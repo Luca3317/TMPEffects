@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13ff6a82e07624438cfe7e6064b4840, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: c13a1d5d10615374ba0e4c3f0e2c45a8, type: 3}
+  m_Name: EffectDatabase
   m_EditorClassIdentifier: 
-  color:
-    serializedVersion: 2
-    rgba: 0
-  _speed: 10
-  _frequency: 10
-  lerpColor:
-    serializedVersion: 2
-    rgba: 0
+  effects:
+  - {fileID: 11400000, guid: 8b8344e125a1d1446b7e340c092f91b7, type: 2}
