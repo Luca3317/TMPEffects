@@ -17,7 +17,6 @@ public struct CharData
     public readonly int wordLen;
 
     public readonly bool isVisible;
-
     // TODO Probably need to reset this one every time as well
     // Also large; maybe make characterdata a class and only keep some fields of info
     // CharData passed as reference though so maybe size not an issue
@@ -28,6 +27,8 @@ public struct CharData
     // This data would be made redundant if passing with Span
     public int segmentIndex;
     public int segmentLength;
+
+    public bool hidden;
 
     public CharData(TMP_CharacterInfo characterInfo, TMP_WordInfo wordInfo) : this(characterInfo)
     {
@@ -48,6 +49,8 @@ public struct CharData
 
         segmentIndex = -1;
         segmentLength = -1;
+
+        hidden = false;
     }
 
 

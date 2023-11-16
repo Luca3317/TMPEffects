@@ -16,16 +16,21 @@ public class TestTMProEffect : TMPEffectParameterless
     {
         for (int i = 0; i < 4; i++)
         {
-            Color32 c = new Color32
-            (
-                (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
-                (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
-                (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
-                (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1))
-            );
-
+            Color32 c = Color.red;
             cData.currentMesh.SetColor(i, c);
         }
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    Color32 c = new Color32
+        //    (
+        //        (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
+        //        (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
+        //        (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1)),
+        //        (byte)Mathf.Lerp(0, 255, Mathf.PingPong(Time.time, 1))
+        //    );
+
+        //    cData.currentMesh.SetColor(i, c);
+        //}
     }
 
     public override void ResetVariables()
