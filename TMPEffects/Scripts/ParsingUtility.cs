@@ -203,7 +203,8 @@ public static class ParsingUtility
 
         // Parse the tag's value
         ParseKeyValue(text, out key, out value, out endValue);
-        dict.Add("", value);
+        if (!string.IsNullOrEmpty(value))
+            dict.Add("", value);
         text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
 
         // TODO only for debugging purposes, prevent endless loop

@@ -6,12 +6,12 @@ public class TMPCommandArgs
 {
     public int index;
     public string name;
-    public Dictionary<string, string> args;
+    public Dictionary<string, string> parameters;
 
-    public TMPCommandArgs(int index, string name, Dictionary<string, string> args) 
+    public TMPCommandArgs(int index, string name, Dictionary<string, string> parameters) 
     {
         this.index = index;
         this.name = name;
-        this.args = args;
+        this.parameters = parameters;
     }
 }

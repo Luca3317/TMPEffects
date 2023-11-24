@@ -23,7 +23,7 @@ public class TMPEffectTag
 
     public void Close(int endIndex)
     {
-        if (!IsOpen) throw new System.InvalidOperationException();
+        //if (!IsOpen) throw new System.InvalidOperationException();
         length = endIndex - startIndex + 1;
     }
 

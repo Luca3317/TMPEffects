@@ -1,0 +1,16 @@
+{
+    "name": "TMPEffects.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:96c64e576ede81e46ad482a315c680f9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

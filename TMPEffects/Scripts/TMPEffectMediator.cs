@@ -18,6 +18,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class TMPEffectMediator : MonoBehaviour
 {
+    // Holds information about the characters (including whitespace chars)
     public List<CharData> charData { get; private set; }
 
     public TMPTextProcessor processor = new TMPTextProcessor();
@@ -42,15 +43,24 @@ public class TMPEffectMediator : MonoBehaviour
     // If this value reaches 0 destroy yourself
     public int Subscribers { get; private set; }
 
+#if UNITY_EDITOR
+    public void AwakeMediator()
+    {
+        Awake();
+        OnEnable();
+    }
+#endif
+
     private void Awake()
     {
+        Debug.Log("Awake effect");
         text = GetComponent<TMP_Text>();
 
         charData = new List<CharData>();
         processor = new TMPTextProcessor();
         hideFlags = HideFlags.HideInInspector;
 
-        StartCoroutine(ChangeText());
+        //StartCoroutine(ChangeText());
     }
 
     private void OnEnable()
@@ -105,7 +115,7 @@ public class TMPEffectMediator : MonoBehaviour
             //      Custom tags will be stripped from the raw text - cant modify an applied text
             //
             // Maybe: Dual solution; use the current method for editor work and the other one during runtime
-            processor.Process(text.text, text.GetParsedText());
+            processor.ProcessTags(text.text, text.GetParsedText());
 
             activeStartIndex = 0;
             activeEndIndex = text.textInfo.characterCount - 1;
@@ -120,16 +130,16 @@ public class TMPEffectMediator : MonoBehaviour
     }
 
     // Test for ensuring texteffects are immediately updated
-    IEnumerator ChangeText()
-    {
-        string newText = "A NEW Text! <wave><color=green><test>Wooo</test></wave>A NEW Text! <wave><test>Wooo</test></wave>A NEW Text! <wave><test>Wooo</test></wave>";
-        yield return new WaitForSeconds(0.1f);
+    //IEnumerator ChangeText()
+    //{
+    //    string newText = "A NEW Text! <wave><color=green><test><#firstWoo>Wooo</test></wave>A NEW Text! <!testCommand><wave><test>Wooo</test></wave>A NEW Text! <wave><test>Wooo</test></wave>";
+    //    yield return new WaitForSeconds(0.1f);
 
-        text.text = newText;
-        text.ForceMeshUpdate();
-        //Debug.Break();
-        yield return null;
-    }
+    //    text.text = newText;
+    //    text.ForceMeshUpdate();
+    //    //Debug.Break();
+    //    yield return null;
+    //}
 
     public void SetCharData()
     {

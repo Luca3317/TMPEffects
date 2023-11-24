@@ -254,7 +254,14 @@ public class OLDTMPEffectPreProcessor : ITextPreprocessor
 
 public interface ITagProcessor
 {
-    public bool Preprocess(ParsingUtility.TagInfo tagInfo, int textIndex);
+    // TODO Unnecessarily expensive to check both times
+    // Refacto: Preprocess checks and holds empty entry
+    // Process populates the entries with the correct indices
+
+    // Check if is valid tag
+    public bool PreProcess(ParsingUtility.TagInfo tagInfo);
+    // Check if is valid tag and create entry
+    public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex);
     public void Reset();
 }
 
@@ -278,8 +285,39 @@ public class AnimationTagProcessor : ITagProcessor<TMPEffectTag>
         ProcessedTags = new();
     }
 
-    public bool Preprocess(TagInfo tagInfo, int textIndex)
+    public bool PreProcess(TagInfo tagInfo)
     {
+        Debug.Log("Preprocessing tag: " + tagInfo.name + "; Database == null " + (database == null));
+        // TODO How to handle this case?
+        // Technically you probably shouldnt be able to create a
+        // processor with an invalid database
+        // DO SAME FOR COMMANDTAGPROCESSOR
+        if (database == null) return false;
+        Debug.Log("Preprocessing tag: " + tagInfo.name + "; within actual!");
+
+        // check name
+        if (!database.Contains(tagInfo.name)) return false;
+        Debug.Log("Preprocessing tag: " + tagInfo.name + "; within actual!");
+
+        if (tagInfo.type == ParsingUtility.TagType.Open)
+        {
+            // check parameters
+            var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString, 0);
+            if (!database.GetEffect(tagInfo.name).ValidateParameters(parameters)) return false;
+        }
+
+        Debug.Log("Preprocessing tag: " + tagInfo.name + "; within actual!");
+        return true;
+    }
+
+    public bool Process(TagInfo tagInfo, int textIndex)
+    {
+        // TODO How to handle this case?
+        // Technically you probably shouldnt be able to create a
+        // processor with an invalid database
+        // DO SAME FOR COMMANDTAGPROCESSOR
+        if (database == null) return false;
+
         // check name
         if (!database.Contains(tagInfo.name)) return false;
 
@@ -327,12 +365,42 @@ public class CommandTagProcessor : ITagProcessor<TMPCommandArgs>
 
     public CommandTagProcessor(TMPCommandDatabase database)
     {
+        Debug.Log("Created command tag processor with " + (database == null));
         this.database = database;
         ProcessedTags = new();
     }
 
-    public bool Preprocess(TagInfo tagInfo, int textIndex)
+    public bool PreProcess(TagInfo tagInfo)
     {
+        // TODO How to handle this case?
+        // Technically you probably shouldnt be able to create a
+        // processor with an invalid database
+        // DO SAME FOR ANIMTAGPROCESSOR
+        if (database == null) return false;
+
+        // check name
+        Debug.Log("Preprocessing command");
+        if (!database.Contains(tagInfo.name)) return false;
+
+        if (tagInfo.type == ParsingUtility.TagType.Open)
+        {
+            // check parameters
+            var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString, 0);
+            if (!database.GetCommand(tagInfo.name).ValidateParameters(parameters)) return false;
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool Process(TagInfo tagInfo, int textIndex)
+    {
+        // TODO How to handle this case?
+        // Technically you probably shouldnt be able to create a
+        // processor with an invalid database
+        // DO SAME FOR ANIMTAGPROCESSOR
+        if (database == null) return false;
+
         // check name
         if (!database.Contains(tagInfo.name)) return false;
 
@@ -369,7 +437,12 @@ public class EventTagProcessor : ITagProcessor<TMPEventArgs>
         ProcessedTags = new();
     }
 
-    public bool Preprocess(TagInfo tagInfo, int textIndex)
+    public bool PreProcess(TagInfo info)
+    {
+        return true;
+    }
+
+    public bool Process(TagInfo tagInfo, int textIndex)
     {
         TMPEventArgs args = new TMPEventArgs(textIndex, tagInfo.name, ParsingUtility.GetTagParametersDict(tagInfo.parameterString, 0));
         ProcessedTags.Add(args);
@@ -448,7 +521,7 @@ public class TMPEffectPreProcessor : ITextPreprocessor
     {
         if (tagPreprocessors.ContainsKey(tagInfo.prefix))
         {
-            return tagPreprocessors[tagInfo.prefix].Preprocess(tagInfo, textIndex);
+            return tagPreprocessors[tagInfo.prefix].Process(tagInfo, textIndex);
         }
 
         return false;

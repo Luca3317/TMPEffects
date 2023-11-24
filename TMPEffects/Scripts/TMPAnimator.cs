@@ -1,24 +1,42 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[ExecuteAlways]
 public class TMPAnimator : MonoBehaviour
 {
     [SerializeField] TMPEffectsDatabase database;
+
+#if UNITY_EDITOR
+    [SerializeField] bool previewAnimations = false;
+    bool firstCall = true;
+#endif
 
     private TMPEffectMediator data;
     private AnimationTagProcessor atp;
 
     private void Awake()
     {
+        Debug.Log("Awake animator");
         atp = new AnimationTagProcessor(database);
     }
 
     private void OnEnable()
     {
+        Debug.Log("Onenable animator");
         if (data == null) data = TMPEffectMediator.Create(gameObject);
 
+
+#if UNITY_EDITOR
+        prevPreviewAnimations = previewAnimations;
+        EditorApplication.update += UpdateText;
+        if (atp == null) atp = new AnimationTagProcessor(database);
+        data.AwakeMediator();
+#endif
+
         data.Subscribe();
-        data.processor.RegisterPreprocessor(ParsingUtility.NO_PREFIX, atp);
+        data.processor.RegisterProcessor(ParsingUtility.NO_PREFIX, atp);
         data.processor.FinishPreProcess += CloseOpenTags;
         data.TextChanged += UpdateText;
         data.ForceUpdateTriggered += UpdateText;
@@ -30,15 +48,94 @@ public class TMPAnimator : MonoBehaviour
         data.TextChanged -= UpdateText;
         data.ForceUpdateTriggered -= UpdateText;
         data.Unsubscribe();
+
+#if UNITY_EDITOR
+        EditorApplication.update -= UpdateText;
+        if (atp == null) atp = new AnimationTagProcessor(database);
+        data.AwakeMediator();
+        previewAnimations = false;
+#endif
     }
 
     private void Update()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying) return;
+        //if (!Application.isPlaying && previewAnimations)
+        //{
+        //    if (firstCall)
+        //    {
+        //        firstCall = false;
+        //        Awake();
+        //        OnEnable();
+        //        data.AwakeMediator();
+        //        EditorApplication.update += UpdatePreview;
+        //    }
+        //}
+#endif
+
         UpdateText();
     }
 
+#if UNITY_EDITOR 
+    bool prevPreviewAnimations = false;
+    private void OnValidate()
+    {
+        if (prevPreviewAnimations != previewAnimations)
+        {
+            Debug.LogWarning("VALUE CHANGED");
+            if (previewAnimations)
+            {
+                Debug.LogWarning("SUB");
+                data.ForceUpdate();
+            }
+            else
+            {
+                Debug.LogWarning("UNSUB");
+                var info = data.text.textInfo;
+
+                for (int i = 0; i < info.characterCount; i++)
+                {
+                    var cInfo = info.characterInfo[i];
+
+                    if (!cInfo.isVisible) continue;
+
+                    int vIndex = cInfo.vertexIndex;
+                    int mIndex = cInfo.materialReferenceIndex;
+
+                    var colors = info.meshInfo[mIndex].colors32;
+                    var verts = info.meshInfo[mIndex].vertices;
+
+                    // TODO Ctrl+z for tmp text during runtime cause oob exception here
+                    if (data.charData.Count == 0)
+                    {
+                        Debug.LogWarning("Uninitialized chardata");
+                    }
+
+                    for (int j = 0; j < 4; j++)
+                    {
+                        verts[vIndex + j] = data.charData[i].initialMesh[j].position;
+                        colors[vIndex + j] = data.charData[i].initialMesh[j].color;
+                    }
+                }
+
+                data.text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            }
+
+            prevPreviewAnimations = previewAnimations;
+        }
+    }
+#endif
+
     void UpdateText()
     {
+
+#if UNITY_EDITOR
+        Debug.Log("Called updatepreview");
+        if (!Application.isPlaying && !previewAnimations) return;
+        Debug.Log("WILL DO  updatepreview");
+#endif
+
         var info = data.text.textInfo;
 
         for (int i = 0; i < atp.ProcessedTags.Count; i++)

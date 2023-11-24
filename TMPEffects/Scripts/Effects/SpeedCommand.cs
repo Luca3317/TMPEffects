@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="new TestCommand", menuName ="TMPEffects/Commands/Test")]
-[TMPEffect("testCommand")]
-public class TestCommand : TMPCommand
+[CreateAssetMenu(fileName = "new SpeedCommand", menuName = "TMPEffects/Commands/Speed")]
+[TMPEffect("speed")]
+public class SpeedCommand : TMPCommand
 {
     public override void ExecuteCommand(TMPCommandArgs args, TMPWriterFinal writer)
     {
-        writer.Wait(float.Parse(args.parameters[""]));
-        Debug.Log("Executed test command");
+        writer.SetSpeed(float.Parse(args.parameters[""], CultureInfo.InvariantCulture));
     }
 
     public override void ResetVariables()
@@ -23,7 +23,7 @@ public class TestCommand : TMPCommand
         if (parameters == null) return false;
         if (!parameters.ContainsKey(""))
             return false;
-
-        return float.TryParse(parameters[""], out _);
+        
+        return float.TryParse(parameters[""], NumberStyles.Float, CultureInfo.InvariantCulture, out _);
     }
 }

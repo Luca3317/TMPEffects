@@ -176,11 +176,11 @@ public class PreprocessorTests
         EventTagProcessor etp = new();
 
         TMPTextProcessor processor = new();
-        processor.RegisterPreprocessor(ParsingUtility.NO_PREFIX, atp);
-        processor.RegisterPreprocessor('#', etp);
-        processor.RegisterPreprocessor('!', ctp);
+        processor.RegisterProcessor(ParsingUtility.NO_PREFIX, atp);
+        processor.RegisterProcessor('#', etp);
+        processor.RegisterProcessor('!', ctp);
 
-        Measure.Method(() => { processor.PreprocessText(stress); processor.Process(stress, stressParsed); }).WarmupCount(5).MeasurementCount(1000).GC().Run();
+        Measure.Method(() => { processor.PreprocessText(stress); processor.ProcessTags(stress, stressParsed); }).WarmupCount(5).MeasurementCount(1000).GC().Run();
     }
 
     [Test, Performance]
@@ -193,10 +193,10 @@ public class PreprocessorTests
         EventTagProcessor etp = new();
 
         TMPTextProcessor processor = new();
-        processor.RegisterPreprocessor(ParsingUtility.NO_PREFIX, atp);
-        processor.RegisterPreprocessor('#', etp);
-        processor.RegisterPreprocessor('!', ctp);
+        processor.RegisterProcessor(ParsingUtility.NO_PREFIX, atp);
+        processor.RegisterProcessor('#', etp);
+        processor.RegisterProcessor('!', ctp);
 
-        Measure.Method(() => { processor.PreprocessText(simple); processor.Process(simple, simpleParsed); }).WarmupCount(5).MeasurementCount(1000).GC().Run();
+        Measure.Method(() => { processor.PreprocessText(simple); processor.ProcessTags(simple, simpleParsed); }).WarmupCount(5).MeasurementCount(1000).GC().Run();
     }
 }

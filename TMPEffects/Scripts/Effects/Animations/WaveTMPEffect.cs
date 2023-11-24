@@ -26,6 +26,8 @@ public class WaveTMPEffect : TMPEffect
 
     public override void SetParameters(Dictionary<string, string> parameters)
     {
+        if (parameters == null) return;
+
         foreach (var kvp in parameters)
         {
             switch (kvp.Key)

@@ -9,9 +9,8 @@ public class TMPCommandDatabase : ScriptableObject
 
     Dictionary<int, TMPCommand> commandDict;
 
-    private void OnEnable()
+    void CreateDict()
     {
-        Debug.Log("Called awake and will now populate effectDict");
         commandDict = new Dictionary<int, TMPCommand>();
         foreach (var command in commands)
         {
@@ -35,21 +34,37 @@ public class TMPCommandDatabase : ScriptableObject
 
     public bool Contains(string name)
     {
+        if (commandDict == null) CreateDict();
         return commandDict.ContainsKey(name.GetHashCode());
     }
 
     public bool Contains(int nameHashCode)
     {
+        if (commandDict == null) CreateDict();
         return commandDict.ContainsKey(nameHashCode);
     }
 
     public TMPCommand GetCommand(string name)
     {
+        if (commandDict == null) CreateDict();
         return commandDict[name.GetHashCode()];
     }
 
     public TMPCommand GetCommand(int nameHashCode)
     {
+        if (commandDict == null) CreateDict();
         return commandDict[nameHashCode];
     }
+
+#if UNITY_EDITOR
+    int prevCount = 0;
+    private void OnValidate()
+    {
+        if (prevCount != commands.Length)
+        {
+            prevCount = commands.Length;
+            CreateDict();
+        }
+    }
+#endif
 }

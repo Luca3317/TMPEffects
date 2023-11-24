@@ -10,9 +10,13 @@ public class TMPEffectsDatabase : ScriptableObject
 
     Dictionary<int, TMPEffect> effectDict;
 
-    private void OnEnable()
+    //private void OnEnable()
+    //{
+    //    Debug.Log("Called awake and will now populate effectDict");
+    //}
+
+    void CreateDict()
     {
-        Debug.Log("Called awake and will now populate effectDict");
         effectDict = new Dictionary<int, TMPEffect>();
         foreach (var effect in effects)
         {
@@ -21,7 +25,7 @@ public class TMPEffectsDatabase : ScriptableObject
                 Debug.Log("Empty effect in " + name);
                 continue;
             }
-            
+
             TMPEffectAttribute att = effect.GetType().GetCustomAttribute<TMPEffectAttribute>();
             if (att == null)
             {
@@ -36,21 +40,37 @@ public class TMPEffectsDatabase : ScriptableObject
 
     public bool Contains(string name)
     {
+        if (effectDict == null) CreateDict();
         return effectDict.ContainsKey(name.GetHashCode());
     }
 
     public bool Contains(int nameHashCode)
     {
+        if (effectDict == null) CreateDict();
         return effectDict.ContainsKey(nameHashCode);
     }
 
     public TMPEffect GetEffect(string name)
     {
+        if (effectDict == null) CreateDict();
         return effectDict[name.GetHashCode()];
     }
 
     public TMPEffect GetEffect(int nameHashCode)
     {
+        if (effectDict == null) CreateDict();
         return effectDict[nameHashCode];
     }
+
+#if UNITY_EDITOR
+    int prevCount = 0;
+    private void OnValidate()
+    {
+        if (prevCount != effects.Length)
+        {
+            prevCount = effects.Length;
+            CreateDict();
+        }
+    }
+#endif
 }
