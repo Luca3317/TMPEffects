@@ -16,6 +16,8 @@ public class TMPAnimatorEditor : Editor
     SerializedProperty databaseProp;
     SerializedProperty updateFromProp;
     SerializedProperty animateOnStartProp;
+    SerializedProperty contextProp;
+    SerializedProperty contextScalingProp;
     //SerializedProperty animateOnTextChangeProp;
 
     GUIContent useDefaultDatabaseLabel;
@@ -28,6 +30,8 @@ public class TMPAnimatorEditor : Editor
         databaseProp = serializedObject.FindProperty("database");
         updateFromProp = serializedObject.FindProperty("updateFrom");
         animateOnStartProp = serializedObject.FindProperty("animateOnStart");
+        contextProp = serializedObject.FindProperty("context");
+        contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
 
         animator = target as TMPAnimatorFinal;
         //wasEnabled = writer.enabled;
@@ -117,6 +121,13 @@ public class TMPAnimatorEditor : Editor
         EditorGUILayout.PropertyField(animateOnStartProp);
 
         DrawDatabase();
+
+        if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(contextScalingProp);
+            EditorGUI.indentLevel--;
+        }
     }
 
     public override void OnInspectorGUI()

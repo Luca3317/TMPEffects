@@ -149,7 +149,6 @@ public class TMPWriterEditor : Editor
 
     void UpdateProgress(int index)
     {
-        Debug.Log("Update progress for " + (index + 1) + " iswriting:" + writer.IsWriting + "; Result = " + Mathf.Lerp(0f, 1f, (float)index / (writer.TotalCharacterCount - 1)));
         progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TotalCharacterCount - 1));
     }
 
