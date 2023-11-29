@@ -386,7 +386,7 @@ public class TMPWriterEditor : Editor
         eventToggleLabel = new GUIContent("Raise events");
         commandToggleLabel = new GUIContent("Execute commands");
         useDefaultDatabaseLabel = new GUIContent("Use default database");
-        eventWarningContent = EditorGUIUtility.IconContent("alertDialog", "|When previewing from edit mode, ensure all the listeners you want to be raised are set to \"Editor and Runtime\", else they will not be raised");
+        eventWarningContent = EditorGUIUtility.IconContent("alertDialog", "|When previewing from edit mode, ensure all the listeners you want to be invoked are set to \"Editor and Runtime\".");
     }
 
     public override void OnInspectorGUI()
@@ -402,7 +402,7 @@ public class TMPWriterEditor : Editor
             case EventType.MouseDrag: if (writer.enabled) HandleMouseDrag(); break;
         }
 
-        // Reserve space 
+        // Reserve space  
         GUILayoutUtility.GetRect(width, playerRect.y + playerHeight + dividerHeight);
 
         EditorGUI.DrawRect(dividerRect, new Color(48f / 255, 44f / 255, 44f / 255));

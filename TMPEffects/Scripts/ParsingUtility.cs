@@ -1,14 +1,7 @@
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Xml;
-using Unity.VisualScripting;
-using UnityEditor.Search;
-using UnityEditor.ShaderKeywordFilter;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public static class ParsingUtility

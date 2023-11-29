@@ -4,8 +4,6 @@ using TMPro;
 using System.Text;
 using System;
 using static ParsingUtility;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
-using UnityEditor.PackageManager;
 
 public class OLDTMPEffectPreProcessor : ITextPreprocessor
 {

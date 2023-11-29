@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TMPEffect : ScriptableObject, ITMPEffect
+public abstract class TMPEffect : ScriptableObject, ITMPAnimation
 {
-    public abstract void Apply(ref CharData charData);
+    public abstract void Animate(ref CharData charData, AnimationContext context);
     public abstract void SetParameters(Dictionary<string, string> parameters);
     public abstract bool ValidateParameters(Dictionary<string, string> parameters);
     public abstract void ResetVariables();

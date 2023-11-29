@@ -5,6 +5,7 @@ using UnityEngine;
 [TMPEffect("test")]
 [CreateAssetMenu(fileName = "new TestTMProEffect", menuName = "TMPEffects/Effects/Test")]
 public class TestTMProEffect : TMPEffectParameterless
+
 {
     [SerializeField] Color32 color;
 
@@ -12,13 +13,14 @@ public class TestTMProEffect : TMPEffectParameterless
     [SerializeField] private float _frequency = 10;
     [SerializeField] private Color32 lerpColor;
 
-    public override void Apply(ref CharData cData)
+    public override void Animate(ref CharData cData, AnimationContext context)
     {
         for (int i = 0; i < 4; i++)
         {
             Color32 c = Color.red;
             cData.currentMesh.SetColor(i, c);
         }
+
         //for (int i = 0; i < 4; i++)
         //{
         //    Color32 c = new Color32

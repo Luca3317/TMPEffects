@@ -17,8 +17,9 @@ public class TMPMediatorFinal : MonoBehaviour
     public TMP_Text Text { get; private set; }
 
     public delegate void EmptyEventHandler();
+    public delegate void RangeEventHandler(int start, int lenght);
     public event EmptyEventHandler TextChanged;
-    public event EmptyEventHandler ForcedUpdate;
+    public event RangeEventHandler ForcedUpdate;
 
     [System.NonSerialized] private bool initialized = false; 
 
@@ -53,9 +54,9 @@ public class TMPMediatorFinal : MonoBehaviour
         Text.ForceMeshUpdate(true, true);
     } 
 
-    public void ForceUpdate()
+    public void ForceUpdate(int start, int length)
     {
-        ForcedUpdate?.Invoke();
+        ForcedUpdate?.Invoke(start, length);
     }
 
     void TestingEvents(bool b, Object obj)
@@ -130,6 +131,7 @@ public class TMPMediatorFinal : MonoBehaviour
     {
         if (subscribers.Contains(obj)) return;
         subscribers.Add(obj);        
+        Debug.Log("Subscriber count " + subscribers.Count);
     }
 
     public void Unsubscribe(object obj)

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using Codice.Client.BaseCommands;
 
 [CustomEditor(typeof(TMPAnimatorFinal))]
 public class TMPAnimatorEditor : Editor
@@ -18,10 +15,14 @@ public class TMPAnimatorEditor : Editor
     SerializedProperty animateOnStartProp;
     SerializedProperty contextProp;
     SerializedProperty contextScalingProp;
+    SerializedProperty contextScaledTimeProp;
+    SerializedProperty previewProp;
     //SerializedProperty animateOnTextChangeProp;
 
     GUIContent useDefaultDatabaseLabel;
 
+    // TODO Move preview to TMPAnimator as editor-only field to make its state persistent between hierarchy selections; serialize too?
+    //bool preview = false;
     bool guiContent = false;
     bool forceReprocess = false;
 
@@ -32,6 +33,8 @@ public class TMPAnimatorEditor : Editor
         animateOnStartProp = serializedObject.FindProperty("animateOnStart");
         contextProp = serializedObject.FindProperty("context");
         contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
+        contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
+        previewProp = serializedObject.FindProperty("preview");
 
         animator = target as TMPAnimatorFinal;
         //wasEnabled = writer.enabled;
@@ -42,11 +45,17 @@ public class TMPAnimatorEditor : Editor
         {
             databaseProp.objectReferenceValue = defaultDatabase;
             serializedObject.ApplyModifiedProperties();
-            animator.ForceReprocess();
         }
-    }
+         
+        animator.ForceReprocess();
 
-    void InitGUIContent()
+        //if (previewProp.boolValue)
+        //{
+        //    animator.NewStartPreview(); 
+        //}
+    }
+      
+    void InitGUIContent() 
     {
         if (guiContent) return;
         guiContent = true;
@@ -94,27 +103,27 @@ public class TMPAnimatorEditor : Editor
         }
     }
 
-    bool preview = false;
-
     void RepaintInspector()
     {
-        bool prevPreview = preview;
+        bool prevPreview = previewProp.boolValue;
 
         EditorGUI.BeginDisabledGroup(Application.isPlaying);
-        preview = EditorGUILayout.Toggle(new GUIContent("Preview"), preview);
+        previewProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Preview"), previewProp.boolValue);
         EditorGUI.EndDisabledGroup();
 
-        if (preview)
+        if (previewProp.boolValue)
         {
-            if (!prevPreview) animator.StartAnimating();
+            if (!prevPreview) animator.StartPreview();
+            //if (!prevPreview) animator.StartAnimating();
 
-            animator.UpdateAnimations();
-            EditorApplication.QueuePlayerLoopUpdate();
+            //animator.UpdateAnimations();
+            //EditorApplication.QueuePlayerLoopUpdate();
         }
         else if (prevPreview)
         {
-            animator.StopAnimating();
-            animator.ResetAnimations();
+            animator.StopPreview();
+            //animator.StopAnimating();
+            //animator.ResetAnimations();
         }
 
         EditorGUILayout.PropertyField(updateFromProp);
@@ -126,6 +135,7 @@ public class TMPAnimatorEditor : Editor
         {
             EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(contextScalingProp);
+            EditorGUILayout.PropertyField(contextScaledTimeProp);
             EditorGUI.indentLevel--;
         }
     }
@@ -147,7 +157,8 @@ public class TMPAnimatorEditor : Editor
 
     public override bool RequiresConstantRepaint()
     {
-        return true;
-        return preview;
+        //return true;
+        return previewProp.boolValue;
     }
 }
+ 

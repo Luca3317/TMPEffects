@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,12 +17,17 @@ public struct CharData
     public readonly int wordFirstIndex;
     public readonly int wordLen;
 
-    public readonly bool isVisible;
-    // TODO Probably need to reset this one every time as well
-    // Also large; maybe make characterdata a class and only keep some fields of info
-    // CharData passed as reference though so maybe size not an issue
-    //public TMP_CharacterInfo info;
+    public readonly float pointSize;
+    public readonly float scale;
 
+    public readonly char character;
+
+    public readonly bool isVisible;
+
+    public readonly int lineNumber;
+    public readonly int pageNumber;
+
+    // public readonly Color32 baseColor;
     #endregion
 
     // This data would be made redundant if passing with Span
@@ -29,6 +35,7 @@ public struct CharData
     public int segmentLength;
 
     public bool hidden;
+    public float shownTime;
 
     public CharData(TMP_CharacterInfo characterInfo, TMP_WordInfo wordInfo) : this(characterInfo)
     {
@@ -47,10 +54,18 @@ public struct CharData
         this.wordFirstIndex = -1;
         this.wordLen = -1;
 
+        lineNumber = characterInfo.lineNumber;
+        pageNumber = characterInfo.pageNumber;
+
         segmentIndex = -1;
         segmentLength = -1;
 
+        pointSize = characterInfo.pointSize;
+        scale = characterInfo.scale;
+        character = characterInfo.character;
+
         hidden = false;
+        shownTime = -1;
     }
 
 

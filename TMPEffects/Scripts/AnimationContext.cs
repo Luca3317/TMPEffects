@@ -18,4 +18,5 @@ public class AnimationContext
 {
     // Animation scaling
     public bool scaleAnimations = true;
+    public bool useScaledTime = true;
 }

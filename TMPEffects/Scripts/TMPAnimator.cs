@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TMPAnimator : MonoBehaviour
 {
     [SerializeField] TMPEffectsDatabase database;
+    [SerializeField] AnimationContext context;
 
 #if UNITY_EDITOR
     [SerializeField] bool previewAnimations = false;
@@ -141,7 +142,7 @@ public class TMPAnimator : MonoBehaviour
         for (int i = 0; i < atp.ProcessedTags.Count; i++)
         {
             TMPEffectTag tag = atp.ProcessedTags[i];
-            ITMPEffect effect = database.GetEffect(tag.name);
+            ITMPAnimation effect = database.GetEffect(tag.name);
             if (effect == null) Debug.LogError("Tags contained tag that did not have a registered effect; sdhould not be possible");
 
             effect.ResetVariables();
@@ -159,7 +160,7 @@ public class TMPAnimator : MonoBehaviour
                 cData.segmentIndex = j;
                 cData.segmentLength = tag.length;
 
-                effect.Apply(ref cData);
+                effect.Animate(ref cData, context);
                 data.charData[tag.startIndex + j] = cData;
             }
         }

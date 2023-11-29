@@ -15,11 +15,14 @@ public class WaveTMPEffect : TMPEffect
     private float amplitude;
     private float speed;
 
-    public override void Apply(ref CharData cData)
+    public override void Animate(ref CharData cData, AnimationContext context)
     {
+        float scale = cData.pointSize / 36f;
+
         for (int i = 0; i < 4; i++)
         {
-            float yOffset = amplitude * (Mathf.Sin(Time.time * speed + cData.index * frequency + Mathf.PI / 2) + 1);
+            float xPos = (cData.initialMesh.vertex_TL.position.x + cData.initialMesh.vertex_TR.position.x) / 2;
+            float yOffset = amplitude * (Mathf.Sin( (context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
             cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i) + Vector3.up * yOffset);
         }
     }
@@ -44,7 +47,7 @@ public class WaveTMPEffect : TMPEffect
                 case "amp":
                 case "amplitude": amplitude = float.Parse(kvp.Value); break;
             }
-        }
+        } 
     }
 
     public override void ResetVariables()
