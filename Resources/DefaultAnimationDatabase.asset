@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13a1d5d10615374ba0e4c3f0e2c45a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e1899aee2d84fa48a4562b19deb09c6, type: 3}
   m_Name: DefaultAnimationDatabase
   m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 11400000, guid: 8b8344e125a1d1446b7e340c092f91b7, type: 2}
-  - {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
+  effectDict:
+    _serializedList:
+    - Key: wave
+      Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
+    - Key: test
+      Value: {fileID: 11400000, guid: 8b8344e125a1d1446b7e340c092f91b7, type: 2}
+    - Key: sickwave
+      Value: {fileID: 11400000, guid: 6f0130bd686dee54da266fdd3afabb08, type: 2}

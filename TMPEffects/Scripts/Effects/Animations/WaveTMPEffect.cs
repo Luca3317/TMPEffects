@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[TMPEffect(tag: "wave")]
 [CreateAssetMenu(fileName = "new WaveTMProEffect", menuName = "TMPEffects/Effects/Wave")]
 public class WaveTMPEffect : TMPAnimation
 {

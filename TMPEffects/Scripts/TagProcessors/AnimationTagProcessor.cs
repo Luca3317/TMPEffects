@@ -10,9 +10,9 @@ public class AnimationTagProcessor : ITagProcessor<TMPAnimationTag>
         get; private set;
     }
 
-    TMPEffectsDatabase database;
+    TMPAnimationDatabase database;
 
-    public AnimationTagProcessor(TMPEffectsDatabase database)
+    public AnimationTagProcessor(TMPAnimationDatabase database)
     {
         this.database = database;
         ProcessedTags = new();
@@ -33,7 +33,7 @@ public class AnimationTagProcessor : ITagProcessor<TMPAnimationTag>
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-            if (!database.GetEffect(tagInfo.name).ValidateParameters(parameters)) return false;
+            if (!database.GetAnimation(tagInfo.name).ValidateParameters(parameters)) return false;
         }
         return true;
     }
@@ -54,7 +54,7 @@ public class AnimationTagProcessor : ITagProcessor<TMPAnimationTag>
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-            if (!database.GetEffect(tagInfo.name).ValidateParameters(parameters)) return false;
+            if (!database.GetAnimation(tagInfo.name).ValidateParameters(parameters)) return false;
 
             tag = new TMPAnimationTag(tagInfo.name, textIndex, parameters);
             ProcessedTags.Add(tag);

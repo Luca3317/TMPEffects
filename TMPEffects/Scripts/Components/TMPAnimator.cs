@@ -12,11 +12,11 @@ using UnityEngine;
 public class TMPAnimator : TMPEffectComponent
 {
     public bool IsAnimating => isAnimating;
-    public TMPEffectsDatabase Database => database;
+    public TMPAnimationDatabase Database => database;
     public List<TMPAnimationTag> Animations => atp.ProcessedTags;
 
     #region Fields
-    [SerializeField] TMPEffectsDatabase database;
+    [SerializeField] TMPAnimationDatabase database;
     [SerializeField] AnimationContext context;
 
     [SerializeField] UpdateFrom updateFrom;
@@ -142,7 +142,7 @@ public class TMPAnimator : TMPEffectComponent
     /// Set the database the animator should use.
     /// </summary>
     /// <param name="database"></param>
-    public void SetDatabase(TMPEffectsDatabase database)
+    public void SetDatabase(TMPAnimationDatabase database)
     {
         this.database = database;
         UpdateProcessor();
@@ -180,7 +180,7 @@ public class TMPAnimator : TMPEffectComponent
         for (int i = 0; i < atp.ProcessedTags.Count; i++)
         {
             TMPEffectTag tag = atp.ProcessedTags[i];
-            ITMPAnimation effect = database.GetEffect(tag.name);
+            ITMPAnimation effect = database.GetAnimation(tag.name);
             if (effect == null) Debug.LogError("Tags contained tag that did not have a registered effect; sdhould not be possible");
 
             effect.ResetVariables();
@@ -252,7 +252,7 @@ public class TMPAnimator : TMPEffectComponent
                 continue;
             }
 
-            ITMPAnimation effect = database.GetEffect(tag.name);
+            ITMPAnimation effect = database.GetAnimation(tag.name);
             if (effect == null) Debug.LogError("Tags contained tag that did not have a registered effect; sdhould not be possible");
 
             effect.ResetVariables();
@@ -303,7 +303,7 @@ public class TMPAnimator : TMPEffectComponent
     [SerializeField, HideInInspector] bool preview = false;
     [SerializeField, HideInInspector] bool initDatabase = false;
     [SerializeField, HideInInspector] bool startedEditorApplication = false;
-    [SerializeField, HideInInspector] TMPEffectsDatabase prevDatabase = null;
+    [SerializeField, HideInInspector] TMPAnimationDatabase prevDatabase = null;
     const string falseCallerMethodWarning = "The animations of the TMPAnimator on {0} were incorrectly updated " +
         "from method \"{1}\" instead of {0}'s \"{2}\" method; If you want to manually control the animation updates, set {0}'s UpdateFrom property to \"Script\", " +
         "either through the inspector or through a script using the SetUpdateFrom method.";

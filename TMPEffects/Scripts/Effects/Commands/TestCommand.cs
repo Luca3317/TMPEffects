@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="new TestCommand", menuName ="TMPEffects/Commands/Test")]
-[TMPEffect("testCommand")]
 public class TestCommand : TMPCommand
 {
     public override CommandType CommandType => CommandType.Index;

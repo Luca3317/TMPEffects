@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[TMPEffect("test")]
 [CreateAssetMenu(fileName = "new TestTMProEffect", menuName = "TMPEffects/Effects/Test")]
 public class TestTMProEffect : TMPAnimationParameterless
 

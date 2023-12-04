@@ -4,7 +4,6 @@ using System.Globalization;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new SpeedCommand", menuName = "TMPEffects/Commands/Speed")]
-[TMPEffect("speed")]
 public class SpeedCommand : TMPCommand
 {
     public override CommandType CommandType => CommandType.Index;

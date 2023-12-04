@@ -4,7 +4,6 @@ using System.Globalization;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new ShowCommand", menuName = "TMPEffects/Commands/Show")]
-[TMPEffect("show")]
 public class ShowCommand : TMPCommand
 {
     public override CommandType CommandType => CommandType.Range;

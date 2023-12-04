@@ -10,7 +10,7 @@ public class TMPAnimatorEditor : Editor
     TMPMediator mediator;
 
     bool useDefaultDatabase;
-    TMPEffectsDatabase defaultDatabase;
+    TMPAnimationDatabase defaultDatabase;
 
     // Serialized properties
     SerializedProperty databaseProp;
@@ -45,7 +45,7 @@ public class TMPAnimatorEditor : Editor
         mediator = animator.GetComponent<TMPMediator>();
 
         //wasEnabled = writer.enabled;
-        defaultDatabase = (TMPEffectsDatabase)Resources.Load("DefaultAnimationDatabase");
+        defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
         useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initDatabase").boolValue;
 
         if (!serializedObject.FindProperty("initDatabase").boolValue)
