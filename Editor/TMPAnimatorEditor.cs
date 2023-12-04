@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEditor;
+using TMPro;
 
-[CustomEditor(typeof(TMPAnimatorFinal))]
+[CustomEditor(typeof(TMPAnimator))]
 public class TMPAnimatorEditor : Editor
 {
-    TMPAnimatorFinal animator;
+    TMPAnimator animator;
+    TMP_Text text;
+    TMPMediator mediator;
 
     bool useDefaultDatabase;
     TMPEffectsDatabase defaultDatabase;
@@ -36,26 +39,40 @@ public class TMPAnimatorEditor : Editor
         contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
         previewProp = serializedObject.FindProperty("preview");
 
-        animator = target as TMPAnimatorFinal;
+        animator = target as TMPAnimator;
+
+        text = animator.GetComponent<TMP_Text>();
+        mediator = animator.GetComponent<TMPMediator>();
+
         //wasEnabled = writer.enabled;
         defaultDatabase = (TMPEffectsDatabase)Resources.Load("DefaultAnimationDatabase");
-        useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || databaseProp.objectReferenceValue == null;
+        useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initDatabase").boolValue;
 
-        if (databaseProp.objectReferenceValue == null)
+        if (!serializedObject.FindProperty("initDatabase").boolValue)
         {
             databaseProp.objectReferenceValue = defaultDatabase;
+            serializedObject.FindProperty("initDatabase").boolValue = true;
             serializedObject.ApplyModifiedProperties();
         }
-         
+
+        //animator.ForceReprocess();
+        forceReprocess = true;
         animator.ForceReprocess();
+
+        //if (databaseProp.objectReferenceValue == null)
+        //{
+        //    databaseProp.objectReferenceValue = defaultDatabase;
+        //    serializedObject.ApplyModifiedProperties();
+        //}
+
 
         //if (previewProp.boolValue)
         //{
         //    animator.NewStartPreview(); 
         //}
     }
-      
-    void InitGUIContent() 
+
+    void InitGUIContent()
     {
         if (guiContent) return;
         guiContent = true;
@@ -98,7 +115,6 @@ public class TMPAnimatorEditor : Editor
 
         if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
         {
-            Debug.Log("CHANGHED");
             forceReprocess = true;
         }
     }
@@ -110,6 +126,8 @@ public class TMPAnimatorEditor : Editor
         EditorGUI.BeginDisabledGroup(Application.isPlaying);
         previewProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Preview"), previewProp.boolValue);
         EditorGUI.EndDisabledGroup();
+
+        //if (prevPreview != previewProp.boolValue) forceReprocess = true;
 
         if (previewProp.boolValue)
         {
@@ -154,11 +172,4 @@ public class TMPAnimatorEditor : Editor
             animator.ForceReprocess();
         }
     }
-
-    public override bool RequiresConstantRepaint()
-    {
-        //return true;
-        return previewProp.boolValue;
-    }
 }
- 

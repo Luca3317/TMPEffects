@@ -5,7 +5,7 @@ using UnityEngine;
 
 [TMPEffect(tag: "wave")]
 [CreateAssetMenu(fileName = "new WaveTMProEffect", menuName = "TMPEffects/Effects/Wave")]
-public class WaveTMPEffect : TMPEffect
+public class WaveTMPEffect : TMPAnimation
 {
     [SerializeField] private float initialSpeed;
     [SerializeField] private float initialFrequency;

@@ -1,73 +1,88 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/*
+ * A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).
+ * Handles the pre- and postprocessing of the text, as well as maintaining information
+ * about it in the form of a CharData collection.
+ */
+[DisallowMultipleComponent]
 public class TMPMediator : MonoBehaviour
 {
-    public int Subscribers { get; private set; }
+    public bool isInitialized => initialized;
+
+    //public int Subscribers { get; private set; }
     public List<CharData> CharData { get; private set; }
     public TMPTextProcessor Processor { get; private set; }
     public TMP_Text Text { get; private set; }
 
     public delegate void EmptyEventHandler();
+    public delegate void RangeEventHandler(int start, int lenght);
     public event EmptyEventHandler TextChanged;
+    public event RangeEventHandler ForcedUpdate;
 
-    private void AwakeMANUAL()
+    [System.NonSerialized] private bool initialized = false;
+
+    // TODO
+    // For now im using an initialize method instead of Awake/OnEnable/Start
+    // to simplify using this with [ExecuteAlways] on TMPAnimator/TMPWriter
+    // Issue: Initialized for some reason retains its value after recompile => nre after recompiling
+    public void Initialize()
     {
-        Text = GetComponent<TMP_Text>();
+        Debug.Log("Init data w/ " + initialized);
+        if (initialized) return;
 
+        initialized = true;
+
+        subscribers = new List<object>();
+        Text = GetComponent<TMP_Text>();
         CharData = new List<CharData>();
         Processor = new TMPTextProcessor();
-        //hideFlags = HideFlags.HideInInspector;
-    }
 
-    private void OnEnableMANUAL()
-    {
         SetPreprocessor();
-        Text.ForceMeshUpdate();
         TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
+        TMPro_EventManager.TEXTMESHPRO_PROPERTY_EVENT.Add(TestingEvents);
+        //ForceReprocess();
     }
 
-    private void StartMANUAL()
-    {
-        if (!string.IsNullOrWhiteSpace(Text.text))
-        {
-            //Text.SetText(Text.text + " ");
-            //Text.ForceMeshUpdate();
-            ForceReprocess();
-        }
-    }
-
-    private void OnDisable()
-    {
-        UnsetPreprocessor();
-        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
-    }
-
-    // TODO Force a reprocess of the text
-    // Should this always immediately reprocess or just
-    // set a flag that is read before the next update?
     public void ForceReprocess()
     {
-        string tmpText = Text.text;
-        Text.SetText(" ");
-        Text.SetText(tmpText);
-        Text.ForceMeshUpdate();
+        Debug.LogWarning("Force reprocess; Preprocessor set: " + (Text.textPreprocessor == Processor));
+        //string tmpText = Text.text;
+        //Text.SetText(" ");
+        //Text.SetText(tmpText);
+        Text.ForceMeshUpdate(true, true);
+    }
+
+    public void ForceUpdate(int start, int length)
+    {
+        ForcedUpdate?.Invoke(start, length);
+    }
+
+    void TestingEvents(bool b, Object obj)
+    {
+        if ((obj as TMP_Text) == Text)
+        {
+            Debug.LogWarning("Called with " + b);
+        }
     }
 
     void OnTextChanged(Object obj)
     {
         if ((obj as TMP_Text) == Text)
         {
+            Debug.LogWarning("Text changed! to " + (obj as TMP_Text).text);
             TextChangedProcedure();
         }
     }
 
     void TextChangedProcedure()
     {
+        Debug.Log("Triggered text change procedure");
         Processor.ProcessTags(Text.text, Text.GetParsedText());
         PopulateCharData();
+        Debug.Log("Charactercount " + Text.textInfo.characterCount);
         TextChanged?.Invoke();
     }
 
@@ -111,11 +126,21 @@ public class TMPMediator : MonoBehaviour
         }
     }
 
-    public void Subscribe() => Subscribers++;
-    public void Unsubscribe()
+    List<object> subscribers = new List<object>();
+
+    public void Subscribe(object obj)
     {
-        Subscribers--;
-        if (Subscribers <= 0)
+        if (subscribers.Contains(obj)) return;
+        subscribers.Add(obj);
+        Debug.Log("Subscriber count " + subscribers.Count);
+    }
+
+    public void Unsubscribe(object obj)
+    {
+        if (!subscribers.Contains(obj)) return;
+        subscribers.Remove(obj);
+
+        if (subscribers.Count == 0)
         {
             // TODO Is this the right way to handle this?
             // This check is meant to prevent doubly calling destroy
@@ -123,6 +148,9 @@ public class TMPMediator : MonoBehaviour
             // (it being destroyed will cause the other objects to call Unsubscribe)
             if (gameObject.activeInHierarchy)
             {
+                UnsetPreprocessor();
+                TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+
 #if UNITY_EDITOR
                 if (Application.isPlaying) Destroy(this);
                 else DestroyImmediate(this);
@@ -135,135 +163,9 @@ public class TMPMediator : MonoBehaviour
 
     public static TMPMediator Create(GameObject go)
     {
-        TMPMediator tem = go.GetOrAddComponent<TMPMediator>();
-        //tem.hideFlags = HideFlags.HideInInspector;
-        tem.Initialize();
-        return tem;
-    }
-
-    public void Initialize()
-    {
-        AwakeMANUAL();
-        OnEnableMANUAL();
-        StartMANUAL();
+        TMPMediator tmf = go.GetOrAddComponent<TMPMediator>();
+        tmf.hideFlags = HideFlags.HideInInspector;
+        tmf.Initialize();
+        return tmf;
     }
 }
-
-/* BACKU PRE EIDTOR PREVIEWE
- * 
- * 
- * public class TMPMediator : MonoBehaviour
-{
-    public int Subscribers { get; private set; }
-    public List<CharData> CharData { get; private set; }
-    public TMPTextProcessor Processor { get; private set; }
-    public TMP_Text Text { get; private set; }
-
-    public delegate void EmptyEventHandler();
-    public event EmptyEventHandler TextChanged;
-
-    private void Awake()
-    {
-        Text = GetComponent<TMP_Text>();
-
-        CharData = new List<CharData>();
-        Processor = new TMPTextProcessor();
-        hideFlags = HideFlags.HideInInspector;
-    }
-
-    private void OnEnable()
-    {
-        SetPreprocessor();
-        Text.ForceMeshUpdate();
-        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
-    }
-
-    private void Start()
-    {
-        if (!string.IsNullOrWhiteSpace(Text.text))
-        {
-            Text.SetText(Text.text + " ");
-            Text.ForceMeshUpdate();
-        }
-    }
-
-    private void OnDisable()
-    {
-        UnsetPreprocessor();
-        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
-    }
-
-    void OnTextChanged(Object obj)
-    {
-        if ((obj as TMP_Text) == Text)
-        {
-            TextChangedProcedure();
-        }
-    }
-
-    void TextChangedProcedure()
-    {
-        Processor.ProcessTags(Text.text, Text.GetParsedText());
-        PopulateCharData();
-        TextChanged?.Invoke();
-    }
-
-    void SetPreprocessor()
-    {
-        Text.textPreprocessor = Processor;
-    }
-
-    void UnsetPreprocessor()
-    {
-        if (Text.textPreprocessor == Processor)
-            Text.textPreprocessor = null;
-    }
-
-    void PopulateCharData()
-    {
-        CharData.Clear();
-
-        TMP_TextInfo info = Text.textInfo;
-        CharData data;
-        TMP_WordInfo? wordInfo;
-        for (int i = 0; i < info.characterCount; i++)
-        {
-            var cInfo = info.characterInfo[i];
-            wordInfo = null;
-
-            if (cInfo.isVisible)
-            {
-                for (int j = 0; j < info.wordCount; j++)
-                {
-                    wordInfo = info.wordInfo[j];
-                    if (wordInfo.Value.firstCharacterIndex <= i && wordInfo.Value.lastCharacterIndex >= i)
-                    {
-                        break;
-                    }
-                }
-            }
-
-            data = wordInfo == null ? new CharData(cInfo) : new CharData(cInfo, wordInfo.Value);
-            CharData.Add(data);
-        }
-    }
-
-    public void Subscribe() => Subscribers++;
-    public void Unsubscribe()
-    {
-        Subscribers--;
-        if (Subscribers <= 0)
-        {
-            Debug.Log("KMS");
-            Destroy(this);
-        }
-    }
-
-    public static TMPMediator Create(GameObject go)
-    {
-        TMPMediator tem = go.GetOrAddComponent<TMPMediator>();
-        tem.hideFlags = HideFlags.HideInInspector;
-        return tem;
-    }
-}
-*/

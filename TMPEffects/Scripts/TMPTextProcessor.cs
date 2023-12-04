@@ -63,7 +63,7 @@ public class TMPTextProcessor : ITextPreprocessor
         Debug.Log("PREProcess text with " + tagProcessors.Keys.Count + " tag processors");
         foreach (var pr in tagProcessors)
         {
-            Debug.Log("Processor: " + pr.Value.GetType().ToString());
+            Debug.Log("Processor: " + pr.Value.GetType().ToString() + " With database: " + (pr.Value.Database == null ? "null" : ((UnityEngine.Object)pr.Value.Database).name));
         }
 
         sw.Reset();
@@ -85,8 +85,6 @@ public class TMPTextProcessor : ITextPreprocessor
         // Iterate over the text until there is no next tag
         while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
         {
-            Debug.Log("Found tag : " + tagInfo.name);
-
             // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
             // add the text inbetween the tags to the StringBuilder
             if (searchIndex != tagInfo.startIndex)
@@ -153,10 +151,11 @@ public class TMPTextProcessor : ITextPreprocessor
 
     public void ProcessTags(string rawText, string parsedText)
     {
-        Debug.Log("Process text with " + tagProcessors.Keys.Count + " tag processors");
-        Debug.Log("rawtext len: " + rawText.Length + " PArsedtext len: " + parsedText.Length);
-        Debug.Log("Raw: " + rawText);
-        Debug.Log("Parsed: " + parsedText);
+        Debug.Log("POSTProcess text with " + tagProcessors.Keys.Count + " tag processors");
+        foreach (var pr in tagProcessors)
+        {
+            Debug.Log("Processor: " + pr.Value.GetType().ToString() + " With database: " + (pr.Value.Database == null ? "null" : ((UnityEngine.Object)pr.Value.Database).name));
+        }
 
         sw.Start();
         BeginProcessTags?.Invoke(parsedText);

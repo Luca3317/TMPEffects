@@ -1,10 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(TMPWriterFinal))]
+[CustomEditor(typeof(TMPWriter))]
 public class TMPWriterEditor : Editor
 {
-    TMPWriterFinal writer;
+    TMPWriter writer;
     bool changed;
     float progress
     {
@@ -26,6 +26,8 @@ public class TMPWriterEditor : Editor
     SerializedProperty databaseProp;
     SerializedProperty speedProp;
     SerializedProperty startOnPlayProp;
+    SerializedProperty eventsEnabledProp;
+    SerializedProperty commandsEnabledProp;
     SerializedProperty onTextEventProp;
     SerializedProperty onShowCharacterProp;
     SerializedProperty onStartWriterProp;
@@ -114,6 +116,8 @@ public class TMPWriterEditor : Editor
         databaseProp = serializedObject.FindProperty("database");
         speedProp = serializedObject.FindProperty("speed");
         startOnPlayProp = serializedObject.FindProperty("writeOnStart");
+        eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
+        commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
         onTextEventProp = serializedObject.FindProperty("OnTextEvent");
         onShowCharacterProp = serializedObject.FindProperty("OnShowCharacter");
         onStartWriterProp = serializedObject.FindProperty("OnStartWriter");
@@ -129,7 +133,7 @@ public class TMPWriterEditor : Editor
         skipButtonTexture = (Texture)Resources.Load("skipButton");
 
         // Other Initialization work
-        writer = target as TMPWriterFinal;
+        writer = target as TMPWriter;
         progress = 0f;
         clicked = false;
         wasWriting = false;
@@ -214,16 +218,14 @@ public class TMPWriterEditor : Editor
         EditorGUI.LabelField(playLabelRect, playLabel, playLabelStyle);
 
         // Draw play toggles
-        writer.eventsEnabled = EditorGUI.ToggleLeft(eventToggleRect, eventToggleLabel, writer.eventsEnabled);
+        eventsEnabledProp.boolValue = EditorGUI.ToggleLeft(eventToggleRect, eventToggleLabel, eventsEnabledProp.boolValue);
 
-        if (writer.eventsEnabled)
+        if (eventsEnabledProp.boolValue)
         {
-
-
             GUI.Label(eventWarningRect, eventWarningContent);
         }
 
-        writer.commandsEnabled = EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, writer.commandsEnabled);
+        commandsEnabledProp.boolValue = EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, commandsEnabledProp.boolValue);
 
         EditorGUI.BeginDisabledGroup(!writer.enabled);
 

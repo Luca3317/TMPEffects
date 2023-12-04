@@ -4,7 +4,7 @@ using UnityEngine;
 
 [TMPEffect("test")]
 [CreateAssetMenu(fileName = "new TestTMProEffect", menuName = "TMPEffects/Effects/Test")]
-public class TestTMProEffect : TMPEffectParameterless
+public class TestTMProEffect : TMPAnimationParameterless
 
 {
     [SerializeField] Color32 color;
