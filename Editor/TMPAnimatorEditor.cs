@@ -59,17 +59,12 @@ public class TMPAnimatorEditor : Editor
         forceReprocess = true;
         animator.ForceReprocess();
 
-        //if (databaseProp.objectReferenceValue == null)
-        //{
-        //    databaseProp.objectReferenceValue = defaultDatabase;
-        //    serializedObject.ApplyModifiedProperties();
-        //}
+        Undo.undoRedoPerformed += OnUndoRedo;
+    }
 
-
-        //if (previewProp.boolValue)
-        //{
-        //    animator.NewStartPreview(); 
-        //}
+    private void OnDisable()
+    {
+        Undo.undoRedoPerformed -= OnUndoRedo;
     }
 
     void InitGUIContent()
@@ -131,7 +126,10 @@ public class TMPAnimatorEditor : Editor
 
         if (previewProp.boolValue)
         {
-            if (!prevPreview) animator.StartPreview();
+            if (!prevPreview)
+            {
+                animator.StartPreview();
+            }
             //if (!prevPreview) animator.StartAnimating();
 
             //animator.UpdateAnimations();
@@ -170,6 +168,25 @@ public class TMPAnimatorEditor : Editor
         {
             forceReprocess = false;
             animator.ForceReprocess();
+        }
+    }
+
+    void OnUndoRedo()
+    {
+        Debug.Log("ON UNDO REDO");
+
+        if (previewProp.boolValue)
+        {
+            //animator.ForceReprocess();
+            previewProp.boolValue = false;
+            animator.StopPreview();
+
+            EditorApplication.delayCall += () =>
+            {
+                serializedObject.FindProperty("preview").boolValue = true;
+                serializedObject.ApplyModifiedProperties();
+                animator.StartPreview();
+            };
         }
     }
 }

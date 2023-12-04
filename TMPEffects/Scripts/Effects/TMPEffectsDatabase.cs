@@ -10,11 +10,6 @@ public class TMPEffectsDatabase : ScriptableObject
 
     Dictionary<int, TMPAnimation> effectDict;
 
-    //private void OnEnable()
-    //{
-    //    Debug.Log("Called awake and will now populate effectDict");
-    //}
-
     void CreateDict()
     {
         effectDict = new Dictionary<int, TMPAnimation>();
@@ -22,18 +17,15 @@ public class TMPEffectsDatabase : ScriptableObject
         {
             if (effect == null)
             {
-                Debug.Log("Empty effect in " + name);
                 continue;
             }
 
             TMPEffectAttribute att = effect.GetType().GetCustomAttribute<TMPEffectAttribute>();
             if (att == null)
             {
-                Debug.LogError("Could not get attribute");
                 continue;
             }
 
-            Debug.Log("added: " + att.Tag);
             effectDict.Add(att.Tag.GetHashCode(), effect);
         }
     }

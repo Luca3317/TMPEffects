@@ -14,9 +14,14 @@ public static class ParsingUtility
         Close = 2
     }
 
+    public const char NO_PREFIX = '\0';
+    public const char ANIMATION_PREFIX = NO_PREFIX;
+    public const char COMMAND_PREFIX = '!';
+    public const char EVENT_PREFIX = '#';
+
     private static readonly HashSet<char> validPrefixes = new HashSet<char>()
     {
-        '!', '#'
+        '!', '#', '+'
     };
 
     public class TagInfo
@@ -453,7 +458,6 @@ public static class ParsingUtility
         return NO_PREFIX;
     }
 
-    public const char NO_PREFIX = '\0';
 
     /// <summary>
     /// Get a tag's name.

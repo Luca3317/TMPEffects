@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Plugins/SerializedCollections/Editor/Assets/KeysGeneratorSelectorWindow.uss?fileID=7433441132597879392&amp;guid=df6c2ef835e40c94c976442569324029&amp;type=3#KeysGeneratorSelectorWindow" />
+    <ui:VisualElement style="flex-direction: row; flex-grow: 1; border-left-color: rgb(97, 97, 97); border-right-color: rgb(97, 97, 97); border-top-color: rgb(97, 97, 97); border-bottom-color: rgb(97, 97, 97); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+        <ui:VisualElement name="LeftContent" style="flex-basis: 66%; border-left-color: rgb(25, 25, 25); border-right-color: rgb(25, 25, 25); border-top-color: rgb(25, 25, 25); border-bottom-color: rgb(25, 25, 25); border-right-width: 1px;">
+            <ui:Label text="Generators" display-tooltip-when-elided="true" class="sc-title" />
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="generators-content" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightContent" style="flex-basis: 100%;">
+            <ui:Label text="Inspector" display-tooltip-when-elided="true" class="sc-title" />
+            <ui:IMGUIContainer name="imgui-inspector" style="flex-grow: 1; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+            <ui:Label text="4 Elements " display-tooltip-when-elided="true" name="generated-count-label" style="padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px;" />
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:RadioButtonGroup label="Radio Button Group" value="-1" name="modification-group" class="sc-radio-button-group" style="flex-grow: 1;">
+                    <ui:RadioButton label="Add" name="add-modification" tooltip="Add the generated missing keys to the target." class="sc-text-toggle sc-modification-toggle" />
+                    <ui:RadioButton label="Remove" name="remove-modification" tooltip="Remove the generated keys form the target." class="sc-text-toggle sc-modification-toggle" />
+                    <ui:RadioButton label="Confine" name="confine-modification" tooltip="Remove all keys that are not part of the generated keys from the target." class="sc-text-toggle sc-modification-toggle" />
+                </ui:RadioButtonGroup>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Label display-tooltip-when-elided="true" name="result-label" style="flex-grow: 1; -unity-text-align: middle-left; padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px;" />
+                <ui:Button text="Apply" display-tooltip-when-elided="true" name="apply-button" style="width: 100px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button display-tooltip-when-elided="true" class="sc-close-button" />
+    </ui:VisualElement>
+</ui:UXML>

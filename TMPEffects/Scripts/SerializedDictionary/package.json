@@ -1,0 +1,32 @@
+{
+  "name": "ayellowpaper.serialized-dictionary",
+  "version": "1.0.0",
+  "displayName": "Serialized Dictionary",
+  "unity": "2021.3",
+  "description": "Serialized Dictionary enables you to serialize dictionaries, including a very easy to use, native-feeling editor, search, duplicate keys in editor for testing and debugging and much more.",
+  "category": "Libraries",
+  "samples": [
+    {
+      "displayName": "Serialized Dictionary Usage",
+      "description": "A brief introduction for how to use a serialized dictionary",
+      "path": "Samples~/Usage"
+    }
+  ],
+  "keywords": [
+    "tools",
+    "editor",
+    "dictionary",
+    "serialized",
+    "serialization",
+    "serializable",
+    "inspector",
+    "workflow",
+    "tool"
+  ],
+  "author": {
+    "name": "ayellowpaper",
+    "url": "https://github.com/ayellowpaper"
+  },
+  "license": "MIT",
+  "hideInEditor": false
+}

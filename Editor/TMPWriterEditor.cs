@@ -319,6 +319,11 @@ public class TMPWriterEditor : Editor
         EditorGUILayout.PropertyField(startOnPlayProp);
 
         DrawDatabase();
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneCommands"));
+        if (EditorGUI.EndChangeCheck()) writer.ForceReprocess();
+
         DrawEventsFoldout();
     }
 

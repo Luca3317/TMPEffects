@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d384365ca7d202479970a92b895f839, type: 3}
   m_Name: new TestCommand
   m_EditorClassIdentifier: 
+  commandType: 0
+  executeInstantly: 0

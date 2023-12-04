@@ -1,11 +1,11 @@
 using static ParsingUtility;
 using System.Collections.Generic;
 
-public class CommandTagProcessor : ITagProcessor<TMPCommandArgs>
+public class CommandTagProcessor : ITagProcessor<TMPCommandTag>
 {
     public object Database => database;
 
-    public List<TMPCommandArgs> ProcessedTags
+    public List<TMPCommandTag> ProcessedTags
     {
         get; private set;
     }
@@ -34,10 +34,10 @@ public class CommandTagProcessor : ITagProcessor<TMPCommandArgs>
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
             if (!database.GetCommand(tagInfo.name).ValidateParameters(parameters)) return false;
-            return true;
         }
+        else if (database.GetCommand(tagInfo.name).CommandType == CommandType.Index) return false;
 
-        return false;
+        return true;
     }
 
     public bool Process(TagInfo tagInfo, int textIndex)
@@ -51,19 +51,36 @@ public class CommandTagProcessor : ITagProcessor<TMPCommandArgs>
         // check name
         if (!database.Contains(tagInfo.name)) return false;
 
+        TMPCommandTag tag;
         if (tagInfo.type == TagType.Open)
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-
             if (!database.GetCommand(tagInfo.name).ValidateParameters(parameters)) return false;
 
-            TMPCommandArgs args = new TMPCommandArgs(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
-            ProcessedTags.Add(args);
-            return true;
-        }
+            tag = new TMPCommandTag(tagInfo.name, textIndex, parameters);
+            ProcessedTags.Add(tag);
 
-        return false;
+            //TMPCommandArgs args = new TMPCommandArgs(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
+            //ProcessedTags.Add(args);
+            //return true;
+        }
+        else if (database.GetCommand(tagInfo.name).CommandType != CommandType.Index)
+        {
+            for (int i = ProcessedTags.Count - 1; i >= 0; i--)
+            {
+                tag = ProcessedTags[i];
+
+                if (tag.IsOpen && tag.IsEqual(tagInfo.name))
+                {
+                    tag.Close(textIndex - 1);
+                    break;
+                }
+            }
+        }
+        else return false; // TODO Not remove invalid clsoing command tags to communicate they dont need to be closed
+
+        return true;
     }
 
     public void Reset()

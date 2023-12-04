@@ -27,7 +27,6 @@ public class TMPCommandDatabase : ScriptableObject
                 continue;
             }
 
-            Debug.Log("added: " + att.Tag);
             commandDict.Add(att.Tag.GetHashCode(), command);
         }
     }

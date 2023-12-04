@@ -1,8 +1,12 @@
+using AYellowpaper.SerializedCollections;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static System.Net.WebRequestMethods;
 
 /// <summary>
 /// One of the two main components of TMPEffects, along with TMPAnimator.
@@ -11,11 +15,13 @@ using UnityEngine.Events;
 /// Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent. 
 /// </summary>
 [ExecuteAlways]
-public class TMPWriter : MonoBehaviour
+public class TMPWriter : TMPEffectComponent
 {
     public bool IsWriting => writing;
     public int TotalCharacterCount => mediator.Text.textInfo.characterCount;
     public TMPCommandDatabase CommandDatabase => database;
+    public List<TMPCommandTag> Commands => ctps.ProcessedTags;
+    public List<TMPEventArgs> Events => etp.ProcessedTags;
 
     public UnityEvent<TMPEventArgs> OnTextEvent;
     public UnityEvent<CharData> OnShowCharacter;
@@ -31,10 +37,13 @@ public class TMPWriter : MonoBehaviour
     [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
     [SerializeField] bool writeOnStart = true;
     [SerializeField] bool autoWriteNewText = true;
+    [SerializedDictionary("Tag Name", "Command")]
+    [SerializeField] SerializedDictionary<string, SceneCommand> sceneCommands;
 
-    [System.NonSerialized] private TMPMediator mediator;
     [System.NonSerialized] private CommandTagProcessor ctp;
+    [System.NonSerialized] private SceneCommandTagProcessor sctp;
     [System.NonSerialized] private EventTagProcessor etp;
+    [System.NonSerialized] private TagProcessorStack<TMPCommandTag> ctps;
 
     [System.NonSerialized] private Coroutine writerCoroutine = null;
     [System.NonSerialized] private float currentSpeed;
@@ -44,20 +53,37 @@ public class TMPWriter : MonoBehaviour
 
     [System.NonSerialized] private bool writing = false;
     [System.NonSerialized] private int currentIndex = -1;
+
+    [System.NonSerialized] Dictionary<int, List<TMPEventArgs>> events;
+    [System.NonSerialized] Dictionary<int, List<TMPCommandTag>> commands;
     #endregion
+
+    Dictionary<string, SceneCommand> toNormal()
+    {
+        Dictionary<string, SceneCommand> niormal = new();
+        foreach (var pair in sceneCommands)
+        {
+            niormal.Add(pair.Key, pair.Value);
+        }
+
+        return niormal;
+    }
 
     #region Initialization
     private void OnEnable()
     {
         UpdateMediator();
-        UpdateProcessor();
+        UpdateProcessor(forceReprocess: false);
+
         etp = new EventTagProcessor(); // Not dependent on any database
         mediator.Processor.RegisterProcessor('#', etp);
 
         mediator.Subscribe(this);
         //data.Processor.FinishProcessTags += CloseOpenTags; TODO Commands can have closing tags?
         //data.TextChanged += UpdateAnimations;
+        mediator.TextChanged -= OnTextChanged;
         mediator.TextChanged += OnTextChanged;
+        mediator.Processor.FinishProcessTags += CloseOpenTags;
 
         mediator.ForceReprocess();
 
@@ -79,13 +105,15 @@ public class TMPWriter : MonoBehaviour
     private void OnDisable()
     {
         mediator.TextChanged -= OnTextChanged;
+        mediator.Processor.FinishProcessTags -= CloseOpenTags;
         mediator.Processor.UnregisterProcessor('!');
         mediator.Processor.UnregisterProcessor('#');
+        mediator.Processor.UnregisterProcessor('+');
 
         // TODO Each reassigned in OnEnable anyway;
         // Either change class to reuse instances or dont reset (atm, resetting is necessary for some editor functionality though)
         etp.Reset();
-        ctp.Reset();
+        ctps.Reset();
 
         ResetWriter();
 
@@ -108,12 +136,12 @@ public class TMPWriter : MonoBehaviour
     /// </summary>
     public void StartWriter()
     {
+        if (!enabled || !gameObject.activeInHierarchy) return;
+
         if (!writing)
         {
-            Debug.LogWarning("Start writer");
             StartWriterCoroutine();
         }
-        else Debug.Log("already running");
 
         OnStartWriter.Invoke();
     }
@@ -124,9 +152,10 @@ public class TMPWriter : MonoBehaviour
     /// </summary>
     public void StopWriter()
     {
+        if (!enabled || !gameObject.activeInHierarchy) return;
+
         if (writing)
         {
-            Debug.LogWarning("Stop writer");
             StopWriterCoroutine();
         }
 
@@ -139,9 +168,10 @@ public class TMPWriter : MonoBehaviour
     /// TODO rn this shows all characters; should hide them but need to fix editor accordingly
     public void ResetWriter()
     {
+        if (!enabled || !gameObject.activeInHierarchy) return;
+
         if (writing)
         {
-            Debug.LogWarning("ResetWriter");
             StopWriterCoroutine();
         }
 
@@ -158,9 +188,10 @@ public class TMPWriter : MonoBehaviour
     /// <param name="index">The index to reset the writer to.</param>
     public void ResetWriter(int index)
     {
+        if (!enabled || !gameObject.activeInHierarchy) return;
+
         if (writing)
         {
-            Debug.LogWarning("ResetWriter");
             StopWriterCoroutine();
         }
 
@@ -178,6 +209,8 @@ public class TMPWriter : MonoBehaviour
     /// </summary>
     public void FinishWriter()
     {
+        if (!enabled || !gameObject.activeInHierarchy) return;
+
         // skip to end
         if (writing) StopWriterCoroutine();
         currentIndex = mediator.Text.textInfo.characterCount;
@@ -192,6 +225,8 @@ public class TMPWriter : MonoBehaviour
     /// </summary>
     public void RestartWriter()
     {
+        if (!enabled) return;
+
         ResetWriter();
         RestartWriter();
     }
@@ -418,9 +453,15 @@ public class TMPWriter : MonoBehaviour
         if (currentIndex == -1)
             HideAllCharacters();
 
-        //Debug.Log(ctp.ProcessedTags.Count + " commands");
-        //Debug.Log(etp.ProcessedTags.Count + " events");
-        if (mediator.CharData.Count == 0) Debug.Log("Chardata not initialized yet!");
+        // Execute all commands tagged as ExecuteInstantly
+        TMPCommand command;
+        for (int j = 0; j < ctp.ProcessedTags.Count; j++)
+        {
+            if ((command = database.GetCommand(ctp.ProcessedTags[j].name)).ExecuteInstantly)
+            {
+                command.ExecuteCommand(ctp.ProcessedTags[j], this);
+            }
+        }
 
         for (int i = Mathf.Max(currentIndex, 0); i < info.characterCount; i++)
         {
@@ -447,13 +488,24 @@ public class TMPWriter : MonoBehaviour
             // Raise any events or comamnds associated with the current index
             for (int j = 0; j < ctp.ProcessedTags.Count; j++)
             {
-                if (ctp.ProcessedTags[j].index == i)
+                if (ctp.ProcessedTags[j].startIndex == i)
                 {
 #if UNITY_EDITOR
                     if (!commandsEnabled && !Application.isPlaying) continue;
 #endif
 
                     database.GetCommand(ctp.ProcessedTags[j].name).ExecuteCommand(ctp.ProcessedTags[j], this);
+                }
+            }
+            for (int j = 0; j < sctp.ProcessedTags.Count; j++)
+            {
+                if (sctp.ProcessedTags[j].startIndex == i)
+                {
+#if UNITY_EDITOR
+                    if (!commandsEnabled && !Application.isPlaying) continue;
+#endif
+                    sceneCommands[sctp.ProcessedTags[j].name].command?.Invoke(sctp.ProcessedTags[j].parameters);
+                    //database.GetCommand(sctp.ProcessedTags[j].name).ExecuteCommand(sctp.ProcessedTags[j], this);
                 }
             }
             for (int j = 0; j < etp.ProcessedTags.Count; j++)
@@ -543,6 +595,11 @@ public class TMPWriter : MonoBehaviour
             reprocessFlag = true;
         }
     }
+
+    public void ForceReprocess()
+    {
+        mediator.ForceReprocess();
+    }
 #endif
     #endregion
 
@@ -591,17 +648,24 @@ public class TMPWriter : MonoBehaviour
         mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
 
-    private void UpdateMediator()
-    {
-        mediator = TMPMediator.Create(gameObject);
-    }
-
-    private void UpdateProcessor()
+    private void UpdateProcessor(bool forceReprocess = true)
     {
         mediator.Processor.UnregisterProcessor('!');
-        ctp = new CommandTagProcessor(database);
-        mediator.Processor.RegisterProcessor('!', ctp);
-        mediator.ForceReprocess();
+        ctps = new TagProcessorStack<TMPCommandTag>();
+        ctps.AddProcessor(ctp = new CommandTagProcessor(database));
+        ctps.AddProcessor(sctp = new SceneCommandTagProcessor(sceneCommands));
+        mediator.Processor.RegisterProcessor('!', ctps);
+
+        if (forceReprocess) mediator.ForceReprocess();
     }
 
+    private void CloseOpenTags(string text)
+    {
+        int endIndex = text.Length - 1;
+        foreach (var tag in ctps.ProcessedTags)
+        {
+            if (tag.IsOpen)
+                tag.Close(endIndex);
+        }
+    }
 }

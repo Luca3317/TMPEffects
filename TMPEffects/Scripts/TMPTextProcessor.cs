@@ -1,3 +1,4 @@
+using Codice.Client.BaseCommands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,16 +27,13 @@ public class TMPTextProcessor : ITextPreprocessor
     {
         if (preprocessor == null)
         {
-            Debug.LogError("Tried to register null processor");
             throw new System.ArgumentNullException(nameof(preprocessor));
         }
 
         if (tagProcessors.ContainsKey(prefix))
         {
-            Debug.LogWarning("Tried to register processor with duplicate prefix:\"" + prefix + "\"");
             return;
         }
-        Debug.LogWarning("Registered processor with prefix: \"" + prefix + "\"");
         tagProcessors.Add(prefix, preprocessor);
     }
 
@@ -43,10 +41,8 @@ public class TMPTextProcessor : ITextPreprocessor
     {
         if (!tagProcessors.ContainsKey(prefix))
         {
-            Debug.LogWarning("Tried to unregister processor with prefix:\"" + prefix + "\", which was not registered");
             return;
         }
-        Debug.LogWarning("Unregistered processor with prefix: \"" + prefix + "\"");
         tagProcessors.Remove(prefix);
     }
 
@@ -60,12 +56,6 @@ public class TMPTextProcessor : ITextPreprocessor
 
     public string PreprocessText(string text)
     {
-        Debug.Log("PREProcess text with " + tagProcessors.Keys.Count + " tag processors");
-        foreach (var pr in tagProcessors)
-        {
-            Debug.Log("Processor: " + pr.Value.GetType().ToString() + " With database: " + (pr.Value.Database == null ? "null" : ((UnityEngine.Object)pr.Value.Database).name));
-        }
-
         sw.Reset();
         sw.Start();
 
@@ -133,12 +123,10 @@ public class TMPTextProcessor : ITextPreprocessor
         {
             FinishPreProcess?.Invoke(" ");
             sw.Stop();
-            Debug.Log("Returning ");
             return " ";
         }
         FinishPreProcess?.Invoke(sb.ToString());
         sw.Stop();
-        Debug.Log("Returning " + sb.ToString());
         return sb.ToString();
     }
 
@@ -151,12 +139,6 @@ public class TMPTextProcessor : ITextPreprocessor
 
     public void ProcessTags(string rawText, string parsedText)
     {
-        Debug.Log("POSTProcess text with " + tagProcessors.Keys.Count + " tag processors");
-        foreach (var pr in tagProcessors)
-        {
-            Debug.Log("Processor: " + pr.Value.GetType().ToString() + " With database: " + (pr.Value.Database == null ? "null" : ((UnityEngine.Object)pr.Value.Database).name));
-        }
-
         sw.Start();
         BeginProcessTags?.Invoke(parsedText);
 
@@ -177,27 +159,13 @@ public class TMPTextProcessor : ITextPreprocessor
         bool parsedOver = false;
         bool parse = true;
 
-        //Debug.Log("Processing");
-        //Debug.Log("Raw: " + rawText);
-        //Debug.Log("Parsed: " + parsedText);
-
         ReadOnlySpan<char> parsedSpan = parsedText;
         ReadOnlySpan<char> rawSpan = rawText;
-
 
         // Iterate over the text until there is no next tag
         while (ParsingUtility.GetNextTag(rawText, searchIndex, ref tagInfo))
         {
             int tagLen = tagInfo.endIndex - tagInfo.startIndex + 1;
-
-            //Debug.Log("TAG: " + tagInfo.name + "  StartIndex: " + tagInfo.startIndex);
-            //Debug.Log("Raw: " + rawText.Substring(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
-
-            //int parsedStart = tagInfo.startIndex + indexOffset;
-            //int parsedEnd = Mathf.Min(parsedLen - parsedStart - 1, parsedStart + (tagInfo.endIndex - tagInfo.startIndex + 1));
-            //if (parsedEnd > parsedStart)
-            //Debug.Log("Parsed: " + parsedText.Substring(parsedStart, parsedEnd - parsedStart) + "   Indexoffset = " + indexOffset);
-
 
             // Check if the start of the current tag, with the indexOffset applied, exceeds the parsed tag and set a flag accordingly
             if (!parsedOver)
@@ -206,7 +174,6 @@ public class TMPTextProcessor : ITextPreprocessor
             // If the current tag is a noparse tag, toggle whether to parse the succeeding text
             if (tagInfo.name == "noparse")
             {
-                //Debug.Log("Got tag with noparse name at " + tagInfo.startIndex + ": " + rawText.Substring(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
                 if (tagInfo.type == ParsingUtility.TagType.Open)
                 {
                     parse = false;
@@ -223,13 +190,9 @@ public class TMPTextProcessor : ITextPreprocessor
                 continue;
             }
 
-            //if (parse < 0) Debug.LogWarning("PARSE UNDER 0");
-
             // If a noparse tag is active, simply adjust the searchIndex and continue to the next tag
             if (!parse)
             {
-                //Debug.Log("Continue cause !parse");
-
                 prevSearchIndex = searchIndex;
                 searchIndex = tagInfo.endIndex + 1;
                 continue;
@@ -244,7 +207,6 @@ public class TMPTextProcessor : ITextPreprocessor
                 // the previous tag and this one; if so, the textindex is clamped to the parsedLen
                 if (tagInfo.startIndex > prevSearchIndex + 1)
                 {
-                    Debug.LogWarning("There was cut off text detected; all following tags will use parsed.length as closer");
                     HandleTag(ref tagInfo, parsedLen);// tagInfo.startIndex + indexOffset);
                 }
 #if UNITY_EDITOR
@@ -268,8 +230,6 @@ public class TMPTextProcessor : ITextPreprocessor
             // Handle the tag and adjust the indexOffset
             if (parsedText[tagInfo.startIndex + indexOffset] != '<')
             {
-                //Debug.Log("Continue cause no '<' detected; will adjjust offset by " + tagLen);
-
                 // If handle tag returns false, ergo this is a native tag
                 if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset))
                 {
@@ -296,7 +256,6 @@ public class TMPTextProcessor : ITextPreprocessor
                 rawSpan.Slice(tagInfo.startIndex, tagLen), StringComparison.Ordinal)
                 )
             {
-                //Debug.Log("Both contained the tag: " + parsedText.Substring(tagInfo.startIndex + indexOffset, Mathf.Min(tagLen, parsedLen - (tagInfo.startIndex + indexOffset))));
                 if (HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset))
                 {
                 }

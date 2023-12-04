@@ -1,11 +1,11 @@
 using static ParsingUtility;
 using System.Collections.Generic;
 
-public class AnimationTagProcessor : ITagProcessor<TMPEffectTag>
+public class AnimationTagProcessor : ITagProcessor<TMPAnimationTag>
 {
     public object Database => database;
 
-    public List<TMPEffectTag> ProcessedTags
+    public List<TMPAnimationTag> ProcessedTags
     {
         get; private set;
     }
@@ -49,14 +49,14 @@ public class AnimationTagProcessor : ITagProcessor<TMPEffectTag>
         // check name
         if (!database.Contains(tagInfo.name)) return false;
 
-        TMPEffectTag tag;
+        TMPAnimationTag tag;
         if (tagInfo.type == TagType.Open)
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
             if (!database.GetEffect(tagInfo.name).ValidateParameters(parameters)) return false;
 
-            tag = new TMPEffectTag(tagInfo.name, textIndex, parameters);
+            tag = new TMPAnimationTag(tagInfo.name, textIndex, parameters);
             ProcessedTags.Add(tag);
         }
         else

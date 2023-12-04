@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TMPEffectTag
+public abstract class TMPEffectTag
 {
     public string name { get; private set; }
     public int startIndex { get; private set; }

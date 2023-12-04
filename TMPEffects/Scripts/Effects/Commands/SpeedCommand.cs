@@ -7,16 +7,13 @@ using UnityEngine;
 [TMPEffect("speed")]
 public class SpeedCommand : TMPCommand
 {
-    public override void ExecuteCommand(TMPCommandArgs args, TMPWriter writer)
+    public override CommandType CommandType => CommandType.Index;
+    public override bool ExecuteInstantly => false;
+
+    public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
     {
         writer.SetSpeed(float.Parse(args.parameters[""], CultureInfo.InvariantCulture));
     }
-
-    public override void ResetVariables()
-    { }
-
-    public override void SetParameters(Dictionary<string, string> parameters)
-    { }
 
     public override bool ValidateParameters(Dictionary<string, string> parameters)
     {

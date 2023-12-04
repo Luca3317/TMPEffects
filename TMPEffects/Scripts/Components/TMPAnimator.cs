@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -8,10 +9,11 @@ using UnityEngine;
 /// TMPAnimator allows you to animate characters.
 /// </summary>
 [ExecuteAlways]
-public class TMPAnimator : MonoBehaviour
+public class TMPAnimator : TMPEffectComponent
 {
     public bool IsAnimating => isAnimating;
     public TMPEffectsDatabase Database => database;
+    public List<TMPAnimationTag> Animations => atp.ProcessedTags;
 
     #region Fields
     [SerializeField] TMPEffectsDatabase database;
@@ -20,7 +22,6 @@ public class TMPAnimator : MonoBehaviour
     [SerializeField] UpdateFrom updateFrom;
     [SerializeField] bool animateOnStart;
 
-    [System.NonSerialized] private TMPMediator mediator = null;
     [System.NonSerialized] private AnimationTagProcessor atp = null;
     [System.NonSerialized] private bool isAnimating = false;
     #endregion
@@ -77,8 +78,6 @@ public class TMPAnimator : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("Order: OnDestroy called on Animato");
-
         if (mediator != null) mediator.Unsubscribe(this); // Unsubscribe from the mediator; if this was the last subscriber, mediator will be destroyed
     }
     #endregion
@@ -222,11 +221,10 @@ public class TMPAnimator : MonoBehaviour
             colors = info.meshInfo[mIndex].colors32;
             verts = info.meshInfo[mIndex].vertices;
 
-            // TODO Ctrl+z for tmp text during runtime cause oob exception here
-            if (mediator.CharData.Count == 0)
-            {
-                Debug.LogWarning("Uninitialized chardata");
-            }
+            //if (mediator.CharData.Count == 0)
+            //{
+            //    Debug.LogWarning("Uninitialized chardata");
+            //}
 
             for (int j = 0; j < 4; j++)
             {
@@ -235,7 +233,8 @@ public class TMPAnimator : MonoBehaviour
             }
         }
 
-        mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        if (mediator.Text.mesh != null)
+            mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
 
     private void UpdateCharacterAnimation(int index)
@@ -347,16 +346,10 @@ public class TMPAnimator : MonoBehaviour
 #endif
     #endregion
 
-    private void UpdateMediator()
-    {
-        mediator = TMPMediator.Create(gameObject);
-    }
-
     private void UpdateProcessor()
     {
         mediator.Processor.UnregisterProcessor(ParsingUtility.NO_PREFIX);
         atp = new AnimationTagProcessor(database);
-        Debug.LogWarning("Updating Processor with atp = " + (atp == null ? "null" : "not null") + " and database = " + (database == null ? "null" : database.name));
         mediator.Processor.RegisterProcessor(ParsingUtility.NO_PREFIX, atp);
     }
 
@@ -405,6 +398,7 @@ public class TMPAnimator : MonoBehaviour
             mediator.CharData[i] = cData;
         }
 
-        mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        if (mediator.Text.mesh != null)
+            mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
 }

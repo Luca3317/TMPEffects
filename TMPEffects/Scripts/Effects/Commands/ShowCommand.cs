@@ -7,17 +7,13 @@ using UnityEngine;
 [TMPEffect("show")]
 public class ShowCommand : TMPCommand
 {
-    public override void ExecuteCommand(TMPCommandArgs args, TMPWriter writer)
-    {
-        Debug.Log("Executed!");
-    }
+    public override CommandType CommandType => CommandType.Range;
+    public override bool ExecuteInstantly => true;
 
-    public override void ResetVariables()
+    public override void ExecuteCommand(TMPCommandTag tag, TMPWriter writer)
     {
-    }
-
-    public override void SetParameters(Dictionary<string, string> parameters)
-    {
+        if (tag.IsOpen) Debug.LogError("Show tag was not closed!");
+        writer.Show(tag.startIndex, tag.length);
     }
 
     public override bool ValidateParameters(Dictionary<string, string> parameters)

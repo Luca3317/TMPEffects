@@ -30,7 +30,6 @@ public class TMPMediator : MonoBehaviour
     // Issue: Initialized for some reason retains its value after recompile => nre after recompiling
     public void Initialize()
     {
-        Debug.Log("Init data w/ " + initialized);
         if (initialized) return;
 
         initialized = true;
@@ -42,16 +41,10 @@ public class TMPMediator : MonoBehaviour
 
         SetPreprocessor();
         TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
-        TMPro_EventManager.TEXTMESHPRO_PROPERTY_EVENT.Add(TestingEvents);
-        //ForceReprocess();
     }
 
     public void ForceReprocess()
     {
-        Debug.LogWarning("Force reprocess; Preprocessor set: " + (Text.textPreprocessor == Processor));
-        //string tmpText = Text.text;
-        //Text.SetText(" ");
-        //Text.SetText(tmpText);
         Text.ForceMeshUpdate(true, true);
     }
 
@@ -60,29 +53,18 @@ public class TMPMediator : MonoBehaviour
         ForcedUpdate?.Invoke(start, length);
     }
 
-    void TestingEvents(bool b, Object obj)
-    {
-        if ((obj as TMP_Text) == Text)
-        {
-            Debug.LogWarning("Called with " + b);
-        }
-    }
-
     void OnTextChanged(Object obj)
     {
         if ((obj as TMP_Text) == Text)
         {
-            Debug.LogWarning("Text changed! to " + (obj as TMP_Text).text);
             TextChangedProcedure();
         }
     }
 
     void TextChangedProcedure()
     {
-        Debug.Log("Triggered text change procedure");
         Processor.ProcessTags(Text.text, Text.GetParsedText());
         PopulateCharData();
-        Debug.Log("Charactercount " + Text.textInfo.characterCount);
         TextChanged?.Invoke();
     }
 
@@ -132,7 +114,6 @@ public class TMPMediator : MonoBehaviour
     {
         if (subscribers.Contains(obj)) return;
         subscribers.Add(obj);
-        Debug.Log("Subscriber count " + subscribers.Count);
     }
 
     public void Unsubscribe(object obj)

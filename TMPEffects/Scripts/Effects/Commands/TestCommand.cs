@@ -6,17 +6,14 @@ using UnityEngine;
 [TMPEffect("testCommand")]
 public class TestCommand : TMPCommand
 {
-    public override void ExecuteCommand(TMPCommandArgs args, TMPWriter writer)
+    public override CommandType CommandType => CommandType.Index;
+    public override bool ExecuteInstantly => false;
+
+    public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
     {
         writer.Wait(float.Parse(args.parameters[""]));
         Debug.Log("Executed test command");
     }
-
-    public override void ResetVariables()
-    { }
-
-    public override void SetParameters(Dictionary<string, string> parameters)
-    { }
 
     public override bool ValidateParameters(Dictionary<string, string> parameters)
     {
