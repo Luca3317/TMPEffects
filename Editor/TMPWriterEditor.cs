@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -147,6 +150,7 @@ public class TMPWriterEditor : Editor
     private void OnDisable()
     {
         writer.OnShowCharacter.RemoveListener(UpdateProgress);
+        writer.OnResetWriter.RemoveListener(UpdateProgress);
     }
 
     void UpdateProgress(CharData cData) => UpdateProgress(cData.index);
@@ -359,7 +363,7 @@ public class TMPWriterEditor : Editor
         float max = progressBarRect.x + progressBarRect.width;
 
         progress = Mathf.InverseLerp(min, max, xPos);
-        writer.ResetWriter(Mathf.RoundToInt(((writer.TotalCharacterCount-1) * progress))); 
+        writer.ResetWriter(Mathf.RoundToInt(((writer.TotalCharacterCount - 1) * progress)));
     }
 
     bool styles = false;
@@ -440,6 +444,8 @@ public class TMPWriterEditor : Editor
             Repaint();
         }
     }
+
+    Vector3 tl = Vector3.zero;
 
     void PauseWriter()
     {

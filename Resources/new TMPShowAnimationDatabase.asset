@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd2eb468351c564a9b8301a29be1963, type: 3}
-  m_Name: DefaultCommandDatabase
+  m_Script: {fileID: 11500000, guid: bd1c888a8af36584781ab02d09901fc2, type: 3}
+  m_Name: new TMPShowAnimationDatabase
   m_EditorClassIdentifier: 
-  commandDict:
+  showAnimations:
     _serializedList:
-    - Key: speed
-      Value: {fileID: 11400000, guid: 1b861c7499ea52f40ae741494de7a3fa, type: 2}
+    - Key: cock
+      Value: {fileID: 11400000, guid: 8a27cb1f74ef47b45957fd85cfe9a92d, type: 2}

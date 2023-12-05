@@ -6,14 +6,14 @@ using TMPro;
 public class TMPAnimatorEditor : Editor
 {
     TMPAnimator animator;
-    TMP_Text text;
-    TMPMediator mediator;
 
     bool useDefaultDatabase;
     TMPAnimationDatabase defaultDatabase;
 
     // Serialized properties
     SerializedProperty databaseProp;
+    SerializedProperty showAnimProp;
+    SerializedProperty hideAnimProp;
     SerializedProperty updateFromProp;
     SerializedProperty animateOnStartProp;
     SerializedProperty contextProp;
@@ -32,6 +32,8 @@ public class TMPAnimatorEditor : Editor
     private void OnEnable()
     {
         databaseProp = serializedObject.FindProperty("database");
+        showAnimProp = serializedObject.FindProperty("defaultShowAnimation");
+        hideAnimProp = serializedObject.FindProperty("defaultHideAnimation");
         updateFromProp = serializedObject.FindProperty("updateFrom");
         animateOnStartProp = serializedObject.FindProperty("animateOnStart");
         contextProp = serializedObject.FindProperty("context");
@@ -40,9 +42,6 @@ public class TMPAnimatorEditor : Editor
         previewProp = serializedObject.FindProperty("preview");
 
         animator = target as TMPAnimator;
-
-        text = animator.GetComponent<TMP_Text>();
-        mediator = animator.GetComponent<TMPMediator>();
 
         //wasEnabled = writer.enabled;
         defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
@@ -55,8 +54,11 @@ public class TMPAnimatorEditor : Editor
             serializedObject.ApplyModifiedProperties();
         }
 
-        //animator.ForceReprocess();
-        forceReprocess = true;
+        // TODO This line is necessary as this ensures the processors are up-to-date with the current state of
+        // the TMPAnimationDatabase. Could also do this by making TMPAnimationDatabase return with ref; fine for now
+        // even better would be a callback when changing the database so you dont have to select the gameobject for
+        // changes to show
+        animator.UpdateProcessorsWrapper();
         animator.ForceReprocess();
 
         Undo.undoRedoPerformed += OnUndoRedo;
@@ -65,7 +67,7 @@ public class TMPAnimatorEditor : Editor
     private void OnDisable()
     {
         Undo.undoRedoPerformed -= OnUndoRedo;
-    }
+    } 
 
     void InitGUIContent()
     {
@@ -114,6 +116,13 @@ public class TMPAnimatorEditor : Editor
         }
     }
 
+    void DrawDefaultHideShow()
+    {
+        EditorGUILayout.PropertyField(showAnimProp);
+        EditorGUILayout.PropertyField(hideAnimProp);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"));
+    }
+
     void RepaintInspector()
     {
         bool prevPreview = previewProp.boolValue;
@@ -146,6 +155,8 @@ public class TMPAnimatorEditor : Editor
         EditorGUILayout.PropertyField(animateOnStartProp);
 
         DrawDatabase();
+
+        DrawDefaultHideShow();
 
         if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
         {

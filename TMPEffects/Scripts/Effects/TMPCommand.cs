@@ -19,6 +19,10 @@ public abstract class TMPCommand : ScriptableObject
     // Can pass in both writer and animator, but would prefer a single dedicated context object later
     public abstract void ExecuteCommand(TMPCommandTag tag, TMPWriter writer/*, TMPAnimator animator*/);
     public abstract bool ValidateParameters(Dictionary<string, string> parameters);
+
+#if UNITY_EDITOR
+    public virtual void SceneGUI(Vector3 position, TMPCommandTag tag) { }
+#endif
 }
 
 public enum CommandType

@@ -12,7 +12,7 @@ public class ShowCommand : TMPCommand
     public override void ExecuteCommand(TMPCommandTag tag, TMPWriter writer)
     {
         if (tag.IsOpen) Debug.LogError("Show tag was not closed!");
-        writer.Show(tag.startIndex, tag.length);
+        writer.Show(tag.startIndex, tag.length, true);
     }
 
     public override bool ValidateParameters(Dictionary<string, string> parameters)

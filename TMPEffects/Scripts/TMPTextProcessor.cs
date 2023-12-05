@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class TMPTextProcessor : ITextPreprocessor
 {
+    public Dictionary<char, ITagProcessor> TagProcessors => new(tagProcessors);
     Dictionary<char, ITagProcessor> tagProcessors;
 
     private StringBuilder sb;

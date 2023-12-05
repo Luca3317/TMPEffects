@@ -20,52 +20,46 @@ public class CommandTagProcessor : ITagProcessor<TMPCommandTag>
 
     public bool PreProcess(TagInfo tagInfo)
     {
-        // TODO How to handle this case?
-        // Technically you probably shouldnt be able to create a
-        // processor with an invalid database
-        // DO SAME FOR ANIMTAGPROCESSOR
         if (database == null) return false;
 
         // check name
         if (!database.Contains(tagInfo.name)) return false;
 
+        TMPCommand command;
+        if ((command = database.GetEffect(tagInfo.name)) == null) return false;
+
         if (tagInfo.type == TagType.Open)
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-            if (!database.GetCommand(tagInfo.name).ValidateParameters(parameters)) return false;
+            if (!command.ValidateParameters(parameters)) return false;
         }
-        else if (database.GetCommand(tagInfo.name).CommandType == CommandType.Index) return false;
+        else if (command.CommandType == CommandType.Index) return false;
 
         return true;
     }
 
     public bool Process(TagInfo tagInfo, int textIndex)
     {
-        // TODO How to handle this case?
-        // Technically you probably shouldnt be able to create a
-        // processor with an invalid database
-        // DO SAME FOR ANIMTAGPROCESSOR
         if (database == null) return false;
 
         // check name
         if (!database.Contains(tagInfo.name)) return false;
+
+        TMPCommand command;
+        if ((command = database.GetEffect(tagInfo.name)) == null) return false;
 
         TMPCommandTag tag;
         if (tagInfo.type == TagType.Open)
         {
             // check parameters
             var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-            if (!database.GetCommand(tagInfo.name).ValidateParameters(parameters)) return false;
+            if (!command.ValidateParameters(parameters)) return false;
 
             tag = new TMPCommandTag(tagInfo.name, textIndex, parameters);
             ProcessedTags.Add(tag);
-
-            //TMPCommandArgs args = new TMPCommandArgs(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
-            //ProcessedTags.Add(args);
-            //return true;
         }
-        else if (database.GetCommand(tagInfo.name).CommandType != CommandType.Index)
+        else if (command.CommandType != CommandType.Index)
         {
             for (int i = ProcessedTags.Count - 1; i >= 0; i--)
             {

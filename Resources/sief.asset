@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd2eb468351c564a9b8301a29be1963, type: 3}
-  m_Name: DefaultCommandDatabase
+  m_Script: {fileID: 11500000, guid: 337bd111296f6ee4cabd2caa57986019, type: 3}
+  m_Name: sief
   m_EditorClassIdentifier: 
-  commandDict:
+  animations:
     _serializedList:
-    - Key: speed
-      Value: {fileID: 11400000, guid: 1b861c7499ea52f40ae741494de7a3fa, type: 2}
+    - Key: wave
+      Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
+    - Key: test
+      Value: {fileID: 11400000, guid: 8b8344e125a1d1446b7e340c092f91b7, type: 2}

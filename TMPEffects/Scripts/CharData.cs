@@ -7,7 +7,6 @@ using UnityEngine;
 public struct CharData
 {
     #region CharacterInfo
-
     // TODO These structs are pretty big;
     // Make just hold initial mesh and for current mesh just indeces?
     public VertexData initialMesh;
@@ -34,8 +33,19 @@ public struct CharData
     public int segmentIndex;
     public int segmentLength;
 
-    public bool hidden;
-    public float shownTime;
+    public VisibilityState visibilityState
+    {
+        get => _visibilityState;
+        set
+        {
+            _stateTime = Time.time; // TODO appropriate way to get time?
+            _visibilityState = value;
+        } 
+    }
+    public float stateTime => _stateTime;
+    private VisibilityState _visibilityState;
+    private float _stateTime;
+    //public bool hidden;
 
     public CharData(TMP_CharacterInfo characterInfo, TMP_WordInfo wordInfo) : this(characterInfo)
     {
@@ -64,10 +74,18 @@ public struct CharData
         scale = characterInfo.scale;
         character = characterInfo.character;
 
-        hidden = false;
-        shownTime = -1;
+        _visibilityState = VisibilityState.Shown;
+        _stateTime = -1;
+        visibilityState = VisibilityState.Shown;
     }
 
+    public enum VisibilityState : int
+    {
+        Shown = 10,
+        Hidden = -10,
+        ShowAnimation = 5,
+        HideAnimation = -5
+    }
 
     public struct VertexData
     {

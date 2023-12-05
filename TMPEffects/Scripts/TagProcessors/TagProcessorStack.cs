@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TagProcessorStack<T> : ITagProcessor<T>
 {
-    object ITagProcessor.Database => throw new System.NotImplementedException();
-
     public List<T> ProcessedTags
     {
         get

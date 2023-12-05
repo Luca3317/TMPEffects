@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e1899aee2d84fa48a4562b19deb09c6, type: 3}
-  m_Name: DefaultAnimationDatabase
+  m_Name: "seiw\xDFfsfs"
   m_EditorClassIdentifier: 
   basicAnimationDatabase: {fileID: 11400000, guid: 0aed3c1ce143dcc418ac83b731eb835d, type: 2}
-  showAnimationDatabase: {fileID: 11400000, guid: d9f9570f82f2fbd47b926e2b995d031a, type: 2}
+  showAnimationDatabase: {fileID: 0}
   hideAnimationDatabase: {fileID: 11400000, guid: 43435b1bd2c7f4e458a9741ea6de02f4, type: 2}

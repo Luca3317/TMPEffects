@@ -4,19 +4,26 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new TMPAnimationDatabase", menuName = "TMPEffects/Animation Database")]
-public class TMPAnimationDatabase : ScriptableObject
+[CreateAssetMenu(fileName = "new TMPAnimationDatabase", menuName = "TMPEffects/Database/Animation Database", order = 0)]
+public class TMPAnimationDatabase : TMPEffectDatabase<TMPAnimation>
 {
-    [SerializedDictionary(keyName: "Tag Name", valueName: "Animation")]
-    [SerializeField] SerializedDictionary<string, TMPAnimation> effectDict;
+    public TMPBasicAnimationDatabase basicAnimationDatabase;
+    public TMPShowAnimationDatabase showAnimationDatabase;
+    public TMPHideAnimationDatabase hideAnimationDatabase;
 
-    public bool Contains(string name)
+    public override bool Contains(string name)
     {
-        return effectDict.ContainsKey(name);
+        if (basicAnimationDatabase.Contains(name)) return true;
+        if (showAnimationDatabase.Contains(name)) return true;
+        if (hideAnimationDatabase.Contains(name)) return true;
+        return false;
     }
 
-    public TMPAnimation GetAnimation(string name)
+    public override TMPAnimation GetEffect(string name)
     {
-        return effectDict[name];
+        if (basicAnimationDatabase.Contains(name)) return basicAnimationDatabase.GetEffect(name);
+        if (showAnimationDatabase.Contains(name)) return showAnimationDatabase.GetEffect(name);
+        if (hideAnimationDatabase.Contains(name)) return hideAnimationDatabase.GetEffect(name);
+        throw new KeyNotFoundException();
     }
 }

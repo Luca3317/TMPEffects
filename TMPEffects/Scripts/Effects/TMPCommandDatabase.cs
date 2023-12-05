@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new TMPCommandDatabase", menuName = "TMPEffects/Command Database")]
-public class TMPCommandDatabase : ScriptableObject
+[CreateAssetMenu(fileName = "new TMPCommandDatabase", menuName = "TMPEffects/Database/Command Database", order = 30)]
+public class TMPCommandDatabase : TMPEffectDatabase<TMPCommand>
 {
     [SerializedDictionary(keyName: "Tag Name", valueName: "Command")]
     [SerializeField] SerializedDictionary<string, TMPCommand> commandDict;
 
-    public bool Contains(string name)
+    public override bool Contains(string name)
     {
         return commandDict.ContainsKey(name);
     }
 
-    public TMPCommand GetCommand(string name)
+    public override TMPCommand GetEffect(string name)
     {
         return commandDict[name];
     }

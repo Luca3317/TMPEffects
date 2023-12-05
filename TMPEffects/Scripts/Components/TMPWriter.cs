@@ -1,4 +1,5 @@
 using AYellowpaper.SerializedCollections;
+using Codice.CM.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static log4net.Appender.ColoredConsoleAppender;
 using static System.Net.WebRequestMethods;
 
 /// <summary>
@@ -57,17 +59,6 @@ public class TMPWriter : TMPEffectComponent
     [System.NonSerialized] Dictionary<int, List<TMPEventArgs>> events;
     [System.NonSerialized] Dictionary<int, List<TMPCommandTag>> commands;
     #endregion
-
-    Dictionary<string, SceneCommand> toNormal()
-    {
-        Dictionary<string, SceneCommand> niormal = new();
-        foreach (var pair in sceneCommands)
-        {
-            niormal.Add(pair.Key, pair.Value);
-        }
-
-        return niormal;
-    }
 
     #region Initialization
     private void OnEnable()
@@ -177,7 +168,7 @@ public class TMPWriter : TMPEffectComponent
 
         // reset
         currentIndex = -1;
-        Show(0, mediator.Text.textInfo.characterCount);
+        Show(0, mediator.Text.textInfo.characterCount, true);
 
         OnResetWriter?.Invoke(0);
     }
@@ -197,8 +188,8 @@ public class TMPWriter : TMPEffectComponent
 
         // reset
         currentIndex = index;
-        Hide(index, mediator.Text.textInfo.characterCount - index);
-        Show(0, index);
+        Hide(index, mediator.Text.textInfo.characterCount - index, true);
+        Show(0, index, true);
 
         OnResetWriter.Invoke(index);
     }
@@ -214,7 +205,7 @@ public class TMPWriter : TMPEffectComponent
         // skip to end
         if (writing) StopWriterCoroutine();
         currentIndex = mediator.Text.textInfo.characterCount;
-        Show(0, mediator.Text.textInfo.characterCount);
+        Show(0, mediator.Text.textInfo.characterCount, true);
 
         OnFinishWriter.Invoke();
     }
@@ -256,125 +247,12 @@ public class TMPWriter : TMPEffectComponent
     }
 
     /// <summary>
-    /// Instantly show the specified characters.
-    /// </summary>
-    /// <param name="start">The startindex of the characters to be shown.</param>
-    /// <param name="length">The amount of characters to be shown, starting from <paramref name="start"/></param>
-    /// <exception cref="System.ArgumentException">Throws if either <paramref name="start"/> or <paramref name="length"/> is out of bounds.</exception>
-    public void Show(int start, int length)
-    {
-        TMP_TextInfo info = mediator.Text.textInfo;
-        if (start < 0 || length < 0 || start + length > info.characterCount)
-        {
-            throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
-        }
-
-        CharData cData;
-        Vector3[] verts;
-        Color32[] colors;
-        int vIndex, mIndex;
-        TMP_CharacterInfo cInfo;
-
-        for (int i = start; i < start + length; i++)
-        {
-            cInfo = info.characterInfo[i];
-            if (!cInfo.isVisible) continue;
-
-            cData = mediator.CharData[i];
-            if (!cData.hidden) continue;
-
-            // Set the current mesh's vertices all to the initial mesh values
-            // TODO Play show animations here?
-            for (int j = 0; j < 4; j++)
-            {
-                cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
-            }
-
-            cData.hidden = false;
-
-            // Apply the new vertices to the vertex array
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
-
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = cData.currentMesh[j].position;
-                colors[vIndex + j] = cData.currentMesh[j].color;
-            }
-
-            // Apply the new vertices to the char data array
-            mediator.CharData[i] = cData;
-        }
-
-        mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-    }
-
-    /// <summary>
     /// Set the current speed of the writer.
     /// </summary>
     /// <param name="speed">The speed to set the writer to.</param>
     public void SetSpeed(float speed)
     {
         currentSpeed = speed;
-    }
-
-    /// <summary>
-    /// Instantly hide the specified characters.
-    /// </summary>
-    /// <param name="start">The startindex of the characters to be hidden.</param>
-    /// <param name="length">The amount of characters to be hidden, starting from <paramref name="start"/></param>
-    /// <exception cref="System.ArgumentException">Throws if either <paramref name="start"/> or <paramref name="length"/> is out of bounds.</exception>
-    public void Hide(int start, int length)
-    {
-        TMP_TextInfo info = mediator.Text.textInfo;
-        if (start < 0 || length < 0 || start + length > info.characterCount)
-        {
-            throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
-        }
-
-        CharData cData;
-        Vector3[] verts;
-        Color32[] colors;
-        int vIndex, mIndex;
-        TMP_CharacterInfo cInfo;
-
-        for (int i = start; i < start + length; i++)
-        {
-            cInfo = info.characterInfo[i];
-            if (!cInfo.isVisible) continue;
-
-            cData = mediator.CharData[i];
-
-            // Set the current mesh's vertices all to the initial mesh values
-            // TODO Play show animations here?
-            for (int j = 0; j < 4; j++)
-            {
-                cData.currentMesh.SetPosition(j, Vector3.zero);
-            }
-
-            cData.hidden = true;
-
-            // Apply the new vertices to the vertex array
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
-
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = cData.currentMesh[j].position;
-                colors[vIndex + j] = cData.currentMesh[j].color;
-            }
-
-            // Apply the new vertices to the char data array
-            mediator.CharData[i] = cData;
-        }
-
-        mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
     #endregion
 
@@ -451,13 +329,13 @@ public class TMPWriter : TMPEffectComponent
         int vIndex, mIndex;
 
         if (currentIndex == -1)
-            HideAllCharacters();
+            HideAllCharacters(true);
 
         // Execute all commands tagged as ExecuteInstantly
         TMPCommand command;
         for (int j = 0; j < ctp.ProcessedTags.Count; j++)
         {
-            if ((command = database.GetCommand(ctp.ProcessedTags[j].name)).ExecuteInstantly)
+            if ((command = database.GetEffect(ctp.ProcessedTags[j].name)).ExecuteInstantly)
             {
                 command.ExecuteCommand(ctp.ProcessedTags[j], this);
             }
@@ -465,6 +343,9 @@ public class TMPWriter : TMPEffectComponent
 
         for (int i = Mathf.Max(currentIndex, 0); i < info.characterCount; i++)
         {
+            // Update current index; needed for when continuing where it left off
+            currentIndex = i;
+
             // TODO preliminary wait implementation
             if (shouldWait)
             {
@@ -472,17 +353,13 @@ public class TMPWriter : TMPEffectComponent
                 yield return new WaitForSeconds(waitAmount);
             }
 
-            // Update current index; needed for when continuing where it left off
-            currentIndex = i;
-
             cData = mediator.CharData[i];
-            cData.hidden = false;
 
-            for (int j = 0; j < 4; j++)
-            {
-                cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
-            }
-            mediator.CharData[i] = cData;
+            //for (int j = 0; j < 4; j++)
+            //{
+            //    cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
+            //}
+            //mediator.CharData[i] = cData;
 
 
             // Raise any events or comamnds associated with the current index
@@ -494,7 +371,7 @@ public class TMPWriter : TMPEffectComponent
                     if (!commandsEnabled && !Application.isPlaying) continue;
 #endif
 
-                    database.GetCommand(ctp.ProcessedTags[j].name).ExecuteCommand(ctp.ProcessedTags[j], this);
+                    database.GetEffect(ctp.ProcessedTags[j].name).ExecuteCommand(ctp.ProcessedTags[j], this);
                 }
             }
             for (int j = 0; j < sctp.ProcessedTags.Count; j++)
@@ -524,23 +401,26 @@ public class TMPWriter : TMPEffectComponent
 
             OnShowCharacter?.Invoke(cData);
 
-            //data.activeEndIndex = i;
-            if (!cInfo.isVisible /*|| !cData.hidden*/) continue;
+            // Show next character
+            if (!cInfo.isVisible || cData.visibilityState != CharData.VisibilityState.Hidden) continue;
 
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
+            //vIndex = cInfo.vertexIndex;
+            //mIndex = cInfo.materialReferenceIndex;
 
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
+            //colors = info.meshInfo[mIndex].colors32;
+            //verts = info.meshInfo[mIndex].vertices;
 
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = mediator.CharData[i].currentMesh[j].position;
-                colors[vIndex + j] = mediator.CharData[i].currentMesh[j].color;
-            }
+            //for (int j = 0; j < 4; j++)
+            //{
+            //    verts[vIndex + j] = mediator.CharData[i].currentMesh[j].position;
+            //    colors[vIndex + j] = mediator.CharData[i].currentMesh[j].color;
+            //}
 
-            mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            //mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
+            //mediator.ForceUpdate(i, 1);
+
+            Show(i, 1, false);
             mediator.ForceUpdate(i, 1);
 
             //data.activeEndIndex = i;
@@ -603,49 +483,9 @@ public class TMPWriter : TMPEffectComponent
 #endif
     #endregion
 
-    private void HideAllCharacters()
+    private void HideAllCharacters(bool skipAnimations = false)
     {
-        TMP_TextInfo info = mediator.Text.textInfo;
-        CharData cData;
-
-        Vector3[] verts;
-        Color32[] colors;
-        int vIndex, mIndex;
-        TMP_CharacterInfo cInfo;
-
-        for (int i = 0; i < mediator.CharData.Count; i++)
-        {
-            cInfo = info.characterInfo[i];
-            if (!cInfo.isVisible) continue;
-
-            cData = mediator.CharData[i];
-
-            // Set the current mesh's vertices all to V3.zero
-            for (int j = 0; j < 4; j++)
-            {
-                cData.currentMesh.SetPosition(j, Vector3.zero);
-            }
-
-            cData.hidden = true;
-
-            // Apply the new vertices to the vertex array
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
-
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = cData.currentMesh[j].position;
-                colors[vIndex + j] = cData.currentMesh[j].color;
-            }
-
-            // Apply the new vertices to the char data array
-            mediator.CharData[i] = cData;
-        }
-
-        mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        Hide(0, mediator.Text.textInfo.characterCount, skipAnimations);
     }
 
     private void UpdateProcessor(bool forceReprocess = true)
@@ -666,6 +506,145 @@ public class TMPWriter : TMPEffectComponent
         {
             if (tag.IsOpen)
                 tag.Close(endIndex);
+        }
+    }
+
+    /// <summary>
+    /// Show the specified characters.
+    /// </summary>
+    /// <param name="start">The startindex of the characters to be shown.</param>
+    /// <param name="length">The amount of characters to be shown, starting from <paramref name="start"/></param>
+    /// <exception cref="System.ArgumentException">Throws if either <paramref name="start"/> or <paramref name="length"/> is out of bounds.</exception>
+    public void Show(int start, int length, bool skipAnimation = false)
+    {
+        TMP_TextInfo info = mediator.Text.textInfo;
+        if (start < 0 || length < 0 || start + length > info.characterCount)
+        {
+            throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
+        }
+
+        CharData cData;
+        TMP_CharacterInfo cInfo;
+        if (skipAnimation)
+        {
+            Vector3[] verts;
+            Color32[] colors;
+            int vIndex, mIndex;
+
+            for (int i = start; i < start + length; i++)
+            {
+                cInfo = info.characterInfo[i];
+                cData = mediator.CharData[i];
+                if (!cData.isVisible) continue;
+
+                // Set the current mesh's vertices all to the initial mesh values
+                for (int j = 0; j < 4; j++)
+                {
+                    cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
+                }
+
+                cData.visibilityState = CharData.VisibilityState.Shown;
+
+                // Apply the new vertices to the vertex array
+                vIndex = cInfo.vertexIndex;
+                mIndex = cInfo.materialReferenceIndex;
+
+                colors = info.meshInfo[mIndex].colors32;
+                verts = info.meshInfo[mIndex].vertices;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    verts[vIndex + j] = cData.currentMesh[j].position; 
+                    colors[vIndex + j] = cData.currentMesh[j].color;
+                }
+
+                // Apply the new vertices to the char data array
+                mediator.CharData[i] = cData;
+            }
+
+            if (mediator.Text.mesh != null)
+                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        }
+        else
+        {
+            for (int i = start; i < start + length; i++)
+            {
+                cData = mediator.CharData[i];
+                if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.ShowAnimation || cData.visibilityState == CharData.VisibilityState.ShowAnimation) continue;
+
+                cData.visibilityState = CharData.VisibilityState.ShowAnimation;
+                mediator.CharData[i] = cData;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Hide the specified characters.
+    /// </summary>
+    /// <param name="start">The startindex of the characters to be hidden.</param>
+    /// <param name="length">The amount of characters to be hidden, starting from <paramref name="start"/></param>
+    /// <exception cref="System.ArgumentException">Throws if either <paramref name="start"/> or <paramref name="length"/> is out of bounds.</exception>
+    public void Hide(int start, int length, bool skipAnimation = false)
+    {
+        TMP_TextInfo info = mediator.Text.textInfo;
+        if (start < 0 || length < 0 || start + length > info.characterCount)
+        {
+            throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
+        }
+
+        CharData cData;
+        TMP_CharacterInfo cInfo;
+        if (skipAnimation)
+        {
+            Vector3[] verts;
+            Color32[] colors;
+            int vIndex, mIndex;
+
+            for (int i = start; i < start + length; i++)
+            {
+                cInfo = info.characterInfo[i];
+                if (!cInfo.isVisible) continue;
+
+                cData = mediator.CharData[i]; 
+
+                // Set the current mesh's vertices all to the initial mesh values
+                for (int j = 0; j < 4; j++)
+                {
+                    cData.currentMesh.SetPosition(j, Vector3.zero);
+                }
+
+                cData.visibilityState = CharData.VisibilityState.Hidden;
+
+                // Apply the new vertices to the vertex array
+                vIndex = cInfo.vertexIndex;
+                mIndex = cInfo.materialReferenceIndex;
+
+                colors = info.meshInfo[mIndex].colors32;
+                verts = info.meshInfo[mIndex].vertices;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    verts[vIndex + j] = cData.currentMesh[j].position;
+                    colors[vIndex + j] = cData.currentMesh[j].color;
+                }
+
+                // Apply the new vertices to the char data array
+                mediator.CharData[i] = cData;
+            }
+
+            if (mediator.Text.mesh != null)
+                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        }
+        else
+        {
+            for (int i = start; i < start + length; i++)
+            {
+                cData = mediator.CharData[i];
+                if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.HideAnimation || cData.visibilityState == CharData.VisibilityState.Hidden) continue;
+
+                cData.visibilityState = CharData.VisibilityState.HideAnimation;
+                mediator.CharData[i] = cData;
+            }
         }
     }
 }

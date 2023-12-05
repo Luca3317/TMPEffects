@@ -18,12 +18,27 @@ public class WaveTMPEffect : TMPAnimation
     {
         float scale = cData.pointSize / 36f;
 
+        float xPos = (cData.currentMesh.vertex_TL.position.x + cData.currentMesh.vertex_TR.position.x) / 2;
+        Vector3 currentCenter = Vector3.zero;
         for (int i = 0; i < 4; i++)
         {
-            float xPos = (cData.initialMesh.vertex_TL.position.x + cData.initialMesh.vertex_TR.position.x) / 2;
-            float yOffset = amplitude * (Mathf.Sin( (context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
+            currentCenter += cData.currentMesh.GetPosition(i);
+        }
+
+
+        for (int i = 0; i < 4; i++)
+        {
+            float yOffset = amplitude * (Mathf.Sin((context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
             cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i) + Vector3.up * yOffset);
         }
+        //float scale = cData.pointSize / 36f;
+
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    float xPos = (cData.initialMesh.vertex_TL.position.x + cData.initialMesh.vertex_TR.position.x) / 2;
+        //    float yOffset = amplitude * (Mathf.Sin( (context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
+        //    cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i) + Vector3.up * yOffset);
+        //}
     }
 
     public override void SetParameters(Dictionary<string, string> parameters)
@@ -46,7 +61,7 @@ public class WaveTMPEffect : TMPAnimation
                 case "amp":
                 case "amplitude": amplitude = float.Parse(kvp.Value); break;
             }
-        } 
+        }
     }
 
     public override void ResetVariables()

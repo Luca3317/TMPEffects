@@ -16,12 +16,14 @@ public static class ParsingUtility
 
     public const char NO_PREFIX = '\0';
     public const char ANIMATION_PREFIX = NO_PREFIX;
+    public const char SHOW_ANIMATION_PREFIX = '+';
+    public const char HIDE_ANIMATION_PREFIX = '-';
     public const char COMMAND_PREFIX = '!';
     public const char EVENT_PREFIX = '#';
 
     private static readonly HashSet<char> validPrefixes = new HashSet<char>()
     {
-        '!', '#', '+'
+        '!', '#', '+', '-'
     };
 
     public class TagInfo
