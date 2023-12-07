@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     _serializedList:
+    - Key: cursor
+      Value: {fileID: 11400000, guid: 033393b78f2968b43be1654dd09e7666, type: 2}
     - Key: wave
       Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
     - Key: test

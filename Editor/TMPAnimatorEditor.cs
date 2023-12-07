@@ -12,8 +12,6 @@ public class TMPAnimatorEditor : Editor
 
     // Serialized properties
     SerializedProperty databaseProp;
-    SerializedProperty showAnimProp;
-    SerializedProperty hideAnimProp;
     SerializedProperty updateFromProp;
     SerializedProperty animateOnStartProp;
     SerializedProperty contextProp;
@@ -32,8 +30,6 @@ public class TMPAnimatorEditor : Editor
     private void OnEnable()
     {
         databaseProp = serializedObject.FindProperty("database");
-        showAnimProp = serializedObject.FindProperty("defaultShowAnimation");
-        hideAnimProp = serializedObject.FindProperty("defaultHideAnimation");
         updateFromProp = serializedObject.FindProperty("updateFrom");
         animateOnStartProp = serializedObject.FindProperty("animateOnStart");
         contextProp = serializedObject.FindProperty("context");
@@ -118,9 +114,8 @@ public class TMPAnimatorEditor : Editor
 
     void DrawDefaultHideShow()
     {
-        EditorGUILayout.PropertyField(showAnimProp);
-        EditorGUILayout.PropertyField(hideAnimProp);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"));
     }
 
     void RepaintInspector()

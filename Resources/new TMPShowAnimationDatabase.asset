@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showAnimations:
     _serializedList:
-    - Key: cock
+    - Key: grow
       Value: {fileID: 11400000, guid: 8a27cb1f74ef47b45957fd85cfe9a92d, type: 2}

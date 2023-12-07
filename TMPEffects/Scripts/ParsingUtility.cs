@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -560,6 +561,14 @@ public static class ParsingUtility
     {
         if (tag[1] == '/') return TagType.Close;
         return TagType.Open;
+    }
+
+    public static bool StringToFloat(string str, out float result)
+    {
+        if (!float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
+            return false;
+
+        return true;
     }
 
     /*

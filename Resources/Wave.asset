@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wave
   m_EditorClassIdentifier: 
   initialSpeed: 5
-  initialFrequency: 3.66
-  initialAmplitude: 5
+  initialFrequency: 35.23
+  initialAmplitude: 0.5

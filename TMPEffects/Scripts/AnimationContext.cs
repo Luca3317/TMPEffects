@@ -19,4 +19,6 @@ public class AnimationContext
     // Animation scaling
     public bool scaleAnimations = true;
     public bool useScaledTime = true;
+    [System.NonSerialized, HideInInspector] public float deltaTime;
+    [System.NonSerialized, HideInInspector] public float passedTime;
 }

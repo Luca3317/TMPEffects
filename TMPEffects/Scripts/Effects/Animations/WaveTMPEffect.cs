@@ -18,27 +18,12 @@ public class WaveTMPEffect : TMPAnimation
     {
         float scale = cData.pointSize / 36f;
 
-        float xPos = (cData.currentMesh.vertex_TL.position.x + cData.currentMesh.vertex_TR.position.x) / 2;
-        Vector3 currentCenter = Vector3.zero;
         for (int i = 0; i < 4; i++)
         {
-            currentCenter += cData.currentMesh.GetPosition(i);
-        }
-
-
-        for (int i = 0; i < 4; i++)
-        {
-            float yOffset = amplitude * (Mathf.Sin((context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
+            float xPos = (cData.initialMesh.vertex_TL.position.x + cData.initialMesh.vertex_TR.position.x) / 2;
+            float yOffset = amplitude * (Mathf.Sin((context.passedTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
             cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i) + Vector3.up * yOffset);
         }
-        //float scale = cData.pointSize / 36f;
-
-        //for (int i = 0; i < 4; i++)
-        //{
-        //    float xPos = (cData.initialMesh.vertex_TL.position.x + cData.initialMesh.vertex_TR.position.x) / 2;
-        //    float yOffset = amplitude * (Mathf.Sin( (context.useScaledTime ? Time.time : Time.unscaledTime) * speed + (xPos / (200 * (context.scaleAnimations ? scale : 1)))/*  cData.index*/ * frequency + Mathf.PI / 2) + 1) * (context.scaleAnimations ? scale : 1);
-        //    cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i) + Vector3.up * yOffset);
-        //}
     }
 
     public override void SetParameters(Dictionary<string, string> parameters)
@@ -51,15 +36,15 @@ public class WaveTMPEffect : TMPAnimation
             {
                 case "s":
                 case "sp":
-                case "speed": speed = float.Parse(kvp.Value); break;
+                case "speed": ParsingUtility.StringToFloat(kvp.Value, out speed); break;
 
                 case "f":
                 case "fq":
-                case "frequency": frequency = float.Parse(kvp.Value); break;
+                case "frequency": ParsingUtility.StringToFloat(kvp.Value, out frequency); break;
 
                 case "a":
                 case "amp":
-                case "amplitude": amplitude = float.Parse(kvp.Value); break;
+                case "amplitude": ParsingUtility.StringToFloat(kvp.Value, out amplitude); break;
             }
         }
     }
@@ -78,6 +63,12 @@ public class WaveTMPEffect : TMPAnimation
 
         foreach (var kvp in parameters)
         {
+            Debug.Log("Trying to parse " + kvp.Key + " value: " + kvp.Value);
+            if (!ParsingUtility.StringToFloat(kvp.Value, out _))
+            {
+                Debug.Log("Will fail");
+            }
+            else Debug.Log("succes");
             switch (kvp.Key)
             {
                 case "s":
@@ -88,7 +79,7 @@ public class WaveTMPEffect : TMPAnimation
                 case "frequency":
                 case "a":
                 case "amp":
-                case "amplitude": if (!float.TryParse(kvp.Value, out _)) return false; break;
+                case "amplitude": if (!ParsingUtility.StringToFloat(kvp.Value, out _)) return false; break;
             }
         }
 

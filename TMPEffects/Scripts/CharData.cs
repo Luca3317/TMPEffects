@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public struct CharData
@@ -33,6 +34,8 @@ public struct CharData
     public int segmentIndex;
     public int segmentLength;
 
+    public float passedTime;
+
     public VisibilityState visibilityState
     {
         get => _visibilityState;
@@ -40,7 +43,7 @@ public struct CharData
         {
             _stateTime = Time.time; // TODO appropriate way to get time?
             _visibilityState = value;
-        } 
+        }
     }
     public float stateTime => _stateTime;
     private VisibilityState _visibilityState;
@@ -74,9 +77,11 @@ public struct CharData
         scale = characterInfo.scale;
         character = characterInfo.character;
 
+        passedTime = 0;
         _visibilityState = VisibilityState.Shown;
         _stateTime = -1;
         visibilityState = VisibilityState.Shown;
+
     }
 
     public enum VisibilityState : int
@@ -180,6 +185,78 @@ public struct CharData
                 case 1: vertex_TL.color = value; break;
                 case 2: vertex_TR.color = value; break;
                 case 3: vertex_BR.color = value; break;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public Vector2 GetUV0(int i)
+        {
+            switch (i)
+            {
+                case 0: return vertex_BL.uv;
+                case 1: return vertex_TL.uv;
+                case 2: return vertex_TR.uv;
+                case 3: return vertex_BR.uv;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SetUV(int i, Vector2 value)
+        {
+            switch (i)
+            {
+                case 0: vertex_BL.uv = value; break;
+                case 1: vertex_TL.uv = value; break;
+                case 2: vertex_TR.uv = value; break;
+                case 3: vertex_BR.uv = value; break;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public Vector2 GetUV2(int i)
+        {
+            switch (i)
+            {
+                case 0: return vertex_BL.uv2;
+                case 1: return vertex_TL.uv2;
+                case 2: return vertex_TR.uv2;
+                case 3: return vertex_BR.uv2;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SetUV2(int i, Vector2 value)
+        {
+            switch (i)
+            {
+                case 0: vertex_BL.uv2 = value; break;
+                case 1: vertex_TL.uv2 = value; break;
+                case 2: vertex_TR.uv2 = value; break;
+                case 3: vertex_BR.uv2 = value; break;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public Vector2 GetUV4(int i)
+        {
+            switch (i)
+            {
+                case 0: return vertex_BL.uv4;
+                case 1: return vertex_TL.uv4;
+                case 2: return vertex_TR.uv4;
+                case 3: return vertex_BR.uv4;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SetUV4(int i, Vector2 value)
+        {
+            switch (i)
+            {
+                case 0: vertex_BL.uv4 = value; break;
+                case 1: vertex_TL.uv4 = value; break;
+                case 2: vertex_TR.uv4 = value; break;
+                case 3: vertex_BR.uv4 = value; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
         }

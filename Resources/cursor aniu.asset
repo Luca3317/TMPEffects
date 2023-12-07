@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c2324e8bb51204f9baab003106ec53, type: 3}
-  m_Name: new TMPHideAnimationDatabase
+  m_Script: {fileID: 11500000, guid: 35229bf395bb61e4ab514a3a7f5a48e1, type: 3}
+  m_Name: cursor aniu
   m_EditorClassIdentifier: 
-  hideAnimations:
-    _serializedList:
-    - Key: shrink
-      Value: {fileID: 11400000, guid: 6590bae2b5edb784f8857fea2164e78f, type: 2}

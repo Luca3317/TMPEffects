@@ -432,6 +432,8 @@ public class TMPWriter : TMPEffectComponent
 
         //currentIndex = -1;
         OnStopWriting();
+
+        Hide(0, mediator.Text.textInfo.characterCount, false);
     }
 
     private void OnStopWriting()
@@ -525,57 +527,57 @@ public class TMPWriter : TMPEffectComponent
 
         CharData cData;
         TMP_CharacterInfo cInfo;
-        if (skipAnimation)
+        //if (skipAnimation)
+        //{
+        Vector3[] verts;
+        Color32[] colors;
+        int vIndex, mIndex;
+
+        for (int i = start; i < start + length; i++)
         {
-            Vector3[] verts;
-            Color32[] colors;
-            int vIndex, mIndex;
+            cInfo = info.characterInfo[i];
+            cData = mediator.CharData[i];
+            if (!cData.isVisible) continue;
 
-            for (int i = start; i < start + length; i++)
+            // Set the current mesh's vertices all to the initial mesh values
+            for (int j = 0; j < 4; j++)
             {
-                cInfo = info.characterInfo[i];
-                cData = mediator.CharData[i];
-                if (!cData.isVisible) continue;
-
-                // Set the current mesh's vertices all to the initial mesh values
-                for (int j = 0; j < 4; j++)
-                {
-                    cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
-                }
-
-                cData.visibilityState = CharData.VisibilityState.Shown;
-
-                // Apply the new vertices to the vertex array
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.currentMesh[j].position; 
-                    colors[vIndex + j] = cData.currentMesh[j].color;
-                }
-
-                // Apply the new vertices to the char data array
-                mediator.CharData[i] = cData;
+                cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-        }
-        else
-        {
-            for (int i = start; i < start + length; i++)
-            {
-                cData = mediator.CharData[i];
-                if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.ShowAnimation || cData.visibilityState == CharData.VisibilityState.ShowAnimation) continue;
+            cData.visibilityState = skipAnimation ? CharData.VisibilityState.Shown : CharData.VisibilityState.ShowAnimation;
 
-                cData.visibilityState = CharData.VisibilityState.ShowAnimation;
-                mediator.CharData[i] = cData;
+            // Apply the new vertices to the vertex array
+            vIndex = cInfo.vertexIndex;
+            mIndex = cInfo.materialReferenceIndex;
+
+            colors = info.meshInfo[mIndex].colors32;
+            verts = info.meshInfo[mIndex].vertices;
+
+            for (int j = 0; j < 4; j++)
+            {
+                verts[vIndex + j] = cData.currentMesh[j].position;
+                colors[vIndex + j] = cData.currentMesh[j].color;
             }
+
+            // Apply the new vertices to the char data array
+            mediator.CharData[i] = cData;
         }
+
+        if (mediator.Text.mesh != null)
+            mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        //}
+        //else
+        //{
+        //    for (int i = start; i < start + length; i++)
+        //    {
+        //        cData = mediator.CharData[i];
+        //        if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.ShowAnimation || cData.visibilityState == CharData.VisibilityState.ShowAnimation) continue;
+
+        //        cData.visibilityState = CharData.VisibilityState.ShowAnimation;
+        //        mediator.CharData[i] = cData;
+        //    }
+        //}
     }
 
     /// <summary>
@@ -594,57 +596,59 @@ public class TMPWriter : TMPEffectComponent
 
         CharData cData;
         TMP_CharacterInfo cInfo;
-        if (skipAnimation)
+        //if (skipAnimation)
+        //{
+        Vector3[] verts;
+        Color32[] colors;
+        int vIndex, mIndex;
+
+        for (int i = start; i < start + length; i++)
         {
-            Vector3[] verts;
-            Color32[] colors;
-            int vIndex, mIndex;
+            cInfo = info.characterInfo[i];
+            if (!cInfo.isVisible) continue;
 
-            for (int i = start; i < start + length; i++)
+            cData = mediator.CharData[i];
+
+            // Set the current mesh's vertices all to the initial mesh values
+            for (int j = 0; j < 4; j++)
             {
-                cInfo = info.characterInfo[i];
-                if (!cInfo.isVisible) continue;
-
-                cData = mediator.CharData[i]; 
-
-                // Set the current mesh's vertices all to the initial mesh values
-                for (int j = 0; j < 4; j++)
-                {
-                    cData.currentMesh.SetPosition(j, Vector3.zero);
-                }
-
-                cData.visibilityState = CharData.VisibilityState.Hidden;
-
-                // Apply the new vertices to the vertex array
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.currentMesh[j].position;
-                    colors[vIndex + j] = cData.currentMesh[j].color;
-                }
-
-                // Apply the new vertices to the char data array
-                mediator.CharData[i] = cData;
+                cData.currentMesh.SetPosition(j, Vector3.zero);
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-        }
-        else
-        {
-            for (int i = start; i < start + length; i++)
-            {
-                cData = mediator.CharData[i];
-                if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.HideAnimation || cData.visibilityState == CharData.VisibilityState.Hidden) continue;
+            //Debug.Log("Hiding " + i);
+            cData.visibilityState = skipAnimation ? CharData.VisibilityState.Hidden : CharData.VisibilityState.HideAnimation;
+            //Debug.Log("Cdata now " + cData.visibilityState.ToString());
 
-                cData.visibilityState = CharData.VisibilityState.HideAnimation;
-                mediator.CharData[i] = cData;
+            // Apply the new vertices to the vertex array
+            vIndex = cInfo.vertexIndex;
+            mIndex = cInfo.materialReferenceIndex;
+
+            colors = info.meshInfo[mIndex].colors32;
+            verts = info.meshInfo[mIndex].vertices;
+
+            for (int j = 0; j < 4; j++)
+            {
+                verts[vIndex + j] = cData.currentMesh[j].position;
+                colors[vIndex + j] = cData.currentMesh[j].color;
             }
+
+            // Apply the new vertices to the char data array
+            mediator.CharData[i] = cData;
         }
+
+        if (mediator.Text.mesh != null)
+            mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        //}
+        //else
+        //{
+        //    for (int i = start; i < start + length; i++)
+        //    {
+        //        cData = mediator.CharData[i];
+        //        if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.HideAnimation || cData.visibilityState == CharData.VisibilityState.Hidden) continue;
+
+        //        cData.visibilityState = CharData.VisibilityState.HideAnimation;
+        //        mediator.CharData[i] = cData;
+        //    }
+        //}
     }
 }

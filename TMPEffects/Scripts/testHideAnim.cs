@@ -8,15 +8,22 @@ public class testHideAnim : TMPHideAnimation
 {
     public override void Animate(ref CharData cData, AnimationContext context)
     {
-        Debug.Log("TestHideAnim");
+        float t = (Time.time - cData.stateTime) * 2.5f;
+        Vector3 center = Vector3.zero;
         for (int i = 0; i < 4; i++)
         {
+            center += cData.initialMesh.GetPosition(i);
+        }
+        center /= 4;
 
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 pos = Vector3.Lerp(cData.initialMesh.GetPosition(i), center, t);
+            cData.currentMesh.SetPosition(i, pos);
         }
 
-        if (Time.time - cData.stateTime > 1000)
+        if (t >= 1)
         {
-            Debug.Log("Done w/ hide anim after " + (Time.time - cData.stateTime));
             cData.visibilityState = CharData.VisibilityState.Hidden;
         }
     }

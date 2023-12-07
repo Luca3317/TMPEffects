@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,7 +12,15 @@ public class TMPAnimator : TMPEffectComponent
 {
     public bool IsAnimating => isAnimating;
     public TMPAnimationDatabase Database => database;
-    public List<TMPAnimationTag> Animations => atp.ProcessedTags;
+    public IEnumerable<TMPAnimationTag> AnimationTags
+    {
+        get
+        {
+            for (int i = 0; i < atp.ProcessedTags.Count; i++) yield return atp.ProcessedTags[i];
+            for (int i = 0; i < satp.ProcessedTags.Count; i++) yield return satp.ProcessedTags[i];
+            for (int i = 0; i < hatp.ProcessedTags.Count; i++) yield return hatp.ProcessedTags[i];
+        }
+    }
 
     #region Fields
     [SerializeField] TMPAnimationDatabase database;
@@ -23,9 +28,6 @@ public class TMPAnimator : TMPEffectComponent
 
     [SerializeField] UpdateFrom updateFrom;
     [SerializeField] bool animateOnStart;
-
-    [SerializeField] TMPShowAnimation defaultShowAnimation;
-    [SerializeField] TMPHideAnimation defaultHideAnimation;
 
     [SerializeField] string defaultShowString;
     [SerializeField] string defaultHideString;
@@ -46,7 +48,7 @@ public class TMPAnimator : TMPEffectComponent
 
         mediator.Subscribe(this); // Subscribe to the mediator; This makes the mediator persistent at least until this component is destroyed
 
-        mediator.Processor.FinishProcessTags += CloseOpenTags; // Close still open tags once tag processing is done
+        mediator.Processor.FinishProcessTags += PostProcessTags; // Close still open tags once tag processing is done
 
         mediator.TextChanged += OnTextChanged; // Subscribe to the relevant events
         mediator.ForcedUpdate += OnForcedUpdate;
@@ -72,7 +74,7 @@ public class TMPAnimator : TMPEffectComponent
     private void OnDisable()
     {
         // Unsubscribe from all events
-        mediator.Processor.FinishProcessTags -= CloseOpenTags;
+        mediator.Processor.FinishProcessTags -= PostProcessTags;
         mediator.TextChanged -= OnTextChanged;
         mediator.ForcedUpdate -= OnForcedUpdate;
 
@@ -100,7 +102,7 @@ public class TMPAnimator : TMPEffectComponent
     /// </summary>
     /// TODO Enforce calling StartAnimating when UpdateFrom.Script?
     /// TODO Allow calling this when not updating from Script?
-    public void UpdateAnimations()
+    public void UpdateAnimations(float deltaTime)
     {
 #if UNITY_EDITOR
         if (Application.isPlaying)
@@ -115,7 +117,7 @@ public class TMPAnimator : TMPEffectComponent
         }
 #endif
 
-        UpdateAnimations_Impl();
+        UpdateAnimations_Impl(deltaTime);
     }
 
     /// <summary>
@@ -168,7 +170,7 @@ public class TMPAnimator : TMPEffectComponent
 #if UNITY_EDITOR
         if (!Application.isPlaying) return;
 #endif
-        if (updateFrom == UpdateFrom.Update && isAnimating) UpdateAnimations_Impl();
+        if (updateFrom == UpdateFrom.Update && isAnimating) UpdateAnimations_Impl(Time.deltaTime);
     }
 
     private void LateUpdate()
@@ -176,7 +178,7 @@ public class TMPAnimator : TMPEffectComponent
 #if UNITY_EDITOR
         if (!Application.isPlaying) return;
 #endif
-        if (updateFrom == UpdateFrom.LateUpdate && isAnimating) UpdateAnimations_Impl();
+        if (updateFrom == UpdateFrom.LateUpdate && isAnimating) UpdateAnimations_Impl(Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -184,17 +186,19 @@ public class TMPAnimator : TMPEffectComponent
 #if UNITY_EDITOR
         if (!Application.isPlaying) return;
 #endif
-        if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl();
+        if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl(Time.fixedDeltaTime);
     }
 
-    private void UpdateAnimations_Impl()
+    private void UpdateAnimations_Impl(float deltaTime)
     {
         System.Diagnostics.Stopwatch sw = new();
         sw.Start();
 
+        context.passedTime += deltaTime;
+
         for (int i = 0; i < mediator.CharData.Count; i++)
         {
-            UpdateCharacterAnimation(i, false);
+            UpdateCharacterAnimation(deltaTime, i, false);
         }
 
         if (mediator.Text.mesh != null)
@@ -209,85 +213,126 @@ public class TMPAnimator : TMPEffectComponent
     [System.NonSerialized] private double total;
     [System.NonSerialized] private int count;
 
-    public void UpdateCharacterAnimation(int index, bool updateVertices = true)
+    void UpdateCharacterAnimation(float deltaTime, int index, bool updateVertices = true)
     {
         CharData cData = mediator.CharData[index];
         if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.Hidden/*hidden*/) return;
 
-        switch (cData.visibilityState)
-        {
-            case CharData.VisibilityState.ShowAnimation:
-                if (UpdateCharacterAnimation_Impl(index, showCached /*satp.ProcessedTags*/) == 0)
-                {
-                    Debug.LogWarning("There are 0 show animations applied to the current character, which is in ShowAnimation state. This should be impossible");
-                    //GetComponent<TMPWriter>().Show(index, 1, true);
-                    //mediator.ForceUpdate(index, 1);
-                }
+        context.deltaTime = deltaTime;
 
-                if (mediator.CharData[index].visibilityState == CharData.VisibilityState.Shown)
-                {
-                    Debug.Log("Set to shown " + cData.character);
-                    UpdateCharacterAnimation(index, updateVertices);
-                }
-                // TODO Some indication whether to update normal animation as well
-                //UpdateCharacterAnimation_Impl(index, basicCached /*atp.ProcessedTags*/);
-                break;
-            case CharData.VisibilityState.HideAnimation:
-                UpdateCharacterAnimation_Impl(index, hideCached /*hatp.ProcessedTags*/);
-                break;
-            case CharData.VisibilityState.Shown:
-                UpdateCharacterAnimation_Impl(index, basicCached /*atp.ProcessedTags*/); break;
-        }
+        UpdateCharacterAnimation_Impl(index);
 
-        // TODO only set actually changed meshes
+        // TODO only set actually changed meshes; dirty flag on cdata & cehcking of uv vert color
         var info = mediator.Text.textInfo;
         TMP_CharacterInfo cInfo = info.characterInfo[index];
         int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
         Color32[] colors = info.meshInfo[mIndex].colors32;
         Vector3[] verts = info.meshInfo[mIndex].vertices;
+        Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
+        Vector2[] uvs2 = info.meshInfo[mIndex].uvs2;
+        //Vector2[] uvs4 = info.meshInfo[mIndex].uvs2;
 
         for (int j = 0; j < 4; j++)
         {
             verts[vIndex + j] = mediator.CharData[index].currentMesh[j].position;
             colors[vIndex + j] = mediator.CharData[index].currentMesh[j].color;
+            uvs0[vIndex + j] = mediator.CharData[index].currentMesh[j].uv;
+            uvs2[vIndex + j] = mediator.CharData[index].currentMesh[j].uv2;
+            //uvs4[vIndex + j] = mediator.CharData[index].currentMesh[j].uv4;
         }
 
         if (updateVertices && mediator.Text.mesh != null)
             mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
     }
 
-    private int UpdateCharacterAnimation_Impl(int index, List<CachedAnimation> animations) //List<TMPAnimationTag> tags)
+    [SerializeField] bool animationsOverride = false;
+    private int UpdateCharacterAnimation_Impl(int index)
     {
+        CharData cData = mediator.CharData[index];
+        //Debug.Log("Updating wth " + cData.visibilityState.ToString());
+        if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.Hidden) return 0;
+
         int applied = 0;
-        for (int i = 0; i < animations.Count; i++)
+
+        Vector3 TL = Vector3.zero;
+        Vector3 TR = Vector3.zero;
+        Vector3 BR = Vector3.zero;
+        Vector3 BL = Vector3.zero;
+
+        if (cData.visibilityState == CharData.VisibilityState.ShowAnimation) Animate(showCached[GetActiveIndex(index, showCached)]);
+        else if (cData.visibilityState == CharData.VisibilityState.HideAnimation) Animate(hideCached[GetActiveIndex(index, hideCached)]);
+
+        if (animationsOverride) Animate(basicCached[GetActiveIndex(index, basicCached)]);
+        else
         {
-            CachedAnimation cachedAnimation = animations[i];
-            if (cachedAnimation.tag.startIndex > index || cachedAnimation.tag.startIndex + cachedAnimation.tag.length <= index)
+            // Get all basic animations active here and apply
+            CachedAnimation ca;
+            for (int i = 0; i < basicCached.Count; i++)
             {
-                continue;
+                ca = basicCached[i];
+                if (ca.tag.startIndex <= index && ca.tag.startIndex + ca.tag.length > index)
+                {
+                    Animate(ca);
+                }
             }
-
-            applied++;
-
-            cachedAnimation.animation.ResetVariables();
-            cachedAnimation.animation.SetParameters(cachedAnimation.tag.parameters);
-
-            CharData cData = mediator.CharData[index];
-            cData.segmentIndex = index - cachedAnimation.tag.startIndex;
-            cData.segmentLength = cachedAnimation.tag.length;
-
-            cachedAnimation.animation.Animate(ref cData, context);
-            mediator.CharData[index] = cData;
         }
 
+        cData.currentMesh.SetPosition(0, cData.initialMesh.vertex_BL.position + BL);
+        cData.currentMesh.SetPosition(1, cData.initialMesh.vertex_TL.position + TL);
+        cData.currentMesh.SetPosition(2, cData.initialMesh.vertex_TR.position + TR);
+        cData.currentMesh.SetPosition(3, cData.initialMesh.vertex_BR.position + BR);
+        mediator.CharData[index] = cData;
+
         return applied;
+
+        void Animate(CachedAnimation ca)
+        {
+            // TODO Reset CData mesh before every animation?
+            //cData.currentMesh.SetPosition(0, cData.initialMesh.GetPosition(0));
+            //cData.currentMesh.SetPosition(1, cData.initialMesh.GetPosition(1));
+            //cData.currentMesh.SetPosition(2, cData.initialMesh.GetPosition(2));
+            //cData.currentMesh.SetPosition(3, cData.initialMesh.GetPosition(3));
+
+            cData.segmentIndex = index - ca.tag.startIndex;
+            cData.segmentLength = ca.tag.length;
+            ca.animation.ResetVariables();
+            ca.animation.SetParameters(ca.tag.parameters);
+            ca.animation.Animate(ref cData, context);
+
+            UpdateVertexOffsets();
+            applied++;
+        }
+
+        void UpdateVertexOffsets()
+        {
+            TL += (cData.currentMesh.vertex_TL.position - cData.initialMesh.vertex_TL.position);
+            TR += (cData.currentMesh.vertex_TR.position - cData.initialMesh.vertex_TR.position);
+            BR += (cData.currentMesh.vertex_BR.position - cData.initialMesh.vertex_BR.position);
+            BL += (cData.currentMesh.vertex_BL.position - cData.initialMesh.vertex_BL.position);
+        }
+    }
+
+    private int GetActiveIndex(int charIndex, IList<CachedAnimation> animations)
+    {
+        // TODO Better way to do this; Does intervaltree work here; Issue: two tags can have startIndex 0 but its still defined which one takes precedence (the one w/ higher index in the list)
+        int maxStart = -1; int maxIndex = -1;
+        for (int i = 0; i < animations.Count; i++)
+        {
+            if (animations[i].tag.startIndex >= maxStart && animations[i].tag.startIndex <= charIndex && animations[i].tag.startIndex + animations[i].tag.length > charIndex)
+            {
+                maxStart = animations[i].tag.startIndex;
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
     }
     #endregion
 
     #region Event Callbacks
     private void OnTextChanged()
     {
-        if (isAnimating) UpdateAnimations_Impl();
+        if (isAnimating) UpdateAnimations_Impl(0f); // TODO what delta value to use here?
     }
 
     private void OnForcedUpdate(int start, int length)
@@ -296,7 +341,7 @@ public class TMPAnimator : TMPEffectComponent
 
         for (int i = 0; i < length; i++)
         {
-            UpdateCharacterAnimation(i + start);
+            UpdateCharacterAnimation(0f, i + start); // TODO what delta value to use here?
         }
     }
     #endregion
@@ -328,7 +373,7 @@ public class TMPAnimator : TMPEffectComponent
 
     private void UpdatePreview()
     {
-        UpdateAnimations_Impl();
+        UpdateAnimations_Impl((float)EditorApplication.timeSinceStartup - context.passedTime);
     }
 
     public void ForceReprocess()
@@ -338,6 +383,7 @@ public class TMPAnimator : TMPEffectComponent
 
     public void UpdateProcessorsWrapper()
     {
+        if (mediator == null) return;
         UpdateProcessors();
     }
 
@@ -383,110 +429,76 @@ public class TMPAnimator : TMPEffectComponent
     private List<CachedAnimation> showCached;
     private List<CachedAnimation> hideCached;
 
-    private void CloseOpenTags(string text)
+    private void PostProcessTags(string text)
     {
+        // Close any unclosed animation tags
         int endIndex = text.Length - 1;
-        foreach (var tag in atp.ProcessedTags)
+        foreach (var tag in AnimationTags)
         {
-            if (tag.IsOpen)
-                tag.Close(endIndex);
+            if (tag.IsOpen) tag.Close(endIndex);
         }
 
+        // Cache the corresponding animation for each tag
         basicCached = new List<CachedAnimation>();
         showCached = new List<CachedAnimation>();
         hideCached = new List<CachedAnimation>();
 
-        foreach (var tag in atp.ProcessedTags)
-        {
-            basicCached.Add(new CachedAnimation(tag, database.basicAnimationDatabase.GetEffect(tag.name)));
-        }
+        foreach (var tag in atp.ProcessedTags) basicCached.Add(new CachedAnimation(tag, database.basicAnimationDatabase.GetEffect(tag.name)));
+        foreach (var tag in satp.ProcessedTags) showCached.Add(new CachedAnimation(tag, database.showAnimationDatabase.GetEffect(tag.name)));
+        foreach (var tag in hatp.ProcessedTags) hideCached.Add(new CachedAnimation(tag, database.hideAnimationDatabase.GetEffect(tag.name)));
 
-        foreach (var tag in satp.ProcessedTags)
-        {
-            showCached.Add(new CachedAnimation(tag, database.showAnimationDatabase.GetEffect(tag.name)));
-        }
-
-        foreach (var tag in hatp.ProcessedTags)
-        {
-            hideCached.Add(new CachedAnimation(tag, database.hideAnimationDatabase.GetEffect(tag.name)));
-        }
-
-        bool handled = false;
+        // Add default show / hide animation
         ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
-        if (ParsingUtility.TryParseTag(defaultShowString, 0, defaultShowString.Length - 1, ref tagInfo, ParsingUtility.TagType.Open))
-        {
-            Debug.Log("Success parse show with tag");
-            var showParams = ParsingUtility.GetTagParametersDict(defaultShowString);
-            bool success = database.showAnimationDatabase.Contains(tagInfo.name) && database.showAnimationDatabase.GetEffect(tagInfo.name).ValidateParameters(showParams);
+        Dictionary<string, string> tagParams = null;
 
-            if (success)
-            {
-                Debug.Log("FULLY PARSED SHOW");
-                // Add to cached
-                var cached = new CachedAnimation(new TMPAnimationTag(tagInfo.name, 0, showParams), database.showAnimationDatabase.GetEffect(tagInfo.name));
-                cached.tag.Close(text.Length - 1);
-                showCached.Add(cached);
-                handled = true;
-            }
-        }
-        if (!handled)
+        if (!AddDefault(defaultShowString, database.showAnimationDatabase, showCached))
         {
-            // Use a built in dummy one
-            var cached = new CachedAnimation(new TMPAnimationTag("dummy show", 0, null), ScriptableObject.CreateInstance<DummyShowAnimation>());
-            cached.tag.Close(text.Length - 1);
-            showCached.Add(cached);
             Debug.Log("DUMMY SHOW");
-        }
-
-
-        handled = false;
-        if (ParsingUtility.TryParseTag(defaultHideString, 0, defaultHideString.Length - 1, ref tagInfo, ParsingUtility.TagType.Open))
-        {
-            var hideParams = ParsingUtility.GetTagParametersDict(defaultHideString);
-            bool success = database.hideAnimationDatabase.Contains(tagInfo.name) && database.hideAnimationDatabase.GetEffect(tagInfo.name).ValidateParameters(hideParams);
-            Debug.Log("Success parse HIDE");
-            if (success)
-            {
-                // Add to cached
-                var cached = new CachedAnimation(new TMPAnimationTag(tagInfo.name, 0, hideParams), database.hideAnimationDatabase.GetEffect(tagInfo.name));
-                cached.tag.Close(text.Length - 1);
-                hideCached.Add(cached);
-                Debug.Log("FULLY PARSED HIDE");
-                handled = true;
-            }
-        }
-        if (!handled)
-        {
-            // Use a built in dummy one
-            var cached = new CachedAnimation(new TMPAnimationTag("dummy hide", 0, null), ScriptableObject.CreateInstance<DummyHideAnimation>());
+            var cached = new CachedAnimation(new TMPAnimationTag("Dummy Show Animation", 0, null), ScriptableObject.CreateInstance<DummyShowAnimation>());
             cached.tag.Close(text.Length - 1);
-            hideCached.Add(cached);
+            showCached.Insert(0, cached);
+        }
+
+        if (!AddDefault(defaultHideString, database.hideAnimationDatabase, hideCached))
+        {
             Debug.Log("DUMMY HIDE");
+            var cached = new CachedAnimation(new TMPAnimationTag("Dummy Hide Animation", 0, null), ScriptableObject.CreateInstance<DummyHideAnimation>());
+            cached.tag.Close(text.Length - 1);
+            hideCached.Insert(0, cached);
+        }
+
+        bool AddDefault<T>(string str, TMPAnimationDatabaseBase<T> database, List<CachedAnimation> anims) where T : TMPAnimation
+        {
+            TMPAnimation animation = null;
+
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
+
+            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open)) return false;
+
+            tagParams = ParsingUtility.GetTagParametersDict(str);
+            if (!(database.Contains(tagInfo.name) && (animation = database.GetEffect(tagInfo.name)).ValidateParameters(tagParams))) return false;
+
+            var cached = new CachedAnimation(new TMPAnimationTag(tagInfo.name, 0, tagParams), animation);
+            cached.tag.Close(text.Length - 1);
+            anims.Insert(0, cached);
+
+            return true;
         }
     }
 
+    #region Dummy Animations
     private class DummyShowAnimation : TMPShowAnimation
     {
-        public override void Animate(ref CharData charData, AnimationContext context)
+        public override void Animate(ref CharData cData, AnimationContext context)
         {
-            float t = (Time.time - charData.stateTime) * 4;
-            Vector3 center = Vector3.zero;
             for (int i = 0; i < 4; i++)
             {
-                center += charData.initialMesh.GetPosition(i);
-            }
-            center /= 4;
-
-            for (int i = 0; i < 4; i++)
-            {
-                Vector3 pos = Vector3.Lerp(center, charData.initialMesh.GetPosition(i), t);
-                charData.currentMesh.SetPosition(i, pos);
+                cData.currentMesh.SetPosition(i, cData.initialMesh.GetPosition(i));
             }
 
-            if (t >= 1)
-            {
-                charData.visibilityState = CharData.VisibilityState.Shown;
-            }
+            cData.visibilityState = CharData.VisibilityState.Shown;
 
             // Accidental kinda cool effect
             //float t = (Time.time - charData.stateTime) / 1000;
@@ -517,7 +529,6 @@ public class TMPAnimator : TMPEffectComponent
             return true;
         }
     }
-
     private class DummyHideAnimation : TMPShowAnimation
     {
         public override void Animate(ref CharData charData, AnimationContext context)
@@ -527,7 +538,7 @@ public class TMPAnimator : TMPEffectComponent
                 charData.currentMesh.SetPosition(i, Vector3.zero);
             }
 
-            charData.visibilityState = CharData.VisibilityState.Shown;
+            charData.visibilityState = CharData.VisibilityState.Hidden;
         }
 
         public override void ResetVariables()
@@ -547,6 +558,7 @@ public class TMPAnimator : TMPEffectComponent
             return true;
         }
     }
+    #endregion
 
     private void ResetAllVisible()
     {
