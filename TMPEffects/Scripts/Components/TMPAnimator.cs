@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.XR;
 
 /// <summary>
 /// One of the two main components of TMPEffects, along with TMPWriter.
@@ -358,6 +359,7 @@ public class TMPAnimator : TMPEffectComponent
 
     public void StartPreview()
     {
+        preview = true;
         StartAnimating();
 
         EditorApplication.update -= UpdatePreview;
@@ -366,6 +368,7 @@ public class TMPAnimator : TMPEffectComponent
 
     public void StopPreview()
     {
+        preview = false;
         EditorApplication.update -= UpdatePreview;
         StopAnimating();
         ResetAnimations();
@@ -379,6 +382,11 @@ public class TMPAnimator : TMPEffectComponent
     public void ForceReprocess()
     {
         if (mediator != null) mediator.ForceReprocess();
+    }
+
+    public void ForcePostProcess()
+    {
+        if (mediator != null) PostProcessTags(mediator.Text.GetParsedText());
     }
 
     public void UpdateProcessorsWrapper()
@@ -431,6 +439,8 @@ public class TMPAnimator : TMPEffectComponent
 
     private void PostProcessTags(string text)
     {
+        Debug.Log("YE " + defaultShowString);
+
         // Close any unclosed animation tags
         int endIndex = text.Length - 1;
         foreach (var tag in AnimationTags)
@@ -469,7 +479,7 @@ public class TMPAnimator : TMPEffectComponent
 
         bool AddDefault<T>(string str, TMPAnimationDatabaseBase<T> database, List<CachedAnimation> anims) where T : TMPAnimation
         {
-            TMPAnimation animation = null;
+            TMPAnimation animation;
 
             if (string.IsNullOrWhiteSpace(str)) return false;
 

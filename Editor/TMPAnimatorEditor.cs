@@ -63,6 +63,7 @@ public class TMPAnimatorEditor : Editor
     private void OnDisable()
     {
         Undo.undoRedoPerformed -= OnUndoRedo;
+        Undo.undoRedoPerformed -= OnUndoRedo;
     } 
 
     void InitGUIContent()
@@ -114,8 +115,14 @@ public class TMPAnimatorEditor : Editor
 
     void DrawDefaultHideShow()
     {
+        EditorGUI.BeginChangeCheck();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"));
+        if (EditorGUI.EndChangeCheck() )
+        {
+            serializedObject.ApplyModifiedProperties();
+            animator.ForcePostProcess();
+        }
     }
 
     void RepaintInspector()
@@ -183,14 +190,13 @@ public class TMPAnimatorEditor : Editor
 
         if (previewProp.boolValue)
         {
-            //animator.ForceReprocess();
-            previewProp.boolValue = false;
+            //previewProp.boolValue = false;
             animator.StopPreview();
 
             EditorApplication.delayCall += () =>
             {
-                serializedObject.FindProperty("preview").boolValue = true;
-                serializedObject.ApplyModifiedProperties();
+                //serializedObject.FindProperty("preview").boolValue = true;
+                //serializedObject.ApplyModifiedProperties();
                 animator.StartPreview();
             };
         }

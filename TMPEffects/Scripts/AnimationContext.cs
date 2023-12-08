@@ -21,4 +21,8 @@ public class AnimationContext
     public bool useScaledTime = true;
     [System.NonSerialized, HideInInspector] public float deltaTime;
     [System.NonSerialized, HideInInspector] public float passedTime;
+
+
+    // TextData holding a lot of TMP_Text.TextInfo information
+
 }

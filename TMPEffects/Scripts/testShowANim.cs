@@ -20,6 +20,8 @@ public class testShowANim : TMPShowAnimation
         {
             Vector3 pos = Vector3.Lerp(center, cData.initialMesh.GetPosition(i), t);
             cData.currentMesh.SetPosition(i, pos);
+
+            cData.currentMesh.SetColor(i, Color.red);
         }
 
         if (t >= 1)
