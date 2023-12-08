@@ -76,7 +76,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
                     }
                 }
             }
-            else return false; // TODO Not remove invalid clsoing command tags to communicate they dont need to be closed
+            else return false;
 
             return true;
         }

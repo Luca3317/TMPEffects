@@ -111,7 +111,8 @@ namespace TMPEffects.Components
             mediator.ForceReprocess(); // Force a reprocess of the text
 
 #if UNITY_EDITOR
-            if (!Application.isPlaying) EditorApplication.delayCall += StopPreview;
+            StopPreview();
+            //if (!Application.isPlaying) EditorApplication.delayCall += StopPreview;
 #endif
         }
 
@@ -312,12 +313,6 @@ namespace TMPEffects.Components
 
             void Animate(CachedAnimation ca)
             {
-                // TODO Reset CData mesh before every animation?
-                //cData.currentMesh.SetPosition(0, cData.initialMesh.GetPosition(0));
-                //cData.currentMesh.SetPosition(1, cData.initialMesh.GetPosition(1));
-                //cData.currentMesh.SetPosition(2, cData.initialMesh.GetPosition(2));
-                //cData.currentMesh.SetPosition(3, cData.initialMesh.GetPosition(3));
-
                 cData.segmentIndex = index - ca.tag.startIndex;
                 cData.segmentLength = ca.tag.length;
                 ca.animation.ResetParameters();
@@ -339,7 +334,6 @@ namespace TMPEffects.Components
 
         private int GetActiveIndex(int charIndex, IList<CachedAnimation> animations)
         {
-            // TODO Better way to do this; Does intervaltree work here; Issue: two tags can have startIndex 0 but its still defined which one takes precedence (the one w/ higher index in the list)
             int maxStart = -1; int maxIndex = -1;
             for (int i = 0; i < animations.Count; i++)
             {
@@ -357,7 +351,7 @@ namespace TMPEffects.Components
         #region Event Callbacks
         private void OnTextChanged()
         {
-            if (isAnimating) UpdateAnimations_Impl(0f); // TODO what delta value to use here?
+            if (isAnimating) UpdateAnimations_Impl(0f);
         }
 
         private void OnForcedUpdate(int start, int length)
@@ -366,7 +360,7 @@ namespace TMPEffects.Components
 
             for (int i = 0; i < length; i++)
             {
-                UpdateCharacterAnimation(0f, i + start); // TODO what delta value to use here?
+                UpdateCharacterAnimation(0f, i + start);
             }
         }
         #endregion
@@ -383,7 +377,7 @@ namespace TMPEffects.Components
 
         public void StartPreview()
         {
-            preview = true;
+            //preview = true;
             StartAnimating();
 
             EditorApplication.update -= UpdatePreview;
@@ -392,7 +386,7 @@ namespace TMPEffects.Components
 
         public void StopPreview()
         {
-            preview = false;
+            //preview = false;
             EditorApplication.update -= UpdatePreview;
             StopAnimating();
             ResetAnimations();
@@ -401,6 +395,7 @@ namespace TMPEffects.Components
         private void UpdatePreview()
         {
             UpdateAnimations_Impl((float)EditorApplication.timeSinceStartup - context.passedTime);
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         public void ForceReprocess()
@@ -485,7 +480,7 @@ namespace TMPEffects.Components
             ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
             Dictionary<string, string> tagParams = null;
 
-            if (!AddDefault(defaultShowString, database.showAnimationDatabase, showCached))
+            if (database == null || !AddDefault(defaultShowString, database.showAnimationDatabase, showCached))
             {
                 Debug.Log("DUMMY SHOW");
                 var cached = new CachedAnimation(new TMPAnimationTag("Dummy Show Animation", 0, null), ScriptableObject.CreateInstance<DummyShowAnimation>());
@@ -493,7 +488,7 @@ namespace TMPEffects.Components
                 showCached.Insert(0, cached);
             }
 
-            if (!AddDefault(defaultHideString, database.hideAnimationDatabase, hideCached))
+            if (database == null || !AddDefault(defaultHideString, database.hideAnimationDatabase, hideCached))
             {
                 Debug.Log("DUMMY HIDE");
                 var cached = new CachedAnimation(new TMPAnimationTag("Dummy Hide Animation", 0, null), ScriptableObject.CreateInstance<DummyHideAnimation>());

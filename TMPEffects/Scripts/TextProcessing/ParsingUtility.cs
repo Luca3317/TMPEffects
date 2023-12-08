@@ -9,7 +9,6 @@ namespace TMPEffects.TextProcessing
 {
     public static class ParsingUtility
     {
-        // TODO Parsing utility should not care about the actual meaning of the prefixes => only include open close here
         [Flags]
         public enum TagType : int
         {
@@ -194,7 +193,6 @@ namespace TMPEffects.TextProcessing
             return true;
         }
 
-        // TODO optimize a little
         public static Dictionary<string, string> GetTagParametersDict(string text, int startIndex)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -210,9 +208,6 @@ namespace TMPEffects.TextProcessing
                 dict.Add("", value);
             text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
 
-            // TODO only for debugging purposes, prevent endless loop
-            int count = 0;
-
             // Parse attribute keys and values
             while (text.Length > 0)
             {
@@ -225,10 +220,6 @@ namespace TMPEffects.TextProcessing
                 }
 
                 text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
-
-                ////Debug.Log("Remainging tag: " + tag);
-                count++;
-                if (count > 5) break;
             }
 
             if (dict.Count == 0) return null;
@@ -298,8 +289,6 @@ namespace TMPEffects.TextProcessing
 
         /// <summary>
         /// Checks if <paramref name="text"/> contains a substring starting at <paramref name="startIndex"/>, going up to <paramref name="maxIndex"/>, that is a well formed tag.
-        /// TODO For now this checks that there is a '<' at the beginning, followed by a '>' with no other '<' inbetween.
-        /// Maybe should check for hasname and has attribute or some shit too?
         /// </summary>
         /// <param name="text"></param>
         /// <param name="startIndex"></param>
@@ -362,7 +351,7 @@ namespace TMPEffects.TextProcessing
 
         public static bool IsValidTag(string tag, TagType type = TagType.Open | TagType.Close)
         {
-            return IsTag(tag); // TODO && NameValid && ParamsValid
+            return IsTag(tag);
         }
 
 
@@ -512,17 +501,6 @@ namespace TMPEffects.TextProcessing
             return replaced.Substring(1, replaced.Length - 2).Trim();
         }
 
-
-        /*
-         * TODO
-         * Need some way to let you get the tag value and attribute keyvalue pairs
-         * For now simple string dictionary; this method will likely have to be used a lot
-         * (either: every frame for each tag or every time text is changed, for each tag)
-         * => more efficient solution?
-         * 
-         * Reusing the same dictionary
-         * Maybe richtexttagattribute array?
-         */
         public static Dictionary<string, string> GetTagParametersDict(string tag)
         {
             if (!IsTag(tag, TagType.Open)) throw new System.ArgumentException(nameof(tag));
@@ -538,8 +516,6 @@ namespace TMPEffects.TextProcessing
             dict.Add("", value);
             tag = tag.Remove(0, Mathf.Min(endValue, tag.Length)).Trim();
 
-            // TODO only for debugging purposes, prevent endless loop
-            int count = 0;
             // Parse attribute keys and values
             while (tag.Length > 0)
             {
@@ -550,10 +526,6 @@ namespace TMPEffects.TextProcessing
                     dict.Add(key, value);
 
                 tag = tag.Remove(0, Mathf.Min(endValue, tag.Length)).Trim();
-
-                //Debug.Log("Remainging tag: " + tag);
-                count++;
-                if (count > 5) break;
             }
 
             return dict;
@@ -572,40 +544,5 @@ namespace TMPEffects.TextProcessing
 
             return true;
         }
-
-        /*
-         * TODO 
-         * For now, closing brackets in quotes are still treated like closing brackets; this prevents you from using them in any string attribute values
-         *      => TMPro seems to do the same
-         * 
-         * TODO 
-         * Later on, make some stuff internal and remove then superfluous istag checks
-         * 
-         * TODO ClosingTag versions?
-         * Better solution: give each method an optional parameter of TagType; include depending on that
-         * 
-         * bool IsTag(string tag) <= check if passed in string is a well formed tag
-         * bool IsTag(string text, int startIndex, int maxIndex = -1) <= check if passed in string contains well formed tag
-         * TODO Maybe not this one; basically the same as GetNextTag?
-         * bool IsTag(string text, int startIndex, out int endIndex, int maxIndex = -1) <= check if passed in string contains tag, and return the relevant indeces
-         * 
-         * bool IsValidTag(string tag) <= checks if the passed in tag is genuinely valid; that is, is it well formed as a tag in general (IsTag) and is its tag registered and its parameters valid
-         * 
-         * TODO should these return bool and rest with outs? Id say yes, otherwise need tuple for indeces version
-         * bool GetNextTag(string text, int startIndex, out string tag) <= returns the next tag contained in a string
-         * bool GetNextTagIndeces(string text, int startIndex, out int tagStartIndex, out int tagEndIndex) <= returns the next tags indeces contained in the string
-         * 
-         * bool GetNextClosingTag(string text, int startIndex, out string closingTag) <= returns next closing tag contained in string
-         * bool GetNextClosingTagIndeces(string text, int startIndex, out int tagStartIndex, out int tagEndIndex) <= returns the next closing tag contained in a string
-         * bool GetClosingTagIndeces(string text, int startIndex, string tagName, out int tagStartIndex, out int tagEndIndex) <= returns the indeces of the next closing tag with the given name
-         * 
-         * TODO maybe have some tag data structure? 
-         * string GetTagName(string tag) <= get a tags name; throw if tag is not well formed
-         * string GetTagParameters(string tag) <= get a tags parameters (value and attributes); throw if tag is not well formed
-         * string GetTagValue(string tag) <= get a tags value; throw if not well formed TODO actually maybe dont throw; make responsibility of caller that tag is well formed
-         * string GetTagAttributes(string tag) <= get a tags attributes; throw if not well formed
-         * Dictionary<string, string> GetTagAttributesDict(string tag) <= get a tags attributes as key/value pairs; throw if not well formed
-         * 
-         */
     }
 }

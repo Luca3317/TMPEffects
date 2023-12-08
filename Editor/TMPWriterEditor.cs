@@ -275,7 +275,6 @@ public class TMPWriterEditor : Editor
 
         if (prevUseDefaultDatabase != useDefaultDatabase)
         {
-            // TODO
             Undo.RecordObject(writer, "Modified writer");
         }
 

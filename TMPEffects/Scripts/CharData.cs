@@ -8,8 +8,6 @@ using UnityEngine;
 public struct CharData
 {
     #region CharacterInfo
-    // TODO These structs are pretty big;
-    // Make just hold initial mesh and for current mesh just indeces?
     public VertexData initialMesh;
     public VertexData currentMesh;
 

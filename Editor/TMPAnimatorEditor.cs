@@ -23,8 +23,6 @@ public class TMPAnimatorEditor : Editor
 
     GUIContent useDefaultDatabaseLabel;
 
-    // TODO Move preview to TMPAnimator as editor-only field to make its state persistent between hierarchy selections; serialize too?
-    //bool preview = false;
     bool guiContent = false;
     bool forceReprocess = false;
 
@@ -87,7 +85,6 @@ public class TMPAnimatorEditor : Editor
 
         if (prevUseDefaultDatabase != useDefaultDatabase)
         {
-            // TODO
             Undo.RecordObject(animator, "Modified " + animator.name);
         }
 
@@ -130,7 +127,7 @@ public class TMPAnimatorEditor : Editor
     {
         bool prevPreview = previewProp.boolValue;
 
-        EditorGUI.BeginDisabledGroup(Application.isPlaying);
+        EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
         previewProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Preview"), previewProp.boolValue);
         EditorGUI.EndDisabledGroup();
 
@@ -153,6 +150,8 @@ public class TMPAnimatorEditor : Editor
             //animator.StopAnimating();
             //animator.ResetAnimations();
         }
+
+        if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedPropertiesWithoutUndo();
 
         EditorGUILayout.PropertyField(updateFromProp);
         EditorGUILayout.PropertyField(animateOnStartProp);

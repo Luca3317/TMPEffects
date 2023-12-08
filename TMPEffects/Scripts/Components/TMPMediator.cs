@@ -28,10 +28,6 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private bool initialized = false;
 
-        // TODO
-        // For now im using an initialize method instead of Awake/OnEnable/Start
-        // to simplify using this with [ExecuteAlways] on TMPAnimator/TMPWriter
-        // Issue: Initialized for some reason retains its value after recompile => nre after recompiling
         public void Initialize()
         {
             if (initialized) return;
@@ -131,7 +127,8 @@ namespace TMPEffects.Components
                 // This check is meant to prevent doubly calling destroy
                 // on this component if the gameobject is destroyed
                 // (it being destroyed will cause the other objects to call Unsubscribe)
-                if (gameObject.activeInHierarchy)
+
+                if (!destroyCancellationToken.IsCancellationRequested && gameObject.activeInHierarchy)
                 {
                     UnsetPreprocessor();
                     TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
@@ -143,6 +140,19 @@ namespace TMPEffects.Components
                 Destroy(this);
 #endif
                 }
+
+//                if (gameObject.activeInHierarchy)
+//                {
+//                    UnsetPreprocessor();
+//                    TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+
+//#if UNITY_EDITOR
+//                    if (Application.isPlaying) Destroy(this);
+//                    else DestroyImmediate(this);
+//#else
+//                Destroy(this);
+//#endif
+                //}
             }
         }
 

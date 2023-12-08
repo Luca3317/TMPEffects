@@ -24,10 +24,6 @@ namespace TMPEffects.TextProcessing.TagProcessors
 
         public bool PreProcess(TagInfo tagInfo)
         {
-            // TODO How to handle this case?
-            // Technically you probably shouldnt be able to create a
-            // processor with an invalid database
-            // DO SAME FOR COMMANDTAGPROCESSOR
             if (database == null) return false;
 
             // check name
@@ -47,10 +43,6 @@ namespace TMPEffects.TextProcessing.TagProcessors
 
         public bool Process(TagInfo tagInfo, int textIndex)
         {
-            // TODO How to handle this case?
-            // Technically you probably shouldnt be able to create a
-            // processor with an invalid database
-            // DO SAME FOR COMMANDTAGPROCESSOR
             if (database == null) return false;
 
             // check name

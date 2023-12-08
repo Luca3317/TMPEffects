@@ -37,7 +37,6 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return false;
         }
 
-        // TODO need executeinstantly and commandtype
         public bool Process(TagInfo tagInfo, int textIndex)
         {
             if (!tags.ContainsKey(tagInfo.name)) return false;

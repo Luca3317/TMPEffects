@@ -111,8 +111,6 @@ namespace TMPEffects.Components
             mediator.Processor.RegisterProcessor('#', etp);
 
             mediator.Subscribe(this);
-            //data.Processor.FinishProcessTags += CloseOpenTags; TODO Commands can have closing tags?
-            //data.TextChanged += UpdateAnimations;
             mediator.TextChanged -= OnTextChanged;
             mediator.TextChanged += OnTextChanged;
             mediator.Processor.FinishProcessTags += CloseOpenTags;
@@ -152,7 +150,14 @@ namespace TMPEffects.Components
             mediator.ForceReprocess();
 
 #if UNITY_EDITOR
-            if (!Application.isPlaying) EditorApplication.delayCall += () => { EditorApplication.update -= EditorUpdate; };
+            if (!Application.isPlaying)
+            {
+                EditorApplication.update -= EditorUpdate;
+                StopWriterCoroutine();
+                currentIndex = -1;
+                Show(0, mediator.Text.textInfo.characterCount, true);
+                writing = false;
+            }
 #endif
         }
 
@@ -445,22 +450,6 @@ namespace TMPEffects.Components
                 // Show next character
                 if (!cInfo.isVisible || cData.visibilityState != CharData.VisibilityState.Hidden) continue;
 
-                //vIndex = cInfo.vertexIndex;
-                //mIndex = cInfo.materialReferenceIndex;
-
-                //colors = info.meshInfo[mIndex].colors32;
-                //verts = info.meshInfo[mIndex].vertices;
-
-                //for (int j = 0; j < 4; j++)
-                //{
-                //    verts[vIndex + j] = mediator.CharData[i].currentMesh[j].position;
-                //    colors[vIndex + j] = mediator.CharData[i].currentMesh[j].color;
-                //}
-
-                //mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-                //mediator.ForceUpdate(i, 1);
-
                 Show(i, 1, false);
                 mediator.ForceUpdate(i, 1);
 
@@ -473,8 +462,6 @@ namespace TMPEffects.Components
 
             //currentIndex = -1;
             OnStopWriting();
-
-            Hide(0, mediator.Text.textInfo.characterCount, false);
         }
 
         private void OnStopWriting()
@@ -607,18 +594,6 @@ namespace TMPEffects.Components
 
             if (mediator.Text.mesh != null)
                 mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-            //}
-            //else
-            //{
-            //    for (int i = start; i < start + length; i++)
-            //    {
-            //        cData = mediator.CharData[i];
-            //        if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.ShowAnimation || cData.visibilityState == CharData.VisibilityState.ShowAnimation) continue;
-
-            //        cData.visibilityState = CharData.VisibilityState.ShowAnimation;
-            //        mediator.CharData[i] = cData;
-            //    }
-            //}
         }
 
         /// <summary>
@@ -677,18 +652,6 @@ namespace TMPEffects.Components
 
             if (mediator.Text.mesh != null)
                 mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-            //}
-            //else
-            //{
-            //    for (int i = start; i < start + length; i++)
-            //    {
-            //        cData = mediator.CharData[i];
-            //        if (!cData.isVisible || cData.visibilityState == CharData.VisibilityState.HideAnimation || cData.visibilityState == CharData.VisibilityState.Hidden) continue;
-
-            //        cData.visibilityState = CharData.VisibilityState.HideAnimation;
-            //        mediator.CharData[i] = cData;
-            //    }
-            //}
         }
     }
 }

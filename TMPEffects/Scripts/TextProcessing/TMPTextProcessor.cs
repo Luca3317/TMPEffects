@@ -133,13 +133,6 @@ namespace TMPEffects.TextProcessing
             return sb.ToString();
         }
 
-
-
-        /*
-         * TODO the index in TMP_CharacterInfo actually refers to its index in the raw preprocessed text; can i use that to simplify this?
-         * 
-         */
-
         public void ProcessTags(string rawText, string parsedText)
         {
             sw.Start();
