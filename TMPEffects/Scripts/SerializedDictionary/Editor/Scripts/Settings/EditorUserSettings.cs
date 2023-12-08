@@ -7,7 +7,7 @@ using System;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public sealed class EditorUserSettings : ScriptableObject
+    internal sealed class EditorUserSettings : ScriptableObject
     {
         [SerializeField]
         private bool _alwaysShowSearch = false;

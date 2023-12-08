@@ -1,5 +1,5 @@
+using TMPEffects;
 using UnityEditor;
-using UnityEngine;
 
 [CustomEditor(typeof(TMPCommand), editorForChildClasses: true)]
 public class TMPCommandEditor : Editor

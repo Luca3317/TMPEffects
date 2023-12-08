@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public class PagingElement
+    internal class PagingElement
     {
         public int Page
         {

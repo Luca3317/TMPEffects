@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public struct LabelWidth : IDisposable
+    internal struct LabelWidth : IDisposable
     {
         public float PreviousWidth { get; }
 

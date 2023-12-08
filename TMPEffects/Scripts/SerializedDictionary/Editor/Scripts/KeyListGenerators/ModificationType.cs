@@ -1,6 +1,6 @@
 namespace AYellowpaper.SerializedCollections
 {
-    public enum ModificationType
+    internal enum ModificationType
     {
         None,
         Add,

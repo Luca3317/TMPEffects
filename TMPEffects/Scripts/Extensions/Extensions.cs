@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Extensions
+namespace TMPEffects.Extensions
 {
-    public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+    public static class Extensions
     {
-        T comp = gameObject.GetComponent<T>();
-        if (comp == null) comp = gameObject.AddComponent<T>();
-        return comp;
+        public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+        {
+            T comp = gameObject.GetComponent<T>();
+            if (comp == null) comp = gameObject.AddComponent<T>();
+            return comp;
+        }
     }
 }

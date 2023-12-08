@@ -6,7 +6,7 @@ using UnityEditor;
 namespace AYellowpaper.SerializedCollections.KeysGenerators
 {
     [CustomEditor(typeof(KeyListGenerator), true)]
-    public class KeyListGeneratorEditor : UnityEditor.Editor
+    internal class KeyListGeneratorEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

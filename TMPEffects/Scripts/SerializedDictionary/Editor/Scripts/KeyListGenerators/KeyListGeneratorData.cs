@@ -2,7 +2,7 @@
 
 namespace AYellowpaper.SerializedCollections.KeysGenerators
 {
-    public class KeyListGeneratorData
+    internal class KeyListGeneratorData
     {
         public string Name { get; set; }
         public Type TargetType { get; set; }

@@ -1,24 +1,33 @@
+using IntervalTree;
 using TMPro;
 using UnityEngine;
 
-public abstract class TMPEffectComponent : MonoBehaviour
+namespace TMPEffects.Components
 {
-    public TMP_Text TextComponent => mediator.Text;
-
-    [System.NonSerialized] protected TMPMediator mediator;
-
-    public void SetText(string text)
+    /// <summary>
+    /// Base class for TMPAnimator and TMPWriter.
+    /// </summary>
+    public abstract class TMPEffectComponent : MonoBehaviour
     {
-        mediator.Text.SetText(text);
-    }
+        public TMP_Text TextComponent => mediator.Text;
+        public TMP_TextInfo TextInfo => mediator.Text.textInfo;
 
-    public void UpdateMeshes(TMPro.TMP_VertexDataUpdateFlags flags = TMPro.TMP_VertexDataUpdateFlags.All)
-    {
-        mediator.Text.UpdateVertexData(flags);
-    }
+        [System.NonSerialized] internal TMPMediator mediator;
 
-    protected void UpdateMediator()
-    {
-        mediator = TMPMediator.Create(gameObject);
+        public void SetText(string text)
+        {
+            mediator.Text.SetText(text);
+        }
+
+        public void UpdateMeshes(TMPro.TMP_VertexDataUpdateFlags flags = TMPro.TMP_VertexDataUpdateFlags.All)
+        {
+            mediator.Text.UpdateVertexData(flags);
+        }
+
+        protected void UpdateMediator()
+        {
+            mediator = TMPMediator.Create(gameObject);
+        }
     }
 }
+

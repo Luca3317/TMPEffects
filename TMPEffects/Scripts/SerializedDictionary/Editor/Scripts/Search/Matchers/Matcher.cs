@@ -2,7 +2,7 @@ using UnityEditor;
 
 namespace AYellowpaper.SerializedCollections.Editor.Search
 {
-    public abstract class Matcher
+    internal abstract class Matcher
     {
         public string SearchString { get; private set; }
 

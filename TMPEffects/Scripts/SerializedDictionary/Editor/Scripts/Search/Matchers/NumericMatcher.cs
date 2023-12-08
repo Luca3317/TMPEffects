@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor.Search
 {
-    public class NumericMatcher : Matcher
+    internal class NumericMatcher : Matcher
     {
         public override string ProcessSearchString(string searchString)
         {

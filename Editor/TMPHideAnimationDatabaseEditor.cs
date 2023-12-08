@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPEffects.Databases;
 using UnityEditor;
-using UnityEngine;
 
 [CustomEditor(typeof(TMPHideAnimationDatabase))]
 public class TMPHideAnimationDatabaseEditor : Editor

@@ -2,7 +2,7 @@
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public static class RectUtility
+    internal static class RectUtility
     {
         public static Rect WithX(this Rect rect, float x) => new Rect(x, rect.y, rect.width, rect.height);
         public static Rect WithY(this Rect rect, float y) => new Rect(rect.x, y, rect.width, rect.height);

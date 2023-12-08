@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor.Search
 {
-    public static class Matchers
+    internal static class Matchers
     {
         public static IEnumerable<Matcher> RegisteredMatchers => _registeredMatchers;
 

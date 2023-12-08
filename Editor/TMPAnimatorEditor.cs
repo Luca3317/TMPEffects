@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
-using TMPro;
+using TMPEffects.Components;
+using TMPEffects.Databases;
 
 [CustomEditor(typeof(TMPAnimator))]
 public class TMPAnimatorEditor : Editor

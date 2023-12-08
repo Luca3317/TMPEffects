@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections
 {
-    public static class SerializedCollectionsUtility
+    internal static class SerializedCollectionsUtility
     {
         public static bool IsValidKey(object obj)
         {

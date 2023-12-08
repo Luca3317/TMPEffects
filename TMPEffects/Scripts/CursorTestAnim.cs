@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "cursor aniu", menuName = "TMPEffects/Cursor anim")]
@@ -36,7 +37,7 @@ public class CursorTestAnim : TMPAnimationParameterless
         //}
     }
 
-    public override void ResetVariables()
+    public override void ResetParameters()
     {
     }
 

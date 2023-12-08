@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.KeysGenerators
 {
-    public static class KeyListGeneratorCache
+    internal static class KeyListGeneratorCache
     {
         private static List<KeyListGeneratorData> _populators;
         private static Dictionary<Type, List<KeyListGeneratorData>> _populatorsByType;

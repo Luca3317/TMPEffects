@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public class SerializedDictionaryInstanceDrawer
+    internal class SerializedDictionaryInstanceDrawer
     {
         private FieldInfo _fieldInfo;
         private ReorderableList _unexpandedList;

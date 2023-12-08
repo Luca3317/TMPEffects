@@ -1,6 +1,5 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+using TMPEffects.Components;
+using TMPEffects.Databases;
 using UnityEditor;
 using UnityEngine;
 
@@ -129,11 +128,11 @@ public class TMPWriterEditor : Editor
         onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
 
         // Load Textures
-        playButtonTexture = (Texture)Resources.Load("playButton");
-        pauseButtonTexture = (Texture)Resources.Load("pauseButton");
-        resetButtonTexture = (Texture)Resources.Load("resetButton");
-        stopButtonTexture = (Texture)Resources.Load("stopButton");
-        skipButtonTexture = (Texture)Resources.Load("skipButton");
+        playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
+        pauseButtonTexture = (Texture)Resources.Load("PlayerIcons/pauseButton");
+        resetButtonTexture = (Texture)Resources.Load("PlayerIcons/resetButton");
+        stopButtonTexture = (Texture)Resources.Load("PlayerIcons/stopButton");
+        skipButtonTexture = (Texture)Resources.Load("PlayerIcons/skipButton");
 
         // Other Initialization work
         writer = target as TMPWriter;
@@ -157,7 +156,7 @@ public class TMPWriterEditor : Editor
 
     void UpdateProgress(int index)
     {
-        progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TotalCharacterCount - 1));
+        progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextInfo.characterCount - 1));
     }
 
     void PrepareLayout()
@@ -363,7 +362,7 @@ public class TMPWriterEditor : Editor
         float max = progressBarRect.x + progressBarRect.width;
 
         progress = Mathf.InverseLerp(min, max, xPos);
-        writer.ResetWriter(Mathf.RoundToInt(((writer.TotalCharacterCount - 1) * progress)));
+        writer.ResetWriter(Mathf.RoundToInt(((writer.TextInfo.characterCount - 1) * progress)));
     }
 
     bool styles = false;

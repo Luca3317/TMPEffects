@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace AYellowpaper.SerializedCollections.Editor.Search
 {
-    public class EnumMatcher : Matcher
+    internal class EnumMatcher : Matcher
     {
         public override bool IsMatch(SerializedProperty property)
         {

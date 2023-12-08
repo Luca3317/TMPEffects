@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public enum DisplayType
+    internal enum DisplayType
     {
         Property,
         PropertyNoLabel,

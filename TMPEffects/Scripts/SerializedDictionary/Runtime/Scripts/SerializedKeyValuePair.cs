@@ -5,7 +5,7 @@ using UnityEngine;
 namespace AYellowpaper.SerializedCollections
 {
     [System.Serializable]
-    public struct SerializedKeyValuePair<TKey, TValue>
+    internal struct SerializedKeyValuePair<TKey, TValue>
     {
         public TKey Key;
         public TValue Value;

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPEffects.Databases;
 using UnityEditor;
-using UnityEditorInternal.VR;
 using UnityEngine;
 
 [CustomEditor(typeof(TMPAnimationDatabase))]

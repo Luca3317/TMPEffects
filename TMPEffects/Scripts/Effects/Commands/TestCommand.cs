@@ -1,25 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPEffects.Tags;
+using TMPEffects.Components;
 
-[CreateAssetMenu(fileName ="new TestCommand", menuName ="TMPEffects/Commands/Test")]
-public class TestCommand : TMPCommand
+namespace TMPEffects.Commands
 {
-    public override CommandType CommandType => CommandType.Index;
-    public override bool ExecuteInstantly => false;
-
-    public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
+    [CreateAssetMenu(fileName = "new TestCommand", menuName = "TMPEffects/Commands/Test")]
+    public class TestCommand : TMPCommand
     {
-        writer.Wait(float.Parse(args.parameters[""]));
-        Debug.Log("Executed test command");
-    }
+        public override CommandType CommandType => CommandType.Index;
+        public override bool ExecuteInstantly => false;
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
-    {
-        if (parameters == null) return false;
-        if (!parameters.ContainsKey(""))
-            return false;
+        public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
+        {
+            writer.Wait(float.Parse(args.parameters[""]));
+            Debug.Log("Executed test command");
+        }
 
-        return float.TryParse(parameters[""], out _);
+        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        {
+            if (parameters == null) return false;
+            if (!parameters.ContainsKey(""))
+                return false;
+
+            return float.TryParse(parameters[""], out _);
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor.Search
 {
-    public class SearchResultEntry
+    internal class SearchResultEntry
     {
         public readonly int Index;
         public readonly SerializedProperty Property;

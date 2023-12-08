@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace AYellowpaper.SerializedCollections.KeysGenerators
 {
-    public class KeyListGeneratorSelectorWindow : EditorWindow
+    internal class KeyListGeneratorSelectorWindow : EditorWindow
     {
         [SerializeField]
         private int _selectedIndex;

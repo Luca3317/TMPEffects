@@ -6,7 +6,7 @@ using UnityEngine;
 namespace AYellowpaper.SerializedCollections.KeysGenerators
 {
     [KeyListGenerator("Int Stepping", typeof(int))]
-    public class IntSteppingGenerator : KeyListGenerator
+    internal class IntSteppingGenerator : KeyListGenerator
     {
         [SerializeField]
         private int _startIndex = 0;

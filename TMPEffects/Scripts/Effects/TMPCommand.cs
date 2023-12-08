@@ -1,33 +1,55 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using TMPEffects.Tags;
+using TMPEffects.Components;
 
-public abstract class TMPCommand : ScriptableObject
+namespace TMPEffects
 {
-    // Position of command tag can either:
-    //      1. define when command is executed              eg: This will just <!wait=5> wait for 5 seconds
-    //      2. define what text the command operates on     eg: This will instantly <!show>show the enclosed</show> text
-    //      
-    // In the second case, the tag could either be executed when the opening tag is processed in the writer or instantly.
-    // Also defined over some toggle (which is hidden in first case)
-    public abstract CommandType CommandType { get; }
-    public abstract bool ExecuteInstantly { get; }
+    /// <summary>
+    /// Base class for commands.
+    /// </summary>
+    public abstract class TMPCommand : ScriptableObject
+    {
+        /// <summary>
+        /// The type of command this is.
+        /// </summary>
+        /// <remarks>
+        /// <list type="table">
+        /// <item><see cref="CommandType.Index"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index. It does not need to be closed. Example: This is <!speed=10> my text</item>
+        /// <item><see cref="CommandType.Range"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text. Example: This <!show>is my</!show> text</item>
+        /// <item><see cref="CommandType.Both"/>: Both applications are valid.</item>
+        /// </list>
+        /// </remarks>
+        public abstract CommandType CommandType { get; }
+        /// <summary>
+        /// Whether the command is executed the moment the <see cref="TMPWriter"/> begin writing.
+        /// Otherwise, it is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index
+        /// </summary>
+        public abstract bool ExecuteInstantly { get; }
 
-    // TODO ExecuteCommand needs a context variable;
-    // Can pass in both writer and animator, but would prefer a single dedicated context object later
-    public abstract void ExecuteCommand(TMPCommandTag tag, TMPWriter writer/*, TMPAnimator animator*/);
-    public abstract bool ValidateParameters(Dictionary<string, string> parameters);
+        /// <summary>
+        /// Execute the command.
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <param name="writer"></param>
+        public abstract void ExecuteCommand(TMPCommandTag tag, TMPWriter writer/*, TMPAnimator animator*/);
+        /// <summary>
+        /// Validate the parameters.<br/>
+        /// Used to validate tags.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public abstract bool ValidateParameters(Dictionary<string, string> parameters);
 
 #if UNITY_EDITOR
-    public virtual void SceneGUI(Vector3 position, TMPCommandTag tag) { }
+        public virtual void SceneGUI(Vector3 position, TMPCommandTag tag) { }
 #endif
-}
+    }
 
-public enum CommandType
-{
-    Index = 0,
-    Range = 1,
-    Both = 2
+    public enum CommandType
+    {
+        Index = 0,
+        Range = 1,
+        Both = 2
+    }
 }

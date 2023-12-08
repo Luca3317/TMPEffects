@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AYellowpaper.SerializedCollections.Editor.Data
 {
-    public class ElementSettings
+    internal class ElementSettings
     {
         public const string DefaultName = "Not Set";
 

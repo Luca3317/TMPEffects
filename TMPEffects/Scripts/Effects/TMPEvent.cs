@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
+using TMPEffects.Tags;
 
-[System.Serializable]
-public class TMPEvent : UnityEvent<TMPEventArgs>
+namespace TMPEffects
 {
-    public TMPEvent() : base() { }
+    [System.Serializable]
+    public class TMPEvent : UnityEvent<TMPEventArgs>
+    {
+        public TMPEvent() : base() { }
+    }
 }

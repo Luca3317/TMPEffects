@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace AYellowpaper.SerializedCollections.Editor
 {
-    public class EditorUserSettingsProvider : SettingsProvider
+    internal class EditorUserSettingsProvider : SettingsProvider
     {
         public const string PreferencesPath = "Preferences/Serialized Collections";
 
