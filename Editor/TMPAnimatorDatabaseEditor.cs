@@ -46,7 +46,6 @@ public class TMPAnimatorDatabaseEditor : Editor
 
         if (serializedObject.hasModifiedProperties)
         {
-            Debug.LogWarning("Had Modified properties");
             serializedObject.ApplyModifiedProperties();
         }
     }

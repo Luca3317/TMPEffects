@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
 using TMPEffects.Databases;
+using UnityEngine.Playables;
 
 [CustomEditor(typeof(TMPAnimator))]
 public class TMPAnimatorEditor : Editor
@@ -15,10 +16,12 @@ public class TMPAnimatorEditor : Editor
     SerializedProperty databaseProp;
     SerializedProperty updateFromProp;
     SerializedProperty animateOnStartProp;
+    SerializedProperty animationsOverrideProp;
     SerializedProperty contextProp;
     SerializedProperty contextScalingProp;
     SerializedProperty contextScaledTimeProp;
     SerializedProperty previewProp;
+    SerializedProperty passedTimeProp;
     //SerializedProperty animateOnTextChangeProp;
 
     GUIContent useDefaultDatabaseLabel;
@@ -31,9 +34,11 @@ public class TMPAnimatorEditor : Editor
         databaseProp = serializedObject.FindProperty("database");
         updateFromProp = serializedObject.FindProperty("updateFrom");
         animateOnStartProp = serializedObject.FindProperty("animateOnStart");
+        animationsOverrideProp = serializedObject.FindProperty("animationsOverride");
         contextProp = serializedObject.FindProperty("context");
         contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
         contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
+        passedTimeProp = contextProp.FindPropertyRelative("passedTime");
         previewProp = serializedObject.FindProperty("preview");
 
         animator = target as TMPAnimator;
@@ -63,13 +68,19 @@ public class TMPAnimatorEditor : Editor
     {
         Undo.undoRedoPerformed -= OnUndoRedo;
         Undo.undoRedoPerformed -= OnUndoRedo;
-    } 
+    }
 
     void InitGUIContent()
     {
         if (guiContent) return;
         guiContent = true;
 
+        alertDialogDefaultShow = new GUIContent();
+        alertDialogDefaultHide = new GUIContent();
+        alertDialogDefaultShow.image = (Texture)EditorGUIUtility.Load("alertDialog");
+        alertDialogDefaultHide.image = (Texture)EditorGUIUtility.Load("alertDialog");
+        alertDialogDefaultShow.text = "";
+        alertDialogDefaultHide.text = "";
         useDefaultDatabaseLabel = new GUIContent("Use default database");
     }
 
@@ -90,7 +101,7 @@ public class TMPAnimatorEditor : Editor
 
         if (useDefaultDatabase)
         {
-            if (!databaseProp.objectReferenceValue == defaultDatabase)
+            if (databaseProp.objectReferenceValue != defaultDatabase)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
             }
@@ -107,16 +118,59 @@ public class TMPAnimatorEditor : Editor
 
         if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
         {
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
             forceReprocess = true;
         }
     }
 
+    GUIContent alertDialogDefaultShow;
+    GUIContent alertDialogDefaultHide;
     void DrawDefaultHideShow()
     {
+        alertDialogDefaultShow.tooltip = animator.CheckDefaultShowString();
+        alertDialogDefaultHide.tooltip = animator.CheckDefaultHideString();
+
         EditorGUI.BeginChangeCheck();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"));
-        if (EditorGUI.EndChangeCheck() )
+
+        GUILayout.BeginHorizontal();
+        string warning = animator.CheckDefaultShowString();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"), GUILayout.ExpandWidth(true));
+
+        Rect rect = GUILayoutUtility.GetLastRect();
+        rect.x = EditorGUIUtility.labelWidth; ;
+        rect.width = 20;
+
+        if (warning != "")
+        {
+            GUI.Label(rect, alertDialogDefaultShow);
+        }
+        else
+        {
+            GUI.Label(rect, new GUIContent(""));
+        }
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        string warning2 = animator.CheckDefaultHideString();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"), GUILayout.ExpandWidth(true));
+
+        rect = GUILayoutUtility.GetLastRect();
+        rect.x = EditorGUIUtility.labelWidth; ;
+        rect.width = 20;
+
+
+        if (warning2 != "")
+        {
+            GUI.Label(rect, alertDialogDefaultHide);
+        }
+        else
+        {
+            GUI.Label(rect, new GUIContent(""));
+        }
+
+        GUILayout.EndHorizontal();
+        if (EditorGUI.EndChangeCheck())
         {
             serializedObject.ApplyModifiedProperties();
             animator.ForcePostProcess();
@@ -158,6 +212,8 @@ public class TMPAnimatorEditor : Editor
 
         DrawDatabase();
 
+        EditorGUILayout.PropertyField(animationsOverrideProp);
+
         DrawDefaultHideShow();
 
         if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
@@ -186,7 +242,6 @@ public class TMPAnimatorEditor : Editor
 
     void OnUndoRedo()
     {
-        Debug.Log("ON UNDO REDO");
 
         if (previewProp.boolValue)
         {

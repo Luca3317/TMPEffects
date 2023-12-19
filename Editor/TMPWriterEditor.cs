@@ -27,6 +27,9 @@ public class TMPWriterEditor : Editor
     // Serialized properties
     SerializedProperty databaseProp;
     SerializedProperty speedProp;
+    SerializedProperty whitespaceSpeedProp;
+    SerializedProperty visibleSpeedProp;
+    SerializedProperty punctuationSpeedProp;
     SerializedProperty startOnPlayProp;
     SerializedProperty eventsEnabledProp;
     SerializedProperty commandsEnabledProp;
@@ -117,6 +120,9 @@ public class TMPWriterEditor : Editor
         // Cache properties
         databaseProp = serializedObject.FindProperty("database");
         speedProp = serializedObject.FindProperty("speed");
+        punctuationSpeedProp = serializedObject.FindProperty("punctuationSpeed");
+        whitespaceSpeedProp = serializedObject.FindProperty("whiteSpaceSpeed");
+        visibleSpeedProp = serializedObject.FindProperty("visibleSpeed");
         startOnPlayProp = serializedObject.FindProperty("writeOnStart");
         eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
         commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
@@ -152,12 +158,15 @@ public class TMPWriterEditor : Editor
         writer.OnResetWriter.RemoveListener(UpdateProgress);
     }
 
-    void UpdateProgress(CharData cData) => UpdateProgress(cData.index);
+    void UpdateProgress(CharData cData) => UpdateProgress(cData.info.index);
 
     void UpdateProgress(int index)
     {
         progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextInfo.characterCount - 1));
+        if (progress == 1) finished = true;
     }
+
+    bool finished = false;
 
     void PrepareLayout()
     {
@@ -186,15 +195,15 @@ public class TMPWriterEditor : Editor
         playLabelRect = new Rect(headerRect.position, new Vector2(playLabelWidth, playLabelHeight));
         if (wrapHeader)
         {
-            eventToggleRect = new Rect(headerRect.x, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth, eventToggleHeight);
+            eventToggleRect = new Rect(headerRect.x, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth-20, eventToggleHeight);
             commandToggleRect = new Rect(headerRect.x + eventToggleWidth, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, commandToggleWidth, commandToggleHeight);
         }
         else
         {
-            eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth, headerHeight);
+            eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth-20, headerHeight);
             commandToggleRect = new Rect(headerRect.x + playLabelWidth + eventToggleWidth, headerRect.y, commandToggleWidth, headerHeight);
         }
-        eventWarningRect = new Rect(eventToggleRect.x + eventToggleRect.width - 25, eventToggleRect.y, 20, 20);
+        eventWarningRect = new Rect(eventToggleRect.x + eventToggleRect.width - 5, eventToggleRect.y, 20, 20);
         playButtonRect = new Rect(playerRect.x, playerRect.y, playButtonWidth, playButtonHeight);
         resetButtonRect = new Rect(playerRect.x + playButtonWidth + buttonOffset, playerRect.y + buttonHeight / 4, buttonWidth, buttonHeight);
         stopButtonRect = new Rect(resetButtonRect.x + buttonWidth, playerRect.y + buttonHeight / 4, buttonWidth, buttonHeight);
@@ -280,7 +289,7 @@ public class TMPWriterEditor : Editor
 
         if (useDefaultDatabase)
         {
-            if (!databaseProp.objectReferenceValue == defaultDatabase)
+            if (databaseProp.objectReferenceValue != defaultDatabase)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
             }
@@ -318,6 +327,9 @@ public class TMPWriterEditor : Editor
         DrawPlayer();
 
         EditorGUILayout.PropertyField(speedProp);
+        EditorGUILayout.PropertyField(whitespaceSpeedProp);
+        EditorGUILayout.PropertyField(punctuationSpeedProp);
+        EditorGUILayout.PropertyField(visibleSpeedProp);
         EditorGUILayout.PropertyField(startOnPlayProp);
 
         DrawDatabase();
