@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideAnimations:
     _serializedList:
-    - Key: shrink
-      Value: {fileID: 11400000, guid: 6590bae2b5edb784f8857fea2164e78f, type: 2}
-    - Key: yea
-      Value: {fileID: 11400000, guid: 6590bae2b5edb784f8857fea2164e78f, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: b063f1b69ee493846896d489cfd79639, type: 2}

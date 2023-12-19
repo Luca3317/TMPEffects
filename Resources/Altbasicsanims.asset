@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8906ec21a17314381f3a3652d44479, type: 3}
-  m_Name: WaveAnimation
+  m_Script: {fileID: 11500000, guid: 337bd111296f6ee4cabd2caa57986019, type: 3}
+  m_Name: Altbasicsanims
   m_EditorClassIdentifier: 
-  speed: 5
-  frequency: 0.1
-  amplitude: 10
+  animations:
+    _serializedList:
+    - Key: wavey
+      Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}

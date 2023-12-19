@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c8906ec21a17314381f3a3652d44479, type: 3}
-  m_Name: WaveAnimation
+  m_Script: {fileID: 11500000, guid: 6f34e37e2008490468c5efd7ec70ffb8, type: 3}
+  m_Name: new GrowHideAnimation
   m_EditorClassIdentifier: 
-  speed: 5
-  frequency: 0.1
-  amplitude: 10
+  anchor: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  speed: 1
+  minScale: 0
+  maxScale: 1

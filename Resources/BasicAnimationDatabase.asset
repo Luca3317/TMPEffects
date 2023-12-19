@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     _serializedList:
-    - Key: cursor
-      Value: {fileID: 11400000, guid: 033393b78f2968b43be1654dd09e7666, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: 2959b084f19b98845809322227d8e0ec, type: 2}
+    - Key: explode
+      Value: {fileID: 11400000, guid: 425bb292a24f3064eac4002b6f69b9b5, type: 2}
+    - Key: funky
+      Value: {fileID: 11400000, guid: 5bb122a649f127040b61e1f70322e67e, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: 65564125880f8b8409f39aa95cf51e5b, type: 2}
+    - Key: jump
+      Value: {fileID: 11400000, guid: c61cda1192922be498c77d93fecb69c8, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: 9aafd69818f70d64f8b13ea0ea3cd40f, type: 2}
     - Key: wave
       Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
-    - Key: test
-      Value: {fileID: 11400000, guid: 8b8344e125a1d1446b7e340c092f91b7, type: 2}

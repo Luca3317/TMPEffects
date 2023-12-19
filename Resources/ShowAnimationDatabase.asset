@@ -15,4 +15,4 @@ MonoBehaviour:
   showAnimations:
     _serializedList:
     - Key: grow
-      Value: {fileID: 11400000, guid: 8a27cb1f74ef47b45957fd85cfe9a92d, type: 2}
+      Value: {fileID: 11400000, guid: b85a8d91e0d73ab4c83c113d068190f5, type: 2}

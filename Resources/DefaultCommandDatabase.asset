@@ -16,3 +16,7 @@ MonoBehaviour:
     _serializedList:
     - Key: speed
       Value: {fileID: 11400000, guid: 1b861c7499ea52f40ae741494de7a3fa, type: 2}
+    - Key: wait
+      Value: {fileID: 11400000, guid: 165bea6868a7a5842bcdb8430d6b456b, type: 2}
+    - Key: show
+      Value: {fileID: 11400000, guid: 7c96c58d71d4f2c4cac75cbe0037ea10, type: 2}
