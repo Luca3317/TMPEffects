@@ -14,6 +14,17 @@ namespace TMPEffects.Components
     [DisallowMultipleComponent]
     internal class TMPMediator : MonoBehaviour
     {
+
+        public void VisibilityStateUpdated(int index, CharData.VisibilityState previous)
+        {
+            OnVisibilityStateUpdated?.Invoke(index, previous);
+        }
+
+        public delegate void VisibilityEventHandler(int index, CharData.VisibilityState previous);
+        public event VisibilityEventHandler OnVisibilityStateUpdated;
+
+
+
         public bool isInitialized => initialized;
 
         //public int Subscribers { get; private set; }
@@ -25,6 +36,7 @@ namespace TMPEffects.Components
         public delegate void RangeEventHandler(int start, int lenght);
         public event EmptyEventHandler TextChanged;
         public event RangeEventHandler ForcedUpdate;
+        public event EmptyEventHandler CharDataPopulated;
 
         [System.NonSerialized] private bool initialized = false;
 
@@ -106,6 +118,8 @@ namespace TMPEffects.Components
                 data = wordInfo == null ? new CharData(cInfo) : new CharData(cInfo, wordInfo.Value);
                 CharData.Add(data);
             }
+
+            CharDataPopulated?.Invoke();
         }
 
         List<object> subscribers = new List<object>();

@@ -10,6 +10,7 @@ using TMPEffects.TextProcessing;
 using TMPEffects.TextProcessing.TagProcessors;
 using TMPEffects.Tags;
 using TMPEffects.Commands;
+using System;
 
 namespace TMPEffects.Components
 {
@@ -76,12 +77,23 @@ namespace TMPEffects.Components
         #region Fields
         [SerializeField] TMPCommandDatabase database;
 
+        [Tooltip("The speed at which the writer shows new characters.")]
         [SerializeField] float speed = 1;
+
         [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] bool writeOnStart = true;
+        [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified.")]
         [SerializeField] bool autoWriteNewText = true;
+
         [SerializedDictionary("Tag Name", "Command")]
         [SerializeField] SerializedDictionary<string, SceneCommand> sceneCommands;
+
+        [Tooltip("The speed at which the writer iterates over whitespace characters, as percentage of the general speed")]
+        [SerializeField, Range(0, 1)] float whiteSpaceSpeed;
+        [Tooltip("The speed at which the writer shows punctuation characters, as percentage of the general speed")]
+        [SerializeField, Range(0, 1)] float punctuationSpeed;
+        [Tooltip("The speed at which the writer iterates over already visible characters, as percentage of the general speed")]
+        [SerializeField, Range(0, 1)] float visibleSpeed;
 
         [System.NonSerialized] private CommandTagProcessor ctp;
         [System.NonSerialized] private SceneCommandTagProcessor sctp;
@@ -93,12 +105,10 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private bool shouldWait = false;
         [System.NonSerialized] private float waitAmount = 0f;
+        [System.NonSerialized] Func<bool> continueConditions;
 
         [System.NonSerialized] private bool writing = false;
         [System.NonSerialized] private int currentIndex = -1;
-
-        [System.NonSerialized] Dictionary<int, List<TMPEventArgs>> events;
-        [System.NonSerialized] Dictionary<int, List<TMPCommandTag>> commands;
         #endregion
 
         #region Initialization
@@ -138,7 +148,6 @@ namespace TMPEffects.Components
             mediator.Processor.FinishProcessTags -= CloseOpenTags;
             mediator.Processor.UnregisterProcessor('!');
             mediator.Processor.UnregisterProcessor('#');
-            mediator.Processor.UnregisterProcessor('+');
 
             // TODO Each reassigned in OnEnable anyway;
             // Either change class to reuse instances or dont reset (atm, resetting is necessary for some editor functionality though)
@@ -292,6 +301,15 @@ namespace TMPEffects.Components
             waitAmount = seconds;
         }
 
+        public void WaitUntil(Func<bool> condition)
+        {
+            if (condition == null) return;
+
+            continueConditions -= condition;
+            continueConditions += condition;
+        }
+
+
         /// <summary>
         /// Set the current speed of the writer.
         /// </summary>
@@ -368,72 +386,124 @@ namespace TMPEffects.Components
             currentSpeed = speed;
 
             TMP_TextInfo info = mediator.Text.textInfo;
-            TMP_CharacterInfo cInfo;
             CharData cData;
-            Vector3[] verts;
-            Color32[] colors;
-            int vIndex, mIndex;
 
             if (currentIndex == -1)
                 HideAllCharacters(true);
 
-            // Execute all commands tagged as ExecuteInstantly
-            TMPCommand command;
-            for (int j = 0; j < ctp.ProcessedTags.Count; j++)
-            {
-                if ((command = database.GetEffect(ctp.ProcessedTags[j].name)).ExecuteInstantly)
-                {
-                    command.ExecuteCommand(ctp.ProcessedTags[j], this);
-                }
-            }
+            // Execute instant commands
+            ExecuteCommandsAndEvents(-1);
 
             for (int i = Mathf.Max(currentIndex, 0); i < info.characterCount; i++)
             {
-                // Update current index; needed for when continuing where it left off
                 currentIndex = i;
-
-                // TODO preliminary wait implementation
-                if (shouldWait)
-                {
-                    shouldWait = false;
-                    yield return new WaitForSeconds(waitAmount);
-                }
-
                 cData = mediator.CharData[i];
 
-                //for (int j = 0; j < 4; j++)
-                //{
-                //    cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
-                //}
-                //mediator.CharData[i] = cData;
+                ExecuteCommandsAndEvents(currentIndex);
 
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                waitAmount = 0f;
 
+                HandleWaitConditions();
+
+                OnShowCharacter?.Invoke(cData);
+
+                // TODO Toggle for whether invisible character still take time to show
+                if (!cData.info.isVisible)
+                {
+                    if (speed > 0 && whiteSpaceSpeed > 0) yield return new WaitForSeconds((1f / (currentSpeed / whiteSpaceSpeed)) * 0.1f);
+                    continue;
+                }
+                // TODO Toggle for whether already visible characters still take time to show
+                if (cData.visibilityState == CharData.VisibilityState.Shown)
+                {
+                    if (speed > 0 && visibleSpeed > 0) yield return new WaitForSeconds((1f / (currentSpeed / visibleSpeed)) * 0.1f);
+                    continue;
+                }
+
+                Show(i, 1, false);
+                mediator.ForceUpdate(i, 1);
+
+                if (currentSpeed > 0)
+                {
+                    if (Char.IsPunctuation(cData.info.character))
+                    {
+                        if (punctuationSpeed > 0)
+                            yield return new WaitForSeconds((1f / (currentSpeed / punctuationSpeed)) * 0.1f);
+                    }
+                    else yield return new WaitForSeconds((1f / currentSpeed) * 0.1f);
+                }
+            }
+
+            OnFinishWriter.Invoke();
+            OnStopWriting();
+
+            Hide(0, mediator.Text.textInfo.characterCount, false);
+        }
+
+        // TODO Toggle for whether to wait 
+        //      Until all conditions have been true at one point since starting the check
+        //      Until all conditions are true at once
+        private void HandleWaitConditions()
+        {
+            if (continueConditions == null) return;
+            bool allMet;
+            Delegate[] delegates;
+            do
+            {
+                allMet = true;
+                delegates = continueConditions.GetInvocationList();
+
+                for (int i = 0; i < delegates.Length; i++)
+                {
+                    if (!(delegates[i] as Func<bool>)()) allMet = false;
+                    else continueConditions -= (delegates[i] as Func<bool>);
+                }
+
+            } while (!allMet);
+
+            continueConditions = null;
+        }
+
+        private void ExecuteCommandsAndEvents(int index)
+        {
+            TMPCommand command;
+            if (index < 0)
+            {
+                for (int j = 0; j < ctp.ProcessedTags.Count; j++)
+                {
+                    if ((command = database.GetEffect(ctp.ProcessedTags[j].name)).ExecuteInstantly)
+                    {
+                        command.ExecuteCommand(ctp.ProcessedTags[j], this);
+                    }
+                }
+            }
+            else
+            {
                 // Raise any events or comamnds associated with the current index
                 for (int j = 0; j < ctp.ProcessedTags.Count; j++)
                 {
-                    if (ctp.ProcessedTags[j].startIndex == i)
+                    if (ctp.ProcessedTags[j].startIndex == index)
                     {
 #if UNITY_EDITOR
                         if (!commandsEnabled && !Application.isPlaying) continue;
 #endif
-
                         database.GetEffect(ctp.ProcessedTags[j].name).ExecuteCommand(ctp.ProcessedTags[j], this);
                     }
                 }
                 for (int j = 0; j < sctp.ProcessedTags.Count; j++)
                 {
-                    if (sctp.ProcessedTags[j].startIndex == i)
+                    if (sctp.ProcessedTags[j].startIndex == index)
                     {
 #if UNITY_EDITOR
                         if (!commandsEnabled && !Application.isPlaying) continue;
 #endif
-                        sceneCommands[sctp.ProcessedTags[j].name].command?.Invoke(sctp.ProcessedTags[j].parameters);
-                        //database.GetCommand(sctp.ProcessedTags[j].name).ExecuteCommand(sctp.ProcessedTags[j], this);
+                        sceneCommands[sctp.ProcessedTags[j].name].command?.Invoke(new SceneCommandArgs(this, sctp.ProcessedTags[j].parameters));
                     }
                 }
                 for (int j = 0; j < etp.ProcessedTags.Count; j++)
                 {
-                    if (etp.ProcessedTags[j].index == i)
+                    if (etp.ProcessedTags[j].index == index)
                     {
 #if UNITY_EDITOR
                         if (!eventsEnabled && !Application.isPlaying) continue;
@@ -442,26 +512,7 @@ namespace TMPEffects.Components
                         OnTextEvent?.Invoke(etp.ProcessedTags[j]);
                     }
                 }
-
-                cInfo = info.characterInfo[i];
-
-                OnShowCharacter?.Invoke(cData);
-
-                // Show next character
-                if (!cInfo.isVisible || cData.visibilityState != CharData.VisibilityState.Hidden) continue;
-
-                Show(i, 1, false);
-                mediator.ForceUpdate(i, 1);
-
-                //data.activeEndIndex = i;
-                if (currentSpeed > 0)
-                {
-                    yield return new WaitForSeconds((1f / currentSpeed) * 0.1f);
-                }
             }
-
-            //currentIndex = -1;
-            OnStopWriting();
         }
 
         private void OnStopWriting()
@@ -565,15 +616,16 @@ namespace TMPEffects.Components
             {
                 cInfo = info.characterInfo[i];
                 cData = mediator.CharData[i];
-                if (!cData.isVisible) continue;
+                if (!cData.info.isVisible) continue;
 
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.currentMesh.SetPosition(j, cData.initialMesh.GetPosition(j));
+                    cData.currentMesh.SetPosition(j, cData.info.initialMesh.GetPosition(j));
                 }
 
-                cData.visibilityState = skipAnimation ? CharData.VisibilityState.Shown : CharData.VisibilityState.ShowAnimation;
+                CharData.VisibilityState prev = cData.visibilityState;
+                cData.SetVisibilityState(skipAnimation ? CharData.VisibilityState.Shown : CharData.VisibilityState.ShowAnimation, Time.time); // TODO What time value to use here?
 
                 // Apply the new vertices to the vertex array
                 vIndex = cInfo.vertexIndex;
@@ -590,6 +642,7 @@ namespace TMPEffects.Components
 
                 // Apply the new vertices to the char data array
                 mediator.CharData[i] = cData;
+                mediator.VisibilityStateUpdated(i, prev);
             }
 
             if (mediator.Text.mesh != null)
@@ -628,10 +681,11 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.currentMesh.SetPosition(j, Vector3.zero);
+                    cData.currentMesh.SetPosition(j, cData.info.initialPosition);
                 }
 
-                cData.visibilityState = skipAnimation ? CharData.VisibilityState.Hidden : CharData.VisibilityState.HideAnimation;
+                CharData.VisibilityState prev = cData.visibilityState;
+                cData.SetVisibilityState(skipAnimation ? CharData.VisibilityState.Hidden : CharData.VisibilityState.HideAnimation, Time.time); // TODO What time value to use here?
 
                 // Apply the new vertices to the vertex array
                 vIndex = cInfo.vertexIndex;
@@ -648,10 +702,13 @@ namespace TMPEffects.Components
 
                 // Apply the new vertices to the char data array
                 mediator.CharData[i] = cData;
+                mediator.VisibilityStateUpdated(i, prev);
             }
 
             if (mediator.Text.mesh != null)
                 mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+            mediator.ForceUpdate(start, length);
         }
     }
 }
