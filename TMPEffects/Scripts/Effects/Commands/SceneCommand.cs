@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.Components;
 using UnityEngine.Events;
 
 namespace TMPEffects.Commands
@@ -8,6 +9,19 @@ namespace TMPEffects.Commands
     {
         public CommandType CommandType;
         public bool executeInstantly;
-        public UnityEvent<Dictionary<string, string>> command;
+        public UnityEvent<SceneCommandArgs> command;
+    }
+
+    [System.Serializable]
+    public struct SceneCommandArgs
+    {
+        public TMPWriter writer;
+        public Dictionary<string, string> parameters;
+
+        public SceneCommandArgs(TMPWriter writer, Dictionary<string, string> parameters)
+        {
+            this.writer = writer;
+            this.parameters = parameters;
+        }
     }
 }

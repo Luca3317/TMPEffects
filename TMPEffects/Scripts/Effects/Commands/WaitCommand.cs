@@ -2,19 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.Components;
+using TMPEffects.TextProcessing;
 
 namespace TMPEffects.Commands
 {
-    [CreateAssetMenu(fileName = "new TestCommand", menuName = "TMPEffects/Commands/Test")]
-    public class TestCommand : TMPCommand
+    [CreateAssetMenu(fileName = "new WaitCommand", menuName = "TMPEffects/Commands/Wait")]
+    public class WaitCommand : TMPCommand
     {
         public override CommandType CommandType => CommandType.Index;
         public override bool ExecuteInstantly => false;
 
         public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
         {
-            writer.Wait(float.Parse(args.parameters[""]));
-            Debug.Log("Executed test command");
+            ParsingUtility.StringToFloat(args.parameters[""], out var value);
+            writer.Wait(value);
+
+            writer.WaitUntil(() => true);
         }
 
         public override bool ValidateParameters(Dictionary<string, string> parameters)
@@ -23,7 +26,7 @@ namespace TMPEffects.Commands
             if (!parameters.ContainsKey(""))
                 return false;
 
-            return float.TryParse(parameters[""], out _);
+            return ParsingUtility.StringToFloat(parameters[""], out _);
         }
     }
 }

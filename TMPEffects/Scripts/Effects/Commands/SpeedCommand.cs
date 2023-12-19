@@ -10,7 +10,7 @@ namespace TMPEffects.Commands
     [CreateAssetMenu(fileName = "new SpeedCommand", menuName = "TMPEffects/Commands/Speed")]
     public class SpeedCommand : TMPCommand
     {
-        public override CommandType CommandType => CommandType.Index;
+        public override CommandType CommandType => CommandType.Both;
         public override bool ExecuteInstantly => false;
 
         public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)

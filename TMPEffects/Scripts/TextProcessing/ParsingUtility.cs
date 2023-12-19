@@ -1,7 +1,9 @@
+using Codice.Client.BaseCommands.Merge.Restorer;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -24,9 +26,9 @@ namespace TMPEffects.TextProcessing
         public const char EVENT_PREFIX = '#';
 
         private static readonly HashSet<char> validPrefixes = new HashSet<char>()
-    {
-        '!', '#', '+', '-'
-    };
+        {
+            '!', '#', '+', '-'
+        };
 
         public class TagInfo
         {
@@ -64,12 +66,8 @@ namespace TMPEffects.TextProcessing
             //}
         }
 
-        public static System.Diagnostics.Stopwatch Getnexttagdtopwatch = new System.Diagnostics.Stopwatch();
-        public static System.Diagnostics.Stopwatch oldw = new System.Diagnostics.Stopwatch();
-
         public static bool GetNextTag(string text, int startIndex, ref TagInfo tag, TagType type = TagType.Open | TagType.Close)
         {
-            Getnexttagdtopwatch.Start();
             int index = startIndex - 1;
             int len = text.Length;
 
@@ -85,14 +83,12 @@ namespace TMPEffects.TextProcessing
                 // If there is no open bracket found or it is at the end of the text, there is no valid tag
                 if (tagStartIndex == -1 || tagStartIndex == len - 1)
                 {
-                    Getnexttagdtopwatch.Stop();
                     return false;
                 }
 
                 tagEndIndex = text.IndexOf('>', tagStartIndex + 1);
                 if (tagEndIndex == -1)
                 {
-                    Getnexttagdtopwatch.Stop();
                     return false;
                 }
 
@@ -102,7 +98,6 @@ namespace TMPEffects.TextProcessing
 
             } while (!TryParseTag(text, tagStartIndex, tagEndIndex, ref tag, type));
 
-            Getnexttagdtopwatch.Stop();
             return true;
         }
 
@@ -208,6 +203,9 @@ namespace TMPEffects.TextProcessing
                 dict.Add("", value);
             text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
 
+            // TODO only for debugging purposes, prevent endless loop
+            int count = 0;
+
             // Parse attribute keys and values
             while (text.Length > 0)
             {
@@ -220,6 +218,9 @@ namespace TMPEffects.TextProcessing
                 }
 
                 text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
+
+                //count++;
+                //if (count > 5) break;
             }
 
             if (dict.Count == 0) return null;
@@ -246,12 +247,11 @@ namespace TMPEffects.TextProcessing
             }
 
             key = text.Substring(0, index);
+            index++;
             endValue = index;
             value = "";
-            index++;
 
             if (!searchValue || index == 0 || index == len) return;
-
 
             bool quoted = false;
             if (text[index] == '"')
@@ -274,18 +274,6 @@ namespace TMPEffects.TextProcessing
             endValue = index + 1;
             value = text.Substring(startIndex, index - startIndex);
         }
-
-
-
-
-        const string TAG_NAME_REGEX = @"^[^>\s=]+";
-        static readonly Regex tagNameRegex = new Regex(TAG_NAME_REGEX);
-
-
-        const string VALID_NAME_CHARS = "!#$&*-0123456789:;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~";
-        const string END_NAME_CHARS = ">= ";
-        static readonly List<char> validNameChars = VALID_NAME_CHARS.ToCharArray().ToList();
-        static readonly List<char> endNameChars = END_NAME_CHARS.ToCharArray().ToList();
 
         /// <summary>
         /// Checks if <paramref name="text"/> contains a substring starting at <paramref name="startIndex"/>, going up to <paramref name="maxIndex"/>, that is a well formed tag.
@@ -381,7 +369,6 @@ namespace TMPEffects.TextProcessing
 
         public static bool GetNextTagIndeces(string text, int startIndex, out int tagStartIndex, out int tagEndIndex, TagType type = TagType.Open | TagType.Close)
         {
-            oldw.Start();
             tagStartIndex = -1;
             tagEndIndex = -1;
             int index = startIndex - 1;
@@ -397,7 +384,6 @@ namespace TMPEffects.TextProcessing
                 // If there is no open bracket found or it is at the end of the text, there is no valid tag
                 if (tagStartIndex == -1 || tagStartIndex == len - 1)
                 {
-                    oldw.Stop();
                     return false;
                 }
 
@@ -407,14 +393,12 @@ namespace TMPEffects.TextProcessing
                 // if index is so large that there isnt enough space for <>, there is no valid tag
                 if (index >= len - 3 || tagEndIndex == -1)
                 {
-                    oldw.Stop();
                     return false;
                 }
 
             } while (!IsTag(text, tagStartIndex, tagEndIndex, type));
 
             //Debug.Log("returning indeces " + tagStartIndex + " and " + tagEndIndex);
-            oldw.Stop();
             return true;
         }
 
@@ -526,8 +510,8 @@ namespace TMPEffects.TextProcessing
                     dict.Add(key, value);
 
                 tag = tag.Remove(0, Mathf.Min(endValue, tag.Length)).Trim();
-            }
 
+            }
             return dict;
         }
 
@@ -542,6 +526,36 @@ namespace TMPEffects.TextProcessing
             if (!float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
                 return false;
 
+            return true;
+        }
+
+        public static bool StringToBool(string str, out bool result)
+        {
+            if (!bool.TryParse(str, out result)) return false;
+            return true;
+        }
+
+        public static bool StringToVector2(string str, out Vector2 result)
+        {
+            result = new Vector2(0, 0);
+            str = str.Trim();
+            if (str.Length <= 3) return false;
+
+            if (str[0] != '(') return false;
+
+            if (str[str.Length - 1] != ')') return false;
+
+            int commaIndex = str.IndexOf(';');
+
+            if (commaIndex < 2) return false;
+
+            float x, y;
+            if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return false;
+
+            if (!StringToFloat(str.Substring(commaIndex + 1, str.Length - (commaIndex + 2)), out y)) return false;
+
+            result.x = x;
+            result.y = y;
             return true;
         }
     }

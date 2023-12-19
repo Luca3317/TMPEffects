@@ -1,9 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TMPEffects
 {
+    /*TODO
+     * Reparsing the parameters every call is wasteful.
+     * Instead, have some CachedParameter class; returned by validateparameters (through out)
+     * Then pass that into set parameters (with in)
+     */
+
     /// <summary>
     /// Base class for animations.
     /// </summary>
@@ -14,7 +21,7 @@ namespace TMPEffects
         /// </summary>
         /// <param name="charData">Data about the character.</param>
         /// <param name="context">Data about the animator.</param>
-        public abstract void Animate(ref CharData charData, AnimationContext context);
+        public abstract void Animate(ref CharData charData, ref IAnimationContext context);
         /// <summary>
         /// Set the parameters for the animation.
         /// </summary>
@@ -31,6 +38,19 @@ namespace TMPEffects
         /// Reset the parameters.
         /// </summary>
         public abstract void ResetParameters();
+
+        public virtual IAnimationContext GetNewContext()
+        {
+            return new DefaultAnimationContext();
+        }
+
+        private struct DefaultAnimationContext : IAnimationContext
+        {
+            public AnimatorContext animatorContext { get => settings; set => settings = value; }
+            private AnimatorContext settings;
+
+            public SegmentData segmentData { get; set; }
+        }
     }
 
     /// <summary>

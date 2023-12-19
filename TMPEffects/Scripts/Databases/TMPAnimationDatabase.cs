@@ -8,7 +8,7 @@ namespace TMPEffects.Databases
     /// Stores <see cref="TMPAnimation"/>, <see cref="TMPShowAnimation"/> and <see cref="TMPHideAnimation"/> animations.
     /// </summary>
     [CreateAssetMenu(fileName = "new TMPAnimationDatabase", menuName = "TMPEffects/Database/Animation Database", order = 0)]
-    public class TMPAnimationDatabase : TMPEffectDatabase<TMPAnimation>
+    public class TMPAnimationDatabase : TMPEffectDatabase<ITMPAnimation>
     {
         public TMPBasicAnimationDatabase basicAnimationDatabase;
         public TMPShowAnimationDatabase showAnimationDatabase;
@@ -22,7 +22,7 @@ namespace TMPEffects.Databases
             return false;
         }
 
-        public override TMPAnimation GetEffect(string name)
+        public override ITMPAnimation GetEffect(string name)
         {
             if (basicAnimationDatabase.Contains(name)) return basicAnimationDatabase.GetEffect(name);
             if (showAnimationDatabase.Contains(name)) return showAnimationDatabase.GetEffect(name);

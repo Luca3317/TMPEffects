@@ -5,7 +5,7 @@ using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing.TagProcessors
 {
-    public class AnimationTagProcessor<T> : ITagProcessor<TMPAnimationTag> where T : TMPAnimation
+    public class AnimationTagProcessor<T> : ITagProcessor<TMPAnimationTag> where T : ITMPAnimation
     {
         public TMPAnimationDatabaseBase<T> Database => database;
 
@@ -29,7 +29,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
             // check name
             if (!database.Contains(tagInfo.name)) return false;
 
-            TMPAnimation animation;
+            ITMPAnimation animation;
             if ((animation = database.GetEffect(tagInfo.name)) == null) return false;
 
             if (tagInfo.type == TagType.Open)
@@ -48,7 +48,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
             // check name
             if (!database.Contains(tagInfo.name)) return false;
 
-            TMPAnimation animation;
+            ITMPAnimation animation;
             if ((animation = database.GetEffect(tagInfo.name)) == null) return false;
 
             TMPAnimationTag tag;
