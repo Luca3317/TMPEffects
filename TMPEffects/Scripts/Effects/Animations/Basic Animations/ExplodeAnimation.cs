@@ -11,10 +11,10 @@ public class ExplodeAnimation : TMPAnimation
         Vector3 center = (context.segmentData.max + context.segmentData.min) / 2;
 
         float t =  Mathf.Sin(context.animatorContext.passedTime) / 2 + 0.5f;
-        Vector3 TL = Vector3.Lerp(center, cData.info.initialMesh.vertex_TL.position, t);
-        Vector3 TR = Vector3.Lerp(center, cData.info.initialMesh.vertex_TR.position, t);
-        Vector3 BL = Vector3.Lerp(center, cData.info.initialMesh.vertex_BL.position, t);
-        Vector3 BR = Vector3.Lerp(center, cData.info.initialMesh.vertex_BR.position, t);
+        Vector3 TL = Vector3.Lerp(center, cData.mesh.initial.vertex_TL.position, t);
+        Vector3 TR = Vector3.Lerp(center, cData.mesh.initial.vertex_TR.position, t);
+        Vector3 BL = Vector3.Lerp(center, cData.mesh.initial.vertex_BL.position, t);
+        Vector3 BR = Vector3.Lerp(center, cData.mesh.initial.vertex_BR.position, t);
 
         EffectUtility.SetVertexRaw(0, BL, ref cData, ref context);
         EffectUtility.SetVertexRaw(1, TL, ref cData, ref context);

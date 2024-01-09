@@ -11,40 +11,21 @@ public class PivotAnimation : TMPAnimation
     [SerializeField] float yOffset;
     [SerializeField] float minAngle;
     [SerializeField] float maxAngle;
+    [SerializeField] Vector3 rotationAxis;
 
     [System.NonSerialized] float currentSpeed;
     [System.NonSerialized] float currentXOffset;
     [System.NonSerialized] float currentYOffset;
     [System.NonSerialized] float currentMaxAngle;
     [System.NonSerialized] float currentMinAngle;
-    [System.NonSerialized] string mode;
+    [System.NonSerialized] Vector3 currentRotationAxis;
 
     public override void Animate(ref CharData cData, ref IAnimationContext context)
     {
         float angle = (context.animatorContext.passedTime * currentSpeed) % 360;
-        switch (mode)
-        {
-            case "z":
-                cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.forward));
-                cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                //cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.forward), cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                break;
-            case "-z":
-                cData.SetRotation(Quaternion.AngleAxis(-angle, Vector3.forward));
-                cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                //cData.SetRotation(Quaternion.AngleAxis(-angle, Vector3.forward), cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                break;
-            case "x":
-                cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.right));
-                cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                //cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.right), cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                break;
-            case "y":
-                cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.up));
-                cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                //cData.SetRotation(Quaternion.AngleAxis(angle, Vector3.up), cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
-                break;
-        }
+        var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
+        cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(currentRotationAxis)));
+        cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));
     }
 
     public override void ResetParameters()
@@ -54,6 +35,7 @@ public class PivotAnimation : TMPAnimation
         currentXOffset = xOffset;
         currentMaxAngle = maxAngle;
         currentMinAngle = minAngle;
+        currentRotationAxis = rotationAxis;
     }
 
     public override void SetParameters(Dictionary<string, string> parameters)
@@ -86,8 +68,8 @@ public class PivotAnimation : TMPAnimation
                     ParsingUtility.StringToFloat(kvp.Value, out currentYOffset);
                     break;
 
-                case "mode":
-                    mode = kvp.Value;
+                case "axis":
+                    ParsingUtility.StringToVector3(kvp.Value, out currentRotationAxis);
                     break;
             }
         }
@@ -115,11 +97,17 @@ public class PivotAnimation : TMPAnimation
                 case "maxangle":
                 case "o":
                 case "offset":
-                    ParsingUtility.StringToFloat(kvp.Value, out _);
+                    if (!ParsingUtility.StringToFloat(kvp.Value, out _)) return false;
                     break;
+
+                case "axis":
+                    if (!ParsingUtility.StringToVector3(kvp.Value, out _)) return false;
+                    break;
+
             }
         }
 
         return true;
     }
 }
+

@@ -22,6 +22,8 @@ public class GrowShowAnimation : TMPShowAnimation
 
     public override void Animate(ref CharData cData, ref IAnimationContext context)
     {
+
+
         Vector3 BL, TL, TR, BR;
         Context ctx = context as Context;
         FixVector(ref currentAnchor);
@@ -43,40 +45,40 @@ public class GrowShowAnimation : TMPShowAnimation
 
             if (currentDirection == Vector2.zero)
             {
-                BL = cData.info.initialPosition + (cData.info.initialMesh.vertex_BL.position - cData.info.initialPosition) * multiplier;
-                TL = cData.info.initialPosition + (cData.info.initialMesh.vertex_TL.position - cData.info.initialPosition) * multiplier;
-                TR = cData.info.initialPosition + (cData.info.initialMesh.vertex_TR.position - cData.info.initialPosition) * multiplier;
-                BR = cData.info.initialPosition + (cData.info.initialMesh.vertex_BR.position - cData.info.initialPosition) * multiplier;
+                BL = cData.info.initialPosition + (cData.mesh.initial.vertex_BL.position - cData.info.initialPosition) * multiplier;
+                TL = cData.info.initialPosition + (cData.mesh.initial.vertex_TL.position - cData.info.initialPosition) * multiplier;
+                TR = cData.info.initialPosition + (cData.mesh.initial.vertex_TR.position - cData.info.initialPosition) * multiplier;
+                BR = cData.info.initialPosition + (cData.mesh.initial.vertex_BR.position - cData.info.initialPosition) * multiplier;
             }
             else if (currentDirection == Vector2.up || currentDirection == Vector2.down)
             {
-                BL = new Vector2(cData.info.initialMesh.vertex_BL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.info.initialMesh.vertex_BL.position.y - cData.info.initialPosition.y) * multiplier;
-                TL = new Vector2(cData.info.initialMesh.vertex_TL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.info.initialMesh.vertex_TL.position.y - cData.info.initialPosition.y) * multiplier;
-                TR = new Vector2(cData.info.initialMesh.vertex_TR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.info.initialMesh.vertex_TR.position.y - cData.info.initialPosition.y) * multiplier;
-                BR = new Vector2(cData.info.initialMesh.vertex_BR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.info.initialMesh.vertex_BR.position.y - cData.info.initialPosition.y) * multiplier;
+                BL = new Vector2(cData.mesh.initial.vertex_BL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_BL.position.y - cData.info.initialPosition.y) * multiplier;
+                TL = new Vector2(cData.mesh.initial.vertex_TL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_TL.position.y - cData.info.initialPosition.y) * multiplier;
+                TR = new Vector2(cData.mesh.initial.vertex_TR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_TR.position.y - cData.info.initialPosition.y) * multiplier;
+                BR = new Vector2(cData.mesh.initial.vertex_BR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_BR.position.y - cData.info.initialPosition.y) * multiplier;
             }
             else if (currentDirection == Vector2.right || currentDirection == Vector2.left)
             {
-                BL = new Vector2(cData.info.initialPosition.x, cData.info.initialMesh.vertex_BL.position.y) + Vector2.right * (cData.info.initialMesh.vertex_BL.position.x - cData.info.initialPosition.x) * multiplier;
-                TL = new Vector2(cData.info.initialPosition.x, cData.info.initialMesh.vertex_TL.position.y) + Vector2.right * (cData.info.initialMesh.vertex_TL.position.x - cData.info.initialPosition.x) * multiplier;
-                TR = new Vector2(cData.info.initialPosition.x, cData.info.initialMesh.vertex_TR.position.y) + Vector2.right * (cData.info.initialMesh.vertex_TR.position.x - cData.info.initialPosition.x) * multiplier;
-                BR = new Vector2(cData.info.initialPosition.x, cData.info.initialMesh.vertex_BR.position.y) + Vector2.right * (cData.info.initialMesh.vertex_BR.position.x - cData.info.initialPosition.x) * multiplier;
+                BL = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_BL.position.y) + Vector2.right * (cData.mesh.initial.vertex_BL.position.x - cData.info.initialPosition.x) * multiplier;
+                TL = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_TL.position.y) + Vector2.right * (cData.mesh.initial.vertex_TL.position.x - cData.info.initialPosition.x) * multiplier;
+                TR = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_TR.position.y) + Vector2.right * (cData.mesh.initial.vertex_TR.position.x - cData.info.initialPosition.x) * multiplier;
+                BR = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_BR.position.y) + Vector2.right * (cData.mesh.initial.vertex_BR.position.x - cData.info.initialPosition.x) * multiplier;
             }
             else if (currentDirection == new Vector2(1, 1) || currentDirection == new Vector2(-1, -1))
             {
-                TR = cData.info.initialMesh.vertex_TR.position;
-                BL = cData.info.initialMesh.vertex_BL.position;
+                TR = cData.mesh.initial.vertex_TR.position;
+                BL = cData.mesh.initial.vertex_BL.position;
 
-                TL = cData.info.initialPosition + (cData.info.initialMesh.vertex_TL.position - cData.info.initialPosition) * multiplier;
-                BR = cData.info.initialPosition + (cData.info.initialMesh.vertex_BR.position - cData.info.initialPosition) * multiplier;
+                TL = cData.info.initialPosition + (cData.mesh.initial.vertex_TL.position - cData.info.initialPosition) * multiplier;
+                BR = cData.info.initialPosition + (cData.mesh.initial.vertex_BR.position - cData.info.initialPosition) * multiplier;
             }
             else if (currentDirection == new Vector2(1, -1) || currentDirection == new Vector2(-1, 1))
             {
-                TL = cData.info.initialMesh.vertex_TL.position;
-                BR = cData.info.initialMesh.vertex_BR.position;
+                TL = cData.mesh.initial.vertex_TL.position;
+                BR = cData.mesh.initial.vertex_BR.position;
 
-                TR = cData.info.initialPosition + (cData.info.initialMesh.vertex_TR.position - cData.info.initialPosition) * multiplier;
-                BL = cData.info.initialPosition + (cData.info.initialMesh.vertex_BL.position - cData.info.initialPosition) * multiplier;
+                TR = cData.info.initialPosition + (cData.mesh.initial.vertex_TR.position - cData.info.initialPosition) * multiplier;
+                BL = cData.info.initialPosition + (cData.mesh.initial.vertex_BL.position - cData.info.initialPosition) * multiplier;
             }
             else throw new System.Exception();
         }
@@ -84,67 +86,67 @@ public class GrowShowAnimation : TMPShowAnimation
         {
             if (currentAnchor == Vector2.right)
             {
-                TR = cData.info.initialMesh.vertex_TR.position;
-                BR = cData.info.initialMesh.vertex_BR.position;
+                TR = cData.mesh.initial.vertex_TR.position;
+                BR = cData.mesh.initial.vertex_BR.position;
 
-                TL = TR + (cData.info.initialMesh.vertex_TL.position - TR) * multiplier;
-                BL = BR + (cData.info.initialMesh.vertex_BL.position - BR) * multiplier;
+                TL = TR + (cData.mesh.initial.vertex_TL.position - TR) * multiplier;
+                BL = BR + (cData.mesh.initial.vertex_BL.position - BR) * multiplier;
             }
             else if (currentAnchor == Vector2.left)
             {
-                TL = cData.info.initialMesh.vertex_TL.position;
-                BL = cData.info.initialMesh.vertex_BL.position;
+                TL = cData.mesh.initial.vertex_TL.position;
+                BL = cData.mesh.initial.vertex_BL.position;
 
-                TR = TL + (cData.info.initialMesh.vertex_TR.position - TL) * multiplier;
-                BR = BL + (cData.info.initialMesh.vertex_BR.position - BL) * multiplier;
+                TR = TL + (cData.mesh.initial.vertex_TR.position - TL) * multiplier;
+                BR = BL + (cData.mesh.initial.vertex_BR.position - BL) * multiplier;
             }
             else if (currentAnchor == Vector2.up)
             {
-                TL = cData.info.initialMesh.vertex_TL.position;
-                TR = cData.info.initialMesh.vertex_TR.position;
+                TL = cData.mesh.initial.vertex_TL.position;
+                TR = cData.mesh.initial.vertex_TR.position;
 
-                BL = TL + (cData.info.initialMesh.vertex_BL.position - TL) * multiplier;
-                BR = TR + (cData.info.initialMesh.vertex_BR.position - TR) * multiplier;
+                BL = TL + (cData.mesh.initial.vertex_BL.position - TL) * multiplier;
+                BR = TR + (cData.mesh.initial.vertex_BR.position - TR) * multiplier;
             }
             else if (currentAnchor == Vector2.down)
             {
-                BL = cData.info.initialMesh.vertex_BL.position;
-                BR = cData.info.initialMesh.vertex_BR.position;
+                BL = cData.mesh.initial.vertex_BL.position;
+                BR = cData.mesh.initial.vertex_BR.position;
 
-                TL = BL + (cData.info.initialMesh.vertex_TL.position - BL) * multiplier;
-                TR = BR + (cData.info.initialMesh.vertex_TR.position - BR) * multiplier;
+                TL = BL + (cData.mesh.initial.vertex_TL.position - BL) * multiplier;
+                TR = BR + (cData.mesh.initial.vertex_TR.position - BR) * multiplier;
             }
             else if (currentAnchor == new Vector2(1, 1))
             {
-                TR = cData.info.initialMesh.vertex_TR.position;
+                TR = cData.mesh.initial.vertex_TR.position;
 
-                TL = TR + (cData.info.initialMesh.vertex_TL.position - TR) * multiplier;
-                BL = TR + (cData.info.initialMesh.vertex_BL.position - TR) * multiplier;
-                BR = TR + (cData.info.initialMesh.vertex_BR.position - TR) * multiplier;
+                TL = TR + (cData.mesh.initial.vertex_TL.position - TR) * multiplier;
+                BL = TR + (cData.mesh.initial.vertex_BL.position - TR) * multiplier;
+                BR = TR + (cData.mesh.initial.vertex_BR.position - TR) * multiplier;
             }
             else if (currentAnchor == new Vector2(-1, 1))
             {
-                TL = cData.info.initialMesh.vertex_TL.position;
+                TL = cData.mesh.initial.vertex_TL.position;
 
-                TR = TL + (cData.info.initialMesh.vertex_TR.position - TL) * multiplier;
-                BL = TL + (cData.info.initialMesh.vertex_BL.position - TL) * multiplier;
-                BR = TL + (cData.info.initialMesh.vertex_BR.position - TL) * multiplier;
+                TR = TL + (cData.mesh.initial.vertex_TR.position - TL) * multiplier;
+                BL = TL + (cData.mesh.initial.vertex_BL.position - TL) * multiplier;
+                BR = TL + (cData.mesh.initial.vertex_BR.position - TL) * multiplier;
             }
             else if (currentAnchor == new Vector2(1, -1))
             {
-                BR = cData.info.initialMesh.vertex_BR.position;
+                BR = cData.mesh.initial.vertex_BR.position;
 
-                TR = BR + (cData.info.initialMesh.vertex_TR.position - BR) * multiplier;
-                BL = BR + (cData.info.initialMesh.vertex_BL.position - BR) * multiplier;
-                TL = BR + (cData.info.initialMesh.vertex_TL.position - BR) * multiplier;
+                TR = BR + (cData.mesh.initial.vertex_TR.position - BR) * multiplier;
+                BL = BR + (cData.mesh.initial.vertex_BL.position - BR) * multiplier;
+                TL = BR + (cData.mesh.initial.vertex_TL.position - BR) * multiplier;
             }
             else if (currentAnchor == new Vector2(-1, -1))
             {
-                BL = cData.info.initialMesh.vertex_BL.position;
+                BL = cData.mesh.initial.vertex_BL.position;
 
-                TR = BL + (cData.info.initialMesh.vertex_TR.position - BL) * multiplier;
-                BR = BL + (cData.info.initialMesh.vertex_BR.position - BL) * multiplier;
-                TL = BL + (cData.info.initialMesh.vertex_TL.position - BL) * multiplier;
+                TR = BL + (cData.mesh.initial.vertex_TR.position - BL) * multiplier;
+                BR = BL + (cData.mesh.initial.vertex_BR.position - BL) * multiplier;
+                TL = BL + (cData.mesh.initial.vertex_TL.position - BL) * multiplier;
             }
             else throw new System.Exception();
         }

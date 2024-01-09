@@ -54,7 +54,7 @@ public static class EffectUtility
     #region Raw Positions & Deltas
     public static Vector3 GetRawVertex(int index, Vector3 position, ref CharData cData, ref IAnimationContext ctx)
     {
-        return GetRawPosition(position, cData.info.initialMesh[index].position, cData.info.referenceScale, ref ctx);
+        return GetRawPosition(position, cData.mesh.initial[index].position, cData.info.referenceScale, ref ctx);
     }
 
     public static Vector3 GetRawPosition(Vector3 position, ref CharData cData, ref IAnimationContext ctx)
@@ -88,7 +88,7 @@ public static class EffectUtility
     {
         if (ctx.animatorContext.scaleAnimations)
         {
-            Vector3 ogPos = cData.info.initialMesh.GetPosition(index);
+            Vector3 ogPos = cData.mesh.initial.GetPosition(index);
             cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
         }
         else

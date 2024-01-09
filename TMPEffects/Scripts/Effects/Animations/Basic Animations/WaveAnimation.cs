@@ -17,7 +17,7 @@ namespace TMPEffects.Animations
 
         public override void Animate(ref CharData cData, ref IAnimationContext context)
         {
-            float xPos = (cData.info.initialMesh.vertex_TL.position.x + cData.info.initialMesh.vertex_TR.position.x) / 2;
+            float xPos = (cData.mesh.initial.vertex_TL.position.x + cData.mesh.initial.vertex_TR.position.x) / 2;
             float yOffset = currentAmplitude * (Mathf.Sin((context.animatorContext.passedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);
             cData.SetPosition(cData.info.initialPosition + Vector3.up * yOffset);
         }
@@ -93,7 +93,7 @@ namespace TMPEffects.Animations
 
     //    public override void Animate(ref CharData cData, ref IAnimationContext context)
     //    {
-    //        float xPos = (cData.info.initialMesh.vertex_TL.position.x + cData.info.initialMesh.vertex_TR.position.x) / 2;
+    //        float xPos = (cData.mesh.initial.vertex_TL.position.x + cData.mesh.initial.vertex_TR.position.x) / 2;
     //        float yOffset = currentAmplitude * (Mathf.Sin((context.AnimatorContext.passedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);
     //        cData.position = cData.info.initialPosition + Vector3.up * yOffset;
 

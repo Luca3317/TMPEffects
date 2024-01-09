@@ -17,11 +17,11 @@ namespace TMPEffects.Animations
             for (int i = 0; i < 4; i++)
             {
                 Color32 c = Color.red;
-                cData.currentMesh.SetColor(i, c);
+                cData.mesh.SetColor(i, c);
             }
 
-            cData.currentMesh.SetColor(0, Color.blue);
-            cData.currentMesh.SetColor(2, Color.blue);
+            cData.mesh.SetColor(0, Color.blue);
+            cData.mesh.SetColor(2, Color.blue);
         }
 
         public override void ResetParameters()

@@ -22,6 +22,12 @@ public class TMPAnimatorEditor : Editor
     SerializedProperty contextScaledTimeProp;
     SerializedProperty previewProp;
     SerializedProperty passedTimeProp;
+    SerializedProperty excludedProp;
+    SerializedProperty excludedShowProp;
+    SerializedProperty excludedHideProp;
+    SerializedProperty excludePunctuationProp;
+    SerializedProperty excludePunctuationShowProp;
+    SerializedProperty excludePunctuationHideProp;
     //SerializedProperty animateOnTextChangeProp;
 
     GUIContent useDefaultDatabaseLabel;
@@ -40,6 +46,12 @@ public class TMPAnimatorEditor : Editor
         contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
         passedTimeProp = contextProp.FindPropertyRelative("passedTime");
         previewProp = serializedObject.FindProperty("preview");
+        excludedProp = serializedObject.FindProperty("excludedCharacters");
+        excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");
+        excludedHideProp = serializedObject.FindProperty("excludedCharactersHide");
+        excludePunctuationProp = serializedObject.FindProperty("excludePunctuation");
+        excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
+        excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
 
         animator = target as TMPAnimator;
 
@@ -177,6 +189,35 @@ public class TMPAnimatorEditor : Editor
         }
     }
 
+    void DrawExclusions()
+    {
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.BeginHorizontal();
+        var prev = EditorGUIUtility.labelWidth;
+        EditorGUIUtility.labelWidth = 100;
+        EditorGUILayout.LabelField("Exclude punctuation?");
+
+        EditorGUIUtility.labelWidth = 40;
+        EditorGUILayout.PropertyField(excludePunctuationProp, new GUIContent("Basic"));
+        EditorGUILayout.PropertyField(excludePunctuationShowProp, new GUIContent("Show"));
+        EditorGUILayout.PropertyField(excludePunctuationHideProp, new GUIContent("Hide"));
+        //EditorGUILayout.Toggle(new GUIContent("Basic"), );
+        //EditorGUILayout.Toggle(new GUIContent("Show"), true);
+        //EditorGUILayout.Toggle(new GUIContent("Hide"), true);
+        EditorGUIUtility.labelWidth = prev;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.PropertyField(excludedProp);
+        EditorGUILayout.PropertyField(excludedShowProp);
+        EditorGUILayout.PropertyField(excludedHideProp);
+        if (EditorGUI.EndChangeCheck())
+        {
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+            forceReprocess = true;
+        }
+    }
+
     void RepaintInspector()
     {
         bool prevPreview = previewProp.boolValue;
@@ -214,8 +255,13 @@ public class TMPAnimatorEditor : Editor
 
         EditorGUILayout.PropertyField(animationsOverrideProp);
 
+        EditorGUILayout.Space(10);
         DrawDefaultHideShow();
 
+        EditorGUILayout.Space(10);
+        DrawExclusions();
+
+        EditorGUILayout.Space(10);
         if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
         {
             EditorGUI.indentLevel++;

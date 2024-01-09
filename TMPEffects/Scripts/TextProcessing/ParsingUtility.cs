@@ -521,6 +521,14 @@ namespace TMPEffects.TextProcessing
             return TagType.Open;
         }
 
+        public static bool StringToInt(string str, out int result)
+        {
+            if (!int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
+                return false;
+
+            return true;
+        }
+
         public static bool StringToFloat(string str, out float result)
         {
             if (!float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
@@ -556,6 +564,32 @@ namespace TMPEffects.TextProcessing
 
             result.x = x;
             result.y = y;
+            return true;
+        }
+
+        public static bool StringToVector3(string str, out Vector3 result)
+        {
+            result = new Vector3(0, 0, 0);
+            str = str.Trim();
+            if (str.Length <= 5) return false;
+
+            if (str[0] != '(') return false;
+
+            if (str[str.Length - 1] != ')') return false;
+
+            int commaIndex = str.IndexOf(';');
+            int commaIndex2 = str.IndexOf(';', commaIndex + 1);
+            if (commaIndex < 2) return false;
+            if (commaIndex2 < 4) return false;
+
+            float x, y, z;
+            if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return false;
+            if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return false;
+            if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return false;
+
+            result.x = x;
+            result.y = y;
+            result.z = z;
             return true;
         }
     }

@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04edef5a5629a5e419eda107fe236b16, type: 3}
-  m_Name: PivotAnimation
+  m_Script: {fileID: 11500000, guid: 6c6df18fb17ddef478b2da3e4878d1ea, type: 3}
+  m_Name: ExplodeAnimation
   m_EditorClassIdentifier: 
-  speed: 5
-  xOffset: 0
-  yOffset: 0
-  minAngle: -100
-  maxAngle: 100
-  rotationAxis: {x: 1, y: 0, z: 0}

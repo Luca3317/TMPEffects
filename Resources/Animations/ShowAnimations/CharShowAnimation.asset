@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04edef5a5629a5e419eda107fe236b16, type: 3}
-  m_Name: PivotAnimation
+  m_Script: {fileID: 11500000, guid: 60b56b52effe6594bae66026aa72b0b8, type: 3}
+  m_Name: CharShowAnimation
   m_EditorClassIdentifier: 
-  speed: 5
-  xOffset: 0
-  yOffset: 0
-  minAngle: -100
-  maxAngle: 100
-  rotationAxis: {x: 1, y: 0, z: 0}
+  duration: 1
+  characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!?+-
+  maxUnitSize: 0
+  minUnitSize: 0
+  originalChance: 0.5
+  order: 0
+  maxWait: 0.5
+  minWait: 0.1

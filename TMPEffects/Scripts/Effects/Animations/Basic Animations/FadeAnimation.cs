@@ -3,8 +3,8 @@ using TMPEffects;
 using TMPEffects.TextProcessing;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new GrowAnimation", menuName = "TMPEffects/Animations/Grow")]
-public class GrowAnimation : TMPAnimation
+[CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Fade")]
+public class FadeAnimation : TMPAnimation
 {
     [SerializeField] Vector2 anchor;
     [SerializeField] Vector2 direction;
@@ -24,17 +24,16 @@ public class GrowAnimation : TMPAnimation
 
     public override void Animate(ref CharData cData, ref IAnimationContext context)
     {
-        Vector3 BL, TL, TR, BR;
+        float BL, TL, TR, BR;
         Context ctx = context as Context;
         FixVector(ref currentAnchor);
         if (ctx.lastUpdated == -1) { ctx.lastUpdated = ctx.animatorContext.passedTime; }
 
-        if (cData.info.index == ctx.segmentData.firstAnimationIndex) ctx.passed += context.animatorContext.deltaTime * currentSpeed;
         //if (cData.segmentIndex == 0) ctx.passed += context.animatorContext.deltaTime * currentSpeed;
+        if (cData.info.index == ctx.segmentData.firstAnimationIndex) ctx.passed += context.animatorContext.deltaTime * currentSpeed;
         float ppT = ctx.passed;
         float lerpT = Mathf.PingPong(ppT, 1);
         float repeat = Mathf.Repeat(ppT, 2) - 1;
-        float multiplier;
 
         if (ctx.waitingSince == -1 && Mathf.Sign(repeat) != Mathf.Sign(ctx.lastRoc))
         {
@@ -52,136 +51,110 @@ public class GrowAnimation : TMPAnimation
             repeat = Mathf.Repeat(ppT, 2) - 1;
         }
 
+
+        float t;
+
         if (ctx.waitingSince == -1)
         {
-            multiplier = Mathf.Lerp(currentMinScale, currentMaxScale, lerpT);
-
+            t = Mathf.PingPong(ppT, 1);
         }
         else
         {
-            multiplier = ctx.isMax ? currentMaxScale : currentMinScale;
+            t = ctx.isMax ? 1 : 0;
         }
 
         ctx.lastRoc = repeat;
 
+        float multiplier = 10;
         if (currentAnchor == Vector2.zero)
         {
-            FixVector(ref currentDirection);
-
-            if (currentDirection == Vector2.zero)
-            {
-                BL = cData.info.initialPosition + (cData.mesh.initial.vertex_BL.position - cData.info.initialPosition) * multiplier;
-                TL = cData.info.initialPosition + (cData.mesh.initial.vertex_TL.position - cData.info.initialPosition) * multiplier;
-                TR = cData.info.initialPosition + (cData.mesh.initial.vertex_TR.position - cData.info.initialPosition) * multiplier;
-                BR = cData.info.initialPosition + (cData.mesh.initial.vertex_BR.position - cData.info.initialPosition) * multiplier;
-            }
-            else if (currentDirection == Vector2.up || currentDirection == Vector2.down)
-            {
-                BL = new Vector2(cData.mesh.initial.vertex_BL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_BL.position.y - cData.info.initialPosition.y) * multiplier;
-                TL = new Vector2(cData.mesh.initial.vertex_TL.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_TL.position.y - cData.info.initialPosition.y) * multiplier;
-                TR = new Vector2(cData.mesh.initial.vertex_TR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_TR.position.y - cData.info.initialPosition.y) * multiplier;
-                BR = new Vector2(cData.mesh.initial.vertex_BR.position.x, cData.info.initialPosition.y) + Vector2.up * (cData.mesh.initial.vertex_BR.position.y - cData.info.initialPosition.y) * multiplier;
-            }
-            else if (currentDirection == Vector2.right || currentDirection == Vector2.left)
-            {
-                BL = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_BL.position.y) + Vector2.right * (cData.mesh.initial.vertex_BL.position.x - cData.info.initialPosition.x) * multiplier;
-                TL = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_TL.position.y) + Vector2.right * (cData.mesh.initial.vertex_TL.position.x - cData.info.initialPosition.x) * multiplier;
-                TR = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_TR.position.y) + Vector2.right * (cData.mesh.initial.vertex_TR.position.x - cData.info.initialPosition.x) * multiplier;
-                BR = new Vector2(cData.info.initialPosition.x, cData.mesh.initial.vertex_BR.position.y) + Vector2.right * (cData.mesh.initial.vertex_BR.position.x - cData.info.initialPosition.x) * multiplier;
-            }
-            else if (currentDirection == new Vector2(1, 1) || currentDirection == new Vector2(-1, -1))
-            {
-                TR = cData.mesh.initial.vertex_TR.position;
-                BL = cData.mesh.initial.vertex_BL.position;
-
-                TL = cData.info.initialPosition + (cData.mesh.initial.vertex_TL.position - cData.info.initialPosition) * multiplier;
-                BR = cData.info.initialPosition + (cData.mesh.initial.vertex_BR.position - cData.info.initialPosition) * multiplier;
-            }
-            else if (currentDirection == new Vector2(1, -1) || currentDirection == new Vector2(-1, 1))
-            {
-                TL = cData.mesh.initial.vertex_TL.position;
-                BR = cData.mesh.initial.vertex_BR.position;
-
-                TR = cData.info.initialPosition + (cData.mesh.initial.vertex_TR.position - cData.info.initialPosition) * multiplier;
-                BL = cData.info.initialPosition + (cData.mesh.initial.vertex_BL.position - cData.info.initialPosition) * multiplier;
-            }
-            else throw new System.Exception();
+            TR = Mathf.Lerp(0, 1, t);
+            BR = Mathf.Lerp(0, 1, t);
+            TL = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
         }
-        else
+        else if (currentAnchor == Vector2.right)
         {
-            if (currentAnchor == Vector2.right)
-            {
-                TR = cData.mesh.initial.vertex_TR.position;
-                BR = cData.mesh.initial.vertex_BR.position;
+            TR = Mathf.Lerp(0, 1, t * multiplier);
+            BR = Mathf.Lerp(0, 1, t * multiplier);
 
-                TL = TR + (cData.mesh.initial.vertex_TL.position - TR) * multiplier;
-                BL = BR + (cData.mesh.initial.vertex_BL.position - BR) * multiplier;
-            }
-            else if (currentAnchor == Vector2.left)
-            {
-                TL = cData.mesh.initial.vertex_TL.position;
-                BL = cData.mesh.initial.vertex_BL.position;
-
-                TR = TL + (cData.mesh.initial.vertex_TR.position - TL) * multiplier;
-                BR = BL + (cData.mesh.initial.vertex_BR.position - BL) * multiplier;
-            }
-            else if (currentAnchor == Vector2.up)
-            {
-                TL = cData.mesh.initial.vertex_TL.position;
-                TR = cData.mesh.initial.vertex_TR.position;
-
-                BL = TL + (cData.mesh.initial.vertex_BL.position - TL) * multiplier;
-                BR = TR + (cData.mesh.initial.vertex_BR.position - TR) * multiplier;
-            }
-            else if (currentAnchor == Vector2.down)
-            {
-                BL = cData.mesh.initial.vertex_BL.position;
-                BR = cData.mesh.initial.vertex_BR.position;
-
-                TL = BL + (cData.mesh.initial.vertex_TL.position - BL) * multiplier;
-                TR = BR + (cData.mesh.initial.vertex_TR.position - BR) * multiplier;
-            }
-            else if (currentAnchor == new Vector2(1, 1))
-            {
-                TR = cData.mesh.initial.vertex_TR.position;
-
-                TL = TR + (cData.mesh.initial.vertex_TL.position - TR) * multiplier;
-                BL = TR + (cData.mesh.initial.vertex_BL.position - TR) * multiplier;
-                BR = TR + (cData.mesh.initial.vertex_BR.position - TR) * multiplier;
-            }
-            else if (currentAnchor == new Vector2(-1, 1))
-            {
-                TL = cData.mesh.initial.vertex_TL.position;
-
-                TR = TL + (cData.mesh.initial.vertex_TR.position - TL) * multiplier;
-                BL = TL + (cData.mesh.initial.vertex_BL.position - TL) * multiplier;
-                BR = TL + (cData.mesh.initial.vertex_BR.position - TL) * multiplier;
-            }
-            else if (currentAnchor == new Vector2(1, -1))
-            {
-                BR = cData.mesh.initial.vertex_BR.position;
-
-                TR = BR + (cData.mesh.initial.vertex_TR.position - BR) * multiplier;
-                BL = BR + (cData.mesh.initial.vertex_BL.position - BR) * multiplier;
-                TL = BR + (cData.mesh.initial.vertex_TL.position - BR) * multiplier;
-            }
-            else if (currentAnchor == new Vector2(-1, -1))
-            {
-                BL = cData.mesh.initial.vertex_BL.position;
-
-                TR = BL + (cData.mesh.initial.vertex_TR.position - BL) * multiplier;
-                BR = BL + (cData.mesh.initial.vertex_BR.position - BL) * multiplier;
-                TL = BL + (cData.mesh.initial.vertex_TL.position - BL) * multiplier;
-            }
-            else throw new System.Exception();
+            TL = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
         }
+        else if (currentAnchor == Vector2.left)
+        {
+            TL = Mathf.Lerp(0, 1, t * multiplier);
+            BL = Mathf.Lerp(0, 1, t * multiplier);
 
-        //ctx.lastRoc = Mathf.Cos(angle);
+            TR = Mathf.Lerp(0, 1, t);
+            BR = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == Vector2.up)
+        {
+            TL = Mathf.Lerp(0, 1, t * multiplier);
+            TR = Mathf.Lerp(0, 1, t * multiplier);
 
-        EffectUtility.SetVertexRaw(0, BL, ref cData, ref context);
-        EffectUtility.SetVertexRaw(1, TL, ref cData, ref context);
-        EffectUtility.SetVertexRaw(2, TR, ref cData, ref context);
-        EffectUtility.SetVertexRaw(3, BR, ref cData, ref context);
+            BR = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == Vector2.down)
+        {
+            BL = Mathf.Lerp(0, 1, t * multiplier);
+            BR = Mathf.Lerp(0, 1, t * multiplier);
+
+            TL = Mathf.Lerp(0, 1, t);
+            TR = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == new Vector2(1, 1))
+        {
+            TR = Mathf.Lerp(0, 1, t * multiplier);
+
+            TL = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
+            BR = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == new Vector2(-1, 1))
+        {
+            TL = Mathf.Lerp(0, 1, t * multiplier);
+
+            TR = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
+            BR = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == new Vector2(1, -1))
+        {
+            BR = Mathf.Lerp(0, 1, t * multiplier);
+
+            TL = Mathf.Lerp(0, 1, t);
+            BL = Mathf.Lerp(0, 1, t);
+            TR = Mathf.Lerp(0, 1, t);
+        }
+        else if (currentAnchor == new Vector2(-1, -1))
+        {
+            BL = Mathf.Lerp(0, 1, t * multiplier);
+
+            TL = Mathf.Lerp(0, 1, t);
+            TR = Mathf.Lerp(0, 1, t);
+            BR = Mathf.Lerp(0, 1, t);
+        }
+        else throw new System.Exception();
+
+
+        Color32 blcolor = cData.mesh.GetColor(0);
+        blcolor.a = (byte)(BL * blcolor.a);
+        cData.mesh.SetColor(0, blcolor);
+
+        Color32 tlcolor = cData.mesh.GetColor(1);
+        tlcolor.a = (byte)(TL * tlcolor.a);
+        cData.mesh.SetColor(1, tlcolor);
+
+        Color32 trcolor = cData.mesh.GetColor(2);
+        trcolor.a = (byte)(TR * trcolor.a);
+        cData.mesh.SetColor(2, trcolor);
+
+        Color32 brcolor = cData.mesh.GetColor(3);
+        brcolor.a = (byte)(BR * brcolor.a);
+        cData.mesh.SetColor(3, brcolor);
     }
 
     void FixVector(ref Vector2 v)

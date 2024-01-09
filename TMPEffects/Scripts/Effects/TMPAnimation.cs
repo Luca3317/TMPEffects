@@ -50,6 +50,8 @@ namespace TMPEffects
             private AnimatorContext settings;
 
             public SegmentData segmentData { get; set; }
+
+            public void ResetContext() { }
         }
     }
 

@@ -115,7 +115,7 @@ namespace TMPEffects.Components
                     }
                 }
 
-                data = wordInfo == null ? new CharData(cInfo) : new CharData(cInfo, wordInfo.Value);
+                data = wordInfo == null ? new CharData(i, cInfo) : new CharData(i, cInfo, wordInfo.Value);
                 CharData.Add(data);
             }
 

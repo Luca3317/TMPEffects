@@ -26,26 +26,26 @@ namespace TMPEffects.Animations
             bool movingUp = Mathf.Cos(context.animatorContext.passedTime * currentSpeed) > 0;       //(Mathf.Sin(context.AnimatorContext.passedTime + 0.0001f) / 2 + 0.5f) < t;
 
 
-            var delta0 = cData.info.initialMesh.vertex_TL.position - cData.info.initialMesh.vertex_BL.position;
-            var delta1 = cData.info.initialMesh.vertex_TR.position - cData.info.initialMesh.vertex_BR.position;
+            var delta0 = cData.mesh.initial.vertex_TL.position - cData.mesh.initial.vertex_BL.position;
+            var delta1 = cData.mesh.initial.vertex_TR.position - cData.mesh.initial.vertex_BR.position;
 
 
-            Vector3 keyframe0_1 = cData.info.initialMesh.GetPosition(0);
-            Vector3 keyframe0_2 = cData.info.initialMesh.GetPosition(3);
+            Vector3 keyframe0_1 = cData.mesh.initial.GetPosition(0);
+            Vector3 keyframe0_2 = cData.mesh.initial.GetPosition(3);
             keyframe0_1 = EffectUtility.GetRawVertex(1, keyframe0_1 + delta0 * currentSqueezeFactor, ref cData, ref context);
             keyframe0_2 = EffectUtility.GetRawVertex(2, keyframe0_2 + delta1 * currentSqueezeFactor, ref cData, ref context);
 
-            Vector3 keyframe1_1 = cData.info.initialMesh.GetPosition(1);
-            Vector3 keyframe1_2 = cData.info.initialMesh.GetPosition(2);
+            Vector3 keyframe1_1 = cData.mesh.initial.GetPosition(1);
+            Vector3 keyframe1_2 = cData.mesh.initial.GetPosition(2);
             keyframe1_1 = EffectUtility.GetRawVertex(1, keyframe1_1, ref cData, ref context) + Vector3.left * currentAmplitude;
             keyframe1_2 = EffectUtility.GetRawVertex(2, keyframe1_2, ref cData, ref context) + Vector3.left * currentAmplitude;
 
-            Vector3 keyframe2_1 = cData.info.initialMesh.GetPosition(1);
-            Vector3 keyframe2_2 = cData.info.initialMesh.GetPosition(2);
+            Vector3 keyframe2_1 = cData.mesh.initial.GetPosition(1);
+            Vector3 keyframe2_2 = cData.mesh.initial.GetPosition(2);
             keyframe2_1 = EffectUtility.GetRawVertex(1, keyframe2_1, ref cData, ref context) + Vector3.right * currentAmplitude;
             keyframe2_2 = EffectUtility.GetRawVertex(2, keyframe2_2, ref cData, ref context) + Vector3.right * currentAmplitude;
 
-            Vector3 p1 = cData.info.initialMesh.GetPosition(1), p2 = cData.info.initialMesh.GetPosition(2);
+            Vector3 p1 = cData.mesh.initial.GetPosition(1), p2 = cData.mesh.initial.GetPosition(2);
             if (movingUp)
             {
                 if (t <= 0.9)

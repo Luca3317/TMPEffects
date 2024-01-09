@@ -438,7 +438,7 @@ namespace TMPEffects.Components
             OnFinishWriter.Invoke();
             OnStopWriting();
 
-            Hide(0, mediator.Text.textInfo.characterCount, false);
+            //Hide(0, mediator.Text.textInfo.characterCount, false);
         }
 
         // TODO Toggle for whether to wait 
@@ -621,7 +621,7 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.currentMesh.SetPosition(j, cData.info.initialMesh.GetPosition(j));
+                    cData.mesh.SetPosition(j, cData.mesh.initial.GetPosition(j));
                 }
 
                 CharData.VisibilityState prev = cData.visibilityState;
@@ -636,8 +636,8 @@ namespace TMPEffects.Components
 
                 for (int j = 0; j < 4; j++)
                 {
-                    verts[vIndex + j] = cData.currentMesh[j].position;
-                    colors[vIndex + j] = cData.currentMesh[j].color;
+                    verts[vIndex + j] = cData.mesh[j].position;
+                    colors[vIndex + j] = cData.mesh[j].color;
                 }
 
                 // Apply the new vertices to the char data array
@@ -681,7 +681,7 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.currentMesh.SetPosition(j, cData.info.initialPosition);
+                    cData.mesh.SetPosition(j, cData.info.initialPosition);
                 }
 
                 CharData.VisibilityState prev = cData.visibilityState;
@@ -696,8 +696,8 @@ namespace TMPEffects.Components
 
                 for (int j = 0; j < 4; j++)
                 {
-                    verts[vIndex + j] = cData.currentMesh[j].position;
-                    colors[vIndex + j] = cData.currentMesh[j].color;
+                    verts[vIndex + j] = cData.mesh[j].position;
+                    colors[vIndex + j] = cData.mesh[j].color;
                 }
 
                 // Apply the new vertices to the char data array

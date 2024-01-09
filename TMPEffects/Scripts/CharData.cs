@@ -17,6 +17,9 @@ public struct CharData
     public bool positionDirty => position != info.initialPosition;
     public bool rotationDirty => rotation != info.initialRotation;
     public bool scaleDirty => scale != Info.defaultScale;
+    public bool verticesDirty => mesh.verticesDirty;
+    public bool colorsDirty => mesh.colorsDirty;
+    public bool uvsDirty => mesh.uvsDirty;
 
     public Vector3 Position => position;
     public Vector3 Scale => scale;
@@ -26,7 +29,7 @@ public struct CharData
     #region Fields
     public readonly Info info;
     public int segmentIndex;
-    public VertexData currentMesh;
+    public VertexData mesh;
 
     private VisibilityState _visibilityState;
     private float _stateTime;
@@ -38,17 +41,16 @@ public struct CharData
     private Vector3 pivot;
     #endregion
 
-    public CharData(TMP_CharacterInfo cInfo)
+    public CharData(int index, TMP_CharacterInfo cInfo)
     {
-        info = new Info(cInfo);
+        VertexData vData = new VertexData(cInfo);
+        mesh = vData;
+        info = new Info(index, cInfo, mesh);
 
         position = info.initialPosition;
         rotation = info.initialRotation;
         scale = info.initialScale;
         pivot = info.initialPosition;
-
-        VertexData vData = new VertexData(cInfo);
-        currentMesh = vData;
 
         _stateTime = -1;
         _visibleTime = -1;
@@ -58,17 +60,16 @@ public struct CharData
 
         SetVisibilityState(VisibilityState.Shown, -1);
     }
-    public CharData(TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
+    public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
     {
-        info = wInfo == null ? new Info(cInfo) : new Info(cInfo, wInfo.Value);
+        VertexData vData = new VertexData(cInfo);
+        mesh = vData;
+        info = wInfo == null ? new Info(index, cInfo, mesh) : new Info(index, cInfo, wInfo.Value, mesh);
 
         position = info.initialPosition;
         rotation = info.initialRotation;
         scale = info.initialScale;
         pivot = info.initialPosition;
-
-        VertexData vData = new VertexData(cInfo);
-        currentMesh = vData;
 
         _stateTime = -1;
         _visibleTime = -1;
@@ -98,7 +99,7 @@ public struct CharData
     /// <param name="position">The new position of the vertex.</param>
     public void SetVertex(int index, Vector3 position)
     {
-        currentMesh.SetPosition(index, position);
+        mesh.SetPosition(index, position);
     }
 
     /// <summary>
@@ -108,7 +109,7 @@ public struct CharData
     /// <param name="delta"></param> 
     public void AddVertexDelta(int index, Vector3 delta)
     {
-        currentMesh.SetPosition(index, currentMesh.GetPosition(index) + delta);
+        mesh.SetPosition(index, mesh.GetPosition(index) + delta);
     }
 
     /// <summary>
@@ -171,8 +172,9 @@ public struct CharData
         ResetRotation();
         ResetScale();
         ResetPivot();
-        ResetVertices();
+        mesh.Reset();
     }
+
     /// <summary>
     /// Reset the character's scale.
     /// </summary>
@@ -189,13 +191,9 @@ public struct CharData
     /// Reset the character's pivot.
     /// </summary>
     public void ResetPivot() => this.pivot = info.initialPosition;
-    public void ResetVertices()
-    {
-        currentMesh.vertex_BL = info.initialMesh.vertex_BL;
-        currentMesh.vertex_TL = info.initialMesh.vertex_TL;
-        currentMesh.vertex_TR = info.initialMesh.vertex_TR;
-        currentMesh.vertex_BR = info.initialMesh.vertex_BR;
-    }
+    public void ResetVertices() => mesh.ResetVertices();
+    public void ResetUVs() => mesh.ResetUVs();
+    public void ResetColors() => mesh.ResetColors();
 
     public struct Info
     {
@@ -203,6 +201,7 @@ public struct CharData
         public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
 
         public readonly int index;
+        public readonly int rawIndex;
         public readonly int wordFirstIndex;
         public readonly int wordLen;
 
@@ -219,17 +218,18 @@ public struct CharData
         public readonly float descender;
         public readonly float xAdvance;
 
+        public readonly TMP_FontAsset fontAsset;
+
         public readonly Vector3 initialPosition;
         public readonly Quaternion initialRotation;
         public readonly float referenceScale;
-        public readonly ReadOnlyVertexData initialMesh;
 
-        public Info(TMP_CharacterInfo cInfo)
+        //public readonly ReadOnlyVertexData initialMesh;
+
+        internal Info(int index, TMP_CharacterInfo cInfo, VertexData mesh)
         {
-            ReadOnlyVertexData vData = new ReadOnlyVertexData(cInfo);
-            initialMesh = vData;
-
-            index = cInfo.index;
+            this.index = index; /*cInfo.index;*/
+            rawIndex = cInfo.index;
             isVisible = cInfo.isVisible;
 
             wordFirstIndex = -1;
@@ -249,16 +249,18 @@ public struct CharData
             initialPosition = default;
             initialRotation = Quaternion.identity;
 
-            initialPosition = GetCenter(ref initialMesh);
+            fontAsset = cInfo.fontAsset;
+
+            initialPosition = GetCenter(in mesh.initial);
         }
 
-        public Info(TMP_CharacterInfo cInfo, TMP_WordInfo wInfo) : this(cInfo)
+        public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo, VertexData mesh) : this(index, cInfo, mesh)
         {
             wordFirstIndex = wInfo.firstCharacterIndex;
             wordLen = wInfo.characterCount;
         }
 
-        private Vector3 GetCenter(ref ReadOnlyVertexData data)
+        private Vector3 GetCenter(in ReadOnlyVertexData data)
         {
             Vector3 center = Vector3.zero;
             for (int i = 0; i < 4; i++)
@@ -275,6 +277,12 @@ public struct CharData
         public TMP_Vertex vertex_TR;
         public TMP_Vertex vertex_BR;
         public TMP_Vertex vertex_BL;
+
+        public readonly ReadOnlyVertexData initial;
+
+        public bool verticesDirty { get; private set; }
+        public bool colorsDirty { get; private set; }
+        public bool uvsDirty { get; private set; }
 
         public TMP_Vertex this[int i]
         {
@@ -299,11 +307,18 @@ public struct CharData
                     case 3: vertex_BR = value; break;
                     default: throw new System.ArgumentOutOfRangeException();
                 }
+
+                verticesDirty = true;
             }
         }
 
         public VertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
         {
+            verticesDirty = false;
+            uvsDirty = false;
+            colorsDirty = false;
+
+            initial = new ReadOnlyVertexData(bl, tl, tr, br);
             this.vertex_BL = bl;
             this.vertex_TL = tl;
             this.vertex_TR = tr;
@@ -312,6 +327,11 @@ public struct CharData
 
         public VertexData(TMP_CharacterInfo info)
         {
+            verticesDirty = false;
+            uvsDirty = false;
+            colorsDirty = false;
+
+            initial = new ReadOnlyVertexData(info);
             this.vertex_BL = info.vertex_BL;
             this.vertex_TL = info.vertex_TL;
             this.vertex_TR = info.vertex_TR;
@@ -340,6 +360,8 @@ public struct CharData
                 case 3: vertex_BR.position = value; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
+
+            verticesDirty = true;
         }
 
         public Color32 GetColor(int i)
@@ -364,6 +386,8 @@ public struct CharData
                 case 3: vertex_BR.color = value; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
+
+            colorsDirty = true;
         }
 
         public Vector2 GetUV0(int i)
@@ -388,6 +412,8 @@ public struct CharData
                 case 3: vertex_BR.uv = value; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
+
+            uvsDirty = true;
         }
 
         public Vector2 GetUV2(int i)
@@ -412,30 +438,50 @@ public struct CharData
                 case 3: vertex_BR.uv2 = value; break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
+
+            uvsDirty = true;
         }
 
-        public Vector2 GetUV4(int i)
+        public void Reset()
         {
-            switch (i)
-            {
-                case 0: return vertex_BL.uv4;
-                case 1: return vertex_TL.uv4;
-                case 2: return vertex_TR.uv4;
-                case 3: return vertex_BR.uv4;
-                default: throw new System.ArgumentOutOfRangeException();
-            }
+            ResetColors();
+            ResetVertices();
+            ResetUVs();
         }
 
-        public void SetUV4(int i, Vector2 value)
+        public void ResetColors()
         {
-            switch (i)
-            {
-                case 0: vertex_BL.uv4 = value; break;
-                case 1: vertex_TL.uv4 = value; break;
-                case 2: vertex_TR.uv4 = value; break;
-                case 3: vertex_BR.uv4 = value; break;
-                default: throw new System.ArgumentOutOfRangeException();
-            }
+            if (!colorsDirty) return;
+            vertex_BL.color = initial.GetColor(0);
+            vertex_TL.color = initial.GetColor(1);
+            vertex_TR.color = initial.GetColor(2);
+            vertex_BR.color = initial.GetColor(3);
+            colorsDirty = false;
+        }
+
+        public void ResetVertices()
+        {
+            if (!verticesDirty) return;
+            vertex_BL.position = initial.GetPosition(0);
+            vertex_TL.position = initial.GetPosition(1);
+            vertex_TR.position = initial.GetPosition(2);
+            vertex_BR.position = initial.GetPosition(3);
+            verticesDirty = false;
+        }
+
+        public void ResetUVs()
+        {
+            if (!uvsDirty) return;
+            vertex_BL.uv = initial.GetUV0(0);
+            vertex_TL.uv = initial.GetUV0(1);
+            vertex_TR.uv = initial.GetUV0(2);
+            vertex_BR.uv = initial.GetUV0(3);
+
+            vertex_BL.uv2 = initial.GetUV2(0);
+            vertex_TL.uv2 = initial.GetUV2(1);
+            vertex_TR.uv2 = initial.GetUV2(2);
+            vertex_BR.uv2 = initial.GetUV2(3);
+            uvsDirty = false;
         }
     }
 
@@ -551,305 +597,3 @@ public struct CharData
         HideAnimation = -5
     }
 }
-
-//public struct CharDataOld
-//{
-//    public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
-//    public Vector3 initialScale => defaultScale;
-
-//    public bool positionDirty => position != initialPosition;
-//    public bool rotationDirty => rotation != initialRotation;
-//    public bool scaleDirty => scale != defaultScale;
-
-//    #region CharacterInfo
-//    public VertexData initialMesh;
-//    public VertexData currentMesh;
-
-//    public readonly int index;
-//    public readonly int wordFirstIndex;
-//    public readonly int wordLen;
-
-//    public readonly float pointSize;
-//    //public readonly float scale;
-
-//    public readonly char character;
-
-//    public readonly bool isVisible;
-
-//    public readonly int lineNumber;
-//    public readonly int pageNumber;
-
-//    public readonly float ascender;
-//    public readonly float descender;
-//    public readonly float xAdvance;
-//    // public readonly Color32 baseColor;
-//    #endregion
-
-//    public Vector3 position;
-//    public readonly Vector3 initialPosition;
-//    public Quaternion rotation;
-//    public readonly Quaternion initialRotation;
-//    public Vector3 scale;
-//    public readonly float referenceScale;
-
-//    public Vector3 rotationPivot;
-
-
-//    // This data would be made redundant if passing with Span
-//    public int segmentIndex;
-//    public int segmentLength;
-
-//    public VisibilityState visibilityState
-//    {
-//        get => _visibilityState;
-//        set
-//        {
-//            _stateTime = Time.time; // TODO appropriate way to get time?
-//            if (_visibilityState == VisibilityState.Hidden && value != VisibilityState.Hidden) _visibleTime = _stateTime;
-//            _visibilityState = value;
-//        }
-//    }
-//    public float stateTime => _stateTime;
-//    public float visibleTime => _visibleTime;
-//    private VisibilityState _visibilityState;
-//    private float _stateTime;
-//    private float _visibleTime;
-//    //public bool hidden;
-
-//    public CharDataOld(TMP_CharacterInfo characterInfo, TMP_WordInfo wordInfo) : this(characterInfo)
-//    {
-//        this.wordFirstIndex = wordInfo.firstCharacterIndex;
-//        this.wordLen = wordInfo.characterCount;
-//    }
-
-//    public CharDataOld(TMP_CharacterInfo characterInfo)
-//    {
-//        VertexData vData = new VertexData(characterInfo);
-//        initialMesh = vData;
-//        currentMesh = vData;
-
-//        index = characterInfo.index;
-//        isVisible = characterInfo.isVisible;
-//        this.wordFirstIndex = -1;
-//        this.wordLen = -1;
-
-//        lineNumber = characterInfo.lineNumber;
-//        pageNumber = characterInfo.pageNumber;
-
-//        segmentIndex = -1;
-//        segmentLength = -1;
-
-//        pointSize = characterInfo.pointSize;
-//        character = characterInfo.character;
-
-//        rotationPivot = default;
-//        initialPosition = default;
-//        position = default;
-
-//        referenceScale = characterInfo.scale;
-//        scale = Vector3.one;
-
-//        initialRotation = Quaternion.identity;
-//        rotation = initialRotation;
-
-//        ascender = characterInfo.ascender;
-//        descender = characterInfo.descender;
-//        xAdvance = characterInfo.xAdvance;
-
-//        _visibilityState = VisibilityState.Shown;
-//        _stateTime = -1;
-//        _visibleTime = -1;
-//        visibilityState = VisibilityState.Shown;
-
-//        initialPosition = GetCenter(ref initialMesh);
-//        position = initialPosition;
-//        rotationPivot = initialPosition;
-//    }
-
-//    private Vector3 GetCenter(ref VertexData data)
-//    {
-//        Vector3 center = Vector3.zero;
-//        for (int i = 0; i < 4; i++)
-//        {
-//            center += data.GetPosition(i);
-//        }
-//        return center / 4;
-//    }
-
-//    public enum VisibilityState : int
-//    {
-//        Shown = 10,
-//        Hidden = -10,
-//        ShowAnimation = 5,
-//        HideAnimation = -5
-//    }
-//    public struct VertexData
-//    {
-//        public TMP_Vertex vertex_TL;
-//        public TMP_Vertex vertex_TR;
-//        public TMP_Vertex vertex_BR;
-//        public TMP_Vertex vertex_BL;
-
-//        public TMP_Vertex this[int i]
-//        {
-//            get
-//            {
-//                switch (i)
-//                {
-//                    case 0: return vertex_BL;
-//                    case 1: return vertex_TL;
-//                    case 2: return vertex_TR;
-//                    case 3: return vertex_BR;
-//                    default: throw new System.ArgumentOutOfRangeException();
-//                }
-//            }
-//            set
-//            {
-//                switch (i)
-//                {
-//                    case 0: vertex_BL = value; break;
-//                    case 1: vertex_TL = value; break;
-//                    case 2: vertex_TR = value; break;
-//                    case 3: vertex_BR = value; break;
-//                    default: throw new System.ArgumentOutOfRangeException();
-//                }
-//            }
-//        }
-
-//        public VertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
-//        {
-//            this.vertex_BL = bl;
-//            this.vertex_TL = tl;
-//            this.vertex_TR = tr;
-//            this.vertex_BR = br;
-//        }
-
-//        public VertexData(TMP_CharacterInfo info)
-//        {
-//            this.vertex_BL = info.vertex_BL;
-//            this.vertex_TL = info.vertex_TL;
-//            this.vertex_TR = info.vertex_TR;
-//            this.vertex_BR = info.vertex_BR;
-//        }
-
-//        public Vector3 GetPosition(int i)
-//        {
-//            switch (i)
-//            {
-//                case 0: return vertex_BL.position;
-//                case 1: return vertex_TL.position;
-//                case 2: return vertex_TR.position;
-//                case 3: return vertex_BR.position;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public void SetPosition(int i, Vector3 value)
-//        {
-//            switch (i)
-//            {
-//                case 0: vertex_BL.position = value; break;
-//                case 1: vertex_TL.position = value; break;
-//                case 2: vertex_TR.position = value; break;
-//                case 3: vertex_BR.position = value; break;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public Color32 GetColor(int i)
-//        {
-//            switch (i)
-//            {
-//                case 0: return vertex_BL.color;
-//                case 1: return vertex_TL.color;
-//                case 2: return vertex_TR.color;
-//                case 3: return vertex_BR.color;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public void SetColor(int i, Color32 value)
-//        {
-//            switch (i)
-//            {
-//                case 0: vertex_BL.color = value; break;
-//                case 1: vertex_TL.color = value; break;
-//                case 2: vertex_TR.color = value; break;
-//                case 3: vertex_BR.color = value; break;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public Vector2 GetUV0(int i)
-//        {
-//            switch (i)
-//            {
-//                case 0: return vertex_BL.uv;
-//                case 1: return vertex_TL.uv;
-//                case 2: return vertex_TR.uv;
-//                case 3: return vertex_BR.uv;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public void SetUV(int i, Vector2 value)
-//        {
-//            switch (i)
-//            {
-//                case 0: vertex_BL.uv = value; break;
-//                case 1: vertex_TL.uv = value; break;
-//                case 2: vertex_TR.uv = value; break;
-//                case 3: vertex_BR.uv = value; break;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public Vector2 GetUV2(int i)
-//        {
-//            switch (i)
-//            {
-//                case 0: return vertex_BL.uv2;
-//                case 1: return vertex_TL.uv2;
-//                case 2: return vertex_TR.uv2;
-//                case 3: return vertex_BR.uv2;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public void SetUV2(int i, Vector2 value)
-//        {
-//            switch (i)
-//            {
-//                case 0: vertex_BL.uv2 = value; break;
-//                case 1: vertex_TL.uv2 = value; break;
-//                case 2: vertex_TR.uv2 = value; break;
-//                case 3: vertex_BR.uv2 = value; break;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public Vector2 GetUV4(int i)
-//        {
-//            switch (i)
-//            {
-//                case 0: return vertex_BL.uv4;
-//                case 1: return vertex_TL.uv4;
-//                case 2: return vertex_TR.uv4;
-//                case 3: return vertex_BR.uv4;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-
-//        public void SetUV4(int i, Vector2 value)
-//        {
-//            switch (i)
-//            {
-//                case 0: vertex_BL.uv4 = value; break;
-//                case 1: vertex_TL.uv4 = value; break;
-//                case 2: vertex_TR.uv4 = value; break;
-//                case 3: vertex_BR.uv4 = value; break;
-//                default: throw new System.ArgumentOutOfRangeException();
-//            }
-//        }
-//    }
-//}
