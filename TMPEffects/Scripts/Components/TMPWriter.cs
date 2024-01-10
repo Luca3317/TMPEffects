@@ -11,6 +11,8 @@ using TMPEffects.TextProcessing.TagProcessors;
 using TMPEffects.Tags;
 using TMPEffects.Commands;
 using System;
+using TMPEffects.Extensions;
+using System.Linq;
 
 namespace TMPEffects.Components
 {
@@ -28,31 +30,44 @@ namespace TMPEffects.Components
     /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent. 
     /// </remarks>
-    [ExecuteAlways, DisallowMultipleComponent]
+    [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPWriter : TMPEffectComponent
     {
         /// <summary>
         /// Is the writer currently writing text?
         /// </summary>
         public bool IsWriting => writing;
+        public int CurrentIndex => currentIndex;
 
         /// <summary>
         /// The database used to process the text's command tags.
         /// </summary>
         public TMPCommandDatabase CommandDatabase => database;
-        /// <summary>
-        /// The command tags parsed by the TMPWriter.
-        /// </summary>
-        public List<TMPCommandTag> Commands => ctps.ProcessedTags;
-        /// <summary>
-        /// The event tags parsed by the TMPWriter.
-        /// </summary>
-        public List<TMPEventArgs> Events => etp.ProcessedTags;
 
+        public IEnumerable<TMPCommandTag> CommandTags
+        {
+            get
+            {
+                foreach (var tag in ctps.ProcessedTags) yield return tag;
+            }
+        }
+        public IEnumerable<TMPEventTag> EventTags
+        {
+            get
+            {
+                foreach (var tag in etp.ProcessedTags) yield return tag;
+            }
+        }
+
+        public int TagCount => ctps.ProcessedTags.Count + etp.ProcessedTags.Count;
+        public int CommandTagCount => ctps.ProcessedTags.Count;
+        public int EventTagCount => etp.ProcessedTags.Count;
+
+        // Events
         /// <summary>
         /// Raised when the TMPWriter shows the character with index corresponding to the event tag.
         /// </summary>
-        public UnityEvent<TMPEventArgs> OnTextEvent;
+        public UnityEvent<TMPEventTag> OnTextEvent;
         /// <summary>
         /// Raised when a new character is shown.
         /// </summary>
@@ -69,6 +84,10 @@ namespace TMPEffects.Components
         /// Raised when the writer is done writing.
         /// </summary>
         public UnityEvent OnFinishWriter;
+        /// <summary>
+        /// Raised when the writer is skipped until the end of the text.
+        /// </summary>
+        public UnityEvent OnSkipWriter;
         /// <summary>
         /// Raised when the writer is reset.
         /// </summary>
@@ -118,7 +137,7 @@ namespace TMPEffects.Components
             UpdateProcessor(forceReprocess: false);
 
             etp = new EventTagProcessor(); // Not dependent on any database
-            mediator.Processor.RegisterProcessor('#', etp);
+            mediator.Processor.RegisterProcessor(ParsingUtility.EVENT_PREFIX, etp);
 
             mediator.Subscribe(this);
             mediator.TextChanged -= OnTextChanged;
@@ -146,8 +165,8 @@ namespace TMPEffects.Components
         {
             mediator.TextChanged -= OnTextChanged;
             mediator.Processor.FinishProcessTags -= CloseOpenTags;
-            mediator.Processor.UnregisterProcessor('!');
-            mediator.Processor.UnregisterProcessor('#');
+            mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
+            mediator.Processor.UnregisterProcessor(ParsingUtility.EVENT_PREFIX);
 
             // TODO Each reassigned in OnEnable anyway;
             // Either change class to reuse instances or dont reset (atm, resetting is necessary for some editor functionality though)
@@ -189,7 +208,7 @@ namespace TMPEffects.Components
                 StartWriterCoroutine();
             }
 
-            OnStartWriter.Invoke();
+            OnStartWriter?.Invoke();
         }
 
         /// <summary>
@@ -205,13 +224,12 @@ namespace TMPEffects.Components
                 StopWriterCoroutine();
             }
 
-            OnStopWriter.Invoke();
+            OnStopWriter?.Invoke();
         }
 
         /// <summary>
         /// Reset the writer.
         /// </summary>
-        /// TODO rn this shows all characters; should hide them but need to fix editor accordingly
         public void ResetWriter()
         {
             if (!enabled || !gameObject.activeInHierarchy) return;
@@ -223,7 +241,7 @@ namespace TMPEffects.Components
 
             // reset
             currentIndex = -1;
-            Show(0, mediator.Text.textInfo.characterCount, true);
+            Hide(0, mediator.Text.textInfo.characterCount, true);
 
             OnResetWriter?.Invoke(0);
         }
@@ -246,7 +264,7 @@ namespace TMPEffects.Components
             Hide(index, mediator.Text.textInfo.characterCount - index, true);
             Show(0, index, true);
 
-            OnResetWriter.Invoke(index);
+            OnResetWriter?.Invoke(index);
         }
 
         /// <summary>
@@ -258,11 +276,27 @@ namespace TMPEffects.Components
             if (!enabled || !gameObject.activeInHierarchy) return;
 
             // skip to end
-            if (writing) StopWriterCoroutine();
+            if (writing)
+            {
+                StopWriterCoroutine();
+                OnSkipWriter?.Invoke();
+            }
+
+            // TODO
+            // Iterate over all skipped indeces and raise eventual events and commands
+            // Stopcoroutine can only be called when on a yield instruction; ensured all commands & events 
+            // of current currentIndex executed.
+            // Other issue: Probably need some indicator on whether to execute even when skipped
+            // i.e. multiple sounds playing at once would suck
+            for (int i = currentIndex + 1; i < CharacterCount; i++)
+            {
+                ExecuteCommandsAndEvents(i);
+            }
+
             currentIndex = mediator.Text.textInfo.characterCount;
             Show(0, mediator.Text.textInfo.characterCount, true);
 
-            OnFinishWriter.Invoke();
+            OnFinishWriter?.Invoke();
         }
 
         /// <summary>
@@ -274,7 +308,161 @@ namespace TMPEffects.Components
             if (!enabled) return;
 
             ResetWriter();
-            RestartWriter();
+            StartWriter();
+        }
+        #endregion
+
+        #region Tag Manipulation & various
+        public TMPCommandTag CommandTagAt(int index)
+        {
+            return ctps.ProcessedTags[index];
+        }
+        public TMPEventTag EventTagAt(int index)
+        {
+            return etp.ProcessedTags[index];
+        }
+
+        public void CommandTagAtTextIndex(int textIndex, ICollection<TMPCommandTag> tags)
+        {
+            tags.AddRange(ctps.ProcessedTags.Where(x => x.startIndex == textIndex));
+        }
+        public void EventTagAtTextIndex(int textIndex, ICollection<TMPEventTag> tags)
+        {
+            tags.AddRange(etp.ProcessedTags.Where(x => x.startIndex == textIndex));
+        }
+
+        public int IndexOfCommandTag(TMPCommandTag tag)
+        {
+            return ctps.ProcessedTags.IndexOf(tag);
+        }
+        public int IndexOfEventTag(TMPEventTag tag)
+        {
+            return etp.ProcessedTags.IndexOf(tag);
+        }
+
+        public bool TryInsertCommandTag(string tag, int textIndex = 0, int length = -1)
+        {
+            ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
+            bool parsed = ParsingUtility.TryParseTag(tag, 0, tag.Length - 1, ref tagInfo, ParsingUtility.TagType.Open);
+            if (!parsed) return false;
+
+            Dictionary<string, string> parameters;
+            if (!ValidateCommandTag(tag, tagInfo, out parameters)) return false;
+
+            TMPCommandTag t = new TMPCommandTag(tagInfo.name, textIndex, parameters);
+
+            if (length < 0) t.Close(mediator.CharData.Count - 1);
+            else if (length == 0) t.Close(textIndex);
+            else t.Close(textIndex + length - 1);
+
+            InsertElement(ctp.ProcessedTags, t);
+
+            return true;
+        }
+        public bool TryInsertCommandTag(string key, Dictionary<string, string> parameters, int textIndex = 0, int length = -1)
+        {
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count || (textIndex + length) > mediator.CharData.Count) throw new System.IndexOutOfRangeException();
+            if (!ValidateCommandTag(key, parameters)) return false;
+
+            TMPCommandTag t = new TMPCommandTag(key, textIndex, parameters);
+
+            if (length < 0) t.Close(mediator.CharData.Count - 1);
+            else if (length == 0) t.Close(textIndex);
+            else t.Close(textIndex + length - 1);
+
+            InsertElement(ctp.ProcessedTags, t);
+
+            return true;
+        }
+        public bool TryInsertEventTag(string tag, int textIndex = 0)
+        {
+            ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
+            bool parsed = ParsingUtility.TryParseTag(tag, 0, tag.Length - 1, ref tagInfo, ParsingUtility.TagType.Open);
+            if (!parsed) return false;
+
+            Dictionary<string, string> parameters = ParsingUtility.GetTagParametersDict(tag);
+            TMPEventTag t = new TMPEventTag(textIndex, tagInfo.name, parameters);
+            InsertElement(etp.ProcessedTags, t);
+            return true;
+        }
+        public void InsertEventTag(string key, Dictionary<string, string> parameters, int textIndex = 0)
+        {
+            TMPEventTag t = new TMPEventTag(textIndex, key, parameters);
+            InsertElement(etp.ProcessedTags, t);
+        }
+
+        public void RemoveCommandTagAt(int index)
+        {
+            ctps.ProcessedTags.RemoveAt(index);
+        }
+        public void RemoveCommandTagAtTextIndex(int textIndex, int maxRemove = -1, ICollection<TMPCommandTag> coll = null)
+        {
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count) throw new System.IndexOutOfRangeException();
+
+            if (maxRemove < 0) maxRemove = ctps.ProcessedTags.Count;
+
+            for (int i = 0; i < ctps.ProcessedTags.Count; i++)
+            {
+                if (maxRemove <= 0) return;
+                if (ctps.ProcessedTags[i].startIndex == textIndex)
+                {
+                    var tag = ctps.ProcessedTags[i];
+                    ctps.ProcessedTags.RemoveAt(i);
+                    coll?.Add(tag);
+                    i--;
+                }
+            }
+        }
+        public void RemoveEventTagAt(int index)
+        {
+            etp.ProcessedTags.RemoveAt(index);
+        }
+        public void RemoveEventTagAtTextIndex(int textIndex, int maxRemove = -1, ICollection<TMPEventTag> coll = null)
+        {
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count) throw new System.IndexOutOfRangeException();
+
+            if (maxRemove < 0) maxRemove = etp.ProcessedTags.Count;
+
+            for (int i = 0; i < etp.ProcessedTags.Count; i++)
+            {
+                if (maxRemove <= 0) return;
+                if (etp.ProcessedTags[i].startIndex == textIndex)
+                {
+                    var tag = etp.ProcessedTags[i];
+                    etp.ProcessedTags.RemoveAt(i);
+                    coll?.Add(tag);
+                    i--;
+                }
+            }
+        }
+
+        public void ClearTags()
+        {
+            ctps.ProcessedTags.Clear();
+            etp.ProcessedTags.Clear();
+        }
+        public void ClearCommandTags()
+        {
+            ctps.ProcessedTags.Clear();
+        }
+        public void ClearEventTags()
+        {
+            etp.ProcessedTags.Clear();
+        }
+
+        private bool ValidateCommandTag(string tag, ParsingUtility.TagInfo tagInfo, out Dictionary<string, string> parametersOut)
+        {
+            parametersOut = null;
+            if (!database.Contains(tagInfo.name)) return false;
+            parametersOut = ParsingUtility.GetTagParametersDict(tag);
+            if (!database.GetEffect(tagInfo.name).ValidateParameters(parametersOut)) return false;
+            return true;
+        }
+        private bool ValidateCommandTag(string key, Dictionary<string, string> parameters)
+        {
+            if (!database.Contains(key)) return false;
+            if (!database.GetEffect(key).ValidateParameters(parameters)) return false;
+            return true;
         }
         #endregion
 
@@ -344,6 +532,7 @@ namespace TMPEffects.Components
                 {
                     StartWriter();
                 }
+                else Show(0, mediator.CharData.Count, true);
                 return;
             }
 #endif
@@ -435,7 +624,7 @@ namespace TMPEffects.Components
                 }
             }
 
-            OnFinishWriter.Invoke();
+            OnFinishWriter?.Invoke();
             OnStopWriting();
 
             //Hide(0, mediator.Text.textInfo.characterCount, false);
@@ -503,7 +692,7 @@ namespace TMPEffects.Components
                 }
                 for (int j = 0; j < etp.ProcessedTags.Count; j++)
                 {
-                    if (etp.ProcessedTags[j].index == index)
+                    if (etp.ProcessedTags[j].startIndex == index)
                     {
 #if UNITY_EDITOR
                         if (!eventsEnabled && !Application.isPlaying) continue;
@@ -571,11 +760,11 @@ namespace TMPEffects.Components
 
         private void UpdateProcessor(bool forceReprocess = true)
         {
-            mediator.Processor.UnregisterProcessor('!');
+            mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
             ctps = new TagProcessorStack<TMPCommandTag>();
             ctps.AddProcessor(ctp = new CommandTagProcessor(database));
             ctps.AddProcessor(sctp = new SceneCommandTagProcessor(sceneCommands));
-            mediator.Processor.RegisterProcessor('!', ctps);
+            mediator.Processor.RegisterProcessor(ParsingUtility.COMMAND_PREFIX, ctps);
 
             if (forceReprocess) mediator.ForceReprocess();
         }

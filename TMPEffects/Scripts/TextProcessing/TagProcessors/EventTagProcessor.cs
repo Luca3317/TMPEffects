@@ -4,11 +4,11 @@ using TMPEffects.Tags;
 
 namespace TMPEffects.TextProcessing.TagProcessors
 {
-    public class EventTagProcessor : ITagProcessor<TMPEventArgs>
+    public class EventTagProcessor : ITagProcessor<TMPEventTag>
     {
         public object Database => null;
 
-        public List<TMPEventArgs> ProcessedTags
+        public List<TMPEventTag> ProcessedTags
         {
             get; private set;
         }
@@ -23,9 +23,14 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return true;
         }
 
+        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        {
+            return Process(tagInfo, textIndex);
+        }
+
         public bool Process(TagInfo tagInfo, int textIndex)
         {
-            TMPEventArgs args = new TMPEventArgs(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
+            TMPEventTag args = new TMPEventTag(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
             ProcessedTags.Add(args);
             return true;
         }

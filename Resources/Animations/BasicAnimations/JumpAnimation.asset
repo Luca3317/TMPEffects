@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70036388af03cb4c8286a68f7717d0d, type: 3}
   m_Name: JumpAnimation
   m_EditorClassIdentifier: 
-  speed: 1
-  amplitude: 1
+  speed: 5
+  amplitude: 10
   uniform: 0
   frequency: 1
+  waitDuration: 1
+  radius: 2

@@ -214,6 +214,7 @@ public struct CharData
         public readonly int lineNumber;
         public readonly int pageNumber;
 
+        public readonly float baseLine;
         public readonly float ascender;
         public readonly float descender;
         public readonly float xAdvance;
@@ -241,6 +242,7 @@ public struct CharData
             pointSize = cInfo.pointSize;
             character = cInfo.character;
 
+            baseLine = cInfo.baseLine;
             ascender = cInfo.ascender;
             descender = cInfo.descender;
             xAdvance = cInfo.xAdvance;

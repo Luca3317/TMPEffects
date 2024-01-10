@@ -8,6 +8,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
         public bool PreProcess(ParsingUtility.TagInfo tagInfo);
         // Check if is valid tag and create entry
         public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex);
+        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex, int length);
         public void Reset();
     }
 

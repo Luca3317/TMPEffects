@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6f8d29769799449920d4c80bd524bd, type: 3}
   m_Name: ShakeAnimation
   m_EditorClassIdentifier: 
-  speed: 1
-  xAmplitude: 1
-  yAmplitude: 1
   uniform: 0
+  xAmplitude: 4
+  yAmplitude: 4
+  delay: 0.1

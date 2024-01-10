@@ -2,6 +2,7 @@ using static TMPEffects.TextProcessing.ParsingUtility;
 using System.Collections.Generic;
 using TMPEffects.Tags;
 using TMPEffects.Commands;
+using UnityEngine.UIElements;
 
 namespace TMPEffects.TextProcessing.TagProcessors
 {
@@ -31,6 +32,17 @@ namespace TMPEffects.TextProcessing.TagProcessors
 
             if (tagInfo.type == TagType.Open || tags[tagInfo.name].CommandType != CommandType.Index)
             {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        {
+            if (Process(tagInfo, textIndex))
+            {
+                ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
                 return true;
             }
 

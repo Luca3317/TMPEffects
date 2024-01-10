@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {x: 0, y: 0}
   direction: {x: 0, y: 0}
-  speed: 0
-  minScale: 0
+  speed: 1
+  minScale: 0.5
   maxScale: 0
-  afterMaxWaitDuration: 0
-  afterMinWaitDuration: 0
+  afterMaxWaitDuration: 1
+  afterMinWaitDuration: 1

@@ -9,6 +9,7 @@ namespace TMPEffects.Commands
     {
         public CommandType CommandType;
         public bool executeInstantly;
+        public bool executeOnSkip;
         public UnityEvent<SceneCommandArgs> command;
     }
 

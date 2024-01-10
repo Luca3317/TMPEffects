@@ -28,6 +28,11 @@ namespace TMPEffects
         public abstract bool ExecuteInstantly { get; }
 
         /// <summary>
+        /// Whether the command should be executed by the <see cref="TMPWriter"/> if its text position is skipped over.
+        /// </summary>
+        public abstract bool ExecuteOnSkip { get; }
+
+        /// <summary>
         /// Execute the command.
         /// </summary>
         /// <param name="tag"></param>

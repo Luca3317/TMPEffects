@@ -21,7 +21,7 @@ MonoBehaviour:
     - Key: char
       Value: {fileID: 11400000, guid: 36c66ff0d68f7ad4085865adde7acba0, type: 2}
     - Key: explode
-      Value: {fileID: 11400000, guid: 425bb292a24f3064eac4002b6f69b9b5, type: 2}
+      Value: {fileID: 11400000, guid: 819492b49e320d140aff1b60bdd312a8, type: 2}
     - Key: funky
       Value: {fileID: 11400000, guid: 5bb122a649f127040b61e1f70322e67e, type: 2}
     - Key: pivot

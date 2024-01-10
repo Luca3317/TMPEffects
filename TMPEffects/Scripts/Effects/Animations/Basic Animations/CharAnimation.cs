@@ -43,7 +43,8 @@ public class CharAnimation : TMPAnimation
 
         if (!ctx.init)
         {
-            cData.info.fontAsset.TryAddCharacters(currentCharacters);
+            if (cData.info.fontAsset.atlasPopulationMode == AtlasPopulationMode.Dynamic)
+                cData.info.fontAsset.TryAddCharacters(currentCharacters);
             ctx.init = true;
         }
 

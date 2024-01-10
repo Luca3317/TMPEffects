@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
 using TMPEffects.Databases;
-using UnityEngine.Playables;
 
 [CustomEditor(typeof(TMPAnimator))]
 public class TMPAnimatorEditor : Editor

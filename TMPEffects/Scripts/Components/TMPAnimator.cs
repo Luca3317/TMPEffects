@@ -40,7 +40,8 @@ namespace TMPEffects.Components
         /// <summary>
         /// The animation tags parsed by the TMPAnimator.
         /// </summary>
-        public IEnumerable<TMPAnimationTag> AnimationTags
+
+        public IEnumerable<TMPAnimationTag> Tags
         {
             get
             {
@@ -49,13 +50,60 @@ namespace TMPEffects.Components
                 for (int i = 0; i < hatp.ProcessedTags.Count; i++) yield return hatp.ProcessedTags[i];
             }
         }
+        /// <summary>
+        /// The basic animation tags parsed by the TMPAnimator.
+        /// </summary>
+        public IEnumerable<TMPAnimationTag> BasicTags
+        {
+            get
+            {
+                for (int i = 0; i < atp.ProcessedTags.Count; i++) yield return atp.ProcessedTags[i];
+            }
+        }
+        /// <summary>
+        /// The show animation tags parsed by the TMPAnimator.
+        /// </summary>
+        public IEnumerable<TMPAnimationTag> ShowTags
+        {
+            get
+            {
+                for (int i = 0; i < satp.ProcessedTags.Count; i++) yield return satp.ProcessedTags[i];
+            }
+        }
+        /// <summary>
+        /// The hide animation tags parsed by the TMPAnimator.
+        /// </summary>
+        public IEnumerable<TMPAnimationTag> HideTags
+        {
+            get
+            {
+                for (int i = 0; i < hatp.ProcessedTags.Count; i++) yield return hatp.ProcessedTags[i];
+            }
+        }
+
+        /// <summary>
+        /// The amount of tags parsed by the TMPAnimator.
+        /// </summary>
+        public int TagCount => atp.ProcessedTags.Count + satp.ProcessedTags.Count + hatp.ProcessedTags.Count;
+        /// <summary>
+        /// The amount of basic tags parsed by the TMPAnimator.
+        /// </summary>
+        public int BasicTagCount => atp.ProcessedTags.Count;
+        /// <summary>
+        /// The amount of show tags parsed by the TMPAnimator.
+        /// </summary>
+        public int ShowTagCount => satp.ProcessedTags.Count;
+        /// <summary>
+        /// The amount of hide parsed by the TMPAnimator.
+        /// </summary>
+        public int HideTagCount => hatp.ProcessedTags.Count;
 
         #region Fields
         [SerializeField] TMPAnimationDatabase database;
         [SerializeField] AnimatorContext context;
 
         [SerializeField] UpdateFrom updateFrom;
-        [SerializeField] bool animateOnStart;
+        [SerializeField] bool animateOnStart = true;
 
         [SerializeField] bool animationsOverride = false;
         [SerializeField] string defaultShowString;
@@ -73,6 +121,9 @@ namespace TMPEffects.Components
         [System.NonSerialized] private AnimationTagProcessor<TMPShowAnimation> satp = null;
         [System.NonSerialized] private AnimationTagProcessor<TMPHideAnimation> hatp = null;
         [System.NonSerialized] private bool isAnimating = false;
+
+        [System.NonSerialized] private CachedAnimation dummyShow;
+        [System.NonSerialized] private CachedAnimation dummyHide;
         #endregion 
 
         #region Initialization
@@ -205,6 +256,13 @@ namespace TMPEffects.Components
         }
         #endregion
 
+        #region Tag Manipulation & various
+        public enum AnimationType
+        {
+            Basic = 0,
+            Show = 5,
+            Hide = 10
+        }
 
         /// <summary>
         /// Check whether the character is excluded from animations of the given type.
@@ -241,6 +299,383 @@ namespace TMPEffects.Components
         /// <param name="c">The character to check</param>
         /// <returns>Whether the character is excluded from hide animations</returns>
         public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
+
+        /// <summary>
+        /// Get the animation tag at the given index.<br/>
+        /// <paramref name="index"/> refers to the index within <see cref="Tags"/>.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>The animation tag at the given index</returns>
+        /// <exception cref="IndexOutOfRangeException">If the index is out of range of <see cref="Tags"/></exception>
+        public TMPAnimationTag TagAt(int index)
+        {
+            if (index < atp.ProcessedTags.Count) return atp.ProcessedTags[index];
+
+            index -= atp.ProcessedTags.Count;
+            if (index < satp.ProcessedTags.Count) return satp.ProcessedTags[index];
+
+            index -= satp.ProcessedTags.Count;
+            if (index < hatp.ProcessedTags.Count) return hatp.ProcessedTags[index];
+
+            throw new IndexOutOfRangeException();
+        }
+        public TMPAnimationTag TagAt(int index, AnimationType type)
+        {
+            switch (type)
+            {
+                case AnimationType.Basic: return atp.ProcessedTags[index];
+                case AnimationType.Show: return satp.ProcessedTags[index];
+                case AnimationType.Hide: return hatp.ProcessedTags[index];
+                default: return null;
+            }
+        }
+        public TMPAnimationTag BasicTagAt(int index) => atp.ProcessedTags[index];
+        public TMPAnimationTag ShowTagAt(int index) => satp.ProcessedTags[index];
+        public TMPAnimationTag HideTagAt(int index) => hatp.ProcessedTags[index];
+
+        public void TagAtTextIndex(int index, ICollection<TMPAnimationTag> tags)
+        {
+            if (index < atp.ProcessedTags.Count)
+            {
+                tags.AddRange(atp.ProcessedTags.Where(x => x.startIndex == index));
+                return;
+            }
+
+            index -= atp.ProcessedTags.Count;
+            if (index < satp.ProcessedTags.Count)
+            {
+                tags.AddRange(satp.ProcessedTags.Where(x => x.startIndex == index));
+                return;
+            }
+
+            index -= satp.ProcessedTags.Count;
+            if (index < hatp.ProcessedTags.Count)
+            {
+                tags.AddRange(hatp.ProcessedTags.Where(x => x.startIndex == index));
+                return;
+            }
+
+            throw new IndexOutOfRangeException();
+        }
+        public void TagAtTextIndex(int index, AnimationType type, ICollection<TMPAnimationTag> tags)
+        {
+            switch (type)
+            {
+                case AnimationType.Basic: tags.AddRange(atp.ProcessedTags.Where(x => x.startIndex == index)); break;
+                case AnimationType.Show: tags.AddRange(satp.ProcessedTags.Where(x => x.startIndex == index)); break;
+                case AnimationType.Hide: tags.AddRange(hatp.ProcessedTags.Where(x => x.startIndex == index)); break;
+            }
+        }
+        public void BasicTagAtTextIndex(int index, ICollection<TMPAnimationTag> tags) => tags.AddRange(atp.ProcessedTags.Where(x => x.startIndex == index));
+        public void ShowTagAtTextIndex(int index, ICollection<TMPAnimationTag> tags) => tags.AddRange(satp.ProcessedTags.Where(x => x.startIndex == index));
+        public void HideTagAtTextIndex(int index, ICollection<TMPAnimationTag> tags) => tags.AddRange(hatp.ProcessedTags.Where(x => x.startIndex == index));
+
+        /// <summary>
+        /// Get the index of the given tag.        
+        /// If no <paramref name="type"/> is defined, the return value refers to the tag's index within <see cref="Tags"/>. <br/>
+        /// Otherwise, it refers to the tag's index within <see cref="BasicTags"/> / <see cref="ShowTags"/> / <see cref="HideTags"/>
+        /// </summary>
+        /// <param name="tag">The tag of which to get the index</param>
+        /// <param name="type">Type of the tag</param>
+        /// <returns>The index of the given tag.        
+        /// If no <paramref name="type"/> is defined, the return value refers to the tag's index within <see cref="Tags"/>. <br/>
+        /// Otherwise, it refers to the tag's index within <see cref="BasicTags"/> / <see cref="ShowTags"/> / <see cref="HideTags"/>
+        /// </returns>
+        public int IndexOfTag(TMPAnimationTag tag, AnimationType? type = null)
+        {
+            if (type == null)
+            {
+                if (atp.ProcessedTags.Contains(tag)) return atp.ProcessedTags.IndexOf(tag);
+                if (satp.ProcessedTags.Contains(tag)) return satp.ProcessedTags.IndexOf(tag);
+                if (hatp.ProcessedTags.Contains(tag)) return hatp.ProcessedTags.IndexOf(tag);
+                return -1;
+            }
+
+            switch (type)
+            {
+                case AnimationType.Basic: return atp.ProcessedTags.IndexOf(tag);
+                case AnimationType.Show: return satp.ProcessedTags.IndexOf(tag);
+                case AnimationType.Hide: return hatp.ProcessedTags.IndexOf(tag);
+            }
+
+            return -1;
+        }
+
+        /// <summary>
+        /// Insert a tag into the text that is being animated by this animator.
+        /// </summary>
+        /// <param name="tag">The tag literal. Has to be a well-formed tag, e.g. \<wave amplitude=10\></param>
+        /// <param name="textIndex">The index of the tag within the animated text</param>
+        /// <param name="length">The "length" of the tag, i.e. how many characters it effects. Negative values will effect all characters after the given <paramref name="textIndex"/></param>
+        /// <returns>Whether the insertion was successful (i.e. whether the tag could successfully be validated)</returns>
+        /// <exception cref="System.IndexOutOfRangeException">If either the <paramref name="textIndex"/> or <paramref name="length"/> parameter is out of range</exception>
+        public bool TryInsertTag(string tag, int textIndex = 0, int length = -1) => InsertTag_Impl(tag, 0, textIndex, length);
+        /// <summary>
+        /// Insert a tag into the text that is being animated by this animator.
+        /// </summary>
+        /// <param name="type">The type of the tag, i.e. whether this is a basic / show / hide animation</param>
+        /// <param name="key">The key (or name) of the tag</param>
+        /// <param name="parameters">The parameters of the tag</param>
+        /// <param name="textIndex">The index of the text within the animated text</param>
+        /// <param name="length">The "length" of the tag, i.e. how many characters it effects. Negative values will effect all characters after the given <paramref name="textIndex"/></param>
+        /// <returns>Whether the insertion was successful (i.e. whether the tag could successfully be validated)</returns>
+        /// <exception cref="System.IndexOutOfRangeException">If either the <paramref name="textIndex"/> or <paramref name="length"/> parameter is out of range</exception>
+        public bool TryInsertTag(AnimationType type, string key, Dictionary<string, string> parameters, int textIndex = 0, int length = -1)
+            => InsertTag_Impl(type, key, parameters, textIndex, length);
+
+        /// <summary>
+        /// Remove the tag at the given <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">        
+        /// The index of the tag.<br/>
+        /// If no <paramref name="type"/> is defined, <paramref name="index"/> refers to the tag's index within <see cref="Tags"/>. <br/>
+        /// Otherwise, <paramref name="index"/> refers to the tag's index within <see cref="BasicTags"/> / <see cref="ShowTags"/> / <see cref="HideTags"/>
+        /// </param>
+        /// <param name="type">The type of the tag to remove</param>
+        /// <exception cref="IndexOutOfRangeException">If the index is outside of the range of the tag collection</exception>
+        public void RemoveTagAt(int index, AnimationType? type = null)
+        {
+            if (index < 0) throw new IndexOutOfRangeException();
+            if (type == null)
+            {
+                if (index < atp.ProcessedTags.Count)
+                {
+                    RemoveTag_Impl(AnimationType.Basic, index);
+                    return;
+                }
+
+                index -= atp.ProcessedTags.Count;
+                if (index < satp.ProcessedTags.Count)
+                {
+                    RemoveTag_Impl(AnimationType.Show, index);
+                    return;
+                }
+
+                index -= satp.ProcessedTags.Count;
+                if (index < hatp.ProcessedTags.Count)
+                {
+                    RemoveTag_Impl(AnimationType.Hide, index);
+                    return;
+                }
+
+                throw new IndexOutOfRangeException();
+            }
+
+            RemoveTag_Impl(type.Value, index);
+        }
+        /// <summary>
+        /// Remove tags at the given <paramref name="textIndex"/>.
+        /// </summary>
+        /// <param name="textIndex">The index in the animated text</param>
+        /// <param name="type">The type of tags to remove</param>
+        /// <param name="maxRemove">The maximum amount of tags to remove (tags can have the same index).<br/>Negative values will remove all tags at the given <paramref name="textIndex"/></param>
+        /// <param name="coll">Removed tags will be appended to this collection</param>
+        /// <exception cref="System.IndexOutOfRangeException">If the <paramref name="textIndex"/> is outside of the range of the text</exception>
+        public void RemoveTagAtTextIndex(int textIndex, AnimationType type, int maxRemove = 1, ICollection<TMPAnimationTag> coll = null)
+        {
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count) throw new System.IndexOutOfRangeException();
+
+            List<TMPAnimationTag> processor = null;
+            List<CachedAnimation> cached = null;
+
+            switch (type)
+            {
+                case AnimationType.Basic:
+                    processor = atp.ProcessedTags;
+                    cached = basicCached;
+                    break;
+
+                case AnimationType.Show:
+                    processor = satp.ProcessedTags;
+                    cached = showCached;
+                    break;
+
+                case AnimationType.Hide:
+                    processor = hatp.ProcessedTags;
+                    cached = hideCached;
+                    break;
+            }
+
+            if (maxRemove < 0) maxRemove = processor.Count;
+
+            for (int i = 0; i < processor.Count; i++)
+            {
+                if (maxRemove <= 0) return;
+                if (processor[i].startIndex == textIndex)
+                {
+                    var tag = processor[i];
+                    processor.RemoveAt(i);
+                    cached.Remove(cached.First(x => x.tag == tag));
+                    coll?.Add(tag);
+                    i--;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Clear all tags of the given type.
+        /// </summary>
+        /// <param name="type">The type of tag that is cleared.</param>
+        public void ClearTags(AnimationType type)
+        {
+            switch (type)
+            {
+                case AnimationType.Basic:
+                    atp.ProcessedTags.Clear();
+                    basicCached.Clear();
+                    break;
+                case AnimationType.Show:
+                    satp.ProcessedTags.Clear();
+                    showCached.Clear();
+                    break;
+                case AnimationType.Hide:
+                    hatp.ProcessedTags.Clear();
+                    hideCached.Clear();
+                    break;
+            }
+        }
+        /// <summary>
+        /// Clear all tags.
+        /// </summary>
+        public void ClearTags()
+        {
+            atp.ProcessedTags.Clear();
+            basicCached.Clear();
+            satp.ProcessedTags.Clear();
+            showCached.Clear();
+            hatp.ProcessedTags.Clear();
+            hideCached.Clear();
+        }
+
+        private bool InsertTag_Impl(AnimationType type, string key, Dictionary<string, string> parameters, int textIndex, int length)
+        {
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count || (textIndex + length) > mediator.CharData.Count) throw new System.IndexOutOfRangeException();
+
+            TMPAnimationTag t;
+            switch (type)
+            {
+                case AnimationType.Basic:
+                    if (!ValidateAnimationTag(key, parameters, database.basicAnimationDatabase)) return false;
+                    t = new(key, textIndex, parameters);
+                    InsertElement(atp.ProcessedTags, t);
+                    PostProcessTag(t, basicCached, database.basicAnimationDatabase);
+                    break;
+
+                case AnimationType.Show:
+                    if (!ValidateAnimationTag(key, parameters, database.showAnimationDatabase)) return false;
+                    t = new(key, textIndex, parameters);
+                    InsertElement(satp.ProcessedTags, t);
+                    PostProcessTag(t, showCached, database.showAnimationDatabase);
+                    break;
+
+                case AnimationType.Hide:
+                    if (!ValidateAnimationTag(key, parameters, database.hideAnimationDatabase)) return false;
+                    t = new(key, textIndex, parameters);
+                    InsertElement(hatp.ProcessedTags, t);
+                    PostProcessTag(t, hideCached, database.hideAnimationDatabase);
+                    break;
+
+                default:
+                    Debug.LogError("Tag \"" + tag + "\" has invalid type");
+                    return false;
+            }
+
+            if (length < 0) t.Close(mediator.CharData.Count - 1);
+            else if (length == 0) t.Close(textIndex);
+            else t.Close(textIndex + length - 1);
+
+            return true;
+        }
+        private bool InsertTag_Impl(string tag, int index, int textIndex, int length)
+        {
+            if (index < 0) return false;
+            if (textIndex < 0 || textIndex >= mediator.CharData.Count || (textIndex + length) > mediator.CharData.Count) return false;
+
+            ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
+            bool parsed = ParsingUtility.TryParseTag(tag, 0, tag.Length - 1, ref tagInfo, ParsingUtility.TagType.Open);
+            if (!parsed) return false;
+
+            Dictionary<string, string> parameters;
+            TMPAnimationTag t;
+            switch (tagInfo.prefix)
+            {
+                case ParsingUtility.NO_PREFIX:
+                    if (!ValidateAnimationTag(tag, tagInfo, database.basicAnimationDatabase, out parameters)) return false;
+                    t = new(tagInfo.name, textIndex, parameters);
+                    atp.ProcessedTags.Insert(index, t);
+                    PostProcessTag(t, basicCached, database.basicAnimationDatabase);
+                    break;
+
+                case ParsingUtility.SHOW_ANIMATION_PREFIX:
+                    if (!ValidateAnimationTag(tag, tagInfo, database.showAnimationDatabase, out parameters)) return false;
+                    t = new(tagInfo.name, textIndex, parameters);
+                    satp.ProcessedTags.Insert(index, t);
+                    PostProcessTag(t, showCached, database.showAnimationDatabase);
+                    break;
+
+                case ParsingUtility.HIDE_ANIMATION_PREFIX:
+                    if (!ValidateAnimationTag(tag, tagInfo, database.hideAnimationDatabase, out parameters)) return false;
+                    t = new(tagInfo.name, textIndex, parameters);
+                    hatp.ProcessedTags.Insert(index, t);
+                    PostProcessTag(t, hideCached, database.hideAnimationDatabase);
+                    break;
+
+                default:
+                    Debug.LogError("Tag \"" + tag + "\" has invalid prefix \'" + tagInfo.prefix + "\'");
+                    return false;
+            }
+
+            if (length < 0) t.Close(mediator.CharData.Count - 1);
+            else if (length == 0) t.Close(textIndex);
+            else t.Close(textIndex + length - 1);
+
+            return true;
+        }
+        private void RemoveTag_Impl(AnimationType type, int index)
+        {
+            if (index < 0) throw new System.IndexOutOfRangeException();
+
+            List<TMPAnimationTag> processor = null;
+            List<CachedAnimation> cached = null;
+
+            switch (type)
+            {
+                case AnimationType.Basic:
+                    processor = atp.ProcessedTags;
+                    cached = basicCached;
+                    break;
+
+                case AnimationType.Show:
+                    processor = satp.ProcessedTags;
+                    cached = showCached;
+                    break;
+
+                case AnimationType.Hide:
+                    processor = hatp.ProcessedTags;
+                    cached = hideCached;
+                    break;
+            }
+
+            if (index >= processor.Count) throw new System.IndexOutOfRangeException();
+            var tag = processor[index];
+            cached.Remove(cached.First(x => x.tag == tag));
+            processor.RemoveAt(index);
+        }
+        private bool ValidateAnimationTag<T>(string tag, ParsingUtility.TagInfo tagInfo, TMPEffectDatabase<T> database, out Dictionary<string, string> parametersOut) where T : ITMPAnimation
+        {
+            parametersOut = null;
+            if (!database.Contains(tagInfo.name)) return false;
+            parametersOut = ParsingUtility.GetTagParametersDict(tag);
+            if (!database.GetEffect(tagInfo.name).ValidateParameters(parametersOut)) return false;
+            return true;
+        }
+        private bool ValidateAnimationTag<T>(string key, Dictionary<string, string> parameters, TMPEffectDatabase<T> database) where T : ITMPAnimation
+        {
+            if (!database.Contains(key)) return false;
+            if (!database.GetEffect(key).ValidateParameters(parameters)) return false;
+            return true;
+        }
+        #endregion
 
         #region Animations
         private void Update()
@@ -360,15 +795,21 @@ namespace TMPEffects.Components
             if (cData.visibilityState == CharData.VisibilityState.ShowAnimation)
             {
                 if (!IsExcludedShow(cData.info.character))
-                    Animate(showCached[GetActiveIndex(index, showCached)]);
+                {
+                    if (showCached.Count > 0) Animate(showCached[GetActiveIndex(index, showCached)]);
+                    else Animate(dummyShow);
+                }
             }
             else if (cData.visibilityState == CharData.VisibilityState.HideAnimation)
             {
                 if (!IsExcludedHide(cData.info.character))
-                    Animate(hideCached[GetActiveIndex(index, hideCached)]);
+                {
+                    if (hideCached.Count > 0) Animate(hideCached[GetActiveIndex(index, hideCached)]);
+                    else Animate(dummyHide);
+                }
             }
 
-            if (cData.visibilityState == CharData.VisibilityState.Hidden || IsExcluded(cData.info.character))
+            if (cData.visibilityState == CharData.VisibilityState.Hidden || IsExcludedBasic(cData.info.character))
             {
                 ApplyVertices();
                 return 1;
@@ -716,11 +1157,19 @@ namespace TMPEffects.Components
         private List<CachedAnimation> showCached;
         private List<CachedAnimation> hideCached;
 
+        private void PostProcessTag<T>(TMPAnimationTag tag, List<CachedAnimation> cachedAnimation, TMPAnimationDatabaseBase<T> database) where T : ITMPAnimation
+        {
+            if (tag.IsOpen) tag.Close(mediator.CharData.Count - 1);
+
+            InsertElement(cachedAnimation, new CachedAnimation(this, tag, database.GetEffect(tag.name), context, mediator), x => x.tag.startIndex > tag.startIndex);
+            //cacehdAnimation.Add(new CachedAnimation(this, tag, database.GetEffect(tag.name), context, mediator));
+        }
+
         private void PostProcessTags(/*string text*/)
         {
             // Close any unclosed animation tags
             int endIndex = mediator.CharData.Count - 1;
-            foreach (var tag in AnimationTags)
+            foreach (var tag in Tags)
             {
                 if (tag.IsOpen) tag.Close(endIndex);
             }
@@ -734,26 +1183,45 @@ namespace TMPEffects.Components
             foreach (var tag in satp.ProcessedTags) showCached.Add(new CachedAnimation(this, tag, database.showAnimationDatabase.GetEffect(tag.name), context, mediator));
             foreach (var tag in hatp.ProcessedTags) hideCached.Add(new CachedAnimation(this, tag, database.hideAnimationDatabase.GetEffect(tag.name), context, mediator));
 
+            SetDummyShow();
+            SetDummyHide();
+
             // Add default show / hide animation
             if (database == null || !AddDefault(defaultShowString, database.showAnimationDatabase, showCached))
             {
-                TMPAnimationTag tag = new TMPAnimationTag("Dummy Show Animation", 0, null);
-                tag.Close(mediator.CharData.Count - 1);
-                var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
+                //TMPAnimationTag tag = new TMPAnimationTag("Dummy Show Animation", 0, null);
+                //tag.Close(mediator.CharData.Count - 1);
+                //var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
 
-                //var cached = new CachedAnimation(new TMPAnimationTag("Dummy Show Animation", 0, null), ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
-                //cached.tag.Close(text.Length - 1);
-                showCached.Insert(0, cached);
+                ////var cached = new CachedAnimation(new TMPAnimationTag("Dummy Show Animation", 0, null), ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
+                ////cached.tag.Close(text.Length - 1);
+                //showCached.Insert(0, cached);
             }
 
             if (database == null || !AddDefault(defaultHideString, database.hideAnimationDatabase, hideCached))
             {
-                TMPAnimationTag tag = new TMPAnimationTag("Dummy Hide Animation", 0, null);
-                tag.Close(mediator.CharData.Count - 1);
-                var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyHideAnimation>(), context, mediator);
+                //TMPAnimationTag tag = new TMPAnimationTag("Dummy Hide Animation", 0, null);
+                //tag.Close(mediator.CharData.Count - 1);
+                //var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyHideAnimation>(), context, mediator);
 
-                hideCached.Insert(0, cached);
+                //hideCached.Insert(0, cached);
             }
+        }
+
+        private void SetDummyShow()
+        {
+            TMPAnimationTag tag = new TMPAnimationTag("Dummy Show Animation", 0, null);
+            tag.Close(mediator.CharData.Count - 1);
+            var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
+            dummyShow = cached;
+        }
+
+        private void SetDummyHide()
+        {
+            TMPAnimationTag tag = new TMPAnimationTag("Dummy Hide Animation", 0, null);
+            tag.Close(mediator.CharData.Count - 1);
+            var cached = new CachedAnimation(this, tag, ScriptableObject.CreateInstance<DummyShowAnimation>(), context, mediator);
+            dummyShow = cached;
         }
 
         private bool AddDefault<T>(string str, TMPAnimationDatabaseBase<T> database, List<CachedAnimation> anims) where T : ITMPAnimation

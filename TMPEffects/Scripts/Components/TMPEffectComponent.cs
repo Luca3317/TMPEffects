@@ -1,4 +1,7 @@
+using Codice.CM.Common;
 using IntervalTree;
+using System.Collections.Generic;
+using TMPEffects.Tags;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +18,15 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] internal TMPMediator mediator;
 
+
+        public int CharacterCount => mediator.CharData.Count;
+        //public string ProcessedText
+        //{
+        //    get
+        //}
+
+
+
         public void SetText(string text)
         {
             mediator.Text.SetText(text);
@@ -28,6 +40,21 @@ namespace TMPEffects.Components
         protected void UpdateMediator()
         {
             mediator = TMPMediator.Create(gameObject);
+        }
+
+        protected void InsertElement<T>(List<T> list, T tag) where T : TMPEffectTag
+        {
+            int largerIndex = list.FindIndex(x => x.startIndex > tag.startIndex);
+            if (largerIndex <= 0) largerIndex = 0;
+            else largerIndex -= 1;
+            list.Insert(largerIndex, tag);
+        }
+        protected void InsertElement<T>(List<T> list, T element, System.Predicate<T> match)
+        {
+            int largerIndex = list.FindIndex(match);
+            if (largerIndex <= 0) largerIndex = 0;
+            else largerIndex -= 1;
+            list.Insert(largerIndex, element);
         }
     }
 }

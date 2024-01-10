@@ -5,7 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
+using TMPEffects.Databases;
+using TMPEffects.Tags;
 using UnityEngine;
+using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing
 {
@@ -520,6 +523,47 @@ namespace TMPEffects.TextProcessing
             if (tag[1] == '/') return TagType.Close;
             return TagType.Open;
         }
+
+
+
+        //public static bool TryParseAnimationTag(int textIndex, TagInfo tagInfo, TMPAnimationDatabase database, ref TMPAnimationTag tag)
+        //{
+        //    if (database == null) return false;
+
+        //    // check name
+        //    if (!database.Contains(tagInfo.name)) return false;
+
+        //    ITMPAnimation animation;
+        //    if ((animation = database.GetEffect(tagInfo.name)) == null) return false;
+
+        //    if (tagInfo.type == TagType.Open)
+        //    {
+        //        // check parameters
+        //        var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
+        //        if (!animation.ValidateParameters(parameters)) return false;
+
+        //        tag = new TMPAnimationTag(tagInfo.name, textIndex, parameters);
+        //        //ProcessedTags.Add(tag);
+        //    }
+        //    else
+        //    {
+        //        for (int i = ProcessedTags.Count - 1; i >= 0; i--)
+        //        {
+        //            tag = ProcessedTags[i];
+
+        //            if (tag.IsOpen && tag.IsEqual(tagInfo.name))
+        //            {
+        //                tag.Close(textIndex - 1);
+        //                break;
+        //            }
+        //        }
+        //    }
+
+        //    return true;
+        //}
+
+
+
 
         public static bool StringToInt(string str, out int result)
         {

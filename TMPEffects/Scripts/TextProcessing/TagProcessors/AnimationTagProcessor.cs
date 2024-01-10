@@ -41,6 +41,17 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return true;
         }
 
+        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        {
+            if (Process(tagInfo, textIndex))
+            {
+                ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
+                return true;
+            }
+
+            return false;
+        }
+
         public bool Process(TagInfo tagInfo, int textIndex)
         {
             if (database == null) return false;

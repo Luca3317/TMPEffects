@@ -11,6 +11,7 @@ namespace TMPEffects.Commands
     {
         public override CommandType CommandType => CommandType.Range;
         public override bool ExecuteInstantly => true;
+        public override bool ExecuteOnSkip => false;
 
         public override void ExecuteCommand(TMPCommandTag tag, TMPWriter writer)
         {

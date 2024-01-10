@@ -52,7 +52,7 @@ public class SegmentData
             if (firstVisibleIndex == -1) firstVisibleIndex = i;
             lastVisibleIndex = i;
 
-            if (!animator.IsExcluded(cData[i].info.character))
+            if (!animator.IsExcludedBasic(cData[i].info.character))
             {
                 if (firstAnimationIndex == -1) firstAnimationIndex = i;
                 lastAnimationIndex = i;

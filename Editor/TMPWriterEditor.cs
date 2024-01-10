@@ -195,12 +195,12 @@ public class TMPWriterEditor : Editor
         playLabelRect = new Rect(headerRect.position, new Vector2(playLabelWidth, playLabelHeight));
         if (wrapHeader)
         {
-            eventToggleRect = new Rect(headerRect.x, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth-20, eventToggleHeight);
+            eventToggleRect = new Rect(headerRect.x, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth - 20, eventToggleHeight);
             commandToggleRect = new Rect(headerRect.x + eventToggleWidth, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, commandToggleWidth, commandToggleHeight);
         }
         else
         {
-            eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth-20, headerHeight);
+            eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth - 20, headerHeight);
             commandToggleRect = new Rect(headerRect.x + playLabelWidth + eventToggleWidth, headerRect.y, commandToggleWidth, headerHeight);
         }
         eventWarningRect = new Rect(eventToggleRect.x + eventToggleRect.width - 5, eventToggleRect.y, 20, 20);
@@ -481,6 +481,11 @@ public class TMPWriterEditor : Editor
         writer.ResetWriter();
         progress = 0;
         if (wasWriting) writer.StartWriter();
+        else
+        {
+            Debug.Log("show");
+            writer.Show(0, writer.CharacterCount, true);
+        }
     }
 
     void StopWriter()
@@ -488,6 +493,7 @@ public class TMPWriterEditor : Editor
         //if (!writer.enabled) return;
         writer.ResetWriter();
         progress = 0;
+        writer.Show(0, writer.CharacterCount, true);
     }
 
     void FinishWriter()

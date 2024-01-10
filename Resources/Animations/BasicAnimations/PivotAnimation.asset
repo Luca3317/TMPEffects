@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04edef5a5629a5e419eda107fe236b16, type: 3}
   m_Name: PivotAnimation
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 75
   xOffset: 0
   yOffset: 0
   minAngle: -100
   maxAngle: 100
-  rotationAxis: {x: 1, y: 0, z: 0}
+  rotationAxis: {x: 0, y: 10, z: 0}

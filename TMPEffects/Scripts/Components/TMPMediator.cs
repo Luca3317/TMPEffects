@@ -12,7 +12,7 @@ namespace TMPEffects.Components
      * about it in the form of a CharData collection.
      */
     [DisallowMultipleComponent]
-    internal class TMPMediator : MonoBehaviour
+    public class TMPMediator : MonoBehaviour
     {
 
         public void VisibilityStateUpdated(int index, CharData.VisibilityState previous)
@@ -137,7 +137,6 @@ namespace TMPEffects.Components
 
             if (subscribers.Count == 0)
             {
-                // TODO Is this the right way to handle this?
                 // This check is meant to prevent doubly calling destroy
                 // on this component if the gameobject is destroyed
                 // (it being destroyed will cause the other objects to call Unsubscribe)

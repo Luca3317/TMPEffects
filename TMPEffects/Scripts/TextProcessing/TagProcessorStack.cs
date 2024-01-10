@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.TextProcessing.TagProcessors;
+using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing
 {
@@ -46,6 +47,16 @@ namespace TMPEffects.TextProcessing
             for (int i = 0; i < tagProcessors.Count; i++)
             {
                 if (tagProcessors[i].PreProcess(tagInfo)) return true;
+            }
+
+            return false;
+        }
+
+        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        {
+            for (int i = 0; i < tagProcessors.Count; i++)
+            {
+                if (tagProcessors[i].Process(tagInfo, textIndex, length)) return true;
             }
 
             return false;
