@@ -7,6 +7,9 @@ using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TextProcessing;
 using TMPEffects.TextProcessing.TagProcessors;
+using System.Linq;
+using System;
+using TMPEffects.Extensions;
 
 namespace TMPEffects.Components
 {
@@ -23,7 +26,7 @@ namespace TMPEffects.Components
     /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>
     /// </remarks>
-    [ExecuteAlways, DisallowMultipleComponent]
+    [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
     {
         /// <summary>
@@ -201,6 +204,43 @@ namespace TMPEffects.Components
             mediator.ForceReprocess();
         }
         #endregion
+
+
+        /// <summary>
+        /// Check whether the character is excluded from animations of the given type.
+        /// </summary>
+        /// <param name="c">The character to check</param>
+        /// <param name="type">The type of animation to check against</param>
+        /// <returns>Whether the character is excluded from animations of the given type</returns>
+        /// <exception cref="System.ArgumentException">If an invalid <see cref="AnimationType"/> is passed in</exception>
+        public bool IsExcluded(char c, AnimationType type)
+        {
+            switch (type)
+            {
+                case AnimationType.Basic: return IsExcludedBasic(c);
+                case AnimationType.Show: return IsExcludedShow(c);
+                case AnimationType.Hide: return IsExcludedHide(c);
+                default: throw new System.ArgumentException();
+            }
+        }
+        /// <summary>
+        /// Check whether the given character is excluded from basic animations.
+        /// </summary>
+        /// <param name="c">The character to check</param>
+        /// <returns>Whether the character is excluded from basic animations</returns>
+        public bool IsExcludedBasic(char c) => (excludePunctuation && char.IsPunctuation(c)) || excludedCharacters.Contains(c);
+        /// <summary>
+        /// Check whether the given character is excluded from show animations.
+        /// </summary>
+        /// <param name="c">The character to check</param>
+        /// <returns>Whether the character is excluded from show animations</returns>
+        public bool IsExcludedShow(char c) => (excludePunctuationShow && char.IsPunctuation(c)) || excludedCharactersShow.Contains(c);
+        /// <summary>
+        /// Check whether the given character is excluded from hide animations.
+        /// </summary>
+        /// <param name="c">The character to check</param>
+        /// <returns>Whether the character is excluded from hide animations</returns>
+        public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
 
         #region Animations
         private void Update()
@@ -642,12 +682,6 @@ namespace TMPEffects.Components
 #endif
         #endregion
 
-        #region Various Public Methods
-        public bool IsExcluded(char c) => (excludePunctuation && char.IsPunctuation(c)) || excludedCharacters.Contains(c);
-        public bool IsExcludedShow(char c) => (excludePunctuationShow && char.IsPunctuation(c)) || excludedCharactersShow.Contains(c);
-        public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
-        #endregion
-
         private void UpdateProcessors()
         {
             mediator.Processor.UnregisterProcessor(ParsingUtility.NO_PREFIX);
@@ -848,12 +882,9 @@ namespace TMPEffects.Components
             float passed = context.passedTime;
             CharData cData = mediator.CharData[index];
             CharData.VisibilityState current = cData.visibilityState;
-            //Debug.Log("1");
             cData.SetVisibilityState(prev, -1);
-            //Debug.Log("2");
             cData.SetVisibilityState(current, passed);
             mediator.CharData[index] = cData;
-            //Debug.Log("Ensuring correct timing; setting from " + current + " to " + prev + " and back again; time: " + mediator.CharData[index].visibleTime + " and passed: " + context.passedTime + " cached passed: " + passed);
         }
     }
 }
