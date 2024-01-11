@@ -8,7 +8,7 @@ namespace TMPEffects
     /// <summary>
     /// Base class for commands.
     /// </summary>
-    public abstract class TMPCommand : ScriptableObject
+    public abstract class TMPCommand : ScriptableObject, ITMPCommand
     {
         /// <summary>
         /// The type of command this is.
@@ -37,7 +37,7 @@ namespace TMPEffects
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="writer"></param>
-        public abstract void ExecuteCommand(TMPCommandTag tag, TMPWriter writer/*, TMPAnimator animator*/);
+        public abstract void ExecuteCommand(TMPCommandArgs args);
         /// <summary>
         /// Validate the parameters.<br/>
         /// Used to validate tags.

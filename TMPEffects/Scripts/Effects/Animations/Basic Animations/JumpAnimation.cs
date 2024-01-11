@@ -1,5 +1,3 @@
-using Codice.CM.Client.Differences;
-using System.Collections;
 using System.Collections.Generic;
 using TMPEffects;
 using TMPEffects.TextProcessing;

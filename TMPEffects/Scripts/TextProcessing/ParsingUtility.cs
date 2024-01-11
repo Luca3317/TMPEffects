@@ -1,14 +1,8 @@
-using Codice.Client.BaseCommands.Merge.Restorer;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using TMPEffects.Databases;
-using TMPEffects.Tags;
 using UnityEngine;
-using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing
 {

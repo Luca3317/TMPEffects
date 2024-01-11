@@ -68,7 +68,7 @@ namespace TMPEffects.Components
         /// <summary>
         /// Raised when the TMPWriter shows the character with index corresponding to the event tag.
         /// </summary>
-        public UnityEvent<TMPEventTag> OnTextEvent;
+        public TMPEvent OnTextEvent;
         /// <summary>
         /// Raised when a new character is shown.
         /// </summary>
@@ -147,7 +147,7 @@ namespace TMPEffects.Components
             mediator.Subscribe(this);
             mediator.TextChanged -= OnTextChanged;
             mediator.TextChanged += OnTextChanged;
-            mediator.Processor.FinishProcessTags += CloseOpenTags;
+            mediator.Processor.FinishProcessTags += PostProcessTags;
 
             mediator.ForceReprocess();
 
@@ -169,7 +169,7 @@ namespace TMPEffects.Components
         private void OnDisable()
         {
             mediator.TextChanged -= OnTextChanged;
-            mediator.Processor.FinishProcessTags -= CloseOpenTags;
+            mediator.Processor.FinishProcessTags -= PostProcessTags;
             mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
             mediator.Processor.UnregisterProcessor(ParsingUtility.EVENT_PREFIX);
 
@@ -404,7 +404,8 @@ namespace TMPEffects.Components
             else if (length == 0) t.Close(textIndex);
             else t.Close(textIndex + length - 1);
 
-            InsertElement(ctp.ProcessedTags, t);
+            InsertElement(ctps.ProcessedTags, t);
+            cachedCommands.Add(t, new CachedCommand(database.GetEffect(t.name), new TMPCommandArgs(t, this)));
 
             return true;
         }
@@ -419,7 +420,8 @@ namespace TMPEffects.Components
             else if (length == 0) t.Close(textIndex);
             else t.Close(textIndex + length - 1);
 
-            InsertElement(ctp.ProcessedTags, t);
+            InsertElement(ctps.ProcessedTags, t);
+            cachedCommands.Add(t, new CachedCommand(database.GetEffect(t.name), new TMPCommandArgs(t, this)));
 
             return true;
         }
@@ -431,19 +433,19 @@ namespace TMPEffects.Components
 
             Dictionary<string, string> parameters = ParsingUtility.GetTagParametersDict(tag);
             TMPEventTag t = new TMPEventTag(textIndex, tagInfo.name, parameters);
+
             InsertElement(etp.ProcessedTags, t);
+            cachedEvents.Add(t, new CachedEvent(new TMPEventArgs(t)));
+
             return true;
         }
         public void InsertEventTag(string key, Dictionary<string, string> parameters, int textIndex = 0)
         {
             TMPEventTag t = new TMPEventTag(textIndex, key, parameters);
             InsertElement(etp.ProcessedTags, t);
+            cachedEvents.Add(t, new CachedEvent(new TMPEventArgs(t)));
         }
 
-        public void RemoveCommandTagAt(int index)
-        {
-            ctps.ProcessedTags.RemoveAt(index);
-        }
         public void RemoveCommandTagAtTextIndex(int textIndex, int maxRemove = -1, ICollection<TMPCommandTag> coll = null)
         {
             if (textIndex < 0 || textIndex >= mediator.CharData.Count) throw new System.IndexOutOfRangeException();
@@ -457,14 +459,11 @@ namespace TMPEffects.Components
                 {
                     var tag = ctps.ProcessedTags[i];
                     ctps.ProcessedTags.RemoveAt(i);
+                    cachedCommands.Remove(tag);
                     coll?.Add(tag);
                     i--;
                 }
             }
-        }
-        public void RemoveEventTagAt(int index)
-        {
-            etp.ProcessedTags.RemoveAt(index);
         }
         public void RemoveEventTagAtTextIndex(int textIndex, int maxRemove = -1, ICollection<TMPEventTag> coll = null)
         {
@@ -479,6 +478,7 @@ namespace TMPEffects.Components
                 {
                     var tag = etp.ProcessedTags[i];
                     etp.ProcessedTags.RemoveAt(i);
+                    cachedEvents.Remove(tag);
                     coll?.Add(tag);
                     i--;
                 }
@@ -638,19 +638,20 @@ namespace TMPEffects.Components
                 HideAllCharacters(true);
 
             // Execute instant commands
-            ExecuteCommandsAndEvents(-1);
+            ExecuteCommands(-1);
 
             for (int i = Mathf.Max(currentIndex, 0); i < info.characterCount; i++)
             {
                 currentIndex = i;
                 cData = mediator.CharData[i];
 
-                ExecuteCommandsAndEvents(currentIndex);
+                ExecuteCommands(currentIndex);
+                ExecuteEvents(currentIndex);
 
                 if (shouldWait) yield return new WaitForSeconds(waitAmount);
                 waitAmount = 0f;
 
-                HandleWaitConditions();
+                yield return HandleWaitConditions();
 
                 OnShowCharacter?.Invoke(cData);
 
@@ -690,9 +691,10 @@ namespace TMPEffects.Components
         // TODO Toggle for whether to wait 
         //      Until all conditions have been true at one point since starting the check
         //      Until all conditions are true at once
-        private void HandleWaitConditions()
+        IEnumerator HandleWaitConditions()
         {
-            if (continueConditions == null) return;
+            if (continueConditions == null) yield break;
+
             bool allMet;
             Delegate[] delegates;
             do
@@ -706,57 +708,83 @@ namespace TMPEffects.Components
                     else continueConditions -= (delegates[i] as Func<bool>);
                 }
 
+                yield return null;
+
             } while (!allMet);
 
             continueConditions = null;
         }
 
-        private void ExecuteCommandsAndEvents(int index)
+        private void ExecuteEvents(int index, bool skipped = false)
         {
-            TMPCommand command;
-            if (index < 0)
-            {
-                for (int j = 0; j < ctp.ProcessedTags.Count; j++)
-                {
-                    if ((command = database.GetEffect(ctp.ProcessedTags[j].name)).ExecuteInstantly)
-                    {
-                        command.ExecuteCommand(ctp.ProcessedTags[j], this);
-                    }
-                }
-            }
-            else
-            {
-                // Raise any events or comamnds associated with the current index
-                for (int j = 0; j < ctp.ProcessedTags.Count; j++)
-                {
-                    if (ctp.ProcessedTags[j].startIndex == index)
-                    {
 #if UNITY_EDITOR
-                        if (!commandsEnabled && !Application.isPlaying) continue;
-#endif
-                        database.GetEffect(ctp.ProcessedTags[j].name).ExecuteCommand(ctp.ProcessedTags[j], this);
-                    }
-                }
-                for (int j = 0; j < sctp.ProcessedTags.Count; j++)
-                {
-                    if (sctp.ProcessedTags[j].startIndex == index)
-                    {
-#if UNITY_EDITOR
-                        if (!commandsEnabled && !Application.isPlaying) continue;
-#endif
-                        sceneCommands[sctp.ProcessedTags[j].name].command?.Invoke(new SceneCommandArgs(this, sctp.ProcessedTags[j].parameters));
-                    }
-                }
-                for (int j = 0; j < etp.ProcessedTags.Count; j++)
-                {
-                    if (etp.ProcessedTags[j].startIndex == index)
-                    {
-#if UNITY_EDITOR
-                        if (!eventsEnabled && !Application.isPlaying) continue;
+            if (!eventsEnabled && !Application.isPlaying) return;
 #endif
 
-                        OnTextEvent?.Invoke(etp.ProcessedTags[j]);
-                    }
+            TMPEventTag eventTag;
+
+            if (skipped)
+            {
+                foreach (var cachedEvent in cachedEvents)
+                {
+                    if (cachedEvent.Key.startIndex >= index) break;
+                    if (cachedEvent.Key.invokeOnSkip)
+                        cachedEvent.Value.Trigger(OnTextEvent);
+                }
+
+                return;
+            }
+
+            int cachedIndex = etp.ProcessedTags.FindIndex((x) => x.startIndex == index);
+            int len = etp.ProcessedTags.Count;
+            if (cachedIndex >= 0)
+            {
+                while (cachedIndex < len && (eventTag = etp.ProcessedTags[cachedIndex++]).startIndex == index)
+                {
+                    cachedEvents[eventTag].Trigger(OnTextEvent);
+                }
+            }
+        }
+
+        private void ExecuteCommands(int index, bool skipped = false)
+        {
+#if UNITY_EDITOR
+            if (!commandsEnabled && !Application.isPlaying) return;
+#endif
+            TMPCommandTag commandTag;
+
+            // If writer skipped, execute remaining commands
+            if (skipped)
+            {
+                foreach (var cachedCommand in cachedCommands)
+                {
+                    if (cachedCommand.Key.startIndex >= index) break;
+                    if (cachedCommand.Value.command.ExecuteOnSkip)
+                        cachedCommand.Value.Trigger();
+                }
+
+                return;
+            }
+
+            // If index negative, execute executeinstantly commands
+            if (index < 0)
+            {
+                foreach (var cachedCommand in cachedCommands.Values)
+                {
+                    if (cachedCommand.command.ExecuteInstantly)
+                        cachedCommand.Trigger();
+                }
+                return;
+            }
+
+            // Otherwise, execute commands at current index
+            int cachedIndex = ctps.ProcessedTags.FindIndex((x) => x.startIndex == index);
+            int len = ctps.ProcessedTags.Count;
+            if (cachedIndex >= 0)
+            {
+                while (cachedIndex < len && (commandTag = ctps.ProcessedTags[cachedIndex++]).startIndex == index)
+                {
+                    cachedCommands[commandTag].Trigger();
                 }
             }
         }
@@ -826,7 +854,11 @@ namespace TMPEffects.Components
             if (forceReprocess) mediator.ForceReprocess();
         }
 
-        private void CloseOpenTags(string text)
+
+        Dictionary<TMPCommandTag, CachedCommand> cachedCommands = new Dictionary<TMPCommandTag, CachedCommand>();
+        Dictionary<TMPEventTag, CachedEvent> cachedEvents = new Dictionary<TMPEventTag, CachedEvent>();
+
+        private void PostProcessTags(string text)
         {
             int endIndex = text.Length - 1;
             foreach (var tag in ctps.ProcessedTags)
@@ -834,6 +866,16 @@ namespace TMPEffects.Components
                 if (tag.IsOpen)
                     tag.Close(endIndex);
             }
+
+            // Sort the processed commands by startIndex; this is necessary since this
+            // wont be autosorted, as it combines two unrelated lists (those are autosorted each)
+            ctps.ProcessedTags.Sort((x, y) => x.startIndex < y.startIndex ? -1 : 1);
+
+            cachedCommands.Clear();
+            cachedEvents.Clear();
+            foreach (var commandTag in ctp.ProcessedTags) cachedCommands.Add(commandTag, new CachedCommand(database.GetEffect(commandTag.name), new TMPCommandArgs(commandTag, this)));
+            foreach (var sceneCommandTag in sctp.ProcessedTags) cachedCommands.Add(sceneCommandTag, new CachedCommand(sceneCommands[sceneCommandTag.name], new TMPCommandArgs(sceneCommandTag, this)));
+            foreach (var eventTag in etp.ProcessedTags) cachedEvents.Add(eventTag, new CachedEvent(new TMPEventArgs(eventTag)));
         }
 
         /// <summary>
@@ -955,6 +997,50 @@ namespace TMPEffects.Components
                 mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
             mediator.ForceUpdate(start, length);
+        }
+
+
+
+        private class CachedCommand
+        {
+            public ITMPCommand command { get; private set; }
+            public TMPCommandArgs args { get; private set; }
+            public bool Triggered { get; private set; }
+
+            public void Trigger()
+            {
+                if (Triggered) return;
+                Triggered = true;
+                command.ExecuteCommand(args);
+            }
+
+            public CachedCommand(ITMPCommand command, TMPCommandArgs args) => Reset(command, args);
+            public void Reset(ITMPCommand command, TMPCommandArgs args)
+            {
+                this.command = command;
+                this.args = args;
+                this.Triggered = false;
+            }
+        }
+
+        private class CachedEvent
+        {
+            public TMPEventArgs args { get; private set; }
+            public bool Triggered { get; private set; }
+
+            public void Trigger(TMPEvent tmpEvent)
+            {
+                if (Triggered) return;
+                Triggered = true;
+                tmpEvent.Invoke(args);
+            }
+
+            public CachedEvent(TMPEventArgs args) => Reset(args);
+            public void Reset(TMPEventArgs args)
+            {
+                this.args = args;
+                Triggered = false;
+            }
         }
     }
 }

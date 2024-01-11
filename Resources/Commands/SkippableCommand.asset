@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b56b52effe6594bae66026aa72b0b8, type: 3}
-  m_Name: CharShowAnimation
+  m_Script: {fileID: 11500000, guid: 4e475b5e11e6f2e41ac672691ad1bf9a, type: 3}
+  m_Name: SkippableCommand
   m_EditorClassIdentifier: 
-  duration: 1
-  characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.!?+-
-  maxUnitSize: 0
-  minUnitSize: 0
-  originalChance: 0.1
-  order: 0
-  maxWait: 0.5
-  minWait: 0.5

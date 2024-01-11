@@ -1,9 +1,7 @@
-using PlasticPipe.PlasticProtocol.Messages;
 using System.Collections.Generic;
 using TMPEffects.Animations;
 using TMPEffects.TextProcessing;
 using UnityEngine;
-using UnityEngine.U2D;
 
 [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Show Animations/Grow")]
 public class GrowShowAnimation : TMPShowAnimation

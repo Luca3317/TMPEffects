@@ -154,17 +154,17 @@ namespace TMPEffects.Components
 #endif
                 }
 
-//                if (gameObject.activeInHierarchy)
-//                {
-//                    UnsetPreprocessor();
-//                    TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
+                //                if (gameObject.activeInHierarchy)
+                //                {
+                //                    UnsetPreprocessor();
+                //                    TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
 
-//#if UNITY_EDITOR
-//                    if (Application.isPlaying) Destroy(this);
-//                    else DestroyImmediate(this);
-//#else
-//                Destroy(this);
-//#endif
+                //#if UNITY_EDITOR
+                //                    if (Application.isPlaying) Destroy(this);
+                //                    else DestroyImmediate(this);
+                //#else
+                //                Destroy(this);
+                //#endif
                 //}
             }
         }

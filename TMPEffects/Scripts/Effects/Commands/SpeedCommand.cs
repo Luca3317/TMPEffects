@@ -14,9 +14,9 @@ namespace TMPEffects.Commands
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => false;
 
-        public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
+        public override void ExecuteCommand(TMPCommandArgs args)
         {
-            writer.SetSpeed(float.Parse(args.parameters[""], CultureInfo.InvariantCulture));
+            args.writer.SetSpeed(float.Parse(args.tag.parameters[""], CultureInfo.InvariantCulture));
         }
 
         public override bool ValidateParameters(Dictionary<string, string> parameters)

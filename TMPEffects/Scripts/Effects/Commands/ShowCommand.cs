@@ -13,10 +13,10 @@ namespace TMPEffects.Commands
         public override bool ExecuteInstantly => true;
         public override bool ExecuteOnSkip => false;
 
-        public override void ExecuteCommand(TMPCommandTag tag, TMPWriter writer)
+        public override void ExecuteCommand(TMPCommandArgs args)
         {
-            if (tag.IsOpen) Debug.LogError("Show tag was not closed!");
-            writer.Show(tag.startIndex, tag.length, true);
+            if (args.tag.IsOpen) Debug.LogError("Show tag was not closed!");
+            args.writer.Show(args.tag.startIndex, args.tag.length, true);
         }
 
         public override bool ValidateParameters(Dictionary<string, string> parameters)

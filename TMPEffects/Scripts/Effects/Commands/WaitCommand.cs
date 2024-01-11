@@ -13,12 +13,10 @@ namespace TMPEffects.Commands
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => false;
 
-        public override void ExecuteCommand(TMPCommandTag args, TMPWriter writer)
+        public override void ExecuteCommand(TMPCommandArgs args)
         {
-            ParsingUtility.StringToFloat(args.parameters[""], out var value);
-            writer.Wait(value);
-
-            writer.WaitUntil(() => true);
+            ParsingUtility.StringToFloat(args.tag.parameters[""], out var value);
+            args.writer.Wait(value);
         }
 
         public override bool ValidateParameters(Dictionary<string, string> parameters)

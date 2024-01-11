@@ -4,7 +4,7 @@ using TMPEffects.Tags;
 namespace TMPEffects
 {
     [System.Serializable]
-    public class TMPEvent : UnityEvent<TMPEventTag>
+    public class TMPEvent : UnityEvent<TMPEventArgs>
     {
         public TMPEvent() : base() { }
     }

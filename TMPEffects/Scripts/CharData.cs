@@ -1,9 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System.Runtime.CompilerServices;
-using System;
-using UnityEditor;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 public struct CharData
 {

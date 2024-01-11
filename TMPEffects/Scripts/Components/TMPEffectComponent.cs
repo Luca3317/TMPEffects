@@ -1,10 +1,7 @@
-using Codice.CM.Common;
-using IntervalTree;
 using System.Collections.Generic;
 using TMPEffects.Tags;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace TMPEffects.Components
 {
