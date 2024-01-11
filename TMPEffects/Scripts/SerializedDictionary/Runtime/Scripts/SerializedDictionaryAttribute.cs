@@ -7,7 +7,7 @@ using UnityEngine;
 namespace AYellowpaper.SerializedCollections
 {
     [Conditional("UNITY_EDITOR")]
-    internal class SerializedDictionaryAttribute : Attribute
+    public class SerializedDictionaryAttribute : Attribute
     {
         public readonly string KeyName;
         public readonly string ValueName;
