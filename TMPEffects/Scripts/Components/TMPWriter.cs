@@ -37,6 +37,7 @@ namespace TMPEffects.Components
         /// Is the writer currently writing text?
         /// </summary>
         public bool IsWriting => writing;
+        public bool MaySkip => currentMaySkip;
         public int CurrentIndex => currentIndex;
 
         /// <summary>
@@ -99,6 +100,9 @@ namespace TMPEffects.Components
         [Tooltip("The speed at which the writer shows new characters.")]
         [SerializeField] float speed = 1;
 
+        [Tooltip("Whether the text may be skipped by default.")]
+        [SerializeField] bool maySkip = false;
+
         [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] bool writeOnStart = true;
         [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified.")]
@@ -121,6 +125,7 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private Coroutine writerCoroutine = null;
         [System.NonSerialized] private float currentSpeed;
+        [System.NonSerialized] private bool currentMaySkip;
 
         [System.NonSerialized] private bool shouldWait = false;
         [System.NonSerialized] private float waitAmount = 0f;
@@ -187,11 +192,11 @@ namespace TMPEffects.Components
                 writing = false;
             }
 #endif
+            if (mediator != null) mediator.Unsubscribe(this);
         }
 
         private void OnDestroy()
         {
-            if (mediator != null) mediator.Unsubscribe(this);
         }
         #endregion
 
@@ -274,29 +279,61 @@ namespace TMPEffects.Components
         public void FinishWriter()
         {
             if (!enabled || !gameObject.activeInHierarchy) return;
+            if (!currentMaySkip) return;
 
-            // skip to end
-            if (writing)
+            int skipTo = mediator.CharData.Count;
+            int cachedIndex = ctps.ProcessedTags.FindIndex((x) => x.startIndex >= currentIndex);
+            if (cachedIndex >= 0)
             {
-                StopWriterCoroutine();
-                OnSkipWriter?.Invoke();
+                int len = ctps.ProcessedTags.Count;
+                TMPCommandTag tag;
+                for (; cachedIndex < len; cachedIndex++)
+                {
+                    tag = ctps.ProcessedTags[cachedIndex];
+                    if (tag.name == "skippable")
+                    {
+                        if (tag.parameters != null && tag.parameters[""] == "false")
+                        {
+                            skipTo = tag.startIndex;
+                            break;
+                        }
+                    }
+                }
             }
 
-            // TODO
-            // Iterate over all skipped indeces and raise eventual events and commands
-            // Stopcoroutine can only be called when on a yield instruction; ensured all commands & events 
-            // of current currentIndex executed.
-            // Other issue: Probably need some indicator on whether to execute even when skipped
-            // i.e. multiple sounds playing at once would suck
-            for (int i = currentIndex + 1; i < CharacterCount; i++)
+            OnSkipWriter?.Invoke();
+
+            currentIndex = skipTo;
+            Show(0, skipTo, true);
+
+            // Execute remaining commands / events
+            ExecuteCommands(skipTo, true);
+            ExecuteEvents(skipTo, true);
+
+            if (skipTo == mediator.CharData.Count)
             {
-                ExecuteCommandsAndEvents(i);
+                if (writing) StopWriterCoroutine();
+                OnFinishWriter?.Invoke();    
             }
 
-            currentIndex = mediator.Text.textInfo.characterCount;
-            Show(0, mediator.Text.textInfo.characterCount, true);
+            //if (!enabled || !gameObject.activeInHierarchy) return;
+            //if (!maySkip) return; 
 
-            OnFinishWriter?.Invoke();
+            //// skip to end
+            //if (writing)
+            //{
+            //    StopWriterCoroutine();
+            //    OnSkipWriter?.Invoke();
+            //}
+
+            //// Execute remaining commands / events
+            //ExecuteCommands(-1, true);
+            //ExecuteEvents(-1, true);
+
+            //currentIndex = mediator.Text.textInfo.characterCount;
+            //Show(0, mediator.Text.textInfo.characterCount, true);
+
+            //OnFinishWriter?.Invoke();
         }
 
         /// <summary>
@@ -313,6 +350,8 @@ namespace TMPEffects.Components
         #endregion
 
         #region Tag Manipulation & various
+
+        // Manipulate based on index in collection
         public TMPCommandTag CommandTagAt(int index)
         {
             return ctps.ProcessedTags[index];
@@ -322,15 +361,6 @@ namespace TMPEffects.Components
             return etp.ProcessedTags[index];
         }
 
-        public void CommandTagAtTextIndex(int textIndex, ICollection<TMPCommandTag> tags)
-        {
-            tags.AddRange(ctps.ProcessedTags.Where(x => x.startIndex == textIndex));
-        }
-        public void EventTagAtTextIndex(int textIndex, ICollection<TMPEventTag> tags)
-        {
-            tags.AddRange(etp.ProcessedTags.Where(x => x.startIndex == textIndex));
-        }
-
         public int IndexOfCommandTag(TMPCommandTag tag)
         {
             return ctps.ProcessedTags.IndexOf(tag);
@@ -338,6 +368,25 @@ namespace TMPEffects.Components
         public int IndexOfEventTag(TMPEventTag tag)
         {
             return etp.ProcessedTags.IndexOf(tag);
+        }
+
+        public void RemoveCommandTagAt(int index)
+        {
+            ctps.ProcessedTags.RemoveAt(index);
+        }
+        public void RemoveEventTagAt(int index)
+        {
+            etp.ProcessedTags.RemoveAt(index);
+        }
+
+        // Manipulate based on index in the text
+        public void CommandTagAtTextIndex(int textIndex, ICollection<TMPCommandTag> tags)
+        {
+            tags.AddRange(ctps.ProcessedTags.Where(x => x.startIndex == textIndex));
+        }
+        public void EventTagAtTextIndex(int textIndex, ICollection<TMPEventTag> tags)
+        {
+            tags.AddRange(etp.ProcessedTags.Where(x => x.startIndex == textIndex));
         }
 
         public bool TryInsertCommandTag(string tag, int textIndex = 0, int length = -1)
@@ -497,7 +546,6 @@ namespace TMPEffects.Components
             continueConditions += condition;
         }
 
-
         /// <summary>
         /// Set the current speed of the writer.
         /// </summary>
@@ -505,6 +553,15 @@ namespace TMPEffects.Components
         public void SetSpeed(float speed)
         {
             currentSpeed = speed;
+        }
+
+        /// <summary>
+        /// Set whether the current text may be skipped.
+        /// </summary>
+        /// <param name="skippable"></param>
+        public void SetSkippable(bool skippable)
+        {
+            currentMaySkip = skippable;
         }
         #endregion
 

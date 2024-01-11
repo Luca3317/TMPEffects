@@ -39,6 +39,7 @@ public class TMPWriterEditor : Editor
     SerializedProperty onStopWriterProp;
     SerializedProperty onResetWriterProp;
     SerializedProperty onFinishWriterProp;
+    SerializedProperty maySkipProp;
 
     // Styles
     GUIStyle buttonStyle;
@@ -132,6 +133,7 @@ public class TMPWriterEditor : Editor
         onStopWriterProp = serializedObject.FindProperty("OnStopWriter");
         onResetWriterProp = serializedObject.FindProperty("OnResetWriter");
         onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
+        maySkipProp = serializedObject.FindProperty("maySkip");
 
         // Load Textures
         playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -330,7 +332,9 @@ public class TMPWriterEditor : Editor
         EditorGUILayout.PropertyField(whitespaceSpeedProp);
         EditorGUILayout.PropertyField(punctuationSpeedProp);
         EditorGUILayout.PropertyField(visibleSpeedProp);
+        
         EditorGUILayout.PropertyField(startOnPlayProp);
+        EditorGUILayout.PropertyField(maySkipProp);
 
         DrawDatabase();
 
