@@ -29,7 +29,7 @@ namespace TMPEffects.Components
 
         //public int Subscribers { get; private set; }
         public List<CharData> CharData { get; private set; }
-        public TMPTextProcessor Processor { get; private set; }
+        internal TMPTextProcessor Processor { get; private set; }
         public TMP_Text Text { get; private set; }
 
         public delegate void EmptyEventHandler();
@@ -49,7 +49,7 @@ namespace TMPEffects.Components
             subscribers = new List<object>();
             Text = GetComponent<TMP_Text>();
             CharData = new List<CharData>();
-            Processor = new TMPTextProcessor();
+            Processor = new TMPTextProcessor(Text);
 
             SetPreprocessor();
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
@@ -75,7 +75,8 @@ namespace TMPEffects.Components
 
         void TextChangedProcedure()
         {
-            Processor.ProcessTags(Text.text, Text.GetParsedText());
+            //Processor.ProcessTags(Text.text, Text.GetParsedText());
+            Processor.AdjustIndeces(Text.textInfo);
             PopulateCharData();
             TextChanged?.Invoke();
         }

@@ -19,7 +19,6 @@ namespace TMPEffects.Commands
         {
             bool val;
             ParsingUtility.StringToBool(args.tag.parameters[""], out val);
-            Debug.Log("Setting to " + val);
             args.writer.SetSkippable(val);
         }
 

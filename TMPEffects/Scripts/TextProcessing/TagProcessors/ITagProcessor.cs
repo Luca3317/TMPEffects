@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using TMPEffects.Tags;
 
 namespace TMPEffects.TextProcessing.TagProcessors
 {
     public interface ITagProcessor
     {
+        public IEnumerable<TMPEffectTag> ProcessedTags { get; }
+
         // Check if is valid tag
         public bool PreProcess(ParsingUtility.TagInfo tagInfo);
         // Check if is valid tag and create entry
@@ -12,8 +15,18 @@ namespace TMPEffects.TextProcessing.TagProcessors
         public void Reset();
     }
 
-    public interface ITagProcessor<T> : ITagProcessor
+    public interface ITagProcessor<T> : ITagProcessor where T : TMPEffectTag
     {
-        public List<T> ProcessedTags { get; }
+        IEnumerable<TMPEffectTag> ITagProcessor.ProcessedTags 
+        {
+            get
+            {
+                foreach (var tag in ProcessedTags)
+                {
+                    yield return tag;
+                }
+            }
+        }
+        public new List<T> ProcessedTags { get; }
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using TMPEffects.Tags;
 using TMPEffects.TextProcessing.TagProcessors;
 using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing
 {
-    public class TagProcessorStack<T> : ITagProcessor<T>
+    public class TagProcessorStack<T> : ITagProcessor<T> where T : TMPEffectTag
     {
         public List<T> ProcessedTags
         {

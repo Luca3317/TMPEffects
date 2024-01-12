@@ -201,7 +201,7 @@ namespace TMPEffects.TextProcessing
             text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
 
             // TODO only for debugging purposes, prevent endless loop
-            int count = 0;
+            //int count = 0;
 
             // Parse attribute keys and values
             while (text.Length > 0)
@@ -285,14 +285,12 @@ namespace TMPEffects.TextProcessing
             if (maxIndex == -1) maxIndex = text.Length - 1;
             if (startIndex >= maxIndex)
             {
-                Debug.LogError("Passed in invalid indeces; startIndex is larger than maxIndex (startIndex: " + startIndex + "; maxIndex: " + maxIndex + ")");
-                throw new System.ArgumentException();
+                throw new System.IndexOutOfRangeException();
             }
 
             int index = startIndex;
             if (text[index] != '<')
             {
-                Debug.Log("First item was not opening bracket");
                 return false;
             }
 
@@ -310,17 +308,14 @@ namespace TMPEffects.TextProcessing
 
             if (nextOpenIndex != -1 && closeIndex > nextOpenIndex)
             {
-                //Debug.Log("Another opne bracket before close bracket; " + nextOpenIndex);
                 return false;
             }
             if (closeIndex == -1)
             {
-                //Debug.Log("No close bracket");
                 return false;
             }
             if (closeIndex <= index + 1)
             {
-                //Debug.Log("Close bracket too close");
                 return false;
             }
 
@@ -346,9 +341,7 @@ namespace TMPEffects.TextProcessing
             int start, end;
             if (!GetNextTagIndeces(text, startIndex, out start, out end, type)) return false;
 
-            //Debug.Log("got " + start + ", " + end);
             tag = text.Substring(start, end - start + 1);
-            //Debug.Log("TAG " + tag);
             return true;
         }
 
@@ -358,9 +351,7 @@ namespace TMPEffects.TextProcessing
             int start, end;
             if (!GetNextTagIndeces(text, tagName, startIndex, out start, out end, type)) return false;
 
-            //Debug.Log("got " + start + ", " + end);
             tag = text.Substring(start, end - start + 1);
-            //Debug.Log("TAG " + tag);
             return true;
         }
 
@@ -401,7 +392,6 @@ namespace TMPEffects.TextProcessing
 
         public static bool GetNextTagIndeces(string text, string tagName, int startIndex, out int tagStartIndex, out int tagEndIndex, TagType type = TagType.Open | TagType.Close)
         {
-            //int index = startIndex - 1;
             string search = "<" + tagName;
             int index = startIndex;
             do
@@ -414,7 +404,6 @@ namespace TMPEffects.TextProcessing
 
             } while (!IsTag(text, tagStartIndex, tagEndIndex, type));
 
-            //Debug.Log("returning indeces " + tagStartIndex + " and " + tagEndIndex);
             return true;
         }
 

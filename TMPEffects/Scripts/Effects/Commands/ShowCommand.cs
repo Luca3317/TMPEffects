@@ -15,7 +15,6 @@ namespace TMPEffects.Commands
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            if (args.tag.IsOpen) Debug.LogError("Show tag was not closed!");
             args.writer.Show(args.tag.startIndex, args.tag.length, true);
         }
 

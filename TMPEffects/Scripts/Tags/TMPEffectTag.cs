@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace TMPEffects.Tags
 {
@@ -6,8 +7,9 @@ namespace TMPEffects.Tags
     {
         public string name { get; private set; }
         public int startIndex { get; private set; }
+        public int endIndex { get; private set; }
 
-        public int length { get; private set; }
+        public int length => endIndex == -1 ? -1 : (endIndex - startIndex) + 1;
         public Dictionary<string, string> parameters { get; private set; }
 
         private int nameHashCode;
@@ -17,14 +19,23 @@ namespace TMPEffects.Tags
             this.name = name;
             this.startIndex = startIndex;
             this.parameters = parameters;
-            length = -1;
+            endIndex = -1;
             nameHashCode = name.GetHashCode();
         }
 
         public void Close(int endIndex)
         {
             //if (!IsOpen) throw new System.InvalidOperationException();
-            length = endIndex - startIndex + 1;
+            this.endIndex = endIndex;
+        }
+
+        public void SetStartIndex(int startIndex)
+        {
+            this.startIndex = startIndex;
+        }
+        public void SetEndIndex(int endIndex) 
+        {
+            this.endIndex = endIndex; 
         }
 
         public bool IsOpen => length == -1;

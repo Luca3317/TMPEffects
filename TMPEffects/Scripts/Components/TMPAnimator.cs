@@ -263,7 +263,7 @@ namespace TMPEffects.Components
         /// Reset all visible characters to their initial state.
         /// </summary>
         public void ResetAnimations() => ResetAllVisible();
-#endregion
+        #endregion
 
         #region Setters
         /// <summary>
@@ -1168,7 +1168,7 @@ namespace TMPEffects.Components
             }
         }
 #endif
-#endregion
+        #endregion
 
         private void UpdateProcessors()
         {

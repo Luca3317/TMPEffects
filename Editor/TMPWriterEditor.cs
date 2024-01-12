@@ -487,7 +487,6 @@ public class TMPWriterEditor : Editor
         if (wasWriting) writer.StartWriter();
         else
         {
-            Debug.Log("show");
             writer.Show(0, writer.CharacterCount, true);
         }
     }

@@ -147,7 +147,7 @@ namespace TMPEffects.Components
             mediator.Subscribe(this);
             mediator.TextChanged -= OnTextChanged;
             mediator.TextChanged += OnTextChanged;
-            mediator.Processor.FinishProcessTags += PostProcessTags;
+            mediator.Processor.FinishAdjustIndeces += PostProcessTags;
 
             mediator.ForceReprocess();
 
@@ -169,7 +169,7 @@ namespace TMPEffects.Components
         private void OnDisable()
         {
             mediator.TextChanged -= OnTextChanged;
-            mediator.Processor.FinishProcessTags -= PostProcessTags;
+            mediator.Processor.FinishAdjustIndeces -= PostProcessTags;
             mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
             mediator.Processor.UnregisterProcessor(ParsingUtility.EVENT_PREFIX);
 

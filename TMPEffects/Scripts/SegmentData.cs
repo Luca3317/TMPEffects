@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPEffects.Components;
 using TMPEffects.Tags;
 using UnityEngine;
@@ -41,6 +42,9 @@ public class SegmentData
         Vector3 leftTop, bottomRight;
         for (int i = startIndex; i < startIndex + length; i++)
         {
+            // TODO This is for testing purposes while changing the index concept;
+            if (i >= cData.Count) break;
+
             if (!cData[i].info.isVisible) continue;
 
             leftTop = cData[i].mesh.initial.vertex_TL.position;
