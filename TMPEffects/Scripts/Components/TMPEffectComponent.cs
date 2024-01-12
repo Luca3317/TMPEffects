@@ -42,16 +42,14 @@ namespace TMPEffects.Components
         protected void InsertElement<T>(List<T> list, T tag) where T : TMPEffectTag
         {
             int largerIndex = list.FindIndex(x => x.startIndex > tag.startIndex);
-            if (largerIndex <= 0) largerIndex = 0;
-            else largerIndex -= 1;
-            list.Insert(largerIndex, tag);
+            if (largerIndex >= 0) list.Insert(largerIndex, tag);
+            else list.Add(tag);
         }
         protected void InsertElement<T>(List<T> list, T element, System.Predicate<T> match)
         {
             int largerIndex = list.FindIndex(match);
-            if (largerIndex <= 0) largerIndex = 0;
-            else largerIndex -= 1;
-            list.Insert(largerIndex, element);
+            if (largerIndex >= 0) list.Insert(largerIndex, element);
+            else list.Add(element);
         }
     }
 }

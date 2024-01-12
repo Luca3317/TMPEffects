@@ -406,10 +406,6 @@ namespace TMPEffects.Components
             RemoveTag_Impl(type.Value, index);
         }
 
-
-
-
-
         public void TagAtTextIndex(int index, ICollection<TMPAnimationTag> tags)
         {
             if (index < atp.ProcessedTags.Count)
@@ -447,7 +443,6 @@ namespace TMPEffects.Components
         public void ShowTagAtTextIndex(int index, ICollection<TMPAnimationTag> tags) => tags.AddRange(satp.ProcessedTags.Where(x => x.startIndex == index));
         public void HideTagAtTextIndex(int index, ICollection<TMPAnimationTag> tags) => tags.AddRange(hatp.ProcessedTags.Where(x => x.startIndex == index));
 
-
         /// <summary>
         /// Insert a tag into the text that is being animated by this animator.
         /// </summary>
@@ -456,7 +451,7 @@ namespace TMPEffects.Components
         /// <param name="length">The "length" of the tag, i.e. how many characters it effects. Negative values will effect all characters after the given <paramref name="textIndex"/></param>
         /// <returns>Whether the insertion was successful (i.e. whether the tag could successfully be validated)</returns>
         /// <exception cref="System.IndexOutOfRangeException">If either the <paramref name="textIndex"/> or <paramref name="length"/> parameter is out of range</exception>
-        public bool TryInsertTag(string tag, int textIndex = 0, int length = -1) => InsertTag_Impl(tag, 0, textIndex, length);
+        public bool TryInsertTag(string tag, int textIndex = 0, int length = -1) => InsertTag_Impl(tag, textIndex, length);
         /// <summary>
         /// Insert a tag into the text that is being animated by this animator.
         /// </summary>
@@ -630,9 +625,8 @@ namespace TMPEffects.Components
 
             return true;
         }
-        private bool InsertTag_Impl(string tag, int index, int textIndex, int length)
+        private bool InsertTag_Impl(string tag, int textIndex, int length)
         {
-            if (index < 0) return false;
             if (textIndex < 0 || textIndex >= mediator.CharData.Count || (textIndex + length) > mediator.CharData.Count) return false;
 
             ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
@@ -646,21 +640,24 @@ namespace TMPEffects.Components
                 case ParsingUtility.NO_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.basicAnimationDatabase, out parameters)) return false;
                     t = new(tagInfo.name, textIndex, parameters);
-                    atp.ProcessedTags.Insert(index, t);
+                    //atp.ProcessedTags.Insert(index, t);
+                    InsertElement(atp.ProcessedTags, t);
                     InsertElement(basicCached, new CachedAnimation(this, t, database.basicAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
                     break;
 
                 case ParsingUtility.SHOW_ANIMATION_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.showAnimationDatabase, out parameters)) return false;
                     t = new(tagInfo.name, textIndex, parameters);
-                    satp.ProcessedTags.Insert(index, t);
+                    //satp.ProcessedTags.Insert(index, t);
+                    InsertElement(satp.ProcessedTags, t);
                     InsertElement(showCached, new CachedAnimation(this, t, database.showAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
                     break;
 
                 case ParsingUtility.HIDE_ANIMATION_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.hideAnimationDatabase, out parameters)) return false;
                     t = new(tagInfo.name, textIndex, parameters);
-                    hatp.ProcessedTags.Insert(index, t);
+                    //hatp.ProcessedTags.Insert(index, t);
+                    InsertElement(hatp.ProcessedTags, t);
                     InsertElement(hideCached, new CachedAnimation(this, t, database.hideAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
                     break;
 

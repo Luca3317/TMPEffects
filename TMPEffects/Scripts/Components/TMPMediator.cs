@@ -75,7 +75,6 @@ namespace TMPEffects.Components
 
         void TextChangedProcedure()
         {
-            //Processor.ProcessTags(Text.text, Text.GetParsedText());
             Processor.AdjustIndeces(Text.textInfo);
             PopulateCharData();
             TextChanged?.Invoke();
