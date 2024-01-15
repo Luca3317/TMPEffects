@@ -23,14 +23,14 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return true;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex, int length)
-        {
-            return Process(tagInfo, textIndex);
-        }
+        //public bool ProcessAndClose(TagInfo tagInfo, int textIndex, int length)
+        //{
+        //    return Process(tagInfo, textIndex);
+        //}
 
-        public bool Process(TagInfo tagInfo, int textIndex)
+        public bool Process(TagInfo tagInfo, int textIndex, int order)
         {
-            TMPEventTag args = new TMPEventTag(textIndex, tagInfo.name, GetTagParametersDict(tagInfo.parameterString, 0));
+            TMPEventTag args = new TMPEventTag(textIndex, tagInfo.name, order, GetTagParametersDict(tagInfo.parameterString, 0));
             ProcessedTags.Add(args);
             return true;
         }

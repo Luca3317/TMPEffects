@@ -10,8 +10,10 @@ namespace TMPEffects.TextProcessing.TagProcessors
         // Check if is valid tag
         public bool PreProcess(ParsingUtility.TagInfo tagInfo);
         // Check if is valid tag and create entry
-        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex);
-        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex, int length);
+        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex, int orderAtIndex);
+
+        //// TODO Placeholder name while implementing order concept to prevent duplicate signatures
+        //public bool ProcessAndClose(ParsingUtility.TagInfo tagInfo, int textIndex, int length);
         public void Reset();
     }
 

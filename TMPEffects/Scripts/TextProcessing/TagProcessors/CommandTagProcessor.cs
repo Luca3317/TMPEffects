@@ -43,20 +43,20 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return true;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex, int length)
-        {
-            if (Process(tagInfo, textIndex))
-            {
-                if (database.GetEffect(tagInfo.name).CommandType != CommandType.Index)
-                    ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
+        //public bool ProcessAndClose(TagInfo tagInfo, int textIndex, int length)
+        //{
+        //    if (Process(tagInfo, textIndex))
+        //    {
+        //        if (database.GetEffect(tagInfo.name).CommandType != CommandType.Index)
+        //            ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
 
-                return true;
-            }
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public bool Process(TagInfo tagInfo, int textIndex)
+        public bool Process(TagInfo tagInfo, int textIndex, int order)
         {
             if (database == null) return false;
 
@@ -73,7 +73,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
                 var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
                 if (!command.ValidateParameters(parameters)) return false;
 
-                tag = new TMPCommandTag(tagInfo.name, textIndex, parameters);
+                tag = new TMPCommandTag(tagInfo.name, textIndex, order, parameters);
                 ProcessedTags.Add(tag);
             }
             else if (command.CommandType != CommandType.Index)

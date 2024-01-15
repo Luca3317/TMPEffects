@@ -14,12 +14,36 @@ namespace TMPEffects.Databases
         public TMPShowAnimationDatabase showAnimationDatabase;
         public TMPHideAnimationDatabase hideAnimationDatabase;
 
+        public bool Contains(string name, TMPAnimationType type)
+        {
+            switch (type)
+            {
+                case TMPAnimationType.Basic: return basicAnimationDatabase.Contains(name);
+                case TMPAnimationType.Show: return showAnimationDatabase.Contains(name);
+                case TMPAnimationType.Hide: return hideAnimationDatabase.Contains(name);
+            }
+
+            throw new System.ArgumentException(nameof(type));
+        }
+
         public override bool Contains(string name)
         {
             if (basicAnimationDatabase.Contains(name)) return true;
             if (showAnimationDatabase.Contains(name)) return true;
             if (hideAnimationDatabase.Contains(name)) return true;
             return false;
+        }
+
+        public ITMPAnimation GetEffect(string name, TMPAnimationType type)
+        {
+            switch (type)
+            {
+                case TMPAnimationType.Basic: return basicAnimationDatabase.GetEffect(name);
+                case TMPAnimationType.Show: return showAnimationDatabase.GetEffect(name);
+                case TMPAnimationType.Hide: return hideAnimationDatabase.GetEffect(name);
+            }
+
+            throw new System.ArgumentException(nameof(type));
         }
 
         public override ITMPAnimation GetEffect(string name)

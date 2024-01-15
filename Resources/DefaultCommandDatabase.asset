@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commandDict:
     _serializedList:
+    - Key: debug
+      Value: {fileID: 11400000, guid: 69d14dce9cbfa694dac7b9d68e4ba374, type: 2}
     - Key: speed
       Value: {fileID: 11400000, guid: 1b861c7499ea52f40ae741494de7a3fa, type: 2}
     - Key: skip

@@ -8,17 +8,19 @@ namespace TMPEffects.Tags
         public string name { get; private set; }
         public int startIndex { get; private set; }
         public int endIndex { get; private set; }
+        internal int orderAtIndex { get; private set; }
 
         public int length => endIndex == -1 ? -1 : (endIndex - startIndex) + 1;
         public Dictionary<string, string> parameters { get; private set; }
 
         private int nameHashCode;
 
-        public TMPEffectTag(string name, int startIndex, Dictionary<string, string> parameters)
+        public TMPEffectTag(string name, int startIndex, int orderAtIndex, Dictionary<string, string> parameters)
         {
             this.name = name;
             this.startIndex = startIndex;
             this.parameters = parameters;
+            this.orderAtIndex = orderAtIndex;
             endIndex = -1;
             nameHashCode = name.GetHashCode();
         }

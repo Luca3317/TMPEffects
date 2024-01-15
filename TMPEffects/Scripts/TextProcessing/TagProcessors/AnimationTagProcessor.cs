@@ -41,9 +41,9 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return true;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        public bool ProcessAndClose(TagInfo tagInfo, int textIndex, int length)
         {
-            if (Process(tagInfo, textIndex))
+            if (Process(tagInfo, textIndex, 0))
             {
                 ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
                 return true;
@@ -52,7 +52,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return false;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex)
+        public bool Process(TagInfo tagInfo, int textIndex, int order)
         {
             if (database == null) return false;
 
@@ -69,7 +69,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
                 var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
                 if (!animation.ValidateParameters(parameters)) return false;
 
-                tag = new TMPAnimationTag(tagInfo.name, textIndex, parameters);
+                tag = new TMPAnimationTag(tagInfo.name, textIndex, order, parameters);
                 ProcessedTags.Add(tag);
             }
             else

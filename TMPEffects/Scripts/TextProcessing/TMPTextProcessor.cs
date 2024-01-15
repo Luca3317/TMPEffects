@@ -72,6 +72,10 @@ namespace TMPEffects.TextProcessing
                 tagProcessors[key].Reset();
             }
 
+            // Indicates the order of the parsed tags at the respective index
+            // i.e. <!wait><#someevent><!playsound> => 0,1,2 respcectively
+            int currentOrderAtIndex = 0;
+
             int indexOffset = 0;
             int searchIndex = 0;
             sb = new StringBuilder();
@@ -81,11 +85,13 @@ namespace TMPEffects.TextProcessing
 
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
-
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
                 // add the text inbetween the tags to the StringBuilder
                 if (searchIndex != tagInfo.startIndex)
+                {
+                    currentOrderAtIndex = 0;
                     sb.Append(text.AsSpan(searchIndex, tagInfo.startIndex - searchIndex));
+                }
 
                 // If the current tag is a noparse tag, toggle whether to parse the succeeding text
                 if (tagInfo.name == "noparse")
@@ -141,20 +147,27 @@ namespace TMPEffects.TextProcessing
                 // If a noparse tag is active, simply append the tag to the StringBuilder, adjust the searchIndex and continue to the next tag
                 if (!parse)
                 {
+                    currentOrderAtIndex = 0;
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
                     searchIndex = tagInfo.endIndex + 1;
                     continue;
                 }
 
                 // Handle the tag; if it fails, meaning this is not a valid custom tag, append the tag to the StringBuilder
-                if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset))
+                if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                 {
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
+
+                    // Dont reset order, as this might be a valid native tag, meaning the previous
+                    // and the next tag may still share an index; if not thats fine, order will just start
+                    // at n > 0 but still maintain its order
+                    //currentOrderAtIndex = 0;
                 }
                 // If it succeeds, adjust the indexOffset accordingly
                 else
                 {
                     indexOffset -= (tagInfo.endIndex - tagInfo.startIndex + 1);
+                    currentOrderAtIndex++;
                 }
 
                 // Adjust the search index and continue to the next tag
@@ -169,6 +182,18 @@ namespace TMPEffects.TextProcessing
             else parsed = sb.ToString();
 
             FinishPreProcess?.Invoke(parsed);
+
+            //Debug.Log("Done preprocessing; here are the internal orders");
+
+            //foreach (var processor in tagProcessors.Values)
+            //{
+            //    foreach (var tag in processor.ProcessedTags)
+            //    {
+            //        Debug.Log(tag.name + " at " + tag.startIndex + " at order " + tag.orderAtIndex);
+            //    }
+            //}
+
+
             return parsed;
         }
 
@@ -284,11 +309,11 @@ namespace TMPEffects.TextProcessing
             FinishAdjustIndeces?.Invoke(info.textComponent.text);
         }
 
-        private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex)
+        private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)
         {
             if (tagProcessors.ContainsKey(tagInfo.prefix))
             {
-                return tagProcessors[tagInfo.prefix].Process(tagInfo, textIndex);
+                return tagProcessors[tagInfo.prefix].Process(tagInfo, textIndex, order);
             }
 
             return false;

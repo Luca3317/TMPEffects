@@ -38,25 +38,25 @@ namespace TMPEffects.TextProcessing.TagProcessors
             return false;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex, int length)
-        {
-            if (Process(tagInfo, textIndex))
-            {
-                ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
-                return true;
-            }
+        //public bool ProcessAndClose(TagInfo tagInfo, int textIndex, int length)
+        //{
+        //    if (Process(tagInfo, textIndex))
+        //    {
+        //        ProcessedTags[ProcessedTags.Count - 1].Close(textIndex + length - 1);
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public bool Process(TagInfo tagInfo, int textIndex)
+        public bool Process(TagInfo tagInfo, int textIndex, int order)
         {
             if (!tags.ContainsKey(tagInfo.name)) return false;
 
             if (tagInfo.type == TagType.Open || tags[tagInfo.name].CommandType != CommandType.Index)
             {
                 var parameters = GetTagParametersDict(tagInfo.parameterString, 0);
-                TMPCommandTag tag = new TMPCommandTag(tagInfo.name, textIndex, parameters);
+                TMPCommandTag tag = new TMPCommandTag(tagInfo.name, textIndex, order, parameters);
                 ProcessedTags.Add(tag);
                 return true;
             }

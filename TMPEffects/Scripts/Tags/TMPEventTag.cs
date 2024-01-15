@@ -8,7 +8,7 @@ namespace TMPEffects.Tags
     {
         public readonly bool invokeOnSkip = false;
 
-        public TMPEventTag(int index, string name, Dictionary<string, string> parameters) : base(name, index, parameters)
+        public TMPEventTag(int index, string name, int order, Dictionary<string, string> parameters) : base(name, index, order, parameters)
         {
             // TODO Might move this into writer
             if (parameters != null)

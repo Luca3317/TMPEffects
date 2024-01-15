@@ -313,7 +313,7 @@ namespace TMPEffects.Components
             if (skipTo == mediator.CharData.Count)
             {
                 if (writing) StopWriterCoroutine();
-                OnFinishWriter?.Invoke();    
+                OnFinishWriter?.Invoke();
             }
 
             //if (!enabled || !gameObject.activeInHierarchy) return;
@@ -398,7 +398,7 @@ namespace TMPEffects.Components
             Dictionary<string, string> parameters;
             if (!ValidateCommandTag(tag, tagInfo, out parameters)) return false;
 
-            TMPCommandTag t = new TMPCommandTag(tagInfo.name, textIndex, parameters);
+            TMPCommandTag t = new TMPCommandTag(tagInfo.name, textIndex, 0, parameters);
 
             if (length < 0) t.Close(mediator.CharData.Count - 1);
             else if (length == 0) t.Close(textIndex);
@@ -414,7 +414,7 @@ namespace TMPEffects.Components
             if (textIndex < 0 || textIndex >= mediator.CharData.Count || (textIndex + length) > mediator.CharData.Count) throw new System.IndexOutOfRangeException();
             if (!ValidateCommandTag(key, parameters)) return false;
 
-            TMPCommandTag t = new TMPCommandTag(key, textIndex, parameters);
+            TMPCommandTag t = new TMPCommandTag(key, textIndex, 0, parameters);
 
             if (length < 0) t.Close(mediator.CharData.Count - 1);
             else if (length == 0) t.Close(textIndex);
@@ -432,7 +432,7 @@ namespace TMPEffects.Components
             if (!parsed) return false;
 
             Dictionary<string, string> parameters = ParsingUtility.GetTagParametersDict(tag);
-            TMPEventTag t = new TMPEventTag(textIndex, tagInfo.name, parameters);
+            TMPEventTag t = new TMPEventTag(textIndex, tagInfo.name, 0, parameters);
 
             InsertElement(etp.ProcessedTags, t);
             cachedEvents.Add(t, new CachedEvent(new TMPEventArgs(t)));
@@ -441,7 +441,7 @@ namespace TMPEffects.Components
         }
         public void InsertEventTag(string key, Dictionary<string, string> parameters, int textIndex = 0)
         {
-            TMPEventTag t = new TMPEventTag(textIndex, key, parameters);
+            TMPEventTag t = new TMPEventTag(textIndex, key, 0, parameters);
             InsertElement(etp.ProcessedTags, t);
             cachedEvents.Add(t, new CachedEvent(new TMPEventArgs(t)));
         }
@@ -617,6 +617,78 @@ namespace TMPEffects.Components
             OnStopWriting();
         }
 
+
+
+        private IEnumerator Execute(int index)
+        {
+            int cmdIndex = ctps.ProcessedTags.FindIndex(x => x.startIndex == index);
+            int evtIndex = etp.ProcessedTags.FindIndex(x => x.startIndex == index);
+            int cmdlen = ctps.ProcessedTags.Count;
+            int evtlen = etp.ProcessedTags.Count;
+            cmdIndex = cmdIndex == -1 ? cmdlen : cmdIndex;
+            evtIndex = evtIndex == -1 ? evtlen : evtIndex;
+            TMPCommandTag cmd = cmdIndex == cmdlen ? null : ctps.ProcessedTags[cmdIndex];
+            TMPEventTag evt = evtIndex == evtlen ? null : etp.ProcessedTags[evtIndex];
+
+#if UNITY_EDITOR
+            // When testing in edit mode
+            if (!Application.isPlaying)
+            {
+                if (!commandsEnabled) cmd = null;
+                if (!eventsEnabled) evt = null;
+            }
+#endif
+
+            while (cmd != null && evt != null)
+            {
+                if (cmd.orderAtIndex < evt.orderAtIndex)
+                {
+                    cachedCommands[cmd].Trigger();
+                    cmdIndex++;
+                    cmd = cmdIndex == cmdlen ? null : ctps.ProcessedTags[cmdIndex];
+                    if (cmd?.startIndex > index) cmd = null;
+                }
+                else
+                {
+                    cachedEvents[evt].Trigger(OnTextEvent);
+                    evtIndex++;
+                    evt = evtIndex == evtlen ? null : etp.ProcessedTags[evtIndex];
+                    if (evt?.startIndex > index) evt = null;
+                }
+
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                waitAmount = 0f;
+
+                yield return HandleWaitConditions();
+            }
+
+            while (cmd != null)
+            {
+                cachedCommands[cmd].Trigger();
+                cmdIndex++;
+                cmd = cmdIndex == cmdlen ? null : ctps.ProcessedTags[cmdIndex];
+                if (cmd?.startIndex > index) cmd = null;
+
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                waitAmount = 0f;
+
+                yield return HandleWaitConditions();
+            }
+
+            while (evt != null)
+            {
+                cachedEvents[evt].Trigger(OnTextEvent);
+                evtIndex++;
+                evt = evtIndex == evtlen ? null : etp.ProcessedTags[evtIndex];
+                if (evt?.startIndex > index) evt = null;
+
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                waitAmount = 0f;
+
+                yield return HandleWaitConditions();
+            }
+        }
+
         IEnumerator WriterCoroutine()
         {
             OnStartWriting();
@@ -630,6 +702,7 @@ namespace TMPEffects.Components
 
             // Reset all relevant variables
             currentSpeed = speed;
+            currentMaySkip = maySkip;
 
             TMP_TextInfo info = mediator.Text.textInfo;
             CharData cData;
@@ -645,13 +718,8 @@ namespace TMPEffects.Components
                 currentIndex = i;
                 cData = mediator.CharData[i];
 
-                ExecuteCommands(currentIndex);
-                ExecuteEvents(currentIndex);
-
-                if (shouldWait) yield return new WaitForSeconds(waitAmount);
-                waitAmount = 0f;
-
-                yield return HandleWaitConditions();
+                // Execute the commands & events for the current index
+                yield return Execute(i);
 
                 OnShowCharacter?.Invoke(cData);
 
@@ -1010,6 +1078,7 @@ namespace TMPEffects.Components
             public void Trigger()
             {
                 if (Triggered) return;
+                //Debug.Log("Trigger command " + args.tag.name + " at " + args.tag.startIndex);
                 Triggered = true;
                 command.ExecuteCommand(args);
             }
@@ -1031,6 +1100,7 @@ namespace TMPEffects.Components
             public void Trigger(TMPEvent tmpEvent)
             {
                 if (Triggered) return;
+                //Debug.Log("Trigger event " + args.tag.name + " at " + args.tag.startIndex);
                 Triggered = true;
                 tmpEvent.Invoke(args);
             }

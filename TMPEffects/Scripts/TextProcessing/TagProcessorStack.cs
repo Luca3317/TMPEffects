@@ -4,7 +4,7 @@ using TMPEffects.TextProcessing.TagProcessors;
 using static TMPEffects.TextProcessing.ParsingUtility;
 
 namespace TMPEffects.TextProcessing
-{
+{ 
     public class TagProcessorStack<T> : ITagProcessor<T> where T : TMPEffectTag
     {
         public List<T> ProcessedTags
@@ -53,21 +53,21 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        public bool Process(TagInfo tagInfo, int textIndex, int length)
+        //public bool ProcessAndClose(TagInfo tagInfo, int textIndex, int length)
+        //{
+        //    for (int i = 0; i < tagProcessors.Count; i++)
+        //    {
+        //        if (tagProcessors[i].ProcessAndClose(tagInfo, textIndex, length)) return true;
+        //    }
+
+        //    return false;
+        //}
+
+        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex, int order)
         {
             for (int i = 0; i < tagProcessors.Count; i++)
             {
-                if (tagProcessors[i].Process(tagInfo, textIndex, length)) return true;
-            }
-
-            return false;
-        }
-
-        public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex)
-        {
-            for (int i = 0; i < tagProcessors.Count; i++)
-            {
-                if (tagProcessors[i].Process(tagInfo, textIndex)) return true;
+                if (tagProcessors[i].Process(tagInfo, textIndex, order)) return true;
             }
 
             return false;
