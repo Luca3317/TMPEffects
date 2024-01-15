@@ -591,24 +591,17 @@ namespace TMPEffects.Components
             {
                 case TMPAnimationType.Basic:
                     if (!ValidateAnimationTag(key, parameters, database.basicAnimationDatabase)) return false;
-                    t = new(key, textIndex, 0, parameters);
-                    InsertElement(atp.ProcessedTags, t);
-                    InsertElement(basicCached, new CachedAnimation(this, t, database.basicAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
-                    //PostProcessTag(t, basicCached, database.basicAnimationDatabase);
+                    t = new(key, textIndex, GetOrderAtIndex(TMPAnimationType.Basic, textIndex), parameters);
                     break;
 
                 case TMPAnimationType.Show:
                     if (!ValidateAnimationTag(key, parameters, database.showAnimationDatabase)) return false;
-                    t = new(key, textIndex, 0, parameters);
-                    InsertElement(satp.ProcessedTags, t);
-                    InsertElement(showCached, new CachedAnimation(this, t, database.showAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
+                    t = new(key, textIndex, GetOrderAtIndex(TMPAnimationType.Show, textIndex), parameters);
                     break;
 
                 case TMPAnimationType.Hide:
                     if (!ValidateAnimationTag(key, parameters, database.hideAnimationDatabase)) return false;
-                    t = new(key, textIndex, 0, parameters);
-                    InsertElement(hatp.ProcessedTags, t);
-                    InsertElement(hideCached, new CachedAnimation(this, t, database.hideAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
+                    t = new(key, textIndex, GetOrderAtIndex(TMPAnimationType.Hide, textIndex), parameters);
                     break;
 
                 default:
@@ -619,6 +612,7 @@ namespace TMPEffects.Components
             if (length < 0) t.Close(mediator.CharData.Count - 1);
             else if (length == 0) t.Close(textIndex);
             else t.Close(textIndex + length - 1);
+            CacheAnimation(t, type);
 
             return true;
         }
@@ -636,26 +630,20 @@ namespace TMPEffects.Components
             {
                 case ParsingUtility.NO_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.basicAnimationDatabase, out parameters)) return false;
-                    t = new(tagInfo.name, textIndex, 0, parameters);
-                    //atp.ProcessedTags.Insert(index, t);
-                    InsertElement(atp.ProcessedTags, t);
-                    InsertElement(basicCached, new CachedAnimation(this, t, database.basicAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
+                    t = new(tagInfo.name, textIndex, GetOrderAtIndex(TMPAnimationType.Basic, textIndex), parameters);
+                    CacheAnimation(t, TMPAnimationType.Basic);
                     break;
 
                 case ParsingUtility.SHOW_ANIMATION_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.showAnimationDatabase, out parameters)) return false;
-                    t = new(tagInfo.name, textIndex, 0, parameters);
-                    //satp.ProcessedTags.Insert(index, t);
-                    InsertElement(satp.ProcessedTags, t);
-                    InsertElement(showCached, new CachedAnimation(this, t, database.showAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
+                    t = new(tagInfo.name, textIndex, GetOrderAtIndex(TMPAnimationType.Show, textIndex), parameters);
+                    CacheAnimation(t, TMPAnimationType.Show);
                     break;
 
                 case ParsingUtility.HIDE_ANIMATION_PREFIX:
                     if (!ValidateAnimationTag(tag, tagInfo, database.hideAnimationDatabase, out parameters)) return false;
-                    t = new(tagInfo.name, textIndex, 0, parameters);
-                    //hatp.ProcessedTags.Insert(index, t);
-                    InsertElement(hatp.ProcessedTags, t);
-                    InsertElement(hideCached, new CachedAnimation(this, t, database.hideAnimationDatabase.GetEffect(t.name), context, mediator), x => x.tag.startIndex > t.startIndex);
+                    t = new(tagInfo.name, textIndex, GetOrderAtIndex(TMPAnimationType.Hide, textIndex), parameters);
+                    CacheAnimation(t, TMPAnimationType.Hide);
                     break;
 
                 default:
@@ -698,6 +686,29 @@ namespace TMPEffects.Components
             var tag = processor[index];
             cached.Remove(cached.First(x => x.tag == tag));
             processor.RemoveAt(index);
+        }
+        private int GetOrderAtIndex(TMPAnimationType type, int index)
+        {
+            int tmpIndex;
+            switch (type)
+            {
+                case TMPAnimationType.Basic:
+                    tmpIndex = basicCached.FindIndex(x => x.tag.startIndex == index);
+                    if (tmpIndex == -1) return 0;
+                    else return basicCached[tmpIndex].tag.orderAtIndex - 1;
+
+                case TMPAnimationType.Show:
+                    tmpIndex = showCached.FindIndex(x => x.tag.startIndex == index);
+                    if (tmpIndex == -1) return 0;
+                    else return showCached[tmpIndex].tag.orderAtIndex - 1;
+
+                case TMPAnimationType.Hide:
+                    tmpIndex = hideCached.FindIndex(x => x.tag.startIndex == index);
+                    if (tmpIndex == -1) return 0;
+                    else return hideCached[tmpIndex].tag.orderAtIndex - 1;
+            }
+
+            throw new System.ArgumentException(nameof(type));
         }
         private bool ValidateAnimationTag<T>(string tag, ParsingUtility.TagInfo tagInfo, TMPEffectDatabase<T> database, out Dictionary<string, string> parametersOut) where T : ITMPAnimation
         {
@@ -1313,15 +1324,15 @@ namespace TMPEffects.Components
             {
                 case TMPAnimationType.Basic:
                     if (!atp.ProcessedTags.Contains(tag)) InsertElement(atp.ProcessedTags, tag);
-                    InsertElement(basicCached, new CachedAnimation(this, tag, database.basicAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex > tag.startIndex);
+                    InsertElement(basicCached, new CachedAnimation(this, tag, database.basicAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex >= tag.startIndex);
                     break;
                 case TMPAnimationType.Show:
                     if (!satp.ProcessedTags.Contains(tag)) InsertElement(satp.ProcessedTags, tag);
-                    InsertElement(showCached, new CachedAnimation(this, tag, database.showAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex > tag.startIndex);
+                    InsertElement(showCached, new CachedAnimation(this, tag, database.showAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex >= tag.startIndex);
                     break;
                 case TMPAnimationType.Hide:
                     if (!hatp.ProcessedTags.Contains(tag)) InsertElement(hatp.ProcessedTags, tag);
-                    InsertElement(hideCached, new CachedAnimation(this, tag, database.hideAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex > tag.startIndex);
+                    InsertElement(hideCached, new CachedAnimation(this, tag, database.hideAnimationDatabase.GetEffect(tag.name), context, mediator), x => x.tag.startIndex >= tag.startIndex);
                     break;
             }
         }
