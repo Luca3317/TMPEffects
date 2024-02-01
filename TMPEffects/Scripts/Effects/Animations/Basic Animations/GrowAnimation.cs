@@ -22,7 +22,7 @@ public class GrowAnimation : TMPAnimation
     [System.NonSerialized] float currentAfterMaxWaitDuration;
     [System.NonSerialized] float currentAfterMinWaitDuration;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         Vector3 BL, TL, TR, BR;
         Context ctx = context as Context;
@@ -209,7 +209,7 @@ public class GrowAnimation : TMPAnimation
         currentAfterMinWaitDuration = afterMinWaitDuration;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -301,7 +301,7 @@ public class GrowAnimation : TMPAnimation
         }
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

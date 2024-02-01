@@ -16,7 +16,7 @@ public class FadeShowAnimation : TMPShowAnimation
     [System.NonSerialized] Vector2 currentAnchor;
     [System.NonSerialized] float currentSpeed;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData,  IAnimationContext context)
     {
         //if (currentAnchor == Vector2.zero) currentAnchor = Vector2.right;
         float BL, TL, TR, BR;
@@ -163,7 +163,7 @@ public class FadeShowAnimation : TMPShowAnimation
     }
 
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -222,7 +222,7 @@ public class FadeShowAnimation : TMPShowAnimation
     }
 
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

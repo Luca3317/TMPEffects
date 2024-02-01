@@ -213,7 +213,7 @@ public class TMPAnimatorEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-            forceReprocess = true;
+            //forceReprocess = true;
         }
     }
 

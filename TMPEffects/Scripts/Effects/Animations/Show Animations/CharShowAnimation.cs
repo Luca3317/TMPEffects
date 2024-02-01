@@ -43,7 +43,7 @@ public class CharShowAnimation : TMPShowAnimation
     // order in which characters are read: random, loop, pingpong
     // if using units: allow for multi chars in current characters    
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 
@@ -201,7 +201,7 @@ public class CharShowAnimation : TMPShowAnimation
         currentMinUnitSize = minUnitSize;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -263,7 +263,7 @@ public class CharShowAnimation : TMPShowAnimation
         }
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

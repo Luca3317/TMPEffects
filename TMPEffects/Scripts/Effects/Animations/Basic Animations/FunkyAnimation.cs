@@ -19,7 +19,7 @@ namespace TMPEffects.Animations
         [System.NonSerialized] float currentAmplitude;
         [System.NonSerialized] float currentSqueezeFactor;
 
-        public override void Animate(ref CharData cData, ref IAnimationContext context)
+        public override void Animate(ref CharData cData, IAnimationContext context)
         {
 
             float t = Mathf.Sin(context.animatorContext.passedTime * currentSpeed) / 2 + 0.5f;
@@ -86,7 +86,7 @@ namespace TMPEffects.Animations
             currentSqueezeFactor = squeezeFactor;
         }
 
-        public override void SetParameters(Dictionary<string, string> parameters)
+        public override void SetParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return;
 
@@ -121,7 +121,7 @@ namespace TMPEffects.Animations
             }
         }
 
-        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
 

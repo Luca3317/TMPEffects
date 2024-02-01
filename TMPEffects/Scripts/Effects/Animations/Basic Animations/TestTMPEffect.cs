@@ -12,7 +12,7 @@ namespace TMPEffects.Animations
         [SerializeField] private float _frequency = 10;
         [SerializeField] private Color32 lerpColor;
 
-        public override void Animate(ref CharData cData, ref IAnimationContext context)
+        public override void Animate(ref CharData cData, IAnimationContext context)
         {
             for (int i = 0; i < 4; i++)
             {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public struct CharData
+public class CharData
 {
     public VisibilityState visibilityState
     {
@@ -40,7 +40,7 @@ public struct CharData
     public CharData(int index, TMP_CharacterInfo cInfo)
     {
         VertexData vData = new VertexData(cInfo);
-        mesh = vData;
+        mesh = vData; 
         info = new Info(index, cInfo, mesh);
 
         position = info.initialPosition;

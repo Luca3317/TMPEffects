@@ -18,7 +18,7 @@ public class GrowHideAnimation : TMPHideAnimation
     [System.NonSerialized] Vector2 currentDirection; // ignored if anchor not center
     [System.NonSerialized] float currentSpeed;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         Vector3 BL, TL, TR, BR;
         Context ctx = context as Context;
@@ -176,7 +176,7 @@ public class GrowHideAnimation : TMPHideAnimation
         currentMinScale = minScale;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -260,7 +260,7 @@ public class GrowHideAnimation : TMPHideAnimation
         }
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

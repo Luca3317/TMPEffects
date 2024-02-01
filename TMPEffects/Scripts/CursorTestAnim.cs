@@ -8,7 +8,7 @@ public class CursorTestAnim : TMPAnimationParameterless
 {
     Transform obj;
     float stopDist = 20;
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         if (obj == null) return;
         Vector3 pos = obj.position;

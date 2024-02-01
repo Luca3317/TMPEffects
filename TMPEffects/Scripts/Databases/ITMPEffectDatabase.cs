@@ -6,10 +6,10 @@ namespace TMPEffects.Databases
 {
     public interface ITMPEffectDatabase
     {
-        public bool Contains(string name);
+        public bool ContainsEffect(string name);
     }
 
-    public interface ITMPEffectDatabase<T> : ITMPEffectDatabase
+    public interface ITMPEffectDatabase<out T> : ITMPEffectDatabase
     {
         public T GetEffect(string name);
     }

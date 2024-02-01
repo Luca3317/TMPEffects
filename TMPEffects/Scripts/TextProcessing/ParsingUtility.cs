@@ -473,10 +473,15 @@ namespace TMPEffects.TextProcessing
 
         public static Dictionary<string, string> GetTagParametersDict(string tag)
         {
-            if (!IsTag(tag, TagType.Open)) throw new System.ArgumentException(nameof(tag));
-            Dictionary<string, string> dict = new Dictionary<string, string>();
+            if (string.IsNullOrWhiteSpace(tag)) throw new System.ArgumentException(nameof(tag));
+            tag = tag.Trim();
+            if (tag[0] == '<')
+            {
+                if (!IsTag(tag, TagType.Open)) throw new System.ArgumentException(nameof(tag));
+                else tag = tag.Substring(1, tag.Length - 2);
+            }
 
-            tag = tag.Substring(1, tag.Length - 2);
+            Dictionary<string, string> dict = new Dictionary<string, string>();
 
             string key, value;
             int endValue;
@@ -490,7 +495,7 @@ namespace TMPEffects.TextProcessing
             while (tag.Length > 0)
             {
                 ParseKeyValue(tag, out key, out value, out endValue);
-                //Debug.Log("Key and value: " + key + ", " + value);
+                //Debug.Log("Key and value: " + key + ", " + value); 
 
                 if (!dict.ContainsKey(key))
                     dict.Add(key, value);

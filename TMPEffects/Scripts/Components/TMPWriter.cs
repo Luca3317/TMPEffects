@@ -142,7 +142,7 @@ namespace TMPEffects.Components
             UpdateProcessor(forceReprocess: false);
 
             etp = new EventTagProcessor(); // Not dependent on any database
-            mediator.Processor.RegisterProcessor(ParsingUtility.EVENT_PREFIX, etp);
+            //mediator.Processor.RegisterProcessor(ParsingUtility.EVENT_PREFIX, etp);
 
             mediator.Subscribe(this);
             mediator.TextChanged -= OnTextChanged;
@@ -170,8 +170,8 @@ namespace TMPEffects.Components
         {
             mediator.TextChanged -= OnTextChanged;
             mediator.Processor.FinishAdjustIndeces -= PostProcessTags;
-            mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
-            mediator.Processor.UnregisterProcessor(ParsingUtility.EVENT_PREFIX);
+            //mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
+            //mediator.Processor.UnregisterProcessor(ParsingUtility.EVENT_PREFIX);
 
             // TODO Each reassigned in OnEnable anyway;
             // Either change class to reuse instances or dont reset (atm, resetting is necessary for some editor functionality though)
@@ -502,14 +502,14 @@ namespace TMPEffects.Components
         private bool ValidateCommandTag(string tag, ParsingUtility.TagInfo tagInfo, out Dictionary<string, string> parametersOut)
         {
             parametersOut = null;
-            if (!database.Contains(tagInfo.name)) return false;
+            if (!database.ContainsEffect(tagInfo.name)) return false;
             parametersOut = ParsingUtility.GetTagParametersDict(tag);
             if (!database.GetEffect(tagInfo.name).ValidateParameters(parametersOut)) return false;
             return true;
         }
         private bool ValidateCommandTag(string key, Dictionary<string, string> parameters)
         {
-            if (!database.Contains(key)) return false;
+            if (!database.ContainsEffect(key)) return false;
             if (!database.GetEffect(key).ValidateParameters(parameters)) return false;
             return true;
         }
@@ -913,11 +913,11 @@ namespace TMPEffects.Components
 
         private void UpdateProcessor(bool forceReprocess = true)
         {
-            mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
+            //mediator.Processor.UnregisterProcessor(ParsingUtility.COMMAND_PREFIX);
             ctps = new TagProcessorStack<TMPCommandTag>();
             ctps.AddProcessor(ctp = new CommandTagProcessor(database));
             ctps.AddProcessor(sctp = new SceneCommandTagProcessor(sceneCommands));
-            mediator.Processor.RegisterProcessor(ParsingUtility.COMMAND_PREFIX, ctps);
+            //mediator.Processor.RegisterProcessor(ParsingUtility.COMMAND_PREFIX, ctps);
 
             if (forceReprocess) mediator.ForceReprocess();
         }

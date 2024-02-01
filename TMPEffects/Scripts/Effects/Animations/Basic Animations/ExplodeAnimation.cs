@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="new ExplodeAnimation", menuName ="TMPEffects/Animations/Explode")]
 public class ExplodeAnimation : TMPAnimation
 {
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         Vector3 center = (context.segmentData.max + context.segmentData.min) / 2;
 
@@ -26,11 +26,11 @@ public class ExplodeAnimation : TMPAnimation
     {
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         return true;
     }

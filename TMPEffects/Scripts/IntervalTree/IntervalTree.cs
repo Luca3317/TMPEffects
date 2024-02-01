@@ -379,6 +379,19 @@ namespace IntervalTree
             this.items = this.items.Where(l => !items.Contains(l.Value)).ToList();
         }
 
+        public void RemoveWhere(Predicate<RangeValuePair<TKey, TValue>> predicate)
+        {
+            isInSync = false;
+            var tmp = items.Where((x) => predicate(x)).ToList();
+            UnityEngine.Debug.Log("Remocing " + tmp.Count + "; Items:");
+            foreach (var item in tmp)
+            {
+               UnityEngine.Debug.Log(((ITagWrapper)item.Value).Tag.Name);
+            }
+
+            this.items = this.items.Where(x => !predicate(x)).ToList();
+        }
+
         public void Clear()
         {
             root = new IntervalTreeNode<TKey, TValue>(comparer);

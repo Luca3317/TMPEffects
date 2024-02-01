@@ -20,7 +20,7 @@ public class PivotAnimation : TMPAnimation
     [System.NonSerialized] float currentMinAngle;
     [System.NonSerialized] Vector3 currentRotationAxis;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         float angle = (context.animatorContext.passedTime * currentSpeed) % 360;
         var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
@@ -38,7 +38,7 @@ public class PivotAnimation : TMPAnimation
         currentRotationAxis = rotationAxis;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -76,7 +76,7 @@ public class PivotAnimation : TMPAnimation
 
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

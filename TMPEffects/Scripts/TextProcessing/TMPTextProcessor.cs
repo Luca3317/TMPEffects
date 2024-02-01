@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using TMPEffects.TextProcessing.TagProcessors;
 using TMPEffects.Tags;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Collections.Specialized;
+using System.Collections;
 
 namespace TMPEffects.TextProcessing
 {
-    internal class TMPTextProcessor : ITextPreprocessor
+    internal class TMPTextProcessor : ITextPreprocessor, ITagProcessorManager
     {
         public TMP_Text TextComponent { get; private set; }
 
-        public Dictionary<char, ITagProcessor> TagProcessors => new(tagProcessors);
-        Dictionary<char, ITagProcessor> tagProcessors;
+        public ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>> TagProcessors => ((ITagProcessorManager)processors).TagProcessors;
+
+        //private Dictionary<char, List<TagProcessor>> tagProcessors;
+        //private Dictionary<char, ReadOnlyCollection<TagProcessor>> tagProcessorsRO;
+        //public ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>> TagProcessors { get; private set; }
+
+        private TagProcessorManager processors;
 
         private StringBuilder sb;
-        private Dictionary<TMPEffectTag, Indeces> newIndeces = new();
+        private Dictionary<EffectTag, Indices> newIndeces = new();
         private Stack<TMP_Style> styles = new();
 
         public delegate void TMPTextProcessorEventHandler(string text);
@@ -24,36 +32,24 @@ namespace TMPEffects.TextProcessing
         public event TMPTextProcessorEventHandler FinishPreProcess;
         public event TMPTextProcessorEventHandler BeginAdjustIndeces;
         public event TMPTextProcessorEventHandler FinishAdjustIndeces;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyProcessorsChangedEventHandler ProcessorsChanged;
+
+        // TODO there should likely be events for processor registered / unregistered
 
         public TMPTextProcessor(TMP_Text text)
         {
             sb = new StringBuilder();
-            tagProcessors = new();
-            this.TextComponent = text;
+            processors = new TagProcessorManager();
+            processors.ProcessorsChanged += (_, args) => ProcessorsChanged?.Invoke(this, args);
+
+            TextComponent = text;
         }
 
-        public void RegisterProcessor<T>(char prefix, ITagProcessor<T> preprocessor) where T : TMPEffectTag
-        {
-            if (preprocessor == null)
-            {
-                throw new System.ArgumentNullException(nameof(preprocessor));
-            }
-
-            if (tagProcessors.ContainsKey(prefix))
-            {
-                return;
-            }
-            tagProcessors.Add(prefix, preprocessor);
-        }
-
-        public void UnregisterProcessor(char prefix)
-        {
-            if (!tagProcessors.ContainsKey(prefix))
-            {
-                return;
-            }
-            tagProcessors.Remove(prefix);
-        }
+        public void AddProcessor(char prefix, TagProcessor processor, int priority = 0) => processors.AddProcessor(prefix, processor, priority);
+        public bool RemoveProcessor(char prefix, TagProcessor processor) => processors.RemoveProcessor(prefix, processor);
+        public IEnumerator<TagProcessor> GetEnumerator() => processors.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => processors.GetEnumerator();
 
         /// <summary>
         /// Preprocess the text.<br/>
@@ -67,9 +63,9 @@ namespace TMPEffects.TextProcessing
             BeginPreProcess?.Invoke(text);
 
             styles.Clear();
-            foreach (var key in tagProcessors.Keys)
+            foreach (var processor in processors)
             {
-                tagProcessors[key].Reset();
+                processor.Reset();
             }
 
             // Indicates the order of the parsed tags at the respective index
@@ -197,15 +193,23 @@ namespace TMPEffects.TextProcessing
             return parsed;
         }
 
-        private class Indeces
+        private class Indices
         {
             public int start;
             public int end;
 
-            public Indeces(int start, int end)
+            public readonly int originalStart;
+            public readonly int originalEnd;
+
+            public readonly EffectTagIndices indices;
+
+            public Indices(EffectTagIndices indices)
             {
-                this.start = start;
-                this.end = end;
+                this.start = indices.StartIndex;
+                this.end = indices.EndIndex;
+
+                this.originalStart = indices.StartIndex;
+                this.originalEnd = indices.EndIndex;
             }
         }
 
@@ -214,14 +218,24 @@ namespace TMPEffects.TextProcessing
         /// to text removed and inserted by TextMeshPro.
         /// </summary>
         /// <param name="info"></param>
-        public void AdjustIndeces(TMP_TextInfo info)
+        public void AdjustIndices(TMP_TextInfo info)
         {
             BeginAdjustIndeces?.Invoke(info.textComponent.text);
 
             newIndeces.Clear();
-            foreach (var processor in tagProcessors.Values)
+
+            Dictionary<TagProcessor, List<KeyValuePair<Indices, EffectTag>>> dict = new();
+            foreach (var processor in processors)
+            {
+                dict.Add(processor, new());
                 foreach (var tag in processor.ProcessedTags)
-                    newIndeces.Add(tag, new Indeces(tag.startIndex, tag.endIndex));
+                {
+                    dict[processor].Add(new KeyValuePair<Indices, EffectTag>(new Indices(tag.Key), tag.Value));
+                }
+            }
+
+
+
 
             int lastIndex = -1;
 
@@ -240,25 +254,28 @@ namespace TMPEffects.TextProcessing
                             insertedCharacters++;
                         }
 
-                        foreach (var kvp in newIndeces)
+                        foreach (var list in dict.Values)
                         {
-                            if (kvp.Key.IsOpen)
+                            foreach (var kvp in list)
                             {
-                                if (kvp.Key.startIndex >= lastIndex)
+                                if (kvp.Key.originalEnd == -1)
                                 {
-                                    kvp.Value.start += insertedCharacters;
+                                    if (kvp.Key.originalStart >= lastIndex)
+                                    {
+                                        kvp.Key.start += insertedCharacters;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                if (kvp.Key.endIndex < lastIndex) continue;
+                                else
+                                {
+                                    if (kvp.Key.originalEnd < lastIndex) continue;
 
-                                // If tag begins after inserted text
-                                if (kvp.Key.startIndex >= lastIndex)
-                                {
-                                    kvp.Value.start += insertedCharacters;
+                                    // If tag begins after inserted text
+                                    if (kvp.Key.originalStart >= lastIndex)
+                                    {
+                                        kvp.Key.start += insertedCharacters;
+                                    }
+                                    kvp.Key.end += insertedCharacters;
                                 }
-                                kvp.Value.end += insertedCharacters;
                             }
                         }
                     }
@@ -267,26 +284,28 @@ namespace TMPEffects.TextProcessing
                     {
                         int diff = cInfo.index - lastIndex - 1;
 
-                        foreach (var kvp in newIndeces)
+                        foreach (var list in dict.Values)
                         {
-
-                            if (kvp.Key.IsOpen)
+                            foreach (var kvp in list)
                             {
-                                if (kvp.Key.startIndex > lastIndex + 1)
+                                if (kvp.Key.originalEnd == -1)
                                 {
-                                    kvp.Value.start -= diff;
+                                    if (kvp.Key.originalStart > lastIndex + 1)
+                                    {
+                                        kvp.Key.start -= diff;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                if (kvp.Key.endIndex <= lastIndex) continue;
+                                else
+                                {
+                                    if (kvp.Key.originalEnd <= lastIndex) continue;
 
-                                // If tag begins after inserted text
-                                if (kvp.Key.startIndex > lastIndex + 1)
-                                {
-                                    kvp.Value.start -= diff;
+                                    // If tag begins after inserted text
+                                    if (kvp.Key.originalStart > lastIndex + 1)
+                                    {
+                                        kvp.Key.start -= diff;
+                                    }
+                                    kvp.Key.end -= diff;
                                 }
-                                kvp.Value.end -= diff;
                             }
                         }
                     }
@@ -300,10 +319,15 @@ namespace TMPEffects.TextProcessing
                 lastIndex = cInfo.index;
             }
 
-            foreach (var kvp in newIndeces)
+            foreach (var kvp in dict)
             {
-                kvp.Key.SetStartIndex(kvp.Value.start);
-                kvp.Key.SetEndIndex(kvp.Value.end);
+
+                foreach (var thing in kvp.Value)
+                {
+                    kvp.Key.AdjustIndices(
+                        new KeyValuePair<EffectTagIndices, EffectTag>(thing.Key.indices, thing.Value), 
+                        new KeyValuePair<EffectTagIndices, EffectTag>(new EffectTagIndices(thing.Key.start, thing.Key.indices.OrderAtIndex, thing.Key.end), thing.Value));
+                }
             }
 
             FinishAdjustIndeces?.Invoke(info.textComponent.text);
@@ -311,9 +335,17 @@ namespace TMPEffects.TextProcessing
 
         private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)
         {
-            if (tagProcessors.ContainsKey(tagInfo.prefix))
+            ReadOnlyCollection<TagProcessor> coll;
+            if (!processors.TagProcessors.TryGetValue(tagInfo.prefix, out coll))
+                return false;
+
+            if (coll.Count == 1)
+                return coll[0].Process(tagInfo, textIndex, order);
+
+            for (int i = 0; i < coll.Count; i++)
             {
-                return tagProcessors[tagInfo.prefix].Process(tagInfo, textIndex, order);
+                if (coll[i].Process(tagInfo, textIndex, order))
+                    return true;
             }
 
             return false;

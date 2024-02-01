@@ -1,8 +1,13 @@
+using Codice.CM.Common;
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPEffects.Components;
 using TMPEffects.Tags;
 using UnityEngine;
+
+// TODO!
+// Reinitialize every time excludeshow/hide/basic or punctuation changed
 
 public class SegmentData
 {
@@ -15,27 +20,17 @@ public class SegmentData
     public readonly int firstAnimationIndex;
     public readonly int lastAnimationIndex;
 
-    public readonly int firstShowAnimationIndex;
-    public readonly int lastShowAnimationIndex;
-
-    public readonly int firstHideAnimationIndex;
-    public readonly int lastHideAnimationIndex;
-
     public Vector3 max;
     public Vector3 min;
 
-    internal SegmentData(TMPAnimator animator, TMPAnimationTag tag, List<CharData> cData)
+    internal SegmentData(EffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
     {
-        startIndex = tag.startIndex;
-        length = tag.length;
+        startIndex = indices.StartIndex;
+        length = indices.Length;
         firstVisibleIndex = -1;
         lastVisibleIndex = -1;
         firstAnimationIndex = -1;
         lastAnimationIndex = -1;
-        firstShowAnimationIndex = -1;
-        lastShowAnimationIndex = -1;
-        firstHideAnimationIndex = -1;
-        lastHideAnimationIndex = -1;
 
         max = Vector3.negativeInfinity;
         min = Vector3.positiveInfinity;
@@ -55,20 +50,10 @@ public class SegmentData
             if (firstVisibleIndex == -1) firstVisibleIndex = i;
             lastVisibleIndex = i;
 
-            if (!animator.IsExcludedBasic(cData[i].info.character))
+            if (!animates(cData[i].info.character))
             {
                 if (firstAnimationIndex == -1) firstAnimationIndex = i;
                 lastAnimationIndex = i;
-            }
-            if (!animator.IsExcludedShow(cData[i].info.character))
-            {
-                if (firstAnimationIndex == -1) firstShowAnimationIndex = i;
-                lastShowAnimationIndex = i;
-            }
-            if (!animator.IsExcludedHide(cData[i].info.character))
-            {
-                if (firstAnimationIndex == -1) firstHideAnimationIndex = i;
-                lastHideAnimationIndex = i;
             }
         }
     }

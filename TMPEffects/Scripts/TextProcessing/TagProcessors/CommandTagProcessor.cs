@@ -27,7 +27,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
             if (database == null) return false;
 
             // check name
-            if (!database.Contains(tagInfo.name)) return false;
+            if (!database.ContainsEffect(tagInfo.name)) return false;
 
             TMPCommand command;
             if ((command = database.GetEffect(tagInfo.name)) == null) return false;
@@ -61,7 +61,7 @@ namespace TMPEffects.TextProcessing.TagProcessors
             if (database == null) return false;
 
             // check name
-            if (!database.Contains(tagInfo.name)) return false;
+            if (!database.ContainsEffect(tagInfo.name)) return false;
 
             TMPCommand command;
             if ((command = database.GetEffect(tagInfo.name)) == null) return false;

@@ -10,19 +10,19 @@ namespace TMPEffects.Animations
         /// </summary>
         /// <param name="charData">Data about the character.</param>
         /// <param name="context">Data about the animator.</param>
-        public abstract void Animate(ref CharData charData, ref IAnimationContext context);
+        public abstract void Animate(ref CharData charData, IAnimationContext context);
         /// <summary>
         /// Set the parameters for the animation.
         /// </summary>
         /// <param name="parameters">Parameters as key-value-pairs.</param>
-        public abstract void SetParameters(Dictionary<string, string> parameters);
+        public abstract void SetParameters(IDictionary<string, string> parameters);
         /// <summary>
         /// Validate the parameters.<br/>
         /// Used to validate tags.
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public abstract bool ValidateParameters(Dictionary<string, string> parameters);
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters);
         /// <summary>
         /// Reset the parameters.
         /// </summary>

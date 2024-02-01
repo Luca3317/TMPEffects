@@ -12,7 +12,7 @@ namespace TMPEffects.Components
      * about it in the form of a CharData collection.
      */
     [DisallowMultipleComponent]
-    public class TMPMediator : MonoBehaviour
+    public sealed class TMPMediator : MonoBehaviour
     {
 
         public void VisibilityStateUpdated(int index, CharData.VisibilityState previous)
@@ -27,7 +27,11 @@ namespace TMPEffects.Components
 
         public bool isInitialized => initialized;
 
-        //public int Subscribers { get; private set; }
+        /// <summary>
+        /// List containing all the current charData.
+        /// You can rely on this never being reassigned (therefore any wrappers
+        /// you may create, e.g. Collection<CharData>, can be relied on as well.
+        /// </summary>
         public List<CharData> CharData { get; private set; }
         internal TMPTextProcessor Processor { get; private set; }
         public TMP_Text Text { get; private set; }
@@ -75,7 +79,7 @@ namespace TMPEffects.Components
 
         void TextChangedProcedure()
         {
-            Processor.AdjustIndeces(Text.textInfo);
+            Processor.AdjustIndices(Text.textInfo);
             PopulateCharData();
             TextChanged?.Invoke();
         }
@@ -119,6 +123,7 @@ namespace TMPEffects.Components
                 CharData.Add(data);
             }
 
+            CharData.TrimExcess();
             CharDataPopulated?.Invoke();
         }
 

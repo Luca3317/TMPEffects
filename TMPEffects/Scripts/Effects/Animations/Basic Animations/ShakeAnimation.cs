@@ -22,7 +22,7 @@ public class ShakeAnimation : TMPAnimation
     ShakeAnimationContext shakeContext;
     System.Random random;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         shakeContext = (ShakeAnimationContext)context;
 
@@ -82,7 +82,7 @@ public class ShakeAnimation : TMPAnimation
         currentDelay = delay;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -125,7 +125,7 @@ public class ShakeAnimation : TMPAnimation
         }
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 

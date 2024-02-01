@@ -22,7 +22,7 @@ public class JumpAnimation : TMPAnimation
     [System.NonSerialized] float currentWaitDuration;
     [System.NonSerialized] float currentRadius;
 
-    public override void Animate(ref CharData cData, ref IAnimationContext context)
+    public override void Animate(ref CharData cData, IAnimationContext context)
     {
         JumpContext ctx = (JumpContext)context;
 
@@ -81,7 +81,7 @@ public class JumpAnimation : TMPAnimation
         currentRadius = radius;
     }
 
-    public override void SetParameters(Dictionary<string, string> parameters)
+    public override void SetParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return;
 
@@ -113,7 +113,7 @@ public class JumpAnimation : TMPAnimation
         }
     }
 
-    public override bool ValidateParameters(Dictionary<string, string> parameters)
+    public override bool ValidateParameters(IDictionary<string, string> parameters)
     {
         if (parameters == null) return true;
 
