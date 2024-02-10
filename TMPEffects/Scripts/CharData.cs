@@ -95,7 +95,7 @@ public class CharData
     /// <param name="position">The new position of the vertex.</param>
     public void SetVertex(int index, Vector3 position)
     {
-        mesh.SetPosition(index, position);
+        mesh.SetVertex(index, position);
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class CharData
     /// <param name="delta"></param> 
     public void AddVertexDelta(int index, Vector3 delta)
     {
-        mesh.SetPosition(index, mesh.GetPosition(index) + delta);
+        mesh.SetVertex(index, mesh.GetPosition(index) + delta);
     }
 
     /// <summary>
@@ -348,7 +348,7 @@ public class CharData
             }
         }
 
-        public void SetPosition(int i, Vector3 value)
+        public void SetVertex(int i, Vector3 value)
         {
             switch (i)
             {

@@ -9,16 +9,22 @@ namespace TMPEffects.Commands
     [CreateAssetMenu(fileName ="new SkippableCommand", menuName ="TMPEffects/Commands/Skippable")]
     public class SkippableCommand : TMPCommand
     {
-        public override CommandType CommandType => CommandType.Both;
+        public override TagType TagType => TagType.Either;
 
         public override bool ExecuteInstantly => false;
 
         public override bool ExecuteOnSkip => true;
 
+        public override bool ExecuteRepeatable => true;
+
+#if UNITY_EDITOR
+        public override bool ExecuteInPreview => true;
+#endif
+
         public override void ExecuteCommand(TMPCommandArgs args)
         {
             bool val;
-            ParsingUtility.StringToBool(args.tag.parameters[""], out val);
+            ParsingUtility.StringToBool(args.tag.Parameters[""], out val);
             args.writer.SetSkippable(val);
         }
 

@@ -1,12 +1,8 @@
-using PlasticGui.Gluon.WorkspaceWindow;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using TMPEffects;
-using Unity.VisualScripting.YamlDotNet.Core;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class ObservableTagCollection : TagCollection, INotifyCollectionChanged

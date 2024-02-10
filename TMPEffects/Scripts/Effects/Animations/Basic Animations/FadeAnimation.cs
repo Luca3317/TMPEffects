@@ -29,8 +29,10 @@ public class FadeAnimation : TMPAnimation
         FixVector(ref currentAnchor);
         if (ctx.lastUpdated == -1) { ctx.lastUpdated = ctx.animatorContext.passedTime; }
 
-        //if (cData.segmentIndex == 0) ctx.passed += context.animatorContext.deltaTime * currentSpeed;
-        if (cData.info.index == ctx.segmentData.firstAnimationIndex) ctx.passed += context.animatorContext.deltaTime * currentSpeed;
+        if (cData.info.index == ctx.segmentData.firstAnimationIndex)
+        {
+            ctx.passed += context.animatorContext.deltaTime * currentSpeed;
+        }
         float ppT = ctx.passed;
         float lerpT = Mathf.PingPong(ppT, 1);
         float repeat = Mathf.Repeat(ppT, 2) - 1;

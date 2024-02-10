@@ -15,12 +15,12 @@ namespace TMPEffects
         /// </summary>
         /// <remarks>
         /// <list type="table">
-        /// <item><see cref="CommandType.Index"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index. It does not need to be closed. Example: This is <!speed=10> my text</item>
-        /// <item><see cref="CommandType.Range"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text. Example: This <!show>is my</!show> text</item>
-        /// <item><see cref="CommandType.Both"/>: Both applications are valid.</item>
+        /// <item><see cref="TagType.Empty"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index. It does not need to be closed. Example: This is <!speed=10> my text</item>
+        /// <item><see cref="TagType.Container"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text. Example: This <!show>is my</!show> text</item>
+        /// <item><see cref="TagType.Either"/>: Both applications are valid.</item>
         /// </list>
         /// </remarks>
-        public abstract CommandType CommandType { get; }
+        public abstract TagType TagType { get; }
         /// <summary>
         /// Whether the command is executed the moment the <see cref="TMPWriter"/> begin writing.
         /// Otherwise, it is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index
@@ -31,6 +31,12 @@ namespace TMPEffects
         /// Whether the command should be executed by the <see cref="TMPWriter"/> if its text position is skipped over.
         /// </summary>
         public abstract bool ExecuteOnSkip { get; }
+
+        public abstract bool ExecuteRepeatable { get; }
+
+#if UNITY_EDITOR
+        public abstract bool ExecuteInPreview { get; }
+#endif
 
         /// <summary>
         /// Execute the command.
@@ -45,16 +51,12 @@ namespace TMPEffects
         /// <param name="parameters"></param>
         /// <returns></returns>
         public abstract bool ValidateParameters(Dictionary<string, string> parameters);
-
-#if UNITY_EDITOR
-        public virtual void SceneGUI(Vector3 position, TMPCommandTag tag) { }
-#endif
     }
 
-    public enum CommandType
+    public enum TagType
     {
-        Index = 0,
-        Range = 1,
-        Both = 2
+        Empty = 0,
+        Container = 1,
+        Either = 2
     }
 }

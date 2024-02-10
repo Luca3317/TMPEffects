@@ -19,7 +19,8 @@ public class CursorTestAnim : TMPAnimationParameterless
             float magnitude = dir.magnitude;
             if (magnitude > stopDist) continue;
             float dist = Mathf.Clamp(1f / magnitude, -0.15f, 0.15f);
-            cData.mesh.SetPosition(i, cData.mesh.initial.GetPosition(i) + dir.normalized * dist);
+            cData.SetVertex(i, cData.mesh.initial.GetPosition(i) + dir.normalized * dist);
+            //cData.mesh.SetPosition(i, cData.mesh.initial.GetPosition(i) + dir.normalized * dist);
             //cData.currentMesh.SetUV(i, cData.initialMesh.GetUV0(i) + new Vector2(obj.position.x, obj.position.y)/100);
             //cData.currentMesh.SetUV2(i, cData.initialMesh.GetUV2(i) + new Vector2(obj.position.x, obj.position.y)/100);
         }

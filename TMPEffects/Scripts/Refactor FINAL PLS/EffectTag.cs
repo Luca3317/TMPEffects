@@ -40,6 +40,12 @@ public sealed class EffectTag
     }
 }
 
+/// <summary>
+/// The indices of an <see cref="EffectTag"/>.
+/// The indices can be regarded as a half-open interval of [<see cref="StartIndex"/>, <see cref="EndIndex"/>).
+/// For example, an instance of this with <see cref="StartIndex"/> == 5 and <see cref="EndIndex"/> == 10 "contains" the indices 5, 6, 7, 8 and 9.
+/// The decision to make the indices a half open interval was made to represent the indices that naturally emerge when parsing them from text.
+/// </summary>
 public struct EffectTagIndices : IComparable<EffectTagIndices>, IEquatable<EffectTagIndices>
 {
     public int StartIndex => startIndex;
@@ -48,6 +54,17 @@ public struct EffectTagIndices : IComparable<EffectTagIndices>, IEquatable<Effec
 
     public bool IsOpen => endIndex == -1;
     public int Length => IsOpen ? endIndex : endIndex - startIndex + 1;
+    public bool Contains(int index) => index >= startIndex && index < endIndex;
+    public IEnumerable<int> ContainedIndices
+    {
+        get
+        {
+            for (int i = startIndex; i < EndIndex; i++)
+            {
+                yield return i;
+            }
+        }
+    }
 
     private int startIndex;
     private int endIndex;

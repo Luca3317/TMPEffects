@@ -8,11 +8,13 @@ namespace TMPEffects
 {
     public class TMPEventArgs : EventArgs
     {
-        public TMPEventTag tag { get; private set; }
+        public EffectTag Tag { get; private set; }
+        public EffectTagIndices Indices { get; private set; }
 
-        public TMPEventArgs(TMPEventTag tag)
+        public TMPEventArgs(EffectTag tag, EffectTagIndices indices)
         {
-            this.tag = tag;
+            this.Tag = tag;
+            this.Indices = indices;
         }
     }
 }

@@ -60,6 +60,8 @@ namespace TMPEffects.TextProcessing
         /// <returns></returns>
         public string PreprocessText(string text)
         {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
             BeginPreProcess?.Invoke(text);
 
             styles.Clear();
@@ -106,7 +108,7 @@ namespace TMPEffects.TextProcessing
                     searchIndex = tagInfo.endIndex + 1;
                     continue;
                 }
-                else if (TextComponent.styleSheet != null && tagInfo.name == "style"/* && tagInfo.parameterString.Length > 8*/)
+                else if (TextComponent.styleSheet != null && tagInfo.name == "style")
                 {
                     if (tagInfo.type == ParsingUtility.TagType.Close)
                     {
@@ -119,11 +121,11 @@ namespace TMPEffects.TextProcessing
                         searchIndex = tagInfo.startIndex;
                         continue;
                     }
-                    else
+                    else if (tagInfo.parameterString.Length > 6)
                     {
                         TMP_Style style;
                         int start = 6, end = tagInfo.parameterString.Length - 1;
-
+                        if (start >= end)
                         if (tagInfo.parameterString[start] == '\"') start++;
                         if (tagInfo.parameterString[end] == '\"') end--;
 
@@ -189,6 +191,9 @@ namespace TMPEffects.TextProcessing
             //    }
             //}
 
+            sw.Stop();
+
+            //Debug.Log("Preprocess took " + sw.Elapsed.TotalMilliseconds);
 
             return parsed;
         }
@@ -210,6 +215,8 @@ namespace TMPEffects.TextProcessing
 
                 this.originalStart = indices.StartIndex;
                 this.originalEnd = indices.EndIndex;
+
+                this.indices = indices;
             }
         }
 
@@ -220,9 +227,10 @@ namespace TMPEffects.TextProcessing
         /// <param name="info"></param>
         public void AdjustIndices(TMP_TextInfo info)
         {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
             BeginAdjustIndeces?.Invoke(info.textComponent.text);
 
-            newIndeces.Clear();
 
             Dictionary<TagProcessor, List<KeyValuePair<Indices, EffectTag>>> dict = new();
             foreach (var processor in processors)
@@ -233,9 +241,6 @@ namespace TMPEffects.TextProcessing
                     dict[processor].Add(new KeyValuePair<Indices, EffectTag>(new Indices(tag.Key), tag.Value));
                 }
             }
-
-
-
 
             int lastIndex = -1;
 
@@ -325,12 +330,15 @@ namespace TMPEffects.TextProcessing
                 foreach (var thing in kvp.Value)
                 {
                     kvp.Key.AdjustIndices(
-                        new KeyValuePair<EffectTagIndices, EffectTag>(thing.Key.indices, thing.Value), 
-                        new KeyValuePair<EffectTagIndices, EffectTag>(new EffectTagIndices(thing.Key.start, thing.Key.indices.OrderAtIndex, thing.Key.end), thing.Value));
+                        new KeyValuePair<EffectTagIndices, EffectTag>(thing.Key.indices, thing.Value),
+                        new KeyValuePair<EffectTagIndices, EffectTag>(new EffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex), thing.Value));
                 }
             }
 
             FinishAdjustIndeces?.Invoke(info.textComponent.text);
+
+            sw.Stop();
+            //Debug.Log("Adjustindices took " + sw.Elapsed.TotalMilliseconds);
         }
 
         private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)

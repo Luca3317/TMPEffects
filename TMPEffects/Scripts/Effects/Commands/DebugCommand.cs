@@ -9,28 +9,30 @@ namespace TMPEffects.Commands
     [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Debug")]
     public class DebugCommand : TMPCommand
     {
-        public override CommandType CommandType => CommandType.Index;
+        public override TagType TagType => TagType.Empty;
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
+        public override bool ExecuteRepeatable => false;
+        public override bool ExecuteInPreview => true;
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            if (args.tag.parameters != null)
+            if (args.tag.Parameters != null)
             {
-                if (args.tag.parameters.ContainsKey("type"))
+                if (args.tag.Parameters.ContainsKey("type"))
                 {
-                    switch (args.tag.parameters["type"])
+                    switch (args.tag.Parameters["type"])
                     {
                         case "w":
-                        case "warning": Debug.LogWarning(args.tag.parameters[""]); break;
+                        case "warning": Debug.LogWarning(args.tag.Parameters[""]); break;
                         case "e":
-                        case "error": Debug.LogError(args.tag.parameters[""]); break;
+                        case "error": Debug.LogError(args.tag.Parameters[""]); break;
                         case "l":
                         case "log":
-                        default: Debug.Log(args.tag.parameters[""]); break;
+                        default: Debug.Log(args.tag.Parameters[""]); break;
                     }
                 }
-                else Debug.Log(args.tag.parameters[""]);
+                else Debug.Log(args.tag.Parameters[""]);
             }
         }
 

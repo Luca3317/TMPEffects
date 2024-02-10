@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPEffects.Tags;
 using TMPro;
@@ -15,13 +16,7 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] internal TMPMediator mediator;
 
-
         public int CharacterCount => mediator.CharData.Count;
-        //public string ProcessedText
-        //{
-        //    get
-        //}
-
 
 
         public void SetText(string text)
@@ -36,21 +31,14 @@ namespace TMPEffects.Components
 
         protected void UpdateMediator()
         {
-            mediator = TMPMediator.Create(gameObject);
+            //mediator = TMPMediator.Create(gameObject);
         }
 
-        protected void InsertElement<T>(List<T> list, T tag) where T : TMPEffectTag
+        private static Dictionary<GameObject, ValueTuple<TMPMediatorNew, List<object>>> gameObjectMediatorMapping;
+    
+        public class TMPMediatorNew
         {
-            int largerIndex = list.FindIndex(x => x.startIndex >= tag.startIndex);
-            if (largerIndex >= 0) list.Insert(largerIndex, tag);
-            else list.Add(tag);
-        }
-        protected void InsertElement<T>(List<T> list, T element, System.Predicate<T> match)
-        {
-            int largerIndex = list.FindIndex(match);
-            if (largerIndex >= 0) list.Insert(largerIndex, element);
-            else list.Add(element);
+
         }
     }
 }
-

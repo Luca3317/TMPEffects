@@ -2,6 +2,7 @@ using TMPEffects.Components;
 using TMPEffects.Databases;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CustomEditor(typeof(TMPWriter))]
 public class TMPWriterEditor : Editor
@@ -26,10 +27,11 @@ public class TMPWriterEditor : Editor
 
     // Serialized properties
     SerializedProperty databaseProp;
-    SerializedProperty speedProp;
-    SerializedProperty whitespaceSpeedProp;
-    SerializedProperty visibleSpeedProp;
-    SerializedProperty punctuationSpeedProp;
+    SerializedProperty delayProp;
+    SerializedProperty whitespaceDelayProp;
+    SerializedProperty visibleDelayProp;
+    SerializedProperty punctuationDelayProp;
+    SerializedProperty linebreakDelayProp;
     SerializedProperty startOnPlayProp;
     SerializedProperty eventsEnabledProp;
     SerializedProperty commandsEnabledProp;
@@ -120,10 +122,11 @@ public class TMPWriterEditor : Editor
     {
         // Cache properties
         databaseProp = serializedObject.FindProperty("database");
-        speedProp = serializedObject.FindProperty("speed");
-        punctuationSpeedProp = serializedObject.FindProperty("punctuationSpeed");
-        whitespaceSpeedProp = serializedObject.FindProperty("whiteSpaceSpeed");
-        visibleSpeedProp = serializedObject.FindProperty("visibleSpeed");
+        delayProp = serializedObject.FindProperty("delay");
+        punctuationDelayProp = serializedObject.FindProperty("punctuationDelay");
+        whitespaceDelayProp = serializedObject.FindProperty("whiteSpaceDelay");
+        visibleDelayProp = serializedObject.FindProperty("visibleDelay");
+        linebreakDelayProp = serializedObject.FindProperty("linebreakDelay");
         startOnPlayProp = serializedObject.FindProperty("writeOnStart");
         eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
         commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
@@ -324,17 +327,31 @@ public class TMPWriterEditor : Editor
         }
     }
 
+    private bool foldd;
     void RepaintInspector()
     {
         DrawPlayer();
 
-        EditorGUILayout.PropertyField(speedProp);
-        EditorGUILayout.PropertyField(whitespaceSpeedProp);
-        EditorGUILayout.PropertyField(punctuationSpeedProp);
-        EditorGUILayout.PropertyField(visibleSpeedProp);
+        EditorGUILayout.BeginHorizontal();
+        foldd = EditorGUILayout.Foldout(foldd, "Delay");
+        var pre = EditorGUIUtility.labelWidth;
+        EditorGUIUtility.labelWidth = 0;
+        EditorGUILayout.PropertyField(delayProp,new GUIContent(""));
+        EditorGUIUtility.labelWidth = pre;
+        EditorGUILayout.EndHorizontal();
+        if (foldd)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(whitespaceDelayProp);
+            EditorGUILayout.PropertyField(linebreakDelayProp);
+            EditorGUILayout.PropertyField(punctuationDelayProp);
+            EditorGUILayout.PropertyField(visibleDelayProp);
+            EditorGUI.indentLevel--;
+        }
         
         EditorGUILayout.PropertyField(startOnPlayProp);
         EditorGUILayout.PropertyField(maySkipProp);
+
 
         DrawDatabase();
 
@@ -493,6 +510,7 @@ public class TMPWriterEditor : Editor
 
     void StopWriter()
     {
+        Debug.Log("Hit stop");
         //if (!writer.enabled) return;
         writer.ResetWriter();
         progress = 0;

@@ -11,20 +11,9 @@ namespace TMPEffects.Components
      * Handles the pre- and postprocessing of the text, as well as maintaining information
      * about it in the form of a CharData collection.
      */
-    [DisallowMultipleComponent]
+    [ExecuteAlways, AddComponentMenu(""), DisallowMultipleComponent]
     public sealed class TMPMediator : MonoBehaviour
     {
-
-        public void VisibilityStateUpdated(int index, CharData.VisibilityState previous)
-        {
-            OnVisibilityStateUpdated?.Invoke(index, previous);
-        }
-
-        public delegate void VisibilityEventHandler(int index, CharData.VisibilityState previous);
-        public event VisibilityEventHandler OnVisibilityStateUpdated;
-
-
-
         public bool isInitialized => initialized;
 
         /// <summary>
@@ -38,9 +27,11 @@ namespace TMPEffects.Components
 
         public delegate void EmptyEventHandler();
         public delegate void RangeEventHandler(int start, int lenght);
+        public delegate void VisibilityEventHandler(int index, CharData.VisibilityState previous);
         public event EmptyEventHandler TextChanged;
         public event RangeEventHandler ForcedUpdate;
         public event EmptyEventHandler CharDataPopulated;
+        public event VisibilityEventHandler OnVisibilityStateUpdated;
 
         [System.NonSerialized] private bool initialized = false;
 
@@ -77,10 +68,17 @@ namespace TMPEffects.Components
             }
         }
 
+        // TODO IDK if i like e.g. animator relying on e.g. writer calling this
+        public void VisibilityStateUpdated(int index, CharData.VisibilityState previous)
+        {
+            OnVisibilityStateUpdated?.Invoke(index, previous);
+        }
+
         void TextChangedProcedure()
         {
             Processor.AdjustIndices(Text.textInfo);
             PopulateCharData();
+
             TextChanged?.Invoke();
         }
 
@@ -140,7 +138,12 @@ namespace TMPEffects.Components
             if (!subscribers.Contains(obj)) return;
             subscribers.Remove(obj);
 
-            if (subscribers.Count == 0)
+            ConditionalDestroy();
+        }
+
+        private void ConditionalDestroy()
+        {
+            if (allowDestroy && subscribers.Count == 0)
             {
                 // This check is meant to prevent doubly calling destroy
                 // on this component if the gameobject is destroyed
@@ -158,28 +161,52 @@ namespace TMPEffects.Components
                 Destroy(this);
 #endif
                 }
-
-                //                if (gameObject.activeInHierarchy)
-                //                {
-                //                    UnsetPreprocessor();
-                //                    TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
-
-                //#if UNITY_EDITOR
-                //                    if (Application.isPlaying) Destroy(this);
-                //                    else DestroyImmediate(this);
-                //#else
-                //                Destroy(this);
-                //#endif
-                //}
             }
         }
+
+        private static HideFlags hf = HideFlags.NotEditable | HideFlags.HideInInspector;
 
         public static TMPMediator Create(GameObject go)
         {
             TMPMediator tmf = go.GetOrAddComponent<TMPMediator>();
-            tmf.hideFlags = HideFlags.HideInInspector;
+            tmf.enabled = true;
+            tmf.hideFlags = hf;
             tmf.Initialize();
             return tmf;
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            hideFlags = hf;
+            Initialize();
+        }
+#endif
+
+        private bool allowDestroy = true;
+        public void OnDisable()
+        {
+#if UNITY_EDITOR
+            if (Application.isPlaying && gameObject.activeInHierarchy && subscribers.Count > 0) Debug.LogWarning("Disabled TMPMediator on " + name + " despite having subscribers; This should never happen =>  bug");
+#endif
+            Debug.Log("Ondisable");
+            if (subscribers.Count == 0) return;
+            List<Behaviour> behaviors = new List<Behaviour>();
+
+            allowDestroy = false;
+            foreach (var v in subscribers)
+            {
+                var s = v as UnityEngine.Behaviour;
+                if (s == null) continue;
+                behaviors.Add(s);
+            }
+            if (behaviors.Count == 0) return;
+
+            for (int i = 0; i < behaviors.Count; i++)
+                behaviors[i].enabled = false;
+
+            allowDestroy = true;
+            ConditionalDestroy();
         }
     }
 }

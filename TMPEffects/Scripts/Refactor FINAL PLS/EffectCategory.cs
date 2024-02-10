@@ -117,7 +117,7 @@ namespace TMPEffects
         {
             data = null;
             if (!tags.ContainsKey(tagInfo.name)) return false;
-            if (tagInfo.type == ParsingUtility.TagType.Open || tags[tagInfo.name].CommandType != CommandType.Index)
+            if (tagInfo.type == ParsingUtility.TagType.Open || tags[tagInfo.name].TagType != TagType.Empty)
             {
                 var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
                 EffectTag tag = new EffectTag(tagInfo.name, tagInfo.prefix, param);

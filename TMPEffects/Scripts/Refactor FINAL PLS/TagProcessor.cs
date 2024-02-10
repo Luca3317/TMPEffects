@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPEffects;
 using TMPEffects.Tags;
 using TMPEffects.TextProcessing;

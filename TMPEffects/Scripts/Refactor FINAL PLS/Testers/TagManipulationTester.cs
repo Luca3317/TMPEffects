@@ -18,13 +18,33 @@ public class TagManipulationTester : MonoBehaviour
 
     [SerializeField] TMPAnimator animator;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1.0f;
+            }
+            else
+            {
+                Time.timeScale = 0.0f;
+            }
+        }
+    }
+
     public void Submit()
     {
         string tag = tagField.text;
-        int start, end, order;
+        int start, end, orderT;
+        int? order;
         if (!ParsingUtility.StringToInt(startField.text, out start)) throw new System.ArgumentException("Start not integer");
         if (!ParsingUtility.StringToInt(endField.text, out end)) throw new System.ArgumentException("End not integer");
-        if (!ParsingUtility.StringToInt(orderField.text, out order)) throw new System.ArgumentException("Order not integer");
+        if (!ParsingUtility.StringToInt(orderField.text, out orderT))
+        {
+            order = null;
+        }
+        else order = orderT;
 
         Component comp;
         string compText = componentDropdown.options[componentDropdown.value].text;
@@ -46,23 +66,46 @@ public class TagManipulationTester : MonoBehaviour
         // TODO support writer
         if (action == Action.Add)
         {
-            Debug.Log("Will add");
-            if (!animator.Tags.TryAdd(new EffectTag(info.name, info.prefix, dict), new EffectTagIndices(start, end, order)))
+            if (order == null)
             {
-                throw new System.ArgumentException("Failed to add");
+                if (!animator.Tags.TryAdd(new EffectTag(info.name, info.prefix, dict), new EffectTagIndices(start, end, 0)))
+                {
+                    throw new System.ArgumentException("Failed to add");
+                }
+                else
+                    Debug.Log("Successfull!");
             }
             else
-                Debug.Log("Successfull!");
+            {
+                if (!animator.Tags.TryAdd(new EffectTag(info.name, info.prefix, dict), new EffectTagIndices(start, end, order.Value)))
+                {
+                    throw new System.ArgumentException("Failed to add");
+                }
+                else
+                    Debug.Log("Successfull!");
+            }
+
         }
         else if (action == Action.Remove)
         {
-            Debug.Log("Will remove");
-            if (!animator.Tags.RemoveAt(start, order))
+            if (order == null)
             {
-                throw new System.ArgumentException("Failed to remove");
+                if (!animator.Tags.RemoveAt(start))
+                {
+                    throw new System.ArgumentException("Failed to remove");
+                }
+                else
+                    Debug.Log("Successful!");
             }
             else
-                Debug.Log("Successful!");
+            {
+                if (!animator.Tags.RemoveAt(start, order))
+                {
+                    throw new System.ArgumentException("Failed to remove");
+                }
+                else
+                    Debug.Log("Successful!");
+            }
         }
     }
 
@@ -80,10 +123,12 @@ public class TagManipulationTester : MonoBehaviour
 
     public void ClearLog()
     {
+#if UNITY_EDITOR
         var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
         var type = assembly.GetType("UnityEditor.LogEntries");
         var method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
+#endif
     }
 
     private enum Component

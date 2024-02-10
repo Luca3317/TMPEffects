@@ -4,10 +4,6 @@ using System.Collections.Specialized;
 using UnityEngine;
 using TMPEffects;
 using System.Linq;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
-using static Codice.CM.Common.CmCallContext;
-using System.Threading.Tasks;
-using System;
 
 public interface ITagCollectionManager<TKey> : IReadOnlyDictionary<TKey, ObservableTagCollection>
 {
@@ -39,6 +35,10 @@ public class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<
 
     public ObservableTagCollection AddKey(TKey key)
     {
+        if (key == null) throw new System.ArgumentNullException(nameof(key));
+        if (collections.ContainsKey(key)) throw new System.ArgumentException(nameof(key));
+        if (prefixToKey.ContainsKey(key.Prefix)) throw new System.ArgumentException(nameof(key.Prefix));
+
         ObservableTagCollection collection = new NonAdjustingTagCollection();
 
         collection.CollectionChanged += OnCollectionChanged;
@@ -63,7 +63,6 @@ public class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<
     {
         if (autoSync) return;
 
-        Debug.Log("Lemme fix it");
         EffectTagTuple tuple;
         switch (args.Action)
         {
@@ -348,7 +347,6 @@ public class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<
 
         public override bool TryAdd(EffectTag tag, EffectTagIndices indices)
         {
-            Debug.Log("DO CALL THIS YES");
             if (validator != null && !validator.ValidateTag(tag)) return false;
 
             int index;

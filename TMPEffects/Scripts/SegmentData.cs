@@ -1,9 +1,5 @@
-using Codice.CM.Common;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using TMPEffects.Components;
-using TMPEffects.Tags;
 using UnityEngine;
 
 // TODO!
@@ -50,7 +46,7 @@ public class SegmentData
             if (firstVisibleIndex == -1) firstVisibleIndex = i;
             lastVisibleIndex = i;
 
-            if (!animates(cData[i].info.character))
+            if (animates(cData[i].info.character))
             {
                 if (firstAnimationIndex == -1) firstAnimationIndex = i;
                 lastAnimationIndex = i;

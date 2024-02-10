@@ -33,7 +33,7 @@ public class JumpAnimation : TMPAnimation
         }
 
         // If waiting, and done
-        if (ctx.waitingSince != -1 && (context.animatorContext.useScaledTime ? Time.time : Time.unscaledTime) - ctx.waitingSince >= currentWaitDuration)
+        if (ctx.waitingSince != -1 && (context.animatorContext.passedTime) - ctx.waitingSince >= currentWaitDuration)
         {
             ctx.waitingSince = -1;
             ctx.playingSince = GetTime(ctx);
