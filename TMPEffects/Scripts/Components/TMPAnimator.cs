@@ -24,7 +24,7 @@ namespace TMPEffects.Components
     /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>
     /// </remarks>
-    [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))] // TODO TMP_Text is abstract; cant create one automactically
+    [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
     {
         /// <summary>
@@ -45,21 +45,6 @@ namespace TMPEffects.Components
 
         public bool AnimateOnStart { get => animateOnStart; set => animateOnStart = value; }
         public bool AnimationsOverride { get => animationsOverride; set => animationsOverride = value; }
-
-
-        [MenuItem("CONTEXT/TMP_Text/Add animator")]
-        static void AddAnimatorToText(MenuCommand command)
-        {
-            TMP_Text text = command.context as TMP_Text;
-            if (text == null)
-            {
-                Debug.LogWarning("Could not add animator to " + command.context.name);
-                return;
-            }
-
-            text.gameObject.GetOrAddComponent<TMPAnimator>();
-        }
-
 
         #region Fields
         [SerializeField] TMPAnimationDatabase database;
@@ -117,7 +102,7 @@ namespace TMPEffects.Components
 
             SubscribeToMediator();
 
-            mediator.ForceReprocess();
+            Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
             if (preview && !Application.isPlaying) StartPreview();
@@ -135,44 +120,38 @@ namespace TMPEffects.Components
 
         private void OnDisable()
         {
-            processors.UnregisterFrom(mediator.Processor);
+            processors.UnregisterFrom(Mediator.Processor);
 
-            mediator.ForceReprocess();
-
-            UnsubscribeFromMediator();
+            Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
             StopPreview();
 #endif
-        }
 
-        private void DisableComponent()
-        {
-            Debug.Log("Attempting recreation");
-            UpdateMediator();
-            gameObject.AddComponent<TMPMediator>();
+            UnsubscribeFromMediator();
         }
 
         private void SubscribeToMediator()
         {
-            mediator.Subscribe(this); // Subscribe to the mediator; This makes the mediator persistent at least until this component is destroyed
+            //Mediator.Subscribe(this); // Subscribe to the mediator; This makes the mediator persistent at least until this component is destroyed
 
-            mediator.OnVisibilityStateUpdated += EnsureCorrectTiming; // Ensure visibility time of object is persistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
-            mediator.CharDataPopulated += PostProcessTags; // 
-            mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
-            mediator.ForcedUpdate += OnForcedUpdate; // Will update animations at indices once; otherwise, depending on timing of required update, there'll be a frame of unanimated text
+            Mediator.OnVisibilityStateUpdated += EnsureCorrectTiming; // Ensure visibility time of object is persistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
+            Mediator.CharDataPopulated += PostProcessTags; // 
+            Mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
+            Mediator.ForcedUpdate += OnForcedUpdate; // Will update animations at indices once; otherwise, depending on timing of required update, there'll be a frame of unanimated text
             //mediator.Disabled += DisableComponent;
         }
 
         private void UnsubscribeFromMediator()
         {
-            mediator.OnVisibilityStateUpdated -= EnsureCorrectTiming;
-            mediator.CharDataPopulated -= PostProcessTags;
-            mediator.TextChanged -= OnTextChanged;
-            mediator.ForcedUpdate -= OnForcedUpdate;
+            Mediator.OnVisibilityStateUpdated -= EnsureCorrectTiming;
+            Mediator.CharDataPopulated -= PostProcessTags;
+            Mediator.TextChanged -= OnTextChanged;
+            Mediator.ForcedUpdate -= OnForcedUpdate;
             //mediator.Disabled -= DisableComponent;
 
-            mediator.Unsubscribe(this);
+            FreeMediator();
+            //Mediator.Unsubscribe(this);
         }
 
         private void PrepareForProcessing()
@@ -184,22 +163,21 @@ namespace TMPEffects.Components
 
             // Reset tagcollection & cachedcollection
             tags = new();
-            var roCData = new ReadOnlyCollection<CharData>(mediator.CharData);
+            var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
             basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
             show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
             hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
 
             // Reset processors
-            //Debug.Log("Updating processors with null mediator: " + (mediator == null) + " and null processors: " + (processors == null));
             processors ??= new();
-            processors.UnregisterFrom(mediator.Processor);
+            processors.UnregisterFrom(Mediator.Processor);
             processors.Clear();
 
             processors.AddProcessor(basicCategory.Prefix, new TagProcessor(basicCategory));
             processors.AddProcessor(showCategory.Prefix, new TagProcessor(showCategory));
             processors.AddProcessor(hideCategory.Prefix, new TagProcessor(hideCategory));
 
-            processors.RegisterTo(mediator.Processor);
+            processors.RegisterTo(Mediator.Processor);
 
             SetDefault(TMPAnimationType.Show);
             SetDefault(TMPAnimationType.Hide);
@@ -207,7 +185,7 @@ namespace TMPEffects.Components
 
         private void SetDefault(TMPAnimationType type)
         {
-            string str;
+            string str; 
 
             switch (type)
             {
@@ -245,12 +223,12 @@ namespace TMPEffects.Components
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    cacher = new AnimationCacher(database?.showAnimationDatabase, context, new ReadOnlyCollection<CharData>(mediator.CharData), x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database?.showAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
                     defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
                     break;
 
                 case TMPAnimationType.Hide:
-                    cacher = new AnimationCacher(database?.hideAnimationDatabase, context, new ReadOnlyCollection<CharData>(mediator.CharData), x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database?.hideAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
                     defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
                     break;
             }
@@ -374,7 +352,7 @@ namespace TMPEffects.Components
         {
             this.database = database;
             OnDatabaseChanged();
-            mediator.ForceReprocess();
+            Mediator.ForceReprocess();
         }
 
         public void SetDefaultShowString(string str)
@@ -458,21 +436,19 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            //else if (count % 100 == 0)
-            //    Debug.Log(count);
             count++;
             sw.Start();
 
             context.passedTime += deltaTime;
 
-            for (int i = 0; i < mediator.CharData.Count; i++)
+            for (int i = 0; i < Mediator.CharData.Count; i++)
             {
-                CharData cData = mediator.CharData[i];
+                CharData cData = Mediator.CharData[i];
                 UpdateCharacterAnimation(ref cData, deltaTime, i, false);
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            if (Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
             sw.Stop();
         }
@@ -486,7 +462,7 @@ namespace TMPEffects.Components
             UpdateCharacterAnimation_Impl(index);
 
             // TODO only set actually changed meshes; dirty flag on cdata & cehcking of uv vert color
-            var info = mediator.Text.textInfo;
+            var info = Mediator.Text.textInfo;
             TMP_CharacterInfo cInfo = info.characterInfo[index];
             int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
             Color32[] colors = info.meshInfo[mIndex].colors32;
@@ -497,15 +473,15 @@ namespace TMPEffects.Components
 
             for (int j = 0; j < 4; j++)
             {
-                verts[vIndex + j] = mediator.CharData[index].mesh[j].position;
-                colors[vIndex + j] = mediator.CharData[index].mesh[j].color;
-                uvs0[vIndex + j] = mediator.CharData[index].mesh[j].uv;
-                uvs2[vIndex + j] = mediator.CharData[index].mesh[j].uv2;
+                verts[vIndex + j] = Mediator.CharData[index].mesh[j].position;
+                colors[vIndex + j] = Mediator.CharData[index].mesh[j].color;
+                uvs0[vIndex + j] = Mediator.CharData[index].mesh[j].uv;
+                uvs2[vIndex + j] = Mediator.CharData[index].mesh[j].uv2;
                 //uvs4[vIndex + j] = mediator.CharData[index].currentMesh[j].uv4;
             }
 
-            if (updateVertices && mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            if (updateVertices && Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
         private bool AnimateCharacter(int index, ref CharData cData)
@@ -519,7 +495,7 @@ namespace TMPEffects.Components
 
         private int UpdateCharacterAnimation_Impl(int index)
         {
-            CharData cData = mediator.CharData[index];
+            CharData cData = Mediator.CharData[index];
             if (!cData.info.isVisible || cData.visibilityState == CharData.VisibilityState.Hidden) return 0;
 
             int applied = 0;
@@ -707,13 +683,14 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
+                // TODO Calculation of correct values needs some work
+
                 // Apply vertex transformations
                 Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 Vector3 vbr = cData.mesh.initial.vertex_BR.position + BR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 Vector3 vbl = cData.mesh.initial.vertex_BL.position + BL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
 
-                // TODO Does this make sense?
                 // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
                 vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
                 vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
@@ -766,7 +743,7 @@ namespace TMPEffects.Components
                 cData.mesh.SetUV2(2, TR_UV2);
                 cData.mesh.SetUV2(3, BR_UV2);
 
-                mediator.CharData[index] = cData;
+                Mediator.CharData[index] = cData;
             }
         }
         #endregion
@@ -783,7 +760,7 @@ namespace TMPEffects.Components
 
             for (int i = 0; i < length; i++)
             {
-                CharData cData = mediator.CharData[start + i];
+                CharData cData = Mediator.CharData[start + i];
                 UpdateCharacterAnimation(ref cData, 0f, start + i);
             }
         }
@@ -792,11 +769,11 @@ namespace TMPEffects.Components
         {
             if (context == null) return;
             float passed = context.passedTime;
-            CharData cData = mediator.CharData[index];
+            CharData cData = Mediator.CharData[index];
             CharData.VisibilityState current = cData.visibilityState;
             cData.SetVisibilityState(prev, -1);
             cData.SetVisibilityState(current, passed);
-            mediator.CharData[index] = cData;
+            Mediator.CharData[index] = cData;
         }
 
         private void PostProcessTags()
@@ -828,7 +805,7 @@ namespace TMPEffects.Components
         #region Utility
         private void ResetAllVisible()
         {
-            var info = mediator.Text.textInfo;
+            var info = Mediator.Text.textInfo;
 
             Vector3[] verts;
             Color32[] colors;
@@ -836,10 +813,10 @@ namespace TMPEffects.Components
             TMP_CharacterInfo cInfo;
 
             // Iterate over all characters and apply the new meshes
-            for (int i = 0; i < mediator.CharData.Count; i++)
+            for (int i = 0; i < Mediator.CharData.Count; i++)
             {
                 cInfo = info.characterInfo[i];
-                if (!cInfo.isVisible || mediator.CharData[i].visibilityState == CharData.VisibilityState.Hidden) continue;
+                if (!cInfo.isVisible || Mediator.CharData[i].visibilityState == CharData.VisibilityState.Hidden) continue;
 
                 vIndex = cInfo.vertexIndex;
                 mIndex = cInfo.materialReferenceIndex;
@@ -847,22 +824,22 @@ namespace TMPEffects.Components
                 colors = info.meshInfo[mIndex].colors32;
                 verts = info.meshInfo[mIndex].vertices;
 
-                CharData cData = mediator.CharData[i];
+                CharData cData = Mediator.CharData[i];
 
                 for (int j = 0; j < 4; j++)
                 {
                     cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
                     cData.mesh.SetColor(j, cData.mesh.initial.GetColor(j));
 
-                    verts[vIndex + j] = mediator.CharData[i].mesh.initial[j].position;
-                    colors[vIndex + j] = mediator.CharData[i].mesh.initial[j].color;
+                    verts[vIndex + j] = Mediator.CharData[i].mesh.initial[j].position;
+                    colors[vIndex + j] = Mediator.CharData[i].mesh.initial[j].color;
                 }
 
-                mediator.CharData[i] = cData;
+                Mediator.CharData[i] = cData;
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            if (Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
         /// <summary>
@@ -903,7 +880,7 @@ namespace TMPEffects.Components
 
         private void RecalculateSegmentData(CachedCollection<CachedAnimation> coll, Predicate<char> animates)
         {
-            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(mediator.CharData);
+            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
             foreach (var animation in coll)
             {
                 animation.context.segmentData = new SegmentData(animation.Indices, ro, animates);
@@ -927,6 +904,19 @@ namespace TMPEffects.Components
             EditorApplication.update += UpdatePreview;
         }
 
+        [MenuItem("CONTEXT/TMP_Text/Add animator")]
+        static void AddAnimator(MenuCommand command)
+        {
+            TMP_Text text = command.context as TMP_Text;
+            if (text == null)
+            {
+                Debug.LogWarning("Could not add animator to " + command.context.name);
+                return;
+            }
+
+            text.gameObject.GetOrAddComponent<TMPAnimator>();
+        }
+
         public void StopPreview()
         {
             //preview = false;
@@ -944,18 +934,17 @@ namespace TMPEffects.Components
 
         public void ForceReprocess()
         {
-            //Debug.Log("Editor force reprocess triggered with mediator is null? " + (mediator == null));
-            if (mediator != null) mediator.ForceReprocess();
+            if (Mediator != null) Mediator.ForceReprocess();
         }
 
         public void ForcePostProcess()
         {
-            if (mediator != null) PostProcessTags();
+            if (Mediator != null) PostProcessTags();
         }
 
         public void UpdateProcessorsWrapper()
         {
-            if (mediator == null) return;
+            if (Mediator == null) return;
             OnDatabaseChanged();
         }
 
@@ -1006,14 +995,13 @@ namespace TMPEffects.Components
         }
 
         private void OnValidate()
-        {
-            if (mediator == null) return;
+        { 
+            if (MediatorThreadSafe == null) return;
 
             if (prevDatabase != database || (database != null && (basicCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.basicAnimationDatabase || showCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.showAnimationDatabase || hideCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.hideAnimationDatabase)))
             {
                 prevDatabase = database;
                 OnDatabaseChanged();
-                //UpdateProcessors();
             }
         }
 #endif

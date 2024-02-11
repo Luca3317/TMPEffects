@@ -1,6 +1,10 @@
+using Codice.CM.Common.Tree.Partial;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using TMPEffects.Extensions;
 using TMPEffects.Tags;
+using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
 
@@ -11,34 +15,58 @@ namespace TMPEffects.Components
     /// </summary>
     public abstract class TMPEffectComponent : MonoBehaviour
     {
-        public TMP_Text TextComponent => mediator.Text;
-        public TMP_TextInfo TextInfo => mediator.Text.textInfo;
+        public TMP_Text TextComponent => Mediator.Text;
+        public TMP_TextInfo TextInfo => Mediator.Text.textInfo;
 
-        [System.NonSerialized] internal TMPMediator mediator;
+        [System.NonSerialized] private readonly object obj = new();
+        [System.NonSerialized] private TMPMediator mediator = null;
 
-        public int CharacterCount => mediator.CharData.Count;
+        protected TMPMediator Mediator
+        {
+            get
+            {
+                if (mediator == null)
+                {
+                    if (!TMPMediatorManager.TryGetMediator(gameObject, out mediator))
+                    {
+                        TMPMediatorManager.Subscribe(GetComponent<TMP_Text>(), obj);
+                        mediator = TMPMediatorManager.GetMediator(gameObject);
+                    }
+                }
+                return mediator;
+            }
+        }
 
+        protected TMPMediator MediatorThreadSafe
+        {
+            get
+            {
+                return mediator;
+            }
+        }
+
+        protected void FreeMediator() 
+        {
+            TMPMediatorManager.Unsubscribe(GetComponent<TMP_Text>(), obj);
+            mediator = null;
+        }
+
+        public int CharacterCount => Mediator.CharData.Count;
 
         public void SetText(string text)
         {
-            mediator.Text.SetText(text);
+            Mediator.Text.SetText(text);
         }
 
         public void UpdateMeshes(TMPro.TMP_VertexDataUpdateFlags flags = TMPro.TMP_VertexDataUpdateFlags.All)
         {
-            mediator.Text.UpdateVertexData(flags);
+            Mediator.Text.UpdateVertexData(flags);
         }
 
         protected void UpdateMediator()
         {
-            //mediator = TMPMediator.Create(gameObject);
-        }
-
-        private static Dictionary<GameObject, ValueTuple<TMPMediatorNew, List<object>>> gameObjectMediatorMapping;
-    
-        public class TMPMediatorNew
-        {
-
+            //GetMediator = TMPMediator.Create(gameObject);
         }
     }
 }
+

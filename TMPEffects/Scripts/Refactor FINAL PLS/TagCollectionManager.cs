@@ -179,15 +179,6 @@ public class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<
     {
         List<EffectTagTuple> list = union.ToList();
 
-        Debug.Log("Pre Validation: ");
-        foreach (var item in list)
-        {
-            if (item.Indices.StartIndex == index)
-            {
-                Debug.Log(item.Tag.Name + ": " + item.Indices.StartIndex + " - " + item.Indices.OrderAtIndex + " : " + item.Indices.EndIndex);
-            }
-        }
-
         if (list.Count == 0) return;
 
         bool prevSync = autoSync;

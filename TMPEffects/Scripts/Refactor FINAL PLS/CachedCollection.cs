@@ -40,11 +40,6 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
 
     private void Add(int cachedIndex, T tuple)
     {
-        if (tuple.Indices.StartIndex == tuple.Indices.EndIndex)
-        {
-            Debug.Log("Adding tag with identical start and endindex; length = " + tuple.Indices.Length);
-        }
-
         foreach (var kvp in minMax)
         {
             if (kvp.Value.MinIndex >= cachedIndex)
@@ -174,9 +169,6 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
         {
             case NotifyCollectionChangedAction.Add:
                 if (e.NewItems.Count > 1) Debug.LogWarning("Added more than one element; Should be impossible");
-                //EffectTagTuple tuple = (EffectTagTuple)e.NewItems[0];
-                //Debug.LogWarning("Adding at " + e.NewStartingIndex);
-                //cache.Insert(e.NewStartingIndex, cacher.CacheTag(tuple.Tag, tuple.Indices));
                 var tuple = (EffectTagTuple)e.NewItems[0];
                 Add(e.NewStartingIndex, cacher.CacheTag(tuple.Tag, tuple.Indices));
                 break;
@@ -187,10 +179,6 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
                 {
                     Remove(index);
                 }
-                //for (int i = 0; i < cache.Count; i++)
-                //{
-                //    cache.RemoveAt(index);
-                //}
                 break;
 
             case NotifyCollectionChangedAction.Reset:
@@ -210,8 +198,6 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
                 {
                     tuple = (EffectTagTuple)e.NewItems[i];
                     Set(index + i, cacher.CacheTag(tuple.Tag, tuple.Indices));
-                    //tuple = (EffectTagTuple)e.NewItems[i];
-                    //cache[index + i] = cacher.CacheTag(tuple.Tag, tuple.Indices);
                 }
                 break;
         }

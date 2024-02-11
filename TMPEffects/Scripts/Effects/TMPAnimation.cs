@@ -5,12 +5,6 @@ using UnityEngine;
 
 namespace TMPEffects
 {
-    /*TODO
-     * Reparsing the parameters every call is wasteful.
-     * Instead, have some CachedParameter class; returned by validateparameters (through out)
-     * Then pass that into set parameters (with in)
-     */
-
     /// <summary>
     /// Base class for animations.
     /// </summary>

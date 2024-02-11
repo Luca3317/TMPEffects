@@ -181,19 +181,7 @@ namespace TMPEffects.TextProcessing
 
             FinishPreProcess?.Invoke(parsed);
 
-            //Debug.Log("Done preprocessing; here are the internal orders");
-
-            //foreach (var processor in tagProcessors.Values)
-            //{
-            //    foreach (var tag in processor.ProcessedTags)
-            //    {
-            //        Debug.Log(tag.name + " at " + tag.startIndex + " at order " + tag.orderAtIndex);
-            //    }
-            //}
-
             sw.Stop();
-
-            //Debug.Log("Preprocess took " + sw.Elapsed.TotalMilliseconds);
 
             return parsed;
         }
@@ -317,7 +305,7 @@ namespace TMPEffects.TextProcessing
                     // If the index became lower again -- is there any case where that may happen?
                     else
                     {
-                        Debug.LogWarning("Undefined case");
+                        Debug.LogWarning("Undefined case; character index became lower again");
                     }
                 }
 
@@ -338,7 +326,6 @@ namespace TMPEffects.TextProcessing
             FinishAdjustIndeces?.Invoke(info.textComponent.text);
 
             sw.Stop();
-            //Debug.Log("Adjustindices took " + sw.Elapsed.TotalMilliseconds);
         }
 
         private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)

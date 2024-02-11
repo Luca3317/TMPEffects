@@ -81,7 +81,6 @@ public class CharData
         _stateTime = currentTime;
         if (_visibilityState == VisibilityState.Hidden && newState != VisibilityState.Hidden)
         {
-            //Debug.Log("Updating my time to " + currentTime + "!");
             _visibleTime = _stateTime;
         }
         _visibilityState = newState;

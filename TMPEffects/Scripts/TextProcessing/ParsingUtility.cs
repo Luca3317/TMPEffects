@@ -200,14 +200,10 @@ namespace TMPEffects.TextProcessing
                 dict.Add("", value);
             text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
 
-            // TODO only for debugging purposes, prevent endless loop
-            //int count = 0;
-
             // Parse attribute keys and values
             while (text.Length > 0)
             {
                 ParseKeyValue(text, out key, out value, out endValue);
-                //Debug.Log("Key and value: " + key + ", " + value);
 
                 if (!dict.ContainsKey(key))
                 {
@@ -215,9 +211,6 @@ namespace TMPEffects.TextProcessing
                 }
 
                 text = text.Remove(0, Mathf.Min(endValue, text.Length)).Trim();
-
-                //count++;
-                //if (count > 5) break;
             }
 
             if (dict.Count == 0) return null;
@@ -386,7 +379,6 @@ namespace TMPEffects.TextProcessing
 
             } while (!IsTag(text, tagStartIndex, tagEndIndex, type));
 
-            //Debug.Log("returning indeces " + tagStartIndex + " and " + tagEndIndex);
             return true;
         }
 
@@ -495,7 +487,6 @@ namespace TMPEffects.TextProcessing
             while (tag.Length > 0)
             {
                 ParseKeyValue(tag, out key, out value, out endValue);
-                //Debug.Log("Key and value: " + key + ", " + value); 
 
                 if (!dict.ContainsKey(key))
                     dict.Add(key, value);

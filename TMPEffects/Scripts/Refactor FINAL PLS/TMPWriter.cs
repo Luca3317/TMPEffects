@@ -11,7 +11,7 @@ using UnityEditor;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Net.WebRequestMethods;
+using TMPEffects.Extensions;
 
 namespace TMPEffects.Components
 {
@@ -108,14 +108,11 @@ namespace TMPEffects.Components
 
         private void OnEnable()
         {
-            UpdateMediator();
+            SubscribeToMediator();
 
             PrepareForProcessing();
 
-            mediator.Subscribe(this);
-            SubscribeToMediator();
-
-            mediator.ForceReprocess();
+            Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
             // TODO Probably should only happen when actually writing
@@ -133,9 +130,9 @@ namespace TMPEffects.Components
 
         private void OnDisable()
         {
-            processors.UnregisterFrom(mediator.Processor);
+            processors.UnregisterFrom(Mediator.Processor);
 
-            mediator.ForceReprocess();
+            Mediator.ForceReprocess();
 
             UnsubscribeFromMediator();
 
@@ -145,12 +142,12 @@ namespace TMPEffects.Components
                 EditorApplication.update -= EditorUpdate;
                 StopWriterCoroutine();
                 currentIndex = -1;
-                Show(0, mediator.CharData.Count, true);
+                Show(0, Mediator.CharData.Count, true);
                 writing = false;
             }
 #endif
 
-            if (mediator != null) mediator.Unsubscribe(this);
+            FreeMediator();
         }
 
         private void PrepareForProcessing()
@@ -162,32 +159,32 @@ namespace TMPEffects.Components
             eventCategory = new TMPEventCategory(ParsingUtility.EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
-            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(mediator.CharData);
+            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
             tags = new();
             commands = new CachedCollection<CachedCommand>(new CommandCacher(ro, this, commandCategory), tags.AddKey(commandCategory));
             events = new CachedCollection<CachedEvent>(new EventCacher(/*ro,*/ OnTextEvent), tags.AddKey(eventCategory));
 
             // Reset processors
             processors ??= new();
-            processors.UnregisterFrom(mediator.Processor);
+            processors.UnregisterFrom(Mediator.Processor);
             processors.Clear();
 
             processors.AddProcessor(commandCategory.Prefix, new TagProcessor(commandCategory));
             processors.AddProcessor(eventCategory.Prefix, new TagProcessor(eventCategory));
 
-            processors.RegisterTo(mediator.Processor);
+            processors.RegisterTo(Mediator.Processor);
         }
 
         private void SubscribeToMediator()
         {
-            mediator.TextChanged += OnTextChanged;
-            mediator.Processor.FinishAdjustIndeces += PostProcessTags;
+            Mediator.TextChanged += OnTextChanged;
+            Mediator.Processor.FinishAdjustIndeces += PostProcessTags;
         }
 
         private void UnsubscribeFromMediator()
         {
-            mediator.TextChanged -= OnTextChanged;
-            mediator.Processor.FinishAdjustIndeces -= PostProcessTags;
+            Mediator.TextChanged -= OnTextChanged;
+            Mediator.Processor.FinishAdjustIndeces -= PostProcessTags;
         }
 
         private void OnDatabaseChanged()
@@ -233,7 +230,6 @@ namespace TMPEffects.Components
         /// </summary>
         public void ResetWriter()
         {
-            Debug.Log("Reset writer");
             if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
 
             if (writing)
@@ -243,9 +239,8 @@ namespace TMPEffects.Components
 
             // reset
             currentIndex = -1;
-            foreach (var eventt in events) eventt.Reset();
-            foreach (var command in commands) command.Reset();
-            Hide(0, mediator.CharData.Count, true);
+            ResetInvokables(Mediator.CharData.Count);
+            Hide(0, Mediator.CharData.Count, true);
 
             ResetData();
 
@@ -258,7 +253,6 @@ namespace TMPEffects.Components
         /// <param name="index">The index to reset the writer to.</param>
         public void ResetWriter(int index)
         {
-            Debug.Log("Reset writer " + index);
             if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
 
             if (writing)
@@ -269,20 +263,16 @@ namespace TMPEffects.Components
             // reset
             ResetData();
 
-            for (int i = 0; i < currentIndex; i++)
-            {
-                foreach (var eventt in events.GetAt(i)) eventt.Reset();
-                foreach (var command in commands.GetAt(i)) command.Reset();
-            }
+            Hide(index, Mediator.CharData.Count - index, true);
+            Show(0, index, true);
 
+            ResetInvokables(currentIndex);
             for (int i = -1; i < index; i++)
             {
                 RaiseInvokables(i);
             }
 
             currentIndex = index;
-            Hide(index, mediator.CharData.Count - index, true);
-            Show(0, index, true);
 
             OnResetWriter?.Invoke(index);
         }
@@ -298,7 +288,7 @@ namespace TMPEffects.Components
             int skipTo;
             CachedCommand cc = commands.FirstOrDefault(x => x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null && x.Tag.Parameters[""] == "false");
 
-            if (cc == default) skipTo = mediator.CharData.Count;
+            if (cc == default) skipTo = Mediator.CharData.Count;
             else skipTo = cc.Indices.StartIndex;
 
             OnSkipWriter?.Invoke();
@@ -311,7 +301,7 @@ namespace TMPEffects.Components
             currentIndex = skipTo;
             Show(0, skipTo, true); // TODO toggle for whether to skip show animations on skip
 
-            if (skipTo == mediator.CharData.Count)
+            if (skipTo == Mediator.CharData.Count)
             {
                 if (writing) StopWriterCoroutine();
                 OnFinishWriter?.Invoke();
@@ -405,7 +395,7 @@ namespace TMPEffects.Components
                 {
                     StartWriter();
                 }
-                else Show(0, mediator.CharData.Count, true);
+                else Show(0, Mediator.CharData.Count, true);
                 return;
             }
 #endif
@@ -438,7 +428,7 @@ namespace TMPEffects.Components
             OnStartWriting();
 
             // TODO This indicates the text is fully shown already
-            if (currentIndex >= mediator.CharData.Count)
+            if (currentIndex >= Mediator.CharData.Count)
             {
                 OnStopWriting();
                 yield break;
@@ -454,10 +444,10 @@ namespace TMPEffects.Components
             yield return RaiseInvokablesCoroutine(-1);
 
             CharData cData;
-            for (int i = Mathf.Max(currentIndex, 0); i < mediator.CharData.Count; i++)
+            for (int i = Mathf.Max(currentIndex, 0); i < Mediator.CharData.Count; i++)
             {
                 currentIndex = i;
-                cData = mediator.CharData[i];
+                cData = Mediator.CharData[i];
 
                 // Execute the commands & events for the current index
                 yield return RaiseInvokablesCoroutine(i);
@@ -468,7 +458,7 @@ namespace TMPEffects.Components
                 // Show the current character
                 OnShowCharacter?.Invoke(cData);
                 Show(i, 1, false);
-                mediator.ForceUpdate(i, 1);
+                Mediator.ForceUpdate(i, 1);
 
                 // Calculate and wait for the delay for the current index
                 if (delay > 0) yield return new WaitForSeconds(delay);
@@ -484,17 +474,30 @@ namespace TMPEffects.Components
             currentMaySkip = maySkip;
         }
 
+        private void ResetInvokables(int maxIndex)
+        {
+            foreach (var eventt in events)
+            {
+                if ((eventt.Indices.StartIndex < maxIndex || eventt.ExecuteInstantly) && eventt.ExecuteRepeatable) eventt.Reset();
+            }
+
+            foreach (var command in commands)
+            {
+                if ((command.Indices.StartIndex < maxIndex || command.ExecuteInstantly) && command.ExecuteRepeatable) command.Reset();
+            }
+        }
+
         private float CalculateDelay(int index)
         {
             if (currentDelay <= 0) return 0;
 
-            CharData cData = mediator.CharData[index];
+            CharData cData = Mediator.CharData[index];
 
             // If character is invisible (=> is whitespace)
             if (!cData.info.isVisible) // Alternatively check char.IsWhiteSpace
             {
                 // If line break
-                if (index < mediator.CharData.Count - 1 && mediator.CharData[index + 1].info.lineNumber > mediator.CharData[index].info.lineNumber)
+                if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
                 {
                     return Mathf.Max(currentDelay * linebreakDelay);
                 }
@@ -507,7 +510,7 @@ namespace TMPEffects.Components
                 return Mathf.Max(currentDelay * visibleDelay, 0);
             }
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
-            if (char.IsPunctuation(cData.info.character) && (index == mediator.CharData.Count - 1 || !char.IsPunctuation(mediator.CharData[index + 1].info.character)))
+            if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
             {
                 return Mathf.Max(currentDelay * punctuationDelay, 0);
             }
@@ -674,16 +677,29 @@ namespace TMPEffects.Components
         {
             if (reprocessFlag)
             {
-                mediator.ForceReprocess();
+                Mediator.ForceReprocess();
                 reprocessFlag = false;
             }
             EditorApplication.QueuePlayerLoopUpdate();
         }
 
+        [MenuItem("CONTEXT/TMP_Text/Add writer")]
+        static void AddWriter(MenuCommand command)
+        {
+            TMP_Text text = command.context as TMP_Text;
+            if (text == null)
+            {
+                Debug.LogWarning("Could not add writer to " + command.context.name);
+                return;
+            }
+
+            text.gameObject.GetOrAddComponent<TMPWriter>();
+        }
+
         private void OnValidate()
         {
             // Ensure data is set - OnValidate called before OnEnable
-            if (mediator == null || !mediator.isInitialized) return;
+            if (MediatorThreadSafe == null || !Mediator.isInitialized) return;
 
             if (database != prevDatabase)
             {
@@ -696,81 +712,14 @@ namespace TMPEffects.Components
 
         public void ForceReprocess()
         {
-            mediator.ForceReprocess();
-        }
-
-        private IEnumerator RaiseInvokablesEditorPreview(int index, bool skipped, bool block)
-        {
-            Debug.Log("Called preview ver w/ index " + index);
-            if (!commandsEnabled && !eventsEnabled) yield break;
-
-            IEnumerable<ICachedInvokable> invokables;
-
-            if (skipped)
-            {
-                if (commandsEnabled)
-                {
-                    invokables = commands;
-                    if (eventsEnabled)
-                    {
-                        invokables = invokables.Concat(events);
-                        invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
-                    }
-                    invokables = invokables.Where(x => x.Indices.StartIndex >= index && x.ExecuteOnSkip);
-                }
-                else { invokables = events; }
-            }
-            else if (index < 0)
-            {
-                if (commandsEnabled)
-                {
-                    invokables = commands;
-                    if (eventsEnabled)
-                    {
-                        invokables = invokables.Concat(events);
-                        invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
-                    }
-                    invokables = invokables.Where(x => x.ExecuteInstantly);
-                }
-                else { invokables = events; }
-            }
-            else
-            {
-                if (commandsEnabled)
-                {
-                    invokables = commands.GetAt(index);
-                    if (eventsEnabled)
-                    {
-                        invokables = invokables.Concat(events.GetAt(index));
-                        invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
-                    }
-                }
-                else { invokables = events.GetAt(index); }
-            }
-
-            foreach (var invokable in invokables)
-            {
-                if (!invokable.ExecuteInPreview) continue;
-
-                invokable.Trigger();
-
-                if (block)
-                {
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
-                    yield return HandleWaitConditions();
-                }
-
-                waitAmount = 0f;
-                shouldWait = false;
-                continueConditions = null;
-            }
+            Mediator.ForceReprocess();
         }
 #endif
         #endregion
 
         private void HideAllCharacters(bool skipAnimations = false)
         {
-            Hide(0, mediator.CharData.Count, skipAnimations);
+            Hide(0, Mediator.CharData.Count, skipAnimations);
         }
 
         private void PostProcessTags(string text)
@@ -794,7 +743,7 @@ namespace TMPEffects.Components
 
         public void Show(int start, int length, bool skipAnimation = false)
         {
-            TMP_TextInfo info = mediator.Text.textInfo;
+            TMP_TextInfo info = Mediator.Text.textInfo;
             if (start < 0 || length < 0 || start + length > info.characterCount)
             {
                 throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
@@ -811,7 +760,7 @@ namespace TMPEffects.Components
             for (int i = start; i < start + length; i++)
             {
                 cInfo = info.characterInfo[i];
-                cData = mediator.CharData[i];
+                cData = Mediator.CharData[i];
                 if (!cData.info.isVisible) continue;
 
                 // Set the current mesh's vertices all to the initial mesh values
@@ -837,19 +786,19 @@ namespace TMPEffects.Components
                 }
 
                 // Apply the new vertices to the char data array
-                mediator.CharData[i] = cData;
-                mediator.VisibilityStateUpdated(i, prev);
+                Mediator.CharData[i] = cData;
+                Mediator.VisibilityStateUpdated(i, prev);
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            if (Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
-            mediator.ForceUpdate(start, length);
+            Mediator.ForceUpdate(start, length);
         }
 
         public void Hide(int start, int length, bool skipAnimation = false)
         {
-            TMP_TextInfo info = mediator.Text.textInfo;
+            TMP_TextInfo info = Mediator.Text.textInfo;
             if (start < 0 || length < 0 || start + length > info.characterCount)
             {
                 throw new System.ArgumentException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
@@ -868,7 +817,7 @@ namespace TMPEffects.Components
                 cInfo = info.characterInfo[i];
                 if (!cInfo.isVisible) continue;
 
-                cData = mediator.CharData[i];
+                cData = Mediator.CharData[i];
 
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
@@ -893,14 +842,14 @@ namespace TMPEffects.Components
                 }
 
                 // Apply the new vertices to the char data array
-                mediator.CharData[i] = cData;
-                mediator.VisibilityStateUpdated(i, prev);
+                Mediator.CharData[i] = cData;
+                Mediator.VisibilityStateUpdated(i, prev);
             }
 
-            if (mediator.Text.mesh != null)
-                mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            if (Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
-            mediator.ForceUpdate(start, length);
+            Mediator.ForceUpdate(start, length);
         }
     }
 
@@ -953,7 +902,6 @@ namespace TMPEffects.Components
         {
             if (Triggered) return;
 
-            Debug.Log("Trigger event: " + Tag.Name);
             Triggered = true;
             tmpEvent.Invoke(args);
         }
@@ -1043,7 +991,6 @@ namespace TMPEffects.Components
             if (Triggered) return;
 
             Triggered = true;
-            Debug.Log("Trigger command: " + Tag.Name);
             command.ExecuteCommand(args);
         }
 

@@ -23,11 +23,6 @@ public class CharAnimation : TMPAnimation
     [System.NonSerialized] float currentMinWait;
     [System.NonSerialized] float currentOriginalChance;
 
-    // Potential TODO
-    // Use min / max unit size
-    // order in which characters are read: random, loop, pingpong
-    // if using units: allow for multi chars in current characters    
-
     public override void Animate(ref CharData cData, IAnimationContext context)
     {
         if (string.IsNullOrWhiteSpace(currentCharacters)) return;
