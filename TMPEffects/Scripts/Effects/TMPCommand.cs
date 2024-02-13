@@ -35,7 +35,7 @@ namespace TMPEffects
         public abstract bool ExecuteRepeatable { get; }
 
 #if UNITY_EDITOR
-        public abstract bool ExecuteInPreview { get; }
+        public virtual bool ExecuteInPreview => false;
 #endif
 
         /// <summary>

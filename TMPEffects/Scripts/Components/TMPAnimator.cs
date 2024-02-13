@@ -23,6 +23,8 @@ namespace TMPEffects.Components
     /// <item><see cref="TMPShowAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>
+    /// <br/>
+    /// You may control when the animations are updated by setting <see cref="UpdateFrom"/> to <see cref="UpdateFrom.Script"/> and calling <see cref="UpdateAnimations(float)"/>.<br/>
     /// </remarks>
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
@@ -185,7 +187,7 @@ namespace TMPEffects.Components
 
         private void SetDefault(TMPAnimationType type)
         {
-            string str; 
+            string str;
 
             switch (type)
             {
@@ -207,17 +209,30 @@ namespace TMPEffects.Components
             Dictionary<string, string> tagParams;
             ITMPAnimation animation;
 
-            if (string.IsNullOrWhiteSpace(str)) return;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                SetToDummy();
+                return;
+            }
             str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
-            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name)) return;
+            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name, type))
+            {
+                SetToDummy();
+                return;
+            }
 
             if ((animation = database.GetEffect(tagInfo.name, type)) == null)
             {
+                SetToDummy();
                 return;
             }
 
             tagParams = ParsingUtility.GetTagParametersDict(str);
-            if (!animation.ValidateParameters(tagParams)) return;
+            if (!animation.ValidateParameters(tagParams)) 
+            {
+                SetToDummy();
+                return;
+            }
 
             AnimationCacher cacher;
             switch (type)
@@ -232,6 +247,15 @@ namespace TMPEffects.Components
                     defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
                     break;
             }
+
+            void SetToDummy()
+            {
+                switch (type)
+                {
+                    case TMPAnimationType.Show: defaultShow = dummyShow; break;
+                    case TMPAnimationType.Hide: defaultHide = dummyHide; break;
+                }
+            }
         }
 
         private void OnDatabaseChanged()
@@ -243,16 +267,43 @@ namespace TMPEffects.Components
         {
             if (dummyShow != null) return;
             EffectTag tag = new EffectTag("Dummy Show Animation", ' ', null);
-            var cached = new CachedAnimation(tag, new EffectTagIndices(), ScriptableObject.CreateInstance<DummyShowAnimation>());
-            dummyShow = cached;
+
+            DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
+            AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
+            dummyShow = cacher.CacheTag(tag, new EffectTagIndices());
         }
 
         private void SetDummyHide()
         {
             if (dummyHide != null) return;
             EffectTag tag = new EffectTag("Dummy Hide Animation", ' ', null);
-            var cached = new CachedAnimation(tag, new EffectTagIndices(), ScriptableObject.CreateInstance<DummyHideAnimation>());
-            dummyHide = cached;
+
+            DummyDatabase database = new DummyDatabase("Dummy Hide Animation", ScriptableObject.CreateInstance<DummyHideAnimation>());
+            AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedHide(x));
+            dummyHide = cacher.CacheTag(tag, new EffectTagIndices());
+        }
+
+        private struct DummyDatabase : ITMPEffectDatabase<ITMPAnimation>
+        {
+            private string name;
+            private ITMPAnimation animation;
+
+            public DummyDatabase(string name, ITMPAnimation animation)
+            {
+                this.name = name;
+                this.animation = animation;
+            }
+
+            public bool ContainsEffect(string name)
+            {
+                return name == this.name;
+            }
+
+            public ITMPAnimation GetEffect(string name)
+            {
+                if (name == this.name) return this.animation;
+                throw new KeyNotFoundException(name);
+            }
         }
         #endregion
 
@@ -436,6 +487,7 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
+            //else if (count % 100 == 0) Debug.Log(count);
             count++;
             sw.Start();
 
@@ -489,13 +541,16 @@ namespace TMPEffects.Components
             return cData.info.isVisible &&
                 cData.visibilityState != CharData.VisibilityState.Hidden &&
                 (basic.HasAnyContaining(index) ||
-                (cData.visibilityState == CharData.VisibilityState.ShowAnimation && show.HasAnyContaining(index)) ||
-                (cData.visibilityState == CharData.VisibilityState.HideAnimation && hide.HasAnyContaining(index)));
+                (cData.visibilityState != CharData.VisibilityState.ShowAnimation) ||
+                (cData.visibilityState != CharData.VisibilityState.HideAnimation));
         }
+
+
 
         private int UpdateCharacterAnimation_Impl(int index)
         {
             CharData cData = Mediator.CharData[index];
+
             if (!cData.info.isVisible || cData.visibilityState == CharData.VisibilityState.Hidden) return 0;
 
             int applied = 0;
@@ -603,22 +658,33 @@ namespace TMPEffects.Components
                         break;
                 }
 
+                CachedCollection<CachedAnimation>.MinMax mm = cc.MinMaxAt(index);
+                if (mm == null) return;
+
                 if (animationsOverride)
                 {
-                    foreach (CachedAnimation animation in cc.GetContaining(index))
+                    for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        Animate(animation);
-                        if (!(animation.overrides != null && !animation.overrides.Value))
-                            break;
+                        CachedAnimation ca = cc[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca);
+                            if (!(ca.overrides != null && !ca.overrides.Value))
+                                break;
+                        }
                     }
                 }
                 else
                 {
-                    foreach (CachedAnimation animation in cc.GetContaining(index))
+                    for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        Animate(animation);
-                        if (animation.overrides != null && animation.overrides.Value)
-                            break;
+                        CachedAnimation ca = cc[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca);
+                            if (ca.overrides != null && ca.overrides.Value)
+                                break;
+                        }
                     }
                 }
             }
@@ -643,10 +709,10 @@ namespace TMPEffects.Components
                     Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
                     Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
 
-                    TL += deltaTL;// (cData.currentMesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position);
-                    TR += deltaTR;// (cData.currentMesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position);
-                    BR += deltaBR;// (cData.currentMesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position);
-                    BL += deltaBL;// (cData.currentMesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position);
+                    TL += deltaTL;
+                    TR += deltaTR;
+                    BR += deltaBR;
+                    BL += deltaBL;
 
                     TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, TLMax.z));
                     TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, TRMax.z));
@@ -686,10 +752,10 @@ namespace TMPEffects.Components
                 // TODO Calculation of correct values needs some work
 
                 // Apply vertex transformations
-                Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vbr = cData.mesh.initial.vertex_BR.position + BR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vbl = cData.mesh.initial.vertex_BL.position + BL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;
+                Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;
+                Vector3 vbr = cData.mesh.initial.vertex_BR.position + BR;
+                Vector3 vbl = cData.mesh.initial.vertex_BL.position + BL;
 
                 // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
                 vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
@@ -716,27 +782,20 @@ namespace TMPEffects.Components
                 vbr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 vbl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
 
-
                 cData.SetVertex(0, vbl);
                 cData.SetVertex(1, vtl);
                 cData.SetVertex(2, vtr);
                 cData.SetVertex(3, vbr);
-
-
-                //cData.mesh.SetPosition(0, vbl);
-                //cData.mesh.SetPosition(1, vtl);
-                //cData.mesh.SetPosition(2, vtr);
-                //cData.mesh.SetPosition(3, vbr);
 
                 cData.mesh.SetColor(0, BL_Color);
                 cData.mesh.SetColor(1, TL_Color);
                 cData.mesh.SetColor(2, TR_Color);
                 cData.mesh.SetColor(3, BR_Color);
 
-                cData.mesh.SetUV(0, BL_UV);
-                cData.mesh.SetUV(1, TL_UV);
-                cData.mesh.SetUV(2, TR_UV);
-                cData.mesh.SetUV(3, BR_UV);
+                cData.mesh.SetUV0(0, BL_UV);
+                cData.mesh.SetUV0(1, TL_UV);
+                cData.mesh.SetUV0(2, TR_UV);
+                cData.mesh.SetUV0(3, BR_UV);
 
                 cData.mesh.SetUV2(0, BL_UV2);
                 cData.mesh.SetUV2(1, TL_UV2);
@@ -809,6 +868,8 @@ namespace TMPEffects.Components
 
             Vector3[] verts;
             Color32[] colors;
+            Vector2[] uvs0;
+            Vector2[] uvs2;
             int vIndex, mIndex;
             TMP_CharacterInfo cInfo;
 
@@ -824,15 +885,18 @@ namespace TMPEffects.Components
                 colors = info.meshInfo[mIndex].colors32;
                 verts = info.meshInfo[mIndex].vertices;
 
+                uvs0 = info.meshInfo[mIndex].uvs0;
+                uvs2 = info.meshInfo[mIndex].uvs2;
+
                 CharData cData = Mediator.CharData[i];
+                cData.Reset();
 
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
-                    cData.mesh.SetColor(j, cData.mesh.initial.GetColor(j));
-
-                    verts[vIndex + j] = Mediator.CharData[i].mesh.initial[j].position;
-                    colors[vIndex + j] = Mediator.CharData[i].mesh.initial[j].color;
+                    verts[vIndex + j] = cData.mesh.initial[j].position;
+                    colors[vIndex + j] = cData.mesh.initial[j].color;
+                    uvs0[vIndex + j] = cData.mesh.initial[j].uv;
+                    uvs2[vIndex + j] = cData.mesh.initial[j].uv2;
                 }
 
                 Mediator.CharData[i] = cData;
@@ -948,6 +1012,12 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
+        public void UpdateDefaultStrings()
+        {
+            SetDefaultShowString(defaultShowString);
+            SetDefaultHideString(defaultHideString);
+        }
+
         public string CheckDefaultShowString()
         {
             if (database == null || database.showAnimationDatabase == null) return "No show database assigned on animation database";
@@ -995,8 +1065,8 @@ namespace TMPEffects.Components
         }
 
         private void OnValidate()
-        { 
-            if (MediatorThreadSafe == null) return;
+        {
+            if (Mediator == null) return;
 
             if (prevDatabase != database || (database != null && (basicCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.basicAnimationDatabase || showCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.showAnimationDatabase || hideCategory.Database != (ITMPEffectDatabase<ITMPAnimation>)database.hideAnimationDatabase)))
             {
@@ -1019,10 +1089,10 @@ namespace TMPEffects.Components
 
     internal class AnimationCacher : ITagCacher<CachedAnimation>
     {
-        private ITMPEffectDatabase<ITMPAnimation> database;
-        private IList<CharData> charData;
-        private AnimatorContext context;
-        private Predicate<char> animates;
+        private readonly ITMPEffectDatabase<ITMPAnimation> database;
+        private readonly IList<CharData> charData;
+        private readonly AnimatorContext context;
+        private readonly Predicate<char> animates;
 
         public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
         {
@@ -1030,6 +1100,7 @@ namespace TMPEffects.Components
             this.database = database;
             this.charData = charData;
             this.animates = animates;
+            Debug.Log("Created animationc acher with context " + (context == null));
         }
 
         public CachedAnimation CacheTag(EffectTag tag, EffectTagIndices indices)
@@ -1045,10 +1116,14 @@ namespace TMPEffects.Components
     {
         public override void Animate(ref CharData cData, IAnimationContext context)
         {
+            Debug.Log("Dummy Show Animation; context null = " + (context == null));
+            Debug.Log("Animatorcontext null " + (context.animatorContext == null));
             for (int i = 0; i < 4; i++)
             {
                 cData.SetVertex(i, cData.mesh.initial.GetPosition(i));
             }
+
+            cData.SetVisibilityState(CharData.VisibilityState.Shown, context.animatorContext.passedTime);
         }
 
         public override void ResetParameters()

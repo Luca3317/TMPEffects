@@ -18,12 +18,14 @@ namespace TMPEffects.Components
             List<object> list;
             if (!mediators.ContainsKey(text.gameObject))
             {
+                Debug.Log("Created mediator for " + text.name);
                 TMPMediator mediator = new TMPMediator(text);
                 list = new List<object>() { obj };
                 mediators.Add(text.gameObject, new ValueTuple<TMPMediator, List<object>>(mediator, list));
             }
             else
             {
+                Debug.Log("Added sub for " + text.name);
                 list = mediators[text.gameObject].Item2;
                 if (!list.Contains(obj))
                 {
@@ -39,10 +41,12 @@ namespace TMPEffects.Components
                 return;
             }
 
+            Debug.Log("Removed sub for " + text.name);
             tuple.Item2.Remove(obj);
 
             if (tuple.Item2.Count == 0)
             {
+                Debug.Log("Deleted mediator for " + text.name);
                 mediators.Remove(text.gameObject);
             }
         }
@@ -68,8 +72,6 @@ namespace TMPEffects.Components
     */
     public class TMPMediator
     {
-        public bool isInitialized => initialized;
-
         /// <summary>
         /// List containing all the current charData.
         /// You can rely on this never being reassigned (therefore any wrappers
@@ -86,8 +88,6 @@ namespace TMPEffects.Components
         public event RangeEventHandler ForcedUpdate;
         public event EmptyEventHandler CharDataPopulated;
         public event VisibilityEventHandler OnVisibilityStateUpdated;
-
-        [System.NonSerialized] private bool initialized = false;
 
         List<object> subscribers;
         public ReadOnlyCollection<object> Subscribers;

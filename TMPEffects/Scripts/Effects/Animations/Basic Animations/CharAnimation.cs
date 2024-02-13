@@ -52,10 +52,10 @@ public class CharAnimation : TMPAnimation
         if (ctx.waitTimeRemaining[cData.segmentIndex] > 0)
         {
             GlyphRect rect = ctx.positions[cData.segmentIndex];
-            cData.mesh.SetUV(0, new Vector2(rect.x / w, rect.y / h));
-            cData.mesh.SetUV(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-            cData.mesh.SetUV(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-            cData.mesh.SetUV(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
+            cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+            cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+            cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+            cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
             return;
         }
 
@@ -63,10 +63,10 @@ public class CharAnimation : TMPAnimation
         {
             cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
             GlyphRect rect = c.glyph.glyphRect;
-            cData.mesh.SetUV(0, new Vector2(rect.x / w, rect.y / h));
-            cData.mesh.SetUV(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-            cData.mesh.SetUV(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-            cData.mesh.SetUV(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
+            cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+            cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+            cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+            cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
             ctx.positions[cData.segmentIndex] = rect;
         }
         else
@@ -77,10 +77,10 @@ public class CharAnimation : TMPAnimation
             if (t)
             {
                 GlyphRect rect = c.glyph.glyphRect;
-                cData.mesh.SetUV(0, new Vector2(rect.x / w, rect.y / h));
-                cData.mesh.SetUV(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
+                cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+                cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+                cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+                cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
                 ctx.positions[cData.segmentIndex] = rect;
             }
         }

@@ -142,19 +142,19 @@ public class FadeAnimation : TMPAnimation
         else throw new System.Exception();
 
 
-        Color32 blcolor = cData.mesh.GetColor(0);
+        Color32 blcolor = cData.mesh.initial.GetColor(0);
         blcolor.a = (byte)(BL * blcolor.a);
         cData.mesh.SetColor(0, blcolor);
 
-        Color32 tlcolor = cData.mesh.GetColor(1);
+        Color32 tlcolor = cData.mesh.initial.GetColor(1);
         tlcolor.a = (byte)(TL * tlcolor.a);
         cData.mesh.SetColor(1, tlcolor);
 
-        Color32 trcolor = cData.mesh.GetColor(2);
+        Color32 trcolor = cData.mesh.initial.GetColor(2);
         trcolor.a = (byte)(TR * trcolor.a);
         cData.mesh.SetColor(2, trcolor);
 
-        Color32 brcolor = cData.mesh.GetColor(3);
+        Color32 brcolor = cData.mesh.initial.GetColor(3);
         brcolor.a = (byte)(BR * brcolor.a);
         cData.mesh.SetColor(3, brcolor);
     }

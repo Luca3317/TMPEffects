@@ -108,6 +108,8 @@ namespace TMPEffects.Components
 
         private void OnEnable()
         {
+            UpdateMediator();
+
             SubscribeToMediator();
 
             PrepareForProcessing();
@@ -699,7 +701,7 @@ namespace TMPEffects.Components
         private void OnValidate()
         {
             // Ensure data is set - OnValidate called before OnEnable
-            if (MediatorThreadSafe == null || !Mediator.isInitialized) return;
+            if (Mediator == null) return;
 
             if (database != prevDatabase)
             {
@@ -759,9 +761,10 @@ namespace TMPEffects.Components
 
             for (int i = start; i < start + length; i++)
             {
-                cInfo = info.characterInfo[i];
                 cData = Mediator.CharData[i];
+
                 if (!cData.info.isVisible) continue;
+                if (cData.visibilityState == CharData.VisibilityState.Shown || (cData.visibilityState == CharData.VisibilityState.ShowAnimation && !skipAnimation)) continue;
 
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
@@ -773,6 +776,7 @@ namespace TMPEffects.Components
                 cData.SetVisibilityState(skipAnimation ? CharData.VisibilityState.Shown : CharData.VisibilityState.ShowAnimation, Time.time); // TODO What time value to use here?
 
                 // Apply the new vertices to the vertex array
+                cInfo = info.characterInfo[i];
                 vIndex = cInfo.vertexIndex;
                 mIndex = cInfo.materialReferenceIndex;
 
@@ -814,10 +818,10 @@ namespace TMPEffects.Components
 
             for (int i = start; i < start + length; i++)
             {
-                cInfo = info.characterInfo[i];
-                if (!cInfo.isVisible) continue;
-
                 cData = Mediator.CharData[i];
+
+                if (!cData.info.isVisible) continue;
+                if (cData.visibilityState == CharData.VisibilityState.Hidden || (cData.visibilityState == CharData.VisibilityState.HideAnimation && !skipAnimation)) continue;
 
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
@@ -829,6 +833,7 @@ namespace TMPEffects.Components
                 cData.SetVisibilityState(skipAnimation ? CharData.VisibilityState.Hidden : CharData.VisibilityState.HideAnimation, Time.time); // TODO What time value to use here?
 
                 // Apply the new vertices to the vertex array
+                cInfo = info.characterInfo[i];
                 vIndex = cInfo.vertexIndex;
                 mIndex = cInfo.materialReferenceIndex;
 
@@ -984,7 +989,9 @@ namespace TMPEffects.Components
         public bool ExecuteInstantly => command.ExecuteInstantly;
         public bool ExecuteOnSkip => command.ExecuteOnSkip;
         public bool ExecuteRepeatable => command.ExecuteRepeatable;
+#if UNITY_EDITOR
         public bool ExecuteInPreview => command.ExecuteInPreview;
+#endif
 
         public void Trigger()
         {
@@ -1015,8 +1022,9 @@ namespace TMPEffects.Components
         public bool ExecuteInstantly { get; }
         public bool ExecuteOnSkip { get; }
         public bool ExecuteRepeatable { get; }
+#if UNITY_EDITOR
         public bool ExecuteInPreview { get; }
-
+#endif
         public void Reset();
         public void Trigger();
     }

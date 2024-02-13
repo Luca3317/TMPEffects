@@ -14,7 +14,7 @@ namespace TMPEffects.Databases
         public TMPShowAnimationDatabase showAnimationDatabase;
         public TMPHideAnimationDatabase hideAnimationDatabase;
 
-        public bool Contains(string name, TMPAnimationType type)
+        public bool ContainsEffect(string name, TMPAnimationType type)
         {
             ITMPEffectDatabase<ITMPAnimation> db;
             switch (type)

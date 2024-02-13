@@ -176,8 +176,6 @@ public class GrowAnimation : TMPAnimation
             else throw new System.Exception();
         }
 
-        //ctx.lastRoc = Mathf.Cos(angle);
-
         EffectUtility.SetVertexRaw(0, BL, ref cData, ref context);
         EffectUtility.SetVertexRaw(1, TL, ref cData, ref context);
         EffectUtility.SetVertexRaw(2, TR, ref cData, ref context);
@@ -250,31 +248,31 @@ public class GrowAnimation : TMPAnimation
                     switch (kvp.Value)
                     {
                         case "tl":
-                        case "topleft": anchor = new Vector2(-1, 1); break;
+                        case "topleft": currentAnchor = new Vector2(-1, 1); break;
 
                         case "tr":
-                        case "topright": anchor = new Vector2(1, 1); break;
+                        case "topright": currentAnchor = new Vector2(1, 1); break;
 
                         case "bl":
-                        case "bottomleft": anchor = new Vector2(-1, -1); break;
+                        case "bottomleft": currentAnchor = new Vector2(-1, -1); break;
 
                         case "br":
-                        case "bottomright": anchor = new Vector2(1, -1); break;
+                        case "bottomright": currentAnchor = new Vector2(1, -1); break;
 
                         case "c":
-                        case "center": anchor = Vector2.zero; break;
+                        case "center": currentAnchor = Vector2.zero; break;
 
                         case "l":
-                        case "left": anchor = Vector2.left; break;
+                        case "left": currentAnchor = Vector2.left; break;
 
                         case "r":
-                        case "right": anchor = Vector2.right; break;
+                        case "right": currentAnchor = Vector2.right; break;
 
                         case "t":
-                        case "top": anchor = Vector2.up; break;
+                        case "top": currentAnchor = Vector2.up; break;
 
                         case "b":
-                        case "bottom": anchor = Vector2.down; break;
+                        case "bottom": currentAnchor = Vector2.down; break;
 
                         default:
                             ParsingUtility.StringToVector2(kvp.Value, out currentAnchor);

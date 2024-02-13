@@ -1,9 +1,8 @@
-using Codice.CM.Client.Differences.Merge;
+using IntervalTree;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using UnityEngine;
 
 public interface ITagCacher<T> where T : ITagWrapper
@@ -203,7 +202,7 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
         }
     }
 
-    private class MinMax
+    public class MinMax
     {
         public int MaxIndex;
         public int MinIndex;
@@ -214,6 +213,20 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
             MinIndex = index;
         }
     }
+
+    public MinMax MinMaxAt(int index)
+    {
+        if (!minMax.TryGetValue(index, out var mm))
+        {
+            return null;
+        }
+        return mm;
+    }
+
+    public T this[int index]
+    {
+        get => cache[index];
+    } 
 
     public bool HasAny() => cache.Count > 0;
     public bool HasAnyContaining(int index)
@@ -274,6 +287,144 @@ public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
             {
                 yield return cached;
             }
+        }
+    }
+
+    public StructContainingEnumerable GetContaining_NonAlloc(int index)
+    {
+        if (!minMax.TryGetValue(index, out MinMax mm))
+        {
+            return new StructContainingEnumerable(null, 0, 0, 0);
+        }
+
+        return new StructContainingEnumerable(cache, index, mm.MaxIndex, mm.MinIndex);
+    }
+
+    public StructReversedContainingEnumerable GetContainingReversed_NonAlloc(int index)
+    {
+        if (!minMax.TryGetValue(index, out MinMax mm))
+        {
+            return new StructReversedContainingEnumerable(null, 0, 0, 0);
+        }
+
+        return new StructReversedContainingEnumerable(cache, index, mm.MaxIndex, mm.MinIndex);
+    }
+
+    public struct StructReversedContainingEnumerable
+    {
+        private readonly List<T> pool;
+        private int containedIndex;
+        private int minIndex;
+        private int maxIndex;
+
+        public StructReversedContainingEnumerable(List<T> pool, int containedIndex, int maxIndex, int minIndex)
+        {
+            this.pool = pool;
+            this.containedIndex = containedIndex;
+            this.minIndex = minIndex;
+            this.maxIndex = maxIndex;
+        }
+
+        public StructReversedContainingEnumerator GetEnumerator()
+        {
+            return new StructReversedContainingEnumerator(this.pool, containedIndex, maxIndex, minIndex);
+        }
+    }
+
+    public struct StructContainingEnumerable
+    {
+        private readonly List<T> pool;
+        private int containedIndex;
+        private int minIndex;
+        private int maxIndex;
+
+        public StructContainingEnumerable(List<T> pool, int containedIndex, int maxIndex, int minIndex)
+        {
+            this.pool = pool;
+            this.containedIndex = containedIndex;
+            this.minIndex = minIndex;
+            this.maxIndex = maxIndex;
+        }
+
+        public StructContainingEnumerator GetEnumerator()
+        {
+            return new StructContainingEnumerator(this.pool, containedIndex, maxIndex, minIndex);
+        }
+    }
+
+    public struct StructReversedContainingEnumerator
+    {
+        private readonly List<T> pool;
+        private readonly int containedIndex;
+        private readonly int maxIndex;
+        private readonly int minIndex;
+        private int index;
+
+        internal StructReversedContainingEnumerator(List<T> pool, int containedIndex, int maxIndex, int minIndex)
+        {
+            this.pool = pool;
+            this.containedIndex = containedIndex;
+            this.index = maxIndex + 1;
+            this.maxIndex = maxIndex;
+            this.minIndex = minIndex;
+        }
+
+        public T Current
+        {
+            get
+            {
+                return this.pool[this.index];
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (pool == null) return false;
+            while (--index >= minIndex && !pool[index].Indices.Contains(containedIndex)) { }
+            return this.minIndex <= this.index;
+        }
+
+        public void Reset()
+        {
+            this.index = maxIndex + 1;
+        }
+    }
+
+    public struct StructContainingEnumerator
+    {
+        private readonly List<T> pool;
+        private readonly int containedIndex;
+        private readonly int maxIndex;
+        private readonly int minIndex;
+        private int index;
+
+        internal StructContainingEnumerator(List<T> pool, int containedIndex, int maxIndex, int minIndex)
+        {
+            this.pool = pool;
+            this.containedIndex = containedIndex;
+            this.index = minIndex - 1;
+            this.maxIndex = maxIndex;
+            this.minIndex = minIndex;
+        }
+
+        public T Current
+        {
+            get
+            {
+                return this.pool[this.index];
+            }
+        }
+
+        public bool MoveNext()
+        {
+            if (pool == null) return false;
+            while (++index <= maxIndex && !pool[index].Indices.Contains(containedIndex)) { }
+            return this.maxIndex >= this.index;
+        }
+
+        public void Reset()
+        {
+            this.index = minIndex - 1;
         }
     }
 

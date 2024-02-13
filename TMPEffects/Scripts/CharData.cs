@@ -399,7 +399,7 @@ public class CharData
             }
         }
 
-        public void SetUV(int i, Vector2 value)
+        public void SetUV0(int i, Vector2 value)
         {
             switch (i)
             {

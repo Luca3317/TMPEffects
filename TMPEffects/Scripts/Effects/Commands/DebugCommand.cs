@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using TMPEffects.Tags;
-using TMPEffects.Components;
 
 namespace TMPEffects.Commands
 {
@@ -13,7 +10,9 @@ namespace TMPEffects.Commands
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
         public override bool ExecuteRepeatable => false;
+#if UNITY_EDITOR
         public override bool ExecuteInPreview => true;
+#endif
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {

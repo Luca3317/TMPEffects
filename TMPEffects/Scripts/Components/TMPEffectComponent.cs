@@ -1,10 +1,3 @@
-using Codice.CM.Common.Tree.Partial;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using TMPEffects.Extensions;
-using TMPEffects.Tags;
-using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
 
@@ -21,31 +14,16 @@ namespace TMPEffects.Components
         [System.NonSerialized] private readonly object obj = new();
         [System.NonSerialized] private TMPMediator mediator = null;
 
+
         protected TMPMediator Mediator
         {
             get
             {
-                if (mediator == null)
-                {
-                    if (!TMPMediatorManager.TryGetMediator(gameObject, out mediator))
-                    {
-                        TMPMediatorManager.Subscribe(GetComponent<TMP_Text>(), obj);
-                        mediator = TMPMediatorManager.GetMediator(gameObject);
-                    }
-                }
                 return mediator;
             }
         }
 
-        protected TMPMediator MediatorThreadSafe
-        {
-            get
-            {
-                return mediator;
-            }
-        }
-
-        protected void FreeMediator() 
+        protected void FreeMediator()
         {
             TMPMediatorManager.Unsubscribe(GetComponent<TMP_Text>(), obj);
             mediator = null;
@@ -65,7 +43,11 @@ namespace TMPEffects.Components
 
         protected void UpdateMediator()
         {
-            //GetMediator = TMPMediator.Create(gameObject);
+            if (mediator == null)
+            {
+                TMPMediatorManager.Subscribe(GetComponent<TMP_Text>(), obj);
+                mediator = TMPMediatorManager.GetMediator(gameObject);
+            }
         }
     }
 }
