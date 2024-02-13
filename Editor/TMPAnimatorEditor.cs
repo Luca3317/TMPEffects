@@ -184,7 +184,8 @@ public class TMPAnimatorEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             serializedObject.ApplyModifiedProperties();
-            animator.ForcePostProcess();
+            animator.UpdateDefaultStrings();
+            //animator.ForcePostProcess();
         }
     }
 
