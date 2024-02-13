@@ -132,6 +132,17 @@ public class TMPAnimatorEditor : Editor
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
             forceReprocess = true;
         }
+
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneAnimations"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneShowAnimations")); 
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneHideAnimations"));
+        if (EditorGUI.EndChangeCheck())
+        {
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+            forceReprocess = true;
+        }
     }
 
     GUIContent alertDialogDefaultShow;
@@ -251,18 +262,32 @@ public class TMPAnimatorEditor : Editor
         EditorGUILayout.PropertyField(updateFromProp);
         EditorGUILayout.PropertyField(animateOnStartProp);
 
-        DrawDatabase();
-
-        EditorGUILayout.PropertyField(animationsOverrideProp);
 
         EditorGUILayout.Space(10);
-        DrawDefaultHideShow();
+        databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
+        if (databaseProp.isExpanded)
+        {
+            EditorGUI.indentLevel++;
+            DrawDatabase();
+            EditorGUI.indentLevel--;
+        }
 
         EditorGUILayout.Space(10);
-        DrawExclusions();
+        animationsOverrideProp.isExpanded = EditorGUILayout.Foldout(animationsOverrideProp.isExpanded, new GUIContent("Animator settings"), true);
+        if (animationsOverrideProp.isExpanded)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(animationsOverrideProp);
+            EditorGUILayout.Space(10);
+            DrawDefaultHideShow();
 
+            EditorGUILayout.Space(10);
+            DrawExclusions();
+            EditorGUI.indentLevel--;
+        }
         EditorGUILayout.Space(10);
-        if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
+
+        if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings"), true))
         {
             EditorGUI.indentLevel++;
             EditorGUILayout.PropertyField(contextScalingProp);
