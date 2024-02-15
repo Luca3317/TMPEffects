@@ -529,7 +529,7 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            else if (count % 100 == 0) Debug.Log(count);
+            else if (count % 100 == 0) Debug.Log(count);  
             count++;
             sw.Start();
 
@@ -553,7 +553,7 @@ namespace TMPEffects.Components
 
             context.deltaTime = deltaTime;
 
-            UpdateCharacterAnimation_Impl(index);
+            UpdateCharacterAnimation_Impl(index); 
 
             // TODO only set actually changed meshes; dirty flag on cdata & cehcking of uv vert color
             var info = Mediator.Text.textInfo;
