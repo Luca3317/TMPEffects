@@ -1,12 +1,15 @@
 using TMPEffects.Databases;
 using UnityEditor;
 
-[CustomEditor(typeof(TMPHideAnimationDatabase))]
-public class TMPHideAnimationDatabaseEditor : Editor
+namespace TMPEffects.Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TMPHideAnimationDatabase))]
+    public class TMPHideAnimationDatabaseEditor : UnityEditor.Editor
     {
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("hideAnimations"));
-        if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        public override void OnInspectorGUI()
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("hideAnimations"));
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        }
     }
 }

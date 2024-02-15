@@ -1,12 +1,15 @@
 using TMPEffects.Databases;
 using UnityEditor;
 
-[CustomEditor(typeof(TMPBasicAnimationDatabase))]
-public class TMPBasicAnimationDatabaseEditor : Editor
+namespace TMPEffects.Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TMPBasicAnimationDatabase))]
+    public class TMPBasicAnimationDatabaseEditor : UnityEditor.Editor
     {
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("animations"));
-        if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        public override void OnInspectorGUI()
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("animations"));
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        }
     }
 }

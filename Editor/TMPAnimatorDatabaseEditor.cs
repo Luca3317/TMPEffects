@@ -1,52 +1,56 @@
 using TMPEffects.Databases;
 using UnityEditor;
-using UnityEngine;
 
-[CustomEditor(typeof(TMPAnimationDatabase))]
-public class TMPAnimatorDatabaseEditor : Editor
+namespace TMPEffects.Editor
 {
-    private Editor _editor1;
-    private Editor _editor2;
-    private Editor _editor3;
-
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(TMPAnimationDatabase))]
+    public class TMPAnimatorDatabaseEditor : UnityEditor.Editor
     {
-        serializedObject.Update();
+        private UnityEditor.Editor _editor1;
+        private UnityEditor.Editor _editor2;
+        private UnityEditor.Editor _editor3;
 
-        var dataBase = serializedObject.FindProperty("basicAnimationDatabase");
-        EditorGUILayout.PropertyField(dataBase);
-
-        if (dataBase.objectReferenceValue != null)
+        public override void OnInspectorGUI()
         {
-            CreateCachedEditor(dataBase.objectReferenceValue, typeof(TMPBasicAnimationDatabaseEditor), ref _editor1);
-            _editor1.OnInspectorGUI();
-        }
+            serializedObject.Update();
 
-        EditorGUILayout.Space();
+            var dataBase = serializedObject.FindProperty("basicAnimationDatabase");
+            EditorGUILayout.PropertyField(dataBase);
 
-        var showDataBase = serializedObject.FindProperty("showAnimationDatabase");
-        EditorGUILayout.PropertyField(showDataBase);
+            if (dataBase.objectReferenceValue != null)
+            {
+                CreateCachedEditor(dataBase.objectReferenceValue, typeof(TMPBasicAnimationDatabaseEditor), ref _editor1);
+                _editor1.OnInspectorGUI();
+            }
 
-        if (showDataBase.objectReferenceValue != null)
-        {
-            CreateCachedEditor(showDataBase.objectReferenceValue, typeof(TMPShowAnimationDatabaseEditor), ref _editor2);
-            _editor2.OnInspectorGUI();
-        }
+            EditorGUILayout.Space();
 
-        EditorGUILayout.Space();
+            var showDataBase = serializedObject.FindProperty("showAnimationDatabase");
+            EditorGUILayout.PropertyField(showDataBase);
 
-        var hideDataBase = serializedObject.FindProperty("hideAnimationDatabase");
-        EditorGUILayout.PropertyField(hideDataBase);
+            if (showDataBase.objectReferenceValue != null)
+            {
+                CreateCachedEditor(showDataBase.objectReferenceValue, typeof(TMPShowAnimationDatabaseEditor), ref _editor2);
+                _editor2.OnInspectorGUI();
+            }
 
-        if (hideDataBase.objectReferenceValue != null)
-        {
-            CreateCachedEditor(hideDataBase.objectReferenceValue, typeof(TMPHideAnimationDatabaseEditor), ref _editor3);
-            _editor3.OnInspectorGUI();
-        }
+            EditorGUILayout.Space();
 
-        if (serializedObject.hasModifiedProperties)
-        {
-            serializedObject.ApplyModifiedProperties();
+            var hideDataBase = serializedObject.FindProperty("hideAnimationDatabase");
+            EditorGUILayout.PropertyField(hideDataBase);
+
+            if (hideDataBase.objectReferenceValue != null)
+            {
+                CreateCachedEditor(hideDataBase.objectReferenceValue, typeof(TMPHideAnimationDatabaseEditor), ref _editor3);
+                _editor3.OnInspectorGUI();
+            }
+
+            if (serializedObject.hasModifiedProperties)
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
         }
     }
 }
+
+

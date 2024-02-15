@@ -1,31 +1,34 @@
 using TMPEffects;
 using UnityEditor;
 
-[CustomEditor(typeof(TMPCommand), editorForChildClasses: true)]
-public class TMPCommandEditor : Editor
+namespace TMPEffects.Editor
 {
-    SerializedProperty commandTypeProp;
-    SerializedProperty executeInstantlyProp;
-
-    private void OnEnable()
+    [CustomEditor(typeof(TMPCommand), editorForChildClasses: true)]
+    public class TMPCommandEditor : UnityEditor.Editor
     {
-        commandTypeProp = serializedObject.FindProperty("commandType");
-        executeInstantlyProp = serializedObject.FindProperty("executeInstantly");
-    }
+        SerializedProperty commandTypeProp;
+        SerializedProperty executeInstantlyProp;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        //commandTypeProp.enumValueIndex = System.Convert.ToInt32(EditorGUILayout.EnumPopup(new GUIContent("Command Type"), (TMPCommand.CommandType)commandTypeProp.enumValueIndex));
+        private void OnEnable()
+        {
+            commandTypeProp = serializedObject.FindProperty("commandType");
+            executeInstantlyProp = serializedObject.FindProperty("executeInstantly");
+        }
 
-        //if ((TMPCommand.CommandType)commandTypeProp.enumValueIndex != TMPCommand.CommandType.Index)
-        //{
-        //    executeInstantlyProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Execute instantly"), executeInstantlyProp.boolValue);
-        //}
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            //commandTypeProp.enumValueIndex = System.Convert.ToInt32(EditorGUILayout.EnumPopup(new GUIContent("Command Type"), (TMPCommand.CommandType)commandTypeProp.enumValueIndex));
 
-        //if (serializedObject.hasModifiedProperties)
-        //{
-        //    serializedObject.ApplyModifiedProperties();
-        //}
+            //if ((TMPCommand.CommandType)commandTypeProp.enumValueIndex != TMPCommand.CommandType.Index)
+            //{
+            //    executeInstantlyProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Execute instantly"), executeInstantlyProp.boolValue);
+            //}
+
+            //if (serializedObject.hasModifiedProperties)
+            //{
+            //    serializedObject.ApplyModifiedProperties();
+            //}
+        }
     }
 }
