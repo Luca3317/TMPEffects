@@ -13,7 +13,7 @@ namespace TMPEffects.EffectCategories
         { }
 
         ///<inheritdoc/>
-        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
         {
             data = null;
             if (tagInfo.prefix != Prefix) return false;
@@ -25,7 +25,15 @@ namespace TMPEffects.EffectCategories
         ///<inheritdoc/>
         public override bool ValidateTag(EffectTag tag)
         {
-            throw new System.NotImplementedException();
+            if (tag.Prefix != Prefix) return false;
+            return true;
+        }
+
+        ///<inheritdoc/>
+        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo)
+        {
+            if (tagInfo.prefix != Prefix) return false;
+            return true;
         }
     }
 }

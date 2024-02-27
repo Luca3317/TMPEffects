@@ -56,7 +56,7 @@ namespace TMPEffects.TextProcessing
         private bool Process_Open(ParsingUtility.TagInfo tagInfo, int textIndex, int orderAtIndex)
         {
             EffectTag tag;
-            if (!validator.ValidateTag(tagInfo, out tag)) return false;
+            if (!validator.ValidateOpenTag(tagInfo, out tag)) return false;
 
             EffectTagIndices indices = new EffectTagIndices(textIndex, -1, orderAtIndex);
             KeyValuePair<EffectTagIndices, EffectTag> kvp = new KeyValuePair<EffectTagIndices, EffectTag>(indices, tag);

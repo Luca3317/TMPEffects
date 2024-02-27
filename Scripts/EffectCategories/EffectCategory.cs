@@ -4,10 +4,6 @@ using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPEffects.Tags;
 
-/*
- * TODO the ValidateTag(TagInfo, out EffectTag) methods need to handle open / close tags differently
- * 
- */
 namespace TMPEffects.EffectCategories
 {
     ///<inheritdoc/>
@@ -41,15 +37,12 @@ namespace TMPEffects.EffectCategories
         }
 
         ///<inheritdoc/>
-        public abstract bool ValidateTag(ParsingUtility.TagInfo tagInfo, out EffectTag data);
+        public abstract bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data);
 
         ///<inheritdoc/>
         public abstract bool ValidateTag(EffectTag tag);
 
         ///<inheritdoc/>
-        public bool ValidateTag(ParsingUtility.TagInfo tagInfo)
-        {
-            return ValidateTag(tagInfo, out _);
-        }
+        public abstract bool ValidateTag(ParsingUtility.TagInfo tagInfo);
     }
 }

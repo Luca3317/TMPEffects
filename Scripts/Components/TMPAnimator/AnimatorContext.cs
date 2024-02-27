@@ -4,10 +4,7 @@ namespace TMPEffects.Components.Animator
 {
     // TODO: Have to make it so that fields are only settable by TMPAnimator
     // Simple solution; make this struct (presuming it will stay this tiny) 
-
-    // TODO: As of right now neither scaleAnimations nor useScaledTime is all that relevant to
-    // animations anymore => scaling applied in animator itself and usescaledtime contained in
-    // passed / deltatime.
+    
 
     /// <summary>
     /// To be used with <see cref="TMPAnimator"/>.<br/>

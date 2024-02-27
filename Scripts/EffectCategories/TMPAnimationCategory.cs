@@ -23,9 +23,11 @@ namespace TMPEffects.EffectCategories
         ///<inheritdoc/>
         public override ITMPAnimation GetEffect(string name) => database.GetEffect(name);
         ///<inheritdoc/>
-        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
         {
             data = null;
+            if (tagInfo.type != ParsingUtility.TagType.Open) throw new System.ArgumentException(nameof(tagInfo.type));
+
             if (tagInfo.prefix != Prefix) return false;
             if (database == null || !database.ContainsEffect(tagInfo.name)) return false;
 
@@ -36,10 +38,31 @@ namespace TMPEffects.EffectCategories
             data = tag;
             return true;
         }
+
         ///<inheritdoc/>
         public override bool ValidateTag(EffectTag tag)
         {
-            throw new System.NotImplementedException();
+            if (tag.Prefix != Prefix) return false;
+            if (database == null || !database.ContainsEffect(tag.Name)) return false;
+
+            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters)) return false;
+
+            return true;
+        }
+
+        ///<inheritdoc/>
+        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo)
+        {
+            if (tagInfo.prefix != Prefix) return false;
+            if (database == null || !database.ContainsEffect(tagInfo.name)) return false;
+
+            if (tagInfo.type == ParsingUtility.TagType.Open)
+            {
+                var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
+                if (!database.GetEffect(tagInfo.name).ValidateParameters(param)) return false;
+            }
+
+            return true;
         }
     }
 }

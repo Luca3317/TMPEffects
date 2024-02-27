@@ -24,7 +24,7 @@ namespace TMPEffects.EffectCategories
         public override ITMPCommand GetEffect(string name) => database.GetEffect(name);
 
         ///<inheritdoc/>
-        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
         {
             data = null;
             if (tagInfo.prefix != Prefix) return false;
@@ -39,7 +39,17 @@ namespace TMPEffects.EffectCategories
         ///<inheritdoc/>
         public override bool ValidateTag(EffectTag tag)
         {
-            throw new System.NotImplementedException();
+            if (tag.Prefix != Prefix) return false;
+            if (database == null || !database.ContainsEffect(tag.Name)) return false;
+            return true;
+        }
+
+        ///<inheritdoc/>
+        public override bool ValidateTag(ParsingUtility.TagInfo tagInfo)
+        {
+            if (tagInfo.prefix != Prefix) return false;
+            if (database == null || !database.ContainsEffect(tagInfo.name)) return false;
+            return true;
         }
     }
 }
