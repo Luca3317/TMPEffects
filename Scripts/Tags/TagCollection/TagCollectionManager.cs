@@ -345,7 +345,7 @@ namespace TMPEffects.Tags.Collections
         }
         
         // TODO
-        // Right now, (Im pretty sure) other listeners (specifically CachedCollection) rely on 
+        // Right now, other listeners (specifically CachedCollection) rely on 
         // indices only being changed via removing and reinsertion
         // => Implement NotifyCollectionChanged more robustly and raise replace / move events
         private class NonAdjustingTagCollection : ObservableTagCollection

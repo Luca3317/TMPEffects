@@ -191,13 +191,10 @@ namespace TMPEffects.Components
 
         private void SubscribeToMediator()
         {
-            //Mediator.Subscribe(this); // Subscribe to the mediator; This makes the mediator persistent at least until this component is destroyed
-
             Mediator.OnVisibilityStateUpdated += EnsureCorrectTiming; // Ensure visibility time of object is persistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
             Mediator.CharDataPopulated += PostProcessTags; // 
             Mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
             Mediator.ForcedUpdate += OnForcedUpdate; // Will update animations at indices once; otherwise, depending on timing of required update, there'll be a frame of unanimated text
-            //mediator.Disabled += DisableComponent;
         }
 
         private void UnsubscribeFromMediator()
@@ -206,10 +203,8 @@ namespace TMPEffects.Components
             Mediator.CharDataPopulated -= PostProcessTags;
             Mediator.TextChanged -= OnTextChanged;
             Mediator.ForcedUpdate -= OnForcedUpdate;
-            //mediator.Disabled -= DisableComponent;
 
             FreeMediator();
-            //Mediator.Unsubscribe(this);
         }
 
         private void PrepareForProcessing()
@@ -766,25 +761,6 @@ namespace TMPEffects.Components
                         }
                     }
                 }
-
-                //if (animationsOverride)
-                //{
-                //    foreach (CachedAnimation animation in cc.GetContaining(index))
-                //    {
-                //        Animate(animation);
-                //        if (!(animation.overrides != null && !animation.overrides.Value))
-                //            break;
-                //    }
-                //}
-                //else
-                //{
-                //    foreach (CachedAnimation animation in cc.GetContaining(index))
-                //    {
-                //        Animate(animation);
-                //        if (animation.overrides != null && animation.overrides.Value)
-                //            break;
-                //    }
-                //}
             }
 
             void UpdateVertexOffsets()
@@ -797,7 +773,7 @@ namespace TMPEffects.Components
                 if (cData.rotationDirty)
                 {
                     rotation = cData.Rotation * rotation;
-                    rotationPivot += (cData.RotationPivot - cData.info.initialPosition);
+                    rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 }
 
                 if (cData.verticesDirty)
@@ -847,8 +823,6 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                // TODO Calculation of correct values needs some work
-
                 // Apply vertex transformations
                 Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);

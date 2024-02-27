@@ -1,19 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace TMPEffects.Tags.Collections
 {
-    /*
-    * TODO
-    * Maybe: Make ITagCollection => ITagCollection<T> where T : ITagWrapper
-    * 
-    * Then: TagCollection : ITagCollection<EffectTagTuple>
-    *          (same with observable/reeadonly)
-    *          
-    * Allows for easier cacher
-    */
-
     /// <summary>
     /// A readonly collection of <see cref="EffectTagTuple"/>.
     /// </summary>

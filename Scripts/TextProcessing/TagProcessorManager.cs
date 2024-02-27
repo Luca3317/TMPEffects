@@ -38,8 +38,6 @@ namespace TMPEffects.TextProcessing
         public bool RemoveProcessor(char prefix, TagProcessor processor);
     }
 
-    // TODO
-    // Maybe remove the entire inotifyprocessorschanged?
     /// <summary>
     /// Manages multiple <see cref="TagProcessor"/>.
     /// </summary>

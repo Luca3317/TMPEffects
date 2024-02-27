@@ -65,7 +65,6 @@ namespace TMPEffects.Tags
 
         public EffectTagIndices(int startIndex, int endIndex, int orderAtIndex)
         {
-            // TODO Make endindex = -1 representing open some constant or smth; also used ie in tagcollection and animator
             if (startIndex < 0) throw new ArgumentOutOfRangeException(nameof(startIndex));
             if (endIndex < -1) throw new ArgumentOutOfRangeException(nameof(endIndex));
 
