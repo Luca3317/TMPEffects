@@ -23,8 +23,8 @@ namespace TMPEffects.TMPAnimations.Animations
         public override void Animate(ref CharData cData, IAnimationContext context)
         {
 
-            float t = Mathf.Sin(context.animatorContext.passedTime * currentSpeed) / 2 + 0.5f;
-            bool movingUp = Mathf.Cos(context.animatorContext.passedTime * currentSpeed) > 0;       //(Mathf.Sin(context.AnimatorContext.passedTime + 0.0001f) / 2 + 0.5f) < t;
+            float t = Mathf.Sin(context.animatorContext.PassedTime * currentSpeed) / 2 + 0.5f;
+            bool movingUp = Mathf.Cos(context.animatorContext.PassedTime * currentSpeed) > 0;       //(Mathf.Sin(context.AnimatorContext.passedTime + 0.0001f) / 2 + 0.5f) < t;
 
 
             var delta0 = cData.mesh.initial.vertex_TL.position - cData.mesh.initial.vertex_BL.position;

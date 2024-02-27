@@ -26,8 +26,8 @@ namespace TMPEffects.TMPAnimations
 
         private struct DefaultAnimationContext : IAnimationContext
         {
-            public AnimatorContext animatorContext { get => settings; set => settings = value; }
-            private AnimatorContext settings;
+            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
+            private ReadOnlyAnimatorContext settings;
 
             public SegmentData segmentData { get; set; }
         }

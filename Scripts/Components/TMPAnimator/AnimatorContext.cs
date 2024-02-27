@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TMPEffects.Components.Animator
@@ -16,12 +17,12 @@ namespace TMPEffects.Components.Animator
         /// <summary>
         /// Whether to scale the animations.
         /// </summary>
-        public bool scaleAnimations = true;
-        
+        public bool scaleAnimations;
+
         /// <summary>
         /// Whether to use scaled time.
         /// </summary>
-        public bool useScaledTime = true;
+        public bool useScaledTime;
 
         /// <summary>
         /// The deltaTime since the last animation update.
@@ -33,6 +34,30 @@ namespace TMPEffects.Components.Animator
         /// </summary>
         [HideInInspector] public float passedTime { get => passed; set { passed = value; } }
         private float passed;
+
+        public AnimatorContext(bool scaleAnimations, bool useScaledTime)
+        {
+            this.scaleAnimations = scaleAnimations;
+            this.useScaledTime = useScaledTime;
+            this.deltaTime = 0f;
+            this.passed = 0f;
+        }
+    }
+
+    public class ReadOnlyAnimatorContext
+    {
+        public bool ScaleAnimations => context.scaleAnimations;
+        public bool UseScaledTime => context.useScaledTime;
+        public float DeltaTime => context.deltaTime;
+        public float PassedTime => context.passedTime;
+
+        public ReadOnlyAnimatorContext(AnimatorContext context)
+        {
+            if (context == null) throw new System.ArgumentNullException(nameof(context));
+            this.context = context;
+        }
+
+        private AnimatorContext context;
     }
 }
 

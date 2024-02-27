@@ -24,7 +24,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(ref CharData cData, IAnimationContext context)
         {
-            float angle = (context.animatorContext.passedTime * currentSpeed) % 360;
+            float angle = (context.animatorContext.PassedTime * currentSpeed) % 360;
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
             cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(currentRotationAxis)));
             cData.SetPivot(cData.info.initialPosition + new Vector3(currentXOffset, currentYOffset, 0f));

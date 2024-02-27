@@ -19,7 +19,7 @@ namespace TMPEffects.TMPAnimations.Animations
         public override void Animate(ref CharData cData, IAnimationContext context)
         {
             float xPos = (cData.mesh.initial.vertex_TL.position.x + cData.mesh.initial.vertex_TR.position.x) / 2;
-            float yOffset = currentAmplitude * (Mathf.Sin((context.animatorContext.passedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);
+            float yOffset = currentAmplitude * (Mathf.Sin((context.animatorContext.PassedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);
             cData.SetPosition(cData.info.initialPosition + Vector3.up * yOffset);
         }
 

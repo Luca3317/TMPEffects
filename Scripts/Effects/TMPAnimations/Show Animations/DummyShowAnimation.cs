@@ -12,7 +12,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 cData.SetVertex(i, cData.mesh.initial.GetPosition(i));
             }
 
-            cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.passedTime);
+            cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
         }
 
         public override void ResetParameters()

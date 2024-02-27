@@ -566,7 +566,7 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            //else if (count % 100 == 0) Debug.Log(count);
+            else if (count % 100 == 0) Debug.Log(count);
             count++;
             sw.Start();
 
@@ -619,7 +619,7 @@ namespace TMPEffects.Components
         {
             return cData.info.isVisible && // If not visible, e.g. whitespace, dont animate
                 cData.visibilityState != VisibilityState.Hidden && // If hidden, dont animate
-                (basic.HasAnyContaining(index) || cData.visibilityState != VisibilityState.Shown); // If has no animations, dont animate
+                (basic.HasAnyContaining(index) || cData.visibilityState != VisibilityState.Shown /*|| !cData.mesh.Equals(cData.mesh.initial)*/); // If has no animations, dont animate
         }
 
         private int UpdateCharacterAnimation_Impl(int index)
@@ -627,7 +627,7 @@ namespace TMPEffects.Components
             CharData cData = Mediator.CharData[index];
             if (!cData.info.isVisible || cData.visibilityState == VisibilityState.Hidden) return 0;
 
-            int applied = 0;
+            int applied = 0; 
 
             Vector3 positionDelta = Vector3.zero;
             Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
@@ -1215,7 +1215,7 @@ namespace TMPEffects.Components
             public CachedAnimation CacheTag(EffectTag tag, EffectTagIndices indices)
             {
                 CachedAnimation ca = new CachedAnimation(tag, new EffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex), database.GetEffect(tag.Name));
-                ca.context.animatorContext = context;
+                ca.context.animatorContext = new ReadOnlyAnimatorContext(context);
                 ca.context.segmentData = new SegmentData(ca.Indices, charData, animates);
                 return ca;
             }

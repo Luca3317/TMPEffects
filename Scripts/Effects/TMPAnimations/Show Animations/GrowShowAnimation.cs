@@ -30,14 +30,14 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             FixVector(ref currentAnchor);
 
 
-            float angle = (context.animatorContext.passedTime - cData.visibleTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
+            float angle = (context.animatorContext.PassedTime - cData.visibleTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
             float t = Mathf.Sin(angle) / 2 + 0.5f;
             if (ctx.lastRoc == 0) ctx.lastRoc = Mathf.Cos(angle);
 
             float multiplier = Mathf.Lerp(currentMinScale, currentMaxScale, t);
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.passedTime);
+                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
             }
 
             if (currentAnchor == Vector2.zero)
@@ -348,7 +348,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
         private class Context : IAnimationContext
         {
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
 
             public float lastRoc;

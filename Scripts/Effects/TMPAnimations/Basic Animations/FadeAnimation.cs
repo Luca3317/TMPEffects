@@ -32,11 +32,11 @@ namespace TMPEffects.TMPAnimations.Animations
             float BL, TL, TR, BR;
             Context ctx = context as Context;
             FixVector(ref currentAnchor);
-            if (ctx.lastUpdated == -1) { ctx.lastUpdated = ctx.animatorContext.passedTime; }
+            if (ctx.lastUpdated == -1) { ctx.lastUpdated = ctx.animatorContext.PassedTime; }
 
             if (cData.info.index == ctx.segmentData.firstAnimationIndex)
             {
-                ctx.passed += context.animatorContext.deltaTime * currentSpeed;
+                ctx.passed += context.animatorContext.DeltaTime * currentSpeed;
             }
             float ppT = ctx.passed;
             float lerpT = Mathf.PingPong(ppT, 1);
@@ -368,7 +368,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private class Context : IAnimationContext
         {
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
 
             public float lastUpdated;

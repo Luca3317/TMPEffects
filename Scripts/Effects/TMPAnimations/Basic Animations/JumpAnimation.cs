@@ -33,27 +33,27 @@ namespace TMPEffects.TMPAnimations.Animations
             // Initialize playingSince
             if (ctx.playingSince == -1)
             {
-                ctx.playingSince = context.animatorContext.passedTime;
+                ctx.playingSince = context.animatorContext.PassedTime;
             }
 
             // If waiting, and done
-            if (ctx.waitingSince != -1 && (context.animatorContext.passedTime) - ctx.waitingSince >= currentWaitDuration)
+            if (ctx.waitingSince != -1 && (context.animatorContext.PassedTime) - ctx.waitingSince >= currentWaitDuration)
             {
                 ctx.waitingSince = -1;
-                ctx.playingSince = context.animatorContext.passedTime;
+                ctx.playingSince = context.animatorContext.PassedTime;
             }
 
             // If not waiting
             if (ctx.waitingSince == -1)
             {
-                ctx.index = Mathf.Lerp(-currentRadius, context.segmentData.length - 1 + currentRadius, (((context.animatorContext.passedTime - ctx.playingSince) * currentSpeed) /*% cData.segmentLength*/) / context.segmentData.length);
+                ctx.index = Mathf.Lerp(-currentRadius, context.segmentData.length - 1 + currentRadius, (((context.animatorContext.PassedTime - ctx.playingSince) * currentSpeed) /*% cData.segmentLength*/) / context.segmentData.length);
                 //ctx.index = Mathf.Lerp(-1, cData.segmentLength, ((context.AnimatorContext.passedTime * currentSpeed) % cData.segmentLength) / cData.segmentLength);
                 int newIndexInt = (int)ctx.index;
 
                 if (newIndexInt == context.segmentData.length - 1 + currentRadius)
                 {
                     // begin wait period
-                    ctx.waitingSince = context.animatorContext.passedTime;
+                    ctx.waitingSince = context.animatorContext.PassedTime;
                     return;
                 }
 
@@ -171,8 +171,8 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private class JumpContext : IAnimationContext
         {
-            private AnimatorContext context;
-            public AnimatorContext animatorContext { get => context; set => context = value; }
+            private ReadOnlyAnimatorContext context;
+            public ReadOnlyAnimatorContext animatorContext { get => context; set => context = value; }
 
             public SegmentData segmentData { get; set; }
 

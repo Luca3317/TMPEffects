@@ -27,14 +27,14 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             Context ctx = context as Context;
             FixVector(ref currentAnchor);
 
-            float angle = (context.animatorContext.passedTime - cData.stateTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
+            float angle = (context.animatorContext.PassedTime - cData.stateTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
             float t = Mathf.Sin(angle) / 2 + 0.5f;
             if (ctx.lastRoc == 0) ctx.lastRoc = Mathf.Cos(angle);
 
             float multiplier = Mathf.Lerp(currentMaxScale, currentMinScale, t);
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Hidden, context.animatorContext.passedTime);
+                cData.SetVisibilityState(VisibilityState.Hidden, context.animatorContext.PassedTime);
                 multiplier = currentMinScale;
             }
 
@@ -346,7 +346,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         private class Context : IAnimationContext
         {
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
 
             public float lastRoc;

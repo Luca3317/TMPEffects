@@ -43,9 +43,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 
 
-            if (context.animatorContext.passedTime - cData.visibleTime >= currentDuration)
+            if (context.animatorContext.PassedTime - cData.visibleTime >= currentDuration)
             {
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.passedTime);
+                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
                 return;
             }
 
@@ -68,7 +68,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
 
 
-            ctx.waitTimeRemaining[cData.segmentIndex] = ctx.waitTimeRemaining[cData.segmentIndex] - context.animatorContext.deltaTime;
+            ctx.waitTimeRemaining[cData.segmentIndex] = ctx.waitTimeRemaining[cData.segmentIndex] - context.animatorContext.DeltaTime;
 
             float h = cData.info.fontAsset.atlasHeight;
             float w = cData.info.fontAsset.atlasWidth;
@@ -88,7 +88,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
 
 
-            float t = (context.animatorContext.passedTime - cData.visibleTime) / currentDuration;
+            float t = (context.animatorContext.PassedTime - cData.visibleTime) / currentDuration;
             if (currentOrder == Order.Random)
             {
                 float plus = Mathf.Lerp(0, 1 - currentOriginalChance, t);
@@ -313,7 +313,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             public System.Random random;
             public bool init;
 
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
         }
 

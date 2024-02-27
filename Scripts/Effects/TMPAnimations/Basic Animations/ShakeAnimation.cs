@@ -31,14 +31,14 @@ namespace TMPEffects.TMPAnimations.Animations
             Vector3 offset;
             int seed;
 
-            if (context.animatorContext.passedTime - shakeContext.lastUpdated < currentDelay)
+            if (context.animatorContext.PassedTime - shakeContext.lastUpdated < currentDelay)
             {
                 seed = shakeContext.lastSeed;
             }
             else
             {
-                seed = (int)(shakeContext.animatorContext.passedTime * 1000);
-                shakeContext.lastUpdated = shakeContext.animatorContext.passedTime;
+                seed = (int)(shakeContext.animatorContext.PassedTime * 1000);
+                shakeContext.lastUpdated = shakeContext.animatorContext.PassedTime;
                 shakeContext.lastSeed = seed;
             }
 
@@ -169,8 +169,8 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             public SegmentData segmentData { get; set; }
 
-            public AnimatorContext animatorContext { get => settings; set => settings = value; }
-            private AnimatorContext settings;
+            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
+            private ReadOnlyAnimatorContext settings;
 
             public float RandomX;
             public float RandomY;

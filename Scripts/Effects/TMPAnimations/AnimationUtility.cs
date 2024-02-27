@@ -20,7 +20,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="waitingSince">Will be set to the current time.</param>
         public static void BeginWaiting(in IAnimationContext ctx, out float waitingSince)
         {
-            waitingSince = ctx.animatorContext.passedTime;
+            waitingSince = ctx.animatorContext.PassedTime;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace TMPEffects.TMPAnimations
         public static bool TryFinishWaiting(float waitTime, in IAnimationContext ctx, ref float waitingSince)
         {
             if (waitingSince < 0) return false;
-            if ((ctx.animatorContext.passedTime - waitingSince) >= waitTime)
+            if ((ctx.animatorContext.PassedTime - waitingSince) >= waitTime)
             {
                 waitingSince = -1;
                 return true;
@@ -92,13 +92,13 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static Vector3 GetRawDelta(Vector3 delta, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (!ctx.animatorContext.scaleAnimations) return delta;
+            if (!ctx.animatorContext.ScaleAnimations) return delta;
             return delta / cData.info.referenceScale;
         }
 
         internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, float scale, ref IAnimationContext ctx)
         {
-            if (!ctx.animatorContext.scaleAnimations) return position;
+            if (!ctx.animatorContext.ScaleAnimations) return position;
             return (position - referencePosition) / scale + referencePosition;
         }
 
@@ -113,7 +113,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetVertexRaw(int index, Vector3 position, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.mesh.initial.GetPosition(index);
                 cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
@@ -131,7 +131,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetPositionRaw(Vector3 position, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.info.initialPosition;
                 cData.SetPosition((position - ogPos) / cData.info.referenceScale + ogPos);
@@ -149,7 +149,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetPivotRaw(Vector3 pivot, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.info.initialPosition;
                 cData.SetPivot((pivot - ogPos) / cData.info.referenceScale + ogPos);
@@ -168,7 +168,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddVertexDeltaRaw(int index, Vector3 delta, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 cData.AddVertexDelta(index, delta / cData.info.referenceScale);
             }
@@ -185,7 +185,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddPositionDeltaRaw(Vector3 delta, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 cData.AddPositionDelta(delta / cData.info.referenceScale);
             }
@@ -202,7 +202,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddPivotDeltaRaw(Vector3 delta, ref CharData cData, ref IAnimationContext ctx)
         {
-            if (ctx.animatorContext.scaleAnimations)
+            if (ctx.animatorContext.ScaleAnimations)
             {
                 cData.AddPivotDelta(delta / cData.info.referenceScale);
             }

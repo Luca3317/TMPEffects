@@ -29,7 +29,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             //if (!ctx.done.ContainsKey(cData.segmentIndex)) ctx.done.Add(cData.segmentIndex, false);
 
-            float angle = (context.animatorContext.passedTime - cData.visibleTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
+            float angle = (context.animatorContext.PassedTime - cData.visibleTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
             float t = Mathf.Sin(angle) / 2 + 0.5f;
             if (ctx.lastRoc == 0) ctx.lastRoc = Mathf.Cos(angle);
 
@@ -41,7 +41,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
                 //ctx.done[cData.segmentIndex] = true;
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.passedTime);
+                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
 
                 cData.mesh.SetColor(0, cData.mesh.initial.GetColor(0));
                 cData.mesh.SetColor(1, cData.mesh.initial.GetColor(1));
@@ -283,7 +283,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
         private class Context : IAnimationContext
         {
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
 
             public float lastRoc;

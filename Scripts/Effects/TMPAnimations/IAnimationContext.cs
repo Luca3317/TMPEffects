@@ -10,7 +10,7 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The context of the animator.
         /// </summary>
-        public AnimatorContext animatorContext { get; set; }
+        public ReadOnlyAnimatorContext animatorContext { get; set; }
         /// <summary>
         /// Data about the animation segment.
         /// </summary>

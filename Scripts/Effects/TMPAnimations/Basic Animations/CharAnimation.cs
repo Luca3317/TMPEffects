@@ -45,7 +45,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 ctx.init = true;
             }
 
-            ctx.waitTimeRemaining[cData.segmentIndex] = ctx.waitTimeRemaining[cData.segmentIndex] - context.animatorContext.deltaTime;
+            ctx.waitTimeRemaining[cData.segmentIndex] = ctx.waitTimeRemaining[cData.segmentIndex] - context.animatorContext.DeltaTime;
 
             float h = cData.info.fontAsset.atlasHeight;
             float w = cData.info.fontAsset.atlasWidth;
@@ -196,7 +196,7 @@ namespace TMPEffects.TMPAnimations.Animations
             public System.Random random;
             public bool init;
 
-            public AnimatorContext animatorContext { get; set; }
+            public ReadOnlyAnimatorContext animatorContext { get; set; }
             public SegmentData segmentData { get; set; }
         }
     }

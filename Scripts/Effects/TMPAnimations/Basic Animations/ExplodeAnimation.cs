@@ -13,7 +13,7 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Vector3 center = (context.segmentData.max + context.segmentData.min) / 2;
 
-            float t = Mathf.Sin(context.animatorContext.passedTime) / 2 + 0.5f;
+            float t = Mathf.Sin(context.animatorContext.PassedTime) / 2 + 0.5f;
             Vector3 TL = Vector3.Lerp(center, cData.mesh.initial.vertex_TL.position, t);
             Vector3 TR = Vector3.Lerp(center, cData.mesh.initial.vertex_TR.position, t);
             Vector3 BL = Vector3.Lerp(center, cData.mesh.initial.vertex_BL.position, t);
