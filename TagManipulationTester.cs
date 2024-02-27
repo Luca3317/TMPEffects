@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using TMPEffects.Components;
 using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPEffects.Tags;
 
 public class TagManipulationTester : MonoBehaviour
 {

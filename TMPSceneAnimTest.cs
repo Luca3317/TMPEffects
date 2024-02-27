@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
-using Unity.VisualScripting;
+using TMPEffects;
+using TMPEffects.TMPAnimations;
+using TMPEffects.Components.CharacterData;
 
 public class TMPSceneAnimTest : TMPSceneAnimation
 {

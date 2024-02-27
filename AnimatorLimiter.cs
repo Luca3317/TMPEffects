@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components;
 using UnityEngine;
+using TMPEffects.Components.Animator;
 
 public class AnimatorLimiter : MonoBehaviour
 {

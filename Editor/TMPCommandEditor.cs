@@ -1,5 +1,6 @@
 using TMPEffects;
 using UnityEditor;
+using TMPEffects.TMPCommands;
 
 namespace TMPEffects.Editor
 {

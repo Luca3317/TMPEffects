@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
-using TMPEffects.Databases;
-using static UnityEngine.GraphicsBuffer;
+using TMPEffects.Databases.AnimationDatabase;
 
 namespace TMPEffects.Editor
 {
@@ -152,13 +151,13 @@ namespace TMPEffects.Editor
         GUIContent alertDialogDefaultHide;
         void DrawDefaultHideShow()
         {
-            alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Animations.TMPAnimationType.Show);
-            alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Animations.TMPAnimationType.Hide);
+            alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show);
+            alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
 
             EditorGUI.BeginChangeCheck();
 
             GUILayout.BeginHorizontal();
-            string warning = animator.CheckDefaultString(Animations.TMPAnimationType.Show);
+            string warning = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"), GUILayout.ExpandWidth(true));
 
             Rect rect = GUILayoutUtility.GetLastRect();
@@ -177,7 +176,7 @@ namespace TMPEffects.Editor
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            string warning2 = animator.CheckDefaultString(Animations.TMPAnimationType.Hide);
+            string warning2 = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"), GUILayout.ExpandWidth(true));
 
             rect = GUILayoutUtility.GetLastRect();

@@ -1,8 +1,8 @@
 using TMPEffects.Components;
-using TMPEffects.Databases;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
+using TMPEffects.Databases.CommandDatabase;
+using TMPEffects.Components.CharacterData;
 
 namespace TMPEffects.Editor
 {
@@ -169,7 +169,7 @@ namespace TMPEffects.Editor
 
         void UpdateProgress(int index)
         {
-            progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextInfo.characterCount - 1));
+            progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextComponent.textInfo.characterCount - 1));
             if (progress == 1) finished = true;
         }
 
@@ -396,7 +396,7 @@ namespace TMPEffects.Editor
             float max = progressBarRect.x + progressBarRect.width;
 
             progress = Mathf.InverseLerp(min, max, xPos);
-            writer.ResetWriter(Mathf.RoundToInt(((writer.TextInfo.characterCount - 1) * progress)));
+            writer.ResetWriter(Mathf.RoundToInt(((writer.TextComponent.textInfo.characterCount - 1) * progress)));
         }
 
         bool styles = false;
@@ -456,7 +456,6 @@ namespace TMPEffects.Editor
                 // If disabled this frame
                 if (!writer.enabled)
                 {
-                    //StopWriter();
                     wasWriting = false;
                     progress = 0;
                 }
@@ -482,13 +481,11 @@ namespace TMPEffects.Editor
 
         void PauseWriter()
         {
-            //if (!writer.enabled) return;
             writer.StopWriter();
         }
 
         void StartWriter()
         {
-            //if (!writer.enabled) return;
             if (progress >= 1)
             {
                 writer.ResetWriter();
@@ -499,29 +496,26 @@ namespace TMPEffects.Editor
 
         void ResetWriter()
         {
-            //if (!writer.enabled) return;
             bool wasWriting = writer.IsWriting;
             writer.ResetWriter();
             progress = 0;
             if (wasWriting) writer.StartWriter();
             else
             {
-                writer.Show(0, writer.CharacterCount, true);
+                writer.Show(0, writer.TextComponent.textInfo.characterCount, true);
             }
         }
 
         void StopWriter()
         {
-            Debug.Log("Hit stop");
-            //if (!writer.enabled) return;
             writer.ResetWriter();
             progress = 0;
-            writer.Show(0, writer.CharacterCount, true);
+            writer.Show(0, writer.TextComponent.textInfo.characterCount, true);
         }
 
         void FinishWriter()
         {
-            writer.FinishWriter();
+            writer.SkipPlayer();
             progress = 1;
         }
 

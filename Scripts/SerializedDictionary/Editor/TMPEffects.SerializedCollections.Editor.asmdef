@@ -1,0 +1,18 @@
+{
+    "name": "TMPEffects.SerializedCollections.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bc50dcdb89ada6249b1b82bd70623a05"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

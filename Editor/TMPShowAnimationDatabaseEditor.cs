@@ -1,5 +1,6 @@
 using TMPEffects.Databases;
 using UnityEditor;
+using TMPEffects.Databases.AnimationDatabase;
 
 namespace TMPEffects.Editor
 {
