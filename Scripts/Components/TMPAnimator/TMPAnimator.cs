@@ -920,7 +920,7 @@ namespace TMPEffects.Components
 
         private void OnForcedUpdate(int start, int length)
         {
-            if (!isAnimating) return;
+            if (!IsAnimating) return;
 
             for (int i = 0; i < length; i++)
             {
@@ -1061,6 +1061,7 @@ namespace TMPEffects.Components
         #region Editor Only
 #if UNITY_EDITOR
         [SerializeField, HideInInspector] bool preview = false;
+        [SerializeField, HideInInspector] bool initDatabase = false;
         [SerializeField, HideInInspector] TMPAnimationDatabase prevDatabase = null;
 
         internal void StartPreview()
