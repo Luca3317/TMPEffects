@@ -31,7 +31,6 @@ namespace TMPEffects.Components.Animator
                         case "override":
                         case "or":
                             if (ParsingUtility.StringToBool(tag.Parameters[param], out tmp)) overrides = tmp;
-                            // TODO remove it from parameters?
                             break;
                     }
                 }

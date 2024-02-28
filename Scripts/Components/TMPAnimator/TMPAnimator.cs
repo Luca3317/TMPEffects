@@ -17,6 +17,7 @@ using TMPEffects.Tags;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.Components.CharacterData;
+using System.Collections.Specialized;
 
 namespace TMPEffects.Components
 {
@@ -94,15 +95,15 @@ namespace TMPEffects.Components
         public const char HIDE_ANIMATION_PREFIX = '-';
 
         #region Fields
-        [SerializeField] private TMPAnimationDatabase database;
-        [SerializeField] private AnimatorContext context;
+        [SerializeField] private TMPAnimationDatabase database = null;
+        [SerializeField] private AnimatorContext context = new AnimatorContext(true, true);
 
-        [SerializeField] private UpdateFrom updateFrom;
+        [SerializeField] private UpdateFrom updateFrom = UpdateFrom.Update;
         [SerializeField] private bool animateOnStart = true;
 
         [SerializeField] private bool animationsOverride = false;
-        [SerializeField] private string defaultShowString;
-        [SerializeField] private string defaultHideString;
+        [SerializeField] private string defaultShowString = "";
+        [SerializeField] private string defaultHideString = "";
 
         [SerializeField] private string excludedCharacters = "";
         [SerializeField] private string excludedCharactersShow = "";
@@ -137,6 +138,7 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private CachedAnimation dummyShow;
         [System.NonSerialized] private CachedAnimation dummyHide;
+
         [System.NonSerialized] private CachedAnimation defaultShow;
         [System.NonSerialized] private CachedAnimation defaultHide;
 
@@ -191,8 +193,8 @@ namespace TMPEffects.Components
 
         private void SubscribeToMediator()
         {
-            Mediator.OnVisibilityStateUpdated += EnsureCorrectTiming; // Ensure visibility time of object is persistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
-            Mediator.CharDataPopulated += PostProcessTags; // 
+            Mediator.OnVisibilityStateUpdated += EnsureCorrectTiming; // Ensure visibility time of object is consistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
+            Mediator.CharDataPopulated += PostProcessTags;
             Mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
             Mediator.ForcedUpdate += OnForcedUpdate; // Will update animations at indices once; otherwise, depending on timing of required update, there'll be a frame of unanimated text
         }
@@ -220,7 +222,10 @@ namespace TMPEffects.Components
             hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase);
 
             // Reset tagcollection & cachedcollection
-            tags = new();
+            if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
+            tags = new TagCollectionManager<TMPAnimationCategory>();
+            tags.CollectionChanged += OnTagCollectionChanged;
+
             var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
             basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
             show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
@@ -239,6 +244,35 @@ namespace TMPEffects.Components
 
             SetDefault(TMPAnimationType.Show);
             SetDefault(TMPAnimationType.Hide);
+        }
+
+        private void OnTagCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Remove:
+                    int min = Mediator.CharData.Count;
+                    int max = 0;
+
+                    EffectTagTuple tuple;
+                    foreach (var ad in e.OldItems)
+                    {
+                        tuple = (EffectTagTuple)ad;
+
+                        if (tuple.Indices.StartIndex < min) min = tuple.Indices.StartIndex;
+                        if (tuple.Indices.EndIndex > max) max = tuple.Indices.EndIndex;
+                    }
+
+                    for (int i = min; i <= max; i++)
+                    {
+                        UpdateCharacterAnimation(Mediator.CharData[i], 0f, i, false, true);
+                    }
+
+                    if (Mediator.Text.mesh != null)
+                        Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+                    break;
+            }
         }
 
         private void SetDefault(TMPAnimationType type)
@@ -296,6 +330,7 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Show:
                     cacher = new AnimationCacher(database?.ShowAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
                     defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
+                    Debug.Log("Success set w/ " + tagInfo.name + "; defaultshow now " + defaultShow.Tag.Name);
                     break;
 
                 case TMPAnimationType.Hide:
@@ -303,6 +338,7 @@ namespace TMPEffects.Components
                     defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
                     break;
             }
+
 
             void SetToDummy()
             {
@@ -480,6 +516,31 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Hide: SetExcludedHideCharacters(str, excludePunctuation); break;
                 default: throw new System.ArgumentException();
             }
+
+            RecalculateSegmentData(type);
+        }
+
+        private void RecalculateSegmentData(TMPAnimationType type)
+        {
+            switch (type)
+            {
+                case TMPAnimationType.Basic:
+                    foreach (var anim in basic)
+                        anim.context.segmentData = new SegmentData(anim.Indices, Mediator.CharData, (c) => !IsExcludedBasic(c));
+                    break;
+
+                case TMPAnimationType.Show:
+                    foreach (var anim in show)
+                        anim.context.segmentData = new SegmentData(anim.Indices, Mediator.CharData, (c) => !IsExcludedShow(c));
+                    break;
+
+                case TMPAnimationType.Hide:
+                    foreach (var anim in hide)
+                        anim.context.segmentData = new SegmentData(anim.Indices, Mediator.CharData, (c) => !IsExcludedHide(c));
+                    break;
+
+                default: throw new System.ArgumentException();
+            }
         }
 
         /// <summary>
@@ -495,7 +556,7 @@ namespace TMPEffects.Components
                 this.excludePunctuation = excludePunctuation.Value;
             }
 
-            RecalculateSegmentData(hide, x => !IsExcludedBasic(x));
+            RecalculateSegmentData(TMPAnimationType.Basic);
         }
 
         /// <summary>
@@ -511,7 +572,7 @@ namespace TMPEffects.Components
                 excludePunctuationShow = excludePunctuation.Value;
             }
 
-            RecalculateSegmentData(hide, x => !IsExcludedShow(x));
+            RecalculateSegmentData(TMPAnimationType.Show);
         }
 
         /// <summary>
@@ -527,7 +588,7 @@ namespace TMPEffects.Components
                 excludePunctuationHide = excludePunctuation.Value;
             }
 
-            RecalculateSegmentData(hide, x => !IsExcludedHide(x));
+            RecalculateSegmentData(TMPAnimationType.Hide);
         }
         #endregion
 
@@ -566,7 +627,7 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            else if (count % 100 == 0) Debug.Log(count);
+            //else if (count % 100 == 0) Debug.Log(count);
             count++;
             sw.Start();
 
@@ -575,7 +636,7 @@ namespace TMPEffects.Components
             for (int i = 0; i < Mediator.CharData.Count; i++)
             {
                 CharData cData = Mediator.CharData[i];
-                UpdateCharacterAnimation(ref cData, deltaTime, i, false);
+                UpdateCharacterAnimation(cData, deltaTime, i, false);
             }
 
             if (Mediator.Text.mesh != null)
@@ -584,15 +645,14 @@ namespace TMPEffects.Components
             sw.Stop();
         }
 
-        private void UpdateCharacterAnimation(ref CharData cData, float deltaTime, int index, bool updateVertices = true)
+        private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true, bool forced = false)
         {
-            if (!AnimateCharacter(index, ref cData)) return;
+            if (!cData.info.isVisible || (!forced && !AnimateCharacter(index, cData))) return;
 
             context.deltaTime = deltaTime;
 
             UpdateCharacterAnimation_Impl(index);
 
-            // TODO only set actually changed meshes; dirty flag on cdata & cehcking of uv vert color
             var info = Mediator.Text.textInfo;
             TMP_CharacterInfo cInfo = info.characterInfo[index];
             int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
@@ -615,11 +675,11 @@ namespace TMPEffects.Components
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
-        private bool AnimateCharacter(int index, ref CharData cData)
+        private bool AnimateCharacter(int index, CharData cData)
         {
             return cData.info.isVisible && // If not visible, e.g. whitespace, dont animate
                 cData.visibilityState != VisibilityState.Hidden && // If hidden, dont animate
-                (basic.HasAnyContaining(index) || cData.visibilityState != VisibilityState.Shown /*|| !cData.mesh.Equals(cData.mesh.initial)*/); // If has no animations, dont animate
+                (basic.HasAnyContaining(index) || cData.visibilityState != VisibilityState.Shown); // If has no animations, dont animate
         }
 
         private int UpdateCharacterAnimation_Impl(int index)
@@ -627,7 +687,7 @@ namespace TMPEffects.Components
             CharData cData = Mediator.CharData[index];
             if (!cData.info.isVisible || cData.visibilityState == VisibilityState.Hidden) return 0;
 
-            int applied = 0; 
+            int applied = 0;
 
             Vector3 positionDelta = Vector3.zero;
             Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
@@ -635,7 +695,7 @@ namespace TMPEffects.Components
             Vector3 rotationPivot = cData.info.initialPosition;
 
             Vector3 TL = Vector3.zero;//Data.mesh.initial.vertex_TL.position;
-            Vector3 TR = Vector3.zero;//Data.mesh.initial.vertex_TR.position;
+            Vector3 TR = Vector3.zero;//Data.mesh.initial.vertex_TR.position; 
             Vector3 BR = Vector3.zero;//Data.mesh.initial.vertex_BR.position;
             Vector3 BL = Vector3.zero;//cData.mesh.initial.vertex_BL.position;
 
@@ -701,7 +761,7 @@ namespace TMPEffects.Components
 
                 ca.animation.ResetParameters();
                 ca.animation.SetParameters(ca.Tag.Parameters);
-                ca.animation.Animate(ref cData, ca.context);
+                ca.animation.Animate(cData, ca.context);
 
                 UpdateVertexOffsets();
 
@@ -881,7 +941,7 @@ namespace TMPEffects.Components
                 cData.mesh.SetUV2(2, TR_UV2);
                 cData.mesh.SetUV2(3, BR_UV2);
 
-                Mediator.CharData[index] = cData;
+                //Mediator.CharData[index] = cData;
             }
         }
         #endregion
@@ -889,7 +949,7 @@ namespace TMPEffects.Components
         #region Event Callbacks
         private void OnTextChanged()
         {
-            if (isAnimating) UpdateAnimations_Impl(0f);
+            if (IsAnimating) UpdateAnimations_Impl(0f);
         }
 
         private void OnForcedUpdate(int start, int length)
@@ -899,7 +959,7 @@ namespace TMPEffects.Components
             for (int i = 0; i < length; i++)
             {
                 CharData cData = Mediator.CharData[start + i];
-                UpdateCharacterAnimation(ref cData, 0f, start + i);
+                UpdateCharacterAnimation(cData, 0f, start + i);
             }
         }
 
@@ -911,7 +971,7 @@ namespace TMPEffects.Components
             VisibilityState current = cData.visibilityState;
             cData.SetVisibilityState(prev, -1);
             cData.SetVisibilityState(current, passed);
-            Mediator.CharData[index] = cData;
+            //Mediator.CharData[index] = cData;
         }
 
         private void PostProcessTags()
@@ -978,7 +1038,7 @@ namespace TMPEffects.Components
                     uvs2[vIndex + j] = cData.mesh.initial[j].uv2;
                 }
 
-                Mediator.CharData[i] = cData;
+                //Mediator.CharData[i] = cData;
             }
 
             if (Mediator.Text.mesh != null)
@@ -1021,22 +1081,20 @@ namespace TMPEffects.Components
         /// <param name="c">The character to check.</param>
         /// <returns>Whether the character is excluded from hide animations.</returns>
         public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
-
-        private void RecalculateSegmentData(CachedCollection<CachedAnimation> coll, Predicate<char> animates)
-        {
-            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            foreach (var animation in coll)
-            {
-                animation.context.segmentData = new SegmentData(animation.Indices, ro, animates);
-            }
-        }
         #endregion
 
         #region Editor Only
 #if UNITY_EDITOR
         [SerializeField, HideInInspector] bool preview = false;
-        [SerializeField, HideInInspector] bool initDatabase = false;
+        [SerializeField, HideInInspector] bool initValidate = false;
         [SerializeField, HideInInspector] TMPAnimationDatabase prevDatabase = null;
+        [SerializeField, HideInInspector] string prevExcludedBasicCharacters = null;
+        [SerializeField, HideInInspector] string prevExcludedShowCharacters = null;
+        [SerializeField, HideInInspector] string prevExcludedHideCharacters = null;
+        [SerializeField, HideInInspector] bool prevBasicExcludePunctuation = false;
+        [SerializeField, HideInInspector] bool prevShowExcludePunctuation = false;
+        [SerializeField, HideInInspector] bool prevHideExcludePunctuation = false;
+
 
         internal void StartPreview()
         {
@@ -1084,7 +1142,7 @@ namespace TMPEffects.Components
             if (Mediator != null) PostProcessTags();
         }
 
-        internal void UpdateProcessorsWrapper()
+        internal void OnDatabaseChangedWrapper()
         {
             if (Mediator == null) return;
             OnDatabaseChanged();
@@ -1098,13 +1156,11 @@ namespace TMPEffects.Components
             {
                 case TMPAnimationType.Show:
                     database = showDatabase;
-                    defaultShow = dummyShow;
                     str = defaultShowString;
                     break;
 
                 case TMPAnimationType.Hide:
                     database = hideDatabase;
-                    defaultHide = dummyHide;
                     str = defaultHideString;
                     break;
 
@@ -1154,13 +1210,45 @@ namespace TMPEffects.Components
 
         private void OnValidate()
         {
-            if (Mediator == null) return;
+            if (!initValidate)
+            {
+                prevDatabase = database;
+                prevExcludedBasicCharacters = excludedCharacters;
+                prevExcludedShowCharacters = excludedCharactersShow;
+                prevExcludedHideCharacters = excludedCharactersHide;
+                prevBasicExcludePunctuation = excludePunctuation;
+                prevShowExcludePunctuation = excludePunctuationHide;
+                prevHideExcludePunctuation = excludePunctuationShow;
+                initValidate = true;
+            }
 
-            if (prevDatabase != database ||
+            if (prevExcludedBasicCharacters != excludedCharacters || prevBasicExcludePunctuation != excludePunctuation)
+            {
+                prevExcludedBasicCharacters = excludedCharacters;
+                prevBasicExcludePunctuation = excludePunctuation;
+                RecalculateSegmentData(TMPAnimationType.Basic);
+            }
+
+            if (prevExcludedShowCharacters != excludedCharactersShow || prevShowExcludePunctuation != excludePunctuationHide)
+            {
+                prevExcludedShowCharacters = excludedCharactersShow;
+                prevShowExcludePunctuation = excludePunctuationShow;
+                RecalculateSegmentData(TMPAnimationType.Show);
+            }
+
+            if (prevExcludedHideCharacters != excludedCharactersHide || prevHideExcludePunctuation != excludePunctuationHide)
+            {
+                prevExcludedHideCharacters = excludedCharactersHide;
+                prevHideExcludePunctuation = excludePunctuationHide;
+                RecalculateSegmentData(TMPAnimationType.Hide);
+            } 
+
+            if (Mediator != null &&
+                    (prevDatabase != database ||
                     (database != null &&
                     (basicDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.BasicAnimationDatabase ||
                     showDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.ShowAnimationDatabase ||
-                    hideDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.HideAnimationDatabase))
+                    hideDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.HideAnimationDatabase)))
                 )
             {
                 prevDatabase = database;
@@ -1169,80 +1257,5 @@ namespace TMPEffects.Components
         }
 #endif
         #endregion
-
-        // Wraps a database and sceneanimations dictionary
-        private class AnimationDatabase<T> : ITMPEffectDatabase<ITMPAnimation> where T : TMPSceneAnimationBase
-        {
-            public ITMPEffectDatabase<ITMPAnimation> Database => database;
-            public IDictionary<string, T> SceneAnimations => sceneAnimations;
-            private readonly ITMPEffectDatabase<ITMPAnimation> database;
-            private readonly IDictionary<string, T> sceneAnimations;
-            public AnimationDatabase(ITMPEffectDatabase<ITMPAnimation> database, IDictionary<string, T> sceneAnimations)
-            {
-                this.database = database;
-                this.sceneAnimations = sceneAnimations;
-            }
-            public bool ContainsEffect(string name)
-            {
-                bool contains = database != null && database.ContainsEffect(name);
-                if (contains) return true;
-                return sceneAnimations != null && sceneAnimations.ContainsKey(name) && sceneAnimations[name] != null;
-            }
-            public ITMPAnimation GetEffect(string name)
-            {
-                if (database != null && database.ContainsEffect(name)) return database.GetEffect(name);
-                if (sceneAnimations != null && sceneAnimations.ContainsKey(name) && sceneAnimations[name] != null) return sceneAnimations[name];
-                throw new KeyNotFoundException(name);
-            }
-        }
-
-        // Handles logic for caching animations
-        private class AnimationCacher : ITagCacher<CachedAnimation>
-        {
-            private readonly ITMPEffectDatabase<ITMPAnimation> database;
-            private readonly IList<CharData> charData;
-            private readonly AnimatorContext context;
-            private readonly Predicate<char> animates;
-
-            public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
-            {
-                this.context = context;
-                this.database = database;
-                this.charData = charData;
-                this.animates = animates;
-            }
-
-            public CachedAnimation CacheTag(EffectTag tag, EffectTagIndices indices)
-            {
-                CachedAnimation ca = new CachedAnimation(tag, new EffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex), database.GetEffect(tag.Name));
-                ca.context.animatorContext = new ReadOnlyAnimatorContext(context);
-                ca.context.segmentData = new SegmentData(ca.Indices, charData, animates);
-                return ca;
-            }
-        }
-
-        // Mock database used to use AnimationCacher with dummyshow/hide
-        private struct DummyDatabase : ITMPEffectDatabase<ITMPAnimation>
-        {
-            private string name;
-            private ITMPAnimation animation;
-
-            public DummyDatabase(string name, ITMPAnimation animation)
-            {
-                this.name = name;
-                this.animation = animation;
-            }
-
-            public bool ContainsEffect(string name)
-            {
-                return name == this.name;
-            }
-
-            public ITMPAnimation GetEffect(string name)
-            {
-                if (name == this.name) return this.animation;
-                throw new KeyNotFoundException(name);
-            }
-        }
     }
 }

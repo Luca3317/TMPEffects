@@ -68,28 +68,23 @@ namespace TMPEffects.Components.Mediator
             }
         }
 
-
-        // TODO Maybe use TMP_Text for both of these as well?
-        // TODO What to do if the GameObject/ TMP_Text is destroyed => now null?
-        //      Quick research suggests this isnt an issue
+        /// <summary>
+        /// Get the <see cref="TMPMediator"/> instance associated with the passed in <see cref="TMP_Text"/> instance.
+        /// </summary>
+        /// <param name="text">The identifier of the <see cref="TMPMediator"/> instance.</param>
+        /// <returns>The <see cref="TMPMediator"/> instance associated with the passed in <see cref="TMP_Text"/> instance.</returns>
+        public static TMPMediator GetMediator(TMP_Text text) => mediators[text.gameObject].Item1;
 
         /// <summary>
-        /// Get the <see cref="TMPMediator"/> instance associated with the passed in <see cref="GameObject"/> instance.
+        /// Attempt to get the <see cref="TMPMediator"/> instance associated with the passed in <see cref="TMP_Text"/> instance.
         /// </summary>
-        /// <param name="go">The identifier of the <see cref="TMPMediator"/> instance.</param>
-        /// <returns>The <see cref="TMPMediator"/> instance associated with the passed in <see cref="GameObject"/> instance.</returns>
-        public static TMPMediator GetMediator(GameObject go) => mediators[go].Item1;
-
-        /// <summary>
-        /// Attempt to get the <see cref="TMPMediator"/> instance associated with the passed in <see cref="GameObject"/> instance.
-        /// </summary>
-        /// <param name="go">The identifier of the <see cref="TMPMediator"/> instance.</param>
+        /// <param name="text">The identifier of the <see cref="TMPMediator"/> instance.</param>
         /// <param name="mediator"></param>
         /// <returns>true if the <paramref name="go"/> has an associated <see cref="TMPMediator"/>; otherwise false.</returns>
-        public static bool TryGetMediator(GameObject go, out TMPMediator mediator)
+        public static bool TryGetMediator(TMP_Text text, out TMPMediator mediator)
         {
             mediator = null;
-            if (!mediators.TryGetValue(go, out var tuple))
+            if (!mediators.TryGetValue(text.gameObject, out var tuple))
             {
                 return false;
             }

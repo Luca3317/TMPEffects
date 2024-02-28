@@ -9,7 +9,7 @@ public class TMPSceneAnimTest : TMPSceneAnimation
     public string DefaultString = "The default string";
     public string currentString = "";
 
-    public override void Animate(ref CharData charData, IAnimationContext context)
+    public override void Animate(CharData charData, IAnimationContext context)
     {
     }
 

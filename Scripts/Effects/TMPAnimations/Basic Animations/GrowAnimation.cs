@@ -27,7 +27,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentAfterMaxWaitDuration;
         [System.NonSerialized] float currentAfterMinWaitDuration;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             Vector3 BL, TL, TR, BR;
             Context ctx = context as Context;
@@ -181,10 +181,10 @@ namespace TMPEffects.TMPAnimations.Animations
                 else throw new System.Exception();
             }
 
-            SetVertexRaw(0, BL, ref cData, ref context);
-            SetVertexRaw(1, TL, ref cData, ref context);
-            SetVertexRaw(2, TR, ref cData, ref context);
-            SetVertexRaw(3, BR, ref cData, ref context);
+            SetVertexRaw(0, BL, cData, ref context);
+            SetVertexRaw(1, TL, cData, ref context);
+            SetVertexRaw(2, TR, cData, ref context);
+            SetVertexRaw(3, BR, cData, ref context);
         }
 
         void FixVector(ref Vector2 v)

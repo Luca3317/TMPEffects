@@ -26,7 +26,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentWaitDuration;
         [System.NonSerialized] float currentRadius;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             JumpContext ctx = (JumpContext)context;
 

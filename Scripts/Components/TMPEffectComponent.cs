@@ -36,17 +36,15 @@ namespace TMPEffects.Components
 
         protected void FreeMediator()
         {
-            TMPMediatorManager.Unsubscribe(GetComponent<TMP_Text>(), obj);
-            mediator = null;
+            TMP_Text text = GetComponent<TMP_Text>();
+            TMPMediatorManager.Unsubscribe(text, obj);
         }
 
         protected void UpdateMediator()
         {
-            if (mediator == null)
-            {
-                TMPMediatorManager.Subscribe(GetComponent<TMP_Text>(), obj);
-                mediator = TMPMediatorManager.GetMediator(gameObject);
-            }
+            TMP_Text text = GetComponent<TMP_Text>();
+            TMPMediatorManager.Subscribe(text, obj);
+            mediator = TMPMediatorManager.GetMediator(text);
         }
     }
 }

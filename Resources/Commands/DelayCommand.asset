@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fc96b79a91f5ea439dcb810f11d754b, type: 3}
-  m_Name: SpeedCommand
+  m_Name: DelayCommand
   m_EditorClassIdentifier: 

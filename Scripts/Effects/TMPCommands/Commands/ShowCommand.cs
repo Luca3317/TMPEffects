@@ -22,14 +22,14 @@ namespace TMPEffects.TMPCommands.Commands
             args.writer.Show(args.indices.StartIndex, args.indices.Length, true);
         }
 
-        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
-            if (parameters.ContainsKey(""))
-            {
-                if (!float.TryParse(parameters[""], NumberStyles.Float, CultureInfo.InvariantCulture, out _))
-                    return false;
-            }
+            if (parameters[""] == "") return true;
+
+            if (!float.TryParse(parameters[""], NumberStyles.Float, CultureInfo.InvariantCulture, out _))
+                return false;
+
             return true;
         }
     }

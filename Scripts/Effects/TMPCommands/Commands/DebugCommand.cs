@@ -35,7 +35,7 @@ namespace TMPEffects.TMPCommands.Commands
             }
         }
 
-        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             return true;
         }

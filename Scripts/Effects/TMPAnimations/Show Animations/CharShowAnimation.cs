@@ -38,7 +38,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             SequentialReverse = 10,
         }
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 

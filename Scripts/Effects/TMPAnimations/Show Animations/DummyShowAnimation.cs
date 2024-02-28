@@ -5,7 +5,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     public class DummyShowAnimation : TMPShowAnimation
     {
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             for (int i = 0; i < 4; i++)
             {

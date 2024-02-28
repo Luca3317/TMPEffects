@@ -19,7 +19,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [System.NonSerialized] Vector2 currentAnchor;
         [System.NonSerialized] float currentSpeed;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             //if (currentAnchor == Vector2.zero) currentAnchor = Vector2.right;
             float BL, TL, TR, BR;

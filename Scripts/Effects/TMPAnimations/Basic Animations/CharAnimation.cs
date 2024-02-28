@@ -25,7 +25,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentMinWait;
         [System.NonSerialized] float currentOriginalChance;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 

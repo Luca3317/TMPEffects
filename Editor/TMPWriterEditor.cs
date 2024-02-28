@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.Components.CharacterData;
+using TMPEffects.Databases.AnimationDatabase;
 
 namespace TMPEffects.Editor
 {
@@ -34,6 +35,10 @@ namespace TMPEffects.Editor
         SerializedProperty visibleDelayProp;
         SerializedProperty punctuationDelayProp;
         SerializedProperty linebreakDelayProp;
+        SerializedProperty whitespaceDelayTypeProp;
+        SerializedProperty visibleDelayTypeProp;
+        SerializedProperty punctuationDelayTypeProp;
+        SerializedProperty linebreakDelayTypeProp;
         SerializedProperty startOnPlayProp;
         SerializedProperty eventsEnabledProp;
         SerializedProperty commandsEnabledProp;
@@ -129,6 +134,10 @@ namespace TMPEffects.Editor
             whitespaceDelayProp = serializedObject.FindProperty("whiteSpaceDelay");
             visibleDelayProp = serializedObject.FindProperty("visibleDelay");
             linebreakDelayProp = serializedObject.FindProperty("linebreakDelay");
+            whitespaceDelayTypeProp = serializedObject.FindProperty("whiteSpaceDelayType");
+            visibleDelayTypeProp = serializedObject.FindProperty("visibleDelayType");
+            punctuationDelayTypeProp = serializedObject.FindProperty("punctuationDelayType");
+            linebreakDelayTypeProp = serializedObject.FindProperty("linebreakDelayType");
             startOnPlayProp = serializedObject.FindProperty("writeOnStart");
             eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
             commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
@@ -155,8 +164,25 @@ namespace TMPEffects.Editor
             wasEnabled = writer.enabled;
             writer.OnShowCharacter.AddListener(UpdateProgress);
             writer.OnResetWriter.AddListener(UpdateProgress);
+
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
-            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || databaseProp.objectReferenceValue == null;
+            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
+
+            if (!serializedObject.FindProperty("initValidate").boolValue)
+            {
+                databaseProp.objectReferenceValue = defaultDatabase;
+                serializedObject.FindProperty("initValidate").boolValue = true;
+                serializedObject.ApplyModifiedProperties();
+            }
+            else
+            {
+                // Potential TODO:
+                // This line is necessary as this ensures the processors are up-to-date with the current state of
+                // the TMPCommandDatabase. Could also do this by making TMPCommandDatabase return with ref; fine for now
+                // even better would be a callback when changing the database so you dont have to select the gameobject for
+                // changes to show
+                writer.OnDatabaseChangedWrapper();
+            }
         }
 
         private void OnDisable()
@@ -344,10 +370,31 @@ namespace TMPEffects.Editor
             if (foldd)
             {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(whitespaceDelayProp);
-                EditorGUILayout.PropertyField(linebreakDelayProp);
-                EditorGUILayout.PropertyField(punctuationDelayProp);
-                EditorGUILayout.PropertyField(visibleDelayProp);
+
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(new GUIContent("Whitespace Delay", whitespaceDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                whitespaceDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)whitespaceDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                whitespaceDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, whitespaceDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(new GUIContent("Linebreak Delay", linebreakDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                linebreakDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)linebreakDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                linebreakDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, linebreakDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(new GUIContent("Punctuation Delay", punctuationDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                punctuationDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)punctuationDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                punctuationDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, punctuationDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(new GUIContent("Visible Delay", visibleDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                visibleDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)visibleDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                visibleDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, visibleDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                GUILayout.EndHorizontal();
+
                 EditorGUI.indentLevel--;
             }
 

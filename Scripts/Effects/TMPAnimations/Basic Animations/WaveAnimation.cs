@@ -16,7 +16,7 @@ namespace TMPEffects.TMPAnimations.Animations
         private float currentAmplitude;
         private float currentSpeed;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             float xPos = (cData.mesh.initial.vertex_TL.position.x + cData.mesh.initial.vertex_TR.position.x) / 2;
             float yOffset = currentAmplitude * (Mathf.Sin((context.animatorContext.PassedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);

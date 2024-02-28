@@ -11,7 +11,7 @@ namespace TMPEffects.TMPAnimations
     public abstract class TMPHideAnimation : ScriptableObject, ITMPAnimation
     {
         ///<inheritdoc/>
-        public abstract void Animate(ref CharData charData, IAnimationContext context);
+        public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>
         public abstract void SetParameters(IDictionary<string, string> parameters);
         ///<inheritdoc/>

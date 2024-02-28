@@ -1,15 +1,11 @@
 using System.Collections.Generic;
-using System.Globalization;
-using UnityEditor;
 using UnityEngine;
-using TMPEffects.Tags;
-using TMPEffects.Components;
 using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName = "new SpeedCommand", menuName = "TMPEffects/Commands/Speed")]
-    public class SpeedCommand : TMPCommand
+    [CreateAssetMenu(fileName = "new DelayCommand", menuName = "TMPEffects/Commands/Delay")]
+    public class DelayCommand : TMPCommand
     {
         public override TagType TagType => TagType.Either;
         public override bool ExecuteInstantly => false;
@@ -22,11 +18,11 @@ namespace TMPEffects.TMPCommands.Commands
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            ParsingUtility.StringToFloat(args.tag.Parameters[""], out float speed);
-            args.writer.SetSpeed(speed);
+            ParsingUtility.StringToFloat(args.tag.Parameters[""], out float delay);
+            args.writer.SetDelay(delay);
         }
 
-        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return false;
             if (!parameters.ContainsKey(""))

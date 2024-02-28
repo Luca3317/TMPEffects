@@ -27,7 +27,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentAfterMaxWaitDuration;
         [System.NonSerialized] float currentAfterMinWaitDuration;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             float BL, TL, TR, BR;
             Context ctx = context as Context;

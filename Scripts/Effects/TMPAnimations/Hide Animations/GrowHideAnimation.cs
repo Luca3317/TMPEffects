@@ -21,7 +21,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
         [System.NonSerialized] Vector2 currentDirection; // ignored if anchor not center
         [System.NonSerialized] float currentSpeed;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             Vector3 BL, TL, TR, BR;
             Context ctx = context as Context;
@@ -150,10 +150,10 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 else throw new System.Exception();
             }
 
-            AnimationUtility.SetVertexRaw(0, BL, ref cData, ref context);
-            AnimationUtility.SetVertexRaw(1, TL, ref cData, ref context);
-            AnimationUtility.SetVertexRaw(2, TR, ref cData, ref context);
-            AnimationUtility.SetVertexRaw(3, BR, ref cData, ref context);
+            AnimationUtility.SetVertexRaw(0, BL, cData, ref context);
+            AnimationUtility.SetVertexRaw(1, TL, cData, ref context);
+            AnimationUtility.SetVertexRaw(2, TR, cData, ref context);
+            AnimationUtility.SetVertexRaw(3, BR, cData, ref context);
         }
 
         void FixVector(ref Vector2 v)

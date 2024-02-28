@@ -4,16 +4,13 @@ using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.Components.CharacterData;
 
-// TODO!
-// Reinitialize every time excludeshow/hide/basic or punctuation changed
-
 namespace TMPEffects.Components.Animator
 {
     /// <summary>
     /// To be used with <see cref="TMPAnimator"/> and its animations.<br/>
     /// Contains data about a given animation segment.
     /// </summary>
-    public class SegmentData
+    public struct SegmentData
     {
         /// <summary>
         /// The first index of the segment within the containing text.
@@ -57,11 +54,12 @@ namespace TMPEffects.Components.Animator
             max = Vector3.negativeInfinity;
             min = Vector3.positiveInfinity;
             Vector3 leftTop, bottomRight;
-            for (int i = startIndex; i < startIndex + length; i++)
-            {
-                // TODO This is for testing purposes while changing the index concept;
-                if (i >= cData.Count) break;
 
+            // Clamp needed for when text ends with tags; will cause (startIndex + length)
+            // to be equal to cData.Count + 1
+            int count = Mathf.Min(cData.Count, startIndex + length);
+            for (int i = startIndex; i < count; i++)
+            {
                 if (!cData[i].info.isVisible) continue;
 
                 leftTop = cData[i].mesh.initial.vertex_TL.position;
@@ -76,8 +74,9 @@ namespace TMPEffects.Components.Animator
                 {
                     if (firstAnimationIndex == -1) firstAnimationIndex = i;
                     lastAnimationIndex = i;
-                }
+                } 
             }
         }
     }
 }
+ 

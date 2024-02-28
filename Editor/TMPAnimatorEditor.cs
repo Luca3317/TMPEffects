@@ -58,20 +58,24 @@ namespace TMPEffects.Editor
 
             //wasEnabled = writer.enabled;
             defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
-            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initDatabase").boolValue;
+            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
 
-            if (!serializedObject.FindProperty("initDatabase").boolValue)
+            if (!serializedObject.FindProperty("initValidate").boolValue)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
-                serializedObject.FindProperty("initDatabase").boolValue = true;
+                serializedObject.FindProperty("initValidate").boolValue = true;
                 serializedObject.ApplyModifiedProperties();
             }
+            else
+            {
+                // Potential TODO:
+                // This line is necessary as this ensures the processors are up-to-date with the current state of
+                // the TMPAnimationDatabase. Could also do this by making TMPAnimationDatabase return with ref; fine for now
+                // even better would be a callback when changing the database so you dont have to select the gameobject for
+                // changes to show
+                animator.OnDatabaseChangedWrapper();
+            }
 
-            // TODO This line is necessary as this ensures the processors are up-to-date with the current state of
-            // the TMPAnimationDatabase. Could also do this by making TMPAnimationDatabase return with ref; fine for now
-            // even better would be a callback when changing the database so you dont have to select the gameobject for
-            // changes to show
-            animator.UpdateProcessorsWrapper();
             animator.ForceReprocess();
 
             Undo.undoRedoPerformed += OnUndoRedo;

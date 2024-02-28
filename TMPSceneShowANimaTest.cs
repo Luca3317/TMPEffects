@@ -8,7 +8,7 @@ using TMPEffects.Components.CharacterData;
 
 public class TMPSceneShowANimaTest : TMPSceneShowAnimation
 {
-    public override void Animate(ref CharData charData, IAnimationContext context)
+    public override void Animate(CharData charData, IAnimationContext context)
     {
         charData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime); 
     }

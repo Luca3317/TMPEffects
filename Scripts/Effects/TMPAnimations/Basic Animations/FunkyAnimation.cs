@@ -20,7 +20,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentAmplitude;
         [System.NonSerialized] float currentSqueezeFactor;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
 
             float t = Mathf.Sin(context.animatorContext.PassedTime * currentSpeed) / 2 + 0.5f;
@@ -33,18 +33,18 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Vector3 keyframe0_1 = cData.mesh.initial.GetPosition(0);
             Vector3 keyframe0_2 = cData.mesh.initial.GetPosition(3);
-            keyframe0_1 = AnimationUtility.GetRawVertex(1, keyframe0_1 + delta0 * currentSqueezeFactor, ref cData, ref context);
-            keyframe0_2 = AnimationUtility.GetRawVertex(2, keyframe0_2 + delta1 * currentSqueezeFactor, ref cData, ref context);
+            keyframe0_1 = AnimationUtility.GetRawVertex(1, keyframe0_1 + delta0 * currentSqueezeFactor, cData, ref context);
+            keyframe0_2 = AnimationUtility.GetRawVertex(2, keyframe0_2 + delta1 * currentSqueezeFactor, cData, ref context);
 
             Vector3 keyframe1_1 = cData.mesh.initial.GetPosition(1);
             Vector3 keyframe1_2 = cData.mesh.initial.GetPosition(2);
-            keyframe1_1 = AnimationUtility.GetRawVertex(1, keyframe1_1, ref cData, ref context) + Vector3.left * currentAmplitude;
-            keyframe1_2 = AnimationUtility.GetRawVertex(2, keyframe1_2, ref cData, ref context) + Vector3.left * currentAmplitude;
+            keyframe1_1 = AnimationUtility.GetRawVertex(1, keyframe1_1, cData, ref context) + Vector3.left * currentAmplitude;
+            keyframe1_2 = AnimationUtility.GetRawVertex(2, keyframe1_2, cData, ref context) + Vector3.left * currentAmplitude;
 
             Vector3 keyframe2_1 = cData.mesh.initial.GetPosition(1);
             Vector3 keyframe2_2 = cData.mesh.initial.GetPosition(2);
-            keyframe2_1 = AnimationUtility.GetRawVertex(1, keyframe2_1, ref cData, ref context) + Vector3.right * currentAmplitude;
-            keyframe2_2 = AnimationUtility.GetRawVertex(2, keyframe2_2, ref cData, ref context) + Vector3.right * currentAmplitude;
+            keyframe2_1 = AnimationUtility.GetRawVertex(1, keyframe2_1, cData, ref context) + Vector3.right * currentAmplitude;
+            keyframe2_2 = AnimationUtility.GetRawVertex(2, keyframe2_2, cData, ref context) + Vector3.right * currentAmplitude;
 
             Vector3 p1 = cData.mesh.initial.GetPosition(1), p2 = cData.mesh.initial.GetPosition(2);
             if (movingUp)

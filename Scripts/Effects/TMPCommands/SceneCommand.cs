@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,5 +27,10 @@ namespace TMPEffects.TMPCommands
         [SerializeField] private UnityEvent<TMPCommandArgs> command;
 
         public void ExecuteCommand(TMPCommandArgs args) => command?.Invoke(args);
+
+        public bool ValidateParameters(IDictionary<string, string> parameters)
+        {
+            return true;
+        }
     }
 }

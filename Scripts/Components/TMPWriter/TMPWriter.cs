@@ -1,7 +1,6 @@
 using TMPEffects.SerializedCollections;
 using System.Collections;
 using TMPEffects.TMPCommands;
-using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
@@ -13,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPEffects.Extensions;
 using TMPEffects.EffectCategories;
-using TMPEffects.Tags;
+using TMPEffects.Components.Writer;
 using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
@@ -21,9 +20,6 @@ using TMPEffects.Components.CharacterData;
 
 namespace TMPEffects.Components
 {
-    // TODO fully change speed to delay concept everyhwere
-    // TODO Make separate files for cachedcommand etc.; internal or public? either way => match with animator equivalents
-
     /// <summary>
     /// Shows / hides the characters of a <see cref="TMP_Text"/> component over time.
     /// </summary>
@@ -106,6 +102,12 @@ namespace TMPEffects.Components
         /// </summary>
         public UnityEvent<int> OnResetWriter;
 
+        // TODO Needed? if not, private
+        public float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
+        public float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
+        public float VisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : currentDelay * visibleDelay;
+        public float LinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : currentDelay * linebreakDelay;
+
         /// <summary>
         /// The prefix used for command tags.
         /// </summary>
@@ -119,7 +121,7 @@ namespace TMPEffects.Components
         // Settings
         [SerializeField] TMPCommandDatabase database;
 
-        [Tooltip("The speed at which the writer shows new characters.")]
+        [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
         [SerializeField] private float delay = 0.075f;
 
         [Tooltip("Whether the text may be skipped by default.")]
@@ -131,13 +133,23 @@ namespace TMPEffects.Components
         [SerializeField] private bool autoWriteNewText = true;
 
         [Tooltip("The delay after whitespace characters, as percentage of the general delay")]
-        [SerializeField, Range(0, 100)] private float whiteSpaceDelay;
+        [SerializeField] private float whiteSpaceDelay;
+        [SerializeField] private DelayType whiteSpaceDelayType;
         [Tooltip("The delay after punctuation characters, as percentage of the general delay")]
-        [SerializeField, Range(0, 100)] private float punctuationDelay;
+        [SerializeField] private float punctuationDelay;
+        [SerializeField] private DelayType punctuationDelayType;
         [Tooltip("The delay after already visible characters, as percentage of the general delay")]
-        [SerializeField, Range(0, 100)] private float visibleDelay;
+        [SerializeField] private float visibleDelay;
+        [SerializeField] private DelayType visibleDelayType;
         [Tooltip("The delay after linebreaks, as percentage of the general delay")]
-        [SerializeField, Range(0, 100)] private float linebreakDelay;
+        [SerializeField] private float linebreakDelay;
+        [SerializeField] private DelayType linebreakDelayType;
+
+        public enum DelayType
+        {
+            Percentage,
+            Raw
+        }
 
         // Scene commands
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
@@ -177,7 +189,6 @@ namespace TMPEffects.Components
             Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
-            // TODO Probably should only happen when actually writing
             if (!Application.isPlaying) EditorApplication.update += EditorUpdate;
 #endif
         }
@@ -422,12 +433,12 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
-        /// Set the current speed of the writer.
+        /// Set the current delay of the writer.
         /// </summary>
-        /// <param name="speed">The speed to set the writer to.</param>
-        public void SetSpeed(float speed)
+        /// <param name="delay">The delay between showing two characters.</param>
+        public void SetDelay(float delay)
         {
-            currentDelay = speed;
+            currentDelay = delay;
         }
 
         /// <summary>
@@ -496,7 +507,7 @@ namespace TMPEffects.Components
         {
             OnStartWriting();
 
-            // TODO This indicates the text is fully shown already
+            // This indicates the text is fully shown already
             if (currentIndex >= Mediator.CharData.Count)
             {
                 OnStopWriting();
@@ -566,22 +577,26 @@ namespace TMPEffects.Components
             if (!cData.info.isVisible) // Alternatively check char.IsWhiteSpace
             {
                 // If line break
-                if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
+                if (cData.info.character == '\n')
                 {
-                    return Mathf.Max(currentDelay * linebreakDelay);
+                    return Mathf.Max(LinebreakDelay, 0);
                 }
+                //if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
+                //{
+                //    return Mathf.Max(currentDelay * LinebreakDelay);
+                //}
 
-                return Mathf.Max(currentDelay * whiteSpaceDelay, 0);
+                return Mathf.Max(WhiteSpaceDelay, 0);
             }
             // If character is already shown (e.g. through using the !show command)
             if (cData.visibilityState == VisibilityState.Shown || cData.visibilityState == VisibilityState.ShowAnimation)
             {
-                return Mathf.Max(currentDelay * visibleDelay, 0);
+                return Mathf.Max(VisibleDelay, 0);
             }
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
             if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
             {
-                return Mathf.Max(currentDelay * punctuationDelay, 0);
+                return Mathf.Max(PunctuationDelay, 0);
             }
 
             return currentDelay;
@@ -737,8 +752,9 @@ namespace TMPEffects.Components
 
         #region Editor
 #if UNITY_EDITOR
-        [System.NonSerialized] TMPCommandDatabase prevDatabase = null;
         [System.NonSerialized] bool reprocessFlag = false;
+        [SerializeField, HideInInspector] TMPCommandDatabase prevDatabase = null;
+        [SerializeField, HideInInspector] bool initValidate = false;
         [SerializeField, HideInInspector] bool eventsEnabled = false;
         [SerializeField, HideInInspector] bool commandsEnabled = false;
 
@@ -749,7 +765,8 @@ namespace TMPEffects.Components
                 Mediator.ForceReprocess();
                 reprocessFlag = false;
             }
-            EditorApplication.QueuePlayerLoopUpdate();
+            if (IsWriting)
+                EditorApplication.QueuePlayerLoopUpdate();
         }
 
         [MenuItem("CONTEXT/TMP_Text/Add writer")]
@@ -767,16 +784,26 @@ namespace TMPEffects.Components
 
         private void OnValidate()
         {
-            // Ensure data is set - OnValidate called before OnEnable
-            if (Mediator == null) return;
+            if (!initValidate)
+            {
+                prevDatabase = database;
+                initValidate = true;
+            }
 
-            if (database != prevDatabase)
+            // Ensure data is set - OnValidate called before OnEnable
+            if (Mediator != null && database != prevDatabase)
             {
                 prevDatabase = database;
                 OnDatabaseChanged();
 
                 reprocessFlag = true;
             }
+        }
+
+        internal void OnDatabaseChangedWrapper()
+        {
+            if (Mediator == null) return;
+            OnDatabaseChanged();
         }
 
         internal void ForceReprocess()
@@ -888,7 +915,7 @@ namespace TMPEffects.Components
                 }
 
                 // Apply the new vertices to the char data array
-                Mediator.CharData[i] = cData;
+                //Mediator.CharData[i] = cData;
                 Mediator.VisibilityStateUpdated(i, prev);
             }
 
@@ -952,7 +979,7 @@ namespace TMPEffects.Components
                 }
 
                 // Apply the new vertices to the char data array
-                Mediator.CharData[i] = cData;
+                //Mediator.CharData[i] = cData;
                 Mediator.VisibilityStateUpdated(i, prev);
             }
 
@@ -962,195 +989,4 @@ namespace TMPEffects.Components
             Mediator.ForceUpdate(start, length);
         }
     }
-
-
-
-
-
-    internal class CommandDatabase : ITMPEffectDatabase<ITMPCommand>
-    {
-        private ITMPEffectDatabase<ITMPCommand> database;
-        private IDictionary<string, SceneCommand> sceneDatabase;
-
-        public CommandDatabase(ITMPEffectDatabase<ITMPCommand> database, IDictionary<string, SceneCommand> sceneDatabase)
-        {
-            this.database = database;
-            this.sceneDatabase = sceneDatabase;
-        }
-
-        public bool ContainsEffect(string name)
-        {
-            bool contains = database != null && database.ContainsEffect(name);
-            if (contains) return true;
-            return sceneDatabase != null && sceneDatabase.ContainsKey(name);
-        }
-
-        public ITMPCommand GetEffect(string name)
-        {
-            if (database != null && database.ContainsEffect(name)) return database.GetEffect(name);
-            if (sceneDatabase != null && sceneDatabase.ContainsKey(name)) return sceneDatabase[name];
-            throw new KeyNotFoundException();
-        }
-    }
-
-    internal class CachedEvent : ITagWrapper, ICachedInvokable
-    {
-        public EffectTag Tag => args.Tag;
-        public EffectTagIndices Indices => args.Indices;
-
-        public TMPEventArgs args { get; private set; }
-        public bool Triggered { get; private set; }
-
-        public bool ExecuteInstantly => false;
-        public bool ExecuteOnSkip => true;
-        public bool ExecuteRepeatable => true;
-        public bool ExecuteInPreview => true;
-
-        private TMPEvent tmpEvent;
-
-        public void Trigger()
-        {
-            if (Triggered) return;
-
-            Triggered = true;
-            tmpEvent.Invoke(args);
-        }
-
-        public void Reset()
-        {
-            Triggered = false;
-        }
-
-        public CachedEvent(TMPEventArgs args, TMPEvent tmpEvent) => Reset(args, tmpEvent);
-        public void Reset(TMPEventArgs args, TMPEvent tmpEvent)
-        {
-            this.tmpEvent = tmpEvent;
-            this.args = args;
-            this.Triggered = false;
-        }
-    }
-
-    internal class EventCacher : ITagCacher<CachedEvent>
-    {
-        private TMPEvent tmpEvent;
-        //private IList<CharData> charData;
-
-        public EventCacher(/*IList<CharData> charData,*/ TMPEvent tmpEvent)
-        {
-            //this.charData = charData;
-            this.tmpEvent = tmpEvent;
-        }
-
-        public CachedEvent CacheTag(EffectTag tag, EffectTagIndices indices)
-        {
-            int endIndex = indices.StartIndex + 1;
-            CachedEvent ce = new CachedEvent(new TMPEventArgs(tag, new EffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex)), tmpEvent);
-            return ce;
-        }
-    }
-
-    internal class CommandCacher : ITagCacher<CachedCommand>
-    {
-        private ITMPEffectDatabase<ITMPCommand> database;
-        private TMPWriter writer;
-        private IList<CharData> charData;
-
-        public CommandCacher(IList<CharData> charData, TMPWriter writer, ITMPEffectDatabase<ITMPCommand> database)
-        {
-            this.charData = charData;
-            this.writer = writer;
-            this.database = database;
-        }
-
-        public CachedCommand CacheTag(EffectTag tag, EffectTagIndices indices)
-        {
-            ITMPCommand command = database.GetEffect(tag.Name);
-            int endIndex = indices.EndIndex;
-
-            switch (command.TagType)
-            {
-                case TagType.Empty: endIndex = indices.StartIndex + 1; break;
-                case TagType.Either:
-                case TagType.Container: if (indices.IsOpen) endIndex = charData.Count; break;
-                default: throw new ArgumentException(nameof(command.TagType));
-            }
-
-            EffectTagIndices fixedIndices = new EffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex);
-            TMPCommandArgs args = new TMPCommandArgs(tag, fixedIndices, writer);
-            CachedCommand cc = new CachedCommand(args, command);
-            return cc;
-        }
-    }
-
-    internal class CachedCommand : ITagWrapper, ICachedInvokable
-    {
-        public EffectTag Tag => args.tag;
-        public EffectTagIndices Indices => args.indices;
-
-        public ITMPCommand command { get; private set; }
-        public TMPCommandArgs args { get; private set; }
-        public bool Triggered { get; private set; }
-
-        public bool ExecuteInstantly => command.ExecuteInstantly;
-        public bool ExecuteOnSkip => command.ExecuteOnSkip;
-        public bool ExecuteRepeatable => command.ExecuteRepeatable;
-#if UNITY_EDITOR
-        public bool ExecuteInPreview => command.ExecuteInPreview;
-#endif
-
-        public void Trigger()
-        {
-            if (Triggered) return;
-
-            Triggered = true;
-            command.ExecuteCommand(args);
-        }
-
-        public void Reset()
-        {
-            if (!ExecuteRepeatable) return;
-            Triggered = false;
-        }
-
-        public CachedCommand(TMPCommandArgs args, ITMPCommand command) => Reset(args, command);
-        public void Reset(TMPCommandArgs args, ITMPCommand command)
-        {
-            this.args = args;
-            this.command = command;
-            this.Triggered = false;
-        }
-    }
-
-    internal interface ICachedInvokable : ITagWrapper
-    {
-        public bool Triggered { get; }
-        public bool ExecuteInstantly { get; }
-        public bool ExecuteOnSkip { get; }
-        public bool ExecuteRepeatable { get; }
-#if UNITY_EDITOR
-        public bool ExecuteInPreview { get; }
-#endif
-        public void Reset();
-        public void Trigger();
-    }
-
-    internal class SceneCommandDatabase : ITMPEffectDatabase<ITMPCommand>
-    {
-        private IDictionary<string, SceneCommand> dict;
-
-        public SceneCommandDatabase(IDictionary<string, SceneCommand> dict)
-        {
-            this.dict = dict;
-        }
-
-        public bool ContainsEffect(string name)
-        {
-            return dict.ContainsKey(name);
-        }
-
-        public ITMPCommand GetEffect(string name)
-        {
-            return dict[name];
-        }
-    }
-}
+} 

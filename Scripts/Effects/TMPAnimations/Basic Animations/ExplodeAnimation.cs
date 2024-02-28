@@ -9,7 +9,7 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new ExplodeAnimation", menuName = "TMPEffects/Animations/Explode")]
     public class ExplodeAnimation : TMPAnimation
     {
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             Vector3 center = (context.segmentData.max + context.segmentData.min) / 2;
 
@@ -19,10 +19,10 @@ namespace TMPEffects.TMPAnimations.Animations
             Vector3 BL = Vector3.Lerp(center, cData.mesh.initial.vertex_BL.position, t);
             Vector3 BR = Vector3.Lerp(center, cData.mesh.initial.vertex_BR.position, t);
 
-            SetVertexRaw(0, BL, ref cData, ref context);
-            SetVertexRaw(1, TL, ref cData, ref context);
-            SetVertexRaw(2, TR, ref cData, ref context);
-            SetVertexRaw(3, BR, ref cData, ref context);
+            SetVertexRaw(0, BL, cData, ref context);
+            SetVertexRaw(1, TL, cData, ref context);
+            SetVertexRaw(2, TR, cData, ref context);
+            SetVertexRaw(3, BR, cData, ref context);
         }
 
         public override void ResetParameters()

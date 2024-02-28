@@ -24,7 +24,7 @@ namespace TMPEffects.TMPCommands.Commands
             args.writer.Wait(value);
         }
 
-        public override bool ValidateParameters(Dictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return false;
             if (!parameters.ContainsKey(""))

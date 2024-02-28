@@ -22,7 +22,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [System.NonSerialized] float currentMinAngle;
         [System.NonSerialized] Vector3 currentRotationAxis;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             float angle = (context.animatorContext.PassedTime * currentSpeed) % 360;
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));

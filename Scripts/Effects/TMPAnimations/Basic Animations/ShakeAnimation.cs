@@ -22,7 +22,7 @@ namespace TMPEffects.TMPAnimations.Animations
         ShakeAnimationContext shakeContext;
         System.Random random;
 
-        public override void Animate(ref CharData cData, IAnimationContext context)
+        public override void Animate(CharData cData, IAnimationContext context)
         {
             shakeContext = (ShakeAnimationContext)context;
 

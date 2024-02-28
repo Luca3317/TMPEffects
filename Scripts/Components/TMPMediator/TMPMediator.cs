@@ -18,15 +18,15 @@ namespace TMPEffects.Components.Mediator
         /// You can rely on this never being reassigned (therefore any wrappers
         /// you may create, e.g. Collection<CharData>, can be relied on as well.
         /// </summary>
-        public List<CharData> CharData { get; private set; }
+        public readonly ReadOnlyCollection<CharData> CharData;
         /// <summary>
         /// The <see cref="TMPTextProcessor"/> used by the associated <see cref="TMP_Text"/> component.
         /// </summary>
-        public TMPTextProcessor Processor { get; private set; }
+        public readonly TMPTextProcessor Processor;
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
         /// </summary>
-        public TMP_Text Text { get; private set; }
+        public readonly TMP_Text Text;
 
         public delegate void EmptyEventHandler();
         public delegate void RangeEventHandler(int start, int lenght);
@@ -51,13 +51,6 @@ namespace TMPEffects.Components.Mediator
         public event VisibilityEventHandler OnVisibilityStateUpdated;
 
         /// <summary>
-        /// List containing the current subscribers of this instance.
-        /// TODO Remove? Why allow access to this
-        /// </summary>
-        public ReadOnlyCollection<object> Subscribers;
-        private readonly List<object> subscribers;
-
-        /// <summary>
         /// Create a new instance of TMPMediator.
         /// </summary>
         /// <param name="text">The associated <see cref="TMP_Text"/> component.</param>
@@ -70,11 +63,11 @@ namespace TMPEffects.Components.Mediator
 
             Text = text;
 
-            CharData = new List<CharData>();
+            charData = new List<CharData>();
+            CharData = new ReadOnlyCollection<CharData>(charData);
             Processor = new TMPTextProcessor(Text);
 
             subscribers = new List<object>();
-            Subscribers = new ReadOnlyCollection<object>(subscribers);
 
             SetPreprocessor();
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
@@ -123,6 +116,10 @@ namespace TMPEffects.Components.Mediator
             OnVisibilityStateUpdated?.Invoke(index, previous);
         }
 
+
+        private readonly List<object> subscribers;
+        private readonly List<CharData> charData;
+
         private void OnTextChanged(UnityEngine.Object obj)
         {
             if ((obj as TMP_Text) == Text)
@@ -146,7 +143,7 @@ namespace TMPEffects.Components.Mediator
 
         private void PopulateCharData()
         {
-            CharData.Clear();
+            charData.Clear();
 
             TMP_TextInfo info = Text.textInfo;
             CharData data;
@@ -169,10 +166,10 @@ namespace TMPEffects.Components.Mediator
                 }
 
                 data = wordInfo == null ? new CharData(i, cInfo) : new CharData(i, cInfo, wordInfo.Value);
-                CharData.Add(data);
+                charData.Add(data);
             }
 
-            CharData.TrimExcess();
+            charData.TrimExcess();
             CharDataPopulated?.Invoke();
         }
     }

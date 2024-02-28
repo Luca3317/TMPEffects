@@ -11,7 +11,7 @@ namespace TMPEffects.Components
     /// </summary>
     public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation
     {
-        public abstract void Animate(ref CharData charData, IAnimationContext context);
+        public abstract void Animate(CharData charData, IAnimationContext context);
         public abstract IAnimationContext GetNewContext();
 
         public abstract void ResetParameters();
