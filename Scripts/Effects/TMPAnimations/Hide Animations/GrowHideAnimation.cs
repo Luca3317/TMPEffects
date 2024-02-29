@@ -34,7 +34,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             float multiplier = Mathf.Lerp(currentMaxScale, currentMinScale, t);
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Hidden, context.animatorContext.PassedTime);
+                cData.SetVisibilityState(VisibilityState.Hidden);
                 multiplier = currentMinScale;
             }
 

@@ -3,6 +3,9 @@ using TMPro;
 using TMPEffects.TextProcessing;
 using System.Collections.ObjectModel;
 using TMPEffects.Components.CharacterData;
+using UnityEngine;
+using UnityEngine.UIElements;
+using System;
 
 namespace TMPEffects.Components.Mediator
 {
@@ -13,6 +16,187 @@ namespace TMPEffects.Components.Mediator
     /// </summary>
     public class TMPMediator
     {
+        public bool RegisterVisibilityProcessor(object obj)
+        {
+            if (visibilityProcessor != null) return false;
+            if (obj == null) return false;
+            visibilityProcessor = obj;
+            return true;
+        }
+
+        public bool UnregisterVisibilityProcessor(object obj)
+        {
+            if (visibilityProcessor != obj) return false;
+            visibilityProcessor = null;
+            return true;
+        }
+
+        public VisibilityState GetVisibilityState(CharData cData)
+        {
+            return visibilityStates[cData.info.index];
+        }
+
+        public void SetVisibilityState(int startIndex, int length, VisibilityState state)
+        {
+            if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
+            {
+                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
+            }
+
+            VisibilityState newState = state;
+            bool processor = visibilityProcessor != null;
+            if (!processor)
+            {
+                //Debug.Log("NO Processor");
+                if (state == VisibilityState.Showing) newState = VisibilityState.Shown;
+                if (state == VisibilityState.Hiding) newState = VisibilityState.Hidden;
+            }
+
+            for (int i = startIndex; i < startIndex + length; i++)
+            {
+                VisibilityState previous = visibilityStates[i];
+                if (newState == previous) continue;
+
+                if (!processor)
+                {
+                    switch (newState)
+                    {
+                        case VisibilityState.Shown:
+                            Show(i, true);
+                            break;
+                        case VisibilityState.Hidden:
+                            Hide(i, true);
+                            break;
+
+                        default: throw new System.ArgumentException(nameof(state));
+                    }
+                }
+
+                visibilityStates[i] = newState;
+                OnVisibilityStateUpdated?.Invoke(i, previous);
+            }
+
+            if (!processor && Text.mesh != null)
+                Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+        }
+
+        public void SetVisibilityState(CharData cData, VisibilityState state)
+            => SetVisibilityState(charData.IndexOf(cData), 1, state);
+
+        public void SetVisibilityState(int index, VisibilityState state)
+        {
+            SetVisibilityState(index, 1, state);
+        }
+
+        private void Hide(int startIndex, int length, bool skipHideProcess)
+        {
+            if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
+            {
+                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
+            }
+
+            for (int i = startIndex; i < startIndex + length; i++)
+            {
+                Hide(i, skipHideProcess);
+            }
+        }
+
+        private void Show(int startIndex, int length, bool skipShowProcess)
+        {
+            if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
+            {
+                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
+            }
+
+            for (int i = startIndex; i < startIndex + length; i++)
+            {
+                Show(i, skipShowProcess);
+            }
+        }
+
+        private void Hide(int index, bool skipHideProcess)
+        {
+            TMP_TextInfo info = Text.textInfo;
+            CharData cData;
+            TMP_CharacterInfo cInfo;
+            Vector3[] verts;
+            Color32[] colors;
+            Vector2[] uvs0;
+            Vector2[] uvs2;
+            int vIndex, mIndex;
+
+            cData = charData[index];
+
+            if (!cData.info.isVisible) return;
+
+            // Set the current mesh's vertices all to the initial mesh values
+            for (int j = 0; j < 4; j++)
+            {
+                cData.SetVertex(j, Vector3.zero);// cData.info.initialPosition);
+            }
+
+            // Apply the new vertices to the vertex array
+            cInfo = info.characterInfo[index];
+            vIndex = cInfo.vertexIndex;
+            mIndex = cInfo.materialReferenceIndex;
+
+            colors = info.meshInfo[mIndex].colors32;
+            verts = info.meshInfo[mIndex].vertices;
+            uvs0 = info.meshInfo[mIndex].uvs0;
+            uvs2 = info.meshInfo[mIndex].uvs2;
+
+            for (int j = 0; j < 4; j++)
+            {
+                verts[vIndex + j] = cData.mesh[j].position;
+                colors[vIndex + j] = cData.mesh[j].color;
+                uvs0[vIndex + j] = cData.mesh[j].uv;
+                uvs2[vIndex + j] = cData.mesh[j].uv2;
+            }
+        }
+
+        private void Show(int index, bool skipShowProcess)
+        {
+            TMP_TextInfo info = Text.textInfo;
+            CharData cData;
+            TMP_CharacterInfo cInfo;
+            Vector3[] verts;
+            Color32[] colors;
+            Vector2[] uvs0;
+            Vector2[] uvs2;
+            int vIndex, mIndex;
+
+            cData = charData[index];
+
+            if (!cData.info.isVisible) return;
+
+            // Set the current mesh's vertices all to the initial mesh values
+            for (int j = 0; j < 4; j++)
+            {
+                cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+            }
+
+            // Apply the new vertices to the vertex array
+            cInfo = info.characterInfo[index];
+            vIndex = cInfo.vertexIndex;
+            mIndex = cInfo.materialReferenceIndex;
+
+            colors = info.meshInfo[mIndex].colors32;
+            verts = info.meshInfo[mIndex].vertices;
+            uvs0 = info.meshInfo[mIndex].uvs0;
+            uvs2 = info.meshInfo[mIndex].uvs2;
+
+            for (int j = 0; j < 4; j++)
+            {
+                verts[vIndex + j] = cData.mesh.initial.GetPosition(j);
+                colors[vIndex + j] = cData.mesh.initial.GetColor(j);
+                uvs0[vIndex + j] = cData.mesh.initial.GetUV0(j);
+                uvs2[vIndex + j] = cData.mesh.initial.GetUV2(j);
+            }
+        }
+
+        public readonly ReadOnlyCollection<VisibilityState> VisibilityStates;
+
+
         /// <summary>
         /// List containing all the current <see cref="CharData"/>.<br/>
         /// You can rely on this never being reassigned (therefore any wrappers
@@ -67,7 +251,8 @@ namespace TMPEffects.Components.Mediator
             CharData = new ReadOnlyCollection<CharData>(charData);
             Processor = new TMPTextProcessor(Text);
 
-            subscribers = new List<object>();
+            visibilityStates = new List<VisibilityState>();
+            VisibilityStates = new ReadOnlyCollection<VisibilityState>(visibilityStates);
 
             SetPreprocessor();
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
@@ -82,6 +267,7 @@ namespace TMPEffects.Components.Mediator
             Text.ForceMeshUpdate(true, true);
         }
 
+        // TODO might get rid of this; dont need it anymore
         /// <summary>
         /// Force an update.<br/>
         /// This notifies all subscribers of the <see cref="ForcedUpdate"/> event that something changed, and they should update themselves accordingly.
@@ -105,20 +291,9 @@ namespace TMPEffects.Components.Mediator
             ForcedUpdate?.Invoke(start, length);
         }
 
-        // TODO IDK if i like e.g. animator relying on e.g. writer calling this
-        /// <summary>
-        /// Calling this method noifies all subscribers of the <see cref="OnVisibilityStateUpdated"/> event that the visibility state of a <see cref="CharData"/> changed.
-        /// </summary>
-        /// <param name="index">The index of the <see cref="CharData"/>.</param>
-        /// <param name="previous">The previous <see cref="CharData.VisibilityState"/>.</param>
-        public void VisibilityStateUpdated(int index, VisibilityState previous)
-        {
-            OnVisibilityStateUpdated?.Invoke(index, previous);
-        }
-
-
-        private readonly List<object> subscribers;
+        private readonly List<VisibilityState> visibilityStates;
         private readonly List<CharData> charData;
+        private object visibilityProcessor = null;
 
         private void OnTextChanged(UnityEngine.Object obj)
         {
@@ -144,6 +319,7 @@ namespace TMPEffects.Components.Mediator
         private void PopulateCharData()
         {
             charData.Clear();
+            visibilityStates.Clear();
 
             TMP_TextInfo info = Text.textInfo;
             CharData data;
@@ -165,11 +341,13 @@ namespace TMPEffects.Components.Mediator
                     }
                 }
 
-                data = wordInfo == null ? new CharData(i, cInfo) : new CharData(i, cInfo, wordInfo.Value);
+                data = wordInfo == null ? new CharData(i, cInfo, this) : new CharData(i, cInfo, this, wordInfo.Value);
                 charData.Add(data);
+                visibilityStates.Add(VisibilityState.Shown);
             }
 
             charData.TrimExcess();
+
             CharDataPopulated?.Invoke();
         }
     }

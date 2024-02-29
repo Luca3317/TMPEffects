@@ -538,7 +538,7 @@ namespace TMPEffects.Components
                 // Show the current character
                 OnShowCharacter?.Invoke(cData);
                 Show(i, 1, false);
-                Mediator.ForceUpdate(i, 1);
+                //Mediator.ForceUpdate(i, 1);
 
                 // Calculate and wait for the delay for the current index
                 if (delay > 0) yield return new WaitForSeconds(delay);
@@ -588,11 +588,14 @@ namespace TMPEffects.Components
 
                 return Mathf.Max(WhiteSpaceDelay, 0);
             }
+
             // If character is already shown (e.g. through using the !show command)
-            if (cData.visibilityState == VisibilityState.Shown || cData.visibilityState == VisibilityState.ShowAnimation)
+            VisibilityState vState = Mediator.GetVisibilityState(cData);
+            if (vState == VisibilityState.Shown || vState == VisibilityState.Showing)
             {
                 return Mathf.Max(VisibleDelay, 0);
             }
+
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
             if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
             {
@@ -853,140 +856,6 @@ namespace TMPEffects.Components
                 foreach (var tag in processor.ProcessedTags)
                     tags[eventCategory].TryAdd(tag.Value, tag.Key);
             }
-        }
-
-        /// <summary>
-        /// Show the characters of the current text within the given interval.
-        /// </summary>
-        /// <param name="start">The index of the first character to show.</param>
-        /// <param name="length">The amount of characters to show.</param>
-        /// <param name="skipAnimation">Whether to skip the show animation.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public void Show(int start, int length, bool skipAnimation = false)
-        {
-            TMP_TextInfo info = Mediator.Text.textInfo;
-            if (start < 0 || length < 0 || start + length > info.characterCount)
-            {
-                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
-            }
-
-            CharData cData;
-            TMP_CharacterInfo cInfo;
-            //if (skipAnimation)
-            //{
-            Vector3[] verts;
-            Color32[] colors;
-            Vector2[] uvs0;
-            Vector2[] uvs2;
-            int vIndex, mIndex;
-
-            for (int i = start; i < start + length; i++)
-            {
-                cData = Mediator.CharData[i];
-
-                if (!cData.info.isVisible) continue;
-                if (cData.visibilityState == VisibilityState.Shown || (cData.visibilityState == VisibilityState.ShowAnimation && !skipAnimation)) continue;
-
-                // Set the current mesh's vertices all to the initial mesh values
-                for (int j = 0; j < 4; j++)
-                {
-                    cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
-                }
-
-                VisibilityState prev = cData.visibilityState;
-                cData.SetVisibilityState(skipAnimation ? VisibilityState.Shown : VisibilityState.ShowAnimation, Time.time); // TODO What time value to use here?
-
-                // Apply the new vertices to the vertex array
-                cInfo = info.characterInfo[i];
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-                uvs0 = info.meshInfo[mIndex].uvs0;
-                uvs2 = info.meshInfo[mIndex].uvs2;
-
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.mesh.initial.GetPosition(j);
-                    colors[vIndex + j] = cData.mesh.initial.GetColor(j);
-                    uvs0[vIndex + j] = cData.mesh.initial.GetUV0(j);
-                    uvs2[vIndex + j] = cData.mesh.initial.GetUV2(j);
-                }
-
-                // Apply the new vertices to the char data array
-                //Mediator.CharData[i] = cData;
-                Mediator.VisibilityStateUpdated(i, prev);
-            }
-
-            if (Mediator.Text.mesh != null)
-                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-            Mediator.ForceUpdate(start, length);
-        }
-
-        /// <summary>
-        /// Hide the characters of the current text within the given interval.
-        /// </summary>
-        /// <param name="start">The index of the first character to hide.</param>
-        /// <param name="length">The amount of characters to hide.</param>
-        /// <param name="skipAnimation">Whether to skip the hide animation.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public void Hide(int start, int length, bool skipAnimation = false)
-        {
-            TMP_TextInfo info = Mediator.Text.textInfo;
-            if (start < 0 || length < 0 || start + length > info.characterCount)
-            {
-                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + start + "; Length = " + length + "; Length of string: " + info.characterCount);
-            }
-
-            CharData cData;
-            TMP_CharacterInfo cInfo;
-            //if (skipAnimation)
-            //{
-            Vector3[] verts;
-            Color32[] colors;
-            int vIndex, mIndex;
-
-            for (int i = start; i < start + length; i++)
-            {
-                cData = Mediator.CharData[i];
-
-                if (!cData.info.isVisible) continue;
-                if (cData.visibilityState == VisibilityState.Hidden || (cData.visibilityState == VisibilityState.HideAnimation && !skipAnimation)) continue;
-
-                // Set the current mesh's vertices all to the initial mesh values
-                for (int j = 0; j < 4; j++)
-                {
-                    cData.SetVertex(j, cData.info.initialPosition);
-                }
-
-                VisibilityState prev = cData.visibilityState;
-                cData.SetVisibilityState(skipAnimation ? VisibilityState.Hidden : VisibilityState.HideAnimation, Time.time); // TODO What time value to use here?
-
-                // Apply the new vertices to the vertex array
-                cInfo = info.characterInfo[i];
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.mesh[j].position;
-                    //colors[vIndex + j] = cData.mesh[j].color;
-                }
-
-                // Apply the new vertices to the char data array
-                //Mediator.CharData[i] = cData;
-                Mediator.VisibilityStateUpdated(i, prev);
-            }
-
-            if (Mediator.Text.mesh != null)
-                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-            Mediator.ForceUpdate(start, length);
         }
     }
 } 

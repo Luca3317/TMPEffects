@@ -37,7 +37,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float multiplier = Mathf.Lerp(currentMinScale, currentMaxScale, t);
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
+                cData.SetVisibilityState(VisibilityState.Shown);
             }
 
             if (currentAnchor == Vector2.zero)

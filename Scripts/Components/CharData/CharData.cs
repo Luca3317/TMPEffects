@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using TMPEffects.Components.Mediator;
 
 namespace TMPEffects.Components.CharacterData
 {
@@ -11,19 +12,16 @@ namespace TMPEffects.Components.CharacterData
     /// </summary>
     public class CharData
     {
-        /// <summary>
-        /// The current <see cref="VisibilityState"/> of this character.
-        /// </summary>
-        public VisibilityState visibilityState
-        {
-            get => _visibilityState;
-        }
+        public VisibilityState VisibilityState => mediator.GetVisibilityState(this);
+        public void SetVisibilityState(VisibilityState state) => mediator.SetVisibilityState(this, state);
+        private TMPMediator mediator;
+
         /// <summary>
         /// Since when the character has been in its current <see cref="visibilityState"/>.
         /// </summary>
         public float stateTime => _stateTime;
         /// <summary>
-        /// Since when the character has been in a visible state (=> either <see cref="VisibilityState.Shown"/> or <see cref="VisibilityState.ShowAnimation"/>).
+        /// Since when the character has been in a visible state (=> either <see cref="VisibilityState.Shown"/> or <see cref="VisibilityState.Showing"/>).
         /// </summary>
         public float visibleTime => _visibleTime;
 
@@ -83,7 +81,6 @@ namespace TMPEffects.Components.CharacterData
         /// </summary>
         public VertexData mesh;
 
-        private VisibilityState _visibilityState;
         private float _stateTime;
         private float _visibleTime;
 
@@ -93,7 +90,7 @@ namespace TMPEffects.Components.CharacterData
         private Vector3 pivot;
         #endregion
 
-        public CharData(int index, TMP_CharacterInfo cInfo)
+        public CharData(int index, TMP_CharacterInfo cInfo, TMPMediator mediator)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
@@ -104,15 +101,14 @@ namespace TMPEffects.Components.CharacterData
             scale = info.initialScale;
             pivot = info.initialPosition;
 
-            _stateTime = -1;
+            _stateTime = -1; // TODO Remove these?
             _visibleTime = -1;
-            _visibilityState = default;
 
             segmentIndex = -1;
 
-            SetVisibilityState(VisibilityState.Shown, -1);
+            this.mediator = mediator;
         }
-        public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
+        public CharData(int index, TMP_CharacterInfo cInfo, TMPMediator mediator, TMP_WordInfo? wInfo = null)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
@@ -125,26 +121,10 @@ namespace TMPEffects.Components.CharacterData
 
             _stateTime = -1;
             _visibleTime = -1;
-            _visibilityState = default;
 
             segmentIndex = -1;
 
-            SetVisibilityState(VisibilityState.Shown, -1);
-        }
-
-        /// <summary>
-        /// Set the visibility state of the character.
-        /// </summary>
-        /// <param name="newState">The new visibility state.</param>
-        /// <param name="currentTime">The time at which the visibility was updated.</param>
-        public void SetVisibilityState(VisibilityState newState, float currentTime)
-        {
-            _stateTime = currentTime;
-            if (_visibilityState == VisibilityState.Hidden && newState != VisibilityState.Hidden)
-            {
-                _visibleTime = _stateTime;
-            }
-            _visibilityState = newState;
+            this.mediator = mediator;
         }
 
 

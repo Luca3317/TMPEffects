@@ -45,7 +45,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (context.animatorContext.PassedTime - cData.visibleTime >= currentDuration)
             {
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
+                cData.SetVisibilityState(VisibilityState.Shown);
                 return;
             }
 

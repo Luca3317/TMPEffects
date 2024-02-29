@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using TMPEffects.Components.Mediator;
+using TMPEffects.Components.CharacterData;
 
 namespace TMPEffects.Components
 {
@@ -21,6 +22,17 @@ namespace TMPEffects.Components
         public void SetText(string text)
         {
             Mediator.Text.SetText(text);
+        } 
+
+
+        public void Show(int start, int length, bool skipShowProcess = false)
+        {
+            Mediator.SetVisibilityState(start, length, skipShowProcess ? VisibilityState.Shown : VisibilityState.Showing);
+        }
+
+        public void Hide(int start, int length, bool skipHideProcess = false)
+        {
+            Mediator.SetVisibilityState(start, length, skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding);
         }
 
         [System.NonSerialized] private readonly object obj = new();

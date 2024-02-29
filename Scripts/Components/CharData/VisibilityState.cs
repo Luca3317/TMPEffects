@@ -26,10 +26,10 @@ namespace TMPEffects.Components.CharacterData
         /// <summary>
         /// The character is in the process of being shown.
         /// </summary>
-        ShowAnimation = 5,
+        Showing = 5,
         /// <summary>
         /// The character is in the process of being hidden.
         /// </summary>
-        HideAnimation = -5
+        Hiding = -5
     }
 }

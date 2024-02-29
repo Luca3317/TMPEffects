@@ -41,7 +41,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
                 //ctx.done[cData.segmentIndex] = true;
-                cData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime);
+                cData.SetVisibilityState(VisibilityState.Shown);
 
                 cData.mesh.SetColor(0, cData.mesh.initial.GetColor(0));
                 cData.mesh.SetColor(1, cData.mesh.initial.GetColor(1));

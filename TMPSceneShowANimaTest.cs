@@ -10,7 +10,7 @@ public class TMPSceneShowANimaTest : TMPSceneShowAnimation
 {
     public override void Animate(CharData charData, IAnimationContext context)
     {
-        charData.SetVisibilityState(VisibilityState.Shown, context.animatorContext.PassedTime); 
+        charData.SetVisibilityState(VisibilityState.Shown); 
     }
 
     public override IAnimationContext GetNewContext()

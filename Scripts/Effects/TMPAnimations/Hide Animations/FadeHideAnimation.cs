@@ -32,7 +32,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Hidden, context.animatorContext.PassedTime);
+                cData.SetVisibilityState(VisibilityState.Hidden);
             }
 
             float multiplier = 10;
