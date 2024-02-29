@@ -7,6 +7,10 @@ namespace TMPEffects
 {
     public static class EffectUtility
     {
+        // TODO update these so that:
+        // First argument parameters
+        // second potential out
+        // thirs params string[] to allow for easy multiple names
         public static bool HasFloatParameter(string name, IDictionary<string, string> parameters)
             => TryGetFloatParameter(name, parameters, out _);
 
@@ -15,7 +19,7 @@ namespace TMPEffects
             parameterValue = default;
             if (parameters == null) return false;
             if (!parameters.ContainsKey(name)) return false;
-            return ParsingUtility.StringToFloat(name, out parameterValue);
+            return ParsingUtility.StringToFloat(parameters[name], out parameterValue);
         }
 
         public static bool HasIntegerParameter(string name, IDictionary<string, string> parameters)
@@ -26,7 +30,7 @@ namespace TMPEffects
             parameterValue = default;
             if (parameters == null) return false;
             if (!parameters.ContainsKey(name)) return false;
-            return ParsingUtility.StringToInt(name, out parameterValue);
+            return ParsingUtility.StringToInt(parameters[name], out parameterValue);
         }
 
         public static bool HasBooleanParameter(string name, IDictionary<string, string> parameters)
@@ -37,7 +41,7 @@ namespace TMPEffects
             parameterValue = default;
             if (parameters == null) return false;
             if (!parameters.ContainsKey(name)) return false;
-            return ParsingUtility.StringToBool(name, out parameterValue);
+            return ParsingUtility.StringToBool(parameters[name], out parameterValue);
         }
 
         public static bool HasVector2Parameter(string name, IDictionary<string, string> parameters)
@@ -48,7 +52,7 @@ namespace TMPEffects
             parameterValue = default;
             if (parameters == null) return false;
             if (!parameters.ContainsKey(name)) return false;
-            return ParsingUtility.StringToVector2(name, out parameterValue);
+            return ParsingUtility.StringToVector2(parameters[name], out parameterValue);
         }
 
         public static bool HasVector3Parameter(string name, IDictionary<string, string> parameters)
@@ -59,7 +63,7 @@ namespace TMPEffects
             parameterValue = default;
             if (parameters == null) return false;
             if (!parameters.ContainsKey(name)) return false;
-            return ParsingUtility.StringToVector3(name, out parameterValue);
+            return ParsingUtility.StringToVector3(parameters[name], out parameterValue);
         }
     }
 }

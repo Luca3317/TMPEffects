@@ -43,7 +43,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 
 
-            if (context.animatorContext.PassedTime - cData.visibleTime >= currentDuration)
+            if (context.animatorContext.PassedTime - context.animatorContext.VisibleTime(cData) >= currentDuration)
             {
                 cData.SetVisibilityState(VisibilityState.Shown);
                 return;
@@ -88,7 +88,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
 
 
-            float t = (context.animatorContext.PassedTime - cData.visibleTime) / currentDuration;
+            float t = (context.animatorContext.PassedTime - context.animatorContext.VisibleTime(cData)) / currentDuration;
             if (currentOrder == Order.Random)
             {
                 float plus = Mathf.Lerp(0, 1 - currentOriginalChance, t);

@@ -1,4 +1,5 @@
 using TMPEffects.Components.Animator;
+using TMPEffects.Components.CharacterData;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -20,5 +21,21 @@ namespace TMPEffects.TMPAnimations
         /// Reset the context.
         /// </summary>
         public void ResetContext() { }
+    }
+
+    /// <summary>
+    /// Basic interface for animation contexts for <see cref="TMPShowAnimation"/> and <see cref="TMPHideAnimation"/>.
+    /// </summary>
+    public interface IVisibilityAnimationContext : IAnimationContext
+    {
+        /// <summary>
+        /// Since when the character has been in its current <see cref="VisibilityState"/>.
+        /// </summary>
+        public float StateTime { get; }
+        /// <summary>
+        /// Since when the character has been visible, i.e. since when its <see cref="VisibilityState"/> 
+        /// has not been <see cref="VisibilityState.Hidden"/>.
+        /// </summary>
+        public float VisibleTime { get; }
     }
 }

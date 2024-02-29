@@ -27,7 +27,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             Context ctx = context as Context;
             FixVector(ref currentAnchor);
 
-            float angle = (context.animatorContext.PassedTime - cData.stateTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
+            float angle = (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
             float t = Mathf.Sin(angle) / 2 + 0.5f;
             if (ctx.lastRoc == 0) ctx.lastRoc = Mathf.Cos(angle);
 

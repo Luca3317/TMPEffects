@@ -535,10 +535,14 @@ namespace TMPEffects.Components
                 // Calculate delay; do here to use accurate visibilitystate
                 float delay = CalculateDelay(i);
 
-                // Show the current character
-                OnShowCharacter?.Invoke(cData);
-                Show(i, 1, false);
-                //Mediator.ForceUpdate(i, 1);
+                // Show the current character, if it is not already shown
+                VisibilityState vState = Mediator.VisibilityStates[i];
+                if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
+                {
+                    // TODO should this be raised even if already shown?
+                    OnShowCharacter?.Invoke(cData);
+                    Show(i, 1, false);
+                }
 
                 // Calculate and wait for the delay for the current index
                 if (delay > 0) yield return new WaitForSeconds(delay);
@@ -858,4 +862,4 @@ namespace TMPEffects.Components
             }
         }
     }
-} 
+}

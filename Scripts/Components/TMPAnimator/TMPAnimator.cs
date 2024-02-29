@@ -94,9 +94,11 @@ namespace TMPEffects.Components
         /// </summary>
         public const char HIDE_ANIMATION_PREFIX = '-';
 
+        private float GetVisibleTime(int index) => visibleTimes[index];
+
         #region Fields
         [SerializeField] private TMPAnimationDatabase database = null;
-        [SerializeField] private AnimatorContext context = new AnimatorContext(true, true);
+        [SerializeField] private AnimatorContext context = new AnimatorContext();
 
         [SerializeField] private UpdateFrom updateFrom = UpdateFrom.Update;
         [SerializeField] private bool animateOnStart = true;
@@ -123,6 +125,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPAnimationCategory> tags;
         [System.NonSerialized] private bool isAnimating = false;
+        [System.NonSerialized] private bool ignoreVisibilityChanges = false;
 
         [System.NonSerialized] private TMPAnimationCategory basicCategory;
         [System.NonSerialized] private TMPAnimationCategory showCategory;
@@ -142,6 +145,10 @@ namespace TMPEffects.Components
         [System.NonSerialized] private CachedAnimation defaultShow;
         [System.NonSerialized] private CachedAnimation defaultHide;
 
+        [System.NonSerialized] private List<float> visibleTimes = new List<float>();
+        [System.NonSerialized] private List<float> stateTimes = new List<float>();
+        [System.NonSerialized] private object timesIdentifier;
+
         private const string falseUpdateAnimationsCallWarning = "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
             "If you want to manually control the animation updates, set its UpdateFrom property to \"Script\", " +
             "either through the inspector or through a script using the SetUpdateFrom method.";
@@ -155,6 +162,7 @@ namespace TMPEffects.Components
         {
             UpdateMediator();
 
+            CreateContext();            
             SetDummyShow();
             SetDummyHide();
 
@@ -199,20 +207,18 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not register as visibility processor!");
             }
 
-            Mediator.CharDataPopulated += PopulateTimes;
-            Mediator.OnVisibilityStateUpdated += OnVisibilityStateUpdated; // Ensure visibility time of object is consistent with context.UseScaledTime; TODO: likely move this into mediator or TMPEffectComponent
-            Mediator.CharDataPopulated += PostProcessTags;
+            Mediator.CharDataPopulated += PopulateTimes; // Populate the timing datas
+            Mediator.VisibilityStateUpdated += OnVisibilityStateUpdated; // Handle Visibility updates
+            Mediator.CharDataPopulated += PostProcessTags; //
             Mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
-            Mediator.ForcedUpdate += OnForcedUpdate; // Will update animations at indices once; otherwise, depending on timing of required update, there'll be a frame of unanimated text
         }
 
         private void UnsubscribeFromMediator()
         {
             Mediator.CharDataPopulated -= PopulateTimes;
-            Mediator.OnVisibilityStateUpdated -= OnVisibilityStateUpdated;
+            Mediator.VisibilityStateUpdated -= OnVisibilityStateUpdated;
             Mediator.CharDataPopulated -= PostProcessTags;
             Mediator.TextChanged -= OnTextChanged;
-            Mediator.ForcedUpdate -= OnForcedUpdate;
 
             if (!Mediator.UnregisterVisibilityProcessor(timesIdentifier))
             {
@@ -220,6 +226,12 @@ namespace TMPEffects.Components
             }
 
             FreeMediator();
+        }
+
+        private void CreateContext()
+        {
+            context.VisibleTime = (i) => visibleTimes[i];
+            context.StateTime = (i) => stateTimes[i];
         }
 
         private void PrepareForProcessing()
@@ -639,12 +651,12 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            else if (count % 100 == 0) Debug.Log(count);
+            //else if (count % 100 == 0) Debug.Log(count);
             count++;
             sw.Start();
 
 
-            context.passedTime += deltaTime;
+            context.passed += deltaTime;
              
             for (int i = 0; i < Mediator.CharData.Count; i++)
             {
@@ -986,10 +998,6 @@ namespace TMPEffects.Components
             }
         }
 
-        [System.NonSerialized] private List<float> visibleTimes = new List<float>();
-        [System.NonSerialized] private List<float> stateTimes = new List<float>();
-        [System.NonSerialized] private object timesIdentifier;
-
         private void PopulateTimes()
         {
             visibleTimes = new List<float>();
@@ -1002,7 +1010,6 @@ namespace TMPEffects.Components
             }
         }
 
-        [System.NonSerialized] bool ignoreVisibilityChanges = false;
         private void OnVisibilityStateUpdated(int index, VisibilityState prev)
         {
             if (ignoreVisibilityChanges) return;
@@ -1019,9 +1026,13 @@ namespace TMPEffects.Components
                 return;
             }
 
+            // TODO
+            // Added for testing; remove!
+            if (prev == VisibilityState.Showing && state == VisibilityState.Shown) return;
+
             // Update timings of the character
-            stateTimes[index] = 0f;
-            if (state == VisibilityState.Hidden || prev == VisibilityState.Hidden) visibleTimes[index] = 0;
+            stateTimes[index] = context.passed;
+            if (state == VisibilityState.Hidden || prev == VisibilityState.Hidden) visibleTimes[index] = context.passed;
 
             if (state == VisibilityState.Shown)
             {
@@ -1255,7 +1266,7 @@ namespace TMPEffects.Components
 
         private void UpdatePreview()
         {
-            UpdateAnimations_Impl((float)EditorApplication.timeSinceStartup - context.passedTime);
+            UpdateAnimations_Impl((float)EditorApplication.timeSinceStartup - context.passed);
             EditorApplication.QueuePlayerLoopUpdate();
         }
 

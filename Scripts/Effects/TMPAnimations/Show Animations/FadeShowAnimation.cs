@@ -29,7 +29,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             //if (!ctx.done.ContainsKey(cData.segmentIndex)) ctx.done.Add(cData.segmentIndex, false);
 
-            float angle = (context.animatorContext.PassedTime - cData.visibleTime) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
+            float angle = (context.animatorContext.PassedTime - context.animatorContext.VisibleTime(cData)) * currentSpeed * 2 + Mathf.Deg2Rad * 270;
             float t = Mathf.Sin(angle) / 2 + 0.5f;
             if (ctx.lastRoc == 0) ctx.lastRoc = Mathf.Cos(angle);
 

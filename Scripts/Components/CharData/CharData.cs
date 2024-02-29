@@ -17,15 +17,6 @@ namespace TMPEffects.Components.CharacterData
         private TMPMediator mediator;
 
         /// <summary>
-        /// Since when the character has been in its current <see cref="visibilityState"/>.
-        /// </summary>
-        public float stateTime => _stateTime;
-        /// <summary>
-        /// Since when the character has been in a visible state (=> either <see cref="VisibilityState.Shown"/> or <see cref="VisibilityState.Showing"/>).
-        /// </summary>
-        public float visibleTime => _visibleTime;
-
-        /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
         /// </summary>
         public bool positionDirty => position != info.initialPosition;
@@ -81,9 +72,6 @@ namespace TMPEffects.Components.CharacterData
         /// </summary>
         public VertexData mesh;
 
-        private float _stateTime;
-        private float _visibleTime;
-
         private Vector3 position;
         private Vector3 scale;
         private Quaternion rotation;
@@ -101,9 +89,6 @@ namespace TMPEffects.Components.CharacterData
             scale = info.initialScale;
             pivot = info.initialPosition;
 
-            _stateTime = -1; // TODO Remove these?
-            _visibleTime = -1;
-
             segmentIndex = -1;
 
             this.mediator = mediator;
@@ -118,9 +103,6 @@ namespace TMPEffects.Components.CharacterData
             rotation = info.initialRotation;
             scale = info.initialScale;
             pivot = info.initialPosition;
-
-            _stateTime = -1;
-            _visibleTime = -1;
 
             segmentIndex = -1;
 

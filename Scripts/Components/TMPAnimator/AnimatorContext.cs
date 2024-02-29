@@ -1,4 +1,6 @@
 using System.Runtime.CompilerServices;
+using TMPEffects.Components.CharacterData;
+using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
 
 namespace TMPEffects.Components.Animator
@@ -28,15 +30,21 @@ namespace TMPEffects.Components.Animator
         /// <summary>
         /// How much time has passed since the animator started playing its animations.
         /// </summary>
-        [HideInInspector] public float passedTime { get => passed; set { passed = value; } }
-        private float passed = 0;
+        [System.NonSerialized, HideInInspector] public float passed = 0;
 
-        public AnimatorContext(bool scaleAnimations, bool useScaledTime)
+        [System.NonSerialized, HideInInspector] public Func<int, float> StateTime;
+        [System.NonSerialized, HideInInspector] public Func<int, float> VisibleTime;
+        
+        public AnimatorContext() { }
+        public AnimatorContext(bool scaleAnimations, bool useScaledTime, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
         {
             this.scaleAnimations = scaleAnimations;
             this.useScaledTime = useScaledTime;
             this.deltaTime = 0f;
             this.passed = 0f;
+
+            this.StateTime = getVisibleTime;
+            this.VisibleTime = getStateTime;
         }
     }
 
@@ -46,7 +54,13 @@ namespace TMPEffects.Components.Animator
         public bool ScaleAnimations => context.scaleAnimations;
         public bool UseScaledTime => context.useScaledTime;
         public float DeltaTime => context.deltaTime;
-        public float PassedTime => context.passedTime;
+        public float PassedTime => context.passed;
+
+        public float StateTime(CharData cData) => context.StateTime(cData.info.index);
+        public float VisibleTime(CharData cData) => context.VisibleTime(cData.info.index);
+
+        public float StateTime(int index) => context.StateTime(index);
+        public float VisibleTime(int index) => context.VisibleTime(index);
 
         public ReadOnlyAnimatorContext(AnimatorContext context)
         {
