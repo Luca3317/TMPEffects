@@ -14,11 +14,10 @@ using TMPEffects.Components.Animator;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Tags.Collections;
 using TMPEffects.Tags;
-using TMPEffects.TMPAnimations.ShowAnimations;
-using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.Components.CharacterData;
 using System.Collections.Specialized;
-using System.Diagnostics.CodeAnalysis;
+using TMPEffects.TMPAnimations.ShowAnimations;
+using TMPEffects.TMPAnimations.HideAnimations;
 
 namespace TMPEffects.Components
 {
@@ -866,8 +865,6 @@ namespace TMPEffects.Components
                     cData.SetVertex(i, cData.mesh.initial.GetPosition(i)); // cData.initialMesh.GetPosition(i));
                 }
 
-                ca.animation.ResetParameters();
-                ca.animation.SetParameters(ca.Tag.Parameters);
                 ca.animation.Animate(cData, ca.roContext);
 
                 UpdateVertexOffsets();

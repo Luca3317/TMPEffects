@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System;
-using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
-using System.Diagnostics;
 
 namespace TMPEffects.Components.Animator
 {
@@ -29,7 +27,9 @@ namespace TMPEffects.Components.Animator
         {
             ITMPAnimation animation = database.GetEffect(tag.Name);
             EffectTagIndices closedIndices = new EffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
-            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), new SegmentData(closedIndices, charData, animates), animation.GetNewCustomData());
+            object customAnimationData = animation.GetNewCustomData();
+            animation.SetParameters(customAnimationData, tag.Parameters);
+            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), new SegmentData(closedIndices, charData, animates), customAnimationData);
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

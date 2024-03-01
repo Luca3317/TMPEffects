@@ -29,9 +29,15 @@ namespace TMPEffects.Databases.AnimationDatabase
         /// <param name="name">The identifier of the animation.</param>
         /// <returns>The animation associated with the given name.</returns>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException"></exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public override TMPAnimation GetEffect(string name)
         {
-            return animations[name];
+            var anim = animations[name];
+            if (anim == null)
+            {
+                throw new System.InvalidOperationException($"The animation {name} is unassigned on database {this.name}");
+            }
+            return anim;
         }
     }
 }

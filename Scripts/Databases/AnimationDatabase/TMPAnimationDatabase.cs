@@ -69,6 +69,7 @@ namespace TMPEffects.Databases.AnimationDatabase
         /// <param name="type">The type of animation.</param>
         /// <returns>The animation associated with the given name.</returns>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException"></exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public ITMPAnimation GetEffect(string name, TMPAnimationType type)
         {
             ITMPEffectDatabase<ITMPAnimation> db;
@@ -90,6 +91,7 @@ namespace TMPEffects.Databases.AnimationDatabase
         /// <param name="name">The identifier of the animation.</param>
         /// <returns>The animation associated with the given name.</returns>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException"></exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public override ITMPAnimation GetEffect(string name)
         {
             if (basicAnimationDatabase != null && basicAnimationDatabase.ContainsEffect(name)) return basicAnimationDatabase.GetEffect(name);

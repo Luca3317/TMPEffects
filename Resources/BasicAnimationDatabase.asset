@@ -14,21 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     _serializedList:
-    - Key: fade
-      Value: {fileID: 11400000, guid: ad0fd688e1a804e47a19904738947f2e, type: 2}
-    - Key: grow
-      Value: {fileID: 11400000, guid: 2959b084f19b98845809322227d8e0ec, type: 2}
-    - Key: char
-      Value: {fileID: 11400000, guid: 36c66ff0d68f7ad4085865adde7acba0, type: 2}
-    - Key: explode
-      Value: {fileID: 11400000, guid: 819492b49e320d140aff1b60bdd312a8, type: 2}
-    - Key: funky
-      Value: {fileID: 11400000, guid: 5bb122a649f127040b61e1f70322e67e, type: 2}
-    - Key: pivot
-      Value: {fileID: 11400000, guid: 65564125880f8b8409f39aa95cf51e5b, type: 2}
-    - Key: jump
-      Value: {fileID: 11400000, guid: c61cda1192922be498c77d93fecb69c8, type: 2}
-    - Key: shake
-      Value: {fileID: 11400000, guid: 9aafd69818f70d64f8b13ea0ea3cd40f, type: 2}
     - Key: wave
       Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}

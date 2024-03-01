@@ -13,16 +13,12 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>
-        public abstract void SetParameters(IDictionary<string, string> parameters);
-        ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
         ///<inheritdoc/>
-        public abstract void ResetParameters();
+        public abstract object GetNewCustomData();
+
         ///<inheritdoc/>
-        public virtual object GetNewCustomData()
-        {
-            return null;
-        }
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
     }
 
     /// <summary>
@@ -30,7 +26,9 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public abstract class TMPAnimationParameterless : TMPAnimation
     {
-        public override void SetParameters(IDictionary<string, string> parameters) { }
+        ///<inheritdoc/>
+        public override void SetParameters(object customData, IDictionary<string, string> parameters) { }
+        ///<inheritdoc/>
         public override bool ValidateParameters(IDictionary<string, string> parameters) => true;
     }
 }

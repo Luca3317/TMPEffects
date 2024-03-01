@@ -15,11 +15,9 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>
-        public abstract void SetParameters(IDictionary<string, string> parameters);
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
         ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
-        ///<inheritdoc/>
-        public abstract void ResetParameters();
         ///<inheritdoc/>
         public virtual object GetNewCustomData()
         {

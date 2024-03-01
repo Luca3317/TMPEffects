@@ -13,11 +13,6 @@ namespace TMPEffects.TMPAnimations
         public void Animate(CharData charData, IAnimationContext context);
 
         /// <summary>
-        /// Set the parameters for the animation.
-        /// </summary>
-        /// <param name="parameters">Parameters as key-value-pairs.</param>
-        public void SetParameters(IDictionary<string, string> parameters);
-        /// <summary>
         /// Validate the parameters.<br/>
         /// Used to validate tags.
         /// </summary>
@@ -25,9 +20,11 @@ namespace TMPEffects.TMPAnimations
         /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
         public bool ValidateParameters(IDictionary<string, string> parameters);
         /// <summary>
-        /// Reset the parameters.
+        /// Set the parameters for the animation.
         /// </summary>
-        public void ResetParameters();
+        /// <param name="customData">The custom data for this animation.</param>
+        /// <param name="parameters">Parameters as key-value-pairs.</param>
+        public void SetParameters(object customData, IDictionary<string, string> parameters);
 
         /// <summary>
         /// Create and get a new custom data object for this animation.

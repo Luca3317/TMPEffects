@@ -18,9 +18,3 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 652b96b19f79f6e408d4d011b2c299be, type: 2}
     - Key: newfade
       Value: {fileID: 11400000, guid: d01bee5e9033e6245bc967f28bfb6acf, type: 2}
-    - Key: char
-      Value: {fileID: 11400000, guid: 7c2afe89cbb9ee94d8161a6fb0f118c3, type: 2}
-    - Key: fade
-      Value: {fileID: 11400000, guid: 95a1806221137c346a26eb00af945c3c, type: 2}
-    - Key: grow
-      Value: {fileID: 11400000, guid: b85a8d91e0d73ab4c83c113d068190f5, type: 2}

@@ -17,6 +17,9 @@ namespace TMPEffects.Components
         public abstract void ResetParameters();
 
         public abstract void SetParameters(IDictionary<string, string> parameters);
+
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
+
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
     }
 }

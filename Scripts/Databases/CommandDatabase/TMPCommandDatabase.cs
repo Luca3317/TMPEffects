@@ -29,9 +29,15 @@ namespace TMPEffects.Databases.CommandDatabase
         /// <param name="name">The identifier of the command.</param>
         /// <returns>The command associated with the given name.</returns>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException"></exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public override TMPCommand GetEffect(string name)
         {
-            return commands[name];
+            var command = commands[name];
+            if (command == null)
+            {
+                throw new System.InvalidOperationException($"The command {name} is unassigned on database {this.name}");
+            }
+            return command;
         }
     }
 }
