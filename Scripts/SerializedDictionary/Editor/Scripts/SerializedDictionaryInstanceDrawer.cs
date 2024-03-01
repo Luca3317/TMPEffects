@@ -184,7 +184,6 @@ namespace TMPEffects.SerializedCollections.Editor
 
         private void CheckPaging()
         {
-            // TODO: Is there a better solution to check for Revert/delete/add?
             if (_lastListSize != _activeState.ListSize)
             {
                 _lastListSize = _activeState.ListSize;

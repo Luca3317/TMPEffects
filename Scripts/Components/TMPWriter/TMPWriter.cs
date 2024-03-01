@@ -138,12 +138,6 @@ namespace TMPEffects.Components
             OnResetWriter?.Invoke(index);
         }
 
-        // TODO Needed? if not, private
-        public float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
-        public float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
-        public float VisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : currentDelay * visibleDelay;
-        public float LinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : currentDelay * linebreakDelay;
-
         /// <summary>
         /// The prefix used for command tags.
         /// </summary>
@@ -152,6 +146,11 @@ namespace TMPEffects.Components
         /// The prefix used for event tags.
         /// </summary>
         public const char EVENT_PREFIX = '#';
+
+        private float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
+        private float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
+        private float VisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : currentDelay * visibleDelay;
+        private float LinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : currentDelay * linebreakDelay;
 
         #region Fields
         // Settings
@@ -387,7 +386,7 @@ namespace TMPEffects.Components
         /// If the current section may not be skipped, this will do nothing.<br/>
         /// Otherwise, the writing process is skipped to either the end of the current text, or the next unskippable section of the current text.
         /// </summary>
-        public void SkipWriter()
+        public void SkipWriter(bool skipShowAnimation = true)
         {
             if (!isActiveAndEnabled || !gameObject.activeInHierarchy || !currentMaySkip) return;
 
@@ -405,7 +404,7 @@ namespace TMPEffects.Components
             }
 
             currentIndex = skipTo;
-            Show(0, skipTo, true); // TODO toggle for whether to skip show animations on skip
+            Show(0, skipTo, skipShowAnimation);
 
             if (skipTo == Mediator.CharData.Count)
             {
@@ -569,7 +568,6 @@ namespace TMPEffects.Components
                 VisibilityState vState = Mediator.VisibilityStates[i];
                 if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
                 {
-                    // TODO should this be raised even if already shown?
                     RaiseCharacterShownEvent(cData);
                     Show(i, 1, false);
                 }
@@ -639,9 +637,6 @@ namespace TMPEffects.Components
             return currentDelay;
         }
 
-        // TODO Toggle for whether to wait 
-        //      Until all conditions have been true at one point since starting the check
-        //      Until all conditions are true at once
         private IEnumerator HandleWaitConditions()
         {
             if (continueConditions == null) yield break;
@@ -863,7 +858,7 @@ namespace TMPEffects.Components
             }
 
             currentIndex = skipTo;
-            Show(0, skipTo, true); // TODO toggle for whether to skip show animations on skip
+            Show(0, skipTo, true);
 
             if (skipTo == Mediator.CharData.Count)
             {

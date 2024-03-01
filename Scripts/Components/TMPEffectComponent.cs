@@ -35,7 +35,6 @@ namespace TMPEffects.Components
         {
 
             VisibilityState visibility = skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding;
-            Debug.Log($"setting {start} to {start + length} to {visibility.ToString()}");
             Mediator.SetVisibilityState(start, length, visibility);
         }
 

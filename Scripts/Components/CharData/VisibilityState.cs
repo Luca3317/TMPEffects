@@ -4,11 +4,6 @@ using UnityEngine;
 
 namespace TMPEffects.Components.CharacterData
 {
-    // Potential TODO:
-    // I might want to decouple the concept of a visibility state
-    // from CharData. Likely then have an index based mapping in 
-    // TMPMediator?
-
     /// <summary>
     /// A character's visibility state.<br/>
     /// A character can be either fully shown or hidden, or in the process of being shown or hidden.

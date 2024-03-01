@@ -770,11 +770,6 @@ namespace TMPEffects.Components
             Color32 BR_Color = cData.mesh.initial.vertex_BR.color;
             Color32 BL_Color = cData.mesh.initial.vertex_BL.color;
 
-            // TODO
-            // Test what happens for characters that have show anim but not basic animation
-            // I expect itll be broken; character should remain in last state permanently
-            // Potential fix: when "allDone", check if basic.hasany(cdata); if not, setvisibility
-            // without ignoring changes
             if (vState == VisibilityState.Showing)
             {
                 bool prev = ignoreVisibilityChanges;
@@ -858,7 +853,6 @@ namespace TMPEffects.Components
                 if (ca.Finished(index)) return;
 
                 cData.Reset();
-                cData.segmentIndex = index - ca.Indices.StartIndex;
 
                 for (int i = 0; i < 4; i++)
                 {

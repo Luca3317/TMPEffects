@@ -64,10 +64,6 @@ namespace TMPEffects.Components.CharacterData
         /// </summary>
         public readonly Info info;
         /// <summary>
-        /// The index of the character within the segment its currently being contextualized in.
-        /// </summary>
-        public int segmentIndex; // TODO Likely move this into IAnimationContext?
-        /// <summary>
         /// The mesh of the character.
         /// </summary>
         public VertexData mesh;
@@ -89,7 +85,6 @@ namespace TMPEffects.Components.CharacterData
             scale = info.initialScale;
             pivot = info.initialPosition;
 
-            segmentIndex = -1;
 
             //this.mediator = mediator;
         }
@@ -103,8 +98,6 @@ namespace TMPEffects.Components.CharacterData
             rotation = info.initialRotation;
             scale = info.initialScale;
             pivot = info.initialPosition;
-
-            segmentIndex = -1;
 
             //this.mediator = mediator;
         }

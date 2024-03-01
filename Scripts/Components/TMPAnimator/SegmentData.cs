@@ -39,8 +39,20 @@ namespace TMPEffects.Components.Animator
         /// </summary>
         public readonly int lastAnimationIndex;
 
-        public Vector3 max;
-        public Vector3 min;
+        public readonly Vector3 max;
+        public readonly Vector3 min;
+
+        public int IndexToSegmentIndex(int index)
+        {
+            index -= startIndex;
+            if (index < 0 || index >= length) return -1;
+            else return index;
+        }
+
+        public int SegmentIndexOf(CharData cData)
+        {
+            return IndexToSegmentIndex(cData.info.index);
+        }
 
         internal SegmentData(EffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
         {
