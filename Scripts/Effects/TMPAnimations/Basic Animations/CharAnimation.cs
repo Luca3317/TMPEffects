@@ -30,7 +30,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (string.IsNullOrWhiteSpace(currentCharacters)) return;
 
             TMP_Character c;
-            CharAnimContext ctx = context as CharAnimContext;
+            CharAnimContext ctx = context.customData as CharAnimContext;
             if (!ctx.waitTimeRemaining.ContainsKey(cData.segmentIndex)) ctx.waitTimeRemaining[cData.segmentIndex] = 0;
             if (!ctx.positions.ContainsKey(cData.segmentIndex))
             {

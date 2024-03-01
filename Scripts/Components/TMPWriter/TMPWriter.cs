@@ -21,11 +21,11 @@ using TMPEffects.Components.CharacterData;
 namespace TMPEffects.Components
 {
     /// <summary>
-    /// Shows / hides the characters of a <see cref="TMP_Text"/> component over time.
+    /// Shows / hides the characters of a <see cref="TMP_Text"/> component over time,<br/>
+    /// and allows you to raise events and commands at specific indices.
     /// </summary>
     /// <remarks>
     /// One of the two main components of TMPEffects, along with <see cref="TMPAnimator"/>.<br/>
-    /// TMPWriter allows you to show / hide text over time.<br/>  
     /// Using command tags, you can call specific methods. There are two types of Commands:
     /// <list type="table">
     /// <item><see cref="TMPCommand"/>: These are defined by the <see cref="TMPCommandDatabase"/> object on the component. As they derive from <see cref="ScriptableObject"/>, they are stored on disk. All built-in commands of this type serve to control the TMPWriter component.</item>
@@ -102,6 +102,36 @@ namespace TMPEffects.Components
         /// </summary>
         public UnityEvent<int> OnResetWriter;
 
+        private void RaiseEvent(UnityEvent uEvent)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                return;
+#endif
+
+            uEvent.Invoke();
+        }
+
+        private void RaiseCharDataEvent(UnityEvent<CharData> uEvent, CharData cData)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                return;
+#endif
+
+            uEvent.Invoke(cData);
+        }
+
+        private void RaiseIntEvent(UnityEvent<int> uEvent, int value)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                return;
+#endif
+
+            uEvent.Invoke(value);
+        }
+
         // TODO Needed? if not, private
         public float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
         public float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
@@ -132,24 +162,18 @@ namespace TMPEffects.Components
         [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool autoWriteNewText = true;
 
-        [Tooltip("The delay after whitespace characters, as percentage of the general delay")]
+        [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float whiteSpaceDelay;
         [SerializeField] private DelayType whiteSpaceDelayType;
-        [Tooltip("The delay after punctuation characters, as percentage of the general delay")]
+        [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float punctuationDelay;
         [SerializeField] private DelayType punctuationDelayType;
-        [Tooltip("The delay after already visible characters, as percentage of the general delay")]
+        [Tooltip("The delay after already visible characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float visibleDelay;
         [SerializeField] private DelayType visibleDelayType;
-        [Tooltip("The delay after linebreaks, as percentage of the general delay")]
+        [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
         [SerializeField] private float linebreakDelay;
         [SerializeField] private DelayType linebreakDelayType;
-
-        public enum DelayType
-        {
-            Percentage,
-            Raw
-        }
 
         // Scene commands
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
@@ -235,7 +259,7 @@ namespace TMPEffects.Components
             ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
             tags = new();
             commands = new CachedCollection<CachedCommand>(new CommandCacher(ro, this, commandCategory), tags.AddKey(commandCategory));
-            events = new CachedCollection<CachedEvent>(new EventCacher(/*ro,*/ OnTextEvent), tags.AddKey(eventCategory));
+            events = new CachedCollection<CachedEvent>(new EventCacher(OnTextEvent), tags.AddKey(eventCategory));
 
             // Reset processors
             processors ??= new();
@@ -279,7 +303,7 @@ namespace TMPEffects.Components
                 StartWriterCoroutine();
             }
 
-            OnStartWriter?.Invoke();
+            RaiseEvent(OnStartWriter);
         }
 
         /// <summary>
@@ -295,7 +319,7 @@ namespace TMPEffects.Components
                 StopWriterCoroutine();
             }
 
-            OnStopWriter?.Invoke();
+            RaiseEvent(OnStopWriter);
         }
 
         /// <summary>
@@ -317,7 +341,7 @@ namespace TMPEffects.Components
 
             ResetData();
 
-            OnResetWriter?.Invoke(0);
+            RaiseIntEvent(OnResetWriter, 0);
         }
 
         /// <summary>
@@ -349,7 +373,7 @@ namespace TMPEffects.Components
 
             currentIndex = index;
 
-            OnResetWriter?.Invoke(index);
+            RaiseIntEvent(OnResetWriter, index);
         }
 
         /// <summary>
@@ -359,7 +383,7 @@ namespace TMPEffects.Components
         /// </summary>
         public void SkipWriter()
         {
-            if (!isActiveAndEnabled || gameObject.activeInHierarchy || !currentMaySkip) return;
+            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || !currentMaySkip) return;
 
             int skipTo;
             CachedCommand cc = commands.FirstOrDefault(x => x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null && x.Tag.Parameters[""] == "false");
@@ -367,7 +391,7 @@ namespace TMPEffects.Components
             if (cc == default) skipTo = Mediator.CharData.Count;
             else skipTo = cc.Indices.StartIndex;
 
-            OnSkipWriter?.Invoke();
+            RaiseEvent(OnSkipWriter);
 
             for (int i = currentIndex; i < skipTo; i++)
             {
@@ -380,7 +404,7 @@ namespace TMPEffects.Components
             if (skipTo == Mediator.CharData.Count)
             {
                 if (writing) StopWriterCoroutine();
-                OnFinishWriter?.Invoke();
+                RaiseEvent(OnFinishWriter);
             }
         }
 
@@ -540,7 +564,7 @@ namespace TMPEffects.Components
                 if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
                 {
                     // TODO should this be raised even if already shown?
-                    OnShowCharacter?.Invoke(cData);
+                    RaiseCharDataEvent(OnShowCharacter, cData);
                     Show(i, 1, false);
                 }
 
@@ -548,7 +572,7 @@ namespace TMPEffects.Components
                 if (delay > 0) yield return new WaitForSeconds(delay);
             }
 
-            OnFinishWriter?.Invoke();
+            RaiseEvent(OnFinishWriter);
             OnStopWriting();
         }
 
@@ -737,7 +761,7 @@ namespace TMPEffects.Components
                 if (block)
                 {
                     if (shouldWait) yield return new WaitForSeconds(waitAmount);
-                    yield return HandleWaitConditions();
+                    if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
                 waitAmount = 0f;
@@ -837,6 +861,12 @@ namespace TMPEffects.Components
         }
 #endif
         #endregion
+
+        public enum DelayType
+        {
+            Percentage,
+            Raw
+        }
 
         private void HideAllCharacters(bool skipAnimations = false)
         {

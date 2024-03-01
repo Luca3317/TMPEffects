@@ -22,17 +22,21 @@ namespace TMPEffects.Components
         public void SetText(string text)
         {
             Mediator.Text.SetText(text);
-        } 
+        }
 
 
         public void Show(int start, int length, bool skipShowProcess = false)
         {
-            Mediator.SetVisibilityState(start, length, skipShowProcess ? VisibilityState.Shown : VisibilityState.Showing);
+            VisibilityState visibility = skipShowProcess ? VisibilityState.Shown : VisibilityState.Showing;
+            Mediator.SetVisibilityState(start, length, visibility);
         }
 
         public void Hide(int start, int length, bool skipHideProcess = false)
         {
-            Mediator.SetVisibilityState(start, length, skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding);
+
+            VisibilityState visibility = skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding;
+            Debug.Log($"setting {start} to {start + length} to {visibility.ToString()}");
+            Mediator.SetVisibilityState(start, length, visibility);
         }
 
         [System.NonSerialized] private readonly object obj = new();

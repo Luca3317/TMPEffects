@@ -8,7 +8,6 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Debug.Log("Dummy show");
             for (int i = 0; i < 4; i++)
             {
                 cData.SetVertex(i, cData.mesh.initial.GetPosition(i));

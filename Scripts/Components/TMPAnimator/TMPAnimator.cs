@@ -164,14 +164,16 @@ namespace TMPEffects.Components
             UpdateMediator();
 
             CreateContext();
-            SetDummyShow();
-            SetDummyHide();
 
             PrepareForProcessing();
 
             SubscribeToMediator();
 
             Mediator.ForceReprocess();
+
+            SetDummies();
+            SetDefault(TMPAnimationType.Show);
+            SetDefault(TMPAnimationType.Hide);
 
 #if UNITY_EDITOR
             if (preview && !Application.isPlaying) StartPreview();
@@ -208,6 +210,7 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not register as visibility processor!");
             }
 
+            Mediator.CharDataPopulated += SetDummies; // Set the dummy show / hide animation 
             Mediator.CharDataPopulated += PopulateTimes; // Populate the timing datas
             Mediator.VisibilityStateUpdated += OnVisibilityStateUpdated; // Handle Visibility updates
             Mediator.CharDataPopulated += PostProcessTags; //
@@ -216,6 +219,7 @@ namespace TMPEffects.Components
 
         private void UnsubscribeFromMediator()
         {
+            Mediator.CharDataPopulated -= SetDummies;
             Mediator.CharDataPopulated -= PopulateTimes;
             Mediator.VisibilityStateUpdated -= OnVisibilityStateUpdated;
             Mediator.CharDataPopulated -= PostProcessTags;
@@ -267,9 +271,6 @@ namespace TMPEffects.Components
             processors.AddProcessor(hideCategory.Prefix, new TagProcessor(hideCategory));
 
             processors.RegisterTo(Mediator.Processor);
-
-            SetDefault(TMPAnimationType.Show);
-            SetDefault(TMPAnimationType.Hide);
         }
 
         private void OnTagCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -355,12 +356,12 @@ namespace TMPEffects.Components
             {
                 case TMPAnimationType.Show:
                     cacher = new AnimationCacher(database?.ShowAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
-                    defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
+                    defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
 
                 case TMPAnimationType.Hide:
                     cacher = new AnimationCacher(database?.HideAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
-                    defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices());
+                    defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
             }
 
@@ -380,24 +381,30 @@ namespace TMPEffects.Components
             PrepareForProcessing();
         }
 
+        private void SetDummies()
+        {
+            SetDummyShow();
+            SetDummyHide();
+        }
+
         private void SetDummyShow()
         {
-            if (dummyShow != null) return;
+            //if (dummyShow != null) return;
             EffectTag tag = new EffectTag("Dummy Show Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
             AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
-            dummyShow = cacher.CacheTag(tag, new EffectTagIndices());
+            dummyShow = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0)); 
         }
 
         private void SetDummyHide()
         {
-            if (dummyHide != null) return;
+            //if (dummyHide != null) return; 
             EffectTag tag = new EffectTag("Dummy Hide Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation", ScriptableObject.CreateInstance<DummyHideAnimation>());
             AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedHide(x));
-            dummyHide = cacher.CacheTag(tag, new EffectTagIndices());
+            dummyHide = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0));
         }
         #endregion
 
@@ -416,7 +423,7 @@ namespace TMPEffects.Components
                 return;
             }
 #else
-            if (updateFrom != UpdateFrom.Script)
+            if (updateFrom != UpdateFrom.Script) 
             {
                 Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
                 return;
@@ -470,8 +477,22 @@ namespace TMPEffects.Components
                 return;
             }
 #endif
-
             isAnimating = false;
+
+            VisibilityState visibility;
+            for (int i = 0; i < Mediator.CharData.Count; i++)
+            {
+                visibility = Mediator.VisibilityStates[i];
+
+                if (visibility == VisibilityState.Showing)
+                {
+                    Mediator.SetVisibilityState(i, VisibilityState.Shown);
+                }
+                else if (visibility == VisibilityState.Hiding)
+                {
+                    Mediator.SetVisibilityState(i, VisibilityState.Hidden);
+                }
+            }
         }
 
         /// <summary>
@@ -670,7 +691,7 @@ namespace TMPEffects.Components
 
             sw.Stop();
         }
-
+         
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true, bool forced = false)
         {
             if (!cData.info.isVisible || (!forced && !AnimateCharacter(index, cData))) return;
@@ -699,7 +720,6 @@ namespace TMPEffects.Components
 
             if (updateVertices && Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
         }
 
         private bool AnimateCharacter(int index, CharData cData)
@@ -763,17 +783,23 @@ namespace TMPEffects.Components
 
                 bool allDone = true;
 
-                if (!IsExcludedShow(cData.info.character) && show.Count != 0)
+                if (IsExcludedShow(cData.info.character))
                 {
-                    allDone = AnimateShowList();
+                    Animate(dummyShow);
+                }
+                else if (show.Count == 0)
+                {
+                    Animate(defaultShow);
+                    allDone = defaultShow.Finished(cData.info.index);
                 }
                 else
                 {
-                    Animate(dummyShow);
+                    allDone = AnimateShowList();
                 }
 
                 if (allDone)
                 {
+                    if (index == 0) Debug.Log("Finish show animations");
                     if (!basic.HasAnyContaining(index) || IsExcludedBasic(cData.info.character))
                     {
                         ignoreVisibilityChanges = false;
@@ -794,13 +820,18 @@ namespace TMPEffects.Components
 
                 bool allDone = true;
 
-                if (!IsExcludedHide(cData.info.character) && hide.Count != 0)
+                if (IsExcludedHide(cData.info.character))
                 {
-                    allDone = AnimateHideList();
+                    Animate(dummyHide);
+                }
+                else if (hide.Count == 0)
+                {
+                    Animate(defaultHide);
+                    allDone = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
-                    Animate(dummyHide);
+                    allDone = AnimateHideList();
                 }
 
                 if (allDone)
@@ -1141,13 +1172,46 @@ namespace TMPEffects.Components
 
         private void OnVisibilityStateUpdated(int index, VisibilityState prev)
         {
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding");
+            }
             if (ignoreVisibilityChanges) return;
+
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding 2");
+            }
 
             CharData cData = Mediator.CharData[index];
             if (!cData.info.isVisible) return;
 
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding 3");
+            }
+
             // Check if visibility actually changed
             VisibilityState state = Mediator.VisibilityStates[index];
+
+            if (!IsAnimating)
+            {
+                if (state == VisibilityState.Showing)
+                {
+                    Mediator.SetVisibilityState(index, VisibilityState.Shown);
+                    return;
+                }
+                if (state == VisibilityState.Hiding)
+                {
+                    Mediator.SetVisibilityState(index, VisibilityState.Hidden);
+                    return;
+                }
+            }
+
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding 4");
+            }
 
             if (prev == state)
             {
@@ -1155,15 +1219,18 @@ namespace TMPEffects.Components
                 return;
             }
 
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding 5");
+            }
+
             // Update timings of the character
             stateTimes[index] = context.passed;
             if (state == VisibilityState.Hidden || prev == VisibilityState.Hidden) visibleTimes[index] = context.passed;
 
-            // TODO 
-            // If not animating, and setting to e.g. showing, automatically set to show instead
-            // Probably should be a check at top of method actually
             if (state == VisibilityState.Shown)
             {
+                cData.Reset();
                 UpdateVisibility(true);
             }
             else if (state == VisibilityState.Hidden)
@@ -1172,10 +1239,12 @@ namespace TMPEffects.Components
             }
 
             // Reset the "finished" status of the relevant animations
-            if (state == VisibilityState.Showing)
+            else if (state == VisibilityState.Showing)
             {
-                var mm = show.MinMaxAt(index);
+                defaultShow.context.ResetFinishAnimation(index);
+                dummyShow.context.ResetFinishAnimation(index);
 
+                var mm = show.MinMaxAt(index);
                 if (mm != null)
                 {
                     for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
@@ -1187,12 +1256,13 @@ namespace TMPEffects.Components
                         }
                     }
                 }
-
             }
             else if (state == VisibilityState.Hiding)
             {
-                var mm = hide.MinMaxAt(index);
+                defaultHide.context.ResetFinishAnimation(index);
+                dummyHide.context.ResetFinishAnimation(index);
 
+                var mm = hide.MinMaxAt(index);
                 if (mm != null)
                 {
                     for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
@@ -1215,14 +1285,18 @@ namespace TMPEffects.Components
 
                 if (state != Mediator.VisibilityStates[index])
                 {
-                    if (cData.info.character == 'w')
-                    {
-                        Debug.LogWarning("Re with w");
-                    }
                     OnVisibilityStateUpdated(index, state);
                     return;
                 }
             }
+
+            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
+            {
+                Debug.Log("Sett to hiding 6");
+            }
+
+            if (Mediator.Text.mesh != null)
+                Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
 
             void UpdateVisibility(bool show)
             {

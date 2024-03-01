@@ -35,14 +35,13 @@ namespace TMPEffects.TMPAnimations
 
         public AnimationContext(ReadOnlyAnimatorContext animatorContext, SegmentData segmentData, object customData)
         {
-            this.customData = customData;
+            this.customData = customData; 
             this.segmentData = segmentData;
             this.animatorContext = animatorContext;
             finishedDict = new Dictionary<int, bool>(segmentData.length);
 
             for (int i = segmentData.startIndex; i < segmentData.startIndex + segmentData.length; i++)
             {
-                UnityEngine.Debug.Log("Add " + i);
                 finishedDict.Add(i, false);
             }
         }
@@ -52,10 +51,10 @@ namespace TMPEffects.TMPAnimations
             finishedDict[index] = true;
         }
 
-        public void ResetFinishAnimation(int index)
+        public void ResetFinishAnimation(int index) 
         {
             finishedDict[index] = false;
-        } 
+        }  
 
         public void ResetFinishAnimation()
         {

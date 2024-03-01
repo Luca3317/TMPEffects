@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
-using TMPEffects.TextProcessing;
 using UnityEngine;
 using static TMPEffects.EffectUtility;
+
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new fade", menuName = "new fade")]
-    public class NewFadeShowAnimation : TMPShowAnimation
+    [CreateAssetMenu(fileName = "new testshwo", menuName = "new testshwo")]
+    public class NewTestShow : TMPShowAnimation
     {
         private float currentDuration;
 
@@ -19,21 +18,14 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float value = 1f;
             if (currentDuration >= 0)
             {
-                value = Mathf.Lerp(0f, 1f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
+                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
             }
 
-            //Debug.Log("for " + cData.info.index + $"; ({ac.PassedTime} - {ac.StateTime(cData)}) / {currentDuration} = {(ac.PassedTime - ac.StateTime(cData)) / currentDuration}");
+            cData.SetPosition(cData.info.initialPosition + Vector3.up * value * 45f);
 
-            for (int i = 0; i < 4; i++)
+            if (value == 0)
             {
-                Color32 color = cData.mesh.GetColor(i);
-                color.a = (byte)(value * color.a);
-                cData.mesh.SetColor(i, color);
-            }
-
-            if (value == 1)
-            {
-                if (cData.info.index == 0) Debug.Log("Finish animation fade");
+                if (cData.info.index == 0) Debug.Log("Finish animation test");
                 context.FinishAnimation(cData.info.index);
             }
         }

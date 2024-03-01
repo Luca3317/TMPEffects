@@ -30,7 +30,7 @@ namespace TMPEffects.TMPAnimations.Animations
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Vector3 BL, TL, TR, BR;
-            Context ctx = context as Context;
+            Context ctx = context.customData as Context;
             FixVector(ref currentAnchor);
             if (ctx.lastUpdated == -1) { ctx.lastUpdated = context.animatorContext.PassedTime; }
 

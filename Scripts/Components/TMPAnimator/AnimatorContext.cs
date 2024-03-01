@@ -1,7 +1,6 @@
-using System.Runtime.CompilerServices;
 using TMPEffects.Components.CharacterData;
-using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
+using System;
 
 namespace TMPEffects.Components.Animator
 {
