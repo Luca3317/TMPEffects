@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace TMPEffects.ObjectChanged
 {
-    internal interface INotifyObjectChanged
+    public interface INotifyObjectChanged
     {
         event ObjectChangedEventHandler ObjectChanged;
     }

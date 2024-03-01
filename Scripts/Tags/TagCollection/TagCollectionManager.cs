@@ -131,8 +131,6 @@ namespace TMPEffects.Tags.Collections
                     return false;
                 }
 
-                Debug.Log("added at " + union.IndicesOf(tag).Value.StartIndex + " - " + union.IndicesOf(tag).Value.OrderAtIndex);
-
                 ValidateIndices(startIndex);
                 return true;
             }
@@ -330,7 +328,7 @@ namespace TMPEffects.Tags.Collections
                     {
                         if (!union.TryAdd(item.Tag, item.Indices))
                         {
-                            Debug.Log("Failed to add tag to union; Now undefined");
+                            Debug.LogError("Failed to add tag to union; Now undefined");
                         }
                     }
 

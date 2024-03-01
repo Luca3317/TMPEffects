@@ -9,6 +9,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
     public class FadeShowAnimation : TMPShowAnimation
     {
+        [SerializeField] private float duration;
         public override void Animate(CharData cData, IAnimationContext context)
         {
             var ac = context.animatorContext;

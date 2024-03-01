@@ -154,7 +154,6 @@ namespace TMPEffects.Components.Mediator
             bool processor = visibilityProcessor != null;
             if (!processor)
             {
-                //Debug.Log("NO Processor");
                 if (state == VisibilityState.Showing) newState = VisibilityState.Shown;
                 if (state == VisibilityState.Hiding) newState = VisibilityState.Hidden;
             }
@@ -219,7 +218,6 @@ namespace TMPEffects.Components.Mediator
         {
             if ((obj as TMP_Text) == Text)
             {
-                Debug.Log("Redoing text");
                 TextChangedProcedure();
             }
         }

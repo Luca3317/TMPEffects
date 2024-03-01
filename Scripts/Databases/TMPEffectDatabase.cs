@@ -14,13 +14,11 @@ namespace TMPEffects.Databases
 
         public void ListenForChanges(ObjectChangedEventHandler handler)
         {
-            Debug.Log("Started to listen on " + name);
             ObjectChanged -= handler;
             ObjectChanged += handler;
         }
         public void StopListenForChanges(ObjectChangedEventHandler handler)
         {
-            Debug.Log("stopped to listen on " + name);
             ObjectChanged -= handler;
         }
 
@@ -46,7 +44,6 @@ namespace TMPEffects.Databases
 
         protected void RaiseDatabaseChanged()
         {
-            Debug.Log("Raising " + name + " propertychange null = " + (ObjectChanged == null));
             ObjectChanged?.Invoke(this);
         }
     }

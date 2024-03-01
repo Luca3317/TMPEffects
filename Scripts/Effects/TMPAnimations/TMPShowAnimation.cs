@@ -11,8 +11,6 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public abstract class TMPShowAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged
     {
-        [SerializeField] protected float duration;
-        
         ///<inheritdoc/>
         public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>

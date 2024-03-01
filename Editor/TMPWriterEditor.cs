@@ -49,6 +49,7 @@ namespace TMPEffects.Editor
         SerializedProperty onResetWriterProp;
         SerializedProperty onFinishWriterProp;
         SerializedProperty maySkipProp;
+        SerializedProperty sceneCommandsProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -148,6 +149,7 @@ namespace TMPEffects.Editor
             onResetWriterProp = serializedObject.FindProperty("OnResetWriter");
             onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
             maySkipProp = serializedObject.FindProperty("maySkip");
+            sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -174,17 +176,7 @@ namespace TMPEffects.Editor
             if (!serializedObject.FindProperty("initValidate").boolValue)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
-                serializedObject.FindProperty("initValidate").boolValue = true;
                 serializedObject.ApplyModifiedProperties();
-            }
-            else
-            {
-                // Potential TODO:
-                // This line is necessary as this ensures the processors are up-to-date with the current state of
-                // the TMPCommandDatabase. Could also do this by making TMPCommandDatabase return with ref; fine for now
-                // even better would be a callback when changing the database so you dont have to select the gameobject for
-                // changes to show
-                //writer.OnDatabaseChangedWrapper();
             }
         }
 
@@ -405,7 +397,7 @@ namespace TMPEffects.Editor
             DrawDatabase();
 
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneCommands"));
+            EditorGUILayout.PropertyField(sceneCommandsProp);
             if (EditorGUI.EndChangeCheck()) writer.ForceReprocess();
 
             DrawEventsFoldout();

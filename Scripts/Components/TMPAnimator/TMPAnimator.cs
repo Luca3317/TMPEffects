@@ -834,7 +834,6 @@ namespace TMPEffects.Components
 
                 if (allDone)
                 {
-                    if (index == 0) Debug.Log("Finish show animations");
                     if (!basic.HasAnyContaining(index) || IsExcludedBasic(cData.info.character))
                     {
                         ignoreVisibilityChanges = false;
@@ -956,7 +955,6 @@ namespace TMPEffects.Components
             bool AnimateShowList()
             {
                 CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
-                //Debug.Log($"Animate show list for {cData.info.character} at {cData.info.index}; mm == null: {mm == null}");
                 if (mm == null) return true;
 
                 bool allDone = true;
@@ -971,7 +969,6 @@ namespace TMPEffects.Components
 
                             if (!ca.Finished(index))
                             {
-                                Debug.Log($"for {index} alldone false due to " + ca.Tag.Name);
                                 allDone = false;
                             }
 
@@ -1204,24 +1201,10 @@ namespace TMPEffects.Components
 
         private void OnVisibilityStateUpdated(int index, VisibilityState prev)
         {
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding");
-            }
             if (ignoreVisibilityChanges) return;
-
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding 2");
-            }
 
             CharData cData = Mediator.CharData[index];
             if (!cData.info.isVisible) return;
-
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding 3");
-            }
 
             // Check if visibility actually changed
             VisibilityState state = Mediator.VisibilityStates[index];
@@ -1240,20 +1223,10 @@ namespace TMPEffects.Components
                 }
             }
 
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding 4");
-            }
-
             if (prev == state)
             {
                 Debug.LogError("Character didnt change but the update event was raised?");
                 return;
-            }
-
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding 5");
             }
 
             // Update timings of the character
@@ -1320,11 +1293,6 @@ namespace TMPEffects.Components
                     OnVisibilityStateUpdated(index, state);
                     return;
                 }
-            }
-
-            if (index == 0 && Mediator.VisibilityStates[index] == VisibilityState.Hiding)
-            {
-                Debug.Log("Sett to hiding 6");
             }
 
             if (Mediator.Text.mesh != null)

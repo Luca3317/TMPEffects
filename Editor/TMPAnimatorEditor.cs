@@ -29,6 +29,12 @@ namespace TMPEffects.Editor
         SerializedProperty excludePunctuationProp;
         SerializedProperty excludePunctuationShowProp;
         SerializedProperty excludePunctuationHideProp;
+        SerializedProperty sceneAnimationsProp;
+        SerializedProperty sceneShowAnimationsProp;
+        SerializedProperty sceneHideAnimationsProp;
+        SerializedProperty defaultShowStringProp;
+        SerializedProperty defaultHideStringProp;
+
         //SerializedProperty animateOnTextChangeProp;
 
         GUIContent useDefaultDatabaseLabel;
@@ -54,6 +60,13 @@ namespace TMPEffects.Editor
             excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
             excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
 
+            sceneAnimationsProp = serializedObject.FindProperty("sceneAnimations");
+            sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
+            sceneHideAnimationsProp = serializedObject.FindProperty("sceneHideAnimations");
+
+            defaultShowStringProp = serializedObject.FindProperty("defaultShowString");
+            defaultHideStringProp = serializedObject.FindProperty("defaultHideString");
+
             animator = target as TMPAnimator;
 
             //wasEnabled = writer.enabled;
@@ -63,15 +76,8 @@ namespace TMPEffects.Editor
             if (!serializedObject.FindProperty("initValidate").boolValue)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
-                serializedObject.FindProperty("initValidate").boolValue = true;
+                //serializedObject.FindProperty("initValidate").boolValue = true;
                 serializedObject.ApplyModifiedProperties();
-            }
-            else
-            {
-                // TODO
-                // Implemented database callback; this still necessary?
-                // Testing required
-                //animator.PrepareForProcessingWrapper();
             }
 
             animator.ForceReprocess();
@@ -139,9 +145,9 @@ namespace TMPEffects.Editor
 
 
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneAnimations"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneShowAnimations"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneHideAnimations"));
+            EditorGUILayout.PropertyField(sceneAnimationsProp);
+            EditorGUILayout.PropertyField(sceneShowAnimationsProp);
+            EditorGUILayout.PropertyField(sceneHideAnimationsProp);
             if (EditorGUI.EndChangeCheck())
             {
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
@@ -160,7 +166,7 @@ namespace TMPEffects.Editor
 
             GUILayout.BeginHorizontal();
             string warning = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"), GUILayout.ExpandWidth(true));
+            EditorGUILayout.PropertyField(defaultShowStringProp, GUILayout.ExpandWidth(true));
 
             Rect rect = GUILayoutUtility.GetLastRect();
             rect.x = EditorGUIUtility.labelWidth; ;
@@ -179,7 +185,7 @@ namespace TMPEffects.Editor
 
             GUILayout.BeginHorizontal();
             string warning2 = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"), GUILayout.ExpandWidth(true));
+            EditorGUILayout.PropertyField(defaultHideStringProp, GUILayout.ExpandWidth(true));
 
             rect = GUILayoutUtility.GetLastRect();
             rect.x = EditorGUIUtility.labelWidth; ;
