@@ -18,6 +18,8 @@ using TMPEffects.Components.CharacterData;
 using System.Collections.Specialized;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace TMPEffects.Components
 {
@@ -168,6 +170,12 @@ namespace TMPEffects.Components
 
             SubscribeToMediator();
 
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+                database.ListenForChanges(ReprocessOnDatabaseChange);
+            }
+
             Mediator.ForceReprocess();
 
             SetDummies();
@@ -199,6 +207,14 @@ namespace TMPEffects.Components
 #endif
 
             UnsubscribeFromMediator();
+        }
+
+        private void OnDestroy()
+        {
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+            }
         }
 
         private void SubscribeToMediator()
@@ -328,7 +344,7 @@ namespace TMPEffects.Components
             if (string.IsNullOrWhiteSpace(str))
             {
                 SetToDummy();
-                return; 
+                return;
             }
             str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
             if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name, type))
@@ -375,9 +391,34 @@ namespace TMPEffects.Components
             }
         }
 
-        private void OnDatabaseChanged()
+        private void OnDatabaseChanged(TMPAnimationDatabase previousDatabase)
         {
+            if (previousDatabase != null)
+            {
+                previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
+            }
+
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+                database.ListenForChanges(ReprocessOnDatabaseChange);
+            }
+
             PrepareForProcessing();
+            Mediator.ForceReprocess();
+        }
+
+        private void ReprocessOnDatabaseChange(object sender)
+        {
+            if ((sender as TMPAnimationDatabase) != database)
+            {
+                Debug.LogError("Event raised by incorrect database; Bug!");
+                (sender as TMPAnimationDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
+                return;
+            }
+
+            PrepareForProcessing();
+            Mediator.ForceReprocess();
         }
 
         private void SetDummies()
@@ -393,7 +434,7 @@ namespace TMPEffects.Components
 
             DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
             AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
-            dummyShow = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0)); 
+            dummyShow = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0));
         }
 
         private void SetDummyHide()
@@ -521,9 +562,9 @@ namespace TMPEffects.Components
         /// <param name="database">The database that will be used to parse animation tags.</param>
         public void SetDatabase(TMPAnimationDatabase database)
         {
+            TMPAnimationDatabase previous = this.database;
             this.database = database;
-            OnDatabaseChanged();
-            Mediator.ForceReprocess();
+            OnDatabaseChanged(previous);
         }
 
         /// <summary>
@@ -690,7 +731,7 @@ namespace TMPEffects.Components
 
             sw.Stop();
         }
-         
+
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true, bool forced = false)
         {
             if (!cData.info.isVisible || (!forced && !AnimateCharacter(index, cData))) return;
@@ -1509,10 +1550,10 @@ namespace TMPEffects.Components
             if (Mediator != null) PostProcessTags();
         }
 
-        internal void OnDatabaseChangedWrapper()
+        internal void PrepareForProcessingWrapper()
         {
             if (Mediator == null) return;
-            OnDatabaseChanged();
+            PrepareForProcessing();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)
@@ -1618,8 +1659,8 @@ namespace TMPEffects.Components
                     hideDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.HideAnimationDatabase)))
                 )
             {
+                OnDatabaseChanged(prevDatabase);
                 prevDatabase = database;
-                OnDatabaseChanged();
             }
         }
 #endif

@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0f221366b2ece4d8f292c89ac2aa90, type: 3}
   m_Name: FadeShowAnimation
   m_EditorClassIdentifier: 
-  anchor: {x: -1, y: 0}
-  speed: 1
-  minScale: 0
-  maxScale: 1
+  duration: 0.5

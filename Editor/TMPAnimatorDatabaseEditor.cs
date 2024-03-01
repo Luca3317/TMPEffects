@@ -7,21 +7,18 @@ namespace TMPEffects.Editor
     [CustomEditor(typeof(TMPAnimationDatabase))]
     public class TMPAnimatorDatabaseEditor : UnityEditor.Editor
     {
-        private UnityEditor.Editor _editor1;
-        private UnityEditor.Editor _editor2;
-        private UnityEditor.Editor _editor3;
-
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
-            var dataBase = serializedObject.FindProperty("basicAnimationDatabase");
-            EditorGUILayout.PropertyField(dataBase);
+            var basicDataBase = serializedObject.FindProperty("basicAnimationDatabase");
+            EditorGUILayout.PropertyField(basicDataBase);
 
-            if (dataBase.objectReferenceValue != null)
+            if (basicDataBase.objectReferenceValue != null)
             {
-                CreateCachedEditor(dataBase.objectReferenceValue, typeof(TMPBasicAnimationDatabaseEditor), ref _editor1);
-                _editor1.OnInspectorGUI();
+                SerializedObject so = new SerializedObject(basicDataBase.objectReferenceValue);
+                var basicDatabaseAnimations = so.FindProperty("animations");
+                EditorGUILayout.PropertyField(basicDatabaseAnimations);
             }
 
             EditorGUILayout.Space();
@@ -31,8 +28,9 @@ namespace TMPEffects.Editor
 
             if (showDataBase.objectReferenceValue != null)
             {
-                CreateCachedEditor(showDataBase.objectReferenceValue, typeof(TMPShowAnimationDatabaseEditor), ref _editor2);
-                _editor2.OnInspectorGUI();
+                SerializedObject so = new SerializedObject(showDataBase.objectReferenceValue);
+                var showDatabaseAnimations = so.FindProperty("showAnimations");
+                EditorGUILayout.PropertyField(showDatabaseAnimations);
             }
 
             EditorGUILayout.Space();
@@ -42,8 +40,9 @@ namespace TMPEffects.Editor
 
             if (hideDataBase.objectReferenceValue != null)
             {
-                CreateCachedEditor(hideDataBase.objectReferenceValue, typeof(TMPHideAnimationDatabaseEditor), ref _editor3);
-                _editor3.OnInspectorGUI();
+                SerializedObject so = new SerializedObject(hideDataBase.objectReferenceValue);
+                var hideDatabaseAnimations = so.FindProperty("hideAnimations");
+                EditorGUILayout.PropertyField(hideDatabaseAnimations);
             }
 
             if (serializedObject.hasModifiedProperties)

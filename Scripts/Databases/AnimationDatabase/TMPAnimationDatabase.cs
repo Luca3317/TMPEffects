@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.TMPAnimations;
 using TMPEffects.Components.Animator;
+using System.ComponentModel;
 
 namespace TMPEffects.Databases.AnimationDatabase
 {
@@ -98,6 +99,47 @@ namespace TMPEffects.Databases.AnimationDatabase
             if (showAnimationDatabase != null && showAnimationDatabase.ContainsEffect(name)) return showAnimationDatabase.GetEffect(name);
             if (hideAnimationDatabase != null && hideAnimationDatabase.ContainsEffect(name)) return hideAnimationDatabase.GetEffect(name);
             throw new KeyNotFoundException();
+        }
+
+
+
+
+        [SerializeField, HideInInspector] private TMPBasicAnimationDatabase prevBasicAnimationDatabase;
+        [SerializeField, HideInInspector] private TMPShowAnimationDatabase prevShowAnimationDatabase;
+        [SerializeField, HideInInspector] private TMPHideAnimationDatabase prevHideAnimationDatabase;
+
+        protected override void OnValidate()
+        {
+            if (prevBasicAnimationDatabase != basicAnimationDatabase)
+            {
+                if (prevBasicAnimationDatabase != null)
+                    prevBasicAnimationDatabase.StopListenForChanges(OnChanged);
+
+                basicAnimationDatabase.ListenForChanges(OnChanged);
+            }
+
+            if (prevShowAnimationDatabase != showAnimationDatabase)
+            {
+                if (prevShowAnimationDatabase != null)
+                    prevShowAnimationDatabase.StopListenForChanges(OnChanged);
+
+                showAnimationDatabase.ListenForChanges(OnChanged);
+            }
+
+            if (prevHideAnimationDatabase != hideAnimationDatabase)
+            {
+                if (prevHideAnimationDatabase != null)
+                    prevHideAnimationDatabase.StopListenForChanges(OnChanged);
+                
+                hideAnimationDatabase.ListenForChanges(OnChanged);
+            }
+
+            RaiseDatabaseChanged();
+        }
+
+        private void OnChanged(object sender)
+        {
+            RaiseDatabaseChanged();
         }
     }
 }

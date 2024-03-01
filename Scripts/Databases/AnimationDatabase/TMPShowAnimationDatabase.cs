@@ -39,5 +39,25 @@ namespace TMPEffects.Databases.AnimationDatabase
             }
             return anim;
         }
+
+#if UNITY_EDITOR
+        protected override void OnValidate()
+        {
+            foreach (var animation in showAnimations.Values)
+            {
+                if (animation == null) continue;
+
+                animation.ObjectChanged -= OnAnimationChanged;
+                animation.ObjectChanged += OnAnimationChanged;
+            }
+
+            RaiseDatabaseChanged();
+        }
+
+        private void OnAnimationChanged(object sender)
+        {
+            RaiseDatabaseChanged();
+        }
+#endif
     }
 }

@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: HideAnimationDatabase
   m_EditorClassIdentifier: 
   hideAnimations:
-    _serializedList:
-    - Key: newfade
-      Value: {fileID: 11400000, guid: d408b624d7e9af648987e7da49fcaf8d, type: 2}
+    _serializedList: []

@@ -219,6 +219,7 @@ namespace TMPEffects.Components.Mediator
         {
             if ((obj as TMP_Text) == Text)
             {
+                Debug.Log("Redoing text");
                 TextChangedProcedure();
             }
         }

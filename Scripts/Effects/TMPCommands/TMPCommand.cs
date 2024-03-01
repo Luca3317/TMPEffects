@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.ObjectChanged;
 using UnityEngine;
 
 namespace TMPEffects.TMPCommands
@@ -6,7 +7,7 @@ namespace TMPEffects.TMPCommands
     /// <summary>
     /// Base class for commands.
     /// </summary>
-    public abstract class TMPCommand : ScriptableObject, ITMPCommand
+    public abstract class TMPCommand : ScriptableObject, ITMPCommand, INotifyObjectChanged
     {
         ///<inheritdoc/>
         public abstract TagType TagType { get; }
@@ -30,5 +31,19 @@ namespace TMPEffects.TMPCommands
         
         ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
+
+#if UNITY_EDITOR
+        public event ObjectChangedEventHandler ObjectChanged;
+
+        protected virtual void OnValidate()
+        {
+            RaiseObjectChanged();
+        }
+
+        protected void RaiseObjectChanged()
+        {
+            ObjectChanged?.Invoke(this);
+        }
+#endif
     }
 }

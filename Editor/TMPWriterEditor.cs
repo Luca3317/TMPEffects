@@ -184,7 +184,7 @@ namespace TMPEffects.Editor
                 // the TMPCommandDatabase. Could also do this by making TMPCommandDatabase return with ref; fine for now
                 // even better would be a callback when changing the database so you dont have to select the gameobject for
                 // changes to show
-                writer.OnDatabaseChangedWrapper();
+                //writer.OnDatabaseChangedWrapper();
             }
         }
 

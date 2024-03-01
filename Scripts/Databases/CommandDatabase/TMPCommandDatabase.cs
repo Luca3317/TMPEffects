@@ -1,6 +1,7 @@
 using TMPEffects.SerializedCollections;
 using UnityEngine;
 using TMPEffects.TMPCommands;
+using System.ComponentModel;
 
 namespace TMPEffects.Databases.CommandDatabase
 {
@@ -39,5 +40,25 @@ namespace TMPEffects.Databases.CommandDatabase
             }
             return command;
         }
+
+#if UNITY_EDITOR
+        protected override void OnValidate()
+        {
+            foreach (var command in commands.Values)
+            {
+                if (command == null) continue;
+
+                command.ObjectChanged -= OnAnimationChanged;
+                command.ObjectChanged += OnAnimationChanged;
+            }
+
+            RaiseDatabaseChanged();
+        }
+
+        private void OnAnimationChanged(object sender)
+        {
+            RaiseDatabaseChanged();
+        }
+#endif
     }
 }

@@ -17,6 +17,7 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.Components.CharacterData;
+using TMPEffects.Databases.AnimationDatabase;
 
 namespace TMPEffects.Components
 {
@@ -215,6 +216,12 @@ namespace TMPEffects.Components
 
             PrepareForProcessing();
 
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+                database.ListenForChanges(ReprocessOnDatabaseChange);
+            }
+
             Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
@@ -250,6 +257,14 @@ namespace TMPEffects.Components
 #endif
 
             FreeMediator();
+        }
+
+        private void OnDestroy()
+        {
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+            }
         }
 
         private void PrepareForProcessing()
@@ -289,9 +304,34 @@ namespace TMPEffects.Components
             Mediator.Processor.FinishAdjustIndices -= PostProcessTags;
         }
 
-        private void OnDatabaseChanged()
+        private void OnDatabaseChanged(TMPCommandDatabase previousDatabase)
         {
+            if (previousDatabase != null)
+            {
+                previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
+            }
+
+            if (database != null)
+            {
+                database.StopListenForChanges(ReprocessOnDatabaseChange);
+                database.ListenForChanges(ReprocessOnDatabaseChange);
+            }
+
             PrepareForProcessing();
+            Mediator.ForceReprocess();
+        }
+
+        private void ReprocessOnDatabaseChange(object sender)
+        {
+            if ((sender as TMPCommandDatabase) != database)
+            {
+                Debug.LogError("Event raised by incorrect database; Bug!");
+                (sender as TMPCommandDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
+                return;
+            }
+
+            PrepareForProcessing();
+            Mediator.ForceReprocess();
         }
         #endregion
 
@@ -487,8 +527,9 @@ namespace TMPEffects.Components
         /// <param name="database">The database that will be used to parse command tags.</param>
         public void SetDatabase(TMPCommandDatabase database)
         {
+            TMPCommandDatabase previous = this.database;
             this.database = database;
-            OnDatabaseChanged();
+            OnDatabaseChanged(previous);
         }
         #endregion
 
@@ -830,18 +871,18 @@ namespace TMPEffects.Components
             // Ensure data is set - OnValidate called before OnEnable
             if (Mediator != null && database != prevDatabase)
             {
+                OnDatabaseChanged(prevDatabase);
                 prevDatabase = database;
-                OnDatabaseChanged();
 
                 reprocessFlag = true;
             }
         }
 
-        internal void OnDatabaseChangedWrapper()
-        {
-            if (Mediator == null) return;
-            OnDatabaseChanged();
-        }
+        //internal void OnDatabaseChangedWrapper()
+        //{
+        //    if (Mediator == null) return;
+        //    OnDatabaseChanged();
+        //}
 
         internal void ForceReprocess()
         {

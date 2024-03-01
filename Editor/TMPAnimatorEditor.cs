@@ -68,12 +68,10 @@ namespace TMPEffects.Editor
             }
             else
             {
-                // Potential TODO:
-                // This line is necessary as this ensures the processors are up-to-date with the current state of
-                // the TMPAnimationDatabase. Could also do this by making TMPAnimationDatabase return with ref; fine for now
-                // even better would be a callback when changing the database so you dont have to select the gameobject for
-                // changes to show
-                animator.OnDatabaseChangedWrapper();
+                // TODO
+                // Implemented database callback; this still necessary?
+                // Testing required
+                //animator.PrepareForProcessingWrapper();
             }
 
             animator.ForceReprocess();

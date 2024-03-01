@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
+using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.TMPAnimations
 {
     /// <summary>
     /// Base class for animations.
     /// </summary>
-    public abstract class TMPAnimation : ScriptableObject, ITMPAnimation
+    public abstract class TMPAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged
     {
         ///<inheritdoc/>
         public abstract void Animate(CharData charData, IAnimationContext context);
@@ -19,6 +19,21 @@ namespace TMPEffects.TMPAnimations
 
         ///<inheritdoc/>
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
+
+
+#if UNITY_EDITOR
+        public event ObjectChangedEventHandler ObjectChanged;
+
+        protected virtual void OnValidate()
+        {
+            RaiseObjectChanged();
+        }
+
+        protected void RaiseObjectChanged()
+        {
+            ObjectChanged?.Invoke(this);
+        }
+#endif
     }
 
     /// <summary>

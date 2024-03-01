@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace TMPEffects.Databases
 {
     public interface ITMPEffectDatabase
