@@ -16,11 +16,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             context.FinishAnimation(cData.info.index);
         }
 
-        public override void ResetParameters()
-        {
-        }
-
-        public override void SetParameters(IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
         }
 

@@ -162,8 +162,11 @@ namespace TMPEffects.Editor
             clicked = false;
             wasWriting = false;
             wasEnabled = writer.enabled;
-            writer.OnShowCharacter.AddListener(UpdateProgress);
-            writer.OnResetWriter.AddListener(UpdateProgress);
+
+            writer.OnResetWriterPreview -= UpdateProgress;
+            writer.OnResetWriterPreview += UpdateProgress; 
+            writer.OnCharacterShownPreview -= UpdateProgress;
+            writer.OnCharacterShownPreview += UpdateProgress;
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
             useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;

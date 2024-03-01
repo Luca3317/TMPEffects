@@ -10,19 +10,18 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new fade hide", menuName = "new fade hide")]
     public class NewFadeHideAnim : TMPHideAnimation
     {
-        private float currentDuration;
-
         public override void Animate(CharData cData, IAnimationContext context)
         {
             ReadOnlyAnimatorContext ac = context.animatorContext;
+            Data data = (Data)context.customData;
 
             float value = 1f;
-            if (currentDuration >= 0)
+            if (data.duration >= 0)
             {
-                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
+                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / data.duration);
             }
 
-            Debug.Log("for " + cData.info.index + $"; ({ac.PassedTime} - {ac.StateTime(cData)}) / {currentDuration} = {(ac.PassedTime - ac.StateTime(cData)) / currentDuration}");
+            Debug.Log("for " + cData.info.index + $"; ({ac.PassedTime} - {ac.StateTime(cData)}) / {data.duration} = {(ac.PassedTime - ac.StateTime(cData)) / data.duration}");
 
             for (int i = 0; i < 4; i++)
             {
@@ -40,19 +39,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        public override void ResetParameters()
-        {
-            currentDuration = duration;
-        }
-
-        public override void SetParameters(IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             if (parameters == null) return;
+
+            Data data = (Data)customData;
 
             float tmpDuration;
             if (TryGetFloatParameter("d", parameters, out tmpDuration))
             {
-                currentDuration = tmpDuration;
+                data.duration = tmpDuration;
             }
         }
 
@@ -60,6 +56,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             if (!HasFloatParameter("d", parameters)) return false;
             return true;
+        }
+
+        public override object GetNewCustomData()
+        {
+            return new Data() { duration = this.duration };
+        }
+
+        private class Data
+        {
+            public float duration;
         }
     }
 }

@@ -9,16 +9,15 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new testshwo", menuName = "new testshwo")]
     public class NewTestShow : TMPShowAnimation
     {
-        private float currentDuration;
-
         public override void Animate(CharData cData, IAnimationContext context)
         {
             ReadOnlyAnimatorContext ac = context.animatorContext;
+            TestData data = (TestData)context.customData;
 
             float value = 1f;
-            if (currentDuration >= 0)
+            if (data.duration >= 0)
             {
-                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
+                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / data.duration);
             }
 
             cData.SetPosition(cData.info.initialPosition + Vector3.up * value * 45f);
@@ -30,19 +29,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        public override void ResetParameters()
-        {
-            currentDuration = duration;
-        }
-
-        public override void SetParameters(IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             if (parameters == null) return;
+
+            TestData td = (TestData)customData;
 
             float tmpDuration;
             if (TryGetFloatParameter("d", parameters, out tmpDuration))
             {
-                currentDuration = tmpDuration;
+                td.duration = tmpDuration;
             }
         }
 
@@ -50,6 +46,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             if (!HasFloatParameter("d", parameters)) return false;
             return true;
+        }
+
+        public override object GetNewCustomData()
+        {
+            return new TestData() { duration = this.duration };
+        }
+
+        private class TestData
+        {
+            public float duration;
         }
     }
 }

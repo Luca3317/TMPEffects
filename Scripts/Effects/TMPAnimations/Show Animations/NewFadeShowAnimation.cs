@@ -10,16 +10,15 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new fade", menuName = "new fade")]
     public class NewFadeShowAnimation : TMPShowAnimation
     {
-        private float currentDuration;
-
         public override void Animate(CharData cData, IAnimationContext context)
         {
             ReadOnlyAnimatorContext ac = context.animatorContext;
+            TestData td = (TestData)context.customData;
 
             float value = 1f;
-            if (currentDuration >= 0)
+            if (td.duration >= 0)
             {
-                value = Mathf.Lerp(0f, 1f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
+                value = Mathf.Lerp(0f, 1f, (ac.PassedTime - ac.StateTime(cData)) / td.duration);
             }
 
             //Debug.Log("for " + cData.info.index + $"; ({ac.PassedTime} - {ac.StateTime(cData)}) / {currentDuration} = {(ac.PassedTime - ac.StateTime(cData)) / currentDuration}");
@@ -38,19 +37,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        public override void ResetParameters()
-        {
-            currentDuration = duration;
-        }
-
-        public override void SetParameters(IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             if (parameters == null) return;
+
+            TestData td = (TestData)customData;
 
             float tmpDuration;
             if (TryGetFloatParameter("d", parameters, out tmpDuration))
             {
-                currentDuration = tmpDuration;
+                td.duration = tmpDuration;
             }
         }
 
@@ -58,6 +54,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             if (!HasFloatParameter("d", parameters)) return false;
             return true;
+        }
+
+        public override object GetNewCustomData()
+        {
+            return new TestData() { duration = this.duration };
+        }
+
+        private class TestData
+        {
+            public float duration;
         }
     }
 }

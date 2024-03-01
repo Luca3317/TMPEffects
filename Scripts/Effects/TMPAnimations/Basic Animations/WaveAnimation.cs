@@ -12,20 +12,19 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField] private float frequency;
         [SerializeField] private float amplitude;
 
-        private float currentFrequency;
-        private float currentAmplitude;
-        private float currentSpeed;
-
         public override void Animate(CharData cData, IAnimationContext context)
         {
+            Data data = (Data)context.customData;
             float xPos = (cData.mesh.initial.vertex_TL.position.x + cData.mesh.initial.vertex_TR.position.x) / 2;
-            float yOffset = currentAmplitude * (Mathf.Sin((context.animatorContext.PassedTime) * currentSpeed +/* cData.index*/ (xPos / (cData.info.referenceScale /*(cData.ascender - cData.descender)*/ / 36f)) / 200 * currentFrequency + Mathf.PI / 2) + 1) * (/*context.scaleAnimations ? scale :*/ 1);
+            float yOffset = data.amplitude * (Mathf.Sin((context.animatorContext.PassedTime) * data.speed + (xPos / (cData.info.referenceScale / 36f)) / 200 * data.frequency + Mathf.PI / 2) + 1);
             cData.SetPosition(cData.info.initialPosition + Vector3.up * yOffset);
         }
 
-        public override void SetParameters(IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             if (parameters == null) return;
+
+            Data data = (Data)customData;
 
             foreach (var kvp in parameters)
             { 
@@ -33,24 +32,17 @@ namespace TMPEffects.TMPAnimations.Animations
                 {
                     case "s":
                     case "sp":
-                    case "speed": ParsingUtility.StringToFloat(kvp.Value, out currentSpeed); break;
+                    case "speed": ParsingUtility.StringToFloat(kvp.Value, out data.speed); break;
 
                     case "f":
                     case "fq":
-                    case "frequency": ParsingUtility.StringToFloat(kvp.Value, out currentFrequency); break;
+                    case "frequency": ParsingUtility.StringToFloat(kvp.Value, out data.frequency); break;
 
                     case "a":
                     case "amp":
-                    case "amplitude": ParsingUtility.StringToFloat(kvp.Value, out currentAmplitude); break;
+                    case "amplitude": ParsingUtility.StringToFloat(kvp.Value, out data.amplitude); break;
                 }
             }
-        }
-
-        public override void ResetParameters()
-        { 
-            currentFrequency = frequency;
-            currentAmplitude = amplitude;
-            currentSpeed = speed;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -77,6 +69,18 @@ namespace TMPEffects.TMPAnimations.Animations
             }
 
             return true;
+        }
+
+        public override object GetNewCustomData()
+        {
+            return new Data() { amplitude = this.amplitude, frequency = this.frequency, speed = this.speed };
+        }
+
+        private class Data
+        {
+            public float speed;
+            public float frequency;
+            public float amplitude;
         }
     }
 }

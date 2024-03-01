@@ -109,27 +109,33 @@ namespace TMPEffects.Components
                 return;
 #endif
 
-            uEvent.Invoke();
+            uEvent?.Invoke();
         }
 
-        private void RaiseCharDataEvent(UnityEvent<CharData> uEvent, CharData cData)
+        private void RaiseCharacterShownEvent(CharData cData)
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
+            {
+                OnCharacterShownPreview?.Invoke(cData);
                 return;
+            }
 #endif
 
-            uEvent.Invoke(cData);
+            OnShowCharacter?.Invoke(cData);
         }
 
-        private void RaiseIntEvent(UnityEvent<int> uEvent, int value)
+        private void RaiseResetWriterEvent(int index)
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
+            {
+                OnResetWriterPreview?.Invoke(index);
                 return;
+            }
 #endif
 
-            uEvent.Invoke(value);
+            OnResetWriter?.Invoke(index);
         }
 
         // TODO Needed? if not, private
@@ -341,7 +347,7 @@ namespace TMPEffects.Components
 
             ResetData();
 
-            RaiseIntEvent(OnResetWriter, 0);
+            RaiseResetWriterEvent(0);
         }
 
         /// <summary>
@@ -373,7 +379,7 @@ namespace TMPEffects.Components
 
             currentIndex = index;
 
-            RaiseIntEvent(OnResetWriter, index);
+            RaiseResetWriterEvent(index);
         }
 
         /// <summary>
@@ -564,7 +570,7 @@ namespace TMPEffects.Components
                 if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
                 {
                     // TODO should this be raised even if already shown?
-                    RaiseCharDataEvent(OnShowCharacter, cData);
+                    RaiseCharacterShownEvent(cData);
                     Show(i, 1, false);
                 }
 
@@ -788,6 +794,11 @@ namespace TMPEffects.Components
         [SerializeField, HideInInspector] bool initValidate = false;
         [SerializeField, HideInInspector] bool eventsEnabled = false;
         [SerializeField, HideInInspector] bool commandsEnabled = false;
+
+        public delegate void CharDataHandler(CharData cData);
+        public delegate void IntHandler(int index);
+        public event CharDataHandler OnCharacterShownPreview;
+        public event IntHandler OnResetWriterPreview;
 
         private void EditorUpdate()
         {
