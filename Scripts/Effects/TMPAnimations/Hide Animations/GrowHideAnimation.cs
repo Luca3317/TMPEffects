@@ -34,7 +34,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             float multiplier = Mathf.Lerp(currentMaxScale, currentMinScale, t);
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
-                cData.SetVisibilityState(VisibilityState.Hidden);
+                context.FinishAnimation(cData.info.index);
                 multiplier = currentMinScale;
             }
 
@@ -339,16 +339,13 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new Context() { lastRoc = 0 };
         }
 
-        private class Context : IAnimationContext
+        private class Context 
         {
-            public ReadOnlyAnimatorContext animatorContext { get; set; }
-            public SegmentData segmentData { get; set; }
-
             public float lastRoc;
         }
     }

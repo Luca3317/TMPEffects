@@ -11,7 +11,6 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new CharShowAnimation", menuName = "TMPEffects/Show Animations/Char")]
     public class CharShowAnimation : TMPShowAnimation
     {
-        [SerializeField] float duration;
         [SerializeField] string characters;
         [SerializeField] int maxUnitSize;
         [SerializeField] int minUnitSize;
@@ -45,7 +44,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (context.animatorContext.PassedTime - context.animatorContext.VisibleTime(cData) >= currentDuration)
             {
-                cData.SetVisibilityState(VisibilityState.Shown);
+                context.FinishAnimation(cData.info.index);
                 return;
             }
 
@@ -301,20 +300,17 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new CharAnimContext() { waitTimeRemaining = new Dictionary<int, float>(), random = new System.Random(), init = false, positions = new Dictionary<int, GlyphRect>() };
         }
 
-        private class CharAnimContext : IAnimationContext
+        private class CharAnimContext 
         {
             public Dictionary<int, float> waitTimeRemaining;
             public Dictionary<int, GlyphRect> positions;
             public System.Random random;
             public bool init;
-
-            public ReadOnlyAnimatorContext animatorContext { get; set; }
-            public SegmentData segmentData { get; set; }
         }
 
         bool StringToOrder(string str, out Order order)

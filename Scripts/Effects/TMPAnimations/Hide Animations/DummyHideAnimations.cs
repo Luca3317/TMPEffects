@@ -12,7 +12,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 AnimationUtility.SetVertexRaw(i, cData.info.initialPosition, cData, ref context);
             }
 
-            cData.SetVisibilityState(VisibilityState.Hidden);
+            context.FinishAnimation(cData.info.index);
         }
 
         public override void ResetParameters()

@@ -12,21 +12,11 @@ namespace TMPEffects.Components
     public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation
     {
         public abstract void Animate(CharData charData, IAnimationContext context);
-        public abstract IAnimationContext GetNewContext();
+        public abstract object GetNewCustomData();
 
         public abstract void ResetParameters();
 
         public abstract void SetParameters(IDictionary<string, string> parameters);
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
-
-        protected class DefaultSceneAnimationContext : IAnimationContext
-        {
-            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
-            private ReadOnlyAnimatorContext settings;
-
-            public SegmentData segmentData { get; set; }
-
-            public void ResetContext() { }
-        }
     }
 }

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showAnimations:
     _serializedList:
+    - Key: newfade
+      Value: {fileID: 11400000, guid: d01bee5e9033e6245bc967f28bfb6acf, type: 2}
     - Key: char
       Value: {fileID: 11400000, guid: 7c2afe89cbb9ee94d8161a6fb0f118c3, type: 2}
     - Key: fade

@@ -10,6 +10,8 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public abstract class TMPHideAnimation : ScriptableObject, ITMPAnimation
     {
+        [SerializeField] protected float duration;
+
         ///<inheritdoc/>
         public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>
@@ -19,17 +21,9 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract void ResetParameters();
         ///<inheritdoc/>
-        public virtual IAnimationContext GetNewContext()
+        public virtual object GetNewCustomData()
         {
-            return new DefaultAnimationContext();
-        }
-
-        private struct DefaultAnimationContext : IAnimationContext
-        {
-            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
-            private ReadOnlyAnimatorContext settings;
-
-            public SegmentData segmentData { get; set; }
+            return null;
         }
     }
 }

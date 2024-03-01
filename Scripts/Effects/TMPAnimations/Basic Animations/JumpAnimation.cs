@@ -28,7 +28,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            JumpContext ctx = (JumpContext)context;
+            JumpContext ctx = (JumpContext)context.customData;
 
             // Initialize playingSince
             if (ctx.playingSince == -1)
@@ -164,18 +164,13 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new JumpContext() { waitingSince = -1f, playingSince = -1f };
         }
 
-        private class JumpContext : IAnimationContext
+        private class JumpContext
         {
-            private ReadOnlyAnimatorContext context;
-            public ReadOnlyAnimatorContext animatorContext { get => context; set => context = value; }
-
-            public SegmentData segmentData { get; set; }
-
             public float waitingSince;
             public float playingSince;
 

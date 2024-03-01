@@ -26,9 +26,15 @@ namespace TMPEffects.Components.Animator
 
         public CachedAnimation CacheTag(EffectTag tag, EffectTagIndices indices)
         {
-            CachedAnimation ca = new CachedAnimation(tag, new EffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex), database.GetEffect(tag.Name));
-            ca.context.animatorContext = new ReadOnlyAnimatorContext(context);
-            ca.context.segmentData = new SegmentData(ca.Indices, charData, animates);
+            ITMPAnimation animation = database.GetEffect(tag.Name);
+            EffectTagIndices closedIndices = new EffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
+            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), new SegmentData(closedIndices, charData, animates), animation.GetNewCustomData());
+            CachedAnimation ca = new CachedAnimation(
+                tag, 
+                closedIndices,
+                animation, 
+                animationContext
+            );
             return ca;
         }
     }

@@ -12,9 +12,9 @@ namespace TMPEffects.Components.CharacterData
     /// </summary>
     public class CharData
     {
-        public VisibilityState VisibilityState => mediator.GetVisibilityState(this);
-        public void SetVisibilityState(VisibilityState state) => mediator.SetVisibilityState(this, state);
-        private TMPMediator mediator;
+        //public VisibilityState VisibilityState => mediator.GetVisibilityState(this);
+        //public void SetVisibilityState(VisibilityState state) => mediator.SetVisibilityState(this, state);
+        //private TMPMediator mediator;
 
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
@@ -91,7 +91,7 @@ namespace TMPEffects.Components.CharacterData
 
             segmentIndex = -1;
 
-            this.mediator = mediator;
+            //this.mediator = mediator;
         }
         public CharData(int index, TMP_CharacterInfo cInfo, TMPMediator mediator, TMP_WordInfo? wInfo = null)
         {
@@ -106,7 +106,7 @@ namespace TMPEffects.Components.CharacterData
 
             segmentIndex = -1;
 
-            this.mediator = mediator;
+            //this.mediator = mediator;
         }
 
 

@@ -184,20 +184,17 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new CharAnimContext() { waitTimeRemaining = new Dictionary<int, float>(), random = new System.Random(), init = false, positions = new Dictionary<int, GlyphRect>() };
         }
 
-        private class CharAnimContext : IAnimationContext
+        private class CharAnimContext
         {
             public Dictionary<int, float> waitTimeRemaining;
             public Dictionary<int, GlyphRect> positions;
             public System.Random random;
             public bool init;
-
-            public ReadOnlyAnimatorContext animatorContext { get; set; }
-            public SegmentData segmentData { get; set; }
         }
     }
 }

@@ -19,19 +19,9 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract void ResetParameters();
         ///<inheritdoc/>
-        public virtual IAnimationContext GetNewContext()
+        public virtual object GetNewCustomData()
         {
-            return new DefaultAnimationContext();
-        }
-
-        private struct DefaultAnimationContext : IAnimationContext
-        {
-            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
-            private ReadOnlyAnimatorContext settings;
-
-            public SegmentData segmentData { get; set; }
-
-            public void ResetContext() { }
+            return null;
         }
     }
 

@@ -41,7 +41,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (Mathf.Sign(ctx.lastRoc) != Mathf.Sign(Mathf.Cos(angle)))
             {
                 //ctx.done[cData.segmentIndex] = true;
-                cData.SetVisibilityState(VisibilityState.Shown);
+                context.FinishAnimation(cData.info.index);
 
                 cData.mesh.SetColor(0, cData.mesh.initial.GetColor(0));
                 cData.mesh.SetColor(1, cData.mesh.initial.GetColor(1));
@@ -276,24 +276,14 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new Context() { lastRoc = 0 };
         }
 
-        private class Context : IAnimationContext
+        private class Context
         {
-            public ReadOnlyAnimatorContext animatorContext { get; set; }
-            public SegmentData segmentData { get; set; }
-
             public float lastRoc;
-
-            //public Dictionary<int, bool> done =new Dictionary<int, bool>();
-
-            public void ResetContext()
-            {
-                //done = new();
-            }
         }
     }
 }

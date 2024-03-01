@@ -30,9 +30,9 @@ namespace TMPEffects.TMPAnimations
         public void ResetParameters();
 
         /// <summary>
-        /// Get the context for this animation.
+        /// Create and get a new custom data object for this animation.
         /// </summary>
-        /// <returns>The context for this animation.</returns>
-        public IAnimationContext GetNewContext();
+        /// <returns>The custom data object for this animation.</returns>
+        public object GetNewCustomData();
     }
 }

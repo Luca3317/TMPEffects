@@ -7,8 +7,8 @@ using UnityEngine;
 using static TMPEffects.EffectUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new fade", menuName = "new fade")]
-    public class NewFadeShowAnimation : TMPShowAnimation
+    [CreateAssetMenu(fileName = "new fade hide", menuName = "new fade hide")]
+    public class NewFadeHideAnim : TMPHideAnimation
     {
         private float currentDuration;
 
@@ -19,7 +19,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float value = 1f;
             if (currentDuration >= 0)
             {
-                value = Mathf.Lerp(0f, 1f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
+                value = Mathf.Lerp(1f, 0f, (ac.PassedTime - ac.StateTime(cData)) / currentDuration);
             }
 
             Debug.Log("for " + cData.info.index + $"; ({ac.PassedTime} - {ac.StateTime(cData)}) / {currentDuration} = {(ac.PassedTime - ac.StateTime(cData)) / currentDuration}");
@@ -30,10 +30,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 color.a = (byte)(value * color.a);
                 cData.mesh.SetColor(i, color);
 
-                cData.SetPosition(cData.info.initialPosition + Vector3.up * value * 25);
+                //cData.SetPosition(cData.info.initialPosition + Vector3.up * value * 25);
             }
 
-            if (value == 1)
+            if (value == 0)
             {
                 Debug.Log($"Finishing animation for {cData.info.character} at {cData.info.index}");
                 context.FinishAnimation(cData.info.index);

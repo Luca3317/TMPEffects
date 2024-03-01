@@ -30,11 +30,11 @@ namespace TMPEffects.TMPAnimations.Animations
         public override void Animate(CharData cData, IAnimationContext context)
         {
             float BL, TL, TR, BR;
-            Context ctx = context as Context;
+            Context ctx = context.customData as Context;
             FixVector(ref currentAnchor);
-            if (ctx.lastUpdated == -1) { ctx.lastUpdated = ctx.animatorContext.PassedTime; }
+            if (ctx.lastUpdated == -1) { ctx.lastUpdated = context.animatorContext.PassedTime; }
 
-            if (cData.info.index == ctx.segmentData.firstAnimationIndex)
+            if (cData.info.index == context.segmentData.firstAnimationIndex)
             {
                 ctx.passed += context.animatorContext.DeltaTime * currentSpeed;
             }
@@ -361,16 +361,13 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new Context() { lastUpdated = -1f, lastRoc = 0, waitingSince = -1, passed = 0 };
         }
 
-        private class Context : IAnimationContext
+        private class Context
         {
-            public ReadOnlyAnimatorContext animatorContext { get; set; }
-            public SegmentData segmentData { get; set; }
-
             public float lastUpdated;
             public float lastRoc;
             public float waitingSince;

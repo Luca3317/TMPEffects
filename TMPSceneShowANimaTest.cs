@@ -10,12 +10,12 @@ public class TMPSceneShowANimaTest : TMPSceneShowAnimation
 {
     public override void Animate(CharData charData, IAnimationContext context)
     {
-        charData.SetVisibilityState(VisibilityState.Shown); 
+        context.FinishAnimation(charData.info.index);
     }
 
-    public override IAnimationContext GetNewContext()
+    public override object GetNewCustomData()
     {
-        return new DefaultSceneAnimationContext();
+        return null;
     }
 
     public override void ResetParameters()

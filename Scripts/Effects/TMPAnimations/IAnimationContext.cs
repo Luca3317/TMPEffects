@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Diagnostics;
 using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
+using UnityEngine.Windows.Speech;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -11,31 +14,74 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The context of the animator.
         /// </summary>
-        public ReadOnlyAnimatorContext animatorContext { get; set; }
+        public ReadOnlyAnimatorContext animatorContext { get; }
         /// <summary>
         /// Data about the animation segment.
         /// </summary>
-        public SegmentData segmentData { get; set; }
+        public SegmentData segmentData { get; }
 
-        /// <summary>
-        /// Reset the context.
-        /// </summary>
-        public void ResetContext() { }
+        public object customData { get; }
+
+        public bool Finished(int index);
+        public void FinishAnimation(int index);
     }
 
-    /// <summary>
-    /// Basic interface for animation contexts for <see cref="TMPShowAnimation"/> and <see cref="TMPHideAnimation"/>.
-    /// </summary>
-    public interface IVisibilityAnimationContext : IAnimationContext
+    public class AnimationContext : IAnimationContext
     {
-        /// <summary>
-        /// Since when the character has been in its current <see cref="VisibilityState"/>.
-        /// </summary>
-        public float StateTime { get; }
-        /// <summary>
-        /// Since when the character has been visible, i.e. since when its <see cref="VisibilityState"/> 
-        /// has not been <see cref="VisibilityState.Hidden"/>.
-        /// </summary>
-        public float VisibleTime { get; }
+        public bool Finished(int index) => finishedDict[index];
+        public ReadOnlyAnimatorContext animatorContext { get; set; }
+        public SegmentData segmentData { get; set; }
+        public object customData { get; }
+
+        public AnimationContext(ReadOnlyAnimatorContext animatorContext, SegmentData segmentData, object customData)
+        {
+            this.customData = customData;
+            this.segmentData = segmentData;
+            this.animatorContext = animatorContext;
+            finishedDict = new Dictionary<int, bool>(segmentData.length);
+
+            for (int i = segmentData.startIndex; i < segmentData.startIndex + segmentData.length; i++)
+            {
+                UnityEngine.Debug.Log("Add " + i);
+                finishedDict.Add(i, false);
+            }
+        }
+
+        public void FinishAnimation(int index)
+        {
+            finishedDict[index] = true;
+        }
+
+        public void ResetFinishAnimation(int index)
+        {
+            finishedDict[index] = false;
+        } 
+
+        public void ResetFinishAnimation()
+        {
+            foreach (var key in finishedDict.Keys)
+            {
+                finishedDict[key] = false;
+            }
+        }
+
+        public Dictionary<int, bool> finishedDict;
+    }
+
+    public class ReadOnlyAnimationContext : IAnimationContext
+    {
+        public bool Finished(int index) => context.Finished(index);
+        public ReadOnlyAnimatorContext animatorContext => context.animatorContext;
+        public SegmentData segmentData => context.segmentData;
+        public object customData => context.customData;
+
+        public ReadOnlyAnimationContext(AnimationContext context)
+        {
+            this.context = context;
+        }
+
+        public void FinishAnimation(int index) => context.FinishAnimation(index);
+
+        private AnimationContext context;
     }
 }

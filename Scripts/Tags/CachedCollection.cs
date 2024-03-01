@@ -19,14 +19,6 @@ namespace TMPEffects.Tags.Collections
     /// <typeparam name="T">The type of tag wrapper / cached tags.</typeparam>
     public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
     {
-        private Dictionary<int, MinMax> minMax = new();
-
-        private List<T> cache = new List<T>();
-        private ITagCacher<T> cacher;
-
-        private int max = int.MinValue;
-        private int min = int.MaxValue;
-
         /// <summary>
         /// Amount of cached tags contained in this collection.
         /// </summary>
@@ -336,6 +328,14 @@ namespace TMPEffects.Tags.Collections
                 this.index = minIndex - 1;
             }
         }
+
+        private Dictionary<int, MinMax> minMax = new();
+
+        private List<T> cache = new List<T>();
+        private ITagCacher<T> cacher;
+
+        private int max = int.MinValue;
+        private int min = int.MaxValue;
 
         private void Add(int cachedIndex, T tuple)
         {

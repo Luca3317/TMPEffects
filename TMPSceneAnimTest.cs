@@ -13,9 +13,9 @@ public class TMPSceneAnimTest : TMPSceneAnimation
     {
     }
 
-    public override IAnimationContext GetNewContext()
+    public override object GetNewCustomData()
     {
-        return new DefaultSceneAnimationContext();
+        return null;
     }
 
     public override bool ValidateParameters(IDictionary<string, string> parameters)

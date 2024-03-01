@@ -24,7 +24,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            shakeContext = (ShakeAnimationContext)context;
+            shakeContext = (ShakeAnimationContext)context.customData;
 
             float xOffset;
             float yOffset;
@@ -37,8 +37,8 @@ namespace TMPEffects.TMPAnimations.Animations
             }
             else
             {
-                seed = (int)(shakeContext.animatorContext.PassedTime * 1000);
-                shakeContext.lastUpdated = shakeContext.animatorContext.PassedTime;
+                seed = (int)(context.animatorContext.PassedTime * 1000);
+                shakeContext.lastUpdated = context.animatorContext.PassedTime;
                 shakeContext.lastSeed = seed;
             }
 
@@ -160,18 +160,13 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override IAnimationContext GetNewContext()
+        public override object GetNewCustomData()
         {
             return new ShakeAnimationContext();
         }
 
-        private class ShakeAnimationContext : IAnimationContext
+        private class ShakeAnimationContext
         {
-            public SegmentData segmentData { get; set; }
-
-            public ReadOnlyAnimatorContext animatorContext { get => settings; set => settings = value; }
-            private ReadOnlyAnimatorContext settings;
-
             public float RandomX;
             public float RandomY;
 

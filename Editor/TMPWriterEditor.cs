@@ -196,10 +196,7 @@ namespace TMPEffects.Editor
         void UpdateProgress(int index)
         {
             progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextComponent.textInfo.characterCount - 1));
-            if (progress == 1) finished = true;
         }
-
-        bool finished = false;
 
         void PrepareLayout()
         {

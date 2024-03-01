@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components.CharacterData;
+using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
@@ -7,12 +8,13 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
+            Debug.Log("Dummy show");
             for (int i = 0; i < 4; i++)
             {
                 cData.SetVertex(i, cData.mesh.initial.GetPosition(i));
             }
 
-            cData.SetVisibilityState(VisibilityState.Shown);
+            context.FinishAnimation(cData.info.index);
         }
 
         public override void ResetParameters()
