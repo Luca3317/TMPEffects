@@ -43,6 +43,13 @@ namespace TMPEffects
             return ret;
         }
 
+
+        public static bool HasNonFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetFloatParameter(out float _, parameters, name, aliases);
+        }
+
         public static bool HasFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetFloatParameter(out float _, parameters, name, aliases);
@@ -74,6 +81,12 @@ namespace TMPEffects
             throw new System.Exception("Parameter " + defined + " is not a valid float");
         }
 
+
+        public static bool HasNonIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetIntParameter(out int _, parameters, name, aliases);
+        }
 
         public static bool HasIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
@@ -107,6 +120,12 @@ namespace TMPEffects
         }
 
 
+        public static bool HasNonBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetBoolParameter(out bool _, parameters, name, aliases);
+        }
+
         public static bool HasBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetBoolParameter(out bool _, parameters, name, aliases);
@@ -139,6 +158,12 @@ namespace TMPEffects
         }
 
 
+        public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetVector2Parameter(out Vector2 _, parameters, name, aliases);
+        }
+
         public static bool HasVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetVector2Parameter(out Vector2 _, parameters, name, aliases);
@@ -170,6 +195,12 @@ namespace TMPEffects
             throw new System.Exception("Parameter " + defined + " is not a valid Vector2");
         }
 
+
+        public static bool HasNonVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetVector3Parameter(out Vector3 _, parameters, name, aliases);
+        }
 
         public static bool HasVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {

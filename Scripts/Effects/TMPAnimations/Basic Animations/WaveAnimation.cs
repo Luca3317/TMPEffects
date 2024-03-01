@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.TextProcessing;
 using TMPEffects.Components.CharacterData;
+using static TMPEffects.EffectUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -25,49 +26,17 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data data = (Data)customData;
-
-            foreach (var kvp in parameters)
-            { 
-                switch (kvp.Key)
-                {
-                    case "s":
-                    case "sp":
-                    case "speed": ParsingUtility.StringToFloat(kvp.Value, out data.speed); break;
-
-                    case "f":
-                    case "fq":
-                    case "frequency": ParsingUtility.StringToFloat(kvp.Value, out data.frequency); break;
-
-                    case "a":
-                    case "amp":
-                    case "amplitude": ParsingUtility.StringToFloat(kvp.Value, out data.amplitude); break;
-                }
-            }
+            if (TryGetFloatParameter(out float val, parameters, "speed", speedAliases)) data.speed = val;
+            if (TryGetFloatParameter(out val, parameters, "frequency", frequencyAliases)) data.frequency = val;
+            if (TryGetFloatParameter(out val, parameters, "amplitude", amplitudeAliases)) data.amplitude = val;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
-            if (parameters == null)
-                return true;
-
-            foreach (var kvp in parameters)
-            {
-                switch (kvp.Key)
-                {
-                    case "s":
-                    case "sp":
-                    case "speed":
-                    case "f":
-                    case "fq":
-                    case "frequency":
-                    case "a":
-                    case "amp":
-                    case "amplitude":
-                        if (!ParsingUtility.StringToFloat(kvp.Value, out _)) return false;
-                        break;
-                }
-            }
-
+            if (parameters == null) return true;
+            if (HasNonFloatParameter(parameters, "speed", speedAliases)) return false;
+            if (HasNonFloatParameter(parameters, "frequency", frequencyAliases)) return false;
+            if (HasNonFloatParameter(parameters, "amplitude", amplitudeAliases)) return false;
             return true;
         }
 
@@ -75,6 +44,10 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             return new Data() { amplitude = this.amplitude, frequency = this.frequency, speed = this.speed };
         }
+
+        private readonly string[] speedAliases = new string[] { "s", "sp" };
+        private readonly string[] frequencyAliases = new string[] { "f", "fq" };
+        private readonly string[] amplitudeAliases = new string[] { "a", "amp" };
 
         private class Data
         {

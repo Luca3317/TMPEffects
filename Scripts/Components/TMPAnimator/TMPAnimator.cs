@@ -328,7 +328,7 @@ namespace TMPEffects.Components
             if (string.IsNullOrWhiteSpace(str))
             {
                 SetToDummy();
-                return;
+                return; 
             }
             str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
             if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name, type))
