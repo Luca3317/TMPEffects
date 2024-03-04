@@ -29,6 +29,11 @@ namespace TMPEffects.TMPAnimations
             RaiseObjectChanged();
         }
 
+        protected virtual void OnDestroy()
+        {
+            RaiseObjectChanged();
+        }
+
         protected void RaiseObjectChanged()
         {
             ObjectChanged?.Invoke(this);

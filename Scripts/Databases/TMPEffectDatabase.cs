@@ -42,6 +42,11 @@ namespace TMPEffects.Databases
             RaiseDatabaseChanged();
         }
 
+        protected virtual void OnDestroy()
+        {
+            RaiseDatabaseChanged();
+        }
+
         protected void RaiseDatabaseChanged()
         {
             ObjectChanged?.Invoke(this);

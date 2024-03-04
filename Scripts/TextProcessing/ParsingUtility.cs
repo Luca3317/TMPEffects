@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using TMPEffects.Extensions;
 using UnityEngine;
 
 namespace TMPEffects.TextProcessing
@@ -345,7 +347,7 @@ namespace TMPEffects.TextProcessing
             if (text[start + 1] == '/') return TagType.Close;
             return TagType.Open;
         }
-        
+
         static bool IsWellFormed(string text, int start, int end, TagType type = TagType.Open | TagType.Close)
         {
             if (start < 0 || end <= 0) return false;
@@ -395,7 +397,7 @@ namespace TMPEffects.TextProcessing
 
             if (str[str.Length - 1] != ')') return false;
 
-            int commaIndex = str.IndexOf(';');
+            int commaIndex = str.IndexOf(',');
 
             if (commaIndex < 2) return false;
 
@@ -409,6 +411,38 @@ namespace TMPEffects.TextProcessing
             return true;
         }
 
+        private static bool SpanToVector2(ReadOnlySpan<char> span, out Vector2 result)
+        {
+            result = new Vector2(0, 0);
+            span = span.Trim();
+            if (span.Length <= 3) return false;
+
+            if (span[0] != '(') return false;
+
+            if (span[span.Length - 1] != ')') return false;
+
+            int commaIndex = span.IndexOf(',');
+
+            if (commaIndex < 2) return false;
+
+            float x, y;
+            if (!SpanToFloat(span.Slice(1, commaIndex - 1), out x)) return false;
+
+            if (!SpanToFloat(span.Slice(commaIndex + 1, span.Length - (commaIndex + 2)), out y)) return false;
+
+            result.x = x;
+            result.y = y;
+            return true;
+        }
+
+        private static bool SpanToFloat(ReadOnlySpan<char> span, out float result)
+        {
+            if (!float.TryParse(span, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
+                return false;
+
+            return true;
+        }
+
         public static bool StringToVector3(string str, out Vector3 result)
         {
             result = new Vector3(0, 0, 0);
@@ -419,8 +453,8 @@ namespace TMPEffects.TextProcessing
 
             if (str[str.Length - 1] != ')') return false;
 
-            int commaIndex = str.IndexOf(';');
-            int commaIndex2 = str.IndexOf(';', commaIndex + 1);
+            int commaIndex = str.IndexOf(',');
+            int commaIndex2 = str.IndexOf(',', commaIndex + 1);
             if (commaIndex < 2) return false;
             if (commaIndex2 < 4) return false;
 
@@ -432,6 +466,117 @@ namespace TMPEffects.TextProcessing
             result.x = x;
             result.y = y;
             result.z = z;
+            return true;
+        }
+
+        /*
+         * Valid anim curve format
+         * 
+         *  cubic(x0,y0,x1,y1....); same with quadratic/linear; alt names e.g. cubic-bezier
+         *  
+         *  cubic((x0,y0),(x1,y1)); same as above but with vectors
+         *  
+         *  
+         *  pure vector sequence: (x0,y0),(x1,y1)...; infer type based on amount of points 
+         *  
+         *  //recognizable by: no '(' ')' or ','
+         *  keywords: easein, easeout, etc
+         */
+        public static bool StringToAnimationCurve(string str, out AnimationCurve result)
+        {
+            result = null;
+            str = str.Trim();
+
+            if (str.Length == 0) return false;
+
+            // If vector
+            if (str[0] == '(')
+            {
+                Debug.LogWarning("Going for vectors");
+                return VectorSequenceToAnimationCurve(str, ref result);
+            }
+
+            // If method
+            if (str.Contains('('))
+            {
+                Debug.LogWarning("Going for method");
+                return MethodToAnimationCurve(str, ref result);
+            }
+
+            // else, keyword
+            if (AnimationCurveUtility.NamePointsMapping.TryGetValue(str, out ReadOnlyCollection<Vector2> val))
+            {
+                Debug.LogWarning("Going for keyword");
+                result = AnimationCurveUtility.CubicBezier(val);
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
+        {
+            List<Vector2> vectors = new List<Vector2>();
+            int currentStartIndex = str.IndexOf('(', 0);
+            int currentEndIndex = str.IndexOf(')', currentStartIndex);
+
+            if (currentStartIndex == -1 || currentEndIndex == -1) return false;
+
+            var span = str.AsSpan();
+
+            while (currentEndIndex < str.Length && currentEndIndex != -1)
+            {
+                var slice = span.Slice(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
+
+                if (!SpanToVector2(slice, out Vector2 vectorResult))
+                {
+                    return false;
+                }
+
+                vectors.Add(vectorResult);
+                currentStartIndex = str.IndexOf('(', currentEndIndex);
+                currentEndIndex = currentStartIndex != -1 ? str.IndexOf(')', currentStartIndex) : -1;
+            }
+
+            result = AnimationCurveUtility.Bezier(vectors);
+            return true;
+        }
+
+        private static bool MethodToAnimationCurve(string str, ref AnimationCurve result)
+        {
+            if (str.Length < 4) return false;
+
+            List<Vector2> vectors = new List<Vector2>();
+            int currentStartIndex = str.IndexOf("((", 0);
+            int currentEndIndex = str.IndexOf(')', currentStartIndex);
+
+            if (currentStartIndex == -1 || currentEndIndex == -1) return false;
+
+            Func<IEnumerable<Vector2>, AnimationCurve> constructor = AnimationCurveUtility.NameBezierConstructorMapping[str.Substring(0, currentStartIndex)];
+
+            Debug.Log("MEthodname: " + str.Substring(0, currentStartIndex));
+
+            currentStartIndex++;
+            var span = str.AsSpan();
+            if (span[span.Length - 1] != ')' || span[span.Length - 2] != ')')
+                return false;
+
+            while (currentEndIndex < str.Length && currentEndIndex != -1)
+            {
+                var slice = span.Slice(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
+
+                UnityEngine.Debug.Log("Trying " + slice.ToString());
+                if (!SpanToVector2(slice, out Vector2 vectorResult))
+                {
+                    return false;
+                }
+
+                vectors.Add(vectorResult);
+                currentStartIndex = str.IndexOf('(', currentEndIndex);
+                currentEndIndex = currentStartIndex != -1 ? str.IndexOf(')', currentStartIndex) : -1;
+            }
+
+            result = constructor(vectors);
             return true;
         }
         #endregion

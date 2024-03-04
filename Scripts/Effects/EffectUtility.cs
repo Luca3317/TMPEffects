@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.TextProcessing;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 namespace TMPEffects
@@ -231,6 +232,44 @@ namespace TMPEffects
             }
 
             throw new System.Exception("Parameter " + defined + " is not a valid Vector3");
+        }
+
+
+        public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetAnimCurveParameter(out AnimationCurve _, parameters, name, aliases);
+        }
+
+        public static bool HasAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return TryGetAnimCurveParameter(out AnimationCurve _, parameters, name, aliases);
+        }
+
+        public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            try
+            {
+                value = GetAnimationCurve(parameters, name, aliases);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        public static AnimationCurve GetAnimationCurve(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+
+            if (ParsingUtility.StringToAnimationCurve(parameters[defined], out AnimationCurve value))
+            {
+                return value;
+            }
+
+            throw new System.Exception("Parameter " + defined + " is not a valid AnimationCurve");
         }
     }
 }

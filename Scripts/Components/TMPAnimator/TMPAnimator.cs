@@ -847,6 +847,13 @@ namespace TMPEffects.Components
 
                 ignoreVisibilityChanges = prev;
             }
+
+            // TODO
+            // Right now this is completely equivalent to the showing logic
+            // Logically though, hiding should be done when the first Hide animation
+            // is finished; character will (/should) be fully invisible
+            // Update this logic to reflect that fact (any other places
+            // that need fixing for this? possibly OnVisibilityStateUpdated)
             else if (vState == VisibilityState.Hiding)
             {
                 bool prev = ignoreVisibilityChanges;

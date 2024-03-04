@@ -876,6 +876,12 @@ namespace TMPEffects.Components
 
                 reprocessFlag = true;
             }
+
+            delay = Mathf.Max(delay, 0);
+            linebreakDelay = Mathf.Max(linebreakDelay, 0);
+            whiteSpaceDelay = Mathf.Max(whiteSpaceDelay, 0);
+            visibleDelay = Mathf.Max(visibleDelay, 0);
+            punctuationDelay = Mathf.Max(punctuationDelay, 0);
         }
 
         //internal void OnDatabaseChangedWrapper()
