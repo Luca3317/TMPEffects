@@ -11,12 +11,8 @@ namespace TMPEffects.Components
     /// </summary>
     public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation
     {
-        public abstract void Animate(CharData charData, IAnimationContext context);
+        public abstract void Animate(CharData cData, IAnimationContext context);
         public abstract object GetNewCustomData();
-
-        public abstract void ResetParameters();
-
-        public abstract void SetParameters(IDictionary<string, string> parameters);
 
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
 

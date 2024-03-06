@@ -120,7 +120,7 @@ namespace TMPEffects.Components.CharacterData
         /// <param name="delta">The delta to add to the position of the vertex.</param> 
         public void AddVertexDelta(int index, Vector3 delta)
         {
-            mesh.SetVertex(index, mesh.GetPosition(index) + delta);
+            mesh.SetVertex(index, mesh.GetVertex(index) + delta);
         }
 
         /// <summary>

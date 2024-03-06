@@ -33,7 +33,6 @@ namespace TMPEffects.Components
 
         public void Hide(int start, int length, bool skipHideProcess = false)
         {
-
             VisibilityState visibility = skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding;
             Mediator.SetVisibilityState(start, length, visibility);
         }

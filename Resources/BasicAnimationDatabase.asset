@@ -15,4 +15,16 @@ MonoBehaviour:
   animations:
     _serializedList:
     - Key: wave
-      Value: {fileID: 11400000, guid: 1f905f4f3ed5abd46822f01022256996, type: 2}
+      Value: {fileID: 11400000, guid: caf90dcc4db077248b4aef29741767e8, type: 2}
+    - Key: char
+      Value: {fileID: 11400000, guid: d6826c460579f67428d39f869dbe772e, type: 2}
+    - Key: funky
+      Value: {fileID: 11400000, guid: 505ebfd45a10d324a875fe622a58721b, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: c9bdffa471e19f74d8eecca2e98ff7a5, type: 2}
+    - Key: jump
+      Value: {fileID: 11400000, guid: 567d16c7fbaad2a43a2c96128495f6d4, type: 2}
+    - Key: fade
+      Value: {fileID: 11400000, guid: e491ab084191bcd41943f54d470627c3, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: c7da9492e365c2a4a993bc557235af1a, type: 2}

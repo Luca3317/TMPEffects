@@ -492,22 +492,19 @@ namespace TMPEffects.TextProcessing
             // If vector
             if (str[0] == '(')
             {
-                Debug.LogWarning("Going for vectors");
                 return VectorSequenceToAnimationCurve(str, ref result);
             }
 
             // If method
             if (str.Contains('('))
             {
-                Debug.LogWarning("Going for method");
                 return MethodToAnimationCurve(str, ref result);
             }
 
             // else, keyword
-            if (AnimationCurveUtility.NamePointsMapping.TryGetValue(str, out ReadOnlyCollection<Vector2> val))
+            if (AnimationCurveUtility.NameConstructorMapping.TryGetValue(str, out Func<AnimationCurve> ctor))
             {
-                Debug.LogWarning("Going for keyword");
-                result = AnimationCurveUtility.CubicBezier(val);
+                result = ctor();
                 return true;
             }
 

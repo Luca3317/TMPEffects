@@ -31,6 +31,10 @@ namespace TMPEffects.Components.CharacterData
         /// The length of the word this character belongs to.
         /// </summary>
         public readonly int wordLen;
+        /// <summary>
+        /// The color of this character.
+        /// </summary>
+        public readonly Color32 color;
 
         /// <summary>
         /// The point size.
@@ -98,6 +102,7 @@ namespace TMPEffects.Components.CharacterData
 
             wordFirstIndex = -1;
             wordLen = -1;
+            color = cInfo.color;
 
             lineNumber = cInfo.lineNumber;
             pageNumber = cInfo.pageNumber;
@@ -130,7 +135,7 @@ namespace TMPEffects.Components.CharacterData
             Vector3 center = Vector3.zero;
             for (int i = 0; i < 4; i++)
             {
-                center += data.GetPosition(i);
+                center += data.GetVertex(i);
             }
             return center / 4;
         }

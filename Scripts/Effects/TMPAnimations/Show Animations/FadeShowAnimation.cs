@@ -1,65 +1,52 @@
-using Codice.Client.Common.FsNodeReaders;
-using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.Extensions;
-using TMPEffects.TextProcessing;
 using UnityEngine;
-using static TMPEffects.EffectUtility;
+using static TMPEffects.ParameterUtility;
+using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
     public class FadeShowAnimation : TMPShowAnimation
     {
-        [SerializeField] private float duration;
-        [SerializeField] private Vector2 anchor;
-        [SerializeField] private AnimationCurve easeInSine = AnimationCurveUtility.EaseInSine();
-        [SerializeField] private AnimationCurve easeOutSine = AnimationCurveUtility.EaseOutSine();
-        [SerializeField] private AnimationCurve easeInOutSine = AnimationCurveUtility.EaseInOutSine(); 
-        [SerializeField] private AnimationCurve easeInQuad = AnimationCurveUtility.EaseInQuad();
-        [SerializeField] private AnimationCurve easeOutQuad = AnimationCurveUtility.EaseOutQuad();
-        [SerializeField] private AnimationCurve easeInOutQuad = AnimationCurveUtility.EaseInOutQuad();
-        [SerializeField] private AnimationCurve easeInQuart = AnimationCurveUtility.EaseInQuart();
-        [SerializeField] private AnimationCurve easeOutQuart = AnimationCurveUtility.EaseOutQuart();
-        [SerializeField] private AnimationCurve easeInOutQuart = AnimationCurveUtility.EaseInOutQuart();
-        [SerializeField] private AnimationCurve easeInCubic = AnimationCurveUtility.EaseInCubic();
-        [SerializeField] private AnimationCurve easeOutCubic = AnimationCurveUtility.EaseOutCubic();
-        [SerializeField] private AnimationCurve easeInOutCubic = AnimationCurveUtility.EaseInOutCubic();
-        [SerializeField] private AnimationCurve easeInCirc = AnimationCurveUtility.EaseInCirc();
-        [SerializeField] private AnimationCurve easeOutCirc = AnimationCurveUtility.EaseOutCirc();
-        [SerializeField] private AnimationCurve easeInOutCirc = AnimationCurveUtility.EaseInOutCirc();
-        [SerializeField] private AnimationCurve easeInElastic = AnimationCurveUtility.EaseInElastic();
-        [SerializeField] private AnimationCurve easeOutElastic = AnimationCurveUtility.EaseOutElastic();
-        [SerializeField] private AnimationCurve easeInOutElastic = AnimationCurveUtility.EaseInOutElastic();
-        [SerializeField] private AnimationCurve easeInBounce = AnimationCurveUtility.EaseInBounce();
-        [SerializeField] private AnimationCurve easeOutBounce = AnimationCurveUtility.EaseOutBounce();
-        [SerializeField] private AnimationCurve easeInOutBounce = AnimationCurveUtility.EaseInOutBounce();
-        [SerializeField] private AnimationCurve easeInBack = AnimationCurveUtility.EaseInBack();
-        [SerializeField] private AnimationCurve easeOutBack = AnimationCurveUtility.EaseOutBack();
-        [SerializeField] private AnimationCurve easeInOutBack = AnimationCurveUtility.EaseInOutBack();
-        [SerializeField] private AnimationCurve quadraticcurve = AnimationCurveUtility.QuadraticBezier(new(0, 0), new(0.0001f, 1), new(1, 1));
+        [SerializeField] float startOpacity = 0;
+        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
+        [SerializeField] Vector2 anchor = Vector2.zero;
+        [SerializeField] float duration = 1;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            var ac = context.animatorContext;
-            var data = context.customData as Data;
+            ReadOnlyAnimatorContext ac = context.animatorContext;
+            Data d = context.customData as Data;
 
-            float t = data.duration > 0 ? (ac.PassedTime - ac.StateTime(cData)) / data.duration : 1f;
-            float value = Mathf.Lerp(0f, 1f, t);
+            float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
+            float t2 = d.curve.Evaluate(t);
 
-            value = AnimationCurveUtility.LinearBezier(new(0,0), new(1,1)).Evaluate(t);
+            float opacity = Mathf.LerpUnclamped(d.startOpacity, cData.info.color.a, t2);
 
             for (int i = 0; i < 4; i++)
             {
-                Color32 color = cData.mesh.GetColor(i);
-                color.a = (byte)(value * color.a);
-                cData.mesh.SetColor(i, color);
+                Color32 c = cData.mesh.initial.GetColor(i);
+                c.a = (byte)opacity;
+                cData.mesh.SetColor(i, c);
             }
 
-            if (t == 1)
+            if (t == 1) context.FinishAnimation(cData);
+        }
+
+        private void FixAnchor(ref Vector2 v)
+        {
+            if (v.x != 0)
             {
-                context.FinishAnimation(cData);
+                if (v.x > 0) v.x = 1;
+                else v.x = -1;
+            }
+            if (v.y != 0)
+            {
+                if (v.y > 0) v.y = 1;
+                else v.y = -1;
             }
         }
 
@@ -67,14 +54,21 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             if (parameters == null) return;
 
-            Data d = customData as Data;
-            if (TryGetFloatParameter(out float val, parameters, "d", durationAlias)) d.duration = val;
+            Data d = (Data)customData;
+            if (TryGetAnimCurveParameter(out var c, parameters, "curve", curveAliases)) d.curve = c;
+            if (TryGetFloatParameter(out float f, parameters, "duration", durationAliases)) d.duration = f;
+            if (TryGetFloatParameter(out f, parameters, "startOpacity", startOpacityAliases)) d.startOpacity = f;
+            if (TryGetVector2Parameter(out var v2, parameters, "anchor", anchorAliases)) d.anchor = v2;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
-            if (HasNonFloatParameter(parameters, "d", durationAlias)) return false;
+
+            if (HasNonFloatParameter(parameters, "startOpacity", startOpacityAliases)) return false;
+            if (HasNonFloatParameter(parameters, "duration", durationAliases)) return false;
+            if (HasNonAnimCurveParameter(parameters, "curve", curveAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "anchor", anchorAliases)) return false;
             return true;
         }
 
@@ -82,21 +76,38 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             return new Data()
             {
-                duration = this.duration,
+                startOpacity = this.startOpacity,
+                curve = this.curve,
                 anchor = this.anchor,
-                //curve = this.curve
+                duration = this.duration,
+
+                waitingSince = -1,
+                cycleTime = -1,
+                lastT = 0
             };
         }
 
-        private readonly string[] durationAlias = new string[] { "d", "dur" };
-        private readonly string[] anchorAlias = new string[] { "a", "anc" };
-        private readonly string[] curveAlias = new string[] { "c" };
+        private readonly string[] startOpacityAliases = new string[] { "start", "startOp" };
+        private readonly string[] anchorAliases = new string[] { "anc" };
+        private readonly string[] durationAliases = new string[] { "dur", "d" };
+        private readonly string[] curveAliases = new string[] { "crv" };
 
         private class Data
         {
+            public float startOpacity;
+            public AnimationCurve curve;
             public float duration;
             public Vector2 anchor;
-            public AnimationCurve curve;
+            public float afterFadeInWaitDuration;
+
+            public int lastT;
+            public float waitingSince;
+            public bool fadeIn;
+
+            public float cycleTime;
+
+            public readonly float sqrt2 = Mathf.Sqrt(8);
+            public readonly float[] dists = new float[4];
         }
     }
 }

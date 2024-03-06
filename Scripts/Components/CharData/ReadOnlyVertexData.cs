@@ -81,7 +81,7 @@ namespace TMPEffects.Components.CharacterData
         /// <param name="i">The index.</param>
         /// <returns>The position of the vertex associated with the index.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public Vector3 GetPosition(int i)
+        public Vector3 GetVertex(int i)
         {
             switch (i)
             {

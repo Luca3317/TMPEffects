@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
 
@@ -26,6 +27,7 @@ namespace TMPEffects.Components.Animator
         {
             if (database != null && database.ContainsEffect(name)) return database.GetEffect(name);
             if (sceneAnimations != null && sceneAnimations.ContainsKey(name) && sceneAnimations[name] != null) return sceneAnimations[name];
+            UnityEngine.Debug.LogWarning("Gonna throw an error with db null: " + (database == null) + " and scene animaiotns null: " + (sceneAnimations == null));
             throw new KeyNotFoundException(name);
         }
     }

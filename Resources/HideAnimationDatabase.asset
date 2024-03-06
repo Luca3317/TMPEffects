@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: HideAnimationDatabase
   m_EditorClassIdentifier: 
   hideAnimations:
-    _serializedList: []
+    _serializedList:
+    - Key: grow
+      Value: {fileID: 11400000, guid: 24b89a3d9f2eaa84ab1f744155c108a3, type: 2}
+    - Key: fade
+      Value: {fileID: 11400000, guid: 8e33c09cfcadddb429127412e4187d31, type: 2}
+    - Key: move
+      Value: {fileID: 11400000, guid: 01ef5b43ef2248240ac83f2dbdbb2495, type: 2}

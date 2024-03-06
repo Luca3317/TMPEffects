@@ -848,18 +848,12 @@ namespace TMPEffects.Components
                 ignoreVisibilityChanges = prev;
             }
 
-            // TODO
-            // Right now this is completely equivalent to the showing logic
-            // Logically though, hiding should be done when the first Hide animation
-            // is finished; character will (/should) be fully invisible
-            // Update this logic to reflect that fact (any other places
-            // that need fixing for this? possibly OnVisibilityStateUpdated)
             else if (vState == VisibilityState.Hiding)
             {
                 bool prev = ignoreVisibilityChanges;
                 ignoreVisibilityChanges = true;
 
-                bool allDone = true;
+                bool done = true;
 
                 if (IsExcludedHide(cData.info.character))
                 {
@@ -868,14 +862,14 @@ namespace TMPEffects.Components
                 else if (hide.Count == 0)
                 {
                     Animate(defaultHide);
-                    allDone = defaultHide.Finished(cData.info.index);
+                    done = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
-                    allDone = AnimateHideList();
+                    done = AnimateHideList();
                 }
 
-                if (allDone)
+                if (done)
                 {
                     ignoreVisibilityChanges = false;
                     Mediator.SetVisibilityState(cData, VisibilityState.Hidden);
@@ -903,7 +897,7 @@ namespace TMPEffects.Components
 
                 for (int i = 0; i < 4; i++)
                 {
-                    cData.SetVertex(i, cData.mesh.initial.GetPosition(i)); // cData.initialMesh.GetPosition(i));
+                    cData.SetVertex(i, cData.mesh.initial.GetVertex(i)); // cData.initialMesh.GetPosition(i));
                 }
 
                 ca.animation.Animate(cData, ca.roContext);
@@ -916,20 +910,17 @@ namespace TMPEffects.Components
                 CachedCollection<CachedAnimation>.MinMax mm = hide.MinMaxAt(index);
                 if (mm == null) return true;
 
-                bool allDone = true;
+                bool done = false;
                 if (animationsOverride)
                 {
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = show[i];
+                        CachedAnimation ca = hide[i];
                         if (ca.Indices.Contains(index))
                         {
                             Animate(ca);
 
-                            if (allDone && Mediator.VisibilityStates[cData.info.index] == VisibilityState.Hiding)
-                            {
-                                allDone = false;
-                            }
+                            if (ca.Finished(index)) return true;
 
                             if (!(ca.overrides != null && !ca.overrides.Value))
                                 break;
@@ -940,15 +931,12 @@ namespace TMPEffects.Components
                 {
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = show[i];
+                        CachedAnimation ca = hide[i];
                         if (ca.Indices.Contains(index))
                         {
                             Animate(ca);
 
-                            if (allDone && Mediator.VisibilityStates[cData.info.index] == VisibilityState.Hiding)
-                            {
-                                allDone = false;
-                            }
+                            if (ca.Finished(index)) return true;
 
                             if (ca.overrides != null && ca.overrides.Value)
                                 break;
@@ -956,7 +944,7 @@ namespace TMPEffects.Components
                     }
                 }
 
-                return allDone;
+                return done;
             }
 
             bool AnimateShowList()
@@ -1279,7 +1267,7 @@ namespace TMPEffects.Components
                 {
                     for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
                     {
-                        CachedAnimation ca = show[i];
+                        CachedAnimation ca = hide[i];
                         if (ca.Indices.Contains(index))
                         {
                             ca.context.ResetFinishAnimation(index);
@@ -1352,7 +1340,7 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                    cData.SetVertex(j, cData.mesh.initial.GetVertex(j));
                 }
             }
         }

@@ -10,7 +10,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             for (int i = 0; i < 4; i++)
             {
-                cData.SetVertex(i, cData.mesh.initial.GetPosition(i));
+                cData.SetVertex(i, cData.mesh.initial.GetVertex(i));
             }
 
             context.FinishAnimation(cData.info.index);

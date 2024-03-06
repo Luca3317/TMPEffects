@@ -11,13 +11,45 @@ public class ComponentController : MonoBehaviour
     [SerializeField] TMPAnimator animator;
     [SerializeField] TMPWriter writer;
 
+    [SerializeField]
+    string[] texts = new string[]
+    {
+        "This is one damn short text.",
+        "This one is just the tiniest bit longer.",
+        "Bye."
+    };
+
+    int i = 0;
+
     private void Update()
     {
-
         if (Input.GetKey(KeyCode.LeftShift))
             HandleAnimatorInput();
         else
             HandleWriterInput();
+    }
+
+    private void OnEnable()
+    {
+        writer.OnFinishWriter.AddListener(StartCoroutine);
+    }
+
+    private void StartCoroutine()
+    {
+        StartCoroutine(ListenWriter());
+    }
+
+    private IEnumerator ListenWriter()
+    {
+        yield return new WaitForSeconds(3f);
+
+        writer.Hide(0, writer.TextComponent.textInfo.characterCount, false);
+
+        yield return new WaitForSeconds(3f);
+
+        writer.SetText(texts[i]);
+        i++;
+        i %= texts.Length;
     }
 
     void HandleAnimatorInput()

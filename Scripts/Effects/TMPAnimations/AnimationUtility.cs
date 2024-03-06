@@ -47,8 +47,6 @@ namespace TMPEffects.TMPAnimations
         }
         #endregion
 
-
-
         #region Raw Positions & Deltas
         /// <summary>
         /// Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
@@ -115,7 +113,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (ctx.animatorContext.ScaleAnimations)
             {
-                Vector3 ogPos = cData.mesh.initial.GetPosition(index);
+                Vector3 ogPos = cData.mesh.initial.GetVertex(index);
                 cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
             }
             else
@@ -212,6 +210,29 @@ namespace TMPEffects.TMPAnimations
             }
         }
         #endregion
+
+        public static float GetValue(AnimationCurve curve, WrapMode wrapMode, IAnimationContext context, float time, CharData cData)
+        {
+            float t;
+            switch (wrapMode)
+            {
+                case WrapMode.Loop:
+                    t = Mathf.Repeat(time, 1);
+                    return curve.Evaluate(t);
+                case WrapMode.PingPong:
+                    t = Mathf.PingPong(time, 1);
+                    return curve.Evaluate(t);
+                case WrapMode.Once:
+                    if (time > 1)
+                    {
+                        context.FinishAnimation(cData);
+                        return 1;
+                    }
+                    return curve.Evaluate(time);
+
+                default: throw new System.ArgumentException("WrapMode " + wrapMode.ToString() + " not supported");
+            }
+        }
     }
 }
 

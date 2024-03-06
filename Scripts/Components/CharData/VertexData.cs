@@ -117,7 +117,7 @@ namespace TMPEffects.Components.CharacterData
         /// <param name="i">The index.</param>
         /// <returns>The position of the vertex associated with the index.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public Vector3 GetPosition(int i)
+        public Vector3 GetVertex(int i)
         {
             switch (i)
             {
@@ -316,10 +316,10 @@ namespace TMPEffects.Components.CharacterData
         public void ResetVertices()
         {
             if (!verticesDirty) return;
-            vertex_BL.position = initial.GetPosition(0);
-            vertex_TL.position = initial.GetPosition(1);
-            vertex_TR.position = initial.GetPosition(2);
-            vertex_BR.position = initial.GetPosition(3);
+            vertex_BL.position = initial.GetVertex(0);
+            vertex_TL.position = initial.GetVertex(1);
+            vertex_TR.position = initial.GetVertex(2);
+            vertex_BR.position = initial.GetVertex(3);
             verticesDirty = false;
         }
 

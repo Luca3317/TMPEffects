@@ -16,5 +16,7 @@ MonoBehaviour:
     _serializedList:
     - Key: move
       Value: {fileID: 11400000, guid: 108b496c4e18ae84e8e10d75c99e52ca, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: 6dd68f0151965bf4896d33309fe4bad4, type: 2}
     - Key: fade
-      Value: {fileID: 11400000, guid: fb69e0a090bd9a64f92535eefa5a2013, type: 2}
+      Value: {fileID: 11400000, guid: 76f36d696eb3a6d4a87af67ab4aae6a8, type: 2}

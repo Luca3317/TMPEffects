@@ -11,7 +11,7 @@ namespace TMPEffects.TMPAnimations
     public abstract class TMPAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged
     {
         ///<inheritdoc/>
-        public abstract void Animate(CharData charData, IAnimationContext context);
+        public abstract void Animate(CharData cData, IAnimationContext context);
         ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
         ///<inheritdoc/>

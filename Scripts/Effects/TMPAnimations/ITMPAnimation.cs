@@ -8,9 +8,9 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// Animate the given character.
         /// </summary>
-        /// <param name="charData">Data about the character.</param>
+        /// <param name="cData">Data about the character.</param>
         /// <param name="context">Data about the animator.</param>
-        public void Animate(CharData charData, IAnimationContext context);
+        public void Animate(CharData cData, IAnimationContext context);
 
         /// <summary>
         /// Validate the parameters.<br/>

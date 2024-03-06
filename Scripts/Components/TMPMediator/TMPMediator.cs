@@ -354,7 +354,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                cData.SetVertex(j, cData.mesh.initial.GetVertex(j));
             }
 
             // Apply the new vertices to the vertex array
@@ -369,7 +369,7 @@ namespace TMPEffects.Components.Mediator
 
             for (int j = 0; j < 4; j++)
             {
-                verts[vIndex + j] = cData.mesh.initial.GetPosition(j);
+                verts[vIndex + j] = cData.mesh.initial.GetVertex(j);
                 colors[vIndex + j] = cData.mesh.initial.GetColor(j);
                 uvs0[vIndex + j] = cData.mesh.initial.GetUV0(j);
                 uvs2[vIndex + j] = cData.mesh.initial.GetUV2(j);
