@@ -1,7 +1,8 @@
 using TMPEffects.TextProcessing;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
-using System.Diagnostics;
+using static TMPEffects.ParameterUtility;
+using UnityEngine;
 
 namespace TMPEffects.Components.Animator
 {
@@ -16,29 +17,25 @@ namespace TMPEffects.Components.Animator
         private EffectTagIndices indices;
 
         public readonly bool? overrides;
+        public readonly bool late;
         public readonly ITMPAnimation animation;
         public readonly AnimationContext context;
         public readonly ReadOnlyAnimationContext roContext;
+        public readonly int firstAffectingAnimationIndex = -1;
 
         public CachedAnimation(EffectTag tag, EffectTagIndices indices, ITMPAnimation animation, AnimationContext context)
         {
             this.tag = tag;
             this.indices = indices;
+            
             overrides = null;
-            if (tag.Parameters != null)
+            if (TryGetBoolParameter(out bool b, tag.Parameters, "override", "or"))
             {
-                bool tmp;
-                foreach (var param in tag.Parameters.Keys)
-                {
-                    switch (param)
-                    {
-                        case "override":
-                        case "or":
-                            if (ParsingUtility.StringToBool(tag.Parameters[param], out tmp)) overrides = tmp;
-                            break;
-                    }
-                }
+                overrides = b;
             }
+
+            late = tag.Parameters.ContainsKey("late");
+            if (late) Debug.Log("Late true for " + tag.Name);
 
             this.animation = animation;
             this.context = context;
@@ -46,4 +43,3 @@ namespace TMPEffects.Components.Animator
         }
     }
 }
- 

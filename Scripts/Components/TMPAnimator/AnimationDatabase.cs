@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using TMPEffects.Databases;
+using TMPEffects.ObjectChanged;
 using TMPEffects.TMPAnimations;
 
 namespace TMPEffects.Components.Animator
@@ -12,17 +13,20 @@ namespace TMPEffects.Components.Animator
         public IDictionary<string, T> SceneAnimations => sceneAnimations;
         private readonly ITMPEffectDatabase<ITMPAnimation> database;
         private readonly IDictionary<string, T> sceneAnimations;
+
         public AnimationDatabase(ITMPEffectDatabase<ITMPAnimation> database, IDictionary<string, T> sceneAnimations)
         {
             this.database = database;
             this.sceneAnimations = sceneAnimations;
         }
+
         public bool ContainsEffect(string name)
         {
             bool contains = database != null && database.ContainsEffect(name);
             if (contains) return true;
             return sceneAnimations != null && sceneAnimations.ContainsKey(name) && sceneAnimations[name] != null;
         }
+
         public ITMPAnimation GetEffect(string name)
         {
             if (database != null && database.ContainsEffect(name)) return database.GetEffect(name);

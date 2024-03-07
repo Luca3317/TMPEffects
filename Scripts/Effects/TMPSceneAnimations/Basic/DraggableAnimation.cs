@@ -5,7 +5,6 @@ using TMPEffects.Components.CharacterData;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Device;
 
 namespace TMPEffects.TMPSceneAnimations
 {
@@ -48,6 +47,8 @@ namespace TMPEffects.TMPSceneAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
+            if (!Application.isPlaying) return;
+
             Data d = context.customData as Data;
             int segmentIndex = context.segmentData.SegmentIndexOf(cData);
 

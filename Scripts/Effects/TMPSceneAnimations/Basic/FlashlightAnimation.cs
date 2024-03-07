@@ -63,17 +63,30 @@ namespace TMPEffects.TMPSceneAnimations.Animations
 
             if (!succ) Debug.LogWarning("Fuckup");
 
+            context.state.CalculateVertexPositions();
             for (int i = 0; i < 4; i++)
             {
-                Vector3 vertex = text.transform.TransformPoint(cData.mesh.initial.GetVertex(i));
+                Vector3 vertex;
+
+                switch (i)
+                {
+                    case 0: vertex = text.transform.TransformPoint(context.state.BL_Result); break;
+                    case 1: vertex = text.transform.TransformPoint(context.state.TL_Result); break;
+                    case 2: vertex = text.transform.TransformPoint(context.state.TR_Result); break;
+                    case 3: vertex = text.transform.TransformPoint(context.state.BR_Result); break;
+                    default: throw new System.Exception();
+                }
+
                 float magnitude = (res - vertex).magnitude;
 
-                Color32 color = cData.mesh.initial.GetColor(i);
+                Color32 color = context.state.TL_Color;
 
                 if (magnitude < d.radius)
                 {
                     float t = magnitude / d.radius;
-                    float t2 = d.fallOffCurve.Evaluate(t + 1);
+                    Debug.Log("T: " + t);
+                    float t2 = 1 - d.fallOffCurve.Evaluate(t);
+                    Debug.Log("T2: " + t2);
                     float opacity = Mathf.LerpUnclamped(d.hiddenOpacity, d.shownOpacity, t2);
 
                     color.a = (byte)opacity;

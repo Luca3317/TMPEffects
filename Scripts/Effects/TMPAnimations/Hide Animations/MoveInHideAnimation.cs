@@ -34,7 +34,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             Data d = customData as Data;
             if (TryGetFloatParameter(out float duration, parameters, "duration", "dur", "d")) d.duration = duration;
             if (TryGetBoolParameter(out bool b, parameters, "targetIsDelta", "isDelta", "delta")) d.targetIsDelta = b;
-            if (TryGetVector3Parameter(out Vector3 v3, parameters, "targetPosition", "startPos", "start")) d.targetPosition = v3;
+            if (TryGetVector3Parameter(out Vector3 v3, parameters, "targetPosition", "targetPos", "target")) d.targetPosition = v3;
             if (TryGetAnimCurveParameter(out AnimationCurve curve, parameters, "curve", "crv", "c")) d.curve = curve;
         }
 
@@ -44,7 +44,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             if (HasNonFloatParameter(parameters, "duration", "d", "dur")) return false;
             if (HasNonAnimCurveParameter(parameters, "curve", "c", "crv")) return false;
             if (HasNonBoolParameter(parameters, "targetIsDelta", "isDelta", "delta")) return false;
-            if (HasNonVector3Parameter(parameters, "targetPosition", "startPos", "start")) return false;
+            if (HasNonVector3Parameter(parameters, "targetPosition", "targetPos", "target")) return false;
             return true;
         }
 

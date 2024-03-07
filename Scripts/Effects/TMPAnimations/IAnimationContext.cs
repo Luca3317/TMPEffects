@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPEffects.Components;
 using TMPEffects.Components.Animator;
 using TMPEffects.Components.CharacterData;
 using UnityEngine.Windows.Speech;
@@ -22,6 +23,8 @@ namespace TMPEffects.TMPAnimations
 
         public object customData { get; }
 
+        public TMPAnimator.CharDataState state { get; }
+
         public bool Finished(int index);
         public bool Finished(CharData cData);
         public void FinishAnimation(int index);
@@ -35,10 +38,12 @@ namespace TMPEffects.TMPAnimations
         public ReadOnlyAnimatorContext animatorContext { get; set; }
         public SegmentData segmentData { get; set; }
         public object customData { get; }
+        public TMPAnimator.CharDataState state { get; }
 
-        public AnimationContext(ReadOnlyAnimatorContext animatorContext, SegmentData segmentData, object customData)
+        public AnimationContext(ReadOnlyAnimatorContext animatorContext, TMPAnimator.CharDataState state, SegmentData segmentData, object customData)
         {
-            this.customData = customData; 
+            this.customData = customData;
+            this.state = state;
             this.segmentData = segmentData;
             this.animatorContext = animatorContext;
             finishedDict = new Dictionary<int, bool>(segmentData.length);
@@ -87,6 +92,7 @@ namespace TMPEffects.TMPAnimations
         public ReadOnlyAnimatorContext animatorContext => context.animatorContext;
         public SegmentData segmentData => context.segmentData;
         public object customData => context.customData;
+        public TMPAnimator.CharDataState state => context.state;
 
         public ReadOnlyAnimationContext(AnimationContext context)
         {

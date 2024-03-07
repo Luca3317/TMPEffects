@@ -272,9 +272,9 @@ namespace TMPEffects.Components
             tags.CollectionChanged += OnTagCollectionChanged;
 
             var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
-            show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
-            hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
+            basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, state, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
+            show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, state, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
+            hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, state, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
 
             // Reset processors
             processors ??= new();
@@ -370,12 +370,12 @@ namespace TMPEffects.Components
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    cacher = new AnimationCacher(database?.ShowAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database?.ShowAnimationDatabase, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
                     defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
 
                 case TMPAnimationType.Hide:
-                    cacher = new AnimationCacher(database?.HideAnimationDatabase, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database?.HideAnimationDatabase, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
                     defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
             }
@@ -433,7 +433,7 @@ namespace TMPEffects.Components
             EffectTag tag = new EffectTag("Dummy Show Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
+            AnimationCacher cacher = new AnimationCacher(database, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
             dummyShow = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0));
         }
 
@@ -443,7 +443,7 @@ namespace TMPEffects.Components
             EffectTag tag = new EffectTag("Dummy Hide Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation", ScriptableObject.CreateInstance<DummyHideAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedHide(x));
+            AnimationCacher cacher = new AnimationCacher(database, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedHide(x));
             dummyHide = cacher.CacheTag(tag, new EffectTagIndices(0, -1, 0));
         }
         #endregion
@@ -770,46 +770,141 @@ namespace TMPEffects.Components
                 (basic.HasAnyContaining(index) || vState != VisibilityState.Shown); // If has no animations, dont animate
         }
 
+        [System.NonSerialized]
+        private CharDataState state = new CharDataState();
+        public class CharDataState
+        {
+            public CharData cData;
+            public AnimatorContext context;
+
+            public Vector3 positionDelta;
+            public Matrix4x4 scaleDelta;
+            public Quaternion rotation;
+            public Vector3 rotationPivot;
+
+            public Vector3 TL;
+            public Vector3 TR;
+            public Vector3 BR;
+            public Vector3 BL;
+
+            public Vector3 TLMax;
+            public Vector3 TRMax;
+            public Vector3 BRMax;
+            public Vector3 BLMax;
+
+            public Vector3 TLMin;
+            public Vector3 TRMin;
+            public Vector3 BRMin;
+            public Vector3 BLMin;
+
+            public Vector2 TL_UV;
+            public Vector2 TR_UV;
+            public Vector2 BR_UV;
+            public Vector2 BL_UV;
+
+            public Vector2 TL_UV2;
+            public Vector2 TR_UV2;
+            public Vector2 BR_UV2;
+            public Vector2 BL_UV2;
+
+            public Color32 TL_Color;
+            public Color32 TR_Color;
+            public Color32 BR_Color;
+            public Color32 BL_Color;
+
+            public Vector3 TL_Result;
+            public Vector3 TR_Result;
+            public Vector3 BR_Result;
+            public Vector3 BL_Result;
+
+            public void Reset(AnimatorContext context, CharData cData)
+            {
+                this.cData = cData;
+                this.context = context;
+
+                positionDelta = Vector3.zero;
+                scaleDelta = Matrix4x4.Scale(Vector3.one);
+                rotation = Quaternion.identity;
+                rotationPivot = cData.info.initialPosition;
+
+                TL = Vector3.zero;
+                TR = Vector3.zero;
+                BR = Vector3.zero;
+                BL = Vector3.zero;
+
+                TLMax = cData.mesh.initial.vertex_TL.position;
+                TRMax = cData.mesh.initial.vertex_TR.position;
+                BRMax = cData.mesh.initial.vertex_BR.position;
+                BLMax = cData.mesh.initial.vertex_BL.position;
+
+                TLMin = cData.mesh.initial.vertex_TL.position;
+                TRMin = cData.mesh.initial.vertex_TR.position;
+                BRMin = cData.mesh.initial.vertex_BR.position;
+                BLMin = cData.mesh.initial.vertex_BL.position;
+
+                TL_UV = cData.mesh.initial.vertex_TL.uv;
+                TR_UV = cData.mesh.initial.vertex_TR.uv;
+                BR_UV = cData.mesh.initial.vertex_BR.uv;
+                BL_UV = cData.mesh.initial.vertex_BL.uv;
+
+                TL_UV2 = cData.mesh.initial.vertex_TL.uv2;
+                TR_UV2 = cData.mesh.initial.vertex_TR.uv2;
+                BR_UV2 = cData.mesh.initial.vertex_BR.uv2;
+                BL_UV2 = cData.mesh.initial.vertex_BL.uv2;
+
+                TL_Color = cData.mesh.initial.vertex_TL.color;
+                TR_Color = cData.mesh.initial.vertex_TR.color;
+                BR_Color = cData.mesh.initial.vertex_BR.color;
+                BL_Color = cData.mesh.initial.vertex_BL.color;
+            }
+
+            public void CalculateVertexPositions()
+            {
+                // Apply vertex transformations
+                Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;
+                Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;
+                Vector3 vbr = cData.mesh.initial.vertex_BR.position + BR;
+                Vector3 vbl = cData.mesh.initial.vertex_BL.position + BL;
+
+                // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
+                vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
+                vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
+                vbr = new Vector3(Mathf.Clamp(vbr.x, BRMin.x, BRMax.x), Mathf.Clamp(vbr.y, BRMin.y, BRMax.y), Mathf.Clamp(vbr.z, BRMin.z, BRMax.z));
+                vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
+
+                // Apply scale
+                vtl = scaleDelta.MultiplyPoint3x4(vtl - cData.info.initialPosition) + cData.info.initialPosition;
+                vtr = scaleDelta.MultiplyPoint3x4(vtr - cData.info.initialPosition) + cData.info.initialPosition;
+                vbr = scaleDelta.MultiplyPoint3x4(vbr - cData.info.initialPosition) + cData.info.initialPosition;
+                vbl = scaleDelta.MultiplyPoint3x4(vbl - cData.info.initialPosition) + cData.info.initialPosition;
+
+                // Apply rotation
+                Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
+                vtl = matrix.MultiplyPoint3x4(vtl - rotationPivot) + rotationPivot;
+                vtr = matrix.MultiplyPoint3x4(vtr - rotationPivot) + rotationPivot;
+                vbr = matrix.MultiplyPoint3x4(vbr - rotationPivot) + rotationPivot;
+                vbl = matrix.MultiplyPoint3x4(vbl - rotationPivot) + rotationPivot;
+
+                // Apply transformation
+                vtl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                vtr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                vbr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                vbl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
+
+                BL_Result = vbl;
+                TL_Result = vtl;
+                TR_Result = vtr;
+                BR_Result = vbr;
+            }
+        }
+
         private void UpdateCharacterAnimation_Impl(int index)
         {
             CharData cData = Mediator.CharData[index];
             VisibilityState vState = Mediator.VisibilityStates[index];
             if (!cData.info.isVisible || vState == VisibilityState.Hidden) return;
 
-            Vector3 positionDelta = Vector3.zero;
-            Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
-            Quaternion rotation = Quaternion.identity;
-            Vector3 rotationPivot = cData.info.initialPosition;
-
-            Vector3 TL = Vector3.zero;//Data.mesh.initial.vertex_TL.position;
-            Vector3 TR = Vector3.zero;//Data.mesh.initial.vertex_TR.position; 
-            Vector3 BR = Vector3.zero;//Data.mesh.initial.vertex_BR.position;
-            Vector3 BL = Vector3.zero;//cData.mesh.initial.vertex_BL.position;
-
-            Vector3 TLMax = cData.mesh.initial.vertex_TL.position;
-            Vector3 TRMax = cData.mesh.initial.vertex_TR.position;
-            Vector3 BRMax = cData.mesh.initial.vertex_BR.position;
-            Vector3 BLMax = cData.mesh.initial.vertex_BL.position;
-
-            Vector3 TLMin = cData.mesh.initial.vertex_TL.position;
-            Vector3 TRMin = cData.mesh.initial.vertex_TR.position;
-            Vector3 BRMin = cData.mesh.initial.vertex_BR.position;
-            Vector3 BLMin = cData.mesh.initial.vertex_BL.position;
-
-            Vector2 TL_UV = cData.mesh.initial.vertex_TL.uv;
-            Vector2 TR_UV = cData.mesh.initial.vertex_TR.uv;
-            Vector2 BR_UV = cData.mesh.initial.vertex_BR.uv;
-            Vector2 BL_UV = cData.mesh.initial.vertex_BL.uv;
-
-            Vector2 TL_UV2 = cData.mesh.initial.vertex_TL.uv2;
-            Vector2 TR_UV2 = cData.mesh.initial.vertex_TR.uv2;
-            Vector2 BR_UV2 = cData.mesh.initial.vertex_BR.uv2;
-            Vector2 BL_UV2 = cData.mesh.initial.vertex_BL.uv2;
-
-            Color32 TL_Color = cData.mesh.initial.vertex_TL.color;
-            Color32 TR_Color = cData.mesh.initial.vertex_TR.color;
-            Color32 BR_Color = cData.mesh.initial.vertex_BR.color;
-            Color32 BL_Color = cData.mesh.initial.vertex_BL.color;
+            state.Reset(context, cData);
 
             if (vState == VisibilityState.Showing)
             {
@@ -820,16 +915,16 @@ namespace TMPEffects.Components
 
                 if (IsExcludedShow(cData.info.character))
                 {
-                    Animate(dummyShow);
+                    Animate(dummyShow, false);
                 }
                 else if (show.Count == 0)
                 {
-                    Animate(defaultShow);
+                    Animate(defaultShow, defaultShow.late);
                     allDone = defaultShow.Finished(cData.info.index);
                 }
                 else
                 {
-                    allDone = AnimateShowList();
+                    allDone = AnimateShowList(false) && AnimateShowList(true);
                 }
 
                 if (allDone)
@@ -857,16 +952,16 @@ namespace TMPEffects.Components
 
                 if (IsExcludedHide(cData.info.character))
                 {
-                    Animate(dummyHide);
+                    Animate(dummyHide, false);
                 }
                 else if (hide.Count == 0)
                 {
-                    Animate(defaultHide);
+                    Animate(defaultHide, defaultHide.late);
                     done = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
-                    done = AnimateHideList();
+                    done = AnimateHideList(false) || AnimateHideList(true);
                 }
 
                 if (done)
@@ -880,18 +975,22 @@ namespace TMPEffects.Components
                 ignoreVisibilityChanges = prev;
             }
 
+
+            // TODO test if is excluded basic, are the show / hide anims still applied?
             if (IsExcludedBasic(cData.info.character))
             {
                 return;
             }
 
-            AnimateList(TMPAnimationType.Basic);
+            AnimateBasic(false);
+            AnimateBasic(true);
             ApplyVertices();
             return;
 
-            void Animate(CachedAnimation ca)
+            void Animate(CachedAnimation ca, bool late)
             {
                 if (ca.Finished(index)) return;
+                if (ca.late != late) return;
 
                 cData.Reset();
 
@@ -905,49 +1004,66 @@ namespace TMPEffects.Components
                 UpdateVertexOffsets();
             }
 
-            bool AnimateHideList()
+            void AnimateBasic(bool late)
             {
-                CachedCollection<CachedAnimation>.MinMax mm = hide.MinMaxAt(index);
-                if (mm == null) return true;
+                CachedCollection<CachedAnimation>.MinMax mm = basic.MinMaxAt(index);
+                if (mm == null) return;
 
-                bool done = false;
                 if (animationsOverride)
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = hide[i];
+                        CachedAnimation ca = basic[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
-
-                            if (ca.Finished(index)) return true;
-
                             if (!(ca.overrides != null && !ca.overrides.Value))
+                            {
+                                start = i;
                                 break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = basic[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
                         }
                     }
                 }
                 else
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = hide[i];
+                        CachedAnimation ca = basic[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
-
-                            if (ca.Finished(index)) return true;
-
                             if (ca.overrides != null && ca.overrides.Value)
+                            {
+                                start = i;
                                 break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = basic[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
                         }
                     }
                 }
-
-                return done;
             }
 
-            bool AnimateShowList()
+            bool AnimateShowList(bool late)
             {
                 CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
                 if (mm == null) return true;
@@ -955,12 +1071,27 @@ namespace TMPEffects.Components
                 bool allDone = true;
                 if (animationsOverride)
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
                         CachedAnimation ca = show[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
+                            if (!(ca.overrides != null && !ca.overrides.Value))
+                            {
+                                start = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = show[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
 
                             if (!ca.Finished(index))
                             {
@@ -974,12 +1105,27 @@ namespace TMPEffects.Components
                 }
                 else
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
                         CachedAnimation ca = show[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
+                            if (ca.overrides != null && ca.overrides.Value)
+                            {
+                                start = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = show[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
 
                             if (!ca.Finished(index))
                             {
@@ -995,41 +1141,38 @@ namespace TMPEffects.Components
                 return allDone;
             }
 
-            void AnimateList(TMPAnimationType type)
+            bool AnimateHideList(bool late)
             {
-                CachedCollection<CachedAnimation> cc = basic;
-                switch (type)
-                {
-                    case TMPAnimationType.Show:
-                        if (show.Count == 0)
-                        {
-                            Animate(defaultShow);
-                            return;
-                        }
-                        cc = show;
-                        break;
+                CachedCollection<CachedAnimation>.MinMax mm = hide.MinMaxAt(index);
+                if (mm == null) return true;
 
-                    case TMPAnimationType.Hide:
-                        if (hide.Count == 0)
-                        {
-                            Animate(defaultHide);
-                            return;
-                        }
-                        cc = hide;
-                        break;
-                }
-
-                CachedCollection<CachedAnimation>.MinMax mm = cc.MinMaxAt(index);
-                if (mm == null) return;
-
+                bool done = false;
                 if (animationsOverride)
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = cc[i];
+                        CachedAnimation ca = hide[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
+                            if (!(ca.overrides != null && !ca.overrides.Value))
+                            {
+                                start = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = hide[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
+
+                            if (ca.Finished(index)) return true;
+
                             if (!(ca.overrides != null && !ca.overrides.Value))
                                 break;
                         }
@@ -1037,33 +1180,53 @@ namespace TMPEffects.Components
                 }
                 else
                 {
+                    int start = mm.MinIndex;
+
                     for (int i = mm.MaxIndex; i >= mm.MinIndex; i--)
                     {
-                        CachedAnimation ca = cc[i];
+                        CachedAnimation ca = hide[i];
                         if (ca.Indices.Contains(index))
                         {
-                            Animate(ca);
+                            if (ca.overrides != null && ca.overrides.Value)
+                            {
+                                start = i;
+                                break;
+                            }
+                        }
+                    }
+
+                    for (int i = start; i <= mm.MaxIndex; i++)
+                    {
+                        CachedAnimation ca = hide[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            Animate(ca, late);
+
+                            if (ca.Finished(index)) return true;
+
                             if (ca.overrides != null && ca.overrides.Value)
                                 break;
                         }
                     }
                 }
+
+                return done;
             }
 
             void UpdateVertexOffsets()
             {
                 if (cData.positionDirty)
                 {
-                    positionDelta += (cData.Position - cData.info.initialPosition);
+                    state.positionDelta += (cData.Position - cData.info.initialPosition);
                 }
                 if (cData.scaleDirty)
                 {
-                    scaleDelta *= Matrix4x4.Scale(cData.Scale);
+                    state.scaleDelta *= Matrix4x4.Scale(cData.Scale);
                 }
                 if (cData.rotationDirty)
                 {
-                    rotation = cData.Rotation * rotation;
-                    rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                    state.rotation = cData.Rotation * state.rotation;
+                    state.rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
                 }
 
                 if (cData.verticesDirty)
@@ -1073,105 +1236,67 @@ namespace TMPEffects.Components
                     Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
                     Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
 
-                    TL += deltaTL;// (cData.currentMesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position);
-                    TR += deltaTR;// (cData.currentMesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position);
-                    BR += deltaBR;// (cData.currentMesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position);
-                    BL += deltaBL;// (cData.currentMesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position);
+                    state.TL += deltaTL;
+                    state.TR += deltaTR;
+                    state.BR += deltaBR;
+                    state.BL += deltaBL;
 
-                    TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, TLMax.z));
-                    TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, TRMax.z));
-                    BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, BRMax.z));
-                    BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, BLMax.z));
+                    state.TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMax.z));
+                    state.TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMax.z));
+                    state.BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMax.z));
+                    state.BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMax.z));
 
-                    TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, TLMin.z));
-                    TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, TRMin.z));
-                    BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, BRMin.z));
-                    BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, BLMin.z));
+                    state.TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMin.z));
+                    state.TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMin.z));
+                    state.BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMin.z));
+                    state.BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMin.z));
                 }
 
                 if (cData.colorsDirty)
                 {
-                    BL_Color = cData.mesh.GetColor(0);
-                    TL_Color = cData.mesh.GetColor(1);
-                    TR_Color = cData.mesh.GetColor(2);
-                    BR_Color = cData.mesh.GetColor(3);
+                    state.BL_Color = cData.mesh.GetColor(0);
+                    state.TL_Color = cData.mesh.GetColor(1);
+                    state.TR_Color = cData.mesh.GetColor(2);
+                    state.BR_Color = cData.mesh.GetColor(3);
                 }
 
                 if (cData.uvsDirty)
                 {
-                    BL_UV = cData.mesh.GetUV0(0);
-                    TL_UV = cData.mesh.GetUV0(1);
-                    TR_UV = cData.mesh.GetUV0(2);
-                    BR_UV = cData.mesh.GetUV0(3);
+                    state.BL_UV = cData.mesh.GetUV0(0);
+                    state.TL_UV = cData.mesh.GetUV0(1);
+                    state.TR_UV = cData.mesh.GetUV0(2);
+                    state.BR_UV = cData.mesh.GetUV0(3);
 
-                    BL_UV2 = cData.mesh.GetUV2(0);
-                    TL_UV2 = cData.mesh.GetUV2(1);
-                    TR_UV2 = cData.mesh.GetUV2(2);
-                    BR_UV2 = cData.mesh.GetUV2(3);
+                    state.BL_UV2 = cData.mesh.GetUV2(0);
+                    state.TL_UV2 = cData.mesh.GetUV2(1);
+                    state.TR_UV2 = cData.mesh.GetUV2(2);
+                    state.BR_UV2 = cData.mesh.GetUV2(3);
                 }
             }
 
             void ApplyVertices()
             {
-                // Apply vertex transformations
-                Vector3 vtl = cData.mesh.initial.vertex_TL.position + TL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vtr = cData.mesh.initial.vertex_TR.position + TR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vbr = cData.mesh.initial.vertex_BR.position + BR;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 vbl = cData.mesh.initial.vertex_BL.position + BL;// * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                state.CalculateVertexPositions();
 
-                // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
-                vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
-                vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
-                vbr = new Vector3(Mathf.Clamp(vbr.x, BRMin.x, BRMax.x), Mathf.Clamp(vbr.y, BRMin.y, BRMax.y), Mathf.Clamp(vbr.z, BRMin.z, BRMax.z));
-                vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
+                cData.SetVertex(0, state.BL_Result);
+                cData.SetVertex(1, state.TL_Result);
+                cData.SetVertex(2, state.TR_Result);
+                cData.SetVertex(3, state.BR_Result);
 
-                // Apply scale
-                vtl = scaleDelta.MultiplyPoint3x4(vtl - cData.info.initialPosition) + cData.info.initialPosition;
-                vtr = scaleDelta.MultiplyPoint3x4(vtr - cData.info.initialPosition) + cData.info.initialPosition;
-                vbr = scaleDelta.MultiplyPoint3x4(vbr - cData.info.initialPosition) + cData.info.initialPosition;
-                vbl = scaleDelta.MultiplyPoint3x4(vbl - cData.info.initialPosition) + cData.info.initialPosition;
+                cData.mesh.SetColor(0, state.BL_Color);
+                cData.mesh.SetColor(1, state.TL_Color);
+                cData.mesh.SetColor(2, state.TR_Color);
+                cData.mesh.SetColor(3, state.BR_Color);
 
-                // Apply rotation
-                Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
-                vtl = matrix.MultiplyPoint3x4(vtl - rotationPivot) + rotationPivot;
-                vtr = matrix.MultiplyPoint3x4(vtr - rotationPivot) + rotationPivot;
-                vbr = matrix.MultiplyPoint3x4(vbr - rotationPivot) + rotationPivot;
-                vbl = matrix.MultiplyPoint3x4(vbl - rotationPivot) + rotationPivot;
+                cData.mesh.SetUV0(0, state.BL_UV);
+                cData.mesh.SetUV0(1, state.TL_UV);
+                cData.mesh.SetUV0(2, state.TR_UV);
+                cData.mesh.SetUV0(3, state.BR_UV);
 
-                // Apply transformation
-                vtl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vtr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vbr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vbl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-
-
-                cData.SetVertex(0, vbl);
-                cData.SetVertex(1, vtl);
-                cData.SetVertex(2, vtr);
-                cData.SetVertex(3, vbr);
-
-
-                //cData.mesh.SetPosition(0, vbl);
-                //cData.mesh.SetPosition(1, vtl);
-                //cData.mesh.SetPosition(2, vtr);
-                //cData.mesh.SetPosition(3, vbr);
-
-                cData.mesh.SetColor(0, BL_Color);
-                cData.mesh.SetColor(1, TL_Color);
-                cData.mesh.SetColor(2, TR_Color);
-                cData.mesh.SetColor(3, BR_Color);
-
-                cData.mesh.SetUV0(0, BL_UV);
-                cData.mesh.SetUV0(1, TL_UV);
-                cData.mesh.SetUV0(2, TR_UV);
-                cData.mesh.SetUV0(3, BR_UV);
-
-                cData.mesh.SetUV2(0, BL_UV2);
-                cData.mesh.SetUV2(1, TL_UV2);
-                cData.mesh.SetUV2(2, TR_UV2);
-                cData.mesh.SetUV2(3, BR_UV2);
-
-                //Mediator.CharData[index] = cData;
+                cData.mesh.SetUV2(0, state.BL_UV2);
+                cData.mesh.SetUV2(1, state.TL_UV2);
+                cData.mesh.SetUV2(2, state.TR_UV2);
+                cData.mesh.SetUV2(3, state.BR_UV2);
             }
         }
         #endregion
