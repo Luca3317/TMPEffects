@@ -23,7 +23,6 @@ namespace TMPEffects.TMPAnimations
             return null;
         }
 
-#if UNITY_EDITOR
         public event ObjectChangedEventHandler ObjectChanged;
 
         protected virtual void OnValidate()
@@ -40,6 +39,5 @@ namespace TMPEffects.TMPAnimations
         {
             ObjectChanged?.Invoke(this);
         }
-#endif
     }
 }

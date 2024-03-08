@@ -12,7 +12,7 @@ namespace TMPEffects.TMPAnimations
     public abstract class TMPShowAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged
     {
         ///<inheritdoc/>
-        public abstract void Animate(CharData charData, IAnimationContext context);
+        public abstract void Animate(CharData cData, IAnimationContext context);
         ///<inheritdoc/>
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
         ///<inheritdoc/>
@@ -23,7 +23,6 @@ namespace TMPEffects.TMPAnimations
             return null;
         }
 
-#if UNITY_EDITOR
         public event ObjectChangedEventHandler ObjectChanged;
 
         protected virtual void OnValidate()
@@ -40,6 +39,5 @@ namespace TMPEffects.TMPAnimations
         {
             ObjectChanged?.Invoke(this);
         }
-#endif
     }
 }

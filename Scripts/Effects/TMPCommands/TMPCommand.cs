@@ -32,10 +32,14 @@ namespace TMPEffects.TMPCommands
         ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
 
-#if UNITY_EDITOR
         public event ObjectChangedEventHandler ObjectChanged;
 
         protected virtual void OnValidate()
+        {
+            RaiseObjectChanged();
+        }
+
+        protected virtual void OnDestroy()
         {
             RaiseObjectChanged();
         }
@@ -44,6 +48,5 @@ namespace TMPEffects.TMPCommands
         {
             ObjectChanged?.Invoke(this);
         }
-#endif
     }
 }

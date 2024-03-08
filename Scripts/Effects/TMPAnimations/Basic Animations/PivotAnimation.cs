@@ -31,7 +31,8 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            if (limitRotation)
+            Data d = context.customData as Data;
+            if (d.limitRotation)
             {
                 LimitedRotation(cData, context);
             }
@@ -68,7 +69,6 @@ namespace TMPEffects.TMPAnimations.Animations
         private void ContinuousRotation(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
-
 
             float angle = (context.animatorContext.PassedTime * d.speed * 360) % 360;
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetVertex(3) - cData.mesh.initial.GetVertex(0)).normalized));

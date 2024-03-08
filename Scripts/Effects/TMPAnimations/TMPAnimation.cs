@@ -21,7 +21,6 @@ namespace TMPEffects.TMPAnimations
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
 
 
-#if UNITY_EDITOR
         public event ObjectChangedEventHandler ObjectChanged;
 
         protected virtual void OnValidate()
@@ -38,7 +37,6 @@ namespace TMPEffects.TMPAnimations
         {
             ObjectChanged?.Invoke(this);
         }
-#endif
     }
 
     /// <summary>

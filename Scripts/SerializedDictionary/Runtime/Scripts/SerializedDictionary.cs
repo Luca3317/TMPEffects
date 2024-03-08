@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 namespace TMPEffects.SerializedCollections
@@ -97,7 +96,6 @@ namespace TMPEffects.SerializedCollections
 
         public void Add(TKey key, TValue value)
         {
-            Debug.Log("1 Added smth with " + mayRaise);
             _dictionary.Add(key, value);
             RaisePropertyChanged();
             value.PropertyChanged += RaisePropertyChanged;
@@ -105,7 +103,6 @@ namespace TMPEffects.SerializedCollections
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
-            Debug.Log("2 Added smth with " + mayRaise);
             ((ICollection<KeyValuePair<TKey, TValue>>)_dictionary).Add(item);
             RaisePropertyChanged();
             item.Value.PropertyChanged += RaisePropertyChanged;

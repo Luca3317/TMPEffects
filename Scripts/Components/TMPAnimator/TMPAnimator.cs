@@ -200,14 +200,11 @@ namespace TMPEffects.Components
             StopPreview();
 #endif
 
-            UnsubscribeFromMediator();
-        }
-
-        private void OnDestroy()
-        {
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
+
+            UnsubscribeFromMediator();
         }
 
         private void SubscribeToMediator()
@@ -904,19 +901,44 @@ namespace TMPEffects.Components
                 ignoreVisibilityChanges = true;
 
                 bool allDone = true;
+                bool isExcludedBasic = IsExcludedBasic(cData.info.character);
 
                 if (IsExcludedShow(cData.info.character))
                 {
                     Animate(dummyShow, false);
+                    if (isExcludedBasic)
+                    {
+                        AnimateBasic(false);
+                        AnimateBasic(true);
+                    }
                 }
                 else if (show.Count == 0)
                 {
-                    Animate(defaultShow, defaultShow.late);
+                    if (isExcludedBasic)
+                    {
+                        Animate(defaultShow, defaultShow.late);
+                    }
+                    else if (defaultShow.late)
+                    {
+                        AnimateBasic(false);
+                        Animate(defaultShow, true);
+                        AnimateBasic(true);
+                    }
+                    else
+                    {
+                        Animate(defaultShow, false);
+                        AnimateBasic(false);
+                        AnimateBasic(true);
+                    }
+
                     allDone = defaultShow.Finished(cData.info.index);
                 }
                 else
                 {
-                    allDone = AnimateShowList(false) && AnimateShowList(true);
+                    allDone = AnimateShowList(false);
+                    if (!isExcludedBasic) AnimateBasic(false);
+                    allDone &= AnimateShowList(true);
+                    if (!isExcludedBasic) AnimateBasic(true);
                 }
 
                 if (allDone)
@@ -931,8 +953,13 @@ namespace TMPEffects.Components
 
                     Mediator.SetVisibilityState(cData, VisibilityState.Shown);
                 }
+                else
+                {
+                    ApplyVertices();
+                }
 
                 ignoreVisibilityChanges = prev;
+                return;
             }
 
             else if (vState == VisibilityState.Hiding)
@@ -941,19 +968,44 @@ namespace TMPEffects.Components
                 ignoreVisibilityChanges = true;
 
                 bool done = true;
+                bool isExcludedBasic = IsExcludedBasic(cData.info.character);
 
                 if (IsExcludedHide(cData.info.character))
                 {
                     Animate(dummyHide, false);
+                    if (!isExcludedBasic)
+                    {
+                        AnimateBasic(false);
+                        AnimateBasic(true);
+                    }
                 }
                 else if (hide.Count == 0)
                 {
-                    Animate(defaultHide, defaultHide.late);
+                    if (isExcludedBasic)
+                    {
+                        Animate(defaultHide, defaultHide.late);
+                    }
+                    else if (defaultShow.late)
+                    {
+                        AnimateBasic(false);
+                        Animate(defaultHide, true);
+                        AnimateBasic(true);
+                    }
+                    else
+                    {
+                        Animate(defaultHide, false);
+                        AnimateBasic(false);
+                        AnimateBasic(true);
+                    }
+
                     done = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
-                    done = AnimateHideList(false) || AnimateHideList(true);
+                    done = AnimateHideList(false);
+                    if (!isExcludedBasic) AnimateBasic(false);
+                    if (!done) done = AnimateHideList(true);
+                    if (!isExcludedBasic) AnimateBasic(true);
                 }
 
                 if (done)
@@ -963,14 +1015,20 @@ namespace TMPEffects.Components
                     ignoreVisibilityChanges = prev;
                     return;
                 }
+                else
+                {
+                    ApplyVertices();
+                }
 
                 ignoreVisibilityChanges = prev;
+                return;
             }
 
 
             // TODO test if is excluded basic, are the show / hide anims still applied?
             if (IsExcludedBasic(cData.info.character))
             {
+                Debug.LogWarning("This case should be impossible to reach - bug");
                 return;
             }
 
