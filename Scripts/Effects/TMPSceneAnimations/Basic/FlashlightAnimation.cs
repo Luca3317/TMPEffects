@@ -84,9 +84,7 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 if (magnitude < d.radius)
                 {
                     float t = magnitude / d.radius;
-                    Debug.Log("T: " + t);
                     float t2 = 1 - d.fallOffCurve.Evaluate(t);
-                    Debug.Log("T2: " + t2);
                     float opacity = Mathf.LerpUnclamped(d.hiddenOpacity, d.shownOpacity, t2);
 
                     color.a = (byte)opacity;

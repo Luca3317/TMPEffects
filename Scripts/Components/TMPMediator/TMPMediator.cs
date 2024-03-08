@@ -215,7 +215,7 @@ namespace TMPEffects.Components.Mediator
         private object visibilityProcessor = null;
 
         private void OnTextChanged(UnityEngine.Object obj)
-        {
+        { 
             if ((obj as TMP_Text) == Text)
             {
                 TextChangedProcedure();

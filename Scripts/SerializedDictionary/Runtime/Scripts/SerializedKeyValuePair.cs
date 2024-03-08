@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TMPEffects.SerializedCollections
 {
     [System.Serializable]
-    internal struct SerializedKeyValuePair<TKey, TValue>
+    public struct SerializedKeyValuePair<TKey, TValue>
     {
         public TKey Key;
         public TValue Value;

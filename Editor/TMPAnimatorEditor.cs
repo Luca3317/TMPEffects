@@ -150,6 +150,13 @@ namespace TMPEffects.Editor
             EditorGUILayout.PropertyField(sceneHideAnimationsProp);
             if (EditorGUI.EndChangeCheck())
             {
+                // SerializedObservableDictionary does not raise events when the operations involves
+                // (de)serializing the actual object (as opposed to the contained objects).
+                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                // instead of instantly performing it.
+                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                // in Update of TMPAnimator.
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
                 forceReprocess = true;
             }
@@ -271,7 +278,6 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.PropertyField(updateFromProp);
             EditorGUILayout.PropertyField(animateOnStartProp);
-
 
             EditorGUILayout.Space(10);
             databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);

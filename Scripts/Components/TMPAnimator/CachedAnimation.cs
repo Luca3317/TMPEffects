@@ -35,7 +35,6 @@ namespace TMPEffects.Components.Animator
             }
 
             late = tag.Parameters.ContainsKey("late");
-            if (late) Debug.Log("Late true for " + tag.Name);
 
             this.animation = animation;
             this.context = context;

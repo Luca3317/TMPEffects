@@ -6,14 +6,14 @@ namespace TMPEffects.SerializedCollections
 {
     internal class DictionaryLookupTable<TKey, TValue> : IKeyable
     {
-        private SerializedDictionary<TKey, TValue> _dictionary;
+        private ISerializedDictionary<TKey, TValue> _dictionary;
         private Dictionary<TKey, List<int>> _occurences = new Dictionary<TKey, List<int>>();
 
         private static readonly List<int> EmptyList = new List<int>();
 
         public IEnumerable Keys => _dictionary.Keys;
 
-        public DictionaryLookupTable(SerializedDictionary<TKey, TValue> dictionary)
+        public DictionaryLookupTable(ISerializedDictionary<TKey, TValue> dictionary)
         {
             _dictionary = dictionary;
         }
@@ -30,10 +30,10 @@ namespace TMPEffects.SerializedCollections
         {
             _occurences.Clear();
 
-            int count = _dictionary._serializedList.Count;
+            int count = _dictionary.SerializedList.Count;
             for (int i = 0; i < count; i++)
             {
-                var kvp = _dictionary._serializedList[i];
+                var kvp = _dictionary.SerializedList[i];
                 if (!SerializedCollectionsUtility.IsValidKey(kvp.Key))
                     continue;
 
@@ -46,27 +46,27 @@ namespace TMPEffects.SerializedCollections
 
         public void RemoveKey(object key)
         {
-            for (int i = _dictionary._serializedList.Count - 1; i >= 0; i--)
+            for (int i = _dictionary.SerializedList.Count - 1; i >= 0; i--)
             {
-                var dictKey = _dictionary._serializedList[i].Key;
+                var dictKey = _dictionary.SerializedList[i].Key;
                 if ((object)dictKey == key || dictKey.Equals(key))
-                    _dictionary._serializedList.RemoveAt(i);
+                    _dictionary.SerializedList.RemoveAt(i);
             }
         }
 
         public void RemoveAt(int index)
         {
-            _dictionary._serializedList.RemoveAt(index);
+            _dictionary.SerializedList.RemoveAt(index);
         }
 
         public object GetKeyAt(int index)
         {
-            return _dictionary._serializedList[index];
+            return _dictionary.SerializedList[index];
         }
 
         public void RemoveDuplicates()
         {
-            _dictionary._serializedList = _dictionary._serializedList
+            _dictionary.SerializedList = _dictionary.SerializedList
                 .GroupBy(x => x.Key)
                 .Where(x => SerializedCollectionsUtility.IsValidKey(x.Key))
                 .Select(x => x.First()).ToList();
@@ -76,7 +76,7 @@ namespace TMPEffects.SerializedCollections
         {
             var entry = new SerializedKeyValuePair<TKey, TValue>();
             entry.Key = (TKey) key;
-            _dictionary._serializedList.Add(entry);
+            _dictionary.SerializedList.Add(entry);
         }
     }
 }

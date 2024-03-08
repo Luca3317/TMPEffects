@@ -118,11 +118,11 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationHide = false;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
-        private SerializedDictionary<string, TMPSceneAnimation> sceneAnimations;
+        private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations;
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Show Animation")]
-        private SerializedDictionary<string, TMPSceneShowAnimation> sceneShowAnimations;
+        private SerializedObservableDictionary<string, TMPSceneShowAnimation> sceneShowAnimations;
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Hide Animation")]
-        private SerializedDictionary<string, TMPSceneHideAnimation> sceneHideAnimations;
+        private SerializedObservableDictionary<string, TMPSceneHideAnimation> sceneHideAnimations;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPAnimationCategory> tags;
@@ -133,9 +133,9 @@ namespace TMPEffects.Components
         [System.NonSerialized] private TMPAnimationCategory showCategory;
         [System.NonSerialized] private TMPAnimationCategory hideCategory;
 
-        [System.NonSerialized] private AnimationDatabase<TMPSceneAnimation> basicDatabase;
-        [System.NonSerialized] private AnimationDatabase<TMPSceneShowAnimation> showDatabase;
-        [System.NonSerialized] private AnimationDatabase<TMPSceneHideAnimation> hideDatabase;
+        [System.NonSerialized] private AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation> basicDatabase;
+        [System.NonSerialized] private AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation> showDatabase;
+        [System.NonSerialized] private AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation> hideDatabase;
 
         [System.NonSerialized] private CachedCollection<CachedAnimation> basic;
         [System.NonSerialized] private CachedCollection<CachedAnimation> show;
@@ -169,12 +169,6 @@ namespace TMPEffects.Components
             PrepareForProcessing();
 
             SubscribeToMediator();
-
-            if (database != null)
-            {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-                database.ListenForChanges(ReprocessOnDatabaseChange);
-            }
 
             Mediator.ForceReprocess();
 
@@ -211,10 +205,9 @@ namespace TMPEffects.Components
 
         private void OnDestroy()
         {
-            if (database != null)
-            {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-            }
+            basicDatabase?.Dispose();
+            showDatabase?.Dispose();
+            hideDatabase?.Dispose();
         }
 
         private void SubscribeToMediator()
@@ -257,9 +250,15 @@ namespace TMPEffects.Components
         private void PrepareForProcessing()
         {
             // Reset database wrappers
-            basicDatabase = new AnimationDatabase<TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase, sceneAnimations);
-            showDatabase = new AnimationDatabase<TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
-            hideDatabase = new AnimationDatabase<TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+            basicDatabase?.Dispose();
+            showDatabase?.Dispose();
+            hideDatabase?.Dispose();
+            basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase, sceneAnimations);
+            showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
+            hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+            basicDatabase.ObjectChanged += ReprocessOnDatabaseChange;
+            showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
+            hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
             basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase);
@@ -393,16 +392,16 @@ namespace TMPEffects.Components
 
         private void OnDatabaseChanged(TMPAnimationDatabase previousDatabase)
         {
-            if (previousDatabase != null)
-            {
-                previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
-            }
+            //if (previousDatabase != null)
+            //{
+            //    previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
+            //}
 
-            if (database != null)
-            {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-                database.ListenForChanges(ReprocessOnDatabaseChange);
-            }
+            //if (database != null)
+            //{
+            //    database.StopListenForChanges(ReprocessOnDatabaseChange);
+            //    database.ListenForChanges(ReprocessOnDatabaseChange);
+            //}
 
             PrepareForProcessing();
             Mediator.ForceReprocess();
@@ -410,13 +409,6 @@ namespace TMPEffects.Components
 
         private void ReprocessOnDatabaseChange(object sender)
         {
-            if ((sender as TMPAnimationDatabase) != database)
-            {
-                Debug.LogError("Event raised by incorrect database; Bug!");
-                (sender as TMPAnimationDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
-                return;
-            }
-
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }

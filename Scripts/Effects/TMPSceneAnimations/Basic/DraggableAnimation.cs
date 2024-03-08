@@ -101,8 +101,6 @@ namespace TMPEffects.TMPSceneAnimations
             {
                 if (d.dragging != -1) Debug.LogError("how the fuck did this happen");
 
-                Debug.Log("Click at " + Input.mousePosition + "; will check at " + (Input.mousePosition - d.offsets[segmentIndex]));
-
                 float scaleFactor = (canvas == null ? 1f : canvas.scaleFactor);
                 Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
                 int index = TMP_TextUtilities.FindIntersectingCharacter(text, Input.mousePosition - d.offsets[segmentIndex] * scaleFactor, input, true);
@@ -117,8 +115,6 @@ namespace TMPEffects.TMPSceneAnimations
                 d.dragging = cData.info.index;
                 d.startPosition = Input.mousePosition;
                 AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
-
-                Debug.Log("Start: Offset of " + index + " is " + d.offsets[segmentIndex]);
 
                 return;
             }

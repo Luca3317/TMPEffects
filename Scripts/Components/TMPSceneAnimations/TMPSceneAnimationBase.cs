@@ -4,14 +4,17 @@ using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.ObjectChanged;
+using System.ComponentModel;
 
 namespace TMPEffects.Components
 {
     /// <summary>
-    /// Base class for a all SceneAnimations.
+    /// Base class for all SceneAnimations.
     /// </summary>
-    public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyObjectChanged
+    public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public abstract void Animate(CharData cData, IAnimationContext context);
         public abstract object GetNewCustomData();
 
@@ -19,24 +22,9 @@ namespace TMPEffects.Components
 
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
 
-#if UNITY_EDITOR
-        public event ObjectChangedEventHandler ObjectChanged;
-
         protected virtual void OnValidate()
         {
-            Debug.Log("Onvalidate");
-            RaiseObjectChanged();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
         }
-
-        protected virtual void OnDestroy()
-        {
-            RaiseObjectChanged();
-        }
-
-        protected void RaiseObjectChanged()
-        {
-            ObjectChanged?.Invoke(this);
-        }
-#endif
     }
 }
