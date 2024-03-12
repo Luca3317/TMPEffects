@@ -53,7 +53,10 @@ namespace TMPEffects.TMPSceneAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            if (!Application.isPlaying) return;
+            if (!Application.isPlaying)
+            {
+                return;
+            }
 
             Data d = context.customData as Data;
 

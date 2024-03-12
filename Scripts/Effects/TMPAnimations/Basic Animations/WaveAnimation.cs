@@ -28,7 +28,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
 
             float t = context.animatorContext.PassedTime * data.speed + xPos / 1000f * data.frequency;
-            float y = data.amplitude * GetValue(data.curve, WrapMode.PingPong, context, t, cData);
+            float y = data.amplitude * GetValue(data.curve, WrapMode.PingPong, t);
             cData.SetPosition(cData.info.initialPosition + Vector3.up * y);
         }
 

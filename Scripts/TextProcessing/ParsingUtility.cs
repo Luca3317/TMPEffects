@@ -365,108 +365,157 @@ namespace TMPEffects.TextProcessing
         }
 
         #region Parsing
-        public static bool StringToInt(string str, out int result)
+        public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
         {
-            if (!int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
-                return false;
+            if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
+                return true;
+
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
 
             return true;
         }
 
-        public static bool StringToFloat(string str, out float result)
+        public static bool StringToFloat(string str, out float result, IDictionary<string, float> keywords = null)
         {
-            if (!float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
-                return false;
+            if (float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
+                return true;
 
-            return true;
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
+
+            return false;
         }
 
-        public static bool StringToBool(string str, out bool result)
+        public static bool StringToBool(string str, out bool result, IDictionary<string, bool> keywords = null)
         {
-            if (!bool.TryParse(str, out result)) return false;
-            return true;
+            if (bool.TryParse(str, out result))
+                return true;
+
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
+
+            return false;
         }
 
-        public static bool StringToVector2(string str, out Vector2 result)
-        {
-            result = new Vector2(0, 0);
-            str = str.Trim();
-            if (str.Length <= 3) return false;
-
-            if (str[0] != '(') return false;
-
-            if (str[str.Length - 1] != ')') return false;
-
-            int commaIndex = str.IndexOf(',');
-
-            if (commaIndex < 2) return false;
-
-            float x, y;
-            if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return false;
-
-            if (!StringToFloat(str.Substring(commaIndex + 1, str.Length - (commaIndex + 2)), out y)) return false;
-
-            result.x = x;
-            result.y = y;
-            return true;
-        }
-
-        private static bool SpanToVector2(ReadOnlySpan<char> span, out Vector2 result)
+        public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
         {
             result = new Vector2(0, 0);
-            span = span.Trim();
-            if (span.Length <= 3) return false;
 
-            if (span[0] != '(') return false;
+            Vector2? v;
+            if ((v = TryParse()) != null)
+            {
+                result = v.Value;
+                return true;
+            }
 
-            if (span[span.Length - 1] != ')') return false;
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
 
-            int commaIndex = span.IndexOf(',');
+            return false;
 
-            if (commaIndex < 2) return false;
+            Vector2? TryParse()
+            {
+                str = str.Trim();
+                if (str.Length <= 3) return null;
 
-            float x, y;
-            if (!SpanToFloat(span.Slice(1, commaIndex - 1), out x)) return false;
+                if (str[0] != '(') return null;
 
-            if (!SpanToFloat(span.Slice(commaIndex + 1, span.Length - (commaIndex + 2)), out y)) return false;
+                if (str[str.Length - 1] != ')') return null;
 
-            result.x = x;
-            result.y = y;
-            return true;
+                int commaIndex = str.IndexOf(',');
+
+                if (commaIndex < 2) return null;
+
+                float x, y;
+                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
+
+                if (!StringToFloat(str.Substring(commaIndex + 1, str.Length - (commaIndex + 2)), out y)) return null;
+
+                return new Vector2(x, y);
+            }
         }
 
-        private static bool SpanToFloat(ReadOnlySpan<char> span, out float result)
-        {
-            if (!float.TryParse(span, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
-                return false;
-
-            return true;
-        }
-
-        public static bool StringToVector3(string str, out Vector3 result)
+        public static bool StringToVector3(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
         {
             result = new Vector3(0, 0, 0);
-            str = str.Trim();
-            if (str.Length <= 5) return false;
 
-            if (str[0] != '(') return false;
+            Vector3? v;
+            if ((v = TryParse()) != null)
+            {
+                result = v.Value;
+                return true;
+            }
 
-            if (str[str.Length - 1] != ')') return false;
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
 
-            int commaIndex = str.IndexOf(',');
-            int commaIndex2 = str.IndexOf(',', commaIndex + 1);
-            if (commaIndex < 2) return false;
-            if (commaIndex2 < 4) return false;
+            return false;
 
-            float x, y, z;
-            if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return false;
-            if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return false;
-            if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return false;
+            Vector3? TryParse()
+            {
+                str = str.Trim();
+                if (str.Length <= 5) return null;
 
-            result.x = x;
-            result.y = y;
-            result.z = z;
-            return true;
+                if (str[0] != '(') return null;
+
+                if (str[str.Length - 1] != ')') return null;
+
+                int commaIndex = str.IndexOf(',');
+                int commaIndex2 = str.IndexOf(',', commaIndex + 1);
+                if (commaIndex < 2) return null;
+                if (commaIndex2 < 4) return null;
+
+                float x, y, z;
+                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
+                if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return null;
+                if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return null;
+
+                return new Vector3(x, y, z);
+            }
+        }
+
+        public static bool StringToAnchor(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+        {
+            result = new Vector3(0, 0, 0);
+
+            if (str == null || str.Length < 2 || str[0] != 'a' || str[1] != ':') ;
+
+            str = str.Substring(2, str.Length - 2);
+
+            Vector3? v;
+            if ((v = TryParse()) != null)
+            {
+                result = v.Value;
+                return true;
+            }
+
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
+
+            return false;
+
+            Vector3? TryParse()
+            {
+                str = str.Trim();
+                if (str.Length <= 5) return null;
+
+                if (str[0] != '(') return null;
+
+                if (str[str.Length - 1] != ')') return null;
+
+                int commaIndex = str.IndexOf(',');
+                int commaIndex2 = str.IndexOf(',', commaIndex + 1);
+                if (commaIndex < 2) return null;
+                if (commaIndex2 < 4) return null;
+
+                float x, y, z;
+                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
+                if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return null;
+                if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return null;
+
+                return new Vector3(x, y, z);
+            }
         }
 
         /*
@@ -482,7 +531,7 @@ namespace TMPEffects.TextProcessing
          *  //recognizable by: no '(' ')' or ','
          *  keywords: easein, easeout, etc
          */
-        public static bool StringToAnimationCurve(string str, out AnimationCurve result)
+        public static bool StringToAnimationCurve(string str, out AnimationCurve result, IDictionary<string, AnimationCurve> keywords = null)
         {
             result = null;
             str = str.Trim();
@@ -501,7 +550,10 @@ namespace TMPEffects.TextProcessing
                 return MethodToAnimationCurve(str, ref result);
             }
 
-            // else, keyword
+            // else, keyword; first passed in ones, then built in ones
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
+
             if (AnimationCurveUtility.NameConstructorMapping.TryGetValue(str, out Func<AnimationCurve> ctor))
             {
                 result = ctor();
@@ -511,7 +563,42 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        private static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
+        public static bool StringToWaveType(string str, out ParameterUtility.WaveType result, IDictionary<string, ParameterUtility.WaveType> keywords = null)
+        {
+            result = default;
+            str = str.Trim();
+
+            switch (str)
+            {
+                case "p":
+                case "pls":
+                case "pulse": result = ParameterUtility.WaveType.Pulse; return true;
+
+                case "w":
+                case "wv":
+                case "wave": result = ParameterUtility.WaveType.Wave; return true;
+
+                case "odp":
+                case "odpls":
+                case "odpulse":
+                case "odirp":
+                case "odirpls":
+                case "odirpulse":
+                case "onedirectionalp":
+                case "onedirectionalpls":
+                case "onedirectionalpulse": result = ParameterUtility.WaveType.OneDirectionalPulse; return true;
+            }
+
+            if (keywords != null && keywords.ContainsKey(str))
+            {
+                result = keywords[str];
+                return true;
+            }
+
+            return false;
+        }
+
+        internal static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
         {
             List<Vector2> vectors = new List<Vector2>();
             int currentStartIndex = str.IndexOf('(', 0);
@@ -539,7 +626,7 @@ namespace TMPEffects.TextProcessing
             return true;
         }
 
-        private static bool MethodToAnimationCurve(string str, ref AnimationCurve result)
+        internal static bool MethodToAnimationCurve(string str, ref AnimationCurve result)
         {
             if (str.Length < 4) return false;
 
@@ -574,6 +661,38 @@ namespace TMPEffects.TextProcessing
             }
 
             result = constructor(vectors);
+            return true;
+        }
+
+        internal static bool SpanToVector2(ReadOnlySpan<char> span, out Vector2 result)
+        {
+            result = new Vector2(0, 0);
+            span = span.Trim();
+            if (span.Length <= 3) return false;
+
+            if (span[0] != '(') return false;
+
+            if (span[span.Length - 1] != ')') return false;
+
+            int commaIndex = span.IndexOf(',');
+
+            if (commaIndex < 2) return false;
+
+            float x, y;
+            if (!SpanToFloat(span.Slice(1, commaIndex - 1), out x)) return false;
+
+            if (!SpanToFloat(span.Slice(commaIndex + 1, span.Length - (commaIndex + 2)), out y)) return false;
+
+            result.x = x;
+            result.y = y;
+            return true;
+        }
+
+        internal static bool SpanToFloat(ReadOnlySpan<char> span, out float result)
+        {
+            if (!float.TryParse(span, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
+                return false;
+
             return true;
         }
         #endregion

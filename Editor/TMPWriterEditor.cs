@@ -557,17 +557,6 @@ namespace TMPEffects.Editor
             writer.SkipPlayer();
             progress = 1;
         }
-
-        public override bool RequiresConstantRepaint()
-        {
-            if (changed)
-            {
-                changed = false;
-                return true;
-            }
-
-            return false;
-        }
     }
 }
 

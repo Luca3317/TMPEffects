@@ -29,7 +29,7 @@ namespace TMPEffects.Components.Animator
         /// <summary>
         /// How much time has passed since the animator started playing its animations.
         /// </summary>
-        [System.NonSerialized, HideInInspector] public float passed = 0;
+        [System.NonSerialized, HideInInspector] public float passed;
 
         [System.NonSerialized, HideInInspector] public Func<int, float> StateTime;
         [System.NonSerialized, HideInInspector] public Func<int, float> VisibleTime;

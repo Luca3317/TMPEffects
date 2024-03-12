@@ -49,7 +49,7 @@ namespace TMPEffects.TMPAnimations.Animations
             float t = (context.animatorContext.PassedTime * d.speed);
             float t2 = Mathf.PingPong(t, 1);
 
-            float eval = GetValue(d.curve, WrapMode.PingPong, context, t2, cData);
+            float eval = GetValue(d.curve, WrapMode.PingPong, t2);
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, eval);
 
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetVertex(3) - cData.mesh.initial.GetVertex(0)).normalized));

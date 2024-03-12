@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     _serializedList:
+    - Key: test
+      Value: {fileID: 11400000, guid: 6a7244bb464e8ee4f97813a9bc0053c8, type: 2}
     - Key: wave
       Value: {fileID: 11400000, guid: caf90dcc4db077248b4aef29741767e8, type: 2}
+    - Key: pulsate
+      Value: {fileID: 11400000, guid: a59657e9278252e44862ca2418bbdfeb, type: 2}
+    - Key: spread
+      Value: {fileID: 11400000, guid: 779ca4742eec2944792561b0ad03c0f8, type: 2}
     - Key: char
       Value: {fileID: 11400000, guid: d6826c460579f67428d39f869dbe772e, type: 2}
     - Key: funky

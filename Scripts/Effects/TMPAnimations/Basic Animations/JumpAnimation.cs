@@ -63,11 +63,11 @@ namespace TMPEffects.TMPAnimations.Animations
                 float eval;
                 if (diff > 0)
                 {
-                    eval = GetValue(d.jumpCurve, WrapMode.PingPong, context, diff / effectiveRadius + 1, cData);
+                    eval = GetValue(d.jumpCurve, WrapMode.PingPong, diff / effectiveRadius + 1);
                 }
                 else
                 {
-                    eval = GetValue(d.fallCurve, WrapMode.PingPong, context, diff / effectiveRadius + 1, cData);
+                    eval = GetValue(d.fallCurve, WrapMode.PingPong, diff / effectiveRadius + 1);
                 }
 
                 cData.SetPosition(cData.info.initialPosition + Vector3.up * d.amplitude * eval);

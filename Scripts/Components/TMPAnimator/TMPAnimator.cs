@@ -766,10 +766,14 @@ namespace TMPEffects.Components
             public CharData cData;
             public AnimatorContext context;
 
+            List<Vector3> pivots = new List<Vector3>();
+            List<Quaternion> rotations = new List<Quaternion>();
+            private int rotationCount = 0;
+
             public Vector3 positionDelta;
             public Matrix4x4 scaleDelta;
-            public Quaternion rotation;
-            public Vector3 rotationPivot;
+            //public Quaternion rotation;
+            //public Vector3 rotationPivot;
 
             public Vector3 TL;
             public Vector3 TR;
@@ -813,8 +817,11 @@ namespace TMPEffects.Components
 
                 positionDelta = Vector3.zero;
                 scaleDelta = Matrix4x4.Scale(Vector3.one);
-                rotation = Quaternion.identity;
-                rotationPivot = cData.info.initialPosition;
+                //rotation = Quaternion.identity;
+                //rotationPivot = cData.info.initialPosition;
+                rotationCount = 0;
+                rotations.Clear();
+                pivots.Clear();
 
                 TL = Vector3.zero;
                 TR = Vector3.zero;
@@ -868,11 +875,18 @@ namespace TMPEffects.Components
                 vbl = scaleDelta.MultiplyPoint3x4(vbl - cData.info.initialPosition) + cData.info.initialPosition;
 
                 // Apply rotation
-                Matrix4x4 matrix = Matrix4x4.Rotate(rotation);
-                vtl = matrix.MultiplyPoint3x4(vtl - rotationPivot) + rotationPivot;
-                vtr = matrix.MultiplyPoint3x4(vtr - rotationPivot) + rotationPivot;
-                vbr = matrix.MultiplyPoint3x4(vbr - rotationPivot) + rotationPivot;
-                vbl = matrix.MultiplyPoint3x4(vbl - rotationPivot) + rotationPivot;
+                Vector3 pivot;
+                Matrix4x4 matrix;
+                for (int i = 0; i < rotations.Count; i++)
+                {
+                    pivot = pivots[i];
+                    matrix = Matrix4x4.Rotate(rotations[i]);
+
+                    vtl = matrix.MultiplyPoint3x4(vtl - pivot) + pivot;
+                    vtr = matrix.MultiplyPoint3x4(vtr - pivot) + pivot;
+                    vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
+                    vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
+                }
 
                 // Apply transformation
                 vtl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
@@ -884,6 +898,74 @@ namespace TMPEffects.Components
                 TL_Result = vtl;
                 TR_Result = vtr;
                 BR_Result = vbr;
+            }
+
+            public void UpdateVertexOffsets()
+            {
+                if (cData.positionDirty)
+                {
+                    positionDelta += (cData.Position - cData.info.initialPosition);
+                }
+
+                if (cData.scaleDirty)
+                {
+                    scaleDelta *= Matrix4x4.Scale(cData.Scale);
+                }
+
+                if (cData.rotationDirty)
+                {
+                    if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
+                    {
+                        rotations.Add(cData.Rotation);
+                        pivots.Add(cData.info.initialPosition + (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1));
+                    }
+                    //rotation = cData.Rotation * rotation;
+                    //rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                }
+
+                if (cData.verticesDirty)
+                {
+                    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+
+                    TL += deltaTL;
+                    TR += deltaTR;
+                    BR += deltaBR;
+                    BL += deltaBL;
+
+                    TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, TLMax.z));
+                    TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, TRMax.z));
+                    BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, BRMax.z));
+                    BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, BLMax.z));
+
+                    TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, TLMin.z));
+                    TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, TRMin.z));
+                    BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, BRMin.z));
+                    BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, BLMin.z));
+                }
+
+                if (cData.colorsDirty)
+                {
+                    BL_Color = cData.mesh.GetColor(0);
+                    TL_Color = cData.mesh.GetColor(1);
+                    TR_Color = cData.mesh.GetColor(2);
+                    BR_Color = cData.mesh.GetColor(3);
+                }
+
+                if (cData.uvsDirty)
+                {
+                    BL_UV = cData.mesh.GetUV0(0);
+                    TL_UV = cData.mesh.GetUV0(1);
+                    TR_UV = cData.mesh.GetUV0(2);
+                    BR_UV = cData.mesh.GetUV0(3);
+
+                    BL_UV2 = cData.mesh.GetUV2(0);
+                    TL_UV2 = cData.mesh.GetUV2(1);
+                    TR_UV2 = cData.mesh.GetUV2(2);
+                    BR_UV2 = cData.mesh.GetUV2(3);
+                }
             }
         }
 
@@ -906,7 +988,7 @@ namespace TMPEffects.Components
                 if (IsExcludedShow(cData.info.character))
                 {
                     Animate(dummyShow, false);
-                    if (isExcludedBasic)
+                    if (!isExcludedBasic)
                     {
                         AnimateBasic(false);
                         AnimateBasic(true);
@@ -953,11 +1035,8 @@ namespace TMPEffects.Components
 
                     Mediator.SetVisibilityState(cData, VisibilityState.Shown);
                 }
-                else
-                {
-                    ApplyVertices();
-                }
 
+                ApplyVertices();
                 ignoreVisibilityChanges = prev;
                 return;
             }
@@ -1051,7 +1130,7 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                UpdateVertexOffsets();
+                state.UpdateVertexOffsets();
             }
 
             void AnimateBasic(bool late)
@@ -1263,66 +1342,66 @@ namespace TMPEffects.Components
                 return done;
             }
 
-            void UpdateVertexOffsets()
-            {
-                if (cData.positionDirty)
-                {
-                    state.positionDelta += (cData.Position - cData.info.initialPosition);
-                }
-                if (cData.scaleDirty)
-                {
-                    state.scaleDelta *= Matrix4x4.Scale(cData.Scale);
-                }
-                if (cData.rotationDirty)
-                {
-                    state.rotation = cData.Rotation * state.rotation;
-                    state.rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                }
+            //void UpdateVertexOffsets()
+            //{
+            //if (cData.positionDirty)
+            //{
+            //    state.positionDelta += (cData.Position - cData.info.initialPosition);
+            //}
+            //if (cData.scaleDirty)
+            //{
+            //    state.scaleDelta *= Matrix4x4.Scale(cData.Scale);
+            //}
+            //if (cData.rotationDirty)
+            //{
+            //    state.rotation = cData.Rotation * state.rotation;
+            //    state.rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+            //}
 
-                if (cData.verticesDirty)
-                {
-                    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+            //if (cData.verticesDirty)
+            //{
+            //    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+            //    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+            //    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+            //    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
 
-                    state.TL += deltaTL;
-                    state.TR += deltaTR;
-                    state.BR += deltaBR;
-                    state.BL += deltaBL;
+            //    state.TL += deltaTL;
+            //    state.TR += deltaTR;
+            //    state.BR += deltaBR;
+            //    state.BL += deltaBL;
 
-                    state.TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMax.z));
-                    state.TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMax.z));
-                    state.BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMax.z));
-                    state.BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMax.z));
+            //    state.TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMax.z));
+            //    state.TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMax.z));
+            //    state.BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMax.z));
+            //    state.BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMax.z));
 
-                    state.TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMin.z));
-                    state.TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMin.z));
-                    state.BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMin.z));
-                    state.BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMin.z));
-                }
+            //    state.TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMin.z));
+            //    state.TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMin.z));
+            //    state.BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMin.z));
+            //    state.BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMin.z));
+            //}
 
-                if (cData.colorsDirty)
-                {
-                    state.BL_Color = cData.mesh.GetColor(0);
-                    state.TL_Color = cData.mesh.GetColor(1);
-                    state.TR_Color = cData.mesh.GetColor(2);
-                    state.BR_Color = cData.mesh.GetColor(3);
-                }
+            //if (cData.colorsDirty)
+            //{
+            //    state.BL_Color = cData.mesh.GetColor(0);
+            //    state.TL_Color = cData.mesh.GetColor(1);
+            //    state.TR_Color = cData.mesh.GetColor(2);
+            //    state.BR_Color = cData.mesh.GetColor(3);
+            //}
 
-                if (cData.uvsDirty)
-                {
-                    state.BL_UV = cData.mesh.GetUV0(0);
-                    state.TL_UV = cData.mesh.GetUV0(1);
-                    state.TR_UV = cData.mesh.GetUV0(2);
-                    state.BR_UV = cData.mesh.GetUV0(3);
+            //if (cData.uvsDirty)
+            //{
+            //    state.BL_UV = cData.mesh.GetUV0(0);
+            //    state.TL_UV = cData.mesh.GetUV0(1);
+            //    state.TR_UV = cData.mesh.GetUV0(2);
+            //    state.BR_UV = cData.mesh.GetUV0(3);
 
-                    state.BL_UV2 = cData.mesh.GetUV2(0);
-                    state.TL_UV2 = cData.mesh.GetUV2(1);
-                    state.TR_UV2 = cData.mesh.GetUV2(2);
-                    state.BR_UV2 = cData.mesh.GetUV2(3);
-                }
-            }
+            //    state.BL_UV2 = cData.mesh.GetUV2(0);
+            //    state.TL_UV2 = cData.mesh.GetUV2(1);
+            //    state.TR_UV2 = cData.mesh.GetUV2(2);
+            //    state.BR_UV2 = cData.mesh.GetUV2(3);
+            //}
+            //}
 
             void ApplyVertices()
             {
@@ -1640,7 +1719,7 @@ namespace TMPEffects.Components
         [SerializeField, HideInInspector] bool prevBasicExcludePunctuation = false;
         [SerializeField, HideInInspector] bool prevShowExcludePunctuation = false;
         [SerializeField, HideInInspector] bool prevHideExcludePunctuation = false;
-
+        [System.NonSerialized, HideInInspector] float lastPreviewUpdateTime = 0f;
 
         internal void StartPreview()
         {
@@ -1674,8 +1753,17 @@ namespace TMPEffects.Components
 
         private void UpdatePreview()
         {
-            UpdateAnimations_Impl((float)EditorApplication.timeSinceStartup - context.passed);
+            if (lastPreviewUpdateTime <= 0)
+            {
+                UpdateAnimations(0f);
+            }
+            else
+            {
+                UpdateAnimations_Impl(Time.time - lastPreviewUpdateTime);
+            }
+
             EditorApplication.QueuePlayerLoopUpdate();
+            lastPreviewUpdateTime = Time.time;
         }
 
         internal void ForceReprocess()
@@ -1692,6 +1780,21 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
             PrepareForProcessing();
+        }
+
+        internal void ResetTime()
+        {
+            context.passed = 0f;
+            for (int i = 0; i < stateTimes.Count; i++)
+            {
+                stateTimes[i] = 0;
+            }
+            for (int i = 0; i < visibleTimes.Count; i++)
+            {
+                visibleTimes[i] = 0;
+            }
+            lastPreviewUpdateTime = Time.time;
+            Mediator.ForceReprocess();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)

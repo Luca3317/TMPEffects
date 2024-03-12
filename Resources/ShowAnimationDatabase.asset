@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showAnimations:
     _serializedList:
+    - Key: char
+      Value: {fileID: 11400000, guid: d82e51bb982c27c47a8814341550d76a, type: 2}
+    - Key: spread
+      Value: {fileID: 11400000, guid: 747c7167c5d13a24dae0f420c3da1a8a, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: fa0673e18b43a904ca0a847d165d724f, type: 2}
     - Key: move
       Value: {fileID: 11400000, guid: 108b496c4e18ae84e8e10d75c99e52ca, type: 2}
     - Key: grow

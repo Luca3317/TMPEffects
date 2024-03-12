@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
 using TMPEffects.Databases.AnimationDatabase;
+using UnityEngine.Playables;
 
 namespace TMPEffects.Editor
 {
@@ -35,11 +36,14 @@ namespace TMPEffects.Editor
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
 
-        //SerializedProperty animateOnTextChangeProp;
+        // Styles
+        GUIStyle previewLabelStyle;
+
 
         GUIContent useDefaultDatabaseLabel;
 
-        bool guiContent = false;
+        bool initGuiContent = false;
+        bool initStyles = false;
         bool forceReprocess = false;
 
         private void OnEnable()
@@ -93,8 +97,8 @@ namespace TMPEffects.Editor
 
         void InitGUIContent()
         {
-            if (guiContent) return;
-            guiContent = true;
+            if (initGuiContent) return;
+            initGuiContent = true;
 
             alertDialogDefaultShow = new GUIContent();
             alertDialogDefaultHide = new GUIContent();
@@ -103,6 +107,22 @@ namespace TMPEffects.Editor
             alertDialogDefaultShow.text = "";
             alertDialogDefaultHide.text = "";
             useDefaultDatabaseLabel = new GUIContent("Use default database");
+        }
+
+        GUIStyle horizontalLine;
+        void InitStyles()
+        {
+            if (initStyles) return;
+            initStyles = true;
+
+
+
+            horizontalLine = new GUIStyle();
+            horizontalLine.normal.background = EditorGUIUtility.whiteTexture;
+            horizontalLine.margin = new RectOffset(0, 0, 4, 4);
+            horizontalLine.fixedHeight = 1;
+
+            previewLabelStyle = new GUIStyle("LargeBoldLabel");
         }
 
         void DrawDatabase()
@@ -246,15 +266,25 @@ namespace TMPEffects.Editor
             }
         }
 
-        void RepaintInspector()
+        void DrawPreview()
         {
             bool prevPreview = previewProp.boolValue;
 
-            EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
-            previewProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Preview"), previewProp.boolValue);
-            EditorGUI.EndDisabledGroup();
+            EditorGUILayout.LabelField(new GUIContent("Animator preview"), previewLabelStyle);
 
-            //if (prevPreview != previewProp.boolValue) forceReprocess = true;
+            EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
+            EditorGUILayout.BeginHorizontal();
+            //previewProp.boolValue = EditorGUILayout.Toggle(GUIContent.none, previewProp.boolValue);
+            if (GUILayout.Button(new GUIContent("Toggle preview")))
+            {
+                previewProp.boolValue = !prevPreview;
+            }
+            if (GUILayout.Button(new GUIContent("Reset time")))
+            {
+                animator.ResetTime();
+            }
+            EditorGUILayout.EndHorizontal();
+            EditorGUI.EndDisabledGroup();
 
             if (previewProp.boolValue)
             {
@@ -262,19 +292,33 @@ namespace TMPEffects.Editor
                 {
                     animator.StartPreview();
                 }
-                //if (!prevPreview) animator.StartAnimating();
-
-                //animator.UpdateAnimations();
-                //EditorApplication.QueuePlayerLoopUpdate();
             }
             else if (prevPreview)
             {
                 animator.StopPreview();
-                //animator.StopAnimating();
-                //animator.ResetAnimations();
             }
 
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedPropertiesWithoutUndo();
+
+            EditorGUILayout.Space();
+            HorizontalLine(Color.gray);
+            EditorGUILayout.Space();
+        }
+
+        // utility method
+        void HorizontalLine(Color color)
+        {
+            var c = GUI.color;
+            GUI.color = color;
+            GUILayout.Box(GUIContent.none, horizontalLine);
+            GUI.color = c;
+        }
+
+
+
+        void RepaintInspector()
+        {
+            DrawPreview();
 
             EditorGUILayout.PropertyField(updateFromProp);
             EditorGUILayout.PropertyField(animateOnStartProp);
@@ -315,6 +359,7 @@ namespace TMPEffects.Editor
         public override void OnInspectorGUI()
         {
             InitGUIContent();
+            InitStyles();
 
             RepaintInspector();
 

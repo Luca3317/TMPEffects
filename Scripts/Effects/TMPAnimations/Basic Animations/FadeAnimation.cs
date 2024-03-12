@@ -66,7 +66,7 @@ namespace TMPEffects.TMPAnimations.Animations
             AnimationCurve curve = d.fadeIn ? d.fadeInCurve : d.fadeOutCurve;
             float startOpacity = d.fadeIn ? d.minOpacity : d.maxOpacity;
 
-            float t = GetValue(curve, WrapMode.PingPong, context, (context.animatorContext.PassedTime - d.cycleTime) / fadeDuration, cData);
+            float t = GetValue(curve, WrapMode.PingPong, (context.animatorContext.PassedTime - d.cycleTime) / fadeDuration);
             float opacity = Mathf.Lerp(startOpacity, targetOpacity, t);
 
             if (anchor == Vector2.zero)
