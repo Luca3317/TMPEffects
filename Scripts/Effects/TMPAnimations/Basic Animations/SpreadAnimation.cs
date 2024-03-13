@@ -44,27 +44,28 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 wave = new Wave(growCurve, shrinkCurve, growDuration, shrinkDuration, velocity, amplitude, crestWait, throughWait);
             }
 
-            int val = wave.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData));
-            if (val == 1) d.growingDict[cData.info.index] = false;
-            if (val == -1) d.growingDict[cData.info.index] = true;
+            //int val = wave.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData));
+            //if (val == 1) d.growingDict[cData.info.index] = false;
+            //if (val == -1) d.growingDict[cData.info.index] = true;
 
-            if (d.growingDict[cData.info.index])
+            float t = (context.animatorContext.PassedTime);
+            var result = wave.Evaluate2(t, context.segmentData.SegmentIndexOf(cData));
+
+            if (result.Item2 > 0)
             {
-                Grow(cData, context, d);
+                Grow(cData, context, d, result.Item1);
             }
             else
             {
-                Shrink(cData, context, d);
+                Shrink(cData, context, d, result.Item1);
             }
         }
 
         [System.NonSerialized] Wave wave = null;
 
-        private void Grow(CharData cData, IAnimationContext context, Data d)
+        private void Grow(CharData cData, IAnimationContext context, Data d, float t)
         {
-            float t = (context.animatorContext.PassedTime);
-            float t2 = wave.Evaluate(t, context.segmentData.SegmentIndexOf(cData));
-            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
+            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
             Vector3 actualDir = new Vector3(d.growDirection.y, d.growDirection.x, 0f);
 
@@ -80,11 +81,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        private void Shrink(CharData cData, IAnimationContext context, Data d)
+        private void Shrink(CharData cData, IAnimationContext context, Data d, float t)
         {
-            float t = (context.animatorContext.PassedTime);
-            float t2 = wave.Evaluate(t, context.segmentData.SegmentIndexOf(cData));
-            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
+            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
             Vector3 actualDir = new Vector3(d.shrinkDirection.y, d.shrinkDirection.x, 0f);
 

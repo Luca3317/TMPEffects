@@ -46,31 +46,31 @@ namespace TMPEffects.TMPAnimations.Animations
             xPos /= (cData.info.referenceScale / 36f);
             xPos /= 2000f;
 
-            //if (context.segmentData.SegmentIndexOf(cData) == 0)
-            //{
-            //    int val;
-            //    if (useIndex)
-            //        val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
-            //    else
-            //        val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, xPos, realtimeinterval);
+            if (context.segmentData.SegmentIndexOf(cData) == 0)
+            {
+                int val;
+                if (useIndex)
+                    val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval, Wave.PulseExtrema.Late);
+                else
+                    val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, xPos, realtimeinterval, Wave.PulseExtrema.Late);
 
-            //    if (val == -1)
-            //    {
-            //        Debug.Log("MINIMA");
-            //    }
-            //    if (val == 1)
-            //    {
-            //        Debug.Log("MAXIMA");
-            //    }
-            //}
+                if (val == -1)
+                {
+                    Debug.Log("MINIMA");
+                }
+                if (val == 1)
+                {
+                    Debug.Log("MAXIMA");
+                }
+            }
 
-            float eval;
+            (float, int) eval;
             if (useIndex)
-                eval = w.Evaluate(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
+                eval = w.Evaluate2(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
             else 
-                eval = w.Evaluate(context.animatorContext.PassedTime, xPos, realtimeinterval);
+                eval = w.Evaluate2(context.animatorContext.PassedTime, xPos, realtimeinterval);
 
-            cData.SetPosition(cData.info.initialPosition + eval * Vector3.up * 25);
+            cData.SetPosition(cData.info.initialPosition + eval.Item1 * Vector3.up * 25);
         }
 
         public override object GetNewCustomData()

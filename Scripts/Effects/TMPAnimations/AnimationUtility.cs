@@ -383,7 +383,7 @@ namespace TMPEffects.TMPAnimations
                 }
 
                 if (ThroughWait <= 0)
-                    return PassedInvertedPulse(time, deltaTime, offset, realtimeWait, extrema);
+                    return PassedInvertedPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
 
                 return PassedOneDirectionalPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
             }
@@ -425,7 +425,10 @@ namespace TMPEffects.TMPAnimations
                 if (deltaTime >= interval)
                 {
                     t %= interval;
-                    return t < EffectiveUpPeriod ? -1 : 1;
+                    if (t < EffectiveUpPeriod) return -1;
+                    if (t < EffectivePeriod) return 1;
+                    return -1;
+                    //return t < EffectiveUpPeriod ? -1 : 1;
                 }
 
                 float prevT = CalculateT(time - deltaTime, offset, -1);
@@ -465,7 +468,9 @@ namespace TMPEffects.TMPAnimations
                 if (deltaTime >= interval)
                 {
                     t %= interval;
-                    return t < EffectiveDownPeriod ? 1 : -1;
+                    if (t < EffectiveDownPeriod) return 1;
+                    if (t < EffectivePeriod) return -1;
+                    return 1;
                 }
 
                 float prevT = CalculateT(time - deltaTime, offset, -1);
@@ -506,8 +511,8 @@ namespace TMPEffects.TMPAnimations
 
                 if (deltaTime >= interval)
                 {
-                    if (offset == 0)
-                        Debug.LogWarning("Case 0!");
+                    //if (offset == 0)
+                    //    Debug.LogWarning("Case 0!");
                     float ogt = t;
 
                     if (interval > 0)
@@ -537,8 +542,8 @@ namespace TMPEffects.TMPAnimations
 
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
-                    if (offset == 0)
-                        Debug.LogWarning("Case 2");
+                    //if (offset == 0)
+                    //    Debug.LogWarning("Case 2");
                     t %= interval;
                     if (t < EffectiveUpPeriod)
                     {
@@ -576,24 +581,24 @@ namespace TMPEffects.TMPAnimations
                 interval -= upInterval;
                 if (prevT < interval && t >= interval)
                 {
-                    if (offset == 0)
-                        Debug.Log("Case 5");
+                    //if (offset == 0)
+                    //    Debug.Log("Case 5");
                     if (extrema.HasFlag(PulseExtrema.Early)) return -1;
                 }
 
                 interval -= EffectiveDownPeriod;
                 if (prevT < interval && t >= interval)
                 {
-                    if (offset == 0)
-                        Debug.Log("Case 6");
+                    //if (offset == 0)
+                    //    Debug.Log("Case 6");
                     if (extrema.HasFlag(PulseExtrema.Late)) return 1;
                 }
 
                 interval -= downInterval;
                 if (prevT < interval && t >= interval)
                 {
-                    if (offset == 0)
-                        Debug.Log("Case 7");
+                    //if (offset == 0)
+                    //    Debug.Log("Case 7");
                     if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                 }
 
@@ -633,6 +638,11 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
 
+
+
+
+
+
             public float Evaluate(float time, float offset, bool realtimeWait = true)
             {
                 if (CrestWait <= 0)
@@ -644,8 +654,8 @@ namespace TMPEffects.TMPAnimations
 
                     return EvaluateAsPulse(time, offset, realtimeWait);
                 }
-                if (ThroughWait <= 0) 
-                    return EvaluateAsInvertedPulse(time, offset, realtimeWait);
+
+                if (ThroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
 
                 return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
             }
@@ -679,7 +689,21 @@ namespace TMPEffects.TMPAnimations
                 if (t <= 0) return Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f);
                 if (t <= EffectiveUpPeriod) return Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod));
                 if (t <= (EffectivePeriod)) return Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod));
-                return Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2);
+                return Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f);
+            }
+
+            public float EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (CrestWait) * (realTimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+
+                if (interval > 0)
+                    t %= interval;
+
+                if (t <= 0) return Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f);
+                if (t <= EffectiveDownPeriod) return Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod));
+                if (t <= EffectivePeriod) return Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod));
+                return Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f);
             }
 
             public float EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = false)
@@ -720,6 +744,111 @@ namespace TMPEffects.TMPAnimations
 
                 throw new System.Exception("Shouldnt be reachable");
             }
+
+
+
+            public (float, int) Evaluate2(float time, float offset, bool realtimeWait = true)
+            {
+                if (CrestWait <= 0)
+                {
+                    if (ThroughWait <= 0)
+                    {
+                        return EvaluateAsWave2(time, offset);
+                    }
+
+                    return EvaluateAsPulse2(time, offset, realtimeWait);
+                }
+
+                if (ThroughWait <= 0) return EvaluateAsInvertedPulse2(time, offset, realtimeWait);
+
+                return EvaluateAsOneDirectionalPulse2(time, offset, realtimeWait);
+            }
+
+            public (float, int) EvaluateAsWave2(float time, float offset)
+            {
+                float t = CalculateT(time, offset, -1);
+                t = Mathf.Abs(t);
+                t %= EffectivePeriod;
+
+                if (t <= EffectiveUpPeriod)
+                {
+                    t = Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod);
+                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, t), 1);
+                }
+                else
+                {
+                    t = Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod);
+                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
+                }
+            }
+
+            public (float, int) EvaluateAsPulse2(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (ThroughWait) * (realTimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+
+                if (interval > 0)
+                    t %= interval;
+
+                if (t <= 0) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+                if (t <= EffectiveUpPeriod) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                if (t <= (EffectivePeriod)) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
+                return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
+            }
+
+            public (float, int) EvaluateAsInvertedPulse2(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (CrestWait) * (realTimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+
+                if (interval > 0)
+                    t %= interval;
+
+                if (t <= 0) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
+                if (t <= EffectiveDownPeriod) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                if (t <= EffectivePeriod) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
+                return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+            }
+
+            public (float, int) EvaluateAsOneDirectionalPulse2(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float upInterval = (CrestWait) * (realTimeWait ? Properties.Velocity : 1f);
+                float downInterval = (ThroughWait) * (realTimeWait ? Properties.Velocity : 1f);
+                float interval = upInterval + downInterval + EffectivePeriod;
+
+                //if (offset == 0) Debug.Log("t " + t + "; Interval: " + interval + "; result " + (t % interval));
+
+
+                if (interval > 0)
+                    t %= interval;
+
+                if (t <= EffectiveUpPeriod)
+                {
+                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                }
+
+                t -= EffectiveUpPeriod;
+                if (t <= upInterval)
+                {
+                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                }
+
+                t -= upInterval;
+                if (t <= EffectiveDownPeriod)
+                {
+                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                }
+
+                t -= EffectiveDownPeriod;
+                if (t <= downInterval)
+                {
+                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
+                }
+
+                throw new System.Exception("Shouldnt be reachable");
+            }
+
 
 
             [Flags]
