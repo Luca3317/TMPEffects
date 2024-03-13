@@ -10,11 +10,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Spread")]
     public class SpreadAnimation : TMPAnimation
     {
-        [SerializeField] float growDuration = 1;
-        [SerializeField] AnimationCurve growCurve = AnimationCurveUtility.EaseOutElastic();
-
-        [SerializeField] float shrinkDuration = 1;
-        [SerializeField] AnimationCurve shrinkCurve = AnimationCurveUtility.EaseOutElastic();
+        [SerializeField] Wave wave;
 
         [SerializeField] Vector3 growAnchor = new Vector3(0, -1, 0);
         [SerializeField] Vector3 growDirection = Vector3.up;
@@ -31,19 +27,17 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.customData as Data;
 
-            d.Wave ??= new Wave(growCurve, shrinkCurve, growDuration, shrinkDuration, velocity, amplitude, crestWait, throughWait);
-
             (float, int) result;
             if (indexbased)
             {
-                result = d.Wave.Evaluate(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData) * uniformity);
+                result = d.Wave.Evaluate(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData));
             }
             else
             {
                 float xPos = cData.info.initialPosition.x;
                 xPos /= (cData.info.referenceScale / 36f);
                 xPos /= 2000f;
-                result = d.Wave.Evaluate(context.animatorContext.PassedTime, xPos * uniformity);
+                result = d.Wave.Evaluate(context.animatorContext.PassedTime, xPos);
             }
 
             if (result.Item2 > 0)
@@ -97,21 +91,34 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return;
 
             Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "growDuration", "growDur", "growD", "gD")) d.growDuration = f;
             if (TryGetVector3Parameter(out Vector3 v, parameters, "growDirection", "growDir", "gDir")) d.growDirection = v;
             if (TryGetVector3Parameter(out v, parameters, "growAnchor", "growAnc", "gAnc") || TryGetAnchorParameter(out v, parameters, "growAnchor", "growAnc", "gAnc")) d.growAnchor = v;
-            if (TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "growCurve", "growCrv", "growC", "gC")) d.growCurve = crv;
 
-            if (TryGetFloatParameter(out f, parameters, "shrinkDuration", "shrinkDur", "shrinkD", "sD")) d.shrinkDuration = f;
             if (TryGetVector3Parameter(out v, parameters, "shrinkDirection", "shrinkDir", "sDir")) d.shrinkDirection = v;
             if (TryGetVector3Parameter(out v, parameters, "shrinkAnchor", "shrinkAnc", "sAnc") || TryGetAnchorParameter(out v, parameters, "shrinkAnchor", "shrinkAnc", "gAnc")) d.shrinkAnchor = v;
-            if (TryGetAnimCurveParameter(out crv, parameters, "shrinkCurve", "shrinkCrv", "shrinkC", "sC")) d.shrinkCurve = crv;
 
-            if (TryGetFloatParameter(out f, parameters, "maxPercentage", "maxP")) d.maxPercentage = f;
+            if (TryGetFloatParameter(out float f, parameters, "maxPercentage", "maxP")) d.maxPercentage = f;
             if (TryGetFloatParameter(out f, parameters, "minPercentage", "minP")) d.minPercentage = f;
 
             WaveParameters wp = GetWaveParameters(parameters);
+            float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
+            float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
 
+            if (wave == null) Debug.Log("its null?");
+
+            float velocity = wave.Velocity; 
+            if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
+            else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod)); // TODO math
+
+            d.Wave = new Wave
+            (
+                wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
+                wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
+                upPeriod,
+                downPeriod,
+                velocity,
+                wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value
+            );
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -119,20 +126,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return true;
 
             if (!ValidateWaveParameters(parameters)) return false;
-            if (HasNonFloatParameter(parameters, "growDuration", "growDur", "growD", "gD")) return false;
             if (HasNonVector3Parameter(parameters, "growDirection", "growDir", "gDir")) return false;
             if (HasNonVector3Parameter(parameters, "growAnchor", "growAnc", "gAnc") && HasNonAnchorParameter(parameters, "growAnchor", "growAnc", "gAnc")) return false;
-            if (HasNonAnimCurveParameter(parameters, "growCurve", "growCrv", "growC", "gC")) return false;
 
-            if (HasNonFloatParameter(parameters, "shrinkDuration", "shrinkDur", "shrinkD", "sD")) return false;
             if (HasNonVector3Parameter(parameters, "shrinkDirection", "shrinkDir", "sDir")) return false;
             if (HasNonVector3Parameter(parameters, "shrinkAnchor", "shrinkAnc", "sAnc") && HasNonAnchorParameter(parameters, "shrinkAnchor", "shrinkAnc", "gAnc")) return false;
-            if (HasNonAnimCurveParameter(parameters, "shrinkCurve", "shrinkCrv", "shrinkC", "sC")) return false;
 
             if (HasNonFloatParameter(parameters, "maxPercentage", "maxP")) return false;
             if (HasNonFloatParameter(parameters, "minPercentage", "minP")) return false;
 
-            return true;
+            return ValidateWaveParameters(parameters);
         }
 
         public override object GetNewCustomData()
@@ -140,15 +143,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return new Data()
             {
                 Wave = null,
-                growDuration = this.growDuration,
+
                 growAnchor = this.growAnchor,
                 growDirection = this.growDirection,
-                growCurve = this.growCurve,
 
-                shrinkDuration = this.shrinkDuration,
                 shrinkAnchor = this.shrinkAnchor,
                 shrinkDirection = this.shrinkDirection,
-                shrinkCurve = this.shrinkCurve,
 
                 maxPercentage = this.maxPercentage,
                 minPercentage = this.minPercentage,
@@ -159,15 +159,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             public Wave Wave;
 
-            public float growDuration = 1;
             public Vector3 growAnchor = new Vector3(0, -1, 0);
             public Vector3 growDirection = Vector3.up;
-            public AnimationCurve growCurve = AnimationCurveUtility.EaseOutElastic();
 
-            public float shrinkDuration = 1;
             public Vector3 shrinkAnchor = new Vector3(0, -1, 0);
             public Vector3 shrinkDirection = Vector3.up;
-            public AnimationCurve shrinkCurve = AnimationCurveUtility.EaseOutElastic();
 
             public float maxPercentage = 1;
             public float minPercentage = 1;

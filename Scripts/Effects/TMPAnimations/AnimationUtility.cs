@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPEffects.Components.CharacterData;
 using System;
 using static TMPEffects.ParameterUtility;
+using UnityEditor.ShaderKeywordFilter;
+using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -67,8 +69,8 @@ namespace TMPEffects.TMPAnimations
             ret += Vector2.up * dist.y * anchor.y;
             return ret;
         }
-        
-        
+
+
         /// <summary>
         /// Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
         /// </summary>
@@ -256,7 +258,8 @@ namespace TMPEffects.TMPAnimations
         #endregion
 
         #region Waves
-        public class Wave
+        [System.Serializable]
+        public class Wave : ISerializationCallbackReceiver
         {
             public AnimationCurve UpwardCurve
             {
@@ -602,39 +605,6 @@ namespace TMPEffects.TMPAnimations
                     if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                 }
 
-                //interval -= downInterval;
-                //if (prevT < interval && t >= interval)
-                //{
-                //    Debug.Log("Case 5");
-                //    if (extrema.HasFlag(PulseExtrema.Early))
-                //    {
-                //        Debug.Log("Forreal");
-                //        return -1;
-                //    }
-                //}
-
-                //interval -= EffectiveDownPeriod;
-                //if (prevT < interval && t >= interval)
-                //{
-                //    Debug.Log("Case 6");
-                //    if (extrema.HasFlag(PulseExtrema.Late))
-                //    {
-                //        Debug.Log("Forreal");
-                //        return 1;
-                //    }
-                //}
-
-                //interval -= upInterval;
-                //if (prevT < interval && t >= interval)
-                //{
-                //    Debug.Log("Case 7");
-                //    if (extrema.HasFlag(PulseExtrema.Early))
-                //    {
-                //        Debug.Log("Forreal");
-                //        return 1;
-                //    }
-                //}
-
                 return 0;
             }
 
@@ -766,11 +736,30 @@ namespace TMPEffects.TMPAnimations
                 return t;
             }
 
-            private readonly WaveProperties Properties;
-            private AnimationCurve upwardCurve;
-            private AnimationCurve downwardCurve;
-            private float upPeriod;
-            private float downPeriod;
+            public void OnBeforeSerialize()
+            {
+                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+
+                upPeriod = Mathf.Max(upPeriod, 0f);
+                downPeriod = Mathf.Max(downPeriod, 0f);
+                crestWait = Mathf.Max(crestWait, 0f);
+                troughWait = Mathf.Max(troughWait, 0f);
+
+                if (downPeriod + upPeriod == 0) upPeriod = 0.1f;
+            }
+             
+            public void OnAfterDeserialize()
+            {
+            }
+
+            [SerializeField, HideInInspector] private WaveProperties Properties;
+            [SerializeField] private AnimationCurve upwardCurve;
+            [SerializeField] private AnimationCurve downwardCurve;
+            [SerializeField] private float upPeriod;
+            [SerializeField] private float downPeriod;
+            [SerializeField] private float crestWait;
+            [SerializeField] private float troughWait;
         }
 
         internal class WaveProperties
@@ -856,7 +845,7 @@ namespace TMPEffects.TMPAnimations
             private float wavelength;
             private float velocity;
             private float amplitude;
-        }
+        } 
 
         public static float FrequencyToPeriod(float frequency)
         {

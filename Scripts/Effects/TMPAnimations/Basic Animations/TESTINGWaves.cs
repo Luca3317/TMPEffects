@@ -54,14 +54,14 @@ namespace TMPEffects.TMPAnimations.Animations
                 else
                     val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, xPos, realtimeinterval, Wave.PulseExtrema.Late);
 
-                if (val == -1)
-                {
-                    Debug.Log("MINIMA");
-                }
-                if (val == 1)
-                {
-                    Debug.Log("MAXIMA");
-                }
+                //if (val == -1)
+                //{
+                //    Debug.Log("MINIMA");
+                //}
+                //if (val == 1)
+                //{
+                //    Debug.Log("MAXIMA");
+                //}
             }
 
             (float, int) eval;
