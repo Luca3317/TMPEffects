@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPAnimations;
@@ -8,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
+using UnityEngine.WSA;
 
 namespace TMPEffects
 {
@@ -463,24 +465,6 @@ namespace TMPEffects
             OneDirectionalPulse
         }
 
-        //public struct WaveParameters
-        //{
-        //    public WaveType? waveType;
-
-        //    public float? amplitude;
-
-        //    public float? frequency;
-        //    public float? period;
-
-        //    public float? waveLength;
-        //    public float? waveVelocity;
-
-        //    public float? impulseInterval;
-
-        //    public float? upMultiplier;
-        //    public float? downMultiplier;
-        //}
-
         public struct WaveParameters
         {
             public AnimationCurve upwardCurve;
@@ -499,6 +483,34 @@ namespace TMPEffects
             public float? amplitude;
         }
 
+        /// <summary>
+        /// Get all parameter relevant to a wave.<br/>
+        /// Important: this reserves the following parameter names:
+        /// <list type="bullet">
+        /// <item>upcurve, upcrv, upc</item>
+        /// <item>downcurve, downcrv, downc, dcrv, dc</item>
+        /// <item>upperiod, uppd</item>
+        /// <item>downperiod, downpd, dpd</item>
+        /// <item>crestwait, crestw, cwait</item>
+        /// <item>troughwait, troughw, twait</item>
+        /// <item>wavevelocity, wavevlc, wvelocity, wvlc</item>
+        /// <item>wavelength, wavelen, wlength, wlen</item>
+        /// <item>waveuniformity, waveuni, wuniformity, wuni</item>
+        /// <item>waveamplitude, wamplitude, waveamp, wamp</item>
+        /// </list>
+        /// <param name="parameters">The dictionary containing the parameters.</param>
+        /// <param name="upwardCurve">Whether to get the upwardCurve parameter.</param>
+        /// <param name="downwardCurve">Whether to get the downwardCurve parameter.</param>
+        /// <param name="upPeriod">Whether to get the upPeriod parameter.</param>
+        /// <param name="downPeriod">Whether to get the downPeriod parameter.</param>
+        /// <param name="crestWait">Whether to get the crestWait parameter.</param>
+        /// <param name="troughWait">Whether to get the troughWait parameter.</param>
+        /// <param name="waveVelocity">Whether to get the waveVelocity parameter.</param>
+        /// <param name="waveLength">Whether to get the waveLength parameter.</param>
+        /// <param name="waveUniformity">Whether to get the waveUniformity parameter.</param>
+        /// <param name="amplitude">Whether to get the amplitude parameter.</param>
+        /// <returns>A <see cref="WaveParameters"/> object containing the parsed fields.</returns>
+        /// <exception cref="System.Exception">If conflicting parameters are specified</exception>
         public static WaveParameters GetWaveParameters(IDictionary<string, string> parameters,
                 bool upwardCurve = true,
                 bool downwardCurve = true,
@@ -523,79 +535,54 @@ namespace TMPEffects
             wp.wavevelocity = null;
             wp.amplitude = null;
 
-            if (waveVelocity && TryGetFloatParameter(out float f, parameters, "wavevelocity", "wavevlc", "wvlc")) wp.wavevelocity = f;
-            if (waveLength && TryGetFloatParameter(out f, parameters, "wavelength", "wavelen", "wlen"))
+            if (waveVelocity && TryGetFloatParameter(out float f, parameters, "wavevelocity", "wavevlc", "wvelocity", "wvlc")) wp.wavevelocity = f;
+            if (waveLength && TryGetFloatParameter(out f, parameters, "wavelength", "wavelen", "wlength", "wlen"))
             {
                 if (wp.wavevelocity != null)
                     throw new System.Exception("Must define either wave velocity, wave length or uniformity; not multiple");
 
                 wp.wavelength = f;
             }
-            if (waveUniformity && TryGetFloatParameter(out f, parameters, "waveuniformity", "waveunf", "wunf"))
-            {
-                if (wp.wavevelocity != null || wp.wavelength != null)
-                    throw new System.Exception("Must define either wave velocity, wave length or uniformity; not multiple");
 
-                wp.waveuniformity = f;
-            }
-
+            if (waveUniformity && TryGetFloatParameter(out f, parameters, "waveuniformity", "waveuni", "wuniformity", "wuni")) wp.waveuniformity = f;
             if (upwardCurve && TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "upcurve", "upcrv", "upc")) wp.upwardCurve = crv;
-            if (downwardCurve && TryGetAnimCurveParameter(out crv, parameters, "downcurve", "downcrv", "downc")) wp.downwardCurve = crv;
+            if (downwardCurve && TryGetAnimCurveParameter(out crv, parameters, "downcurve", "downcrv", "downc", "dcrv", "dc")) wp.downwardCurve = crv;
             if (upPeriod && TryGetFloatParameter(out f, parameters, "upperiod", "uppd")) wp.upPeriod = f;
-            if (downPeriod && TryGetFloatParameter(out f, parameters, "downperiod", "downpd")) wp.downPeriod = f;
-            if (crestWait && TryGetFloatParameter(out f, parameters, "crestwait", "cwait")) wp.crestWait = f;
-            if (troughWait && TryGetFloatParameter(out f, parameters, "troughwait", "twait")) wp.crestWait = f;
-            if (amplitude && TryGetFloatParameter(out f, parameters, "amplitude", "amp")) wp.amplitude = f;
+            if (downPeriod && TryGetFloatParameter(out f, parameters, "downperiod", "downpd", "dpd")) wp.downPeriod = f;
+            if (crestWait && TryGetFloatParameter(out f, parameters, "crestwait", "crestw", "cwait")) wp.crestWait = f;
+            if (troughWait && TryGetFloatParameter(out f, parameters, "troughwait", "troughw", "twait")) wp.crestWait = f;
+            if (amplitude && TryGetFloatParameter(out f, parameters, "waveamplitude", "wamplitude", "waveamp", "wamp")) wp.amplitude = f;
 
             return wp;
         }
 
-
-        ///// <summary>
-        ///// Get all parameter relevant to a wave.<br/>
-        ///// Important: this reserves the following parameter names:
-        ///// <list type="bullet">
-        ///// <item><description>wavetype, wt</description></item>
-        ///// <item><description>amplitude, amp</description></item>
-        ///// <item><description>frequency, freq, fq</description></item>
-        ///// <item><description>period, pd</description></item>
-        ///// <item><description>wavelength, wavelen, wl</description></item>
-        ///// <item><description>wavevelocity, wavevlc, wv</description></item>
-        ///// <item><description>pulseinterval, pulseinr, plsinr, pi</description></item>
-        ///// <item><description>upmultiplier, upmult, um</description></item>
-        ///// <item><description>downmultiplier, downmult, dm</description></item>
-        ///// </list>
-        ///// </summary>
-        ///// <param name="parameters"></param>
-        ///// <returns></returns>
-        //public static WaveParameters GetWaveParameters(IDictionary<string, string> parameters)
-        //{
-        //    WaveParameters wp = new WaveParameters();
-
-        //    wp.waveType = null;
-        //    wp.amplitude = null;
-        //    wp.frequency = null;
-        //    wp.period = null;
-        //    wp.waveLength = null;
-        //    wp.waveVelocity = null;
-
-        //    if (TryGetWaveTypeParameter(out WaveType wt, parameters, "wavetype", "wt")) wp.waveType = wt;
-        //    if (TryGetFloatParameter(out float f, parameters, "amplitude", "amp")) wp.amplitude = f;
-        //    if (TryGetFloatParameter(out f, parameters, "frequency", "freq", "fq")) wp.frequency = f;
-        //    if (TryGetFloatParameter(out f, parameters, "period", "pd")) wp.period = f;
-        //    if (TryGetFloatParameter(out f, parameters, "wavelength", "wavelen", "wl")) wp.waveLength = f;
-        //    if (TryGetFloatParameter(out f, parameters, "wavevelocity", "wavevlc", "wv")) wp.waveVelocity = f;
-        //    if (TryGetFloatParameter(out f, parameters, "upmultiplier", "upmult", "um")) wp.upMultiplier = f;
-        //    if (TryGetFloatParameter(out f, parameters, "downmultiplier", "downmult", "dm")) wp.downMultiplier = f;
-        //    if (TryGetFloatParameter(out f, parameters, "pulseinterval", "pulseinr", "plsinr", "pi"))
-        //    {
-        //        if (f < 0) throw new System.ArgumentOutOfRangeException("Impulse interval may not be negative.");
-        //        wp.impulseInterval = f;
-        //    }
-
-        //    return wp;
-        //}
-
+        /// <summary>
+        /// Validate all parameters relevant to a wave.<br/>
+        /// Important: this reserves the following parameter names:
+        /// <list type="bullet">
+        /// <item>upcurve, upcrv, upc</item>
+        /// <item>downcurve, downcrv, downc, dcrv, dc</item>
+        /// <item>upperiod, uppd</item>
+        /// <item>downperiod, downpd, dpd</item>
+        /// <item>crestwait, crestw, cwait</item>
+        /// <item>troughwait, troughw, twait</item>
+        /// <item>wavevelocity, wavevlc, wvelocity, wvlc</item>
+        /// <item>wavelength, wavelen, wlength, wlen</item>
+        /// <item>waveuniformity, waveuni, wuniformity, wuni</item>
+        /// <item>waveamplitude, wamplitude, waveamp, wamp</item>
+        /// </list>
+        /// <param name="parameters">The dictionary containing the parameters.</param>
+        /// <param name="upwardCurve">Whether to validate the upwardCurve parameter.</param>
+        /// <param name="downwardCurve">Whether to validate the downwardCurve parameter.</param>
+        /// <param name="upPeriod">Whether to validate the upPeriod parameter.</param>
+        /// <param name="downPeriod">Whether to validate the downPeriod parameter.</param>
+        /// <param name="crestWait">Whether to validate the crestWait parameter.</param>
+        /// <param name="troughWait">Whether to validate the troughWait parameter.</param>
+        /// <param name="waveVelocity">Whether to validate the waveVelocity parameter.</param>
+        /// <param name="waveLength">Whether to validate the waveLength parameter.</param>
+        /// <param name="waveUniformity">Whether to validate the waveUniformity parameter.</param>
+        /// <param name="amplitude">Whether to validate the amplitude parameter.</param>
+        /// <returns>true if all specified fields were successfully validate; otherwise, false.</returns>
         public static bool ValidateWaveParameters(IDictionary<string, string> parameters,
                 bool upwardCurve = true,
                 bool downwardCurve = true,
@@ -612,36 +599,29 @@ namespace TMPEffects
             bool contained = false;
             string defined;
 
-            if (waveVelocity && TryGetDefinedParameter(out defined, parameters, "wavevelocity", "wavevlc", "wvlc"))
+            if (waveVelocity && TryGetDefinedParameter(out defined, parameters, "wavevelocity", "wavevlc", "wvelocity", "wvlc"))
             {
                 if (HasNonFloatParameter(parameters, defined)) return false;
                 contained = true;
             }
 
-            if (waveLength && TryGetDefinedParameter(out defined, parameters, "wavelength", "wavelen", "wlen"))
-            {
-                if (contained) return false;
-                if (HasNonFloatParameter(parameters, defined)) return false;
-                contained = true;
-            }
-
-            if (waveUniformity && TryGetDefinedParameter(out defined, parameters, "waveuniformity", "waveunf", "wunf"))
+            if (waveLength && TryGetDefinedParameter(out defined, parameters, "wavelength", "wavelen", "wlength", "wlen"))
             {
                 if (contained) return false;
                 if (HasNonFloatParameter(parameters, defined)) return false;
             }
 
+            if (waveUniformity && HasNonFloatParameter(parameters, "waveuniformity", "waveuni", "wuniformity", "wuni")) return false;
             if (upwardCurve && HasNonAnimCurveParameter(parameters, "upcurve", "upcrv", "upc")) return false;
-            if (downwardCurve && HasNonAnimCurveParameter(parameters, "downcurve", "downcrv", "downc")) return false;
+            if (downwardCurve && HasNonAnimCurveParameter(parameters, "downcurve", "downcrv", "downc", "dcrv", "dc")) return false;
             if (upPeriod && HasNonFloatParameter(parameters, "upperiod", "uppd")) return false;            
-            if (downPeriod && HasNonFloatParameter(parameters, "downperiod", "downpd")) return false;
-            if (crestWait && HasNonFloatParameter(parameters, "crestwait", "cwait")) return false;
-            if (troughWait && HasNonFloatParameter(parameters, "troughwait", "twait")) return false;
-            if (amplitude && HasNonFloatParameter(parameters, "amplitude", "amp")) return false;
+            if (downPeriod && HasNonFloatParameter(parameters, "downperiod", "downpd", "dpd")) return false;
+            if (crestWait && HasNonFloatParameter(parameters, "crestwait", "crestw", "cwait")) return false;
+            if (troughWait && HasNonFloatParameter(parameters, "troughwait", "troughw", "twait")) return false;
+            if (amplitude && HasNonFloatParameter(parameters, "waveamplitude", "wamplitude", "waveamp", "wamp")) return false;
 
             return true;
         }
-
 
 
         // Aliases for common parameters

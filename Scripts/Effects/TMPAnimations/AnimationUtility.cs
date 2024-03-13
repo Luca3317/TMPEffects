@@ -1,9 +1,8 @@
 using UnityEngine;
 using TMPEffects.Components.CharacterData;
 using System;
-using static TMPEffects.ParameterUtility;
-using UnityEditor.ShaderKeywordFilter;
 using TMPEffects.Extensions;
+using Unity.Collections;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -272,78 +271,33 @@ namespace TMPEffects.TMPAnimations
                 set => downwardCurve = value;
             }
 
-            public float UpPeriod
+            public float CrestWait
             {
-                get => upPeriod;
-                set
-                {
-                    if (value < 0f) throw new System.ArgumentException(nameof(UpPeriod) + " may not be negative");
-                    if (value + downPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
-
-                    upPeriod = value;
-                    Properties.Period = downPeriod + upPeriod;
-
-                    if (Velocity == 0)
-                    {
-                        EffectivePeriod = Period;
-                        EffectiveUpPeriod = upPeriod;
-                    }
-                    else
-                    {
-                        EffectivePeriod = Period * Velocity;
-                        EffectiveUpPeriod = upPeriod * Velocity;
-                    }
-                }
+                get => crestWait;
+                set => crestWait = value;
             }
-            public float DownPeriod
+            public float TroughWait
             {
-                get => downPeriod;
-                set
-                {
-                    if (value < 0f) throw new System.ArgumentException(nameof(DownPeriod) + " may not be negative");
-                    if (value + upPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
+                get => troughWait;
+                set => troughWait = value;
+            }
 
-                    downPeriod = value;
-                    Properties.Period = downPeriod + upPeriod;
+            public float Uniformity
+            {
+                get => uniformity;
+                set => uniformity = value;
+            }
 
-                    if (Velocity == 0)
-                    {
-                        EffectivePeriod = Period;
-                        EffectiveDownPeriod = downPeriod;
-                    }
-                    else
-                    {
-                        EffectivePeriod = Period * Velocity;
-                        EffectiveDownPeriod = downPeriod * Velocity;
-                    }
-                }
-            }
-            public float EffectivePeriod { get; private set; }
-            public float EffectiveUpPeriod { get; private set; }
-            public float EffectiveDownPeriod { get; private set; }
-            public float Period
+            public WaveProperties Properties
             {
-                get => Properties.Period;
+                get => properties;
             }
-            public float Velocity
-            {
-                get => Properties.Velocity;
-                set
-                {
-                    Properties.Velocity = value;
-                    UpPeriod = upPeriod;
-                    DownPeriod = downPeriod;
-                }
-            }
-            public float Amplitude
-            {
-                get => Properties.Amplitude;
-                set => Properties.Amplitude = value;
-            }
-            public float CrestWait { get; set; }
-            public float TroughWait { get; set; }
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude)
+
+            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 1f, 0f, 0f, 1f)
+            { }
+
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float uniformity = 1f)
             {
                 if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
                 if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
@@ -352,18 +306,14 @@ namespace TMPEffects.TMPAnimations
                 if ((upPeriod + downPeriod) <= 0) throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) + " must be larger than zero");
                 if (velocity < 0) throw new System.ArgumentException(nameof(velocity) + " may not be negative");
 
-                Properties = new WaveProperties(upPeriod + downPeriod, velocity, amplitude);
+                this.uniformity = uniformity;
+                properties = new WaveProperties(upPeriod, downPeriod, velocity, amplitude);
                 UpwardCurve = upwardCurve;
                 DownwardCurve = downwardCurve;
-                this.upPeriod = upPeriod;
-                this.downPeriod = downPeriod;
-
-                UpPeriod = upPeriod;
-                DownPeriod = downPeriod;
             }
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float crestWait, float troughWait)
-                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, velocity, amplitude)
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
+                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, velocity, amplitude, uniformity)
             {
                 if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
                 if (TroughWait < 0) throw new System.ArgumentException(nameof(TroughWait) + " may not be negative");
@@ -395,24 +345,24 @@ namespace TMPEffects.TMPAnimations
             {
                 float t = Mathf.Abs(CalculateT(time, offset, -1));
 
-                if (deltaTime >= EffectivePeriod)
+                if (deltaTime >= properties.EffectivePeriod)
                 {
-                    t %= EffectivePeriod;
-                    return t < EffectiveUpPeriod ? -1 : 1;
+                    t %= properties.EffectivePeriod;
+                    return t < properties.EffectiveUpPeriod ? -1 : 1;
                 }
 
                 float prevT = Mathf.Abs(CalculateT(time - deltaTime, offset, -1));
 
-                if ((int)(t / EffectivePeriod) > (int)(prevT / EffectivePeriod))
+                if ((int)(t / properties.EffectivePeriod) > (int)(prevT / properties.EffectivePeriod))
                 {
-                    t %= EffectivePeriod;
-                    return t < EffectiveUpPeriod ? -1 : 1;
+                    t %= properties.EffectivePeriod;
+                    return t < properties.EffectiveUpPeriod ? -1 : 1;
                 }
 
-                prevT %= EffectivePeriod;
-                t %= EffectivePeriod;
+                prevT %= properties.EffectivePeriod;
+                t %= properties.EffectivePeriod;
 
-                if (prevT < EffectiveUpPeriod && t >= EffectiveUpPeriod)
+                if (prevT < properties.EffectiveUpPeriod && t >= properties.EffectiveUpPeriod)
                 {
                     return 1;
                 }
@@ -423,13 +373,13 @@ namespace TMPEffects.TMPAnimations
             public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float t = CalculateT(time, offset, -1);
-                float interval = (TroughWait) * (realtimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+                float interval = (TroughWait) * (realtimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
 
                 if (deltaTime >= interval)
                 {
                     t %= interval;
-                    if (t < EffectiveUpPeriod) return -1;
-                    if (t < EffectivePeriod) return 1;
+                    if (t < properties.EffectiveUpPeriod) return -1;
+                    if (t < properties.EffectivePeriod) return 1;
                     return -1;
                     //return t < EffectiveUpPeriod ? -1 : 1;
                 }
@@ -439,7 +389,7 @@ namespace TMPEffects.TMPAnimations
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
                     t %= interval;
-                    if (t < EffectiveUpPeriod)
+                    if (t < properties.EffectiveUpPeriod)
                     {
                         if (extrema.HasFlag(PulseExtrema.Late)) return -1;
                         return 0;
@@ -450,12 +400,12 @@ namespace TMPEffects.TMPAnimations
                 prevT %= interval;
                 t %= interval;
 
-                if (prevT < EffectiveUpPeriod && t >= EffectiveUpPeriod)
+                if (prevT < properties.EffectiveUpPeriod && t >= properties.EffectiveUpPeriod)
                 {
                     return 1;
                 }
 
-                if (prevT < EffectivePeriod && t >= EffectivePeriod)
+                if (prevT < properties.EffectivePeriod && t >= properties.EffectivePeriod)
                 {
                     if (extrema.HasFlag(PulseExtrema.Early)) return -1;
                 }
@@ -466,13 +416,13 @@ namespace TMPEffects.TMPAnimations
             public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float t = CalculateT(time, offset, -1);
-                float interval = (CrestWait) * (realtimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+                float interval = (CrestWait) * (realtimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
 
                 if (deltaTime >= interval)
                 {
                     t %= interval;
-                    if (t < EffectiveDownPeriod) return 1;
-                    if (t < EffectivePeriod) return -1;
+                    if (t < properties.EffectiveDownPeriod) return 1;
+                    if (t < properties.EffectivePeriod) return -1;
                     return 1;
                 }
 
@@ -481,7 +431,7 @@ namespace TMPEffects.TMPAnimations
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
                     t %= interval;
-                    if (t < EffectiveDownPeriod)
+                    if (t < properties.EffectiveDownPeriod)
                     {
                         if (extrema.HasFlag(PulseExtrema.Late)) return 1;
                         return 0;
@@ -492,12 +442,12 @@ namespace TMPEffects.TMPAnimations
                 prevT %= interval;
                 t %= interval;
 
-                if (prevT < EffectiveDownPeriod && t >= EffectiveDownPeriod)
+                if (prevT < properties.EffectiveDownPeriod && t >= properties.EffectiveDownPeriod)
                 {
                     return -1;
                 }
 
-                if (prevT < EffectivePeriod && t >= EffectivePeriod)
+                if (prevT < properties.EffectivePeriod && t >= properties.EffectivePeriod)
                 {
                     if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                 }
@@ -508,32 +458,30 @@ namespace TMPEffects.TMPAnimations
             public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float t = CalculateT(time, offset, -1);
-                float upInterval = (CrestWait) * (realtimeWait ? Properties.Velocity : 1f);
-                float downInterval = (TroughWait) * (realtimeWait ? Properties.Velocity : 1f);
-                float interval = upInterval + downInterval + EffectivePeriod;
+                float upInterval = (CrestWait) * (realtimeWait ? properties.Velocity : 1f);
+                float downInterval = (TroughWait) * (realtimeWait ? properties.Velocity : 1f);
+                float interval = upInterval + downInterval + properties.EffectivePeriod;
 
                 if (deltaTime >= interval)
                 {
-                    //if (offset == 0)
-                    //    Debug.LogWarning("Case 0!");
                     float ogt = t;
 
                     if (interval > 0)
                         t %= interval;
 
-                    if (t <= EffectiveUpPeriod)
+                    if (t <= properties.EffectiveUpPeriod)
                     {
                         return -1;
                     }
-                    else if ((t -= EffectiveUpPeriod) <= upInterval)
+                    else if ((t -= properties.EffectiveUpPeriod) <= upInterval)
                     {
                         return 1;
                     }
-                    else if ((t -= upInterval) <= EffectiveDownPeriod)
+                    else if ((t -= upInterval) <= properties.EffectiveDownPeriod)
                     {
                         return 1;
                     }
-                    else if ((t -= EffectiveDownPeriod) <= downInterval)
+                    else if ((t -= properties.EffectiveDownPeriod) <= downInterval)
                     {
                         return -1;
                     }
@@ -545,28 +493,26 @@ namespace TMPEffects.TMPAnimations
 
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
-                    //if (offset == 0)
-                    //    Debug.LogWarning("Case 2");
                     t %= interval;
-                    if (t < EffectiveUpPeriod)
+                    if (t < properties.EffectiveUpPeriod)
                     {
                         if (extrema.HasFlag(PulseExtrema.Late)) return -1;
                         return 0;
                     }
-                    else if ((t - EffectiveUpPeriod) < upInterval)
+                    else if ((t - properties.EffectiveUpPeriod) < upInterval)
                     {
                         if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                         if (extrema.HasFlag(PulseExtrema.Late)) return -1;
                         return 0;
                     }
-                    else if ((t - upInterval) < EffectiveDownPeriod)
+                    else if ((t - upInterval) < properties.EffectiveDownPeriod)
                     {
                         if (extrema.HasFlag(PulseExtrema.Late)) return 1;
                         if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                         if (extrema.HasFlag(PulseExtrema.Late)) return -1;
                         return 0;
                     }
-                    else if ((t - EffectiveDownPeriod) < downInterval)
+                    else if ((t - properties.EffectiveDownPeriod) < downInterval)
                     {
                         if (extrema.HasFlag(PulseExtrema.Early)) return -1;
                         if (extrema.HasFlag(PulseExtrema.Late)) return 1;
@@ -584,24 +530,18 @@ namespace TMPEffects.TMPAnimations
                 interval -= upInterval;
                 if (prevT < interval && t >= interval)
                 {
-                    //if (offset == 0)
-                    //    Debug.Log("Case 5");
                     if (extrema.HasFlag(PulseExtrema.Early)) return -1;
                 }
 
-                interval -= EffectiveDownPeriod;
+                interval -= properties.EffectiveDownPeriod;
                 if (prevT < interval && t >= interval)
                 {
-                    //if (offset == 0)
-                    //    Debug.Log("Case 6");
                     if (extrema.HasFlag(PulseExtrema.Late)) return 1;
                 }
 
                 interval -= downInterval;
                 if (prevT < interval && t >= interval)
                 {
-                    //if (offset == 0)
-                    //    Debug.Log("Case 7");
                     if (extrema.HasFlag(PulseExtrema.Early)) return 1;
                 }
 
@@ -630,84 +570,83 @@ namespace TMPEffects.TMPAnimations
             {
                 float t = CalculateT(time, offset, -1);
                 t = Mathf.Abs(t);
-                t %= EffectivePeriod;
+                t %= properties.EffectivePeriod;
 
-                if (t <= EffectiveUpPeriod)
+                if (t <= properties.EffectiveUpPeriod)
                 {
-                    t = Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod);
-                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, t), 1);
+                    t = Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod);
+                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, t), 1);
                 }
                 else
                 {
-                    t = Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod);
-                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
+                    t = Mathf.Lerp(1f, 2f, (t - properties.EffectiveUpPeriod) / properties.EffectiveDownPeriod);
+                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
                 }
             }
 
             public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = false)
             {
                 float t = CalculateT(time, offset, -1);
-                float interval = (TroughWait) * (realTimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+                float interval = (TroughWait) * (realTimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
 
                 if (interval > 0)
                     t %= interval;
 
-                if (t <= 0) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
-                if (t <= EffectiveUpPeriod) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
-                if (t <= (EffectivePeriod)) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
-                return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
+                if (t <= 0) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+                if (t <= properties.EffectiveUpPeriod) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod)), 1);
+                if (t <= (properties.EffectivePeriod)) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - properties.EffectiveUpPeriod) / properties.EffectiveDownPeriod)), -1);
+                return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
             }
 
             public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = false)
             {
                 float t = CalculateT(time, offset, -1);
-                float interval = (CrestWait) * (realTimeWait ? Properties.Velocity : 1f) + EffectivePeriod;
+                float interval = (CrestWait) * (realTimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
 
                 if (interval > 0)
                     t %= interval;
 
-                if (t <= 0) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
-                if (t <= EffectiveDownPeriod) return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
-                if (t <= EffectivePeriod) return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
-                return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                if (t <= 0) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
+                if (t <= properties.EffectiveDownPeriod) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / properties.EffectiveDownPeriod)), -1);
+                if (t <= properties.EffectivePeriod) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - properties.EffectiveDownPeriod) / properties.EffectiveUpPeriod)), 1);
+                return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
             }
 
             public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = false)
             {
                 float t = CalculateT(time, offset, -1);
-                float upInterval = (CrestWait) * (realTimeWait ? Properties.Velocity : 1f);
-                float downInterval = (TroughWait) * (realTimeWait ? Properties.Velocity : 1f);
-                float interval = upInterval + downInterval + EffectivePeriod;
+                float upInterval = (CrestWait) * (realTimeWait ? properties.Velocity : 1f);
+                float downInterval = (TroughWait) * (realTimeWait ? properties.Velocity : 1f);
+                float interval = upInterval + downInterval + properties.EffectivePeriod;
 
                 if (interval > 0)
                     t %= interval;
 
-                if (t <= EffectiveUpPeriod)
+                if (t <= properties.EffectiveUpPeriod)
                 {
-                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod)), 1);
                 }
 
-                t -= EffectiveUpPeriod;
+                t -= properties.EffectiveUpPeriod;
                 if (t <= upInterval)
                 {
-                    return (Properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
                 }
 
                 t -= upInterval;
-                if (t <= EffectiveDownPeriod)
+                if (t <= properties.EffectiveDownPeriod)
                 {
-                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / properties.EffectiveDownPeriod)), -1);
                 }
 
-                t -= EffectiveDownPeriod;
+                t -= properties.EffectiveDownPeriod;
                 if (t <= downInterval)
                 {
-                    return (Properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
+                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
                 }
 
                 throw new System.Exception("Shouldnt be reachable");
             }
-
 
             [Flags]
             public enum PulseExtrema
@@ -717,20 +656,17 @@ namespace TMPEffects.TMPAnimations
                 Both = 0b11
             }
 
-
             private float CalculateT(float time, float offset, int mult)
             {
-                if (Properties.WaveLength == 0) return 0f;
-
                 float t;
-                if (Properties.WaveLength == 0)
+                if (properties.WaveLength == 0)
                 {
-                    t = (time * Properties.Velocity);
+                    t = (time * properties.Velocity);
                 }
                 else
                 {
-                    float v = Properties.Velocity * Properties.WaveLength;
-                    t = (time * v) / Properties.WaveLength + (offset / Properties.WaveLength) * mult;
+                    float v = properties.Velocity * properties.WaveLength;
+                    t = (time * v) / properties.WaveLength + (offset / properties.WaveLength) * mult * uniformity;
                 }
 
                 return t;
@@ -741,60 +677,105 @@ namespace TMPEffects.TMPAnimations
                 if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
                 if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
 
-                upPeriod = Mathf.Max(upPeriod, 0f);
-                downPeriod = Mathf.Max(downPeriod, 0f);
                 crestWait = Mathf.Max(crestWait, 0f);
                 troughWait = Mathf.Max(troughWait, 0f);
-
-                if (downPeriod + upPeriod == 0) upPeriod = 0.1f;
             }
-             
+
             public void OnAfterDeserialize()
             {
+                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+
+                troughWait = Mathf.Max(troughWait, 0f);
+                crestWait = Mathf.Max(crestWait, 0f);
+
+                EvaluateCopy(0f, 0f, true);
             }
 
-            [SerializeField, HideInInspector] private WaveProperties Properties;
+            public (float, int) EvaluateCopy(float time, float offset, bool realtimeWait = true)
+            {
+                if (CrestWait <= 0)
+                {
+                    if (TroughWait <= 0)
+                    {
+                        return EvaluateAsWave(time, offset);
+                    }
+
+                    return EvaluateAsPulse(time, offset, realtimeWait);
+                }
+
+                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
+
+                return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
+            }
+
+            [SerializeField] private WaveProperties properties;
             [SerializeField] private AnimationCurve upwardCurve;
             [SerializeField] private AnimationCurve downwardCurve;
-            [SerializeField] private float upPeriod;
-            [SerializeField] private float downPeriod;
             [SerializeField] private float crestWait;
             [SerializeField] private float troughWait;
+            [SerializeField] private float uniformity;
         }
 
-        internal class WaveProperties
+        [System.Serializable]
+        public class WaveProperties : ISerializationCallbackReceiver
         {
-            public float WaveLength
+            public float UpPeriod
             {
-                get => wavelength;
+                get => upPeriod;
                 set
                 {
-                    wavelength = value;
-                    frequency = velocity / wavelength;
-                    period = 1 / frequency;
-                }
-            }
+                    if (value < 0f) throw new System.ArgumentException(nameof(UpPeriod) + " may not be negative");
+                    if (value + downPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
 
-            public float Period
-            {
-                get => period;
-                set
-                {
-                    period = value;
+                    upPeriod = value;
+                    period = upPeriod + downPeriod;
                     frequency = 1f / period;
                     wavelength = velocity * period;
+
+                    if (Velocity == 0)
+                    {
+                        adjustedPeriod = period;
+                        adjustedUpPeriod = upPeriod;
+                    }
+                    else
+                    {
+                        adjustedPeriod = period * Velocity;
+                        adjustedUpPeriod = upPeriod * Velocity;
+                    }
                 }
             }
 
-            public float Frequency
+            public float DownPeriod
             {
-                get => frequency;
+                get => downPeriod;
                 set
                 {
-                    frequency = value;
-                    period = 1f / frequency;
+                    if (value < 0f) throw new System.ArgumentException(nameof(DownPeriod) + " may not be negative");
+                    if (value + upPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
+
+                    downPeriod = value;
+                    period = upPeriod + downPeriod;
+                    frequency = 1f / period;
                     wavelength = velocity * period;
+
+                    if (Velocity == 0)
+                    {
+                        adjustedPeriod = period;
+                        adjustedDownPeriod = downPeriod;
+                    }
+                    else
+                    {
+                        adjustedPeriod = period * Velocity;
+                        adjustedDownPeriod = downPeriod * Velocity;
+                    }
                 }
+            }
+
+            public float Amplitude
+            {
+                get => amplitude;
+                set => amplitude = value;
             }
 
             public float Velocity
@@ -806,46 +787,205 @@ namespace TMPEffects.TMPAnimations
                     wavelength = velocity / frequency;
                     frequency = velocity / wavelength;
                     period = 1 / frequency;
+
+                    UpPeriod = upPeriod;
+                    DownPeriod = downPeriod;
                 }
             }
 
-            public float Amplitude
+            public float Period
             {
-                get => amplitude;
-                set => amplitude = value;
+                get => period;
             }
 
-            public WaveProperties()
+            public float WaveLength
             {
-                WaveLength = 1f;
-                Period = 1f;
-                Frequency = 1f;
-                Velocity = 1f;
-                Amplitude = 1f;
+                get => wavelength;
             }
 
-            public WaveProperties(float waveLength, float period, float frequency, float velocity, float amplitude) : this()
+            public float EffectiveUpPeriod
             {
-                WaveLength = waveLength;
-                Period = period;
-                Frequency = frequency;
+                get => adjustedUpPeriod;
+            }
+
+            public float EffectiveDownPeriod
+            {
+                get => adjustedDownPeriod;
+            }
+
+            public float EffectivePeriod
+            {
+                get => adjustedPeriod;
+            }
+
+            public float Frequency
+            {
+                get => frequency;
+            }
+
+            public WaveProperties() : this(1f, 1f, 1f, 1f)
+            { }
+
+            public WaveProperties(float upPeriod, float downPeriod, float velocity, float amplitude)
+            {
+                this.upPeriod = 1f;
+                this.downPeriod = 1f;
+                this.amplitude = 1f;
+                this.velocity = 1f;
+
+                period = 1f;
+                adjustedPeriod = 1f;
+                adjustedUpPeriod = 1f;
+                adjustedDownPeriod = 1f;
+
+                frequency = 1f;
+                wavelength = 1f;
+
+                UpPeriod = upPeriod;
+                DownPeriod = downPeriod;
                 Velocity = velocity;
                 Amplitude = amplitude;
             }
 
-            public WaveProperties(float period, float velocity, float amplitude) : this()
+
+            [SerializeField] private float upPeriod;
+            [SerializeField] private float downPeriod;
+            [SerializeField] private float amplitude;
+            [SerializeField] private float velocity;
+
+            [System.NonSerialized] private float period;
+            [System.NonSerialized] private float adjustedPeriod;
+            [System.NonSerialized] private float adjustedUpPeriod;
+            [System.NonSerialized] private float adjustedDownPeriod;
+            [System.NonSerialized] private float frequency;
+            [System.NonSerialized] public float wavelength;
+
+            public void OnBeforeSerialize()
             {
-                Period = period;
+                upPeriod = Mathf.Max(upPeriod, 0f);
+                downPeriod = Mathf.Max(downPeriod, 0f);
+                if (downPeriod + upPeriod == 0) upPeriod = 0.1f;
+                velocity = Mathf.Max(velocity, 0.001f);
+
+                // Setting the velocity will set frequency and wavelength,
+                // and also call the setter of DownPeriod and UpPeriod,
+                // which will set all remaining values
                 Velocity = velocity;
-                Amplitude = amplitude;
             }
 
-            private float period;
-            private float frequency;
-            private float wavelength;
-            private float velocity;
-            private float amplitude;
-        } 
+            public void OnAfterDeserialize()
+            {
+                upPeriod = Mathf.Max(upPeriod, 0f);
+                downPeriod = Mathf.Max(downPeriod, 0f);
+                if (downPeriod + upPeriod == 0) upPeriod = 0.1f;
+                velocity = Mathf.Max(velocity, 0.001f);
+
+                // Setting the velocity will set frequency and wavelength,
+                // and also call the setter of DownPeriod and UpPeriod,
+                // which will set all remaining values
+                Velocity = velocity;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //internal class WaveProperties
+        //{
+        //    public float WaveLength
+        //    {
+        //        get => wavelength;
+        //        set
+        //        {
+        //            wavelength = value;
+        //            frequency = velocity / wavelength;
+        //            period = 1 / frequency;
+        //        }
+        //    }
+
+        //    public float Period
+        //    {
+        //        get => period;
+        //        set
+        //        {
+        //            period = value;
+        //            frequency = 1f / period;
+        //            wavelength = velocity * period;
+        //        }
+        //    }
+
+        //    public float Frequency
+        //    {
+        //        get => frequency;
+        //        set
+        //        {
+        //            frequency = value;
+        //            period = 1f / frequency;
+        //            wavelength = velocity * period;
+        //        }
+        //    }
+
+        //    public float Velocity
+        //    {
+        //        get => velocity;
+        //        set
+        //        {
+        //            velocity = value;
+        //            wavelength = velocity / frequency;
+        //            frequency = velocity / wavelength;
+        //            period = 1 / frequency;
+        //        }
+        //    }
+
+        //    public float Amplitude
+        //    {
+        //        get => amplitude;
+        //        set => amplitude = value;
+        //    }
+
+        //    public WaveProperties()
+        //    {
+        //        WaveLength = 1f;
+        //        Period = 1f;
+        //        Frequency = 1f;
+        //        Velocity = 1f;
+        //        Amplitude = 1f;
+        //    }
+
+        //    public WaveProperties(float waveLength, float period, float frequency, float velocity, float amplitude) : this()
+        //    {
+        //        WaveLength = waveLength;
+        //        Period = period;
+        //        Frequency = frequency;
+        //        Velocity = velocity;
+        //        Amplitude = amplitude;
+        //    }
+
+        //    public WaveProperties(float period, float velocity, float amplitude) : this()
+        //    {
+        //        Period = period;
+        //        Velocity = velocity;
+        //        Amplitude = amplitude;
+        //    }
+
+        //    private float period;
+        //    private float frequency;
+        //    private float wavelength;
+        //    private float velocity;
+        //    private float amplitude;
+        //}
 
         public static float FrequencyToPeriod(float frequency)
         {

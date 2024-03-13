@@ -101,12 +101,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetFloatParameter(out f, parameters, "minPercentage", "minP")) d.minPercentage = f;
 
             WaveParameters wp = GetWaveParameters(parameters);
-            float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
-            float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
+            float upPeriod = wp.upPeriod == null ? wave.Properties.UpPeriod : wp.upPeriod.Value;
+            float downPeriod = wp.downPeriod == null ? wave.Properties.DownPeriod : wp.downPeriod.Value;
 
-            if (wave == null) Debug.Log("its null?");
-
-            float velocity = wave.Velocity; 
+            float velocity = wave.Properties.Velocity; 
             if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
             else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod)); // TODO math
 
@@ -117,7 +115,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 upPeriod,
                 downPeriod,
                 velocity,
-                wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value
+                wp.amplitude == null ? wave.Properties.Amplitude : wp.amplitude.Value,
+                wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
+                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,
+                wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
             );
         }
 
