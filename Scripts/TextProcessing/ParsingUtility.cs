@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using TMPEffects.Extensions;
+using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 namespace TMPEffects.TextProcessing
@@ -563,30 +564,25 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        public static bool StringToWaveType(string str, out ParameterUtility.WaveType result, IDictionary<string, ParameterUtility.WaveType> keywords = null)
+        public static bool StringToWaveOffsetType(string str, out AnimationUtility.WaveOffsetType result, IDictionary<string, AnimationUtility.WaveOffsetType> keywords = null)
         {
             result = default;
             str = str.Trim();
 
             switch (str)
             {
-                case "p":
-                case "pls":
-                case "pulse": result = ParameterUtility.WaveType.Pulse; return true;
+                case "sidx":
+                case "sindex":
+                case "segmentindex": result = AnimationUtility.WaveOffsetType.SegmentIndex; return true;
 
-                case "w":
-                case "wv":
-                case "wave": result = ParameterUtility.WaveType.Wave; return true;
+                case "idx":
+                case "index": result = AnimationUtility.WaveOffsetType.Index; return true;
 
-                case "odp":
-                case "odpls":
-                case "odpulse":
-                case "odirp":
-                case "odirpls":
-                case "odirpulse":
-                case "onedirectionalp":
-                case "onedirectionalpls":
-                case "onedirectionalpulse": result = ParameterUtility.WaveType.OneDirectionalPulse; return true;
+                case "x":
+                case "xpos": result = AnimationUtility.WaveOffsetType.XPos; return true;
+
+                case "y":
+                case "ypos": result = AnimationUtility.WaveOffsetType.YPos; return true;
             }
 
             if (keywords != null && keywords.ContainsKey(str))
@@ -597,6 +593,41 @@ namespace TMPEffects.TextProcessing
 
             return false;
         }
+
+        //public static bool StringToWaveType(string str, out ParameterUtility.WaveType result, IDictionary<string, ParameterUtility.WaveType> keywords = null)
+        //{
+        //    result = default;
+        //    str = str.Trim();
+
+        //    switch (str)
+        //    {
+        //        case "p":
+        //        case "pls":
+        //        case "pulse": result = ParameterUtility.WaveType.Pulse; return true;
+
+        //        case "w":
+        //        case "wv":
+        //        case "wave": result = ParameterUtility.WaveType.Wave; return true;
+
+        //        case "odp":
+        //        case "odpls":
+        //        case "odpulse":
+        //        case "odirp":
+        //        case "odirpls":
+        //        case "odirpulse":
+        //        case "onedirectionalp":
+        //        case "onedirectionalpls":
+        //        case "onedirectionalpulse": result = ParameterUtility.WaveType.OneDirectionalPulse; return true;
+        //    }
+
+        //    if (keywords != null && keywords.ContainsKey(str))
+        //    {
+        //        result = keywords[str];
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
 
         internal static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
         {

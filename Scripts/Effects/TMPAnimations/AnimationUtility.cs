@@ -3,6 +3,9 @@ using TMPEffects.Components.CharacterData;
 using System;
 using TMPEffects.Extensions;
 using Unity.Collections;
+using Codice.ThemeImages;
+using static TMPEffects.ParameterUtility;
+using System.Security.Cryptography;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -257,468 +260,34 @@ namespace TMPEffects.TMPAnimations
         #endregion
 
         #region Waves
-        [System.Serializable]
-        public class Wave : ISerializationCallbackReceiver
+
+        public static Wave CreateWave(Wave wave, ParameterUtility.WaveParameters wp)
         {
-            public AnimationCurve UpwardCurve
-            {
-                get => upwardCurve;
-                set => upwardCurve = value;
-            }
-            public AnimationCurve DownwardCurve
-            {
-                get => downwardCurve;
-                set => downwardCurve = value;
-            }
-
-            public float CrestWait
-            {
-                get => crestWait;
-                set => crestWait = value;
-            }
-            public float TroughWait
-            {
-                get => troughWait;
-                set => troughWait = value;
-            }
-
-            public float Uniformity
-            {
-                get => uniformity;
-                set => uniformity = value;
-            }
-
-            public WaveProperties Properties
-            {
-                get => properties;
-            }
-
-
-            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 1f, 0f, 0f, 1f)
-            { }
-
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float uniformity = 1f)
-            {
-                if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
-                if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
-                if (upPeriod < 0) throw new System.ArgumentException(nameof(upPeriod) + " may not be negative");
-                if (downPeriod < 0) throw new System.ArgumentException(nameof(downPeriod) + " may not be negative");
-                if ((upPeriod + downPeriod) <= 0) throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) + " must be larger than zero");
-                if (velocity < 0) throw new System.ArgumentException(nameof(velocity) + " may not be negative");
-
-                this.uniformity = uniformity;
-                properties = new WaveProperties(upPeriod, downPeriod, velocity, amplitude);
-                UpwardCurve = upwardCurve;
-                DownwardCurve = downwardCurve;
-            }
-
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
-                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, velocity, amplitude, uniformity)
-            {
-                if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
-                if (TroughWait < 0) throw new System.ArgumentException(nameof(TroughWait) + " may not be negative");
-
-                CrestWait = crestWait;
-                TroughWait = troughWait;
-            }
-
-
-            public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
-            {
-                if (CrestWait <= 0)
-                {
-                    if (TroughWait <= 0)
-                    {
-                        return PassedWaveExtrema(time, deltaTime, offset);
-                    }
-
-                    return PassedPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
-                }
-
-                if (TroughWait <= 0)
-                    return PassedInvertedPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
-
-                return PassedOneDirectionalPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
-            }
-
-            public int PassedWaveExtrema(float time, float deltaTime, float offset)
-            {
-                float t = Mathf.Abs(CalculateT(time, offset, -1));
-
-                if (deltaTime >= properties.EffectivePeriod)
-                {
-                    t %= properties.EffectivePeriod;
-                    return t < properties.EffectiveUpPeriod ? -1 : 1;
-                }
-
-                float prevT = Mathf.Abs(CalculateT(time - deltaTime, offset, -1));
-
-                if ((int)(t / properties.EffectivePeriod) > (int)(prevT / properties.EffectivePeriod))
-                {
-                    t %= properties.EffectivePeriod;
-                    return t < properties.EffectiveUpPeriod ? -1 : 1;
-                }
-
-                prevT %= properties.EffectivePeriod;
-                t %= properties.EffectivePeriod;
-
-                if (prevT < properties.EffectiveUpPeriod && t >= properties.EffectiveUpPeriod)
-                {
-                    return 1;
-                }
-
-                return 0;
-            }
-
-            public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
-            {
-                float t = CalculateT(time, offset, -1);
-                float interval = (TroughWait) * (realtimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
-
-                if (deltaTime >= interval)
-                {
-                    t %= interval;
-                    if (t < properties.EffectiveUpPeriod) return -1;
-                    if (t < properties.EffectivePeriod) return 1;
-                    return -1;
-                    //return t < EffectiveUpPeriod ? -1 : 1;
-                }
-
-                float prevT = CalculateT(time - deltaTime, offset, -1);
-
-                if ((int)(t / interval) > (int)(prevT / interval))
-                {
-                    t %= interval;
-                    if (t < properties.EffectiveUpPeriod)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
-                        return 0;
-                    }
-                    else return 1;
-                }
-
-                prevT %= interval;
-                t %= interval;
-
-                if (prevT < properties.EffectiveUpPeriod && t >= properties.EffectiveUpPeriod)
-                {
-                    return 1;
-                }
-
-                if (prevT < properties.EffectivePeriod && t >= properties.EffectivePeriod)
-                {
-                    if (extrema.HasFlag(PulseExtrema.Early)) return -1;
-                }
-
-                return 0;
-            }
-
-            public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
-            {
-                float t = CalculateT(time, offset, -1);
-                float interval = (CrestWait) * (realtimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
-
-                if (deltaTime >= interval)
-                {
-                    t %= interval;
-                    if (t < properties.EffectiveDownPeriod) return 1;
-                    if (t < properties.EffectivePeriod) return -1;
-                    return 1;
-                }
-
-                float prevT = CalculateT(time - deltaTime, offset, -1);
-
-                if ((int)(t / interval) > (int)(prevT / interval))
-                {
-                    t %= interval;
-                    if (t < properties.EffectiveDownPeriod)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
-                        return 0;
-                    }
-                    else return -1;
-                }
-
-                prevT %= interval;
-                t %= interval;
-
-                if (prevT < properties.EffectiveDownPeriod && t >= properties.EffectiveDownPeriod)
-                {
-                    return -1;
-                }
-
-                if (prevT < properties.EffectivePeriod && t >= properties.EffectivePeriod)
-                {
-                    if (extrema.HasFlag(PulseExtrema.Early)) return 1;
-                }
-
-                return 0;
-            }
-
-            public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
-            {
-                float t = CalculateT(time, offset, -1);
-                float upInterval = (CrestWait) * (realtimeWait ? properties.Velocity : 1f);
-                float downInterval = (TroughWait) * (realtimeWait ? properties.Velocity : 1f);
-                float interval = upInterval + downInterval + properties.EffectivePeriod;
-
-                if (deltaTime >= interval)
-                {
-                    float ogt = t;
-
-                    if (interval > 0)
-                        t %= interval;
-
-                    if (t <= properties.EffectiveUpPeriod)
-                    {
-                        return -1;
-                    }
-                    else if ((t -= properties.EffectiveUpPeriod) <= upInterval)
-                    {
-                        return 1;
-                    }
-                    else if ((t -= upInterval) <= properties.EffectiveDownPeriod)
-                    {
-                        return 1;
-                    }
-                    else if ((t -= properties.EffectiveDownPeriod) <= downInterval)
-                    {
-                        return -1;
-                    }
-
-                    throw new System.Exception("Should not be reachable with og t " + ogt + " and interval " + interval + "; final t  " + t);
-                }
-
-                float prevT = CalculateT(time - deltaTime, offset, -1);
-
-                if ((int)(t / interval) > (int)(prevT / interval))
-                {
-                    t %= interval;
-                    if (t < properties.EffectiveUpPeriod)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
-                        return 0;
-                    }
-                    else if ((t - properties.EffectiveUpPeriod) < upInterval)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
-                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
-                        return 0;
-                    }
-                    else if ((t - upInterval) < properties.EffectiveDownPeriod)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
-                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
-                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
-                        return 0;
-                    }
-                    else if ((t - properties.EffectiveDownPeriod) < downInterval)
-                    {
-                        if (extrema.HasFlag(PulseExtrema.Early)) return -1;
-                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
-                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
-                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
-                        return 0;
-                    }
-
-                    throw new System.Exception("Should not be reachable");
-                }
-
-                prevT %= interval;
-                t %= interval;
-
-                interval -= upInterval;
-                if (prevT < interval && t >= interval)
-                {
-                    if (extrema.HasFlag(PulseExtrema.Early)) return -1;
-                }
-
-                interval -= properties.EffectiveDownPeriod;
-                if (prevT < interval && t >= interval)
-                {
-                    if (extrema.HasFlag(PulseExtrema.Late)) return 1;
-                }
-
-                interval -= downInterval;
-                if (prevT < interval && t >= interval)
-                {
-                    if (extrema.HasFlag(PulseExtrema.Early)) return 1;
-                }
-
-                return 0;
-            }
-
-
-            public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
-            {
-                if (CrestWait <= 0)
-                {
-                    if (TroughWait <= 0)
-                    {
-                        return EvaluateAsWave(time, offset);
-                    }
-
-                    return EvaluateAsPulse(time, offset, realtimeWait);
-                }
-
-                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
-
-                return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
-            }
-
-            public (float, int) EvaluateAsWave(float time, float offset)
-            {
-                float t = CalculateT(time, offset, -1);
-                t = Mathf.Abs(t);
-                t %= properties.EffectivePeriod;
-
-                if (t <= properties.EffectiveUpPeriod)
-                {
-                    t = Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod);
-                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, t), 1);
-                }
-                else
-                {
-                    t = Mathf.Lerp(1f, 2f, (t - properties.EffectiveUpPeriod) / properties.EffectiveDownPeriod);
-                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
-                }
-            }
-
-            public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = false)
-            {
-                float t = CalculateT(time, offset, -1);
-                float interval = (TroughWait) * (realTimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
-
-                if (interval > 0)
-                    t %= interval;
-
-                if (t <= 0) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
-                if (t <= properties.EffectiveUpPeriod) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod)), 1);
-                if (t <= (properties.EffectivePeriod)) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - properties.EffectiveUpPeriod) / properties.EffectiveDownPeriod)), -1);
-                return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
-            }
-
-            public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = false)
-            {
-                float t = CalculateT(time, offset, -1);
-                float interval = (CrestWait) * (realTimeWait ? properties.Velocity : 1f) + properties.EffectivePeriod;
-
-                if (interval > 0)
-                    t %= interval;
-
-                if (t <= 0) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
-                if (t <= properties.EffectiveDownPeriod) return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / properties.EffectiveDownPeriod)), -1);
-                if (t <= properties.EffectivePeriod) return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - properties.EffectiveDownPeriod) / properties.EffectiveUpPeriod)), 1);
-                return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
-            }
-
-            public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = false)
-            {
-                float t = CalculateT(time, offset, -1);
-                float upInterval = (CrestWait) * (realTimeWait ? properties.Velocity : 1f);
-                float downInterval = (TroughWait) * (realTimeWait ? properties.Velocity : 1f);
-                float interval = upInterval + downInterval + properties.EffectivePeriod;
-
-                if (interval > 0)
-                    t %= interval;
-
-                if (t <= properties.EffectiveUpPeriod)
-                {
-                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / properties.EffectiveUpPeriod)), 1);
-                }
-
-                t -= properties.EffectiveUpPeriod;
-                if (t <= upInterval)
-                {
-                    return (properties.Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
-                }
-
-                t -= upInterval;
-                if (t <= properties.EffectiveDownPeriod)
-                {
-                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / properties.EffectiveDownPeriod)), -1);
-                }
-
-                t -= properties.EffectiveDownPeriod;
-                if (t <= downInterval)
-                {
-                    return (properties.Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
-                }
-
-                throw new System.Exception("Shouldnt be reachable");
-            }
-
-            [Flags]
-            public enum PulseExtrema
-            {
-                Early = 0b01,
-                Late = 0b10,
-                Both = 0b11
-            }
-
-            private float CalculateT(float time, float offset, int mult)
-            {
-                float t;
-                if (properties.WaveLength == 0)
-                {
-                    t = (time * properties.Velocity);
-                }
-                else
-                {
-                    float v = properties.Velocity * properties.WaveLength;
-                    t = (time * v) / properties.WaveLength + (offset / properties.WaveLength) * mult * uniformity;
-                }
-
-                return t;
-            }
-
-            public void OnBeforeSerialize()
-            {
-                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
-                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
-
-                crestWait = Mathf.Max(crestWait, 0f);
-                troughWait = Mathf.Max(troughWait, 0f);
-            }
-
-            public void OnAfterDeserialize()
-            {
-                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
-                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
-
-                troughWait = Mathf.Max(troughWait, 0f);
-                crestWait = Mathf.Max(crestWait, 0f);
-
-                EvaluateCopy(0f, 0f, true);
-            }
-
-            public (float, int) EvaluateCopy(float time, float offset, bool realtimeWait = true)
-            {
-                if (CrestWait <= 0)
-                {
-                    if (TroughWait <= 0)
-                    {
-                        return EvaluateAsWave(time, offset);
-                    }
-
-                    return EvaluateAsPulse(time, offset, realtimeWait);
-                }
-
-                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
-
-                return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
-            }
-
-            [SerializeField] private WaveProperties properties;
-            [SerializeField] private AnimationCurve upwardCurve;
-            [SerializeField] private AnimationCurve downwardCurve;
-            [SerializeField] private float crestWait;
-            [SerializeField] private float troughWait;
-            [SerializeField] private float uniformity;
+            float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
+            float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
+
+            float velocity = wave.Velocity;
+            if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
+            else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod));
+
+            Wave newWave = new Wave
+            (
+                wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
+                wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
+                upPeriod,
+                downPeriod,
+                velocity,
+                wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value,
+                wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
+                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,
+                wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
+            );
+
+            return newWave;
         }
 
         [System.Serializable]
-        public class WaveProperties : ISerializationCallbackReceiver
+        public abstract class WaveBase : ISerializationCallbackReceiver
         {
             public float UpPeriod
             {
@@ -823,10 +392,10 @@ namespace TMPEffects.TMPAnimations
                 get => frequency;
             }
 
-            public WaveProperties() : this(1f, 1f, 1f, 1f)
+            public WaveBase() : this(1f, 1f, 1f, 1f)
             { }
 
-            public WaveProperties(float upPeriod, float downPeriod, float velocity, float amplitude)
+            public WaveBase(float upPeriod, float downPeriod, float velocity, float amplitude)
             {
                 this.upPeriod = 1f;
                 this.downPeriod = 1f;
@@ -847,20 +416,22 @@ namespace TMPEffects.TMPAnimations
                 Amplitude = amplitude;
             }
 
-
+            [Tooltip("The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds")]
             [SerializeField] private float upPeriod;
+            [Tooltip("The time it takes for the wave to travel from crest to trough, or from its highest to its lowest point, in seconds")]
             [SerializeField] private float downPeriod;
+            [Tooltip("The amplitude of the wave")]
             [SerializeField] private float amplitude;
-            [SerializeField] private float velocity;
+            [SerializeField, HideInInspector] private float velocity;
 
             [System.NonSerialized] private float period;
             [System.NonSerialized] private float adjustedPeriod;
-            [System.NonSerialized] private float adjustedUpPeriod;
+            [System.NonSerialized] private float adjustedUpPeriod; 
             [System.NonSerialized] private float adjustedDownPeriod;
             [System.NonSerialized] private float frequency;
             [System.NonSerialized] public float wavelength;
 
-            public void OnBeforeSerialize()
+            public virtual void OnBeforeSerialize()
             {
                 upPeriod = Mathf.Max(upPeriod, 0f);
                 downPeriod = Mathf.Max(downPeriod, 0f);
@@ -873,7 +444,7 @@ namespace TMPEffects.TMPAnimations
                 Velocity = velocity;
             }
 
-            public void OnAfterDeserialize()
+            public virtual void OnAfterDeserialize()
             {
                 upPeriod = Mathf.Max(upPeriod, 0f);
                 downPeriod = Mathf.Max(downPeriod, 0f);
@@ -887,105 +458,466 @@ namespace TMPEffects.TMPAnimations
             }
         }
 
+        [System.Serializable]
+        public class Wave : WaveBase, ISerializationCallbackReceiver
+        {
+            public AnimationCurve UpwardCurve
+            {
+                get => upwardCurve;
+                set => upwardCurve = value;
+            }
+            public AnimationCurve DownwardCurve
+            {
+                get => downwardCurve;
+                set => downwardCurve = value;
+            }
+
+            public float CrestWait
+            {
+                get => crestWait;
+                set => crestWait = value;
+            }
+            public float TroughWait
+            {
+                get => troughWait;
+                set => troughWait = value;
+            }
+
+            public float Uniformity
+            {
+                get => uniformity;
+                set => uniformity = value;
+            }
+
+            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 1f, 0f, 0f, 1f)
+            { }
+
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, velocity, amplitude)
+            {
+                if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
+                if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
+                if (upPeriod < 0) throw new System.ArgumentException(nameof(upPeriod) + " may not be negative");
+                if (downPeriod < 0) throw new System.ArgumentException(nameof(downPeriod) + " may not be negative");
+                if ((upPeriod + downPeriod) <= 0) throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) + " must be larger than zero");
+                if (velocity < 0) throw new System.ArgumentException(nameof(velocity) + " may not be negative");
+
+                this.uniformity = uniformity;
+                UpwardCurve = upwardCurve;
+                DownwardCurve = downwardCurve;
+            }
+
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
+                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, velocity, amplitude, uniformity)
+            {
+                if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
+                if (TroughWait < 0) throw new System.ArgumentException(nameof(TroughWait) + " may not be negative");
+
+                CrestWait = crestWait;
+                TroughWait = troughWait;
+            }
 
 
+            public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            {
+                if (CrestWait <= 0)
+                {
+                    if (TroughWait <= 0)
+                    {
+                        return PassedWaveExtrema(time, deltaTime, offset);
+                    }
+
+                    return PassedPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
+                }
+
+                if (TroughWait <= 0)
+                    return PassedInvertedPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
+
+                return PassedOneDirectionalPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
+            }
+
+            public int PassedWaveExtrema(float time, float deltaTime, float offset)
+            {
+                float t = Mathf.Abs(CalculateT(time, offset, -1));
+
+                if (deltaTime >= EffectivePeriod)
+                {
+                    t %= EffectivePeriod;
+                    return t < EffectiveUpPeriod ? -1 : 1;
+                }
+
+                float prevT = Mathf.Abs(CalculateT(time - deltaTime, offset, -1));
+
+                if ((int)(t / EffectivePeriod) > (int)(prevT / EffectivePeriod))
+                {
+                    t %= EffectivePeriod;
+                    return t < EffectiveUpPeriod ? -1 : 1;
+                }
+
+                prevT %= EffectivePeriod;
+                t %= EffectivePeriod;
+
+                if (prevT < EffectiveUpPeriod && t >= EffectiveUpPeriod)
+                {
+                    return 1;
+                }
+
+                return 0;
+            }
+
+            public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (TroughWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
+
+                if (deltaTime >= interval)
+                {
+                    t %= interval;
+                    if (t < EffectiveUpPeriod) return -1;
+                    if (t < EffectivePeriod) return 1;
+                    return -1;
+                    //return t < EffectiveUpPeriod ? -1 : 1;
+                }
+
+                float prevT = CalculateT(time - deltaTime, offset, -1);
+
+                if ((int)(t / interval) > (int)(prevT / interval))
+                {
+                    t %= interval;
+                    if (t < EffectiveUpPeriod)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
+                        return 0;
+                    }
+                    else return 1;
+                }
+
+                prevT %= interval;
+                t %= interval;
+
+                if (prevT < EffectiveUpPeriod && t >= EffectiveUpPeriod)
+                {
+                    return 1;
+                }
+
+                if (prevT < EffectivePeriod && t >= EffectivePeriod)
+                {
+                    if (extrema.HasFlag(PulseExtrema.Early)) return -1;
+                }
+
+                return 0;
+            }
+
+            public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (CrestWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
+
+                if (deltaTime >= interval)
+                {
+                    t %= interval;
+                    if (t < EffectiveDownPeriod) return 1;
+                    if (t < EffectivePeriod) return -1;
+                    return 1;
+                }
+
+                float prevT = CalculateT(time - deltaTime, offset, -1);
+
+                if ((int)(t / interval) > (int)(prevT / interval))
+                {
+                    t %= interval;
+                    if (t < EffectiveDownPeriod)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
+                        return 0;
+                    }
+                    else return -1;
+                }
+
+                prevT %= interval;
+                t %= interval;
+
+                if (prevT < EffectiveDownPeriod && t >= EffectiveDownPeriod)
+                {
+                    return -1;
+                }
+
+                if (prevT < EffectivePeriod && t >= EffectivePeriod)
+                {
+                    if (extrema.HasFlag(PulseExtrema.Early)) return 1;
+                }
+
+                return 0;
+            }
+
+            public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            {
+                float t = CalculateT(time, offset, -1);
+                float upInterval = (CrestWait) * (realtimeWait ? Velocity : 1f);
+                float downInterval = (TroughWait) * (realtimeWait ? Velocity : 1f);
+                float interval = upInterval + downInterval + EffectivePeriod;
+
+                if (deltaTime >= interval)
+                {
+                    float ogt = t;
+
+                    if (interval > 0)
+                        t %= interval;
+
+                    if (t <= EffectiveUpPeriod)
+                    {
+                        return -1;
+                    }
+                    else if ((t -= EffectiveUpPeriod) <= upInterval)
+                    {
+                        return 1;
+                    }
+                    else if ((t -= upInterval) <= EffectiveDownPeriod)
+                    {
+                        return 1;
+                    }
+                    else if ((t -= EffectiveDownPeriod) <= downInterval)
+                    {
+                        return -1;
+                    }
+
+                    throw new System.Exception("Should not be reachable with og t " + ogt + " and interval " + interval + "; final t  " + t);
+                }
+
+                float prevT = CalculateT(time - deltaTime, offset, -1);
+
+                if ((int)(t / interval) > (int)(prevT / interval))
+                {
+                    t %= interval;
+                    if (t < EffectiveUpPeriod)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
+                        return 0;
+                    }
+                    else if ((t - EffectiveUpPeriod) < upInterval)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
+                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
+                        return 0;
+                    }
+                    else if ((t - upInterval) < EffectiveDownPeriod)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
+                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
+                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
+                        return 0;
+                    }
+                    else if ((t - EffectiveDownPeriod) < downInterval)
+                    {
+                        if (extrema.HasFlag(PulseExtrema.Early)) return -1;
+                        if (extrema.HasFlag(PulseExtrema.Late)) return 1;
+                        if (extrema.HasFlag(PulseExtrema.Early)) return 1;
+                        if (extrema.HasFlag(PulseExtrema.Late)) return -1;
+                        return 0;
+                    }
+
+                    throw new System.Exception("Should not be reachable");
+                }
+
+                prevT %= interval;
+                t %= interval;
+
+                interval -= upInterval;
+                if (prevT < interval && t >= interval)
+                {
+                    if (extrema.HasFlag(PulseExtrema.Early)) return -1;
+                }
+
+                interval -= EffectiveDownPeriod;
+                if (prevT < interval && t >= interval)
+                {
+                    if (extrema.HasFlag(PulseExtrema.Late)) return 1;
+                }
+
+                interval -= downInterval;
+                if (prevT < interval && t >= interval)
+                {
+                    if (extrema.HasFlag(PulseExtrema.Early)) return 1;
+                }
+
+                return 0;
+            }
 
 
+            public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
+            {
+                if (CrestWait <= 0)
+                {
+                    if (TroughWait <= 0)
+                    {
+                        return EvaluateAsWave(time, offset);
+                    }
 
+                    return EvaluateAsPulse(time, offset, realtimeWait);
+                }
 
+                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
 
+                return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
+            }
 
+            public (float, int) EvaluateAsWave(float time, float offset)
+            {
+                float t = CalculateT(time, offset, -1);
+                t = Mathf.Abs(t);
+                t %= EffectivePeriod;
 
+                if (t <= EffectiveUpPeriod)
+                {
+                    t = Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod);
+                    return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, t), 1);
+                }
+                else
+                {
+                    t = Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod);
+                    return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
+                }
+            }
 
+            public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (TroughWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
 
+                if (interval > 0)
+                    t %= interval;
 
+                if (t <= 0) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+                if (t <= EffectiveUpPeriod) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                if (t <= (EffectivePeriod)) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
+                return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
+            }
 
+            public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float interval = (CrestWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
 
+                if (interval > 0)
+                    t %= interval;
 
-        //internal class WaveProperties
-        //{
-        //    public float WaveLength
-        //    {
-        //        get => wavelength;
-        //        set
-        //        {
-        //            wavelength = value;
-        //            frequency = velocity / wavelength;
-        //            period = 1 / frequency;
-        //        }
-        //    }
+                if (t <= 0) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
+                if (t <= EffectiveDownPeriod) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                if (t <= EffectivePeriod) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
+                return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+            }
 
-        //    public float Period
-        //    {
-        //        get => period;
-        //        set
-        //        {
-        //            period = value;
-        //            frequency = 1f / period;
-        //            wavelength = velocity * period;
-        //        }
-        //    }
+            public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = false)
+            {
+                float t = CalculateT(time, offset, -1);
+                float upInterval = (CrestWait) * (realTimeWait ? Velocity : 1f);
+                float downInterval = (TroughWait) * (realTimeWait ? Velocity : 1f);
+                float interval = upInterval + downInterval + EffectivePeriod;
 
-        //    public float Frequency
-        //    {
-        //        get => frequency;
-        //        set
-        //        {
-        //            frequency = value;
-        //            period = 1f / frequency;
-        //            wavelength = velocity * period;
-        //        }
-        //    }
+                if (interval > 0)
+                    t %= interval;
 
-        //    public float Velocity
-        //    {
-        //        get => velocity;
-        //        set
-        //        {
-        //            velocity = value;
-        //            wavelength = velocity / frequency;
-        //            frequency = velocity / wavelength;
-        //            period = 1 / frequency;
-        //        }
-        //    }
+                if (t <= EffectiveUpPeriod)
+                {
+                    return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                }
 
-        //    public float Amplitude
-        //    {
-        //        get => amplitude;
-        //        set => amplitude = value;
-        //    }
+                t -= EffectiveUpPeriod;
+                if (t <= upInterval)
+                {
+                    return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                }
 
-        //    public WaveProperties()
-        //    {
-        //        WaveLength = 1f;
-        //        Period = 1f;
-        //        Frequency = 1f;
-        //        Velocity = 1f;
-        //        Amplitude = 1f;
-        //    }
+                t -= upInterval;
+                if (t <= EffectiveDownPeriod)
+                {
+                    return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                }
 
-        //    public WaveProperties(float waveLength, float period, float frequency, float velocity, float amplitude) : this()
-        //    {
-        //        WaveLength = waveLength;
-        //        Period = period;
-        //        Frequency = frequency;
-        //        Velocity = velocity;
-        //        Amplitude = amplitude;
-        //    }
+                t -= EffectiveDownPeriod;
+                if (t <= downInterval)
+                {
+                    return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
+                }
 
-        //    public WaveProperties(float period, float velocity, float amplitude) : this()
-        //    {
-        //        Period = period;
-        //        Velocity = velocity;
-        //        Amplitude = amplitude;
-        //    }
+                throw new System.Exception("Shouldnt be reachable");
+            }
 
-        //    private float period;
-        //    private float frequency;
-        //    private float wavelength;
-        //    private float velocity;
-        //    private float amplitude;
-        //}
+            [Flags]
+            public enum PulseExtrema
+            {
+                Early = 0b01,
+                Late = 0b10,
+                Both = 0b11
+            }
+
+            private float CalculateT(float time, float offset, int mult)
+            {
+                float t;
+                if (WaveLength == 0)
+                {
+                    t = (time * Velocity);
+                }
+                else
+                {
+                    float v = Velocity * WaveLength;
+                    t = (time * v) / WaveLength + (offset / WaveLength) * mult * uniformity;
+                }
+
+                return Mathf.Abs(t);
+            }
+
+            public override void OnBeforeSerialize()
+            {
+                base.OnBeforeSerialize();
+
+                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+
+                crestWait = Mathf.Max(crestWait, 0f);
+                troughWait = Mathf.Max(troughWait, 0f);
+            }
+
+            public override void OnAfterDeserialize()
+            {
+                base.OnAfterDeserialize();
+
+                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+
+                troughWait = Mathf.Max(troughWait, 0f);
+                crestWait = Mathf.Max(crestWait, 0f);
+
+                EvaluateCopy(0f, 0f, true);
+            }
+
+            public (float, int) EvaluateCopy(float time, float offset, bool realtimeWait = true)
+            {
+                if (CrestWait <= 0)
+                {
+                    if (TroughWait <= 0)
+                    {
+                        return EvaluateAsWave(time, offset);
+                    }
+
+                    return EvaluateAsPulse(time, offset, realtimeWait);
+                }
+
+                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
+
+                return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
+            }
+
+            [Tooltip("The \"up\" part of the wave. This is the curve that is used to travel from trough to crest, or from the wave's lowest to its highest point.")]
+            [SerializeField] private AnimationCurve upwardCurve;
+            [Tooltip("The \"down\" part of the wave. This is the curve that is used to travel from crest to trough, or from the wave's highest to its lowest point.")]
+            [SerializeField] private AnimationCurve downwardCurve;
+            [Tooltip("The amount of time to remain at the crest before moving down again, in seconds.")]
+            [SerializeField] private float crestWait;
+            [Tooltip("The amount of time to remain at the trough before moving up again, in seconds.")]
+            [SerializeField] private float troughWait;
+            [Tooltip("The uniformity of the wave. The closer to zero, the more uniform the wave is applied to the effected characters.")]
+            [SerializeField] private float uniformity;
+        }
 
         public static float FrequencyToPeriod(float frequency)
         {
@@ -1010,6 +942,35 @@ namespace TMPEffects.TMPAnimations
         public static float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)
         {
             return wavevelocity / frequency;
+        }
+
+        public enum WaveOffsetType
+        {
+            SegmentIndex = 0,
+            Index = 5,
+            XPos = 10,
+            YPos = 15
+        }
+
+        public static float GetWaveOffset(CharData cData, IAnimationContext context, WaveOffsetType type)
+        {
+            switch (type)
+            {
+                case WaveOffsetType.SegmentIndex: return context.segmentData.SegmentIndexOf(cData);
+                case WaveOffsetType.Index: return cData.info.index;
+                case WaveOffsetType.XPos:
+                    float pos = cData.info.initialPosition.x;
+                    pos /= (cData.info.referenceScale / 36f);
+                    pos /= 2000f; 
+                    return pos;
+                case WaveOffsetType.YPos:
+                    pos = cData.info.initialPosition.y;
+                    pos /= (cData.info.referenceScale / 36f);
+                    pos /= 2000f;
+                    return pos;
+            }
+
+            throw new System.ArgumentException(nameof(type));
         }
         #endregion
 

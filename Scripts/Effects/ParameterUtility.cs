@@ -413,22 +413,23 @@ namespace TMPEffects
         }
 
 
-        public static bool HasNonWaveTypeParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+
+        public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetWaveTypeParameter(out WaveType _, parameters, name, aliases);
+            return !TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType _, parameters, name, aliases);
         }
 
-        public static bool HasWaveTypeParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool HasWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            return TryGetWaveTypeParameter(out WaveType _, parameters, name, aliases);
+            return TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType _, parameters, name, aliases);
         }
 
-        public static bool TryGetWaveTypeParameter(out WaveType value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             try
             {
-                value = GetWaveTypeParameter(parameters, name, aliases);
+                value = GetWaveOffsetParameter(parameters, name, aliases);
                 return true;
             }
             catch
@@ -438,17 +439,20 @@ namespace TMPEffects
             }
         }
 
-        public static WaveType GetWaveTypeParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static AnimationUtility.WaveOffsetType GetWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             string defined = GetDefinedParameter(parameters, name, aliases);
 
-            if (ParsingUtility.StringToWaveType(parameters[defined], out WaveType value))
+            if (ParsingUtility.StringToWaveOffsetType(parameters[defined], out AnimationUtility.WaveOffsetType value))
             {
                 return value;
             }
 
-            throw new System.Exception("Parameter " + defined + " is not a valid WaveType");
+            throw new System.Exception("Parameter " + defined + " is not a valid WaveOffsetType");
         }
+
+
+
 
         // TODO Move both of these somewhere else
         public enum VectorType
@@ -456,13 +460,6 @@ namespace TMPEffects
             Position,
             PositionOffset,
             Anchor
-        }
-
-        public enum WaveType
-        {
-            Wave,
-            Pulse,
-            OneDirectionalPulse
         }
 
         public struct WaveParameters

@@ -7,6 +7,10 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
+    // TODO 
+    // Maybe rename variables shring/growanchor/direction to up/downanchor/direction to
+    // be more in line with wave parameter names?
+
     [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Spread")]
     public class SpreadAnimation : TMPAnimation
     {
@@ -21,24 +25,13 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [SerializeField] float maxPercentage = 1;
         [SerializeField] float minPercentage = 0;
 
-        [SerializeField] bool indexbased;
+        [SerializeField] WaveOffsetType waveOffsetType;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
-            (float, int) result;
-            if (indexbased)
-            {
-                result = d.Wave.Evaluate(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData));
-            }
-            else
-            {
-                float xPos = cData.info.initialPosition.x;
-                xPos /= (cData.info.referenceScale / 36f);
-                xPos /= 2000f;
-                result = d.Wave.Evaluate(context.animatorContext.PassedTime, xPos);
-            }
+            (float, int) result = d.Wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.offsetType));
 
             if (result.Item2 > 0)
             {
@@ -100,26 +93,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetFloatParameter(out float f, parameters, "maxPercentage", "maxP")) d.maxPercentage = f;
             if (TryGetFloatParameter(out f, parameters, "minPercentage", "minP")) d.minPercentage = f;
 
-            WaveParameters wp = GetWaveParameters(parameters);
-            float upPeriod = wp.upPeriod == null ? wave.Properties.UpPeriod : wp.upPeriod.Value;
-            float downPeriod = wp.downPeriod == null ? wave.Properties.DownPeriod : wp.downPeriod.Value;
+            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", "woffset", "waveoff", "woff")) d.offsetType = offset;
 
-            float velocity = wave.Properties.Velocity; 
-            if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
-            else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod)); // TODO math
-
-            d.Wave = new Wave
-            (
-                wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
-                wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
-                upPeriod,
-                downPeriod,
-                velocity,
-                wp.amplitude == null ? wave.Properties.Amplitude : wp.amplitude.Value,
-                wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
-                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,
-                wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
-            );
+            d.Wave = CreateWave(wave, GetWaveParameters(parameters));
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -136,6 +112,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (HasNonFloatParameter(parameters, "maxPercentage", "maxP")) return false;
             if (HasNonFloatParameter(parameters, "minPercentage", "minP")) return false;
 
+            if (HasNonWaveOffsetParameter(parameters, "waveoffset", "woffset", "waveoff", "woff")) return false;
+
             return ValidateWaveParameters(parameters);
         }
 
@@ -144,6 +122,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return new Data()
             {
                 Wave = null,
+                offsetType = this.waveOffsetType,
 
                 growAnchor = this.growAnchor,
                 growDirection = this.growDirection,
@@ -159,6 +138,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         private class Data
         {
             public Wave Wave;
+
+            public WaveOffsetType offsetType;
 
             public Vector3 growAnchor = new Vector3(0, -1, 0);
             public Vector3 growDirection = Vector3.up;

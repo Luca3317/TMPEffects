@@ -11,7 +11,6 @@ namespace TMPEffects.TMPAnimations.Animations
     public class TESTINGWaves : TMPAnimation
     {
         //[SerializeField] Wave wave;
-        [SerializeField] ParameterUtility.WaveType waveType;
         //[SerializeField] float interval;
         //[SerializeField] float wavelength;
         //[SerializeField] float amplitude;
