@@ -26,96 +26,78 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [Header("Wave - ignored if wavelength is 0")]
         [SerializeField] WaveType waveType;
         [SerializeField] float wavelength;
-        [SerializeField] float interval;
+        [SerializeField] float crestWait;
+        [SerializeField] float throughWait;
+        [SerializeField] float velocity;
+        [SerializeField] float amplitude;
+
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
             if (d.playingSince == -1) d.playingSince = context.animatorContext.PassedTime;
+            if (!d.growingDict.ContainsKey(cData.info.index)) d.growingDict[cData.info.index] = true;
 
-            // Have: wavelength, period (grow/shrinkduration)
-            // Want: frequency
+            if (wave == null)
+            {
+                wave = new Wave(growCurve, shrinkCurve, growDuration, shrinkDuration, velocity, amplitude, crestWait, throughWait);
+            }
 
-            //if (wave == null)
-            //{
-            //    float up, down, velocity;
+            int val = wave.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData));
+            if (val == 1) d.growingDict[cData.info.index] = false;
+            if (val == -1) d.growingDict[cData.info.index] = true;
 
-            //    if (d.growDuration > d.shrinkDuration)
-            //    {
-            //        // set frequency based on shrink
-            //        down = 1f;
-            //        up = d.shrinkDuration / d.growDuration;
-            //        velocity = d.wavelength / d.shrinkDuration;
-            //    }
-            //    else
-            //    {
-            //        // set frequency based on shrink
-            //        up = 1f;
-            //        down = d.growDuration / d.shrinkDuration;
-            //        velocity = d.wavelength / d.growDuration;
-            //    }
-
-
-            //    Debug.Log("Up: " + up + " Down: " + down + " Velocity: " + velocity);
-            //    wave = new Wave(waveType, growCurve, shrinkCurve, wavelength, 1f, 1f, 1f / d.growDuration, 1f / d.shrinkDuration, d.interval);
-            //}
-
-
-
-
-            //wave = new Wave(waveType, growCurve, shrinkCurve, wavelength, 1f, 1f, 1f / d.growDuration, 1f / d.shrinkDuration, d.interval);
-
-            //if (d.growing)
-            //{
-            //    Grow(cData, context, d);
-            //}
-            //else
-            //{
-            //    Shrink(cData, context, d);
-            //}
+            if (d.growingDict[cData.info.index])
+            {
+                Grow(cData, context, d);
+            }
+            else
+            {
+                Shrink(cData, context, d);
+            }
         }
 
         [System.NonSerialized] Wave wave = null;
 
         private void Grow(CharData cData, IAnimationContext context, Data d)
         {
-            //float t = (context.animatorContext.PassedTime - d.playingSince);
-            //float t2 = wave.Evaluate(t, cData);// context.segmentData.SegmentIndexOf(cData));
-            //float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
+            float t = (context.animatorContext.PassedTime);
+            float t2 = wave.Evaluate(t, context.segmentData.SegmentIndexOf(cData));
+            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
 
-            //Vector3 actualDir = new Vector3(d.growDirection.y, d.growDirection.x, 0f);
+            Vector3 actualDir = new Vector3(d.growDirection.y, d.growDirection.x, 0f);
 
-            //Vector3 lineStart = AnchorToPosition(d.growAnchor - actualDir * 2, cData);
-            //Vector3 lineEnd = AnchorToPosition(d.growAnchor + actualDir * 2, cData);
+            Vector3 lineStart = AnchorToPosition(d.growAnchor - actualDir * 2, cData);
+            Vector3 lineEnd = AnchorToPosition(d.growAnchor + actualDir * 2, cData);
 
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-            //    Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
-            //    SetVertexRaw(i, pos, cData, ref context);
-            //}
+                SetVertexRaw(i, pos, cData, ref context);
+            }
         }
 
         private void Shrink(CharData cData, IAnimationContext context, Data d)
         {
-            //float t = (context.animatorContext.PassedTime - d.playingSince) / d.shrinkDuration;
-            //float t2 = wave.Evaluate(t, cData);// context.segmentData.SegmentIndexOf(cData));
-            //float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
+            float t = (context.animatorContext.PassedTime);
+            float t2 = wave.Evaluate(t, context.segmentData.SegmentIndexOf(cData));
+            float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t2);
 
-            //Vector3 actualDir = new Vector3(d.shrinkDirection.y, d.shrinkDirection.x, 0f);
+            Vector3 actualDir = new Vector3(d.shrinkDirection.y, d.shrinkDirection.x, 0f);
 
-            //Vector3 lineStart = AnchorToPosition(d.shrinkAnchor - actualDir * 2, cData);
-            //Vector3 lineEnd = AnchorToPosition(d.shrinkAnchor + actualDir * 2, cData);
+            Vector3 lineStart = AnchorToPosition(d.shrinkAnchor - actualDir * 2, cData);
+            Vector3 lineEnd = AnchorToPosition(d.shrinkAnchor + actualDir * 2, cData);
 
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-            //    Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
-            //    SetVertexRaw(i, pos, cData, ref context);
-            //}
+                SetVertexRaw(i, pos, cData, ref context);
+            }
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
@@ -185,19 +167,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 maxPercentage = this.maxPercentage,
                 minPercentage = this.minPercentage,
 
-                waveType = this.waveType,
-                wavelength = this.wavelength,
-                interval = this.interval,
-
                 waitingSince = -1f,
                 playingSince = -1f,
                 growing = true,
+                growingDict = new Dictionary<int, bool>()
             };
         }
 
         private class Data
         {
-            public Wave wave;
+            //public Wave wave;
 
             public float growDuration = 1;
             public Vector3 growAnchor = new Vector3(0, -1, 0);
@@ -219,6 +198,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             public float waitingSince;
             public float playingSince;
             public bool growing;
+
+
+            public Dictionary<int, bool> growingDict;
         }
     }
 }

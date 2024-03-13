@@ -26,13 +26,17 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField] float pulseInterval;
         [SerializeField] bool useIndex = false;
         [SerializeField] bool realtimeinterval = false;
+        [SerializeField] float crestWait = 1f;
+        [SerializeField] float throughWait = 1f;
 
 
         Wave w = null;
         public override void Animate(CharData cData, IAnimationContext context)
         {
             if (w == null)
-                w = new Wave(waveType, upCurve, downCurve, upPeriod, downPeriod, velocity, amplitude, pulseInterval);
+            {
+                w = new Wave(upCurve, downCurve, upPeriod, downPeriod, velocity, amplitude, crestWait, throughWait);
+            }
 
 
             // Xpos is roughly approximated to look similar to index based T;
@@ -42,23 +46,23 @@ namespace TMPEffects.TMPAnimations.Animations
             xPos /= (cData.info.referenceScale / 36f);
             xPos /= 2000f;
 
-            if (context.segmentData.SegmentIndexOf(cData) == 0)
-            {
-                int val;
-                if (useIndex)
-                    val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
-                else 
-                    val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, xPos, realtimeinterval);
+            //if (context.segmentData.SegmentIndexOf(cData) == 0)
+            //{
+            //    int val;
+            //    if (useIndex)
+            //        val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
+            //    else
+            //        val = w.PassedExtrema(context.animatorContext.PassedTime, context.animatorContext.DeltaTime, xPos, realtimeinterval);
 
-                if (val == -1)
-                {
-                    Debug.Log("MINIMA");
-                }
-                if (val == 1)
-                {
-                    Debug.Log("MAXIMA");
-                }
-            }
+            //    if (val == -1)
+            //    {
+            //        Debug.Log("MINIMA");
+            //    }
+            //    if (val == 1)
+            //    {
+            //        Debug.Log("MAXIMA");
+            //    }
+            //}
 
             float eval;
             if (useIndex)
@@ -72,7 +76,7 @@ namespace TMPEffects.TMPAnimations.Animations
         public override object GetNewCustomData()
         {
             return null;
-        }
+        } 
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
