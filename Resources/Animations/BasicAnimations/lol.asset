@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9be22e758b2f0a4496a1a89543715e9, type: 3}
   m_Name: lol
   m_EditorClassIdentifier: 
-  waveType: 2
+  waveType: 0
   upCurve:
     serializedVersion: 2
     m_Curve:
@@ -61,10 +61,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  upPeriod: 2
-  downPeriod: 1
-  velocity: 1
+  upPeriod: 0.5
+  downPeriod: 0.5
   amplitude: 1
-  pulseInterval: 1
-  useIndex: 0
+  pulseInterval: 0
+  useIndex: 1
   realtimeinterval: 1
+  crestWait: 3
+  throughWait: 2
+  velocity: 2

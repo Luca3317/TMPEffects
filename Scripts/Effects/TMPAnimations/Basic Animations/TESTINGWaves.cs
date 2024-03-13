@@ -21,7 +21,6 @@ namespace TMPEffects.TMPAnimations.Animations
 
         [SerializeField] float upPeriod;
         [SerializeField] float downPeriod;
-        [SerializeField] float velocity;
         [SerializeField] float amplitude;
         [SerializeField] float pulseInterval;
         [SerializeField] bool useIndex = false;
@@ -29,6 +28,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField] float crestWait = 1f;
         [SerializeField] float throughWait = 1f;
 
+        [SerializeField] float velocity;
 
         Wave w = null;
         public override void Animate(CharData cData, IAnimationContext context)
@@ -66,9 +66,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
             (float, int) eval;
             if (useIndex)
-                eval = w.Evaluate2(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
+                eval = w.Evaluate(context.animatorContext.PassedTime, context.segmentData.SegmentIndexOf(cData), realtimeinterval);
             else 
-                eval = w.Evaluate2(context.animatorContext.PassedTime, xPos, realtimeinterval);
+                eval = w.Evaluate(context.animatorContext.PassedTime, xPos, realtimeinterval);
 
             cData.SetPosition(cData.info.initialPosition + eval.Item1 * Vector3.up * 25);
         }
