@@ -20,6 +20,7 @@ using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using log4net.Appender;
 
 namespace TMPEffects.Components
 {
@@ -96,8 +97,6 @@ namespace TMPEffects.Components
         /// </summary>
         public const char HIDE_ANIMATION_PREFIX = '-';
 
-        private float GetVisibleTime(int index) => visibleTimes[index];
-
         #region Fields
         [SerializeField] private TMPAnimationDatabase database = null;
         [SerializeField] private AnimatorContext context = new AnimatorContext();
@@ -116,6 +115,8 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuation = false;
         [SerializeField] private bool excludePunctuationShow = false;
         [SerializeField] private bool excludePunctuationHide = false;
+
+        [SerializeField] private bool animationsUseAnimatorTime = true;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
         private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations;
@@ -194,8 +195,6 @@ namespace TMPEffects.Components
         {
             processors.UnregisterFrom(Mediator.Processor);
 
-            Mediator.ForceReprocess();
-
 #if UNITY_EDITOR
             StopPreview();
 #endif
@@ -210,6 +209,7 @@ namespace TMPEffects.Components
         private void SubscribeToMediator()
         {
             timesIdentifier = new object();
+            Debug.Log("Calling it with " + timesIdentifier);
             if (!Mediator.RegisterVisibilityProcessor(timesIdentifier))
             {
                 Debug.LogError("Could not register as visibility processor!");
@@ -235,6 +235,7 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not unregister as visibility processor!");
             }
 
+            Mediator.ForceReprocess();
             FreeMediator();
         }
 
@@ -458,6 +459,11 @@ namespace TMPEffects.Components
                 return;
             }
 #endif
+
+            if (!isActiveAndEnabled) 
+            {
+                throw new System.InvalidOperationException("Animator is not enabled!");
+            }
 
             UpdateAnimations_Impl(deltaTime);
         }
@@ -761,6 +767,7 @@ namespace TMPEffects.Components
 
         [System.NonSerialized]
         private CharDataState state = new CharDataState();
+        // TODO Own file
         public class CharDataState
         {
             public CharData cData;
@@ -768,7 +775,6 @@ namespace TMPEffects.Components
 
             List<Vector3> pivots = new List<Vector3>();
             List<Quaternion> rotations = new List<Quaternion>();
-            private int rotationCount = 0;
 
             public Vector3 positionDelta;
             public Matrix4x4 scaleDelta;
@@ -819,7 +825,6 @@ namespace TMPEffects.Components
                 scaleDelta = Matrix4x4.Scale(Vector3.one);
                 //rotation = Quaternion.identity;
                 //rotationPivot = cData.info.initialPosition;
-                rotationCount = 0;
                 rotations.Clear();
                 pivots.Clear();
 
@@ -948,10 +953,38 @@ namespace TMPEffects.Components
 
                 if (cData.colorsDirty)
                 {
-                    BL_Color = cData.mesh.GetColor(0);
-                    TL_Color = cData.mesh.GetColor(1);
-                    TR_Color = cData.mesh.GetColor(2);
-                    BR_Color = cData.mesh.GetColor(3);
+                    if (cData.alphasDirty)
+                    {
+                        BL_Color = cData.mesh.GetColor(0);
+                        TL_Color = cData.mesh.GetColor(1);
+                        TR_Color = cData.mesh.GetColor(2);
+                        BR_Color = cData.mesh.GetColor(3);
+                    }
+                    else
+                    {
+                        Color32 color = cData.mesh.GetColor(0);
+                        color.a = cData.mesh.initial.GetAlpha(0);
+                        BL_Color = cData.mesh.GetColor(0);
+
+                        color = cData.mesh.GetColor(1);
+                        color.a = cData.mesh.initial.GetAlpha(1);
+                        TL_Color = cData.mesh.GetColor(1);
+
+                        color = cData.mesh.GetColor(2);
+                        color.a = cData.mesh.initial.GetAlpha(2);
+                        TR_Color = cData.mesh.GetColor(2);
+
+                        color = cData.mesh.GetColor(3);
+                        color.a = cData.mesh.initial.GetAlpha(3);
+                        BR_Color = cData.mesh.GetColor(3);
+                    }
+                }
+                else if (cData.alphasDirty)
+                {
+                    BL_Color.a = cData.mesh.GetAlpha(0);
+                    TL_Color.a = cData.mesh.GetAlpha(1);
+                    TR_Color.a = cData.mesh.GetAlpha(2);
+                    BR_Color.a = cData.mesh.GetAlpha(3);
                 }
 
                 if (cData.uvsDirty)
@@ -1342,67 +1375,6 @@ namespace TMPEffects.Components
                 return done;
             }
 
-            //void UpdateVertexOffsets()
-            //{
-            //if (cData.positionDirty)
-            //{
-            //    state.positionDelta += (cData.Position - cData.info.initialPosition);
-            //}
-            //if (cData.scaleDirty)
-            //{
-            //    state.scaleDelta *= Matrix4x4.Scale(cData.Scale);
-            //}
-            //if (cData.rotationDirty)
-            //{
-            //    state.rotation = cData.Rotation * state.rotation;
-            //    state.rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-            //}
-
-            //if (cData.verticesDirty)
-            //{
-            //    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-            //    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-            //    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-            //    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-
-            //    state.TL += deltaTL;
-            //    state.TR += deltaTR;
-            //    state.BR += deltaBR;
-            //    state.BL += deltaBL;
-
-            //    state.TLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMax.x), Mathf.Max(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMax.y), Mathf.Max(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMax.z));
-            //    state.TRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMax.x), Mathf.Max(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMax.y), Mathf.Max(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMax.z));
-            //    state.BRMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMax.x), Mathf.Max(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMax.y), Mathf.Max(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMax.z));
-            //    state.BLMax = new Vector3(Mathf.Max(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMax.x), Mathf.Max(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMax.y), Mathf.Max(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMax.z));
-
-            //    state.TLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TL.position.x + deltaTL.x, state.TLMin.x), Mathf.Min(cData.mesh.initial.vertex_TL.position.y + deltaTL.y, state.TLMin.y), Mathf.Min(cData.mesh.initial.vertex_TL.position.z + deltaTL.z, state.TLMin.z));
-            //    state.TRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_TR.position.x + deltaTR.x, state.TRMin.x), Mathf.Min(cData.mesh.initial.vertex_TR.position.y + deltaTR.y, state.TRMin.y), Mathf.Min(cData.mesh.initial.vertex_TR.position.z + deltaTR.z, state.TRMin.z));
-            //    state.BRMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BR.position.x + deltaBR.x, state.BRMin.x), Mathf.Min(cData.mesh.initial.vertex_BR.position.y + deltaBR.y, state.BRMin.y), Mathf.Min(cData.mesh.initial.vertex_BR.position.z + deltaBR.z, state.BRMin.z));
-            //    state.BLMin = new Vector3(Mathf.Min(cData.mesh.initial.vertex_BL.position.x + deltaBL.x, state.BLMin.x), Mathf.Min(cData.mesh.initial.vertex_BL.position.y + deltaBL.y, state.BLMin.y), Mathf.Min(cData.mesh.initial.vertex_BL.position.z + deltaBL.z, state.BLMin.z));
-            //}
-
-            //if (cData.colorsDirty)
-            //{
-            //    state.BL_Color = cData.mesh.GetColor(0);
-            //    state.TL_Color = cData.mesh.GetColor(1);
-            //    state.TR_Color = cData.mesh.GetColor(2);
-            //    state.BR_Color = cData.mesh.GetColor(3);
-            //}
-
-            //if (cData.uvsDirty)
-            //{
-            //    state.BL_UV = cData.mesh.GetUV0(0);
-            //    state.TL_UV = cData.mesh.GetUV0(1);
-            //    state.TR_UV = cData.mesh.GetUV0(2);
-            //    state.BR_UV = cData.mesh.GetUV0(3);
-
-            //    state.BL_UV2 = cData.mesh.GetUV2(0);
-            //    state.TL_UV2 = cData.mesh.GetUV2(1);
-            //    state.TR_UV2 = cData.mesh.GetUV2(2);
-            //    state.BR_UV2 = cData.mesh.GetUV2(3);
-            //}
-            //}
-
             void ApplyVertices()
             {
                 state.CalculateVertexPositions();
@@ -1482,18 +1454,40 @@ namespace TMPEffects.Components
             stateTimes[index] = context.passed;
             if (state == VisibilityState.Hidden || prev == VisibilityState.Hidden) visibleTimes[index] = context.passed;
 
-            if (state == VisibilityState.Shown)
-            {
-                cData.Reset();
-                UpdateVisibility(true);
-            }
-            else if (state == VisibilityState.Hidden)
+            //if (state == VisibilityState.Shown)
+            //{
+            //    cData.Reset();
+            //    UpdateVisibility(true);
+            //}
+            //else if (state == VisibilityState.Hidden)
+            //{
+            //    UpdateVisibility(false);
+            //}
+
+            if (state == VisibilityState.Hidden)
             {
                 UpdateVisibility(false);
             }
+            else
+            {
+                if (state == VisibilityState.Shown)
+                {
+                    cData.Reset();
+                    UpdateVisibility(true);
+                }
+
+                if (prev == VisibilityState.Hidden)
+                    UpdateAnimationTimes(basic);
+
+                if (state == VisibilityState.Showing)
+                    UpdateAnimationTimes(show);
+
+                if (state == VisibilityState.Hiding)
+                    UpdateAnimationTimes(hide);
+            }
 
             // Reset the "finished" status of the relevant animations
-            else if (state == VisibilityState.Showing)
+            if (state == VisibilityState.Showing)
             {
                 defaultShow.context.ResetFinishAnimation(index);
                 dummyShow.context.ResetFinishAnimation(index);
@@ -1595,6 +1589,37 @@ namespace TMPEffects.Components
                 for (int j = 0; j < 4; j++)
                 {
                     cData.SetVertex(j, cData.mesh.initial.GetVertex(j));
+                }
+            }
+
+            void UpdateAnimationTimes(CachedCollection<CachedAnimation> coll)
+            {
+                var mm = coll.MinMaxAt(index);
+                if (mm == null) return;
+
+                if (animationsUseAnimatorTime)
+                {
+                    CachedAnimation ca;
+                    for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
+                    {
+                        ca = coll[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            ca.context.AnimationTime = 0f;
+                        }
+                    }
+                }
+                else
+                {
+                    CachedAnimation ca;
+                    for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
+                    {
+                        ca = coll[i];
+                        if (ca.Indices.Contains(index))
+                        {
+                            ca.context.AnimationTime = context.passed;
+                        }
+                    }
                 }
             }
         }
@@ -1753,6 +1778,8 @@ namespace TMPEffects.Components
 
         private void UpdatePreview()
         {
+            if (Application.isPlaying) return;
+
             if (lastPreviewUpdateTime <= 0)
             {
                 UpdateAnimations(0f);

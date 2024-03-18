@@ -35,6 +35,7 @@ namespace TMPEffects.Editor
         SerializedProperty sceneHideAnimationsProp;
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
+        SerializedProperty animationsUseAnimatorTimeProp;
 
         // Styles
         GUIStyle previewLabelStyle;
@@ -70,6 +71,8 @@ namespace TMPEffects.Editor
 
             defaultShowStringProp = serializedObject.FindProperty("defaultShowString");
             defaultHideStringProp = serializedObject.FindProperty("defaultHideString");
+
+            animationsUseAnimatorTimeProp = serializedObject.FindProperty("animationsUseAnimatorTime");
 
             animator = target as TMPAnimator;
 
@@ -352,6 +355,7 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(contextScalingProp);
                 EditorGUILayout.PropertyField(contextScaledTimeProp);
+                EditorGUILayout.PropertyField(animationsUseAnimatorTimeProp);
                 EditorGUI.indentLevel--;
             }
         }

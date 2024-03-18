@@ -31,7 +31,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.customData as Data;
 
-            (float, int) result = d.Wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.offsetType));
+            (float, int) result = d.Wave.Evaluate(context.AnimationTimePassed,/* context.animatorContext.PassedTime,*/ GetWaveOffset(cData, context, d.offsetType));
 
             if (result.Item2 > 0)
             {
@@ -47,7 +47,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
-            Vector3 actualDir = new Vector3(d.growDirection.y, d.growDirection.x, 0f);
+            Vector3 actualDir = new Vector3(-d.growDirection.x, d.growDirection.y, 0f);
 
             Vector3 lineStart = AnchorToPosition(d.growAnchor - actualDir * 2, cData);
             Vector3 lineEnd = AnchorToPosition(d.growAnchor + actualDir * 2, cData);
@@ -65,7 +65,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
-            Vector3 actualDir = new Vector3(d.shrinkDirection.y, d.shrinkDirection.x, 0f);
+            Vector3 actualDir = new Vector3(-d.shrinkDirection.x, d.shrinkDirection.y, 0f);
 
             Vector3 lineStart = AnchorToPosition(d.shrinkAnchor - actualDir * 2, cData);
             Vector3 lineEnd = AnchorToPosition(d.shrinkAnchor + actualDir * 2, cData);

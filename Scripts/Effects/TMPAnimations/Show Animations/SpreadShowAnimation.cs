@@ -24,6 +24,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float t = Mathf.Lerp(d.startPercentage, d.targetPercentage, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
             float t2 = d.curve.Evaluate(t);
 
+            float l = Mathf.Lerp(0f, 1f, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
+            if (l == 1)
+                context.FinishAnimation(cData);
+
             Vector3 actualDir = new Vector3(d.direction.y, d.direction.x, 0f);
 
             Vector3 lineStart = AnchorToPosition(d.anchor - actualDir * 2, cData);

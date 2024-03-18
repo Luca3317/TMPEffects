@@ -25,10 +25,14 @@ namespace TMPEffects.TMPAnimations
 
         public TMPAnimator.CharDataState state { get; }
 
+        public float AnimationTime { get; }
+        public float AnimationTimePassed { get; }   
+
         public bool Finished(int index);
         public bool Finished(CharData cData);
         public void FinishAnimation(int index);
         public void FinishAnimation(CharData cData);
+
     }
 
     public class AnimationContext : IAnimationContext
@@ -39,6 +43,19 @@ namespace TMPEffects.TMPAnimations
         public SegmentData segmentData { get; set; }
         public object customData { get; }
         public TMPAnimator.CharDataState state { get; }
+        public float AnimationTime 
+        {
+            get
+            {
+                return aaa;
+            }
+            set
+            {
+                aaa = value;
+            }
+        }
+        private float aaa;
+        public float AnimationTimePassed => animatorContext.PassedTime - AnimationTime;
 
         public AnimationContext(ReadOnlyAnimatorContext animatorContext, TMPAnimator.CharDataState state, SegmentData segmentData, object customData)
         {
@@ -46,6 +63,7 @@ namespace TMPEffects.TMPAnimations
             this.state = state;
             this.segmentData = segmentData;
             this.animatorContext = animatorContext;
+            AnimationTime = -1;
             finishedDict = new Dictionary<int, bool>(segmentData.length);
 
             for (int i = segmentData.startIndex; i < segmentData.startIndex + segmentData.length; i++)
@@ -93,6 +111,9 @@ namespace TMPEffects.TMPAnimations
         public SegmentData segmentData => context.segmentData;
         public object customData => context.customData;
         public TMPAnimator.CharDataState state => context.state;
+
+        public float AnimationTime=> context.AnimationTime;
+        public float AnimationTimePassed => context.AnimationTimePassed;
 
         public ReadOnlyAnimationContext(AnimationContext context)
         {

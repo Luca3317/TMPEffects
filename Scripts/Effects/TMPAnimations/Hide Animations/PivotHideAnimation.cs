@@ -38,7 +38,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 case VectorType.Position:
                     cData.SetPivot(d.pivot);
                     break;
-                case VectorType.PositionOffset:
+                case VectorType.Offset:
                     cData.SetPivot(cData.info.initialPosition + d.pivot);
                     break;
                 case VectorType.Anchor:
@@ -66,9 +66,9 @@ namespace TMPEffects.TMPAnimations.Animations
                     d.pivotType = VectorType.Anchor;
                     d.pivot = v;
                 }
-                else if (TryGetOffsetParameter(out v, parameters, value))
+                else if (TryGetVector3OffsetParameter(out v, parameters, value))
                 {
-                    d.pivotType = VectorType.PositionOffset;
+                    d.pivotType = VectorType.Offset;
                     d.pivot = v;
                 }
                 else if (TryGetVector3Parameter(out v, parameters, value))
@@ -90,7 +90,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             if (TryGetDefinedParameter(out string value, parameters, "pivot", pivotAliases))
             {
-                if (!HasVector3Parameter(parameters, value) && !HasAnchorParameter(parameters, value) && !HasOffsetParameter(parameters, value))
+                if (!HasVector3Parameter(parameters, value) && !HasAnchorParameter(parameters, value) && !HasVector3OffsetParameter(parameters, value))
                 {
                     return false;
                 }

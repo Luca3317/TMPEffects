@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using TMPEffects.Extensions;
 using TMPEffects.TMPAnimations;
@@ -399,6 +400,9 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
+
+
+
         public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
         {
             result = new Vector2(0, 0);
@@ -476,48 +480,69 @@ namespace TMPEffects.TextProcessing
             }
         }
 
-        public static bool StringToAnchor(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+        public static bool StringToVector2Offset(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
         {
-            result = new Vector3(0, 0, 0);
-
-            if (str == null || str.Length < 2 || str[0] != 'a' || str[1] != ':') ;
-
-            str = str.Substring(2, str.Length - 2);
-
-            Vector3? v;
-            if ((v = TryParse()) != null)
+            str = str.Trim();
+            if (str.Length < 9 || str[0] != 'o' || str[1] != ':')
             {
-                result = v.Value;
-                return true;
+                result = Vector2.zero;
+                return false;
             }
 
+            str = str.Substring(2, str.Length - 2);
             if (keywords != null && keywords.TryGetValue(str, out result))
                 return true;
 
-            return false;
-
-            Vector3? TryParse()
+            if (StringToVector2(str, out result, keywords))
             {
-                str = str.Trim();
-                if (str.Length <= 5) return null;
-
-                if (str[0] != '(') return null;
-
-                if (str[str.Length - 1] != ')') return null;
-
-                int commaIndex = str.IndexOf(',');
-                int commaIndex2 = str.IndexOf(',', commaIndex + 1);
-                if (commaIndex < 2) return null;
-                if (commaIndex2 < 4) return null;
-
-                float x, y, z;
-                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
-                if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return null;
-                if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return null;
-
-                return new Vector3(x, y, z);
+                return true;
             }
+
+            return false;
         }
+
+        public static bool StringToVector3Offset(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+        {
+            str = str.Trim();
+            if (str.Length < 9 || str[0] != 'o' || str[1] != ':')
+            {
+                result = Vector3.zero;
+                return false;
+            }
+
+            str = str.Substring(2, str.Length - 2);
+            if (keywords != null && keywords.TryGetValue(str, out result))
+                return true;
+
+            if (StringToVector3(str, out result, keywords))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool StringToAnchor(string str, out Vector3 result, IDictionary<string, Vector3> anchorKeywords = null, IDictionary<string, Vector3> vectorKeywords = null)
+        {
+            str = str.Trim();
+            if (str.Length < 9 || str[0] != 'a' || str[1] != ':')
+            {
+                result = Vector3.zero;
+                return false;
+            }
+
+            if (anchorKeywords != null && anchorKeywords.TryGetValue(str, out result))
+                return true;
+
+            str = str.Substring(2, str.Length - 2);
+            if (StringToVector3(str, out result, vectorKeywords))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         /*
          * Valid anim curve format
@@ -594,40 +619,240 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        //public static bool StringToWaveType(string str, out ParameterUtility.WaveType result, IDictionary<string, ParameterUtility.WaveType> keywords = null)
-        //{
-        //    result = default;
-        //    str = str.Trim();
+        public static bool StringToColor(string str, out Color result, IDictionary<string, Color> keywords = null)
+        {
+            str = str.Trim();
 
-        //    switch (str)
-        //    {
-        //        case "p":
-        //        case "pls":
-        //        case "pulse": result = ParameterUtility.WaveType.Pulse; return true;
+            if (ColorKeyWords.TryGetValue(str, out Color color))
+            {
+                result = color;
+                return true;
+            }
 
-        //        case "w":
-        //        case "wv":
-        //        case "wave": result = ParameterUtility.WaveType.Wave; return true;
+            if (StringToHexColor(str, out result)) return true;
+            if (StringToHSVColor(str, out result)) return true;
+            if (StringToRGBColor(str, out result)) return true;
+            if (StringToRGBAColor(str, out result)) return true;
 
-        //        case "odp":
-        //        case "odpls":
-        //        case "odpulse":
-        //        case "odirp":
-        //        case "odirpls":
-        //        case "odirpulse":
-        //        case "onedirectionalp":
-        //        case "onedirectionalpls":
-        //        case "onedirectionalpulse": result = ParameterUtility.WaveType.OneDirectionalPulse; return true;
-        //    }
+            if (keywords != null && keywords.TryGetValue(str, out color))
+            {
+                result = color;
+                return true;
+            }
 
-        //    if (keywords != null && keywords.ContainsKey(str))
-        //    {
-        //        result = keywords[str];
-        //        return true;
-        //    }
+            return false;
+        }
 
-        //    return false;
-        //}
+
+        internal static bool StringToHexColor(string str, out Color result)
+        {
+            result = default;
+
+            if (str.Length != 7 && str.Length != 9) return false;
+
+            if (str[0] != '#') return false;
+
+            try
+            {
+                string red = str.Substring(1, 2);
+                int redInt = Convert.ToInt32(red, 16);
+                string green = str.Substring(3, 2);
+                int greenInt = Convert.ToInt32(green, 16);
+                string blue = str.Substring(5, 2);
+                int blueInt = Convert.ToInt32(blue, 16);
+
+                if (str.Length == 9)
+                {
+                    string alpha = str.Substring(7, 2);
+                    int alphaInt = Convert.ToInt32(alpha, 16);
+                    result = new Color(redInt, greenInt, blueInt, alphaInt);
+                }
+
+                result = new Color(redInt, greenInt, blueInt);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        internal static bool StringToHSVColor(string str, out Color result)
+        {
+            result = default;
+
+            if (str.Length < 10) return false;
+
+            if (str.Substring(0, 3) == "hsv")
+            {
+                if (str[3] != '(') return false;
+                if (str[str.Length - 1] != ')') return false;
+
+                var values = str.Substring(4, str.Length - 5).Split(',');
+                if (values.Length != 3 && values.Length != 4) return false;
+
+                float[] floats = new float[3];
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!StringToFloat(values[i], out float res, null))
+                    {
+                        return false;
+                    }
+
+                    floats[i] = res;
+                }
+
+                if (values.Length == 4)
+                {
+                    if (!StringToBool(values[3], out bool res, null))
+                    {
+                        return false;
+                    }
+
+                    result = Color.HSVToRGB(floats[0], floats[1], floats[2], res);
+                    return true;
+                }
+                else
+                {
+                    result = Color.HSVToRGB(floats[0], floats[1], floats[2]);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        internal static bool StringToRGBColor(string str, out Color result)
+        {
+            result = default;
+
+            if (str.Length < 10) return false;
+
+            if (str.Substring(0, 3) == "rgb")
+            {
+                if (str[3] != '(') return false;
+                if (str[str.Length - 1] != ')') return false;
+
+                var values = str.Substring(4, str.Length - 5).Split(',');
+                if (values.Length != 3) return false;
+
+                float[] floats = new float[3];
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!StringToFloat(values[i], out float res, null))
+                    {
+                        return false;
+                    }
+
+                    floats[i] = res;
+                }
+
+                result = new Color(floats[0], floats[1], floats[2]);
+                return true;
+            }
+
+            return false;
+        }
+
+        internal static bool StringToRGBAColor(string str, out Color result, IDictionary<string, Color> keywords = null)
+        {
+            result = default;
+
+            if (str.Length < 11) return false;
+
+            if (str.Substring(0, 4) == "rgba")
+            {
+                if (str[4] != '(') return false;
+                if (str[str.Length - 1] != ')') return false;
+
+                var values = str.Substring(5, str.Length - 6).Split(',');
+                if (values.Length != 4) return false;
+
+                float[] floats = new float[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    if (!StringToFloat(values[i], out float res, null))
+                    {
+                        return false;
+                    }
+
+                    floats[i] = res;
+                }
+
+                result = new Color(floats[0], floats[1], floats[2], floats[3]);
+                return true;
+            }
+
+            return false;
+        }
+
+        internal static readonly ReadOnlyDictionary<string, Color> ColorKeyWords = new ReadOnlyDictionary<string, Color>(new Dictionary<string, Color>()
+        {
+            { "black", Color.black },
+            { "blue", Color.blue },
+            { "clear", Color.clear },
+            { "green", Color.green },
+            { "cyan", Color.cyan },
+            { "gray", Color.gray },
+            { "grey", Color.grey },
+            { "magenta", Color.magenta },
+            { "red", Color.red },
+            { "white", Color.white },
+            { "yellow", Color.yellow },
+
+            { "maroon", new Color32(128, 0, 0, 255) },
+            { "olive", new Color32(128, 128, 0, 255) },
+            { "lime", new Color32(0, 255, 0, 255) },
+            { "aqua", new Color32(0, 255, 255, 255) },
+            { "teal", new Color32(0, 128, 128, 255) },
+            { "navy", new Color32(0, 0, 128, 255) },
+            { "fuchsia", new Color32(255, 0, 255, 255) },
+            { "purple", new Color32(128, 0, 128, 255) },
+            { "silver", new Color32(192, 192, 192, 255) },
+            { "orange", new Color32(255, 165, 0, 255) },
+            { "pink", new Color32(255, 192, 203, 255) },
+
+            { "gold", new Color32(255, 215, 0, 255) },
+            { "indigo", new Color32(75, 0, 130, 255) },
+            { "violet", new Color32(238, 130, 238, 255) },
+            { "brown", new Color32(165, 42, 42, 255) },
+            { "beige", new Color32(245, 245, 220, 255) },
+            { "ivory", new Color32(255, 255, 240, 255) },
+            { "khaki", new Color32(240, 230, 140, 255) },
+            { "lavender", new Color32(230, 230, 250, 255) },
+            { "salmon", new Color32(250, 128, 114, 255) },
+            { "turquoise", new Color32(64, 224, 208, 255) },
+
+            { "coral", new Color32(255, 127, 80, 255) },
+            { "peach", new Color32(255, 218, 185, 255) },
+            { "mint", new Color32(189, 252, 201, 255) },
+            { "skyblue", new Color32(135, 206, 235, 255) },
+            { "plum", new Color32(221, 160, 221, 255) },
+            { "chocolate", new Color32(210, 105, 30, 255) },
+            { "tomato", new Color32(255, 99, 71, 255) },
+            { "honeydew", new Color32(240, 255, 240, 255) },
+            { "orchid", new Color32(218, 112, 214, 255) },
+            { "papayawhip", new Color32(255, 239, 213, 255) },
+
+            { "darkblue", new Color32(0, 0, 139, 255) },
+            { "lightblue", new Color32(173, 216, 230, 255) },
+            { "darkred", new Color32(139, 0, 0, 255) },
+            { "lightred", new Color32(255, 102, 102, 255) },
+            { "darkgreen", new Color32(0, 100, 0, 255) },
+            { "lightgreen", new Color32(144, 238, 144, 255) },
+            { "darkyellow", new Color32(204, 204, 0, 255) },
+            { "lightyellow", new Color32(255, 255, 224, 255) },
+            { "darkorange", new Color32(255, 140, 0, 255) },
+            { "lightorange", new Color32(255, 165, 0, 255) },
+            { "darkviolet", new Color32(148, 0, 211, 255) },
+            { "lightviolet", new Color32(238, 130, 238, 255) },
+            { "darkbrown", new Color32(101, 67, 33, 255) },
+            { "lightbrown", new Color32(181, 101, 29, 255) },
+            { "darkpurple", new Color32(128, 0, 128, 255) },
+            { "lightpurple", new Color32(147, 112, 219, 255) },
+            { "darkmagenta", new Color32(139, 0, 139, 255) },
+            { "lightmagenta", new Color32(255, 0, 255, 255) },
+        });
 
         internal static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
         {

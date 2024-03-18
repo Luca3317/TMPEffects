@@ -39,6 +39,10 @@ namespace TMPEffects.Components.CharacterData
         /// </summary>
         public bool colorsDirty { get; private set; }
         /// <summary>
+        /// Whether the vertex alphas have been manipulated.
+        /// </summary>
+        public bool alphasDirty { get; private set; }
+        /// <summary>
         /// Whether the UVs have been manipulated.
         /// </summary>
         public bool uvsDirty { get; private set; }
@@ -86,6 +90,7 @@ namespace TMPEffects.Components.CharacterData
             verticesDirty = false;
             uvsDirty = false;
             colorsDirty = false;
+            alphasDirty = false;
 
             initial = new ReadOnlyVertexData(bl, tl, tr, br);
             this.vertex_BL = bl;
@@ -99,6 +104,7 @@ namespace TMPEffects.Components.CharacterData
             verticesDirty = false;
             uvsDirty = false;
             colorsDirty = false;
+            alphasDirty = false;
 
             initial = new ReadOnlyVertexData(info);
             this.vertex_BL = info.vertex_BL;
@@ -182,9 +188,28 @@ namespace TMPEffects.Components.CharacterData
         /// 3 => bottom right<br/>
         /// </summary>
         /// <param name="i">The index.</param>
+        /// <param name="value">The color to set the vertex too.</param>
+        /// <param name="ignoreAlpha">Whether to ignore the alpha of the passed in color.</param>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public void SetColor(int i, Color32 value)
+        public void SetColor(int i, Color32 value, bool ignoreAlpha = false)
         {
+            if (!ignoreAlpha)
+            {
+                switch (i)
+                {
+                    case 0: vertex_BL.color = value; break;
+                    case 1: vertex_TL.color = value; break;
+                    case 2: vertex_TR.color = value; break;
+                    case 3: vertex_BR.color = value; break;
+                    default: throw new System.ArgumentOutOfRangeException();
+                }
+
+                colorsDirty = true;
+                alphasDirty = true;
+                return;
+            }
+
+            value = new Color32(value.r, value.g, value.b, initial.GetAlpha(i));
             switch (i)
             {
                 case 0: vertex_BL.color = value; break;
@@ -195,6 +220,51 @@ namespace TMPEffects.Components.CharacterData
             }
 
             colorsDirty = true;
+        }
+
+        /// <summary>
+        /// Get the alpha of the vertex associated with the index.<br/>
+        /// 0 => bottom left<br/>
+        /// 1 => top left<br/>
+        /// 2 => top right<br/>
+        /// 3 => bottom right<br/>
+        /// </summary>
+        /// <param name="i">The index.</param>
+        /// <returns>The alpha of the vertex associated with the index.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        public byte GetAlpha(int i)
+        {
+            switch (i)
+            {
+                case 0: return vertex_BL.color.a;
+                case 1: return vertex_TL.color.a;
+                case 2: return vertex_TR.color.a;
+                case 3: return vertex_BR.color.a;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        /// <summary>
+        /// Set the alpha of the vertex associated with the index.<br/>
+        /// 0 => bottom left<br/>
+        /// 1 => top left<br/>
+        /// 2 => top right<br/>
+        /// 3 => bottom right<br/>
+        /// </summary>
+        /// <param name="i">The index.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        public void SetAlpha(int i, float value)
+        {
+            switch (i)
+            {
+                case 0: vertex_BL.color.a = (byte)value; break;
+                case 1: vertex_TL.color.a = (byte)value; break;
+                case 2: vertex_TR.color.a = (byte)value; break;
+                case 3: vertex_BR.color.a = (byte)value; break;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+
+            alphasDirty = true;
         }
 
         /// <summary>

@@ -102,8 +102,11 @@ namespace TMPEffects.Components.Mediator
         /// <returns>true if registration was successful; otherwise false.</returns>
         public bool RegisterVisibilityProcessor(object obj)
         {
+            Debug.Log("Register 1");
             if (visibilityProcessor != null) return false;
+            Debug.Log("Register 2 and shit null: " + (obj == null));
             if (obj == null) return false;
+            Debug.Log("Register 3");
             visibilityProcessor = obj;
             return true;
         }
@@ -115,8 +118,11 @@ namespace TMPEffects.Components.Mediator
         /// <returns>true if registration was successful; otherwise false.</returns>
         public bool UnregisterVisibilityProcessor(object obj)
         {
+            Debug.Log("Unregister 1");
             if (visibilityProcessor != obj) return false;
+            Debug.Log("Unregister 2");
             visibilityProcessor = null;
+            Debug.Log("Unregister 3");
             return true;
         }
 

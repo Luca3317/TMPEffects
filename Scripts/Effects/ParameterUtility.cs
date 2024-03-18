@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPAnimations;
 using TMPro;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
@@ -180,6 +181,13 @@ namespace TMPEffects
         }
 
 
+
+
+
+
+
+
+
         public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
@@ -256,6 +264,84 @@ namespace TMPEffects
         }
 
 
+        public static bool HasNonVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetVector2OffsetParameter(out Vector2 _, parameters, name, aliases);
+        }
+
+        public static bool HasVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return TryGetVector2OffsetParameter(out Vector2 _, parameters, name, aliases);
+        }
+
+        public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            try
+            {
+                value = GetVector2OffsetParameter(parameters, name, aliases);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        public static Vector2 GetVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+
+            if (ParsingUtility.StringToVector2Offset(parameters[defined], out Vector2 value, BuiltInVector2Keywords))
+            {
+                return value;
+            }
+
+            throw new System.Exception("Parameter " + defined + " is not a valid Vector2 offset");
+        }
+
+
+        public static bool HasNonVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetVector3OffsetParameter(out Vector3 _, parameters, name, aliases);
+        }
+
+        public static bool HasVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return TryGetVector3OffsetParameter(out Vector3 _, parameters, name, aliases);
+        }
+
+        public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            try
+            {
+                value = GetVector3OffsetParameter(parameters, name, aliases);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        public static Vector3 GetVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+
+            if (ParsingUtility.StringToVector3Offset(parameters[defined], out Vector3 value, BuiltInVector3Keywords))
+            {
+                return value;
+            }
+            else
+
+            throw new System.Exception("Parameter " + defined + " is not a valid Vector3 offset");
+        }
+
+
+
         // TODO Make v2
         public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
@@ -286,67 +372,12 @@ namespace TMPEffects
         {
             string defined = GetDefinedParameter(parameters, name, aliases);
 
-            if (AnchorKeywords.ContainsKey(parameters[defined])) return AnchorKeywords[parameters[defined]];
-
-            if (ParsingUtility.StringToAnchor(parameters[defined], out Vector3 value, BuiltInVector3Keywords))
+            if (ParsingUtility.StringToAnchor(parameters[defined], out Vector3 value, AnchorKeywords, BuiltInVector3Keywords))
             {
-                if (Mathf.Abs(value.x) > 1 || Mathf.Abs(value.y) > 1 || Mathf.Abs(value.z) > 1)
-                { }
-                else
-                {
-                    return value;
-                }
+                return value;
             }
 
-            throw new System.Exception("Parameter " + defined + " is not a valid Anchor");
-        }
-
-
-        public static bool HasNonOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetOffsetParameter(out Vector3 _, parameters, name, aliases);
-        }
-
-        public static bool HasOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            return TryGetOffsetParameter(out Vector3 _, parameters, name, aliases);
-        }
-
-        public static bool TryGetOffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            try
-            {
-                value = GetOffsetParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
-
-        public static Vector3 GetOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            string str = parameters[defined];
-
-            if (str == null || str.Length < 2 || str[0] != 'o' || str[1] != ':')
-                throw new System.Exception("Parameter " + defined + " is not a valid Offset");
-
-            if (ParsingUtility.StringToVector3(str.Substring(2, str.Length - 1), out Vector3 value, BuiltInVector3Keywords))
-            {
-                if (Mathf.Abs(value.x) > 1 || Mathf.Abs(value.y) > 1 || Mathf.Abs(value.z) > 1)
-                { }
-                else
-                {
-                    return value;
-                }
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Offset");
+            throw new System.Exception("Parameter " + defined + " is not a valid anchor");
         }
 
         public static readonly ReadOnlyDictionary<string, Vector3> AnchorKeywords = new ReadOnlyDictionary<string, Vector3>(new Dictionary<string, Vector3>()
@@ -373,6 +404,19 @@ namespace TMPEffects
 
             { "a:center", Vector3.zero }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -413,7 +457,6 @@ namespace TMPEffects
         }
 
 
-
         public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
@@ -452,16 +495,158 @@ namespace TMPEffects
         }
 
 
+        public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetColorParameter(out Color _, parameters, name, aliases);
+        }
+
+        public static bool HasColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return TryGetColorParameter(out Color _, parameters, name, aliases);
+        }
+
+        public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            try
+            {
+                value = GetColorParameter(parameters, name, aliases);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        public static Color GetColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+
+            if (ParsingUtility.StringToColor(parameters[defined], out Color value))
+            {
+                return value;
+            }
+
+            throw new System.Exception("Parameter " + defined + " is not a valid Color");
+        }
+
+
+        public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetArrayParameter(out List<T> _, parameters, func, name, aliases);
+        }
+
+        public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        {
+            return TryGetArrayParameter(out List<T> _, parameters, func, name, aliases);
+        }
+
+        public static bool TryGetArrayParameter<T>(out List<T> value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        {
+            try
+            {
+                value = GetArrayParameter(parameters, func, name, aliases);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
+        public static List<T> GetArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+
+            string[] contents = parameters[defined].Split(";");
+
+            List<T> result = new List<T>();
+
+            for (int i = 0; i < contents.Length; i++)
+            {
+                string value = contents[i];
+
+                if (!func(value, out T t, null))
+                {
+                    throw new System.Exception("Parameter " + defined + " contains invalid type");
+                }
+
+                result.Add(t);
+            }
+
+            return result;
+        }
+
+
+
+        public static bool HasNonAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return HasNonVector3Parameter(parameters, name, aliases) && HasNonAnchorParameter(parameters, name, aliases) && HasNonVector3OffsetParameter(parameters, name, aliases);
+        }
+
+        public static bool HasAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return HasVector3Parameter(parameters, name, aliases) || HasAnchorParameter(parameters, name, aliases) || HasVector3OffsetParameter(parameters, name, aliases);
+        }
+
+        public static bool TryGetAnyVector3Parameter(out Vector3 value, out VectorType type, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (TryGetVector3Parameter(out value, parameters, name, aliases))
+            {
+                type = VectorType.Position;
+                return true;
+            }
+            if (TryGetAnchorParameter(out value, parameters, name, aliases))
+            {
+                type = VectorType.Anchor;
+                return true;
+            }
+            if (TryGetVector3OffsetParameter(out value, parameters, name, aliases))
+            {
+                type = VectorType.Offset;
+                return true;
+            }
+
+            type = default;
+            return false;
+        }
+
+        public static (Vector3, VectorType) GetAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+            name = parameters[defined];
+
+            Vector3 value;
+            if (TryGetVector3Parameter(out value, parameters, name))
+            {
+                return (value, VectorType.Position);
+            }
+            if (TryGetAnchorParameter(out value, parameters, name))
+            {
+                return (value, VectorType.Anchor);
+            }
+            if (TryGetVector3OffsetParameter(out value, parameters, name))
+            {
+                return (value, VectorType.Offset);
+            }
+
+            throw new System.Exception("Parameter " + defined + " is not a valid Vector3");
+        }
+
 
 
         // TODO Move both of these somewhere else
         public enum VectorType
         {
             Position,
-            PositionOffset,
+            Offset,
             Anchor
         }
-
         public struct WaveParameters
         {
             public AnimationCurve upwardCurve;
@@ -547,7 +732,7 @@ namespace TMPEffects
             if (upPeriod && TryGetFloatParameter(out f, parameters, "upperiod", "uppd")) wp.upPeriod = f;
             if (downPeriod && TryGetFloatParameter(out f, parameters, "downperiod", "downpd", "dpd")) wp.downPeriod = f;
             if (crestWait && TryGetFloatParameter(out f, parameters, "crestwait", "crestw", "cwait")) wp.crestWait = f;
-            if (troughWait && TryGetFloatParameter(out f, parameters, "troughwait", "troughw", "twait")) wp.crestWait = f;
+            if (troughWait && TryGetFloatParameter(out f, parameters, "troughwait", "troughw", "twait")) wp.troughWait = f;
             if (amplitude && TryGetFloatParameter(out f, parameters, "waveamplitude", "wamplitude", "waveamp", "wamp")) wp.amplitude = f;
 
             return wp;
@@ -611,7 +796,7 @@ namespace TMPEffects
             if (waveUniformity && HasNonFloatParameter(parameters, "waveuniformity", "waveuni", "wuniformity", "wuni")) return false;
             if (upwardCurve && HasNonAnimCurveParameter(parameters, "upcurve", "upcrv", "upc")) return false;
             if (downwardCurve && HasNonAnimCurveParameter(parameters, "downcurve", "downcrv", "downc", "dcrv", "dc")) return false;
-            if (upPeriod && HasNonFloatParameter(parameters, "upperiod", "uppd")) return false;            
+            if (upPeriod && HasNonFloatParameter(parameters, "upperiod", "uppd")) return false;
             if (downPeriod && HasNonFloatParameter(parameters, "downperiod", "downpd", "dpd")) return false;
             if (crestWait && HasNonFloatParameter(parameters, "crestwait", "crestw", "cwait")) return false;
             if (troughWait && HasNonFloatParameter(parameters, "troughwait", "troughw", "twait")) return false;
@@ -622,6 +807,7 @@ namespace TMPEffects
 
 
         // Aliases for common parameters
+        public static readonly string[] WaveOffsetAliases = new string[] { "woffset", "waveoff", "woff" };
         public static readonly string[] SpeedAliases = new string[] { "sp" };
         public static readonly string[] CurveAliases = new string[] { "crv" };
         public static readonly string[] FrequencyAliases = new string[] { "freq", "fq" };

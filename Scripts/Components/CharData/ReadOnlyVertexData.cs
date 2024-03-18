@@ -116,6 +116,28 @@ namespace TMPEffects.Components.CharacterData
         }
 
         /// <summary>
+        /// Get the alpha of the vertex associated with the index.<br/>
+        /// 0 => bottom left<br/>
+        /// 1 => top left<br/>
+        /// 2 => top right<br/>
+        /// 3 => bottom right<br/>
+        /// </summary>
+        /// <param name="i">The index.</param>
+        /// <returns>The alpha of the vertex associated with the index.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        public byte GetAlpha(int i)
+        {
+            switch (i)
+            {
+                case 0: return _vertex_BL.color.a;
+                case 1: return _vertex_TL.color.a;
+                case 2: return _vertex_TR.color.a;
+                case 3: return _vertex_BR.color.a;
+                default: throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
+        /// <summary>
         /// Get the UV0 of the vertex associated with the index.<br/>
         /// 0 => bottom left<br/>
         /// 1 => top left<br/>

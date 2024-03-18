@@ -73,8 +73,8 @@ namespace TMPEffects.SerializedCollections
         protected bool mayRaise = true;
         private Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
 
-        public TValue this[TKey key] 
-        { 
+        public TValue this[TKey key]
+        {
             get => _dictionary[key];
             set
             {
@@ -98,21 +98,24 @@ namespace TMPEffects.SerializedCollections
         {
             _dictionary.Add(key, value);
             RaisePropertyChanged();
-            value.PropertyChanged += RaisePropertyChanged;
+            if (value != null)
+                value.PropertyChanged += RaisePropertyChanged;
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
             ((ICollection<KeyValuePair<TKey, TValue>>)_dictionary).Add(item);
             RaisePropertyChanged();
-            item.Value.PropertyChanged += RaisePropertyChanged;
+            if (item.Value != null)
+                item.Value.PropertyChanged += RaisePropertyChanged;
         }
 
         public void Clear()
         {
             foreach (var kvp in _dictionary)
             {
-                kvp.Value.PropertyChanged -= RaisePropertyChanged;
+                if (kvp.Value != null)
+                    kvp.Value.PropertyChanged -= RaisePropertyChanged;
             }
 
             _dictionary.Clear();
@@ -244,7 +247,7 @@ namespace TMPEffects.SerializedCollections
             _serializedList.Clear();
 #endif
 
-            mayRaise = true; 
+            mayRaise = true;
         }
 
         public void OnBeforeSerialize()

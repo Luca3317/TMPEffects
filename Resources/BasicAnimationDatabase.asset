@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     _serializedList:
-    - Key: test
-      Value: {fileID: 11400000, guid: 6a7244bb464e8ee4f97813a9bc0053c8, type: 2}
     - Key: wave
       Value: {fileID: 11400000, guid: caf90dcc4db077248b4aef29741767e8, type: 2}
+    - Key: palette
+      Value: {fileID: 11400000, guid: 88202588c4dc013488ae14da87d7be47, type: 2}
     - Key: pulsate
       Value: {fileID: 11400000, guid: a59657e9278252e44862ca2418bbdfeb, type: 2}
     - Key: spread
@@ -34,3 +34,5 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: e491ab084191bcd41943f54d470627c3, type: 2}
     - Key: pivot
       Value: {fileID: 11400000, guid: c7da9492e365c2a4a993bc557235af1a, type: 2}
+    - Key: pivotc
+      Value: {fileID: 11400000, guid: 6bbec3462f379a640af9072ef72f1687, type: 2}

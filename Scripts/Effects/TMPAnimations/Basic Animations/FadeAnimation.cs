@@ -2,108 +2,133 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.Extensions;
+using TMPro;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
+using static TMPro.TMP_Compatibility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
     [CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Fade")]
     public class FadeAnimation : TMPAnimation
     {
+        [SerializeField] Wave wave;
+        [SerializeField] WaveOffsetType waveOffsetType;
+
         [SerializeField] float maxOpacity = 255;
-        [SerializeField] AnimationCurve fadeInCurve = AnimationCurveUtility.EaseInSine();
-        [SerializeField] Vector2 fadeInAnchor = Vector2.zero;
-        [SerializeField] float fadeInDuration = 1;
-        [SerializeField] float afterFadeInWaitDuration = 1;
+        [SerializeField] Vector3 fadeInAnchor = Vector3.zero;
+        [SerializeField] Vector3 fadeInDirection = Vector3.up;
 
         [SerializeField] float minOpacity = 0;
-        [SerializeField] AnimationCurve fadeOutCurve = AnimationCurveUtility.EaseOutSine();
-        [SerializeField] Vector2 fadeOutAnchor = Vector2.zero;
-        [SerializeField] float fadeOutDuration = 1;
-        [SerializeField] float afterFadeOutWaitDuration = 1;
+        [SerializeField] Vector3Int fadeOutAnchor = Vector3Int.zero;
+        [SerializeField] Vector3 fadeOutDirection = Vector3.up;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
-            if (d.cycleTime == -1) d.cycleTime = context.animatorContext.PassedTime;
-            Color32 c;
+            (float, int) result = d.Wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
 
-            // Check if done fading in / out => should wait
-            float fadeDuration = d.fadeIn ? d.fadeInDuration : d.fadeOutDuration;
-            if (d.waitingSince == -1 && context.animatorContext.PassedTime - d.cycleTime >= fadeDuration)
+            if (result.Item2 > 0)
             {
-                d.waitingSince = context.animatorContext.PassedTime;
+                FadeIn(cData, context, d, result.Item1);
             }
-
-            // If waiting
-            float waitDuration = d.fadeIn ? d.afterFadeInWaitDuration : d.afterFadeOutWaitDuration;
-            if (d.waitingSince != -1)
+            else
             {
-                if (context.animatorContext.PassedTime - d.waitingSince >= waitDuration)
-                {
-                    d.cycleTime = context.animatorContext.PassedTime;
-                    d.waitingSince = -1f;
-                    d.fadeIn = !d.fadeIn;
-                }
-                else
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        c = cData.mesh.initial.GetColor(i);
-                        c.a = (byte)(((d.fadeIn ? d.maxOpacity : d.minOpacity) / 255f) * c.a);
-                        cData.mesh.SetColor(i, c);
-                    }
-                    return;
-                }
+                FadeOut(cData, context, d, result.Item1);
             }
+        }
 
-            // Get values to use (just to prevent a bunch of if / else branches)
-            Vector2 anchor = d.fadeIn ? d.fadeInAnchor : d.fadeOutAnchor;
+
+        private void FadeIn(CharData cData, IAnimationContext context, Data d, float t)
+        {
+            Vector2 anchor = d.fadeInAnchor;
             FixAnchor(ref anchor);
-            float targetOpacity = d.fadeIn ? d.maxOpacity : d.minOpacity;
-            AnimationCurve curve = d.fadeIn ? d.fadeInCurve : d.fadeOutCurve;
-            float startOpacity = d.fadeIn ? d.minOpacity : d.maxOpacity;
-
-            float t = GetValue(curve, WrapMode.PingPong, (context.animatorContext.PassedTime - d.cycleTime) / fadeDuration);
-            float opacity = Mathf.Lerp(startOpacity, targetOpacity, t);
 
             if (anchor == Vector2.zero)
             {
                 for (int i = 0; i < 4; i++)
                 {
+                    float eval = Mathf.Lerp(minOpacity, maxOpacity, t);
+
+                    Color32 c;
                     c = cData.mesh.initial.GetColor(i);
-                    c.a = (byte)((opacity / 255f) * c.a);
-                    cData.mesh.SetColor(i, c);
+                    c.a = (byte)((eval / 255f) * c.a);
+
+                    cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
                 }
 
                 return;
             }
 
-            float blDist = (new Vector2(-1, -1) - anchor).magnitude / d.sqrt2;
-            float tlDist = (new Vector2(-1, 1) - anchor).magnitude / d.sqrt2;
-            float trDist = (new Vector2(1, 1) - anchor).magnitude / d.sqrt2;
-            float brDist = (new Vector2(1, -1) - anchor).magnitude / d.sqrt2;
+            Vector2 direction = new Vector2(-anchor.x, -anchor.y);
+            Vector2 opposite = direction;
 
-            d.dists[0] = blDist;
-            d.dists[1] = tlDist;
-            d.dists[2] = trDist;
-            d.dists[3] = brDist;
+            Vector3 anchorPosition = AnchorToPosition(anchor, cData);
+            Vector3 oppositePosition = AnchorToPosition(opposite, cData);
+            float dist = (anchorPosition - oppositePosition).magnitude;
 
             for (int i = 0; i < 4; i++)
             {
-                float op = Mathf.Lerp(startOpacity, targetOpacity, t * (10 - d.dists[i] * 9));
-                c = cData.mesh.initial.GetColor(i);
-                c.a = (byte)((op / 255f) * c.a);
-                cData.mesh.SetColor(i, c);
+                Vector3 vec = cData.mesh.initial.GetVertex(i) - anchorPosition;
+                vec.x *= direction.x;
+                vec.y *= direction.y;
 
-                //if (d.fadeIn)
-                //{
-                //    Debug.Log("FADEIN For " + i + " with dist " + d.dists[i] + " and t " + (t * (2 - d.dists[i])) + " => alpha = " + c.a);
-                //}
-                //else
-                //    Debug.Log("FADEOUT For " + i + " with dist " + d.dists[i] + " and t " + (t * (2 - d.dists[i])) + " => alpha = " + c.a);
+                float currDist = (vec.magnitude / dist);
+
+                float eval = Mathf.Lerp(minOpacity, maxOpacity, t * (2 - currDist));
+
+                Color32 c;
+                c = cData.mesh.initial.GetColor(i);
+                c.a = (byte)((eval / 255f) * c.a);
+
+                cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
+            }
+        }
+
+        private void FadeOut(CharData cData, IAnimationContext context, Data d, float t)
+        {
+            Vector2 anchor = d.fadeOutAnchor;
+            FixAnchor(ref anchor);
+
+            if (anchor == Vector2.zero)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    float eval = Mathf.Lerp(minOpacity, maxOpacity, t);
+
+                    Color32 c;
+                    c = cData.mesh.initial.GetColor(i);
+                    c.a = (byte)((eval / 255f) * c.a);
+
+                    cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
+                }
+
+                return;
+            }
+
+            Vector2 direction = new Vector2(-anchor.x, -anchor.y);
+            Vector2 opposite = direction;
+
+            Vector3 anchorPosition = AnchorToPosition(anchor, cData);
+            Vector3 oppositePosition = AnchorToPosition(opposite, cData);
+            float dist = (anchorPosition - oppositePosition).magnitude;
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 vec = cData.mesh.initial.GetVertex(i) - anchorPosition;
+                vec.x *= direction.x;
+                vec.y *= direction.y;
+
+                float currDist = (vec.magnitude / dist);
+
+                float eval = Mathf.Lerp(minOpacity, maxOpacity, t * (2 - currDist));
+
+                Color32 c;
+                c = cData.mesh.initial.GetColor(i);
+                c.a = (byte)((eval / 255f) * c.a);
+                cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
             }
         }
 
@@ -126,17 +151,17 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data d = (Data)customData;
-            if (TryGetAnimCurveParameter(out var c, parameters, "fadeInCurve", fadeInCurveAliases)) d.fadeInCurve = c;
             if (TryGetFloatParameter(out var f, parameters, "maxOpacity", maxOpAliases)) d.maxOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "fadeInDuration", fadeInDurationAliases)) d.fadeInDuration = f;
-            if (TryGetFloatParameter(out f, parameters, "fadeInWait", fadeInWaitAliases)) d.afterFadeInWaitDuration = f;
             if (TryGetVector2Parameter(out var v2, parameters, "fadeInAnchor", fadeInAnchorAliases)) d.fadeInAnchor = v2;
+            if (TryGetVector2Parameter(out v2, parameters, "fadeInDirection", "fadeInDir", "fiDir")) d.fadeInDirection = v2;
 
-            if (TryGetAnimCurveParameter(out c, parameters, "fadeOutCurve", fadeOutCurveAliases)) d.fadeOutCurve = c;
             if (TryGetFloatParameter(out f, parameters, "minOpacity", minOpAliases)) d.minOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "fadeOutDuration", fadeOutDurationAliases)) d.fadeOutDuration = f;
-            if (TryGetFloatParameter(out f, parameters, "fadeOutWait", fadeOutWaitAliases)) d.afterFadeOutWaitDuration = f;
             if (TryGetVector2Parameter(out v2, parameters, "fadeOutAnchor", fadeOutAnchorAliases)) d.fadeOutAnchor = v2;
+            if (TryGetVector2Parameter(out v2, parameters, "fadeOutDirection", "fadeOutDir", "foDir")) d.fadeOutDirection = v2;
+
+            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
+
+            d.Wave = CreateWave(wave, GetWaveParameters(parameters));
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -144,73 +169,52 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return true;
 
             if (HasNonFloatParameter(parameters, "maxOpacity", maxOpAliases)) return false;
-            if (HasNonFloatParameter(parameters, "fadeInWait", fadeInWaitAliases)) return false;
-            if (HasNonFloatParameter(parameters, "fadeInDuration", fadeInDurationAliases)) return false;
-            if (HasNonAnimCurveParameter(parameters, "fadeInCurve", fadeInCurveAliases)) return false;
             if (HasNonVector2Parameter(parameters, "fadeInAnchor", fadeInAnchorAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "fadeInDirection", "fadeInDir", "fiDir")) return false;
 
             if (HasNonFloatParameter(parameters, "minOpacity", minOpAliases)) return false;
-            if (HasNonFloatParameter(parameters, "fadeOutWait", fadeOutWaitAliases)) return false;
-            if (HasNonFloatParameter(parameters, "fadeOutDuration", fadeOutDurationAliases)) return false;
-            if (HasNonAnimCurveParameter(parameters, "fadeOutCurve", fadeOutCurveAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeOutAnchor", fadeOutAnchorAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "fadeOutAnchor", "fadeOutAnc", "foAnc", "foA")) return false;
+            if (HasNonVector2Parameter(parameters, "fadeOutDirection", "fadeOutDir", "foDir")) return false;
 
-            return true;
+            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
+
+            return ValidateWaveParameters(parameters);
         }
 
         public override object GetNewCustomData()
         {
             return new Data()
             {
+                Wave = null,
+
                 maxOpacity = this.maxOpacity,
-                fadeInCurve = this.fadeInCurve,
-                afterFadeInWaitDuration = this.afterFadeInWaitDuration,
                 fadeInAnchor = this.fadeInAnchor,
-                fadeInDuration = this.fadeInDuration,
+                fadeInDirection = this.fadeInDirection,
 
                 minOpacity = this.minOpacity,
-                fadeOutCurve = this.fadeOutCurve,
-                afterFadeOutWaitDuration = this.afterFadeOutWaitDuration,
                 fadeOutAnchor = this.fadeOutAnchor,
-                fadeOutDuration = this.fadeOutDuration,
-
-                waitingSince = -1,
-                cycleTime = -1,
-                lastT = 0
+                fadeOutDirection = this.fadeOutDirection,
             };
         }
 
         private readonly string[] maxOpAliases = new string[] { "max", "maxOp" };
-        private readonly string[] fadeInCurveAliases = new string[] { "fiCurve", "fiCrv", "fiC" };
-        private readonly string[] fadeInWaitAliases = new string[] { "fiWait", "fiW" };
-        private readonly string[] fadeInDurationAliases = new string[] { "fiDuration", "fiDur", "fiD" };
         private readonly string[] fadeInAnchorAliases = new string[] { "fiAnchor", "fiAnc", "fiA" };
 
         private readonly string[] minOpAliases = new string[] { "min", "minOp" };
-        private readonly string[] fadeOutCurveAliases = new string[] { "foCurve", "foCrv", "foC" };
-        private readonly string[] fadeOutWaitAliases = new string[] { "foWait", "foWait", "foW" };
-        private readonly string[] fadeOutDurationAliases = new string[] { "foDuration", "foDur", "foD" };
         private readonly string[] fadeOutAnchorAliases = new string[] { "foAnchor", "foAnc", "foA" };
 
         private class Data
         {
+            public Wave Wave;
+            public WaveOffsetType waveOffset;
+
             public float maxOpacity;
-            public AnimationCurve fadeInCurve;
-            public float fadeInDuration;
-            public Vector2 fadeInAnchor;
-            public float afterFadeInWaitDuration;
+            public Vector3 fadeInAnchor;
+            public Vector3 fadeInDirection;
 
             public float minOpacity;
-            public AnimationCurve fadeOutCurve;
-            public float fadeOutDuration;
-            public Vector2 fadeOutAnchor;
-            public float afterFadeOutWaitDuration;
-
-            public int lastT;
-            public float waitingSince;
-            public bool fadeIn;
-
-            public float cycleTime;
+            public Vector3 fadeOutAnchor;
+            public Vector3 fadeOutDirection;
 
             public readonly float sqrt2 = Mathf.Sqrt(8);
             public readonly float[] dists = new float[4];

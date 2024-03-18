@@ -31,7 +31,6 @@ namespace TMPEffects.TMPCommands.Commands
                         default: Debug.Log(args.tag.Parameters[""]); break;
                     }
                 }
-                else Debug.Log(args.tag.Parameters[""]);
             }
         }
 

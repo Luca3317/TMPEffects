@@ -9,19 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d4d28e8e34e1046a0087fab19f1224, type: 3}
-  m_Name: PivotAnimation
+  m_Script: {fileID: 11500000, guid: 71b8c68fa59bf9243b5cbce186c702ac, type: 3}
+  m_Name: PaletteAnimation
   m_EditorClassIdentifier: 
-  speed: 1
-  offsetDelta: 1
-  pivot: {x: 0, y: 0, z: 0}
-  rotationAxis: {x: 0, y: 0, z: -1}
-  limitRotation: 1
-  maxAngleLimit: 25
-  minAngleLimit: -25
   wave:
-    upPeriod: 1
-    downPeriod: 1
+    upPeriod: 2
+    downPeriod: 2
     amplitude: 1
     velocity: 1
     upwardCurve:
@@ -31,28 +24,19 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
+        outSlope: 1
         tangentMode: 0
-        weightedMode: 3
+        weightedMode: 0
         inWeight: 0
-        outWeight: 0.333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 2.9999938
-        outSlope: 2.9999943
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333403
-        outWeight: 0.33333397
+        outWeight: 0
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
+        inSlope: 1
         outSlope: 0
         tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333397
+        weightedMode: 0
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -64,33 +48,26 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
+        outSlope: 1
         tangentMode: 0
-        weightedMode: 3
+        weightedMode: 0
         inWeight: 0
-        outWeight: 0.333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 2.9999938
-        outSlope: 2.9999943
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333403
-        outWeight: 0.33333397
+        outWeight: 0
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
+        inSlope: 1
         outSlope: 0
         tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333397
+        weightedMode: 0
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    crestWait: 1
+    crestWait: 2
     troughWait: 0
-    uniformity: 0.15
-  waveOffsetType: 0
+    uniformity: 0.2
+  waveOffset: 10
+  colors:
+  - {r: 0.14971161, g: 0, b: 1, a: 1}

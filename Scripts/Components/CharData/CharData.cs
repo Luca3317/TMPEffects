@@ -35,7 +35,11 @@ namespace TMPEffects.Components.CharacterData
         /// <summary>
         /// Whether the vertex colors have been manipulated.
         /// </summary>
-        public bool colorsDirty => mesh.colorsDirty;
+        public bool colorsDirty => mesh.colorsDirty;        
+        /// <summary>
+        /// Whether the vertex alphas have been manipulated.
+        /// </summary>
+        public bool alphasDirty => mesh.alphasDirty;
         /// <summary>
         /// Whether the UVs have been manipulated.
         /// </summary>

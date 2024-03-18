@@ -257,6 +257,9 @@ namespace TMPEffects.TMPAnimations
 
             return vClosestPoint;
         }
+       
+
+        
         #endregion
 
         #region Waves
