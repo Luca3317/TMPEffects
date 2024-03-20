@@ -4,10 +4,10 @@ using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new ShakeShowAnimation", menuName = "TMPEffects/Show Animations/Shake")]
-    public class ShakeShowAnimation : TMPShowAnimation
+    [CreateAssetMenu(fileName = "new ShakeHideAnimation", menuName = "TMPEffects/Hide Animations/Shake")]
+    public class ShakeHideAnimation : TMPHideAnimation
     {
         [SerializeField] float duration = 1f;
 
@@ -19,8 +19,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [SerializeField] float minDelay = 0.1f;
         [SerializeField] float maxDelay = 0.1f;
 
-        [SerializeField] AnimationCurve delayCurve = AnimationCurveUtility.Linear();
-        [SerializeField] AnimationCurve amplitudeCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
+        [SerializeField] AnimationCurve delayCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
+        [SerializeField] AnimationCurve amplitudeCurve = AnimationCurveUtility.Linear();
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -45,7 +45,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             int segmentIndex = context.segmentData.SegmentIndexOf(cData);
             float remaining = d.duration - (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData));
 
-            if (t == 1)
+            if (t == 1 || remaining < d.minDelay)
             {
                 d.delayDict[segmentIndex] = 0f;
                 d.lastUpdatedDict[segmentIndex] = 0f;
@@ -55,7 +55,6 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
 
             Vector3 offset;
-
 
             if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex] && remaining >= d.minDelay * delayMult)
             {

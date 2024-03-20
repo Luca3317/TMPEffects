@@ -18,6 +18,7 @@ using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
+using TMPEffects.Components.Animator;
 
 namespace TMPEffects.Components
 {
@@ -182,14 +183,20 @@ namespace TMPEffects.Components
         [SerializeField] private DelayType linebreakDelayType;
 
         // Scene commands
+        //[SerializeField, SerializedDictionary("Tag Name", "Command")] private SerializedDictionary<string, SceneCommand> sceneCommands;
+
+
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
-        [SerializeField, SerializedDictionary("Tag Name", "Command")] private SerializedDictionary<string, SceneCommand> sceneCommands;
+        [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
+        private SerializedObservableDictionary<string, SceneCommand> sceneCommands;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPEffectCategory> tags;
 
         [System.NonSerialized] private TMPCommandCategory commandCategory;
         [System.NonSerialized] private TMPEventCategory eventCategory;
+
+        [System.NonSerialized] private CommandDatabase commandDatabase;
 
         [System.NonSerialized] private CachedCollection<CachedCommand> commands;
         [System.NonSerialized] private CachedCollection<CachedEvent> events;
@@ -218,8 +225,7 @@ namespace TMPEffects.Components
 
             if (database != null)
             {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-                database.ListenForChanges(ReprocessOnDatabaseChange);
+                database.ObjectChanged += ReprocessOnDatabaseChange;
             }
 
             Mediator.ForceReprocess();
@@ -243,6 +249,8 @@ namespace TMPEffects.Components
 
             Mediator.ForceReprocess();
 
+            commandDatabase?.Dispose();
+
             UnsubscribeFromMediator();
 
 #if UNITY_EDITOR
@@ -259,20 +267,17 @@ namespace TMPEffects.Components
             FreeMediator();
         }
 
-        private void OnDestroy()
-        {
-            if (database != null)
-            {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-            }
-        }
-
         private void PrepareForProcessing()
         {
-            CommandDatabase db = new CommandDatabase(database, sceneCommands);
+            Debug.LogWarning("UPDATED");
+
+            // Reset database wrappers
+            commandDatabase?.Dispose();
+            commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
+            commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
-            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, db);
+            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, commandDatabase);
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
@@ -306,16 +311,16 @@ namespace TMPEffects.Components
 
         private void OnDatabaseChanged(TMPCommandDatabase previousDatabase)
         {
-            if (previousDatabase != null)
-            {
-                previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
-            }
+            //if (previousDatabase != null)
+            //{
+            //    previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
+            //}
 
-            if (database != null)
-            {
-                database.StopListenForChanges(ReprocessOnDatabaseChange);
-                database.ListenForChanges(ReprocessOnDatabaseChange);
-            }
+            //if (database != null)
+            //{
+            //    database.StopListenForChanges(ReprocessOnDatabaseChange);
+            //    database.ListenForChanges(ReprocessOnDatabaseChange);
+            //}
 
             PrepareForProcessing();
             Mediator.ForceReprocess();
@@ -323,12 +328,12 @@ namespace TMPEffects.Components
 
         private void ReprocessOnDatabaseChange(object sender)
         {
-            if ((sender as TMPCommandDatabase) != database)
-            {
-                Debug.LogError("Event raised by incorrect database; Bug!");
-                (sender as TMPCommandDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
-                return;
-            }
+            //if ((sender as TMPCommandDatabase) != database)
+            //{
+            //    Debug.LogError("Event raised by incorrect database; Bug!");
+            //    (sender as TMPCommandDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
+            //    return;
+            //}
 
             PrepareForProcessing();
             Mediator.ForceReprocess();
@@ -575,6 +580,8 @@ namespace TMPEffects.Components
 
         private IEnumerator WriterCoroutine()
         {
+            Debug.Log("Began writing");
+
             OnStartWriting();
 
             // This indicates the text is fully shown already
@@ -591,7 +598,20 @@ namespace TMPEffects.Components
                 HideAllCharacters(true);
 
             // Execute instant commands
-            yield return RaiseInvokablesCoroutine(-1);
+            var invokables = GetInvokables(-1);
+            foreach (var invokable in invokables)
+            {
+                waitAmount = 0f;
+                shouldWait = false;
+                continueConditions = null;
+
+                invokable.Trigger();
+
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                if (continueConditions != null) yield return HandleWaitConditions();
+            }
+
+
 
             CharData cData;
             for (int i = Mathf.Max(currentIndex, 0); i < Mediator.CharData.Count; i++)
@@ -600,7 +620,18 @@ namespace TMPEffects.Components
                 cData = Mediator.CharData[i];
 
                 // Execute the commands & events for the current index
-                yield return RaiseInvokablesCoroutine(i);
+                invokables = GetInvokables(i);
+                foreach (var invokable in invokables)
+                {
+                    waitAmount = 0f;
+                    shouldWait = false;
+                    continueConditions = null;
+
+                    invokable.Trigger();
+
+                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (continueConditions != null) yield return HandleWaitConditions();
+                }
 
                 // Calculate delay; do here to use accurate visibilitystate
                 float delay = CalculateDelay(i);
@@ -796,7 +827,33 @@ namespace TMPEffects.Components
 
         private IEnumerator RaiseInvokablesCoroutine(int index, bool skipped = false, bool block = true)
         {
+            waitAmount = 0f;
+            shouldWait = false;
+            continueConditions = null;
+
             foreach (var invokable in GetInvokables(index, skipped))
+            {
+                invokable.Trigger();
+
+                if (block)
+                {
+                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (continueConditions != null) yield return HandleWaitConditions();
+                }
+
+                waitAmount = 0f;
+                shouldWait = false;
+                continueConditions = null;
+            }
+        }
+
+        private IEnumerator RaiseInvokablesCoroutine(IEnumerable<ICachedInvokable> invokables, bool block = true)
+        {
+            waitAmount = 0f;
+            shouldWait = false;
+            continueConditions = null;
+
+            foreach (var invokable in invokables)
             {
                 invokable.Trigger();
 

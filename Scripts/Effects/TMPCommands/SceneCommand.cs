@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using TMPEffects.TMPCommands;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace TMPEffects.TMPCommands
 {
     [System.Serializable]
-    public struct SceneCommand : ITMPCommand
+    public struct SceneCommand : ITMPCommand, INotifyPropertyChanged, ISerializationCallbackReceiver
     {
         public TagType TagType => commandType;
         public bool ExecuteInstantly => executeInstantly;
@@ -26,11 +28,68 @@ namespace TMPEffects.TMPCommands
         [Tooltip("The methods to trigger.")]
         [SerializeField] private UnityEvent<TMPCommandArgs> command;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public void ExecuteCommand(TMPCommandArgs args) => command?.Invoke(args);
 
         public bool ValidateParameters(IDictionary<string, string> parameters)
         {
             return true;
         }
+
+        public void OnBeforeSerialize()
+        {
+            if (prevExecuteInstantly != executeInstantly ||
+                prevCommandType != commandType ||
+                prevExecuteRepeatable != executeRepeatable ||
+                prevExecuteOnSkip != executeOnSkip ||
+                args.Count != command.GetPersistentEventCount())
+            {
+                    Debug.Log("RAISING");
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+                return;
+            }
+
+            for (int i = 0; i < command.GetPersistentEventCount(); i++)
+            {
+                var element = args[i];
+
+                if (element.Item1 != command.GetPersistentTarget(i) || element.Item2 != command.GetPersistentListenerState(i))
+                {
+                    Debug.Log("RAISING");
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+                    return;
+                }
+            }
+        }
+
+        public void OnAfterDeserialize()
+        {
+            prevExecuteInstantly = executeInstantly;
+            prevExecuteOnSkip = executeOnSkip;
+            prevExecuteRepeatable = executeRepeatable;
+            prevCommandType = commandType;
+
+            args = new List<(Object, UnityEventCallState)>();
+            for (int i = 0; i < command.GetPersistentEventCount(); i++)
+            {
+                args.Add((command.GetPersistentTarget(i), command.GetPersistentListenerState(i)));
+            }
+
+            //prevCommand = new UnityEvent<TMPCommandArgs>();
+            //for (int i = 0; i < command.GetPersistentEventCount(); i++)
+            //{
+            //    prevCommand.SetPersistentListenerState(i, command.GetPersistentListenerState(i));
+            //}
+        }
+
+#if UNITY_EDITOR
+        private TagType prevCommandType;
+        private bool prevExecuteInstantly;
+        private bool prevExecuteOnSkip;
+        private bool prevExecuteRepeatable;
+        //private UnityEvent<TMPCommandArgs> prevCommand;
+        private List<(UnityEngine.Object, UnityEventCallState)> args;
+#endif
     }
 }

@@ -39,9 +39,6 @@ namespace TMPEffects.Extensions
         }
         #endregion
 
-        #region Spring
-        #endregion
-
         #region Ease Sine
         private static readonly Vector2[] easeInSinePoints = new Vector2[]
         {
@@ -491,7 +488,6 @@ namespace TMPEffects.Extensions
         #endregion
 
         #region Bezier Constructors
-
         public static AnimationCurve Bezier(params Vector2[] points)
         {
             int len = points.Length;
@@ -665,6 +661,49 @@ namespace TMPEffects.Extensions
         }
         #endregion
 
+        public static AnimationCurve GetInverse(AnimationCurve originalCurve)
+        {
+            AnimationCurve curve = new AnimationCurve();
+
+            for (int i = originalCurve.keys.Length - 1; i >= 0; i--)
+            {
+                Keyframe keyFrame = originalCurve.keys[i];
+
+                keyFrame.time = Mathf.Lerp(1, 0, keyFrame.time);
+                float tmp = keyFrame.inWeight;
+                keyFrame.inWeight = keyFrame.outWeight;
+                keyFrame.outWeight = tmp;
+                keyFrame.inTangent *= -1;
+                keyFrame.outTangent *= -1;
+
+                curve.AddKey(keyFrame);
+            }
+
+            return curve;
+        }
+
+        public static AnimationCurve Invert(AnimationCurve curve)
+        {
+            List<Keyframe> frames = new List<Keyframe>(curve.keys);
+            curve.ClearKeys();
+
+            for (int i = frames.Count - 1; i >= 0; i--)
+            {
+                Keyframe keyFrame = frames[i];
+
+                keyFrame.time = Mathf.Lerp(1, 0, keyFrame.time);
+                float tmp = keyFrame.inWeight;
+                keyFrame.inWeight = keyFrame.outWeight;
+                keyFrame.outWeight = tmp;
+                keyFrame.inTangent *= -1;
+                keyFrame.outTangent *= -1;
+
+                curve.AddKey(keyFrame);
+            }
+
+            return curve;
+        }
+
         #region Mappings
         internal static readonly ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>> NamePointsMapping = new ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>>(new Dictionary<string, ReadOnlyCollection<Vector2>>()
         {
@@ -831,7 +870,6 @@ namespace TMPEffects.Extensions
         #endregion
 
         #region Curve Fitting
-
         public static AnimationCurve MergeCurves(AnimationCurve curve0, AnimationCurve curve1, int dataCount)
         {
             Vector2[] data = new Vector2[dataCount + 1];
@@ -848,7 +886,7 @@ namespace TMPEffects.Extensions
             }
 
             List<Vector2> fitted = CubicBezierFitter.FitCurve(data, 1e-06f);
-             
+
             return Bezier(fitted);
         }
 

@@ -16,7 +16,7 @@ public class AnimatorLimiter : MonoBehaviour
     void Start()
     {
         updateInterval = 1.0f / updatesPerSecond;
-        animator.SetUpdateFrom(UpdateFrom.Script);   
+        animator.SetUpdateFrom(UpdateFrom.Script);
     }
 
     // Update is called once per frame
@@ -27,7 +27,9 @@ public class AnimatorLimiter : MonoBehaviour
         if (timer > updateInterval)
         {
             int amount = (int)(timer / updateInterval);
-            animator.UpdateAnimations(amount * updateInterval);
+
+            if (animator.isActiveAndEnabled)
+                animator.UpdateAnimations(amount * updateInterval);
 
             timer %= updateInterval;
         }

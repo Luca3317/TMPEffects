@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15026022bbc1bc14088f6bd4255bbb3d, type: 3}
-  m_Name: ShakeShowAnimation
+  m_Script: {fileID: 11500000, guid: 461d4a24976cde04ebc3b7a1139b0231, type: 3}
+  m_Name: ShakeHideAnimation
   m_EditorClassIdentifier: 
   duration: 1
   maxXAmplitude: 5
@@ -24,18 +24,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
@@ -48,18 +48,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -0
-      outSlope: -0
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -0
-      outSlope: -0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0

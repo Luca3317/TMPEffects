@@ -16,6 +16,8 @@ MonoBehaviour:
     _serializedList:
     - Key: char
       Value: {fileID: 11400000, guid: d82e51bb982c27c47a8814341550d76a, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: 7ff686710e747034e9b6413be079b56a, type: 2}
     - Key: spread
       Value: {fileID: 11400000, guid: 747c7167c5d13a24dae0f420c3da1a8a, type: 2}
     - Key: pivot

@@ -18,9 +18,6 @@ using TMPEffects.Components.CharacterData;
 using System.Collections.Specialized;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
-using log4net.Appender;
 
 namespace TMPEffects.Components
 {
@@ -174,8 +171,8 @@ namespace TMPEffects.Components
             Mediator.ForceReprocess();
 
             SetDummies();
-            SetDefault(TMPAnimationType.Show);
-            SetDefault(TMPAnimationType.Hide);
+            //SetDefault(TMPAnimationType.Show);
+            //SetDefault(TMPAnimationType.Hide);
 
 #if UNITY_EDITOR
             if (preview && !Application.isPlaying) StartPreview();
@@ -209,7 +206,6 @@ namespace TMPEffects.Components
         private void SubscribeToMediator()
         {
             timesIdentifier = new object();
-            Debug.Log("Calling it with " + timesIdentifier);
             if (!Mediator.RegisterVisibilityProcessor(timesIdentifier))
             {
                 Debug.LogError("Could not register as visibility processor!");
@@ -247,6 +243,8 @@ namespace TMPEffects.Components
 
         private void PrepareForProcessing()
         {
+            Debug.LogWarning("ANIMATOR UPDATE");
+
             // Reset database wrappers
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
@@ -390,17 +388,6 @@ namespace TMPEffects.Components
 
         private void OnDatabaseChanged(TMPAnimationDatabase previousDatabase)
         {
-            //if (previousDatabase != null)
-            //{
-            //    previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
-            //}
-
-            //if (database != null)
-            //{
-            //    database.StopListenForChanges(ReprocessOnDatabaseChange);
-            //    database.ListenForChanges(ReprocessOnDatabaseChange);
-            //}
-
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }
@@ -708,7 +695,7 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            //else if (count % 100 == 0) Debug.Log(count);
+            //else if (count % 100 == 0) Debug.Log(count); 
             count++;
             sw.Start();
 
@@ -1647,6 +1634,10 @@ namespace TMPEffects.Components
                 foreach (var tag in processor.ProcessedTags)
                     tags[hideCategory].TryAdd(tag.Value, tag.Key);
             }
+
+
+            SetDefault(TMPAnimationType.Show);
+            SetDefault(TMPAnimationType.Hide);
         }
         #endregion
 

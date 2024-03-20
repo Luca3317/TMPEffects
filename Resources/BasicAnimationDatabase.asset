@@ -16,6 +16,10 @@ MonoBehaviour:
     _serializedList:
     - Key: wave
       Value: {fileID: 11400000, guid: caf90dcc4db077248b4aef29741767e8, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: 30d2435db910b094bacfda24efefc008, type: 2}
+    - Key: swing
+      Value: {fileID: 11400000, guid: 1f630aff11d4b334c87d691870092917, type: 2}
     - Key: palette
       Value: {fileID: 11400000, guid: 88202588c4dc013488ae14da87d7be47, type: 2}
     - Key: pulsate

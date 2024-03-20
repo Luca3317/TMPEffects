@@ -7,6 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new PivotAnimation", menuName = "TMPEffects/Animations/Pivot")]
     public class PivotAnimation : TMPAnimation
     {
@@ -45,6 +46,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 ContinuousRotation(cData, context);
             }
         }
+
 
         private void LimitedRotation(CharData cData, IAnimationContext context)
         {

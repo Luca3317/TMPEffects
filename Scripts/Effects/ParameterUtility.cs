@@ -1,16 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Security.Claims;
-using System.Text.RegularExpressions;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPAnimations;
 using TMPro;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.VFX;
-using UnityEngine.WSA;
 
 namespace TMPEffects
 {

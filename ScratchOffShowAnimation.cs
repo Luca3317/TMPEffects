@@ -1,15 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.Components.CharacterData;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPSceneAnimations.Animations
+namespace TMPEffects.TMPSceneAnimations.ShowAnimations
 {
-    public class FlashlightAnimation : TMPSceneAnimation
+    public class ScratchOffShowAnimation : TMPSceneShowAnimation
     {
         [SerializeField] Camera cam;
         [SerializeField] TMP_Text text;
@@ -53,12 +51,43 @@ namespace TMPEffects.TMPSceneAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            if (!Application.isPlaying)
+            Data d = context.customData as Data;
+
+            if (d.state == null)
             {
-                return;
+                d.state = new Dictionary<int, Vector4>();
+                for (int i = context.segmentData.firstAnimationIndex; i <= context.segmentData.lastAnimationIndex; i++)
+                {
+                    d.state[i] = Vector4.one * hiddenOpacity;
+                }
             }
 
+            int segmentIndex = context.segmentData.SegmentIndexOf(cData);
+            Vector4 alphas = d.state[segmentIndex];
+
+            UpdateAlphas(ref alphas, cData, context);
+
+            cData.mesh.SetAlpha(0, alphas.x);
+            cData.mesh.SetAlpha(1, alphas.y);
+            cData.mesh.SetAlpha(2, alphas.z);
+            cData.mesh.SetAlpha(3, alphas.w);
+
+            d.state[segmentIndex] = alphas;
+
+            if (alphas.x >= 255 && alphas.y >= 255f && alphas.z >= 255f && alphas.w >= 255f)
+            {
+                context.FinishAnimation(cData);
+            }
+        }
+
+        private void UpdateAlphas(ref Vector4 alphas, CharData cData, IAnimationContext context)
+        {
+            if (!Input.GetMouseButton(0) || (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)) return;
+
+
             Data d = context.customData as Data;
+
+            context.state.CalculateVertexPositions();
 
             Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
 
@@ -67,7 +96,6 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 Debug.LogError("Failed to calculate ScreenPointToWorldPointInRectangle");
             }
 
-            context.state.CalculateVertexPositions();
             for (int i = 0; i < 4; i++)
             {
                 Vector3 vertex;
@@ -83,64 +111,49 @@ namespace TMPEffects.TMPSceneAnimations.Animations
 
                 float magnitude = (res - vertex).magnitude;
 
-                Color32 color = context.state.TL_Color;
-
                 if (magnitude < d.radius)
                 {
                     float t = magnitude / d.radius;
                     float t2 = 1 - d.fallOffCurve.Evaluate(t);
-                    float opacity = Mathf.LerpUnclamped(d.hiddenOpacity, d.shownOpacity, t2);
+                    //Debug.LogWarning("Actuially doing it!; Adding " + t2 + " * " + context.animatorContext.DeltaTime + " * 2000 => " + (t2 * context.animatorContext.DeltaTime * 2000));
 
-                    color.a = (byte)opacity;
-                    cData.mesh.SetColor(i, color);
-                }
-                else
-                {
-                    color.a = (byte)0;
-                    cData.mesh.SetColor(i, color);
+                    if (t2 < 0) Debug.LogWarning("NEGATIVE");
+                    if (context.animatorContext.DeltaTime < 0) Debug.LogWarning("NEGATIVE");
+                    alphas[i] = Mathf.Clamp(alphas[i] + t2 * context.animatorContext.DeltaTime * 400, 0f, 255f);
                 }
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden")) d.hiddenOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "shownOpacity", "sOpacity", "sOp", "shown")) d.shownOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "radius", "rad", "r")) d.radius = f;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "fallOffCurve", "foCurve", "foCrv")) d.fallOffCurve = crv;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden")) return false;
-            if (HasNonFloatParameter(parameters, "shownOpacity", "sOpacity", "sOp", "shown")) return false;
-            if (HasNonFloatParameter(parameters, "radius", "rad", "r")) return false;
-            if (HasNonAnimCurveParameter(parameters, "fallOffCurve", "foCurve", "foCrv")) return false;
-            return true;
-        }
 
         public override object GetNewCustomData()
         {
             return new Data()
             {
+                state = null,
+                radius = this.radius,
+                fallOffCurve = this.fallOffCurve,
                 hiddenOpacity = this.hiddenOpacity,
                 shownOpacity = this.shownOpacity,
-                fallOffCurve = this.fallOffCurve,
-                radius = this.radius
             };
+        }
+
+        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        {
+
+        }
+
+        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        {
+            return true;
         }
 
         private class Data
         {
+            public Dictionary<int, Vector4> state;
+            public float radius;
+            public AnimationCurve fallOffCurve;
             public float hiddenOpacity;
             public float shownOpacity;
-            public AnimationCurve fallOffCurve;
-            public float radius;
         }
     }
 }

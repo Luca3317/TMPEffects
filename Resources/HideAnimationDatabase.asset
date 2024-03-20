@@ -16,6 +16,8 @@ MonoBehaviour:
     _serializedList:
     - Key: grow
       Value: {fileID: 11400000, guid: 24b89a3d9f2eaa84ab1f744155c108a3, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: a8d1eaa017b36aa45ba73e3972d0a777, type: 2}
     - Key: spread
       Value: {fileID: 11400000, guid: 4dabd2eadc1eba049af839f1abfa4bef, type: 2}
     - Key: pivot

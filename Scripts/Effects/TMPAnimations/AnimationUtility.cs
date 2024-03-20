@@ -2,10 +2,6 @@ using UnityEngine;
 using TMPEffects.Components.CharacterData;
 using System;
 using TMPEffects.Extensions;
-using Unity.Collections;
-using Codice.ThemeImages;
-using static TMPEffects.ParameterUtility;
-using System.Security.Cryptography;
 
 namespace TMPEffects.TMPAnimations
 {

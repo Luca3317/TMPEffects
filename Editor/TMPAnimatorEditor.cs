@@ -85,9 +85,12 @@ namespace TMPEffects.Editor
                 databaseProp.objectReferenceValue = defaultDatabase;
                 //serializedObject.FindProperty("initValidate").boolValue = true;
                 serializedObject.ApplyModifiedProperties();
+                animator.ForceReprocess();
             }
 
-            animator.ForceReprocess();
+            // TODO Removed this to prevent animation / writer reset when reselecitng object
+            // Still need to test whether this breaks anything else (dont expect it to)
+            //animator.ForceReprocess();
 
             Undo.undoRedoPerformed += OnUndoRedo;
         }
@@ -277,8 +280,10 @@ namespace TMPEffects.Editor
 
             EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
             EditorGUILayout.BeginHorizontal();
-            //previewProp.boolValue = EditorGUILayout.Toggle(GUIContent.none, previewProp.boolValue);
-            if (GUILayout.Button(new GUIContent("Toggle preview")))
+
+            char c = previewProp.boolValue ? '\u2713' : '\u2717';
+
+            if (GUILayout.Button(new GUIContent("Toggle preview " + c.ToString())))
             {
                 previewProp.boolValue = !prevPreview;
             }
