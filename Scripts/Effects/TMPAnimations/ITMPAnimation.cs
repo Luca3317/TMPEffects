@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 
 namespace TMPEffects.TMPAnimations
 {

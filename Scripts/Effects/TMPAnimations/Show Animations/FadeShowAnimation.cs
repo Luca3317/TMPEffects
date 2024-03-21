@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
@@ -9,7 +9,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
-    public class FadeShowAnimation : TMPShowAnimation
+    public class FadeShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float startOpacity = 0;
         [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
@@ -35,7 +35,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (t == 1) context.FinishAnimation(cData);
         }
-
+         
         private void FixAnchor(ref Vector2 v)
         {
             if (v.x != 0)

@@ -6,6 +6,7 @@ using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 using TMPEffects.SerializedCollections;
 using TMPEffects.TMPAnimations;
+using TMPEffects.TMPSceneAnimations;
 
 namespace TMPEffects.Components.Animator
 {
@@ -32,13 +33,11 @@ namespace TMPEffects.Components.Animator
 
         private void RaiseObjectChanged(object sender)
         {
-            UnityEngine.Debug.Log("Raised from database");
             ObjectChanged?.Invoke(this);
         }
 
         private void RaiseObjectChanged(object sender, PropertyChangedEventArgs args)
         {
-            UnityEngine.Debug.Log("Raised from scene animations");
             ObjectChanged?.Invoke(this);
         }
 

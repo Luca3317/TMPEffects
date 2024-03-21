@@ -15,32 +15,30 @@ namespace TMPEffects.Components.Writer
     internal class CommandDatabase : ITMPEffectDatabase<ITMPCommand>, INotifyObjectChanged, IDisposable
     {
         public TMPCommandDatabase Database => database;
-        public SerializedObservableDictionary<string, SceneCommand> SceneCommands => sceneCommands;
+        public IDictionary<string, SceneCommand> SceneCommands => sceneCommands;
         private TMPCommandDatabase database;
-        private SerializedObservableDictionary<string, SceneCommand> sceneCommands;
+        private IDictionary<string, SceneCommand> sceneCommands;
 
         public event ObjectChangedEventHandler ObjectChanged;
 
         private bool disposed = false;
 
-        public CommandDatabase(TMPCommandDatabase database, SerializedObservableDictionary<string, SceneCommand> sceneCommands)
+        public CommandDatabase(TMPCommandDatabase database, IDictionary<string, SceneCommand> sceneCommands)
         {
             this.database = database;
             this.sceneCommands = sceneCommands;
 
             if (database != null) database.ObjectChanged += RaiseObjectChanged;
-            if (sceneCommands != null) sceneCommands.PropertyChanged += RaiseObjectChanged;
+            //if (sceneCommands != null) sceneCommands.PropertyChanged += RaiseObjectChanged;
         }
 
         private void RaiseObjectChanged(object sender)
         {
-            UnityEngine.Debug.Log("Raised from database");
             ObjectChanged?.Invoke(this);
         }
 
         private void RaiseObjectChanged(object sender, PropertyChangedEventArgs args)
         {
-            UnityEngine.Debug.Log("Raised from scene animations");
             ObjectChanged?.Invoke(this);
         }
 
@@ -63,7 +61,6 @@ namespace TMPEffects.Components.Writer
             if (disposed) return;
             disposed = true;
             if (database != null) database.ObjectChanged -= RaiseObjectChanged;
-            if (sceneCommands != null) sceneCommands.PropertyChanged -= RaiseObjectChanged;
             database = null;
             sceneCommands = null;
         }

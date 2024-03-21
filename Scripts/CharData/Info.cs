@@ -1,8 +1,8 @@
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPro;
 using UnityEngine;
 
-namespace TMPEffects.Components.CharacterData
+namespace TMPEffects.CharacterData
 {
     /// <summary>
     /// Holds a selection of data of <see cref="TMP_CharacterInfo"/>, as well as some data about the initial mesh of the character.

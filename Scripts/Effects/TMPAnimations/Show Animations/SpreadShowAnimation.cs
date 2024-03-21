@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.ParameterUtility;
@@ -8,7 +8,7 @@ using TMPEffects.Extensions;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new SpreadShowAnimation", menuName = "TMPEffects/Show Animations/Spread")]
-    public class SpreadShowAnimation : TMPShowAnimation
+    public class SpreadShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float duration = 1;
         [SerializeField] Vector3 anchor = new Vector3(0, -1, 0);

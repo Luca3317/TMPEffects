@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using TMPEffects.Components;
 using TMPEffects.Components.Animator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using UnityEngine.Windows.Speech;
 
 namespace TMPEffects.TMPAnimations
@@ -30,7 +30,6 @@ namespace TMPEffects.TMPAnimations
 
         public bool Finished(int index);
         public bool Finished(CharData cData);
-        public void FinishAnimation(int index);
         public void FinishAnimation(CharData cData);
 
     }
@@ -70,11 +69,6 @@ namespace TMPEffects.TMPAnimations
             {
                 finishedDict.Add(i, false);
             }
-        }
-
-        public void FinishAnimation(int index)
-        {
-            finishedDict[index] = true;
         }
 
         public void ResetFinishAnimation(int index)
@@ -120,7 +114,6 @@ namespace TMPEffects.TMPAnimations
             this.context = context;
         }
 
-        public void FinishAnimation(int index) => context.FinishAnimation(index);
         public void FinishAnimation(CharData cData) => context.FinishAnimation(cData);
 
         private AnimationContext context;

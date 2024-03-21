@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;

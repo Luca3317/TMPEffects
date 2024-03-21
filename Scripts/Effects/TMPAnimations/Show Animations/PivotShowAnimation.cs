@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using TMPEffects.Extensions;
@@ -8,7 +8,7 @@ using TMPEffects.Extensions;
 namespace TMPEffects.TMPAnimations.Animations
 {
     [CreateAssetMenu(fileName = "new PivotShowAnimation", menuName = "TMPEffects/Show Animations/Pivot")]
-    public class PivotShowAnimation : TMPShowAnimation
+    public class PivotShowAnimation : TMPShowyAnimation
     {
         [SerializeField] private float duration = 1f;
         [SerializeField] private VectorType pivotType = VectorType.Anchor;

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Tags;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 
 namespace TMPEffects.Components.Animator
 {

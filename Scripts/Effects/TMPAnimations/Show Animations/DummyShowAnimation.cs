@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    public class DummyShowAnimation : TMPShowAnimation
+    public class DummyShowAnimation : TMPShowyAnimation
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -12,12 +12,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             {
                 cData.SetVertex(i, cData.mesh.initial.GetVertex(i));
             }
-
-            context.FinishAnimation(cData.info.index);
+            context.FinishAnimation(cData);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
+
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)

@@ -2,7 +2,7 @@ using TMPEffects.Components;
 using UnityEditor;
 using UnityEngine;
 using TMPEffects.Databases.CommandDatabase;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
 
 namespace TMPEffects.Editor
@@ -392,7 +392,6 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.PropertyField(startOnPlayProp);
             EditorGUILayout.PropertyField(maySkipProp);
-
 
             DrawDatabase();
 

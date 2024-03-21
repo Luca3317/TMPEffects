@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TMPEffects.Components.CharacterData
+namespace TMPEffects.CharacterData
 {
     /// <summary>
     /// A character's visibility state.<br/>

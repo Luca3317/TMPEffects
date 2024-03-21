@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Components;
 using TMPEffects.Databases;
 using TMPEffects.Tags;

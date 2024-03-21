@@ -99,7 +99,9 @@ namespace TMPEffects.SerializedCollections
             _dictionary.Add(key, value);
             RaisePropertyChanged();
             if (value != null)
+            {
                 value.PropertyChanged += RaisePropertyChanged;
+            }
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)

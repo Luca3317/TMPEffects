@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;

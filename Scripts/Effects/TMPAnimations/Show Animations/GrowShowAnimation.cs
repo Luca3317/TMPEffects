@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
@@ -8,7 +8,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Show Animations/Grow")]
-    public class GrowShowAnimation : TMPShowAnimation
+    public class GrowShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float duration = 0.15f;
         [SerializeField] Vector3 startScale = Vector3.one * 2;
@@ -50,11 +50,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return new Data { curve = this.curve, duration = this.duration, startScale = this.startScale };
         }
 
-        private class Data
+        private class Data  
         {
-            public AnimationCurve curve;
-            public float duration;
-            public Vector3 startScale;
+            public AnimationCurve curve; 
+            public float duration; 
+            public Vector3 startScale; 
         }
     }
 }

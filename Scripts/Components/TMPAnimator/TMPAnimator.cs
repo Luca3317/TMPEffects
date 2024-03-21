@@ -14,10 +14,11 @@ using TMPEffects.Components.Animator;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Tags.Collections;
 using TMPEffects.Tags;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using System.Collections.Specialized;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
+using TMPEffects.TMPSceneAnimations;
 
 namespace TMPEffects.Components
 {
@@ -30,7 +31,7 @@ namespace TMPEffects.Components
     /// There are three types of animations:
     /// <list type="table">
     /// <item><see cref="TMPAnimation"/>: The "basic" type of animation. Will animate the effected text continuously.</item>
-    /// <item><see cref="TMPShowAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
+    /// <item><see cref="TMPShowyAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>    
     /// <br/>
@@ -232,7 +233,7 @@ namespace TMPEffects.Components
             }
 
             Mediator.ForceReprocess();
-            FreeMediator();
+            FreeMediator(); 
         }
 
         private void CreateContext()
@@ -243,8 +244,6 @@ namespace TMPEffects.Components
 
         private void PrepareForProcessing()
         {
-            Debug.LogWarning("ANIMATOR UPDATE");
-
             // Reset database wrappers
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
@@ -315,17 +314,20 @@ namespace TMPEffects.Components
         private void SetDefault(TMPAnimationType type)
         {
             string str;
+            ITMPEffectDatabase<ITMPAnimation> database;
 
             switch (type)
             {
                 case TMPAnimationType.Show:
                     defaultShow = dummyShow;
                     str = defaultShowString;
+                    database = showDatabase;
                     break;
 
                 case TMPAnimationType.Hide:
                     defaultHide = dummyHide;
                     str = defaultHideString;
+                    database = hideDatabase;
                     break;
 
                 default:
@@ -342,13 +344,13 @@ namespace TMPEffects.Components
                 return;
             }
             str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
-            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name, type))
+            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name))
             {
                 SetToDummy();
                 return;
             }
 
-            if ((animation = database.GetEffect(tagInfo.name, type)) == null)
+            if ((animation = database.GetEffect(tagInfo.name)) == null)
             {
                 SetToDummy();
                 return;
@@ -365,12 +367,12 @@ namespace TMPEffects.Components
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    cacher = new AnimationCacher(database?.ShowAnimationDatabase, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
                     defaultShow = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
 
                 case TMPAnimationType.Hide:
-                    cacher = new AnimationCacher(database?.HideAnimationDatabase, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database, state, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
                     defaultHide = cacher.CacheTag(new EffectTag(tagInfo.name, tagInfo.prefix, tagParams), new EffectTagIndices(0, -1, 0));
                     break;
             }

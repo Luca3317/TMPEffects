@@ -4,7 +4,10 @@
 //using TMPEffects.Components;
 //using TMPEffects.TMPAnimations;
 //using UnityEngine;
-//using TMPEffects.Components.CharacterData;
+//using
+//
+//
+//;
 
 //public class TMPSceneShowANimaTest : TMPSceneShowAnimation
 //{
@@ -31,3 +34,4 @@
 //        return true;
 //    }
 //}
+ 

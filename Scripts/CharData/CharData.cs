@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using TMPEffects.Components.Mediator;
 
-namespace TMPEffects.Components.CharacterData
+namespace TMPEffects.CharacterData
 {
     /// <summary>
     /// Holds information about a character.<br/>

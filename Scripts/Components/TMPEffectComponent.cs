@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using TMPEffects.Components.Mediator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 
 namespace TMPEffects.Components
 {

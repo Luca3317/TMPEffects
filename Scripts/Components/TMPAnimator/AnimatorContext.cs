@@ -1,4 +1,4 @@
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using UnityEngine;
 using System;
 

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace TMPEffects.Components.CharacterData
+namespace TMPEffects.CharacterData
 {
     /// <summary>
     /// Holds data about a character's mesh.

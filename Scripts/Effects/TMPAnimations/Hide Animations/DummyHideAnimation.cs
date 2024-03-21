@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    public class DummyHideAnimation : TMPShowAnimation
+    public class DummyHideAnimation : TMPHideAnimation
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -12,7 +12,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 AnimationUtility.SetVertexRaw(i, cData.info.initialPosition, cData, ref context);
             }
 
-            context.FinishAnimation(cData.info.index);
+            context.FinishAnimation(cData);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.ObjectChanged;
 using System.ComponentModel;
 
-namespace TMPEffects.Components
+namespace TMPEffects.TMPSceneAnimations
 {
     /// <summary>
     /// Base class for all SceneAnimations.

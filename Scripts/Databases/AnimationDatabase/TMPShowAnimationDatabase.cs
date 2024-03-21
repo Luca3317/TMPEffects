@@ -5,13 +5,13 @@ using TMPEffects.TMPAnimations;
 namespace TMPEffects.Databases.AnimationDatabase
 {
     /// <summary>
-    /// Stores <see cref="TMPShowAnimation"/> animations.
+    /// Stores <see cref="TMPShowyAnimation"/> animations.
     /// </summary>
     [CreateAssetMenu(fileName = "new TMPShowAnimationDatabase", menuName = "TMPEffects/Database/Show Animation Database", order = 12)]
-    public class TMPShowAnimationDatabase : TMPAnimationDatabaseBase<TMPShowAnimation>
+    public class TMPShowAnimationDatabase : TMPAnimationDatabaseBase<TMPShowyAnimation>
     {
         [SerializedDictionary(keyName: "Tag Name", valueName: "Show Animation")]
-        [SerializeField] SerializedDictionary<string, TMPShowAnimation> showAnimations;
+        [SerializeField] SerializedDictionary<string, TMPShowyAnimation> showAnimations;
 
         /// <summary>
         /// Check whether this database contains an animation associated with the given name.
@@ -30,7 +30,7 @@ namespace TMPEffects.Databases.AnimationDatabase
         /// <returns>The animation associated with the given name.</returns>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException"></exception>
         /// <exception cref="System.InvalidOperationException"></exception>
-        public override TMPShowAnimation GetEffect(string name)
+        public override TMPShowyAnimation GetEffect(string name)
         {
             var anim = showAnimations[name];
             if (anim == null)

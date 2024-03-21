@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
@@ -8,7 +8,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new MoveInShowAnimation", menuName = "TMPEffects/Show Animations/MoveIn")]
-    public class MoveInShowAnimation : TMPShowAnimation
+    public class MoveInShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float duration = 0.15f;
         [SerializeField] Vector3 startPosition = new Vector3(10, 10, 0);

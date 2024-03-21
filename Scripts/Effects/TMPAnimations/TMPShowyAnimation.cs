@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Components.Animator;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.TMPAnimations
@@ -9,7 +9,7 @@ namespace TMPEffects.TMPAnimations
     /// <summary>
     /// Base class for all show animations.
     /// </summary>
-    public abstract class TMPShowAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged
+    public abstract class TMPShowyAnimation : ScriptableObject, ITMPFinishableAnimation, INotifyObjectChanged
     {
         ///<inheritdoc/>
         public abstract void Animate(CharData cData, IAnimationContext context);
@@ -25,7 +25,7 @@ namespace TMPEffects.TMPAnimations
 
         public event ObjectChangedEventHandler ObjectChanged;
 
-        protected virtual void OnValidate()
+        protected virtual void OnValidate() 
         {
             RaiseObjectChanged();
         }
@@ -41,3 +41,4 @@ namespace TMPEffects.TMPAnimations
         }
     }
 }
+  

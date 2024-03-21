@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using System;
 using TMPEffects.Extensions;
 

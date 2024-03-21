@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore;
@@ -9,7 +9,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new CharShowAnimation", menuName = "TMPEffects/Show Animations/Char")]
-    public class CharShowAnimation : TMPShowAnimation
+    public class CharShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float duration = 1f;
         [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

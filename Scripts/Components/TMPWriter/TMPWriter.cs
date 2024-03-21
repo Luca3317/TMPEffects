@@ -16,7 +16,7 @@ using TMPEffects.Components.Writer;
 using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Components.Animator;
 
@@ -188,7 +188,7 @@ namespace TMPEffects.Components
 
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
-        private SerializedObservableDictionary<string, SceneCommand> sceneCommands;
+        private SerializedDictionary<string, SceneCommand> sceneCommands;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPEffectCategory> tags;
@@ -269,8 +269,6 @@ namespace TMPEffects.Components
 
         private void PrepareForProcessing()
         {
-            Debug.LogWarning("UPDATED");
-
             // Reset database wrappers
             commandDatabase?.Dispose();
             commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
@@ -309,32 +307,14 @@ namespace TMPEffects.Components
             Mediator.Processor.FinishAdjustIndices -= PostProcessTags;
         }
 
-        private void OnDatabaseChanged(TMPCommandDatabase previousDatabase)
+        private void OnDatabaseChanged()
         {
-            //if (previousDatabase != null)
-            //{
-            //    previousDatabase.StopListenForChanges(ReprocessOnDatabaseChange);
-            //}
-
-            //if (database != null)
-            //{
-            //    database.StopListenForChanges(ReprocessOnDatabaseChange);
-            //    database.ListenForChanges(ReprocessOnDatabaseChange);
-            //}
-
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }
 
         private void ReprocessOnDatabaseChange(object sender)
         {
-            //if ((sender as TMPCommandDatabase) != database)
-            //{
-            //    Debug.LogError("Event raised by incorrect database; Bug!");
-            //    (sender as TMPCommandDatabase).StopListenForChanges(ReprocessOnDatabaseChange);
-            //    return;
-            //}
-
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }
@@ -534,7 +514,7 @@ namespace TMPEffects.Components
         {
             TMPCommandDatabase previous = this.database;
             this.database = database;
-            OnDatabaseChanged(previous);
+            OnDatabaseChanged();
         }
         #endregion
 
@@ -580,8 +560,6 @@ namespace TMPEffects.Components
 
         private IEnumerator WriterCoroutine()
         {
-            Debug.Log("Began writing");
-
             OnStartWriting();
 
             // This indicates the text is fully shown already
@@ -928,7 +906,7 @@ namespace TMPEffects.Components
             // Ensure data is set - OnValidate called before OnEnable
             if (Mediator != null && database != prevDatabase)
             {
-                OnDatabaseChanged(prevDatabase);
+                OnDatabaseChanged();
                 prevDatabase = database;
 
                 reprocessFlag = true;

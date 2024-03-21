@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TMPEffects.Components.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
@@ -7,7 +7,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new ShakeShowAnimation", menuName = "TMPEffects/Show Animations/Shake")]
-    public class ShakeShowAnimation : TMPShowAnimation
+    public class ShakeShowAnimation : TMPShowyAnimation
     {
         [SerializeField] float duration = 1f;
 
@@ -51,7 +51,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 d.lastUpdatedDict[segmentIndex] = 0f;
                 d.offsetDict[segmentIndex] = Vector2.zero;
                 context.FinishAnimation(cData);
-                return;
+                return; 
             }
 
             Vector3 offset;
