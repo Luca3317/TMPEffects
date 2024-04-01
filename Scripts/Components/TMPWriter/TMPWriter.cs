@@ -81,7 +81,7 @@ namespace TMPEffects.Components
         /// <summary>
         /// Raised when the TMPWriter shows a new character.
         /// </summary>
-        public UnityEvent<CharData> OnShowCharacter;
+        public UnityEvent<CharData> OnCharacterShown;
         /// <summary>
         /// Raised when the TMPWriter starts / resumes writing.
         /// </summary>
@@ -124,7 +124,7 @@ namespace TMPEffects.Components
             }
 #endif
 
-            OnShowCharacter?.Invoke(cData);
+            OnCharacterShown?.Invoke(cData);
         }
 
         private void RaiseResetWriterEvent(int index)
@@ -592,7 +592,7 @@ namespace TMPEffects.Components
 
 
             CharData cData;
-            for (int i = Mathf.Max(currentIndex, 0); i < Mediator.CharData.Count; i++)
+            for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? because coroutines are not instantly cancelled (so disable writer => NRE)
             {
                 currentIndex = i;
                 cData = Mediator.CharData[i];
@@ -614,7 +614,7 @@ namespace TMPEffects.Components
                 // Calculate delay; do here to use accurate visibilitystate
                 float delay = CalculateDelay(i);
 
-                // Show the current character, if it is not already shown
+                // Show the current character, if it is not already shown 
                 VisibilityState vState = Mediator.VisibilityStates[i];
                 if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
                 {
@@ -919,15 +919,9 @@ namespace TMPEffects.Components
             punctuationDelay = Mathf.Max(punctuationDelay, 0);
         }
 
-        //internal void OnDatabaseChangedWrapper()
-        //{
-        //    if (Mediator == null) return;
-        //    OnDatabaseChanged();
-        //}
-
         internal void ForceReprocess()
         {
-            Mediator.ForceReprocess();
+            Mediator?.ForceReprocess();
         }
 
         internal void SkipPlayer()

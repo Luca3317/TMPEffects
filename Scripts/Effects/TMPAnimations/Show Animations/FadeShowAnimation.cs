@@ -9,7 +9,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
-    public class FadeShowAnimation : TMPShowyAnimation
+    public class FadeShowAnimation : TMPShowAnimation
     {
         [SerializeField] float startOpacity = 0;
         [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
@@ -28,9 +28,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             for (int i = 0; i < 4; i++)
             {
-                Color32 c = cData.mesh.initial.GetColor(i);
-                c.a = (byte)opacity;
-                cData.mesh.SetColor(i, c);
+                cData.mesh.SetAlpha(i, opacity);
             }
 
             if (t == 1) context.FinishAnimation(cData);

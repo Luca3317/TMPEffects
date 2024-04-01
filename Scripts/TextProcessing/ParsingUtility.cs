@@ -148,9 +148,11 @@ namespace TMPEffects.TextProcessing
             // Index now at first character of name
 
             // Try parsing the name; if it fails, return false
-            if (!TryParseTagName(text, index, ref name) || string.IsNullOrWhiteSpace(name)) return false;
+            if (!TryParseTagName(text, index, ref name)/* || string.IsNullOrWhiteSpace(name)*/) return false;
 
-            string parameterString = text.Substring(index, endIndex - index);
+            string parameterString;
+
+            parameterString = text.Substring(index, endIndex - index);
 
             //tag = new TagInfo(startIndex, endIndex, actualType, prefix, name, parameterString);
             tag.startIndex = startIndex;
@@ -341,7 +343,7 @@ namespace TMPEffects.TextProcessing
 
         static bool HasTagPrefix(string text, int index)
         {
-            return !char.IsLetter(text[index]);
+            return !char.IsLetter(text[index]) && text[index] != '>';
         }
 
         static TagType GetTagType(string text, int start)
@@ -483,7 +485,7 @@ namespace TMPEffects.TextProcessing
         public static bool StringToVector2Offset(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
         {
             str = str.Trim();
-            if (str.Length < 9 || str[0] != 'o' || str[1] != ':')
+            if (str.Length < 3 || str[0] != 'o' || str[1] != ':')
             {
                 result = Vector2.zero;
                 return false;
@@ -504,7 +506,7 @@ namespace TMPEffects.TextProcessing
         public static bool StringToVector3Offset(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
         {
             str = str.Trim();
-            if (str.Length < 9 || str[0] != 'o' || str[1] != ':')
+            if (str.Length < 3 || str[0] != 'o' || str[1] != ':')
             {
                 result = Vector3.zero;
                 return false;
@@ -525,7 +527,7 @@ namespace TMPEffects.TextProcessing
         public static bool StringToAnchor(string str, out Vector3 result, IDictionary<string, Vector3> anchorKeywords = null, IDictionary<string, Vector3> vectorKeywords = null)
         {
             str = str.Trim();
-            if (str.Length < 9 || str[0] != 'a' || str[1] != ':')
+            if (str.Length < 3 || str[0] != 'a' || str[1] != ':')
             {
                 result = Vector3.zero;
                 return false;

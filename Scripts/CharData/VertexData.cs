@@ -363,6 +363,7 @@ namespace TMPEffects.CharacterData
         public void Reset()
         {
             ResetColors();
+            ResetAlphas();
             ResetVertices();
             ResetUVs();
         }
@@ -378,6 +379,16 @@ namespace TMPEffects.CharacterData
             vertex_TR.color = initial.GetColor(2);
             vertex_BR.color = initial.GetColor(3);
             colorsDirty = false;
+        }
+
+        public void ResetAlphas()
+        {
+            if (!alphasDirty) return;
+            vertex_BL.color.a = initial.GetColor(0).a;
+            vertex_TL.color.a = initial.GetColor(1).a;
+            vertex_TR.color.a = initial.GetColor(2).a;
+            vertex_BR.color.a = initial.GetColor(3).a;
+            alphasDirty = false;
         }
 
         /// <summary>

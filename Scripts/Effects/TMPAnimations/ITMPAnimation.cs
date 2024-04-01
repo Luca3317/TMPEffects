@@ -32,4 +32,4 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The custom data object for this animation.</returns>
         public object GetNewCustomData();
     }
-}
+} 

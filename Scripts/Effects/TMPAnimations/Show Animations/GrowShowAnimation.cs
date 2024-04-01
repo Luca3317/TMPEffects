@@ -8,7 +8,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Show Animations/Grow")]
-    public class GrowShowAnimation : TMPShowyAnimation
+    public class GrowShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 0.15f;
         [SerializeField] Vector3 startScale = Vector3.one * 2;

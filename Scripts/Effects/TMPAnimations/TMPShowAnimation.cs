@@ -9,7 +9,7 @@ namespace TMPEffects.TMPAnimations
     /// <summary>
     /// Base class for all show animations.
     /// </summary>
-    public abstract class TMPShowyAnimation : ScriptableObject, ITMPFinishableAnimation, INotifyObjectChanged
+    public abstract class TMPShowAnimation : ScriptableObject, ITMPFinishableAnimation, INotifyObjectChanged
     {
         ///<inheritdoc/>
         public abstract void Animate(CharData cData, IAnimationContext context);

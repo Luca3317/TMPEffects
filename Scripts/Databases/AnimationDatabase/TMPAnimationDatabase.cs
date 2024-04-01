@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace TMPEffects.Databases.AnimationDatabase
 {
     /// <summary>
-    /// Stores <see cref="TMPAnimation"/>, <see cref="TMPShowyAnimation"/> and <see cref="TMPHideAnimation"/> animations.
+    /// Stores <see cref="TMPAnimation"/>, <see cref="TMPShowAnimation"/> and <see cref="TMPHideAnimation"/> animations.
     /// </summary>
     [CreateAssetMenu(fileName = "new TMPAnimationDatabase", menuName = "TMPEffects/Database/Animation Database", order = 0)]
     public class TMPAnimationDatabase : TMPEffectDatabase<ITMPAnimation>

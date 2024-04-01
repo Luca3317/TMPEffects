@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using TMPEffects.Components.Mediator;
 using TMPEffects.CharacterData;
+using UnityEngine.XR;
 
 namespace TMPEffects.Components
 {
@@ -50,6 +51,7 @@ namespace TMPEffects.Components
 
         protected void FreeMediator()
         {
+            mediator = null;
             TMP_Text text = GetComponent<TMP_Text>();
             TMPMediatorManager.Unsubscribe(text, obj);
         }

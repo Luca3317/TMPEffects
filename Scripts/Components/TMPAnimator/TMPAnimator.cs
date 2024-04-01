@@ -31,7 +31,7 @@ namespace TMPEffects.Components
     /// There are three types of animations:
     /// <list type="table">
     /// <item><see cref="TMPAnimation"/>: The "basic" type of animation. Will animate the effected text continuously.</item>
-    /// <item><see cref="TMPShowyAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
+    /// <item><see cref="TMPShowAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>    
     /// <br/>
@@ -233,7 +233,7 @@ namespace TMPEffects.Components
             }
 
             Mediator.ForceReprocess();
-            FreeMediator(); 
+            FreeMediator();
         }
 
         private void CreateContext()
@@ -313,11 +313,15 @@ namespace TMPEffects.Components
 
         private void SetDefault(TMPAnimationType type)
         {
+            if (Mediator == null) return;
+
             string str;
             ITMPEffectDatabase<ITMPAnimation> database;
 
+
             switch (type)
             {
+
                 case TMPAnimationType.Show:
                     defaultShow = dummyShow;
                     str = defaultShowString;
@@ -449,7 +453,7 @@ namespace TMPEffects.Components
             }
 #endif
 
-            if (!isActiveAndEnabled) 
+            if (!isActiveAndEnabled)
             {
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
@@ -588,10 +592,17 @@ namespace TMPEffects.Components
             }
 
             RecalculateSegmentData(type);
+            QueueCharacterReset();
         }
 
         private void RecalculateSegmentData(TMPAnimationType type)
         {
+            // TODO Need to check this in case exclusions change while animator is
+            // disabled (=> mediator is null).
+            // At some point the editor-runtime code separation will need some level
+            // of reworking
+            if (!isActiveAndEnabled) return;
+
             switch (type)
             {
                 case TMPAnimationType.Basic:
@@ -701,12 +712,18 @@ namespace TMPEffects.Components
             count++;
             sw.Start();
 
-
             context.passed += deltaTime;
+
+            if (characterResetQueued)
+            {
+                ResetAllVisible();
+                characterResetQueued = false;
+            }
 
             for (int i = 0; i < Mediator.CharData.Count; i++)
             {
                 CharData cData = Mediator.CharData[i];
+
                 UpdateCharacterAnimation(cData, deltaTime, i, false);
             }
 
@@ -952,20 +969,20 @@ namespace TMPEffects.Components
                     else
                     {
                         Color32 color = cData.mesh.GetColor(0);
-                        color.a = cData.mesh.initial.GetAlpha(0);
-                        BL_Color = cData.mesh.GetColor(0);
+                        color.a = BL_Color.a;
+                        BL_Color = color;
 
                         color = cData.mesh.GetColor(1);
-                        color.a = cData.mesh.initial.GetAlpha(1);
-                        TL_Color = cData.mesh.GetColor(1);
+                        color.a = TL_Color.a;
+                        TL_Color = color;
 
                         color = cData.mesh.GetColor(2);
-                        color.a = cData.mesh.initial.GetAlpha(2);
-                        TR_Color = cData.mesh.GetColor(2);
+                        color.a = TR_Color.a;
+                        TR_Color = color;
 
                         color = cData.mesh.GetColor(3);
-                        color.a = cData.mesh.initial.GetAlpha(3);
-                        BR_Color = cData.mesh.GetColor(3);
+                        color.a = BR_Color.a;
+                        BR_Color = color;
                     }
                 }
                 else if (cData.alphasDirty)
@@ -1125,11 +1142,13 @@ namespace TMPEffects.Components
                 return;
             }
 
+            if (vState != VisibilityState.Shown)
+            { Debug.LogWarning("This should be unreachable!"); }
 
             // TODO test if is excluded basic, are the show / hide anims still applied?
             if (IsExcludedBasic(cData.info.character))
             {
-                Debug.LogWarning("This case should be impossible to reach - bug");
+                //Debug.LogWarning("This case should be impossible to reach - bug with index " + cData.info.index + " and visbility: "+ Mediator.VisibilityStates[index]);
                 return;
             }
 
@@ -1820,16 +1839,16 @@ namespace TMPEffects.Components
         internal string CheckDefaultString(TMPAnimationType type)
         {
             string str;
-            ITMPEffectDatabase<ITMPAnimation> database;
+            ITMPEffectDatabase<ITMPAnimation> tempDatabase;
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    database = showDatabase;
+                    tempDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
                     str = defaultShowString;
                     break;
 
                 case TMPAnimationType.Hide:
-                    database = hideDatabase;
+                    tempDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
                     str = defaultHideString;
                     break;
 
@@ -1851,12 +1870,12 @@ namespace TMPEffects.Components
                 return "Not a well-formed tag";
             }
 
-            if (!database.ContainsEffect(tagInfo.name))
+            if (!tempDatabase.ContainsEffect(tagInfo.name))
             {
-                return "Tag with name " + tagInfo.name + " not defined";
+                return "Tag with name " + tagInfo.name + " not defined;";
             }
 
-            if ((animation = database.GetEffect(tagInfo.name)) == null)
+            if ((animation = tempDatabase.GetEffect(tagInfo.name)) == null)
             {
                 return "Tag with name " + tagInfo.name + " is defined, but not assigned an animation";
             }
@@ -1896,13 +1915,15 @@ namespace TMPEffects.Components
                 prevExcludedBasicCharacters = excludedCharacters;
                 prevBasicExcludePunctuation = excludePunctuation;
                 RecalculateSegmentData(TMPAnimationType.Basic);
+                QueueCharacterReset();
             }
 
-            if (prevExcludedShowCharacters != excludedCharactersShow || prevShowExcludePunctuation != excludePunctuationHide)
+            if (prevExcludedShowCharacters != excludedCharactersShow || prevShowExcludePunctuation != excludePunctuationShow)
             {
                 prevExcludedShowCharacters = excludedCharactersShow;
                 prevShowExcludePunctuation = excludePunctuationShow;
                 RecalculateSegmentData(TMPAnimationType.Show);
+                QueueCharacterReset();
             }
 
             if (prevExcludedHideCharacters != excludedCharactersHide || prevHideExcludePunctuation != excludePunctuationHide)
@@ -1910,6 +1931,7 @@ namespace TMPEffects.Components
                 prevExcludedHideCharacters = excludedCharactersHide;
                 prevHideExcludePunctuation = excludePunctuationHide;
                 RecalculateSegmentData(TMPAnimationType.Hide);
+                QueueCharacterReset();
             }
 
             if (Mediator != null &&
@@ -1926,5 +1948,12 @@ namespace TMPEffects.Components
         }
 #endif
         #endregion
+
+
+        private bool characterResetQueued = false;
+        private void QueueCharacterReset()
+        {
+            characterResetQueued = true;
+        }
     }
 }

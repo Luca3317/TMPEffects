@@ -14,6 +14,15 @@ namespace TMPEffects.TextProcessing
         /// </summary>
         public readonly ReadOnlyCollection<KeyValuePair<EffectTagIndices, EffectTag>> ProcessedTags;
 
+        /// <summary>
+        /// Tags with this keyword as name will close all open tags of this tag processor.
+        /// </summary>
+        public const string ALL_KEYWORD = "all";
+        /// <summary>
+        /// Tags with this keyword as name will close teh most recent open tag of this tag processor.
+        /// </summary>
+        public const string MOST_RECENT_KEYWORD = "";
+
         public TagProcessor(ITMPTagValidator validator)
         {
             processedTags = new();
@@ -67,6 +76,16 @@ namespace TMPEffects.TextProcessing
 
         private bool Process_Close(ParsingUtility.TagInfo tagInfo, int textIndex)
         {
+            if (tagInfo.name == MOST_RECENT_KEYWORD)
+            {
+                return CloseMostRecent(textIndex);
+            }
+            else if (tagInfo.name == ALL_KEYWORD) // TODO Const
+            {
+                CloseAll(textIndex);
+                return true;
+            }
+
             if (!validator.ValidateTag(tagInfo)) return false;
 
             KeyValuePair<EffectTagIndices, EffectTag> kvp;
@@ -82,6 +101,37 @@ namespace TMPEffects.TextProcessing
             }
 
             return true;
+        }
+
+        private bool CloseMostRecent(int textIndex)
+        {
+            KeyValuePair<EffectTagIndices, EffectTag> kvp;
+            for (int i = ProcessedTags.Count - 1; i >= 0; i--)
+            {
+                kvp = ProcessedTags[i];
+                if (kvp.Key.IsOpen)
+                {
+                    EffectTagIndices newIndices = new EffectTagIndices(kvp.Key.StartIndex, textIndex, kvp.Key.OrderAtIndex);
+                    processedTags[i] = new KeyValuePair<EffectTagIndices, EffectTag>(newIndices, kvp.Value);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void CloseAll(int textIndex)
+        {
+            KeyValuePair<EffectTagIndices, EffectTag> kvp;
+            for (int i = ProcessedTags.Count - 1; i >= 0; i--)
+            {
+                kvp = ProcessedTags[i];
+                if (kvp.Key.IsOpen)
+                {
+                    EffectTagIndices newIndices = new EffectTagIndices(kvp.Key.StartIndex, textIndex, kvp.Key.OrderAtIndex);
+                    processedTags[i] = new KeyValuePair<EffectTagIndices, EffectTag>(newIndices, kvp.Value);
+                }
+            }
         }
     }
 }

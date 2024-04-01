@@ -8,7 +8,7 @@ using TMPEffects.Extensions;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new SpreadShowAnimation", menuName = "TMPEffects/Show Animations/Spread")]
-    public class SpreadShowAnimation : TMPShowyAnimation
+    public class SpreadShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 1;
         [SerializeField] Vector3 anchor = new Vector3(0, -1, 0);
@@ -19,7 +19,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.customData as Data; 
 
             float t = Mathf.Lerp(d.startPercentage, d.targetPercentage, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
             float t2 = d.curve.Evaluate(t);
@@ -41,7 +41,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 SetVertexRaw(i, pos, cData, ref context);
             }
         }
-
+         
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             if (parameters == null) return;

@@ -143,7 +143,7 @@ namespace TMPEffects.Editor
             eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
             commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
             onTextEventProp = serializedObject.FindProperty("OnTextEvent");
-            onShowCharacterProp = serializedObject.FindProperty("OnShowCharacter");
+            onShowCharacterProp = serializedObject.FindProperty("OnCharacterShown");
             onStartWriterProp = serializedObject.FindProperty("OnStartWriter");
             onStopWriterProp = serializedObject.FindProperty("OnStopWriter");
             onResetWriterProp = serializedObject.FindProperty("OnResetWriter");
@@ -169,6 +169,10 @@ namespace TMPEffects.Editor
             writer.OnResetWriterPreview += UpdateProgress; 
             writer.OnCharacterShownPreview -= UpdateProgress;
             writer.OnCharacterShownPreview += UpdateProgress;
+            writer.OnCharacterShown.RemoveListener(UpdateProgress);
+            writer.OnCharacterShown.AddListener(UpdateProgress);
+            writer.OnResetWriter.RemoveListener(UpdateProgress);
+            writer.OnResetWriter.AddListener(UpdateProgress);
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
             useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
@@ -182,7 +186,7 @@ namespace TMPEffects.Editor
 
         private void OnDisable()
         {
-            writer.OnShowCharacter.RemoveListener(UpdateProgress);
+            writer.OnCharacterShown.RemoveListener(UpdateProgress);
             writer.OnResetWriter.RemoveListener(UpdateProgress);
         }
 
@@ -191,6 +195,7 @@ namespace TMPEffects.Editor
         void UpdateProgress(int index)
         {
             progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextComponent.textInfo.characterCount - 1));
+            Repaint();
         }
 
         void PrepareLayout()
@@ -254,6 +259,8 @@ namespace TMPEffects.Editor
             // Draw play label
             EditorGUI.LabelField(playLabelRect, playLabel, playLabelStyle);
 
+            EditorGUI.BeginDisabledGroup(!PlayerEnabled());
+
             // Draw play toggles
             eventsEnabledProp.boolValue = EditorGUI.ToggleLeft(eventToggleRect, eventToggleLabel, eventsEnabledProp.boolValue);
 
@@ -264,7 +271,6 @@ namespace TMPEffects.Editor
 
             commandsEnabledProp.boolValue = EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, commandsEnabledProp.boolValue);
 
-            EditorGUI.BeginDisabledGroup(!writer.enabled);
 
             // Draw Buttons
             if (writer.IsWriting || (wasWriting && clicked))
@@ -347,19 +353,19 @@ namespace TMPEffects.Editor
             }
         }
 
-        private bool foldd;
+        private bool delayFoldout;
         void RepaintInspector()
         {
             DrawPlayer();
 
             EditorGUILayout.BeginHorizontal();
-            foldd = EditorGUILayout.Foldout(foldd, "Delay");
+            delayFoldout = EditorGUILayout.Foldout(delayFoldout, "Delay");
             var pre = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 0;
             EditorGUILayout.PropertyField(delayProp, new GUIContent(""));
             EditorGUIUtility.labelWidth = pre;
             EditorGUILayout.EndHorizontal();
-            if (foldd)
+            if (delayFoldout)
             {
                 EditorGUI.indentLevel++;
 
@@ -404,6 +410,8 @@ namespace TMPEffects.Editor
 
         void HandleMouseDown()
         {
+            if (!PlayerEnabled()) return;
+
             if (progressBarRect.Contains(Event.current.mousePosition))
             {
                 wasWriting = writer.IsWriting;
@@ -415,6 +423,7 @@ namespace TMPEffects.Editor
 
         void HandleMouseUp()
         {
+            if (!PlayerEnabled()) return;
             if (clicked)
             {
                 if (wasWriting)
@@ -426,6 +435,7 @@ namespace TMPEffects.Editor
 
         void HandleMouseDrag()
         {
+            if (!PlayerEnabled()) return;
             if (!clicked) return;
 
             float xPos = Event.current.mousePosition.x;
@@ -515,7 +525,10 @@ namespace TMPEffects.Editor
             }
         }
 
-        Vector3 tl = Vector3.zero;
+        bool PlayerEnabled()
+        {
+            return writer.isActiveAndEnabled && !Application.isPlaying;
+        }
 
         void PauseWriter()
         {

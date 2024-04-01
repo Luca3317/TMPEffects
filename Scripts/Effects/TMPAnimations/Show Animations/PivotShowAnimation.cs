@@ -8,7 +8,7 @@ using TMPEffects.Extensions;
 namespace TMPEffects.TMPAnimations.Animations
 {
     [CreateAssetMenu(fileName = "new PivotShowAnimation", menuName = "TMPEffects/Show Animations/Pivot")]
-    public class PivotShowAnimation : TMPShowyAnimation
+    public class PivotShowAnimation : TMPShowAnimation
     {
         [SerializeField] private float duration = 1f;
         [SerializeField] private VectorType pivotType = VectorType.Anchor;

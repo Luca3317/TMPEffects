@@ -7,7 +7,6 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [AutoParameters]
     [CreateAssetMenu(fileName = "new PivotAnimation", menuName = "TMPEffects/Animations/Pivot")]
     public class PivotAnimation : TMPAnimation
     {

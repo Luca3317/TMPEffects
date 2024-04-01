@@ -35,7 +35,7 @@ namespace TMPEffects.TMPAnimations.Animations
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    cData.mesh.SetColor(i, d.colors[0]);
+                    cData.mesh.SetColor(i, d.colors[0], true);
                 }
 
                 return;
@@ -44,7 +44,7 @@ namespace TMPEffects.TMPAnimations.Animations
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    cData.mesh.SetColor(i, d.colors[0]);
+                    cData.mesh.SetColor(i, d.colors[0], true);
                 }
 
                 return;
@@ -86,7 +86,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             for (int i = 0; i < 4; i++)
             {
-                cData.mesh.SetColor(i, color);
+                cData.mesh.SetColor(i, color, true);
             }
         }
 

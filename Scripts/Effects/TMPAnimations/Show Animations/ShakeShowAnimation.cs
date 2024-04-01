@@ -7,13 +7,13 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new ShakeShowAnimation", menuName = "TMPEffects/Show Animations/Shake")]
-    public class ShakeShowAnimation : TMPShowyAnimation
+    public class ShakeShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 1f;
 
         [SerializeField] float maxXAmplitude = 5;
         [SerializeField] float minXAmplitude = 5;
-        [SerializeField] float maxYAmplitude = 5;
+        [SerializeField] float maxYAmplitude = 5; 
         [SerializeField] float minYAmplitude = 5;
 
         [SerializeField] float minDelay = 0.1f;
@@ -24,7 +24,6 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-
             Data d = context.customData as Data;
 
             if (!d.init)
@@ -50,11 +49,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 d.delayDict[segmentIndex] = 0f;
                 d.lastUpdatedDict[segmentIndex] = 0f;
                 d.offsetDict[segmentIndex] = Vector2.zero;
-                context.FinishAnimation(cData);
+                //context.FinishAnimation(cData);
                 return; 
             }
-
-            Vector3 offset;
+             
+            Vector3 offset;  
 
 
             if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex] && remaining >= d.minDelay * delayMult)
@@ -197,3 +196,4 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         }
     }
 }
+ 

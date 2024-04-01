@@ -8,7 +8,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new MoveInShowAnimation", menuName = "TMPEffects/Show Animations/MoveIn")]
-    public class MoveInShowAnimation : TMPShowyAnimation
+    public class MoveInShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 0.15f;
         [SerializeField] Vector3 startPosition = new Vector3(10, 10, 0);

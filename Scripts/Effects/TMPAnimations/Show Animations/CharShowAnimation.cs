@@ -9,7 +9,7 @@ using static TMPEffects.ParameterUtility;
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new CharShowAnimation", menuName = "TMPEffects/Show Animations/Char")]
-    public class CharShowAnimation : TMPShowyAnimation
+    public class CharShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 1f;
         [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

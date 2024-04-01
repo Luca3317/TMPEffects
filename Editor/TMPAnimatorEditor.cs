@@ -234,12 +234,11 @@ namespace TMPEffects.Editor
                 GUI.Label(rect, new GUIContent(""));
             }
 
-            GUILayout.EndHorizontal();
+            GUILayout.EndHorizontal(); 
             if (EditorGUI.EndChangeCheck())
             {
                 serializedObject.ApplyModifiedProperties();
                 animator.UpdateDefaultStrings();
-                //animator.ForcePostProcess();
             }
         }
 
@@ -278,7 +277,7 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.LabelField(new GUIContent("Animator preview"), previewLabelStyle);
 
-            EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
+            EditorGUI.BeginDisabledGroup(!PreviewEnabled());
             EditorGUILayout.BeginHorizontal();
 
             char c = previewProp.boolValue ? '\u2713' : '\u2717';
@@ -321,8 +320,6 @@ namespace TMPEffects.Editor
             GUILayout.Box(GUIContent.none, horizontalLine);
             GUI.color = c;
         }
-
-
 
         void RepaintInspector()
         {
@@ -381,18 +378,19 @@ namespace TMPEffects.Editor
             }
         }
 
+        bool PreviewEnabled()
+        {
+            return animator.isActiveAndEnabled && !Application.isPlaying;
+        }
+
         void OnUndoRedo()
         {
-
             if (previewProp.boolValue)
             {
-                //previewProp.boolValue = false;
                 animator.StopPreview();
 
                 EditorApplication.delayCall += () =>
                 {
-                    //serializedObject.FindProperty("preview").boolValue = true;
-                    //serializedObject.ApplyModifiedProperties();
                     animator.StartPreview();
                 };
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    public class DummyShowAnimation : TMPShowyAnimation
+    public class DummyShowAnimation : TMPShowAnimation
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
