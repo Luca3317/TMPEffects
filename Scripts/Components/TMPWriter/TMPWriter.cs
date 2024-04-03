@@ -153,6 +153,45 @@ namespace TMPEffects.Components
             OnFinishWriter?.Invoke();
         }
 
+        private void RaiseStartWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnStartWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnStartWriter?.Invoke();
+        }
+
+        private void RaiseStopWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnStopWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnStopWriter?.Invoke();
+        }
+
+        private void RaiseSkipWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnSkipWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnSkipWriter?.Invoke();
+        }
+
         /// <summary>
         /// The prefix used for command tags.
         /// </summary>
@@ -348,7 +387,7 @@ namespace TMPEffects.Components
                 StartWriterCoroutine();
             }
 
-            RaiseEvent(OnStartWriter);
+            RaiseStartWriterEvent();
         }
 
         /// <summary>
@@ -364,7 +403,7 @@ namespace TMPEffects.Components
                 StopWriterCoroutine();
             }
 
-            RaiseEvent(OnStopWriter);
+            RaiseStopWriterEvent();
         }
 
         /// <summary>
@@ -436,7 +475,7 @@ namespace TMPEffects.Components
             if (cc == default) skipTo = Mediator.CharData.Count;
             else skipTo = cc.Indices.StartIndex;
 
-            RaiseEvent(OnSkipWriter);
+            RaiseSkipWriterEvent();
 
             for (int i = currentIndex; i < skipTo; i++)
             {
@@ -640,6 +679,19 @@ namespace TMPEffects.Components
                 if (delay > 0) yield return new WaitForSeconds(delay);
             }
 
+            invokables = GetInvokables(Mediator.CharData.Count);
+            foreach (var invokable in invokables)
+            {
+                waitAmount = 0f;
+                shouldWait = false;
+                continueConditions = null;
+
+                invokable.Trigger();
+
+                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                if (continueConditions != null) yield return HandleWaitConditions();
+            }
+
             RaiseFinishWriterEvent();
             OnStopWriting();
         }
@@ -654,12 +706,18 @@ namespace TMPEffects.Components
         {
             foreach (var eventt in events)
             {
-                if ((eventt.Indices.StartIndex < maxIndex || eventt.ExecuteInstantly) && eventt.ExecuteRepeatable) eventt.Reset();
+                if ((eventt.Indices.StartIndex <= maxIndex || eventt.ExecuteInstantly) && eventt.ExecuteRepeatable)
+                {
+                    eventt.Reset();
+                }
             }
 
             foreach (var command in commands)
             {
-                if ((command.Indices.StartIndex < maxIndex || command.ExecuteInstantly) && command.ExecuteRepeatable) command.Reset();
+                if ((command.Indices.StartIndex <= maxIndex || command.ExecuteInstantly) && command.ExecuteRepeatable)
+                {
+                    command.Reset();
+                }
             }
         }
 
@@ -886,6 +944,10 @@ namespace TMPEffects.Components
         public event CharDataHandler OnCharacterShownPreview;
         public event IntHandler OnResetWriterPreview;
         public event VoidHandler OnFinishWriterPreview;
+        public event VoidHandler OnStartWriterPreview;
+        public event VoidHandler OnStopWriterPreview;
+        public event VoidHandler OnSkipWriterPreview;
+
 
         private void EditorUpdate()
         {

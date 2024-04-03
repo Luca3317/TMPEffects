@@ -11,9 +11,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
     public class FadeShowAnimation : TMPShowAnimation
     {
-        [SerializeField] float startOpacity = 0;
         [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
-        [SerializeField] Vector2 anchor = Vector2.zero;
+        [SerializeField] float startOpacity = 0;
+        [SerializeField] Vector3 anchor = Vector3.zero;
+        [SerializeField] Vector3 direction = Vector3.up;
         [SerializeField] float duration = 1;
 
         public override void Animate(CharData cData, IAnimationContext context)
@@ -32,8 +33,57 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
 
             if (t == 1) context.FinishAnimation(cData);
+
+
+            FadeIn(cData, context, d, t2);
         }
-         
+
+        private void FadeIn(CharData cData, IAnimationContext context, Data d, float t)
+        {
+            Vector2 anchor = d.anchor;
+            FixAnchor(ref anchor);
+
+            if (anchor == Vector2.zero)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    float eval = Mathf.Lerp(d.startOpacity, cData.info.color.a, t);
+
+                    Color32 c;
+                    c = cData.mesh.initial.GetColor(i);
+                    c.a = (byte)((eval / 255f) * c.a);
+
+                    cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
+                }
+
+                return;
+            }
+
+            Vector2 direction = new Vector2(-anchor.x, -anchor.y);
+            Vector2 opposite = direction;
+
+            Vector3 anchorPosition = AnchorToPosition(anchor, cData);
+            Vector3 oppositePosition = AnchorToPosition(opposite, cData);
+            float dist = (anchorPosition - oppositePosition).magnitude;
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 vec = cData.mesh.initial.GetVertex(i) - anchorPosition;
+                vec.x *= direction.x;
+                vec.y *= direction.y;
+
+                float currDist = (vec.magnitude / dist);
+
+                float eval = Mathf.Lerp(d.startOpacity, cData.info.color.a, t * (2 - currDist));
+
+                Color32 c;
+                c = cData.mesh.initial.GetColor(i);
+                c.a = (byte)((eval / 255f) * c.a);
+
+                cData.mesh.SetAlpha(i, (byte)((eval / 255f) * c.a));
+            }
+        }
+
         private void FixAnchor(ref Vector2 v)
         {
             if (v.x != 0)
@@ -55,18 +105,20 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             Data d = (Data)customData;
             if (TryGetAnimCurveParameter(out var c, parameters, "curve", curveAliases)) d.curve = c;
             if (TryGetFloatParameter(out float f, parameters, "duration", durationAliases)) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "startOpacity", startOpacityAliases)) d.startOpacity = f;
-            if (TryGetVector2Parameter(out var v2, parameters, "anchor", anchorAliases)) d.anchor = v2;
+            if (TryGetFloatParameter(out f, parameters, "startopacity", startOpacityAliases)) d.startOpacity = f;
+            if (TryGetTypedVector2Parameter(out var tv3, parameters, "anchor", anchorAliases)) d.anchor = tv3.vector;
+            if (TryGetVector2Parameter(out var v3, parameters, "direction", "dir")) d.direction = v3;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
 
-            if (HasNonFloatParameter(parameters, "startOpacity", startOpacityAliases)) return false;
+            if (HasNonFloatParameter(parameters, "startopacity", startOpacityAliases)) return false;
             if (HasNonFloatParameter(parameters, "duration", durationAliases)) return false;
             if (HasNonAnimCurveParameter(parameters, "curve", curveAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "anchor", anchorAliases)) return false;
+            if (HasNonTypedVector2Parameter(parameters, "anchor", anchorAliases) || HasVector2OffsetParameter(parameters, "anchor", anchorAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "direction", "dir")) return false;
             return true;
         }
 
@@ -76,8 +128,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             {
                 startOpacity = this.startOpacity,
                 curve = this.curve,
-                anchor = this.anchor,
+                anchor = anchor,
                 duration = this.duration,
+                direction = this.direction,
 
                 waitingSince = -1,
                 cycleTime = -1,
@@ -85,7 +138,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             };
         }
 
-        private readonly string[] startOpacityAliases = new string[] { "start", "startOp" };
+        private readonly string[] startOpacityAliases = new string[] { "start", "startop" };
         private readonly string[] anchorAliases = new string[] { "anc" };
         private readonly string[] durationAliases = new string[] { "dur", "d" };
         private readonly string[] curveAliases = new string[] { "crv" };
@@ -96,6 +149,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             public AnimationCurve curve;
             public float duration;
             public Vector2 anchor;
+            public Vector2 direction;
             public float afterFadeInWaitDuration;
 
             public int lastT;

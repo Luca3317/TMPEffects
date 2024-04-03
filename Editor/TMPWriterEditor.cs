@@ -27,6 +27,7 @@ namespace TMPEffects.Editor
         bool wasWriting;
         bool useDefaultDatabase;
         bool wasEnabled;
+        Coroutine hideCoroutine;
         TMPCommandDatabase defaultDatabase;
 
         // Serialized properties
@@ -166,8 +167,19 @@ namespace TMPEffects.Editor
             wasWriting = false;
             wasEnabled = writer.enabled;
 
+            writer.OnResetWriterPreview -= CancelHideAfterFinish;
+            writer.OnResetWriterPreview += CancelHideAfterFinish;
+            writer.OnCharacterShownPreview -= CancelHideAfterFinish;
+            writer.OnCharacterShownPreview += CancelHideAfterFinish;
+            writer.OnSkipWriterPreview -= CancelHideAfterFinish;
+            writer.OnSkipWriterPreview += CancelHideAfterFinish;
+            writer.OnStartWriterPreview -= CancelHideAfterFinish;
+            writer.OnStartWriterPreview += CancelHideAfterFinish;
+            writer.OnStopWriterPreview -= CancelHideAfterFinish;
+            writer.OnStopWriterPreview += CancelHideAfterFinish;
+
             writer.OnResetWriterPreview -= UpdateProgress;
-            writer.OnResetWriterPreview += UpdateProgress; 
+            writer.OnResetWriterPreview += UpdateProgress;
             writer.OnCharacterShownPreview -= UpdateProgress;
             writer.OnCharacterShownPreview += UpdateProgress;
             writer.OnFinishWriterPreview -= UpdateProgressFinish;
@@ -178,7 +190,7 @@ namespace TMPEffects.Editor
             writer.OnCharacterShown.AddListener(UpdateProgress);
             writer.OnResetWriter.RemoveListener(UpdateProgress);
             writer.OnResetWriter.AddListener(UpdateProgress);
-            writer.OnFinishWriter.RemoveListener(UpdateProgressFinish); 
+            writer.OnFinishWriter.RemoveListener(UpdateProgressFinish);
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
@@ -213,7 +225,18 @@ namespace TMPEffects.Editor
 
         private void StartHideAfterFinish()
         {
-            writer.StartCoroutine(HideAfterFinish());
+            hideCoroutine = writer.StartCoroutine(HideAfterFinish());
+        }
+
+        private void CancelHideAfterFinish(CharData cdata) => CancelHideAfterFinish();
+        private void CancelHideAfterFinish(int index) => CancelHideAfterFinish();
+        private void CancelHideAfterFinish()
+        {
+            if (hideCoroutine != null)
+            {
+                writer.StopCoroutine(hideCoroutine);
+                hideCoroutine = null;
+            }
         }
 
         IEnumerator HideAfterFinish()
@@ -223,11 +246,11 @@ namespace TMPEffects.Editor
             {
                 yield return null;
                 passed += Time.deltaTime;
+
                 EditorApplication.QueuePlayerLoopUpdate();
             }
 
             yield return null;
-
             writer.HideAll();
         }
 

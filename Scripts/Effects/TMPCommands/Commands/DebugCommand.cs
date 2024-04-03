@@ -9,7 +9,7 @@ namespace TMPEffects.TMPCommands.Commands
         public override TagType TagType => TagType.Empty;
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
-        public override bool ExecuteRepeatable => false;
+        public override bool ExecuteRepeatable => true;
 #if UNITY_EDITOR
         public override bool ExecuteInPreview => true;
 #endif
@@ -30,6 +30,10 @@ namespace TMPEffects.TMPCommands.Commands
                         case "log":
                         default: Debug.Log(args.tag.Parameters[""]); break;
                     }
+                }
+                else
+                {
+                    Debug.Log(args.tag.Parameters[""]);
                 }
             }
         }

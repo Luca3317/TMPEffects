@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPro.TMP_Compatibility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -58,7 +57,7 @@ namespace TMPEffects.TMPAnimations.Animations
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    float eval = Mathf.Lerp(minOpacity, maxOpacity, t);
+                    float eval = Mathf.Lerp(d.minOpacity, d.maxOpacity, t);
 
                     Color32 c;
                     c = cData.mesh.initial.GetColor(i);
@@ -85,7 +84,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 float currDist = (vec.magnitude / dist);
 
-                float eval = Mathf.Lerp(minOpacity, maxOpacity, t * (2 - currDist));
+                float eval = Mathf.Lerp(d.minOpacity, d.maxOpacity, t * (2 - currDist));
 
                 Color32 c;
                 c = cData.mesh.initial.GetColor(i);
@@ -104,7 +103,7 @@ namespace TMPEffects.TMPAnimations.Animations
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    float eval = Mathf.Lerp(minOpacity, maxOpacity, t);
+                    float eval = Mathf.Lerp(d.minOpacity, d.maxOpacity, t);
 
                     Color32 c;
                     c = cData.mesh.initial.GetColor(i);
@@ -131,7 +130,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 float currDist = (vec.magnitude / dist);
 
-                float eval = Mathf.Lerp(minOpacity, maxOpacity, t * (2 - currDist));
+                float eval = Mathf.Lerp(d.minOpacity, d.maxOpacity, t * (2 - currDist));
 
                 Color32 c;
                 c = cData.mesh.initial.GetColor(i);
@@ -160,12 +159,12 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Data d = (Data)customData;
             if (TryGetFloatParameter(out var f, parameters, "maxopacity", maxOpAliases)) d.maxOpacity = f;
-            if (TryGetVector2Parameter(out var v2, parameters, "fadeInAnchor", fadeInAnchorAliases)) d.fadeInAnchor = v2;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeInDirection", "fadeInDir", "fiDir")) d.fadeInDirection = v2;
+            if (TryGetVector2Parameter(out var v2, parameters, "fadeinanchor", fadeInAnchorAliases)) d.fadeInAnchor = v2;
+            if (TryGetVector2Parameter(out v2, parameters, "fadeindirection", "fadeindir", "fidir")) d.fadeInDirection = v2;
 
-            if (TryGetFloatParameter(out f, parameters, "minOpacity", minOpAliases)) d.minOpacity = f;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeOutAnchor", fadeOutAnchorAliases)) d.fadeOutAnchor = v2;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeOutDirection", "fadeOutDir", "foDir")) d.fadeOutDirection = v2;
+            if (TryGetFloatParameter(out f, parameters, "minopacity", minOpAliases)) d.minOpacity = f;
+            if (TryGetVector2Parameter(out v2, parameters, "fadeoutanchor", fadeOutAnchorAliases)) d.fadeOutAnchor = v2;
+            if (TryGetVector2Parameter(out v2, parameters, "fadeoutdirection", "fadeoutdir", "fodir")) d.fadeOutDirection = v2;
 
             if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
 
@@ -176,7 +175,7 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             if (parameters == null) return true;
 
-            if (HasNonFloatParameter(parameters, "maxOpacity", maxOpAliases)) return false;
+            if (HasNonFloatParameter(parameters, "maxopacity", maxOpAliases)) return false;
             if (HasNonVector2Parameter(parameters, "fadeinanchor", fadeInAnchorAliases)) return false;
             if (HasNonVector2Parameter(parameters, "fadeindirection", "fadeindir", "fidir", "fid")) return false;
 
