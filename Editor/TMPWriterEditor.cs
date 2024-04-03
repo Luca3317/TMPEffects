@@ -177,6 +177,8 @@ namespace TMPEffects.Editor
             writer.OnStartWriterPreview += CancelHideAfterFinish;
             writer.OnStopWriterPreview -= CancelHideAfterFinish;
             writer.OnStopWriterPreview += CancelHideAfterFinish;
+            writer.OnFinishWriterPreview -= StartHideAfterFinish;
+            writer.OnFinishWriterPreview += StartHideAfterFinish;
 
             writer.OnResetWriterPreview -= UpdateProgress;
             writer.OnResetWriterPreview += UpdateProgress;
@@ -184,8 +186,6 @@ namespace TMPEffects.Editor
             writer.OnCharacterShownPreview += UpdateProgress;
             writer.OnFinishWriterPreview -= UpdateProgressFinish;
             writer.OnFinishWriterPreview += UpdateProgressFinish;
-            writer.OnFinishWriterPreview -= StartHideAfterFinish;
-            writer.OnFinishWriterPreview += StartHideAfterFinish;
             writer.OnCharacterShown.RemoveListener(UpdateProgress);
             writer.OnCharacterShown.AddListener(UpdateProgress);
             writer.OnResetWriter.RemoveListener(UpdateProgress);
@@ -225,6 +225,7 @@ namespace TMPEffects.Editor
 
         private void StartHideAfterFinish()
         {
+            //CancelHideAfterFinish();
             hideCoroutine = writer.StartCoroutine(HideAfterFinish());
         }
 

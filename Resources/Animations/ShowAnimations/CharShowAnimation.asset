@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1
   characters: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-  probability: 0.25
-  minDelay: 0.5
-  maxDelay: 0.5
+  probability: 0.95
+  minWait: 0.1
+  minDelay: 0.1
   autoCase: 1
-  delayCurve:
+  waitCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -47,20 +47,20 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
+      value: 1
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2

@@ -10,9 +10,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Show Animations/Grow")]
     public class GrowShowAnimation : TMPShowAnimation
     {
+        [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]
         [SerializeField] float duration = 0.15f;
-        [SerializeField] Vector3 startScale = Vector3.one * 2;
+        [Tooltip("The curve used for getting the t-value to interpolate between the scales.\nAliases: curve, crv, c")]
         [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseOutSine();
+        [Tooltip("The scale to start growing to the initial scale from.\nAliases: startscale, startscl, start")]
+        [SerializeField] Vector3 startScale = Vector3.one * 2;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -33,7 +36,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             Data d = customData as Data;
             if (TryGetFloatParameter(out float duration, parameters, "duration", "dur", "d")) d.duration = duration;
             if (TryGetAnimCurveParameter(out AnimationCurve curve, parameters, "curve", "crv", "c")) d.curve = curve;
-            if (TryGetVector3Parameter(out Vector3 v3, parameters, "startScale", "scale", "start")) d.startScale = v3;
+            if (TryGetVector3Parameter(out Vector3 v3, parameters, "startscale", "startscl", "start")) d.startScale = v3;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -41,7 +44,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return true;
             if (HasNonFloatParameter(parameters, "duration", "d", "dur")) return false;
             if (HasNonAnimCurveParameter(parameters, "curve", "c", "crv")) return false;
-            if (HasNonVector3Parameter(parameters, "startScale", "scale", "start")) return false;
+            if (HasNonVector3Parameter(parameters, "startscale", "startscl", "start")) return false;
             return true;
         }
 

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de76f2aed86166440bd86a742de2ca85, type: 3}
   m_Name: GrowHideAnimation
   m_EditorClassIdentifier: 
-  duration: 1
-  targetScale: {x: 2, y: 2, z: 2}
+  duration: 0.25
   curve:
     serializedVersion: 2
     m_Curve:
@@ -47,3 +46,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  targetScale: {x: 2, y: 2, z: 2}

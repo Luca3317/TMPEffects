@@ -17,9 +17,9 @@ MonoBehaviour:
   minXAmplitude: 5
   maxYAmplitude: 5
   minYAmplitude: 5
-  minDelay: 0.1
-  maxDelay: 0.1
-  delayCurve:
+  minWait: 0.1
+  maxWait: 0.1
+  waitCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3

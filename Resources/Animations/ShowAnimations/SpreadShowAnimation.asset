@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: SpreadShowAnimation
   m_EditorClassIdentifier: 
   duration: 1
-  anchor: {x: 0, y: -1, z: 0}
-  direction: {x: 0, y: 1, z: 0}
-  startPercentage: 0
-  targetPercentage: 1
   curve:
     serializedVersion: 2
     m_Curve:
@@ -68,3 +64,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anchor:
+    vector: {x: 0, y: -1}
+    type: 2
+  direction: {x: 0, y: 1, z: 0}
+  startPercentage: 0
+  targetPercentage: 1

@@ -17,25 +17,25 @@ MonoBehaviour:
   minXAmplitude: 5
   maxYAmplitude: 5
   minYAmplitude: 5
-  minDelay: 0.1
-  maxDelay: 0.1
-  delayCurve:
+  minWait: 0.1
+  maxWait: 0.1
+  waitCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -0
-      outSlope: -0
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -0
-      outSlope: -0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
@@ -48,18 +48,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 1
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -0
+      outSlope: -0
       tangentMode: 0
       weightedMode: 3
       inWeight: 0

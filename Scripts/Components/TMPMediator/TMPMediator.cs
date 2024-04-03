@@ -224,6 +224,7 @@ namespace TMPEffects.Components.Mediator
 
         private void TextChangedProcedure()
         {
+            Debug.Log("Text changed!!");
             Processor.AdjustIndices();
             PopulateCharData();
 

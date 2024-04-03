@@ -10,37 +10,68 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new SpreadHideAnimation", menuName = "TMPEffects/Hide Animations/Spread")]
     public class SpreadHideAnimation : TMPHideAnimation
     {
-        [SerializeField] float duration = 0.25f;
-        [SerializeField] Vector3 anchor = new Vector3(0, -1, 0);
+        [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]
+        [SerializeField] float duration = 1;
+        [Tooltip("The curve used for getting the t-value to interpolate between the percentages.\nAliases: curve, crv, c")]
+        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseOutElastic();
+        [Tooltip("The anchor from where the character spreads.\nAliases: anchor, anc, a")]
+        [SerializeField] TypedVector2 anchor = new TypedVector2(VectorType.Anchor, Vector2.zero);
+        [Tooltip("The direction in which the character spreads.\nAliases: direction, dir, d")]
         [SerializeField] Vector3 direction = Vector3.up;
+        [Tooltip("The start percentage of the spread, 0 being fully hidden.\nAliases: startpercentage, start")]
         [SerializeField] float startPercentage = 1;
+        [Tooltip("The target percentage of the spread, 1 being fully shown.\nAliases: targetpercentage, target")]
         [SerializeField] float targetPercentage = 0;
-        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseOutBack();
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
             float t = Mathf.Lerp(d.startPercentage, d.targetPercentage, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
-            float t2 = d.curve.Evaluate(t);
+            float t2 = d.curve.Evaluate(1 - t);
 
             float l = Mathf.Lerp(0f, 1f, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
             if (l == 1)
                 context.FinishAnimation(cData);
 
-            Vector3 actualDir = new Vector3(d.direction.y, d.direction.x, 0f);
+            Grow(cData, context, d, t2);
+        }
 
-            Vector3 lineStart = AnchorToPosition(d.anchor - actualDir * 2, cData);
-            Vector3 lineEnd = AnchorToPosition(d.anchor + actualDir * 2, cData);
+        private void Grow(CharData cData, IAnimationContext context, Data d, float t)
+        {
+            float percentage = Mathf.LerpUnclamped(d.startPercentage, d.targetPercentage, t);
+
+            Vector2 actualDir = new Vector2(-d.direction.y, d.direction.x);
+
+            Vector3 lineStart, lineEnd;
+
+            switch (d.anchor.type)
+            {
+                case VectorType.Offset:
+                    lineStart = cData.info.initialPosition + (Vector3)(d.anchor.vector - actualDir * 2);
+                    lineEnd = cData.info.initialPosition + (Vector3)(d.anchor.vector + actualDir * 2);
+                    break;
+                case VectorType.Anchor:
+                    lineStart = AnchorToPosition(d.anchor.vector - actualDir * 2, cData);
+                    lineEnd = AnchorToPosition(d.anchor.vector + actualDir * 2, cData);
+                    break;
+                case VectorType.Position:
+                    lineStart = d.anchor.vector - actualDir * 2;
+                    lineEnd = d.anchor.vector + actualDir * 2;
+                    break;
+
+                default: throw new System.NotImplementedException(nameof(anchor.type));
+            }
 
             for (int i = 0; i < 4; i++)
             {
                 Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), t2);
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
                 SetVertexRaw(i, pos, cData, ref context);
             }
         }
+
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
@@ -48,10 +79,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             Data d = customData as Data;
             if (TryGetFloatParameter(out float f, parameters, "duration", "dur", "d")) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "startPercentage", "start", "st")) d.startPercentage = f;
-            if (TryGetFloatParameter(out f, parameters, "targetPercentage", "target", "tg")) d.targetPercentage = f;
-            if (TryGetVector3Parameter(out Vector3 v, parameters, "direction", "dir")) d.direction = v;
-            if (TryGetVector3Parameter(out v, parameters, "anchor", "anc") || TryGetAnchorParameter(out v, parameters, "anchor", "anc")) d.anchor = v;
+            if (TryGetFloatParameter(out f, parameters, "startpercentage", "start")) d.startPercentage = f;
+            if (TryGetFloatParameter(out f, parameters, "targetpercentage", "target")) d.targetPercentage = f;
+            if (TryGetVector3Parameter(out Vector3 v, parameters, "direction", "dir", "d")) d.direction = v;
+            if (TryGetTypedVector2Parameter(out var tv2, parameters, "anchor", "anc", "a")) d.anchor = tv2;
             if (TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "curve", "crv", "c")) d.curve = crv;
         }
 
@@ -60,10 +91,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return true;
 
             if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
-            if (HasNonFloatParameter(parameters, "startPercentage", "start", "st")) return false;
-            if (HasNonFloatParameter(parameters, "targetPercentage", "target", "tg")) return false;
-            if (HasNonVector3Parameter(parameters, "anchor", "anc") && HasNonAnchorParameter(parameters, "anchor", "anc")) return false;
-            if (HasNonVector3Parameter(parameters, "direction", "dir")) return false;
+            if (HasNonFloatParameter(parameters, "startpercentage", "start")) return false;
+            if (HasNonFloatParameter(parameters, "targetpercentage", "target")) return false;
+            if (HasNonVector3Parameter(parameters, "direction", "dir", "d")) return false;
+            if (HasNonTypedVector2Parameter(parameters, "anchor", "anc", "a")) return false;
             if (HasNonAnimCurveParameter(parameters, "curve", "crv", "c")) return false;
             return true;
         }
@@ -84,7 +115,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         private class Data
         {
             public float duration;
-            public Vector3 anchor;
+            public TypedVector2 anchor;
             public Vector3 direction;
             public float startPercentage;
             public float targetPercentage;

@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: MoveInShowAnimation
   m_EditorClassIdentifier: 
   duration: 1
-  startPosition: {x: 10, y: 10, z: 0}
-  startIsDelta: 1
   curve:
     serializedVersion: 2
     m_Curve:
@@ -66,3 +64,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  startPosition:
+    vector: {x: 50, y: 50, z: 50}
+    type: 1

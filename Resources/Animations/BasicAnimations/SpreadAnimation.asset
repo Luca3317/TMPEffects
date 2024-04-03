@@ -24,19 +24,46 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 3.000003
+        outSlope: 12.519564
         tangentMode: 0
         weightedMode: 3
         inWeight: 0
-        outWeight: 0.333333
+        outWeight: 0.5916667
       - serializedVersion: 3
-        time: 1
+        time: 0.225
         value: 1
-        inSlope: 0
+        inSlope: -4.402922
+        outSlope: -3.2624085
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.59166664
+        outWeight: 0.3916667
+      - serializedVersion: 3
+        time: 0.525
+        value: 1
+        inSlope: -0.55036545
+        outSlope: -0.40816337
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.8666667
+        outWeight: 0.40833333
+      - serializedVersion: 3
+        time: 0.825
+        value: 1
+        inSlope: -0.06879558
         outSlope: 0
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.33333302
+        inWeight: 0.8916666
+        outWeight: 0.008331367
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.014328615
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 1
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -72,10 +99,10 @@ MonoBehaviour:
   growAnchor:
     vector: {x: 0, y: 0, z: 0}
     type: 2
-  growDirection: {x: 1, y: 0, z: 0}
+  growDirection: {x: 0, y: 1, z: 0}
   shrinkAnchor:
     vector: {x: 0, y: 0, z: 0}
     type: 2
-  shrinkDirection: {x: 1, y: 0, z: 0}
+  shrinkDirection: {x: 0, y: 0, z: 0}
   maxPercentage: 1
   minPercentage: 0

@@ -27,7 +27,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [Tooltip("The minimum opacity that is reached.\nAliases: minopacity, minop, min")]
         [SerializeField] float minOpacity = 0;
         [Tooltip("The anchor used for fading out.\nAliases: fadeoutanchor, foanchor, foanc, foa")]
-        [SerializeField] Vector3Int fadeOutAnchor = Vector3Int.zero;
+        [SerializeField] Vector3 fadeOutAnchor = Vector3Int.zero;
         [Tooltip("The direction to fade out in.\nAliases: fadeoutdirection, fodirection, fodir, fod")]
         [SerializeField] Vector3 fadeOutDirection = Vector3.up;
 
@@ -159,11 +159,11 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Data d = (Data)customData;
             if (TryGetFloatParameter(out var f, parameters, "maxopacity", maxOpAliases)) d.maxOpacity = f;
-            if (TryGetVector2Parameter(out var v2, parameters, "fadeinanchor", fadeInAnchorAliases)) d.fadeInAnchor = v2;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeindirection", "fadeindir", "fidir")) d.fadeInDirection = v2;
+            if (TryGetTypedVector2Parameter(out var tv2, parameters, "fadeinanchor", fadeInAnchorAliases)) d.fadeInAnchor = tv2.vector;
+            if (TryGetVector2Parameter(out var v2, parameters, "fadeindirection", "fadeindir", "fidir")) d.fadeInDirection = v2;
 
             if (TryGetFloatParameter(out f, parameters, "minopacity", minOpAliases)) d.minOpacity = f;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeoutanchor", fadeOutAnchorAliases)) d.fadeOutAnchor = v2;
+            if (TryGetTypedVector2Parameter(out tv2, parameters, "fadeoutanchor", fadeOutAnchorAliases)) d.fadeOutAnchor = tv2.vector;
             if (TryGetVector2Parameter(out v2, parameters, "fadeoutdirection", "fadeoutdir", "fodir")) d.fadeOutDirection = v2;
 
             if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
@@ -176,11 +176,11 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return true;
 
             if (HasNonFloatParameter(parameters, "maxopacity", maxOpAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeinanchor", fadeInAnchorAliases)) return false;
+            if (HasNonTypedVector2Parameter(parameters, "fadeinanchor", fadeInAnchorAliases) || HasVector2OffsetParameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
             if (HasNonVector2Parameter(parameters, "fadeindirection", "fadeindir", "fidir", "fid")) return false;
 
             if (HasNonFloatParameter(parameters, "minopacity", minOpAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
+            if (HasNonTypedVector2Parameter(parameters, "fadeoutanchor", fadeOutAnchorAliases) || HasVector2OffsetParameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
             if (HasNonVector2Parameter(parameters, "fadeoutdirection", "fadeoutdir", "fodir", "fod")) return false;
 
             if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;

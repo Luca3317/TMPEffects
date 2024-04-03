@@ -44,7 +44,10 @@ namespace TMPEffects.Tags.Collections
             if (collections.ContainsKey(key)) throw new System.ArgumentException(nameof(key));
             if (prefixToKey.ContainsKey(key.Prefix)) throw new System.ArgumentException(nameof(key.Prefix));
 
+            // TODO IMPORTANT
+
             ObservableTagCollection collection = new NonAdjustingTagCollection();
+            //ObservableTagCollection collection = new NonAdjustingTagCollection(key);
 
             collection.CollectionChanged += OnCollectionChanged;
             prefixToKey.Add(key.Prefix, key);
@@ -348,6 +351,11 @@ namespace TMPEffects.Tags.Collections
         // => Implement NotifyCollectionChanged more robustly and raise replace / move events
         private class NonAdjustingTagCollection : ObservableTagCollection
         {
+            public NonAdjustingTagCollection(ITMPTagValidator validator = null) : base(validator)
+            { 
+                //if (validator == null) throw new System.ArgumentNullException(nameof(validator)); 
+            }
+
             internal bool SetOrder(EffectTag tag, EffectTagIndices indices, int newOrder)
             {
                 int index;

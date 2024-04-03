@@ -508,7 +508,7 @@ namespace TMPEffects.Components
             isAnimating = false;
 
             VisibilityState visibility;
-            for (int i = 0; i < Mediator.CharData.Count; i++)
+            for (int i = 0; i < Mediator?.CharData.Count; i++)
             {
                 visibility = Mediator.VisibilityStates[i];
 
@@ -1663,6 +1663,11 @@ namespace TMPEffects.Components
         #region Utility
         private void ResetAllVisible()
         {
+            if (Mediator == null)
+            {
+                Debug.LogWarning("Early return in resetallvisible");
+                return;
+            }
             var info = Mediator.Text.textInfo;
 
             Vector3[] verts;

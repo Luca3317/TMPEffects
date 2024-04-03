@@ -12,17 +12,23 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new CharShowAnimation", menuName = "TMPEffects/Show Animations/Char")]
     public class CharShowAnimation : TMPShowAnimation
     {
+        [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]
         [SerializeField] float duration = 1f;
 
+        [Tooltip("The pool of characters to change to.\nAliases: characters, chars, char, c")]
         [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        [Tooltip("The probability to change to a character different from the original.\nAliases: probability, prob, p")]
         [SerializeField] float probability = 0.95f;
-
-        [SerializeField] float minDelay = 0.01f;
-        [SerializeField] float maxDelay = 0.05f;
-
+        [Tooltip("The minimum amount of time to wait once a character changed (or did not change).\nAliases: minwait, minw, min")]
+        [SerializeField] float minWait = 0.1f;
+        [Tooltip("The maximum amount of time to wait once a character changed (or did not change).\nAliases: maxwait, maxw, max")]
+        [SerializeField] float minDelay = 0.1f;
+        [Tooltip("Whether to ensure capitalized characters are only changed to other capitalized characters, and vice versa.\nautocase, case")]
         [SerializeField] bool autoCase = true;
 
-        [SerializeField] AnimationCurve delayCurve = AnimationCurveUtility.Linear();
+        [Tooltip("The curve that defines the falloff of the wait between each change.\nAliases: waitcurve, waitcrv, waitc")]
+        [SerializeField] AnimationCurve waitCurve = AnimationCurveUtility.Linear();
+        [Tooltip("The curve that defines the falloff of the probability of changing to a character other than the original.\nAliases: probabilitycurve, probabilitycrv, probabilityc, probcurve, probcrv, probc")]
         [SerializeField] AnimationCurve probabilityCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
 
         public override void Animate(CharData cData, IAnimationContext context)
@@ -72,12 +78,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
             {
                 // If time for another
-                if (remaining >= d.minDelay * delayMult)
+                if (remaining >= d.minWait * delayMult)
                 {
-                    bool original = d.rngDict[segmentIndex].NextDouble() > d.probability;
+                    bool original = d.rngDict[segmentIndex].NextDouble() * probMult > d.probability;
 
                     // Set delay
-                    float delay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
+                    float delay = d.maxWait == d.minWait ? d.maxWait : Mathf.Lerp(d.minWait, d.maxWait, (float)d.rngDict[segmentIndex].NextDouble());
                     delay *= delayMult;
                     delay = Mathf.Clamp(delay, d.delayDict[segmentIndex], remaining);
                     d.delayDict[segmentIndex] = delay;
@@ -210,12 +216,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (TryGetFloatParameter(out float f, parameters, "probability", "prob", "p")) d.probability = f;
             if (TryGetFloatParameter(out f, parameters, "duration", "dur", "d")) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "minDelay", "minD")) d.minDelay = f;
-            if (TryGetFloatParameter(out f, parameters, "maxDelay", "maxD")) d.maxDelay = f;
+            if (TryGetFloatParameter(out f, parameters, "minwait", "minw", "min")) d.minWait = f;
+            if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw", "max")) d.maxWait = f;
             if (TryGetDefinedParameter(out string s, parameters, "characters", "char", "c")) d.characters = parameters[s];
-            if (TryGetBoolParameter(out bool b, parameters, "autoCase", "case")) d.autoCase = b;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "delayCurve", "delayCrv", "delayC")) d.delayCurve = crv;
-            if (TryGetAnimCurveParameter(out crv, parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) d.probCurve = crv;
+            if (TryGetBoolParameter(out bool b, parameters, "autocase", "case")) d.autoCase = b;
+            if (TryGetAnimCurveParameter(out var crv, parameters, "waitcurve", "waitcrv", "waitc")) d.delayCurve = crv;
+            if (TryGetAnimCurveParameter(out crv, parameters, "probabilitycurve", "probabilitycrv", "probabilityc", "probcurve", "probcrv", "probc")) d.probCurve = crv;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -224,11 +230,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (HasNonFloatParameter(parameters, "probability", "prob", "p")) return false;
             if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
-            if (HasNonFloatParameter(parameters, "minDelay", "minDelay")) return false;
-            if (HasNonFloatParameter(parameters, "maxDelay", "maxDelay")) return false;
-            if (HasNonBoolParameter(parameters, "autoCase", "case")) return false;
-            if (HasNonAnimCurveParameter(parameters, "delayCurve", "delayCrv", "delayC")) return false;
-            if (HasNonAnimCurveParameter(parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) return false;
+            if (HasNonFloatParameter(parameters, "minwait", "minw", "min")) return false;
+            if (HasNonFloatParameter(parameters, "maxwait", "maxw", "max")) return false;
+            if (HasNonBoolParameter(parameters, "autocase", "case")) return false;
+            if (HasNonAnimCurveParameter(parameters, "waitcurve", "waitcrv", "waitc")) return false;
+            if (HasNonAnimCurveParameter(parameters, "probabilitycurve", "probabilitycrv", "probabilityc", "probcurve", "probcrv", "probc")) return false;
             return true;
         }
 
@@ -240,11 +246,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 duration = this.duration,
                 characters = this.characters,
                 probability = this.probability,
-                minDelay = this.minDelay,
-                maxDelay = this.maxDelay,
+                minWait = this.minWait,
+                maxWait = this.minDelay,
                 autoCase = this.autoCase,
 
-                delayCurve = this.delayCurve,
+                delayCurve = this.waitCurve,
                 probCurve = this.probabilityCurve,
 
                 lastUpdatedDict = null,
@@ -260,8 +266,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             public float duration;
             public string characters;
             public float probability;
-            public float minDelay;
-            public float maxDelay;
+            public float minWait;
+            public float maxWait;
             public bool autoCase;
 
             public AnimationCurve delayCurve;

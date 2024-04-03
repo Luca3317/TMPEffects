@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6878c283d3594e44f89db6b32c3a2781, type: 3}
   m_Name: GrowShowAnimation
   m_EditorClassIdentifier: 
-  duration: 1
-  startScale: {x: 2, y: 2, z: 2}
+  duration: 0.25
   curve:
     serializedVersion: 2
     m_Curve:
@@ -38,3 +37,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  startScale: {x: 2, y: 2, z: 2}

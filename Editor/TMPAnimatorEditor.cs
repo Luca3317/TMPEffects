@@ -78,6 +78,8 @@ namespace TMPEffects.Editor
 
             //wasEnabled = writer.enabled;
             defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
+            if (defaultDatabase == null) Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
+
             useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
 
             if (!serializedObject.FindProperty("initValidate").boolValue)
@@ -148,6 +150,9 @@ namespace TMPEffects.Editor
 
             if (useDefaultDatabase)
             {
+                if (prevUseDefaultDatabase != useDefaultDatabase && defaultDatabase == null)
+                    Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
+
                 if (databaseProp.objectReferenceValue != defaultDatabase)
                 {
                     databaseProp.objectReferenceValue = defaultDatabase;
@@ -234,7 +239,7 @@ namespace TMPEffects.Editor
                 GUI.Label(rect, new GUIContent(""));
             }
 
-            GUILayout.EndHorizontal(); 
+            GUILayout.EndHorizontal();
             if (EditorGUI.EndChangeCheck())
             {
                 serializedObject.ApplyModifiedProperties();

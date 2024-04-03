@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace TMPEffects.Tags
 {    
@@ -8,7 +9,7 @@ namespace TMPEffects.Tags
     /// A <see cref="TMPEffects"/> tag.<br/>
     /// Contains any data "inherent" to the given tag.
     /// </summary>
-    public sealed class EffectTag
+    public sealed class EffectTag : IEquatable<EffectTag>
     {
         /// <summary>
         /// The name of the tag.
@@ -35,6 +36,11 @@ namespace TMPEffects.Tags
                 this.parameters = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
             else
                 this.parameters = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>(parameters));
+        }
+
+        public bool Equals(EffectTag other)
+        {
+            return name == other.name && prefix == other.prefix && parameters.SequenceEqual(other.parameters); 
         }
     }
 }

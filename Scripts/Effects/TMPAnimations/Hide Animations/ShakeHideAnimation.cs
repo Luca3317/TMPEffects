@@ -4,27 +4,35 @@ using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPAnimations.HideAnimations
+namespace TMPEffects.TMPAnimations.ShowAnimations
 {
     [CreateAssetMenu(fileName = "new ShakeHideAnimation", menuName = "TMPEffects/Hide Animations/Shake")]
     public class ShakeHideAnimation : TMPHideAnimation
     {
+        [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]
         [SerializeField] float duration = 1f;
 
+        [Tooltip("The maximum X amplitude of each shake.\nAliases: maxxamplitude, maxxamp, maxxa, maxx")]
         [SerializeField] float maxXAmplitude = 5;
+        [Tooltip("The minimum X amplitude of each shake.\nAliases: minxamplitude, minxamp, minxa, minx")]
         [SerializeField] float minXAmplitude = 5;
+        [Tooltip("The maximum Y amplitude of each shake.\nAliases: maxyamplitude, maxyamp, maxya, maxy")]
         [SerializeField] float maxYAmplitude = 5;
+        [Tooltip("The minimum Y amplitude of each shake.\nAliases: minyamplitude, minyamp, minya, miny")]
         [SerializeField] float minYAmplitude = 5;
 
-        [SerializeField] float minDelay = 0.1f;
-        [SerializeField] float maxDelay = 0.1f;
+        [Tooltip("The minimum amount of time to wait after each shake.\nAliases: minwait, minw")]
+        [SerializeField] float minWait = 0.1f;
+        [Tooltip("The maximum amount of time to wait after each shake.\nAliases: maxwait, maxw")]
+        [SerializeField] float maxWait = 0.1f;
 
-        [SerializeField] AnimationCurve delayCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
-        [SerializeField] AnimationCurve amplitudeCurve = AnimationCurveUtility.Linear();
+        [Tooltip("The curve that defines the falloff of the wait between each shake.\nAliases: waitcurve, waitcrv, waitc")]
+        [SerializeField] AnimationCurve waitCurve = AnimationCurveUtility.Linear();
+        [Tooltip("The curve that defines the falloff of the amplitude of each shake.\nAliases: amplitudecurve, amplitudecrv, amplitudec, ampcurve, ampcrv, ampc")]
+        [SerializeField] AnimationCurve amplitudeCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-
             Data d = context.customData as Data;
 
             if (!d.init)
@@ -39,13 +47,13 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             float t = Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
 
-            float delayMult = d.delayCurve.Evaluate(t);
-            float ampMult = d.ampCurve.Evaluate(t);
+            float delayMult = d.waitCurve.Evaluate(1 - t);
+            float ampMult = d.ampCurve.Evaluate(1 - t);
 
             int segmentIndex = context.segmentData.SegmentIndexOf(cData);
             float remaining = d.duration - (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData));
 
-            if (t == 1 || remaining < d.minDelay)
+            if (t == 1)
             {
                 d.delayDict[segmentIndex] = 0f;
                 d.lastUpdatedDict[segmentIndex] = 0f;
@@ -56,14 +64,15 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             Vector3 offset;
 
-            if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex] && remaining >= d.minDelay * delayMult)
+
+            if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex] && remaining >= d.minWait * delayMult)
             {
                 float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
                 float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
 
-                float delay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
+                float delay = d.maxWait == d.minWait ? d.maxWait : Mathf.Lerp(d.minWait, d.maxWait, (float)d.rngDict[segmentIndex].NextDouble());
                 delay *= delayMult;
-                delay = Mathf.Clamp(delay, d.delayDict[segmentIndex], remaining);
+                delay = Mathf.Clamp(delay, 0f, remaining);
                 d.delayDict[segmentIndex] = delay;
 
                 d.lastUpdatedDict[segmentIndex] = context.animatorContext.PassedTime;
@@ -88,7 +97,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 d.rngDict.Add(i, new System.Random(seed + i));
             }
         }
-
+         
         private void InitLastUpdatedDict(IAnimationContext context)
         {
             Data d = context.customData as Data;
@@ -126,30 +135,30 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             if (parameters == null) return;
 
             Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "maxXAmplitude", "maxXAmp", "maxXA", "maxX")) d.maxXAmplitude = f;
+            if (TryGetFloatParameter(out float f, parameters, "maxxamplitude", "maxxamp", "maxxa", "maxx")) d.maxXAmplitude = f;
             if (TryGetFloatParameter(out f, parameters, "duration", "dur", "d")) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "maxYAmplitude", "maxYAmp", "maxYA", "maxY")) d.maxYAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "minXAmplitude", "minXAmp", "minXA", "minX")) d.minXAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "minYAmplitude", "minYAmp", "minYA", "minY")) d.minYAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "minDelay", "minD")) d.minDelay = f;
-            if (TryGetFloatParameter(out f, parameters, "maxDelay", "maxD")) d.maxDelay = f;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "delayCurve", "delayCrv", "delayC")) d.delayCurve = crv;
-            if (TryGetAnimCurveParameter(out crv, parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) d.ampCurve = crv;
+            if (TryGetFloatParameter(out f, parameters, "maxyamplitude", "maxyamp", "maxya", "maxy")) d.maxYAmplitude = f;
+            if (TryGetFloatParameter(out f, parameters, "minxamplitude", "minxamp", "minxa", "minx")) d.minXAmplitude = f;
+            if (TryGetFloatParameter(out f, parameters, "minyamplitude", "minyamp", "minya", "miny")) d.minYAmplitude = f;
+            if (TryGetFloatParameter(out f, parameters, "minwait", "minw")) d.minWait = f;
+            if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw")) d.maxWait = f;
+            if (TryGetAnimCurveParameter(out var crv, parameters, "waitcurve", "waitcrv", "waitc")) d.waitCurve = crv;
+            if (TryGetAnimCurveParameter(out crv, parameters, "amplitudecurve", "amplitudecrv", "amplitudec", "ampcurve", "ampcrv", "ampc")) d.ampCurve = crv;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
 
-            if (HasNonFloatParameter(parameters, "maxXAmplitude", "maxXAmp", "maxXA", "maxX")) return false;
+            if (HasNonFloatParameter(parameters, "maxxamplitude", "maxxamp", "maxxa", "maxx")) return false;
             if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
-            if (HasNonFloatParameter(parameters, "maxYAmplitude", "maxYAmp", "maxYA", "maxY")) return false;
-            if (HasNonFloatParameter(parameters, "minXAmplitude", "minXAmp", "minXA", "minX")) return false;
-            if (HasNonFloatParameter(parameters, "minYAmplitude", "minYAmp", "minYA", "minY")) return false;
-            if (HasNonFloatParameter(parameters, "minDelay", "minD")) return false;
-            if (HasNonFloatParameter(parameters, "maxDelay", "maxD")) return false;
-            if (HasNonAnimCurveParameter(parameters, "delayCurve", "delayCrv", "delayC")) return false;
-            if (HasNonAnimCurveParameter(parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) return false;
+            if (HasNonFloatParameter(parameters, "maxyamplitude", "maxyamp", "maxya", "maxy")) return false;
+            if (HasNonFloatParameter(parameters, "minxamplitude", "minxamp", "minxa", "minx")) return false;
+            if (HasNonFloatParameter(parameters, "minyamplitude", "minyamp", "minya", "miny")) return false;
+            if (HasNonFloatParameter(parameters, "minwait", "minw")) return false;
+            if (HasNonFloatParameter(parameters, "maxwait", "maxw")) return false;
+            if (HasNonAnimCurveParameter(parameters, "waitcurve", "waitcrv", "waitc")) return false;
+            if (HasNonAnimCurveParameter(parameters, "amplitudecurve", "amplitudecrv", "amplitudec", "ampcurve", "ampcrv", "ampc")) return false;
             return true;
         }
 
@@ -163,9 +172,9 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 minXAmplitude = this.minXAmplitude,
                 minYAmplitude = this.minYAmplitude,
                 maxYAmplitude = this.maxYAmplitude,
-                minDelay = this.minDelay,
-                maxDelay = this.maxDelay,
-                delayCurve = this.delayCurve,
+                minWait = this.minWait,
+                maxWait = this.maxWait,
+                waitCurve = this.waitCurve,
                 ampCurve = this.amplitudeCurve,
 
                 offsetDict = null,
@@ -184,9 +193,9 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             public float minXAmplitude;
             public float maxYAmplitude;
             public float minYAmplitude;
-            public float minDelay;
-            public float maxDelay;
-            public AnimationCurve delayCurve;
+            public float minWait;
+            public float maxWait;
+            public AnimationCurve waitCurve;
             public AnimationCurve ampCurve;
 
             public Dictionary<int, Vector2> offsetDict = null;

@@ -444,6 +444,12 @@ namespace TMPEffects.Tags.Collections
             cache.RemoveAt(cachedIndex);
 
             // Update max/min
+            if (cache.Count == 0)
+            {
+                max = int.MinValue;
+                min = int.MaxValue;
+                return;
+            }
             min = cache[0].Indices.StartIndex;
             if (tuple.Indices.EndIndex == max)
             {
@@ -495,6 +501,7 @@ namespace TMPEffects.Tags.Collections
 
                     for (int i = 0; i < e.NewItems.Count; i++)
                     {
+                        Debug.Log("Calling set for " + i);
                         tuple = (EffectTagTuple)e.NewItems[i];
                         Set(index + i, cacher.CacheTag(tuple.Tag, tuple.Indices));
                     }

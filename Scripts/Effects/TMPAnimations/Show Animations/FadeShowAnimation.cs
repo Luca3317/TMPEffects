@@ -11,11 +11,17 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
     public class FadeShowAnimation : TMPShowAnimation
     {
-        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
-        [SerializeField] float startOpacity = 0;
-        [SerializeField] Vector3 anchor = Vector3.zero;
-        [SerializeField] Vector3 direction = Vector3.up;
+        [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]
         [SerializeField] float duration = 1;
+        [Tooltip("The curve used for fading in.\nAliases: curve, crv, c")]
+        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
+
+        [Tooltip("The opacity that is faded in from.\nAliases: startopacity, startop, start")]
+        [SerializeField] float startOpacity = 0;
+        [Tooltip("The anchor that is faded in from.\nAliases: anchor, anc, a")]
+        [SerializeField] Vector3 anchor = Vector3.zero;
+        [Tooltip("The direction used for fading in.\nAliases: direction, dir")]
+        [SerializeField] Vector3 direction = Vector3.up;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -25,15 +31,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
             float t2 = d.curve.Evaluate(t);
 
-            float opacity = Mathf.LerpUnclamped(d.startOpacity, cData.info.color.a, t2);
-
-            for (int i = 0; i < 4; i++)
-            {
-                cData.mesh.SetAlpha(i, opacity);
-            }
-
             if (t == 1) context.FinishAnimation(cData);
-
 
             FadeIn(cData, context, d, t2);
         }
@@ -139,9 +137,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         }
 
         private readonly string[] startOpacityAliases = new string[] { "start", "startop" };
-        private readonly string[] anchorAliases = new string[] { "anc" };
+        private readonly string[] anchorAliases = new string[] { "anc", "a" };
         private readonly string[] durationAliases = new string[] { "dur", "d" };
-        private readonly string[] curveAliases = new string[] { "crv" };
+        private readonly string[] curveAliases = new string[] { "crv", "c" };
 
         private class Data
         {

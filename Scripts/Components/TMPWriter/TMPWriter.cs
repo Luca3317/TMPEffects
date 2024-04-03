@@ -19,6 +19,7 @@ using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Components.Animator;
+using TMPEffects.Tags;
 
 namespace TMPEffects.Components
 {
@@ -384,10 +385,9 @@ namespace TMPEffects.Components
 
             if (!writing)
             {
+                RaiseStartWriterEvent();
                 StartWriterCoroutine();
             }
-
-            RaiseStartWriterEvent();
         }
 
         /// <summary>
@@ -401,9 +401,9 @@ namespace TMPEffects.Components
             if (writing)
             {
                 StopWriterCoroutine();
+                RaiseStopWriterEvent();
             }
 
-            RaiseStopWriterEvent();
         }
 
         /// <summary>
@@ -1035,6 +1035,22 @@ namespace TMPEffects.Components
 
         private void PostProcessTags()
         {
+            //var oldTags = CommandTags;
+            //var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+            //if (oldTags.SequenceEqual(newTags))
+            //{
+            //    oldTags = EventTags;
+            //    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+            //    if (oldTags.SequenceEqual(newTags))
+            //    {
+            //        Debug.Log("Tags did NOT change; WONT reprocess!");
+            //        return;
+            //    }
+            //}
+            //Debug.Log("Tags DID change; WILL reprocess!");
+
             tags.Clear();
 
             foreach (var processor in processors.TagProcessors[commandCategory.Prefix])

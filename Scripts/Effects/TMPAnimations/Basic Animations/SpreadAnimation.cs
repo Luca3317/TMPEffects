@@ -54,7 +54,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
-            Vector3 actualDir = new Vector3(-d.growDirection.x, d.growDirection.y, 0f);
+            Vector3 actualDir = new Vector3(-d.growDirection.y, d.growDirection.x, 0f);
 
             Vector3 lineStart, lineEnd;
 
@@ -89,7 +89,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
-            Vector3 actualDir = new Vector3(-d.shrinkDirection.x, d.shrinkDirection.y, 0f);
+            Vector3 actualDir = new Vector3(-d.shrinkDirection.y, d.shrinkDirection.x, 0f);
 
             Vector3 lineStart, lineEnd;
 

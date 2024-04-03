@@ -18,17 +18,17 @@ public class TagManipulationTester : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1.0f;
-            }
-            else
-            {
-                Time.timeScale = 0.0f;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    if (Time.timeScale == 0)
+        //    {
+        //        Time.timeScale = 1.0f;
+        //    }
+        //    else
+        //    {
+        //        Time.timeScale = 0.0f;
+        //    }
+        //}
     }
 
     public void Submit()
@@ -66,21 +66,25 @@ public class TagManipulationTester : MonoBehaviour
         {
             if (order == null)
             {
-                if (!animator.Tags.TryAdd(new EffectTag(info.name, info.prefix, dict), new EffectTagIndices(start, end, 0)))
+                var t = new EffectTag(info.name, info.prefix, dict);
+                var ti = new EffectTagIndices(start, end, 0);
+                if (!animator.Tags.TryAdd(t, ti))
                 {
                     throw new System.ArgumentException("Failed to add");
                 }
                 else
-                    Debug.Log("Successfull!");
+                    Debug.Log("Successfully added tag! Name: " + t.Name + "; Start: " + ti.StartIndex + " Endindex: " + ti.EndIndex + " Order: " + ti.OrderAtIndex);
             }
             else
             {
-                if (!animator.Tags.TryAdd(new EffectTag(info.name, info.prefix, dict), new EffectTagIndices(start, end, order.Value)))
+                var t = new EffectTag(info.name, info.prefix, dict);
+                var ti = new EffectTagIndices(start, end, order.Value);
+                if (!animator.Tags.TryAdd(t, ti))
                 {
                     throw new System.ArgumentException("Failed to add");
                 }
                 else
-                    Debug.Log("Successfull!");
+                    Debug.Log("Successfully added tag! Name: " + t.Name + "; Start: " + ti.StartIndex + " Endindex: " + ti.EndIndex + " Order: " + ti.OrderAtIndex);
             }
 
         }
@@ -109,7 +113,7 @@ public class TagManipulationTester : MonoBehaviour
 
     public void PrintTags()
     {
-        ClearLog();
+        //ClearLog();
 
         foreach (var tag in animator.Tags)
         {
