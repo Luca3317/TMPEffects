@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.TextCore;
 using static TMPEffects.ParameterUtility;
 
@@ -12,10 +13,15 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new CharAnimation", menuName = "TMPEffects/Animations/Char")]
     public class CharAnimation : TMPAnimation
     {
+        [Tooltip("The pool of characters to change to.\nAliases: characters, chars, char, c")]
         [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        [Tooltip("The probability to change to a character different from the original.\nAliases: probability, prob, p")]
         [SerializeField] float probability = 0.15f;
+        [Tooltip("The minimum amount of time to wait once a character changed (or did not change).\nAliases: minwait, minw, min")]
         [SerializeField] float minWait = 0.5f;
+        [Tooltip("The maximum amount of time to wait once a character changed (or did not change).\nAliases: maxwait, maxw, max")]
         [SerializeField] float maxWait = 2.5f;
+        [Tooltip("Whether to ensure capitalized characters are only changed to other capitalized characters, and vice versa.\nautocase, case")]
         [SerializeField] bool autoCase = true;
 
         public override void Animate(CharData cData, IAnimationContext context)
@@ -61,14 +67,21 @@ namespace TMPEffects.TMPAnimations.Animations
                     cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
                     cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
 
+                    //if (rect.width != ogRect.width || rect.height != ogRect.height)
+                    //{
+                    //    Vector3 p = (cData.mesh.initial.vertex_BL.position + cData.mesh.initial.vertex_BR.position) / 2;
+                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width);
+                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width + Vector3.up * rect.height);
+                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width + Vector3.up * rect.height);
+                    //}
+
+
                     if (rect.width != ogRect.width || rect.height != ogRect.height)
                     {
                         float wProp = (float)rect.width / ogRect.width;
                         float hProp = (float)rect.height / ogRect.height;
-                        float height = cData.mesh.initial.GetVertex(1).y - cData.mesh.initial.GetVertex(0).y;
-                        height /= hProp;
                         cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition - Vector3.up * height / 4);
+                        cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
                     }
 
                     return;
@@ -116,11 +129,8 @@ namespace TMPEffects.TMPAnimations.Animations
                     {
                         float wProp = (float)rect.width / ogRect.width;
                         float hProp = (float)rect.height / ogRect.height;
-                        float height = cData.mesh.initial.GetVertex(1).y - cData.mesh.initial.GetVertex(0).y;
-                        height /= hProp;
-
                         cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition - Vector3.up * height / 4);
+                        cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
                     }
                 }
                 else
@@ -157,10 +167,10 @@ namespace TMPEffects.TMPAnimations.Animations
             Data d = (Data)customData;
 
             if (TryGetFloatParameter(out float f, parameters, "probability", "prob", "p")) d.probability = f;
-            if (TryGetFloatParameter(out f, parameters, "minWait", "minW")) d.minWait = f;
-            if (TryGetFloatParameter(out f, parameters, "maxWait", "maxW")) d.maxWait = f;
-            if (TryGetDefinedParameter(out string s, parameters, "characters", "char", "c")) d.characters = parameters[s];
-            if (TryGetBoolParameter(out bool b, parameters, "autoCase", "case")) d.autoCase = b;
+            if (TryGetFloatParameter(out f, parameters, "minwait", "minw", "min")) d.minWait = f;
+            if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw", "max")) d.maxWait = f;
+            if (TryGetDefinedParameter(out string s, parameters, "characters", "char", "chars", "c")) d.characters = parameters[s];
+            if (TryGetBoolParameter(out bool b, parameters, "autocase", "case")) d.autoCase = b;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -168,9 +178,9 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return true;
 
             if (HasNonFloatParameter(parameters, "probability", "prob", "p")) return false;
-            if (HasNonFloatParameter(parameters, "minWait", "minW")) return false;
-            if (HasNonFloatParameter(parameters, "maxWait", "maxW")) return false;
-            if (HasNonBoolParameter(parameters, "autoCase", "case")) return false;
+            if (HasNonFloatParameter(parameters, "minwait", "minw", "min")) return false;
+            if (HasNonFloatParameter(parameters, "maxwait", "maxw", "max")) return false;
+            if (HasNonBoolParameter(parameters, "autocase", "case")) return false;
             return true;
         }
 

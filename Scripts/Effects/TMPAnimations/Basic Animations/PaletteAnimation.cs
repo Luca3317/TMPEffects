@@ -11,9 +11,12 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new PaletteAnimation", menuName = "TMPEffects/Animations/Palette")]
     public class PaletteAnimation : TMPAnimation
     {
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         [SerializeField] Wave wave;
+        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         [SerializeField] WaveOffsetType waveOffset;
 
+        [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         [SerializeField] Color[] colors;
 
         public override void Animate(CharData cData, IAnimationContext context)

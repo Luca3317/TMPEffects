@@ -1143,12 +1143,10 @@ namespace TMPEffects.Components
             }
 
             if (vState != VisibilityState.Shown)
-            { Debug.LogWarning("This should be unreachable!"); }
+            { Debug.LogWarning("This should be unreachable! - BUG"); }
 
-            // TODO test if is excluded basic, are the show / hide anims still applied?
             if (IsExcludedBasic(cData.info.character))
             {
-                //Debug.LogWarning("This case should be impossible to reach - bug with index " + cData.info.index + " and visbility: "+ Mediator.VisibilityStates[index]);
                 return;
             }
 

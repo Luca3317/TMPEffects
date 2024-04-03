@@ -148,7 +148,7 @@ namespace TMPEffects.TextProcessing
             // Index now at first character of name
 
             // Try parsing the name; if it fails, return false
-            if (!TryParseTagName(text, index, ref name)/* || string.IsNullOrWhiteSpace(name)*/) return false;
+            if (!TryParseTagName(text, index, ref name) || (actualType == TagType.Open && string.IsNullOrWhiteSpace(name))) return false;
 
             string parameterString;
 

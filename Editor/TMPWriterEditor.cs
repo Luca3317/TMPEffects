@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
+using System.Collections;
 
 namespace TMPEffects.Editor
 {
@@ -169,10 +170,16 @@ namespace TMPEffects.Editor
             writer.OnResetWriterPreview += UpdateProgress; 
             writer.OnCharacterShownPreview -= UpdateProgress;
             writer.OnCharacterShownPreview += UpdateProgress;
+            writer.OnFinishWriterPreview -= UpdateProgressFinish;
+            writer.OnFinishWriterPreview += UpdateProgressFinish;
+            writer.OnFinishWriterPreview -= StartHideAfterFinish;
+            writer.OnFinishWriterPreview += StartHideAfterFinish;
             writer.OnCharacterShown.RemoveListener(UpdateProgress);
             writer.OnCharacterShown.AddListener(UpdateProgress);
             writer.OnResetWriter.RemoveListener(UpdateProgress);
             writer.OnResetWriter.AddListener(UpdateProgress);
+            writer.OnFinishWriter.RemoveListener(UpdateProgressFinish); 
+            writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
             useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
@@ -196,6 +203,32 @@ namespace TMPEffects.Editor
         {
             progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextComponent.textInfo.characterCount - 1));
             Repaint();
+        }
+
+        void UpdateProgressFinish()
+        {
+            progress = 1f;
+            Repaint();
+        }
+
+        private void StartHideAfterFinish()
+        {
+            writer.StartCoroutine(HideAfterFinish());
+        }
+
+        IEnumerator HideAfterFinish()
+        {
+            float passed = 0f;
+            while (passed < 1f)
+            {
+                yield return null;
+                passed += Time.deltaTime;
+                EditorApplication.QueuePlayerLoopUpdate();
+            }
+
+            yield return null;
+
+            writer.HideAll();
         }
 
         void PrepareLayout()
@@ -270,7 +303,6 @@ namespace TMPEffects.Editor
             }
 
             commandsEnabledProp.boolValue = EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, commandsEnabledProp.boolValue);
-
 
             // Draw Buttons
             if (writer.IsWriting || (wasWriting && clicked))

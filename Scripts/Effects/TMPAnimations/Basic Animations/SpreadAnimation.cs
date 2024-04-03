@@ -14,18 +14,25 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Spread")]
     public class SpreadAnimation : TMPAnimation
     {
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         [SerializeField] Wave wave;
+        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        [SerializeField] WaveOffsetType waveOffsetType;
 
-        [SerializeField] Vector3 growAnchor = new Vector3(0, -1, 0);
+        [Tooltip("The anchor used for growing.\nAliases: growanchor, growanc, ganc")]
+        [SerializeField] TypedVector3 growAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+        [Tooltip("The direction used for growing.\nAliases: growdirection, growdir, gdir")]
         [SerializeField] Vector3 growDirection = Vector3.up;
 
-        [SerializeField] Vector3 shrinkAnchor = new Vector3(0, -1, 0);
+        [Tooltip("The anchor used for shrinking.\nAliases: shrinkanchor, shrinkanc, sanc")]
+        [SerializeField] TypedVector3 shrinkAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+        [Tooltip("The direction used for shrinking.\nAliases: shrinkdirection, shrinkdir, sdir")]
         [SerializeField] Vector3 shrinkDirection = Vector3.up;
 
+        [Tooltip("The maximum percentage to spread to, at 1 being completely shown.\nAliases: maxpercentage, maxp, max")]
         [SerializeField] float maxPercentage = 1;
+        [Tooltip("The minimum percentage to unspread to, at 0 being completely hidden.\nAliases: minpercentage, minp, min")]
         [SerializeField] float minPercentage = 0;
-
-        [SerializeField] WaveOffsetType waveOffsetType;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -49,8 +56,25 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             Vector3 actualDir = new Vector3(-d.growDirection.x, d.growDirection.y, 0f);
 
-            Vector3 lineStart = AnchorToPosition(d.growAnchor - actualDir * 2, cData);
-            Vector3 lineEnd = AnchorToPosition(d.growAnchor + actualDir * 2, cData);
+            Vector3 lineStart, lineEnd;
+
+            switch (d.growAnchor.type)
+            {
+                case VectorType.Offset:
+                    lineStart = cData.info.initialPosition + (d.growAnchor.vector - actualDir * 2);
+                    lineEnd = cData.info.initialPosition + (d.growAnchor.vector + actualDir * 2);
+                    break;
+                case VectorType.Anchor:
+                    lineStart = AnchorToPosition(d.growAnchor.vector - actualDir * 2, cData);
+                    lineEnd = AnchorToPosition(d.growAnchor.vector + actualDir * 2, cData);
+                    break;
+                case VectorType.Position:
+                    lineStart = d.growAnchor.vector - actualDir * 2;
+                    lineEnd = d.growAnchor.vector + actualDir * 2;
+                    break;
+
+                default: throw new System.NotImplementedException(nameof(growAnchor.type));
+            }
 
             for (int i = 0; i < 4; i++)
             {
@@ -67,8 +91,25 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             Vector3 actualDir = new Vector3(-d.shrinkDirection.x, d.shrinkDirection.y, 0f);
 
-            Vector3 lineStart = AnchorToPosition(d.shrinkAnchor - actualDir * 2, cData);
-            Vector3 lineEnd = AnchorToPosition(d.shrinkAnchor + actualDir * 2, cData);
+            Vector3 lineStart, lineEnd;
+
+            switch (d.shrinkAnchor.type)
+            {
+                case VectorType.Offset:
+                    lineStart = cData.info.initialPosition + (d.shrinkAnchor.vector - actualDir * 2);
+                    lineEnd = cData.info.initialPosition + (d.shrinkAnchor.vector + actualDir * 2);
+                    break;
+                case VectorType.Anchor:
+                    lineStart = AnchorToPosition(d.shrinkAnchor.vector - actualDir * 2, cData);
+                    lineEnd = AnchorToPosition(d.shrinkAnchor.vector + actualDir * 2, cData);
+                    break;
+                case VectorType.Position:
+                    lineStart = d.shrinkAnchor.vector - actualDir * 2;
+                    lineEnd = d.shrinkAnchor.vector + actualDir * 2;
+                    break;
+
+                default: throw new System.NotImplementedException(nameof(shrinkAnchor.type));
+            }
 
             for (int i = 0; i < 4; i++)
             {
@@ -84,16 +125,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return;
 
             Data d = customData as Data;
-            if (TryGetVector3Parameter(out Vector3 v, parameters, "growDirection", "growDir", "gDir")) d.growDirection = v;
-            if (TryGetVector3Parameter(out v, parameters, "growAnchor", "growAnc", "gAnc") || TryGetAnchorParameter(out v, parameters, "growAnchor", "growAnc", "gAnc")) d.growAnchor = v;
+            if (TryGetVector3Parameter(out Vector3 v, parameters, "growDirection", "growdir", "gdir")) d.growDirection = v;
+            if (TryGetTypedVector3Parameter(out TypedVector3 tv, parameters, "growanchor", "growanc", "ganc")) d.growAnchor = tv;
 
-            if (TryGetVector3Parameter(out v, parameters, "shrinkDirection", "shrinkDir", "sDir")) d.shrinkDirection = v;
-            if (TryGetVector3Parameter(out v, parameters, "shrinkAnchor", "shrinkAnc", "sAnc") || TryGetAnchorParameter(out v, parameters, "shrinkAnchor", "shrinkAnc", "gAnc")) d.shrinkAnchor = v;
+            if (TryGetVector3Parameter(out v, parameters, "shrinkdirection", "shrinkdir", "sdir")) d.shrinkDirection = v;
+            if (TryGetTypedVector3Parameter(out tv, parameters, "shrinkanchor", "shrinkanc", "sanc")) d.shrinkAnchor = tv;
 
-            if (TryGetFloatParameter(out float f, parameters, "maxPercentage", "maxP")) d.maxPercentage = f;
-            if (TryGetFloatParameter(out f, parameters, "minPercentage", "minP")) d.minPercentage = f;
+            if (TryGetFloatParameter(out float f, parameters, "maxpercentage", "maxp", "max")) d.maxPercentage = f;
+            if (TryGetFloatParameter(out f, parameters, "minpercentage", "minp", "min")) d.minPercentage = f;
 
-            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", "woffset", "waveoff", "woff")) d.offsetType = offset;
+            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.offsetType = offset;
 
             d.Wave = CreateWave(wave, GetWaveParameters(parameters));
         }
@@ -103,16 +144,16 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (parameters == null) return true;
 
             if (!ValidateWaveParameters(parameters)) return false;
-            if (HasNonVector3Parameter(parameters, "growDirection", "growDir", "gDir")) return false;
-            if (HasNonVector3Parameter(parameters, "growAnchor", "growAnc", "gAnc") && HasNonAnchorParameter(parameters, "growAnchor", "growAnc", "gAnc")) return false;
+            if (HasNonVector3Parameter(parameters, "growdirection", "growdir", "gdir")) return false;
+            if (HasNonTypedVector3Parameter(parameters, "growanchor", "growanc", "ganc")) return false;
 
-            if (HasNonVector3Parameter(parameters, "shrinkDirection", "shrinkDir", "sDir")) return false;
-            if (HasNonVector3Parameter(parameters, "shrinkAnchor", "shrinkAnc", "sAnc") && HasNonAnchorParameter(parameters, "shrinkAnchor", "shrinkAnc", "gAnc")) return false;
+            if (HasNonVector3Parameter(parameters, "shrinkdirection", "shrinkdir", "sdir")) return false;
+            if (HasNonTypedVector3Parameter(parameters, "shrinkanchor", "shrinkanc", "sanc")) return false;
 
-            if (HasNonFloatParameter(parameters, "maxPercentage", "maxP")) return false;
-            if (HasNonFloatParameter(parameters, "minPercentage", "minP")) return false;
+            if (HasNonFloatParameter(parameters, "maxpercentage", "maxp", "max")) return false;
+            if (HasNonFloatParameter(parameters, "minpercentage", "minp", "min")) return false;
 
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", "woffset", "waveoff", "woff")) return false;
+            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
 
             return ValidateWaveParameters(parameters);
         }
@@ -141,11 +182,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             public WaveOffsetType offsetType;
 
-            public Vector3 growAnchor = new Vector3(0, -1, 0);
-            public Vector3 growDirection = Vector3.up;
+            public TypedVector3 growAnchor;
+            public Vector3 growDirection;
 
-            public Vector3 shrinkAnchor = new Vector3(0, -1, 0);
-            public Vector3 shrinkDirection = Vector3.up;
+            public TypedVector3 shrinkAnchor;
+            public Vector3 shrinkDirection;
 
             public float maxPercentage = 1;
             public float minPercentage = 1;

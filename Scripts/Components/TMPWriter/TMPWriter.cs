@@ -140,6 +140,19 @@ namespace TMPEffects.Components
             OnResetWriter?.Invoke(index);
         }
 
+        private void RaiseFinishWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnFinishWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnFinishWriter?.Invoke();
+        }
+
         /// <summary>
         /// The prefix used for command tags.
         /// </summary>
@@ -297,14 +310,16 @@ namespace TMPEffects.Components
 
         private void SubscribeToMediator()
         {
+            Mediator.CharDataPopulated += PostProcessTags;
             Mediator.TextChanged += OnTextChanged;
-            Mediator.Processor.FinishAdjustIndices += PostProcessTags;
+            //Mediator.Processor.FinishAdjustIndices += PostProcessTags;
         }
 
         private void UnsubscribeFromMediator()
         {
+            Mediator.CharDataPopulated -= PostProcessTags;
             Mediator.TextChanged -= OnTextChanged;
-            Mediator.Processor.FinishAdjustIndices -= PostProcessTags;
+            //Mediator.Processor.FinishAdjustIndices -= PostProcessTags;
         }
 
         private void OnDatabaseChanged()
@@ -434,7 +449,7 @@ namespace TMPEffects.Components
             if (skipTo == Mediator.CharData.Count)
             {
                 if (writing) StopWriterCoroutine();
-                RaiseEvent(OnFinishWriter);
+                RaiseFinishWriterEvent();
             }
         }
 
@@ -590,7 +605,6 @@ namespace TMPEffects.Components
             }
 
 
-
             CharData cData;
             for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? because coroutines are not instantly cancelled (so disable writer => NRE)
             {
@@ -626,7 +640,7 @@ namespace TMPEffects.Components
                 if (delay > 0) yield return new WaitForSeconds(delay);
             }
 
-            RaiseEvent(OnFinishWriter);
+            RaiseFinishWriterEvent();
             OnStopWriting();
         }
 
@@ -868,8 +882,10 @@ namespace TMPEffects.Components
 
         public delegate void CharDataHandler(CharData cData);
         public delegate void IntHandler(int index);
+        public delegate void VoidHandler();
         public event CharDataHandler OnCharacterShownPreview;
         public event IntHandler OnResetWriterPreview;
+        public event VoidHandler OnFinishWriterPreview;
 
         private void EditorUpdate()
         {
@@ -955,7 +971,7 @@ namespace TMPEffects.Components
             Hide(0, Mediator.CharData.Count, skipAnimations);
         }
 
-        private void PostProcessTags(string text)
+        private void PostProcessTags()
         {
             tags.Clear();
 

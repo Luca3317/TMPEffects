@@ -10,26 +10,18 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new WaveAnimation", menuName = "TMPEffects/Animations/Wave")]
     public class WaveAnimation : TMPAnimation
     {
-        [Tooltip("The speed at which the wave moves.")]
-        [SerializeField] private float speed = 2.5f;
-        [Tooltip("The frequency of the wave.")]
-        [SerializeField] private float frequency = 0.1f;
-        [Tooltip("The amplitude of the wave.")]
-        [SerializeField] private float amplitude = 10f;
-        [Tooltip("The actual wave.")]
-        [SerializeField] private AnimationCurve curve = AnimationCurveUtility.EaseInOutSine();
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        [SerializeField] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f, 1f, 1f, 0.2f);
+        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        [SerializeField] WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data data = (Data)context.customData;
 
-            float xPos = cData.info.initialPosition.x;
-            xPos /= (cData.info.referenceScale / 36f);
-
-
-            float t = context.animatorContext.PassedTime * data.speed + xPos / 1000f * data.frequency;
-            float y = data.amplitude * GetValue(data.curve, WrapMode.PingPong, t);
-            cData.SetPosition(cData.info.initialPosition + Vector3.up * y);
+            //if (context.segmentData.SegmentIndexOf(cData) == 0) Debug.Log("Passedtime " + context.animatorContext.PassedTime);
+            float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+            cData.SetPosition(cData.info.initialPosition + Vector3.up * eval);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
@@ -37,38 +29,26 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data data = (Data)customData;
-            if (TryGetFloatParameter(out float val, parameters, "speed", speedAliases)) data.speed = val;
-            if (TryGetFloatParameter(out val, parameters, "frequency", frequencyAliases)) data.frequency = val;
-            if (TryGetFloatParameter(out val, parameters, "amplitude", amplitudeAliases)) data.amplitude = val;
-            if (TryGetAnimCurveParameter(out AnimationCurve curve, parameters, "curve", curveAliases)) data.curve = curve;
+            if (TryGetWaveOffsetParameter(out var wot, parameters, "waveoffset", WaveOffsetAliases)) data.waveOffsetType = wot;
+            data.wave = CreateWave(this.wave, GetWaveParameters(parameters));
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
-            if (HasNonFloatParameter(parameters, "speed", speedAliases)) return false;
-            if (HasNonFloatParameter(parameters, "frequency", frequencyAliases)) return false;
-            if (HasNonFloatParameter(parameters, "amplitude", amplitudeAliases)) return false;
-            if (HasNonAnimCurveParameter(parameters, "curve", curveAliases)) return false;
-            return true;
+            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
+            return ValidateWaveParameters(parameters);
         }
 
         public override object GetNewCustomData()
         {
-            return new Data() { amplitude = this.amplitude, frequency = this.frequency, speed = this.speed, curve = this.curve };
+            return new Data() { wave = this.wave, waveOffsetType = this.waveOffsetType };
         }
-
-        private readonly string[] speedAliases = new string[] { "s", "sp" };
-        private readonly string[] frequencyAliases = new string[] { "f", "fq" };
-        private readonly string[] amplitudeAliases = new string[] { "a", "amp" };
-        private readonly string[] curveAliases = new string[] { "c", "crv" };
 
         private class Data
         {
-            public float speed;
-            public float frequency;
-            public float amplitude;
-            public AnimationCurve curve;
+            public Wave wave;
+            public WaveOffsetType waveOffsetType;
         }
     }
 }

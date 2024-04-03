@@ -22,8 +22,6 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 1f630aff11d4b334c87d691870092917, type: 2}
     - Key: palette
       Value: {fileID: 11400000, guid: 88202588c4dc013488ae14da87d7be47, type: 2}
-    - Key: pulsate
-      Value: {fileID: 11400000, guid: a59657e9278252e44862ca2418bbdfeb, type: 2}
     - Key: spread
       Value: {fileID: 11400000, guid: 779ca4742eec2944792561b0ad03c0f8, type: 2}
     - Key: char
@@ -33,10 +31,10 @@ MonoBehaviour:
     - Key: shake
       Value: {fileID: 11400000, guid: c9bdffa471e19f74d8eecca2e98ff7a5, type: 2}
     - Key: jump
-      Value: {fileID: 11400000, guid: 567d16c7fbaad2a43a2c96128495f6d4, type: 2}
+      Value: {fileID: 11400000, guid: ef05f38e6d7c12742bfb6b8777ef7289, type: 2}
     - Key: fade
       Value: {fileID: 11400000, guid: e491ab084191bcd41943f54d470627c3, type: 2}
     - Key: pivot
       Value: {fileID: 11400000, guid: c7da9492e365c2a4a993bc557235af1a, type: 2}
     - Key: pivotc
-      Value: {fileID: 11400000, guid: 6bbec3462f379a640af9072ef72f1687, type: 2}
+      Value: {fileID: 11400000, guid: 0c88b7ebe02d2fe419c8bdbec8a8d764, type: 2}

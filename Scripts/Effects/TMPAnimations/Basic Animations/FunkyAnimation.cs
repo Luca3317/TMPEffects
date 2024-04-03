@@ -11,8 +11,11 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new FunkyAnimation", menuName = "TMPEffects/Animations/Funky")]
     public class FunkyAnimation : TMPAnimation
     {
+        [Tooltip("The speed at which the animation plays.\nAliases: speed, sp, s")]
         [SerializeField] float speed;
+        [Tooltip("The percentage of its original size the text is squeezed to.\nAliases: squeezefactor, squeeze, sqz")]
         [SerializeField] float squeezeFactor;
+        [Tooltip("The amplitude the text pushes to the left / right.\nAliases: amplitude, amp")]
         [SerializeField] float amplitude;
 
         public override void Animate(CharData cData, IAnimationContext context)
@@ -80,7 +83,7 @@ namespace TMPEffects.TMPAnimations.Animations
             Data d = customData as Data;
             if (TryGetFloatParameter(out float f, parameters, "speed", SpeedAliases)) d.speed = f;
             if (TryGetFloatParameter(out f, parameters, "amplitude", AmplitudeAliases)) d.amplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "squeezeFactor", "squeeze", "sqz")) d.squeezeFactor = f;
+            if (TryGetFloatParameter(out f, parameters, "squeezefactor", "squeeze", "sqz")) d.squeezeFactor = f;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)

@@ -38,6 +38,18 @@ namespace TMPEffects.Components
             Mediator.SetVisibilityState(start, length, visibility);
         }
 
+        public void ShowAll(bool skipShowProcess = false)
+        {
+            VisibilityState visibility = skipShowProcess ? VisibilityState.Shown : VisibilityState.Showing;
+            Mediator.SetVisibilityState(0, Mediator.Text.textInfo.characterCount, visibility);
+        }
+
+        public void HideAll(bool skipHideProcess = false)
+        {
+            VisibilityState visibility = skipHideProcess ? VisibilityState.Hidden : VisibilityState.Hiding;
+            Mediator.SetVisibilityState(0, Mediator.Text.textInfo.characterCount, visibility);
+        }
+
         [System.NonSerialized] private readonly object obj = new();
         [System.NonSerialized] private TMPMediator mediator = null;
 

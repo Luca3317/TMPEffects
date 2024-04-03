@@ -331,7 +331,7 @@ namespace TMPEffects
             }
             else
 
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector3 offset");
+                throw new System.Exception("Parameter " + defined + " is not a valid Vector3 offset");
         }
 
 
@@ -578,39 +578,39 @@ namespace TMPEffects
 
 
 
-        public static bool HasNonAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasNonVector3Parameter(parameters, name, aliases) && HasNonAnchorParameter(parameters, name, aliases) && HasNonVector3OffsetParameter(parameters, name, aliases);
         }
 
-        public static bool HasAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasVector3Parameter(parameters, name, aliases) || HasAnchorParameter(parameters, name, aliases) || HasVector3OffsetParameter(parameters, name, aliases);
         }
 
-        public static bool TryGetAnyVector3Parameter(out Vector3 value, out VectorType type, IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool TryGetTypedVector3Parameter(out TypedVector3 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            if (TryGetVector3Parameter(out value, parameters, name, aliases))
+            if (TryGetVector3Parameter(out Vector3 value, parameters, name, aliases))
             {
-                type = VectorType.Position;
+                vector = new TypedVector3(VectorType.Position, value);
                 return true;
             }
             if (TryGetAnchorParameter(out value, parameters, name, aliases))
             {
-                type = VectorType.Anchor;
+                vector = new TypedVector3(VectorType.Anchor, value);
                 return true;
             }
             if (TryGetVector3OffsetParameter(out value, parameters, name, aliases))
             {
-                type = VectorType.Offset;
+                vector = new TypedVector3(VectorType.Offset, value);
                 return true;
             }
 
-            type = default;
+            vector = default;
             return false;
         }
 
-        public static (Vector3, VectorType) GetAnyVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static TypedVector3 GetTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             string defined = GetDefinedParameter(parameters, name, aliases);
             name = parameters[defined];
@@ -618,15 +618,15 @@ namespace TMPEffects
             Vector3 value;
             if (TryGetVector3Parameter(out value, parameters, name))
             {
-                return (value, VectorType.Position);
+                return new TypedVector3(VectorType.Position, value);
             }
             if (TryGetAnchorParameter(out value, parameters, name))
             {
-                return (value, VectorType.Anchor);
+                return new TypedVector3(VectorType.Anchor, value);
             }
             if (TryGetVector3OffsetParameter(out value, parameters, name))
             {
-                return (value, VectorType.Offset);
+                return new TypedVector3(VectorType.Offset, value);
             }
 
             throw new System.Exception("Parameter " + defined + " is not a valid Vector3");
@@ -634,13 +634,97 @@ namespace TMPEffects
 
 
 
-        // TODO Move both of these somewhere else
+
+        public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return HasNonVector2Parameter(parameters, name, aliases) && HasNonAnchorParameter(parameters, name, aliases) && HasNonVector2OffsetParameter(parameters, name, aliases);
+        }
+
+        public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return HasVector2Parameter(parameters, name, aliases) || HasAnchorParameter(parameters, name, aliases) || HasVector2OffsetParameter(parameters, name, aliases);
+        }
+
+        public static bool TryGetTypedVector2Parameter(out TypedVector2 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            if (TryGetVector2Parameter(out Vector2 value, parameters, name, aliases))
+            {
+                vector = new TypedVector2(VectorType.Position, value);
+                return true;
+            }
+            if (TryGetAnchorParameter(out Vector3 value3, parameters, name, aliases))
+            {
+                vector = new TypedVector2(VectorType.Anchor, value3);
+                return true;
+            }
+            if (TryGetVector2OffsetParameter(out value, parameters, name, aliases))
+            {
+                vector = new TypedVector2(VectorType.Offset, value);
+                return true;
+            }
+
+            vector = default;
+            return false;
+        }
+
+        public static TypedVector2 GetTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            string defined = GetDefinedParameter(parameters, name, aliases);
+            name = parameters[defined];
+
+            Vector2 value;
+            if (TryGetVector2Parameter(out value, parameters, name))
+            {
+                return new TypedVector2(VectorType.Position, value);
+            }
+            if (TryGetAnchorParameter(out Vector3 value3, parameters, name))
+            {
+                return new TypedVector2(VectorType.Anchor, value3);
+            }
+            if (TryGetVector2OffsetParameter(out value, parameters, name))
+            {
+                return new TypedVector2(VectorType.Offset, value);
+            }
+
+            throw new System.Exception("Parameter " + defined + " is not a valid Vector2");
+        }
+
+
+
+        // TODO Move these somewhere else
         public enum VectorType
         {
             Position,
             Offset,
             Anchor
         }
+
+        [System.Serializable]
+        public struct TypedVector2
+        {
+            public Vector2 vector;
+            public VectorType type;
+
+            public TypedVector2(VectorType type, Vector2 vector)
+            {
+                this.type = type;
+                this.vector = vector;
+            }
+        }
+
+        [System.Serializable]
+        public struct TypedVector3
+        {
+            public Vector3 vector;
+            public VectorType type;
+
+            public TypedVector3(VectorType type, Vector3 vector)
+            {
+                this.type = type;
+                this.vector = vector;
+            }
+        }
+
         public struct WaveParameters
         {
             public AnimationCurve upwardCurve;
@@ -687,7 +771,7 @@ namespace TMPEffects
         /// <param name="amplitude">Whether to get the amplitude parameter.</param>
         /// <returns>A <see cref="WaveParameters"/> object containing the parsed fields.</returns>
         /// <exception cref="System.Exception">If conflicting parameters are specified</exception>
-        public static WaveParameters GetWaveParameters(IDictionary<string, string> parameters,
+        public static WaveParameters GetWaveParameters(IDictionary<string, string> parameters, string prefix = "",
                 bool upwardCurve = true,
                 bool downwardCurve = true,
                 bool upPeriod = true,
@@ -711,8 +795,8 @@ namespace TMPEffects
             wp.wavevelocity = null;
             wp.amplitude = null;
 
-            if (waveVelocity && TryGetFloatParameter(out float f, parameters, "wavevelocity", "wavevlc", "wvelocity", "wvlc")) wp.wavevelocity = f;
-            if (waveLength && TryGetFloatParameter(out f, parameters, "wavelength", "wavelen", "wlength", "wlen"))
+            if (waveVelocity && TryGetFloatParameter(out float f, parameters, prefix + "velocity", prefix + "vlc")) wp.wavevelocity = f;
+            if (waveLength && TryGetFloatParameter(out f, parameters, prefix + "wavelength", prefix + "wavelen", prefix + "wlength", prefix + "wlen"))
             {
                 if (wp.wavevelocity != null)
                     throw new System.Exception("Must define either wave velocity, wave length or uniformity; not multiple");
@@ -720,14 +804,14 @@ namespace TMPEffects
                 wp.wavelength = f;
             }
 
-            if (waveUniformity && TryGetFloatParameter(out f, parameters, "waveuniformity", "waveuni", "wuniformity", "wuni")) wp.waveuniformity = f;
-            if (upwardCurve && TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "upcurve", "upcrv", "upc")) wp.upwardCurve = crv;
-            if (downwardCurve && TryGetAnimCurveParameter(out crv, parameters, "downcurve", "downcrv", "downc", "dcrv", "dc")) wp.downwardCurve = crv;
-            if (upPeriod && TryGetFloatParameter(out f, parameters, "upperiod", "uppd")) wp.upPeriod = f;
-            if (downPeriod && TryGetFloatParameter(out f, parameters, "downperiod", "downpd", "dpd")) wp.downPeriod = f;
-            if (crestWait && TryGetFloatParameter(out f, parameters, "crestwait", "crestw", "cwait")) wp.crestWait = f;
-            if (troughWait && TryGetFloatParameter(out f, parameters, "troughwait", "troughw", "twait")) wp.troughWait = f;
-            if (amplitude && TryGetFloatParameter(out f, parameters, "waveamplitude", "wamplitude", "waveamp", "wamp")) wp.amplitude = f;
+            if (waveUniformity && TryGetFloatParameter(out f, parameters, prefix + "uniformity", prefix + "uni")) wp.waveuniformity = f;
+            if (upwardCurve && TryGetAnimCurveParameter(out AnimationCurve crv, parameters, prefix + "upcurve", prefix + "upcrv", prefix + "up")) wp.upwardCurve = crv;
+            if (downwardCurve && TryGetAnimCurveParameter(out crv, parameters, prefix + "downcurve", prefix + "downcrv", prefix + "down", prefix + "dn")) wp.downwardCurve = crv;
+            if (upPeriod && TryGetFloatParameter(out f, parameters, prefix + "upperiod", prefix + "uppd")) wp.upPeriod = f;
+            if (downPeriod && TryGetFloatParameter(out f, parameters, prefix + "downperiod", prefix + "downpd", prefix + "dnpd")) wp.downPeriod = f;
+            if (crestWait && TryGetFloatParameter(out f, parameters, prefix + "crestwait", prefix + "crestw", prefix + "cwait", prefix + "cw")) wp.crestWait = f;
+            if (troughWait && TryGetFloatParameter(out f, parameters, prefix + "troughwait", prefix + "troughw", prefix + "twait", prefix + "tw")) wp.troughWait = f;
+            if (amplitude && TryGetFloatParameter(out f, parameters, prefix + "amplitude", prefix + "amp")) wp.amplitude = f;
 
             return wp;
         }
@@ -759,7 +843,7 @@ namespace TMPEffects
         /// <param name="waveUniformity">Whether to validate the waveUniformity parameter.</param>
         /// <param name="amplitude">Whether to validate the amplitude parameter.</param>
         /// <returns>true if all specified fields were successfully validate; otherwise, false.</returns>
-        public static bool ValidateWaveParameters(IDictionary<string, string> parameters,
+        public static bool ValidateWaveParameters(IDictionary<string, string> parameters, string prefix = "",
                 bool upwardCurve = true,
                 bool downwardCurve = true,
                 bool upPeriod = true,
@@ -775,26 +859,26 @@ namespace TMPEffects
             bool contained = false;
             string defined;
 
-            if (waveVelocity && TryGetDefinedParameter(out defined, parameters, "wavevelocity", "wavevlc", "wvelocity", "wvlc"))
+            if (waveVelocity && TryGetDefinedParameter(out defined, parameters, prefix + "velocity", prefix + "vlc"))
             {
                 if (HasNonFloatParameter(parameters, defined)) return false;
                 contained = true;
             }
 
-            if (waveLength && TryGetDefinedParameter(out defined, parameters, "wavelength", "wavelen", "wlength", "wlen"))
+            if (waveLength && TryGetDefinedParameter(out defined, parameters, prefix + "wavelength", prefix + "wavelen", prefix + "wlength", prefix + "wlen"))
             {
                 if (contained) return false;
                 if (HasNonFloatParameter(parameters, defined)) return false;
             }
 
-            if (waveUniformity && HasNonFloatParameter(parameters, "waveuniformity", "waveuni", "wuniformity", "wuni")) return false;
-            if (upwardCurve && HasNonAnimCurveParameter(parameters, "upcurve", "upcrv", "upc")) return false;
-            if (downwardCurve && HasNonAnimCurveParameter(parameters, "downcurve", "downcrv", "downc", "dcrv", "dc")) return false;
-            if (upPeriod && HasNonFloatParameter(parameters, "upperiod", "uppd")) return false;
-            if (downPeriod && HasNonFloatParameter(parameters, "downperiod", "downpd", "dpd")) return false;
-            if (crestWait && HasNonFloatParameter(parameters, "crestwait", "crestw", "cwait")) return false;
-            if (troughWait && HasNonFloatParameter(parameters, "troughwait", "troughw", "twait")) return false;
-            if (amplitude && HasNonFloatParameter(parameters, "waveamplitude", "wamplitude", "waveamp", "wamp")) return false;
+            if (waveUniformity && HasNonFloatParameter(parameters, prefix + "uniformity", prefix + "uni")) return false;
+            if (upwardCurve && HasNonAnimCurveParameter(parameters, prefix + "upcurve", prefix + "upcrv", prefix + "up")) return false;
+            if (downwardCurve && HasNonAnimCurveParameter(parameters, prefix + "downcurve", prefix + "downcrv", prefix + "down", prefix + "dn")) return false;
+            if (upPeriod && HasNonFloatParameter(parameters, prefix + "upperiod", prefix + "uppd")) return false;
+            if (downPeriod && HasNonFloatParameter(parameters, prefix + "downperiod", prefix + "downpd", prefix + "dnpd")) return false;
+            if (crestWait && HasNonFloatParameter(parameters, prefix + "crestwait", prefix + "crestw", prefix + "cwait", prefix + "cw")) return false;
+            if (troughWait && HasNonFloatParameter(parameters, prefix + "troughwait", prefix + "troughw", prefix + "twait", prefix + "tw")) return false;
+            if (amplitude && HasNonFloatParameter(parameters, prefix + "amplitude", prefix + "amp")) return false;
 
             return true;
         }
@@ -802,7 +886,7 @@ namespace TMPEffects
 
         // Aliases for common parameters
         public static readonly string[] WaveOffsetAliases = new string[] { "woffset", "waveoff", "woff" };
-        public static readonly string[] SpeedAliases = new string[] { "sp" };
+        public static readonly string[] SpeedAliases = new string[] { "sp", "s" };
         public static readonly string[] CurveAliases = new string[] { "crv" };
         public static readonly string[] FrequencyAliases = new string[] { "freq", "fq" };
         public static readonly string[] AmplitudeAliases = new string[] { "amp" };

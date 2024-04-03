@@ -49,7 +49,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 d.delayDict[segmentIndex] = 0f;
                 d.lastUpdatedDict[segmentIndex] = 0f;
                 d.offsetDict[segmentIndex] = Vector2.zero;
-                //context.FinishAnimation(cData);
+                context.FinishAnimation(cData);
                 return; 
             }
              

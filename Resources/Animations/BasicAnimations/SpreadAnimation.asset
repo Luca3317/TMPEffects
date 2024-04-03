@@ -24,28 +24,19 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: -0.0012029491
+        outSlope: 3.000003
         tangentMode: 0
         weightedMode: 3
         inWeight: 0
-        outWeight: 0.36078
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 1.5725082
-        outSlope: 1.5733721
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.326514
-        outWeight: 0.33093
+        outWeight: 0.333333
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: -0.0009312395
+        inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.358688
+        inWeight: 0.33333302
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -57,39 +48,34 @@ MonoBehaviour:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
+        outSlope: 3.9858234
         tangentMode: 0
         weightedMode: 3
         inWeight: 0
-        outWeight: 0.333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 2.9999938
-        outSlope: 2.9999943
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333403
-        outWeight: 0.33333397
+        outWeight: 0.269099
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
+        inSlope: 0.013942328
         outSlope: 0
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.33333397
+        inWeight: 0.434789
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     crestWait: 0.2
-    troughWait: 0.4
-    uniformity: 0
-  growAnchor: {x: 0, y: 0, z: 0}
-  growDirection: {x: 1, y: 1, z: 0}
-  shrinkAnchor: {x: 0, y: 0, z: 0}
-  shrinkDirection: {x: -1, y: 1, z: 0}
+    troughWait: 0.6
+    uniformity: 0.2
+  waveOffsetType: 10
+  growAnchor:
+    vector: {x: 0, y: 0, z: 0}
+    type: 2
+  growDirection: {x: 1, y: 0, z: 0}
+  shrinkAnchor:
+    vector: {x: 0, y: 0, z: 0}
+    type: 2
+  shrinkDirection: {x: 1, y: 0, z: 0}
   maxPercentage: 1
   minPercentage: 0
-  waveOffsetType: 10

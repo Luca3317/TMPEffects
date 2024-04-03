@@ -13,15 +13,23 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Fade")]
     public class FadeAnimation : TMPAnimation
     {
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         [SerializeField] Wave wave;
+        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         [SerializeField] WaveOffsetType waveOffsetType;
 
+        [Tooltip("The maximum opacity that is reached.\nAliases: maxopacity, maxop, max")]
         [SerializeField] float maxOpacity = 255;
+        [Tooltip("The anchor used for fading in.\nAliases: fadeinanchor, fianchor, fianc, fia")]
         [SerializeField] Vector3 fadeInAnchor = Vector3.zero;
+        [Tooltip("The direction to fade in in.\nAliases: fadeindirection, fidirection, fidir, fid")]
         [SerializeField] Vector3 fadeInDirection = Vector3.up;
 
+        [Tooltip("The minimum opacity that is reached.\nAliases: minopacity, minop, min")]
         [SerializeField] float minOpacity = 0;
+        [Tooltip("The anchor used for fading out.\nAliases: fadeoutanchor, foanchor, foanc, foa")]
         [SerializeField] Vector3Int fadeOutAnchor = Vector3Int.zero;
+        [Tooltip("The direction to fade out in.\nAliases: fadeoutdirection, fodirection, fodir, fod")]
         [SerializeField] Vector3 fadeOutDirection = Vector3.up;
 
         public override void Animate(CharData cData, IAnimationContext context)
@@ -151,7 +159,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data d = (Data)customData;
-            if (TryGetFloatParameter(out var f, parameters, "maxOpacity", maxOpAliases)) d.maxOpacity = f;
+            if (TryGetFloatParameter(out var f, parameters, "maxopacity", maxOpAliases)) d.maxOpacity = f;
             if (TryGetVector2Parameter(out var v2, parameters, "fadeInAnchor", fadeInAnchorAliases)) d.fadeInAnchor = v2;
             if (TryGetVector2Parameter(out v2, parameters, "fadeInDirection", "fadeInDir", "fiDir")) d.fadeInDirection = v2;
 
@@ -169,12 +177,12 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return true;
 
             if (HasNonFloatParameter(parameters, "maxOpacity", maxOpAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeInAnchor", fadeInAnchorAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeInDirection", "fadeInDir", "fiDir")) return false;
+            if (HasNonVector2Parameter(parameters, "fadeinanchor", fadeInAnchorAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "fadeindirection", "fadeindir", "fidir", "fid")) return false;
 
-            if (HasNonFloatParameter(parameters, "minOpacity", minOpAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeOutAnchor", "fadeOutAnc", "foAnc", "foA")) return false;
-            if (HasNonVector2Parameter(parameters, "fadeOutDirection", "fadeOutDir", "foDir")) return false;
+            if (HasNonFloatParameter(parameters, "minopacity", minOpAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
+            if (HasNonVector2Parameter(parameters, "fadeoutdirection", "fadeoutdir", "fodir", "fod")) return false;
 
             if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
 
@@ -197,11 +205,11 @@ namespace TMPEffects.TMPAnimations.Animations
             };
         }
 
-        private readonly string[] maxOpAliases = new string[] { "max", "maxOp" };
-        private readonly string[] fadeInAnchorAliases = new string[] { "fiAnchor", "fiAnc", "fiA" };
+        private readonly string[] maxOpAliases = new string[] { "max", "maxop" };
+        private readonly string[] fadeInAnchorAliases = new string[] { "fianchor", "fianc", "fia" };
 
-        private readonly string[] minOpAliases = new string[] { "min", "minOp" };
-        private readonly string[] fadeOutAnchorAliases = new string[] { "foAnchor", "foAnc", "foA" };
+        private readonly string[] minOpAliases = new string[] { "min", "minop" };
+        private readonly string[] fadeOutAnchorAliases = new string[] { "foanchor", "foanc", "foa" };
 
         private class Data
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644683b62706b574eac0d76437be3ea5, type: 3}
   m_Name: SpreadHideAnimation
   m_EditorClassIdentifier: 
-  duration: 0.25
+  duration: 1
   anchor: {x: 0, y: -1, z: 0}
   direction: {x: 0, y: 1, z: 0}
   startPercentage: 1

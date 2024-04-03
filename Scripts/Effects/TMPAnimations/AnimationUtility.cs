@@ -536,7 +536,7 @@ namespace TMPEffects.TMPAnimations
 
             public int PassedWaveExtrema(float time, float deltaTime, float offset)
             {
-                float t = Mathf.Abs(CalculateT(time, offset, -1));
+                float t = CalculateWaveT(time, offset, -1);
 
                 if (deltaTime >= EffectivePeriod)
                 {
@@ -544,7 +544,7 @@ namespace TMPEffects.TMPAnimations
                     return t < EffectiveUpPeriod ? -1 : 1;
                 }
 
-                float prevT = Mathf.Abs(CalculateT(time - deltaTime, offset, -1));
+                float prevT = CalculateWaveT(time - deltaTime, offset, -1);
 
                 if ((int)(t / EffectivePeriod) > (int)(prevT / EffectivePeriod))
                 {
@@ -565,7 +565,7 @@ namespace TMPEffects.TMPAnimations
 
             public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float interval = (TroughWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
 
                 if (deltaTime >= interval)
@@ -577,7 +577,7 @@ namespace TMPEffects.TMPAnimations
                     //return t < EffectiveUpPeriod ? -1 : 1;
                 }
 
-                float prevT = CalculateT(time - deltaTime, offset, -1);
+                float prevT = CalculatePulseT(time - deltaTime, offset, -1);
 
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
@@ -608,7 +608,7 @@ namespace TMPEffects.TMPAnimations
 
             public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float interval = (CrestWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
 
                 if (deltaTime >= interval)
@@ -619,7 +619,7 @@ namespace TMPEffects.TMPAnimations
                     return 1;
                 }
 
-                float prevT = CalculateT(time - deltaTime, offset, -1);
+                float prevT = CalculatePulseT(time - deltaTime, offset, -1);
 
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
@@ -650,7 +650,7 @@ namespace TMPEffects.TMPAnimations
 
             public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float upInterval = (CrestWait) * (realtimeWait ? Velocity : 1f);
                 float downInterval = (TroughWait) * (realtimeWait ? Velocity : 1f);
                 float interval = upInterval + downInterval + EffectivePeriod;
@@ -682,7 +682,7 @@ namespace TMPEffects.TMPAnimations
                     throw new System.Exception("Should not be reachable with og t " + ogt + " and interval " + interval + "; final t  " + t);
                 }
 
-                float prevT = CalculateT(time - deltaTime, offset, -1);
+                float prevT = CalculatePulseT(time - deltaTime, offset, -1);
 
                 if ((int)(t / interval) > (int)(prevT / interval))
                 {
@@ -761,7 +761,7 @@ namespace TMPEffects.TMPAnimations
 
             public (float, int) EvaluateAsWave(float time, float offset)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculateWaveT(time, offset, -1);
                 t = Mathf.Abs(t);
                 t %= EffectivePeriod;
 
@@ -779,7 +779,7 @@ namespace TMPEffects.TMPAnimations
 
             public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = false)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float interval = (TroughWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
 
                 if (interval > 0)
@@ -793,13 +793,13 @@ namespace TMPEffects.TMPAnimations
 
             public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = false)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float interval = (CrestWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
 
                 if (interval > 0)
                     t %= interval;
 
-                if (t <= 0) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 0f), -1);
+                if (t <= 0) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 1f), -1);
                 if (t <= EffectiveDownPeriod) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
                 if (t <= EffectivePeriod) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
                 return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
@@ -807,7 +807,7 @@ namespace TMPEffects.TMPAnimations
 
             public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = false)
             {
-                float t = CalculateT(time, offset, -1);
+                float t = CalculatePulseT(time, offset, -1);
                 float upInterval = (CrestWait) * (realTimeWait ? Velocity : 1f);
                 float downInterval = (TroughWait) * (realTimeWait ? Velocity : 1f);
                 float interval = upInterval + downInterval + EffectivePeriod;
@@ -849,6 +849,17 @@ namespace TMPEffects.TMPAnimations
                 Both = 0b11
             }
 
+            private float CalculateWaveT(float time, float offset, int mult)
+            {
+                return Mathf.Abs(CalculateT(time, offset, mult));
+            }
+
+            private float CalculatePulseT(float time, float offset, int mult)
+            {
+                float t = CalculateT(time, offset, mult);
+                return Mathf.Max(t, 0f);
+            }
+
             private float CalculateT(float time, float offset, int mult)
             {
                 float t;
@@ -862,7 +873,7 @@ namespace TMPEffects.TMPAnimations
                     t = (time * v) / WaveLength + (offset / WaveLength) * mult * uniformity;
                 }
 
-                return Mathf.Abs(t);
+                return t;
             }
 
             public override void OnBeforeSerialize()

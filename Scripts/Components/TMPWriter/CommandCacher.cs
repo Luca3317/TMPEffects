@@ -30,7 +30,9 @@ namespace TMPEffects.Components.Writer
             {
                 case TagType.Empty: endIndex = indices.StartIndex + 1; break;
                 case TagType.Either:
-                case TagType.Container: if (indices.IsOpen) endIndex = charData.Count; break;
+                case TagType.Container:
+                    if (indices.IsOpen) endIndex = charData.Count;
+                    break;
                 default: throw new ArgumentException(nameof(command.TagType));
             }
 

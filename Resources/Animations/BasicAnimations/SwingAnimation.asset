@@ -12,13 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d4d28e8e34e1046a0087fab19f1224, type: 3}
   m_Name: SwingAnimation
   m_EditorClassIdentifier: 
-  speed: 1
-  pivotType: 2
-  pivot: {x: 0, y: 1, z: 0}
-  rotationAxis: {x: 0, y: 0, z: 1}
-  limitRotation: 1
-  maxAngleLimit: 20
-  minAngleLimit: -20
   wave:
     upPeriod: 1
     downPeriod: 1
@@ -94,3 +87,9 @@ MonoBehaviour:
     troughWait: 0
     uniformity: 0.15
   waveOffsetType: 0
+  pivot:
+    vector: {x: 0, y: 1, z: 0}
+    type: 2
+  rotationAxis: {x: 0, y: 0, z: 1}
+  maxAngleLimit: 20
+  minAngleLimit: -20

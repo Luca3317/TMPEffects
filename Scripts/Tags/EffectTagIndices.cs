@@ -38,7 +38,7 @@ namespace TMPEffects.Tags
         /// The length of the interval, meaning the difference between <see cref="EndIndex"/> and <see cref="StartIndex"/>.<br/>
         /// Is -1 if the tag is open.
         /// </summary>
-        public int Length => IsOpen ? endIndex : endIndex - startIndex + 1;
+        public int Length => IsOpen ? endIndex : endIndex - startIndex/* + 1*/;
         /// <summary>
         /// Whether the indices contain the given index.
         /// </summary>

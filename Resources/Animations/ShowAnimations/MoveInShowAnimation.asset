@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dba42c317fd2b42a5da053b8df296d, type: 3}
   m_Name: MoveInShowAnimation
   m_EditorClassIdentifier: 
-  duration: 0.15
+  duration: 1
   startPosition: {x: 10, y: 10, z: 0}
   startIsDelta: 1
   curve:

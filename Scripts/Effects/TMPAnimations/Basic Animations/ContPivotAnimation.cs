@@ -3,41 +3,30 @@ using UnityEngine;
 using TMPEffects.CharacterData;
 using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new PivotAnimation", menuName = "TMPEffects/Animations/Pivot")]
-    public class PivotAnimation : TMPAnimation
+    [CreateAssetMenu(fileName = "new ContPivotAnimation", menuName = "TMPEffects/Animations/ContPivot")]
+    public class ContPivotAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave;
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffsetType;
-
+        [Tooltip("The speed of the rotation, in rotations per second.\nAliased: speed, sp, s")]
+        [SerializeField] private float speed;
         [Tooltip("The pivot position of the rotation.\nAliases: pivot, pv, p")]
         [SerializeField] private TypedVector3 pivot = new TypedVector3(VectorType.Anchor, Vector3.zero);
         [Tooltip("The axis to rotate around.\nAliases: rotationaxis, axis, a")]
         [SerializeField] private Vector3 rotationAxis = Vector3.right;
 
-        [Tooltip("The maximum angle of the rotation.\nAliases: maxangle, maxa, max")]
-        [SerializeField] private float maxAngleLimit = 180;
-        [Tooltip("The minimum angle of the rotation.\nAliases: minangle, mina, min")]
-        [SerializeField] private float minAngleLimit = -180f;
-
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            LimitedRotation(cData, context);
+            ContinuousRotation(cData, context);
         }
 
-        private void LimitedRotation(CharData cData, IAnimationContext context)
+        private void ContinuousRotation(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
-            (float, int) result = d.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
-            float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
+            float angle = (context.animatorContext.PassedTime * d.speed * 360) % 360;
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetVertex(3) - cData.mesh.initial.GetVertex(0)).normalized));
-
             cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(d.rotationAxis)));
 
             switch (d.pivot.type)
@@ -53,52 +42,38 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data d = customData as Data;
-            if (TryGetFloatParameter(out float val, parameters, "maxangle", maxAngleAliases)) d.maxAngleLimit = val;
-            if (TryGetFloatParameter(out val, parameters, "minangle", minAngleAliases)) d.minAngleLimit = val;
             if (TryGetVector3Parameter(out Vector3 v3, parameters, "rotationaxis", rotationAxisAliases)) d.rotationAxis = v3;
-            if (TryGetWaveOffsetParameter(out WaveOffsetType type, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = type;
             if (TryGetTypedVector3Parameter(out var tv3, parameters, "pivot", pivotAliases)) d.pivot = tv3;
-            d.wave = CreateWave(wave, GetWaveParameters(parameters));
+            if (TryGetFloatParameter(out var speed, parameters, "speed", "sp", "s")) d.speed = speed;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return true;
 
-            if (HasNonFloatParameter(parameters, "maxangle", maxAngleAliases)) return false;
-            if (HasNonFloatParameter(parameters, "minangle", minAngleAliases)) return false;
             if (HasNonVector3Parameter(parameters, "rotationaxis", rotationAxisAliases)) return false;
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
             if (HasNonTypedVector3Parameter(parameters, "pivot", pivotAliases)) return false;
-            return ValidateWaveParameters(parameters);
+            if (HasNonFloatParameter(parameters, "speed", "sp", "s")) return false;
+            return true;
         }
 
         public override object GetNewCustomData()
         {
             return new Data
             {
-                wave = this.wave, 
-                waveOffset = this.waveOffsetType,
+                speed = this.speed,
                 pivot = this.pivot,
-                maxAngleLimit = this.maxAngleLimit,
-                minAngleLimit = this.minAngleLimit,
                 rotationAxis = this.rotationAxis,
             };
         }
 
         private readonly string[] pivotAliases = new string[] { "p", "pv" };
-        private readonly string[] maxAngleAliases = new string[] { "max", "maxa" };
-        private readonly string[] minAngleAliases = new string[] { "min", "mina" };
         private readonly string[] rotationAxisAliases = new string[] { "axis", "a" };
 
         private class Data
         {
-            public Wave wave;
-            public WaveOffsetType waveOffset;
-
+            public float speed;
             public TypedVector3 pivot;
-            public float maxAngleLimit;
-            public float minAngleLimit;
             public Vector3 rotationAxis;
         }
     }

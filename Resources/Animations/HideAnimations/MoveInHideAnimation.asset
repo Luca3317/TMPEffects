@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1444028752b811649a52227086a86ecc, type: 3}
   m_Name: MoveInHideAnimation
   m_EditorClassIdentifier: 
-  duration: 0.55
+  duration: 1
   targetPosition: {x: 0, y: 1250, z: 0}
   targetIsDelta: 1
   curve:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore;
@@ -12,30 +13,34 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     public class CharShowAnimation : TMPShowAnimation
     {
         [SerializeField] float duration = 1f;
+
         [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         [SerializeField] float probability = 0.95f;
-        [SerializeField] float minWait = 0.01f;
-        [SerializeField] float maxWait = 0.05f;
+
+        [SerializeField] float minDelay = 0.01f;
+        [SerializeField] float maxDelay = 0.05f;
+
         [SerializeField] bool autoCase = true;
+
+        [SerializeField] AnimationCurve delayCurve = AnimationCurveUtility.Linear();
+        [SerializeField] AnimationCurve probabilityCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data d = context.customData as Data;
 
-            if (string.IsNullOrWhiteSpace(d.characters)) return;
+            if (!d.init)
+            {
+                d.init = true;
+
+                InitRNGDict(context);
+                InitLastUpdatedDict(context);
+                InitDelayDict(context);
+                InitPositionsDict(context);
+            }
 
             int segmentIndex = context.segmentData.SegmentIndexOf(cData);
             TMP_Character c;
-
-            float passed = Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
-
-            if (passed == 1) context.FinishAnimation(cData);
-
-            if (d.waitingSince == null)
-            {
-                Init(cData, d, context);
-            }
-
             if (!d.positions.ContainsKey(segmentIndex))
             {
                 if (!cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c))
@@ -45,141 +50,172 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 d.originalPositions[segmentIndex] = c.glyph.glyphRect;
             }
 
-            float h = cData.info.fontAsset.atlasHeight;
-            float w = cData.info.fontAsset.atlasWidth;
+            float t = Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
 
-            // If waiting
-            if (d.waitingSince[segmentIndex] != -1)
+            float delayMult = d.delayCurve.Evaluate(t);
+            float probMult = d.probCurve.Evaluate(t);
+
+            float remaining = d.duration - (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData));
+
+            if (t == 1)
             {
-                // If done waiting
-                if (context.animatorContext.PassedTime - d.waitingSince[segmentIndex] >= d.waitDuration[segmentIndex])
-                {
-                    d.waitingSince[segmentIndex] = -1;
-                }
-                else
-                {
-                    GlyphRect rect = d.positions[segmentIndex];
-                    GlyphRect ogRect = d.originalPositions[segmentIndex];
-                    cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                    cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-
-                    if (rect.width != ogRect.width || rect.height != ogRect.height)
-                    {
-                        float wProp = (float)rect.width / ogRect.width;
-                        float hProp = (float)rect.height / ogRect.height;
-                        float height = cData.mesh.initial.GetVertex(1).y - cData.mesh.initial.GetVertex(0).y;
-                        height /= hProp;
-                        cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition - Vector3.up * height / 4);
-                    }
-
-                    return;
-                }
-            }
-
-            float durationLeft = d.duration - (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData));
-            if (durationLeft < d.minWait)
-            {
-                Debug.Log("Too little time to change anymore");
+                d.delayDict[segmentIndex] = 0f;
+                d.lastUpdatedDict[segmentIndex] = 0f;
+                context.FinishAnimation(cData);
                 return;
             }
 
-            // Set to original character
-            if (d.random.NextDouble() > d.probability)
-            {
-                cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
-                GlyphRect rect = c.glyph.glyphRect;
-                cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                d.positions[segmentIndex] = rect;
-            }
+            float h = cData.info.fontAsset.atlasHeight;
+            float w = cData.info.fontAsset.atlasWidth;
 
-            // Set to new random character
-            else
+            // If waiting done
+            if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
             {
-                int index = d.random.Next(0, d.characters.Length);
-                char character = d.characters[index];
-                if (d.autoCase && char.IsLetter(cData.info.character) && char.IsLetter(character))
+                // If time for another
+                if (remaining >= d.minDelay * delayMult)
                 {
-                    if (char.IsUpper(cData.info.character))
-                        character = char.ToUpper(character);
-                    else if (char.IsLower(cData.info.character))
-                        character = char.ToLower(character);
+                    bool original = d.rngDict[segmentIndex].NextDouble() > d.probability;
+
+                    // Set delay
+                    float delay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
+                    delay *= delayMult;
+                    delay = Mathf.Clamp(delay, d.delayDict[segmentIndex], remaining);
+                    d.delayDict[segmentIndex] = delay;
+
+                    d.lastUpdatedDict[segmentIndex] = context.animatorContext.PassedTime;
+
+                    // Set to original
+                    if (original)
+                    {
+                        cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
+                        GlyphRect rect = c.glyph.glyphRect;
+                        cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+                        cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+                        cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+                        cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
+                        d.positions[segmentIndex] = rect;
+                    }
+                    else
+                    {
+                        int index = d.rngDict[segmentIndex].Next(0, d.characters.Length);
+                        char character = d.characters[index];
+                        if (d.autoCase && char.IsLetter(cData.info.character) && char.IsLetter(character))
+                        {
+                            if (char.IsUpper(cData.info.character))
+                                character = char.ToUpper(character);
+                            else if (char.IsLower(cData.info.character))
+                                character = char.ToLower(character);
+                        }
+
+                        bool success = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out c);
+
+                        if (success)
+                        {
+                            GlyphRect rect = c.glyph.glyphRect;
+                            GlyphRect ogRect = d.originalPositions[segmentIndex];
+                            cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+                            cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+                            cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+                            cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
+                            d.positions[segmentIndex] = rect;
+
+                            if (rect.width != ogRect.width || rect.height != ogRect.height)
+                            {
+                                float wProp = (float)rect.width / ogRect.width;
+                                float hProp = (float)rect.height / ogRect.height;
+                                cData.SetScale(new Vector3(wProp, hProp, 1f));
+                                cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
+                            }
+                        }
+                        else
+                            Debug.LogError("Failed to get character from lookup table");
+                    }
                 }
-
-                bool t = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out c);
-
-                if (t)
+                // If not, set to original
+                else
                 {
+                    cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
                     GlyphRect rect = c.glyph.glyphRect;
-                    GlyphRect ogRect = d.originalPositions[segmentIndex];
                     cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
                     cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
                     cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
                     cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
                     d.positions[segmentIndex] = rect;
-
-                    if (rect.width != ogRect.width || rect.height != ogRect.height)
-                    {
-                        float wProp = (float)rect.width / ogRect.width;
-                        float hProp = (float)rect.height / ogRect.height;
-                        float height = cData.mesh.initial.GetVertex(1).y - cData.mesh.initial.GetVertex(0).y;
-                        height /= hProp;
-
-                        cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition - Vector3.up * height / 4);
-                    }
                 }
-                else
-                    Debug.LogError("Failed to get character from lookup table");
             }
-
-            d.waitingSince[segmentIndex] = context.animatorContext.PassedTime;
-
-            float waitDuration = Mathf.Lerp(d.minWait, d.maxWait, (float)d.random.NextDouble());
-            if (waitDuration - durationLeft < d.minWait) 
-                waitDuration = Mathf.Min(d.maxWait, d.maxWait);
             else
-                waitDuration = Mathf.Min(waitDuration, d.duration - (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)));
+            {
+                GlyphRect rect = d.positions[segmentIndex];
+                GlyphRect ogRect = d.originalPositions[segmentIndex];
+                cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
+                cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
+                cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
+                cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
 
-            d.waitDuration[segmentIndex] = waitDuration;
+                if (rect.width != ogRect.width || rect.height != ogRect.height)
+                {
+                    float wProp = (float)rect.width / ogRect.width;
+                    float hProp = (float)rect.height / ogRect.height;
+                    cData.SetScale(new Vector3(wProp, hProp, 1f));
+                    cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
+                }
+            }
         }
 
 
-        private void Init(CharData cData, Data d, IAnimationContext context)
+
+        private void InitRNGDict(IAnimationContext context)
         {
-            d.random = new System.Random((int)(context.animatorContext.PassedTime * 1000));
+            Data d = context.customData as Data;
+            int seed = (int)(context.animatorContext.PassedTime * 1000);
+            d.rngDict = new Dictionary<int, System.Random>(context.segmentData.length);
+            for (int i = 0; i < context.segmentData.length; i++)
+            {
+                d.rngDict.Add(i, new System.Random(seed + i));
+            }
+        }
 
-            if (cData.info.fontAsset.atlasPopulationMode == AtlasPopulationMode.Dynamic)
-                cData.info.fontAsset.TryAddCharacters(d.characters);
+        private void InitLastUpdatedDict(IAnimationContext context)
+        {
+            Data d = context.customData as Data;
+            d.lastUpdatedDict = new Dictionary<int, float>(context.segmentData.length);
+            for (int i = 0; i < context.segmentData.length; i++)
+            {
+                d.lastUpdatedDict.Add(i, context.animatorContext.PassedTime);
+            }
+        }
 
-            //d.vertices = new(context.segmentData.length);
-            d.originalPositions = new(context.segmentData.length);
-            d.waitingSince = new(context.segmentData.length);
-            d.waitDuration = new(context.segmentData.length);
-            d.positions = new(context.segmentData.length);
+        private void InitDelayDict(IAnimationContext context)
+        {
+            Data d = context.customData as Data;
+            d.delayDict = new Dictionary<int, float>(context.segmentData.length);
 
             for (int i = 0; i < context.segmentData.length; i++)
             {
-                d.waitDuration[i] = -1;
-                d.waitingSince[i] = -1;
+                d.delayDict.Add(i, 0);
             }
+        }
+
+        private void InitPositionsDict(IAnimationContext context)
+        {
+            Data d = context.customData as Data;
+            d.positions = new Dictionary<int, GlyphRect>(context.segmentData.length);
+            d.originalPositions = new Dictionary<int, GlyphRect>(context.segmentData.length);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
         {
+            if (parameters == null) return; 
             Data d = (Data)customData;
 
             if (TryGetFloatParameter(out float f, parameters, "probability", "prob", "p")) d.probability = f;
             if (TryGetFloatParameter(out f, parameters, "duration", "dur", "d")) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "minWait", "minW")) d.minWait = f;
-            if (TryGetFloatParameter(out f, parameters, "maxWait", "maxW")) d.maxWait = f;
+            if (TryGetFloatParameter(out f, parameters, "minDelay", "minD")) d.minDelay = f;
+            if (TryGetFloatParameter(out f, parameters, "maxDelay", "maxD")) d.maxDelay = f;
             if (TryGetDefinedParameter(out string s, parameters, "characters", "char", "c")) d.characters = parameters[s];
             if (TryGetBoolParameter(out bool b, parameters, "autoCase", "case")) d.autoCase = b;
+            if (TryGetAnimCurveParameter(out var crv, parameters, "delayCurve", "delayCrv", "delayC")) d.delayCurve = crv;
+            if (TryGetAnimCurveParameter(out crv, parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) d.probCurve = crv;
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -188,9 +224,11 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             if (HasNonFloatParameter(parameters, "probability", "prob", "p")) return false;
             if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
-            if (HasNonFloatParameter(parameters, "minWait", "minW")) return false;
-            if (HasNonFloatParameter(parameters, "maxWait", "maxW")) return false;
+            if (HasNonFloatParameter(parameters, "minDelay", "minDelay")) return false;
+            if (HasNonFloatParameter(parameters, "maxDelay", "maxDelay")) return false;
             if (HasNonBoolParameter(parameters, "autoCase", "case")) return false;
+            if (HasNonAnimCurveParameter(parameters, "delayCurve", "delayCrv", "delayC")) return false;
+            if (HasNonAnimCurveParameter(parameters, "amplitudeCurve", "amplitudeCrv", "amplitudeC", "ampCurve", "ampCrv", "ampC")) return false;
             return true;
         }
 
@@ -198,29 +236,43 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             return new Data()
             {
+                init = false,
                 duration = this.duration,
                 characters = this.characters,
                 probability = this.probability,
-                minWait = this.minWait,
-                maxWait = this.maxWait,
+                minDelay = this.minDelay,
+                maxDelay = this.maxDelay,
                 autoCase = this.autoCase,
+
+                delayCurve = this.delayCurve,
+                probCurve = this.probabilityCurve,
+
+                lastUpdatedDict = null,
+                delayDict = null,
+                rngDict = null,
             };
         }
 
         private class Data
         {
-            public Dictionary<int, float> waitingSince = null;
-            public Dictionary<int, float> waitDuration = null;
-            public Dictionary<int, GlyphRect> positions = null;
-            public Dictionary<int, GlyphRect> originalPositions = null;
-            public System.Random random = null;
+            public bool init;
 
             public float duration;
             public string characters;
             public float probability;
-            public float minWait;
-            public float maxWait;
+            public float minDelay;
+            public float maxDelay;
             public bool autoCase;
+
+            public AnimationCurve delayCurve;
+            public AnimationCurve probCurve;
+
+            public System.Random random = null;
+            public Dictionary<int, GlyphRect> positions = null;
+            public Dictionary<int, GlyphRect> originalPositions = null;
+            public Dictionary<int, float> lastUpdatedDict = null;
+            public Dictionary<int, float> delayDict = null;
+            public Dictionary<int, System.Random> rngDict = null;
         }
     }
 }

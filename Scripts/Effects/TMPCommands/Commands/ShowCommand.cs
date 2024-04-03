@@ -3,6 +3,7 @@ using System.Globalization;
 using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.Components;
+using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -24,12 +25,6 @@ namespace TMPEffects.TMPCommands.Commands
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
-            if (parameters == null) return true;
-            if (parameters[""] == "") return true;
-
-            if (!float.TryParse(parameters[""], NumberStyles.Float, CultureInfo.InvariantCulture, out _))
-                return false;
-
             return true;
         }
     }
