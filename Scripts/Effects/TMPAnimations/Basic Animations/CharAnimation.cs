@@ -41,7 +41,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (!d.positions.ContainsKey(segmentIndex))
             {
                 if (!cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c))
-                    Debug.LogError("Failed to get character from lookup table");
+                    Debug.LogError($"Failed to get character {cData.info.character} from lookup table");
 
                 d.positions[segmentIndex] = c.glyph.glyphRect;
                 d.originalPositions[segmentIndex] = c.glyph.glyphRect;
@@ -134,7 +134,7 @@ namespace TMPEffects.TMPAnimations.Animations
                     }
                 }
                 else
-                    Debug.LogError("Failed to get character from lookup table");
+                    Debug.LogError($"Failed to get character {character} from lookup table");
             }
 
             d.waitingSince[segmentIndex] = context.animatorContext.PassedTime;
