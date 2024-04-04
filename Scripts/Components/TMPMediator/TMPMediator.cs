@@ -42,17 +42,18 @@ namespace TMPEffects.Components.Mediator
         public delegate void EmptyEventHandler();
         public delegate void RangeEventHandler(int start, int lenght);
         public delegate void VisibilityEventHandler(int index, VisibilityState previous);
-        public delegate void TextChangedEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
+        public delegate void TextChangedEarlyEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData);
+        public delegate void TextChangedLateEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
 
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, before <see cref="TextChanged_Late"/>.<br/>
         /// Do NOT modify either CharData or VisibilityStates in callbacks to this event. Subscribe to <see cref="TextChanged_Late"/> for that.
         /// </summary>
-        public event TextChangedEventHandler TextChanged_Early;
+        public event TextChangedEarlyEventHandler TextChanged_Early;
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, after <see cref="TextChanged_Early"/>.<br/>
         /// </summary>
-        public event TextChangedEventHandler TextChanged_Late;
+        public event TextChangedLateEventHandler TextChanged_Late;
         /// <summary>
         /// Raised when the <see cref="VisibilityState"/> of one of the contained <see cref="CharData"/> is updated. 
         /// </summary>
@@ -236,6 +237,9 @@ namespace TMPEffects.Components.Mediator
             // Check whether there was textual changes (excluding processed tags)
             bool changed = CompareCharData(oldchardata);
 
+            // Invoke textchanged events
+            TextChanged_Early?.Invoke(changed, oldchardata);
+            
             // Cache the old visibility states
             var oldvisibility = new ReadOnlyCollection<VisibilityState>(new List<VisibilityState>(VisibilityStates));
 
@@ -263,7 +267,6 @@ namespace TMPEffects.Components.Mediator
             }
 
             // Invoke textchanged events
-            TextChanged_Early?.Invoke(changed, oldchardata, oldvisibility); // TODO MUST add some documentation to not operate on the actual chardata here; animator uses this to update visbility arrays
             TextChanged_Late?.Invoke(changed, oldchardata, oldvisibility);
         }
 
