@@ -167,15 +167,13 @@ namespace TMPEffects.Components
 
             CreateContext();
 
+            SetDummies();
+            
             PrepareForProcessing();
 
             SubscribeToMediator();
 
             Mediator.ForceReprocess();
-
-            SetDummies();
-            //SetDefault(TMPAnimationType.Show);
-            //SetDefault(TMPAnimationType.Hide);
 
 #if UNITY_EDITOR
             if (preview && !Application.isPlaying) StartPreview();
@@ -287,10 +285,14 @@ namespace TMPEffects.Components
         {
             ResetAllVisible();
         }
-
+        
         private void SetDefault(TMPAnimationType type)
         {
-            if (Mediator == null) return;
+            if (Mediator == null)
+            {
+                SetToDummy();
+                return;
+            }
 
             string str;
             ITMPEffectDatabase<ITMPAnimation> database;
@@ -366,6 +368,8 @@ namespace TMPEffects.Components
                     case TMPAnimationType.Show: defaultShow = dummyShow; break;
                     case TMPAnimationType.Hide: defaultHide = dummyHide; break;
                 }
+
+                if (dummyShow == null || dummyHide == null) Debug.LogWarning("SET DEFAULT WHILE DUMMY NULL");
             }
         }
 
@@ -1392,6 +1396,8 @@ namespace TMPEffects.Components
             {
                 SetDummies();
                 PostProcessTags();
+                SetDefault(TMPAnimationType.Show);
+                SetDefault(TMPAnimationType.Hide);
                 if (IsAnimating) UpdateAnimations_Impl(0f);
                 return;
             }
@@ -1420,15 +1426,22 @@ namespace TMPEffects.Components
             {
                 SetDummies();
                 PostProcessTags();
+                SetDefault(TMPAnimationType.Show);
+                SetDefault(TMPAnimationType.Hide);
                 if (IsAnimating) UpdateAnimations_Impl(0f);
             }
 
+            SetDefault(TMPAnimationType.Show);
+            SetDefault(TMPAnimationType.Hide);
             if (IsAnimating) UpdateAnimations_Impl(0f);
         }
 
-        private void PopulateTimes(bool textContentChanged, IList<CharData> oldCharData, IList<VisibilityState> oldVisibilities)
+        private void PopulateTimes(bool textContentChanged, IList<CharData> oldCharData)
         {
-            if (!textContentChanged) return;
+            if (!textContentChanged && Mediator.CharData.Count == visibleTimes?.Count)
+            {
+                return;
+            }
 
             visibleTimes = new List<float>();
             stateTimes = new List<float>();
@@ -1667,9 +1680,6 @@ namespace TMPEffects.Components
                 foreach (var tag in processor.ProcessedTags)
                     tags[hideCategory].TryAdd(tag.Value, tag.Key);
             }
-
-            SetDefault(TMPAnimationType.Show);
-            SetDefault(TMPAnimationType.Hide);
         }
         #endregion
 
@@ -1896,10 +1906,16 @@ namespace TMPEffects.Components
                 return "Tag with name " + tagInfo.name + " is defined, but not assigned an animation";
             }
 
-            tagParams = ParsingUtility.GetTagParametersDict(str);
-            if (!animation.ValidateParameters(tagParams))
+            try
             {
-
+                tagParams = ParsingUtility.GetTagParametersDict(str);
+                if (!animation.ValidateParameters(tagParams))
+                {
+                    return "Parameters are not valid for this tag";
+                }
+            }
+            catch
+            {
                 return "Parameters are not valid for this tag";
             }
 

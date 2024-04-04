@@ -689,6 +689,7 @@ namespace TMPEffects.Components
                 if (Mediator == null) yield break;
             }
 
+            yield return null;
 
             CharData cData;
             for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? because coroutines are not instantly cancelled (so disable writer => NRE)
