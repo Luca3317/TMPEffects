@@ -113,7 +113,7 @@ namespace TMPEffects.Components
         /// <summary>
         /// The prefix used for event tags.
         /// </summary>
-        public const char EVENT_PREFIX = '#';
+        public const char EVENT_PREFIX = '?';
 
         private float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
         private float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
