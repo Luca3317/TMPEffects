@@ -105,94 +105,6 @@ namespace TMPEffects.Components
         /// </summary>
         public UnityEvent<int> OnResetWriter;
 
-        private void RaiseEvent(UnityEvent uEvent)
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                return;
-#endif
-
-            uEvent?.Invoke();
-        }
-
-        private void RaiseCharacterShownEvent(CharData cData)
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnCharacterShownPreview?.Invoke(cData);
-                return;
-            }
-#endif
-
-            OnCharacterShown?.Invoke(cData);
-        }
-
-        private void RaiseResetWriterEvent(int index)
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnResetWriterPreview?.Invoke(index);
-                return;
-            }
-#endif
-
-            OnResetWriter?.Invoke(index);
-        }
-
-        private void RaiseFinishWriterEvent()
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnFinishWriterPreview?.Invoke();
-                return;
-            }
-#endif
-
-            OnFinishWriter?.Invoke();
-        }
-
-        private void RaiseStartWriterEvent()
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnStartWriterPreview?.Invoke();
-                return;
-            }
-#endif
-
-            OnStartWriter?.Invoke();
-        }
-
-        private void RaiseStopWriterEvent()
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnStopWriterPreview?.Invoke();
-                return;
-            }
-#endif
-
-            OnStopWriter?.Invoke();
-        }
-
-        private void RaiseSkipWriterEvent()
-        {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                OnSkipWriterPreview?.Invoke();
-                return;
-            }
-#endif
-
-            OnSkipWriter?.Invoke();
-        }
-
         /// <summary>
         /// The prefix used for command tags.
         /// </summary>
@@ -350,16 +262,12 @@ namespace TMPEffects.Components
 
         private void SubscribeToMediator()
         {
-            Mediator.CharDataPopulated += PostProcessTags;
-            Mediator.TextChanged += OnTextChanged;
-            //Mediator.Processor.FinishAdjustIndices += PostProcessTags;
+            Mediator.TextChanged_Late += OnTextChanged;
         }
 
         private void UnsubscribeFromMediator()
         {
-            Mediator.CharDataPopulated -= PostProcessTags;
-            Mediator.TextChanged -= OnTextChanged;
-            //Mediator.Processor.FinishAdjustIndices -= PostProcessTags;
+            Mediator.TextChanged_Late -= OnTextChanged;
         }
 
         private void OnDatabaseChanged()
@@ -493,6 +401,39 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
+        /// Pause the writer for the given amount of time.<br/>
+        /// If the writer is not currently writing, this will do nothing.
+        /// </summary>
+        /// <param name="seconds">The amount of time to pause the writer for.</param>
+        public void PauseWriter(float seconds)
+        {
+            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || !writing) return;
+            Debug.Log("SETTING PAUSE");
+            pause = Mathf.Max(seconds, pause);
+        }
+        private float pause;
+
+
+        private void SetWriterToIndex(int index)
+        {
+            HideAll(true);
+            if (index > 0) Show(0, index, true);
+
+            for (int i = -1; i < index; i++)
+            {
+                RaiseInvokables(i, false);
+            }
+
+            currentIndex = index;
+
+            if (index == Mediator.CharData.Count)
+            {
+                if (writing) StopWriterCoroutine();
+                RaiseFinishWriterEvent();
+            }
+        }
+
+        /// <summary>
         /// Restart the writer.<br/>
         /// This will reset the writer and start the writing process.
         /// </summary>
@@ -572,10 +513,33 @@ namespace TMPEffects.Components
         }
         #endregion
 
-        #region Event Callbacks
-        private void OnTextChanged()
+        #region Event Callbacks and Wrappers
+        private void OnTextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
+            if (!textContentChanged)
+            {
+                bool tagsChanged = true;
+                var oldTags = CommandTags;
+                var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+                if (oldTags.SequenceEqual(newTags))
+                {
+                    oldTags = EventTags;
+                    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+                    if (oldTags.SequenceEqual(newTags))
+                    {
+                        tagsChanged = false;
+                    }
+                }
+
+                if (!tagsChanged) return;
+            }
+
+            PostProcessTags();
+
 #if UNITY_EDITOR
+            // If is preview
             if (!Application.isPlaying)
             {
                 bool wasWriting = writing;
@@ -591,6 +555,85 @@ namespace TMPEffects.Components
 
             ResetWriter();
             if (autoWriteNewText) StartWriter();
+            return;
+        }
+
+        private void RaiseCharacterShownEvent(CharData cData)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnCharacterShownPreview?.Invoke(cData);
+                return;
+            }
+#endif
+
+            OnCharacterShown?.Invoke(cData);
+        }
+
+        private void RaiseResetWriterEvent(int index)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnResetWriterPreview?.Invoke(index);
+                return;
+            }
+#endif
+
+            OnResetWriter?.Invoke(index);
+        }
+
+        private void RaiseFinishWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnFinishWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnFinishWriter?.Invoke();
+        }
+
+        private void RaiseStartWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnStartWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnStartWriter?.Invoke();
+        }
+
+        private void RaiseStopWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnStopWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnStopWriter?.Invoke();
+        }
+
+        private void RaiseSkipWriterEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnSkipWriterPreview?.Invoke();
+                return;
+            }
+#endif
+
+            OnSkipWriter?.Invoke();
         }
         #endregion
 
@@ -667,7 +710,7 @@ namespace TMPEffects.Components
                 // Calculate delay; do here to use accurate visibilitystate
                 float delay = CalculateDelay(i);
 
-                // Show the current character, if it is not already shown 
+                // Show the current character, if it is not already shown
                 VisibilityState vState = Mediator.VisibilityStates[i];
                 if (vState == VisibilityState.Hidden || vState == VisibilityState.Hiding)
                 {
@@ -677,6 +720,11 @@ namespace TMPEffects.Components
 
                 // Calculate and wait for the delay for the current index
                 if (delay > 0) yield return new WaitForSeconds(delay);
+                if (pause > 0)
+                {
+                    yield return new WaitForSeconds(pause);
+                    pause = 0f;
+                }
             }
 
             invokables = GetInvokables(Mediator.CharData.Count);
@@ -700,6 +748,7 @@ namespace TMPEffects.Components
         {
             currentDelay = delay;
             currentMaySkip = maySkip;
+            pause = 0f;
         }
 
         private void ResetInvokables(int maxIndex)

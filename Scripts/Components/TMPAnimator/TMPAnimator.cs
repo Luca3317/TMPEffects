@@ -19,6 +19,8 @@ using System.Collections.Specialized;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
+using System.Diagnostics.Tracing;
+using System.Linq;
 
 namespace TMPEffects.Components
 {
@@ -212,20 +214,16 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not register as visibility processor!");
             }
 
-            Mediator.CharDataPopulated += SetDummies; // Set the dummy show / hide animation 
-            Mediator.CharDataPopulated += PopulateTimes; // Populate the timing datas
+            Mediator.TextChanged_Late += OnTextChanged;
+            Mediator.TextChanged_Early += PopulateTimes;
             Mediator.VisibilityStateUpdated += OnVisibilityStateUpdated; // Handle Visibility updates
-            Mediator.CharDataPopulated += PostProcessTags; //
-            Mediator.TextChanged += OnTextChanged; // Will update animations once; otherwise, depending on timing of text change, there'll be a frame of unanimated text
         }
 
         private void UnsubscribeFromMediator()
         {
-            Mediator.CharDataPopulated -= SetDummies;
-            Mediator.CharDataPopulated -= PopulateTimes;
+            Mediator.TextChanged_Late -= OnTextChanged;
+            Mediator.TextChanged_Early -= PopulateTimes;
             Mediator.VisibilityStateUpdated -= OnVisibilityStateUpdated;
-            Mediator.CharDataPopulated -= PostProcessTags;
-            Mediator.TextChanged -= OnTextChanged;
 
             if (!Mediator.UnregisterVisibilityProcessor(timesIdentifier))
             {
@@ -1409,13 +1407,50 @@ namespace TMPEffects.Components
         #endregion
 
         #region Event Callbacks
-        private void OnTextChanged()
+        private void OnTextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
+            if (textContentChanged)
+            {
+                SetDummies();
+                PostProcessTags();
+                if (IsAnimating) UpdateAnimations_Impl(0f);
+                return;
+            }
+
+            bool tagsChanged = true;
+            var oldTags = BasicTags;
+            var newTags = processors.TagProcessors[basicCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+            if (oldTags.SequenceEqual(newTags))
+            {
+                oldTags = ShowTags;
+                newTags = processors.TagProcessors[showCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+
+                if (oldTags.SequenceEqual(newTags))
+                {
+                    oldTags = HideTags;
+                    newTags = processors.TagProcessors[hideCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+                    if (oldTags.SequenceEqual(newTags))
+                    {
+                        tagsChanged = false;
+                    }
+                }
+            }
+
+            if (tagsChanged)
+            {
+                SetDummies();
+                PostProcessTags();
+                if (IsAnimating) UpdateAnimations_Impl(0f);
+            }
+
             if (IsAnimating) UpdateAnimations_Impl(0f);
         }
 
-        private void PopulateTimes()
+        private void PopulateTimes(bool textContentChanged, IList<CharData> oldCharData, IList<VisibilityState> oldVisibilities)
         {
+            if (!textContentChanged) return;
+
             visibleTimes = new List<float>();
             stateTimes = new List<float>();
 
@@ -1653,7 +1688,6 @@ namespace TMPEffects.Components
                 foreach (var tag in processor.ProcessedTags)
                     tags[hideCategory].TryAdd(tag.Value, tag.Key);
             }
-
 
             SetDefault(TMPAnimationType.Show);
             SetDefault(TMPAnimationType.Hide);

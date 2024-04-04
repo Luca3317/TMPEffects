@@ -42,20 +42,22 @@ namespace TMPEffects.Components.Mediator
         public delegate void EmptyEventHandler();
         public delegate void RangeEventHandler(int start, int lenght);
         public delegate void VisibilityEventHandler(int index, VisibilityState previous);
+        public delegate void TextChangedEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
 
         /// <summary>
-        /// Raised when the text of the associated <see cref="TMP_Text"/> component changed.
+        /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, before <see cref="TextChanged_Late"/>.<br/>
+        /// Do NOT modify either CharData or VisibilityStates in callbacks to this event. Subscribe to <see cref="TextChanged_Late"/> for that.
         /// </summary>
-        public event EmptyEventHandler TextChanged;
+        public event TextChangedEventHandler TextChanged_Early;
         /// <summary>
-        /// Raised when the <see cref="CharData"/> property is fully populated.<br/>
-        /// The property is populated whenever the text of the associated <see cref="TMP_Text"/> property changes.
+        /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, after <see cref="TextChanged_Early"/>.<br/>
         /// </summary>
-        public event EmptyEventHandler CharDataPopulated;
+        public event TextChangedEventHandler TextChanged_Late;
         /// <summary>
         /// Raised when the <see cref="VisibilityState"/> of one of the contained <see cref="CharData"/> is updated. 
         /// </summary>
         public event VisibilityEventHandler VisibilityStateUpdated;
+
 
         /// <summary>
         /// Create a new instance of TMPMediator.
@@ -215,7 +217,7 @@ namespace TMPEffects.Components.Mediator
         private object visibilityProcessor = null;
 
         private void OnTextChanged(UnityEngine.Object obj)
-        { 
+        {
             if ((obj as TMP_Text) == Text)
             {
                 TextChangedProcedure();
@@ -224,11 +226,60 @@ namespace TMPEffects.Components.Mediator
 
         private void TextChangedProcedure()
         {
-            Debug.Log("Text changed!!");
+            // Adjust the indiecs of all processed tags
             Processor.AdjustIndices();
+
+            // Cache the old chardata before repopulating with new chardata
+            var oldchardata = new ReadOnlyCollection<CharData>(new List<CharData>(charData));
             PopulateCharData();
 
-            TextChanged?.Invoke();
+            // Check whether there was textual changes (excluding processed tags)
+            bool changed = CompareCharData(oldchardata);
+
+            // Cache the old visibility states
+            var oldvisibility = new ReadOnlyCollection<VisibilityState>(new List<VisibilityState>(VisibilityStates));
+
+            // If there was no actual textual change, restore prior visibilities
+            // TODO This arguably should be handled in the visibility processor, if one is present
+            if (!changed)
+            {
+                for (int i = 0; i < oldvisibility.Count; i++)
+                {
+                    if (oldvisibility[i] == VisibilityState.Hidden)
+                    {
+                        visibilityStates[i] = VisibilityState.Shown;
+                        SetVisibilityState(i, VisibilityState.Hidden);
+                    }
+                    else
+                    {
+                        visibilityStates[i] = oldvisibility[i];
+                    }
+                }
+            }
+            // Else, reset visibility states
+            else
+            {
+                ResetVisibilityStates();
+            }
+
+            // Invoke textchanged events
+            TextChanged_Early?.Invoke(changed, oldchardata, oldvisibility); // TODO MUST add some documentation to not operate on the actual chardata here; animator uses this to update visbility arrays
+            TextChanged_Late?.Invoke(changed, oldchardata, oldvisibility);
+        }
+
+        private bool CompareCharData(ReadOnlyCollection<CharData> oldData)
+        {
+            if (oldData.Count == CharData.Count)
+            {
+                for (int i = 0; i < oldData.Count; i++)
+                {
+                    if (oldData[i].info.character != CharData[i].info.character) return true;
+                }
+
+                return false;
+            }
+
+            return true;
         }
 
         private void SetPreprocessor()
@@ -239,7 +290,6 @@ namespace TMPEffects.Components.Mediator
         private void PopulateCharData()
         {
             charData.Clear();
-            visibilityStates.Clear();
 
             TMP_TextInfo info = Text.textInfo;
             CharData data;
@@ -263,12 +313,20 @@ namespace TMPEffects.Components.Mediator
 
                 data = wordInfo == null ? new CharData(i, cInfo, this) : new CharData(i, cInfo, this, wordInfo.Value);
                 charData.Add(data);
-                visibilityStates.Add(VisibilityState.Shown);
             }
 
             charData.TrimExcess();
+        }
 
-            CharDataPopulated?.Invoke();
+        private void ResetVisibilityStates()
+        {
+            visibilityStates.Clear();
+
+            for (int i = 0; i < Text.textInfo.characterCount; i++)
+            {
+                visibilityStates.Add(VisibilityState.Shown);
+            }
+
         }
 
         private void Hide(int startIndex, int length, bool skipHideProcess)

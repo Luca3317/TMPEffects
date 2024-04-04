@@ -86,4 +86,4 @@ MonoBehaviour:
     crestWait: 0
     troughWait: 0
     uniformity: 0.1
-  waveOffsetType: 5
+  waveOffsetType: 10
