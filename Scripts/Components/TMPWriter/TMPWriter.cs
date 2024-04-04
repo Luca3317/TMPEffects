@@ -20,6 +20,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Components.Animator;
 using TMPEffects.Tags;
+using UnityEngine.XR;
 
 namespace TMPEffects.Components
 {
@@ -683,7 +684,9 @@ namespace TMPEffects.Components
                 invokable.Trigger();
 
                 if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                if (Mediator == null) yield break;
                 if (continueConditions != null) yield return HandleWaitConditions();
+                if (Mediator == null) yield break;
             }
 
 
@@ -704,7 +707,9 @@ namespace TMPEffects.Components
                     invokable.Trigger();
 
                     if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (Mediator == null) yield break;
                     if (continueConditions != null) yield return HandleWaitConditions();
+                    if (Mediator == null) yield break;
                 }
 
                 // Calculate delay; do here to use accurate visibilitystate
@@ -719,12 +724,24 @@ namespace TMPEffects.Components
                 }
 
                 // Calculate and wait for the delay for the current index
-                if (delay > 0) yield return new WaitForSeconds(delay);
+                if (delay > 0)
+                {
+                    yield return new WaitForSeconds(delay);
+                    if (Mediator == null) yield break;
+                }
                 if (pause > 0)
                 {
                     yield return new WaitForSeconds(pause);
                     pause = 0f;
+                    if (Mediator == null) yield break;
                 }
+            }
+
+            if (Mediator == null)
+            {
+                RaiseFinishWriterEvent();
+                OnStopWriting();
+                yield break;
             }
 
             invokables = GetInvokables(Mediator.CharData.Count);
@@ -737,7 +754,9 @@ namespace TMPEffects.Components
                 invokable.Trigger();
 
                 if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                if (Mediator == null) yield break;
                 if (continueConditions != null) yield return HandleWaitConditions();
+                if (Mediator == null) yield break;
             }
 
             RaiseFinishWriterEvent();
