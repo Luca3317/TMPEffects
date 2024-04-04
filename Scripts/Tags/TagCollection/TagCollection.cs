@@ -195,11 +195,6 @@ namespace TMPEffects.Tags.Collections
         {
             if (indices == null) return FindIndex(tag) >= 0;
             return FindIndex(tag) >= 0;
-
-            //int index = BinarySearchIndexOf(new TempIndices(tag.StartIndex, tag.OrderAtIndex));
-            //if (index < 0) return false;
-            //if (tags[index].Value != tag) return false;
-            //return true;
         }
 
         public IEnumerator<EffectTagTuple> GetEnumerator() => tags.GetEnumerator();

@@ -280,33 +280,12 @@ namespace TMPEffects.Components
             processors.RegisterTo(Mediator.Processor);
         }
 
+        // Reset all visible character when a tag is added / removed / replaced;
+        // Mostly required when tag is removed or replaced so that previously animated text
+        // is no longer animated; would remain in last animated state otherwise
         private void OnTagCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Remove:
-                    int min = Mediator.CharData.Count;
-                    int max = 0;
-
-                    EffectTagTuple tuple;
-                    foreach (var ad in e.OldItems)
-                    {
-                        tuple = (EffectTagTuple)ad;
-
-                        if (tuple.Indices.StartIndex < min) min = tuple.Indices.StartIndex;
-                        if (tuple.Indices.EndIndex > max) max = tuple.Indices.EndIndex;
-                    }
-
-                    for (int i = min; i <= max; i++)
-                    {
-                        UpdateCharacterAnimation(Mediator.CharData[i], 0f, i, false, true);
-                    }
-
-                    if (Mediator.Text.mesh != null)
-                        Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-                    break;
-            }
+            ResetAllVisible();
         }
 
         private void SetDefault(TMPAnimationType type)

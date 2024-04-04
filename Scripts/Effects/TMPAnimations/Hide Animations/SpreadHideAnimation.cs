@@ -16,7 +16,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseOutElastic();
         [Tooltip("The anchor from where the character spreads.\nAliases: anchor, anc, a")]
         [SerializeField] TypedVector2 anchor = new TypedVector2(VectorType.Anchor, Vector2.zero);
-        [Tooltip("The direction in which the character spreads.\nAliases: direction, dir, d")]
+        [Tooltip("The direction in which the character spreads.\nAliases: direction, dir")]
         [SerializeField] Vector3 direction = Vector3.up;
         [Tooltip("The start percentage of the spread, 0 being fully hidden.\nAliases: startpercentage, start")]
         [SerializeField] float startPercentage = 1;
@@ -81,7 +81,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetFloatParameter(out float f, parameters, "duration", "dur", "d")) d.duration = f;
             if (TryGetFloatParameter(out f, parameters, "startpercentage", "start")) d.startPercentage = f;
             if (TryGetFloatParameter(out f, parameters, "targetpercentage", "target")) d.targetPercentage = f;
-            if (TryGetVector3Parameter(out Vector3 v, parameters, "direction", "dir", "d")) d.direction = v;
+            if (TryGetVector3Parameter(out Vector3 v, parameters, "direction", "dir")) d.direction = v;
             if (TryGetTypedVector2Parameter(out var tv2, parameters, "anchor", "anc", "a")) d.anchor = tv2;
             if (TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "curve", "crv", "c")) d.curve = crv;
         }
@@ -93,7 +93,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
             if (HasNonFloatParameter(parameters, "startpercentage", "start")) return false;
             if (HasNonFloatParameter(parameters, "targetpercentage", "target")) return false;
-            if (HasNonVector3Parameter(parameters, "direction", "dir", "d")) return false;
+            if (HasNonVector3Parameter(parameters, "direction", "dir")) return false;
             if (HasNonTypedVector2Parameter(parameters, "anchor", "anc", "a")) return false;
             if (HasNonAnimCurveParameter(parameters, "curve", "crv", "c")) return false;
             return true;

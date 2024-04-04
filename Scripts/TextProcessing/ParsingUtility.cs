@@ -371,6 +371,9 @@ namespace TMPEffects.TextProcessing
         #region Parsing
         public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
         {
+            result = 0;
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
             if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
                 return true;
 
@@ -382,6 +385,9 @@ namespace TMPEffects.TextProcessing
 
         public static bool StringToFloat(string str, out float result, IDictionary<string, float> keywords = null)
         {
+            result = 0;
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
             if (float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
                 return true;
 
@@ -393,6 +399,9 @@ namespace TMPEffects.TextProcessing
 
         public static bool StringToBool(string str, out bool result, IDictionary<string, bool> keywords = null)
         {
+            result = false;
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
             if (bool.TryParse(str, out result))
                 return true;
 
