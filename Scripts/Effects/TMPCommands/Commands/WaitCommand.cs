@@ -9,7 +9,7 @@ namespace TMPEffects.TMPCommands.Commands
     [CreateAssetMenu(fileName = "new WaitCommand", menuName = "TMPEffects/Commands/Wait")]
     public class WaitCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Empty;
+        public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => false;
         public override bool ExecuteRepeatable => true;

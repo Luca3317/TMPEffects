@@ -10,15 +10,6 @@ namespace TMPEffects.CharacterData
     public struct Info
     {
         /// <summary>
-        /// The initial scale of the character.
-        /// </summary>
-        public Vector3 initialScale => defaultScale;
-        /// <summary>
-        /// The default scale.
-        /// </summary>
-        public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
-
-        /// <summary>
         /// The index of the character within the source text.
         /// </summary>
         public readonly int index;
@@ -83,14 +74,6 @@ namespace TMPEffects.CharacterData
         public readonly TMP_FontAsset fontAsset;
 
         /// <summary>
-        /// The initial position of this character.
-        /// </summary>
-        public readonly Vector3 initialPosition;
-        /// <summary>
-        /// The initial rotation of this character.
-        /// </summary>
-        public readonly Quaternion initialRotation;
-        /// <summary>
         /// The reference scale of this character.
         /// </summary>
         public readonly float referenceScale;
@@ -116,28 +99,13 @@ namespace TMPEffects.CharacterData
             xAdvance = cInfo.xAdvance;
 
             referenceScale = cInfo.scale;
-            initialPosition = default;
-            initialRotation = Quaternion.identity;
-
             fontAsset = cInfo.fontAsset;
-
-            initialPosition = GetCenter(in mesh.initial);
         }
 
         public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo, VertexData mesh) : this(index, cInfo, mesh)
         {
             wordFirstIndex = wInfo.firstCharacterIndex;
             wordLen = wInfo.characterCount;
-        }
-
-        private Vector3 GetCenter(in ReadOnlyVertexData data)
-        {
-            Vector3 center = Vector3.zero;
-            for (int i = 0; i < 4; i++)
-            {
-                center += data.GetVertex(i);
-            }
-            return center / 4;
         }
     }
 }

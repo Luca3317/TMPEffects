@@ -109,7 +109,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Data d = (Data)customData;
             if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-            if (TryGetArrayParameter<Color>(out var array, parameters, ParsingUtility.StringToColor, "colors", "clrs")) d.colors = array.ToArray();
+            if (TryGetArrayParameter<Color>(out var array, parameters, ParsingUtility.StringToColor, "colors", "clrs")) d.colors = array;
 
             if (d.colors == null || d.colors.Length == 0)
             {

@@ -75,7 +75,7 @@ namespace TMPEffects.TMPSceneAnimations
                     }
                 }
 
-                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
+                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
                 return;
             }
 
@@ -85,14 +85,14 @@ namespace TMPEffects.TMPSceneAnimations
                 // If dragging another character, set and return
                 if (d.dragging != cData.info.index)
                 {
-                    AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
+                    AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
                     return;
                 }
 
                 // If dragging this, update offset, set and return
                 
                 d.dynamicOffset = (Input.mousePosition - d.startPosition) / (canvas == null ? 1f : canvas.scaleFactor);
-                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex] + d.dynamicOffset, cData, ref context);
+                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex] + d.dynamicOffset, cData, context);
                 return;
             }
 
@@ -107,20 +107,20 @@ namespace TMPEffects.TMPSceneAnimations
 
                 if (index != cData.info.index)
                 {
-                    AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
+                    AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
                     return;
                 }
 
                 d.dynamicOffset = Vector3.zero;
                 d.dragging = cData.info.index;
                 d.startPosition = Input.mousePosition;
-                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
+                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
 
                 return;
             }
 
             if (d.offsets[segmentIndex] != Vector3.zero)
-                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, ref context);
+                AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
         }
 
         //public void OldAnimate(CharData cData, IAnimationContext context)

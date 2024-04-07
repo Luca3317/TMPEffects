@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
     [CreateAssetMenu(fileName = "new DelayCommand", menuName = "TMPEffects/Commands/Delay")]
     public class DelayCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Either;
+        public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
-        public override bool ExecuteOnSkip => false;
+        public override bool ExecuteOnSkip => true;
         public override bool ExecuteRepeatable => true;
 
 #if UNITY_EDITOR
@@ -18,8 +17,15 @@ namespace TMPEffects.TMPCommands.Commands
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            ParsingUtility.StringToFloat(args.tag.Parameters[""], out float delay);
-            args.writer.SetDelay(delay);
+            if (ParameterUtility.TryGetFloatParameter(out float delay, args.tag.Parameters, ""))
+            {
+                args.writer.SetDelay(delay);
+                return;
+            }
+             
+            // Since validate parameters ensures the parameter is present and float,
+            // this state should be impossible to reach
+            throw new System.InvalidOperationException();
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
@@ -28,7 +34,7 @@ namespace TMPEffects.TMPCommands.Commands
             if (!parameters.ContainsKey(""))
                 return false;
 
-            return ParsingUtility.StringToFloat(parameters[""], out _);
+            return ParameterUtility.HasFloatParameter(parameters, "");
         }
     }
 }

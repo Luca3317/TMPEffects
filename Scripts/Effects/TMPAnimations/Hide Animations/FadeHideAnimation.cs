@@ -6,7 +6,7 @@ using UnityEngine;
 using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new FadeHideAnimation", menuName = "TMPEffects/Hide Animations/Fade")]
     public class FadeHideAnimation : TMPHideAnimation

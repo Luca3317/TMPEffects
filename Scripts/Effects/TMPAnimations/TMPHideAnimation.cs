@@ -18,10 +18,8 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
         ///<inheritdoc/>
-        public virtual object GetNewCustomData()
-        {
-            return null;
-        }
+        public abstract object GetNewCustomData();
+
 
         public event ObjectChangedEventHandler ObjectChanged;
 

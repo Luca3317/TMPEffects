@@ -28,9 +28,9 @@ namespace TMPEffects.Components.Writer
 
             switch (command.TagType)
             {
-                case TagType.Empty: endIndex = indices.StartIndex + 1; break;
+                case TagType.Index: endIndex = indices.StartIndex + 1; break;
                 case TagType.Either:
-                case TagType.Container:
+                case TagType.Block:
                     if (indices.IsOpen) endIndex = charData.Count;
                     break;
                 default: throw new ArgumentException(nameof(command.TagType));

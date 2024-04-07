@@ -49,6 +49,7 @@ namespace TMPEffects.Editor
         SerializedProperty onStartWriterProp;
         SerializedProperty onStopWriterProp;
         SerializedProperty onResetWriterProp;
+        SerializedProperty onSkipWriterProp;
         SerializedProperty onFinishWriterProp;
         SerializedProperty maySkipProp;
         SerializedProperty sceneCommandsProp;
@@ -149,6 +150,7 @@ namespace TMPEffects.Editor
             onStartWriterProp = serializedObject.FindProperty("OnStartWriter");
             onStopWriterProp = serializedObject.FindProperty("OnStopWriter");
             onResetWriterProp = serializedObject.FindProperty("OnResetWriter");
+            onSkipWriterProp = serializedObject.FindProperty("OnSkipWriter");
             onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
             maySkipProp = serializedObject.FindProperty("maySkip");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
@@ -393,6 +395,20 @@ namespace TMPEffects.Editor
             GUILayout.EndHorizontal();
         }
 
+        void DrawCommandsFoldout()
+        {
+            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Commands"), true);
+            if (databaseProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                DrawDatabase();
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(sceneCommandsProp);
+                if (EditorGUI.EndChangeCheck()) writer.ForceReprocess();
+                EditorGUI.indentLevel--;
+            }
+        }
+
         static bool eventFoldout = false;
         void DrawEventsFoldout()
         {
@@ -405,6 +421,7 @@ namespace TMPEffects.Editor
                 EditorGUILayout.PropertyField(onStartWriterProp);
                 EditorGUILayout.PropertyField(onStopWriterProp);
                 EditorGUILayout.PropertyField(onResetWriterProp);
+                EditorGUILayout.PropertyField(onSkipWriterProp);
                 EditorGUILayout.PropertyField(onFinishWriterProp);
             }
         }
@@ -455,12 +472,10 @@ namespace TMPEffects.Editor
             EditorGUILayout.PropertyField(startOnPlayProp);
             EditorGUILayout.PropertyField(maySkipProp);
 
-            DrawDatabase();
+            EditorGUILayout.Space(10);
+            DrawCommandsFoldout();
 
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(sceneCommandsProp);
-            if (EditorGUI.EndChangeCheck()) writer.ForceReprocess();
-
+            EditorGUILayout.Space(10);
             DrawEventsFoldout();
         }
 

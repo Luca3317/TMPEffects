@@ -30,24 +30,24 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Vector3 keyframe0_1 = cData.mesh.initial.GetVertex(0);
             Vector3 keyframe0_2 = cData.mesh.initial.GetVertex(3);
-            keyframe0_1 = GetRawVertex(1, keyframe0_1 + delta0 * d.squeezeFactor, cData, ref context);
-            keyframe0_2 = GetRawVertex(2, keyframe0_2 + delta1 * d.squeezeFactor, cData, ref context);
+            keyframe0_1 = GetRawVertex(1, keyframe0_1 + delta0 * d.squeezeFactor, cData, context);
+            keyframe0_2 = GetRawVertex(2, keyframe0_2 + delta1 * d.squeezeFactor, cData, context);
 
             Vector3 keyframe1_1 = cData.mesh.initial.GetVertex(1);
             Vector3 keyframe1_2 = cData.mesh.initial.GetVertex(2);
-            keyframe1_1 = GetRawVertex(1, keyframe1_1, cData, ref context) + Vector3.left * d.amplitude;
-            keyframe1_2 = GetRawVertex(2, keyframe1_2, cData, ref context) + Vector3.left * d.amplitude;
+            keyframe1_1 = GetRawVertex(1, keyframe1_1, cData, context) + Vector3.left * d.amplitude;
+            keyframe1_2 = GetRawVertex(2, keyframe1_2, cData, context) + Vector3.left * d.amplitude;
 
             Vector3 keyframe2_1 = cData.mesh.initial.GetVertex(1);
             Vector3 keyframe2_2 = cData.mesh.initial.GetVertex(2);
-            keyframe2_1 = GetRawVertex(1, keyframe2_1, cData, ref context) + Vector3.right * d.amplitude;
-            keyframe2_2 = GetRawVertex(2, keyframe2_2, cData, ref context) + Vector3.right * d.amplitude;
+            keyframe2_1 = GetRawVertex(1, keyframe2_1, cData, context) + Vector3.right * d.amplitude;
+            keyframe2_2 = GetRawVertex(2, keyframe2_2, cData, context) + Vector3.right * d.amplitude;
 
             Vector3 p1 = cData.mesh.initial.GetVertex(1), p2 = cData.mesh.initial.GetVertex(2);
             if (movingUp)
             {
                 if (t <= 0.9)
-                {
+                { 
                     p2 = Vector3.Lerp(keyframe1_2, keyframe0_2, t / 0.9f);
                     p1 = Vector3.Lerp(keyframe1_1, keyframe0_1, t / 0.9f);
                 }

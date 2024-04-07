@@ -13,25 +13,6 @@ namespace TMPEffects.Extensions
 {
     public static class AnimationCurveUtility
     {
-        public static bool StringToWrapMode(string str, out WrapMode result)
-        {
-            str = str.Trim();
-            switch (str)
-            {
-                case "o":
-                case "once": result = WrapMode.Once; return true;
-                case "l":
-                case "loop": result = WrapMode.Loop; return true;
-                case "pp":
-                case "pingpong": result = WrapMode.PingPong; return true;
-                case "c":
-                case "clamp": result = WrapMode.Clamp; return true;
-            }
-
-            result = default;
-            return false;
-        }
-
         #region Linear
         public static AnimationCurve Linear()
         {
@@ -705,7 +686,7 @@ namespace TMPEffects.Extensions
         }
 
         #region Mappings
-        internal static readonly ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>> NamePointsMapping = new ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>>(new Dictionary<string, ReadOnlyCollection<Vector2>>()
+        public static readonly ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>> NamePointsMapping = new ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>>(new Dictionary<string, ReadOnlyCollection<Vector2>>()
         {
             { "easeinsine", EaseInSinePoints },
             { "easeoutsine", EaseOutSinePoints },
@@ -778,7 +759,7 @@ namespace TMPEffects.Extensions
             { "easeinout-bounce", EaseInOutBouncePoints },
         });
 
-        internal static readonly ReadOnlyDictionary<string, Func<AnimationCurve>> NameConstructorMapping = new ReadOnlyDictionary<string, Func<AnimationCurve>>(new Dictionary<string, Func<AnimationCurve>>()
+        public static readonly ReadOnlyDictionary<string, Func<AnimationCurve>> NameConstructorMapping = new ReadOnlyDictionary<string, Func<AnimationCurve>>(new Dictionary<string, Func<AnimationCurve>>()
         {
             { "easeinsine", EaseInSine },
             { "easeoutsine", EaseOutSine },
@@ -853,7 +834,7 @@ namespace TMPEffects.Extensions
             { "linear", Linear}
         });
 
-        internal static readonly ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>> NameBezierConstructorMapping = new ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>(new Dictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>()
+        public static readonly ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>> NameBezierConstructorMapping = new ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>(new Dictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>()
         {
             { "linear", LinearBezier },
             { "quadratic", QuadraticBezier },
@@ -870,30 +851,30 @@ namespace TMPEffects.Extensions
         #endregion
 
         #region Curve Fitting
-        public static AnimationCurve MergeCurves(AnimationCurve curve0, AnimationCurve curve1, int dataCount)
-        {
-            Vector2[] data = new Vector2[dataCount + 1];
-            for (int i = 0; i <= dataCount; i++)
-            {
-                float t = (float)i / dataCount;
+        //public static AnimationCurve MergeCurves(AnimationCurve curve0, AnimationCurve curve1, int dataCount)
+        //{
+        //    Vector2[] data = new Vector2[dataCount + 1];
+        //    for (int i = 0; i <= dataCount; i++)
+        //    {
+        //        float t = (float)i / dataCount;
 
-                float val0 = curve0.Evaluate(t);
-                float val1 = curve1.Evaluate(t);
+        //        float val0 = curve0.Evaluate(t);
+        //        float val1 = curve1.Evaluate(t);
 
-                float value = Mathf.Lerp(val0, val1, t);
-                Debug.Log("Val0: " + val0 + "; Val1: " + val1 + "; Merged with t = " + t + " =>  " + value);
-                data[i] = new Vector2(t, value);
-            }
+        //        float value = Mathf.Lerp(val0, val1, t);
+        //        Debug.Log("Val0: " + val0 + "; Val1: " + val1 + "; Merged with t = " + t + " =>  " + value);
+        //        data[i] = new Vector2(t, value);
+        //    }
 
-            List<Vector2> fitted = CubicBezierFitter.FitCurve(data, 1e-06f);
+        //    List<Vector2> fitted = CubicBezierFitter.FitCurve(data, 1e-06f);
 
-            return Bezier(fitted);
-        }
+        //    return Bezier(fitted);
+        //}
 
         /// <summary>
         /// To make cubic bezier spline by data.
         /// </summary>
-        public static class CubicBezierFitter
+        internal static class CubicBezierFitter
         {
             private const int MAX_DATA_COUNT = 100000;
             private const float MIN_ERROR = 1e-06f;

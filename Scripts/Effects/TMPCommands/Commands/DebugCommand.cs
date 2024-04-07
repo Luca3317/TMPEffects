@@ -6,7 +6,7 @@ namespace TMPEffects.TMPCommands.Commands
     [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Debug")]
     public class DebugCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Empty;
+        public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
         public override bool ExecuteRepeatable => true;

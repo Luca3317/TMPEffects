@@ -8,11 +8,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                cData.SetVertex(i, cData.mesh.initial.GetVertex(i));
-            }
             context.FinishAnimation(cData);
+        }
+
+        public override object GetNewCustomData()
+        {
+            return null;
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

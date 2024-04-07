@@ -316,7 +316,8 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
-        /// Reset the writer to the initial state for the current text.
+        /// Reset the writer to the initial state for the current text.<br/>
+        /// This also stops the writing process.
         /// </summary>
         public void ResetWriter()
         {
@@ -338,12 +339,14 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
-        /// Reset the writer to the given index of the current text.
+        /// Reset the writer to the given index of the current text.<br/>
+        /// Does not allow you to skip text; the passed index must be smaller than
+        /// the current index.
         /// </summary>
         /// <param name="index">The index to reset the writer to.</param>
         public void ResetWriter(int index)
         {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
+            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || index >= currentIndex) return;
 
             if (writing)
             {
@@ -355,8 +358,6 @@ namespace TMPEffects.Components
 
             Hide(0, Mediator.CharData.Count, true);
             Show(0, index, true);
-            //Hide(index, Mediator.CharData.Count - index, true);
-            //Show(0, index, true);
 
             ResetInvokables(currentIndex);
             for (int i = -1; i < index; i++)
@@ -395,39 +396,6 @@ namespace TMPEffects.Components
             Show(0, skipTo, skipShowAnimation);
 
             if (skipTo == Mediator.CharData.Count)
-            {
-                if (writing) StopWriterCoroutine();
-                RaiseFinishWriterEvent();
-            }
-        }
-
-        /// <summary>
-        /// Pause the writer for the given amount of time.<br/>
-        /// If the writer is not currently writing, this will do nothing.
-        /// </summary>
-        /// <param name="seconds">The amount of time to pause the writer for.</param>
-        public void PauseWriter(float seconds)
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || !writing) return;
-            Debug.Log("SETTING PAUSE");
-            pause = Mathf.Max(seconds, pause);
-        }
-        private float pause;
-
-
-        private void SetWriterToIndex(int index)
-        {
-            HideAll(true);
-            if (index > 0) Show(0, index, true);
-
-            for (int i = -1; i < index; i++)
-            {
-                RaiseInvokables(i, false);
-            }
-
-            currentIndex = index;
-
-            if (index == Mediator.CharData.Count)
             {
                 if (writing) StopWriterCoroutine();
                 RaiseFinishWriterEvent();
@@ -508,7 +476,6 @@ namespace TMPEffects.Components
         /// <param name="database">The database that will be used to parse command tags.</param>
         public void SetDatabase(TMPCommandDatabase database)
         {
-            TMPCommandDatabase previous = this.database;
             this.database = database;
             OnDatabaseChanged();
         }
@@ -730,12 +697,6 @@ namespace TMPEffects.Components
                     yield return new WaitForSeconds(delay);
                     if (Mediator == null) yield break;
                 }
-                if (pause > 0)
-                {
-                    yield return new WaitForSeconds(pause);
-                    pause = 0f;
-                    if (Mediator == null) yield break;
-                }
             }
 
             if (Mediator == null)
@@ -768,7 +729,6 @@ namespace TMPEffects.Components
         {
             currentDelay = delay;
             currentMaySkip = maySkip;
-            pause = 0f;
         }
 
         private void ResetInvokables(int maxIndex)

@@ -5,6 +5,7 @@ using TMPEffects.TextProcessing;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
+using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects
 {
@@ -530,15 +531,15 @@ namespace TMPEffects
         public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetArrayParameter(out List<T> _, parameters, func, name, aliases);
+            return !TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
         }
 
         public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
-            return TryGetArrayParameter(out List<T> _, parameters, func, name, aliases);
+            return TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
         }
 
-        public static bool TryGetArrayParameter<T>(out List<T> value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             try
             {
@@ -553,7 +554,7 @@ namespace TMPEffects
         }
 
         public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
-        public static List<T> GetArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        public static T[] GetArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             string defined = GetDefinedParameter(parameters, name, aliases);
 
@@ -573,7 +574,7 @@ namespace TMPEffects
                 result.Add(t);
             }
 
-            return result;
+            return result.ToArray();
         }
 
 
@@ -882,6 +883,40 @@ namespace TMPEffects
 
             return true;
         }
+
+
+        /// <summary>
+        /// Create a new <see cref="Wave"/> using the passed in one as a template, and replacing any of its properties that are defined in the passed in <see cref="WaveParameters"/>.<br/>
+        /// This is not in-place. The passed in <see cref="Wave"> will not be modified.
+        /// </summary>
+        /// <param name="wave"></param>
+        /// <param name="wp"></param>
+        /// <returns>A new <see cref="Wave"/>, that combines the properties of the passed in objects.</returns>
+        public static Wave CreateWave(Wave wave, ParameterUtility.WaveParameters wp)
+        {
+            float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
+            float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
+
+            float velocity = wave.Velocity;
+            if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
+            else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod));
+
+            Wave newWave = new Wave
+            (
+                wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
+                wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
+                upPeriod,
+                downPeriod,
+                velocity,
+                wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value,
+                wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
+                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,
+                wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
+            );
+
+            return newWave;
+        }
+
 
 
         // Aliases for common parameters

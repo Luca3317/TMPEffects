@@ -19,9 +19,12 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data data = (Data)context.customData;
 
-            //if (context.segmentData.SegmentIndexOf(cData) == 0) Debug.Log("Passedtime " + context.animatorContext.PassedTime);
-            float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
-            cData.SetPosition(cData.info.initialPosition + Vector3.up * eval);
+            float angle = context.animatorContext.PassedTime * 25 % 360;
+            cData.SetRotation(Quaternion.Euler(0, 0, angle));
+            cData.AddPivotDelta(Vector3.right * 150);
+
+            //float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+            //cData.SetPosition(cData.info.initialPosition + Vector3.up * eval);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

@@ -5,7 +5,7 @@ using static TMPEffects.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using TMPEffects.Extensions;
 
-namespace TMPEffects.TMPAnimations.Animations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new PivotHideAnimation", menuName = "TMPEffects/Hide Animations/Pivot")]
     public class PivotHideAnimation : TMPHideAnimation
@@ -48,7 +48,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 case VectorType.Anchor:
                     Vector3 position = AnchorToPosition(d.pivot.vector, cData);
                     position.z = 0;
-                    SetPivotRaw(position, cData, ref context);
+                    SetPivotRaw(position, cData, context);
                     break;
             }
         }

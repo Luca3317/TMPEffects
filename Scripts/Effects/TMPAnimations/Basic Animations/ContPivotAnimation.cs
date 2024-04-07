@@ -31,9 +31,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
             switch (d.pivot.type)
             {
-                case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, ref context); break;
+                case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, context); break;
                 case VectorType.Offset: cData.SetPivot(cData.info.initialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f)); break;
-                case VectorType.Anchor: SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, ref context); break;
+                case VectorType.Anchor: SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, context); break;
             }
         }
 

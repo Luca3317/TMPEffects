@@ -56,7 +56,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 d.originalPositions[segmentIndex] = c.glyph.glyphRect;
             }
 
-            float t = Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
+            float t = d.duration > 0 ? Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration) : 1f;
 
             float delayMult = d.delayCurve.Evaluate(t);
             float probMult = d.probCurve.Evaluate(t);

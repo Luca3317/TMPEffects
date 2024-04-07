@@ -22,7 +22,7 @@ namespace TMPEffects.Components
         /// <param name="text">The new text.</param>
         public void SetText(string text)
         {
-            Mediator.Text.SetText(text);
+            Mediator.SetText(text);
         }
 
 

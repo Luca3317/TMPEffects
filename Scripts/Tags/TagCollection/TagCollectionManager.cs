@@ -13,7 +13,7 @@ namespace TMPEffects.Tags.Collections
     /// Also maintains a union of all contained collections.
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
-    public class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<TKey>, IReadOnlyDictionary<TKey, ObservableTagCollection>, INotifyCollectionChanged where TKey : ITMPPrefixSupplier, ITMPTagValidator
+    internal class TagCollectionManager<TKey> : ITagCollection, ITagCollectionManager<TKey>, IReadOnlyDictionary<TKey, ObservableTagCollection>, INotifyCollectionChanged where TKey : ITMPPrefixSupplier, ITMPTagValidator
     {
         /// <summary>
         /// Raised when the union collection changes (i.e. when any of the <see cref="ObservableTagCollection"/> change).

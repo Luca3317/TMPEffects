@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.TextCore;
 using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new CharHideAnimation", menuName = "TMPEffects/Hide Animations/Char")]
     public class CharHideAnimation : TMPHideAnimation

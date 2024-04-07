@@ -19,7 +19,6 @@ namespace TMPEffects.TMPSceneAnimations
         public abstract object GetNewCustomData();
 
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
-
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
 
         protected virtual void OnValidate()

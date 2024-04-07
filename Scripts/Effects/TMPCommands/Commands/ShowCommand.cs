@@ -10,7 +10,7 @@ namespace TMPEffects.TMPCommands.Commands
     [CreateAssetMenu(fileName = "new ShowCommand", menuName = "TMPEffects/Commands/Show")]
     public class ShowCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Container;
+        public override TagType TagType => TagType.Block;
         public override bool ExecuteInstantly => true;
         public override bool ExecuteOnSkip => false;
         public override bool ExecuteRepeatable => true;

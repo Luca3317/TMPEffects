@@ -12,22 +12,18 @@ namespace TMPEffects.CharacterData
     /// </summary>
     public class CharData
     {
-        //public VisibilityState VisibilityState => mediator.GetVisibilityState(this);
-        //public void SetVisibilityState(VisibilityState state) => mediator.SetVisibilityState(this, state);
-        //private TMPMediator mediator;
-
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
         /// </summary>
-        public bool positionDirty => position != info.initialPosition;
+        public bool positionDirty => position != initialPosition;
         /// <summary>
         /// Whether the rotation has been manipulated from the character's initial rotation.
         /// </summary>
-        public bool rotationDirty => rotation != info.initialRotation;
+        public bool rotationDirty => rotation != defaultRotation;
         /// <summary>
         /// Whether the scale has been manipulated from the character's initial scale.
         /// </summary>
-        public bool scaleDirty => scale != Info.defaultScale;
+        public bool scaleDirty => scale != defaultScale;
         /// <summary>
         /// Whether the vertices have been manipulated.
         /// </summary>
@@ -49,6 +45,10 @@ namespace TMPEffects.CharacterData
         /// The character's position.
         /// </summary>
         public Vector3 Position => position;
+        /// <summary>
+        /// The character's original position.
+        /// </summary>
+        public Vector3 OriginalPosition => initialPosition;
         /// <summary>
         /// The character's scale.
         /// </summary>
@@ -73,38 +73,61 @@ namespace TMPEffects.CharacterData
         // TODO Should this not be readonly? making it readonly seems to break all animations, somehow
         public VertexData mesh;
 
+        public readonly ReadOnlyVertexData initialMesh;
+
         private Vector3 position;
         private Vector3 scale;
         private Quaternion rotation;
         private Vector3 pivot;
+
+        // TODO Keep these?
+
+        /// <summary>
+        /// The default scale.
+        /// </summary>
+        public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
+        public static readonly Quaternion defaultRotation = Quaternion.identity;
+
+        /// <summary>
+        /// The initial position of this character.
+        /// </summary>
+        public readonly Vector3 initialPosition;
+        /// <summary>
+        /// The initial rotation of this character.
+        /// </summary>
+        public readonly Quaternion originalRotation;
         #endregion
 
-        public CharData(int index, TMP_CharacterInfo cInfo, TMPMediator mediator)
+        public CharData(int index, TMP_CharacterInfo cInfo)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
             info = new Info(index, cInfo, mesh);
 
-            position = info.initialPosition;
-            rotation = info.initialRotation;
-            scale = info.initialScale;
-            pivot = info.initialPosition;
+            initialPosition = default;
+            originalRotation = Quaternion.identity;
+            initialPosition = GetCenter(in mesh.initial);
 
-
+            position = initialPosition;
+            rotation = defaultRotation;
+            scale = defaultScale;
+            pivot = initialPosition;
             //this.mediator = mediator;
         }
-        public CharData(int index, TMP_CharacterInfo cInfo, TMPMediator mediator, TMP_WordInfo? wInfo = null)
+        public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
             info = wInfo == null ? new Info(index, cInfo, mesh) : new Info(index, cInfo, wInfo.Value, mesh);
 
-            position = info.initialPosition;
-            rotation = info.initialRotation;
-            scale = info.initialScale;
-            pivot = info.initialPosition;
+            initialPosition = default;
+            originalRotation = Quaternion.identity;
+            initialPosition = GetCenter(in mesh.initial);
 
-            //this.mediator = mediator;
+            position = initialPosition;
+            rotation = defaultRotation;
+            scale = defaultScale;
+            pivot = initialPosition;
         }
 
 
@@ -172,7 +195,7 @@ namespace TMPEffects.CharacterData
         public void SetRotation(Quaternion rotation)
         {
             this.rotation = rotation;
-            this.pivot = info.initialPosition;
+            //this.pivot = initialPosition;
         }
 
         /// <summary>
@@ -199,19 +222,19 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Reset the character's scale.
         /// </summary>
-        public void ResetScale() => this.scale = info.initialScale;
+        public void ResetScale() => this.scale = defaultScale;
         /// <summary>
         /// Reset the character's position.
         /// </summary>
-        public void ResetPosition() => this.position = info.initialPosition;
+        public void ResetPosition() => this.position = initialPosition;
         /// <summary>
         /// Reset the character's rotation.
         /// </summary>
-        public void ResetRotation() => this.rotation = info.initialRotation;
+        public void ResetRotation() => this.rotation = defaultRotation;
         /// <summary>
         /// Reset the character's pivot.
         /// </summary>
-        public void ResetPivot() => this.pivot = info.initialPosition;
+        public void ResetPivot() => this.pivot = initialPosition;
         /// <summary>
         /// Reset the character's vertices.
         /// </summary>
@@ -224,5 +247,16 @@ namespace TMPEffects.CharacterData
         /// Reset the character's vertex colors.
         /// </summary>
         public void ResetColors() => mesh.ResetColors();
+
+
+        private Vector3 GetCenter(in ReadOnlyVertexData data)
+        {
+            Vector3 center = Vector3.zero;
+            for (int i = 0; i < 4; i++)
+            {
+                center += data.GetVertex(i);
+            }
+            return center / 4;
+        }
     }
 }

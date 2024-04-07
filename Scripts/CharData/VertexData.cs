@@ -25,6 +25,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public TMP_Vertex vertex_BR;
 
+
         /// <summary>
         /// The initial vertex of the character.
         /// </summary>

@@ -676,10 +676,10 @@ namespace TMPEffects.TextProcessing
                 {
                     string alpha = str.Substring(7, 2);
                     int alphaInt = Convert.ToInt32(alpha, 16);
-                    result = new Color(redInt, greenInt, blueInt, alphaInt);
+                    result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f, alphaInt / 255f);
                 }
 
-                result = new Color(redInt, greenInt, blueInt);
+                result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f);
                 return true;
             }
             catch
@@ -725,7 +725,10 @@ namespace TMPEffects.TextProcessing
                 }
                 else
                 {
+                    Debug.Log("Colors " + floats[0] + " " + floats[1] + " " + floats[2]);
                     result = Color.HSVToRGB(floats[0], floats[1], floats[2]);
+                    Debug.Log("Result " + result.r + " " + result.g + " " + result.b);
+
                     return true;
                 }
             }
@@ -797,7 +800,7 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        internal static readonly ReadOnlyDictionary<string, Color> ColorKeyWords = new ReadOnlyDictionary<string, Color>(new Dictionary<string, Color>()
+        public static readonly ReadOnlyDictionary<string, Color> ColorKeyWords = new ReadOnlyDictionary<string, Color>(new Dictionary<string, Color>()
         {
             { "black", Color.black },
             { "blue", Color.blue },
@@ -905,8 +908,6 @@ namespace TMPEffects.TextProcessing
 
             Func<IEnumerable<Vector2>, AnimationCurve> constructor = AnimationCurveUtility.NameBezierConstructorMapping[str.Substring(0, currentStartIndex)];
 
-            Debug.Log("MEthodname: " + str.Substring(0, currentStartIndex));
-
             currentStartIndex++;
             var span = str.AsSpan();
             if (span[span.Length - 1] != ')' || span[span.Length - 2] != ')')
@@ -916,7 +917,6 @@ namespace TMPEffects.TextProcessing
             {
                 var slice = span.Slice(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
 
-                UnityEngine.Debug.Log("Trying " + slice.ToString());
                 if (!SpanToVector2(slice, out Vector2 vectorResult))
                 {
                     return false;

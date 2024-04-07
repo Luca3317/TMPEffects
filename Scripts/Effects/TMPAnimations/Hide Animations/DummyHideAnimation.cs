@@ -7,12 +7,12 @@ namespace TMPEffects.TMPAnimations.HideAnimations
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                AnimationUtility.SetVertexRaw(i, cData.info.initialPosition, cData, ref context);
-            }
-
             context.FinishAnimation(cData);
+        }
+
+        public override object GetNewCustomData()
+        {
+            return null;
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

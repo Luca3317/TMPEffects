@@ -287,7 +287,12 @@ namespace TMPEffects.Editor
 
             char c = previewProp.boolValue ? '\u2713' : '\u2717';
 
-            if (GUILayout.Button(new GUIContent("Toggle preview " + c.ToString())))
+            GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
+            buttonStyle.richText = true;
+            GUIContent buttonContent = new GUIContent("Toggle preview " + (previewProp.boolValue ? "<color=#90ee90>" : "<color=#f1807e>") + c.ToString() + "</color>");
+
+
+            if (GUILayout.Button(buttonContent, buttonStyle))
             {
                 previewProp.boolValue = !prevPreview;
             }

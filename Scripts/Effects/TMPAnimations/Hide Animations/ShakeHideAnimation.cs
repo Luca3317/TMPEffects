@@ -4,7 +4,7 @@ using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new ShakeHideAnimation", menuName = "TMPEffects/Hide Animations/Shake")]
     public class ShakeHideAnimation : TMPHideAnimation

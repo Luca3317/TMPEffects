@@ -234,8 +234,9 @@ namespace TMPEffects.Components
 
         private void CreateContext()
         {
-            context.VisibleTime = (i) => visibleTimes[i];
-            context.StateTime = (i) => stateTimes[i];
+            // TODO Should be no longer necessary to do 
+            context._VisibleTime = (i) => visibleTimes[i];
+            context._StateTime = (i) => stateTimes[i];
         }
 
         private void PrepareForProcessing()
@@ -660,7 +661,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.Update && isAnimating) UpdateAnimations_Impl(context.useScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
+            if (updateFrom == UpdateFrom.Update && isAnimating) UpdateAnimations_Impl(context.UseScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
         }
 
         private void LateUpdate()
@@ -668,7 +669,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.LateUpdate && isAnimating) UpdateAnimations_Impl(context.useScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
+            if (updateFrom == UpdateFrom.LateUpdate && isAnimating) UpdateAnimations_Impl(context.UseScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
         }
 
         private void FixedUpdate()
@@ -676,7 +677,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl(context.useScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
+            if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
         [System.NonSerialized] System.Diagnostics.Stopwatch sw = null;
@@ -881,10 +882,10 @@ namespace TMPEffects.Components
                 }
 
                 // Apply transformation
-                vtl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vtr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vbr += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                vbl += positionDelta * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                vtl += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                vtr += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                vbr += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                vbl += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
 
                 BL_Result = vbl;
                 TL_Result = vtl;
@@ -909,7 +910,7 @@ namespace TMPEffects.Components
                     if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
                     {
                         rotations.Add(cData.Rotation);
-                        pivots.Add(cData.info.initialPosition + (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1));
+                        pivots.Add(cData.info.initialPosition + (cData.RotationPivot - cData.info.initialPosition) * (context.ScaleAnimations ? cData.info.referenceScale : 1));
                     }
                     //rotation = cData.Rotation * rotation;
                     //rotationPivot += (cData.RotationPivot - cData.info.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
@@ -917,10 +918,10 @@ namespace TMPEffects.Components
 
                 if (cData.verticesDirty)
                 {
-                    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
-                    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.scaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaTL = (cData.mesh.vertex_TL.position - cData.mesh.initial.vertex_TL.position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaTR = (cData.mesh.vertex_TR.position - cData.mesh.initial.vertex_TR.position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaBR = (cData.mesh.vertex_BR.position - cData.mesh.initial.vertex_BR.position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                    Vector3 deltaBL = (cData.mesh.vertex_BL.position - cData.mesh.initial.vertex_BL.position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
 
                     TL += deltaTL;
                     TR += deltaTR;

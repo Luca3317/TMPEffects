@@ -213,6 +213,13 @@ namespace TMPEffects.Components.Mediator
             SetVisibilityState(index, 1, state);
         }
 
+        bool settingText = false;
+        public void SetText(string text)
+        {
+            settingText = true;
+            Text.SetText(text);
+        }
+
         private readonly List<VisibilityState> visibilityStates;
         private readonly List<CharData> charData;
         private object visibilityProcessor = null;
@@ -235,7 +242,9 @@ namespace TMPEffects.Components.Mediator
             PopulateCharData();
 
             // Check whether there was textual changes (excluding processed tags)
-            bool changed = CompareCharData(oldchardata);
+            bool changed = settingText || CompareCharData(oldchardata);
+
+            settingText = false;
 
             // Invoke textchanged events
             TextChanged_Early?.Invoke(changed, oldchardata);
@@ -314,7 +323,7 @@ namespace TMPEffects.Components.Mediator
                     }
                 }
 
-                data = wordInfo == null ? new CharData(i, cInfo, this) : new CharData(i, cInfo, this, wordInfo.Value);
+                data = wordInfo == null ? new CharData(i, cInfo) : new CharData(i, cInfo, wordInfo.Value);
                 charData.Add(data);
             }
 

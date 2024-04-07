@@ -5,7 +5,7 @@ using TMPEffects.Extensions;
 using UnityEngine;
 using static TMPEffects.ParameterUtility;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new GrowHideAnimation", menuName = "TMPEffects/Hide Animations/Grow")]
     public class GrowHideAnimation : TMPHideAnimation

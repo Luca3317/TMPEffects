@@ -5,7 +5,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.ParameterUtility;
 using TMPEffects.Extensions;
 
-namespace TMPEffects.TMPAnimations.ShowAnimations
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     [CreateAssetMenu(fileName = "new SpreadHideAnimation", menuName = "TMPEffects/Hide Animations/Spread")]
     public class SpreadHideAnimation : TMPHideAnimation
@@ -68,7 +68,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
                 Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
-                SetVertexRaw(i, pos, cData, ref context);
+                SetVertexRaw(i, pos, cData, context);
             }
         }
 

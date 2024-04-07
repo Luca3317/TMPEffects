@@ -41,15 +41,16 @@ public class ComponentController : MonoBehaviour
 
     private IEnumerator ListenWriter()
     {
-        yield return new WaitForSeconds(3f);
+        yield return null;
+        //yield return new WaitForSeconds(1.5f);
 
-        writer.Hide(0, writer.TextComponent.textInfo.characterCount, false);
+        //writer.Hide(0, writer.TextComponent.textInfo.characterCount, false);
 
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(1.5f);
 
-        writer.SetText(texts[i]);
-        i++;
-        i %= texts.Length;
+        //writer.SetText(texts[i]);
+        //i++;
+        //i %= texts.Length;
     }
 
     void HandleAnimatorInput()

@@ -8,18 +8,48 @@ namespace TMPEffects.Components.Animator
     /// To be used with <see cref="TMPAnimator"/>.<br/>
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
-    [System.Serializable]
-    public class AnimatorContext
+    public interface IAnimatorContext
     {
+        public bool ScaleAnimations { get; }
+        public bool UseScaledTime { get; }
+
+        public float DeltaTime { get; }
+        public float Passed { get; }
+
+        public float StateTime(CharData cData);
+        public float VisibleTime(CharData cData);
+    }
+
+    /// <summary>
+    /// To be used with <see cref="TMPAnimator"/>.<br/>
+    /// Contains context data of the respective <see cref="TMPAnimator"/>.
+    /// </summary>
+    [System.Serializable]
+    public class AnimatorContext /*: IAnimatorContext*/
+    {
+        public bool ScaleAnimations
+        {
+            get => scaleAnimations;
+            set => scaleAnimations = value;
+        }
+        public bool UseScaledTime
+        {
+            get => useScaledTime;
+            set => useScaledTime = value;
+        }
+
+
+
+
         /// <summary>
         /// Whether to scale the animations.
         /// </summary>
-        public bool scaleAnimations = true;
+        [SerializeField] private bool scaleAnimations = true;
 
         /// <summary>
         /// Whether to use scaled time.
         /// </summary>
-        public bool useScaledTime = true;
+        [SerializeField] private bool useScaledTime = true;
 
         /// <summary>
         /// The deltaTime since the last animation update.
@@ -31,32 +61,40 @@ namespace TMPEffects.Components.Animator
         /// </summary>
         [System.NonSerialized, HideInInspector] public float passed;
 
-        [System.NonSerialized, HideInInspector] public Func<int, float> StateTime;
-        [System.NonSerialized, HideInInspector] public Func<int, float> VisibleTime;
-        
+        [System.NonSerialized, HideInInspector] public Func<int, float> _StateTime;
+        [System.NonSerialized, HideInInspector] public Func<int, float> _VisibleTime;
+
         public AnimatorContext() { }
         public AnimatorContext(bool scaleAnimations, bool useScaledTime, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
         {
-            this.scaleAnimations = scaleAnimations;
-            this.useScaledTime = useScaledTime;
+            this.ScaleAnimations = scaleAnimations;
+            this.UseScaledTime = useScaledTime;
             this.deltaTime = 0f;
             this.passed = 0f;
 
-            this.StateTime = getVisibleTime;
-            this.VisibleTime = getStateTime;
+            this._StateTime = getVisibleTime;
+            this._VisibleTime = getStateTime;
         }
+
+        public float StateTime(CharData cData) => _StateTime(cData.info.index);
+        public float VisibleTime(CharData cData) => _VisibleTime(cData.info.index);
+        public float StateTime(int index) => _StateTime(index);
+        public float VisibleTime(int index) => _VisibleTime(index);
     }
 
     [System.Serializable]
     public class ReadOnlyAnimatorContext
     {
-        public bool ScaleAnimations => context.scaleAnimations;
-        public bool UseScaledTime => context.useScaledTime;
+        /// <summary>
+        /// Whether animation
+        /// </summary>
+        public bool ScaleAnimations => context.ScaleAnimations;
+        public bool UseScaledTime => context.UseScaledTime;
         public float DeltaTime => context.deltaTime;
         public float PassedTime => context.passed;
 
-        public float StateTime(CharData cData) => context.StateTime(cData.info.index);
-        public float VisibleTime(CharData cData) => context.VisibleTime(cData.info.index);
+        public float StateTime(CharData cData) => context.StateTime(cData);
+        public float VisibleTime(CharData cData) => context.VisibleTime(cData);
 
         public float StateTime(int index) => context.StateTime(index);
         public float VisibleTime(int index) => context.VisibleTime(index);

@@ -81,7 +81,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
                 Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
-                SetVertexRaw(i, pos, cData, ref context);
+                SetVertexRaw(i, pos, cData,  context);
             }
         }
 
@@ -116,7 +116,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
                 Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
 
-                SetVertexRaw(i, pos, cData, ref context);
+                SetVertexRaw(i, pos, cData, context);
             }
         }
 
