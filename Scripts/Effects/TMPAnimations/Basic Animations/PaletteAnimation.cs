@@ -21,9 +21,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            (float, int) result = d.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
 
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
             int intIndex = (int)index;

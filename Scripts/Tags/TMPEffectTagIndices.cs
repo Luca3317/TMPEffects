@@ -6,12 +6,11 @@ using UnityEngine;
 namespace TMPEffects.Tags
 {
     /// <summary>
-    /// The indices of an <see cref="EffectTag"/>.<br/>
+    /// The indices of an <see cref="TMPEffectTag"/>.<br/>
     /// The indices can be regarded as a half-open interval of [<see cref="StartIndex"/>, <see cref="EndIndex"/>).<br/>
-    /// For example, an instance with <see cref="StartIndex"/> == 5 and <see cref="EndIndex"/> == 10 "contains" the indices 5, 6, 7, 8 and 9.<br/>
-    /// The decision to make the indices a half open interval was made to represent the indices that naturally emerge when parsing them from text.
+    /// For example, an instance with <see cref="StartIndex"/> == 5 and <see cref="EndIndex"/> == 10 "contains" the indices 5, 6, 7, 8 and 9.
     /// </summary>
-    public struct EffectTagIndices : IComparable<EffectTagIndices>, IEquatable<EffectTagIndices>
+    public struct TMPEffectTagIndices : IComparable<TMPEffectTagIndices>, IEquatable<TMPEffectTagIndices>
     {
         /// <summary>
         /// The (inclusive) start index of the tag.
@@ -63,7 +62,7 @@ namespace TMPEffects.Tags
         private int endIndex;
         private int orderAtIndex;
 
-        public EffectTagIndices(int startIndex, int endIndex, int orderAtIndex)
+        public TMPEffectTagIndices(int startIndex, int endIndex, int orderAtIndex)
         {
             if (startIndex < 0) throw new ArgumentOutOfRangeException(nameof(startIndex));
             if (endIndex < -1) throw new ArgumentOutOfRangeException(nameof(endIndex));
@@ -74,7 +73,7 @@ namespace TMPEffects.Tags
         }
 
         /// <summary>
-        /// Compares this instance to another instance of <see cref="EffectTagIndices"/>.<br/>
+        /// Compares this instance to another instance of <see cref="TMPEffectTagIndices"/>.<br/>
         /// First compares <see cref="StartIndex"/>. If those are equal, compares <see cref="OrderAtIndex"/>. The <see cref="EndIndex"/> is not considered.
         /// </summary>
         /// <param name="other">The instance to compare this instance to.</param>
@@ -83,42 +82,42 @@ namespace TMPEffects.Tags
         /// Zero => This instance occurs in the same position in the sort order as <paramref name="other"/>.<br/>
         /// Greater than zero => This instance follows <paramref name="other"/> in the sort order.
         /// </returns>
-        public int CompareTo(EffectTagIndices other)
+        public int CompareTo(TMPEffectTagIndices other)
         {
             int res = startIndex.CompareTo(other.startIndex);
             if (res == 0) return orderAtIndex.CompareTo(other.orderAtIndex);
             return res;
         }
 
-        public static bool operator ==(EffectTagIndices c1, EffectTagIndices c2)
+        public static bool operator ==(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
         {
             return c1.Equals(c2);
         }
 
-        public static bool operator !=(EffectTagIndices c1, EffectTagIndices c2)
+        public static bool operator !=(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
         {
             return !c1.Equals(c2);
         }
 
-        public static bool operator >(EffectTagIndices c1, EffectTagIndices c2)
+        public static bool operator >(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
         {
             return c1.CompareTo(c2) > 0;
         }
 
-        public static bool operator <(EffectTagIndices c1, EffectTagIndices c2)
+        public static bool operator <(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
         {
             return c1.CompareTo(c2) < 0;
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is EffectTagIndices)
+            if (obj is TMPEffectTagIndices)
             {
-                return Equals((EffectTagIndices)obj);
+                return Equals((TMPEffectTagIndices)obj);
             }
             return false;
         }
-        public bool Equals(EffectTagIndices other)
+        public bool Equals(TMPEffectTagIndices other)
         {
             return startIndex == other.startIndex && endIndex == other.endIndex && orderAtIndex == other.orderAtIndex;
         }

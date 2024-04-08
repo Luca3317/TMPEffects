@@ -5,17 +5,17 @@ using UnityEngine;
 namespace TMPEffects.Tags
 {
     /// <summary>
-    /// Interface that wraps an <see cref="EffectTag"/> as well as an <see cref="EffectTagIndices"/> instance.
+    /// Interface that wraps an <see cref="TMPEffectTag"/> as well as an <see cref="TMPEffectTagIndices"/> instance.
     /// </summary>
     public interface ITagWrapper
     {
         /// <summary>
         /// The wrapped tag.
         /// </summary>
-        public EffectTag Tag { get; }
+        public TMPEffectTag Tag { get; }
         /// <summary>
         /// The wrapped tag indices.
         /// </summary>
-        public EffectTagIndices Indices { get; }
+        public TMPEffectTagIndices Indices { get; }
     }
 }

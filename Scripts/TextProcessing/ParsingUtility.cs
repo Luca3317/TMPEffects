@@ -471,21 +471,34 @@ namespace TMPEffects.TextProcessing
             Vector3? TryParse()
             {
                 str = str.Trim();
-                if (str.Length <= 5) return null;
+                if (str.Length <= 3) return null;
 
                 if (str[0] != '(') return null;
 
                 if (str[str.Length - 1] != ')') return null;
 
-                int commaIndex = str.IndexOf(',');
-                int commaIndex2 = str.IndexOf(',', commaIndex + 1);
-                if (commaIndex < 2) return null;
-                if (commaIndex2 < 4) return null;
 
-                float x, y, z;
-                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
-                if (!StringToFloat(str.Substring(commaIndex + 1, commaIndex2 - (commaIndex + 1)), out y)) return null;
-                if (!StringToFloat(str.Substring(commaIndex2 + 1, str.Length - (commaIndex2 + 2)), out z)) return null;
+                var split = str.Substring(1, str.Length - 2).Split(',');
+
+                if (split.Length < 2 || split.Length > 3) return null;
+
+                //int commaIndex = str.IndexOf(',');
+                //int commaIndex2 = str.IndexOf(',', commaIndex + 1);
+                //if (commaIndex < 2) return null;
+                //if (commaIndex2 < 4) return null;
+
+                float x, y, z = 0f;
+                if (split.Length == 2)
+                {
+                    if (!StringToFloat(split[0], out x)) return null;
+                    if (!StringToFloat(split[1], out y)) return null;
+                }
+                else
+                {
+                    if (!StringToFloat(split[0], out x)) return null;
+                    if (!StringToFloat(split[1], out y)) return null;
+                    if (!StringToFloat(split[2], out z)) return null;
+                }
 
                 return new Vector3(x, y, z);
             }
@@ -533,7 +546,7 @@ namespace TMPEffects.TextProcessing
             return false;
         }
 
-        public static bool StringToAnchor(string str, out Vector3 result, IDictionary<string, Vector3> anchorKeywords = null, IDictionary<string, Vector3> vectorKeywords = null)
+        public static bool StringToAnchor(string str, out Vector2 result, IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector2> vectorKeywords = null)
         {
             str = str.Trim();
             if (str.Length < 3 || str[0] != 'a' || str[1] != ':')
@@ -546,7 +559,7 @@ namespace TMPEffects.TextProcessing
                 return true;
 
             str = str.Substring(2, str.Length - 2);
-            if (StringToVector3(str, out result, vectorKeywords))
+            if (StringToVector2(str, out result, vectorKeywords))
             {
                 return true;
             }

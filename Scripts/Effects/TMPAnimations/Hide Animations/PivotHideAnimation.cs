@@ -23,9 +23,9 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            float t = Mathf.Lerp(0, 1, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
+            float t = Mathf.Lerp(0, 1, (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / d.duration);
 
             if (t == 1)
             {

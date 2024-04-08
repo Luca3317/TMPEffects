@@ -13,21 +13,21 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The context of the animating TMPAnimator.
         /// </summary>
-        public ReadOnlyAnimatorContext animatorContext { get; }
+        public ReadOnlyAnimatorContext AnimatorContext { get; }
         /// <summary>
         /// Data about the animation segment.
         /// </summary>
-        public SegmentData segmentData { get; }
+        public SegmentData SegmentData { get; }
 
         /// <summary>
         /// The custom data object.
         /// </summary>
-        public object customData { get; }
+        public object CustomData { get; }
 
         /// <summary>
         /// The current state of the CharData, with the previous animations applied.
         /// </summary>
-        public TMPAnimator.CharDataState state { get; }
+        public ReadOnlyCharDataState State { get; }
 
         /// <summary>
         /// The time of when the animation started playing.
@@ -67,13 +67,13 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public bool Finished(CharData cData) => finishedDict[cData.info.index];
         /// <inheritdoc/>
-        public ReadOnlyAnimatorContext animatorContext { get; set; }
+        public ReadOnlyAnimatorContext AnimatorContext { get; set; }
         /// <inheritdoc/>
-        public SegmentData segmentData { get; set; }
+        public SegmentData SegmentData { get; set; }
         /// <inheritdoc/>
-        public object customData { get; }
+        public object CustomData { get; }
         /// <inheritdoc/>
-        public TMPAnimator.CharDataState state { get; }
+        public ReadOnlyCharDataState State { get; }
         /// <inheritdoc/>
         public float AnimationTime
         {
@@ -88,14 +88,14 @@ namespace TMPEffects.TMPAnimations
         }
         private float aaa;
         /// <inheritdoc/>
-        public float AnimationTimePassed => animatorContext.PassedTime - AnimationTime;
+        public float AnimationTimePassed => AnimatorContext.PassedTime - AnimationTime;
 
-        public AnimationContext(ReadOnlyAnimatorContext animatorContext, TMPAnimator.CharDataState state, SegmentData segmentData, object customData)
+        public AnimationContext(ReadOnlyAnimatorContext animatorContext, ReadOnlyCharDataState state, SegmentData segmentData, object customData)
         {
-            this.customData = customData;
-            this.state = state;
-            this.segmentData = segmentData;
-            this.animatorContext = animatorContext;
+            this.CustomData = customData;
+            this.State = state;
+            this.SegmentData = segmentData;
+            this.AnimatorContext = animatorContext;
             AnimationTime = -1;
             finishedDict = new Dictionary<int, bool>(segmentData.length);
 
@@ -138,13 +138,13 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public bool Finished(CharData cData) => context.Finished(cData);
         /// <inheritdoc/>
-        public ReadOnlyAnimatorContext animatorContext => context.animatorContext;
+        public ReadOnlyAnimatorContext AnimatorContext => context.AnimatorContext;
         /// <inheritdoc/>
-        public SegmentData segmentData => context.segmentData;
+        public SegmentData SegmentData => context.SegmentData;
         /// <inheritdoc/>
-        public object customData => context.customData;
+        public object CustomData => context.CustomData;
         /// <inheritdoc/>
-        public TMPAnimator.CharDataState state => context.state;
+        public ReadOnlyCharDataState State => context.State;
         /// <inheritdoc/>
         public float AnimationTime => context.AnimationTime;
         /// <inheritdoc/>

@@ -9,8 +9,8 @@ namespace TMPEffects.Components.Writer
 {
     internal class CachedEvent : ITagWrapper, ICachedInvokable
     {
-        public EffectTag Tag => args.Tag;
-        public EffectTagIndices Indices => args.Indices;
+        public TMPEffectTag Tag => args.Tag;
+        public TMPEffectTagIndices Indices => args.Indices;
 
         public TMPEventArgs args { get; private set; }
         public bool Triggered { get; private set; }

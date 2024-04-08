@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace TMPEffects.TMPCommands
 {
     [System.Serializable]
-    public struct SceneCommand : ITMPCommand
+    public struct TMPSceneCommand : ITMPCommand
     {
         public TagType TagType => commandType;
         public bool ExecuteInstantly => executeInstantly;

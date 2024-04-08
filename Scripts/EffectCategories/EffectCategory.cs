@@ -37,10 +37,10 @@ namespace TMPEffects.EffectCategories
         }
 
         ///<inheritdoc/>
-        public abstract bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data);
+        public abstract bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data);
 
         ///<inheritdoc/>
-        public abstract bool ValidateTag(EffectTag tag);
+        public abstract bool ValidateTag(TMPEffectTag tag);
 
         ///<inheritdoc/>
         public abstract bool ValidateTag(ParsingUtility.TagInfo tagInfo);

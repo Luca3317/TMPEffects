@@ -1,3 +1,4 @@
+using TMPEffects.Components;
 using UnityEngine.Events;
 
 namespace TMPEffects.TMPEvents

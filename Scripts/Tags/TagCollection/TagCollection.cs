@@ -8,7 +8,7 @@ namespace TMPEffects.Tags.Collections
     ///<inheritdoc/>
     public class TagCollection : ITagCollection
     {
-        public TagCollection(IList<EffectTagTuple> tags, ITMPTagValidator validator = null)
+        public TagCollection(IList<TMPEffectTagTuple> tags, ITMPTagValidator validator = null)
         {
             this.validator = validator;
             this.tags = tags;
@@ -16,11 +16,11 @@ namespace TMPEffects.Tags.Collections
         public TagCollection(ITMPTagValidator validator = null)
         {
             this.validator = validator;
-            this.tags = new List<EffectTagTuple>();
+            this.tags = new List<TMPEffectTagTuple>();
         }
 
         ///<inheritdoc/>
-        public virtual bool TryAdd(EffectTag tag, EffectTagIndices indices)
+        public virtual bool TryAdd(TMPEffectTag tag, TMPEffectTagIndices indices)
         {
             if (validator != null && !validator.ValidateTag(tag)) return false;
 
@@ -33,17 +33,17 @@ namespace TMPEffects.Tags.Collections
             // Otherwise adjust the index
             else index = ~index;
 
-            tags.Insert(index, new EffectTagTuple(tag, indices));
+            tags.Insert(index, new TMPEffectTagTuple(tag, indices));
             return true;
         }
 
         ///<inheritdoc/>
-        public virtual bool TryAdd(EffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
+        public virtual bool TryAdd(TMPEffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
         {
             if (validator != null && !validator.ValidateTag(tag)) return false;
 
             int index;
-            EffectTagIndices indices;
+            TMPEffectTagIndices indices;
 
             // If no order is specified, add it as first element at current index
             if (orderAtIndex == null)
@@ -54,19 +54,19 @@ namespace TMPEffects.Tags.Collections
                 if (index < 0)
                 {
                     index = ~index;
-                    indices = new EffectTagIndices(startIndex, endIndex, 0);
+                    indices = new TMPEffectTagIndices(startIndex, endIndex, 0);
                 }
                 // Otherwise
                 else
                 {
-                    indices = new EffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
+                    indices = new TMPEffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
                 }
             }
             // If order is specified
             else
             {
                 index = BinarySearchIndexOf(new TempIndices(startIndex, orderAtIndex.Value));
-                indices = new EffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
+                indices = new TMPEffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
 
                 // If no tag with these indices
                 if (index < 0)
@@ -79,25 +79,25 @@ namespace TMPEffects.Tags.Collections
                 }
             }
 
-            tags.Insert(index, new EffectTagTuple(tag, indices));
+            tags.Insert(index, new TMPEffectTagTuple(tag, indices));
             return true;
         }
 
-        protected void AdjustOrderAtIndexAt(int listIndex, EffectTagIndices indices)
+        protected void AdjustOrderAtIndexAt(int listIndex, TMPEffectTagIndices indices)
         {
-            EffectTagTuple current;
-            EffectTagIndices last = indices;
+            TMPEffectTagTuple current;
+            TMPEffectTagIndices last = indices;
 
             while ((current = tags[listIndex]).Indices.StartIndex == last.StartIndex && current.Indices.OrderAtIndex == last.OrderAtIndex)
             {
-                tags[listIndex++] = new EffectTagTuple(current.Tag, new EffectTagIndices(current.Indices.StartIndex, current.Indices.EndIndex, current.Indices.OrderAtIndex + 1));
+                tags[listIndex++] = new TMPEffectTagTuple(current.Tag, new TMPEffectTagIndices(current.Indices.StartIndex, current.Indices.EndIndex, current.Indices.OrderAtIndex + 1));
                 //tags[listIndex++] = new KeyValuePair<EffectTagIndices, EffectTag>(new EffectTagIndices(current.Key.StartIndex, current.Key.EndIndex, current.Key.OrderAtIndex + 1), current.Value);
                 last = current.Indices;
             }
         }
 
         ///<inheritdoc/>
-        public virtual int RemoveAllAt(int startIndex, EffectTagTuple[] buffer = null, int bufferIndex = 0)
+        public virtual int RemoveAllAt(int startIndex, TMPEffectTagTuple[] buffer = null, int bufferIndex = 0)
         {
             int firstIndex = BinarySearchIndexFirstIndexOf(new StartIndexOnly(startIndex));
             if (firstIndex < 0) return 0;
@@ -155,7 +155,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public virtual bool Remove(EffectTag tag, EffectTagIndices? indices = null)
+        public virtual bool Remove(TMPEffectTag tag, TMPEffectTagIndices? indices = null)
         {
             int index;
             if (indices == null)
@@ -175,7 +175,7 @@ namespace TMPEffects.Tags.Collections
             return true;
         }
 
-        public void CopyTo(EffectTag[] array, int arrayIndex)
+        public void CopyTo(TMPEffectTag[] array, int arrayIndex)
         {
             if (array is null) throw new ArgumentNullException(nameof(array));
             if (arrayIndex < 0) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
@@ -191,16 +191,16 @@ namespace TMPEffects.Tags.Collections
         public int TagCount => tags.Count;
 
         ///<inheritdoc/>
-        public bool Contains(EffectTag tag, EffectTagIndices? indices = null)
+        public bool Contains(TMPEffectTag tag, TMPEffectTagIndices? indices = null)
         {
             if (indices == null) return FindIndex(tag) >= 0;
             return FindIndex(tag) >= 0;
         }
 
-        public IEnumerator<EffectTagTuple> GetEnumerator() => tags.GetEnumerator();
+        public IEnumerator<TMPEffectTagTuple> GetEnumerator() => tags.GetEnumerator();
 
         ///<inheritdoc/>
-        public EffectTag TagAt(int startIndex, int? order = null)
+        public TMPEffectTag TagAt(int startIndex, int? order = null)
         {
             int index;
             if (order == null)
@@ -218,7 +218,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public int TagsAt(int startIndex, EffectTagTuple[] buffer, int bufferIndex = 0)
+        public int TagsAt(int startIndex, TMPEffectTagTuple[] buffer, int bufferIndex = 0)
         {
             int firstIndex = BinarySearchIndexOf(new StartIndexOnly(startIndex));
             if (firstIndex < 0) return 0;
@@ -245,7 +245,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public IEnumerable<EffectTagTuple> TagsAt(int startIndex)
+        public IEnumerable<TMPEffectTagTuple> TagsAt(int startIndex)
         {
             int firstIndex = BinarySearchIndexFirstIndexOf(new StartIndexOnly(startIndex));
             if (firstIndex < 0) yield break;
@@ -262,7 +262,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public EffectTagIndices? IndicesOf(EffectTag tag)
+        public TMPEffectTagIndices? IndicesOf(TMPEffectTag tag)
         {
             for (int i = 0; i < tags.Count; i++)
             {
@@ -273,7 +273,7 @@ namespace TMPEffects.Tags.Collections
         }
 
 
-        protected int FindIndex(EffectTag tag)
+        protected int FindIndex(TMPEffectTag tag)
         {
             for (int i = 0; i < tags.Count; i++)
             {
@@ -283,7 +283,7 @@ namespace TMPEffects.Tags.Collections
             return -1;
         }
 
-        protected int BinarySearchIndexOf(IComparable<EffectTagIndices> indices)
+        protected int BinarySearchIndexOf(IComparable<TMPEffectTagIndices> indices)
         {
             int lower = 0;
             int upper = tags.Count - 1;
@@ -316,7 +316,7 @@ namespace TMPEffects.Tags.Collections
             return res + 1;
         }
 
-        protected struct TempIndices : IComparable<EffectTagIndices>
+        protected struct TempIndices : IComparable<TMPEffectTagIndices>
         {
             private readonly int startIndex;
             private readonly int orderAtIndex;
@@ -327,7 +327,7 @@ namespace TMPEffects.Tags.Collections
                 this.orderAtIndex = orderAtIndex;
             }
 
-            public int CompareTo(EffectTagIndices other)
+            public int CompareTo(TMPEffectTagIndices other)
             {
                 int res = startIndex.CompareTo(other.StartIndex);
                 if (res == 0) return orderAtIndex.CompareTo(other.OrderAtIndex);
@@ -335,7 +335,7 @@ namespace TMPEffects.Tags.Collections
             }
         }
 
-        protected struct StartIndexOnly : IComparable<EffectTagIndices>
+        protected struct StartIndexOnly : IComparable<TMPEffectTagIndices>
         {
             public readonly int startIndex;
 
@@ -344,13 +344,13 @@ namespace TMPEffects.Tags.Collections
                 this.startIndex = startIndex;
             }
 
-            public int CompareTo(EffectTagIndices other)
+            public int CompareTo(TMPEffectTagIndices other)
             {
                 return startIndex.CompareTo(other.StartIndex);
             }
         }
 
-        protected IList<EffectTagTuple> tags;
+        protected IList<TMPEffectTagTuple> tags;
         protected readonly ITMPTagValidator validator;
     }
 }

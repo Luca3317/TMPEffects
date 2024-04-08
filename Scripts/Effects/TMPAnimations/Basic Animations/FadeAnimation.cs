@@ -33,9 +33,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            (float, int) result = d.Wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
+            (float, int) result = d.Wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
 
             if (result.Item2 > 0)
             {

@@ -17,9 +17,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data data = (Data)context.customData;
+            Data data = (Data)context.CustomData;
 
-            float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+            float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
             cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
         }
 

@@ -54,7 +54,7 @@ namespace TMPEffects.Components.Animator
             return IndexToSegmentIndex(cData.info.index);
         }
 
-        internal SegmentData(EffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
+        internal SegmentData(TMPEffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
         {
             startIndex = indices.StartIndex;
             length = indices.Length;

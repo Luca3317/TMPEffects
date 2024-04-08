@@ -21,7 +21,7 @@ namespace TMPEffects.Components.Writer
             this.database = database;
         }
 
-        public CachedCommand CacheTag(EffectTag tag, EffectTagIndices indices)
+        public CachedCommand CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
         {
             ITMPCommand command = database.GetEffect(tag.Name);
             int endIndex = indices.EndIndex;
@@ -36,7 +36,7 @@ namespace TMPEffects.Components.Writer
                 default: throw new ArgumentException(nameof(command.TagType));
             }
 
-            EffectTagIndices fixedIndices = new EffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex);
+            TMPEffectTagIndices fixedIndices = new TMPEffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex);
             TMPCommandArgs args = new TMPCommandArgs(tag, fixedIndices, writer);
             CachedCommand cc = new CachedCommand(args, command);
             return cc;

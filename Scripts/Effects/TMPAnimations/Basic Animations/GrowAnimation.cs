@@ -12,7 +12,7 @@ namespace TMPEffects.TMPAnimations.Animations
     public class GrowAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.3f, 0.3f, 1f, 1f, 0f, 1f, 0.04f);
+        [SerializeField] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.3f, 0.3f, 1f, 0f, 1f, 0.04f);
         [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         [SerializeField] WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
 
@@ -23,9 +23,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            (float, int) result = d.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffsetType));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffsetType));
             float scale = Mathf.LerpUnclamped(d.minScale, d.maxScale, result.Item1);
             cData.SetScale(Vector3.one * scale);
         }

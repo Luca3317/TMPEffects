@@ -8,13 +8,13 @@ namespace TMPEffects.Components.Animator
 {
     internal class CachedAnimation : ITagWrapper
     {
-        public EffectTag Tag => tag;
-        public EffectTagIndices Indices => indices;
+        public TMPEffectTag Tag => tag;
+        public TMPEffectTagIndices Indices => indices;
 
         public bool Finished(int index) => context.Finished(index);
 
-        private EffectTag tag;
-        private EffectTagIndices indices;
+        private TMPEffectTag tag;
+        private TMPEffectTagIndices indices;
 
         public readonly bool? overrides;
         public readonly bool late;
@@ -23,7 +23,7 @@ namespace TMPEffects.Components.Animator
         public readonly ReadOnlyAnimationContext roContext;
         public readonly int firstAffectingAnimationIndex = -1;
 
-        public CachedAnimation(EffectTag tag, EffectTagIndices indices, ITMPAnimation animation, AnimationContext context)
+        public CachedAnimation(TMPEffectTag tag, TMPEffectTagIndices indices, ITMPAnimation animation, AnimationContext context)
         {
             this.tag = tag;
             this.indices = indices;

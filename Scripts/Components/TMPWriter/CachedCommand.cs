@@ -5,8 +5,8 @@ namespace TMPEffects.Components.Writer
 {
 internal class CachedCommand : ITagWrapper, ICachedInvokable
 {
-    public EffectTag Tag => args.tag;
-    public EffectTagIndices Indices => args.indices;
+    public TMPEffectTag Tag => args.tag;
+    public TMPEffectTagIndices Indices => args.indices;
 
     public ITMPCommand command { get; private set; }
     public TMPCommandArgs args { get; private set; }

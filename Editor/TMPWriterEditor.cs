@@ -25,7 +25,6 @@ namespace TMPEffects.Editor
         float _progress;
         bool clicked;
         bool wasWriting;
-        bool useDefaultDatabase;
         bool wasEnabled;
         Coroutine hideCoroutine;
         TMPCommandDatabase defaultDatabase;
@@ -42,6 +41,7 @@ namespace TMPEffects.Editor
         SerializedProperty punctuationDelayTypeProp;
         SerializedProperty linebreakDelayTypeProp;
         SerializedProperty startOnPlayProp;
+        SerializedProperty startOnNewTextProp;
         SerializedProperty eventsEnabledProp;
         SerializedProperty commandsEnabledProp;
         SerializedProperty onTextEventProp;
@@ -53,6 +53,7 @@ namespace TMPEffects.Editor
         SerializedProperty onFinishWriterProp;
         SerializedProperty maySkipProp;
         SerializedProperty sceneCommandsProp;
+        SerializedProperty useDefaultDatabaseProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -143,6 +144,7 @@ namespace TMPEffects.Editor
             punctuationDelayTypeProp = serializedObject.FindProperty("punctuationDelayType");
             linebreakDelayTypeProp = serializedObject.FindProperty("linebreakDelayType");
             startOnPlayProp = serializedObject.FindProperty("writeOnStart");
+            startOnNewTextProp = serializedObject.FindProperty("writeOnNewText");
             eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
             commandsEnabledProp = serializedObject.FindProperty("commandsEnabled");
             onTextEventProp = serializedObject.FindProperty("OnTextEvent");
@@ -154,6 +156,7 @@ namespace TMPEffects.Editor
             onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
             maySkipProp = serializedObject.FindProperty("maySkip");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
+            useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -196,9 +199,8 @@ namespace TMPEffects.Editor
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
-            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
 
-            if (!serializedObject.FindProperty("initValidate").boolValue)
+            if (!useDefaultDatabaseProp.boolValue)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
                 serializedObject.ApplyModifiedProperties();
@@ -211,29 +213,29 @@ namespace TMPEffects.Editor
             writer.OnResetWriter.RemoveListener(UpdateProgress);
         }
 
-        void UpdateProgress(CharData cData) => UpdateProgress(cData.info.index);
+        void UpdateProgress(TMPWriter writer, CharData cData) => UpdateProgress(writer, cData.info.index);
 
-        void UpdateProgress(int index)
+        void UpdateProgress(TMPWriter writer, int index)
         {
             progress = Mathf.Lerp(0f, 1f, (float)index / (writer.TextComponent.textInfo.characterCount - 1));
             Repaint();
         }
 
-        void UpdateProgressFinish()
+        void UpdateProgressFinish(TMPWriter writer)
         {
             progress = 1f;
             Repaint();
         }
 
-        private void StartHideAfterFinish()
+        private void StartHideAfterFinish(TMPWriter writer)
         {
             //CancelHideAfterFinish();
             hideCoroutine = writer.StartCoroutine(HideAfterFinish());
         }
 
-        private void CancelHideAfterFinish(CharData cdata) => CancelHideAfterFinish();
-        private void CancelHideAfterFinish(int index) => CancelHideAfterFinish();
-        private void CancelHideAfterFinish()
+        private void CancelHideAfterFinish(TMPWriter writer, CharData cdata) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, int index) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer)
         {
             if (hideCoroutine != null)
             {
@@ -368,15 +370,15 @@ namespace TMPEffects.Editor
         void DrawDatabase()
         {
             GUILayout.BeginHorizontal();
-            bool prevUseDefaultDatabase = useDefaultDatabase;
-            useDefaultDatabase = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabase);
+            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
+            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
-            if (prevUseDefaultDatabase != useDefaultDatabase)
+            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
                 Undo.RecordObject(writer, "Modified writer");
             }
 
-            if (useDefaultDatabase)
+            if (useDefaultDatabaseProp.boolValue)
             {
                 if (databaseProp.objectReferenceValue != defaultDatabase)
                 {
@@ -470,6 +472,7 @@ namespace TMPEffects.Editor
             }
 
             EditorGUILayout.PropertyField(startOnPlayProp);
+            EditorGUILayout.PropertyField(startOnNewTextProp);
             EditorGUILayout.PropertyField(maySkipProp);
 
             EditorGUILayout.Space(10);

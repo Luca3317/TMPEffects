@@ -58,7 +58,7 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 return;
             }
 
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
             Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
 
@@ -67,23 +67,23 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 Debug.LogError("Failed to calculate ScreenPointToWorldPointInRectangle");
             }
 
-            context.state.CalculateVertexPositions();
+            context.State.CalculateVertexPositions();
             for (int i = 0; i < 4; i++)
             {
                 Vector3 vertex;
 
                 switch (i)
                 {
-                    case 0: vertex = text.transform.TransformPoint(context.state.BL_Result); break;
-                    case 1: vertex = text.transform.TransformPoint(context.state.TL_Result); break;
-                    case 2: vertex = text.transform.TransformPoint(context.state.TR_Result); break;
-                    case 3: vertex = text.transform.TransformPoint(context.state.BR_Result); break;
+                    case 0: vertex = text.transform.TransformPoint(context.State.BL_Result); break;
+                    case 1: vertex = text.transform.TransformPoint(context.State.TL_Result); break;
+                    case 2: vertex = text.transform.TransformPoint(context.State.TR_Result); break;
+                    case 3: vertex = text.transform.TransformPoint(context.State.BR_Result); break;
                     default: throw new System.Exception();
                 }
 
                 float magnitude = (res - vertex).magnitude;
 
-                Color32 color = context.state.TL_Color;
+                Color32 color = context.State.TL_Color;
 
                 if (magnitude < d.radius)
                 {

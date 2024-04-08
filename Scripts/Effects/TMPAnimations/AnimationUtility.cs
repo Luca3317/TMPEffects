@@ -11,6 +11,15 @@ namespace TMPEffects.TMPAnimations
     public static class AnimationUtility
     {
         #region Raw Positions & Deltas
+        /// <summary>
+        /// Convert an anchor to its actual position.<br/>
+        /// Since it is inherently based on the character's vertex positions,
+        /// the resulting position automatically ignores <see cref="TMPAnimator's"/> scaling;
+        /// no need to call <see cref="GetRawPosition(Vector3, CharData, IAnimationContext)"/> on it.
+        /// </summary>
+        /// <param name="anchor"></param>
+        /// <param name="cData"></param>
+        /// <returns></returns>
         public static Vector2 AnchorToPosition(Vector2 anchor, CharData cData)
         {
             if (anchor == Vector2.zero)
@@ -72,13 +81,13 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx)
         {
-            if (!ctx.animatorContext.ScaleAnimations) return delta;
+            if (!ctx.AnimatorContext.ScaleAnimations) return delta;
             return delta / cData.info.referenceScale;
         }
 
         internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, float scale, IAnimationContext ctx)
         {
-            if (!ctx.animatorContext.ScaleAnimations) return position;
+            if (!ctx.AnimatorContext.ScaleAnimations) return position;
             return (position - referencePosition) / scale + referencePosition;
         }
 
@@ -93,7 +102,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.initialMesh.GetPosition(index);
                 cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
@@ -111,7 +120,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.InitialPosition;
                 cData.SetPosition((position - ogPos) / cData.info.referenceScale + ogPos);
@@ -129,7 +138,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 Vector3 ogPos = cData.InitialPosition;
                 cData.SetPivot(((pivot - ogPos) / cData.info.referenceScale) + ogPos);
@@ -148,7 +157,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 cData.AddVertexDelta(index, delta / cData.info.referenceScale);
             }
@@ -165,7 +174,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 cData.AddPositionDelta(delta / cData.info.referenceScale);
             }
@@ -182,7 +191,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
         {
-            if (ctx.animatorContext.ScaleAnimations)
+            if (ctx.AnimatorContext.ScaleAnimations)
             {
                 cData.AddPivotDelta(delta / cData.info.referenceScale);
             }
@@ -421,26 +430,25 @@ namespace TMPEffects.TMPAnimations
                 set => uniformity = value;
             }
 
-            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 1f, 0f, 0f, 1f)
+            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 0f, 0f, 1f)
             { }
 
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, velocity, amplitude)
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, 1f, amplitude)
             {
                 if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
                 if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
                 if (upPeriod < 0) throw new System.ArgumentException(nameof(upPeriod) + " may not be negative");
                 if (downPeriod < 0) throw new System.ArgumentException(nameof(downPeriod) + " may not be negative");
                 if ((upPeriod + downPeriod) <= 0) throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) + " must be larger than zero");
-                if (velocity < 0) throw new System.ArgumentException(nameof(velocity) + " may not be negative");
 
                 this.uniformity = uniformity;
                 UpwardCurve = upwardCurve;
                 DownwardCurve = downwardCurve;
             }
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float velocity, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
-                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, velocity, amplitude, uniformity)
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
+                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, amplitude, uniformity)
             {
                 if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
                 if (TroughWait < 0) throw new System.ArgumentException(nameof(TroughWait) + " may not be negative");
@@ -901,7 +909,7 @@ namespace TMPEffects.TMPAnimations
         {
             switch (type)
             {
-                case WaveOffsetType.SegmentIndex: return context.segmentData.SegmentIndexOf(cData);
+                case WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
                 case WaveOffsetType.Index: return cData.info.index;
                 case WaveOffsetType.XPos:
                     float pos = cData.InitialPosition.x;

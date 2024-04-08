@@ -49,14 +49,14 @@ namespace TMPEffects.TMPSceneAnimations
         {
             if (!Application.isPlaying) return;
 
-            Data d = context.customData as Data;
-            int segmentIndex = context.segmentData.SegmentIndexOf(cData);
+            Data d = context.CustomData as Data;
+            int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
 
             // Initialize all offsets to 0
             if (d.offsets == null)
             {
-                d.offsets = new(context.segmentData.length);
-                for (int i = 0; i < context.segmentData.length; i++)
+                d.offsets = new(context.SegmentData.length);
+                for (int i = 0; i < context.SegmentData.length; i++)
                 {
                     d.offsets.Add(i, Vector3.zero);
                 }

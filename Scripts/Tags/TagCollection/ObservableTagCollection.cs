@@ -9,7 +9,7 @@ namespace TMPEffects.Tags.Collections
     /// </summary>
     public class ObservableTagCollection : TagCollection, INotifyCollectionChanged
     {
-        public ObservableTagCollection(IList<EffectTagTuple> tags, ITMPTagValidator validator = null) : base(tags, validator)
+        public ObservableTagCollection(IList<TMPEffectTagTuple> tags, ITMPTagValidator validator = null) : base(tags, validator)
         { }
         public ObservableTagCollection(ITMPTagValidator validator = null) : base(validator)
         { }
@@ -25,7 +25,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public override bool TryAdd(EffectTag tag, EffectTagIndices indices)
+        public override bool TryAdd(TMPEffectTag tag, TMPEffectTagIndices indices)
         {
             if (validator != null && !validator.ValidateTag(tag)) return false;
 
@@ -38,18 +38,18 @@ namespace TMPEffects.Tags.Collections
             // Otherwise adjust the index
             else index = ~index;
 
-            tags.Insert(index, new EffectTagTuple(tag, indices));
+            tags.Insert(index, new TMPEffectTagTuple(tag, indices));
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, tags[index], index));
             return true;
         }
 
         ///<inheritdoc/>
-        public override bool TryAdd(EffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
+        public override bool TryAdd(TMPEffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
         {
             if (validator != null && !validator.ValidateTag(tag)) return false;
 
             int index;
-            EffectTagIndices indices;
+            TMPEffectTagIndices indices;
 
             // If no order is specified, add it as first element at current index
             if (orderAtIndex == null)
@@ -60,19 +60,19 @@ namespace TMPEffects.Tags.Collections
                 if (index < 0)
                 {
                     index = ~index;
-                    indices = new EffectTagIndices(startIndex, endIndex, 0);
+                    indices = new TMPEffectTagIndices(startIndex, endIndex, 0);
                 }
                 // Otherwise
                 else
                 {
-                    indices = new EffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
+                    indices = new TMPEffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
                 }
             }
             // If order is specified
             else
             {
                 index = BinarySearchIndexOf(new TempIndices(startIndex, orderAtIndex.Value));
-                indices = new EffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
+                indices = new TMPEffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
 
                 // If no tag with these indices
                 if (index < 0)
@@ -85,17 +85,17 @@ namespace TMPEffects.Tags.Collections
                 }
             }
 
-            tags.Insert(index, new EffectTagTuple(tag, indices));
+            tags.Insert(index, new TMPEffectTagTuple(tag, indices));
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, tags[index], index));
             return true;
         }
 
 
         ///<inheritdoc/>
-        public override bool Remove(EffectTag tag, EffectTagIndices? indices = null)
+        public override bool Remove(TMPEffectTag tag, TMPEffectTagIndices? indices = null)
         {
             int index;
-            EffectTagTuple tuple;
+            TMPEffectTagTuple tuple;
             if (indices == null)
             {
                 index = FindIndex(tag);
@@ -139,9 +139,9 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public override int RemoveAllAt(int startIndex, EffectTagTuple[] buffer = null, int bufferIndex = 0)
+        public override int RemoveAllAt(int startIndex, TMPEffectTagTuple[] buffer = null, int bufferIndex = 0)
         {
-            List<EffectTagTuple> removed = new List<EffectTagTuple>();
+            List<TMPEffectTagTuple> removed = new List<TMPEffectTagTuple>();
             int first = BinarySearchIndexFirstIndexOf(new StartIndexOnly(startIndex));
             if (first == -1) return 0;
 
@@ -151,7 +151,7 @@ namespace TMPEffects.Tags.Collections
                 int len = Mathf.Min(tags.Count, buffer.Length - bufferIndex);
                 for (i = first; i < len;)
                 {
-                    EffectTagTuple tuple = tags[i];
+                    TMPEffectTagTuple tuple = tags[i];
                     if (tuple.Indices.StartIndex != startIndex) break;
                     buffer[i] = tuple;
                     removed.Add(tuple);
@@ -160,7 +160,7 @@ namespace TMPEffects.Tags.Collections
 
                 for (; i < tags.Count;)
                 {
-                    EffectTagTuple kvp = tags[i];
+                    TMPEffectTagTuple kvp = tags[i];
                     if (kvp.Indices.StartIndex != startIndex) break;
                     removed.Add(kvp);
                     tags.RemoveAt(i);
@@ -170,7 +170,7 @@ namespace TMPEffects.Tags.Collections
             {
                 for (int i = first; i < tags.Count;)
                 {
-                    EffectTagTuple kvp = tags[i];
+                    TMPEffectTagTuple kvp = tags[i];
                     if (kvp.Indices.StartIndex != startIndex) break;
                     removed.Add(kvp);
                     tags.RemoveAt(i);

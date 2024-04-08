@@ -11,7 +11,6 @@ namespace TMPEffects.Editor
     {
         TMPAnimator animator;
 
-        bool useDefaultDatabase;
         TMPAnimationDatabase defaultDatabase;
 
         // Serialized properties
@@ -36,6 +35,7 @@ namespace TMPEffects.Editor
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
         SerializedProperty animationsUseAnimatorTimeProp;
+        SerializedProperty useDefaultDatabaseProp;
 
         // Styles
         GUIStyle previewLabelStyle;
@@ -64,6 +64,7 @@ namespace TMPEffects.Editor
             excludePunctuationProp = serializedObject.FindProperty("excludePunctuation");
             excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
             excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
+            useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
 
             sceneAnimationsProp = serializedObject.FindProperty("sceneAnimations");
             sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
@@ -80,9 +81,7 @@ namespace TMPEffects.Editor
             defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
             if (defaultDatabase == null) Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
 
-            useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initValidate").boolValue;
-
-            if (!serializedObject.FindProperty("initValidate").boolValue)
+            if (!useDefaultDatabaseProp.boolValue)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
                 //serializedObject.FindProperty("initValidate").boolValue = true;
@@ -140,17 +139,17 @@ namespace TMPEffects.Editor
 
             var value = databaseProp.objectReferenceValue;
 
-            bool prevUseDefaultDatabase = useDefaultDatabase;
-            useDefaultDatabase = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabase);
+            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
+            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
-            if (prevUseDefaultDatabase != useDefaultDatabase)
+            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
                 Undo.RecordObject(animator, "Modified " + animator.name);
             }
 
-            if (useDefaultDatabase)
+            if (useDefaultDatabaseProp.boolValue)
             {
-                if (prevUseDefaultDatabase != useDefaultDatabase && defaultDatabase == null)
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && defaultDatabase == null)
                     Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
 
                 if (databaseProp.objectReferenceValue != defaultDatabase)

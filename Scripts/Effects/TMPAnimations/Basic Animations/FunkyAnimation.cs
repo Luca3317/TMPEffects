@@ -20,10 +20,10 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            float t = Mathf.Sin(context.animatorContext.PassedTime * d.speed) / 2 + 0.5f;
-            bool movingUp = Mathf.Cos(context.animatorContext.PassedTime * d.speed) > 0;
+            float t = Mathf.Sin(context.AnimatorContext.PassedTime * d.speed) / 2 + 0.5f;
+            bool movingUp = Mathf.Cos(context.AnimatorContext.PassedTime * d.speed) > 0;
 
             var delta0 = cData.initialMesh.TL_Position - cData.mesh.initial.BL_Position;
             var delta1 = cData.initialMesh.TR_Position - cData.mesh.initial.BR_Position;

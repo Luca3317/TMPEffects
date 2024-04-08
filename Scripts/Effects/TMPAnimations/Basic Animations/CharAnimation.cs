@@ -26,11 +26,11 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
             if (string.IsNullOrWhiteSpace(d.characters)) return;
 
-            int segmentIndex = context.segmentData.SegmentIndexOf(cData);
+            int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
             TMP_Character c;
 
             if (d.waitingSince == null)
@@ -54,7 +54,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (d.waitingSince[segmentIndex] != -1)
             {
                 // If done waiting
-                if (context.animatorContext.PassedTime - d.waitingSince[segmentIndex] >= d.waitDuration[segmentIndex])
+                if (context.AnimatorContext.PassedTime - d.waitingSince[segmentIndex] >= d.waitDuration[segmentIndex])
                 {
                     d.waitingSince[segmentIndex] = -1;
                 }
@@ -137,25 +137,25 @@ namespace TMPEffects.TMPAnimations.Animations
                     Debug.LogError($"Failed to get character {character} from lookup table");
             }
 
-            d.waitingSince[segmentIndex] = context.animatorContext.PassedTime;
+            d.waitingSince[segmentIndex] = context.AnimatorContext.PassedTime;
             d.waitDuration[segmentIndex] = Mathf.Lerp(d.minWait, d.maxWait, (float)d.random.NextDouble());
         }
 
 
         private void Init(CharData cData, Data d, IAnimationContext context)
         {
-            d.random = new System.Random((int)(context.animatorContext.PassedTime * 1000));
+            d.random = new System.Random((int)(context.AnimatorContext.PassedTime * 1000));
 
             if (cData.info.fontAsset.atlasPopulationMode == AtlasPopulationMode.Dynamic)
                 cData.info.fontAsset.TryAddCharacters(d.characters);
 
             //d.vertices = new(context.segmentData.length);
-            d.originalPositions = new(context.segmentData.length);
-            d.waitingSince = new(context.segmentData.length);
-            d.waitDuration = new(context.segmentData.length);
-            d.positions = new(context.segmentData.length);
+            d.originalPositions = new(context.SegmentData.length);
+            d.waitingSince = new(context.SegmentData.length);
+            d.waitDuration = new(context.SegmentData.length);
+            d.positions = new(context.SegmentData.length);
 
-            for (int i = 0; i < context.segmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
                 d.waitDuration[i] = -1;
                 d.waitingSince[i] = -1;

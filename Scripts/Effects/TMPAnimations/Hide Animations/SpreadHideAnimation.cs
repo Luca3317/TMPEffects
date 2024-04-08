@@ -25,12 +25,12 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            float t = Mathf.Lerp(d.startPercentage, d.targetPercentage, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
+            float t = Mathf.Lerp(d.startPercentage, d.targetPercentage, (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / d.duration);
             float t2 = d.curve.Evaluate(1 - t);
 
-            float l = Mathf.Lerp(0f, 1f, (context.animatorContext.PassedTime - context.animatorContext.StateTime(cData)) / d.duration);
+            float l = Mathf.Lerp(0f, 1f, (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / d.duration);
             if (l == 1)
                 context.FinishAnimation(cData);
 

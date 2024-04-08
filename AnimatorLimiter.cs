@@ -28,8 +28,8 @@ public class AnimatorLimiter : MonoBehaviour
         Debug.Log("UPDATE");
         if (!added)
         {
-            EffectTag tag = new EffectTag("wave", '\0', new Dictionary<string, string>());
-            EffectTagIndices indices = new EffectTagIndices(0, -1, 0);
+            TMPEffectTag tag = new TMPEffectTag("wave", '\0', new Dictionary<string, string>());
+            TMPEffectTagIndices indices = new TMPEffectTagIndices(0, -1, 0);
 
             if (animator.BasicTags.TryAdd(tag, indices))
             {
@@ -46,8 +46,8 @@ public class AnimatorLimiter : MonoBehaviour
 
 
 
-            tag = new EffectTag("fade", '+', new Dictionary<string, string>());
-            indices = new EffectTagIndices(0, 10, 0);
+            tag = new TMPEffectTag("fade", '+', new Dictionary<string, string>());
+            indices = new TMPEffectTagIndices(0, 10, 0);
 
             if (animator.ShowTags.TryAdd(tag, indices))
             {

@@ -16,6 +16,6 @@ namespace TMPEffects.Tags
         /// <param name="tag">The tag to cache.</param>
         /// <param name="indices">The associated indices.</param>
         /// <returns>The cached tag.</returns>
-        public T CacheTag(EffectTag tag, EffectTagIndices indices);
+        public T CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices);
     }
 }

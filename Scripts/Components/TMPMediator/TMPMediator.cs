@@ -6,6 +6,7 @@ using TMPEffects.CharacterData;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
+using UnityEditor;
 
 namespace TMPEffects.Components.Mediator
 {
@@ -91,6 +92,12 @@ namespace TMPEffects.Components.Mediator
         public void ForceReprocess()
         {
             Text.ForceMeshUpdate(true, true);
+//#if UNITY_EDITOR
+//            if (!Application.isPlaying)
+//            {
+//                SceneView.RepaintAll();
+//            }
+//#endif
         }
 
         /// <summary>

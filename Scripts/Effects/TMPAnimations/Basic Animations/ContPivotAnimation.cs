@@ -23,9 +23,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private void ContinuousRotation(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            float angle = (context.animatorContext.PassedTime * d.speed * 360) % 360;
+            float angle = (context.AnimatorContext.PassedTime * d.speed * 360) % 360;
             var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
             cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(d.rotationAxis)));
 

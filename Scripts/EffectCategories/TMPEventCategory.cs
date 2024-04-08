@@ -13,17 +13,17 @@ namespace TMPEffects.EffectCategories
         { }
 
         ///<inheritdoc/>
-        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out EffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
         {
             data = null;
             if (tagInfo.prefix != Prefix) return false;
-            EffectTag tagData = new(tagInfo.name, tagInfo.prefix, ParsingUtility.GetTagParametersDict(tagInfo.parameterString));
+            TMPEffectTag tagData = new(tagInfo.name, tagInfo.prefix, ParsingUtility.GetTagParametersDict(tagInfo.parameterString));
             data = tagData;
             return true;
         }
 
         ///<inheritdoc/>
-        public override bool ValidateTag(EffectTag tag)
+        public override bool ValidateTag(TMPEffectTag tag)
         {
             if (tag.Prefix != Prefix) return false;
             return true;

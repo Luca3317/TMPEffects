@@ -33,7 +33,7 @@ namespace TMPEffects.Components
     /// Using command tags, you can call specific methods. There are two types of Commands:
     /// <list type="table">
     /// <item><see cref="TMPCommand"/>: These are defined by the <see cref="TMPCommandDatabase"/> object on the component. As they derive from <see cref="ScriptableObject"/>, they are stored on disk. All built-in commands of this type serve to control the TMPWriter component.</item>
-    /// <item><see cref="SceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
+    /// <item><see cref="TMPSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
     /// </list>
     /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent. 
@@ -83,28 +83,28 @@ namespace TMPEffects.Components
         /// <summary>
         /// Raised when the TMPWriter shows a new character.
         /// </summary>
-        public UnityEvent<CharData> OnCharacterShown;
+        public UnityEvent<TMPWriter, CharData> OnCharacterShown;
         /// <summary>
         /// Raised when the TMPWriter starts / resumes writing.
         /// </summary>
-        public UnityEvent OnStartWriter;
+        public UnityEvent<TMPWriter> OnStartWriter;
         /// <summary>
         /// Raised when the TMPWriter stops writing.
         /// </summary>
-        public UnityEvent OnStopWriter;
+        public UnityEvent<TMPWriter> OnStopWriter;
         /// <summary>
         /// Raised when the TMPWriter is done writing the current text.
         /// </summary>
-        public UnityEvent OnFinishWriter;
+        public UnityEvent<TMPWriter> OnFinishWriter;
         /// <summary>
         /// Raised when the current (section of) text is skipped.
         /// </summary>
-        public UnityEvent OnSkipWriter;
+        public UnityEvent<TMPWriter, int> OnSkipWriter;
         /// <summary>
         /// Raised when the TMPWriter is reset.<br/>
         /// The integer parameter indicates the text index the TMPWriter was reset to.
         /// </summary>
-        public UnityEvent<int> OnResetWriter;
+        public UnityEvent<TMPWriter, int> OnResetWriter;
 
         /// <summary>
         /// The prefix used for command tags.
@@ -115,10 +115,6 @@ namespace TMPEffects.Components
         /// </summary>
         public const char EVENT_PREFIX = '?';
 
-        private float WhiteSpaceDelay => whiteSpaceDelayType == DelayType.Raw ? whiteSpaceDelay : currentDelay * whiteSpaceDelay;
-        private float PunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : currentDelay * punctuationDelay;
-        private float VisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : currentDelay * visibleDelay;
-        private float LinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : currentDelay * linebreakDelay;
 
         #region Fields
         // Settings
@@ -133,7 +129,7 @@ namespace TMPEffects.Components
         [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnStart = true;
         [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
-        [SerializeField] private bool autoWriteNewText = true;
+        [SerializeField] private bool writeOnNewText = true;
 
         [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float whiteSpaceDelay;
@@ -148,13 +144,9 @@ namespace TMPEffects.Components
         [SerializeField] private float linebreakDelay;
         [SerializeField] private DelayType linebreakDelayType;
 
-        // Scene commands
-        //[SerializeField, SerializedDictionary("Tag Name", "Command")] private SerializedDictionary<string, SceneCommand> sceneCommands;
-
-
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
-        private SerializedDictionary<string, SceneCommand> sceneCommands;
+        private SerializedDictionary<string, TMPSceneCommand> sceneCommands;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPEffectCategory> tags;
@@ -168,8 +160,28 @@ namespace TMPEffects.Components
         [System.NonSerialized] private CachedCollection<CachedEvent> events;
 
         [System.NonSerialized] private Coroutine writerCoroutine = null;
-        [System.NonSerialized] private float currentDelay;
+        //[System.NonSerialized] private float currentDelay;
         [System.NonSerialized] private bool currentMaySkip;
+
+        [System.NonSerialized] private Delays currentDelays;
+
+        private struct Delays
+        {
+            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
+            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
+            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
+            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
+
+            public float currentDelay;
+            public float currentWhitespaceDelay;
+            public DelayType currentWhitespaceDelayType;
+            public float currentLinebreakDelay;
+            public DelayType currentLinebreakDelayType;
+            public float currentPunctuationDelay;
+            public DelayType currentPunctuationDelayType;
+            public float currentVisibleDelay;
+            public DelayType currentVisibleDelayType;
+        }
 
         [System.NonSerialized] private bool shouldWait = false;
         [System.NonSerialized] private float waitAmount = 0f;
@@ -180,7 +192,6 @@ namespace TMPEffects.Components
         #endregion
 
         #region Initialization
-
         private void OnEnable()
         {
             UpdateMediator();
@@ -197,7 +208,11 @@ namespace TMPEffects.Components
             Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
-            if (!Application.isPlaying) EditorApplication.update += EditorUpdate;
+            if (!Application.isPlaying)
+            {
+                EditorApplication.update -= EditorUpdate;
+                EditorApplication.update += EditorUpdate;
+            }
 #endif
         }
 
@@ -248,7 +263,7 @@ namespace TMPEffects.Components
             ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
             tags = new();
             commands = new CachedCollection<CachedCommand>(new CommandCacher(ro, this, commandCategory), tags.AddKey(commandCategory));
-            events = new CachedCollection<CachedEvent>(new EventCacher(OnTextEvent), tags.AddKey(eventCategory));
+            events = new CachedCollection<CachedEvent>(new EventCacher(this, OnTextEvent), tags.AddKey(eventCategory));
 
             // Reset processors
             processors ??= new();
@@ -385,7 +400,7 @@ namespace TMPEffects.Components
             if (cc == default) skipTo = Mediator.CharData.Count;
             else skipTo = cc.Indices.StartIndex;
 
-            RaiseSkipWriterEvent();
+            RaiseSkipWriterEvent(skipTo);
 
             for (int i = currentIndex; i < skipTo; i++)
             {
@@ -456,7 +471,32 @@ namespace TMPEffects.Components
         /// <param name="delay">The delay between showing two characters.</param>
         public void SetDelay(float delay)
         {
-            currentDelay = delay;
+            //currentDelay = delay;
+            currentDelays.currentDelay = delay;
+        }
+
+        public void SetWhitespaceDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentWhitespaceDelay = delay;
+            if (type != null) currentDelays.currentWhitespaceDelayType = type.Value;
+        }
+
+        public void SetLinebreakDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentLinebreakDelay = delay;
+            if (type != null) currentDelays.currentLinebreakDelayType = type.Value;
+        }
+
+        public void SetVisibleDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentVisibleDelay = delay;
+            if (type != null) currentDelays.currentVisibleDelayType = type.Value;
+        }
+
+        public void SetPunctuationDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentPunctuationDelay = delay;
+            if (type != null) currentDelays.currentPunctuationDelayType = type.Value;
         }
 
         /// <summary>
@@ -488,12 +528,12 @@ namespace TMPEffects.Components
             {
                 bool tagsChanged = true;
                 var oldTags = CommandTags;
-                var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+                var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                 if (oldTags.SequenceEqual(newTags))
                 {
                     oldTags = EventTags;
-                    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
+                    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                     if (oldTags.SequenceEqual(newTags))
                     {
@@ -522,7 +562,7 @@ namespace TMPEffects.Components
 #endif
 
             ResetWriter();
-            if (autoWriteNewText) StartWriter();
+            if (writeOnNewText) StartWriter();
             return;
         }
 
@@ -531,12 +571,12 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnCharacterShownPreview?.Invoke(cData);
+                OnCharacterShownPreview?.Invoke(this, cData);
                 return;
             }
 #endif
 
-            OnCharacterShown?.Invoke(cData);
+            OnCharacterShown?.Invoke(this, cData);
         }
 
         private void RaiseResetWriterEvent(int index)
@@ -544,12 +584,12 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnResetWriterPreview?.Invoke(index);
+                OnResetWriterPreview?.Invoke(this, index);
                 return;
             }
 #endif
 
-            OnResetWriter?.Invoke(index);
+            OnResetWriter?.Invoke(this, index);
         }
 
         private void RaiseFinishWriterEvent()
@@ -557,12 +597,12 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnFinishWriterPreview?.Invoke();
+                OnFinishWriterPreview?.Invoke(this);
                 return;
             }
 #endif
 
-            OnFinishWriter?.Invoke();
+            OnFinishWriter?.Invoke(this);
         }
 
         private void RaiseStartWriterEvent()
@@ -570,12 +610,12 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnStartWriterPreview?.Invoke();
+                OnStartWriterPreview?.Invoke(this);
                 return;
             }
 #endif
 
-            OnStartWriter?.Invoke();
+            OnStartWriter?.Invoke(this);
         }
 
         private void RaiseStopWriterEvent()
@@ -583,25 +623,25 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnStopWriterPreview?.Invoke();
+                OnStopWriterPreview?.Invoke(this);
                 return;
             }
 #endif
 
-            OnStopWriter?.Invoke();
+            OnStopWriter?.Invoke(this);
         }
 
-        private void RaiseSkipWriterEvent()
+        private void RaiseSkipWriterEvent(int index)
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnSkipWriterPreview?.Invoke();
+                OnSkipWriterPreview?.Invoke(this, index);
                 return;
             }
 #endif
 
-            OnSkipWriter?.Invoke();
+            OnSkipWriter?.Invoke(this, index);
         }
         #endregion
 
@@ -727,7 +767,19 @@ namespace TMPEffects.Components
 
         private void ResetData()
         {
-            currentDelay = delay;
+            currentDelays = new Delays()
+            {
+                currentDelay = delay,
+                currentWhitespaceDelay = whiteSpaceDelay,
+                currentWhitespaceDelayType = whiteSpaceDelayType,
+                currentLinebreakDelay = linebreakDelay,
+                currentLinebreakDelayType = linebreakDelayType,
+                currentPunctuationDelay = punctuationDelay,
+                currentPunctuationDelayType = punctuationDelayType,
+                currentVisibleDelay = visibleDelay,
+                currentVisibleDelayType = visibleDelayType
+            };
+            //currentDelay = delay;
             currentMaySkip = maySkip;
         }
 
@@ -752,7 +804,7 @@ namespace TMPEffects.Components
 
         private float CalculateDelay(int index)
         {
-            if (currentDelay <= 0) return 0;
+            if (currentDelays.currentDelay <= 0) return 0;
 
             CharData cData = Mediator.CharData[index];
 
@@ -762,30 +814,30 @@ namespace TMPEffects.Components
                 // If line break
                 if (cData.info.character == '\n')
                 {
-                    return Mathf.Max(LinebreakDelay, 0);
+                    return Mathf.Max(currentDelays.LinebreakDelay, 0);
                 }
                 //if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
                 //{
                 //    return Mathf.Max(currentDelay * LinebreakDelay);
                 //}
 
-                return Mathf.Max(WhiteSpaceDelay, 0);
+                return Mathf.Max(currentDelays.WhiteSpaceDelay, 0);
             }
 
             // If character is already shown (e.g. through using the !show command)
             VisibilityState vState = Mediator.GetVisibilityState(cData);
             if (vState == VisibilityState.Shown || vState == VisibilityState.Showing)
             {
-                return Mathf.Max(VisibleDelay, 0);
+                return Mathf.Max(currentDelays.VisibleDelay, 0);
             }
 
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
             if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
             {
-                return Mathf.Max(PunctuationDelay, 0);
+                return Mathf.Max(currentDelays.PunctuationDelay, 0);
             }
 
-            return currentDelay;
+            return currentDelays.currentDelay;
         }
 
         private IEnumerator HandleWaitConditions()
@@ -964,18 +1016,19 @@ namespace TMPEffects.Components
         [System.NonSerialized] bool reprocessFlag = false;
         [SerializeField, HideInInspector] TMPCommandDatabase prevDatabase = null;
         [SerializeField, HideInInspector] bool initValidate = false;
+        [SerializeField, HideInInspector] bool useDefaultDatabase = true;
         [SerializeField, HideInInspector] bool eventsEnabled = false;
         [SerializeField, HideInInspector] bool commandsEnabled = false;
 
-        public delegate void CharDataHandler(CharData cData);
-        public delegate void IntHandler(int index);
-        public delegate void VoidHandler();
+        public delegate void CharDataHandler(TMPWriter writer, CharData cData);
+        public delegate void IntHandler(TMPWriter writer, int index);
+        public delegate void VoidHandler(TMPWriter writer);
         public event CharDataHandler OnCharacterShownPreview;
         public event IntHandler OnResetWriterPreview;
+        public event IntHandler OnSkipWriterPreview;
         public event VoidHandler OnFinishWriterPreview;
         public event VoidHandler OnStartWriterPreview;
         public event VoidHandler OnStopWriterPreview;
-        public event VoidHandler OnSkipWriterPreview;
 
 
         private void EditorUpdate()

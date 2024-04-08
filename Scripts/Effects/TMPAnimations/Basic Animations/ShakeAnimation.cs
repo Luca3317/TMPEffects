@@ -29,7 +29,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
             if (!d.init)
             {
@@ -53,13 +53,13 @@ namespace TMPEffects.TMPAnimations.Animations
             Vector3 offset;
             if (d.uniform)
             {
-                if (context.animatorContext.PassedTime - d.lastUpdated >= d.delay)
+                if (context.AnimatorContext.PassedTime - d.lastUpdated >= d.delay)
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rng.NextDouble());
                     float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rng.NextDouble());
 
                     d.delay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rng.NextDouble());
-                    d.lastUpdated = context.animatorContext.PassedTime;
+                    d.lastUpdated = context.AnimatorContext.PassedTime;
 
                     d.xOffset = ((float)d.rng.NextDouble() * 2f - 1f) * xAmp;
                     d.yOffset = ((float)d.rng.NextDouble() * 2f - 1f) * yAmp;
@@ -69,8 +69,8 @@ namespace TMPEffects.TMPAnimations.Animations
             }
             else if (d.uniformDelay)
             {
-                int segmentIndex = context.segmentData.SegmentIndexOf(cData);
-                if (d.autoUpdateDict[segmentIndex] || context.animatorContext.PassedTime - d.sharedLastUpdated >= d.sharedDelay)
+                int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+                if (d.autoUpdateDict[segmentIndex] || context.AnimatorContext.PassedTime - d.sharedLastUpdated >= d.sharedDelay)
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
                     float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
@@ -79,9 +79,9 @@ namespace TMPEffects.TMPAnimations.Animations
                     else
                     {
                         d.sharedDelay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
-                        d.sharedLastUpdated = context.animatorContext.PassedTime;
+                        d.sharedLastUpdated = context.AnimatorContext.PassedTime;
 
-                        for (int i = 0; i < context.segmentData.length; i++)
+                        for (int i = 0; i < context.SegmentData.length; i++)
                         {
                             if (i == segmentIndex) continue;
                             d.autoUpdateDict[i] = true;
@@ -97,14 +97,14 @@ namespace TMPEffects.TMPAnimations.Animations
             }
             else
             {
-                int segmentIndex = context.segmentData.SegmentIndexOf(cData);
-                if (context.animatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
+                int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+                if (context.AnimatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
                     float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
 
                     d.delayDict[segmentIndex] = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
-                    d.lastUpdatedDict[segmentIndex] = context.animatorContext.PassedTime;
+                    d.lastUpdatedDict[segmentIndex] = context.AnimatorContext.PassedTime;
 
                     float xOffset = ((float)d.rngDict[segmentIndex].NextDouble() * 2f - 1f) * xAmp;
                     float yOffset = ((float)d.rngDict[segmentIndex].NextDouble() * 2f - 1f) * yAmp;
@@ -119,10 +119,10 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private void InitRNGDict(IAnimationContext context)
         {
-            Data d = context.customData as Data;
-            int seed = (int)(context.animatorContext.PassedTime * 1000);
-            d.rngDict = new Dictionary<int, System.Random>(context.segmentData.length);
-            for (int i = 0; i < context.segmentData.length; i++)
+            Data d = context.CustomData as Data;
+            int seed = (int)(context.AnimatorContext.PassedTime * 1000);
+            d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.length);
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
                 d.rngDict.Add(i, new System.Random(seed + i));
             }
@@ -130,20 +130,20 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private void InitLastUpdatedDict(IAnimationContext context)
         {
-            Data d = context.customData as Data;
-            d.lastUpdatedDict = new Dictionary<int, float>(context.segmentData.length);
-            for (int i = 0; i < context.segmentData.length; i++)
+            Data d = context.CustomData as Data;
+            d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.length);
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
-                d.lastUpdatedDict.Add(i, context.animatorContext.PassedTime);
+                d.lastUpdatedDict.Add(i, context.AnimatorContext.PassedTime);
             }
         }
 
         private void InitDelayDict(IAnimationContext context)
         {
-            Data d = context.customData as Data;
-            d.delayDict = new Dictionary<int, float>(context.segmentData.length);
+            Data d = context.CustomData as Data;
+            d.delayDict = new Dictionary<int, float>(context.SegmentData.length);
 
-            for (int i = 0; i < context.segmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
                 d.delayDict.Add(i, 0);
             }
@@ -151,10 +151,10 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private void InitOffsetDict(IAnimationContext context)
         {
-            Data d = context.customData as Data;
-            d.offsetDict = new Dictionary<int, Vector2>(context.segmentData.length);
+            Data d = context.CustomData as Data;
+            d.offsetDict = new Dictionary<int, Vector2>(context.SegmentData.length);
 
-            for (int i = 0; i < context.segmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
                 d.offsetDict.Add(i, Vector2.zero);
             }
@@ -162,10 +162,10 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private void InitAutoUpdateDict(IAnimationContext context)
         {
-            Data d = context.customData as Data;
-            d.autoUpdateDict = new Dictionary<int, bool>(context.segmentData.length);
+            Data d = context.CustomData as Data;
+            d.autoUpdateDict = new Dictionary<int, bool>(context.SegmentData.length);
 
-            for (int i = 0; i < context.segmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.length; i++)
             {
                 d.autoUpdateDict.Add(i, false);
             }

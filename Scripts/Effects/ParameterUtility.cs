@@ -176,13 +176,6 @@ namespace TMPEffects
         }
 
 
-
-
-
-
-
-
-
         public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
@@ -341,15 +334,15 @@ namespace TMPEffects
         public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetAnchorParameter(out Vector3 _, parameters, name, aliases);
+            return !TryGetAnchorParameter(out Vector2 _, parameters, name, aliases);
         }
 
         public static bool HasAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            return TryGetAnchorParameter(out Vector3 _, parameters, name, aliases);
+            return TryGetAnchorParameter(out Vector2 _, parameters, name, aliases);
         }
 
-        public static bool TryGetAnchorParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             try
             {
@@ -363,11 +356,11 @@ namespace TMPEffects
             }
         }
 
-        public static Vector3 GetAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static Vector2 GetAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             string defined = GetDefinedParameter(parameters, name, aliases);
 
-            if (ParsingUtility.StringToAnchor(parameters[defined], out Vector3 value, AnchorKeywords, BuiltInVector3Keywords))
+            if (ParsingUtility.StringToAnchor(parameters[defined], out Vector2 value, AnchorKeywords, BuiltInVector2Keywords))
             {
                 return value;
             }
@@ -375,43 +368,30 @@ namespace TMPEffects
             throw new System.Exception("Parameter " + defined + " is not a valid anchor");
         }
 
-        public static readonly ReadOnlyDictionary<string, Vector3> AnchorKeywords = new ReadOnlyDictionary<string, Vector3>(new Dictionary<string, Vector3>()
+        public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords = new ReadOnlyDictionary<string, Vector2>(new Dictionary<string, Vector2>()
         {
-            { "a:top", Vector3.up },
-            { "a:bottom", Vector3.down },
-            { "a:bttm", Vector3.down },
-            { "a:right", Vector3.right },
-            { "a:left", Vector3.left },
+            { "a:top", Vector2.up },
+            { "a:bottom", Vector2.down },
+            { "a:bttm", Vector2.down },
+            { "a:right", Vector2.right },
+            { "a:left", Vector2.left },
 
-            { "a:topright", Vector3.up + Vector3.right },
-            { "a:tr",  Vector3.up + Vector3.right },
+            { "a:topright", Vector2.up + Vector2.right },
+            { "a:tr",  Vector2.up + Vector2.right },
 
-            { "a:bottomright", Vector3.down + Vector3.right },
-            { "a:bttmright", Vector3.down + Vector3.right },
-            { "a:br", Vector3.down + Vector3.right  },
+            { "a:bottomright", Vector2.down + Vector2.right },
+            { "a:bttmright", Vector2.down + Vector2.right },
+            { "a:br", Vector2.down + Vector2.right  },
 
-            { "a:topleft", Vector3.up + Vector3.left },
-            { "a:tl", Vector3.up + Vector3.left },
+            { "a:topleft", Vector2.up + Vector2.left },
+            { "a:tl", Vector2.up + Vector2.left },
 
-            { "a:bottomleft", Vector3.down + Vector3.left },
-            { "a:bttmleft", Vector3.down + Vector3.left },
-            { "a:bl", Vector3.down + Vector3.left },
+            { "a:bottomleft", Vector2.down + Vector2.left },
+            { "a:bttmleft", Vector2.down + Vector2.left },
+            { "a:bl", Vector2.down + Vector2.left },
 
-            { "a:center", Vector3.zero }
+            { "a:center", Vector2.zero }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -596,9 +576,9 @@ namespace TMPEffects
                 vector = new TypedVector3(VectorType.Position, value);
                 return true;
             }
-            if (TryGetAnchorParameter(out value, parameters, name, aliases))
+            if (TryGetAnchorParameter(out Vector2 value2, parameters, name, aliases))
             {
-                vector = new TypedVector3(VectorType.Anchor, value);
+                vector = new TypedVector3(VectorType.Anchor, value2);
                 return true;
             }
             if (TryGetVector3OffsetParameter(out value, parameters, name, aliases))
@@ -621,9 +601,9 @@ namespace TMPEffects
             {
                 return new TypedVector3(VectorType.Position, value);
             }
-            if (TryGetAnchorParameter(out value, parameters, name))
+            if (TryGetAnchorParameter(out Vector2 value2, parameters, name))
             {
-                return new TypedVector3(VectorType.Anchor, value);
+                return new TypedVector3(VectorType.Anchor, value2);
             }
             if (TryGetVector3OffsetParameter(out value, parameters, name))
             {
@@ -653,9 +633,9 @@ namespace TMPEffects
                 vector = new TypedVector2(VectorType.Position, value);
                 return true;
             }
-            if (TryGetAnchorParameter(out Vector3 value3, parameters, name, aliases))
+            if (TryGetAnchorParameter(out value, parameters, name, aliases))
             {
-                vector = new TypedVector2(VectorType.Anchor, value3);
+                vector = new TypedVector2(VectorType.Anchor, value);
                 return true;
             }
             if (TryGetVector2OffsetParameter(out value, parameters, name, aliases))
@@ -678,9 +658,9 @@ namespace TMPEffects
             {
                 return new TypedVector2(VectorType.Position, value);
             }
-            if (TryGetAnchorParameter(out Vector3 value3, parameters, name))
+            if (TryGetAnchorParameter(out value, parameters, name))
             {
-                return new TypedVector2(VectorType.Anchor, value3);
+                return new TypedVector2(VectorType.Anchor, value);
             }
             if (TryGetVector2OffsetParameter(out value, parameters, name))
             {
@@ -897,17 +877,12 @@ namespace TMPEffects
             float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
             float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
 
-            float velocity = wave.Velocity;
-            if (wp.wavevelocity != null) velocity = wp.wavevelocity.Value;
-            else if (wp.wavelength != null) velocity = wp.wavelength.Value * (1f / (upPeriod + downPeriod));
-
             Wave newWave = new Wave
             (
                 wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
                 wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
                 upPeriod,
                 downPeriod,
-                velocity,
                 wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value,
                 wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
                 wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,

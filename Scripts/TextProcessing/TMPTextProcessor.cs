@@ -206,13 +206,13 @@ namespace TMPEffects.TextProcessing
             sw.Start();
             BeginAdjustIndices?.Invoke(info.textComponent.text);
 
-            Dictionary<TagProcessor, List<KeyValuePair<Indices, EffectTag>>> dict = new();
+            Dictionary<TagProcessor, List<KeyValuePair<Indices, TMPEffectTag>>> dict = new();
             foreach (var processor in processors)
             {
                 dict.Add(processor, new());
                 foreach (var tag in processor.ProcessedTags)
                 {
-                    dict[processor].Add(new KeyValuePair<Indices, EffectTag>(new Indices(tag.Key), tag.Value));
+                    dict[processor].Add(new KeyValuePair<Indices, TMPEffectTag>(new Indices(tag.Key), tag.Value));
                 }
             }
 
@@ -304,8 +304,8 @@ namespace TMPEffects.TextProcessing
                 foreach (var thing in kvp.Value)
                 {
                     kvp.Key.AdjustIndices(
-                        new KeyValuePair<EffectTagIndices, EffectTag>(thing.Key.indices, thing.Value),
-                        new KeyValuePair<EffectTagIndices, EffectTag>(new EffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex), thing.Value));
+                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(thing.Key.indices, thing.Value),
+                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(new TMPEffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex), thing.Value));
                 }
             }
 
@@ -345,9 +345,9 @@ namespace TMPEffects.TextProcessing
             public readonly int originalStart;
             public readonly int originalEnd;
 
-            public readonly EffectTagIndices indices;
+            public readonly TMPEffectTagIndices indices;
 
-            public Indices(EffectTagIndices indices)
+            public Indices(TMPEffectTagIndices indices)
             {
                 this.start = indices.StartIndex;
                 this.end = indices.EndIndex;

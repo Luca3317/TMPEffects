@@ -9,7 +9,7 @@ namespace TMPEffects.Tags
     /// A <see cref="TMPEffects"/> tag.<br/>
     /// Contains any data "inherent" to the given tag.
     /// </summary>
-    public sealed class EffectTag : IEquatable<EffectTag>
+    public sealed class TMPEffectTag : IEquatable<TMPEffectTag>
     {
         /// <summary>
         /// The name of the tag.
@@ -28,7 +28,7 @@ namespace TMPEffects.Tags
         private readonly char prefix;
         private readonly ReadOnlyDictionary<string, string> parameters;
 
-        public EffectTag(string name, char prefix, IDictionary<string, string> parameters)
+        public TMPEffectTag(string name, char prefix, IDictionary<string, string> parameters)
         {
             this.name = name;
             this.prefix = prefix;
@@ -38,7 +38,7 @@ namespace TMPEffects.Tags
                 this.parameters = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>(parameters));
         }
 
-        public bool Equals(EffectTag other)
+        public bool Equals(TMPEffectTag other)
         {
             return name == other.name && prefix == other.prefix && parameters.SequenceEqual(other.parameters); 
         }

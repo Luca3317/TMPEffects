@@ -66,8 +66,8 @@ public class TagManipulationTester : MonoBehaviour
         {
             if (order == null)
             {
-                var t = new EffectTag(info.name, info.prefix, dict);
-                var ti = new EffectTagIndices(start, end, 0);
+                var t = new TMPEffectTag(info.name, info.prefix, dict);
+                var ti = new TMPEffectTagIndices(start, end, 0);
                 if (!animator.Tags.TryAdd(t, ti))
                 {
                     throw new System.ArgumentException("Failed to add");
@@ -77,8 +77,8 @@ public class TagManipulationTester : MonoBehaviour
             }
             else
             {
-                var t = new EffectTag(info.name, info.prefix, dict);
-                var ti = new EffectTagIndices(start, end, order.Value);
+                var t = new TMPEffectTag(info.name, info.prefix, dict);
+                var ti = new TMPEffectTagIndices(start, end, order.Value);
                 if (!animator.Tags.TryAdd(t, ti))
                 {
                     throw new System.ArgumentException("Failed to add");

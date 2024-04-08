@@ -34,7 +34,7 @@ public class ComponentController : MonoBehaviour
         writer.OnFinishWriter.AddListener(StartCoroutine);
     }
 
-    private void StartCoroutine()
+    private void StartCoroutine(TMPWriter writer)
     {
         StartCoroutine(ListenWriter());
     }
@@ -112,8 +112,8 @@ public class ComponentController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            EffectTag tag = new EffectTag("wait", '!', new Dictionary<string, string>() { { "", "2" } });
-            EffectTagIndices indices = new EffectTagIndices(writer.CurrentIndex + 1, writer.CurrentIndex + 2, 0);
+            TMPEffectTag tag = new TMPEffectTag("wait", '!', new Dictionary<string, string>() { { "", "2" } });
+            TMPEffectTagIndices indices = new TMPEffectTagIndices(writer.CurrentIndex + 1, writer.CurrentIndex + 2, 0);
             writer.CommandTags.TryAdd(tag, indices);
             return;
         }

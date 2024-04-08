@@ -21,7 +21,7 @@ public class Writercontroller : MonoBehaviour
         textIndex = 0;
     }
 
-    void StartCoroutine()
+    void StartCoroutine(TMPWriter writer)
     {
         StartCoroutine(CC());
     }

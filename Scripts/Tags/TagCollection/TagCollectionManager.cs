@@ -110,13 +110,13 @@ namespace TMPEffects.Tags.Collections
 
         #region ITagCollection
         ///<inheritdoc/>
-        public bool TryAdd(EffectTag tag, EffectTagIndices indices)
+        public bool TryAdd(TMPEffectTag tag, TMPEffectTagIndices indices)
         {
             return TryAdd(tag, indices.StartIndex, indices.EndIndex, indices.OrderAtIndex);
         }
 
         ///<inheritdoc/>
-        public bool TryAdd(EffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
+        public bool TryAdd(TMPEffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public int RemoveAllAt(int startIndex, EffectTagTuple[] buffer = null, int bufferIndex = 0)
+        public int RemoveAllAt(int startIndex, TMPEffectTagTuple[] buffer = null, int bufferIndex = 0)
         {
             try
             {
@@ -171,7 +171,7 @@ namespace TMPEffects.Tags.Collections
         }
 
         ///<inheritdoc/>
-        public bool Remove(EffectTag tag, EffectTagIndices? indices = null)
+        public bool Remove(TMPEffectTag tag, TMPEffectTagIndices? indices = null)
         {
             if (!prefixToKey.TryGetValue(tag.Prefix, out TKey key)) return false;
 
@@ -218,17 +218,17 @@ namespace TMPEffects.Tags.Collections
         ///<inheritdoc/>
         public int TagCount => union.TagCount;
         ///<inheritdoc/>
-        public bool Contains(EffectTag tag, EffectTagIndices? indices = null) => union.Contains(tag, indices);
+        public bool Contains(TMPEffectTag tag, TMPEffectTagIndices? indices = null) => union.Contains(tag, indices);
         ///<inheritdoc/>
-        public EffectTagIndices? IndicesOf(EffectTag tag) => union.IndicesOf(tag);
+        public TMPEffectTagIndices? IndicesOf(TMPEffectTag tag) => union.IndicesOf(tag);
         ///<inheritdoc/>
-        public int TagsAt(int startIndex, EffectTagTuple[] buffer, int bufferIndex = 0) => union.TagsAt(startIndex, buffer, bufferIndex);
+        public int TagsAt(int startIndex, TMPEffectTagTuple[] buffer, int bufferIndex = 0) => union.TagsAt(startIndex, buffer, bufferIndex);
         ///<inheritdoc/>
-        public IEnumerable<EffectTagTuple> TagsAt(int startIndex) => union.TagsAt(startIndex);
+        public IEnumerable<TMPEffectTagTuple> TagsAt(int startIndex) => union.TagsAt(startIndex);
         ///<inheritdoc/>
-        public EffectTag TagAt(int startIndex, int? order = null) => union.TagAt(startIndex, order);
+        public TMPEffectTag TagAt(int startIndex, int? order = null) => union.TagAt(startIndex, order);
         ///<inheritdoc/>
-        public IEnumerator<EffectTagTuple> GetEnumerator() => union.GetEnumerator();
+        public IEnumerator<TMPEffectTagTuple> GetEnumerator() => union.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => union.GetEnumerator();
         #endregion
 
@@ -240,7 +240,7 @@ namespace TMPEffects.Tags.Collections
 
         private void ValidateIndices(int index)
         {
-            List<EffectTagTuple> list = union.ToList();
+            List<TMPEffectTagTuple> list = union.ToList();
 
             if (list.Count == 0) return;
 
@@ -295,11 +295,11 @@ namespace TMPEffects.Tags.Collections
         {
             if (autoSync) return;
 
-            EffectTagTuple tuple;
+            TMPEffectTagTuple tuple;
             switch (args.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    tuple = (EffectTagTuple)args.NewItems[0];
+                    tuple = (TMPEffectTagTuple)args.NewItems[0];
                     if (!union.TryAdd(tuple.Tag, tuple.Indices))
                     {
                         Debug.LogError("Failed to add to union; now undefined");
@@ -309,7 +309,7 @@ namespace TMPEffects.Tags.Collections
                 case NotifyCollectionChangedAction.Remove:
                     foreach (var current in args.OldItems)
                     {
-                        tuple = (EffectTagTuple)current;
+                        tuple = (TMPEffectTagTuple)current;
                         if (!union.RemoveAt(tuple.Indices.StartIndex, tuple.Indices.OrderAtIndex))
                         {
                             Debug.LogError("Failed to remove from union; now undefined");
@@ -318,7 +318,7 @@ namespace TMPEffects.Tags.Collections
                     break;
 
                 case NotifyCollectionChangedAction.Reset:
-                    IEnumerable<EffectTagTuple> concat = new List<EffectTagTuple>();
+                    IEnumerable<TMPEffectTagTuple> concat = new List<TMPEffectTagTuple>();
 
                     foreach (var coll in collections.Values)
                     {
@@ -356,7 +356,7 @@ namespace TMPEffects.Tags.Collections
                 //if (validator == null) throw new System.ArgumentNullException(nameof(validator)); 
             }
 
-            internal bool SetOrder(EffectTag tag, EffectTagIndices indices, int newOrder)
+            internal bool SetOrder(TMPEffectTag tag, TMPEffectTagIndices indices, int newOrder)
             {
                 int index;
                 if ((index = BinarySearchIndexOf(indices)) < 0) return false;
@@ -372,7 +372,7 @@ namespace TMPEffects.Tags.Collections
                 if (index == tags.Count || tags[index].Indices.StartIndex != indices.StartIndex) return false;
 
                 var prev = tags[index];
-                tags[index] = new EffectTagTuple(tag, new EffectTagIndices(indices.StartIndex, indices.EndIndex, newOrder));
+                tags[index] = new TMPEffectTagTuple(tag, new TMPEffectTagIndices(indices.StartIndex, indices.EndIndex, newOrder));
 
                 InvokeEvent(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, prev, tags[index], index));
 
@@ -380,7 +380,7 @@ namespace TMPEffects.Tags.Collections
 
             }
 
-            public override bool TryAdd(EffectTag tag, EffectTagIndices indices)
+            public override bool TryAdd(TMPEffectTag tag, TMPEffectTagIndices indices)
             {
                 if (validator != null && !validator.ValidateTag(tag)) return false;
 
@@ -388,17 +388,17 @@ namespace TMPEffects.Tags.Collections
                 if ((index = BinarySearchIndexOf(indices)) < 0)
                     index = ~index;
 
-                tags.Insert(index, new EffectTagTuple(tag, indices));
+                tags.Insert(index, new TMPEffectTagTuple(tag, indices));
                 InvokeEvent(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, tags[index], index));
                 return true;
             }
 
-            public override bool TryAdd(EffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
+            public override bool TryAdd(TMPEffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)
             {
                 if (validator != null && !validator.ValidateTag(tag)) return false;
 
                 int index;
-                EffectTagIndices indices;
+                TMPEffectTagIndices indices;
 
                 // If no order is specified, add it as first element at current index
                 if (orderAtIndex == null)
@@ -409,19 +409,19 @@ namespace TMPEffects.Tags.Collections
                     if (index < 0)
                     {
                         index = ~index;
-                        indices = new EffectTagIndices(startIndex, endIndex, 0);
+                        indices = new TMPEffectTagIndices(startIndex, endIndex, 0);
                     }
                     // Otherwise
                     else
                     {
-                        indices = new EffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
+                        indices = new TMPEffectTagIndices(startIndex, endIndex, tags[index].Indices.OrderAtIndex - 1);
                     }
                 }
                 // If order is specified
                 else
                 {
                     index = BinarySearchIndexOf(new TempIndices(startIndex, orderAtIndex.Value));
-                    indices = new EffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
+                    indices = new TMPEffectTagIndices(startIndex, endIndex, orderAtIndex.Value);
 
                     // If no tag with these indices
                     if (index < 0)
@@ -430,7 +430,7 @@ namespace TMPEffects.Tags.Collections
                     }
                 }
 
-                tags.Insert(index, new EffectTagTuple(tag, indices));
+                tags.Insert(index, new TMPEffectTagTuple(tag, indices));
                 InvokeEvent(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, tags[index], index));
                 return true;
             }

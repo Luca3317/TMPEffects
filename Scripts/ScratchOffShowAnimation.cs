@@ -51,18 +51,18 @@ namespace TMPEffects.TMPSceneAnimations.ShowAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
             if (d.state == null)
             {
                 d.state = new Dictionary<int, Vector4>();
-                for (int i = context.segmentData.firstAnimationIndex; i <= context.segmentData.lastAnimationIndex; i++)
+                for (int i = context.SegmentData.firstAnimationIndex; i <= context.SegmentData.lastAnimationIndex; i++)
                 {
                     d.state[i] = Vector4.one * hiddenOpacity;
                 }
             }
 
-            int segmentIndex = context.segmentData.SegmentIndexOf(cData);
+            int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
             Vector4 alphas = d.state[segmentIndex];
 
             UpdateAlphas(ref alphas, cData, context);
@@ -85,9 +85,9 @@ namespace TMPEffects.TMPSceneAnimations.ShowAnimations
             if (!Input.GetMouseButton(0) || (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)) return;
 
 
-            Data d = context.customData as Data;
+            Data d = context.CustomData as Data;
 
-            context.state.CalculateVertexPositions();
+            context.State.CalculateVertexPositions();
 
             Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
 
@@ -102,10 +102,10 @@ namespace TMPEffects.TMPSceneAnimations.ShowAnimations
 
                 switch (i)
                 {
-                    case 0: vertex = text.transform.TransformPoint(context.state.BL_Result); break;
-                    case 1: vertex = text.transform.TransformPoint(context.state.TL_Result); break;
-                    case 2: vertex = text.transform.TransformPoint(context.state.TR_Result); break;
-                    case 3: vertex = text.transform.TransformPoint(context.state.BR_Result); break;
+                    case 0: vertex = text.transform.TransformPoint(context.State.BL_Result); break;
+                    case 1: vertex = text.transform.TransformPoint(context.State.TL_Result); break;
+                    case 2: vertex = text.transform.TransformPoint(context.State.TR_Result); break;
+                    case 3: vertex = text.transform.TransformPoint(context.State.BR_Result); break;
                     default: throw new System.Exception();
                 }
 
@@ -118,8 +118,8 @@ namespace TMPEffects.TMPSceneAnimations.ShowAnimations
                     //Debug.LogWarning("Actuially doing it!; Adding " + t2 + " * " + context.animatorContext.DeltaTime + " * 2000 => " + (t2 * context.animatorContext.DeltaTime * 2000));
 
                     if (t2 < 0) Debug.LogWarning("NEGATIVE");
-                    if (context.animatorContext.DeltaTime < 0) Debug.LogWarning("NEGATIVE");
-                    alphas[i] = Mathf.Clamp(alphas[i] + t2 * context.animatorContext.DeltaTime * 400, 0f, 255f);
+                    if (context.AnimatorContext.DeltaTime < 0) Debug.LogWarning("NEGATIVE");
+                    alphas[i] = Mathf.Clamp(alphas[i] + t2 * context.AnimatorContext.DeltaTime * 400, 0f, 255f);
                 }
             }
         }

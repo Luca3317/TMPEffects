@@ -474,7 +474,7 @@ namespace TMPEffects.Tags.Collections
             {
                 case NotifyCollectionChangedAction.Add:
                     if (e.NewItems.Count > 1) Debug.LogWarning("Added more than one element; Should be impossible");
-                    var tuple = (EffectTagTuple)e.NewItems[0];
+                    var tuple = (TMPEffectTagTuple)e.NewItems[0];
                     Add(e.NewStartingIndex, cacher.CacheTag(tuple.Tag, tuple.Indices));
                     break;
 
@@ -502,7 +502,7 @@ namespace TMPEffects.Tags.Collections
                     for (int i = 0; i < e.NewItems.Count; i++)
                     {
                         Debug.Log("Calling set for " + i);
-                        tuple = (EffectTagTuple)e.NewItems[i];
+                        tuple = (TMPEffectTagTuple)e.NewItems[i];
                         Set(index + i, cacher.CacheTag(tuple.Tag, tuple.Indices));
                     }
                     break;
