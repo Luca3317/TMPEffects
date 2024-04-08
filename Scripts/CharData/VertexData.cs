@@ -6,24 +6,24 @@ namespace TMPEffects.CharacterData
     /// <summary>
     /// Holds data about a character's mesh.
     /// </summary>
-    public struct VertexData
+    public class VertexData
     {
         /// <summary>
         /// The bottom left vertex. Index = 0
         /// </summary>
-        public TMP_Vertex vertex_BL;
+        private TMP_Vertex vertex_BL;
         /// <summary>
         /// The top left vertex. Index = 1
         /// </summary>
-        public TMP_Vertex vertex_TL;
+        private TMP_Vertex vertex_TL;
         /// <summary>
         /// The top right vertex. Index = 2
         /// </summary>
-        public TMP_Vertex vertex_TR;
+        private TMP_Vertex vertex_TR;
         /// <summary>
         /// The bottom right vertex. Index = 3
         /// </summary>
-        public TMP_Vertex vertex_BR;
+        private TMP_Vertex vertex_BR;
 
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace TMPEffects.CharacterData
         public readonly ReadOnlyVertexData initial;
 
         /// <summary>
-        /// Whether the vertices have been manipulated.
+        /// Whether the positions have been manipulated.
         /// </summary>
-        public bool verticesDirty { get; private set; }
+        public bool positionsDirty{ get; private set; }
         /// <summary>
         /// Whether the vertex colors have been manipulated.
         /// </summary>
@@ -49,46 +49,265 @@ namespace TMPEffects.CharacterData
         public bool uvsDirty { get; private set; }
 
         /// <summary>
-        /// Index based access of the vertices.<br/>
-        /// 0 => bottom left<br/>
-        /// 1 => top left<br/>
-        /// 2 => top right<br/>
-        /// 3 => bottom right<br/>
+        /// Get or set the color of the bottom left vertex.<br/>
+        /// Note that this will mark both colors and alphas as dirty.<br/>
+        /// Use <see cref="SetColor(int, Color32, bool)"/> if you want to only set color.
         /// </summary>
-        /// <param name="i">The index.</param>
-        /// <returns>The vertex associated with the index.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public TMP_Vertex this[int i]
+        public Color32 BL_Color
         {
-            get
-            {
-                switch (i)
-                {
-                    case 0: return vertex_BL;
-                    case 1: return vertex_TL;
-                    case 2: return vertex_TR;
-                    case 3: return vertex_BR;
-                    default: throw new System.ArgumentOutOfRangeException();
-                }
-            }
+            get => vertex_BL.color;
             set
             {
-                switch (i)
-                {
-                    case 0: vertex_BL = value; break;
-                    case 1: vertex_TL = value; break;
-                    case 2: vertex_TR = value; break;
-                    case 3: vertex_BR = value; break;
-                    default: throw new System.ArgumentOutOfRangeException();
-                }
+                vertex_BL.color = value;
+                colorsDirty = true;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the color of the top left vertex.<br/>
+        /// Note that this will mark both colors and alphas as dirty.<br/>
+        /// Use <see cref="SetColor(int, Color32, bool)"/> if you want to only set color.
+        /// </summary>
+        public Color32 TL_Color
+        {
+            get => vertex_TL.color;
+            set
+            {
+                vertex_TL.color = value;
+                colorsDirty = true;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the color of the top right vertex.<br/>
+        /// Note that this will mark both colors and alphas as dirty.<br/>
+        /// Use <see cref="SetColor(int, Color32, bool)"/> if you want to only set color.
+        /// </summary>
+        public Color32 TR_Color
+        {
+            get => vertex_TR.color;
+            set
+            {
+                vertex_TR.color = value;
+                colorsDirty = true;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the color of the bottom right vertex.<br/>
+        /// Note that this will mark both colors and alphas as dirty.<br/>
+        /// Use <see cref="SetColor(int, Color32, bool)"/> if you want to only set color.
+        /// </summary>
+        public Color32 BR_Color
+        {
+            get => vertex_BR.color;
+            set
+            {
+                vertex_BR.color = value;
+                colorsDirty = true;
+                alphasDirty = true;
+            }
+        }
 
-                verticesDirty = true;
+        /// <summary>
+        /// Get or set the alpha of the bottom left vertex.
+        /// </summary>
+        public byte BL_Alpha
+        {
+            get => vertex_BL.color.a;
+            set
+            {
+                vertex_BL.color.a = value;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the alpha of the top left vertex.
+        /// </summary>
+        public byte TL_Alpha
+        {
+            get => vertex_TL.color.a;
+            set
+            {
+                vertex_TL.color.a = value;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the alpha of the top right vertex.
+        /// </summary>
+        public byte TR_Alpha
+        {
+            get => vertex_TR.color.a;
+            set
+            {
+                vertex_TR.color.a = value;
+                alphasDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the alpha of the bottom right vertex.
+        /// </summary>
+        public byte BR_Alpha
+        {
+            get => vertex_BR.color.a;
+            set
+            {
+                vertex_BR.color.a = value;
+                alphasDirty = true;
+            }
+        }
+
+        /// <summary>
+        /// Get or set the position of the bottom left vertex.
+        /// </summary>
+        public Vector3 BL_Position
+        {
+            get => vertex_BL.position;
+            set
+            {
+                vertex_BL.position = value;
+                positionsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the position of the top left vertex.
+        /// </summary>
+        public Vector3 TL_Position
+        {
+            get => vertex_TL.position;
+            set
+            {
+                vertex_TL.position = value;
+                positionsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the position of the top right vertex.
+        /// </summary>
+        public Vector3 TR_Position
+        {
+            get => vertex_TR.position;
+            set
+            {
+                vertex_TR.position = value;
+                positionsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the position of the bottom right vertex.
+        /// </summary>
+        public Vector3 BR_Position
+        {
+            get => vertex_BR.position;
+            set
+            {
+                vertex_BR.position = value;
+                positionsDirty = true;
+            }
+        }
+
+        /// <summary>
+        /// Get or set the UV0 of the bottom left vertex.
+        /// </summary>
+        public Vector3 BL_UV0
+        {
+            get => vertex_BL.uv;
+            set
+            {
+                vertex_BL.uv = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV0 of the bottom right vertex.
+        /// </summary>
+        public Vector3 TL_UV0
+        {
+            get => vertex_TL.uv;
+            set
+            {
+                vertex_TL.uv = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV0 of the top right vertex.
+        /// </summary>
+        public Vector3 TR_UV0
+        {
+            get => vertex_TR.uv;
+            set
+            {
+                vertex_TR.uv = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV0 of the bottom right vertex.
+        /// </summary>
+        public Vector3 BR_UV0
+        {
+            get => vertex_BR.uv;
+            set
+            {
+                vertex_BR.uv = value;
+                uvsDirty = true;
+            }
+        }
+
+        /// <summary>
+        /// Get or set the UV2 of the bottom left vertex.
+        /// </summary>
+        public Vector3 BL_UV2
+        {
+            get => vertex_BL.uv2;
+            set
+            {
+                vertex_BL.uv2 = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV2 of the bottom right vertex.
+        /// </summary>
+        public Vector3 TL_UV2
+        {
+            get => vertex_TL.uv2;
+            set
+            {
+                vertex_TL.uv2 = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV2 of the top right vertex.
+        /// </summary>
+        public Vector3 TR_UV2
+        {
+            get => vertex_TR.uv2;
+            set
+            {
+                vertex_TR.uv2 = value;
+                uvsDirty = true;
+            }
+        }
+        /// <summary>
+        /// Get or set the UV2 of the bottom right vertex.
+        /// </summary>
+        public Vector3 BR_UV2
+        {
+            get => vertex_BR.uv2;
+            set
+            {
+                vertex_BR.uv2 = value;
+                uvsDirty = true;
             }
         }
 
         public VertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
         {
-            verticesDirty = false;
+            positionsDirty = false;
             uvsDirty = false;
             colorsDirty = false;
             alphasDirty = false;
@@ -102,7 +321,7 @@ namespace TMPEffects.CharacterData
 
         public VertexData(TMP_CharacterInfo info)
         {
-            verticesDirty = false;
+            positionsDirty = false;
             uvsDirty = false;
             colorsDirty = false;
             alphasDirty = false;
@@ -124,7 +343,7 @@ namespace TMPEffects.CharacterData
         /// <param name="i">The index.</param>
         /// <returns>The position of the vertex associated with the index.</returns>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public Vector3 GetVertex(int i)
+        public Vector3 GetPosition(int i)
         {
             switch (i)
             {
@@ -145,7 +364,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         /// <param name="i">The index.</param>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public void SetVertex(int i, Vector3 value)
+        public void SetPosition(int i, Vector3 value)
         {
             switch (i)
             {
@@ -156,7 +375,7 @@ namespace TMPEffects.CharacterData
                 default: throw new System.ArgumentOutOfRangeException();
             }
 
-            verticesDirty = true;
+            positionsDirty = true;
         }
 
         /// <summary>
@@ -365,7 +584,7 @@ namespace TMPEffects.CharacterData
         {
             ResetColors();
             ResetAlphas();
-            ResetVertices();
+            ResetPositions();
             ResetUVs();
         }
 
@@ -395,14 +614,14 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Reset the vertices to <see cref="initial"/>.
         /// </summary>
-        public void ResetVertices()
+        public void ResetPositions()
         {
-            if (!verticesDirty) return;
-            vertex_BL.position = initial.GetVertex(0);
-            vertex_TL.position = initial.GetVertex(1);
-            vertex_TR.position = initial.GetVertex(2);
-            vertex_BR.position = initial.GetVertex(3);
-            verticesDirty = false;
+            if (!positionsDirty) return;
+            vertex_BL.position = initial.GetPosition(0);
+            vertex_TL.position = initial.GetPosition(1);
+            vertex_TR.position = initial.GetPosition(2);
+            vertex_BR.position = initial.GetPosition(3);
+            positionsDirty = false;
         }
 
         /// <summary>

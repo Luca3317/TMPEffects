@@ -36,14 +36,14 @@ namespace TMPEffects.TMPAnimations.Animations
 
             (float, int) result = d.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
-            var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetVertex(3) - cData.mesh.initial.GetVertex(0)).normalized));
+            var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
 
             cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(d.rotationAxis)));
 
             switch (d.pivot.type)
             {
                 case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, context); break;
-                case VectorType.Offset: cData.SetPivot(cData.info.initialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f)); break;
+                case VectorType.Offset: cData.SetPivot(cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f)); break;
                 case VectorType.Anchor: SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, context); break;
             }
         }

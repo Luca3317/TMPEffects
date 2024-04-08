@@ -66,7 +66,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             for (int i = 0; i < 4; i++)
             {
-                Vector3 vec = cData.mesh.initial.GetVertex(i) - anchorPosition;
+                Vector3 vec = cData.mesh.initial.GetPosition(i) - anchorPosition;
                 vec.x *= direction.x;
                 vec.y *= direction.y;
 

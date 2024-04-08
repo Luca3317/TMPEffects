@@ -61,8 +61,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             switch (d.growAnchor.type)
             {
                 case VectorType.Offset:
-                    lineStart = cData.info.initialPosition + (d.growAnchor.vector - actualDir * 2);
-                    lineEnd = cData.info.initialPosition + (d.growAnchor.vector + actualDir * 2);
+                    lineStart = cData.InitialPosition + (d.growAnchor.vector - actualDir * 2);
+                    lineEnd = cData.InitialPosition + (d.growAnchor.vector + actualDir * 2);
                     break;
                 case VectorType.Anchor:
                     lineStart = AnchorToPosition(d.growAnchor.vector - actualDir * 2, cData);
@@ -78,8 +78,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             for (int i = 0; i < 4; i++)
             {
-                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
+                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetPosition(i));
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetPosition(i), percentage);
 
                 SetVertexRaw(i, pos, cData,  context);
             }
@@ -96,8 +96,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             switch (d.shrinkAnchor.type)
             {
                 case VectorType.Offset:
-                    lineStart = cData.info.initialPosition + (d.shrinkAnchor.vector - actualDir * 2);
-                    lineEnd = cData.info.initialPosition + (d.shrinkAnchor.vector + actualDir * 2);
+                    lineStart = cData.InitialPosition + (d.shrinkAnchor.vector - actualDir * 2);
+                    lineEnd = cData.InitialPosition + (d.shrinkAnchor.vector + actualDir * 2);
                     break;
                 case VectorType.Anchor:
                     lineStart = AnchorToPosition(d.shrinkAnchor.vector - actualDir * 2, cData);
@@ -113,8 +113,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
             for (int i = 0; i < 4; i++)
             {
-                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
+                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetPosition(i));
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetPosition(i), percentage);
 
                 SetVertexRaw(i, pos, cData, context);
             }

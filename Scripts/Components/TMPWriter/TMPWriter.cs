@@ -1048,6 +1048,32 @@ namespace TMPEffects.Components
                 if (writing) StopWriterCoroutine();
             }
         }
+
+        internal void SetWriter(int index)
+        {
+            if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
+
+            if (writing)
+            {
+                StopWriterCoroutine();
+            }
+
+            // reset
+            ResetData();
+
+            Hide(0, Mediator.CharData.Count, true);
+            Show(0, index, true);
+
+            ResetInvokables(currentIndex);
+            for (int i = -1; i < index; i++)
+            {
+                RaiseInvokables(i);
+            }
+
+            currentIndex = index;
+
+            RaiseResetWriterEvent(index);
+        }
 #endif
         #endregion
 

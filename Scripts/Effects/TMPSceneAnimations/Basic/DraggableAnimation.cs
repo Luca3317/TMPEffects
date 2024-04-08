@@ -149,7 +149,7 @@ namespace TMPEffects.TMPSceneAnimations
         //                d.offsets[segmentIndex] = d.offsets[segmentIndex] + d.dynamicOffset;
         //                d.dynamicOffset = Vector3.zero;
 
-        //                Debug.Log("Set to " + cData.info.initialPosition + d.offsets[segmentIndex]);
+        //                Debug.Log("Set to " + cData.initialPosition + d.offsets[segmentIndex]);
         //            }
 
         //            d.dragging = -1;

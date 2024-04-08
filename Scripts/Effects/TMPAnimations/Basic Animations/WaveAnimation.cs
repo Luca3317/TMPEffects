@@ -19,12 +19,8 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data data = (Data)context.customData;
 
-            float angle = context.animatorContext.PassedTime * 25 % 360;
-            cData.SetRotation(Quaternion.Euler(0, 0, angle));
-            cData.AddPivotDelta(Vector3.right * 150);
-
-            //float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
-            //cData.SetPosition(cData.info.initialPosition + Vector3.up * eval);
+            float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+            cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

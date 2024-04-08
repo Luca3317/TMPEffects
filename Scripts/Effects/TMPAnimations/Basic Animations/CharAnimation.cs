@@ -81,7 +81,7 @@ namespace TMPEffects.TMPAnimations.Animations
                         float wProp = (float)rect.width / ogRect.width;
                         float hProp = (float)rect.height / ogRect.height;
                         cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
+                        cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
                     }
 
                     return;
@@ -130,7 +130,7 @@ namespace TMPEffects.TMPAnimations.Animations
                         float wProp = (float)rect.width / ogRect.width;
                         float hProp = (float)rect.height / ogRect.height;
                         cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.info.initialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
+                        cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
                     }
                 }
                 else

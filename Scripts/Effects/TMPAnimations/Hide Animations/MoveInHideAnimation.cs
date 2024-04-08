@@ -32,12 +32,12 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             {
                 case VectorType.Position: targetPos = targetPosition.vector; break;
                 case VectorType.Anchor: targetPos = AnchorToPosition(targetPosition.vector, cData); break;
-                case VectorType.Offset: targetPos = cData.info.initialPosition + targetPosition.vector; break;
+                case VectorType.Offset: targetPos = cData.InitialPosition + targetPosition.vector; break;
 
                 default: throw new System.NotImplementedException(nameof(targetPosition.type));
             }
 
-            Vector3 pos = Vector3.LerpUnclamped(cData.info.initialPosition, targetPos, t2);
+            Vector3 pos = Vector3.LerpUnclamped(cData.InitialPosition, targetPos, t2);
 
             cData.SetPosition(pos);
 

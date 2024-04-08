@@ -15,7 +15,7 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
         /// </summary>
-        public bool positionDirty => position != initialPosition;
+        public bool positionDirty => position != InitialPosition;
         /// <summary>
         /// Whether the rotation has been manipulated from the character's initial rotation.
         /// </summary>
@@ -27,7 +27,7 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Whether the vertices have been manipulated.
         /// </summary>
-        public bool verticesDirty => mesh.verticesDirty;
+        public bool verticesDirty => mesh.positionsDirty;
         /// <summary>
         /// Whether the vertex colors have been manipulated.
         /// </summary>
@@ -46,10 +46,6 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public Vector3 Position => position;
         /// <summary>
-        /// The character's original position.
-        /// </summary>
-        public Vector3 OriginalPosition => initialPosition;
-        /// <summary>
         /// The character's scale.
         /// </summary>
         public Vector3 Scale => scale;
@@ -64,6 +60,15 @@ namespace TMPEffects.CharacterData
 
         #region Fields
         /// <summary>
+        /// The default scale of any CharData.
+        /// </summary>
+        public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
+        /// <summary>
+        /// The default rotation of any CharData.
+        /// </summary>
+        public static readonly Quaternion defaultRotation = Quaternion.identity;
+
+        /// <summary>
         /// Holds a selection of <see cref="TMP_CharacterInfo"/> data.
         /// </summary>
         public readonly Info info;
@@ -71,63 +76,60 @@ namespace TMPEffects.CharacterData
         /// The mesh of the character.
         /// </summary>
         // TODO Should this not be readonly? making it readonly seems to break all animations, somehow
-        public VertexData mesh;
+        public readonly VertexData mesh;
 
-        public readonly ReadOnlyVertexData initialMesh;
+        /// <summary>
+        /// The initial mesh of this character.
+        /// </summary>
+        public ReadOnlyVertexData initialMesh => mesh.initial;
+        /// <summary>
+        /// The initial position of this character.
+        /// </summary>
+        public readonly Vector3 InitialPosition;
+        /// <summary>
+        /// The initial rotation of this character.
+        /// </summary>
+        public readonly Quaternion InitialRotation;
+        /// <summary>
+        /// The initial scale of this character.
+        /// </summary>
+        public readonly Vector3 InitialScale;
 
         private Vector3 position;
         private Vector3 scale;
         private Quaternion rotation;
         private Vector3 pivot;
-
-        // TODO Keep these?
-
-        /// <summary>
-        /// The default scale.
-        /// </summary>
-        public static readonly Vector3 defaultScale = new Vector3(1, 1, 1);
-        public static readonly Quaternion defaultRotation = Quaternion.identity;
-
-        /// <summary>
-        /// The initial position of this character.
-        /// </summary>
-        public readonly Vector3 initialPosition;
-        /// <summary>
-        /// The initial rotation of this character.
-        /// </summary>
-        public readonly Quaternion originalRotation;
-        #endregion
+        #endregion 
 
         public CharData(int index, TMP_CharacterInfo cInfo)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
-            info = new Info(index, cInfo, mesh);
+            info = new Info(index, cInfo);
 
-            initialPosition = default;
-            originalRotation = Quaternion.identity;
-            initialPosition = GetCenter(in mesh.initial);
+            InitialRotation = defaultRotation;
+            InitialScale = defaultScale;
+            InitialPosition = GetCenter(in mesh.initial);
 
-            position = initialPosition;
+            position = InitialPosition;
             rotation = defaultRotation;
             scale = defaultScale;
-            pivot = initialPosition;
-            //this.mediator = mediator;
+            pivot = InitialPosition;
         }
         public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
-            info = wInfo == null ? new Info(index, cInfo, mesh) : new Info(index, cInfo, wInfo.Value, mesh);
+            info = wInfo == null ? new Info(index, cInfo) : new Info(index, cInfo, wInfo.Value);
 
-            initialPosition = default;
-            originalRotation = Quaternion.identity;
-            initialPosition = GetCenter(in mesh.initial);
+            InitialRotation = defaultRotation;
+            InitialScale = defaultScale;
+            InitialPosition = GetCenter(in mesh.initial);
 
-            position = initialPosition;
+            position = InitialPosition;
             rotation = defaultRotation;
             scale = defaultScale;
-            pivot = initialPosition;
+            pivot = InitialPosition;
         }
 
 
@@ -138,7 +140,7 @@ namespace TMPEffects.CharacterData
         /// <param name="position">The new position of the vertex.</param>
         public void SetVertex(int index, Vector3 position)
         {
-            mesh.SetVertex(index, position);
+            mesh.SetPosition(index, position);
         }
 
         /// <summary>
@@ -148,7 +150,7 @@ namespace TMPEffects.CharacterData
         /// <param name="delta">The delta to add to the position of the vertex.</param> 
         public void AddVertexDelta(int index, Vector3 delta)
         {
-            mesh.SetVertex(index, mesh.GetVertex(index) + delta);
+            mesh.SetPosition(index, mesh.GetPosition(index) + delta);
         }
 
         /// <summary>
@@ -226,7 +228,7 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Reset the character's position.
         /// </summary>
-        public void ResetPosition() => this.position = initialPosition;
+        public void ResetPosition() => this.position = InitialPosition;
         /// <summary>
         /// Reset the character's rotation.
         /// </summary>
@@ -234,11 +236,11 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Reset the character's pivot.
         /// </summary>
-        public void ResetPivot() => this.pivot = initialPosition;
+        public void ResetPivot() => this.pivot = InitialPosition;
         /// <summary>
         /// Reset the character's vertices.
         /// </summary>
-        public void ResetVertices() => mesh.ResetVertices();
+        public void ResetVertices() => mesh.ResetPositions();
         /// <summary>
         /// Reset the character's UVs.
         /// </summary>
@@ -254,7 +256,7 @@ namespace TMPEffects.CharacterData
             Vector3 center = Vector3.zero;
             for (int i = 0; i < 4; i++)
             {
-                center += data.GetVertex(i);
+                center += data.GetPosition(i);
             }
             return center / 4;
         }

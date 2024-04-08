@@ -78,7 +78,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public readonly float referenceScale;
 
-        internal Info(int index, TMP_CharacterInfo cInfo, VertexData mesh)
+        internal Info(int index, TMP_CharacterInfo cInfo)
         {
             this.index = index; /*cInfo.index;*/
             isVisible = cInfo.isVisible;
@@ -102,7 +102,7 @@ namespace TMPEffects.CharacterData
             fontAsset = cInfo.fontAsset;
         }
 
-        public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo, VertexData mesh) : this(index, cInfo, mesh)
+        public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo) : this(index, cInfo)
         {
             wordFirstIndex = wInfo.firstCharacterIndex;
             wordLen = wInfo.characterCount;

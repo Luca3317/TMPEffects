@@ -25,7 +25,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
             float t2 = d.curve.Evaluate(t);
 
-            Vector3 scale = Vector3.LerpUnclamped(d.startScale, cData.info.initialScale, t2);
+            Vector3 scale = Vector3.LerpUnclamped(d.startScale, cData.InitialScale, t2);
             cData.SetScale(scale);
 
             if (t == 1) context.FinishAnimation(cData);

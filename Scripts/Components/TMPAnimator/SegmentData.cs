@@ -74,8 +74,8 @@ namespace TMPEffects.Components.Animator
             {
                 if (!cData[i].info.isVisible) continue;
 
-                leftTop = cData[i].mesh.initial.vertex_TL.position;
-                bottomRight = cData[i].mesh.initial.vertex_BR.position;
+                leftTop = cData[i].initialMesh.TL_Position;
+                bottomRight = cData[i].initialMesh.BR_Position;
                 max = new Vector3(Mathf.Max(max.x, leftTop.x, bottomRight.x), Mathf.Max(max.y, leftTop.y, bottomRight.y), Mathf.Max(max.z, leftTop.z, bottomRight.z));
                 min = new Vector3(Mathf.Min(min.x, leftTop.x, bottomRight.x), Mathf.Min(min.y, leftTop.y, bottomRight.y), Mathf.Min(min.z, leftTop.z, bottomRight.z));
 

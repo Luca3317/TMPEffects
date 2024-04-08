@@ -25,25 +25,25 @@ namespace TMPEffects.TMPAnimations.Animations
             float t = Mathf.Sin(context.animatorContext.PassedTime * d.speed) / 2 + 0.5f;
             bool movingUp = Mathf.Cos(context.animatorContext.PassedTime * d.speed) > 0;
 
-            var delta0 = cData.mesh.initial.vertex_TL.position - cData.mesh.initial.vertex_BL.position;
-            var delta1 = cData.mesh.initial.vertex_TR.position - cData.mesh.initial.vertex_BR.position;
+            var delta0 = cData.initialMesh.TL_Position - cData.mesh.initial.BL_Position;
+            var delta1 = cData.initialMesh.TR_Position - cData.mesh.initial.BR_Position;
 
-            Vector3 keyframe0_1 = cData.mesh.initial.GetVertex(0);
-            Vector3 keyframe0_2 = cData.mesh.initial.GetVertex(3);
+            Vector3 keyframe0_1 = cData.mesh.initial.GetPosition(0);
+            Vector3 keyframe0_2 = cData.mesh.initial.GetPosition(3);
             keyframe0_1 = GetRawVertex(1, keyframe0_1 + delta0 * d.squeezeFactor, cData, context);
             keyframe0_2 = GetRawVertex(2, keyframe0_2 + delta1 * d.squeezeFactor, cData, context);
 
-            Vector3 keyframe1_1 = cData.mesh.initial.GetVertex(1);
-            Vector3 keyframe1_2 = cData.mesh.initial.GetVertex(2);
+            Vector3 keyframe1_1 = cData.mesh.initial.GetPosition(1);
+            Vector3 keyframe1_2 = cData.mesh.initial.GetPosition(2);
             keyframe1_1 = GetRawVertex(1, keyframe1_1, cData, context) + Vector3.left * d.amplitude;
             keyframe1_2 = GetRawVertex(2, keyframe1_2, cData, context) + Vector3.left * d.amplitude;
 
-            Vector3 keyframe2_1 = cData.mesh.initial.GetVertex(1);
-            Vector3 keyframe2_2 = cData.mesh.initial.GetVertex(2);
+            Vector3 keyframe2_1 = cData.mesh.initial.GetPosition(1);
+            Vector3 keyframe2_2 = cData.mesh.initial.GetPosition(2);
             keyframe2_1 = GetRawVertex(1, keyframe2_1, cData, context) + Vector3.right * d.amplitude;
             keyframe2_2 = GetRawVertex(2, keyframe2_2, cData, context) + Vector3.right * d.amplitude;
 
-            Vector3 p1 = cData.mesh.initial.GetVertex(1), p2 = cData.mesh.initial.GetVertex(2);
+            Vector3 p1 = cData.mesh.initial.GetPosition(1), p2 = cData.mesh.initial.GetPosition(2);
             if (movingUp)
             {
                 if (t <= 0.9)

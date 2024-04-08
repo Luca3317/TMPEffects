@@ -15,14 +15,14 @@ namespace TMPEffects.TMPAnimations
         {
             if (anchor == Vector2.zero)
             {
-                return cData.info.initialPosition;
+                return cData.InitialPosition;
             }
 
             Vector2 dist;
-            Vector2 ret = cData.info.initialPosition;
+            Vector2 ret = cData.InitialPosition;
 
-            dist.x = (cData.mesh.initial.vertex_BL.position - cData.mesh.initial.vertex_BR.position).magnitude / 2f;
-            dist.y = (cData.mesh.initial.vertex_BL.position - cData.mesh.initial.vertex_TL.position).magnitude / 2f;
+            dist.x = (cData.mesh.initial.BL_Position - cData.mesh.initial.BR_Position).magnitude / 2f;
+            dist.y = (cData.mesh.initial.BL_Position - cData.mesh.initial.TL_Position).magnitude / 2f;
 
             ret += Vector2.right * dist.x * anchor.x;
             ret += Vector2.up * dist.y * anchor.y;
@@ -39,7 +39,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx)
         {
-            return GetRawPosition(position, cData.mesh.initial[index].position, cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData.info.referenceScale, ctx);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx)
         {
-            return GetRawPosition(position, cData.info.initialPosition, cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.InitialPosition, cData.info.referenceScale, ctx);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The animation context.</param>
         public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx)
         {
-            return GetRawPosition(position, cData.info.initialPosition, cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.InitialPosition, cData.info.referenceScale, ctx);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (ctx.animatorContext.ScaleAnimations)
             {
-                Vector3 ogPos = cData.mesh.initial.GetVertex(index);
+                Vector3 ogPos = cData.initialMesh.GetPosition(index);
                 cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
             }
             else
@@ -113,7 +113,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (ctx.animatorContext.ScaleAnimations)
             {
-                Vector3 ogPos = cData.info.initialPosition;
+                Vector3 ogPos = cData.InitialPosition;
                 cData.SetPosition((position - ogPos) / cData.info.referenceScale + ogPos);
             }
             else
@@ -131,7 +131,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (ctx.animatorContext.ScaleAnimations)
             {
-                Vector3 ogPos = cData.info.initialPosition;
+                Vector3 ogPos = cData.InitialPosition;
                 cData.SetPivot(((pivot - ogPos) / cData.info.referenceScale) + ogPos);
             }
             else
@@ -904,12 +904,12 @@ namespace TMPEffects.TMPAnimations
                 case WaveOffsetType.SegmentIndex: return context.segmentData.SegmentIndexOf(cData);
                 case WaveOffsetType.Index: return cData.info.index;
                 case WaveOffsetType.XPos:
-                    float pos = cData.info.initialPosition.x;
+                    float pos = cData.InitialPosition.x;
                     pos /= (cData.info.referenceScale / 36f);
                     pos /= 2000f; 
                     return pos;
                 case WaveOffsetType.YPos:
-                    pos = cData.info.initialPosition.y;
+                    pos = cData.InitialPosition.y;
                     pos /= (cData.info.referenceScale / 36f);
                     pos /= 2000f;
                     return pos;

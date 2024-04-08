@@ -515,7 +515,8 @@ namespace TMPEffects.Editor
             float max = progressBarRect.x + progressBarRect.width;
 
             progress = Mathf.InverseLerp(min, max, xPos);
-            writer.ResetWriter(Mathf.RoundToInt(((writer.TextComponent.textInfo.characterCount - 1) * progress)));
+
+            writer.SetWriter(Mathf.RoundToInt(((writer.TextComponent.textInfo.characterCount - 1) * progress)));
         }
 
         bool styles = false;

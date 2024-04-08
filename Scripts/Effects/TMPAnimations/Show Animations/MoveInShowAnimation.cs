@@ -32,12 +32,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             {
                 case VectorType.Position: startPos = startPosition.vector; break;
                 case VectorType.Anchor: startPos = AnchorToPosition(startPosition.vector, cData); break;
-                case VectorType.Offset: startPos = cData.info.initialPosition + startPosition.vector; break;
+                case VectorType.Offset: startPos = cData.InitialPosition + startPosition.vector; break;
 
                 default: throw new System.NotImplementedException(nameof(startPosition.type));
             }
 
-            Vector3 pos = Vector3.LerpUnclamped(startPos, cData.info.initialPosition, t2);
+            Vector3 pos = Vector3.LerpUnclamped(startPos, cData.InitialPosition, t2);
 
             cData.SetPosition(pos);
 

@@ -48,8 +48,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             switch (d.anchor.type)
             {
                 case VectorType.Offset:
-                    lineStart = cData.info.initialPosition + (Vector3)(d.anchor.vector - actualDir * 2);
-                    lineEnd = cData.info.initialPosition + (Vector3)(d.anchor.vector + actualDir * 2);
+                    lineStart = cData.InitialPosition + (Vector3)(d.anchor.vector - actualDir * 2);
+                    lineEnd = cData.InitialPosition + (Vector3)(d.anchor.vector + actualDir * 2);
                     break;
                 case VectorType.Anchor:
                     lineStart = AnchorToPosition(d.anchor.vector - actualDir * 2, cData);
@@ -65,8 +65,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             for (int i = 0; i < 4; i++)
             {
-                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetVertex(i));
-                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetVertex(i), percentage);
+                Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetPosition(i));
+                Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetPosition(i), percentage);
 
                 SetVertexRaw(i, pos, cData, context);
             }

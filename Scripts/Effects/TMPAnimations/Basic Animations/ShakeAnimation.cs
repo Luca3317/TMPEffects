@@ -114,7 +114,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 offset = d.offsetDict[segmentIndex];
             }
 
-            cData.SetPosition(cData.info.initialPosition + offset);
+            cData.SetPosition(cData.InitialPosition + offset);
         }
 
         private void InitRNGDict(IAnimationContext context)

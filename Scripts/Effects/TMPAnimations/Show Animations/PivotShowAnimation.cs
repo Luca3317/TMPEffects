@@ -43,7 +43,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                     cData.SetPivot(d.pivot.vector);
                     break;
                 case VectorType.Offset:
-                    cData.SetPivot(cData.info.initialPosition + (Vector3)d.pivot.vector);
+                    cData.SetPivot(cData.InitialPosition + (Vector3)d.pivot.vector);
                     break;
                 case VectorType.Anchor:
                     Vector3 position = AnchorToPosition(d.pivot.vector, cData);
