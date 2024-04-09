@@ -1282,14 +1282,14 @@ namespace TMPEffects.Components
                     UpdateVisibility(true);
                 }
 
-                if (prev == VisibilityState.Hidden)
-                    UpdateAnimationTimes(basic);
+                //if (prev == VisibilityState.Hidden)
+                //    UpdateAnimationTimes(basic);
 
-                if (state == VisibilityState.Showing)
-                    UpdateAnimationTimes(show);
+                //if (state == VisibilityState.Showing)
+                //    UpdateAnimationTimes(show);
 
-                if (state == VisibilityState.Hiding)
-                    UpdateAnimationTimes(hide);
+                //if (state == VisibilityState.Hiding)
+                //    UpdateAnimationTimes(hide);
             }
 
             // Reset the "finished" status of the relevant animations
@@ -1395,37 +1395,6 @@ namespace TMPEffects.Components
                 for (int j = 0; j < 4; j++)
                 {
                     cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
-                }
-            }
-
-            void UpdateAnimationTimes(CachedCollection<CachedAnimation> coll)
-            {
-                var mm = coll.MinMaxAt(index);
-                if (mm == null) return;
-
-                if (animationsUseAnimatorTime)
-                {
-                    CachedAnimation ca;
-                    for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
-                    {
-                        ca = coll[i];
-                        if (ca.Indices.Contains(index))
-                        {
-                            ca.context.AnimationTime = 0f;
-                        }
-                    }
-                }
-                else
-                {
-                    CachedAnimation ca;
-                    for (int i = mm.MinIndex; i <= mm.MaxIndex; i++)
-                    {
-                        ca = coll[i];
-                        if (ca.Indices.Contains(index))
-                        {
-                            ca.context.AnimationTime = context.passed;
-                        }
-                    }
                 }
             }
         }

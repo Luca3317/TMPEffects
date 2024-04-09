@@ -38,7 +38,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.CustomData as Data;
 
-            (float, int) result = d.Wave.Evaluate(context.AnimationTimePassed,/* context.animatorContext.PassedTime,*/ GetWaveOffset(cData, context, d.offsetType));
+            (float, int) result = d.Wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.offsetType));
 
             if (result.Item2 > 0)
             {
@@ -81,7 +81,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 Vector3 startPos = ClosestPointOnLine(lineStart, lineEnd, cData.mesh.initial.GetPosition(i));
                 Vector3 pos = Vector3.LerpUnclamped(startPos, cData.mesh.initial.GetPosition(i), percentage);
 
-                SetVertexRaw(i, pos, cData,  context);
+                SetVertexRaw(i, pos, cData, context);
             }
         }
 

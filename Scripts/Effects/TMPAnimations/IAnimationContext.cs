@@ -30,15 +30,6 @@ namespace TMPEffects.TMPAnimations
         public ReadOnlyCharDataState State { get; }
 
         /// <summary>
-        /// The time of when the animation started playing.
-        /// </summary>
-        public float AnimationTime { get; }
-        /// <summary>
-        /// The time that has passed since the animation started playing.
-        /// </summary>
-        public float AnimationTimePassed { get; }
-
-        /// <summary>
         /// Check if the animation is considered finished for the character at the given index.
         /// </summary>
         /// <param name="index"></param>
@@ -74,21 +65,6 @@ namespace TMPEffects.TMPAnimations
         public object CustomData { get; }
         /// <inheritdoc/>
         public ReadOnlyCharDataState State { get; }
-        /// <inheritdoc/>
-        public float AnimationTime
-        {
-            get
-            {
-                return aaa;
-            }
-            set
-            {
-                aaa = value;
-            }
-        }
-        private float aaa;
-        /// <inheritdoc/>
-        public float AnimationTimePassed => AnimatorContext.PassedTime - AnimationTime;
 
         public AnimationContext(ReadOnlyAnimatorContext animatorContext, ReadOnlyCharDataState state, SegmentData segmentData, object customData)
         {
@@ -96,7 +72,6 @@ namespace TMPEffects.TMPAnimations
             this.State = state;
             this.SegmentData = segmentData;
             this.AnimatorContext = animatorContext;
-            AnimationTime = -1;
             finishedDict = new Dictionary<int, bool>(segmentData.length);
 
             for (int i = segmentData.startIndex; i < segmentData.startIndex + segmentData.length; i++)
@@ -145,10 +120,6 @@ namespace TMPEffects.TMPAnimations
         public object CustomData => context.CustomData;
         /// <inheritdoc/>
         public ReadOnlyCharDataState State => context.State;
-        /// <inheritdoc/>
-        public float AnimationTime => context.AnimationTime;
-        /// <inheritdoc/>
-        public float AnimationTimePassed => context.AnimationTimePassed;
 
         public ReadOnlyAnimationContext(AnimationContext context)
         {
