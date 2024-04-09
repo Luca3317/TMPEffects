@@ -196,7 +196,7 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
 #if UNITY_EDITOR
-            StopPreview();
+            if (preview && !Application.isPlaying) StopPreview();
 #endif
 
             basicDatabase?.Dispose();
@@ -513,6 +513,8 @@ namespace TMPEffects.Components
                     Mediator.SetVisibilityState(i, VisibilityState.Hidden);
                 }
             }
+
+            ResetAllVisible();
         }
 
         /// <summary>
