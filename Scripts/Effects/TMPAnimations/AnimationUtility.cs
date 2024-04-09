@@ -799,6 +799,7 @@ namespace TMPEffects.TMPAnimations
             private float CalculatePulseT(float time, float offset, int mult)
             {
                 float t = CalculateT(time, offset, mult);
+                //return Mathf.Abs(t)
                 return Mathf.Max(t, 0f);
             }
 

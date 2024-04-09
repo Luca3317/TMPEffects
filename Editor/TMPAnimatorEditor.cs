@@ -79,12 +79,11 @@ namespace TMPEffects.Editor
 
             //wasEnabled = writer.enabled;
             defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
-            if (defaultDatabase == null) Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
+            if (defaultDatabase == null) Debug.LogWarning($"Could not find default animation database; ensure there is {nameof(TMPAnimationDatabase)} object in the resource folder named \"DefaultAnimationDatabase\"");
 
-            if (!useDefaultDatabaseProp.boolValue)
+            if (useDefaultDatabaseProp.boolValue && databaseProp.objectReferenceValue != defaultDatabase)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
-                //serializedObject.FindProperty("initValidate").boolValue = true;
                 serializedObject.ApplyModifiedProperties();
                 animator.ForceReprocess();
             }

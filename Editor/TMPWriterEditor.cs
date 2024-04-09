@@ -199,11 +199,13 @@ namespace TMPEffects.Editor
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
             defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
+            if (defaultDatabase == null) Debug.LogWarning($"Could not find default command database; ensure there is a {nameof(TMPCommandDatabase)} object in the resource folder named \"DefaultCommandDatabase\"");
 
-            if (!useDefaultDatabaseProp.boolValue)
+            if (useDefaultDatabaseProp.boolValue && databaseProp.objectReferenceValue != defaultDatabase)
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
                 serializedObject.ApplyModifiedProperties();
+                writer.ForceReprocess();
             }
         }
 

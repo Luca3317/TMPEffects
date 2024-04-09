@@ -92,12 +92,6 @@ namespace TMPEffects.Components.Mediator
         public void ForceReprocess()
         {
             Text.ForceMeshUpdate(true, true);
-//#if UNITY_EDITOR
-//            if (!Application.isPlaying)
-//            {
-//                SceneView.RepaintAll();
-//            }
-//#endif
         }
 
         /// <summary>

@@ -204,6 +204,11 @@ namespace TMPEffects.Components
             hideDatabase?.Dispose();
 
             UnsubscribeFromMediator();
+
+#if UNITY_EDITOR
+            // Queue a player loop update to instantly update scene view
+            EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+#endif
         }
 
         private void SubscribeToMediator()
@@ -231,6 +236,7 @@ namespace TMPEffects.Components
             }
 
             Mediator.ForceReprocess();
+
             FreeMediator();
         }
 

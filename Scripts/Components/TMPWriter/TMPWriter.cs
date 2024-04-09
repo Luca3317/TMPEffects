@@ -246,6 +246,11 @@ namespace TMPEffects.Components
 #endif
 
             FreeMediator();
+
+#if UNITY_EDITOR
+            // Queue a player loop update to instantly update scene view
+            EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+#endif
         }
 
         private void PrepareForProcessing()
@@ -1035,6 +1040,7 @@ namespace TMPEffects.Components
         {
             if (reprocessFlag)
             {
+                Debug.Log("updaing from editor update");
                 Mediator.ForceReprocess();
                 reprocessFlag = false;
             }
