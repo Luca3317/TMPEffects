@@ -118,6 +118,7 @@ namespace TMPEffects.Components
 
         #region Fields
         // Settings
+        [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")]
         [SerializeField] TMPCommandDatabase database;
 
         [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
@@ -1018,12 +1019,14 @@ namespace TMPEffects.Components
 
         #region Editor
 #if UNITY_EDITOR
-        [System.NonSerialized] bool reprocessFlag = false;
-        [SerializeField, HideInInspector] TMPCommandDatabase prevDatabase = null;
-        [SerializeField, HideInInspector] bool initValidate = false;
+#pragma warning disable CS0414
+        //[System.NonSerialized] bool reprocessFlag = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
+        [Tooltip("Raise text events in preview mode?")]
         [SerializeField, HideInInspector] bool eventsEnabled = false;
-        [SerializeField, HideInInspector] bool commandsEnabled = false;
+        [Tooltip("Raise commands in preview mode?")]
+        [SerializeField, HideInInspector] bool commandsEnabled = true;
+#pragma warning restore CS0414
 
         public delegate void CharDataHandler(TMPWriter writer, CharData cData);
         public delegate void IntHandler(TMPWriter writer, int index);
@@ -1035,15 +1038,8 @@ namespace TMPEffects.Components
         public event VoidHandler OnStartWriterPreview;
         public event VoidHandler OnStopWriterPreview;
 
-
         private void EditorUpdate()
         {
-            if (reprocessFlag)
-            {
-                Debug.Log("updaing from editor update");
-                Mediator.ForceReprocess();
-                reprocessFlag = false;
-            }
             if (IsWriting)
                 EditorApplication.QueuePlayerLoopUpdate();
         }
@@ -1061,33 +1057,18 @@ namespace TMPEffects.Components
             text.gameObject.GetOrAddComponent<TMPWriter>();
         }
 
+        internal void OnChangedDatabase()
+        {
+            OnDatabaseChanged();
+        }
+
         private void OnValidate()
         {
-            if (!initValidate)
-            {
-                prevDatabase = database;
-                initValidate = true;
-            }
-
-            // Ensure data is set - OnValidate called before OnEnable
-            if (Mediator != null && database != prevDatabase)
-            {
-                OnDatabaseChanged();
-                prevDatabase = database;
-
-                reprocessFlag = true;
-            }
-
             delay = Mathf.Max(delay, 0);
             linebreakDelay = Mathf.Max(linebreakDelay, 0);
             whiteSpaceDelay = Mathf.Max(whiteSpaceDelay, 0);
             visibleDelay = Mathf.Max(visibleDelay, 0);
             punctuationDelay = Mathf.Max(punctuationDelay, 0);
-        }
-
-        internal void ForceReprocess()
-        {
-            Mediator?.ForceReprocess();
         }
 
         internal void SkipPlayer()
@@ -1149,22 +1130,6 @@ namespace TMPEffects.Components
 
         private void PostProcessTags()
         {
-            //var oldTags = CommandTags;
-            //var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
-
-            //if (oldTags.SequenceEqual(newTags))
-            //{
-            //    oldTags = EventTags;
-            //    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new EffectTagTuple(tag.Value, tag.Key));
-
-            //    if (oldTags.SequenceEqual(newTags))
-            //    {
-            //        Debug.Log("Tags did NOT change; WONT reprocess!");
-            //        return;
-            //    }
-            //}
-            //Debug.Log("Tags DID change; WILL reprocess!");
-
             tags.Clear();
 
             foreach (var processor in processors.TagProcessors[commandCategory.Prefix])

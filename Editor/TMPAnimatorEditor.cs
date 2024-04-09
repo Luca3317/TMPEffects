@@ -34,7 +34,6 @@ namespace TMPEffects.Editor
         SerializedProperty sceneHideAnimationsProp;
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
-        SerializedProperty animationsUseAnimatorTimeProp;
         SerializedProperty useDefaultDatabaseProp;
 
         // Styles
@@ -45,7 +44,6 @@ namespace TMPEffects.Editor
 
         bool initGuiContent = false;
         bool initStyles = false;
-        bool forceReprocess = false;
 
         private void OnEnable()
         {
@@ -73,8 +71,6 @@ namespace TMPEffects.Editor
             defaultShowStringProp = serializedObject.FindProperty("defaultShowString");
             defaultHideStringProp = serializedObject.FindProperty("defaultHideString");
 
-            animationsUseAnimatorTimeProp = serializedObject.FindProperty("animationsUseAnimatorTime");
-
             animator = target as TMPAnimator;
 
             //wasEnabled = writer.enabled;
@@ -85,7 +81,7 @@ namespace TMPEffects.Editor
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
                 serializedObject.ApplyModifiedProperties();
-                animator.ForceReprocess();
+                animator.OnChangedDatabase();
             }
 
             // TODO Removed this to prevent animation / writer reset when reselecitng object
@@ -131,9 +127,19 @@ namespace TMPEffects.Editor
             previewLabelStyle = new GUIStyle("LargeBoldLabel");
         }
 
+        void DrawAnimationsFoldout()
+        {
+            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
+            if (databaseProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                DrawDatabase();
+                EditorGUI.indentLevel--;
+            }
+        }
+
         void DrawDatabase()
         {
-            EditorGUI.BeginChangeCheck();
             GUILayout.BeginHorizontal();
 
             var value = databaseProp.objectReferenceValue;
@@ -146,6 +152,7 @@ namespace TMPEffects.Editor
                 Undo.RecordObject(animator, "Modified " + animator.name);
             }
 
+            EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
                 if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && defaultDatabase == null)
@@ -153,7 +160,7 @@ namespace TMPEffects.Editor
 
                 if (databaseProp.objectReferenceValue != defaultDatabase)
                 {
-                    databaseProp.objectReferenceValue = defaultDatabase;
+                    databaseProp.objectReferenceValue = defaultDatabase; 
                 }
 
                 EditorGUI.BeginDisabledGroup(true);
@@ -169,7 +176,7 @@ namespace TMPEffects.Editor
             if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
             {
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                forceReprocess = true;
+                animator.OnChangedDatabase();
             }
 
 
@@ -187,7 +194,7 @@ namespace TMPEffects.Editor
                 // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
                 // in Update of TMPAnimator.
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                forceReprocess = true;
+                animator.OnChangedDatabase();
             }
         }
 
@@ -247,30 +254,64 @@ namespace TMPEffects.Editor
 
         void DrawExclusions()
         {
-            EditorGUI.BeginChangeCheck();
             EditorGUILayout.BeginHorizontal();
             var prev = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 100;
             EditorGUILayout.LabelField("Exclude punctuation?");
-
             EditorGUIUtility.labelWidth = 40;
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationProp, new GUIContent("Basic"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedBasicExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationShowProp, new GUIContent("Show"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedShowExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationHideProp, new GUIContent("Hide"));
-            //EditorGUILayout.Toggle(new GUIContent("Basic"), );
-            //EditorGUILayout.Toggle(new GUIContent("Show"), true);
-            //EditorGUILayout.Toggle(new GUIContent("Hide"), true);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedHideExclusion();
+            }
+
+
             EditorGUIUtility.labelWidth = prev;
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludedProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedBasicExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludedShowProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedShowExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludedHideProp);
             if (EditorGUI.EndChangeCheck())
             {
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                //forceReprocess = true;
+                animator.OnChangedHideExclusion();
             }
         }
 
@@ -333,17 +374,13 @@ namespace TMPEffects.Editor
         {
             DrawPreview();
 
+            EditorGUI.BeginDisabledGroup(Application.isPlaying);
             EditorGUILayout.PropertyField(updateFromProp);
+            EditorGUI.EndDisabledGroup();
             EditorGUILayout.PropertyField(animateOnStartProp);
 
             EditorGUILayout.Space(10);
-            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
-            if (databaseProp.isExpanded)
-            {
-                EditorGUI.indentLevel++;
-                DrawDatabase();
-                EditorGUI.indentLevel--;
-            }
+            DrawAnimationsFoldout();
 
             EditorGUILayout.Space(10);
             animationsOverrideProp.isExpanded = EditorGUILayout.Foldout(animationsOverrideProp.isExpanded, new GUIContent("Animator settings"), true);
@@ -365,7 +402,6 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(contextScalingProp);
                 EditorGUILayout.PropertyField(contextScaledTimeProp);
-                EditorGUILayout.PropertyField(animationsUseAnimatorTimeProp);
                 EditorGUI.indentLevel--;
             }
         }
@@ -378,12 +414,6 @@ namespace TMPEffects.Editor
             RepaintInspector();
 
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-
-            if (forceReprocess)
-            {
-                forceReprocess = false;
-                animator.ForceReprocess();
-            }
         }
 
         bool PreviewEnabled()

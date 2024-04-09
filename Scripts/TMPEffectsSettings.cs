@@ -20,17 +20,3 @@ namespace TMPEffects
         }
     }
 }
-static class MySingletonMenuItems
-{
-    [MenuItem("SingletonTest/Log")]
-    static void LogMySingletonState()
-    {
-        TMPEffectsSettings.instance.Log();
-    }
-
-    [MenuItem("SingletonTest/Modify")]
-    static void ModifyMySingletonState()
-    {
-        //TMPEffectsSettings.instance.Modify();
-    }
-}

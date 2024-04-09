@@ -10,14 +10,51 @@ namespace TMPEffects.Components.Animator
     /// </summary>
     public interface IAnimatorContext
     {
+        /// <summary>
+        /// Whether animations are scaled.
+        /// </summary>
         public bool ScaleAnimations { get; }
+        /// <summary>
+        /// Whether animations use scaled time.
+        /// </summary>
         public bool UseScaledTime { get; }
 
+        /// <summary>
+        /// The current delta time (=> time since last animation update).
+        /// </summary>
         public float DeltaTime { get; }
-        public float Passed { get; }
+        /// <summary>
+        /// The time that has passed since the animator began animating.
+        /// </summary>
+        public float PassedTime { get; }
 
+        /// <summary>
+        /// Check how long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.<br/>
+        /// Generally, to be used with show and hide animations.
+        /// </summary>
+        /// <param name="cData">The character to check.</param>
+        /// <returns>How long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.</returns>
         public float StateTime(CharData cData);
+        /// <summary>
+        /// Check how long the passed <see cref="CharData"/> has been visible.
+        /// </summary>
+        /// <param name="cData">The character to check.</param>
+        /// <returns>How long the passed <see cref="CharData"/> has been visible.</returns>
         public float VisibleTime(CharData cData);
+
+        /// <summary>
+        /// Check how long the <see cref="CharData"/> at the given index has been in its current <see cref="VisibilityState"/>.<br/>
+        /// Generally, to be used with show and hide animations.
+        /// </summary>
+        /// <param name="index">The index of the character to check.</param>
+        /// <returns>How long the <see cref="CharData"/> at the given index has been in its current <see cref="VisibilityState"/>.</returns>
+        public float StateTime(int index);
+        /// <summary>
+        /// Check how long the <see cref="CharData"/> at the given index has been visible.
+        /// </summary>
+        /// <param name="cData">The character to check.</param>
+        /// <returns>How long the <see cref="CharData"/> at the given index has been visible.</returns>
+        public float VisibleTime(int index);
     }
 
     /// <summary>
@@ -25,42 +62,40 @@ namespace TMPEffects.Components.Animator
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
     [System.Serializable]
-    public class AnimatorContext /*: IAnimatorContext*/
+    public class AnimatorContext : IAnimatorContext
     {
+        /// <inheritdoc/>
         public bool ScaleAnimations
         {
             get => scaleAnimations;
             set => scaleAnimations = value;
         }
+        /// <inheritdoc/>
         public bool UseScaledTime
         {
             get => useScaledTime;
             set => useScaledTime = value;
         }
+        /// <inheritdoc/>
+        public float DeltaTime
+        {
+            get => deltaTime;
+            set => deltaTime = value;
+        }
+        /// <inheritdoc/>
+        public float PassedTime
+        {
+            get => passed;
+            set => passed = value;
+        }
 
-
-
-
-        /// <summary>
-        /// Whether to scale the animations.
-        /// </summary>
+        [Tooltip("Whether to scale the animations. If true, they will look the same no matter how large or small the individual characters")]
         [SerializeField] private bool scaleAnimations = true;
-
-        /// <summary>
-        /// Whether to use scaled time.
-        /// </summary>
+        [Tooltip("Whether to use scaled time (instead of real time)")]
         [SerializeField] private bool useScaledTime = true;
 
-        /// <summary>
-        /// The deltaTime since the last animation update.
-        /// </summary>
         [System.NonSerialized, HideInInspector] public float deltaTime = 0;
-
-        /// <summary>
-        /// How much time has passed since the animator started playing its animations.
-        /// </summary>
         [System.NonSerialized, HideInInspector] public float passed;
-
         [System.NonSerialized, HideInInspector] public Func<int, float> _StateTime;
         [System.NonSerialized, HideInInspector] public Func<int, float> _VisibleTime;
 
@@ -76,27 +111,36 @@ namespace TMPEffects.Components.Animator
             this._VisibleTime = getStateTime;
         }
 
+        /// <inheritdoc/>
         public float StateTime(CharData cData) => _StateTime(cData.info.index);
+        /// <inheritdoc/>
         public float VisibleTime(CharData cData) => _VisibleTime(cData.info.index);
+        /// <inheritdoc/>
         public float StateTime(int index) => _StateTime(index);
+        /// <inheritdoc/>
         public float VisibleTime(int index) => _VisibleTime(index);
     }
 
     [System.Serializable]
-    public class ReadOnlyAnimatorContext
+    public class ReadOnlyAnimatorContext : IAnimatorContext
     {
-        /// <summary>
-        /// Whether animation
-        /// </summary>
-        public bool ScaleAnimations => context.ScaleAnimations;
+        /// <inheritdoc/>
+        public bool ScaleAnimations => context.ScaleAnimations; 
+        /// <inheritdoc/>
         public bool UseScaledTime => context.UseScaledTime;
+        /// <inheritdoc/>
         public float DeltaTime => context.deltaTime;
+        /// <inheritdoc/>
         public float PassedTime => context.passed;
 
+        /// <inheritdoc/>
         public float StateTime(CharData cData) => context.StateTime(cData);
+        /// <inheritdoc/>
         public float VisibleTime(CharData cData) => context.VisibleTime(cData);
 
+        /// <inheritdoc/>
         public float StateTime(int index) => context.StateTime(index);
+        /// <inheritdoc/>
         public float VisibleTime(int index) => context.VisibleTime(index);
 
         public ReadOnlyAnimatorContext(AnimatorContext context)

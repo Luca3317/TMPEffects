@@ -205,7 +205,7 @@ namespace TMPEffects.Editor
             {
                 databaseProp.objectReferenceValue = defaultDatabase;
                 serializedObject.ApplyModifiedProperties();
-                writer.ForceReprocess();
+                writer.OnChangedDatabase();
             }
         }
 
@@ -369,19 +369,27 @@ namespace TMPEffects.Editor
             EditorGUI.EndDisabledGroup();
         }
 
+
         void DrawDatabase()
         {
             GUILayout.BeginHorizontal();
+
+            var value = databaseProp.objectReferenceValue;
+
             bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
             useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
             if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
-                Undo.RecordObject(writer, "Modified writer");
+                Undo.RecordObject(writer, "Modified " + writer.name);
             }
 
+            EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && defaultDatabase == null)
+                    Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
+
                 if (databaseProp.objectReferenceValue != defaultDatabase)
                 {
                     databaseProp.objectReferenceValue = defaultDatabase;
@@ -395,8 +403,21 @@ namespace TMPEffects.Editor
             {
                 EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
             }
-
             GUILayout.EndHorizontal();
+
+            if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                writer.OnChangedDatabase();
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(sceneCommandsProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                writer.OnChangedDatabase();
+            }
         }
 
         void DrawCommandsFoldout()
@@ -406,9 +427,6 @@ namespace TMPEffects.Editor
             {
                 EditorGUI.indentLevel++;
                 DrawDatabase();
-                EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(sceneCommandsProp);
-                if (EditorGUI.EndChangeCheck()) writer.ForceReprocess();
                 EditorGUI.indentLevel--;
             }
         }
@@ -592,7 +610,6 @@ namespace TMPEffects.Editor
 
             if (serializedObject.hasModifiedProperties)
             {
-                Undo.RecordObject(writer, "Writer modified");
                 serializedObject.ApplyModifiedProperties();
             }
 

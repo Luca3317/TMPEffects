@@ -68,7 +68,7 @@ MonoBehaviour:
     crestWait: 1.75
     troughWait: 1
     uniformity: 0.1
-  waveOffsetType: 10
+  waveOffsetType: 5
   maxOpacity: 255
   fadeInAnchor: {x: 0, y: 0, z: 0}
   fadeInDirection: {x: 0, y: 0, z: 0}

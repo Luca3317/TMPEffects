@@ -46,7 +46,11 @@ namespace TMPEffects.Components
         /// Whether the text is currently being animated.<br/>
         /// If <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>, this will always evaluate to true.
         /// </summary>
+#if UNITY_EDITOR
+        public bool IsAnimating => updateFrom == UpdateFrom.Script || isAnimating || preview;
+#else
         public bool IsAnimating => updateFrom == UpdateFrom.Script || isAnimating;
+#endif
 
         /// <summary>
         /// The database used to parse animation tags.
@@ -98,25 +102,35 @@ namespace TMPEffects.Components
         public const char HIDE_ANIMATION_PREFIX = '-';
 
         #region Fields
+        [Tooltip("The database used for processing animation tags (e.g. <wave>, <+fade>)")]
         [SerializeField] private TMPAnimationDatabase database = null;
         [SerializeField] private AnimatorContext context = new AnimatorContext();
 
+        [Tooltip("Where to update the animations from. If set to Script, you will have to manually update animations from your own script")]
         [SerializeField] private UpdateFrom updateFrom = UpdateFrom.Update;
+        [Tooltip("Whether to automatically start animating when entering playmode. Ignored if UpdateFrom is set to Script")]
         [SerializeField] private bool animateOnStart = true;
 
+        [Tooltip("Whether animation tags override each other by default. You can set this individually on a per-tag basis by adding the override=true/false parameter to them")]
         [SerializeField] private bool animationsOverride = false;
+        [Tooltip("The default show animation to use, if a TMPWriter component is present")]
         [SerializeField] private string defaultShowString = "";
+        [Tooltip("The default hide animation to use, if a TMPWriter component is present")]
         [SerializeField] private string defaultHideString = "";
 
+        [Tooltip("Characters that are excluded from basic animations")]
         [SerializeField] private string excludedCharacters = "";
+        [Tooltip("Characters that are excluded from show animations")]
         [SerializeField] private string excludedCharactersShow = "";
+        [Tooltip("Characters that are excluded from hide animations")]
         [SerializeField] private string excludedCharactersHide = "";
 
+        [Tooltip("Whether to exclude punctuation characters from basic animations")]
         [SerializeField] private bool excludePunctuation = false;
+        [Tooltip("Whether to exclude punctuation characters from show animations")]
         [SerializeField] private bool excludePunctuationShow = false;
+        [Tooltip("Whether to exclude punctuation characters from hide animations")]
         [SerializeField] private bool excludePunctuationHide = false;
-
-        [SerializeField] private bool animationsUseAnimatorTime = true;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
         private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations;
@@ -208,7 +222,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             // Queue a player loop update to instantly update scene view
             EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
-#endif
+#endif 
         }
 
         private void SubscribeToMediator()
@@ -384,7 +398,7 @@ namespace TMPEffects.Components
             }
         }
 
-        private void OnDatabaseChanged(TMPAnimationDatabase previousDatabase)
+        private void OnDatabaseChanged()
         {
             PrepareForProcessing();
             Mediator.ForceReprocess();
@@ -392,8 +406,7 @@ namespace TMPEffects.Components
 
         private void ReprocessOnDatabaseChange(object sender)
         {
-            PrepareForProcessing();
-            Mediator.ForceReprocess();
+            OnDatabaseChanged();
         }
 
         private void SetDummies()
@@ -544,9 +557,8 @@ namespace TMPEffects.Components
         /// <param name="database">The database that will be used to parse animation tags.</param>
         public void SetDatabase(TMPAnimationDatabase database)
         {
-            TMPAnimationDatabase previous = this.database;
             this.database = database;
-            OnDatabaseChanged(previous);
+            OnDatabaseChanged();
         }
 
         /// <summary>
@@ -1517,25 +1529,24 @@ namespace TMPEffects.Components
 
         #region Editor Only
 #if UNITY_EDITOR
+#pragma warning disable CS0414
         [SerializeField, HideInInspector] bool preview = false;
-        [SerializeField, HideInInspector] bool initValidate = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
-        [SerializeField, HideInInspector] TMPAnimationDatabase prevDatabase = null;
-        [SerializeField, HideInInspector] string prevExcludedBasicCharacters = null;
-        [SerializeField, HideInInspector] string prevExcludedShowCharacters = null;
-        [SerializeField, HideInInspector] string prevExcludedHideCharacters = null;
-        [SerializeField, HideInInspector] bool prevBasicExcludePunctuation = false;
-        [SerializeField, HideInInspector] bool prevShowExcludePunctuation = false;
-        [SerializeField, HideInInspector] bool prevHideExcludePunctuation = false;
         [System.NonSerialized, HideInInspector] float lastPreviewUpdateTime = 0f;
+#pragma warning restore CS0414
 
         internal void StartPreview()
         {
-            //preview = true;
-            StartAnimating();
-
+            preview = true;
             EditorApplication.update -= UpdatePreview;
             EditorApplication.update += UpdatePreview;
+        }
+
+        internal void StopPreview()
+        {
+            preview = false;
+            EditorApplication.update -= UpdatePreview;
+            ResetAnimations();
         }
 
         [MenuItem("CONTEXT/TMP_Text/Add animator")]
@@ -1551,21 +1562,13 @@ namespace TMPEffects.Components
             text.gameObject.GetOrAddComponent<TMPAnimator>();
         }
 
-        internal void StopPreview()
-        {
-            //preview = false;
-            EditorApplication.update -= UpdatePreview;
-            if (updateFrom != UpdateFrom.Script) StopAnimating();
-            ResetAnimations();
-        }
-
         private void UpdatePreview()
         {
             if (Application.isPlaying) return;
 
             if (lastPreviewUpdateTime <= 0)
             {
-                UpdateAnimations(0f);
+                UpdateAnimations_Impl(0f);
             }
             else
             {
@@ -1574,22 +1577,6 @@ namespace TMPEffects.Components
 
             EditorApplication.QueuePlayerLoopUpdate();
             lastPreviewUpdateTime = Time.time;
-        }
-
-        internal void ForceReprocess()
-        {
-            if (Mediator != null) Mediator.ForceReprocess();
-        }
-
-        internal void ForcePostProcess()
-        {
-            if (Mediator != null) PostProcessTags();
-        }
-
-        internal void PrepareForProcessingWrapper()
-        {
-            if (Mediator == null) return;
-            PrepareForProcessing();
         }
 
         internal void ResetTime()
@@ -1673,58 +1660,28 @@ namespace TMPEffects.Components
             SetDefaultHideString(defaultHideString);
         }
 
-        private void OnValidate()
+        internal void OnChangedBasicExclusion()
         {
-            if (!initValidate)
-            {
-                prevDatabase = database;
-                prevExcludedBasicCharacters = excludedCharacters;
-                prevExcludedShowCharacters = excludedCharactersShow;
-                prevExcludedHideCharacters = excludedCharactersHide;
-                prevBasicExcludePunctuation = excludePunctuation;
-                prevShowExcludePunctuation = excludePunctuationHide;
-                prevHideExcludePunctuation = excludePunctuationShow;
-                initValidate = true;
-            }
+            RecalculateSegmentData(TMPAnimationType.Basic);
+            QueueCharacterReset();
+        }
+        internal void OnChangedShowExclusion()
+        {
+            RecalculateSegmentData(TMPAnimationType.Show);
+            QueueCharacterReset();
+        }
+        internal void OnChangedHideExclusion()
+        {
+            RecalculateSegmentData(TMPAnimationType.Hide);
+            QueueCharacterReset();
+        }
 
-            if (prevExcludedBasicCharacters != excludedCharacters || prevBasicExcludePunctuation != excludePunctuation)
-            {
-                prevExcludedBasicCharacters = excludedCharacters;
-                prevBasicExcludePunctuation = excludePunctuation;
-                RecalculateSegmentData(TMPAnimationType.Basic);
-                QueueCharacterReset();
-            }
-
-            if (prevExcludedShowCharacters != excludedCharactersShow || prevShowExcludePunctuation != excludePunctuationShow)
-            {
-                prevExcludedShowCharacters = excludedCharactersShow;
-                prevShowExcludePunctuation = excludePunctuationShow;
-                RecalculateSegmentData(TMPAnimationType.Show);
-                QueueCharacterReset();
-            }
-
-            if (prevExcludedHideCharacters != excludedCharactersHide || prevHideExcludePunctuation != excludePunctuationHide)
-            {
-                prevExcludedHideCharacters = excludedCharactersHide;
-                prevHideExcludePunctuation = excludePunctuationHide;
-                RecalculateSegmentData(TMPAnimationType.Hide);
-                QueueCharacterReset();
-            }
-
-            if (Mediator != null &&
-                    (prevDatabase != database ||
-                    (database != null &&
-                    (basicDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.BasicAnimationDatabase ||
-                    showDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.ShowAnimationDatabase ||
-                    hideDatabase.Database != (ITMPEffectDatabase<ITMPAnimation>)database.HideAnimationDatabase)))
-                )
-            {
-                OnDatabaseChanged(prevDatabase);
-                prevDatabase = database;
-            }
+        internal void OnChangedDatabase()
+        {
+            OnDatabaseChanged();
         }
 #endif
-        #endregion
+#endregion
 
 
         private bool characterResetQueued = false;
