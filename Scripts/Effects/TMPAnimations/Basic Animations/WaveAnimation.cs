@@ -19,7 +19,10 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data data = (Data)context.CustomData;
 
+            // Evaluate the wave based on time and offset
             float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+
+            // Move the character up based on the wave evaluation
             cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
         }
 

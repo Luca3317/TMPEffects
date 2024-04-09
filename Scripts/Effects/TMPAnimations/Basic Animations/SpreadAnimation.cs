@@ -38,12 +38,15 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.CustomData as Data;
 
+            // Evaluate the wave based on time and offset
             (float, int) result = d.Wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.offsetType));
 
+            // If the wave is moving up, grow the character
             if (result.Item2 > 0)
             {
                 Grow(cData, context, d, result.Item1);
             }
+            // else, shrink the character
             else
             {
                 Shrink(cData, context, d, result.Item1);

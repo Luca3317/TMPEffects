@@ -25,7 +25,10 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data d = context.CustomData as Data;
 
+            // Evaluate the wave based on time and offsets
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffsetType));
+
+            // Calculate the current scale and set it
             float scale = Mathf.LerpUnclamped(d.minScale, d.maxScale, result.Item1);
             cData.SetScale(Vector3.one * scale);
         }

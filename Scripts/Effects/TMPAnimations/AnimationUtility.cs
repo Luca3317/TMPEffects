@@ -12,10 +12,7 @@ namespace TMPEffects.TMPAnimations
     {
         #region Raw Positions & Deltas
         /// <summary>
-        /// Convert an anchor to its actual position.<br/>
-        /// Since it is inherently based on the character's vertex positions,
-        /// the resulting position automatically ignores <see cref="TMPAnimator's"/> scaling;
-        /// no need to call <see cref="GetRawPosition(Vector3, CharData, IAnimationContext)"/> on it.
+        /// Convert an anchor to its actual position.
         /// </summary>
         /// <param name="anchor"></param>
         /// <param name="cData"></param>
@@ -30,11 +27,14 @@ namespace TMPEffects.TMPAnimations
             Vector2 dist;
             Vector2 ret = cData.InitialPosition;
 
+            Vector2 up = (cData.initialMesh.TL_Position - cData.initialMesh.BL_Position) / 2f;
+            Vector2 right = (cData.initialMesh.BR_Position - cData.initialMesh.BL_Position) / 2f;
+
             dist.x = (cData.mesh.initial.BL_Position - cData.mesh.initial.BR_Position).magnitude / 2f;
             dist.y = (cData.mesh.initial.BL_Position - cData.mesh.initial.TL_Position).magnitude / 2f;
 
-            ret += Vector2.right * dist.x * anchor.x;
-            ret += Vector2.up * dist.y * anchor.y;
+            ret += right * anchor.x;
+            ret += up * anchor.y;
             return ret;
         }
 

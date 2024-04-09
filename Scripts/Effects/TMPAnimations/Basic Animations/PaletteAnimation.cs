@@ -23,8 +23,10 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data d = context.CustomData as Data;
 
+            // Evaluate the wave based on time and offset
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
 
+            // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
             int intIndex = (int)index;
 
@@ -33,7 +35,7 @@ namespace TMPEffects.TMPAnimations.Animations
             Color color1;
             Color color;
 
-            // Handle edge cases for exact crest / trough
+            // Handle edge case for exact trough
             if (index == 0)
             {
                 for (int i = 0; i < 4; i++)
@@ -43,6 +45,8 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 return;
             }
+
+            // Handle edge case for exact crest
             if (index == d.colors.Length)
             {
                 for (int i = 0; i < 4; i++)
@@ -53,10 +57,13 @@ namespace TMPEffects.TMPAnimations.Animations
                 return;
             }
 
+            // If the wave is moving up
             if (result.Item2 == 1)
             {
+                // Calculate interpolation value between the two current colors
                 t = index % 1f;
 
+                // Set the two current colors
                 color0 = d.colors[intIndex];
                 if (intIndex == d.colors.Length - 1)
                 {
@@ -67,13 +74,16 @@ namespace TMPEffects.TMPAnimations.Animations
                     color1 = d.colors[intIndex + 1];
                 }
 
+                // Calculate color
                 color = Color.Lerp(color0, color1, t);
             }
             else if (result.Item2 == -1)
             {
+                // Calculate interpolation value between the two current colors
                 t = index % 1;
-                color0 = d.colors[d.colors.Length - 1 - intIndex];
 
+                // Set the two current colors
+                color0 = d.colors[d.colors.Length - 1 - intIndex];
                 if (intIndex == 0)
                 {
                     color1 = d.colors[0];
@@ -83,10 +93,13 @@ namespace TMPEffects.TMPAnimations.Animations
                     color1 = d.colors[d.colors.Length - intIndex];
                 }
 
-                color = Color.Lerp(color0, color1, 1f-t);
+                // Calculate color
+                color = Color.Lerp(color0, color1, 1f - t);
             }
             else throw new System.Exception("Shouldnt be possible");
 
+            // Set the color for each vertex of the character
+            // (without overriding the alpha channel)
             for (int i = 0; i < 4; i++)
             {
                 cData.mesh.SetColor(i, color, true);

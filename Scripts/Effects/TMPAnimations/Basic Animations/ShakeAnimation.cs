@@ -31,6 +31,7 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data d = context.CustomData as Data;
 
+            // Initialize if not yet initialized
             if (!d.init)
             {
                 d.init = true;
@@ -51,8 +52,11 @@ namespace TMPEffects.TMPAnimations.Animations
             }
 
             Vector3 offset;
+
+            // If the shake is uniform (all characters shake the same way, at the same time)
             if (d.uniform)
             {
+                // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delay
                 if (context.AnimatorContext.PassedTime - d.lastUpdated >= d.delay)
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rng.NextDouble());
@@ -67,9 +71,13 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 offset = new Vector3(d.xOffset, d.yOffset, 0f);
             }
+
+            // else if the shake uses uniform delay (all character shake at the same time)
             else if (d.uniformDelay)
             {
                 int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+
+                // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude for each character a new delay
                 if (d.autoUpdateDict[segmentIndex] || context.AnimatorContext.PassedTime - d.sharedLastUpdated >= d.sharedDelay)
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
@@ -95,9 +103,13 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 offset = d.offsetDict[segmentIndex];
             }
+
+            // else if the characters shake completely independently
             else
             {
                 int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+
+                // if the delay time of the current character is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delays for each character
                 if (context.AnimatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
                 {
                     float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
@@ -114,6 +126,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 offset = d.offsetDict[segmentIndex];
             }
 
+            // Set the position of the character using the calculated offset
             cData.SetPosition(cData.InitialPosition + offset);
         }
 

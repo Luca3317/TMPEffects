@@ -25,10 +25,13 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             Data d = context.CustomData as Data;
 
+            // Calculate the angle based on the evaluate wave
             float angle = (context.AnimatorContext.PassedTime * d.speed * 360) % 360;
-            var rotate = Matrix4x4.Rotate(Quaternion.FromToRotation(Vector3.right, (cData.mesh.initial.GetPosition(3) - cData.mesh.initial.GetPosition(0)).normalized));
-            cData.SetRotation(Quaternion.AngleAxis(angle, rotate.MultiplyPoint3x4(d.rotationAxis)));
 
+            // Set the rotation using the rotationaxis and current angle
+            cData.SetRotation(Quaternion.AngleAxis(angle, d.rotationAxis));
+
+            // Set the pivot depending on its type
             switch (d.pivot.type)
             {
                 case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, context); break;
