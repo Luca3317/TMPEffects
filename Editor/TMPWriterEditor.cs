@@ -12,22 +12,12 @@ namespace TMPEffects.Editor
     public class TMPWriterEditor : UnityEditor.Editor
     {
         TMPWriter writer;
-        bool changed;
-        float progress
-        {
-            get => _progress;
-            set
-            {
-                _progress = value;
-                changed = true;
-            }
-        }
-        float _progress;
+
+        float progress;
         bool clicked;
         bool wasWriting;
         bool wasEnabled;
         Coroutine hideCoroutine;
-        TMPCommandDatabase defaultDatabase;
 
         // Serialized properties
         SerializedProperty databaseProp;
@@ -198,12 +188,22 @@ namespace TMPEffects.Editor
             writer.OnFinishWriter.RemoveListener(UpdateProgressFinish);
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
-            defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
-            if (defaultDatabase == null) Debug.LogWarning($"Could not find default command database; ensure there is a {nameof(TMPCommandDatabase)} object in the resource folder named \"DefaultCommandDatabase\"");
+            //defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
+            //if (defaultDatabase == null) Debug.LogWarning($"Could not find default command database; ensure there is a {nameof(TMPCommandDatabase)} object in the resource folder named \"DefaultCommandDatabase\"");
 
-            if (useDefaultDatabaseProp.boolValue && databaseProp.objectReferenceValue != defaultDatabase)
+            if (!useDefaultDatabaseProp.boolValue) return;
+
+            if (TMPEffectsSettings.Get().DefaultCommandDatabase == null)
             {
-                databaseProp.objectReferenceValue = defaultDatabase;
+                Debug.LogWarning("No default command database set in Preferences/TMPEffects");
+                useDefaultDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
+            {
+                databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
                 serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
             }
@@ -387,12 +387,14 @@ namespace TMPEffects.Editor
             EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && defaultDatabase == null)
-                    Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
-
-                if (databaseProp.objectReferenceValue != defaultDatabase)
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && TMPEffectsSettings.Get().DefaultCommandDatabase == null)
                 {
-                    databaseProp.objectReferenceValue = defaultDatabase;
+                    Debug.LogWarning("No default command database set in Preferences/TMPEffects");
+                    useDefaultDatabaseProp.boolValue = false;
+                }
+                else if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
+                {
+                    databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
                 }
 
                 EditorGUI.BeginDisabledGroup(true);

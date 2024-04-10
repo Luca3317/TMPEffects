@@ -11,8 +11,6 @@ namespace TMPEffects.Editor
     {
         TMPAnimator animator;
 
-        TMPAnimationDatabase defaultDatabase;
-
         // Serialized properties
         SerializedProperty databaseProp;
         SerializedProperty updateFromProp;
@@ -73,27 +71,29 @@ namespace TMPEffects.Editor
 
             animator = target as TMPAnimator;
 
-            //wasEnabled = writer.enabled;
-            defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
-            if (defaultDatabase == null) Debug.LogWarning($"Could not find default animation database; ensure there is {nameof(TMPAnimationDatabase)} object in the resource folder named \"DefaultAnimationDatabase\"");
+            Undo.undoRedoPerformed -= OnUndoRedo;
+            Undo.undoRedoPerformed += OnUndoRedo;
 
-            if (useDefaultDatabaseProp.boolValue && databaseProp.objectReferenceValue != defaultDatabase)
+            if (!useDefaultDatabaseProp.boolValue) return;
+
+            if (TMPEffectsSettings.Get().DefaultAnimationDatabase == null)
             {
-                databaseProp.objectReferenceValue = defaultDatabase;
+                Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+                useDefaultDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
+            {
+                databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
             }
-
-            // TODO Removed this to prevent animation / writer reset when reselecitng object
-            // Still need to test whether this breaks anything else (dont expect it to)
-            //animator.ForceReprocess();
-
-            Undo.undoRedoPerformed += OnUndoRedo;
         }
 
         private void OnDisable()
         {
-            Undo.undoRedoPerformed -= OnUndoRedo;
             Undo.undoRedoPerformed -= OnUndoRedo;
         }
 
@@ -155,12 +155,14 @@ namespace TMPEffects.Editor
             EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && defaultDatabase == null)
-                    Debug.LogWarning("Could not find default animation database; ensure there is TMPAnimationDatabase object in the resource folder named \"DefaultAnimationDatabase\"");
-
-                if (databaseProp.objectReferenceValue != defaultDatabase)
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && TMPEffectsSettings.Get().DefaultAnimationDatabase == null)
                 {
-                    databaseProp.objectReferenceValue = defaultDatabase; 
+                    Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+                    useDefaultDatabaseProp.boolValue = false;
+                }
+                else if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
+                {
+                    databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
                 }
 
                 EditorGUI.BeginDisabledGroup(true);
