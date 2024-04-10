@@ -188,9 +188,6 @@ namespace TMPEffects.Editor
             writer.OnFinishWriter.RemoveListener(UpdateProgressFinish);
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
-            //defaultDatabase = (TMPCommandDatabase)Resources.Load("DefaultCommandDatabase");
-            //if (defaultDatabase == null) Debug.LogWarning($"Could not find default command database; ensure there is a {nameof(TMPCommandDatabase)} object in the resource folder named \"DefaultCommandDatabase\"");
-
             if (!useDefaultDatabaseProp.boolValue) return;
 
             if (TMPEffectsSettings.Get().DefaultCommandDatabase == null)

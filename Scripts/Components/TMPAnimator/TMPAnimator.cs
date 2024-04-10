@@ -394,7 +394,7 @@ namespace TMPEffects.Components
                     case TMPAnimationType.Hide: defaultHide = dummyHide; break;
                 }
 
-                if (dummyShow == null || dummyHide == null) Debug.LogWarning("SET DEFAULT WHILE DUMMY NULL");
+                if (dummyShow == null || dummyHide == null) Debug.LogWarning("Set default while dummy null - bug!");
             }
         }
 
@@ -1266,7 +1266,7 @@ namespace TMPEffects.Components
 
             if (prev == state)
             {
-                Debug.LogError("Character didnt change but the update event was raised?");
+                //Debug.LogError("Character did not change visbility but event was raised?");
                 return;
             }
 
@@ -1444,7 +1444,6 @@ namespace TMPEffects.Components
         {
             if (Mediator == null)
             {
-                Debug.LogWarning("Early return in resetallvisible");
                 return;
             }
             var info = Mediator.Text.textInfo;

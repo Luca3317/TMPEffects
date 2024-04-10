@@ -851,26 +851,6 @@ namespace TMPEffects.Extensions
         #endregion
 
         #region Curve Fitting
-        //public static AnimationCurve MergeCurves(AnimationCurve curve0, AnimationCurve curve1, int dataCount)
-        //{
-        //    Vector2[] data = new Vector2[dataCount + 1];
-        //    for (int i = 0; i <= dataCount; i++)
-        //    {
-        //        float t = (float)i / dataCount;
-
-        //        float val0 = curve0.Evaluate(t);
-        //        float val1 = curve1.Evaluate(t);
-
-        //        float value = Mathf.Lerp(val0, val1, t);
-        //        Debug.Log("Val0: " + val0 + "; Val1: " + val1 + "; Merged with t = " + t + " =>  " + value);
-        //        data[i] = new Vector2(t, value);
-        //    }
-
-        //    List<Vector2> fitted = CubicBezierFitter.FitCurve(data, 1e-06f);
-
-        //    return Bezier(fitted);
-        //}
-
         /// <summary>
         /// To make cubic bezier spline by data.
         /// </summary>

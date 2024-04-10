@@ -501,7 +501,6 @@ namespace TMPEffects.Tags.Collections
 
                     for (int i = 0; i < e.NewItems.Count; i++)
                     {
-                        Debug.Log("Calling set for " + i);
                         tuple = (TMPEffectTagTuple)e.NewItems[i];
                         Set(index + i, cacher.CacheTag(tuple.Tag, tuple.Indices));
                     }

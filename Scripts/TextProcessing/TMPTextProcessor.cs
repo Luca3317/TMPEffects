@@ -298,9 +298,21 @@ namespace TMPEffects.TextProcessing
                 lastIndex = cInfo.index;
             }
 
+            // Added as quick fix for something like this:
+            // "A<color=white><wave>"; TODO cleaner fix?
             foreach (var kvp in dict)
             {
+                foreach (var thing in kvp.Value)
+                {
+                    if (thing.Key.start > info.characterCount)
+                    {
+                        thing.Key.start = info.characterCount;
+                    }
+                }
+            }
 
+            foreach (var kvp in dict)
+            {
                 foreach (var thing in kvp.Value)
                 {
                     kvp.Key.AdjustIndices(

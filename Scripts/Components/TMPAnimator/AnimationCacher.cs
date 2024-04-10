@@ -4,6 +4,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
+using System.Diagnostics;
 
 namespace TMPEffects.Components.Animator
 {
@@ -31,7 +32,9 @@ namespace TMPEffects.Components.Animator
             TMPEffectTagIndices closedIndices = new TMPEffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
             object customAnimationData = animation.GetNewCustomData();
             animation.SetParameters(customAnimationData, tag.Parameters);
-            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), state, new SegmentData(closedIndices, charData, animates), customAnimationData);
+
+            SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
+            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), state, segmentData, customAnimationData);
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

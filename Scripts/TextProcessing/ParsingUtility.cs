@@ -738,10 +738,7 @@ namespace TMPEffects.TextProcessing
                 }
                 else
                 {
-                    Debug.Log("Colors " + floats[0] + " " + floats[1] + " " + floats[2]);
                     result = Color.HSVToRGB(floats[0], floats[1], floats[2]);
-                    Debug.Log("Result " + result.r + " " + result.g + " " + result.b);
-
                     return true;
                 }
             }

@@ -932,6 +932,7 @@ namespace TMPEffects.TMPAnimations
         }
         #endregion
 
+
         public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)
         {
             float t;

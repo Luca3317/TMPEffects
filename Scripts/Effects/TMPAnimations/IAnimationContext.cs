@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
+using System.Diagnostics;
 
 namespace TMPEffects.TMPAnimations
 {
