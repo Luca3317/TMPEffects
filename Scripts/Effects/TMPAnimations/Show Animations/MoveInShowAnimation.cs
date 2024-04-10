@@ -20,7 +20,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
-            ReadOnlyAnimatorContext ac = context.AnimatorContext;
+            IAnimatorContext ac = context.AnimatorContext;
             Data d = context.CustomData as Data;
 
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;

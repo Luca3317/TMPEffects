@@ -14,7 +14,7 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The context of the animating TMPAnimator.
         /// </summary>
-        public ReadOnlyAnimatorContext AnimatorContext { get; }
+        public IAnimatorContext AnimatorContext { get; }
         /// <summary>
         /// Data about the animation segment.
         /// </summary>
@@ -59,7 +59,7 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public bool Finished(CharData cData) => finishedDict[cData.info.index];
         /// <inheritdoc/>
-        public ReadOnlyAnimatorContext AnimatorContext { get; set; }
+        public IAnimatorContext AnimatorContext { get; set; }
         /// <inheritdoc/>
         public SegmentData SegmentData { get; set; }
         /// <inheritdoc/>
@@ -114,7 +114,7 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public bool Finished(CharData cData) => context.Finished(cData);
         /// <inheritdoc/>
-        public ReadOnlyAnimatorContext AnimatorContext => context.AnimatorContext;
+        public IAnimatorContext AnimatorContext => context.AnimatorContext;
         /// <inheritdoc/>
         public SegmentData SegmentData => context.SegmentData;
         /// <inheritdoc/>
