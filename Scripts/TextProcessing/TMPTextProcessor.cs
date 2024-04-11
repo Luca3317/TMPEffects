@@ -5,9 +5,8 @@ using TMPro;
 using UnityEngine;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Collections;
-
+ 
 namespace TMPEffects.TextProcessing
 {
     /// <summary>
@@ -102,7 +101,7 @@ namespace TMPEffects.TextProcessing
                 }
 
                 // If the current tag is a noparse tag, toggle whether to parse the succeeding text
-                if (tagInfo.name == "noparse")
+                if (tagInfo.name == "noparse" || tagInfo.name == "NOPARSE")
                 {
                     if (tagInfo.type == ParsingUtility.TagType.Open)
                     {
@@ -120,7 +119,7 @@ namespace TMPEffects.TextProcessing
                 }
 
                 // if the current tag is an animated sprite text, handle it manually
-                else if (tagInfo.name == "sprite")
+                else if (tagInfo.name == "sprite" || tagInfo.name == "SPRITE")
                 {
                     var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
                     if (parameters.ContainsKey("anim"))
@@ -139,13 +138,29 @@ namespace TMPEffects.TextProcessing
                                 currentOrderAtIndex++;
 
                                 StringBuilder sb2 = new StringBuilder();
-                                sb2.Append($"<sprite={split[0]}");
+                                sb2.Append($"<sprite");
                                 foreach (var parameter in parameters)
                                 {
-                                    if (string.IsNullOrWhiteSpace(parameter.Key)) continue;
-                                    if (parameter.Key == "anim") continue;
-                                    sb2.Append($" {parameter.Key}=\"{parameter.Value}\"");
+                                    switch (parameter.Key)
+                                    {
+                                        case "index":
+                                        case "INDEX":
+                                        case "anim": break;
+
+                                        case "name":
+                                        case "NAME":
+                                        case "tint":
+                                        case "TINT":
+                                        case "color":
+                                        case "COLOR":
+                                            sb2.Append($" {parameter.Key}=\"{parameter.Value}\""); break;
+                                        case "":
+                                            sb2.Append($"{parameter.Key}=\"{parameter.Value}\""); break;
+                                    }
+
+                                    //if (string.IsNullOrWhiteSpace(parameter.Key)) continue;
                                 }
+                                sb2.Append(" index=" + split[0]);
                                 sb2.Append("></sprite>");
 
                                 text = text.Insert(tagInfo.endIndex + 1, sb2.ToString());
@@ -158,7 +173,7 @@ namespace TMPEffects.TextProcessing
                 }
 
                 // if the current tag is a style tag, handle it manually
-                else if (sheet != null && tagInfo.name == "style")
+                else if (sheet != null && (tagInfo.name == "style" || tagInfo.name == "STYLE"))
                 {
                     if (tagInfo.type == ParsingUtility.TagType.Close)
                     {
