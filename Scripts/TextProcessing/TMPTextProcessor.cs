@@ -125,11 +125,9 @@ namespace TMPEffects.TextProcessing
                     var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
                     if (parameters.ContainsKey("anim"))
                     {
-                        Debug.Log("ANIMATED SPRITE TAG");
                         var split = parameters["anim"].Split(',');
                         if (split.Length == 3)
                         {
-                            Debug.Log("Opening tag at " + (tagInfo.startIndex + indexOffset));
                             if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                             {
                                 Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
@@ -235,7 +233,6 @@ namespace TMPEffects.TextProcessing
 
             sw.Stop();
 
-            Debug.Log("Parsed: " + parsed);
             return parsed;
         }
 

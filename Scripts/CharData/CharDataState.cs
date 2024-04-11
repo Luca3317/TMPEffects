@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
+using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 namespace TMPEffects.CharacterData
@@ -131,10 +132,11 @@ namespace TMPEffects.CharacterData
             }
 
             // Apply transformation
-            vtl += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-            vtr += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-            vbr += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-            vbl += positionDelta * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+            var scaled = AnimationUtility.ScaleVector(positionDelta, cData, context);
+            vtl += scaled;
+            vtr += scaled;
+            vbr += scaled;
+            vbl += scaled;
 
             BL_Result = vbl;
             TL_Result = vtl;
@@ -159,18 +161,22 @@ namespace TMPEffects.CharacterData
                 if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
                 {
                     rotations.Add(cData.Rotation);
-                    pivots.Add(cData.InitialPosition + (cData.RotationPivot - cData.InitialPosition) * (context.ScaleAnimations ? cData.info.referenceScale : 1));
+                    var scaled = cData.InitialPosition + AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData, context);
+                    pivots.Add(scaled);
                 }
-                //rotation = cData.Rotation * rotation;
-                //rotationPivot += (cData.RotationPivot - cData.initialPosition) * (context.scaleAnimations ? cData.info.referenceScale : 1);
             }
 
             if (cData.verticesDirty)
             {
-                Vector3 deltaTL = (cData.mesh.TL_Position - cData.mesh.initial.TL_Position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 deltaTR = (cData.mesh.TR_Position - cData.mesh.initial.TR_Position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 deltaBR = (cData.mesh.BR_Position - cData.mesh.initial.BR_Position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
-                Vector3 deltaBL = (cData.mesh.BL_Position - cData.mesh.initial.BL_Position) * (context.ScaleAnimations ? cData.info.referenceScale : 1);
+                Vector3 deltaTL;
+                Vector3 deltaTR;
+                Vector3 deltaBR;
+                Vector3 deltaBL;
+
+                deltaTL = AnimationUtility.ScaleVector(cData.mesh.TL_Position - cData.mesh.initial.TL_Position, cData, context);
+                deltaTR = AnimationUtility.ScaleVector(cData.mesh.TR_Position - cData.mesh.initial.TR_Position, cData, context);
+                deltaBR = AnimationUtility.ScaleVector(cData.mesh.BR_Position - cData.mesh.initial.BR_Position, cData, context);
+                deltaBL = AnimationUtility.ScaleVector(cData.mesh.BL_Position - cData.mesh.initial.BL_Position, cData, context);
 
                 TL += deltaTL;
                 TR += deltaTR;

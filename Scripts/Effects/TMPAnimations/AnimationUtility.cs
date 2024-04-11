@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPEffects.CharacterData;
 using System;
 using TMPEffects.Extensions;
+using TMPEffects.Components.Animator;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -10,6 +11,24 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public static class AnimationUtility
     {
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => ScaleVector(vector, cData, context.AnimatorContext);
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
+        {
+            if (!context.ScaleAnimations) return vector;
+            if (!context.ScaleUniformly) return vector * (cData.info.pointSize / 36f);
+            return vector * (context.Animator.TextComponent.fontSize / 36f);
+        }
+
+
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => InverseScaleVector(vector, cData, context.AnimatorContext);
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
+        {
+            if (!context.ScaleAnimations) return vector;
+            if (!context.ScaleUniformly) return vector / (cData.info.pointSize / 36f);
+            return vector / (context.Animator.TextComponent.fontSize / 36f);
+        }
+
+
         #region Raw Positions & Deltas
         /// <summary>
         /// Convert an anchor to its actual position.
@@ -46,9 +65,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx)
+        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx) => GetRawVertex(index, position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData, ctx);
         }
 
         /// <summary>
@@ -57,9 +77,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx)
+        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPosition(position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            return GetRawPosition(position, cData.InitialPosition, cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.InitialPosition, cData, ctx);
         }
 
         /// <summary>
@@ -68,9 +89,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the pivot to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx)
+        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPivot(position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            return GetRawPosition(position, cData.InitialPosition, cData.info.referenceScale, ctx);
+            return GetRawPosition(position, cData.InitialPosition, cData, ctx);
         }
 
         /// <summary>
@@ -79,16 +101,15 @@ namespace TMPEffects.TMPAnimations
         /// <param name="delta">The delta.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx)
+        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx) => GetRawDelta(delta, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            if (!ctx.AnimatorContext.ScaleAnimations) return delta;
-            return delta / cData.info.referenceScale;
+            return InverseScaleVector(delta, cData, ctx);
         }
 
-        internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, float scale, IAnimationContext ctx)
+        internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, CharData cData, IAnimatorContext ctx)
         {
-            if (!ctx.AnimatorContext.ScaleAnimations) return position;
-            return (position - referencePosition) / scale + referencePosition;
+            return InverseScaleVector(position - referencePosition, cData, ctx) + referencePosition;
         }
 
 
@@ -100,17 +121,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx)
+        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx) => SetVertexRaw(index, position, cData, ctx.AnimatorContext);
+        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                Vector3 ogPos = cData.initialMesh.GetPosition(index);
-                cData.SetVertex(index, (position - ogPos) / cData.info.referenceScale + ogPos);
-            }
-            else
-            {
-                cData.SetVertex(index, position);
-            }
+            Vector3 ogPos = cData.initialMesh.GetPosition(index);
+            cData.SetVertex(index, GetRawPosition(position, ogPos, cData, ctx));
         }
         /// <summary>
         /// Set the raw position of the character. This position will ignore the animator's scaling.
@@ -118,17 +133,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx)
+        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx) => SetPositionRaw(position, cData, ctx.AnimatorContext);
+        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                Vector3 ogPos = cData.InitialPosition;
-                cData.SetPosition((position - ogPos) / cData.info.referenceScale + ogPos);
-            }
-            else
-            {
-                cData.SetPosition(position);
-            }
+            Vector3 ogPos = cData.InitialPosition;
+            cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
         /// <summary>
         /// Set the raw pivot of the character. This position will ignore the animator's scaling.
@@ -136,17 +145,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the pivot to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx)
+        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx) => SetPivotRaw(pivot, cData, ctx.AnimatorContext);
+        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                Vector3 ogPos = cData.InitialPosition;
-                cData.SetPivot(((pivot - ogPos) / cData.info.referenceScale) + ogPos);
-            }
-            else
-            {
-                cData.SetPivot(pivot);
-            }
+            Vector3 ogPos = cData.InitialPosition;
+            cData.SetPivot(GetRawPosition(pivot, ogPos, cData, ctx));
         }
         /// <summary>
         /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
@@ -155,16 +158,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="delta">The delta to add to the vertex.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx)
+        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx) => AddVertexDeltaRaw(index, delta, cData, ctx.AnimatorContext);
+        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                cData.AddVertexDelta(index, delta / cData.info.referenceScale);
-            }
-            else
-            {
-                cData.AddVertexDelta(index, delta);
-            }
+            cData.AddVertexDelta(index, GetRawDelta(delta, cData, ctx));
         }
         /// <summary>
         /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
@@ -172,16 +169,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="delta">The delta to add to the position of the character.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
+        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPositionDeltaRaw(delta, cData, ctx.AnimatorContext);
+        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                cData.AddPositionDelta(delta / cData.info.referenceScale);
-            }
-            else
-            {
-                cData.AddPositionDelta(delta);
-            }
+            cData.AddPositionDelta(GetRawDelta(delta, cData, ctx)); 
         }
         /// <summary>
         /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
@@ -189,16 +180,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="delta">The delta to add to the pivot.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The animation context.</param>
-        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
+        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPivotDeltaRaw(delta, cData, ctx.AnimatorContext);
+        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            if (ctx.AnimatorContext.ScaleAnimations)
-            {
-                cData.AddPivotDelta(delta / cData.info.referenceScale);
-            }
-            else
-            {
-                cData.AddPivotDelta(delta);
-            }
+            cData.AddPivotDelta(GetRawDelta(delta, cData, ctx));
         }
         #endregion
 
@@ -222,7 +207,7 @@ namespace TMPEffects.TMPAnimations
             var vClosestPoint = lineStart + vVector3;
 
             return vClosestPoint;
-        }        
+        }
         #endregion
 
         #region Waves
@@ -366,7 +351,7 @@ namespace TMPEffects.TMPAnimations
 
             [System.NonSerialized] private float period;
             [System.NonSerialized] private float adjustedPeriod;
-            [System.NonSerialized] private float adjustedUpPeriod; 
+            [System.NonSerialized] private float adjustedUpPeriod;
             [System.NonSerialized] private float adjustedDownPeriod;
             [System.NonSerialized] private float frequency;
             [System.NonSerialized] public float wavelength;
@@ -398,7 +383,7 @@ namespace TMPEffects.TMPAnimations
             }
         }
 
-        
+
         [System.Serializable]
         public class Wave : WaveBase, ISerializationCallbackReceiver
         {
@@ -922,10 +907,15 @@ namespace TMPEffects.TMPAnimations
             {
                 case WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
                 case WaveOffsetType.Index: return cData.info.index;
+
+                case WaveOffsetType.Line: return cData.info.lineNumber;
+                case WaveOffsetType.Baseline: return cData.info.baseLine;
+                case WaveOffsetType.Word: return (cData.info.wordFirstIndex + cData.info.wordLastIndex) / 2f;
+
                 case WaveOffsetType.XPos:
                     float pos = cData.InitialPosition.x;
                     pos /= (cData.info.referenceScale / 36f);
-                    pos /= 2000f; 
+                    pos /= 2000f;
                     return pos;
                 case WaveOffsetType.YPos:
                     pos = cData.InitialPosition.y;

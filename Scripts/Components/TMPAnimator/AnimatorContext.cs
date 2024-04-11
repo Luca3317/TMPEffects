@@ -15,6 +15,18 @@ namespace TMPEffects.Components.Animator
         /// </summary>
         public bool ScaleAnimations { get; }
         /// <summary>
+        /// Whether to scale animations uniformly (based on the default font size of the animator)
+        /// or on a per character basis.<br/>
+        /// Ignored if <see cref="ScaleAnimations"/> is false.
+        /// </summary>
+        public bool ScaleUniformly { get; }
+
+        /// <summary>
+        /// The animating <see cref="TMPAnimator"/>.
+        /// </summary>
+        public TMPAnimator Animator { get; }
+
+        /// <summary>
         /// Whether animations use scaled time.
         /// </summary>
         public bool UseScaledTime { get; }
@@ -71,10 +83,21 @@ namespace TMPEffects.Components.Animator
             set => scaleAnimations = value;
         }
         /// <inheritdoc/>
+        public bool ScaleUniformly
+        {
+            get => scaleUniformly;
+            set => scaleUniformly = value;
+        }
+        /// <inheritdoc/>
         public bool UseScaledTime
         {
             get => useScaledTime;
             set => useScaledTime = value;
+        }
+        public TMPAnimator Animator
+        {
+            get => tmpAnimator;
+            set => tmpAnimator = value;
         }
         /// <inheritdoc/>
         public float DeltaTime
@@ -91,8 +114,12 @@ namespace TMPEffects.Components.Animator
 
         [Tooltip("Whether to scale the animations. If true, they will look the same no matter how large or small the individual characters")]
         [SerializeField] private bool scaleAnimations = true;
+        [Tooltip("Whether to scale the animations uniformly based on the default font size of the TMP_Text component, or on a per character basis.\nIgnored if ScaleAnimations is false")]
+        [SerializeField] private bool scaleUniformly = true;
         [Tooltip("Whether to use scaled time (instead of real time)")]
         [SerializeField] private bool useScaledTime = true;
+
+        [SerializeField, HideInInspector] private TMPAnimator tmpAnimator;
 
         [System.NonSerialized, HideInInspector] public float deltaTime = 0;
         [System.NonSerialized, HideInInspector] public float passed;
@@ -100,9 +127,12 @@ namespace TMPEffects.Components.Animator
         [System.NonSerialized, HideInInspector] public Func<int, float> _VisibleTime;
 
         public AnimatorContext() { }
-        public AnimatorContext(bool scaleAnimations, bool useScaledTime, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
+        public AnimatorContext(TMPAnimator animator) { this.tmpAnimator = animator; }
+        public AnimatorContext(TMPAnimator animator, bool scaleAnimations, bool useScaledTime, bool scaleUniformly, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
         {
+            this.tmpAnimator = animator;
             this.ScaleAnimations = scaleAnimations;
+            this.scaleUniformly = scaleUniformly;
             this.UseScaledTime = useScaledTime;
             this.deltaTime = 0f;
             this.passed = 0f;
@@ -125,9 +155,13 @@ namespace TMPEffects.Components.Animator
     public class ReadOnlyAnimatorContext : IAnimatorContext
     {
         /// <inheritdoc/>
-        public bool ScaleAnimations => context.ScaleAnimations; 
+        public bool ScaleAnimations => context.ScaleAnimations;
+        /// <inheritdoc/>
+        public bool ScaleUniformly => context.ScaleUniformly;
         /// <inheritdoc/>
         public bool UseScaledTime => context.UseScaledTime;
+        /// <inheritdoc/>
+        public TMPAnimator Animator => context.Animator;
         /// <inheritdoc/>
         public float DeltaTime => context.deltaTime;
         /// <inheritdoc/>

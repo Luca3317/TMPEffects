@@ -86,7 +86,7 @@ namespace TMPEffects.TMPSceneAnimations
                 if (d.dragging != cData.info.index)
                 {
                     AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
-                    return;
+                    return; 
                 }
 
                 // If dragging this, update offset, set and return

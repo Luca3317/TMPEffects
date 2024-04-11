@@ -259,6 +259,7 @@ namespace TMPEffects.Components
             // TODO Should be no longer necessary to do 
             context._VisibleTime = (i) => visibleTimes[i];
             context._StateTime = (i) => stateTimes[i];
+            context.Animator = this;
         }
 
         private void PrepareForProcessing()

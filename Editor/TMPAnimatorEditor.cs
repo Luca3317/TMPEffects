@@ -18,6 +18,7 @@ namespace TMPEffects.Editor
         SerializedProperty animationsOverrideProp;
         SerializedProperty contextProp;
         SerializedProperty contextScalingProp;
+        SerializedProperty contextUniformScalingProp;
         SerializedProperty contextScaledTimeProp;
         SerializedProperty previewProp;
         SerializedProperty passedTimeProp;
@@ -51,6 +52,7 @@ namespace TMPEffects.Editor
             animationsOverrideProp = serializedObject.FindProperty("animationsOverride");
             contextProp = serializedObject.FindProperty("context");
             contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
+            contextUniformScalingProp = contextProp.FindPropertyRelative("scaleUniformly");
             contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
             passedTimeProp = contextProp.FindPropertyRelative("passedTime");
             previewProp = serializedObject.FindProperty("preview");
@@ -403,6 +405,7 @@ namespace TMPEffects.Editor
             {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(contextScalingProp);
+                EditorGUILayout.PropertyField(contextUniformScalingProp);
                 EditorGUILayout.PropertyField(contextScaledTimeProp);
                 EditorGUI.indentLevel--;
             }
