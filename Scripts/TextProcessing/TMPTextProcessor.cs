@@ -89,6 +89,8 @@ namespace TMPEffects.TextProcessing
 
             bool parse = true;
 
+            TMP_StyleSheet sheet = TextComponent.styleSheet != null ? TextComponent.styleSheet : TMP_Settings.defaultStyleSheet;
+
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
@@ -116,7 +118,49 @@ namespace TMPEffects.TextProcessing
                     searchIndex = tagInfo.endIndex + 1;
                     continue;
                 }
-                else if (TextComponent.styleSheet != null && tagInfo.name == "style")
+
+                // if the current tag is an animated sprite text, handle it manually
+                else if (tagInfo.name == "sprite")
+                {
+                    var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
+                    if (parameters.ContainsKey("anim"))
+                    {
+                        Debug.Log("ANIMATED SPRITE TAG");
+                        var split = parameters["anim"].Split(',');
+                        if (split.Length == 3)
+                        {
+                            Debug.Log("Opening tag at " + (tagInfo.startIndex + indexOffset));
+                            if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
+                            {
+                                Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
+                                sb.Append(" <color=red>!SEE CONSOLE!</color> ");
+                            }
+                            else
+                            {
+                                indexOffset -= (tagInfo.endIndex - tagInfo.startIndex + 1);
+                                currentOrderAtIndex++;
+
+                                StringBuilder sb2 = new StringBuilder();
+                                sb2.Append($"<sprite={split[0]}");
+                                foreach (var parameter in parameters)
+                                {
+                                    if (string.IsNullOrWhiteSpace(parameter.Key)) continue;
+                                    if (parameter.Key == "anim") continue;
+                                    sb2.Append($" {parameter.Key}=\"{parameter.Value}\"");
+                                }
+                                sb2.Append("></sprite>");
+
+                                text = text.Insert(tagInfo.endIndex + 1, sb2.ToString());
+                            }
+
+                            searchIndex = tagInfo.endIndex + 1;
+                            continue;
+                        }
+                    }
+                }
+
+                // if the current tag is a style tag, handle it manually
+                else if (sheet != null && tagInfo.name == "style")
                 {
                     if (tagInfo.type == ParsingUtility.TagType.Close)
                     {
@@ -137,7 +181,7 @@ namespace TMPEffects.TextProcessing
                             if (tagInfo.parameterString[start] == '\"') start++;
                         if (tagInfo.parameterString[end] == '\"') end--;
 
-                        style = TextComponent.styleSheet.GetStyle(tagInfo.parameterString.Substring(start, end - start + 1));
+                        style = sheet.GetStyle(tagInfo.parameterString.Substring(start, end - start + 1));
                         if (style != null)
                         {
                             text = text.Remove(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1);
@@ -191,6 +235,7 @@ namespace TMPEffects.TextProcessing
 
             sw.Stop();
 
+            Debug.Log("Parsed: " + parsed);
             return parsed;
         }
 
