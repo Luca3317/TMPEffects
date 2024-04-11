@@ -19,6 +19,10 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public readonly int wordFirstIndex;
         /// <summary>
+        /// The last index of the word this character belongs to.
+        /// </summary>
+        public readonly int wordLastIndex;
+        /// <summary>
         /// The length of the word this character belongs to.
         /// </summary>
         public readonly int wordLen;
@@ -72,6 +76,14 @@ namespace TMPEffects.CharacterData
         /// The font asset used for this character.
         /// </summary>
         public readonly TMP_FontAsset fontAsset;
+        /// <summary>
+        /// The sprite asset used for this sprite.
+        /// </summary>
+        public readonly TMP_SpriteAsset spriteAsset;
+
+        public readonly TMP_TextElementType elementType;
+
+        public readonly float origin;
 
         /// <summary>
         /// The reference scale of this character.
@@ -84,6 +96,7 @@ namespace TMPEffects.CharacterData
             isVisible = cInfo.isVisible;
 
             wordFirstIndex = -1;
+            wordLastIndex = -1;
             wordLen = -1;
             color = cInfo.color;
 
@@ -100,11 +113,15 @@ namespace TMPEffects.CharacterData
 
             referenceScale = cInfo.scale;
             fontAsset = cInfo.fontAsset;
+            spriteAsset = cInfo.spriteAsset;
+            elementType = cInfo.elementType;
+            origin = cInfo.origin;
         }
 
         public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo) : this(index, cInfo)
         {
             wordFirstIndex = wInfo.firstCharacterIndex;
+            wordLastIndex = wInfo.lastCharacterIndex;
             wordLen = wInfo.characterCount;
         }
     }

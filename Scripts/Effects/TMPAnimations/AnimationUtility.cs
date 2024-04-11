@@ -907,7 +907,13 @@ namespace TMPEffects.TMPAnimations
             SegmentIndex = 0,
             Index = 5,
             XPos = 10,
-            YPos = 15
+            YPos = 15,
+
+
+            // new
+            Word,
+            Line,
+            Baseline
         }
 
         public static float GetWaveOffset(CharData cData, IAnimationContext context, WaveOffsetType type)

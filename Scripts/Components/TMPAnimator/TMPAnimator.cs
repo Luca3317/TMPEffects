@@ -249,9 +249,9 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not unregister as visibility processor!");
             }
 
-            Mediator.ForceReprocess();
-
+            var textComponent = Mediator.Text;
             FreeMediator();
+            if (textComponent != null) textComponent.ForceMeshUpdate(false, true);
         }
 
         private void CreateContext()
@@ -270,6 +270,9 @@ namespace TMPEffects.Components
             basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase, sceneAnimations);
             showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
             hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+
+            basicDatabase.AddAnimation("sprite", new SpriteAnimation());
+
             basicDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
@@ -300,6 +303,163 @@ namespace TMPEffects.Components
             processors.AddProcessor(hideCategory.Prefix, new TagProcessor(hideCategory));
 
             processors.RegisterTo(Mediator.Processor);
+        }
+
+        private class SpriteAnimation : ITMPAnimation
+        {
+            public void Animate(CharData cData, IAnimationContext context)
+            {
+                if (cData.info.elementType == TMP_TextElementType.Character) return;
+
+                Data d = context.CustomData as Data;
+                Data2 d2;
+
+                if (!d.datas.ContainsKey(cData.info.index))
+                {
+                    d2 = new Data2();
+                    d2.currentFrame = d.start;
+                    if (d.end > cData.info.spriteAsset.spriteCharacterTable.Count)
+                        d.end = cData.info.spriteAsset.spriteCharacterTable.Count - 1;
+
+                    d2.baseSpriteScale = cData.info.spriteAsset.spriteCharacterTable[d.start].scale * cData.info.spriteAsset.spriteCharacterTable[d.start].glyph.scale;
+                    d2.targetTime = 0f;
+                    d.datas.Add(cData.info.index, d2);
+                }
+                else
+                {
+                    d2 = d.datas[cData.info.index];
+                }
+
+
+
+                if (context.AnimatorContext.PassedTime >= d2.targetTime)
+                {
+                    TMP_SpriteAsset spriteAsset = cData.info.spriteAsset;
+
+                    d2.targetTime = 1f / Mathf.Abs(d.framerate) + context.AnimatorContext.PassedTime;
+
+                    // Return if sprite was truncated or replaced by the Ellipsis character.
+                    if (cData.info.character == 0x03 || cData.info.character == 0x2026)
+                    {
+                        return;
+                    }
+ 
+                    // Get a reference to the current sprite
+                    TMP_SpriteCharacter spriteCharacter = spriteAsset.spriteCharacterTable[d2.currentFrame];
+
+                    // Update the vertices for the new sprite
+                    Vector2 origin = new Vector2(cData.info.origin, cData.info.baseLine);
+
+                    float spriteScale = cData.info.referenceScale / d2.baseSpriteScale * spriteCharacter.scale * spriteCharacter.glyph.scale;
+
+                    Vector3 bl = new Vector3(origin.x + spriteCharacter.glyph.metrics.horizontalBearingX * spriteScale, origin.y + (spriteCharacter.glyph.metrics.horizontalBearingY - spriteCharacter.glyph.metrics.height) * spriteScale);
+                    Vector3 tl = new Vector3(bl.x, origin.y + spriteCharacter.glyph.metrics.horizontalBearingY * spriteScale);
+                    Vector3 tr = new Vector3(origin.x + (spriteCharacter.glyph.metrics.horizontalBearingX + spriteCharacter.glyph.metrics.width) * spriteScale, tl.y);
+                    Vector3 br = new Vector3(tr.x, bl.y);
+
+                    d2.vert_0 = bl;
+                    d2.vert_1 = tl;
+                    d2.vert_2 = tr;
+                    d2.vert_3 = br;
+
+                    // Update the UV to point to the new sprite
+                    Vector2 uv0 = new Vector2((float)spriteCharacter.glyph.glyphRect.x / spriteAsset.spriteSheet.width, (float)spriteCharacter.glyph.glyphRect.y / spriteAsset.spriteSheet.height);
+                    Vector2 uv1 = new Vector2(uv0.x, (float)(spriteCharacter.glyph.glyphRect.y + spriteCharacter.glyph.glyphRect.height) / spriteAsset.spriteSheet.height);
+                    Vector2 uv2 = new Vector2((float)(spriteCharacter.glyph.glyphRect.x + spriteCharacter.glyph.glyphRect.width) / spriteAsset.spriteSheet.width, uv1.y);
+                    Vector2 uv3 = new Vector2(uv2.x, uv0.y);
+
+                    d2.uv0_0 = uv0;
+                    d2.uv0_1 = uv1;
+                    d2.uv0_2 = uv2;
+                    d2.uv0_3 = uv3;
+
+                    if (d.framerate > 0)
+                    {
+                        if (d2.currentFrame < d.end)
+                            d2.currentFrame += 1;
+                        else
+                            d2.currentFrame = d.start;
+                    }
+                    else
+                    {
+                        if (d2.currentFrame > d.start)
+                            d2.currentFrame -= 1;
+                        else
+                            d2.currentFrame = d.end;
+                    }
+                }
+
+                cData.mesh.SetPosition(0, d2.vert_0);
+                cData.mesh.SetPosition(1, d2.vert_1);
+                cData.mesh.SetPosition(2, d2.vert_2);
+                cData.mesh.SetPosition(3, d2.vert_3);
+
+                cData.mesh.SetUV0(0, d2.uv0_0);
+                cData.mesh.SetUV0(1, d2.uv0_1);
+                cData.mesh.SetUV0(2, d2.uv0_2);
+                cData.mesh.SetUV0(3, d2.uv0_3);
+            }
+
+            public object GetNewCustomData()
+            {
+                return new Data() { datas = new Dictionary<int, Data2>() };
+            }
+
+            public void SetParameters(object customData, IDictionary<string, string> parameters)
+            {
+                Data d = customData as Data;
+
+                var split = parameters["anim"].Split(',');
+                if (ParsingUtility.StringToInt(split[0], out int result))
+                {
+                    d.start = result;
+                }
+                if (ParsingUtility.StringToInt(split[1], out result))
+                {
+                    d.end = result;
+                }
+                if (ParsingUtility.StringToInt(split[2], out result))
+                {
+                    d.framerate = result;
+                }
+            }
+
+            public bool ValidateParameters(IDictionary<string, string> parameters)
+            {
+                Debug.Log("Checking parameters");
+                if (parameters == null) return false;
+                if (!parameters.ContainsKey("anim")) return false;
+                if (parameters["anim"].Split(',').Length != 3) return false;
+                return true;
+            }
+
+            private class Data
+            {
+                public int start;
+                public int end;
+                public int framerate;
+
+                public Dictionary<int, Data2> datas;
+            }
+
+            private class Data2
+            {
+                public int currentFrame;
+                public float baseSpriteScale;
+                public float targetTime;
+
+                public Vector2 uv0_0;
+                public Vector2 uv0_1;
+                public Vector2 uv0_2;
+                public Vector2 uv0_3;
+
+                public Vector3 vert_0;
+                public Vector3 vert_1;
+                public Vector3 vert_2;
+                public Vector3 vert_3;
+
+                public bool init;
+            }
         }
 
         // Reset all visible character when a tag is added / removed / replaced;
@@ -1680,7 +1840,7 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 #endif
-#endregion
+        #endregion
 
 
         private bool characterResetQueued = false;

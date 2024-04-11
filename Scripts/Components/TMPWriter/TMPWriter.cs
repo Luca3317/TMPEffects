@@ -229,8 +229,6 @@ namespace TMPEffects.Components
         {
             processors.UnregisterFrom(Mediator.Processor);
 
-            Mediator.ForceReprocess();
-
             commandDatabase?.Dispose();
 
             UnsubscribeFromMediator();
@@ -246,7 +244,9 @@ namespace TMPEffects.Components
             }
 #endif
 
+            var textComponent = Mediator.Text;
             FreeMediator();
+            if (textComponent != null) textComponent.ForceMeshUpdate(false, true);
 
 #if UNITY_EDITOR
             // Queue a player loop update to instantly update scene view

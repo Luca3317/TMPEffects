@@ -627,6 +627,17 @@ namespace TMPEffects.TextProcessing
                 case "idx":
                 case "index": result = AnimationUtility.WaveOffsetType.Index; return true;
 
+                case "word":
+                case "wordidx":
+                case "wordindex": result = AnimationUtility.WaveOffsetType.Word; return true;
+
+                case "line":
+                case "lineno":
+                case "linenumber": result = AnimationUtility.WaveOffsetType.Line; return true;
+
+                case "base":
+                case "baseline": result = AnimationUtility.WaveOffsetType.Baseline; return true;
+
                 case "x":
                 case "xpos": result = AnimationUtility.WaveOffsetType.XPos; return true;
 
