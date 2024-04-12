@@ -327,7 +327,7 @@ namespace TMPEffects.Components
             ITMPEffectDatabase<ITMPAnimation> database;
 
 
-            switch (type)
+            switch (type) 
             {
 
                 case TMPAnimationType.Show:
@@ -719,8 +719,8 @@ namespace TMPEffects.Components
             {
                 Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
             }
-            //else if (count % 100 == 0) Debug.Log(count); 
-            count++;
+            else if (count % 100 == 0) Debug.Log(count);
+            count++; 
             sw.Start();
 
             context.passed += deltaTime;

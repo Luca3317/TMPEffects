@@ -6,7 +6,7 @@ using UnityEngine;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
 using System.Collections;
- 
+
 namespace TMPEffects.TextProcessing
 {
     /// <summary>
@@ -122,16 +122,22 @@ namespace TMPEffects.TextProcessing
                 else if (tagInfo.name == "sprite" || tagInfo.name == "SPRITE")
                 {
                     var parameters = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
+
+                    // if has anim parameter (otherwise not relevant)
                     if (parameters.ContainsKey("anim"))
                     {
                         var split = parameters["anim"].Split(',');
+
+                        // if has valid anim parameter (otherwise not relevant)
                         if (split.Length == 3)
                         {
+                            // If tag is not handled, print warning and append indicator to text
                             if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                             {
                                 Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
                                 sb.Append(" <color=red>!SEE CONSOLE!</color> ");
                             }
+                            // If tag is handled, append normal <sprite> tag to text
                             else
                             {
                                 indexOffset -= (tagInfo.endIndex - tagInfo.startIndex + 1);
@@ -155,7 +161,8 @@ namespace TMPEffects.TextProcessing
                                         case "COLOR":
                                             sb2.Append($" {parameter.Key}=\"{parameter.Value}\""); break;
                                         case "":
-                                            sb2.Append($"{parameter.Key}=\"{parameter.Value}\""); break;
+                                            if (!string.IsNullOrWhiteSpace(parameter.Value))
+                                                sb2.Append($"{parameter.Key}=\"{parameter.Value}\""); break;
                                     }
 
                                     //if (string.IsNullOrWhiteSpace(parameter.Key)) continue;
@@ -241,14 +248,16 @@ namespace TMPEffects.TextProcessing
             sb.Append(text.AsSpan(searchIndex, text.Length - searchIndex));
 
             string parsed;
-            if (sb.Length == 0) parsed = " ";
-            else parsed = sb.ToString();
+            parsed = sb.ToString();
 
             FinishPreProcess?.Invoke(parsed);
 
             sw.Stop();
 
-            return parsed;
+            // Add a space at the end of the text;
+            // Quick fix to issues with texts that are empty either after this
+            // preprocess or after the native tag processing
+            return parsed + " ";
         }
 
         /// <summary>
@@ -259,8 +268,6 @@ namespace TMPEffects.TextProcessing
         {
             var info = TextComponent.textInfo;
 
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
             BeginAdjustIndices?.Invoke(info.textComponent.text);
 
             Dictionary<TagProcessor, List<KeyValuePair<Indices, TMPEffectTag>>> dict = new();
@@ -273,97 +280,27 @@ namespace TMPEffects.TextProcessing
                 }
             }
 
-            int lastIndex = -1;
-
-            for (int i = 0; i < info.characterCount; i++)
-            {
-                var cInfo = info.characterInfo[i];
-
-                if (cInfo.index - lastIndex != 1)
-                {
-                    // If the index did not change => inserted text
-                    if (cInfo.index == lastIndex)
-                    {
-                        int insertedCharacters = 1;
-                        while (i++ < info.characterCount && info.characterInfo[i].index == lastIndex)
-                        {
-                            insertedCharacters++;
-                        }
-
-                        foreach (var list in dict.Values)
-                        {
-                            foreach (var kvp in list)
-                            {
-                                if (kvp.Key.originalEnd == -1)
-                                {
-                                    if (kvp.Key.originalStart >= lastIndex)
-                                    {
-                                        kvp.Key.start += insertedCharacters;
-                                    }
-                                }
-                                else
-                                {
-                                    if (kvp.Key.originalEnd < lastIndex) continue;
-
-                                    // If tag begins after inserted text
-                                    if (kvp.Key.originalStart >= lastIndex)
-                                    {
-                                        kvp.Key.start += insertedCharacters;
-                                    }
-                                    kvp.Key.end += insertedCharacters;
-                                }
-                            }
-                        }
-                    }
-                    // If the index incremented by more than one => text removed
-                    else if (cInfo.index > lastIndex)
-                    {
-                        int diff = cInfo.index - lastIndex - 1;
-
-                        foreach (var list in dict.Values)
-                        {
-                            foreach (var kvp in list)
-                            {
-                                if (kvp.Key.originalEnd == -1)
-                                {
-                                    if (kvp.Key.originalStart > lastIndex + 1)
-                                    {
-                                        kvp.Key.start -= diff;
-                                    }
-                                }
-                                else
-                                {
-                                    if (kvp.Key.originalEnd <= lastIndex) continue;
-
-                                    // If tag begins after inserted text
-                                    if (kvp.Key.originalStart > lastIndex + 1)
-                                    {
-                                        kvp.Key.start -= diff;
-                                    }
-                                    kvp.Key.end -= diff;
-                                }
-                            }
-                        }
-                    }
-                    // If the index became lower again -- is there any case where that may happen?
-                    else
-                    {
-                        Debug.LogWarning("Undefined case; character index became lower again");
-                    }
-                }
-
-                lastIndex = cInfo.index;
-            }
-
-            // Added as quick fix for something like this:
-            // "A<color=white><wave>"; TODO cleaner fix?
             foreach (var kvp in dict)
             {
                 foreach (var thing in kvp.Value)
                 {
-                    if (thing.Key.start > info.characterCount)
+                    for (int i = 0; i < info.characterCount; i++)
                     {
-                        thing.Key.start = info.characterCount;
+                        var cinfo = info.characterInfo[i];
+
+                        if (!thing.Key.startSet && thing.Key.start <= cinfo.index)
+                        {
+                            thing.Key.start = i;
+                            thing.Key.startSet = true;
+                        }
+
+                        if (thing.Key.end != -1 && !thing.Key.endSet && thing.Key.end <= cinfo.index)
+                        {
+                            thing.Key.end = i;
+                            thing.Key.endSet = true;
+                        }
+
+                        if (thing.Key.startSet && (thing.Key.end == -1 || thing.Key.endSet)) break;
                     }
                 }
             }
@@ -379,8 +316,6 @@ namespace TMPEffects.TextProcessing
             }
 
             FinishAdjustIndices?.Invoke(info.textComponent.text);
-
-            sw.Stop();
         }
 
         private TagProcessorManager processors;
@@ -411,8 +346,8 @@ namespace TMPEffects.TextProcessing
             public int start;
             public int end;
 
-            public readonly int originalStart;
-            public readonly int originalEnd;
+            public bool startSet;
+            public bool endSet;
 
             public readonly TMPEffectTagIndices indices;
 
@@ -421,8 +356,8 @@ namespace TMPEffects.TextProcessing
                 this.start = indices.StartIndex;
                 this.end = indices.EndIndex;
 
-                this.originalStart = indices.StartIndex;
-                this.originalEnd = indices.EndIndex;
+                startSet = false;
+                endSet = false;
 
                 this.indices = indices;
             }
