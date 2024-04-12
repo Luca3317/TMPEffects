@@ -53,7 +53,7 @@ namespace TMPEffects.Tags.Collections
                 if (collections.ContainsKey(coll.Key)) throw new System.ArgumentException(nameof(coll.Key));
                 if (prefixToKey.ContainsKey(coll.Key.Prefix)) throw new System.ArgumentException(nameof(coll.Key.Prefix));
 
-                NonAdjustingTagCollection collection = new NonAdjustingTagCollection();
+                NonAdjustingTagCollection collection = new NonAdjustingTagCollection(coll.Key);
                 collection.SetItems(coll.Value.Select(x => new TMPEffectTagTuple(x.Value, x.Key)));
                 prefixToKey.Add(coll.Key.Prefix, coll.Key);
                 collections.Add(coll.Key, collection);
@@ -75,7 +75,7 @@ namespace TMPEffects.Tags.Collections
 
             // TODO IMPORTANT
 
-            ObservableTagCollection collection = new NonAdjustingTagCollection();
+            ObservableTagCollection collection = new NonAdjustingTagCollection(key);
             //ObservableTagCollection collection = new NonAdjustingTagCollection(key);
 
             collection.CollectionChanged += OnCollectionChanged;
