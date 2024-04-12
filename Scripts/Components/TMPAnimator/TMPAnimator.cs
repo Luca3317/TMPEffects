@@ -709,20 +709,8 @@ namespace TMPEffects.Components
             if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
-        [System.NonSerialized] System.Diagnostics.Stopwatch sw = null;
-        [System.NonSerialized] int count = 0;
-
         private void UpdateAnimations_Impl(float deltaTime)
         {
-            if (sw == null) sw = new();
-            else if (count == 100000)
-            {
-                Debug.Log("MEasurement aftert 100000 iterations: " + sw.Elapsed.TotalMilliseconds);
-            }
-            else if (count % 100 == 0) Debug.Log(count);
-            count++; 
-            sw.Start();
-
             context.passed += deltaTime;
 
             if (characterResetQueued)
@@ -740,8 +728,6 @@ namespace TMPEffects.Components
 
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-            sw.Stop();
         }
 
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true, bool forced = false)

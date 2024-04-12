@@ -4,7 +4,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
-using System.Diagnostics;
+using UnityEngine;
 
 namespace TMPEffects.Components.Animator
 {

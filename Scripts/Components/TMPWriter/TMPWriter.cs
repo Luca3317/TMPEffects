@@ -17,10 +17,7 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
-using TMPEffects.Databases.AnimationDatabase;
-using TMPEffects.Components.Animator;
 using TMPEffects.Tags;
-using UnityEngine.XR;
 
 namespace TMPEffects.Components
 {

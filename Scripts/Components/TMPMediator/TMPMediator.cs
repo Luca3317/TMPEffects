@@ -4,9 +4,6 @@ using TMPEffects.TextProcessing;
 using System.Collections.ObjectModel;
 using TMPEffects.CharacterData;
 using UnityEngine;
-using UnityEngine.UIElements;
-using System;
-using UnityEditor;
 
 namespace TMPEffects.Components.Mediator
 {

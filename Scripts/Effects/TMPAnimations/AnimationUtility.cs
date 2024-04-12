@@ -3,6 +3,9 @@ using TMPEffects.CharacterData;
 using System;
 using TMPEffects.Extensions;
 using TMPEffects.Components.Animator;
+using TMPro;
+using System.Runtime.CompilerServices;
+using UnityEngine.TextCore;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -765,7 +768,7 @@ namespace TMPEffects.TMPAnimations
                     return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)), -1);
                 }
 
-                throw new System.Exception("Shouldnt be reachable");
+                throw new System.Exception("Shouldnt be reachable (interval = " + interval + ")");
             }
 
             [Flags]
@@ -927,6 +930,35 @@ namespace TMPEffects.TMPAnimations
             throw new System.ArgumentException(nameof(type));
         }
         #endregion
+
+        public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData, IAnimationContext context)
+        {
+            float baseSpriteScale = originalCharacter.scale * originalCharacter.glyph.scale;
+            Vector2 origin = new Vector2(cData.info.origin, cData.info.baseLine);
+            float spriteScale = cData.info.referenceScale / baseSpriteScale * newCharacter.scale * newCharacter.glyph.scale;
+
+            Vector3 bl = new Vector3(origin.x + newCharacter.glyph.metrics.horizontalBearingX * spriteScale, origin.y + (newCharacter.glyph.metrics.horizontalBearingY - newCharacter.glyph.metrics.height) * spriteScale);
+            Vector3 tl = new Vector3(bl.x, origin.y + newCharacter.glyph.metrics.horizontalBearingY * spriteScale);
+            Vector3 tr = new Vector3(origin.x + (newCharacter.glyph.metrics.horizontalBearingX + newCharacter.glyph.metrics.width) * spriteScale, tl.y);
+            Vector3 br = new Vector3(tr.x, bl.y);
+
+            var fontAsset = cData.info.fontAsset;
+
+            Vector2 uv0 = new Vector2((float)newCharacter.glyph.glyphRect.x / fontAsset.atlasWidth, (float)newCharacter.glyph.glyphRect.y / fontAsset.atlasHeight);
+            Vector2 uv1 = new Vector2(uv0.x, (float)(newCharacter.glyph.glyphRect.y + newCharacter.glyph.glyphRect.height) / fontAsset.atlasHeight);
+            Vector2 uv2 = new Vector2((float)(newCharacter.glyph.glyphRect.x + newCharacter.glyph.glyphRect.width) / fontAsset.atlasWidth, uv1.y);
+            Vector2 uv3 = new Vector2(uv2.x, uv0.y);
+
+            SetVertexRaw(0, bl, cData, context);
+            SetVertexRaw(1, tl, cData, context);
+            SetVertexRaw(2, tr, cData, context);
+            SetVertexRaw(3, br, cData, context);
+
+            cData.mesh.SetUV0(0, uv0);
+            cData.mesh.SetUV0(1, uv1);
+            cData.mesh.SetUV0(2, uv2);
+            cData.mesh.SetUV0(3, uv3);
+        }
 
 
         public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)

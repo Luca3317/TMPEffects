@@ -42,18 +42,22 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 InitRNGDict(context);
                 InitLastUpdatedDict(context);
                 InitDelayDict(context);
-                InitPositionsDict(context);
+                InitCharactersDict(context);
             }
 
             int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
             TMP_Character c;
-            if (!d.positions.ContainsKey(segmentIndex))
+            if (!d.originalCharacterCache.ContainsKey(segmentIndex))
             {
-                if (!cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c))
-                    Debug.LogError($"Failed to get character {cData.info.character} from lookup table");
-
-                d.positions[segmentIndex] = c.glyph.glyphRect;
-                d.originalPositions[segmentIndex] = c.glyph.glyphRect;
+                if (cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out TMP_Character original))
+                {
+                    d.originalCharacterCache[segmentIndex] = original;
+                    d.currentCharacterCache[segmentIndex] = original;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             float t = Mathf.Lerp(0, 1, (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / d.duration);
@@ -93,13 +97,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                     // Set to original
                     if (original)
                     {
-                        cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
-                        GlyphRect rect = c.glyph.glyphRect;
-                        cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                        cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                        cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                        cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                        d.positions[segmentIndex] = rect;
+                        d.currentCharacterCache[segmentIndex] = d.originalCharacterCache[segmentIndex];
                     }
                     else
                     {
@@ -113,25 +111,12 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                                 character = char.ToLower(character);
                         }
 
-                        bool success = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out c);
+                        bool success = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out TMP_Character newCharacter);
 
                         if (success)
                         {
-                            GlyphRect rect = c.glyph.glyphRect;
-                            GlyphRect ogRect = d.originalPositions[segmentIndex];
-                            cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                            cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                            cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                            cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                            d.positions[segmentIndex] = rect;
-
-                            if (rect.width != ogRect.width || rect.height != ogRect.height)
-                            {
-                                float wProp = (float)rect.width / ogRect.width;
-                                float hProp = (float)rect.height / ogRect.height;
-                                cData.SetScale(new Vector3(wProp, hProp, 1f));
-                                cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
-                            }
+                            d.currentCharacterCache[segmentIndex] = newCharacter;
+                            AnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData, context);
                         }
                         else
                             Debug.LogError($"Failed to get character {character} from lookup table");
@@ -140,31 +125,14 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 // If not, set to original
                 else
                 {
-                    cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
-                    GlyphRect rect = c.glyph.glyphRect;
-                    cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                    cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                    d.positions[segmentIndex] = rect;
+                    d.currentCharacterCache[segmentIndex] = d.originalCharacterCache[segmentIndex];
                 }
             }
             else
             {
-                GlyphRect rect = d.positions[segmentIndex];
-                GlyphRect ogRect = d.originalPositions[segmentIndex];
-                cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-
-                if (rect.width != ogRect.width || rect.height != ogRect.height)
-                {
-                    float wProp = (float)rect.width / ogRect.width;
-                    float hProp = (float)rect.height / ogRect.height;
-                    cData.SetScale(new Vector3(wProp, hProp, 1f));
-                    cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
-                }
+                TMP_Character current = d.currentCharacterCache[segmentIndex];
+                TMP_Character original = d.originalCharacterCache[segmentIndex];
+                AnimationUtility.SetToCharacter(current, original, cData, context);
             }
         }
 
@@ -202,11 +170,11 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             }
         }
 
-        private void InitPositionsDict(IAnimationContext context)
+        private void InitCharactersDict(IAnimationContext context)
         {
             Data d = context.CustomData as Data;
-            d.positions = new Dictionary<int, GlyphRect>(context.SegmentData.length);
-            d.originalPositions = new Dictionary<int, GlyphRect>(context.SegmentData.length);
+            d.currentCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
+            d.originalCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
@@ -274,8 +242,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             public AnimationCurve probCurve;
 
             public System.Random random = null;
-            public Dictionary<int, GlyphRect> positions = null;
-            public Dictionary<int, GlyphRect> originalPositions = null;
+            public Dictionary<int, TMP_Character> currentCharacterCache = null;
+            public Dictionary<int, TMP_Character> originalCharacterCache = null;
             public Dictionary<int, float> lastUpdatedDict = null;
             public Dictionary<int, float> delayDict = null;
             public Dictionary<int, System.Random> rngDict = null;

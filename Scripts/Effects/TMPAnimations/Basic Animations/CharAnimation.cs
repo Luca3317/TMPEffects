@@ -38,17 +38,18 @@ namespace TMPEffects.TMPAnimations.Animations
                 Init(cData, d, context);
             }
 
-            if (!d.positions.ContainsKey(segmentIndex))
+            if (!d.originalCharacterCache.ContainsKey(segmentIndex))
             {
-                if (!cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c))
-                    Debug.LogError($"Failed to get character {cData.info.character} from lookup table");
-
-                d.positions[segmentIndex] = c.glyph.glyphRect;
-                d.originalPositions[segmentIndex] = c.glyph.glyphRect;
+                if (cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out TMP_Character original))
+                {
+                    d.originalCharacterCache[segmentIndex] = original;
+                    d.currentCharacterCache[segmentIndex] = original;
+                }
+                else
+                {
+                    return;
+                }
             }
-
-            float h = cData.info.fontAsset.atlasHeight;
-            float w = cData.info.fontAsset.atlasWidth;
 
             // If waiting
             if (d.waitingSince[segmentIndex] != -1)
@@ -60,30 +61,9 @@ namespace TMPEffects.TMPAnimations.Animations
                 }
                 else
                 {
-                    GlyphRect rect = d.positions[segmentIndex];
-                    GlyphRect ogRect = d.originalPositions[segmentIndex];
-                    cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                    cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-
-                    //if (rect.width != ogRect.width || rect.height != ogRect.height)
-                    //{
-                    //    Vector3 p = (cData.mesh.initial.vertex_BL.position + cData.mesh.initial.vertex_BR.position) / 2;
-                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width);
-                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width + Vector3.up * rect.height);
-                    //    cData.mesh.SetVertex(0, p - Vector3.right * rect.width + Vector3.up * rect.height);
-                    //}
-
-
-                    if (rect.width != ogRect.width || rect.height != ogRect.height)
-                    {
-                        float wProp = (float)rect.width / ogRect.width;
-                        float hProp = (float)rect.height / ogRect.height;
-                        cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
-                    }
-
+                    TMP_Character current = d.currentCharacterCache[segmentIndex];
+                    TMP_Character original = d.originalCharacterCache[segmentIndex];
+                    AnimationUtility.SetToCharacter(current, original, cData, context);
                     return;
                 }
             }
@@ -91,13 +71,7 @@ namespace TMPEffects.TMPAnimations.Animations
             // Set to original character
             if (d.random.NextDouble() > d.probability)
             {
-                cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out c);
-                GlyphRect rect = c.glyph.glyphRect;
-                cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                d.positions[segmentIndex] = rect;
+                d.currentCharacterCache[segmentIndex] = d.originalCharacterCache[segmentIndex];
             }
 
             // Set to new random character
@@ -113,25 +87,12 @@ namespace TMPEffects.TMPAnimations.Animations
                         character = char.ToLower(character);
                 }
 
-                bool t = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out c);
+                bool succ = cData.info.fontAsset.characterLookupTable.TryGetValue(character, out TMP_Character newCharacter);
 
-                if (t)
+                if (succ)
                 {
-                    GlyphRect rect = c.glyph.glyphRect;
-                    GlyphRect ogRect = d.originalPositions[segmentIndex];
-                    cData.mesh.SetUV0(0, new Vector2(rect.x / w, rect.y / h));
-                    cData.mesh.SetUV0(1, new Vector2(rect.x / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(2, new Vector2((rect.x + rect.width) / w, (rect.y + rect.height) / h));
-                    cData.mesh.SetUV0(3, new Vector2((rect.x + rect.width) / w, rect.y / h));
-                    d.positions[segmentIndex] = rect;
-
-                    if (rect.width != ogRect.width || rect.height != ogRect.height)
-                    {
-                        float wProp = (float)rect.width / ogRect.width;
-                        float hProp = (float)rect.height / ogRect.height;
-                        cData.SetScale(new Vector3(wProp, hProp, 1f));
-                        cData.SetPosition(cData.InitialPosition + Vector3.up * (rect.height - ogRect.height) / 2);
-                    }
+                    d.currentCharacterCache[segmentIndex] = newCharacter;
+                    AnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData, context);
                 }
                 else
                     Debug.LogError($"Failed to get character {character} from lookup table");
@@ -150,10 +111,10 @@ namespace TMPEffects.TMPAnimations.Animations
                 cData.info.fontAsset.TryAddCharacters(d.characters);
 
             //d.vertices = new(context.segmentData.length);
-            d.originalPositions = new(context.SegmentData.length);
             d.waitingSince = new(context.SegmentData.length);
             d.waitDuration = new(context.SegmentData.length);
-            d.positions = new(context.SegmentData.length);
+            d.originalCharacterCache = new(context.SegmentData.length);
+            d.currentCharacterCache = new(context.SegmentData.length);
 
             for (int i = 0; i < context.SegmentData.length; i++)
             {
@@ -200,8 +161,8 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             public Dictionary<int, float> waitingSince = null;
             public Dictionary<int, float> waitDuration = null;
-            public Dictionary<int, GlyphRect> positions = null;
-            public Dictionary<int, GlyphRect> originalPositions = null;
+            public Dictionary<int, TMP_Character> currentCharacterCache = null;
+            public Dictionary<int, TMP_Character> originalCharacterCache = null;
             public System.Random random = null;
 
             public string characters;

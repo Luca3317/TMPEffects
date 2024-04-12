@@ -67,8 +67,6 @@ namespace TMPEffects.TextProcessing
         /// <returns>The preprocessed text.</returns>
         public string PreprocessText(string text)
         {
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
             BeginPreProcess?.Invoke(text);
 
             styles.Clear();
@@ -251,8 +249,6 @@ namespace TMPEffects.TextProcessing
             parsed = sb.ToString();
 
             FinishPreProcess?.Invoke(parsed);
-
-            sw.Stop();
 
             // Add a space at the end of the text;
             // Quick fix to issues with texts that are empty either after this
