@@ -16,6 +16,7 @@ public class AnimatorLimiter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (animator == null) return;
         updateInterval = 1.0f / updatesPerSecond;
         animator.SetUpdateFrom(UpdateFrom.Script);
     }
@@ -23,6 +24,8 @@ public class AnimatorLimiter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animator == null) return;
+
         timer += Time.deltaTime;
 
         if (timer > updateInterval)

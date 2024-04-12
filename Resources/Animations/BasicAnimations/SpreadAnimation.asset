@@ -98,11 +98,11 @@ MonoBehaviour:
   waveOffsetType: 10
   growAnchor:
     vector: {x: 0, y: 0, z: 0}
-    type: 2
+    type: 1
   growDirection: {x: 0, y: 1, z: 0}
   shrinkAnchor:
     vector: {x: 0, y: 0, z: 0}
-    type: 2
+    type: 1
   shrinkDirection: {x: 0, y: 0, z: 0}
   maxPercentage: 1
   minPercentage: 0

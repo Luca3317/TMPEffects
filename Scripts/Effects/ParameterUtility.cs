@@ -11,54 +11,32 @@ namespace TMPEffects
 {
     public static class ParameterUtility
     {
-        public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            try
-            {
-                GetDefinedParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         public static bool TryGetDefinedParameter(out string value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetDefinedParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = null;
-                return false;
-            }
-        }
-
-        public static string GetDefinedParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string ret = null;
-            if (parameters.ContainsKey(name)) ret = name;
+            value = null;
+            if (parameters.ContainsKey(name)) value = name;
             if (aliases == null)
             {
-                if (ret != null) return ret;
-                throw new System.Exception("Parameter " + name + " not defined");
+                return value != null;
             }
 
             for (int i = 0; i < aliases.Length; i++)
             {
                 if (parameters.ContainsKey(aliases[i]))
                 {
-                    if (ret != null) throw new System.Exception("Parameter " + name + " or its aliases defined multiple times");
-                    else ret = aliases[i];
+                    if (value != null) return false;
+                    else value = aliases[i];
                 }
             }
 
-            if (ret == null) throw new System.Exception("Parameter " + name + " not defined, nor any of its aliases");
-            return ret;
+            return value != null;
+        }
+
+
+        public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
+        {
+            return TryGetDefinedParameter(out _, parameters, name, aliases);
         }
 
 
@@ -75,28 +53,10 @@ namespace TMPEffects
 
         public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetFloatParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = 0f;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static float GetFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToFloat(parameters[defined], out float value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid float");
+            return ParsingUtility.StringToFloat(parameters[parameterName], out value);
         }
 
 
@@ -113,28 +73,10 @@ namespace TMPEffects
 
         public static bool TryGetIntParameter(out int value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetIntParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = 0;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static int GetIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToInt(parameters[defined], out int value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid int");
+            return ParsingUtility.StringToInt(parameters[parameterName], out value);
         }
 
 
@@ -151,28 +93,10 @@ namespace TMPEffects
 
         public static bool TryGetBoolParameter(out bool value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetBoolParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
-
-        public static bool GetBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToBool(parameters[defined], out bool value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid bool");
+            value = false;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
+           
+            return ParsingUtility.StringToBool(parameters[parameterName], out value);
         }
 
 
@@ -189,28 +113,10 @@ namespace TMPEffects
 
         public static bool TryGetVector2Parameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetVector2Parameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = Vector2.zero;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Vector2 GetVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToVector2(parameters[defined], out Vector2 value, BuiltInVector2Keywords))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector2");
+            return ParsingUtility.StringToVector2(parameters[parameterName], out value, BuiltInVector2Keywords);
         }
 
 
@@ -227,28 +133,10 @@ namespace TMPEffects
 
         public static bool TryGetVector3Parameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetVector3Parameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = Vector3.zero;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Vector3 GetVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToVector3(parameters[defined], out Vector3 value, BuiltInVector3Keywords))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector3");
+            return ParsingUtility.StringToVector3(parameters[parameterName], out value, BuiltInVector3Keywords);
         }
 
 
@@ -265,28 +153,10 @@ namespace TMPEffects
 
         public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetVector2OffsetParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = Vector2.zero;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Vector2 GetVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToVector2Offset(parameters[defined], out Vector2 value, BuiltInVector2Keywords))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector2 offset");
+            return ParsingUtility.StringToVector2Offset(parameters[parameterName], out value, BuiltInVector2Keywords);
         }
 
 
@@ -303,34 +173,13 @@ namespace TMPEffects
 
         public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetVector3OffsetParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = Vector3.zero;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Vector3 GetVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToVector3Offset(parameters[defined], out Vector3 value, BuiltInVector3Keywords))
-            {
-                return value;
-            }
-            else
-
-                throw new System.Exception("Parameter " + defined + " is not a valid Vector3 offset");
+            return ParsingUtility.StringToVector3Offset(parameters[parameterName], out value, BuiltInVector3Keywords);
         }
 
 
-
-        // TODO Make v2
         public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
@@ -344,28 +193,10 @@ namespace TMPEffects
 
         public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetAnchorParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = Vector2.zero;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Vector2 GetAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToAnchor(parameters[defined], out Vector2 value, AnchorKeywords, BuiltInVector2Keywords))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid anchor");
+            return ParsingUtility.StringToAnchor(parameters[parameterName], out value, AnchorKeywords, BuiltInVector2Keywords);
         }
 
         public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords = new ReadOnlyDictionary<string, Vector2>(new Dictionary<string, Vector2>()
@@ -407,28 +238,10 @@ namespace TMPEffects
 
         public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetAnimationCurveParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = null;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static AnimationCurve GetAnimationCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToAnimationCurve(parameters[defined], out AnimationCurve value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid AnimationCurve");
+            return ParsingUtility.StringToAnimationCurve(parameters[parameterName], out value);
         }
 
 
@@ -445,30 +258,11 @@ namespace TMPEffects
 
         public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetWaveOffsetParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
+            value = WaveOffsetType.Index;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
+
+            return ParsingUtility.StringToWaveOffsetType(parameters[parameterName], out value);
         }
-
-        public static AnimationUtility.WaveOffsetType GetWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToWaveOffsetType(parameters[defined], out AnimationUtility.WaveOffsetType value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid WaveOffsetType");
-        }
-
 
         public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
@@ -483,28 +277,10 @@ namespace TMPEffects
 
         public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetColorParameter(parameters, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = default;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public static Color GetColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            if (ParsingUtility.StringToColor(parameters[defined], out Color value))
-            {
-                return value;
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Color");
+            return ParsingUtility.StringToColor(parameters[parameterName], out value);
         }
 
 
@@ -521,43 +297,32 @@ namespace TMPEffects
 
         public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
-            try
-            {
-                value = GetArrayParameter(parameters, func, name, aliases);
-                return true;
-            }
-            catch
-            {
-                value = default;
-                return false;
-            }
-        }
+            value = null;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-        public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
-        public static T[] GetArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-
-            string[] contents = parameters[defined].Split(";");
+            string[] contents = parameters[parameterName].Split(";");
 
             List<T> result = new List<T>();
 
             for (int i = 0; i < contents.Length; i++)
             {
-                string value = contents[i];
+                string contentValue = contents[i];
 
-                if (!func(value, out T t, null))
+                if (!func(contentValue, out T t, null))
                 {
-                    throw new System.Exception("Parameter " + defined + " contains invalid type");
+                    return false;
+                    //throw new System.Exception("Parameter " + defined + " contains invalid type");
                 }
 
                 result.Add(t);
             }
 
-            return result.ToArray();
+            value = result.ToArray();
+            return true;
         }
 
-
+        public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
+      
 
         public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
@@ -591,30 +356,6 @@ namespace TMPEffects
             return false;
         }
 
-        public static TypedVector3 GetTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-            name = parameters[defined];
-
-            Vector3 value;
-            if (TryGetVector3Parameter(out value, parameters, name))
-            {
-                return new TypedVector3(VectorType.Position, value);
-            }
-            if (TryGetAnchorParameter(out Vector2 value2, parameters, name))
-            {
-                return new TypedVector3(VectorType.Anchor, value2);
-            }
-            if (TryGetVector3OffsetParameter(out value, parameters, name))
-            {
-                return new TypedVector3(VectorType.Offset, value);
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector3");
-        }
-
-
-
 
         public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
@@ -647,29 +388,6 @@ namespace TMPEffects
             vector = default;
             return false;
         }
-
-        public static TypedVector2 GetTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {
-            string defined = GetDefinedParameter(parameters, name, aliases);
-            name = parameters[defined];
-
-            Vector2 value;
-            if (TryGetVector2Parameter(out value, parameters, name))
-            {
-                return new TypedVector2(VectorType.Position, value);
-            }
-            if (TryGetAnchorParameter(out value, parameters, name))
-            {
-                return new TypedVector2(VectorType.Anchor, value);
-            }
-            if (TryGetVector2OffsetParameter(out value, parameters, name))
-            {
-                return new TypedVector2(VectorType.Offset, value);
-            }
-
-            throw new System.Exception("Parameter " + defined + " is not a valid Vector2");
-        }
-
 
 
         // TODO Move these somewhere else

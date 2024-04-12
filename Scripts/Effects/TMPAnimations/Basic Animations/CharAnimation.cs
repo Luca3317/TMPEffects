@@ -29,9 +29,9 @@ namespace TMPEffects.TMPAnimations.Animations
             Data d = context.CustomData as Data;
 
             if (string.IsNullOrWhiteSpace(d.characters)) return;
+            if (cData.info.elementType != TMP_TextElementType.Character) return;
 
             int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
-            TMP_Character c;
 
             if (d.waitingSince == null)
             {
@@ -72,6 +72,9 @@ namespace TMPEffects.TMPAnimations.Animations
             if (d.random.NextDouble() > d.probability)
             {
                 d.currentCharacterCache[segmentIndex] = d.originalCharacterCache[segmentIndex];
+                TMP_Character current = d.currentCharacterCache[segmentIndex];
+                TMP_Character original = d.originalCharacterCache[segmentIndex];
+                AnimationUtility.SetToCharacter(current, original, cData, context);
             }
 
             // Set to new random character

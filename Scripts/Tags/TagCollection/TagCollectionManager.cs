@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
-using TMPEffects.Tags.Collections;
-using TMPEffects.Tags;
 using System.Linq;
 
 namespace TMPEffects.Tags.Collections
@@ -30,6 +28,37 @@ namespace TMPEffects.Tags.Collections
             collections = new Dictionary<TKey, ObservableTagCollection>();
             prefixToKey = new Dictionary<char, TKey>();
             autoSync = false;
+        }
+
+        public TagCollectionManager(params KeyValuePair<TKey, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>[] entries)
+        {
+            List<TMPEffectTagTuple> union = new List<TMPEffectTagTuple>();
+            foreach (var coll in entries)
+            {
+                foreach (var kvp in coll.Value)
+                {
+                    union.Add(new TMPEffectTagTuple(kvp.Value, kvp.Key));
+                }
+            }
+
+            union = union.OrderBy(x => x.Indices).ToList();
+            this.union = new NonAdjustingTagCollection();
+            this.union.SetItems(union);
+
+            collections = new();
+            prefixToKey = new();
+            foreach (var coll in entries)
+            {
+                if (coll.Key == null) throw new System.ArgumentNullException(nameof(coll.Key));
+                if (collections.ContainsKey(coll.Key)) throw new System.ArgumentException(nameof(coll.Key));
+                if (prefixToKey.ContainsKey(coll.Key.Prefix)) throw new System.ArgumentException(nameof(coll.Key.Prefix));
+
+                NonAdjustingTagCollection collection = new NonAdjustingTagCollection();
+                collection.SetItems(coll.Value.Select(x => new TMPEffectTagTuple(x.Value, x.Key)));
+                prefixToKey.Add(coll.Key.Prefix, coll.Key);
+                collections.Add(coll.Key, collection);
+                collection.CollectionChanged += OnCollectionChanged;
+            }
         }
 
         ITagCollection ITagCollectionManager<TKey>.AddKey(TKey key) => AddKey(key);
@@ -290,7 +319,7 @@ namespace TMPEffects.Tags.Collections
                 autoSync = prevSync;
             }
         }
-    
+
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
             if (autoSync) return;
@@ -344,7 +373,7 @@ namespace TMPEffects.Tags.Collections
                     throw new System.NotImplementedException();
             }
         }
-        
+
         // TODO
         // Right now, other listeners (specifically CachedCollection) rely on 
         // indices only being changed via removing and reinsertion
@@ -352,7 +381,7 @@ namespace TMPEffects.Tags.Collections
         private class NonAdjustingTagCollection : ObservableTagCollection
         {
             public NonAdjustingTagCollection(ITMPTagValidator validator = null) : base(validator)
-            { 
+            {
                 //if (validator == null) throw new System.ArgumentNullException(nameof(validator)); 
             }
 
@@ -433,6 +462,12 @@ namespace TMPEffects.Tags.Collections
                 tags.Insert(index, new TMPEffectTagTuple(tag, indices));
                 InvokeEvent(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, tags[index], index));
                 return true;
+            }
+
+            internal void SetItems(IEnumerable<TMPEffectTagTuple> items)
+            {
+                tags.Clear();
+                foreach (var tag in items) tags.Add(tag);
             }
         }
     }

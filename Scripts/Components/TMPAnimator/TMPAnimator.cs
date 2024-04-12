@@ -19,8 +19,6 @@ using System.Collections.Specialized;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
-using System.Diagnostics.Tracing;
-using System.Linq;
 using TMPEffects.TMPAnimations.Animations;
 
 namespace TMPEffects.Components
@@ -289,11 +287,11 @@ namespace TMPEffects.Components
             tags = new TagCollectionManager<TMPAnimationCategory>();
             tags.CollectionChanged += OnTagCollectionChanged;
 
-            var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            var roCDataState = new ReadOnlyCharDataState(state);
-            basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
-            show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
-            hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
+            //var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
+            //var roCDataState = new ReadOnlyCharDataState(state);
+            //basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
+            //show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
+            //hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
 
             // Reset processors
             processors ??= new();
@@ -327,7 +325,7 @@ namespace TMPEffects.Components
             ITMPEffectDatabase<ITMPAnimation> database;
 
 
-            switch (type) 
+            switch (type)
             {
 
                 case TMPAnimationType.Show:
@@ -1170,45 +1168,39 @@ namespace TMPEffects.Components
         #region Event Callbacks
         private void OnTextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
-            if (textContentChanged)
-            {
-                SetDummies();
-                PostProcessTags();
-                SetDefault(TMPAnimationType.Show);
-                SetDefault(TMPAnimationType.Hide);
-                if (IsAnimating) UpdateAnimations_Impl(0f);
-                return;
-            }
+            //if (textContentChanged)
+            //{
+            //    SetDummies();
+            //    PostProcessTags();
+            //    SetDefault(TMPAnimationType.Show);
+            //    SetDefault(TMPAnimationType.Hide);
+            //    if (IsAnimating) UpdateAnimations_Impl(0f);
+            //    return;
+            //}
 
-            bool tagsChanged = true;
-            var oldTags = BasicTags;
-            var newTags = processors.TagProcessors[basicCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
+            //bool tagsChanged = true;
+            //var oldTags = tags.ContainsKey(basicCategory) ? BasicTags : Enumerable.Empty<TMPEffectTagTuple>();
+            //var newTags = processors.TagProcessors[basicCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
-            if (oldTags.SequenceEqual(newTags))
-            {
-                oldTags = ShowTags;
-                newTags = processors.TagProcessors[showCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
+            //if (newTags.SequenceEqual(oldTags))
+            //{
+            //    oldTags = tags.ContainsKey(showCategory) ? ShowTags : Enumerable.Empty<TMPEffectTagTuple>();
+            //    newTags = processors.TagProcessors[showCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
-                if (oldTags.SequenceEqual(newTags))
-                {
-                    oldTags = HideTags;
-                    newTags = processors.TagProcessors[hideCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
-                    if (oldTags.SequenceEqual(newTags))
-                    {
-                        tagsChanged = false;
-                    }
-                }
-            }
+            //    if (newTags.SequenceEqual(oldTags))
+            //    {
+            //        oldTags = tags.ContainsKey(hideCategory) ? HideTags : Enumerable.Empty<TMPEffectTagTuple>();
+            //        newTags = processors.TagProcessors[hideCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
-            if (tagsChanged)
-            {
-                SetDummies();
-                PostProcessTags();
-                SetDefault(TMPAnimationType.Show);
-                SetDefault(TMPAnimationType.Hide);
-                if (IsAnimating) UpdateAnimations_Impl(0f);
-            }
+            //        if (newTags.SequenceEqual(oldTags))
+            //        {
+            //            tagsChanged = false;
+            //        }
+            //    }
+            //}
 
+            SetDummies();
+            PostProcessTags();
             SetDefault(TMPAnimationType.Show);
             SetDefault(TMPAnimationType.Hide);
             if (IsAnimating) UpdateAnimations_Impl(0f);
@@ -1406,27 +1398,21 @@ namespace TMPEffects.Components
 
         private void PostProcessTags()
         {
-            tags.Clear();
+            var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
+            var roCDataState = new ReadOnlyCharDataState(state);
 
-            foreach (var processor in processors.TagProcessors[basicCategory.Prefix])
-            {
-                foreach (var tag in processor.ProcessedTags)
-                {
-                    tags[basicCategory].TryAdd(tag.Value, tag.Key);
-                }
-            }
+            var kvpBasic = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(basicCategory, processors.TagProcessors[basicCategory.Prefix][0].ProcessedTags);
+            var kvpShow = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(showCategory, processors.TagProcessors[showCategory.Prefix][0].ProcessedTags);
+            var kvpHide = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(hideCategory, processors.TagProcessors[hideCategory.Prefix][0].ProcessedTags);
+            tags = new TagCollectionManager<TMPAnimationCategory>(kvpBasic, kvpShow, kvpHide);
 
-            foreach (var processor in processors.TagProcessors[showCategory.Prefix])
-            {
-                foreach (var tag in processor.ProcessedTags)
-                    tags[showCategory].TryAdd(tag.Value, tag.Key);
-            }
+            var basicCacher = new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x));
+            var showCacher = new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x));
+            var hideCacher = new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x));
 
-            foreach (var processor in processors.TagProcessors[hideCategory.Prefix])
-            {
-                foreach (var tag in processor.ProcessedTags)
-                    tags[hideCategory].TryAdd(tag.Value, tag.Key);
-            }
+            basic = new CachedCollection<CachedAnimation>(basicCacher, tags[basicCategory]);
+            show = new CachedCollection<CachedAnimation>(showCacher, tags[showCategory]);
+            hide = new CachedCollection<CachedAnimation>(hideCacher, tags[hideCategory]);
         }
         #endregion
 
@@ -1569,21 +1555,6 @@ namespace TMPEffects.Components
             lastPreviewUpdateTime = Time.time;
         }
 
-        internal void ResetTime()
-        {
-            context.passed = 0f;
-            for (int i = 0; i < stateTimes.Count; i++)
-            {
-                stateTimes[i] = 0;
-            }
-            for (int i = 0; i < visibleTimes.Count; i++)
-            {
-                visibleTimes[i] = 0;
-            }
-            lastPreviewUpdateTime = Time.time;
-            Mediator.ForceReprocess();
-        }
-
         internal string CheckDefaultString(TMPAnimationType type)
         {
             string str;
@@ -1672,6 +1643,25 @@ namespace TMPEffects.Components
         }
 #endif
         #endregion
+
+        public void ResetTime()
+        {
+            context.passed = 0f;
+            for (int i = 0; i < stateTimes.Count; i++)
+            {
+                stateTimes[i] = 0;
+            }
+            for (int i = 0; i < visibleTimes.Count; i++)
+            {
+                visibleTimes[i] = 0;
+            }
+
+#if UNITY_EDITOR
+            lastPreviewUpdateTime = Time.time;
+#endif
+
+            Mediator.ForceReprocess();
+        }
 
 
         private bool characterResetQueued = false;

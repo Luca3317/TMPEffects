@@ -16,6 +16,7 @@ namespace TMPEffects.Components.Animator
         private readonly AnimatorContext context;
         private readonly Predicate<char> animates;
         private readonly ReadOnlyCharDataState state;
+        private readonly ReadOnlyAnimatorContext roContext;
 
         public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, ReadOnlyCharDataState state, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
         {
@@ -24,6 +25,7 @@ namespace TMPEffects.Components.Animator
             this.charData = charData;
             this.animates = animates;
             this.state = state;
+            roContext = new ReadOnlyAnimatorContext(context);
         }
 
         public CachedAnimation CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
@@ -34,7 +36,7 @@ namespace TMPEffects.Components.Animator
             animation.SetParameters(customAnimationData, tag.Parameters);
 
             SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
-            AnimationContext animationContext = new AnimationContext(new ReadOnlyAnimatorContext(context), state, segmentData, customAnimationData);
+            AnimationContext animationContext = new AnimationContext(roContext, state, segmentData, customAnimationData);
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

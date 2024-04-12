@@ -1,14 +1,9 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
-using TMPEffects.Extensions;
 using TMPEffects.TextProcessing;
 using TMPro;
-using Unity.VisualScripting.YamlDotNet.Serialization;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UI;
 using static TMPEffects.ParameterUtility;
-using static UnityEngine.UI.Image;
 
 
 namespace TMPEffects.TMPAnimations.Animations

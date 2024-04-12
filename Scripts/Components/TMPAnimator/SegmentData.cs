@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.CharacterData;
+using System.Threading;
 
 namespace TMPEffects.Components.Animator
 {
@@ -20,6 +21,11 @@ namespace TMPEffects.Components.Animator
         /// The length of the animation segment.
         /// </summary>
         public readonly int length;
+
+        /// <summary>
+        /// The effective length of the animation segment; i.e. the length of the segment from <see cref="firstAnimationIndex"/> to <see cref="lastAnimationIndex"/>.
+        /// </summary>
+        public readonly int effectiveLength;
 
         /// <summary>
         /// The index of the first visible character (i.e. non-whitespace character).
@@ -65,30 +71,53 @@ namespace TMPEffects.Components.Animator
 
             max = Vector3.negativeInfinity;
             min = Vector3.positiveInfinity;
-            Vector3 leftTop, bottomRight;
+            //Vector3 leftTop, bottomRight;
 
             // Clamp needed for when text ends with tags; will cause (startIndex + length)
             // to be equal to cData.Count + 1
             int count = Mathf.Min(cData.Count, startIndex + length);
+            //for (int i = startIndex; i < count; i++)
+            //{
+            //    if (!cData[i].info.isVisible) continue;
+
+            //    //leftTop = cData[i].initialMesh.TL_Position;
+            //    //bottomRight = cData[i].initialMesh.BR_Position;
+            //    //max = new Vector3(Mathf.Max(max.x, leftTop.x, bottomRight.x), Mathf.Max(max.y, leftTop.y, bottomRight.y), Mathf.Max(max.z, leftTop.z, bottomRight.z));
+            //    //min = new Vector3(Mathf.Min(min.x, leftTop.x, bottomRight.x), Mathf.Min(min.y, leftTop.y, bottomRight.y), Mathf.Min(min.z, leftTop.z, bottomRight.z));
+
+            //    if (firstVisibleIndex == -1) firstVisibleIndex = i;
+            //    lastVisibleIndex = i;
+
+            //    if (animates(cData[i].info.character))
+            //    {
+            //        if (firstAnimationIndex == -1) firstAnimationIndex = i;
+            //        lastAnimationIndex = i;
+            //    }
+            //}
+
             for (int i = startIndex; i < count; i++)
             {
                 if (!cData[i].info.isVisible) continue;
-
-                leftTop = cData[i].initialMesh.TL_Position;
-                bottomRight = cData[i].initialMesh.BR_Position;
-                max = new Vector3(Mathf.Max(max.x, leftTop.x, bottomRight.x), Mathf.Max(max.y, leftTop.y, bottomRight.y), Mathf.Max(max.z, leftTop.z, bottomRight.z));
-                min = new Vector3(Mathf.Min(min.x, leftTop.x, bottomRight.x), Mathf.Min(min.y, leftTop.y, bottomRight.y), Mathf.Min(min.z, leftTop.z, bottomRight.z));
-
                 if (firstVisibleIndex == -1) firstVisibleIndex = i;
-                lastVisibleIndex = i;
-
                 if (animates(cData[i].info.character))
                 {
-                    if (firstAnimationIndex == -1) firstAnimationIndex = i;
-                    lastAnimationIndex = i;
-                } 
+                    firstAnimationIndex = i;
+                    break;
+                }
             }
+
+            for (int i = count - 1; i >= startIndex; i--)
+            {
+                if (!cData[i].info.isVisible) continue;
+                if (lastVisibleIndex == -1) lastVisibleIndex = i;
+                if (animates(cData[i].info.character))
+                {
+                    lastAnimationIndex = i;
+                    break;
+                }
+            }
+
+            effectiveLength = lastAnimationIndex - firstAnimationIndex + 1;
         }
     }
 }
- 

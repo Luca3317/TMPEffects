@@ -35,6 +35,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.CustomData as Data;
 
+            if (string.IsNullOrWhiteSpace(d.characters) || cData.info.elementType != TMP_TextElementType.Character)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }
+
             if (!d.init)
             {
                 d.init = true;
@@ -42,11 +48,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 InitRNGDict(context);
                 InitLastUpdatedDict(context);
                 InitDelayDict(context);
-                InitCharactersDict(context);
+                InitCharactersDict(context); 
             }
 
             int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
-            TMP_Character c;
             if (!d.originalCharacterCache.ContainsKey(segmentIndex))
             {
                 if (cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character, out TMP_Character original))

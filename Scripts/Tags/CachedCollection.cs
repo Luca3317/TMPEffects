@@ -31,10 +31,17 @@ namespace TMPEffects.Tags.Collections
 
             this.cacher = cacher;
 
+            List<T> cached = new List<T>();
+            foreach (var tagData in tagCollection)
+            {
+                cached.Add(cacher.CacheTag(tagData.Tag, tagData.Indices));
+            }
+
             int counter = 0;
             foreach (var tagData in tagCollection)
             {
-                Add(counter++, cacher.CacheTag(tagData.Tag, tagData.Indices));
+                Add(counter, cached[counter]);
+                counter++;
             }
 
             tagCollection.CollectionChanged += OnCollectionChanged;

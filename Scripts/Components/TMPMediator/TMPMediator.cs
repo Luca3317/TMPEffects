@@ -4,6 +4,8 @@ using TMPEffects.TextProcessing;
 using System.Collections.ObjectModel;
 using TMPEffects.CharacterData;
 using UnityEngine;
+using UnityEditor;
+using System.Collections;
 
 namespace TMPEffects.Components.Mediator
 {
@@ -90,6 +92,40 @@ namespace TMPEffects.Components.Mediator
         {
             Text.ForceMeshUpdate(true, true);
         }
+
+
+
+//        bool reprocessQueued = false;
+//        public void QueueReprocess()
+//        {
+//            if (reprocessQueued) return;
+//            reprocessQueued = true;
+//#if UNITY_EDITOR
+//            if (!Application.isPlaying)
+//            {
+//                EditorApplication.delayCall += ForceReprocess;
+//                return;
+//            }
+
+//            Text.StartCoroutine(ReprocessNextFrame());
+//        }
+
+//        private void ReprocessNextFrame_Editor()
+//        {
+//            reprocessQueued = false;
+//            ForceReprocess();
+//        }
+
+//        private IEnumerator ReprocessNextFrame()
+//        {
+//            yield return null;
+//            reprocessQueued = false;
+//            ForceReprocess();
+//        }
+
+
+
+
 
         /// <summary>
         /// Register as the visibility processor of this TMPMediator.<br/>
@@ -246,7 +282,7 @@ namespace TMPEffects.Components.Mediator
 
             // Invoke textchanged events
             TextChanged_Early?.Invoke(changed, oldchardata);
-            
+
             // Cache the old visibility states
             var oldvisibility = new ReadOnlyCollection<VisibilityState>(new List<VisibilityState>(VisibilityStates));
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
+using System.Diagnostics;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -71,10 +72,9 @@ namespace TMPEffects.TMPAnimations
             this.State = state;
             this.SegmentData = segmentData;
             this.AnimatorContext = animatorContext;
+            finishedDict = new Dictionary<int, bool>(segmentData.effectiveLength);
 
-            finishedDict = new Dictionary<int, bool>(segmentData.length);
-
-            for (int i = segmentData.startIndex; i < segmentData.startIndex + segmentData.length; i++)
+            for (int i = segmentData.firstAnimationIndex; i < segmentData.firstAnimationIndex + segmentData.effectiveLength; i++)
             {
                 finishedDict.Add(i, false);
             }
