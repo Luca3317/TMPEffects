@@ -524,14 +524,24 @@ namespace TMPEffects.Components
             this.database = database;
             OnDatabaseChanged();
         }
+
+        public void SetWriteOnStart(bool writeOnStart)
+        {
+            this.writeOnStart = writeOnStart;
+        }
+
+        public void SetWriteOnNewText(bool writeOnNewText)
+        {
+            this.writeOnNewText = writeOnNewText;
+        }
         #endregion
 
         #region Event Callbacks and Wrappers
         [System.NonSerialized] private bool tagsChanged = false;
         private void OnTextChanged_Early(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)
         {
-            tagsChanged = false;
-            if (!textContentChanged)
+            tagsChanged = tags == null;
+            if (!textContentChanged && tags != null)
             {
                 tagsChanged = true;
 
