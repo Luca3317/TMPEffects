@@ -263,10 +263,10 @@ namespace TMPEffects.Components
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
-            ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            tags = new();
-            commands = new CachedCollection<CachedCommand>(new CommandCacher(ro, this, commandCategory), tags.AddKey(commandCategory));
-            events = new CachedCollection<CachedEvent>(new EventCacher(this, OnTextEvent), tags.AddKey(eventCategory));
+            //ReadOnlyCollection<CharData> ro = new ReadOnlyCollection<CharData>(Mediator.CharData);
+            //tags = new();
+            //commands = new CachedCollection<CachedCommand>(new CommandCacher(ro, this, commandCategory), tags.AddKey(commandCategory));
+            //events = new CachedCollection<CachedEvent>(new EventCacher(this, OnTextEvent), tags.AddKey(eventCategory));
 
             // Reset processors
             processors ??= new();
@@ -281,12 +281,14 @@ namespace TMPEffects.Components
 
         private void SubscribeToMediator()
         {
-            Mediator.TextChanged_Late += OnTextChanged;
+            Mediator.TextChanged_Late += OnTextChanged_Late;
+            Mediator.TextChanged_Early += OnTextChanged_Early;
         }
 
         private void UnsubscribeFromMediator()
         {
-            Mediator.TextChanged_Late -= OnTextChanged;
+            Mediator.TextChanged_Late -= OnTextChanged_Late;
+            Mediator.TextChanged_Early -= OnTextChanged_Early;
         }
 
         private void OnDatabaseChanged()
@@ -525,17 +527,20 @@ namespace TMPEffects.Components
         #endregion
 
         #region Event Callbacks and Wrappers
-        private void OnTextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+        [System.NonSerialized] private bool tagsChanged = false;
+        private void OnTextChanged_Early(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)
         {
+            tagsChanged = false;
             if (!textContentChanged)
             {
-                bool tagsChanged = true;
-                var oldTags = CommandTags;
+                tagsChanged = true;
+
+                var oldTags = tags.ContainsKey(commandCategory) ? CommandTags : Enumerable.Empty<TMPEffectTagTuple>();
                 var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                 if (oldTags.SequenceEqual(newTags))
                 {
-                    oldTags = EventTags;
+                    oldTags = tags.ContainsKey(eventCategory) ? EventTags : Enumerable.Empty<TMPEffectTagTuple>();
                     newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                     if (oldTags.SequenceEqual(newTags))
@@ -543,20 +548,26 @@ namespace TMPEffects.Components
                         tagsChanged = false;
                     }
                 }
-
-                if (!tagsChanged) return;
-            }
+            } 
 
             PostProcessTags();
+        }
+
+        private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+        {
+            if (!textContentChanged && !tagsChanged)
+            {
+                return;
+            }
 
 #if UNITY_EDITOR
-            // If is preview
+            // If is preview 
             if (!Application.isPlaying)
             {
                 bool wasWriting = writing;
                 ResetWriter();
                 if (wasWriting)
-                { 
+                {
                     StartWriter();
                 }
                 else Show(0, Mediator.CharData.Count, true);
@@ -1127,21 +1138,16 @@ namespace TMPEffects.Components
 
         private void PostProcessTags()
         {
-            tags.Clear();
+            var kvpCommands = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(commandCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
+            var kvpEvents = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(eventCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
 
-            foreach (var processor in processors.TagProcessors[commandCategory.Prefix])
-            {
-                foreach (var tag in processor.ProcessedTags)
-                {
-                    tags[commandCategory].TryAdd(tag.Value, tag.Key);
-                }
-            }
+            tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
-            foreach (var processor in processors.TagProcessors[eventCategory.Prefix])
-            {
-                foreach (var tag in processor.ProcessedTags)
-                    tags[eventCategory].TryAdd(tag.Value, tag.Key);
-            }
+            var commandCacher = new CommandCacher(Mediator.CharData, this, commandCategory);
+            var eventCacher = new EventCacher(this, OnTextEvent);
+
+            commands = new CachedCollection<CachedCommand>(commandCacher, tags[commandCategory]);
+            events = new CachedCollection<CachedEvent>(eventCacher, tags[eventCategory]);
         }
     }
 }

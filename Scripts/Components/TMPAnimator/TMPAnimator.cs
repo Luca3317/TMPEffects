@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPEffects.TMPAnimations;
 using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
-using System;
 using System.Collections.ObjectModel;
 using TMPEffects.Extensions;
 using TMPEffects.SerializedCollections;
@@ -282,10 +281,10 @@ namespace TMPEffects.Components
             showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase);
             hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase);
 
-            // Reset tagcollection & cachedcollection
-            if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
-            tags = new TagCollectionManager<TMPAnimationCategory>();
-            tags.CollectionChanged += OnTagCollectionChanged;
+            // Reset tagcollection & cachedcollection => moved to postprocesstags
+            //if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
+            //tags = new TagCollectionManager<TMPAnimationCategory>();
+            //tags.CollectionChanged += OnTagCollectionChanged;
 
             //var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
             //var roCDataState = new ReadOnlyCharDataState(state);
@@ -378,12 +377,12 @@ namespace TMPEffects.Components
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    cacher = new AnimationCacher(database, roCDataState, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedShow(x));
                     defaultShow = cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams), new TMPEffectTagIndices(0, -1, 0));
                     break;
 
                 case TMPAnimationType.Hide:
-                    cacher = new AnimationCacher(database, roCDataState, context, new ReadOnlyCollection<CharData>(Mediator.CharData), x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedHide(x));
                     defaultHide = cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams), new TMPEffectTagIndices(0, -1, 0));
                     break;
             }
@@ -424,7 +423,7 @@ namespace TMPEffects.Components
             TMPEffectTag tag = new TMPEffectTag("Dummy Show Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedShow(x));
+            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, Mediator.CharData, (x) => !IsExcludedShow(x));
             dummyShow = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
 
@@ -434,7 +433,7 @@ namespace TMPEffects.Components
             TMPEffectTag tag = new TMPEffectTag("Dummy Hide Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation", ScriptableObject.CreateInstance<DummyHideAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, new ReadOnlyCollection<CharData>(Mediator.CharData), (x) => !IsExcludedHide(x));
+            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, Mediator.CharData, (x) => !IsExcludedHide(x));
             dummyHide = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
         #endregion
@@ -521,7 +520,7 @@ namespace TMPEffects.Components
                 visibility = Mediator.VisibilityStates[i];
 
                 if (visibility == VisibilityState.Showing)
-                {
+                { 
                     Mediator.SetVisibilityState(i, VisibilityState.Shown);
                 }
                 else if (visibility == VisibilityState.Hiding)
@@ -1392,7 +1391,10 @@ namespace TMPEffects.Components
             var kvpBasic = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(basicCategory, processors.TagProcessors[basicCategory.Prefix][0].ProcessedTags);
             var kvpShow = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(showCategory, processors.TagProcessors[showCategory.Prefix][0].ProcessedTags);
             var kvpHide = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(hideCategory, processors.TagProcessors[hideCategory.Prefix][0].ProcessedTags);
+
+            if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
             tags = new TagCollectionManager<TMPAnimationCategory>(kvpBasic, kvpShow, kvpHide);
+            tags.CollectionChanged += OnTagCollectionChanged;
 
             var basicCacher = new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x));
             var showCacher = new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x));
