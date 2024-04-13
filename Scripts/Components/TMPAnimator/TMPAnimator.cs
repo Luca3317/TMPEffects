@@ -209,7 +209,7 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
 #if UNITY_EDITOR
-            if (preview && !Application.isPlaying) StopPreview();
+            if (preview && !Application.isPlaying) StopPreviewWithouSet();
 #endif
 
             basicDatabase?.Dispose();
@@ -232,15 +232,15 @@ namespace TMPEffects.Components
                 Debug.LogError("Could not register as visibility processor!");
             }
 
-            Mediator.TextChanged_Late += OnTextChanged;
-            Mediator.TextChanged_Early += PopulateTimes;
+            Mediator.TextChanged_Late += OnTextChanged_Late;
+            Mediator.TextChanged_Early += OnTextChanged_Early;
             Mediator.VisibilityStateUpdated += OnVisibilityStateUpdated; // Handle Visibility updates
         }
 
         private void UnsubscribeFromMediator()
         {
-            Mediator.TextChanged_Late -= OnTextChanged;
-            Mediator.TextChanged_Early -= PopulateTimes;
+            Mediator.TextChanged_Late -= OnTextChanged_Late;
+            Mediator.TextChanged_Early -= OnTextChanged_Early;
             Mediator.VisibilityStateUpdated -= OnVisibilityStateUpdated;
 
             if (!Mediator.UnregisterVisibilityProcessor(timesIdentifier))
@@ -606,12 +606,14 @@ namespace TMPEffects.Components
 
         private void RecalculateSegmentData(TMPAnimationType type)
         {
+            //Debug.Log("Recalculating segment data");
             // TODO Need to check this in case exclusions change while animator is
             // disabled (=> mediator is null).
             // At some point the editor-runtime code separation will need some level
             // of reworking
             if (!isActiveAndEnabled) return;
 
+            //Debug.Log("fr");
             switch (type)
             {
                 case TMPAnimationType.Basic:
@@ -914,7 +916,17 @@ namespace TMPEffects.Components
 
             void Animate(CachedAnimation ca, bool late)
             {
-                if (ca.Finished(index)) return;
+                try
+                {
+                    if (ca.Finished(index)) return;
+
+                }
+                catch
+                {
+                    Debug.Log("Failed check for character " + cData.info.character + " at " + index);
+
+                    Debug.Log("Segmentdata: start: " + ca.context.SegmentData.startIndex + " len: " + ca.context.SegmentData.length + " firstanim: " + ca.context.SegmentData.firstAnimationIndex + " lastanim: " + ca.context.SegmentData.lastAnimationIndex + " firstvis: " + ca.context.SegmentData.firstVisibleIndex + " lastvis: " + ca.context.SegmentData.lastVisibleIndex);
+                }
                 if (ca.late != late) return;
 
                 cData.Reset();
@@ -1166,43 +1178,19 @@ namespace TMPEffects.Components
         #endregion
 
         #region Event Callbacks
-        private void OnTextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+
+        private void OnTextChanged_Early(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)
         {
-            //if (textContentChanged)
-            //{
-            //    SetDummies();
-            //    PostProcessTags();
-            //    SetDefault(TMPAnimationType.Show);
-            //    SetDefault(TMPAnimationType.Hide);
-            //    if (IsAnimating) UpdateAnimations_Impl(0f);
-            //    return;
-            //}
-
-            //bool tagsChanged = true;
-            //var oldTags = tags.ContainsKey(basicCategory) ? BasicTags : Enumerable.Empty<TMPEffectTagTuple>();
-            //var newTags = processors.TagProcessors[basicCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
-
-            //if (newTags.SequenceEqual(oldTags))
-            //{
-            //    oldTags = tags.ContainsKey(showCategory) ? ShowTags : Enumerable.Empty<TMPEffectTagTuple>();
-            //    newTags = processors.TagProcessors[showCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
-
-            //    if (newTags.SequenceEqual(oldTags))
-            //    {
-            //        oldTags = tags.ContainsKey(hideCategory) ? HideTags : Enumerable.Empty<TMPEffectTagTuple>();
-            //        newTags = processors.TagProcessors[hideCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
-
-            //        if (newTags.SequenceEqual(oldTags))
-            //        {
-            //            tagsChanged = false;
-            //        }
-            //    }
-            //}
-
+            PopulateTimes(textContentChanged, oldCharData);
             SetDummies();
             PostProcessTags();
             SetDefault(TMPAnimationType.Show);
             SetDefault(TMPAnimationType.Hide);
+        }
+
+        private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+        {
+            QueueCharacterReset();
             if (IsAnimating) UpdateAnimations_Impl(0f);
         }
 
@@ -1506,7 +1494,7 @@ namespace TMPEffects.Components
         #region Editor Only
 #if UNITY_EDITOR
 #pragma warning disable CS0414
-        [SerializeField, HideInInspector] bool preview = false;
+        [SerializeField, HideInInspector] internal bool preview = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
         [System.NonSerialized, HideInInspector] float lastPreviewUpdateTime = 0f;
 #pragma warning restore CS0414
@@ -1518,8 +1506,15 @@ namespace TMPEffects.Components
             EditorApplication.update += UpdatePreview;
         }
 
+        internal void StopPreviewWithouSet()
+        {
+            EditorApplication.update -= UpdatePreview;
+            ResetAnimations();
+        }
+
         internal void StopPreview()
         {
+            //Debug.Log("STOP PREVIEW");
             preview = false;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();

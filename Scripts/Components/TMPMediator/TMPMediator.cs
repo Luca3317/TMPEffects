@@ -47,7 +47,8 @@ namespace TMPEffects.Components.Mediator
 
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, before <see cref="TextChanged_Late"/>.<br/>
-        /// Do NOT modify either CharData or VisibilityStates in callbacks to this event. Subscribe to <see cref="TextChanged_Late"/> for that.
+        /// You should use this callback for initialization, e.g. processing tags. Don't modify data that might mess with the initialization of other
+        /// listeners, such as setting visibilities or char data. For such operations, use <see cref="TextChanged_Late"/>.
         /// </summary>
         public event TextChangedEarlyEventHandler TextChanged_Early;
         /// <summary>
@@ -92,39 +93,6 @@ namespace TMPEffects.Components.Mediator
         {
             Text.ForceMeshUpdate(true, true);
         }
-
-
-
-//        bool reprocessQueued = false;
-//        public void QueueReprocess()
-//        {
-//            if (reprocessQueued) return;
-//            reprocessQueued = true;
-//#if UNITY_EDITOR
-//            if (!Application.isPlaying)
-//            {
-//                EditorApplication.delayCall += ForceReprocess;
-//                return;
-//            }
-
-//            Text.StartCoroutine(ReprocessNextFrame());
-//        }
-
-//        private void ReprocessNextFrame_Editor()
-//        {
-//            reprocessQueued = false;
-//            ForceReprocess();
-//        }
-
-//        private IEnumerator ReprocessNextFrame()
-//        {
-//            yield return null;
-//            reprocessQueued = false;
-//            ForceReprocess();
-//        }
-
-
-
 
 
         /// <summary>

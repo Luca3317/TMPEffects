@@ -60,24 +60,33 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public IAnimatorContext AnimatorContext { get; set; }
         /// <inheritdoc/>
-        public SegmentData SegmentData { get; set; }
+        public SegmentData SegmentData 
+        {
+            get => segmentData;
+            set
+            {
+                segmentData = value;
+                finishedDict = new Dictionary<int, bool>(segmentData.effectiveLength);
+
+                for (int i = segmentData.firstAnimationIndex; i < segmentData.firstAnimationIndex + segmentData.effectiveLength; i++)
+                {
+                    finishedDict.Add(i, false);
+                }
+            }
+        }
         /// <inheritdoc/>
         public object CustomData { get; }
         /// <inheritdoc/>
         public ReadOnlyCharDataState State { get; }
 
+        private SegmentData segmentData;
+
         public AnimationContext(ReadOnlyAnimatorContext animatorContext, ReadOnlyCharDataState state, SegmentData segmentData, object customData)
         {
             this.CustomData = customData;
             this.State = state;
-            this.SegmentData = segmentData;
             this.AnimatorContext = animatorContext;
-            finishedDict = new Dictionary<int, bool>(segmentData.effectiveLength);
-
-            for (int i = segmentData.firstAnimationIndex; i < segmentData.firstAnimationIndex + segmentData.effectiveLength; i++)
-            {
-                finishedDict.Add(i, false);
-            }
+            this.SegmentData = segmentData;
         }
 
         public void ResetFinishAnimation(int index)

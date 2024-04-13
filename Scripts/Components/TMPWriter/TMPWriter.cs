@@ -556,7 +556,7 @@ namespace TMPEffects.Components
                 bool wasWriting = writing;
                 ResetWriter();
                 if (wasWriting)
-                {
+                { 
                     StartWriter();
                 }
                 else Show(0, Mediator.CharData.Count, true);
