@@ -175,7 +175,7 @@ namespace TMPEffects.TMPAnimations
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPositionDeltaRaw(delta, cData, ctx.AnimatorContext);
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            cData.AddPositionDelta(GetRawDelta(delta, cData, ctx)); 
+            cData.AddPositionDelta(GetRawDelta(delta, cData, ctx));
         }
         /// <summary>
         /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
@@ -917,14 +917,36 @@ namespace TMPEffects.TMPAnimations
 
                 case WaveOffsetType.XPos:
                     float pos = cData.InitialPosition.x;
-                    pos /= (cData.info.referenceScale / 36f);
-                    pos /= 2000f;
-                    return pos;
+
+                    if (!context.AnimatorContext.ScaleAnimations)
+                        return pos / 10f;
+
+                    if (context.AnimatorContext.ScaleUniformly)
+                    {
+                        if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
+                        return pos / 10f;
+                    }
+                    else
+                    {
+                        if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
+                        return pos / 10f;
+                    }
                 case WaveOffsetType.YPos:
                     pos = cData.InitialPosition.y;
-                    pos /= (cData.info.referenceScale / 36f);
-                    pos /= 2000f;
-                    return pos;
+
+                    if (!context.AnimatorContext.ScaleAnimations)
+                        return pos / 10f;
+
+                    if (context.AnimatorContext.ScaleUniformly)
+                    {
+                        if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
+                        return pos / 10f;
+                    }
+                    else
+                    {
+                        if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
+                        return pos / 10f;
+                    }
             }
 
             throw new System.ArgumentException(nameof(type));
