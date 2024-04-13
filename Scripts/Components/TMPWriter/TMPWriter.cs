@@ -230,16 +230,18 @@ namespace TMPEffects.Components
 
             UnsubscribeFromMediator();
 
+            //#if UNITY_EDITOR
+            //            if (!Application.isPlaying)
+            //            {
 #if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                EditorApplication.update -= EditorUpdate;
-                StopWriterCoroutine();
-                currentIndex = -1;
-                Show(0, Mediator.CharData.Count, true);
-                writing = false;
-            }
+            EditorApplication.update -= EditorUpdate;
 #endif
+            StopWriterCoroutine();
+            currentIndex = -1;
+            Show(0, Mediator.CharData.Count, true);
+            writing = false;
+            //            }
+            //#endif
 
             var textComponent = Mediator.Text;
             FreeMediator();
@@ -310,7 +312,11 @@ namespace TMPEffects.Components
         /// </summary>
         public void StartWriter()
         {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
+            if (!isActiveAndEnabled || !gameObject.activeInHierarchy)
+            {
+                Debug.LogWarning("The writer must be enabled to start writing");
+                return;
+            }
 
             if (!writing)
             {
@@ -558,7 +564,7 @@ namespace TMPEffects.Components
                         tagsChanged = false;
                     }
                 }
-            } 
+            }
 
             PostProcessTags();
         }
@@ -585,8 +591,9 @@ namespace TMPEffects.Components
             }
 #endif
 
+            bool waswriting = writing;
             ResetWriter();
-            if (writeOnNewText) StartWriter();
+            if (waswriting || writeOnNewText) StartWriter();
             return;
         }
 

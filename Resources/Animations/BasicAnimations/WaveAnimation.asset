@@ -15,7 +15,7 @@ MonoBehaviour:
   wave:
     upPeriod: 0.5
     downPeriod: 0.5
-    amplitude: 20
+    amplitude: 10
     velocity: 1
     upwardCurve:
       serializedVersion: 2

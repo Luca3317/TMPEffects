@@ -57,6 +57,7 @@ namespace TMPEffects.Components
         {
             get
             {
+                if (mediator == null) UpdateMediator();
                 return mediator;
             }
         }

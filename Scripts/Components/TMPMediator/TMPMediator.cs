@@ -91,7 +91,7 @@ namespace TMPEffects.Components.Mediator
         /// </summary>
         public void ForceReprocess()
         {
-            Text.ForceMeshUpdate(true, true);
+            if (Text != null) Text.ForceMeshUpdate(false, true);
         }
 
 
