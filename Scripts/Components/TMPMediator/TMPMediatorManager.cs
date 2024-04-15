@@ -11,7 +11,7 @@ namespace TMPEffects.Components.Mediator
     /// Allows components to easily share one <see cref="TMPMediator"/> instance, using their associated
     /// <see cref="TMP_Text"/> component as key.
     /// </summary>
-    public static class TMPMediatorManager
+    internal static class TMPMediatorManager
     {
         public static Dictionary<GameObject, ValueTuple<TMPMediator, List<object>>> mediators = new();
 

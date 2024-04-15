@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
 {
-    private string text_0 = "<wave><palette>TMPEffects Quick Tutorial</wave></palette>\n\nFirst add a pla";
-
     public TMP_Text textComp;
     private TMPAnimator animator;
     private TMPWriter writer;
@@ -20,12 +18,8 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     public Button next;
     public Button previous;
 
-    private bool animate = true;
-
     int currentSequence;
     private Action[] sequence;
-
-
 
     void Awake()
     {
@@ -45,7 +39,9 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
             Sequence_11,
             Sequence_12,
             Sequence_14,
-            Sequence_15
+            Sequence_15,
+            Sequence_16,
+            Sequence_17
         };
     }
 
@@ -54,8 +50,6 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         animator = textComp.GetComponent<TMPAnimator>();
         writer = textComp.GetComponent<TMPWriter>();
-
-        if (animator == null) Debug.Log("its null tf");
 
         animator.SetUpdateFrom(UpdateFrom.Script);
         animator.ResetAnimations();
@@ -78,8 +72,6 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
         animator.enabled = false;
         animator.enabled = true;
         animator.enabled = false;
-
-
 
         writer.enabled = false;
         animator.enabled = true;
@@ -142,7 +134,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>TMPAnimator</b>\n\nBesides these basic animations, there are also show and hide animations (and a SceneAnimation variation for each of the three).\nMore about them after the TMPWriter section");
+        animator.SetText("<b>TMPAnimator</b>\n\nBesides these basic animations, there are also show and hide animations.\nMore about them after the TMPWriter section");
     }
 
     private void Sequence_9()
@@ -174,7 +166,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>TMPWriter</b>\n\nIn addition to invoking specific commands, you can also raise generic events, like so:\n<?myfirstevent key1=value1 key2=value2>.\nYou can listen to these events with TMPWriter's \"OnTextEvent\" event.");
+        animator.SetText("<b>TMPWriter</b>\n\nFor a full overview of all built-in commands and their parameters, see <color=lightblue><u><link=\"http://localhost:8080/docs/tmpwriter_builtincommands.html\">this page of the docs</link>");
     }
 
     private void Sequence_14()
@@ -188,14 +180,27 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = true;
         animator.enabled = true;
-        animator.SetText("<!show><b>Combining them</b>\n\n<noparse><+fade duration=0.2>First I will fade in, </+><+pivot>then pivot for a bit</+>, <+shake>and then shake for the rest of it.</noparse></!>\n\n<!wait=1><+fade d=0.2>First I will fade in, </+><+pivot>then pivot for a bit</+>, <+shake>and then shake for the rest of it.");
+        animator.SetText("<!show><b>Combining them</b>\n\n<noparse><+fade duration=0.2>First I will fade in, </+><+pivot>then pivot for a bit</+>, <+shake>and then shake for the rest of it.\n<!wait=1><+fade d=0.2><+pivot>And then I'll do all of it!</noparse></!>\n\n<!wait=1><+fade d=0.2>First I will fade in, </+><+pivot>then pivot for a bit</+>, <+shake>and then shake for the rest of it.\n<!wait=1><+fade d=0.2><+pivot>And then I'll do all of it!");
         writer.RestartWriter();
+    }
+
+    private void Sequence_16()
+    {
+        writer.enabled = false;
+        animator.enabled = false;
+        animator.SetText("<b>Combining them</b>\n\nFor a full overview of all show / hide animations and their parameters, see <color=lightblue><u><link=\"http://localhost:8080/docs/tmpanimator_builtinshowhideanimations.html\">this page of the docs</link>");
+    }
+
+    private void Sequence_17()
+    {
+        writer.enabled = false;
+        animator.enabled = false;
+        animator.SetText("The full documentation of TMPEffects can be found <color=lightblue><u><link=\"http://localhost:8080/docs/introduction.html\">here</link>");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         int linkIndex = TMP_TextUtilities.FindIntersectingLink(textComp, eventData.position, eventData.pressEventCamera);
-        Debug.Log("clicked " + linkIndex);
         if (linkIndex != -1)
         {
             TMP_LinkInfo linkInfo = textComp.textInfo.linkInfo[linkIndex];

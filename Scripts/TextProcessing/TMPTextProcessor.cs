@@ -132,8 +132,8 @@ namespace TMPEffects.TextProcessing
                             // If tag is not handled, print warning and append indicator to text
                             if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                             {
-                                Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
-                                sb.Append(" <color=red>!SEE CONSOLE!</color> ");
+                                //Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
+                                sb.Append(" <color=red>!NATIVE SPRITE ANIMATIONS NOT SUPPORTED; ADD TMPANIMATOR!</color> ");
                             }
                             // If tag is handled, append normal <sprite> tag to text
                             else
@@ -149,7 +149,7 @@ namespace TMPEffects.TextProcessing
                                     {
                                         case "index":
                                         case "INDEX":
-                                        case "anim": break;
+                                        case "anim": break; 
 
                                         case "name":
                                         case "NAME":

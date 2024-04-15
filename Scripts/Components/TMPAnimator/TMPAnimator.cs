@@ -111,9 +111,9 @@ namespace TMPEffects.Components
 
         [Tooltip("Whether animation tags override each other by default. You can set this individually on a per-tag basis by adding the override=true/false parameter to them")]
         [SerializeField] private bool animationsOverride = false;
-        [Tooltip("The default show animation to use, if a TMPWriter component is present")]
+        //[Tooltip("The default show animation to use, if a TMPWriter component is present")] Set in editor
         [SerializeField] private string defaultShowString = "";
-        [Tooltip("The default hide animation to use, if a TMPWriter component is present")]
+        //[Tooltip("The default hide animation to use, if a TMPWriter component is present")]
         [SerializeField] private string defaultHideString = "";
 
         [Tooltip("Characters that are excluded from basic animations")]
@@ -747,7 +747,6 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
 
-            //Debug.Log("fr");
             switch (type)
             {
                 case TMPAnimationType.Basic:
@@ -1001,18 +1000,8 @@ namespace TMPEffects.Components
 
             void Animate(CachedAnimation ca, bool late)
             {
-                try
-                {
-                    if (ca.Finished(index)) return;
-
-                }
-                catch
-                {
-                    Debug.Log("Failed check for character " + cData.info.character + " at " + index);
-
-                    Debug.Log("Segmentdata: start: " + ca.context.SegmentData.startIndex + " len: " + ca.context.SegmentData.length + " firstanim: " + ca.context.SegmentData.firstAnimationIndex + " lastanim: " + ca.context.SegmentData.lastAnimationIndex + " firstvis: " + ca.context.SegmentData.firstVisibleIndex + " lastvis: " + ca.context.SegmentData.lastVisibleIndex);
-                }
                 if (ca.late != late) return;
+                if (ca.Finished(index)) return;
 
                 cData.Reset();
 
@@ -1275,7 +1264,6 @@ namespace TMPEffects.Components
 
         private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
-            //Debug.Log("On text changed by");
             QueueCharacterReset();
             if (IsAnimating) UpdateAnimations_Impl(0f);
         }

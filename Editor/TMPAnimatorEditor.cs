@@ -204,42 +204,57 @@ namespace TMPEffects.Editor
 
         GUIContent alertDialogDefaultShow;
         GUIContent alertDialogDefaultHide;
+
+        string defaultShowTooltip;
+
         void DrawDefaultHideShow()
         {
-            alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show);
-            alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
-
             EditorGUI.BeginChangeCheck();
 
             GUILayout.BeginHorizontal();
-            string warning = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show);
             EditorGUILayout.PropertyField(defaultShowStringProp, GUILayout.ExpandWidth(true));
 
             Rect rect = GUILayoutUtility.GetLastRect();
-            rect.x = EditorGUIUtility.labelWidth; ;
+            rect.x = EditorGUIUtility.labelWidth;
             rect.width = 20;
 
-            if (warning != "")
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                animator.UpdateDefaultStrings();
+                alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show); ;
+                Repaint();
+            }
+
+            EditorGUI.BeginChangeCheck();
+
+            if (alertDialogDefaultShow.tooltip != "")
             {
                 GUI.Label(rect, alertDialogDefaultShow);
             }
             else
             {
-                GUI.Label(rect, new GUIContent(""));
+                GUI.Label(rect, new GUIContent("", defaultShowTooltip));
             }
 
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            string warning2 = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
             EditorGUILayout.PropertyField(defaultHideStringProp, GUILayout.ExpandWidth(true));
 
             rect = GUILayoutUtility.GetLastRect();
-            rect.x = EditorGUIUtility.labelWidth; ;
+            rect.x = EditorGUIUtility.labelWidth;
             rect.width = 20;
 
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                animator.UpdateDefaultStrings();
+                alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
+                Repaint();
+            }
 
-            if (warning2 != "")
+            if (alertDialogDefaultHide.tooltip != "")
             {
                 GUI.Label(rect, alertDialogDefaultHide);
             }
@@ -249,11 +264,6 @@ namespace TMPEffects.Editor
             }
 
             GUILayout.EndHorizontal();
-            if (EditorGUI.EndChangeCheck())
-            {
-                serializedObject.ApplyModifiedProperties();
-                animator.UpdateDefaultStrings();
-            }
         }
 
         void DrawExclusions()
