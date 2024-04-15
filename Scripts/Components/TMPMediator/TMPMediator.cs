@@ -84,14 +84,7 @@ namespace TMPEffects.Components.Mediator
 
             SetPreprocessor();
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
-
-            if (r == null) r = new System.Random();
-            name = r.NextDouble().ToString("0.000000");
-            Debug.Log("Created tmpmediator with " + name);
         }
-
-        private string name;
-        private static System.Random r;
 
         /// <summary>
         /// Forces a mesh update on the associated <see cref="TMP_Text"/> component.<br/>
@@ -253,30 +246,12 @@ namespace TMPEffects.Components.Mediator
 
             if ((obj as TMP_Text) == Text)
             {
-                Debug.Log("On text changed in " + name);
-
-                foreach (var gos in TMPMediatorManager.mediators)
-                {
-                    Debug.Log("mediator " + gos.Value.Item1.name + " subbed to " + gos.Key.name);
-                }
                 TextChangedProcedure();
             }
         }
 
         private void TextChangedProcedure()
         {
-            TMPAnimator animator;
-            TMPWriter writer;
-
-            if ((animator = Text.GetComponent<TMPAnimator>()) == null || !animator.enabled)
-            {
-                if ((writer = Text.GetComponent<TMPWriter>()) == null || !writer.enabled)
-                {
-                    Debug.Log("NO one listening; im out");
-                    return;
-                }
-            }
-
             // Adjust the indiecs of all processed tags
             Processor.AdjustIndices();
 
