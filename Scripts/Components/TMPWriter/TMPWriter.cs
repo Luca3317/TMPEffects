@@ -66,11 +66,11 @@ namespace TMPEffects.Components
         /// <summary>
         /// All command tags parsed by the TMPWriter.
         /// </summary>
-        public ITagCollection CommandTags => tags[commandCategory];
+        public ITagCollection CommandTags => tags == null ? null : tags[commandCategory];
         /// <summary>
         /// All event tags parsed by the TMPWriter.
         /// </summary>
-        public ITagCollection EventTags => tags[eventCategory];
+        public ITagCollection EventTags => tags == null ? null : tags[eventCategory];
 
         // Events
         /// <summary>
@@ -189,6 +189,289 @@ namespace TMPEffects.Components
         [System.NonSerialized] private int currentIndex = -1;
         #endregion
 
+        #region Public methods
+
+        #region Writer Controlling
+        /// <summary>
+        /// Start (or resume) writing.
+        /// </summary>
+        public void StartWriter()
+        {
+            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            if (!writing)
+            {
+                RaiseStartWriterEvent();
+                StartWriterCoroutine();
+            }
+        }
+
+        /// <summary>
+        /// Stop writing.<br/>
+        /// Note that this does not reset the shown text.
+        /// </summary>
+        public void StopWriter()
+        {
+            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            if (writing)
+            {
+                StopWriterCoroutine();
+                RaiseStopWriterEvent();
+            }
+
+        }
+
+        /// <summary>
+        /// Reset the writer to the initial state for the current text.<br/>
+        /// This also stops the writing process.
+        /// </summary>
+        public void ResetWriter()
+        {
+            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            if (writing)
+            {
+                StopWriterCoroutine();
+            }
+
+            // reset
+            currentIndex = -1;
+            ResetInvokables(Mediator.CharData.Count);
+            Hide(0, Mediator.CharData.Count, true);
+
+            ResetData();
+
+            RaiseResetWriterEvent(0);
+        }
+
+        /// <summary>
+        /// Reset the writer to the given index of the current text.<br/>
+        /// Does not allow you to skip text; the passed index must be smaller than
+        /// the current index.
+        /// </summary>
+        /// <param name="index">The index to reset the writer to.</param>
+        public void ResetWriter(int index)
+        {
+            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            if (index >= currentIndex)
+            {
+                Debug.LogWarning($"Can't reset the TMPWriter on {gameObject.name} to index {index}; current index is only {currentIndex}");
+                return;
+            }
+
+            if (writing)
+            {
+                StopWriterCoroutine();
+            }
+
+            // reset
+            ResetData();
+
+            Hide(0, Mediator.CharData.Count, true);
+            Show(0, index, true);
+
+            ResetInvokables(currentIndex);
+            for (int i = -1; i < index; i++)
+            {
+                RaiseInvokables(i);
+            }
+
+            currentIndex = index;
+
+            RaiseResetWriterEvent(index);
+        }
+
+        /// <summary>
+        /// Skip the current section of the text.<br/>
+        /// If the current section may not be skipped, this will do nothing.<br/>
+        /// Otherwise, the writing process is skipped to either the end of the current text, or the next unskippable section of the current text.
+        /// </summary>
+        public void SkipWriter(bool skipShowAnimation = true)
+        {
+            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            if (!currentMaySkip)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} may not skip at the current index");
+                return;
+            }
+
+            int skipTo;
+            CachedCommand cc = commands.FirstOrDefault(x => x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null && x.Tag.Parameters[""] == "false");
+
+            if (cc == default) skipTo = Mediator.CharData.Count;
+            else skipTo = cc.Indices.StartIndex;
+
+            RaiseSkipWriterEvent(skipTo);
+
+            for (int i = currentIndex; i < skipTo; i++)
+            {
+                RaiseInvokables(i, true);
+            }
+
+            currentIndex = skipTo;
+            Show(0, skipTo, skipShowAnimation);
+
+            if (skipTo == Mediator.CharData.Count)
+            {
+                if (writing) StopWriterCoroutine();
+                RaiseFinishWriterEvent();
+            }
+        }
+
+        /// <summary>
+        /// Restart the writer.<br/>
+        /// This will reset the writer and start the writing process.
+        /// </summary>
+        public void RestartWriter()
+        {
+            if (Mediator == null)
+            {
+                Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
+                return;
+            }
+
+            ResetWriter();
+            StartWriter();
+        }
+        #endregion
+
+        #region Writer Commands
+        /// <summary>
+        /// Pause the writer for the given amount of seconds.
+        /// </summary>
+        /// <param name="seconds">The amount of time to wait.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">Throws if <paramref name="seconds"/> is less than zero.</exception>
+        public void Wait(float seconds)
+        {
+            if (seconds < 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("Seconds was negative");
+            }
+
+            if (shouldWait)
+            {
+                waitAmount = Mathf.Max(waitAmount, seconds);
+                return;
+            }
+
+            shouldWait = true;
+            waitAmount = seconds;
+        }
+
+        public void ResetWaitPeriod()
+        {
+            shouldWait = false;
+            waitAmount = 0f;
+        }
+
+        /// <summary>
+        /// Pause the writer until the given condition evaluates to true.
+        /// </summary>
+        /// <param name="condition">The condition to wait for.</param>
+        public void WaitUntil(Func<bool> condition)
+        {
+            if (condition == null) return;
+
+            continueConditions -= condition;
+            continueConditions += condition;
+        }
+
+        public void ResetWaitConditions()
+        {
+            continueConditions = null;
+        }
+
+        /// <summary>
+        /// Set the current delay of the writer.
+        /// </summary>
+        /// <param name="delay">The delay between showing two characters.</param>
+        public void SetDelay(float delay)
+        {
+            currentDelays.currentDelay = delay;
+        }
+
+        public void SetWhitespaceDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentWhitespaceDelay = delay;
+            if (type != null) currentDelays.currentWhitespaceDelayType = type.Value;
+        }
+
+        public void SetLinebreakDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentLinebreakDelay = delay;
+            if (type != null) currentDelays.currentLinebreakDelayType = type.Value;
+        }
+
+        public void SetVisibleDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentVisibleDelay = delay;
+            if (type != null) currentDelays.currentVisibleDelayType = type.Value;
+        }
+
+        public void SetPunctuationDelay(float delay, DelayType? type = null)
+        {
+            currentDelays.currentPunctuationDelay = delay;
+            if (type != null) currentDelays.currentPunctuationDelayType = type.Value;
+        }
+
+        /// <summary>
+        /// Set whether the current text may be skipped.
+        /// </summary>
+        /// <param name="skippable">Whether the current text may be skipped.</param>
+        public void SetSkippable(bool skippable)
+        {
+            currentMaySkip = skippable;
+        }
+        #endregion
+
+        #region Setters
+        /// <summary>
+        /// Set the database that will be used to parse command tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse command tags.</param>
+        public void SetDatabase(TMPCommandDatabase database)
+        {
+            this.database = database;
+            OnDatabaseChanged();
+        }
+
+        public void SetWriteOnStart(bool writeOnStart)
+        {
+            this.writeOnStart = writeOnStart;
+        }
+
+        public void SetWriteOnNewText(bool writeOnNewText)
+        {
+            this.writeOnNewText = writeOnNewText;
+        }
+        #endregion
+
+
+        #endregion
+
         #region Initialization
         private void OnEnable()
         {
@@ -303,242 +586,6 @@ namespace TMPEffects.Components
         {
             PrepareForProcessing();
             Mediator.ForceReprocess();
-        }
-        #endregion
-
-        #region Writer Controlling
-        /// <summary>
-        /// Start (or resume) writing.
-        /// </summary>
-        public void StartWriter()
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy)
-            {
-                Debug.LogWarning("The writer must be enabled to start writing");
-                return;
-            }
-
-            if (!writing)
-            {
-                RaiseStartWriterEvent();
-                StartWriterCoroutine();
-            }
-        }
-
-        /// <summary>
-        /// Stop writing.<br/>
-        /// Note that this does not reset the shown text.
-        /// </summary>
-        public void StopWriter()
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
-
-            if (writing)
-            {
-                StopWriterCoroutine();
-                RaiseStopWriterEvent();
-            }
-
-        }
-
-        /// <summary>
-        /// Reset the writer to the initial state for the current text.<br/>
-        /// This also stops the writing process.
-        /// </summary>
-        public void ResetWriter()
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
-
-            if (writing)
-            {
-                StopWriterCoroutine();
-            }
-
-            // reset
-            currentIndex = -1;
-            ResetInvokables(Mediator.CharData.Count);
-            Hide(0, Mediator.CharData.Count, true);
-
-            ResetData();
-
-            RaiseResetWriterEvent(0);
-        }
-
-        /// <summary>
-        /// Reset the writer to the given index of the current text.<br/>
-        /// Does not allow you to skip text; the passed index must be smaller than
-        /// the current index.
-        /// </summary>
-        /// <param name="index">The index to reset the writer to.</param>
-        public void ResetWriter(int index)
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || index >= currentIndex) return;
-
-            if (writing)
-            {
-                StopWriterCoroutine();
-            }
-
-            // reset
-            ResetData();
-
-            Hide(0, Mediator.CharData.Count, true);
-            Show(0, index, true);
-
-            ResetInvokables(currentIndex);
-            for (int i = -1; i < index; i++)
-            {
-                RaiseInvokables(i);
-            }
-
-            currentIndex = index;
-
-            RaiseResetWriterEvent(index);
-        }
-
-        /// <summary>
-        /// Skip the current section of the text.<br/>
-        /// If the current section may not be skipped, this will do nothing.<br/>
-        /// Otherwise, the writing process is skipped to either the end of the current text, or the next unskippable section of the current text.
-        /// </summary>
-        public void SkipWriter(bool skipShowAnimation = true)
-        {
-            if (!isActiveAndEnabled || !gameObject.activeInHierarchy || !currentMaySkip) return;
-
-            int skipTo;
-            CachedCommand cc = commands.FirstOrDefault(x => x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null && x.Tag.Parameters[""] == "false");
-
-            if (cc == default) skipTo = Mediator.CharData.Count;
-            else skipTo = cc.Indices.StartIndex;
-
-            RaiseSkipWriterEvent(skipTo);
-
-            for (int i = currentIndex; i < skipTo; i++)
-            {
-                RaiseInvokables(i, true);
-            }
-
-            currentIndex = skipTo;
-            Show(0, skipTo, skipShowAnimation);
-
-            if (skipTo == Mediator.CharData.Count)
-            {
-                if (writing) StopWriterCoroutine();
-                RaiseFinishWriterEvent();
-            }
-        }
-
-        /// <summary>
-        /// Restart the writer.<br/>
-        /// This will reset the writer and start the writing process.
-        /// </summary>
-        public void RestartWriter()
-        {
-            if (!isActiveAndEnabled) return;
-
-            ResetWriter();
-            StartWriter();
-        }
-        #endregion
-
-        #region Writer Commands
-        /// <summary>
-        /// Pause the writer for the given amount of seconds.
-        /// </summary>
-        /// <param name="seconds">The amount of time to wait.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">Throws if <paramref name="seconds"/> is less than zero.</exception>
-        public void Wait(float seconds)
-        {
-            if (seconds < 0f)
-            {
-                throw new System.ArgumentOutOfRangeException("Seconds was negative");
-            }
-
-            if (shouldWait)
-            {
-                waitAmount = Mathf.Max(waitAmount, seconds);
-                return;
-            }
-
-            shouldWait = true;
-            waitAmount = seconds;
-        }
-
-        /// <summary>
-        /// Pause the writer until the given condition evaluates to true.
-        /// </summary>
-        /// <param name="condition">The condition to wait for.</param>
-        public void WaitUntil(Func<bool> condition)
-        {
-            if (condition == null) return;
-
-            continueConditions -= condition;
-            continueConditions += condition;
-        }
-
-        /// <summary>
-        /// Set the current delay of the writer.
-        /// </summary>
-        /// <param name="delay">The delay between showing two characters.</param>
-        public void SetDelay(float delay)
-        {
-            //currentDelay = delay;
-            currentDelays.currentDelay = delay;
-        }
-
-        public void SetWhitespaceDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentWhitespaceDelay = delay;
-            if (type != null) currentDelays.currentWhitespaceDelayType = type.Value;
-        }
-
-        public void SetLinebreakDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentLinebreakDelay = delay;
-            if (type != null) currentDelays.currentLinebreakDelayType = type.Value;
-        }
-
-        public void SetVisibleDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentVisibleDelay = delay;
-            if (type != null) currentDelays.currentVisibleDelayType = type.Value;
-        }
-
-        public void SetPunctuationDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentPunctuationDelay = delay;
-            if (type != null) currentDelays.currentPunctuationDelayType = type.Value;
-        }
-
-        /// <summary>
-        /// Set whether the current text may be skipped.
-        /// </summary>
-        /// <param name="skippable">Whether the current text may be skipped.</param>
-        public void SetSkippable(bool skippable)
-        {
-            currentMaySkip = skippable;
-        }
-        #endregion
-
-        #region Setters
-        /// <summary>
-        /// Set the database that will be used to parse command tags.
-        /// </summary>
-        /// <param name="database">The database that will be used to parse command tags.</param>
-        public void SetDatabase(TMPCommandDatabase database)
-        {
-            this.database = database;
-            OnDatabaseChanged();
-        }
-
-        public void SetWriteOnStart(bool writeOnStart)
-        {
-            this.writeOnStart = writeOnStart;
-        }
-
-        public void SetWriteOnNewText(bool writeOnNewText)
-        {
-            this.writeOnNewText = writeOnNewText;
         }
         #endregion
 
@@ -888,9 +935,9 @@ namespace TMPEffects.Components
                     else continueConditions -= (delegates[i] as Func<bool>);
                 }
 
-                yield return null;
+                if (!allMet) yield return null;
 
-            } while (!allMet);
+            } while (!allMet && continueConditions != null);
 
             continueConditions = null;
         }

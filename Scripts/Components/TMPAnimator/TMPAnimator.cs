@@ -67,15 +67,15 @@ namespace TMPEffects.Components
         /// <summary>
         /// All basic animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection BasicTags => tags[basicCategory];
+        public ITagCollection BasicTags => tags == null ? null : tags[basicCategory];
         /// <summary>
         /// All show animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection ShowTags => tags[showCategory];
+        public ITagCollection ShowTags => tags == null ? null : tags[showCategory];
         /// <summary>
         /// All hide animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection HideTags => tags[hideCategory];
+        public ITagCollection HideTags => tags == null ? null : tags[hideCategory];
 
         /// <summary>
         /// Whether the TMPAnimator should automatically begin animating on <see cref="Start"/>.
@@ -174,6 +174,308 @@ namespace TMPEffects.Components
             "either through the inspector or through a script using the SetUpdateFrom method.";
         #endregion
 
+
+        #region Public methods
+
+        #region Animation Controlling
+        /// <summary>
+        /// Update the current animations.<br/>
+        /// You should only call this if <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>,
+        /// otherwise this will output a warning and return.
+        /// </summary>
+        public void UpdateAnimations(float deltaTime)
+        {
+            if (Mediator == null)
+            {
+                throw new System.InvalidOperationException("Animator is not enabled!");
+            }
+
+#if UNITY_EDITOR
+            if (Application.isPlaying && updateFrom != UpdateFrom.Script)
+            {
+                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
+                return;
+            }
+#else
+            if (updateFrom != UpdateFrom.Script) 
+            {
+                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
+                return;
+            }
+#endif
+
+            UpdateAnimations_Impl(deltaTime);
+        }
+
+        /// <summary>
+        /// Start animating.<br/>
+        /// You should only call this if <see cref="UpdateFrom"/> is NOT set to <see cref="UpdateFrom.Script"/>,
+        /// otherwise this will output a warning and return.
+        /// </summary>
+        public void StartAnimating()
+        {
+            if (Mediator == null)
+            {
+                throw new System.InvalidOperationException("Animator is not enabled!");
+            }
+
+#if UNITY_EDITOR
+            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
+            {
+                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
+                return;
+            }
+#else
+            if (updateFrom == UpdateFrom.Script)
+            {
+                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
+                return;
+            }
+#endif
+
+            isAnimating = true;
+        }
+
+        /// <summary>
+        /// Stop animating.<br/>
+        /// You should only call this if <see cref="UpdateFrom"/> is NOT set to <see cref="UpdateFrom.Script"/>,
+        /// otherwise this will output a warning and return.
+        /// </summary>
+        public void StopAnimating()
+        {
+            if (Mediator == null)
+            {
+                throw new System.InvalidOperationException("Animator is not enabled!");
+            }
+
+#if UNITY_EDITOR
+            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
+            {
+                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
+                return;
+            }
+#else
+            if (updateFrom == UpdateFrom.Script)
+            {
+                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
+                return;
+            }
+#endif
+
+            isAnimating = false;
+
+            VisibilityState visibility;
+            for (int i = 0; i < Mediator?.CharData.Count; i++)
+            {
+                visibility = Mediator.VisibilityStates[i];
+
+                if (visibility == VisibilityState.Showing)
+                {
+                    Mediator.SetVisibilityState(i, VisibilityState.Shown);
+                }
+                else if (visibility == VisibilityState.Hiding)
+                {
+                    Mediator.SetVisibilityState(i, VisibilityState.Hidden);
+                }
+            }
+
+            ResetAllVisible();
+        }
+
+        /// <summary>
+        /// Reset all visible characters to their initial, unanimated state.
+        /// </summary>
+        public void ResetAnimations() => ResetAllVisible();
+        #endregion
+
+        #region Setters
+        /// <summary>
+        /// Set where the animations should be updated from.
+        /// </summary>
+        /// <param name="updateFrom">Where the animations are updated from.</param>
+        public void SetUpdateFrom(UpdateFrom updateFrom)
+        {
+            if (isAnimating)
+            {
+                StopAnimating();
+            }
+
+            this.updateFrom = updateFrom;
+        }
+
+        /// <summary>
+        /// Set the database that will be used to parse animation tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse animation tags.</param>
+        public void SetDatabase(TMPAnimationDatabase database)
+        {
+            this.database = database;
+            OnDatabaseChanged();
+        }
+
+        /// <summary>
+        /// Set the default show animation.
+        /// </summary>
+        /// <param name="str">The default show animation as a string, e.g. "<+fade>".</param>
+        public void SetDefaultShowString(string str)
+        {
+            defaultShowString = str;
+
+            if (Mediator == null) return;
+            SetDefault(TMPAnimationType.Show);
+        }
+
+        /// <summary>
+        /// Set the default hide animation.
+        /// </summary>
+        /// <param name="str">The default hide animation as a string, e.g. "<-fade>".</param>
+        public void SetDefaultHideString(string str)
+        {
+            defaultHideString = str;
+
+            if (Mediator == null) return;
+            SetDefault(TMPAnimationType.Hide);
+        }
+
+        /// <summary>
+        /// Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
+        /// </summary>
+        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
+        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
+        /// <exception cref="System.ArgumentException">If an invalid <see cref="TMPAnimationType"/> is passed in.</exception>
+        public void SetExcludedCharacters(TMPAnimationType type, string str, bool? excludePunctuation = null)
+        {
+            switch (type)
+            {
+                case TMPAnimationType.Basic: SetExcludedBasicCharacters(str, excludePunctuation); break;
+                case TMPAnimationType.Show: SetExcludedShowCharacters(str, excludePunctuation); break;
+                case TMPAnimationType.Hide: SetExcludedHideCharacters(str, excludePunctuation); break;
+                default: throw new System.ArgumentException();
+            }
+        }
+
+
+        /// <summary>
+        /// Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
+        /// </summary>
+        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
+        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
+        public void SetExcludedBasicCharacters(string str, bool? excludePunctuation = null)
+        {
+            excludedCharacters = str;
+            if (excludePunctuation != null)
+            {
+                this.excludePunctuation = excludePunctuation.Value;
+            }
+
+            if (Mediator != null)
+            {
+                RecalculateSegmentData(TMPAnimationType.Basic);
+                QueueCharacterReset();
+            }
+        }
+
+        /// <summary>
+        /// Set the excluded character for show animations, meaning characters that will not be animated by show animations.
+        /// </summary>
+        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
+        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
+        public void SetExcludedShowCharacters(string str, bool? excludePunctuation = null)
+        {
+            excludedCharactersShow = str;
+            if (excludePunctuation != null)
+            {
+                excludePunctuationShow = excludePunctuation.Value;
+            }
+
+            if (Mediator != null)
+            {
+                RecalculateSegmentData(TMPAnimationType.Show);
+                QueueCharacterReset();
+            }
+        }
+
+        /// <summary>
+        /// Set the excluded character for hide animations, meaning characters that will not be animated by hide animations.
+        /// </summary>
+        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
+        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
+        public void SetExcludedHideCharacters(string str, bool? excludePunctuation = null)
+        {
+            excludedCharactersHide = str;
+            if (excludePunctuation != null)
+            {
+                excludePunctuationHide = excludePunctuation.Value;
+            }
+
+            if (Mediator != null)
+            {
+                RecalculateSegmentData(TMPAnimationType.Hide);
+                QueueCharacterReset();
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// Whether the character is excluded from animations of the given type.
+        /// </summary>
+        /// <param name="c">The character to check.</param>
+        /// <param name="type">The type of animation to check against.</param>
+        /// <returns>Whether the character is excluded from animations of the given type.</returns>
+        /// <exception cref="System.ArgumentException">If an invalid <see cref="TMPAnimationType"/> is passed in.</exception>
+        public bool IsExcluded(char c, TMPAnimationType type)
+        {
+            switch (type)
+            {
+                case TMPAnimationType.Basic: return IsExcludedBasic(c);
+                case TMPAnimationType.Show: return IsExcludedShow(c);
+                case TMPAnimationType.Hide: return IsExcludedHide(c);
+                default: throw new System.ArgumentException();
+            }
+        }
+        /// <summary>
+        /// Check whether the given character is excluded from basic animations.
+        /// </summary>
+        /// <param name="c">The character to check.</param>
+        /// <returns>Whether the character is excluded from basic animations.</returns>
+        public bool IsExcludedBasic(char c) => (excludePunctuation && char.IsPunctuation(c)) || excludedCharacters.Contains(c);
+        /// <summary>
+        /// Check whether the given character is excluded from show animations.
+        /// </summary>
+        /// <param name="c">The character to check.</param>
+        /// <returns>Whether the character is excluded from show animations.</returns>
+        public bool IsExcludedShow(char c) => (excludePunctuationShow && char.IsPunctuation(c)) || excludedCharactersShow.Contains(c);
+        /// <summary>
+        /// Check whether the given character is excluded from hide animations.
+        /// </summary>
+        /// <param name="c">The character to check.</param>
+        /// <returns>Whether the character is excluded from hide animations.</returns>
+        public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
+
+        /// <summary>
+        /// Reset the time of the animator.
+        /// </summary>
+        public void ResetTime()
+        {
+            if (Mediator == null) return;
+
+            context.passed = 0f;
+            for (int i = 0; i < stateTimes.Count; i++)
+            {
+                stateTimes[i] = 0f;
+            }
+            for (int i = 0; i < visibleTimes.Count; i++)
+            {
+                visibleTimes[i] = 0f;
+            }
+
+#if UNITY_EDITOR
+            lastPreviewUpdateTime = Time.time;
+#endif
+        }
+
+        #endregion
+
         #region Initialization
         private void OnEnable()
         {
@@ -254,10 +556,10 @@ namespace TMPEffects.Components
 
         private void CreateContext()
         {
-            // TODO Should be no longer necessary to do 
             context._VisibleTime = (i) => visibleTimes[i];
             context._StateTime = (i) => stateTimes[i];
             context.Animator = this;
+            ResetTime();
         }
 
         private void PrepareForProcessing()
@@ -314,11 +616,11 @@ namespace TMPEffects.Components
 
         private void SetDefault(TMPAnimationType type)
         {
-            if (Mediator == null)
-            {
-                SetToDummy();
-                return;
-            }
+            //if (Mediator == null)
+            //{
+            //    SetToDummy();
+            //    return;
+            //}
 
             string str;
             ITMPEffectDatabase<ITMPAnimation> database;
@@ -402,6 +704,7 @@ namespace TMPEffects.Components
 
         private void OnDatabaseChanged()
         {
+            if (Mediator == null) return;
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }
@@ -438,179 +741,11 @@ namespace TMPEffects.Components
         }
         #endregion
 
-        #region Animation Controlling
-        /// <summary>
-        /// Update the current animations.<br/>
-        /// You should only call this if <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>,
-        /// otherwise this will output a warning and return.
-        /// </summary>
-        public void UpdateAnimations(float deltaTime)
-        {
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom != UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
-                return;
-            }
-#else
-            if (updateFrom != UpdateFrom.Script) 
-            {
-                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
-                return;
-            }
-#endif
 
-            if (!isActiveAndEnabled)
-            {
-                throw new System.InvalidOperationException("Animator is not enabled!");
-            }
-
-            UpdateAnimations_Impl(deltaTime);
-        }
-
-        /// <summary>
-        /// Start animating.<br/>
-        /// You should only call this if <see cref="UpdateFrom"/> is NOT set to <see cref="UpdateFrom.Script"/>,
-        /// otherwise this will output a warning and return.
-        /// </summary>
-        public void StartAnimating()
-        {
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
-                return;
-            }
-#else
-            if (updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
-                return;
-            }
-#endif
-
-            isAnimating = true;
-        }
-
-        /// <summary>
-        /// Stop animating.<br/>
-        /// You should only call this if <see cref="UpdateFrom"/> is NOT set to <see cref="UpdateFrom.Script"/>,
-        /// otherwise this will output a warning and return.
-        /// </summary>
-        public void StopAnimating()
-        {
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
-                return;
-            }
-#else
-            if (updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
-                return;
-            }
-#endif
-            isAnimating = false;
-
-            VisibilityState visibility;
-            for (int i = 0; i < Mediator?.CharData.Count; i++)
-            {
-                visibility = Mediator.VisibilityStates[i];
-
-                if (visibility == VisibilityState.Showing)
-                { 
-                    Mediator.SetVisibilityState(i, VisibilityState.Shown);
-                }
-                else if (visibility == VisibilityState.Hiding)
-                {
-                    Mediator.SetVisibilityState(i, VisibilityState.Hidden);
-                }
-            }
-
-            ResetAllVisible();
-        }
-
-        /// <summary>
-        /// Reset all visible characters to their initial, unanimated state.
-        /// </summary>
-        public void ResetAnimations() => ResetAllVisible();
-        #endregion
-
-        #region Setters
-        /// <summary>
-        /// Set where the animations should be updated from.
-        /// </summary>
-        /// <param name="updateFrom">Where the animations are updated from.</param>
-        public void SetUpdateFrom(UpdateFrom updateFrom)
-        {
-            if (isAnimating)
-            {
-                StopAnimating();
-            }
-
-            this.updateFrom = updateFrom;
-        }
-
-        /// <summary>
-        /// Set the database that will be used to parse animation tags.
-        /// </summary>
-        /// <param name="database">The database that will be used to parse animation tags.</param>
-        public void SetDatabase(TMPAnimationDatabase database)
-        {
-            this.database = database;
-            OnDatabaseChanged();
-        }
-
-        /// <summary>
-        /// Set the default show animation.
-        /// </summary>
-        /// <param name="str">The default show animation as a string, e.g. "<+fade>".</param>
-        public void SetDefaultShowString(string str)
-        {
-            defaultShowString = str;
-            SetDefault(TMPAnimationType.Show);
-        }
-
-        /// <summary>
-        /// Set the default hide animation.
-        /// </summary>
-        /// <param name="str">The default hide animation as a string, e.g. "<-fade>".</param>
-        public void SetDefaultHideString(string str)
-        {
-            defaultHideString = str;
-            SetDefault(TMPAnimationType.Hide);
-        }
-
-        /// <summary>
-        /// Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
-        /// </summary>
-        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
-        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
-        /// <exception cref="System.ArgumentException">If an invalid <see cref="TMPAnimationType"/> is passed in.</exception>
-        public void SetExcludedCharacters(TMPAnimationType type, string str, bool? excludePunctuation = null)
-        {
-            switch (type)
-            {
-                case TMPAnimationType.Basic: SetExcludedBasicCharacters(str, excludePunctuation); break;
-                case TMPAnimationType.Show: SetExcludedShowCharacters(str, excludePunctuation); break;
-                case TMPAnimationType.Hide: SetExcludedHideCharacters(str, excludePunctuation); break;
-                default: throw new System.ArgumentException();
-            }
-
-            RecalculateSegmentData(type);
-            QueueCharacterReset();
-        }
 
         private void RecalculateSegmentData(TMPAnimationType type)
         {
-            //Debug.Log("Recalculating segment data");
-            // TODO Need to check this in case exclusions change while animator is
-            // disabled (=> mediator is null).
-            // At some point the editor-runtime code separation will need some level
-            // of reworking
-            if (!isActiveAndEnabled) return;
+            if (Mediator == null) return;
 
             //Debug.Log("fr");
             switch (type)
@@ -633,55 +768,6 @@ namespace TMPEffects.Components
                 default: throw new System.ArgumentException();
             }
         }
-
-        /// <summary>
-        /// Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
-        /// </summary>
-        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
-        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
-        public void SetExcludedBasicCharacters(string str, bool? excludePunctuation = null)
-        {
-            excludedCharacters = str;
-            if (excludePunctuation != null)
-            {
-                this.excludePunctuation = excludePunctuation.Value;
-            }
-
-            RecalculateSegmentData(TMPAnimationType.Basic);
-        }
-
-        /// <summary>
-        /// Set the excluded character for show animations, meaning characters that will not be animated by show animations.
-        /// </summary>
-        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
-        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
-        public void SetExcludedShowCharacters(string str, bool? excludePunctuation = null)
-        {
-            excludedCharactersShow = str;
-            if (excludePunctuation != null)
-            {
-                excludePunctuationShow = excludePunctuation.Value;
-            }
-
-            RecalculateSegmentData(TMPAnimationType.Show);
-        }
-
-        /// <summary>
-        /// Set the excluded character for hide animations, meaning characters that will not be animated by hide animations.
-        /// </summary>
-        /// <param name="str">The excluded characters, as string. The string will be evaluated character-wise.</param>
-        /// <param name="excludePunctuation">Whether punctuation is excluded.</param>
-        public void SetExcludedHideCharacters(string str, bool? excludePunctuation = null)
-        {
-            excludedCharactersHide = str;
-            if (excludePunctuation != null)
-            {
-                excludePunctuationHide = excludePunctuation.Value;
-            }
-
-            RecalculateSegmentData(TMPAnimationType.Hide);
-        }
-        #endregion
 
         #region Animations 
         private void Update()
@@ -1189,6 +1275,7 @@ namespace TMPEffects.Components
 
         private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
+            //Debug.Log("On text changed by");
             QueueCharacterReset();
             if (IsAnimating) UpdateAnimations_Impl(0f);
         }
@@ -1413,6 +1500,7 @@ namespace TMPEffects.Components
             {
                 return;
             }
+
             var info = Mediator.Text.textInfo;
 
             Vector3[] verts;
@@ -1454,55 +1542,20 @@ namespace TMPEffects.Components
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
-
-
-        /// <summary>
-        /// Whether the character is excluded from animations of the given type.
-        /// </summary>
-        /// <param name="c">The character to check.</param>
-        /// <param name="type">The type of animation to check against.</param>
-        /// <returns>Whether the character is excluded from animations of the given type.</returns>
-        /// <exception cref="System.ArgumentException">If an invalid <see cref="TMPAnimationType"/> is passed in.</exception>
-        public bool IsExcluded(char c, TMPAnimationType type)
-        {
-            switch (type)
-            {
-                case TMPAnimationType.Basic: return IsExcludedBasic(c);
-                case TMPAnimationType.Show: return IsExcludedShow(c);
-                case TMPAnimationType.Hide: return IsExcludedHide(c);
-                default: throw new System.ArgumentException();
-            }
-        }
-        /// <summary>
-        /// Check whether the given character is excluded from basic animations.
-        /// </summary>
-        /// <param name="c">The character to check.</param>
-        /// <returns>Whether the character is excluded from basic animations.</returns>
-        public bool IsExcludedBasic(char c) => (excludePunctuation && char.IsPunctuation(c)) || excludedCharacters.Contains(c);
-        /// <summary>
-        /// Check whether the given character is excluded from show animations.
-        /// </summary>
-        /// <param name="c">The character to check.</param>
-        /// <returns>Whether the character is excluded from show animations.</returns>
-        public bool IsExcludedShow(char c) => (excludePunctuationShow && char.IsPunctuation(c)) || excludedCharactersShow.Contains(c);
-        /// <summary>
-        /// Check whether the given character is excluded from hide animations.
-        /// </summary>
-        /// <param name="c">The character to check.</param>
-        /// <returns>Whether the character is excluded from hide animations.</returns>
-        public bool IsExcludedHide(char c) => (excludePunctuationHide && char.IsPunctuation(c)) || excludedCharactersHide.Contains(c);
         #endregion
 
         #region Editor Only
 #if UNITY_EDITOR
 #pragma warning disable CS0414
-        [SerializeField, HideInInspector] internal bool preview = false;
-        [SerializeField, HideInInspector] bool useDefaultDatabase = true;
-        [System.NonSerialized, HideInInspector] float lastPreviewUpdateTime = 0f;
+        [SerializeField, HideInInspector] private bool preview = false;
+        [SerializeField, HideInInspector] private bool useDefaultDatabase = true;
+        [System.NonSerialized, HideInInspector] private float lastPreviewUpdateTime = 0f;
 #pragma warning restore CS0414
 
         internal void StartPreview()
         {
+            if (Mediator == null) return;
+
             preview = true;
             EditorApplication.update -= UpdatePreview;
             EditorApplication.update += UpdatePreview;
@@ -1510,13 +1563,14 @@ namespace TMPEffects.Components
 
         internal void StopPreviewWithouSet()
         {
+            if (Mediator == null) return;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();
         }
 
         internal void StopPreview()
         {
-            //Debug.Log("STOP PREVIEW");
+            if (Mediator == null) return;
             preview = false;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();
@@ -1537,6 +1591,7 @@ namespace TMPEffects.Components
 
         private void UpdatePreview()
         {
+            if (Mediator == null) return;
             if (Application.isPlaying) return;
 
             if (lastPreviewUpdateTime <= 0)
@@ -1620,45 +1675,32 @@ namespace TMPEffects.Components
 
         internal void OnChangedBasicExclusion()
         {
+            if (Mediator == null) return;
             RecalculateSegmentData(TMPAnimationType.Basic);
             QueueCharacterReset();
         }
         internal void OnChangedShowExclusion()
         {
+            if (Mediator == null) return;
             RecalculateSegmentData(TMPAnimationType.Show);
             QueueCharacterReset();
         }
         internal void OnChangedHideExclusion()
         {
+            if (Mediator == null) return;
             RecalculateSegmentData(TMPAnimationType.Hide);
             QueueCharacterReset();
         }
 
         internal void OnChangedDatabase()
         {
+            if (Mediator == null) return;
             OnDatabaseChanged();
         }
 #endif
         #endregion
 
-        public void ResetTime()
-        {
-            context.passed = 0f;
-            for (int i = 0; i < stateTimes.Count; i++)
-            {
-                stateTimes[i] = 0;
-            }
-            for (int i = 0; i < visibleTimes.Count; i++)
-            {
-                visibleTimes[i] = 0;
-            }
 
-#if UNITY_EDITOR
-            lastPreviewUpdateTime = Time.time;
-#endif
-
-            Mediator.ForceReprocess();
-        }
 
 
         private bool characterResetQueued = false;

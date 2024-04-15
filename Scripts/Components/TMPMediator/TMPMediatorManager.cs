@@ -13,7 +13,7 @@ namespace TMPEffects.Components.Mediator
     /// </summary>
     public static class TMPMediatorManager
     {
-        private static Dictionary<GameObject, ValueTuple<TMPMediator, List<object>>> mediators = new();
+        public static Dictionary<GameObject, ValueTuple<TMPMediator, List<object>>> mediators = new();
 
         /// <summary>
         /// Subscribe to the TMPMediatorManager.<br/>
@@ -63,8 +63,9 @@ namespace TMPEffects.Components.Mediator
             if (tuple.Item2.Count == 0)
             {
                 mediators.Remove(text.gameObject);
-                if (text.textPreprocessor == tuple.Item1.Processor)
-                    text.textPreprocessor = null;
+                tuple.Item1.Dispose();
+                //if (text.textPreprocessor == tuple.Item1.Processor)
+                //    text.textPreprocessor = null;
             }
         }
 
@@ -91,7 +92,5 @@ namespace TMPEffects.Components.Mediator
             mediator = tuple.Item1;
             return true;
         }
-
-
     }
 }

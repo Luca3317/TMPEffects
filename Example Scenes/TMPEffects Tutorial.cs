@@ -20,7 +20,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     public Button next;
     public Button previous;
 
-    private bool animate;
+    private bool animate = true;
 
     int currentSequence;
     private Action[] sequence;
@@ -69,6 +69,18 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
 
     private void Sequence_0()
     {
+        writer.enabled = true;
+        animator.enabled = true;
+        animator.enabled = false;
+        animator.enabled = true;
+        animator.enabled = false;
+        animator.enabled = true;
+        animator.enabled = false;
+        animator.enabled = true;
+        animator.enabled = false;
+
+
+
         writer.enabled = false;
         animator.enabled = true;
         animator.SetText("With TMPEffects, you can modify the way your TextMeshPro texts are displayed in a myriad of ways.\n\nSimply apply the tag corresponding to the effect you want, like you would any other TextMeshPro tag.\n\n" +
@@ -80,6 +92,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
         writer.enabled = false;
         animator.enabled = false;
         animator.SetText("There are two main components of TMPEffects:\n\n1. The TMPAnimator\n\n2. The TMPWriter");
+
     }
 
     private void Sequence_2()
@@ -144,7 +157,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        writer.ResetWriter();
+        //writer.ResetWriter();
         animator.SetText("<b>TMPWriter</b>\n\nYou can modify the behavior of the writing process using command tags, prefixed with a '!'.");
     }
 
@@ -154,14 +167,14 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
         animator.enabled = false;
         writer.ResetWriter();
         writer.StartWriter();
-        animator.SetText("<!show><b>TMPWriter</b>\n\n<noparse>For example, you can wait <!wait=2.25>for any given amount of time, or <!delay=0.025>change the speed at which the text is shown.</noparse></!>\n\n<alpha=#CC>For example, you can wait<!wait=2.25>for any given amount of time, or <!delay=0.025>change the speed at which the text is shown.</noparse></!>\n");
+        animator.SetText("<!show><b>TMPWriter</b>\n\n<noparse>For example, you can wait <!wait=2.25>for any given amount of time, or <!delay=0.025>change the speed at which the text is shown.</noparse></!>\n\n<alpha=#CC>For example, you can wait <!wait=2.25>for any given amount of time, or <!delay=0.025>change the speed at which the text is shown.</noparse></!>\n");
     }
 
     private void Sequence_12()
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>TMPWriter</b>\n\nIn addition to invoking specific commands, you can also raise generic events, like so: <?myfirstevent key1=value1 key2=value2>.\nYou can listen to these events with TMPWriter's \"OnTextEvent\" event.");
+        animator.SetText("<b>TMPWriter</b>\n\nIn addition to invoking specific commands, you can also raise generic events, like so:\n<?myfirstevent key1=value1 key2=value2>.\nYou can listen to these events with TMPWriter's \"OnTextEvent\" event.");
     }
 
     private void Sequence_14()
@@ -197,7 +210,10 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
-        if (animate) animator.UpdateAnimations(Time.deltaTime);
+        if (animator.isActiveAndEnabled)
+        {
+            animator.UpdateAnimations(Time.deltaTime);
+        }
     }
 
     public void Previous()
@@ -212,5 +228,13 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
         if (currentSequence == sequence.Length - 1) return;
         currentSequence++;
         sequence[currentSequence].Invoke();
+    }
+
+    public void RestartWriter()
+    {
+        if (writer.isActiveAndEnabled)
+        {
+            writer.RestartWriter();
+        }
     }
 }
