@@ -174,7 +174,6 @@ namespace TMPEffects.Components
             "either through the inspector or through a script using the SetUpdateFrom method.";
         #endregion
 
-
         #region Public methods
 
         #region Animation Controlling
@@ -741,11 +740,9 @@ namespace TMPEffects.Components
         }
         #endregion
 
-
-
         private void RecalculateSegmentData(TMPAnimationType type)
         {
-            if (Mediator == null) return;
+            if (Mediator == null) return; 
 
             switch (type)
             {
@@ -1687,9 +1684,6 @@ namespace TMPEffects.Components
         }
 #endif
         #endregion
-
-
-
 
         private bool characterResetQueued = false;
         private void QueueCharacterReset()
