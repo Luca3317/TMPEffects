@@ -666,7 +666,12 @@ namespace TMPEffects.Extensions
         public static AnimationCurve Invert(AnimationCurve curve)
         {
             List<Keyframe> frames = new List<Keyframe>(curve.keys);
-            curve.ClearKeys();
+
+            int len = curve.keys.Length;
+            for (int i = len - 1; i >= 0; i--)
+            {
+                curve.RemoveKey(i);
+            }
 
             for (int i = frames.Count - 1; i >= 0; i--)
             {
