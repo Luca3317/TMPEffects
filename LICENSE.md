@@ -1,6 +1,6 @@
 MIT License
 
-TMPEffects Copyright (c) 2024 Luca3317
+Copyright (c) 2024 Luca3317
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
