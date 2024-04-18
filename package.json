@@ -17,5 +17,17 @@
     "animation",
     "writer",
     "effect"
+  ],
+  "samples": [
+    {
+      "displayName": "Example Scene Animations",
+      "description": "Contains exemplary scene animations",
+      "path": "Samples~/Example SceneAnimations"
+    },
+    {
+      "displayName": "Example Scenes",
+      "description": "Example Scenes",
+      "path": "Samples~/Example Scenes"
+    }
   ]
 }
