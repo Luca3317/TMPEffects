@@ -82,6 +82,7 @@ namespace TMPEffects.Components.Animator
             database = null;
             sceneAnimations = null;
             customAnimations = null;
+            ObjectChanged = null;
         }
     }
 }

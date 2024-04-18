@@ -19,6 +19,7 @@ using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
+using System.Xml.Linq;
 
 namespace TMPEffects.Components
 {
@@ -149,6 +150,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation> basicDatabase;
         [System.NonSerialized] private AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation> showDatabase;
         [System.NonSerialized] private AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation> hideDatabase;
+        [System.NonSerialized] private AnimationDatabase<TMPAnimationDatabase, TMPSceneAnimation> mainDatabaseWrapper;
 
         [System.NonSerialized] private CachedCollection<CachedAnimation> basic;
         [System.NonSerialized] private CachedCollection<CachedAnimation> show;
@@ -515,6 +517,7 @@ namespace TMPEffects.Components
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
+            mainDatabaseWrapper?.Dispose();
 
             UnsubscribeFromMediator();
 
@@ -567,20 +570,27 @@ namespace TMPEffects.Components
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
-            basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase, sceneAnimations);
-            showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
-            hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+            mainDatabaseWrapper?.Dispose();
+
+
+            basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase == null ? null : database.BasicAnimationDatabase, sceneAnimations);
+            showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
+            hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+            mainDatabaseWrapper = new AnimationDatabase<TMPAnimationDatabase, TMPSceneAnimation>(database == null ? null : database, null);
 
             basicDatabase.AddAnimation("sprite", new SpriteAnimation());
+
 
             basicDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
+            mainDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
             basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase);
             showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase);
             hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase);
+
 
             // Reset tagcollection & cachedcollection => moved to postprocesstags
             //if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
@@ -603,6 +613,11 @@ namespace TMPEffects.Components
             processors.AddProcessor(hideCategory.Prefix, new TagProcessor(hideCategory));
 
             processors.RegisterTo(Mediator.Processor);
+        }
+
+        private void MainDatabaseWrapper_ObjectChanged(object sender)
+        {
+            throw new System.NotImplementedException();
         }
 
         // Reset all visible character when a tag is added / removed / replaced;
@@ -742,7 +757,7 @@ namespace TMPEffects.Components
 
         private void RecalculateSegmentData(TMPAnimationType type)
         {
-            if (Mediator == null) return; 
+            if (Mediator == null) return;
 
             switch (type)
             {
@@ -1599,12 +1614,12 @@ namespace TMPEffects.Components
             switch (type)
             {
                 case TMPAnimationType.Show:
-                    tempDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
+                    tempDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
                     str = defaultShowString;
                     break;
 
                 case TMPAnimationType.Hide:
-                    tempDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
+                    tempDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
                     str = defaultHideString;
                     break;
 

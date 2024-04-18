@@ -115,7 +115,10 @@ namespace TMPEffects.Databases.AnimationDatabase
                 if (prevBasicAnimationDatabase != null)
                     prevBasicAnimationDatabase.StopListenForChanges(OnChanged);
 
-                basicAnimationDatabase.ListenForChanges(OnChanged);
+                if (basicAnimationDatabase != null)
+                    basicAnimationDatabase.ListenForChanges(OnChanged);
+
+                prevBasicAnimationDatabase = basicAnimationDatabase;
             }
 
             if (prevShowAnimationDatabase != showAnimationDatabase)
@@ -123,15 +126,21 @@ namespace TMPEffects.Databases.AnimationDatabase
                 if (prevShowAnimationDatabase != null)
                     prevShowAnimationDatabase.StopListenForChanges(OnChanged);
 
-                showAnimationDatabase.ListenForChanges(OnChanged);
+                if (showAnimationDatabase != null)
+                    showAnimationDatabase.ListenForChanges(OnChanged);
+
+                prevShowAnimationDatabase = showAnimationDatabase;
             }
 
             if (prevHideAnimationDatabase != hideAnimationDatabase)
             {
                 if (prevHideAnimationDatabase != null)
                     prevHideAnimationDatabase.StopListenForChanges(OnChanged);
-                
-                hideAnimationDatabase.ListenForChanges(OnChanged);
+
+                if (hideAnimationDatabase != null)
+                    hideAnimationDatabase.ListenForChanges(OnChanged);
+
+                prevHideAnimationDatabase = hideAnimationDatabase;
             }
 
             RaiseDatabaseChanged();

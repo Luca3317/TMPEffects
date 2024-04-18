@@ -190,6 +190,8 @@ namespace TMPEffects.Editor
 
             if (!useDefaultDatabaseProp.boolValue) return;
 
+            if (!TMPEffectsSettingsProvider.IsSettingsAvailable()) return;
+
             if (TMPEffectsSettings.Get().DefaultCommandDatabase == null)
             {
                 Debug.LogWarning("No default command database set in Preferences/TMPEffects");
@@ -384,12 +386,25 @@ namespace TMPEffects.Editor
             EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && TMPEffectsSettings.Get().DefaultCommandDatabase == null)
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
                 {
-                    Debug.LogWarning("No default command database set in Preferences/TMPEffects");
-                    useDefaultDatabaseProp.boolValue = false;
+                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
+                    if (settings == null)
+                    {
+                        //Debug.LogWarning("No settings");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else if (settings.DefaultCommandDatabase == null)
+                    {
+                        Debug.LogWarning("No default comamnd database set in Preferences/TMPEffects");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else
+                    {
+                        databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
+                    }
                 }
-                else if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
+                else if (TMPEffectsSettingsProvider.IsSettingsAvailable() && databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
                 {
                     databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
                 }

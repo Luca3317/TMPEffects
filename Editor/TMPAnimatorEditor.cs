@@ -3,6 +3,7 @@ using UnityEditor;
 using TMPEffects.Components;
 using TMPEffects.Databases.AnimationDatabase;
 using UnityEngine.Playables;
+using Codice.CM.Client.Differences;
 
 namespace TMPEffects.Editor
 {
@@ -78,7 +79,10 @@ namespace TMPEffects.Editor
 
             if (!useDefaultDatabaseProp.boolValue) return;
 
-            if (TMPEffectsSettings.Get().DefaultAnimationDatabase == null)
+            TMPEffectsSettings settings = TMPEffectsSettings.Get();
+            if (settings == null) return;
+
+            if (settings.DefaultAnimationDatabase == null)
             {
                 Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
@@ -86,9 +90,9 @@ namespace TMPEffects.Editor
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
+            if (databaseProp.objectReferenceValue != settings.DefaultAnimationDatabase)
             {
-                databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
+                databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
             }
@@ -157,12 +161,25 @@ namespace TMPEffects.Editor
             EditorGUI.BeginChangeCheck();
             if (useDefaultDatabaseProp.boolValue)
             {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue && TMPEffectsSettings.Get().DefaultAnimationDatabase == null)
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
                 {
-                    Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
-                    useDefaultDatabaseProp.boolValue = false;
+                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
+                    if (settings == null)
+                    {
+                        //Debug.LogWarning("No settings");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else if (settings.DefaultAnimationDatabase == null)
+                    {
+                        Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else
+                    {
+                        databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
+                    }
                 }
-                else if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
+                else if (TMPEffectsSettingsProvider.IsSettingsAvailable() && databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
                 {
                     databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
                 }

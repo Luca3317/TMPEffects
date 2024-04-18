@@ -112,7 +112,6 @@ namespace TMPEffects.Components
         /// </summary>
         public const char EVENT_PREFIX = '?';
 
-
         #region Fields
         // Settings
         [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")]

@@ -56,7 +56,7 @@ namespace TMPEffects
             value = 0f;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
 
-            return ParsingUtility.StringToFloat(parameters[parameterName], out value);
+            return ParsingUtility.StringToFloat(parameters[parameterName], out value, BuiltInFloatKeywords);
         }
 
 

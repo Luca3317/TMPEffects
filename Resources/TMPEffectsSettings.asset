@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2201564a71275479b536da96c1d11f, type: 3}
+  m_Name: TMPEffectsSettings
+  m_EditorClassIdentifier: 
+  defaultAnimationDatabase: {fileID: 11400000, guid: f0a33761ff6919d4a9979ee36980a29d, type: 2}
+  defaultCommandDatabase: {fileID: 11400000, guid: 290ad04254a96934aa269d5b8d258008, type: 2}
