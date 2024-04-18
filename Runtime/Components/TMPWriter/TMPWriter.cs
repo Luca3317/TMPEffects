@@ -1204,7 +1204,7 @@ namespace TMPEffects.Components
         private void PostProcessTags()
         {
             var kvpCommands = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(commandCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
-            var kvpEvents = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(eventCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
+            var kvpEvents = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(eventCategory, processors.TagProcessors[eventCategory.Prefix][0].ProcessedTags);
 
             tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
