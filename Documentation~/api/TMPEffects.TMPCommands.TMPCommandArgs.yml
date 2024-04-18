@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TMPCommandArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPCommandArgs
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public class TMPCommandArgs
@@ -55,12 +55,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TMPCommandArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: tag
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public readonly TMPEffectTag tag
@@ -82,12 +82,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TMPCommandArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: indices
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public readonly TMPEffectTagIndices indices
@@ -109,12 +109,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TMPCommandArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: writer
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public readonly TMPWriter writer
@@ -136,12 +136,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TMPCommandArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public TMPCommandArgs(TMPEffectTag tag, TMPEffectTagIndices indices, TMPWriter writer)

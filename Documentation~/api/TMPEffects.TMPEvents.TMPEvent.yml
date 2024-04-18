@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEvent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEvent
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEvent.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEvent.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: >-
@@ -86,12 +86,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEvent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEvent.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEvent.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: public TMPEvent()

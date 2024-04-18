@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChangedEarlyEventHandler
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 45
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   syntax:
     content: public delegate void TMPMediator.TextChangedEarlyEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)

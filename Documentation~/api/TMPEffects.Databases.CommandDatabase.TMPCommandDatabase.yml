@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPCommandDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.CommandDatabase
   summary: Stores <xref href="TMPEffects.TMPCommands.TMPCommand" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -135,12 +135,12 @@ items:
     remote:
       path: Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.CommandDatabase
   summary: Check whether this database contains a command associated with the given name.
   example: []
@@ -174,12 +174,12 @@ items:
     remote:
       path: Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 33
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.CommandDatabase
   summary: Get the command associated with the given name.
   example: []

@@ -33,12 +33,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimatorContext
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 75
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
@@ -85,12 +85,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleAnimations
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 79
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Whether animations are scaled.
   example: []
@@ -118,12 +118,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleUniformly
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 85
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     Whether to scale animations uniformly (based on the default font size of the animator)
@@ -156,12 +156,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 91
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Whether animations use scaled time.
   example: []
@@ -189,12 +189,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 96
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The animating <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -222,12 +222,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DeltaTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 102
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The current delta time (=&gt; time since last animation update).
   example: []
@@ -255,12 +255,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 108
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The time that has passed since the animator began animating.
   example: []
@@ -288,12 +288,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: deltaTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 123
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: >-
@@ -332,12 +332,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: passed
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 124
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: >-
@@ -376,12 +376,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: _StateTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 125
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: >-
@@ -420,12 +420,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: _VisibleTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 126
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: >-
@@ -464,12 +464,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 128
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public AnimatorContext()
@@ -493,12 +493,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 129
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public AnimatorContext(TMPAnimator animator)
@@ -525,12 +525,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 130
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public AnimatorContext(TMPAnimator animator, bool scaleAnimations, bool useScaledTime, bool scaleUniformly, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
@@ -567,12 +567,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 144
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -607,12 +607,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 146
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
   example: []
@@ -644,12 +644,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 148
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -687,12 +687,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/AnimatorContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
     startLine: 150
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
   example: []

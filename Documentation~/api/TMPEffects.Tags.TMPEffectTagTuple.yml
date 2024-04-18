@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagTuple.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTagTuple
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagTuple.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Readonly struct that combines an <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref> and an <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -56,12 +56,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagTuple.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagTuple.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The tag.
   example: []
@@ -85,12 +85,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagTuple.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Indices
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagTuple.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The tag indices.
   example: []
@@ -114,12 +114,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagTuple.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagTuple.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public TMPEffectTagTuple(TMPEffectTag tag, TMPEffectTagIndices indices)
@@ -148,12 +148,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagTuple.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagTuple.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   example: []
   syntax:

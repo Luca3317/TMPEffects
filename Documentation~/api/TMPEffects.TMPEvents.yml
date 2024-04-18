@@ -14,7 +14,7 @@ items:
   fullName: TMPEffects.TMPEvents
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
 - uid: TMPEffects.TMPEvents.TMPEventArgs
   commentId: T:TMPEffects.TMPEvents.TMPEventArgs

@@ -46,6 +46,8 @@ You can also set the database used by the TMPWriter component through script, us
 
 Below the database, there is another field, <mark style="color: lightgray; background-color: #191a18">SceneCommands</mark>, which is simply a dictionary that allows you to map tag names to SceneCommands. Tags defined here are also parsed by the TMPWriter.
 
+For more about databases, see [Databases](databases.md). For more about SceneCommands, see [SceneCommands](tmpwriter_scenecommands.md).
+
 ## Writer events
 Besides the OnTextEvent (see [Getting started](tmpwriter_gettingstarted.md)), there are the following events you may listen to:
 

@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/ITMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public interface ITMPAnimation
@@ -45,12 +45,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/ITMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Animate the given character.
   example: []
@@ -80,12 +80,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/ITMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: >-
     Validate the parameters.<br />
@@ -121,12 +121,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/ITMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
     startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -159,12 +159,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/ITMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
     startLine: 32
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Create and get a new custom data object for this animation.
   example: []

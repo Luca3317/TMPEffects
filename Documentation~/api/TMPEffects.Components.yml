@@ -16,15 +16,8 @@ items:
   fullName: TMPEffects.Components
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.Components.TMPEffectComponent
-  commentId: T:TMPEffects.Components.TMPEffectComponent
-  parent: TMPEffects.Components
-  href: TMPEffects.Components.TMPEffectComponent.html
-  name: TMPEffectComponent
-  nameWithType: TMPEffectComponent
-  fullName: TMPEffects.Components.TMPEffectComponent
 - uid: TMPEffects.Components.TMPAnimator
   commentId: T:TMPEffects.Components.TMPAnimator
   parent: TMPEffects.Components
@@ -62,6 +55,13 @@ references:
   - uid: TMPEffects.Components.TMPWriter.DelayType
     name: DelayType
     href: TMPEffects.Components.TMPWriter.DelayType.html
+- uid: TMPEffects.Components.TMPEffectComponent
+  commentId: T:TMPEffects.Components.TMPEffectComponent
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent
+  nameWithType: TMPEffectComponent
+  fullName: TMPEffects.Components.TMPEffectComponent
 - uid: TMPEffects.Components
   commentId: N:TMPEffects.Components
   href: TMPEffects.html

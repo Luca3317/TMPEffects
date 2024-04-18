@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollectionManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagCollectionManager
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollectionManager.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollectionManager.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Interface for a manager of <xref href="TMPEffects.Tags.Collections.ITagCollection" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -52,12 +52,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollectionManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: this[]
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollectionManager.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollectionManager.cs
     startLine: 19
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the <xref href="TMPEffects.Tags.Collections.ITagCollection" data-throw-if-not-resolved="false"></xref> associated with the given key.
   example: []
@@ -94,12 +94,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollectionManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddKey
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollectionManager.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollectionManager.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Add a key. This will automatically create an associated <xref href="TMPEffects.Tags.Collections.ITagCollection" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -131,12 +131,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollectionManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveKey
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollectionManager.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollectionManager.cs
     startLine: 31
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove a key.
   example: []

@@ -2,10 +2,12 @@
 _layout: landing
 ---
 
-# This is the **HOMEPAGE**.
+# TMPEffects documentation
 
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+This is the full documentation of the [TMPEffects](https://github.com/Luca3317/TMPEffects) package.
+Click [here](docs/introduction.md) to begin reading. 
 
-## Quick Start Notes:
+Below is a copy of the readme of the [github repository](https://github.com/Luca3317/TMPEffects).
 
-1. Add images to the *images* folder if the file is referencing an image.
+
+

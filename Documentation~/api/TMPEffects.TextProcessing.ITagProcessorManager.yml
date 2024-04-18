@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessorManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagProcessorManager
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Interface for manager of <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -48,12 +48,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessorManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessors
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Mapping of prefix to list of <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -79,12 +79,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessorManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 30
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Add a processor.
   example: []
@@ -131,12 +131,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessorManager.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Remove a processor.
   example: []

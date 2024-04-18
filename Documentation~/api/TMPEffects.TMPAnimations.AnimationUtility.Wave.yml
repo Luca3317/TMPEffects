@@ -36,12 +36,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Wave
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 389
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: >-
@@ -95,12 +95,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpwardCurve
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 392
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public AnimationCurve UpwardCurve { get; set; }
@@ -124,12 +124,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DownwardCurve
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 397
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public AnimationCurve DownwardCurve { get; set; }
@@ -153,12 +153,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CrestWait
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 403
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float CrestWait { get; set; }
@@ -182,12 +182,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TroughWait
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 408
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float TroughWait { get; set; }
@@ -211,12 +211,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Uniformity
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 414
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Uniformity { get; set; }
@@ -240,12 +240,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 420
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public Wave()
@@ -269,12 +269,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 424
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float uniformity = 1)
@@ -311,12 +311,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 437
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float crestWait, float troughWait, float uniformity = 1)
@@ -357,12 +357,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedExtrema
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 448
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
@@ -399,12 +399,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedWaveExtrema
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 466
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public int PassedWaveExtrema(float time, float deltaTime, float offset)
@@ -437,12 +437,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedPulseExtrema
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 495
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
@@ -479,12 +479,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedInvertedPulseExtrema
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 538
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
@@ -521,12 +521,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedOneDirectionalPulseExtrema
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 580
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
@@ -563,12 +563,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Evaluate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 674
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
@@ -601,12 +601,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsWave
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 691
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public (float, int) EvaluateAsWave(float time, float offset)
@@ -637,12 +637,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsPulse
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 709
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)
@@ -675,12 +675,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsInvertedPulse
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 723
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)
@@ -713,12 +713,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsOneDirectionalPulse
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 737
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = true)
@@ -751,12 +751,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnBeforeSerialize
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 813
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: <p>Implement this method to receive a callback before Unity serializes your object.</p>
   example: []
@@ -782,12 +782,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnAfterDeserialize
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 824
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: <p>Implement this method to receive a callback after Unity deserializes your object.</p>
   example: []

@@ -32,14 +32,14 @@ items:
   - TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
   - TMPEffects.Components.TMPWriter.SetVisibleDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
   - TMPEffects.Components.TMPWriter.SetWhitespaceDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  - TMPEffects.Components.TMPWriter.SetWriteOnNewText(System.Boolean)
-  - TMPEffects.Components.TMPWriter.SetWriteOnStart(System.Boolean)
   - TMPEffects.Components.TMPWriter.SkipWriter(System.Boolean)
   - TMPEffects.Components.TMPWriter.StartWriter
   - TMPEffects.Components.TMPWriter.StopWriter
   - TMPEffects.Components.TMPWriter.Tags
   - TMPEffects.Components.TMPWriter.Wait(System.Single)
   - TMPEffects.Components.TMPWriter.WaitUntil(System.Func{System.Boolean})
+  - TMPEffects.Components.TMPWriter.WriteOnNewText
+  - TMPEffects.Components.TMPWriter.WriteOnStart
   langs:
   - csharp
   - vb
@@ -51,12 +51,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Shows / hides the characters of a <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component over time,<br />
@@ -248,12 +248,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsWriting
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Whether the TMPWriter is currently writing text.
   example: []
@@ -279,12 +279,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MaySkip
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 48
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Whether the TMPWriter may skip the current section of text.
   example: []
@@ -310,12 +310,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CurrentIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 52
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The text index of the TMPWriter's current character.
   example: []
@@ -341,12 +341,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Database
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 58
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The database used to parse command tags.
   example: []
@@ -372,12 +372,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 64
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All tags parsed by the TMPWriter.
   example: []
@@ -403,12 +403,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CommandTags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 68
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All command tags parsed by the TMPWriter.
   example: []
@@ -434,12 +434,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EventTags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
     startLine: 72
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All event tags parsed by the TMPWriter.
   example: []
@@ -450,6 +450,64 @@ items:
       type: TMPEffects.Tags.Collections.ITagCollection
     content.vb: Public ReadOnly Property EventTags As ITagCollection
   overload: TMPEffects.Components.TMPWriter.EventTags*
+- uid: TMPEffects.Components.TMPWriter.WriteOnStart
+  commentId: P:TMPEffects.Components.TMPWriter.WriteOnStart
+  id: WriteOnStart
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteOnStart
+  nameWithType: TMPWriter.WriteOnStart
+  fullName: TMPEffects.Components.TMPWriter.WriteOnStart
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WriteOnStart
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 74
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool WriteOnStart { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WriteOnStart As Boolean
+  overload: TMPEffects.Components.TMPWriter.WriteOnStart*
+- uid: TMPEffects.Components.TMPWriter.WriteOnNewText
+  commentId: P:TMPEffects.Components.TMPWriter.WriteOnNewText
+  id: WriteOnNewText
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteOnNewText
+  nameWithType: TMPWriter.WriteOnNewText
+  fullName: TMPEffects.Components.TMPWriter.WriteOnNewText
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WriteOnNewText
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 80
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool WriteOnNewText { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WriteOnNewText As Boolean
+  overload: TMPEffects.Components.TMPWriter.WriteOnNewText*
 - uid: TMPEffects.Components.TMPWriter.OnTextEvent
   commentId: F:TMPEffects.Components.TMPWriter.OnTextEvent
   id: OnTextEvent
@@ -465,12 +523,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnTextEvent
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 78
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 90
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the TMPWriter reaches an event tag.
   example: []
@@ -494,12 +552,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnCharacterShown
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 82
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 94
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the TMPWriter shows a new character.
   example: []
@@ -523,12 +581,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStartWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 86
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 98
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the TMPWriter starts / resumes writing.
   example: []
@@ -552,12 +610,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStopWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 90
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 102
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the TMPWriter stops writing.
   example: []
@@ -581,12 +639,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnFinishWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 94
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 106
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the TMPWriter is done writing the current text.
   example: []
@@ -610,12 +668,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnSkipWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 98
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 110
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Raised when the current (section of) text is skipped.
   example: []
@@ -639,12 +697,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnResetWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 103
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 115
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Raised when the TMPWriter is reset.<br />
@@ -671,12 +729,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: COMMAND_PREFIX
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 108
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 120
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The prefix used for command tags.
   example: []
@@ -700,12 +758,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EVENT_PREFIX
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 112
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 124
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The prefix used for event tags.
   example: []
@@ -729,12 +787,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StartWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 196
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 208
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Start (or resume) writing.
   example: []
@@ -757,12 +815,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StopWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 215
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 227
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Stop writing.<br />
@@ -788,12 +846,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 235
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 247
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Reset the writer to the initial state for the current text.<br />
@@ -819,12 +877,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 264
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 276
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Reset the writer to the given index of the current text.<br />
@@ -859,12 +917,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SkipWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 305
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 317
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Skip the current section of the text.<br />
@@ -898,12 +956,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RestartWriter
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 346
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 358
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Restart the writer.<br />
@@ -929,12 +987,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Wait
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 365
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 377
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Pause the writer for the given amount of seconds.
   example: []
@@ -968,12 +1026,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 382
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 394
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void ResetWaitPeriod()
@@ -994,12 +1052,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaitUntil
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 392
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 404
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Pause the writer until the given condition evaluates to true.
   example: []
@@ -1029,12 +1087,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitConditions
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 400
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 412
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void ResetWaitConditions()
@@ -1055,12 +1113,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDelay
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 409
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 421
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the current delay of the writer.
   example: []
@@ -1090,12 +1148,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetWhitespaceDelay
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 414
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 426
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetWhitespaceDelay(float delay, TMPWriter.DelayType? type = null)
@@ -1124,12 +1182,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetLinebreakDelay
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 420
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 432
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetLinebreakDelay(float delay, TMPWriter.DelayType? type = null)
@@ -1158,12 +1216,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibleDelay
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 426
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 438
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetVisibleDelay(float delay, TMPWriter.DelayType? type = null)
@@ -1192,12 +1250,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPunctuationDelay
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 432
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 444
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetPunctuationDelay(float delay, TMPWriter.DelayType? type = null)
@@ -1226,12 +1284,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetSkippable
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 442
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 454
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set whether the current text may be skipped.
   example: []
@@ -1261,12 +1319,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 453
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 465
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the database that will be used to parse command tags.
   example: []
@@ -1278,70 +1336,6 @@ items:
       description: The database that will be used to parse command tags.
     content.vb: Public Sub SetDatabase(database As TMPCommandDatabase)
   overload: TMPEffects.Components.TMPWriter.SetDatabase*
-- uid: TMPEffects.Components.TMPWriter.SetWriteOnStart(System.Boolean)
-  commentId: M:TMPEffects.Components.TMPWriter.SetWriteOnStart(System.Boolean)
-  id: SetWriteOnStart(System.Boolean)
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetWriteOnStart(bool)
-  nameWithType: TMPWriter.SetWriteOnStart(bool)
-  fullName: TMPEffects.Components.TMPWriter.SetWriteOnStart(bool)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
-    id: SetWriteOnStart
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 459
-  assemblies:
-  - Luca3317.TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetWriteOnStart(bool writeOnStart)
-    parameters:
-    - id: writeOnStart
-      type: System.Boolean
-    content.vb: Public Sub SetWriteOnStart(writeOnStart As Boolean)
-  overload: TMPEffects.Components.TMPWriter.SetWriteOnStart*
-  nameWithType.vb: TMPWriter.SetWriteOnStart(Boolean)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetWriteOnStart(Boolean)
-  name.vb: SetWriteOnStart(Boolean)
-- uid: TMPEffects.Components.TMPWriter.SetWriteOnNewText(System.Boolean)
-  commentId: M:TMPEffects.Components.TMPWriter.SetWriteOnNewText(System.Boolean)
-  id: SetWriteOnNewText(System.Boolean)
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetWriteOnNewText(bool)
-  nameWithType: TMPWriter.SetWriteOnNewText(bool)
-  fullName: TMPEffects.Components.TMPWriter.SetWriteOnNewText(bool)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
-    id: SetWriteOnNewText
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 464
-  assemblies:
-  - Luca3317.TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetWriteOnNewText(bool writeOnNewText)
-    parameters:
-    - id: writeOnNewText
-      type: System.Boolean
-    content.vb: Public Sub SetWriteOnNewText(writeOnNewText As Boolean)
-  overload: TMPEffects.Components.TMPWriter.SetWriteOnNewText*
-  nameWithType.vb: TMPWriter.SetWriteOnNewText(Boolean)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetWriteOnNewText(Boolean)
-  name.vb: SetWriteOnNewText(Boolean)
 references:
 - uid: TMPro.TMP_Text
   commentId: T:TMPro.TMP_Text
@@ -6162,6 +6156,18 @@ references:
   name: EventTags
   nameWithType: TMPWriter.EventTags
   fullName: TMPEffects.Components.TMPWriter.EventTags
+- uid: TMPEffects.Components.TMPWriter.WriteOnStart*
+  commentId: Overload:TMPEffects.Components.TMPWriter.WriteOnStart
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_WriteOnStart
+  name: WriteOnStart
+  nameWithType: TMPWriter.WriteOnStart
+  fullName: TMPEffects.Components.TMPWriter.WriteOnStart
+- uid: TMPEffects.Components.TMPWriter.WriteOnNewText*
+  commentId: Overload:TMPEffects.Components.TMPWriter.WriteOnNewText
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_WriteOnNewText
+  name: WriteOnNewText
+  nameWithType: TMPWriter.WriteOnNewText
+  fullName: TMPEffects.Components.TMPWriter.WriteOnNewText
 - uid: UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   commentId: T:UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   parent: UnityEngine.Events
@@ -6597,15 +6603,3 @@ references:
   name: SetDatabase
   nameWithType: TMPWriter.SetDatabase
   fullName: TMPEffects.Components.TMPWriter.SetDatabase
-- uid: TMPEffects.Components.TMPWriter.SetWriteOnStart*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetWriteOnStart
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetWriteOnStart_System_Boolean_
-  name: SetWriteOnStart
-  nameWithType: TMPWriter.SetWriteOnStart
-  fullName: TMPEffects.Components.TMPWriter.SetWriteOnStart
-- uid: TMPEffects.Components.TMPWriter.SetWriteOnNewText*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetWriteOnNewText
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetWriteOnNewText_System_Boolean_
-  name: SetWriteOnNewText
-  nameWithType: TMPWriter.SetWriteOnNewText
-  fullName: TMPEffects.Components.TMPWriter.SetWriteOnNewText

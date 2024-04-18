@@ -26,12 +26,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 426
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public struct ParameterUtility.WaveParameters
@@ -58,12 +58,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: upwardCurve
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 428
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public AnimationCurve upwardCurve
@@ -85,12 +85,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: downwardCurve
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 429
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public AnimationCurve downwardCurve
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: upPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 431
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? upPeriod
@@ -139,12 +139,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: downPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 432
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? downPeriod
@@ -166,12 +166,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: crestWait
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 434
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? crestWait
@@ -193,12 +193,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: troughWait
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 435
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? troughWait
@@ -220,12 +220,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wavevelocity
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 437
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? wavevelocity
@@ -247,12 +247,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wavelength
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 438
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? wavelength
@@ -274,12 +274,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: waveuniformity
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 439
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? waveuniformity
@@ -301,12 +301,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: amplitude
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 441
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public float? amplitude

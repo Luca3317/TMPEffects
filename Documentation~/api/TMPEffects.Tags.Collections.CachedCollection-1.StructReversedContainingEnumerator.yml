@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StructReversedContainingEnumerator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 259
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 258
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Helper struct for <xref href="TMPEffects.Tags.Collections.CachedCollection%601.GetContainingReversed_NonAlloc(System.Int32)" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -56,12 +56,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Current
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 276
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 275
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public T Current { get; }
@@ -87,12 +87,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MoveNext
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 284
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 283
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public bool MoveNext()
@@ -117,12 +117,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 291
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 290
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public void Reset()

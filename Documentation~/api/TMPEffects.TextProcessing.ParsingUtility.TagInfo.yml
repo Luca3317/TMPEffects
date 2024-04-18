@@ -24,12 +24,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagInfo
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 31
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Utility class that holds data about a parsed tag.
   example: []
@@ -61,12 +61,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: type
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Type of the tag (open, close).
   example: []
@@ -90,12 +90,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: prefix
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Prefix of the tag.
   example: []
@@ -119,12 +119,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: name
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 45
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Name of the tag.
   example: []
@@ -148,12 +148,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: parameterString
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: The parameters of the tag, unparsed.
   example: []
@@ -177,12 +177,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: startIndex
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 55
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Start index of the tag in the source text.
   example: []
@@ -206,12 +206,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: endIndex
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 59
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: End index of the tag in the source text.
   example: []
@@ -235,12 +235,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 61
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TagInfo(int startIndex, int endIndex, ParsingUtility.TagType type, char prefix, string name, string parameterString)
@@ -277,12 +277,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 72
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TagInfo()

@@ -48,12 +48,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyCharDataState
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public class ReadOnlyCharDataState
@@ -83,12 +83,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: positionDelta
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 positionDelta { get; }
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: scaleDelta
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Matrix4x4 scaleDelta { get; }
@@ -141,12 +141,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TL { get; }
@@ -170,12 +170,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TR { get; }
@@ -199,12 +199,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BR { get; }
@@ -228,12 +228,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BL { get; }
@@ -257,12 +257,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TLMax
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TLMax { get; }
@@ -286,12 +286,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TRMax
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TRMax { get; }
@@ -315,12 +315,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BRMax
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 22
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BRMax { get; }
@@ -344,12 +344,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BLMax
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BLMax { get; }
@@ -373,12 +373,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TLMin
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TLMin { get; }
@@ -402,12 +402,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TRMin
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TRMin { get; }
@@ -431,12 +431,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BRMin
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BRMin { get; }
@@ -460,12 +460,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BLMin
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 28
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BLMin { get; }
@@ -489,12 +489,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 30
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 TL_UV { get; }
@@ -518,12 +518,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 31
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 TR_UV { get; }
@@ -547,12 +547,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 32
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 BR_UV { get; }
@@ -576,12 +576,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 33
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 BL_UV { get; }
@@ -605,12 +605,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV2
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 35
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 TL_UV2 { get; }
@@ -634,12 +634,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV2
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 TR_UV2 { get; }
@@ -663,12 +663,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV2
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 BR_UV2 { get; }
@@ -692,12 +692,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV2
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 38
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector2 BL_UV2 { get; }
@@ -721,12 +721,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Color
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Color32 TL_Color { get; }
@@ -750,12 +750,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Color
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Color32 TR_Color { get; }
@@ -779,12 +779,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Color
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 42
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Color32 BR_Color { get; }
@@ -808,12 +808,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Color
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 43
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Color32 BL_Color { get; }
@@ -837,12 +837,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Result
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 45
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TL_Result { get; }
@@ -866,12 +866,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Result
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 46
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 TR_Result { get; }
@@ -895,12 +895,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Result
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 47
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BR_Result { get; }
@@ -924,12 +924,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Result
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 48
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 BL_Result { get; }
@@ -953,12 +953,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public ReadOnlyCharDataState(CharDataState state)
@@ -985,12 +985,12 @@ items:
     remote:
       path: Runtime/CharData/ReadOnlyCharDataState.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculateVertexPositions
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/ReadOnlyCharDataState.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/ReadOnlyCharDataState.cs
     startLine: 55
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public void CalculateVertexPositions()

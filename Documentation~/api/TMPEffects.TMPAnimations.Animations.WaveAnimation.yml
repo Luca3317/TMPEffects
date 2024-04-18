@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.Animations
   syntax:
     content: >-
@@ -129,12 +129,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.Animations
   summary: Animate the given character.
   example: []
@@ -165,12 +165,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
     startLine: 28
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.Animations
   summary: Set the parameters for the animation.
   example: []
@@ -204,12 +204,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.Animations
   summary: >-
     Validate the parameters.<br />
@@ -246,12 +246,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/WaveAnimation.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.Animations
   summary: Create and get a new custom data object for this animation.
   example: []

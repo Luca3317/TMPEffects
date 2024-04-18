@@ -53,12 +53,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CharData
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: >-
     Holds information about a character.<br />
@@ -97,12 +97,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: positionDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the position has been manipulated from the character's initial position.
   example: []
@@ -128,12 +128,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: rotationDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the rotation has been manipulated from the character's initial rotation.
   example: []
@@ -159,12 +159,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: scaleDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the scale has been manipulated from the character's initial scale.
   example: []
@@ -190,12 +190,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: verticesDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 29
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the vertices have been manipulated.
   example: []
@@ -221,12 +221,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: colorsDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 33
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex colors have been manipulated.
   example: []
@@ -252,12 +252,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: alphasDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex alphas have been manipulated.
   example: []
@@ -283,12 +283,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: uvsDirty
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the UVs have been manipulated.
   example: []
@@ -314,12 +314,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Position
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 46
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The character's position.
   example: []
@@ -345,12 +345,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Scale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The character's scale.
   example: []
@@ -376,12 +376,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Rotation
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 54
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The character's rotation.
   example: []
@@ -407,12 +407,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RotationPivot
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 58
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The character's rotation pivot.
   example: []
@@ -438,12 +438,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultScale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 64
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The default scale of any CharData.
   example: []
@@ -467,12 +467,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultRotation
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 68
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The default rotation of any CharData.
   example: []
@@ -496,12 +496,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: info
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 73
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Holds a selection of <xref href="TMPro.TMP_CharacterInfo" data-throw-if-not-resolved="false"></xref> data.
   example: []
@@ -525,12 +525,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: mesh
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 78
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The mesh of the character.
   example: []
@@ -554,12 +554,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: initialMesh
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 83
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The initial mesh of this character.
   example: []
@@ -585,12 +585,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialPosition
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 87
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The initial position of this character.
   example: []
@@ -614,12 +614,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialRotation
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 91
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The initial rotation of this character.
   example: []
@@ -643,12 +643,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialScale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 95
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The initial scale of this character.
   example: []
@@ -672,12 +672,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 103
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public CharData(int index, TMP_CharacterInfo cInfo)
@@ -706,12 +706,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 118
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
@@ -742,12 +742,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVertex
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 140
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Set the position of the vertex at the given index.
   example: []
@@ -780,12 +780,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddVertexDelta
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 150
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Add a positon delta to the vertex at the given index.
   example: []
@@ -818,12 +818,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPosition
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 159
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Set the position of the character.
   example: []
@@ -850,12 +850,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPositionDelta
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 168
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Add a delta to the position of the character.
   example: []
@@ -882,12 +882,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPivot
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 178
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the pivot of this character.<br />
@@ -917,12 +917,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPivotDelta
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 187
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: >-
     Add a delta to the pivot of the character.<br />
@@ -952,12 +952,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetRotation
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 196
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Set the rotation of this character.
   example: []
@@ -984,12 +984,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetScale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 206
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Set the scale of this character.
   example: []
@@ -1016,12 +1016,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 214
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset changes made to the character's mesh, position, rotation, scale and pivot.
   example: []
@@ -1044,12 +1044,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetScale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 226
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's scale.
   example: []
@@ -1072,12 +1072,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPosition
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 230
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's position.
   example: []
@@ -1100,12 +1100,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetRotation
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 234
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's rotation.
   example: []
@@ -1128,12 +1128,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPivot
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 238
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's pivot.
   example: []
@@ -1156,12 +1156,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetVertices
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 242
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's vertices.
   example: []
@@ -1184,12 +1184,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetUVs
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 246
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's UVs.
   example: []
@@ -1212,12 +1212,12 @@ items:
     remote:
       path: Runtime/CharData/CharData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetColors
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/CharData.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
     startLine: 250
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Reset the character's vertex colors.
   example: []

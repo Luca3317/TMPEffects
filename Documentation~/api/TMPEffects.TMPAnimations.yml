@@ -25,42 +25,8 @@ items:
   fullName: TMPEffects.TMPAnimations
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TMPAnimations.TMPShowAnimation
-  commentId: T:TMPEffects.TMPAnimations.TMPShowAnimation
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.TMPShowAnimation.html
-  name: TMPShowAnimation
-  nameWithType: TMPShowAnimation
-  fullName: TMPEffects.TMPAnimations.TMPShowAnimation
-- uid: TMPEffects.TMPAnimations.ITMPAnimation
-  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.ITMPAnimation.html
-  name: ITMPAnimation
-  nameWithType: ITMPAnimation
-  fullName: TMPEffects.TMPAnimations.ITMPAnimation
-- uid: TMPEffects.TMPAnimations.IAnimationContext
-  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.IAnimationContext.html
-  name: IAnimationContext
-  nameWithType: IAnimationContext
-  fullName: TMPEffects.TMPAnimations.IAnimationContext
-- uid: TMPEffects.TMPAnimations.AnimationContext
-  commentId: T:TMPEffects.TMPAnimations.AnimationContext
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.AnimationContext.html
-  name: AnimationContext
-  nameWithType: AnimationContext
-  fullName: TMPEffects.TMPAnimations.AnimationContext
-- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
-  commentId: T:TMPEffects.TMPAnimations.ReadOnlyAnimationContext
-  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html
-  name: ReadOnlyAnimationContext
-  nameWithType: ReadOnlyAnimationContext
-  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
 - uid: TMPEffects.TMPAnimations.AnimationUtility
   commentId: T:TMPEffects.TMPAnimations.AnimationUtility
   href: TMPEffects.TMPAnimations.AnimationUtility.html
@@ -180,6 +146,33 @@ references:
   name: TMPAnimationParameterless
   nameWithType: TMPAnimationParameterless
   fullName: TMPEffects.TMPAnimations.TMPAnimationParameterless
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.TMPAnimations.AnimationContext
+  commentId: T:TMPEffects.TMPAnimations.AnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationContext.html
+  name: AnimationContext
+  nameWithType: AnimationContext
+  fullName: TMPEffects.TMPAnimations.AnimationContext
+- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html
+  name: ReadOnlyAnimationContext
+  nameWithType: ReadOnlyAnimationContext
+  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+- uid: TMPEffects.TMPAnimations.TMPShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.TMPShowAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPShowAnimation.html
+  name: TMPShowAnimation
+  nameWithType: TMPShowAnimation
+  fullName: TMPEffects.TMPAnimations.TMPShowAnimation
 - uid: TMPEffects.TMPAnimations.TMPHideAnimation
   commentId: T:TMPEffects.TMPAnimations.TMPHideAnimation
   parent: TMPEffects.TMPAnimations
@@ -187,6 +180,13 @@ references:
   name: TMPHideAnimation
   nameWithType: TMPHideAnimation
   fullName: TMPEffects.TMPAnimations.TMPHideAnimation
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
 - uid: TMPEffects.TMPAnimations
   commentId: N:TMPEffects.TMPAnimations
   href: TMPEffects.html

@@ -21,12 +21,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     A <xref href="TMPEffects" data-throw-if-not-resolved="false"></xref> tag.<br />
@@ -62,12 +62,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Name
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The name of the tag.
   example: []
@@ -93,12 +93,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Prefix
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The prefix of the tag.
   example: []
@@ -124,12 +124,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Parameters
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The parameters of the tag.
   example: []
@@ -155,12 +155,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 30
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public TMPEffectTag(string name, char prefix, IDictionary<string, string> parameters)
@@ -191,12 +191,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTag.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTag.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTag.cs
     startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   example: []
   syntax:

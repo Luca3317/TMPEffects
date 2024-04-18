@@ -14,15 +14,8 @@ items:
   fullName: TMPEffects.ObjectChanged
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
-  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
-  parent: TMPEffects.ObjectChanged
-  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
-  name: INotifyObjectChanged
-  nameWithType: INotifyObjectChanged
-  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
 - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
   commentId: T:TMPEffects.ObjectChanged.ObjectChangedEventHandler
   parent: TMPEffects.ObjectChanged
@@ -30,6 +23,13 @@ references:
   name: ObjectChangedEventHandler
   nameWithType: ObjectChangedEventHandler
   fullName: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
 - uid: TMPEffects.ObjectChanged
   commentId: N:TMPEffects.ObjectChanged
   href: TMPEffects.html

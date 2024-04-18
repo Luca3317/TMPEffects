@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/ObjectChangedEvent/ObjectChangedEventHandler.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChangedEventHandler
-    path: ../Assets/TMPEffects OLD/Runtime/ObjectChangedEvent/ObjectChangedEventHandler.cs
+    path: ../Assets/TMPEffects/Runtime/ObjectChangedEvent/ObjectChangedEventHandler.cs
     startLine: 6
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.ObjectChanged
   syntax:
     content: public delegate void ObjectChangedEventHandler(object sender)

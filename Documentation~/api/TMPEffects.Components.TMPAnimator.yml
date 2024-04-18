@@ -45,12 +45,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Animates the character of a <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   remarks: >-
@@ -241,12 +241,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsAnimating
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Whether the text is currently being animated.<br />
@@ -275,12 +275,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Database
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 56
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The database used to parse animation tags.
   example: []
@@ -306,12 +306,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateFrom
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 61
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Where the animations are currently being updated from.
   example: []
@@ -337,12 +337,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 66
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All tags parsed by the TMPAnimator.
   example: []
@@ -368,12 +368,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BasicTags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 70
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All basic animation tags parsed by the TMPAnimator.
   example: []
@@ -399,12 +399,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowTags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 74
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All show animation tags parsed by the TMPAnimator.
   example: []
@@ -430,12 +430,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HideTags
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 78
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: All hide animation tags parsed by the TMPAnimator.
   example: []
@@ -461,12 +461,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimateOnStart
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 83
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Whether the TMPAnimator should automatically begin animating on <xref href="TMPEffects.Components.TMPAnimator.Start" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -492,12 +492,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationsOverride
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 87
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Whether animations will override each other by default.
   example: []
@@ -523,12 +523,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ANIMATION_PREFIX
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 92
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The prefix used for basic animation tags.
   example: []
@@ -552,12 +552,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SHOW_ANIMATION_PREFIX
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 96
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The prefix used for show animation tags.
   example: []
@@ -581,12 +581,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HIDE_ANIMATION_PREFIX
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 100
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The prefix used for hide animation tags.
   example: []
@@ -610,12 +610,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateAnimations
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 186
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Update the current animations.<br />
@@ -649,12 +649,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StartAnimating
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 215
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Start animating.<br />
@@ -682,12 +682,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StopAnimating
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 244
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: >-
     Stop animating.<br />
@@ -715,12 +715,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetAnimations
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 288
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Reset all visible characters to their initial, unanimated state.
   example: []
@@ -743,12 +743,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetUpdateFrom
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 296
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set where the animations should be updated from.
   example: []
@@ -775,12 +775,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 310
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the database that will be used to parse animation tags.
   example: []
@@ -807,12 +807,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDefaultShowString
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 320
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetDefaultShowString(string str)
@@ -839,12 +839,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDefaultHideString
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 332
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void SetDefaultHideString(string str)
@@ -871,12 +871,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedCharacters
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 346
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
   example: []
@@ -915,12 +915,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedBasicCharacters
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 363
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
   example: []
@@ -953,12 +953,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedShowCharacters
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 383
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the excluded character for show animations, meaning characters that will not be animated by show animations.
   example: []
@@ -991,12 +991,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedHideCharacters
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 403
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the excluded character for hide animations, meaning characters that will not be animated by hide animations.
   example: []
@@ -1029,12 +1029,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcluded
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 426
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Whether the character is excluded from animations of the given type.
   example: []
@@ -1074,12 +1074,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedBasic
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 441
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from basic animations.
   example: []
@@ -1112,12 +1112,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedShow
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 447
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from show animations.
   example: []
@@ -1150,12 +1150,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedHide
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 453
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from hide animations.
   example: []
@@ -1188,12 +1188,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetTime
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
     startLine: 458
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Reset the time of the animator.
   example: []

@@ -50,12 +50,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationUtility
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Utility methods for animations.
   example: []
@@ -87,12 +87,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleVector
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context)
@@ -122,12 +122,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleVector
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
@@ -157,12 +157,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InverseScaleVector
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context)
@@ -192,12 +192,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InverseScaleVector
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
@@ -227,12 +227,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnchorToPosition
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Convert an anchor to its actual position.
   example: []
@@ -265,12 +265,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawVertex
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 70
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
   example: []
@@ -311,12 +311,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawVertex
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 71
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
@@ -351,12 +351,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawPosition
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 82
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Calculate the raw version of the passed in character position, i.e. the one that will ignore the animator's scaling.
   example: []
@@ -391,12 +391,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawPosition
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 83
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorContext ctx)
@@ -426,12 +426,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawPivot
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 94
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Calculate the raw version of the passed in pivot position, i.e. the one that will ignore the animator's scaling.
   example: []
@@ -466,12 +466,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawPivot
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 95
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorContext ctx)
@@ -501,12 +501,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawDelta
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 106
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Calculate the raw version of the passed in delta, i.e. the one that will ignore the animator's scaling.
   example: []
@@ -541,12 +541,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetRawDelta
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 107
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
@@ -576,12 +576,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVertexRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 126
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the raw position of the vertex at the given index. This position will ignore the animator's scaling.
   example: []
@@ -620,12 +620,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVertexRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 127
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
@@ -658,12 +658,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPositionRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 138
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the raw position of the character. This position will ignore the animator's scaling.
   example: []
@@ -696,12 +696,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPositionRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 139
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorContext ctx)
@@ -729,12 +729,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPivotRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 150
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the raw pivot of the character. This position will ignore the animator's scaling.
   example: []
@@ -766,12 +766,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPivotRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 151
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
@@ -799,12 +799,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddVertexDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 163
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
   example: []
@@ -843,12 +843,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddVertexDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 164
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
@@ -881,12 +881,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPositionDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 174
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
   example: []
@@ -919,12 +919,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPositionDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 175
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
@@ -952,12 +952,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPivotDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 185
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
   example: []
@@ -990,12 +990,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPivotDeltaRaw
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 186
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
@@ -1023,12 +1023,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ClosestPointOnLine
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 193
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static Vector3 ClosestPointOnLine(Vector3 lineStart, Vector3 lineEnd, Vector3 point)
@@ -1058,12 +1058,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FrequencyToPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 867
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float FrequencyToPeriod(float frequency)
@@ -1092,12 +1092,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PeriodToFrequency
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 872
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float PeriodToFrequency(float period)
@@ -1126,12 +1126,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveLengthVelocityToFrequency
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 877
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float WaveLengthVelocityToFrequency(float wavelength, float wavevelocity)
@@ -1162,12 +1162,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveLengthFrequencyToVelocity
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 882
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float WaveLengthFrequencyToVelocity(float wavelength, float frequency)
@@ -1198,12 +1198,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveVelocityFrequencyToLength
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 887
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)
@@ -1234,12 +1234,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetWaveOffset
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 906
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float GetWaveOffset(CharData cData, IAnimationContext context, AnimationUtility.WaveOffsetType type)
@@ -1269,12 +1269,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetToCharacter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 955
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData, IAnimationContext context)
@@ -1304,12 +1304,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetValue
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 985
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)

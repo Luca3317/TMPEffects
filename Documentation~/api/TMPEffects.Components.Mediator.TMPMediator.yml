@@ -32,12 +32,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPMediator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: >-
     A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).<br />
@@ -76,12 +76,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityStates
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   syntax:
     content: public readonly ReadOnlyCollection<VisibilityState> VisibilityStates
@@ -103,12 +103,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CharData
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 32
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   syntax:
     content: public readonly ReadOnlyCollection<CharData> CharData
@@ -130,12 +130,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Processor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> used by the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   example: []
@@ -159,12 +159,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Text
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: The associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   example: []
@@ -188,12 +188,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Early
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 53
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Raised when the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component raises its TEXT_CHANGED_EVENT, before <xref href="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Late" data-throw-if-not-resolved="false"></xref>.<br />
@@ -222,12 +222,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Late
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 57
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Raised when the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component raises its TEXT_CHANGED_EVENT, after <xref href="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Early" data-throw-if-not-resolved="false"></xref>.<br />
   example: []
@@ -251,12 +251,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityStateUpdated
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 61
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Raised when the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> of one of the contained <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> is updated.
   example: []
@@ -280,12 +280,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ForceReprocess
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 92
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Forces a mesh update on the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.<br />
@@ -311,12 +311,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Dispose
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 98
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   example: []
   syntax:
@@ -340,12 +340,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RegisterVisibilityProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 120
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Register as the visibility processor of this TMPMediator.<br />
@@ -389,12 +389,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UnregisterVisibilityProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 133
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Unregister as the visibility processor of this TMPMediator.
   example: []
@@ -427,12 +427,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetVisibilityState
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 151
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Get the associated <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> of the given <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
   remarks: >-
@@ -473,12 +473,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 163
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> at the given indices.
   example: []
@@ -518,12 +518,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 216
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the given <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
   remarks: >-
@@ -561,12 +561,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 225
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> at the given index.
   example: []
@@ -603,12 +603,12 @@ items:
     remote:
       path: Runtime/Components/TMPMediator/TMPMediator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPMediator/TMPMediator.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
     startLine: 231
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Mediator
   syntax:
     content: public void SetText(string text)

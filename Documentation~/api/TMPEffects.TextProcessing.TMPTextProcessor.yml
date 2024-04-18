@@ -28,12 +28,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPTextProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: >-
     Preprocesses the text, removing valid tags.<br />
@@ -75,12 +75,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextComponent
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: The associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   example: []
@@ -106,12 +106,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessors
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Mapping of prefix to list of <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -139,12 +139,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BeginPreProcess
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 30
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Raised just before the PreProcess routine begins.
   example: []
@@ -168,12 +168,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishPreProcess
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 34
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Raised once the PreProcess routine finished.
   example: []
@@ -197,12 +197,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BeginAdjustIndices
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 38
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Raised just before the AdjustIndices routine begins.
   example: []
@@ -226,12 +226,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishAdjustIndices
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 42
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Raised once the AdjustIndices routine finished.
   example: []
@@ -255,12 +255,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TMPTextProcessor(TMP_Text text)
@@ -287,12 +287,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 53
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Add a processor.
   example: []
@@ -341,12 +341,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 55
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Remove a processor.
   example: []
@@ -384,12 +384,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 57
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   example: []
   syntax:
@@ -415,12 +415,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PreprocessText
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 67
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: >-
     Preprocess the text.<br />
@@ -460,12 +460,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustIndices
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 262
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: >-
     Adjust the indices that were cached during the preprocess stage to accomodate

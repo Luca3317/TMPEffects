@@ -4,7 +4,6 @@ items:
   commentId: N:TMPEffects.TMPSceneAnimations
   id: TMPEffects.TMPSceneAnimations
   children:
-  - TMPEffects.TMPSceneAnimations.Draggable
   - TMPEffects.TMPSceneAnimations.TMPSceneAnimation
   - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
   - TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
@@ -17,8 +16,20 @@ items:
   fullName: TMPEffects.TMPSceneAnimations
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html
+  name: TMPSceneAnimation
+  nameWithType: TMPSceneAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  href: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html
+  name: TMPSceneHideAnimation
+  nameWithType: TMPSceneHideAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
 - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
   commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
   parent: TMPEffects.TMPSceneAnimations
@@ -26,31 +37,12 @@ references:
   name: TMPSceneAnimationBase
   nameWithType: TMPSceneAnimationBase
   fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
-- uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
-  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
-  href: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html
-  name: TMPSceneHideAnimation
-  nameWithType: TMPSceneHideAnimation
-  fullName: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
-- uid: TMPEffects.TMPSceneAnimations.Draggable
-  commentId: T:TMPEffects.TMPSceneAnimations.Draggable
-  href: TMPEffects.TMPSceneAnimations.Draggable.html
-  name: Draggable
-  nameWithType: Draggable
-  fullName: TMPEffects.TMPSceneAnimations.Draggable
 - uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
   commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
   href: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html
   name: TMPSceneShowAnimation
   nameWithType: TMPSceneShowAnimation
   fullName: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
-- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
-  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimation
-  parent: TMPEffects.TMPSceneAnimations
-  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html
-  name: TMPSceneAnimation
-  nameWithType: TMPSceneAnimation
-  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
 - uid: TMPEffects.TMPSceneAnimations
   commentId: N:TMPEffects.TMPSceneAnimations
   href: TMPEffects.html

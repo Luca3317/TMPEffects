@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/Tags/ITMPPrefixSupplier.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPPrefixSupplier
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPPrefixSupplier.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPPrefixSupplier.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Interface for supplying prefix.
   example: []
@@ -44,12 +44,12 @@ items:
     remote:
       path: Runtime/Tags/ITMPPrefixSupplier.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Prefix
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPPrefixSupplier.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPPrefixSupplier.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The supplied prefix.
   example: []

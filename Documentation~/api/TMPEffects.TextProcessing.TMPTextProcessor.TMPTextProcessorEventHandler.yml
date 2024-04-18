@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TMPTextProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPTextProcessorEventHandler
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TMPTextProcessor.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
     startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public delegate void TMPTextProcessor.TMPTextProcessorEventHandler(string text)

@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: INotifyObjectChanged
-    path: ../Assets/TMPEffects OLD/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+    path: ../Assets/TMPEffects/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
     startLine: 4
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.ObjectChanged
   syntax:
     content: public interface INotifyObjectChanged
@@ -42,12 +42,12 @@ items:
     remote:
       path: Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
-    path: ../Assets/TMPEffects OLD/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+    path: ../Assets/TMPEffects/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
     startLine: 6
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.ObjectChanged
   syntax:
     content: event ObjectChangedEventHandler ObjectChanged

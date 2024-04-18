@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DummyShowAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
     startLine: 6
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   syntax:
     content: 'public class DummyShowAnimation : TMPShowAnimation, ITMPAnimation, INotifyObjectChanged'
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Animate the given character.
   example: []
@@ -148,12 +148,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Create and get a new custom data object for this animation.
   example: []
@@ -180,12 +180,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -219,12 +219,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Show Animations/DummyShowAnimation.cs
     startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: >-
     Validate the parameters.<br />

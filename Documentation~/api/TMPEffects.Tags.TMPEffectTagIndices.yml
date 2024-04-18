@@ -32,12 +32,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTagIndices
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     The indices of an <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>.<br />
@@ -72,12 +72,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StartIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The (inclusive) start index of the tag.
   example: []
@@ -103,12 +103,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EndIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The (exclusive) end index of the tag.
   example: []
@@ -134,12 +134,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OrderAtIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 28
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     The order at the start index.<br />
@@ -172,12 +172,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsOpen
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 34
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     Whether the tag is open, meaning it is never closed and therefore does not have a defined end index;<br />
@@ -206,12 +206,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Length
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 39
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     The length of the interval, meaning the difference between <xref href="TMPEffects.Tags.TMPEffectTagIndices.EndIndex" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.Tags.TMPEffectTagIndices.StartIndex" data-throw-if-not-resolved="false"></xref>.<br />
@@ -240,12 +240,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 45
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Whether the indices contain the given index.
   example: []
@@ -278,12 +278,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainedIndices
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 49
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Enumeration of all contained indices.
   example: []
@@ -309,12 +309,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 64
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public TMPEffectTagIndices(int startIndex, int endIndex, int orderAtIndex)
@@ -345,12 +345,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CompareTo
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 84
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: >-
     Compares this instance to another instance of <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref>.<br />
@@ -390,12 +390,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: op_Equality
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 91
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public static bool operator ==(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
@@ -426,12 +426,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: op_Inequality
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 96
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public static bool operator !=(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
@@ -462,12 +462,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: op_GreaterThan
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 101
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public static bool operator >(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
@@ -498,12 +498,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: op_LessThan
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 106
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   syntax:
     content: public static bool operator <(TMPEffectTagIndices c1, TMPEffectTagIndices c2)
@@ -534,12 +534,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 111
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   example: []
   syntax:
@@ -570,12 +570,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 119
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   example: []
   syntax:
@@ -604,12 +604,12 @@ items:
     remote:
       path: Runtime/Tags/TMPEffectTagIndices.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetHashCode
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TMPEffectTagIndices.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
     startLine: 124
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   example: []
   syntax:

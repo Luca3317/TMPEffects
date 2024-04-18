@@ -23,12 +23,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveOffsetType
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 892
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public enum AnimationUtility.WaveOffsetType
@@ -48,12 +48,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 894
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: SegmentIndex = 0
@@ -74,12 +74,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Index
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 895
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: Index = 5
@@ -100,12 +100,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: XPos
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 896
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: XPos = 10
@@ -126,12 +126,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: YPos
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 897
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: YPos = 15
@@ -152,12 +152,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Word
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 901
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: Word = 16
@@ -178,12 +178,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Line
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 902
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: Line = 17
@@ -204,12 +204,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Baseline
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 903
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: Baseline = 18

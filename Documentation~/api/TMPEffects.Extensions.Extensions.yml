@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/Extensions/Extensions.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Extensions
-    path: ../Assets/TMPEffects OLD/Runtime/Extensions/Extensions.cs
+    path: ../Assets/TMPEffects/Runtime/Extensions/Extensions.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Extensions
   syntax:
     content: public static class Extensions
@@ -53,12 +53,12 @@ items:
     remote:
       path: Runtime/Extensions/Extensions.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetOrAddComponent
-    path: ../Assets/TMPEffects OLD/Runtime/Extensions/Extensions.cs
+    path: ../Assets/TMPEffects/Runtime/Extensions/Extensions.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Extensions
   summary: >-
     Gets a reference to a component of type T on the specified GameObject.<br />

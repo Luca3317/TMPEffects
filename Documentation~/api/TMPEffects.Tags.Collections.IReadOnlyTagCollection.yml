@@ -22,12 +22,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IReadOnlyTagCollection
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: A readonly collection of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -52,12 +52,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCount
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: The amount of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref> in this collection.
   example: []
@@ -83,12 +83,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Whether this collection contains the given tag with the given indices (if supplied).
   example: []
@@ -121,12 +121,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndicesOf
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the associated indices of the given tag.
   example: []
@@ -156,12 +156,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -200,12 +200,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 42
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -238,12 +238,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Get the tag at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />

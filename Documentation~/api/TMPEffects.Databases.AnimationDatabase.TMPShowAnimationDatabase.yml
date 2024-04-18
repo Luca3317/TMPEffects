@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPShowAnimationDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Stores <xref href="TMPEffects.TMPAnimations.TMPShowAnimation" data-throw-if-not-resolved="false"></xref> animations.
   example: []
@@ -136,12 +136,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Check whether this database contains an animation associated with the given name.
   example: []
@@ -175,12 +175,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 32
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Get the animation associated with the given name.
   example: []

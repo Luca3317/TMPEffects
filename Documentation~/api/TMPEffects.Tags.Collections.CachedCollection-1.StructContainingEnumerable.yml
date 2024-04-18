@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StructContainingEnumerable
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 235
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 234
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Helper struct for <xref href="TMPEffects.Tags.Collections.CachedCollection%601.GetContaining_NonAlloc(System.Int32)" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -55,12 +55,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 242
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 241
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public StructContainingEnumerable(List<T> pool, int containedIndex, int maxIndex, int minIndex)
@@ -93,12 +93,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 250
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 249
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public CachedCollection<T>.StructContainingEnumerator GetEnumerator()

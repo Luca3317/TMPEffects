@@ -20,50 +20,50 @@ items:
   fullName: TMPEffects.TMPAnimations.HideAnimations
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
-  commentId: T:TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
-  href: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html
-  name: GrowHideAnimation
-  nameWithType: GrowHideAnimation
-  fullName: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
-- uid: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
-  commentId: T:TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
-  href: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.html
-  name: FadeHideAnimation
-  nameWithType: FadeHideAnimation
-  fullName: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
 - uid: TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
   commentId: T:TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
   href: TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.html
   name: SpreadHideAnimation
   nameWithType: SpreadHideAnimation
   fullName: TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
-- uid: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
-  commentId: T:TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
-  href: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html
-  name: ShakeHideAnimation
-  nameWithType: ShakeHideAnimation
-  fullName: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
 - uid: TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
   commentId: T:TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
   href: TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.html
   name: DummyHideAnimation
   nameWithType: DummyHideAnimation
   fullName: TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
-- uid: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
-  commentId: T:TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
-  href: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.html
-  name: MoveInHideAnimation
-  nameWithType: MoveInHideAnimation
-  fullName: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
 - uid: TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
   commentId: T:TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
   href: TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.html
   name: CharHideAnimation
   nameWithType: CharHideAnimation
   fullName: TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.html
+  name: MoveInHideAnimation
+  nameWithType: MoveInHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.html
+  name: FadeHideAnimation
+  nameWithType: FadeHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html
+  name: ShakeHideAnimation
+  nameWithType: ShakeHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html
+  name: GrowHideAnimation
+  nameWithType: GrowHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
 - uid: TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation
   commentId: T:TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation
   href: TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.html

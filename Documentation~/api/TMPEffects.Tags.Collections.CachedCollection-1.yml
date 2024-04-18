@@ -28,12 +28,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CachedCollection
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 19
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Manages a collection of <xref href="TMPEffects.Tags.ITagWrapper" data-throw-if-not-resolved="false"></xref> that represent a cached tag.<br />
@@ -83,12 +83,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Count
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 24
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Amount of cached tags contained in this collection.
   example: []
@@ -116,12 +116,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 26
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public CachedCollection(ITagCacher<T> cacher, ObservableTagCollection tagCollection)
@@ -150,12 +150,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MinMaxAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 75
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 74
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the <xref href="TMPEffects.Tags.Collections.CachedCollection%601.MinMax" data-throw-if-not-resolved="false"></xref> for a text index.
   example: []
@@ -188,12 +188,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: this[]
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 90
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 89
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the cached tag of type T at the given collection index.
   example: []
@@ -230,12 +230,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAny
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 99
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 98
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Whether this collection has any cached tags.
   example: []
@@ -263,12 +263,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnyContaining
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 105
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 104
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Whether this collection has any cached tags that contain the given text index.
   example: []
@@ -301,12 +301,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnyAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 116
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 115
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Whether this collection has any cached tags that start at the given text index.
   example: []
@@ -338,12 +338,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetContaining
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 136
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 135
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Enumerates all cached tags that contain the given text index.
   example: []
@@ -376,12 +376,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 157
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 156
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Enumerates all cached tags that start at the given text index.
   example: []
@@ -414,12 +414,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetContaining_NonAlloc
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 184
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 183
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Enumerates all cached tags that contain the given text index, without allocating any memory.
   example: []
@@ -452,12 +452,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetContainingReversed_NonAlloc
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 198
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 197
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Enumerates all cached tags that contain the given text index in reversed order, without allocating any memory.
   example: []
@@ -490,12 +490,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 517
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 516
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   example: []
   syntax:

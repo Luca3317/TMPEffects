@@ -13,7 +13,7 @@ items:
   fullName: TMPEffects.Databases.CommandDatabase
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
 - uid: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
   commentId: T:TMPEffects.Databases.CommandDatabase.TMPCommandDatabase

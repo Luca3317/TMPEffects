@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/Databases/ITMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPEffectDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/ITMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
     startLine: 4
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: public interface ITMPEffectDatabase
@@ -42,12 +42,12 @@ items:
     remote:
       path: Runtime/Databases/ITMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/ITMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   summary: Check whether this database contains an effect associated with the given name.
   example: []

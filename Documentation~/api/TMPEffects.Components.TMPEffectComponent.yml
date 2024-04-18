@@ -25,12 +25,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectComponent
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Base class for TMPAnimator and TMPWriter.
   example: []
@@ -176,12 +176,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextComponent
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: The associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   example: []
@@ -207,12 +207,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 22
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   summary: Set the text of the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
   example: []
@@ -242,12 +242,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Show
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 28
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void Show(int start, int length, bool skipShowProcess = false)
@@ -278,12 +278,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hide
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 39
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void Hide(int start, int length, bool skipHideProcess = false)
@@ -314,12 +314,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowAll
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void ShowAll(bool skipShowProcess = false)
@@ -346,12 +346,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HideAll
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 61
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public void HideAll(bool skipHideProcess = false)
@@ -378,12 +378,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Mediator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 76
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: protected TMPMediator Mediator { get; }
@@ -407,12 +407,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FreeMediator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 85
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: protected void FreeMediator()
@@ -433,12 +433,12 @@ items:
     remote:
       path: Runtime/Components/TMPEffectComponent.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateMediator
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPEffectComponent.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
     startLine: 92
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: protected void UpdateMediator()

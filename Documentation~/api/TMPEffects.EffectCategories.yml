@@ -17,8 +17,20 @@ items:
   fullName: TMPEffects.EffectCategories
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
+- uid: TMPEffects.EffectCategories.TMPAnimationCategory
+  commentId: T:TMPEffects.EffectCategories.TMPAnimationCategory
+  href: TMPEffects.EffectCategories.TMPAnimationCategory.html
+  name: TMPAnimationCategory
+  nameWithType: TMPAnimationCategory
+  fullName: TMPEffects.EffectCategories.TMPAnimationCategory
+- uid: TMPEffects.EffectCategories.TMPCommandCategory
+  commentId: T:TMPEffects.EffectCategories.TMPCommandCategory
+  href: TMPEffects.EffectCategories.TMPCommandCategory.html
+  name: TMPCommandCategory
+  nameWithType: TMPCommandCategory
+  fullName: TMPEffects.EffectCategories.TMPCommandCategory
 - uid: TMPEffects.EffectCategories.TMPEffectCategory`1
   commentId: T:TMPEffects.EffectCategories.TMPEffectCategory`1
   href: TMPEffects.EffectCategories.TMPEffectCategory-1.html
@@ -57,18 +69,6 @@ references:
   name: TMPEventCategory
   nameWithType: TMPEventCategory
   fullName: TMPEffects.EffectCategories.TMPEventCategory
-- uid: TMPEffects.EffectCategories.TMPAnimationCategory
-  commentId: T:TMPEffects.EffectCategories.TMPAnimationCategory
-  href: TMPEffects.EffectCategories.TMPAnimationCategory.html
-  name: TMPAnimationCategory
-  nameWithType: TMPAnimationCategory
-  fullName: TMPEffects.EffectCategories.TMPAnimationCategory
-- uid: TMPEffects.EffectCategories.TMPCommandCategory
-  commentId: T:TMPEffects.EffectCategories.TMPCommandCategory
-  href: TMPEffects.EffectCategories.TMPCommandCategory.html
-  name: TMPCommandCategory
-  nameWithType: TMPCommandCategory
-  fullName: TMPEffects.EffectCategories.TMPCommandCategory
 - uid: TMPEffects.EffectCategories
   commentId: N:TMPEffects.EffectCategories
   href: TMPEffects.html

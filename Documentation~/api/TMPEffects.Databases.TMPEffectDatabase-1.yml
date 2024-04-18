@@ -24,12 +24,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   summary: Base class for all databases.
   example: []
@@ -124,12 +124,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   example: []
   syntax:
@@ -156,12 +156,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ListenForChanges
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: public void ListenForChanges(ObjectChangedEventHandler handler)
@@ -187,12 +187,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StopListenForChanges
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 19
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: public void StopListenForChanges(ObjectChangedEventHandler handler)
@@ -218,12 +218,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 29
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   summary: Check whether this database contains an effect associated with the given name.
   example: []
@@ -258,12 +258,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   summary: Get the effect associated with the given name.
   example: []
@@ -302,12 +302,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 39
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: protected virtual void OnValidate()
@@ -330,12 +330,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnDestroy
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: protected virtual void OnDestroy()
@@ -358,12 +358,12 @@ items:
     remote:
       path: Runtime/Databases/TMPEffectDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaiseDatabaseChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/TMPEffectDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
     startLine: 49
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases
   syntax:
     content: protected void RaiseDatabaseChanged()

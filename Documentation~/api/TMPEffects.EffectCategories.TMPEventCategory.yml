@@ -6,7 +6,7 @@ items:
   parent: TMPEffects.EffectCategories
   children:
   - TMPEffects.EffectCategories.TMPEventCategory.#ctor(System.Char)
-  - TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   - TMPEffects.EffectCategories.TMPEventCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   - TMPEffects.EffectCategories.TMPEventCategory.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
   langs:
@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/EffectCategories/TMPEventCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEventCategory
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/TMPEventCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Category for events.
   example: []
@@ -63,12 +63,12 @@ items:
     remote:
       path: Runtime/EffectCategories/TMPEventCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/TMPEventCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   syntax:
     content: public TMPEventCategory(char prefix)
@@ -80,32 +80,32 @@ items:
   nameWithType.vb: TMPEventCategory.New(Char)
   fullName.vb: TMPEffects.EffectCategories.TMPEventCategory.New(Char)
   name.vb: New(Char)
-- uid: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  commentId: M:TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  id: ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+- uid: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  commentId: M:TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  id: ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   parent: TMPEffects.EffectCategories.TMPEventCategory
   langs:
   - csharp
   - vb
-  name: ValidateOpenTag(TagInfo, out TMPEffectTag)
-  nameWithType: TMPEventCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag)
-  fullName: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag)
+  name: ValidateOpenTag(TagInfo, out TMPEffectTag, out int)
+  nameWithType: TMPEventCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag, out int)
+  fullName: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag, out int)
   type: Method
   source:
     remote:
       path: Runtime/EffectCategories/TMPEventCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateOpenTag
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/TMPEventCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Validate a given <xref href="TMPEffects.TextProcessing.ParsingUtility.TagInfo" data-throw-if-not-resolved="false"></xref>. MUST be of type <xref href="TMPEffects.TextProcessing.ParsingUtility.TagType.Open" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
+    content: public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
     parameters:
     - id: tagInfo
       type: TMPEffects.TextProcessing.ParsingUtility.TagInfo
@@ -113,19 +113,22 @@ items:
     - id: data
       type: TMPEffects.Tags.TMPEffectTag
       description: Assuming the tag is validated, this will be set to the created <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>; otherwise it will be null.
+    - id: endIndex
+      type: System.Int32
+      description: Assuming the tag is validated, this will be set to the endIndex of the tag. TODO this arguably exceeds ITMPTagValidators responsibilities
     return:
       type: System.Boolean
       description: true if the tag is successfully validated; false otherwise.
-    content.vb: Public Overrides Function ValidateOpenTag(tagInfo As ParsingUtility.TagInfo, data As TMPEffectTag) As Boolean
-  overridden: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+    content.vb: Public Overrides Function ValidateOpenTag(tagInfo As ParsingUtility.TagInfo, data As TMPEffectTag, endIndex As Integer) As Boolean
+  overridden: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   overload: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: ''
-  nameWithType.vb: TMPEventCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag)
-  fullName.vb: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag)
-  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag)
+  nameWithType.vb: TMPEventCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag, Integer)
+  fullName.vb: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag, Integer)
+  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag, Integer)
 - uid: TMPEffects.EffectCategories.TMPEventCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   commentId: M:TMPEffects.EffectCategories.TMPEventCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   id: ValidateTag(TMPEffects.Tags.TMPEffectTag)
@@ -141,12 +144,12 @@ items:
     remote:
       path: Runtime/EffectCategories/TMPEventCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 25
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
+    startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Validate a given <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -177,12 +180,12 @@ items:
     remote:
       path: Runtime/EffectCategories/TMPEventCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 32
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
+    startLine: 33
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Validate a given <xref href="TMPEffects.TextProcessing.ParsingUtility.TagInfo" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -578,20 +581,21 @@ references:
   name: ArgumentException
   nameWithType: ArgumentException
   fullName: System.ArgumentException
-- uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  commentId: M:TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+- uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  commentId: M:TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   parent: TMPEffects.EffectCategories.TMPEffectCategory
-  href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
-  name: ValidateOpenTag(TagInfo, out TMPEffectTag)
-  nameWithType: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag)
-  fullName: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag)
-  nameWithType.vb: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag)
-  fullName.vb: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag)
-  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag)
+  isExternal: true
+  href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
+  name: ValidateOpenTag(TagInfo, out TMPEffectTag, out int)
+  nameWithType: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag, out int)
+  fullName: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag, out int)
+  nameWithType.vb: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag, Integer)
+  fullName.vb: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag, Integer)
+  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag, Integer)
   spec.csharp:
-  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
     name: ValidateOpenTag
-    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   - name: (
   - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
     name: TagInfo
@@ -603,11 +607,19 @@ references:
   - uid: TMPEffects.Tags.TMPEffectTag
     name: TMPEffectTag
     href: TMPEffects.Tags.TMPEffectTag.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
   spec.vb:
-  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
     name: ValidateOpenTag
-    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   - name: (
   - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
     name: TagInfo
@@ -617,13 +629,30 @@ references:
   - uid: TMPEffects.Tags.TMPEffectTag
     name: TMPEffectTag
     href: TMPEffects.Tags.TMPEffectTag.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag*
   commentId: Overload:TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag
-  href: TMPEffects.EffectCategories.TMPEventCategory.html#TMPEffects_EffectCategories_TMPEventCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+  href: TMPEffects.EffectCategories.TMPEventCategory.html#TMPEffects_EffectCategories_TMPEventCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   name: ValidateOpenTag
   nameWithType: TMPEventCategory.ValidateOpenTag
   fullName: TMPEffects.EffectCategories.TMPEventCategory.ValidateOpenTag
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

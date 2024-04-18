@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimationType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimationType
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimationType.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
@@ -49,12 +49,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimationType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Basic
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimationType.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     The "standard" animation type.<br />
@@ -80,12 +80,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimationType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Show
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimationType.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Animations of this type are played when a character is shown.
   example: []
@@ -108,12 +108,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/TMPAnimationType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hide
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/TMPAnimationType.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 22
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: Animations of this type are played when a character is hidden.
   example: []

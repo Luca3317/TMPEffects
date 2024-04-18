@@ -17,8 +17,15 @@ items:
   fullName: TMPEffects.Databases.AnimationDatabase
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
+- uid: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html
+  name: TMPBasicAnimationDatabase
+  nameWithType: TMPBasicAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
 - uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
   commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
   href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html
@@ -44,6 +51,13 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html
+  name: TMPHideAnimationDatabase
+  nameWithType: TMPHideAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
 - uid: TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
   commentId: T:TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
   parent: TMPEffects.Databases.AnimationDatabase
@@ -58,20 +72,6 @@ references:
   name: TMPAnimationDatabase
   nameWithType: TMPAnimationDatabase
   fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
-- uid: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
-  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
-  parent: TMPEffects.Databases.AnimationDatabase
-  href: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html
-  name: TMPHideAnimationDatabase
-  nameWithType: TMPHideAnimationDatabase
-  fullName: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
-- uid: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
-  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
-  parent: TMPEffects.Databases.AnimationDatabase
-  href: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html
-  name: TMPBasicAnimationDatabase
-  nameWithType: TMPBasicAnimationDatabase
-  fullName: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
 - uid: TMPEffects.Databases.AnimationDatabase
   commentId: N:TMPEffects.Databases.AnimationDatabase
   href: TMPEffects.html

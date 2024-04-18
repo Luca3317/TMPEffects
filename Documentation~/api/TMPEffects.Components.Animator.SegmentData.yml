@@ -27,12 +27,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentData
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and its animations.<br />
@@ -64,12 +64,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: startIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The first index of the segment within the containing text.
   example: []
@@ -93,12 +93,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: length
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 22
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The length of the animation segment.
   example: []
@@ -122,12 +122,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: effectiveLength
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The effective length of the animation segment; i.e. the length of the segment from <xref href="TMPEffects.Components.Animator.SegmentData.firstAnimationIndex" data-throw-if-not-resolved="false"></xref> to <xref href="TMPEffects.Components.Animator.SegmentData.lastAnimationIndex" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -151,12 +151,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: firstVisibleIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 32
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The index of the first visible character (i.e. non-whitespace character).
   example: []
@@ -180,12 +180,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lastVisibleIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The index of the last visible character (i.e. non-whitespace character).
   example: []
@@ -209,12 +209,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: firstAnimationIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The index of the first character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
   example: []
@@ -238,12 +238,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lastAnimationIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 45
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: The index of the last character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
   example: []
@@ -267,12 +267,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: max
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 47
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public readonly Vector3 max
@@ -294,12 +294,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: min
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 48
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public readonly Vector3 min
@@ -321,12 +321,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndexToSegmentIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 50
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public int IndexToSegmentIndex(int index)
@@ -355,12 +355,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/SegmentData.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentIndexOf
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/SegmentData.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/SegmentData.cs
     startLine: 57
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public int SegmentIndexOf(CharData cData)

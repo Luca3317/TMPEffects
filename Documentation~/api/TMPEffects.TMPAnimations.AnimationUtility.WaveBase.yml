@@ -31,12 +31,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveBase
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 216
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: >-
@@ -80,12 +80,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 219
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float UpPeriod { get; set; }
@@ -109,12 +109,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DownPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 245
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float DownPeriod { get; set; }
@@ -138,12 +138,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Amplitude
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 271
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Amplitude { get; set; }
@@ -167,12 +167,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Velocity
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 277
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Velocity { get; set; }
@@ -196,12 +196,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Period
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 292
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Period { get; }
@@ -225,12 +225,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveLength
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 297
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float WaveLength { get; }
@@ -254,12 +254,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EffectiveUpPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 302
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float EffectiveUpPeriod { get; }
@@ -283,12 +283,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EffectiveDownPeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 307
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float EffectiveDownPeriod { get; }
@@ -312,12 +312,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EffectivePeriod
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 312
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float EffectivePeriod { get; }
@@ -341,12 +341,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Frequency
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 317
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Frequency { get; }
@@ -370,12 +370,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 322
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public WaveBase()
@@ -399,12 +399,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 325
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public WaveBase(float upPeriod, float downPeriod, float velocity, float amplitude)
@@ -437,12 +437,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wavelength
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 359
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: >-
@@ -474,12 +474,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnBeforeSerialize
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 361
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: <p>Implement this method to receive a callback before Unity serializes your object.</p>
   example: []
@@ -504,12 +504,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnAfterDeserialize
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
     startLine: 374
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: <p>Implement this method to receive a callback after Unity deserializes your object.</p>
   example: []

@@ -24,12 +24,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPHideAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Base class for all hide animations.
   example: []
@@ -122,12 +122,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Animate the given character.
   example: []
@@ -158,12 +158,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -198,12 +198,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: >-
     Validate the parameters.<br />
@@ -241,12 +241,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Create and get a new custom data object for this animation.
   example: []
@@ -274,12 +274,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   example: []
   syntax:
@@ -304,12 +304,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected virtual void OnValidate()
@@ -330,12 +330,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnDestroy
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 30
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected virtual void OnDestroy()
@@ -356,12 +356,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaiseObjectChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs
     startLine: 35
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected void RaiseObjectChanged()

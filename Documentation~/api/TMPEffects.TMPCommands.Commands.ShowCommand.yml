@@ -22,12 +22,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowCommand
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   syntax:
     content: >-
@@ -131,12 +131,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   example: []
   syntax:
@@ -162,12 +162,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteInstantly
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   summary: >-
     Whether the command is executed the moment the TMPWriter begin writing.<br />
@@ -197,12 +197,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteOnSkip
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   summary: Whether the command should be executed by the TMPWriter if its text position is skipped over.
   example: []
@@ -229,12 +229,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteRepeatable
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   summary: >-
     Whether the command may be executed multiple times if, for example, the TMPWriter is reset to an earlier text position after the command has been executed.<br />
@@ -264,12 +264,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteCommand
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   summary: Execute the command.
   example: []
@@ -297,12 +297,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/ShowCommand.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands
   summary: >-
     Validate the parameters.<br />

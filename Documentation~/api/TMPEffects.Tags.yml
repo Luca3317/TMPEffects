@@ -19,21 +19,15 @@ items:
   fullName: TMPEffects.Tags
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.Tags.ITMPTagValidator
-  commentId: T:TMPEffects.Tags.ITMPTagValidator
+- uid: TMPEffects.Tags.TMPEffectTag
+  commentId: T:TMPEffects.Tags.TMPEffectTag
   parent: TMPEffects.Tags
-  href: TMPEffects.Tags.ITMPTagValidator.html
-  name: ITMPTagValidator
-  nameWithType: ITMPTagValidator
-  fullName: TMPEffects.Tags.ITMPTagValidator
-- uid: TMPEffects.Tags.ITagWrapper
-  commentId: T:TMPEffects.Tags.ITagWrapper
-  href: TMPEffects.Tags.ITagWrapper.html
-  name: ITagWrapper
-  nameWithType: ITagWrapper
-  fullName: TMPEffects.Tags.ITagWrapper
+  href: TMPEffects.Tags.TMPEffectTag.html
+  name: TMPEffectTag
+  nameWithType: TMPEffectTag
+  fullName: TMPEffects.Tags.TMPEffectTag
 - uid: TMPEffects.Tags.ITagCacher`1
   commentId: T:TMPEffects.Tags.ITagCacher`1
   href: TMPEffects.Tags.ITagCacher-1.html
@@ -59,20 +53,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: TMPEffects.Tags.TMPEffectTag
-  commentId: T:TMPEffects.Tags.TMPEffectTag
-  parent: TMPEffects.Tags
-  href: TMPEffects.Tags.TMPEffectTag.html
-  name: TMPEffectTag
-  nameWithType: TMPEffectTag
-  fullName: TMPEffects.Tags.TMPEffectTag
-- uid: TMPEffects.Tags.ITMPPrefixSupplier
-  commentId: T:TMPEffects.Tags.ITMPPrefixSupplier
-  parent: TMPEffects.Tags
-  href: TMPEffects.Tags.ITMPPrefixSupplier.html
-  name: ITMPPrefixSupplier
-  nameWithType: ITMPPrefixSupplier
-  fullName: TMPEffects.Tags.ITMPPrefixSupplier
 - uid: TMPEffects.Tags.TMPEffectTagIndices
   commentId: T:TMPEffects.Tags.TMPEffectTagIndices
   parent: TMPEffects.Tags
@@ -80,6 +60,26 @@ references:
   name: TMPEffectTagIndices
   nameWithType: TMPEffectTagIndices
   fullName: TMPEffects.Tags.TMPEffectTagIndices
+- uid: TMPEffects.Tags.ITMPTagValidator
+  commentId: T:TMPEffects.Tags.ITMPTagValidator
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.ITMPTagValidator.html
+  name: ITMPTagValidator
+  nameWithType: ITMPTagValidator
+  fullName: TMPEffects.Tags.ITMPTagValidator
+- uid: TMPEffects.Tags.ITMPPrefixSupplier
+  commentId: T:TMPEffects.Tags.ITMPPrefixSupplier
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.ITMPPrefixSupplier.html
+  name: ITMPPrefixSupplier
+  nameWithType: ITMPPrefixSupplier
+  fullName: TMPEffects.Tags.ITMPPrefixSupplier
+- uid: TMPEffects.Tags.ITagWrapper
+  commentId: T:TMPEffects.Tags.ITagWrapper
+  href: TMPEffects.Tags.ITagWrapper.html
+  name: ITagWrapper
+  nameWithType: ITagWrapper
+  fullName: TMPEffects.Tags.ITagWrapper
 - uid: TMPEffects.Tags.TMPEffectTagTuple
   commentId: T:TMPEffects.Tags.TMPEffectTagTuple
   parent: TMPEffects.Tags

@@ -17,12 +17,12 @@ items:
     remote:
       path: Runtime/Tags/ITagCacher.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagCacher
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagCacher.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITagCacher.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Generic interface for caching tags.
   example: []
@@ -50,12 +50,12 @@ items:
     remote:
       path: Runtime/Tags/ITagCacher.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CacheTag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagCacher.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITagCacher.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Cache the given tag and its associated indices.
   example: []

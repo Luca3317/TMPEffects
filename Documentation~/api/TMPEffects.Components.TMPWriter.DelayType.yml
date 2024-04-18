@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DelayType
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1190
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1192
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: public enum TMPWriter.DelayType
@@ -43,12 +43,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Percentage
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1192
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1194
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: Percentage = 0
@@ -69,12 +69,12 @@ items:
     remote:
       path: Runtime/Components/TMPWriter/TMPWriter.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Raw
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1193
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1195
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components
   syntax:
     content: Raw = 1

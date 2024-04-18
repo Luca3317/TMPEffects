@@ -20,58 +20,8 @@ items:
   fullName: TMPEffects.TextProcessing
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TextProcessing.TagProcessor
-  commentId: T:TMPEffects.TextProcessing.TagProcessor
-  parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.TagProcessor.html
-  name: TagProcessor
-  nameWithType: TagProcessor
-  fullName: TMPEffects.TextProcessing.TagProcessor
-- uid: TMPEffects.TextProcessing.TMPTextProcessor
-  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor
-  parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  name: TMPTextProcessor
-  nameWithType: TMPTextProcessor
-  fullName: TMPEffects.TextProcessing.TMPTextProcessor
-- uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
-  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
-  parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  name: TMPTextProcessor.TMPTextProcessorEventHandler
-  nameWithType: TMPTextProcessor.TMPTextProcessorEventHandler
-  fullName: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
-  spec.csharp:
-  - uid: TMPEffects.TextProcessing.TMPTextProcessor
-    name: TMPTextProcessor
-    href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  - name: .
-  - uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
-    name: TMPTextProcessorEventHandler
-    href: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html
-  spec.vb:
-  - uid: TMPEffects.TextProcessing.TMPTextProcessor
-    name: TMPTextProcessor
-    href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  - name: .
-  - uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
-    name: TMPTextProcessorEventHandler
-    href: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html
-- uid: TMPEffects.TextProcessing.ITagProcessorManager
-  commentId: T:TMPEffects.TextProcessing.ITagProcessorManager
-  parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.ITagProcessorManager.html
-  name: ITagProcessorManager
-  nameWithType: ITagProcessorManager
-  fullName: TMPEffects.TextProcessing.ITagProcessorManager
-- uid: TMPEffects.TextProcessing.TagProcessorManager
-  commentId: T:TMPEffects.TextProcessing.TagProcessorManager
-  href: TMPEffects.TextProcessing.TagProcessorManager.html
-  name: TagProcessorManager
-  nameWithType: TagProcessorManager
-  fullName: TMPEffects.TextProcessing.TagProcessorManager
 - uid: TMPEffects.TextProcessing.ParsingUtility
   commentId: T:TMPEffects.TextProcessing.ParsingUtility
   href: TMPEffects.TextProcessing.ParsingUtility.html
@@ -124,6 +74,56 @@ references:
   - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
     name: TagInfo
     href: TMPEffects.TextProcessing.ParsingUtility.TagInfo.html
+- uid: TMPEffects.TextProcessing.ITagProcessorManager
+  commentId: T:TMPEffects.TextProcessing.ITagProcessorManager
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.ITagProcessorManager.html
+  name: ITagProcessorManager
+  nameWithType: ITagProcessorManager
+  fullName: TMPEffects.TextProcessing.ITagProcessorManager
+- uid: TMPEffects.TextProcessing.TagProcessorManager
+  commentId: T:TMPEffects.TextProcessing.TagProcessorManager
+  href: TMPEffects.TextProcessing.TagProcessorManager.html
+  name: TagProcessorManager
+  nameWithType: TagProcessorManager
+  fullName: TMPEffects.TextProcessing.TagProcessorManager
+- uid: TMPEffects.TextProcessing.TMPTextProcessor
+  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.TMPTextProcessor.html
+  name: TMPTextProcessor
+  nameWithType: TMPTextProcessor
+  fullName: TMPEffects.TextProcessing.TMPTextProcessor
+- uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.TMPTextProcessor.html
+  name: TMPTextProcessor.TMPTextProcessorEventHandler
+  nameWithType: TMPTextProcessor.TMPTextProcessorEventHandler
+  fullName: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+  spec.csharp:
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor
+    name: TMPTextProcessor
+    href: TMPEffects.TextProcessing.TMPTextProcessor.html
+  - name: .
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+    name: TMPTextProcessorEventHandler
+    href: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor
+    name: TMPTextProcessor
+    href: TMPEffects.TextProcessing.TMPTextProcessor.html
+  - name: .
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+    name: TMPTextProcessorEventHandler
+    href: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html
+- uid: TMPEffects.TextProcessing.TagProcessor
+  commentId: T:TMPEffects.TextProcessing.TagProcessor
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.TagProcessor.html
+  name: TagProcessor
+  nameWithType: TagProcessor
+  fullName: TMPEffects.TextProcessing.TagProcessor
 - uid: TMPEffects.TextProcessing
   commentId: N:TMPEffects.TextProcessing
   href: TMPEffects.html

@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TagType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TagType.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: public enum TagType
@@ -44,12 +44,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TagType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Index
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TagType.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: Index = 0
@@ -70,12 +70,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TagType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Block
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TagType.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: Block = 1
@@ -96,12 +96,12 @@ items:
     remote:
       path: Runtime/Effects/TMPCommands/TagType.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Either
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPCommands/TagType.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPCommands
   syntax:
     content: Either = 2

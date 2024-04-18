@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FadeHideAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   syntax:
     content: >-
@@ -129,12 +129,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Animate the given character.
   example: []
@@ -165,12 +165,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
     startLine: 97
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -204,12 +204,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
     startLine: 109
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: >-
     Validate the parameters.<br />
@@ -246,12 +246,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/FadeHideAnimation.cs
     startLine: 121
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Create and get a new custom data object for this animation.
   example: []

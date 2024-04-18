@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEventArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEventArgs
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEventArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
     startLine: 6
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: 'public class TMPEventArgs : EventArgs'
@@ -57,12 +57,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEventArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tag
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEventArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: public TMPEffectTag Tag { get; }
@@ -86,12 +86,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEventArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Indices
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEventArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: public TMPEffectTagIndices Indices { get; }
@@ -115,12 +115,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEventArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Writer
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEventArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: public TMPWriter Writer { get; }
@@ -144,12 +144,12 @@ items:
     remote:
       path: Runtime/Effects/TMPEvents/TMPEventArgs.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPEvents/TMPEventArgs.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPEvents
   syntax:
     content: public TMPEventArgs(TMPEffectTag tag, TMPEffectTagIndices indices, TMPWriter writer)

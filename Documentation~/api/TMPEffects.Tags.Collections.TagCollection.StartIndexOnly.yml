@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StartIndexOnly
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 337
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: 'protected struct TagCollection.StartIndexOnly : IComparable<TMPEffectTagIndices>'
@@ -53,12 +53,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: startIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 339
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public readonly int startIndex
@@ -80,12 +80,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 341
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public StartIndexOnly(int startIndex)
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CompareTo
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 346
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   example: []
   syntax:

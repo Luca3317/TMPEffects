@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimationParameterless
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPAnimation.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Base class for animations that dont take parameters.
   example: []
@@ -114,12 +114,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPAnimation.cs
     startLine: 47
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -153,12 +153,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/TMPAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/TMPAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/TMPAnimation.cs
     startLine: 49
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: >-
     Validate the parameters.<br />

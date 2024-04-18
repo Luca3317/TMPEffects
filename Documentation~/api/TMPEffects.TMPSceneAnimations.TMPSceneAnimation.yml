@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPSceneAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimation.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Base class for all BasicSceneAnimations.
   example: []
@@ -35,9 +35,6 @@ items:
   - UnityEngine.Behaviour
   - UnityEngine.MonoBehaviour
   - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
-  derivedClasses:
-  - TMPEffects.TMPSceneAnimations.Animations.FlashlightAnimation
-  - TMPEffects.TMPSceneAnimations.Draggable
   implements:
   - TMPEffects.TMPAnimations.ITMPAnimation
   - System.ComponentModel.INotifyPropertyChanged

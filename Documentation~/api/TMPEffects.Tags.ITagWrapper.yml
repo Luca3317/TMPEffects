@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/Tags/ITagWrapper.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagWrapper
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagWrapper.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITagWrapper.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Interface that wraps an <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref> as well as an <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref> instance.
   example: []
@@ -45,12 +45,12 @@ items:
     remote:
       path: Runtime/Tags/ITagWrapper.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagWrapper.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITagWrapper.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The wrapped tag.
   example: []
@@ -76,12 +76,12 @@ items:
     remote:
       path: Runtime/Tags/ITagWrapper.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Indices
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagWrapper.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITagWrapper.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: The wrapped tag indices.
   example: []

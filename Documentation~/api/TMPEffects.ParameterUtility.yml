@@ -74,12 +74,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParameterUtility
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static class ParameterUtility
@@ -109,12 +109,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetDefinedParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetDefinedParameter(out string value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -149,12 +149,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParameterDefined
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -187,12 +187,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonFloatParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 42
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -225,12 +225,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasFloatParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 48
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -263,12 +263,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetFloatParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 53
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -303,12 +303,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonIntParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 62
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -341,12 +341,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasIntParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 68
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -379,12 +379,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetIntParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 73
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetIntParameter(out int value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -419,12 +419,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonBoolParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 82
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -457,12 +457,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasBoolParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 88
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -495,12 +495,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetBoolParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 93
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetBoolParameter(out bool value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -535,12 +535,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 102
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -573,12 +573,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 108
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -611,12 +611,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 113
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetVector2Parameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -651,12 +651,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 122
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -689,12 +689,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 128
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -727,12 +727,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 133
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetVector3Parameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -767,12 +767,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector2OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 142
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -805,12 +805,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector2OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 148
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -843,12 +843,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector2OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 153
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -883,12 +883,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector3OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 162
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -921,12 +921,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector3OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 168
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -959,12 +959,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector3OffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 173
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -999,12 +999,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonAnchorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 182
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1037,12 +1037,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnchorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 188
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1075,12 +1075,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetAnchorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 193
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1115,12 +1115,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnchorKeywords
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 201
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords
@@ -1142,12 +1142,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonAnimCurveParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 227
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1180,12 +1180,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnimCurveParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 233
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1218,12 +1218,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetAnimCurveParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 238
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1258,12 +1258,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonWaveOffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 247
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1296,12 +1296,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasWaveOffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 253
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1334,12 +1334,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetWaveOffsetParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 258
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1374,12 +1374,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonColorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 266
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1412,12 +1412,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasColorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 272
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1450,12 +1450,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetColorParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 277
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1490,12 +1490,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonArrayParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 286
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
@@ -1532,12 +1532,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasArrayParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 292
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
@@ -1574,12 +1574,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetArrayParameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 297
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
@@ -1618,12 +1618,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonTypedVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 326
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1656,12 +1656,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasTypedVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 331
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1694,12 +1694,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetTypedVector3Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 336
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetTypedVector3Parameter(out ParameterUtility.TypedVector3 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1734,12 +1734,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonTypedVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 359
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1772,12 +1772,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HasTypedVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 364
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1810,12 +1810,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetTypedVector2Parameter
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 369
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool TryGetTypedVector2Parameter(out ParameterUtility.TypedVector2 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
@@ -1850,12 +1850,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetWaveParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 472
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static ParameterUtility.WaveParameters GetWaveParameters(IDictionary<string, string> parameters, string prefix = "", bool upwardCurve = true, bool downwardCurve = true, bool upPeriod = true, bool downPeriod = true, bool crestWait = true, bool troughWait = true, bool waveVelocity = true, bool waveLength = true, bool waveUniformity = true, bool amplitude = true)
@@ -1906,12 +1906,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateWaveParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 544
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static bool ValidateWaveParameters(IDictionary<string, string> parameters, string prefix = "", bool upwardCurve = true, bool downwardCurve = true, bool upPeriod = true, bool downPeriod = true, bool crestWait = true, bool troughWait = true, bool waveVelocity = true, bool waveLength = true, bool waveUniformity = true, bool amplitude = true)
@@ -1962,12 +1962,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CreateWave
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 592
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static AnimationUtility.Wave CreateWave(AnimationUtility.Wave wave, ParameterUtility.WaveParameters wp)
@@ -1995,12 +1995,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveOffsetAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 615
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] WaveOffsetAliases
@@ -2022,12 +2022,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SpeedAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 616
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] SpeedAliases
@@ -2049,12 +2049,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CurveAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 617
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] CurveAliases
@@ -2076,12 +2076,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FrequencyAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 618
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] FrequencyAliases
@@ -2103,12 +2103,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AmplitudeAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 619
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] AmplitudeAliases
@@ -2130,12 +2130,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PivotAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 620
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] PivotAliases
@@ -2157,12 +2157,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RadiusAliases
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 621
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly string[] RadiusAliases
@@ -2184,12 +2184,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInFloatKeywords
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 623
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly ReadOnlyDictionary<string, float> BuiltInFloatKeywords
@@ -2211,12 +2211,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInVector2Keywords
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 631
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Vector2> BuiltInVector2Keywords
@@ -2238,12 +2238,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInVector3Keywords
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 664
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Vector3> BuiltInVector3Keywords

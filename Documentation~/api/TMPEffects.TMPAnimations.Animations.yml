@@ -21,26 +21,26 @@ items:
   fullName: TMPEffects.TMPAnimations.Animations
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TMPAnimations.Animations.ShakeAnimation
-  commentId: T:TMPEffects.TMPAnimations.Animations.ShakeAnimation
-  href: TMPEffects.TMPAnimations.Animations.ShakeAnimation.html
-  name: ShakeAnimation
-  nameWithType: ShakeAnimation
-  fullName: TMPEffects.TMPAnimations.Animations.ShakeAnimation
-- uid: TMPEffects.TMPAnimations.Animations.GrowAnimation
-  commentId: T:TMPEffects.TMPAnimations.Animations.GrowAnimation
-  href: TMPEffects.TMPAnimations.Animations.GrowAnimation.html
-  name: GrowAnimation
-  nameWithType: GrowAnimation
-  fullName: TMPEffects.TMPAnimations.Animations.GrowAnimation
+- uid: TMPEffects.TMPAnimations.Animations.PaletteAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.PaletteAnimation
+  href: TMPEffects.TMPAnimations.Animations.PaletteAnimation.html
+  name: PaletteAnimation
+  nameWithType: PaletteAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.PaletteAnimation
 - uid: TMPEffects.TMPAnimations.Animations.CharAnimation
   commentId: T:TMPEffects.TMPAnimations.Animations.CharAnimation
   href: TMPEffects.TMPAnimations.Animations.CharAnimation.html
   name: CharAnimation
   nameWithType: CharAnimation
   fullName: TMPEffects.TMPAnimations.Animations.CharAnimation
+- uid: TMPEffects.TMPAnimations.Animations.GrowAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.GrowAnimation
+  href: TMPEffects.TMPAnimations.Animations.GrowAnimation.html
+  name: GrowAnimation
+  nameWithType: GrowAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.GrowAnimation
 - uid: TMPEffects.TMPAnimations.Animations.ContPivotAnimation
   commentId: T:TMPEffects.TMPAnimations.Animations.ContPivotAnimation
   href: TMPEffects.TMPAnimations.Animations.ContPivotAnimation.html
@@ -53,12 +53,18 @@ references:
   name: WaveAnimation
   nameWithType: WaveAnimation
   fullName: TMPEffects.TMPAnimations.Animations.WaveAnimation
-- uid: TMPEffects.TMPAnimations.Animations.PaletteAnimation
-  commentId: T:TMPEffects.TMPAnimations.Animations.PaletteAnimation
-  href: TMPEffects.TMPAnimations.Animations.PaletteAnimation.html
-  name: PaletteAnimation
-  nameWithType: PaletteAnimation
-  fullName: TMPEffects.TMPAnimations.Animations.PaletteAnimation
+- uid: TMPEffects.TMPAnimations.Animations.FadeAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.FadeAnimation
+  href: TMPEffects.TMPAnimations.Animations.FadeAnimation.html
+  name: FadeAnimation
+  nameWithType: FadeAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.FadeAnimation
+- uid: TMPEffects.TMPAnimations.Animations.ShakeAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.ShakeAnimation
+  href: TMPEffects.TMPAnimations.Animations.ShakeAnimation.html
+  name: ShakeAnimation
+  nameWithType: ShakeAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.ShakeAnimation
 - uid: TMPEffects.TMPAnimations.Animations.PivotAnimation
   commentId: T:TMPEffects.TMPAnimations.Animations.PivotAnimation
   href: TMPEffects.TMPAnimations.Animations.PivotAnimation.html
@@ -71,9 +77,3 @@ references:
   name: FunkyAnimation
   nameWithType: FunkyAnimation
   fullName: TMPEffects.TMPAnimations.Animations.FunkyAnimation
-- uid: TMPEffects.TMPAnimations.Animations.FadeAnimation
-  commentId: T:TMPEffects.TMPAnimations.Animations.FadeAnimation
-  href: TMPEffects.TMPAnimations.Animations.FadeAnimation.html
-  name: FadeAnimation
-  nameWithType: FadeAnimation
-  fullName: TMPEffects.TMPAnimations.Animations.FadeAnimation

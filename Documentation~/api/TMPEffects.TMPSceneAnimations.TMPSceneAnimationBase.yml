@@ -22,12 +22,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPSceneAnimationBase
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Base class for all SceneAnimations.
   example: []
@@ -177,12 +177,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: PropertyChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   example: []
   syntax:
@@ -207,12 +207,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Animate the given character.
   example: []
@@ -244,12 +244,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Create and get a new custom data object for this animation.
   example: []
@@ -277,12 +277,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -317,12 +317,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: >-
     Validate the parameters.<br />
@@ -360,12 +360,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneAnimationBase.cs
     startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   syntax:
     content: protected virtual void OnValidate()

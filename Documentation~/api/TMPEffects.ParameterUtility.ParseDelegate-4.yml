@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParseDelegate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 323
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public delegate W ParameterUtility.ParseDelegate<T, U, V, W>(T input, out U output, V keywords)

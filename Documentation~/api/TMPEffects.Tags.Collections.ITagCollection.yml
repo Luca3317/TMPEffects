@@ -22,12 +22,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagCollection
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: A writable collection of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -58,12 +58,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Attempt to add a new tag to the collection.
   example: []
@@ -96,12 +96,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Attempt to add a new tag to the collection.<br />
@@ -146,12 +146,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove all tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -190,12 +190,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 44
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Remove the tag starting at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />
@@ -234,12 +234,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 52
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove the given tag, with the specified indices (if supplied).
   example: []
@@ -272,12 +272,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ITagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ITagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 57
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Clear the entire collection.
   example: []

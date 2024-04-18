@@ -14,17 +14,17 @@ items:
   fullName: TMPEffects.Extensions
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.Extensions.Extensions
-  commentId: T:TMPEffects.Extensions.Extensions
-  href: TMPEffects.Extensions.Extensions.html
-  name: Extensions
-  nameWithType: Extensions
-  fullName: TMPEffects.Extensions.Extensions
 - uid: TMPEffects.Extensions.AnimationCurveUtility
   commentId: T:TMPEffects.Extensions.AnimationCurveUtility
   href: TMPEffects.Extensions.AnimationCurveUtility.html
   name: AnimationCurveUtility
   nameWithType: AnimationCurveUtility
   fullName: TMPEffects.Extensions.AnimationCurveUtility
+- uid: TMPEffects.Extensions.Extensions
+  commentId: T:TMPEffects.Extensions.Extensions
+  href: TMPEffects.Extensions.Extensions.html
+  name: Extensions
+  nameWithType: Extensions
+  fullName: TMPEffects.Extensions.Extensions

@@ -17,35 +17,35 @@ items:
   fullName: TMPEffects.TMPCommands.Commands
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TMPCommands.Commands.WaitCommand
-  commentId: T:TMPEffects.TMPCommands.Commands.WaitCommand
-  href: TMPEffects.TMPCommands.Commands.WaitCommand.html
-  name: WaitCommand
-  nameWithType: WaitCommand
-  fullName: TMPEffects.TMPCommands.Commands.WaitCommand
-- uid: TMPEffects.TMPCommands.Commands.DebugCommand
-  commentId: T:TMPEffects.TMPCommands.Commands.DebugCommand
-  href: TMPEffects.TMPCommands.Commands.DebugCommand.html
-  name: DebugCommand
-  nameWithType: DebugCommand
-  fullName: TMPEffects.TMPCommands.Commands.DebugCommand
-- uid: TMPEffects.TMPCommands.Commands.DelayCommand
-  commentId: T:TMPEffects.TMPCommands.Commands.DelayCommand
-  href: TMPEffects.TMPCommands.Commands.DelayCommand.html
-  name: DelayCommand
-  nameWithType: DelayCommand
-  fullName: TMPEffects.TMPCommands.Commands.DelayCommand
 - uid: TMPEffects.TMPCommands.Commands.ShowCommand
   commentId: T:TMPEffects.TMPCommands.Commands.ShowCommand
   href: TMPEffects.TMPCommands.Commands.ShowCommand.html
   name: ShowCommand
   nameWithType: ShowCommand
   fullName: TMPEffects.TMPCommands.Commands.ShowCommand
+- uid: TMPEffects.TMPCommands.Commands.DebugCommand
+  commentId: T:TMPEffects.TMPCommands.Commands.DebugCommand
+  href: TMPEffects.TMPCommands.Commands.DebugCommand.html
+  name: DebugCommand
+  nameWithType: DebugCommand
+  fullName: TMPEffects.TMPCommands.Commands.DebugCommand
 - uid: TMPEffects.TMPCommands.Commands.SkippableCommand
   commentId: T:TMPEffects.TMPCommands.Commands.SkippableCommand
   href: TMPEffects.TMPCommands.Commands.SkippableCommand.html
   name: SkippableCommand
   nameWithType: SkippableCommand
   fullName: TMPEffects.TMPCommands.Commands.SkippableCommand
+- uid: TMPEffects.TMPCommands.Commands.DelayCommand
+  commentId: T:TMPEffects.TMPCommands.Commands.DelayCommand
+  href: TMPEffects.TMPCommands.Commands.DelayCommand.html
+  name: DelayCommand
+  nameWithType: DelayCommand
+  fullName: TMPEffects.TMPCommands.Commands.DelayCommand
+- uid: TMPEffects.TMPCommands.Commands.WaitCommand
+  commentId: T:TMPEffects.TMPCommands.Commands.WaitCommand
+  href: TMPEffects.TMPCommands.Commands.WaitCommand.html
+  name: WaitCommand
+  nameWithType: WaitCommand
+  fullName: TMPEffects.TMPCommands.Commands.WaitCommand

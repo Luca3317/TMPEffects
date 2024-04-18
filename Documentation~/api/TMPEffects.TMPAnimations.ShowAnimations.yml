@@ -21,7 +21,7 @@ items:
   fullName: TMPEffects.TMPAnimations.ShowAnimations
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
 - uid: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
@@ -29,36 +29,18 @@ references:
   name: GrowShowAnimation
   nameWithType: GrowShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
-- uid: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
-  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
-  href: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html
-  name: CharShowAnimation
-  nameWithType: CharShowAnimation
-  fullName: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
-- uid: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
-  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
-  href: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.html
-  name: SpreadAnimation
-  nameWithType: SpreadAnimation
-  fullName: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
 - uid: TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation
   href: TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation.html
   name: PivotShowAnimation
   nameWithType: PivotShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation
-- uid: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
-  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
-  href: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.html
-  name: FadeShowAnimation
-  nameWithType: FadeShowAnimation
-  fullName: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
-- uid: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
-  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
-  href: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html
-  name: DummyShowAnimation
-  nameWithType: DummyShowAnimation
-  fullName: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.html
+  name: ShakeShowAnimation
+  nameWithType: ShakeShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
 - uid: TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation
   href: TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation.html
@@ -71,9 +53,27 @@ references:
   name: SpreadShowAnimation
   nameWithType: SpreadShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation
-- uid: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
-  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
-  href: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.html
-  name: ShakeShowAnimation
-  nameWithType: ShakeShowAnimation
-  fullName: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.html
+  name: SpreadAnimation
+  nameWithType: SpreadAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.html
+  name: FadeShowAnimation
+  nameWithType: FadeShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html
+  name: CharShowAnimation
+  nameWithType: CharShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html
+  name: DummyShowAnimation
+  nameWithType: DummyShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation

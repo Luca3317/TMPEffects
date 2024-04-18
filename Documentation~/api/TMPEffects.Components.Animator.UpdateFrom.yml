@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/UpdateFrom.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateFrom
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/UpdateFrom.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 6
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>'s <xref href="TMPEffects.Components.TMPAnimator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)" data-throw-if-not-resolved="false"></xref> method.<br />
@@ -60,12 +60,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/UpdateFrom.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Update
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/UpdateFrom.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> is updated in the Update method.
   example: []
@@ -88,12 +88,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/UpdateFrom.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: LateUpdate
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/UpdateFrom.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 16
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> is updated in the LateUpdate method.
   example: []
@@ -116,12 +116,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/UpdateFrom.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FixedUpdate
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/UpdateFrom.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> is updated in the FixedUpdate method.
   example: []
@@ -144,12 +144,12 @@ items:
     remote:
       path: Runtime/Components/TMPAnimator/UpdateFrom.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Script
-    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/UpdateFrom.cs
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Components.Animator
   summary: <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> is not automatically updated; you will need to update it from your own script.
   example: []

@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TypedVector2
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 400
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: >-
@@ -61,12 +61,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: vector
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 403
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public Vector2 vector
@@ -88,12 +88,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: type
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 404
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public ParameterUtility.VectorType type
@@ -115,12 +115,12 @@ items:
     remote:
       path: Runtime/Effects/ParameterUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
     startLine: 406
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects
   syntax:
     content: public TypedVector2(ParameterUtility.VectorType type, Vector2 vector)

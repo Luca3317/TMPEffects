@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MinMax
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 52
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 51
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: The minimum and maximum collection index of cached tags potentially relevant to a given text index.
   example: []
@@ -59,12 +59,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MaxIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 57
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 56
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: The maximum collection index of cached tags potentially relevant to a given text index.
   example: []
@@ -90,12 +90,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MinIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 61
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 60
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: The minimum collection index of cached tags potentially relevant to a given text index.
   example: []
@@ -121,12 +121,12 @@ items:
     remote:
       path: Runtime/Tags/CachedCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/CachedCollection.cs
-    startLine: 63
+    path: ../Assets/TMPEffects/Runtime/Tags/CachedCollection.cs
+    startLine: 62
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public MinMax(int textIndex)

@@ -17,35 +17,8 @@ items:
   fullName: TMPEffects.TMPCommands
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.TMPCommands.TMPCommand
-  commentId: T:TMPEffects.TMPCommands.TMPCommand
-  parent: TMPEffects.TMPCommands
-  href: TMPEffects.TMPCommands.TMPCommand.html
-  name: TMPCommand
-  nameWithType: TMPCommand
-  fullName: TMPEffects.TMPCommands.TMPCommand
-- uid: TMPEffects.TMPCommands.ITMPCommand
-  commentId: T:TMPEffects.TMPCommands.ITMPCommand
-  parent: TMPEffects.TMPCommands
-  href: TMPEffects.TMPCommands.ITMPCommand.html
-  name: ITMPCommand
-  nameWithType: ITMPCommand
-  fullName: TMPEffects.TMPCommands.ITMPCommand
-- uid: TMPEffects.TMPCommands.TMPCommandArgs
-  commentId: T:TMPEffects.TMPCommands.TMPCommandArgs
-  parent: TMPEffects.TMPCommands
-  href: TMPEffects.TMPCommands.TMPCommandArgs.html
-  name: TMPCommandArgs
-  nameWithType: TMPCommandArgs
-  fullName: TMPEffects.TMPCommands.TMPCommandArgs
-- uid: TMPEffects.TMPCommands.TMPSceneCommand
-  commentId: T:TMPEffects.TMPCommands.TMPSceneCommand
-  href: TMPEffects.TMPCommands.TMPSceneCommand.html
-  name: TMPSceneCommand
-  nameWithType: TMPSceneCommand
-  fullName: TMPEffects.TMPCommands.TMPSceneCommand
 - uid: TMPEffects.TMPCommands.TagType
   commentId: T:TMPEffects.TMPCommands.TagType
   parent: TMPEffects.TMPCommands
@@ -53,6 +26,33 @@ references:
   name: TagType
   nameWithType: TagType
   fullName: TMPEffects.TMPCommands.TagType
+- uid: TMPEffects.TMPCommands.TMPSceneCommand
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommand
+  href: TMPEffects.TMPCommands.TMPSceneCommand.html
+  name: TMPSceneCommand
+  nameWithType: TMPSceneCommand
+  fullName: TMPEffects.TMPCommands.TMPSceneCommand
+- uid: TMPEffects.TMPCommands.TMPCommandArgs
+  commentId: T:TMPEffects.TMPCommands.TMPCommandArgs
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPCommandArgs.html
+  name: TMPCommandArgs
+  nameWithType: TMPCommandArgs
+  fullName: TMPEffects.TMPCommands.TMPCommandArgs
+- uid: TMPEffects.TMPCommands.ITMPCommand
+  commentId: T:TMPEffects.TMPCommands.ITMPCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.ITMPCommand.html
+  name: ITMPCommand
+  nameWithType: ITMPCommand
+  fullName: TMPEffects.TMPCommands.ITMPCommand
+- uid: TMPEffects.TMPCommands.TMPCommand
+  commentId: T:TMPEffects.TMPCommands.TMPCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPCommand.html
+  name: TMPCommand
+  nameWithType: TMPCommand
+  fullName: TMPEffects.TMPCommands.TMPCommand
 - uid: TMPEffects.TMPCommands
   commentId: N:TMPEffects.TMPCommands
   href: TMPEffects.html

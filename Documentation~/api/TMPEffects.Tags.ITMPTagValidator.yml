@@ -5,7 +5,7 @@ items:
   id: ITMPTagValidator
   parent: TMPEffects.Tags
   children:
-  - TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   - TMPEffects.Tags.ITMPTagValidator.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   - TMPEffects.Tags.ITMPTagValidator.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
   langs:
@@ -19,44 +19,44 @@ items:
     remote:
       path: Runtime/Tags/ITMPTagValidator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPTagValidator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPTagValidator.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPTagValidator.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Tag validation interface.
   example: []
   syntax:
     content: public interface ITMPTagValidator
     content.vb: Public Interface ITMPTagValidator
-- uid: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  commentId: M:TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  id: ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+- uid: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  commentId: M:TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  id: ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   parent: TMPEffects.Tags.ITMPTagValidator
   langs:
   - csharp
   - vb
-  name: ValidateOpenTag(TagInfo, out TMPEffectTag)
-  nameWithType: ITMPTagValidator.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag)
-  fullName: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag)
+  name: ValidateOpenTag(TagInfo, out TMPEffectTag, out int)
+  nameWithType: ITMPTagValidator.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag, out int)
+  fullName: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag, out int)
   type: Method
   source:
     remote:
       path: Runtime/Tags/ITMPTagValidator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateOpenTag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPTagValidator.cs
-    startLine: 16
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPTagValidator.cs
+    startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Validate a given <xref href="TMPEffects.TextProcessing.ParsingUtility.TagInfo" data-throw-if-not-resolved="false"></xref>. MUST be of type <xref href="TMPEffects.TextProcessing.ParsingUtility.TagType.Open" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
+    content: bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
     parameters:
     - id: tagInfo
       type: TMPEffects.TextProcessing.ParsingUtility.TagInfo
@@ -64,18 +64,21 @@ items:
     - id: data
       type: TMPEffects.Tags.TMPEffectTag
       description: Assuming the tag is validated, this will be set to the created <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>; otherwise it will be null.
+    - id: endIndex
+      type: System.Int32
+      description: Assuming the tag is validated, this will be set to the endIndex of the tag. TODO this arguably exceeds ITMPTagValidators responsibilities
     return:
       type: System.Boolean
       description: true if the tag is successfully validated; false otherwise.
-    content.vb: Function ValidateOpenTag(tagInfo As ParsingUtility.TagInfo, data As TMPEffectTag) As Boolean
+    content.vb: Function ValidateOpenTag(tagInfo As ParsingUtility.TagInfo, data As TMPEffectTag, endIndex As Integer) As Boolean
   overload: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: ''
-  nameWithType.vb: ITMPTagValidator.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag)
-  fullName.vb: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag)
-  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag)
+  nameWithType.vb: ITMPTagValidator.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag, Integer)
+  fullName.vb: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag, Integer)
+  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag, Integer)
 - uid: TMPEffects.Tags.ITMPTagValidator.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
   commentId: M:TMPEffects.Tags.ITMPTagValidator.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
   id: ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
@@ -91,12 +94,12 @@ items:
     remote:
       path: Runtime/Tags/ITMPTagValidator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPTagValidator.cs
-    startLine: 22
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPTagValidator.cs
+    startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Validate a given <xref href="TMPEffects.TextProcessing.ParsingUtility.TagInfo" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -126,12 +129,12 @@ items:
     remote:
       path: Runtime/Tags/ITMPTagValidator.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITMPTagValidator.cs
-    startLine: 28
+    path: ../Assets/TMPEffects/Runtime/Tags/ITMPTagValidator.cs
+    startLine: 29
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags
   summary: Validate a given <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -214,10 +217,21 @@ references:
   fullName: System.ArgumentException
 - uid: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag*
   commentId: Overload:TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag
-  href: TMPEffects.Tags.ITMPTagValidator.html#TMPEffects_Tags_ITMPTagValidator_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+  href: TMPEffects.Tags.ITMPTagValidator.html#TMPEffects_Tags_ITMPTagValidator_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   name: ValidateOpenTag
   nameWithType: ITMPTagValidator.ValidateOpenTag
   fullName: TMPEffects.Tags.ITMPTagValidator.ValidateOpenTag
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

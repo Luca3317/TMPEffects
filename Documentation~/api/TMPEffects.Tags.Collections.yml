@@ -26,7 +26,7 @@ items:
   fullName: TMPEffects.Tags.Collections
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
 - uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection
   commentId: T:TMPEffects.Tags.Collections.IReadOnlyTagCollection
@@ -35,6 +35,38 @@ references:
   name: IReadOnlyTagCollection
   nameWithType: IReadOnlyTagCollection
   fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+- uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
+  commentId: T:TMPEffects.Tags.Collections.ITagCollectionManager`1
+  href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
+  name: ITagCollectionManager<TKey>
+  nameWithType: ITagCollectionManager<TKey>
+  fullName: TMPEffects.Tags.Collections.ITagCollectionManager<TKey>
+  nameWithType.vb: ITagCollectionManager(Of TKey)
+  fullName.vb: TMPEffects.Tags.Collections.ITagCollectionManager(Of TKey)
+  name.vb: ITagCollectionManager(Of TKey)
+  spec.csharp:
+  - uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
+    name: ITagCollectionManager
+    href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
+    name: ITagCollectionManager
+    href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: TMPEffects.Tags.Collections.ITagCollection
+  commentId: T:TMPEffects.Tags.Collections.ITagCollection
+  parent: TMPEffects.Tags.Collections
+  href: TMPEffects.Tags.Collections.ITagCollection.html
+  name: ITagCollection
+  nameWithType: ITagCollection
+  fullName: TMPEffects.Tags.Collections.ITagCollection
 - uid: TMPEffects.Tags.Collections.TagCollection
   commentId: T:TMPEffects.Tags.Collections.TagCollection
   parent: TMPEffects.Tags.Collections
@@ -288,38 +320,6 @@ references:
   - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructContainingEnumerator
     name: StructContainingEnumerator
     href: TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.html
-- uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
-  commentId: T:TMPEffects.Tags.Collections.ITagCollectionManager`1
-  href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
-  name: ITagCollectionManager<TKey>
-  nameWithType: ITagCollectionManager<TKey>
-  fullName: TMPEffects.Tags.Collections.ITagCollectionManager<TKey>
-  nameWithType.vb: ITagCollectionManager(Of TKey)
-  fullName.vb: TMPEffects.Tags.Collections.ITagCollectionManager(Of TKey)
-  name.vb: ITagCollectionManager(Of TKey)
-  spec.csharp:
-  - uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
-    name: ITagCollectionManager
-    href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
-  - name: <
-  - name: TKey
-  - name: '>'
-  spec.vb:
-  - uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
-    name: ITagCollectionManager
-    href: TMPEffects.Tags.Collections.ITagCollectionManager-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: )
-- uid: TMPEffects.Tags.Collections.ITagCollection
-  commentId: T:TMPEffects.Tags.Collections.ITagCollection
-  parent: TMPEffects.Tags.Collections
-  href: TMPEffects.Tags.Collections.ITagCollection.html
-  name: ITagCollection
-  nameWithType: ITagCollection
-  fullName: TMPEffects.Tags.Collections.ITagCollection
 - uid: TMPEffects.Tags.Collections.ObservableTagCollection
   commentId: T:TMPEffects.Tags.Collections.ObservableTagCollection
   parent: TMPEffects.Tags.Collections

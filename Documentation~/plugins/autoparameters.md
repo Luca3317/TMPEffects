@@ -4,6 +4,8 @@ AutoParameters greatly streamlines the handling of parameters of animations and 
 If you haven't yet, look at [Creating Animations](../docs/tmpanimator_creatinganimations.md) before this section.
 
 #### Installation
+Assuming you [installed TMPEffects](../docs/installation.md), you add AutoParameters to your project by simply downloading the two .dll files and their .meta files from the
+[TMPEffects.AutoParameters](https://github.com/Luca3317/TMPEffects.AutoParameters/releases) releases and putting them anywhere within your project's asset folder.
 
 #### Using AutoParameters
 Once you installed AutoParameters, you can decorate any partial animation class (i.e. one that implements <mark style="color: lightgray; background-color: #191a18">ITMPAnimation</mark>)

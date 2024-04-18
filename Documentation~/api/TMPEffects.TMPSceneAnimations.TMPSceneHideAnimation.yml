@@ -16,12 +16,12 @@ items:
     remote:
       path: Runtime/Effects/TMPSceneAnimations/TMPSceneHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPSceneHideAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPSceneAnimations/TMPSceneHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPSceneAnimations/TMPSceneHideAnimation.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPSceneAnimations
   summary: Base class for all SceneHideAnimations.
   example: []

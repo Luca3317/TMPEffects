@@ -18,12 +18,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: >-
     Tag type enum.<br />
@@ -58,12 +58,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Open
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: Open = 1
@@ -84,12 +84,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Close
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: Close = 2

@@ -23,12 +23,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimationContext
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Basic interface for animation contexts.
   example: []
@@ -50,12 +50,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimatorContext
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: The context of the animating TMPAnimator.
   example: []
@@ -81,12 +81,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 19
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Data about the animation segment.
   example: []
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: The custom data object.
   example: []
@@ -143,12 +143,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: State
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 29
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: The current state of the CharData, with the previous animations applied.
   example: []
@@ -174,12 +174,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Check if the animation is considered finished for the character at the given index.
   example: []
@@ -212,12 +212,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 42
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Check if the animation is considered finished for the given character.
   example: []
@@ -247,12 +247,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
     startLine: 48
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: Set the animation to be considered finished for the given character.
   example: []

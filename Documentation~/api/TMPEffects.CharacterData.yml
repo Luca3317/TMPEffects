@@ -19,15 +19,8 @@ items:
   fullName: TMPEffects.CharacterData
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
-- uid: TMPEffects.CharacterData.VertexData
-  commentId: T:TMPEffects.CharacterData.VertexData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.VertexData.html
-  name: VertexData
-  nameWithType: VertexData
-  fullName: TMPEffects.CharacterData.VertexData
 - uid: TMPEffects.CharacterData.Info
   commentId: T:TMPEffects.CharacterData.Info
   parent: TMPEffects.CharacterData
@@ -35,20 +28,6 @@ references:
   name: Info
   nameWithType: Info
   fullName: TMPEffects.CharacterData.Info
-- uid: TMPEffects.CharacterData.CharData
-  commentId: T:TMPEffects.CharacterData.CharData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.CharData.html
-  name: CharData
-  nameWithType: CharData
-  fullName: TMPEffects.CharacterData.CharData
-- uid: TMPEffects.CharacterData.ReadOnlyVertexData
-  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
-  name: ReadOnlyVertexData
-  nameWithType: ReadOnlyVertexData
-  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
 - uid: TMPEffects.CharacterData.CharDataState
   commentId: T:TMPEffects.CharacterData.CharDataState
   parent: TMPEffects.CharacterData
@@ -56,13 +35,13 @@ references:
   name: CharDataState
   nameWithType: CharDataState
   fullName: TMPEffects.CharacterData.CharDataState
-- uid: TMPEffects.CharacterData.VisibilityState
-  commentId: T:TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
   parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.VisibilityState.html
-  name: VisibilityState
-  nameWithType: VisibilityState
-  fullName: TMPEffects.CharacterData.VisibilityState
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
 - uid: TMPEffects.CharacterData.ReadOnlyCharDataState
   commentId: T:TMPEffects.CharacterData.ReadOnlyCharDataState
   parent: TMPEffects.CharacterData
@@ -70,6 +49,27 @@ references:
   name: ReadOnlyCharDataState
   nameWithType: ReadOnlyCharDataState
   fullName: TMPEffects.CharacterData.ReadOnlyCharDataState
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.VertexData
+  commentId: T:TMPEffects.CharacterData.VertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VertexData.html
+  name: VertexData
+  nameWithType: VertexData
+  fullName: TMPEffects.CharacterData.VertexData
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VisibilityState.html
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState
 - uid: TMPEffects.CharacterData
   commentId: N:TMPEffects.CharacterData
   href: TMPEffects.html

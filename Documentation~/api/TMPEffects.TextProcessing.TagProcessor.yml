@@ -22,12 +22,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 9
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Handles processing of, and stores successfully processed tags.
   example: []
@@ -58,12 +58,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ProcessedTags
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 14
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: All processed tags.
   example: []
@@ -87,12 +87,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ALL_KEYWORD
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 19
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 20
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Tags with this keyword as name will close all open tags of this tag processor.
   example: []
@@ -116,12 +116,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MOST_RECENT_KEYWORD
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 23
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 24
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Tags with this keyword as name will close teh most recent open tag of this tag processor.
   example: []
@@ -145,12 +145,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 25
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 26
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TagProcessor(ITMPTagValidator validator)
@@ -177,12 +177,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Process
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 39
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Process the given tag.
   example: []
@@ -221,12 +221,12 @@ items:
     remote:
       path: Runtime/TextProcessing/TagProcessor.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 48
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
+    startLine: 49
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Reset this TagProcessor.
   example: []

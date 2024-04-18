@@ -33,12 +33,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParsingUtility
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Utility methods for text processing and parsing.
   example: []
@@ -70,12 +70,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNextTag
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 83
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Get the next tag in <code class="paramref">text</code>, starting from <code class="paramref">startIndex</code>.
   example: []
@@ -117,12 +117,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryParseTag
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 127
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Attempt to parse a tag from the substring of <code class="paramref">text</code> given by <code class="paramref">startIndex</code> and <code class="paramref">endIndex</code>.
   example: []
@@ -167,12 +167,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 173
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Checks if the given string contains a substring starting at <code class="paramref">startIndex</code>, going up to <code class="paramref">maxIndex</code>, that is a well formed tag.
   example: []
@@ -213,12 +213,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 222
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   summary: Checks if the given string is a well formed tag (of the given type, if supplied).
   example: []
@@ -254,12 +254,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetTagParametersDict
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 239
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static Dictionary<string, string> GetTagParametersDict(string tag)
@@ -288,12 +288,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToInt
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 371
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
@@ -326,12 +326,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToFloat
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 385
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToFloat(string str, out float result, IDictionary<string, float> keywords = null)
@@ -364,12 +364,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToBool
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 399
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToBool(string str, out bool result, IDictionary<string, bool> keywords = null)
@@ -402,12 +402,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 416
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
@@ -440,12 +440,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector3
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 454
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToVector3(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
@@ -478,12 +478,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2Offset
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 506
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToVector2Offset(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
@@ -516,12 +516,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector3Offset
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 527
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToVector3Offset(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
@@ -554,12 +554,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnchor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 548
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToAnchor(string str, out Vector2 result, IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector2> vectorKeywords = null)
@@ -594,12 +594,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnimationCurve
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 583
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToAnimationCurve(string str, out AnimationCurve result, IDictionary<string, AnimationCurve> keywords = null)
@@ -632,12 +632,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToWaveOffsetType
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 615
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToWaveOffsetType(string str, out AnimationUtility.WaveOffsetType result, IDictionary<string, AnimationUtility.WaveOffsetType> keywords = null)
@@ -670,12 +670,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToColor
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 656
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static bool StringToColor(string str, out Color result, IDictionary<string, Color> keywords = null)
@@ -708,12 +708,12 @@ items:
     remote:
       path: Runtime/TextProcessing/ParsingUtility.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ColorKeyWords
-    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/ParsingUtility.cs
+    path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 823
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Color> ColorKeyWords

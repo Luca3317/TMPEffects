@@ -27,7 +27,7 @@ You can also set the database used by the TMPAnimator component through script, 
 
 Below the database, there are three other fields: <mark style="color: lightgray; background-color: #191a18">SceneAnimations</mark>, <mark style="color: lightgray; background-color: #191a18">SceneShowAnimations</mark> and <mark style="color: lightgray; background-color: #191a18">SceneHideAnimations</mark>. These are simply dictionaries that allow you to map tag names to SceneAnimations. Tags defined here are also parsed by the TMPAnimator.
 
-For more about databases, see <mark style="color: red; background-color: #191a18">[TODO](s)</mark>. For more about SceneAnimations, see [SceneAnimations](tmpanimator_sceneanimations.md).
+For more about databases, see [Databases](databases.md). For more about SceneAnimations, see [SceneAnimations](tmpanimator_sceneanimations.md).
 
 ## Animator settings
 TMPAnimator has various settings that modify the way it animates its text. Each of these is settable through both the inspector and through script.

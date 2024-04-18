@@ -24,12 +24,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimationDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Stores <xref href="TMPEffects.TMPAnimations.TMPAnimation" data-throw-if-not-resolved="false"></xref>, <xref href="TMPEffects.TMPAnimations.TMPShowAnimation" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.TMPAnimations.TMPHideAnimation" data-throw-if-not-resolved="false"></xref> animations.
   example: []
@@ -140,12 +140,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BasicAnimationDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: The backing <xref href="TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase" data-throw-if-not-resolved="false"></xref> used.
   example: []
@@ -171,12 +171,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowAnimationDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: The backing <xref href="TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase" data-throw-if-not-resolved="false"></xref> used.
   example: []
@@ -202,12 +202,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HideAnimationDatabase
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 25
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: The backing <xref href="TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase" data-throw-if-not-resolved="false"></xref> used.
   example: []
@@ -233,12 +233,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 37
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Check whether this database contains an animation associated with the given name.
   example: []
@@ -274,12 +274,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 57
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Check whether this database contains an animation associated with the given name.
   example: []
@@ -313,12 +313,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 73
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Get the animation associated with the given name.
   example: []
@@ -361,12 +361,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 95
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   summary: Get the animation associated with the given name.
   example: []
@@ -407,12 +407,12 @@ items:
     remote:
       path: Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
-    path: ../Assets/TMPEffects OLD/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
+    path: ../Assets/TMPEffects/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 110
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Databases.AnimationDatabase
   example: []
   syntax:

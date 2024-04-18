@@ -20,12 +20,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DummyHideAnimation
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
     startLine: 5
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   syntax:
     content: 'public class DummyHideAnimation : TMPHideAnimation, ITMPAnimation, INotifyObjectChanged'
@@ -112,12 +112,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
     startLine: 7
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Animate the given character.
   example: []
@@ -148,12 +148,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
     startLine: 12
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Create and get a new custom data object for this animation.
   example: []
@@ -180,12 +180,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
     startLine: 17
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -219,12 +219,12 @@ items:
     remote:
       path: Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
-    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Hide Animations/DummyHideAnimation.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.TMPAnimations.HideAnimations
   summary: >-
     Validate the parameters.<br />

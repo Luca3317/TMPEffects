@@ -26,12 +26,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObservableTagCollection
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: An observable <xref href="TMPEffects.Tags.Collections.ITagCollection" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -85,12 +85,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public ObservableTagCollection(IList<TMPEffectTagTuple> tags, ITMPTagValidator validator = null)
@@ -119,12 +119,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 13
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public ObservableTagCollection(ITMPTagValidator validator = null)
@@ -151,12 +151,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CollectionChanged
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 19
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Raised when the collection changed.
   example: []
@@ -182,12 +182,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InvokeEvent
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 21
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected void InvokeEvent(NotifyCollectionChangedEventArgs e)
@@ -211,12 +211,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Attempt to add a new tag to the collection.
   example: []
@@ -250,12 +250,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 46
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Attempt to add a new tag to the collection.<br />
@@ -301,12 +301,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 94
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove the given tag, with the specified indices (if supplied).
   example: []
@@ -340,12 +340,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 120
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Remove the tag starting at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />
@@ -385,12 +385,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 141
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove all tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -430,12 +430,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/ObservableTagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/ObservableTagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 185
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Clear the entire collection.
   example: []

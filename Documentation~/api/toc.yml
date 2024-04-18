@@ -120,15 +120,6 @@ items:
     name: AnimationCurveUtility
   - uid: TMPEffects.Extensions.Extensions
     name: Extensions
-- uid: TMPEffects.Intervaltree
-  name: TMPEffects.Intervaltree
-  items:
-  - uid: TMPEffects.Intervaltree.IIntervalTree`2
-    name: IIntervalTree<TKey, TValue>
-  - uid: TMPEffects.Intervaltree.IntervalTree`2
-    name: IntervalTree<TKey, TValue>
-  - uid: TMPEffects.Intervaltree.RangeValuePair`2
-    name: RangeValuePair<TKey, TValue>
 - uid: TMPEffects.ObjectChanged
   name: TMPEffects.ObjectChanged
   items:
@@ -262,8 +253,6 @@ items:
 - uid: TMPEffects.TMPSceneAnimations
   name: TMPEffects.TMPSceneAnimations
   items:
-  - uid: TMPEffects.TMPSceneAnimations.Draggable
-    name: Draggable
   - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
     name: TMPSceneAnimation
   - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
@@ -272,11 +261,6 @@ items:
     name: TMPSceneHideAnimation
   - uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
     name: TMPSceneShowAnimation
-- uid: TMPEffects.TMPSceneAnimations.Animations
-  name: TMPEffects.TMPSceneAnimations.Animations
-  items:
-  - uid: TMPEffects.TMPSceneAnimations.Animations.FlashlightAnimation
-    name: FlashlightAnimation
 - uid: TMPEffects.Tags
   name: TMPEffects.Tags
   items:

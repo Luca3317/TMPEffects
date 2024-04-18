@@ -19,12 +19,12 @@ items:
     remote:
       path: Runtime/EffectCategories/EffectCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectCategory
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/EffectCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/EffectCategory.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Base class for all effect categories.
   example: []
@@ -47,7 +47,7 @@ items:
   inheritedMembers:
   - TMPEffects.EffectCategories.TMPEffectCategory.Prefix
   - TMPEffects.EffectCategories.TMPEffectCategory.prefix
-  - TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   - TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   - TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)
   - System.Object.Equals(System.Object)
@@ -75,12 +75,12 @@ items:
     remote:
       path: Runtime/EffectCategories/EffectCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/EffectCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/EffectCategory.cs
     startLine: 11
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   syntax:
     content: public TMPEffectCategory(char prefix)
@@ -107,12 +107,12 @@ items:
     remote:
       path: Runtime/EffectCategories/EffectCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/EffectCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/EffectCategory.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Check whether this database contains an effect associated with the given name.
   example: []
@@ -147,12 +147,12 @@ items:
     remote:
       path: Runtime/EffectCategories/EffectCategory.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
-    path: ../Assets/TMPEffects OLD/Runtime/EffectCategories/EffectCategory.cs
+    path: ../Assets/TMPEffects/Runtime/EffectCategories/EffectCategory.cs
     startLine: 18
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.EffectCategories
   summary: Get the effect associated with the given name.
   example: []
@@ -279,20 +279,21 @@ references:
   name: prefix
   nameWithType: TMPEffectCategory.prefix
   fullName: TMPEffects.EffectCategories.TMPEffectCategory.prefix
-- uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
-  commentId: M:TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+- uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
+  commentId: M:TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
   parent: TMPEffects.EffectCategories.TMPEffectCategory
-  href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
-  name: ValidateOpenTag(TagInfo, out TMPEffectTag)
-  nameWithType: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag)
-  fullName: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag)
-  nameWithType.vb: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag)
-  fullName.vb: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag)
-  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag)
+  isExternal: true
+  href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
+  name: ValidateOpenTag(TagInfo, out TMPEffectTag, out int)
+  nameWithType: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, out TMPEffectTag, out int)
+  fullName: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, out TMPEffects.Tags.TMPEffectTag, out int)
+  nameWithType.vb: TMPEffectCategory.ValidateOpenTag(ParsingUtility.TagInfo, TMPEffectTag, Integer)
+  fullName.vb: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo, TMPEffects.Tags.TMPEffectTag, Integer)
+  name.vb: ValidateOpenTag(TagInfo, TMPEffectTag, Integer)
   spec.csharp:
-  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
     name: ValidateOpenTag
-    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   - name: (
   - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
     name: TagInfo
@@ -304,11 +305,19 @@ references:
   - uid: TMPEffects.Tags.TMPEffectTag
     name: TMPEffectTag
     href: TMPEffects.Tags.TMPEffectTag.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
   spec.vb:
-  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@)
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)
     name: ValidateOpenTag
-    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__
+    href: TMPEffects.EffectCategories.TMPEffectCategory.html#TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__
   - name: (
   - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
     name: TagInfo
@@ -318,6 +327,12 @@ references:
   - uid: TMPEffects.Tags.TMPEffectTag
     name: TMPEffectTag
     href: TMPEffects.Tags.TMPEffectTag.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)
   commentId: M:TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)

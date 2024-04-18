@@ -38,12 +38,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCollection
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 8
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   example: []
   syntax:
@@ -82,12 +82,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 10
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public TagCollection(IList<TMPEffectTagTuple> tags, ITMPTagValidator validator = null)
@@ -116,12 +116,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 15
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public TagCollection(ITMPTagValidator validator = null)
@@ -148,12 +148,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 22
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Attempt to add a new tag to the collection.
   example: []
@@ -188,12 +188,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 40
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Attempt to add a new tag to the collection.<br />
@@ -240,12 +240,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustOrderAtIndexAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 85
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected void AdjustOrderAtIndexAt(int listIndex, TMPEffectTagIndices indices)
@@ -274,12 +274,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 99
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove all tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -320,12 +320,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 132
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Remove the tag starting at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />
@@ -366,12 +366,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 151
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Clear the entire collection.
   example: []
@@ -396,12 +396,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 157
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Remove the given tag, with the specified indices (if supplied).
   example: []
@@ -436,12 +436,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CopyTo
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 177
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: public void CopyTo(TMPEffectTag[] array, int arrayIndex)
@@ -470,12 +470,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCount
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 190
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: The amount of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref> in this collection.
   example: []
@@ -503,12 +503,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 193
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Whether this collection contains the given tag with the given indices (if supplied).
   example: []
@@ -543,12 +543,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 199
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   example: []
   syntax:
@@ -574,12 +574,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 202
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: >-
     Get the tag at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />
@@ -620,12 +620,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 220
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -666,12 +666,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 247
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
   example: []
@@ -706,12 +706,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndicesOf
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 264
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   summary: Get the associated indices of the given tag.
   example: []
@@ -743,12 +743,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FindIndex
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 275
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected int FindIndex(TMPEffectTag tag)
@@ -774,12 +774,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BinarySearchIndexOf
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 285
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected int BinarySearchIndexOf(IComparable<TMPEffectTagIndices> indices)
@@ -808,12 +808,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BinarySearchIndexFirstIndexOf
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 305
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected int BinarySearchIndexFirstIndexOf(TagCollection.StartIndexOnly indices)
@@ -839,12 +839,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: tags
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 352
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected IList<TMPEffectTagTuple> tags
@@ -866,12 +866,12 @@ items:
     remote:
       path: Runtime/Tags/TagCollection/TagCollection.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: validator
-    path: ../Assets/TMPEffects OLD/Runtime/Tags/TagCollection/TagCollection.cs
+    path: ../Assets/TMPEffects/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 353
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.Tags.Collections
   syntax:
     content: protected readonly ITMPTagValidator validator

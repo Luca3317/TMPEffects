@@ -36,12 +36,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Info
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 9
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Holds a selection of data of <xref href="TMPro.TMP_CharacterInfo" data-throw-if-not-resolved="false"></xref>, as well as some data about the initial mesh of the character.
   example: []
@@ -70,12 +70,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: index
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 14
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The index of the character within the source text.
   example: []
@@ -99,12 +99,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordFirstIndex
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 19
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The first index of the word this character belongs to.
   example: []
@@ -128,12 +128,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordLastIndex
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 23
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The last index of the word this character belongs to.
   example: []
@@ -157,12 +157,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordLen
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 27
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The length of the word this character belongs to.
   example: []
@@ -186,12 +186,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: color
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 31
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The color of this character.
   example: []
@@ -215,12 +215,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: pointSize
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 36
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The point size.
   example: []
@@ -244,12 +244,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: character
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 41
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The actual character.
   example: []
@@ -273,12 +273,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: isVisible
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 46
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Whether the character is inherently visible; i.e. is no whitespace.
   example: []
@@ -302,12 +302,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lineNumber
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 51
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The line number of the line this character belongs to.
   example: []
@@ -331,12 +331,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: pageNumber
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 55
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The page number of the page this character belongs to.
   example: []
@@ -360,12 +360,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: baseLine
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 60
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The baseline of the character.
   example: []
@@ -389,12 +389,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ascender
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 64
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The ascender of the character.
   example: []
@@ -418,12 +418,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: descender
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 68
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The descender of the character.
   example: []
@@ -447,12 +447,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: xAdvance
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 72
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The xAdvance factor of the character.
   example: []
@@ -476,12 +476,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: fontAsset
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 77
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The font asset used for this character.
   example: []
@@ -505,12 +505,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: spriteAsset
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 81
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The sprite asset used for this sprite.
   example: []
@@ -534,12 +534,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: elementType
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 83
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public readonly TMP_TextElementType elementType
@@ -561,12 +561,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: origin
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 85
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public readonly float origin
@@ -588,12 +588,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: referenceScale
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 90
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: The reference scale of this character.
   example: []
@@ -617,12 +617,12 @@ items:
     remote:
       path: Runtime/CharData/Info.cs
       branch: main
-      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects OLD/Runtime/CharData/Info.cs
+    path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
     startLine: 120
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Info(int index, TMP_CharacterInfo cInfo, TMP_WordInfo wInfo)

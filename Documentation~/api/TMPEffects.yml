@@ -18,7 +18,7 @@ items:
   fullName: TMPEffects
   type: Namespace
   assemblies:
-  - Luca3317.TMPEffects
+  - TMPEffects
 references:
 - uid: TMPEffects.ParameterUtility
   commentId: T:TMPEffects.ParameterUtility
