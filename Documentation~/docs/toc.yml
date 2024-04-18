@@ -1,7 +1,7 @@
 - name: Introduction
   href: introduction.md
-- name: Getting Started
-  href: getting-started.md
+- name: Installation
+  href: installation.md
 - name: TMPAnimator
   href: tmpanimator.md
   items:
