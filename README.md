@@ -2,6 +2,7 @@
 If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lweist3317)!
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![openupm](https://img.shields.io/npm/v/com.luca3317.tmpeffects?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.luca3317.tmpeffects/)
 [![PCKG: Version](https://img.shields.io/github/tag/Luca3317/TMPEffects?include_prereleases=&sort=semver&color=blue)](https://github.com/Luca3317/TMPEffects/releases/)
 [![issues - TMPEffects](https://img.shields.io/github/issues/Luca3317/TMPEffects)](https://github.com/Luca3317/TMPEffects/issues)
 ***
@@ -31,7 +32,7 @@ and [commands](https://luca3317.github.io/TMPEffects-Pages/docs/tmpwriter_builti
 - Only dependency: Unity's TextMeshPro package (automatically included in Unity 2018.3 and up)
 
 ## Installation
-TMPEffects is available on the OpenUPM registry.  
+TMPEffects is available on the [OpenUPM registry](https://openupm.com/packages/com.luca3317.tmpeffects/).  
 Alternatively, you can install TMPEffects through the Unity Package Manager, using the git url:
 ```console
 https://github.com/Luca3317/TMPEffects.git
