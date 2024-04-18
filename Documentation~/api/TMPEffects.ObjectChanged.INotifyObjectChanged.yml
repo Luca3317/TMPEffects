@@ -1,0 +1,86 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  id: INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  children:
+  - TMPEffects.ObjectChanged.INotifyObjectChanged.ObjectChanged
+  langs:
+  - csharp
+  - vb
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
+  type: Interface
+  source:
+    remote:
+      path: Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: INotifyObjectChanged
+    path: ../Assets/TMPEffects OLD/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+    startLine: 4
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.ObjectChanged
+  syntax:
+    content: public interface INotifyObjectChanged
+    content.vb: Public Interface INotifyObjectChanged
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged.ObjectChanged
+  commentId: E:TMPEffects.ObjectChanged.INotifyObjectChanged.ObjectChanged
+  id: ObjectChanged
+  parent: TMPEffects.ObjectChanged.INotifyObjectChanged
+  langs:
+  - csharp
+  - vb
+  name: ObjectChanged
+  nameWithType: INotifyObjectChanged.ObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged.ObjectChanged
+  type: Event
+  source:
+    remote:
+      path: Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ObjectChanged
+    path: ../Assets/TMPEffects OLD/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
+    startLine: 6
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.ObjectChanged
+  syntax:
+    content: event ObjectChangedEventHandler ObjectChanged
+    return:
+      type: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+    content.vb: Event ObjectChanged As ObjectChangedEventHandler
+references:
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  href: TMPEffects.html
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+- uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+  commentId: T:TMPEffects.ObjectChanged.ObjectChangedEventHandler
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
+  name: ObjectChangedEventHandler
+  nameWithType: ObjectChangedEventHandler
+  fullName: TMPEffects.ObjectChanged.ObjectChangedEventHandler

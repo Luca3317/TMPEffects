@@ -1,0 +1,95 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ParameterUtility.ParseDelegate`4
+  commentId: T:TMPEffects.ParameterUtility.ParseDelegate`4
+  id: ParameterUtility.ParseDelegate`4
+  parent: TMPEffects
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType: ParameterUtility.ParseDelegate<T, U, V, W>
+  fullName: TMPEffects.ParameterUtility.ParseDelegate<T, U, V, W>
+  type: Delegate
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ParseDelegate
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 323
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public delegate W ParameterUtility.ParseDelegate<T, U, V, W>(T input, out U output, V keywords)
+    parameters:
+    - id: input
+      type: '{T}'
+    - id: output
+      type: '{U}'
+    - id: keywords
+      type: '{V}'
+    typeParameters:
+    - id: T
+    - id: U
+    - id: V
+    - id: W
+    return:
+      type: '{W}'
+    content.vb: Public Delegate Function ParameterUtility.ParseDelegate(Of T, U, V, W)(input As T, output As U, keywords As V) As W
+  nameWithType.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
+  fullName.vb: TMPEffects.ParameterUtility.ParseDelegate(Of T, U, V, W)
+  name.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
+references:
+- uid: TMPEffects
+  commentId: N:TMPEffects
+  href: TMPEffects.html
+  name: TMPEffects
+  nameWithType: TMPEffects
+  fullName: TMPEffects
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: '{U}'
+  commentId: '!:U'
+  definition: U
+  name: U
+  nameWithType: U
+  fullName: U
+- uid: '{V}'
+  commentId: '!:V'
+  definition: V
+  name: V
+  nameWithType: V
+  fullName: V
+- uid: '{W}'
+  commentId: '!:W'
+  definition: W
+  name: W
+  nameWithType: W
+  fullName: W
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: U
+  commentId: '!:U'
+  name: U
+  nameWithType: U
+  fullName: U
+- uid: V
+  commentId: '!:V'
+  name: V
+  nameWithType: V
+  fullName: V
+- uid: W
+  commentId: '!:W'
+  name: W
+  nameWithType: W
+  fullName: W

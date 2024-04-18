@@ -1,0 +1,3500 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ParameterUtility
+  commentId: T:TMPEffects.ParameterUtility
+  id: ParameterUtility
+  parent: TMPEffects
+  children:
+  - TMPEffects.ParameterUtility.AmplitudeAliases
+  - TMPEffects.ParameterUtility.AnchorKeywords
+  - TMPEffects.ParameterUtility.BuiltInFloatKeywords
+  - TMPEffects.ParameterUtility.BuiltInVector2Keywords
+  - TMPEffects.ParameterUtility.BuiltInVector3Keywords
+  - TMPEffects.ParameterUtility.CreateWave(TMPEffects.TMPAnimations.AnimationUtility.Wave,TMPEffects.ParameterUtility.WaveParameters)
+  - TMPEffects.ParameterUtility.CurveAliases
+  - TMPEffects.ParameterUtility.FrequencyAliases
+  - TMPEffects.ParameterUtility.GetWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - TMPEffects.ParameterUtility.HasAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.HasWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.ParameterDefined(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.PivotAliases
+  - TMPEffects.ParameterUtility.RadiusAliases
+  - TMPEffects.ParameterUtility.SpeedAliases
+  - TMPEffects.ParameterUtility.TryGetAnchorParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetAnimCurveParameter(UnityEngine.AnimationCurve@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetArrayParameter``1(``0[]@,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetBoolParameter(System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetColorParameter(UnityEngine.Color@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetDefinedParameter(System.String@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetFloatParameter(System.Single@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetIntParameter(System.Int32@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetTypedVector2Parameter(TMPEffects.ParameterUtility.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetTypedVector3Parameter(TMPEffects.ParameterUtility.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetVector2OffsetParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetVector2Parameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetVector3OffsetParameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetVector3Parameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.TryGetWaveOffsetParameter(TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  - TMPEffects.ParameterUtility.ValidateWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - TMPEffects.ParameterUtility.WaveOffsetAliases
+  langs:
+  - csharp
+  - vb
+  name: ParameterUtility
+  nameWithType: ParameterUtility
+  fullName: TMPEffects.ParameterUtility
+  type: Class
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ParameterUtility
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 11
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static class ParameterUtility
+    content.vb: Public Module ParameterUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.ParameterUtility.TryGetDefinedParameter(System.String@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetDefinedParameter(System.String@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetDefinedParameter(System.String@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetDefinedParameter(out string, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetDefinedParameter(out string, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetDefinedParameter(out string, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetDefinedParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 14
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetDefinedParameter(out string value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: System.String
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetDefinedParameter(value As String, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetDefinedParameter*
+  nameWithType.vb: ParameterUtility.TryGetDefinedParameter(String, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetDefinedParameter(String, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetDefinedParameter(String, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.ParameterDefined(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.ParameterDefined(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: ParameterDefined(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: ParameterDefined(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.ParameterDefined(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.ParameterDefined(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ParameterDefined
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 36
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ParameterDefined(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.ParameterDefined*
+  nameWithType.vb: ParameterUtility.ParameterDefined(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.ParameterDefined(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: ParameterDefined(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonFloatParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonFloatParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonFloatParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonFloatParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 42
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonFloatParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonFloatParameter*
+  nameWithType.vb: ParameterUtility.HasNonFloatParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonFloatParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonFloatParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasFloatParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasFloatParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasFloatParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasFloatParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasFloatParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 48
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasFloatParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasFloatParameter*
+  nameWithType.vb: ParameterUtility.HasFloatParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasFloatParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasFloatParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetFloatParameter(System.Single@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetFloatParameter(System.Single@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetFloatParameter(System.Single@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetFloatParameter(out float, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetFloatParameter(out float, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetFloatParameter(out float, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetFloatParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 53
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: System.Single
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetFloatParameter(value As Single, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetFloatParameter*
+  nameWithType.vb: ParameterUtility.TryGetFloatParameter(Single, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetFloatParameter(Single, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetFloatParameter(Single, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonIntParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonIntParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonIntParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonIntParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 62
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonIntParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonIntParameter*
+  nameWithType.vb: ParameterUtility.HasNonIntParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonIntParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonIntParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasIntParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasIntParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasIntParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasIntParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasIntParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 68
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasIntParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasIntParameter*
+  nameWithType.vb: ParameterUtility.HasIntParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasIntParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasIntParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetIntParameter(System.Int32@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetIntParameter(System.Int32@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetIntParameter(System.Int32@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetIntParameter(out int, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetIntParameter(out int, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetIntParameter(out int, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetIntParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 73
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetIntParameter(out int value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: System.Int32
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetIntParameter(value As Integer, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetIntParameter*
+  nameWithType.vb: ParameterUtility.TryGetIntParameter(Integer, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetIntParameter(Integer, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetIntParameter(Integer, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonBoolParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonBoolParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonBoolParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonBoolParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 82
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonBoolParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonBoolParameter*
+  nameWithType.vb: ParameterUtility.HasNonBoolParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonBoolParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonBoolParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasBoolParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasBoolParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasBoolParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasBoolParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasBoolParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 88
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasBoolParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasBoolParameter*
+  nameWithType.vb: ParameterUtility.HasBoolParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasBoolParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasBoolParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetBoolParameter(System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetBoolParameter(System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetBoolParameter(System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetBoolParameter(out bool, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetBoolParameter(out bool, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetBoolParameter(out bool, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetBoolParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 93
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetBoolParameter(out bool value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: System.Boolean
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetBoolParameter(value As Boolean, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetBoolParameter*
+  nameWithType.vb: ParameterUtility.TryGetBoolParameter(Boolean, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetBoolParameter(Boolean, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetBoolParameter(Boolean, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonVector2Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonVector2Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonVector2Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 102
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonVector2Parameter*
+  nameWithType.vb: ParameterUtility.HasNonVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonVector2Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasVector2Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasVector2Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasVector2Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 108
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasVector2Parameter*
+  nameWithType.vb: ParameterUtility.HasVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasVector2Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetVector2Parameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetVector2Parameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetVector2Parameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetVector2Parameter(out Vector2, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetVector2Parameter(out Vector2, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetVector2Parameter(out UnityEngine.Vector2, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 113
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetVector2Parameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Vector2
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetVector2Parameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetVector2Parameter*
+  nameWithType.vb: ParameterUtility.TryGetVector2Parameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetVector2Parameter(UnityEngine.Vector2, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetVector2Parameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonVector3Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonVector3Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonVector3Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 122
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonVector3Parameter*
+  nameWithType.vb: ParameterUtility.HasNonVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonVector3Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasVector3Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasVector3Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasVector3Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 128
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasVector3Parameter*
+  nameWithType.vb: ParameterUtility.HasVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasVector3Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetVector3Parameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetVector3Parameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetVector3Parameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetVector3Parameter(out Vector3, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetVector3Parameter(out Vector3, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetVector3Parameter(out UnityEngine.Vector3, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 133
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetVector3Parameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Vector3
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetVector3Parameter(value As Vector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetVector3Parameter*
+  nameWithType.vb: ParameterUtility.TryGetVector3Parameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetVector3Parameter(UnityEngine.Vector3, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetVector3Parameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonVector2OffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonVector2OffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonVector2OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 142
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonVector2OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter*
+  nameWithType.vb: ParameterUtility.HasNonVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasVector2OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasVector2OffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasVector2OffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasVector2OffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasVector2OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 148
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasVector2OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasVector2OffsetParameter*
+  nameWithType.vb: ParameterUtility.HasVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasVector2OffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetVector2OffsetParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetVector2OffsetParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetVector2OffsetParameter(out Vector2, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetVector2OffsetParameter(out Vector2, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter(out UnityEngine.Vector2, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetVector2OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 153
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Vector2
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetVector2OffsetParameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter*
+  nameWithType.vb: ParameterUtility.TryGetVector2OffsetParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter(UnityEngine.Vector2, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetVector2OffsetParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonVector3OffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonVector3OffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonVector3OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 162
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonVector3OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter*
+  nameWithType.vb: ParameterUtility.HasNonVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasVector3OffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasVector3OffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasVector3OffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasVector3OffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasVector3OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 168
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasVector3OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasVector3OffsetParameter*
+  nameWithType.vb: ParameterUtility.HasVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasVector3OffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetVector3OffsetParameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetVector3OffsetParameter(UnityEngine.Vector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetVector3OffsetParameter(out Vector3, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetVector3OffsetParameter(out Vector3, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter(out UnityEngine.Vector3, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetVector3OffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 173
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Vector3
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetVector3OffsetParameter(value As Vector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter*
+  nameWithType.vb: ParameterUtility.TryGetVector3OffsetParameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter(UnityEngine.Vector3, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetVector3OffsetParameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonAnchorParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonAnchorParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonAnchorParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonAnchorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 182
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonAnchorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonAnchorParameter*
+  nameWithType.vb: ParameterUtility.HasNonAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonAnchorParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasAnchorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasAnchorParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasAnchorParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasAnchorParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasAnchorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 188
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasAnchorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasAnchorParameter*
+  nameWithType.vb: ParameterUtility.HasAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasAnchorParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetAnchorParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetAnchorParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetAnchorParameter(UnityEngine.Vector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetAnchorParameter(out Vector2, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetAnchorParameter(out Vector2, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetAnchorParameter(out UnityEngine.Vector2, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetAnchorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 193
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Vector2
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetAnchorParameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetAnchorParameter*
+  nameWithType.vb: ParameterUtility.TryGetAnchorParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetAnchorParameter(UnityEngine.Vector2, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetAnchorParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.AnchorKeywords
+  commentId: F:TMPEffects.ParameterUtility.AnchorKeywords
+  id: AnchorKeywords
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: AnchorKeywords
+  nameWithType: ParameterUtility.AnchorKeywords
+  fullName: TMPEffects.ParameterUtility.AnchorKeywords
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AnchorKeywords
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 201
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector2}
+    content.vb: Public Shared ReadOnly AnchorKeywords As ReadOnlyDictionary(Of String, Vector2)
+- uid: TMPEffects.ParameterUtility.HasNonAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonAnimCurveParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonAnimCurveParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonAnimCurveParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonAnimCurveParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 227
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonAnimCurveParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonAnimCurveParameter*
+  nameWithType.vb: ParameterUtility.HasNonAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonAnimCurveParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasAnimCurveParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasAnimCurveParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasAnimCurveParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasAnimCurveParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasAnimCurveParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 233
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasAnimCurveParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasAnimCurveParameter*
+  nameWithType.vb: ParameterUtility.HasAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasAnimCurveParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetAnimCurveParameter(UnityEngine.AnimationCurve@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetAnimCurveParameter(UnityEngine.AnimationCurve@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetAnimCurveParameter(UnityEngine.AnimationCurve@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetAnimCurveParameter(out AnimationCurve, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetAnimCurveParameter(out AnimationCurve, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetAnimCurveParameter(out UnityEngine.AnimationCurve, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetAnimCurveParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 238
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.AnimationCurve
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetAnimCurveParameter(value As AnimationCurve, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetAnimCurveParameter*
+  nameWithType.vb: ParameterUtility.TryGetAnimCurveParameter(AnimationCurve, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetAnimCurveParameter(UnityEngine.AnimationCurve, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetAnimCurveParameter(AnimationCurve, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonWaveOffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonWaveOffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonWaveOffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 247
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonWaveOffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter*
+  nameWithType.vb: ParameterUtility.HasNonWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasWaveOffsetParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasWaveOffsetParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasWaveOffsetParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasWaveOffsetParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasWaveOffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 253
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasWaveOffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasWaveOffsetParameter*
+  nameWithType.vb: ParameterUtility.HasWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasWaveOffsetParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter(TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetWaveOffsetParameter(TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetWaveOffsetParameter(TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetWaveOffsetParameter(out WaveOffsetType, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter(out TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetWaveOffsetParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 258
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetWaveOffsetParameter(value As AnimationUtility.WaveOffsetType, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter*
+  nameWithType.vb: ParameterUtility.TryGetWaveOffsetParameter(AnimationUtility.WaveOffsetType, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter(TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetWaveOffsetParameter(WaveOffsetType, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonColorParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonColorParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonColorParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonColorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 266
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonColorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonColorParameter*
+  nameWithType.vb: ParameterUtility.HasNonColorParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonColorParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonColorParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasColorParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasColorParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasColorParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasColorParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasColorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 272
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasColorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasColorParameter*
+  nameWithType.vb: ParameterUtility.HasColorParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasColorParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasColorParameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetColorParameter(UnityEngine.Color@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetColorParameter(UnityEngine.Color@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetColorParameter(UnityEngine.Color@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetColorParameter(out Color, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetColorParameter(out Color, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetColorParameter(out UnityEngine.Color, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetColorParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 277
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: UnityEngine.Color
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetColorParameter(value As Color, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetColorParameter*
+  nameWithType.vb: ParameterUtility.TryGetColorParameter(Color, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetColorParameter(UnityEngine.Color, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetColorParameter(Color, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  id: HasNonArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonArrayParameter<T>(IDictionary<string, string>, ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  nameWithType: ParameterUtility.HasNonArrayParameter<T>(IDictionary<string, string>, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonArrayParameter<T>(System.Collections.Generic.IDictionary<string, string>, TMPEffects.ParameterUtility.ParseDelegate<string, T, System.Collections.Generic.IDictionary<string, T>, bool>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonArrayParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 286
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: func
+      type: TMPEffects.ParameterUtility.ParseDelegate{System.String,{T},System.Collections.Generic.IDictionary{System.String,{T}},System.Boolean}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonArrayParameter(Of T)(parameters As IDictionary(Of String, String), func As ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonArrayParameter*
+  nameWithType.vb: ParameterUtility.HasNonArrayParameter(Of T)(IDictionary(Of String, String), ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonArrayParameter(Of T)(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.ParameterUtility.ParseDelegate(Of String, T, System.Collections.Generic.IDictionary(Of String, T), Boolean), String, ParamArray String())
+  name.vb: HasNonArrayParameter(Of T)(IDictionary(Of String, String), ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  id: HasArrayParameter``1(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasArrayParameter<T>(IDictionary<string, string>, ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  nameWithType: ParameterUtility.HasArrayParameter<T>(IDictionary<string, string>, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasArrayParameter<T>(System.Collections.Generic.IDictionary<string, string>, TMPEffects.ParameterUtility.ParseDelegate<string, T, System.Collections.Generic.IDictionary<string, T>, bool>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasArrayParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 292
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: func
+      type: TMPEffects.ParameterUtility.ParseDelegate{System.String,{T},System.Collections.Generic.IDictionary{System.String,{T}},System.Boolean}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasArrayParameter(Of T)(parameters As IDictionary(Of String, String), func As ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasArrayParameter*
+  nameWithType.vb: ParameterUtility.HasArrayParameter(Of T)(IDictionary(Of String, String), ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasArrayParameter(Of T)(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.ParameterUtility.ParseDelegate(Of String, T, System.Collections.Generic.IDictionary(Of String, T), Boolean), String, ParamArray String())
+  name.vb: HasArrayParameter(Of T)(IDictionary(Of String, String), ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetArrayParameter``1(``0[]@,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetArrayParameter``1(``0[]@,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  id: TryGetArrayParameter``1(``0[]@,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetArrayParameter<T>(out T[], IDictionary<string, string>, ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  nameWithType: ParameterUtility.TryGetArrayParameter<T>(out T[], IDictionary<string, string>, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetArrayParameter<T>(out T[], System.Collections.Generic.IDictionary<string, string>, TMPEffects.ParameterUtility.ParseDelegate<string, T, System.Collections.Generic.IDictionary<string, T>, bool>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetArrayParameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 297
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+    parameters:
+    - id: value
+      type: '{T}[]'
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: func
+      type: TMPEffects.ParameterUtility.ParseDelegate{System.String,{T},System.Collections.Generic.IDictionary{System.String,{T}},System.Boolean}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetArrayParameter(Of T)(value As T(), parameters As IDictionary(Of String, String), func As ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetArrayParameter*
+  nameWithType.vb: ParameterUtility.TryGetArrayParameter(Of T)(T(), IDictionary(Of String, String), ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetArrayParameter(Of T)(T(), System.Collections.Generic.IDictionary(Of String, String), TMPEffects.ParameterUtility.ParseDelegate(Of String, T, System.Collections.Generic.IDictionary(Of String, T), Boolean), String, ParamArray String())
+  name.vb: TryGetArrayParameter(Of T)(T(), IDictionary(Of String, String), ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonTypedVector3Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonTypedVector3Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonTypedVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 326
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonTypedVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter*
+  nameWithType.vb: ParameterUtility.HasNonTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasTypedVector3Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasTypedVector3Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasTypedVector3Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasTypedVector3Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasTypedVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 331
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasTypedVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasTypedVector3Parameter*
+  nameWithType.vb: ParameterUtility.HasTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasTypedVector3Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter(TMPEffects.ParameterUtility.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetTypedVector3Parameter(TMPEffects.ParameterUtility.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetTypedVector3Parameter(TMPEffects.ParameterUtility.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetTypedVector3Parameter(out TypedVector3, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetTypedVector3Parameter(out ParameterUtility.TypedVector3, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter(out TMPEffects.ParameterUtility.TypedVector3, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetTypedVector3Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 336
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetTypedVector3Parameter(out ParameterUtility.TypedVector3 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: vector
+      type: TMPEffects.ParameterUtility.TypedVector3
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetTypedVector3Parameter(vector As ParameterUtility.TypedVector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter*
+  nameWithType.vb: ParameterUtility.TryGetTypedVector3Parameter(ParameterUtility.TypedVector3, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter(TMPEffects.ParameterUtility.TypedVector3, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetTypedVector3Parameter(TypedVector3, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasNonTypedVector2Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasNonTypedVector2Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasNonTypedVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 359
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasNonTypedVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter*
+  nameWithType.vb: ParameterUtility.HasNonTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasNonTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.HasTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.HasTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: HasTypedVector2Parameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: HasTypedVector2Parameter(IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.HasTypedVector2Parameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.HasTypedVector2Parameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: HasTypedVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 364
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function HasTypedVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.HasTypedVector2Parameter*
+  nameWithType.vb: ParameterUtility.HasTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.HasTypedVector2Parameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter(TMPEffects.ParameterUtility.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.ParameterUtility.TryGetTypedVector2Parameter(TMPEffects.ParameterUtility.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  id: TryGetTypedVector2Parameter(TMPEffects.ParameterUtility.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: TryGetTypedVector2Parameter(out TypedVector2, IDictionary<string, string>, string, params string[])
+  nameWithType: ParameterUtility.TryGetTypedVector2Parameter(out ParameterUtility.TypedVector2, IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter(out TMPEffects.ParameterUtility.TypedVector2, System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TryGetTypedVector2Parameter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 369
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool TryGetTypedVector2Parameter(out ParameterUtility.TypedVector2 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
+    parameters:
+    - id: vector
+      type: TMPEffects.ParameterUtility.TypedVector2
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: name
+      type: System.String
+    - id: aliases
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryGetTypedVector2Parameter(vector As ParameterUtility.TypedVector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
+  overload: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter*
+  nameWithType.vb: ParameterUtility.TryGetTypedVector2Parameter(ParameterUtility.TypedVector2, IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter(TMPEffects.ParameterUtility.TypedVector2, System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: TryGetTypedVector2Parameter(TypedVector2, IDictionary(Of String, String), String, ParamArray String())
+- uid: TMPEffects.ParameterUtility.GetWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:TMPEffects.ParameterUtility.GetWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  id: GetWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: GetWaveParameters(IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  nameWithType: ParameterUtility.GetWaveParameters(IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  fullName: TMPEffects.ParameterUtility.GetWaveParameters(System.Collections.Generic.IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetWaveParameters
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 472
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static ParameterUtility.WaveParameters GetWaveParameters(IDictionary<string, string> parameters, string prefix = "", bool upwardCurve = true, bool downwardCurve = true, bool upPeriod = true, bool downPeriod = true, bool crestWait = true, bool troughWait = true, bool waveVelocity = true, bool waveLength = true, bool waveUniformity = true, bool amplitude = true)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: prefix
+      type: System.String
+    - id: upwardCurve
+      type: System.Boolean
+    - id: downwardCurve
+      type: System.Boolean
+    - id: upPeriod
+      type: System.Boolean
+    - id: downPeriod
+      type: System.Boolean
+    - id: crestWait
+      type: System.Boolean
+    - id: troughWait
+      type: System.Boolean
+    - id: waveVelocity
+      type: System.Boolean
+    - id: waveLength
+      type: System.Boolean
+    - id: waveUniformity
+      type: System.Boolean
+    - id: amplitude
+      type: System.Boolean
+    return:
+      type: TMPEffects.ParameterUtility.WaveParameters
+    content.vb: Public Shared Function GetWaveParameters(parameters As IDictionary(Of String, String), prefix As String = "", upwardCurve As Boolean = True, downwardCurve As Boolean = True, upPeriod As Boolean = True, downPeriod As Boolean = True, crestWait As Boolean = True, troughWait As Boolean = True, waveVelocity As Boolean = True, waveLength As Boolean = True, waveUniformity As Boolean = True, amplitude As Boolean = True) As ParameterUtility.WaveParameters
+  overload: TMPEffects.ParameterUtility.GetWaveParameters*
+  nameWithType.vb: ParameterUtility.GetWaveParameters(IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+  fullName.vb: TMPEffects.ParameterUtility.GetWaveParameters(System.Collections.Generic.IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+  name.vb: GetWaveParameters(IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+- uid: TMPEffects.ParameterUtility.ValidateWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:TMPEffects.ParameterUtility.ValidateWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  id: ValidateWaveParameters(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: ValidateWaveParameters(IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  nameWithType: ParameterUtility.ValidateWaveParameters(IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  fullName: TMPEffects.ParameterUtility.ValidateWaveParameters(System.Collections.Generic.IDictionary<string, string>, string, bool, bool, bool, bool, bool, bool, bool, bool, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ValidateWaveParameters
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 544
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static bool ValidateWaveParameters(IDictionary<string, string> parameters, string prefix = "", bool upwardCurve = true, bool downwardCurve = true, bool upPeriod = true, bool downPeriod = true, bool crestWait = true, bool troughWait = true, bool waveVelocity = true, bool waveLength = true, bool waveUniformity = true, bool amplitude = true)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+    - id: prefix
+      type: System.String
+    - id: upwardCurve
+      type: System.Boolean
+    - id: downwardCurve
+      type: System.Boolean
+    - id: upPeriod
+      type: System.Boolean
+    - id: downPeriod
+      type: System.Boolean
+    - id: crestWait
+      type: System.Boolean
+    - id: troughWait
+      type: System.Boolean
+    - id: waveVelocity
+      type: System.Boolean
+    - id: waveLength
+      type: System.Boolean
+    - id: waveUniformity
+      type: System.Boolean
+    - id: amplitude
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ValidateWaveParameters(parameters As IDictionary(Of String, String), prefix As String = "", upwardCurve As Boolean = True, downwardCurve As Boolean = True, upPeriod As Boolean = True, downPeriod As Boolean = True, crestWait As Boolean = True, troughWait As Boolean = True, waveVelocity As Boolean = True, waveLength As Boolean = True, waveUniformity As Boolean = True, amplitude As Boolean = True) As Boolean
+  overload: TMPEffects.ParameterUtility.ValidateWaveParameters*
+  nameWithType.vb: ParameterUtility.ValidateWaveParameters(IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+  fullName.vb: TMPEffects.ParameterUtility.ValidateWaveParameters(System.Collections.Generic.IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+  name.vb: ValidateWaveParameters(IDictionary(Of String, String), String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
+- uid: TMPEffects.ParameterUtility.CreateWave(TMPEffects.TMPAnimations.AnimationUtility.Wave,TMPEffects.ParameterUtility.WaveParameters)
+  commentId: M:TMPEffects.ParameterUtility.CreateWave(TMPEffects.TMPAnimations.AnimationUtility.Wave,TMPEffects.ParameterUtility.WaveParameters)
+  id: CreateWave(TMPEffects.TMPAnimations.AnimationUtility.Wave,TMPEffects.ParameterUtility.WaveParameters)
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateWave(Wave, WaveParameters)
+  nameWithType: ParameterUtility.CreateWave(AnimationUtility.Wave, ParameterUtility.WaveParameters)
+  fullName: TMPEffects.ParameterUtility.CreateWave(TMPEffects.TMPAnimations.AnimationUtility.Wave, TMPEffects.ParameterUtility.WaveParameters)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: CreateWave
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 592
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static AnimationUtility.Wave CreateWave(AnimationUtility.Wave wave, ParameterUtility.WaveParameters wp)
+    parameters:
+    - id: wave
+      type: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    - id: wp
+      type: TMPEffects.ParameterUtility.WaveParameters
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    content.vb: Public Shared Function CreateWave(wave As AnimationUtility.Wave, wp As ParameterUtility.WaveParameters) As AnimationUtility.Wave
+  overload: TMPEffects.ParameterUtility.CreateWave*
+- uid: TMPEffects.ParameterUtility.WaveOffsetAliases
+  commentId: F:TMPEffects.ParameterUtility.WaveOffsetAliases
+  id: WaveOffsetAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: WaveOffsetAliases
+  nameWithType: ParameterUtility.WaveOffsetAliases
+  fullName: TMPEffects.ParameterUtility.WaveOffsetAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: WaveOffsetAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 615
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] WaveOffsetAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly WaveOffsetAliases As String()
+- uid: TMPEffects.ParameterUtility.SpeedAliases
+  commentId: F:TMPEffects.ParameterUtility.SpeedAliases
+  id: SpeedAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: SpeedAliases
+  nameWithType: ParameterUtility.SpeedAliases
+  fullName: TMPEffects.ParameterUtility.SpeedAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SpeedAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 616
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] SpeedAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly SpeedAliases As String()
+- uid: TMPEffects.ParameterUtility.CurveAliases
+  commentId: F:TMPEffects.ParameterUtility.CurveAliases
+  id: CurveAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: CurveAliases
+  nameWithType: ParameterUtility.CurveAliases
+  fullName: TMPEffects.ParameterUtility.CurveAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: CurveAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 617
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] CurveAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly CurveAliases As String()
+- uid: TMPEffects.ParameterUtility.FrequencyAliases
+  commentId: F:TMPEffects.ParameterUtility.FrequencyAliases
+  id: FrequencyAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: FrequencyAliases
+  nameWithType: ParameterUtility.FrequencyAliases
+  fullName: TMPEffects.ParameterUtility.FrequencyAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: FrequencyAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 618
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] FrequencyAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly FrequencyAliases As String()
+- uid: TMPEffects.ParameterUtility.AmplitudeAliases
+  commentId: F:TMPEffects.ParameterUtility.AmplitudeAliases
+  id: AmplitudeAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: AmplitudeAliases
+  nameWithType: ParameterUtility.AmplitudeAliases
+  fullName: TMPEffects.ParameterUtility.AmplitudeAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AmplitudeAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 619
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] AmplitudeAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly AmplitudeAliases As String()
+- uid: TMPEffects.ParameterUtility.PivotAliases
+  commentId: F:TMPEffects.ParameterUtility.PivotAliases
+  id: PivotAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: PivotAliases
+  nameWithType: ParameterUtility.PivotAliases
+  fullName: TMPEffects.ParameterUtility.PivotAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: PivotAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 620
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] PivotAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly PivotAliases As String()
+- uid: TMPEffects.ParameterUtility.RadiusAliases
+  commentId: F:TMPEffects.ParameterUtility.RadiusAliases
+  id: RadiusAliases
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: RadiusAliases
+  nameWithType: ParameterUtility.RadiusAliases
+  fullName: TMPEffects.ParameterUtility.RadiusAliases
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: RadiusAliases
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 621
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly string[] RadiusAliases
+    return:
+      type: System.String[]
+    content.vb: Public Shared ReadOnly RadiusAliases As String()
+- uid: TMPEffects.ParameterUtility.BuiltInFloatKeywords
+  commentId: F:TMPEffects.ParameterUtility.BuiltInFloatKeywords
+  id: BuiltInFloatKeywords
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: BuiltInFloatKeywords
+  nameWithType: ParameterUtility.BuiltInFloatKeywords
+  fullName: TMPEffects.ParameterUtility.BuiltInFloatKeywords
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: BuiltInFloatKeywords
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 623
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, float> BuiltInFloatKeywords
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Single}
+    content.vb: Public Shared ReadOnly BuiltInFloatKeywords As ReadOnlyDictionary(Of String, Single)
+- uid: TMPEffects.ParameterUtility.BuiltInVector2Keywords
+  commentId: F:TMPEffects.ParameterUtility.BuiltInVector2Keywords
+  id: BuiltInVector2Keywords
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: BuiltInVector2Keywords
+  nameWithType: ParameterUtility.BuiltInVector2Keywords
+  fullName: TMPEffects.ParameterUtility.BuiltInVector2Keywords
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: BuiltInVector2Keywords
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 631
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, Vector2> BuiltInVector2Keywords
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector2}
+    content.vb: Public Shared ReadOnly BuiltInVector2Keywords As ReadOnlyDictionary(Of String, Vector2)
+- uid: TMPEffects.ParameterUtility.BuiltInVector3Keywords
+  commentId: F:TMPEffects.ParameterUtility.BuiltInVector3Keywords
+  id: BuiltInVector3Keywords
+  parent: TMPEffects.ParameterUtility
+  langs:
+  - csharp
+  - vb
+  name: BuiltInVector3Keywords
+  nameWithType: ParameterUtility.BuiltInVector3Keywords
+  fullName: TMPEffects.ParameterUtility.BuiltInVector3Keywords
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: BuiltInVector3Keywords
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 664
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, Vector3> BuiltInVector3Keywords
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector3}
+    content.vb: Public Shared ReadOnly BuiltInVector3Keywords As ReadOnlyDictionary(Of String, Vector3)
+references:
+- uid: TMPEffects
+  commentId: N:TMPEffects
+  href: TMPEffects.html
+  name: TMPEffects
+  nameWithType: TMPEffects
+  fullName: TMPEffects
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.ParameterUtility.TryGetDefinedParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetDefinedParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetDefinedParameter_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetDefinedParameter
+  nameWithType: ParameterUtility.TryGetDefinedParameter
+  fullName: TMPEffects.ParameterUtility.TryGetDefinedParameter
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string>
+  nameWithType: IDictionary<string, string>
+  fullName: System.Collections.Generic.IDictionary<string, string>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.ParameterUtility.ParameterDefined*
+  commentId: Overload:TMPEffects.ParameterUtility.ParameterDefined
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_ParameterDefined_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: ParameterDefined
+  nameWithType: ParameterUtility.ParameterDefined
+  fullName: TMPEffects.ParameterUtility.ParameterDefined
+- uid: TMPEffects.ParameterUtility.HasNonFloatParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonFloatParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonFloatParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonFloatParameter
+  nameWithType: ParameterUtility.HasNonFloatParameter
+  fullName: TMPEffects.ParameterUtility.HasNonFloatParameter
+- uid: TMPEffects.ParameterUtility.HasFloatParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasFloatParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasFloatParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasFloatParameter
+  nameWithType: ParameterUtility.HasFloatParameter
+  fullName: TMPEffects.ParameterUtility.HasFloatParameter
+- uid: TMPEffects.ParameterUtility.TryGetFloatParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetFloatParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetFloatParameter_System_Single__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetFloatParameter
+  nameWithType: ParameterUtility.TryGetFloatParameter
+  fullName: TMPEffects.ParameterUtility.TryGetFloatParameter
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.ParameterUtility.HasNonIntParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonIntParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonIntParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonIntParameter
+  nameWithType: ParameterUtility.HasNonIntParameter
+  fullName: TMPEffects.ParameterUtility.HasNonIntParameter
+- uid: TMPEffects.ParameterUtility.HasIntParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasIntParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasIntParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasIntParameter
+  nameWithType: ParameterUtility.HasIntParameter
+  fullName: TMPEffects.ParameterUtility.HasIntParameter
+- uid: TMPEffects.ParameterUtility.TryGetIntParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetIntParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetIntParameter_System_Int32__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetIntParameter
+  nameWithType: ParameterUtility.TryGetIntParameter
+  fullName: TMPEffects.ParameterUtility.TryGetIntParameter
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.ParameterUtility.HasNonBoolParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonBoolParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonBoolParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonBoolParameter
+  nameWithType: ParameterUtility.HasNonBoolParameter
+  fullName: TMPEffects.ParameterUtility.HasNonBoolParameter
+- uid: TMPEffects.ParameterUtility.HasBoolParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasBoolParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasBoolParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasBoolParameter
+  nameWithType: ParameterUtility.HasBoolParameter
+  fullName: TMPEffects.ParameterUtility.HasBoolParameter
+- uid: TMPEffects.ParameterUtility.TryGetBoolParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetBoolParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetBoolParameter_System_Boolean__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetBoolParameter
+  nameWithType: ParameterUtility.TryGetBoolParameter
+  fullName: TMPEffects.ParameterUtility.TryGetBoolParameter
+- uid: TMPEffects.ParameterUtility.HasNonVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonVector2Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonVector2Parameter
+  nameWithType: ParameterUtility.HasNonVector2Parameter
+  fullName: TMPEffects.ParameterUtility.HasNonVector2Parameter
+- uid: TMPEffects.ParameterUtility.HasVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasVector2Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasVector2Parameter
+  nameWithType: ParameterUtility.HasVector2Parameter
+  fullName: TMPEffects.ParameterUtility.HasVector2Parameter
+- uid: TMPEffects.ParameterUtility.TryGetVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetVector2Parameter_UnityEngine_Vector2__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetVector2Parameter
+  nameWithType: ParameterUtility.TryGetVector2Parameter
+  fullName: TMPEffects.ParameterUtility.TryGetVector2Parameter
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: TMPEffects.ParameterUtility.HasNonVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonVector3Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonVector3Parameter
+  nameWithType: ParameterUtility.HasNonVector3Parameter
+  fullName: TMPEffects.ParameterUtility.HasNonVector3Parameter
+- uid: TMPEffects.ParameterUtility.HasVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasVector3Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasVector3Parameter
+  nameWithType: ParameterUtility.HasVector3Parameter
+  fullName: TMPEffects.ParameterUtility.HasVector3Parameter
+- uid: TMPEffects.ParameterUtility.TryGetVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetVector3Parameter_UnityEngine_Vector3__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetVector3Parameter
+  nameWithType: ParameterUtility.TryGetVector3Parameter
+  fullName: TMPEffects.ParameterUtility.TryGetVector3Parameter
+- uid: UnityEngine.Vector3
+  commentId: T:UnityEngine.Vector3
+  parent: UnityEngine
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonVector2OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonVector2OffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonVector2OffsetParameter
+  nameWithType: ParameterUtility.HasNonVector2OffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter
+- uid: TMPEffects.ParameterUtility.HasVector2OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasVector2OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasVector2OffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasVector2OffsetParameter
+  nameWithType: ParameterUtility.HasVector2OffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasVector2OffsetParameter
+- uid: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetVector2OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetVector2OffsetParameter_UnityEngine_Vector2__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetVector2OffsetParameter
+  nameWithType: ParameterUtility.TryGetVector2OffsetParameter
+  fullName: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter
+- uid: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonVector3OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonVector3OffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonVector3OffsetParameter
+  nameWithType: ParameterUtility.HasNonVector3OffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter
+- uid: TMPEffects.ParameterUtility.HasVector3OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasVector3OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasVector3OffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasVector3OffsetParameter
+  nameWithType: ParameterUtility.HasVector3OffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasVector3OffsetParameter
+- uid: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetVector3OffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetVector3OffsetParameter_UnityEngine_Vector3__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetVector3OffsetParameter
+  nameWithType: ParameterUtility.TryGetVector3OffsetParameter
+  fullName: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter
+- uid: TMPEffects.ParameterUtility.HasNonAnchorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonAnchorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonAnchorParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonAnchorParameter
+  nameWithType: ParameterUtility.HasNonAnchorParameter
+  fullName: TMPEffects.ParameterUtility.HasNonAnchorParameter
+- uid: TMPEffects.ParameterUtility.HasAnchorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasAnchorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasAnchorParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasAnchorParameter
+  nameWithType: ParameterUtility.HasAnchorParameter
+  fullName: TMPEffects.ParameterUtility.HasAnchorParameter
+- uid: TMPEffects.ParameterUtility.TryGetAnchorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetAnchorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetAnchorParameter_UnityEngine_Vector2__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetAnchorParameter
+  nameWithType: ParameterUtility.TryGetAnchorParameter
+  fullName: TMPEffects.ParameterUtility.TryGetAnchorParameter
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector2}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector2}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, Vector2>
+  nameWithType: ReadOnlyDictionary<string, Vector2>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, UnityEngine.Vector2>
+  nameWithType.vb: ReadOnlyDictionary(Of String, Vector2)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, UnityEngine.Vector2)
+  name.vb: ReadOnlyDictionary(Of String, Vector2)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<TKey, TValue>
+  nameWithType: ReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: ReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of TKey, TValue)
+  name.vb: ReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: TMPEffects.ParameterUtility.HasNonAnimCurveParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonAnimCurveParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonAnimCurveParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonAnimCurveParameter
+  nameWithType: ParameterUtility.HasNonAnimCurveParameter
+  fullName: TMPEffects.ParameterUtility.HasNonAnimCurveParameter
+- uid: TMPEffects.ParameterUtility.HasAnimCurveParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasAnimCurveParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasAnimCurveParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasAnimCurveParameter
+  nameWithType: ParameterUtility.HasAnimCurveParameter
+  fullName: TMPEffects.ParameterUtility.HasAnimCurveParameter
+- uid: TMPEffects.ParameterUtility.TryGetAnimCurveParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetAnimCurveParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetAnimCurveParameter_UnityEngine_AnimationCurve__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetAnimCurveParameter
+  nameWithType: ParameterUtility.TryGetAnimCurveParameter
+  fullName: TMPEffects.ParameterUtility.TryGetAnimCurveParameter
+- uid: UnityEngine.AnimationCurve
+  commentId: T:UnityEngine.AnimationCurve
+  parent: UnityEngine
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: UnityEngine.AnimationCurve
+- uid: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonWaveOffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonWaveOffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonWaveOffsetParameter
+  nameWithType: ParameterUtility.HasNonWaveOffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter
+- uid: TMPEffects.ParameterUtility.HasWaveOffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasWaveOffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasWaveOffsetParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasWaveOffsetParameter
+  nameWithType: ParameterUtility.HasWaveOffsetParameter
+  fullName: TMPEffects.ParameterUtility.HasWaveOffsetParameter
+- uid: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetWaveOffsetParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetWaveOffsetParameter_TMPEffects_TMPAnimations_AnimationUtility_WaveOffsetType__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetWaveOffsetParameter
+  nameWithType: ParameterUtility.TryGetWaveOffsetParameter
+  fullName: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.WaveOffsetType
+  nameWithType: AnimationUtility.WaveOffsetType
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.ParameterUtility.HasNonColorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonColorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonColorParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonColorParameter
+  nameWithType: ParameterUtility.HasNonColorParameter
+  fullName: TMPEffects.ParameterUtility.HasNonColorParameter
+- uid: TMPEffects.ParameterUtility.HasColorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasColorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasColorParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasColorParameter
+  nameWithType: ParameterUtility.HasColorParameter
+  fullName: TMPEffects.ParameterUtility.HasColorParameter
+- uid: TMPEffects.ParameterUtility.TryGetColorParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetColorParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetColorParameter_UnityEngine_Color__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetColorParameter
+  nameWithType: ParameterUtility.TryGetColorParameter
+  fullName: TMPEffects.ParameterUtility.TryGetColorParameter
+- uid: UnityEngine.Color
+  commentId: T:UnityEngine.Color
+  parent: UnityEngine
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: UnityEngine.Color
+- uid: TMPEffects.ParameterUtility.HasNonArrayParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonArrayParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonArrayParameter__1_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_ParameterUtility_ParseDelegate_System_String___0_System_Collections_Generic_IDictionary_System_String___0__System_Boolean__System_String_System_String___
+  name: HasNonArrayParameter
+  nameWithType: ParameterUtility.HasNonArrayParameter
+  fullName: TMPEffects.ParameterUtility.HasNonArrayParameter
+- uid: TMPEffects.ParameterUtility.ParseDelegate{System.String,{T},System.Collections.Generic.IDictionary{System.String,{T}},System.Boolean}
+  commentId: T:TMPEffects.ParameterUtility.ParseDelegate{System.String,``0,System.Collections.Generic.IDictionary{System.String,``0},System.Boolean}
+  parent: TMPEffects
+  definition: TMPEffects.ParameterUtility.ParseDelegate`4
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool>
+  nameWithType: ParameterUtility.ParseDelegate<string, T, IDictionary<string, T>, bool>
+  fullName: TMPEffects.ParameterUtility.ParseDelegate<string, T, System.Collections.Generic.IDictionary<string, T>, bool>
+  nameWithType.vb: ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean)
+  fullName.vb: TMPEffects.ParameterUtility.ParseDelegate(Of String, T, System.Collections.Generic.IDictionary(Of String, T), Boolean)
+  name.vb: ParameterUtility.ParseDelegate(Of String, T, IDictionary(Of String, T), Boolean)
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.ParseDelegate`4
+    name: ParseDelegate
+    href: TMPEffects.ParameterUtility.ParseDelegate-4.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.ParseDelegate`4
+    name: ParseDelegate
+    href: TMPEffects.ParameterUtility.ParseDelegate-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.ParameterUtility.ParseDelegate`4
+  commentId: T:TMPEffects.ParameterUtility.ParseDelegate`4
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType: ParameterUtility.ParseDelegate<T, U, V, W>
+  fullName: TMPEffects.ParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
+  fullName.vb: TMPEffects.ParameterUtility.ParseDelegate(Of T, U, V, W)
+  name.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.ParseDelegate`4
+    name: ParseDelegate
+    href: TMPEffects.ParameterUtility.ParseDelegate-4.html
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: U
+  - name: ','
+  - name: " "
+  - name: V
+  - name: ','
+  - name: " "
+  - name: W
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.ParseDelegate`4
+    name: ParseDelegate
+    href: TMPEffects.ParameterUtility.ParseDelegate-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: U
+  - name: ','
+  - name: " "
+  - name: V
+  - name: ','
+  - name: " "
+  - name: W
+  - name: )
+- uid: TMPEffects.ParameterUtility.HasArrayParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasArrayParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasArrayParameter__1_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_ParameterUtility_ParseDelegate_System_String___0_System_Collections_Generic_IDictionary_System_String___0__System_Boolean__System_String_System_String___
+  name: HasArrayParameter
+  nameWithType: ParameterUtility.HasArrayParameter
+  fullName: TMPEffects.ParameterUtility.HasArrayParameter
+- uid: TMPEffects.ParameterUtility.TryGetArrayParameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetArrayParameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetArrayParameter__1___0____System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_ParameterUtility_ParseDelegate_System_String___0_System_Collections_Generic_IDictionary_System_String___0__System_Boolean__System_String_System_String___
+  name: TryGetArrayParameter
+  nameWithType: ParameterUtility.TryGetArrayParameter
+  fullName: TMPEffects.ParameterUtility.TryGetArrayParameter
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonTypedVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonTypedVector3Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonTypedVector3Parameter
+  nameWithType: ParameterUtility.HasNonTypedVector3Parameter
+  fullName: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter
+- uid: TMPEffects.ParameterUtility.HasTypedVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasTypedVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasTypedVector3Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasTypedVector3Parameter
+  nameWithType: ParameterUtility.HasTypedVector3Parameter
+  fullName: TMPEffects.ParameterUtility.HasTypedVector3Parameter
+- uid: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetTypedVector3Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetTypedVector3Parameter_TMPEffects_ParameterUtility_TypedVector3__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetTypedVector3Parameter
+  nameWithType: ParameterUtility.TryGetTypedVector3Parameter
+  fullName: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter
+- uid: TMPEffects.ParameterUtility.TypedVector3
+  commentId: T:TMPEffects.ParameterUtility.TypedVector3
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.TypedVector3
+  nameWithType: ParameterUtility.TypedVector3
+  fullName: TMPEffects.ParameterUtility.TypedVector3
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.ParameterUtility.TypedVector3.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.ParameterUtility.TypedVector3.html
+- uid: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasNonTypedVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasNonTypedVector2Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasNonTypedVector2Parameter
+  nameWithType: ParameterUtility.HasNonTypedVector2Parameter
+  fullName: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter
+- uid: TMPEffects.ParameterUtility.HasTypedVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.HasTypedVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_HasTypedVector2Parameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasTypedVector2Parameter
+  nameWithType: ParameterUtility.HasTypedVector2Parameter
+  fullName: TMPEffects.ParameterUtility.HasTypedVector2Parameter
+- uid: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter*
+  commentId: Overload:TMPEffects.ParameterUtility.TryGetTypedVector2Parameter
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_TryGetTypedVector2Parameter_TMPEffects_ParameterUtility_TypedVector2__System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: TryGetTypedVector2Parameter
+  nameWithType: ParameterUtility.TryGetTypedVector2Parameter
+  fullName: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter
+- uid: TMPEffects.ParameterUtility.TypedVector2
+  commentId: T:TMPEffects.ParameterUtility.TypedVector2
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.TypedVector2
+  nameWithType: ParameterUtility.TypedVector2
+  fullName: TMPEffects.ParameterUtility.TypedVector2
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.TypedVector2
+    name: TypedVector2
+    href: TMPEffects.ParameterUtility.TypedVector2.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.TypedVector2
+    name: TypedVector2
+    href: TMPEffects.ParameterUtility.TypedVector2.html
+- uid: TMPEffects.ParameterUtility.GetWaveParameters*
+  commentId: Overload:TMPEffects.ParameterUtility.GetWaveParameters
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_GetWaveParameters_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  name: GetWaveParameters
+  nameWithType: ParameterUtility.GetWaveParameters
+  fullName: TMPEffects.ParameterUtility.GetWaveParameters
+- uid: TMPEffects.ParameterUtility.WaveParameters
+  commentId: T:TMPEffects.ParameterUtility.WaveParameters
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.WaveParameters
+  nameWithType: ParameterUtility.WaveParameters
+  fullName: TMPEffects.ParameterUtility.WaveParameters
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.WaveParameters
+    name: WaveParameters
+    href: TMPEffects.ParameterUtility.WaveParameters.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.WaveParameters
+    name: WaveParameters
+    href: TMPEffects.ParameterUtility.WaveParameters.html
+- uid: TMPEffects.ParameterUtility.ValidateWaveParameters*
+  commentId: Overload:TMPEffects.ParameterUtility.ValidateWaveParameters
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_ValidateWaveParameters_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  name: ValidateWaveParameters
+  nameWithType: ParameterUtility.ValidateWaveParameters
+  fullName: TMPEffects.ParameterUtility.ValidateWaveParameters
+- uid: TMPEffects.ParameterUtility.CreateWave*
+  commentId: Overload:TMPEffects.ParameterUtility.CreateWave
+  href: TMPEffects.ParameterUtility.html#TMPEffects_ParameterUtility_CreateWave_TMPEffects_TMPAnimations_AnimationUtility_Wave_TMPEffects_ParameterUtility_WaveParameters_
+  name: CreateWave
+  nameWithType: ParameterUtility.CreateWave
+  fullName: TMPEffects.ParameterUtility.CreateWave
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.Wave
+  nameWithType: AnimationUtility.Wave
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Single}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Single}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, float>
+  nameWithType: ReadOnlyDictionary<string, float>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, float>
+  nameWithType.vb: ReadOnlyDictionary(Of String, Single)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, Single)
+  name.vb: ReadOnlyDictionary(Of String, Single)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector3}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,UnityEngine.Vector3}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, Vector3>
+  nameWithType: ReadOnlyDictionary<string, Vector3>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, UnityEngine.Vector3>
+  nameWithType.vb: ReadOnlyDictionary(Of String, Vector3)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, UnityEngine.Vector3)
+  name.vb: ReadOnlyDictionary(Of String, Vector3)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )

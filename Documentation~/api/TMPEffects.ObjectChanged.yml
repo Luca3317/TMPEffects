@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  id: TMPEffects.ObjectChanged
+  children:
+  - TMPEffects.ObjectChanged.INotifyObjectChanged
+  - TMPEffects.ObjectChanged.ObjectChangedEventHandler
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  type: Namespace
+  assemblies:
+  - Luca3317.TMPEffects
+references:
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
+- uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+  commentId: T:TMPEffects.ObjectChanged.ObjectChangedEventHandler
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
+  name: ObjectChangedEventHandler
+  nameWithType: ObjectChangedEventHandler
+  fullName: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  href: TMPEffects.html
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html

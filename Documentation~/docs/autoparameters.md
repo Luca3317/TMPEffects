@@ -1,0 +1,3 @@
+# AutoParameters
+AutoParameters is a plugin for TMPEffects that minimizes any parameter-related boilerplate for animations by automatically implementing the <mark style="color: lightgray; background-color: #191a18">ValidateParameters</mark>,
+<mark style="color: lightgray; background-color: #191a18">SetParameters</mark> and <mark style="color: lightgray; background-color: #191a18">GetNewCustomData</mark> methods for you. For more information, see the [page on it](../plugins/autoparameters.md).

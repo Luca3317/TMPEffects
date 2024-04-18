@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Tags.ITagCacher`1
+  commentId: T:TMPEffects.Tags.ITagCacher`1
+  id: ITagCacher`1
+  parent: TMPEffects.Tags
+  children:
+  - TMPEffects.Tags.ITagCacher`1.CacheTag(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)
+  langs:
+  - csharp
+  - vb
+  name: ITagCacher<T>
+  nameWithType: ITagCacher<T>
+  fullName: TMPEffects.Tags.ITagCacher<T>
+  type: Interface
+  source:
+    remote:
+      path: Runtime/Tags/ITagCacher.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ITagCacher
+    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagCacher.cs
+    startLine: 10
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Tags
+  summary: Generic interface for caching tags.
+  example: []
+  syntax:
+    content: 'public interface ITagCacher<T> where T : ITagWrapper'
+    typeParameters:
+    - id: T
+      description: Type that will be used to represent a cached tag.
+    content.vb: Public Interface ITagCacher(Of T As ITagWrapper)
+  nameWithType.vb: ITagCacher(Of T)
+  fullName.vb: TMPEffects.Tags.ITagCacher(Of T)
+  name.vb: ITagCacher(Of T)
+- uid: TMPEffects.Tags.ITagCacher`1.CacheTag(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)
+  commentId: M:TMPEffects.Tags.ITagCacher`1.CacheTag(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)
+  id: CacheTag(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)
+  parent: TMPEffects.Tags.ITagCacher`1
+  langs:
+  - csharp
+  - vb
+  name: CacheTag(TMPEffectTag, TMPEffectTagIndices)
+  nameWithType: ITagCacher<T>.CacheTag(TMPEffectTag, TMPEffectTagIndices)
+  fullName: TMPEffects.Tags.ITagCacher<T>.CacheTag(TMPEffects.Tags.TMPEffectTag, TMPEffects.Tags.TMPEffectTagIndices)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Tags/ITagCacher.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: CacheTag
+    path: ../Assets/TMPEffects OLD/Runtime/Tags/ITagCacher.cs
+    startLine: 18
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Tags
+  summary: Cache the given tag and its associated indices.
+  example: []
+  syntax:
+    content: T CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
+    parameters:
+    - id: tag
+      type: TMPEffects.Tags.TMPEffectTag
+      description: The tag to cache.
+    - id: indices
+      type: TMPEffects.Tags.TMPEffectTagIndices
+      description: The associated indices.
+    return:
+      type: '{T}'
+      description: The cached tag.
+    content.vb: Function CacheTag(tag As TMPEffectTag, indices As TMPEffectTagIndices) As T
+  overload: TMPEffects.Tags.ITagCacher`1.CacheTag*
+  nameWithType.vb: ITagCacher(Of T).CacheTag(TMPEffectTag, TMPEffectTagIndices)
+  fullName.vb: TMPEffects.Tags.ITagCacher(Of T).CacheTag(TMPEffects.Tags.TMPEffectTag, TMPEffects.Tags.TMPEffectTagIndices)
+references:
+- uid: TMPEffects.Tags
+  commentId: N:TMPEffects.Tags
+  href: TMPEffects.html
+  name: TMPEffects.Tags
+  nameWithType: TMPEffects.Tags
+  fullName: TMPEffects.Tags
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+- uid: TMPEffects.Tags.ITagCacher`1.CacheTag*
+  commentId: Overload:TMPEffects.Tags.ITagCacher`1.CacheTag
+  href: TMPEffects.Tags.ITagCacher-1.html#TMPEffects_Tags_ITagCacher_1_CacheTag_TMPEffects_Tags_TMPEffectTag_TMPEffects_Tags_TMPEffectTagIndices_
+  name: CacheTag
+  nameWithType: ITagCacher<T>.CacheTag
+  fullName: TMPEffects.Tags.ITagCacher<T>.CacheTag
+  nameWithType.vb: ITagCacher(Of T).CacheTag
+  fullName.vb: TMPEffects.Tags.ITagCacher(Of T).CacheTag
+- uid: TMPEffects.Tags.TMPEffectTag
+  commentId: T:TMPEffects.Tags.TMPEffectTag
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTag.html
+  name: TMPEffectTag
+  nameWithType: TMPEffectTag
+  fullName: TMPEffects.Tags.TMPEffectTag
+- uid: TMPEffects.Tags.TMPEffectTagIndices
+  commentId: T:TMPEffects.Tags.TMPEffectTagIndices
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices
+  nameWithType: TMPEffectTagIndices
+  fullName: TMPEffects.Tags.TMPEffectTagIndices
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

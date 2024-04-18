@@ -1,0 +1,33 @@
+{
+  "name": "com.luca3317.tmpeffects",
+  "description": "Easily apply all kinds of effects to your TextMeshPro texts",
+  "version": "0.1.0",
+  "unity": "2021.3",
+  "displayName": "TMPEffects",
+  "author": "Luca Weist <lweist3317@gmail.com> (https://github.com/Luca3317)",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "documentationUrl": "https://luca3317.github.io/TMPEffects-Pages",
+  "license": "MIT",
+  "keywords": [
+    "textmeshpro",
+    "text",
+    "tmp",
+    "animation",
+    "writer",
+    "effect"
+  ],
+  "samples": [
+    {
+      "displayName": "Example Scene Animations",
+      "description": "Contains exemplary scene animations",
+      "path": "Samples~/Example SceneAnimations"
+    },
+    {
+      "displayName": "Example Scenes",
+      "description": "Example Scenes",
+      "path": "Samples~/Example Scenes"
+    }
+  ]
+}

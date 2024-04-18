@@ -1,0 +1,179 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  id: VisibilityState
+  parent: TMPEffects.CharacterData
+  children:
+  - TMPEffects.CharacterData.VisibilityState.Hidden
+  - TMPEffects.CharacterData.VisibilityState.Hiding
+  - TMPEffects.CharacterData.VisibilityState.Showing
+  - TMPEffects.CharacterData.VisibilityState.Shown
+  langs:
+  - csharp
+  - vb
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState
+  type: Enum
+  source:
+    remote:
+      path: Runtime/CharData/VisibilityState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: VisibilityState
+    path: ../Assets/TMPEffects OLD/Runtime/CharData/VisibilityState.cs
+    startLine: 10
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    A character's visibility state.<br />
+
+    A character can be either fully shown or hidden, or in the process of being shown or hidden.
+  example: []
+  syntax:
+    content: public enum VisibilityState
+    content.vb: Public Enum VisibilityState
+- uid: TMPEffects.CharacterData.VisibilityState.Shown
+  commentId: F:TMPEffects.CharacterData.VisibilityState.Shown
+  id: Shown
+  parent: TMPEffects.CharacterData.VisibilityState
+  langs:
+  - csharp
+  - vb
+  name: Shown
+  nameWithType: VisibilityState.Shown
+  fullName: TMPEffects.CharacterData.VisibilityState.Shown
+  type: Field
+  source:
+    remote:
+      path: Runtime/CharData/VisibilityState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Shown
+    path: ../Assets/TMPEffects OLD/Runtime/CharData/VisibilityState.cs
+    startLine: 15
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: The character is fully shown.
+  example: []
+  syntax:
+    content: Shown = 10
+    return:
+      type: TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.CharacterData.VisibilityState.Hidden
+  commentId: F:TMPEffects.CharacterData.VisibilityState.Hidden
+  id: Hidden
+  parent: TMPEffects.CharacterData.VisibilityState
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: VisibilityState.Hidden
+  fullName: TMPEffects.CharacterData.VisibilityState.Hidden
+  type: Field
+  source:
+    remote:
+      path: Runtime/CharData/VisibilityState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Hidden
+    path: ../Assets/TMPEffects OLD/Runtime/CharData/VisibilityState.cs
+    startLine: 19
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: The character is fully hidden.
+  example: []
+  syntax:
+    content: Hidden = -10
+    return:
+      type: TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.CharacterData.VisibilityState.Showing
+  commentId: F:TMPEffects.CharacterData.VisibilityState.Showing
+  id: Showing
+  parent: TMPEffects.CharacterData.VisibilityState
+  langs:
+  - csharp
+  - vb
+  name: Showing
+  nameWithType: VisibilityState.Showing
+  fullName: TMPEffects.CharacterData.VisibilityState.Showing
+  type: Field
+  source:
+    remote:
+      path: Runtime/CharData/VisibilityState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Showing
+    path: ../Assets/TMPEffects OLD/Runtime/CharData/VisibilityState.cs
+    startLine: 23
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: The character is in the process of being shown.
+  example: []
+  syntax:
+    content: Showing = 5
+    return:
+      type: TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.CharacterData.VisibilityState.Hiding
+  commentId: F:TMPEffects.CharacterData.VisibilityState.Hiding
+  id: Hiding
+  parent: TMPEffects.CharacterData.VisibilityState
+  langs:
+  - csharp
+  - vb
+  name: Hiding
+  nameWithType: VisibilityState.Hiding
+  fullName: TMPEffects.CharacterData.VisibilityState.Hiding
+  type: Field
+  source:
+    remote:
+      path: Runtime/CharData/VisibilityState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Hiding
+    path: ../Assets/TMPEffects OLD/Runtime/CharData/VisibilityState.cs
+    startLine: 27
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: The character is in the process of being hidden.
+  example: []
+  syntax:
+    content: Hiding = -5
+    return:
+      type: TMPEffects.CharacterData.VisibilityState
+references:
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VisibilityState.html
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState

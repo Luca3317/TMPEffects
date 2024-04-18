@@ -1,0 +1,1173 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TextProcessing.TagProcessorManager
+  commentId: T:TMPEffects.TextProcessing.TagProcessorManager
+  id: TagProcessorManager
+  parent: TMPEffects.TextProcessing
+  children:
+  - TMPEffects.TextProcessing.TagProcessorManager.#ctor
+  - TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  - TMPEffects.TextProcessing.TagProcessorManager.Clear
+  - TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
+  - TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  - TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  - TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+  - TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  langs:
+  - csharp
+  - vb
+  name: TagProcessorManager
+  nameWithType: TagProcessorManager
+  fullName: TMPEffects.TextProcessing.TagProcessorManager
+  type: Class
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TagProcessorManager
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 43
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Manages multiple <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class TagProcessorManager : ITagProcessorManager, IEnumerable<TagProcessor>, IEnumerable'
+    content.vb: Public Class TagProcessorManager Implements ITagProcessorManager, IEnumerable(Of TagProcessor), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - TMPEffects.TextProcessing.ITagProcessorManager
+  - System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+  commentId: P:TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+  id: TagProcessors
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: TagProcessors
+  nameWithType: TagProcessorManager.TagProcessors
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+  type: Property
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TagProcessors
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 46
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Mapping of prefix to list of <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>> TagProcessors { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.Char,System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.TextProcessing.TagProcessor}}
+    content.vb: Public Property TagProcessors As ReadOnlyDictionary(Of Char, ReadOnlyCollection(Of TagProcessor))
+  overload: TMPEffects.TextProcessing.TagProcessorManager.TagProcessors*
+  implements:
+  - TMPEffects.TextProcessing.ITagProcessorManager.TagProcessors
+- uid: TMPEffects.TextProcessing.TagProcessorManager.#ctor
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.#ctor
+  id: '#ctor'
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: TagProcessorManager()
+  nameWithType: TagProcessorManager.TagProcessorManager()
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.TagProcessorManager()
+  type: Constructor
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: .ctor
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 50
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  syntax:
+    content: public TagProcessorManager()
+    content.vb: Public Sub New()
+  overload: TMPEffects.TextProcessing.TagProcessorManager.#ctor*
+  nameWithType.vb: TagProcessorManager.New()
+  fullName.vb: TMPEffects.TextProcessing.TagProcessorManager.New()
+  name.vb: New()
+- uid: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  id: AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: AddProcessor(char, TagProcessor, int)
+  nameWithType: TagProcessorManager.AddProcessor(char, TagProcessor, int)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(char, TMPEffects.TextProcessing.TagProcessor, int)
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddProcessor
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 58
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Add a processor.
+  example: []
+  syntax:
+    content: public void AddProcessor(char prefix, TagProcessor processor, int priority = 0)
+    parameters:
+    - id: prefix
+      type: System.Char
+      description: Prefix of tags processed by <code class="paramref">processor</code>.
+    - id: processor
+      type: TMPEffects.TextProcessing.TagProcessor
+      description: The processor.
+    - id: priority
+      type: System.Int32
+      description: >-
+        Priority of this processor. Only one processors can process any given tag, 
+
+        so the order that processors are invoked in matters.<br />
+
+        Less than zero =&gt; last processed<br />
+
+        zero =&gt; first processed (highest priority)<br />
+
+        Greater than zero =&gt; priority-th processed<br />
+
+        Greater than current amount of processors =&gt; last processed
+    content.vb: Public Sub AddProcessor(prefix As Char, processor As TagProcessor, priority As Integer = 0)
+  overload: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor*
+  implements:
+  - TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  nameWithType.vb: TagProcessorManager.AddProcessor(Char, TagProcessor, Integer)
+  fullName.vb: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(Char, TMPEffects.TextProcessing.TagProcessor, Integer)
+  name.vb: AddProcessor(Char, TagProcessor, Integer)
+- uid: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  id: RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: RemoveProcessor(char, TagProcessor)
+  nameWithType: TagProcessorManager.RemoveProcessor(char, TagProcessor)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(char, TMPEffects.TextProcessing.TagProcessor)
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: RemoveProcessor
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 83
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Remove a processor.
+  example: []
+  syntax:
+    content: public bool RemoveProcessor(char prefix, TagProcessor processor)
+    parameters:
+    - id: prefix
+      type: System.Char
+      description: Prefix of tags processed by <code class="paramref">processor</code>.
+    - id: processor
+      type: TMPEffects.TextProcessing.TagProcessor
+      description: The processor.
+    return:
+      type: System.Boolean
+      description: true if the processors was removed; otherwise false.
+    content.vb: Public Function RemoveProcessor(prefix As Char, processor As TagProcessor) As Boolean
+  overload: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor*
+  implements:
+  - TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  nameWithType.vb: TagProcessorManager.RemoveProcessor(Char, TagProcessor)
+  fullName.vb: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(Char, TMPEffects.TextProcessing.TagProcessor)
+  name.vb: RemoveProcessor(Char, TagProcessor)
+- uid: TMPEffects.TextProcessing.TagProcessorManager.Clear
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.Clear
+  id: Clear
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: TagProcessorManager.Clear()
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.Clear()
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Clear
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 105
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Remove all processors.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: TMPEffects.TextProcessing.TagProcessorManager.Clear*
+- uid: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  id: RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: RegisterTo(TMPTextProcessor)
+  nameWithType: TagProcessorManager.RegisterTo(TMPTextProcessor)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: RegisterTo
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 115
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Register all <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> to the given <code class="paramref">textProcessor</code>.
+  example: []
+  syntax:
+    content: public void RegisterTo(TMPTextProcessor textProcessor)
+    parameters:
+    - id: textProcessor
+      type: TMPEffects.TextProcessing.TMPTextProcessor
+      description: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> to register to.
+    content.vb: Public Sub RegisterTo(textProcessor As TMPTextProcessor)
+  overload: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo*
+- uid: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  id: UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: UnregisterFrom(TMPTextProcessor)
+  nameWithType: TagProcessorManager.UnregisterFrom(TMPTextProcessor)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: UnregisterFrom
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 130
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Unregister all <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> from the given <code class="paramref">textProcessor</code>.
+  example: []
+  syntax:
+    content: public void UnregisterFrom(TMPTextProcessor textProcessor)
+    parameters:
+    - id: textProcessor
+      type: TMPEffects.TextProcessing.TMPTextProcessor
+      description: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> to unregister from.
+    content.vb: Public Sub UnregisterFrom(textProcessor As TMPTextProcessor)
+  overload: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom*
+- uid: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
+  id: GetEnumerator
+  parent: TMPEffects.TextProcessing.TagProcessorManager
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: TagProcessorManager.GetEnumerator()
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: Runtime/TextProcessing/TagProcessorManager.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetEnumerator
+    path: ../Assets/TMPEffects OLD/Runtime/TextProcessing/TagProcessorManager.cs
+    startLine: 145
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TextProcessing
+  summary: Get all <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> managed by this instance.
+  example: []
+  syntax:
+    content: public IEnumerator<TagProcessor> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{TMPEffects.TextProcessing.TagProcessor}
+      description: All <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> managed by this instance.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of TagProcessor)
+  overload: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}.GetEnumerator
+references:
+- uid: TMPEffects.TextProcessing.TagProcessor
+  commentId: T:TMPEffects.TextProcessing.TagProcessor
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.TagProcessor.html
+  name: TagProcessor
+  nameWithType: TagProcessor
+  fullName: TMPEffects.TextProcessing.TagProcessor
+- uid: TMPEffects.TextProcessing
+  commentId: N:TMPEffects.TextProcessing
+  href: TMPEffects.html
+  name: TMPEffects.TextProcessing
+  nameWithType: TMPEffects.TextProcessing
+  fullName: TMPEffects.TextProcessing
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TextProcessing
+    name: TextProcessing
+    href: TMPEffects.TextProcessing.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TextProcessing
+    name: TextProcessing
+    href: TMPEffects.TextProcessing.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.TextProcessing.ITagProcessorManager
+  commentId: T:TMPEffects.TextProcessing.ITagProcessorManager
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.ITagProcessorManager.html
+  name: ITagProcessorManager
+  nameWithType: ITagProcessorManager
+  fullName: TMPEffects.TextProcessing.ITagProcessorManager
+- uid: System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}
+  commentId: T:System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TagProcessor>
+  nameWithType: IEnumerable<TagProcessor>
+  fullName: System.Collections.Generic.IEnumerable<TMPEffects.TextProcessing.TagProcessor>
+  nameWithType.vb: IEnumerable(Of TagProcessor)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TMPEffects.TextProcessing.TagProcessor)
+  name.vb: IEnumerable(Of TagProcessor)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: TMPEffects.TextProcessing.TagProcessorManager.TagProcessors*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_TagProcessors
+  name: TagProcessors
+  nameWithType: TagProcessorManager.TagProcessors
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
+- uid: TMPEffects.TextProcessing.ITagProcessorManager.TagProcessors
+  commentId: P:TMPEffects.TextProcessing.ITagProcessorManager.TagProcessors
+  parent: TMPEffects.TextProcessing.ITagProcessorManager
+  href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_TagProcessors
+  name: TagProcessors
+  nameWithType: ITagProcessorManager.TagProcessors
+  fullName: TMPEffects.TextProcessing.ITagProcessorManager.TagProcessors
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.Char,System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.TextProcessing.TagProcessor}}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.Char,System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.TextProcessing.TagProcessor}}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>>
+  nameWithType: ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<char, System.Collections.ObjectModel.ReadOnlyCollection<TMPEffects.TextProcessing.TagProcessor>>
+  nameWithType.vb: ReadOnlyDictionary(Of Char, ReadOnlyCollection(Of TagProcessor))
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of Char, System.Collections.ObjectModel.ReadOnlyCollection(Of TMPEffects.TextProcessing.TagProcessor))
+  name.vb: ReadOnlyDictionary(Of Char, ReadOnlyCollection(Of TagProcessor))
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: )
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<TKey, TValue>
+  nameWithType: ReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: ReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of TKey, TValue)
+  name.vb: ReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: TMPEffects.TextProcessing.TagProcessorManager.#ctor*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.#ctor
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager__ctor
+  name: TagProcessorManager
+  nameWithType: TagProcessorManager.TagProcessorManager
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.TagProcessorManager
+  nameWithType.vb: TagProcessorManager.New
+  fullName.vb: TMPEffects.TextProcessing.TagProcessorManager.New
+  name.vb: New
+- uid: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.AddProcessor
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_AddProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_System_Int32_
+  name: AddProcessor
+  nameWithType: TagProcessorManager.AddProcessor
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.AddProcessor
+- uid: TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  commentId: M:TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+  parent: TMPEffects.TextProcessing.ITagProcessorManager
+  isExternal: true
+  href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_AddProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_System_Int32_
+  name: AddProcessor(char, TagProcessor, int)
+  nameWithType: ITagProcessorManager.AddProcessor(char, TagProcessor, int)
+  fullName: TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(char, TMPEffects.TextProcessing.TagProcessor, int)
+  nameWithType.vb: ITagProcessorManager.AddProcessor(Char, TagProcessor, Integer)
+  fullName.vb: TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(Char, TMPEffects.TextProcessing.TagProcessor, Integer)
+  name.vb: AddProcessor(Char, TagProcessor, Integer)
+  spec.csharp:
+  - uid: TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+    name: AddProcessor
+    href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_AddProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_System_Int32_
+  - name: (
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TextProcessing.ITagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
+    name: AddProcessor
+    href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_AddProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_System_Int32_
+  - name: (
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_RemoveProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_
+  name: RemoveProcessor
+  nameWithType: TagProcessorManager.RemoveProcessor
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor
+- uid: TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  commentId: M:TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+  parent: TMPEffects.TextProcessing.ITagProcessorManager
+  isExternal: true
+  href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_RemoveProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_
+  name: RemoveProcessor(char, TagProcessor)
+  nameWithType: ITagProcessorManager.RemoveProcessor(char, TagProcessor)
+  fullName: TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(char, TMPEffects.TextProcessing.TagProcessor)
+  nameWithType.vb: ITagProcessorManager.RemoveProcessor(Char, TagProcessor)
+  fullName.vb: TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(Char, TMPEffects.TextProcessing.TagProcessor)
+  name.vb: RemoveProcessor(Char, TagProcessor)
+  spec.csharp:
+  - uid: TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+    name: RemoveProcessor
+    href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_RemoveProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_
+  - name: (
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TextProcessing.ITagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
+    name: RemoveProcessor
+    href: TMPEffects.TextProcessing.ITagProcessorManager.html#TMPEffects_TextProcessing_ITagProcessorManager_RemoveProcessor_System_Char_TMPEffects_TextProcessing_TagProcessor_
+  - name: (
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.TextProcessing.TagProcessorManager.Clear*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.Clear
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_Clear
+  name: Clear
+  nameWithType: TagProcessorManager.Clear
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.Clear
+- uid: TMPEffects.TextProcessing.TMPTextProcessor
+  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor
+  parent: TMPEffects.TextProcessing
+  href: TMPEffects.TextProcessing.TMPTextProcessor.html
+  name: TMPTextProcessor
+  nameWithType: TMPTextProcessor
+  fullName: TMPEffects.TextProcessing.TMPTextProcessor
+- uid: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.RegisterTo
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_RegisterTo_TMPEffects_TextProcessing_TMPTextProcessor_
+  name: RegisterTo
+  nameWithType: TagProcessorManager.RegisterTo
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo
+- uid: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_UnregisterFrom_TMPEffects_TextProcessing_TMPTextProcessor_
+  name: UnregisterFrom
+  nameWithType: TagProcessorManager.UnregisterFrom
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom
+- uid: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator*
+  commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_GetEnumerator
+  name: GetEnumerator
+  nameWithType: TagProcessorManager.GetEnumerator
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<TagProcessor>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<TMPEffects.TextProcessing.TagProcessor>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of TagProcessor).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TMPEffects.TextProcessing.TagProcessor).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{TMPEffects.TextProcessing.TagProcessor}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{TMPEffects.TextProcessing.TagProcessor}
+  commentId: T:System.Collections.Generic.IEnumerator{TMPEffects.TextProcessing.TagProcessor}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<TagProcessor>
+  nameWithType: IEnumerator<TagProcessor>
+  fullName: System.Collections.Generic.IEnumerator<TMPEffects.TextProcessing.TagProcessor>
+  nameWithType.vb: IEnumerator(Of TagProcessor)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of TMPEffects.TextProcessing.TagProcessor)
+  name.vb: IEnumerator(Of TagProcessor)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    href: TMPEffects.TextProcessing.TagProcessor.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

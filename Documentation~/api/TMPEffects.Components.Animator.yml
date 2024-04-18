@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  id: TMPEffects.Components.Animator
+  children:
+  - TMPEffects.Components.Animator.AnimatorContext
+  - TMPEffects.Components.Animator.IAnimatorContext
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  - TMPEffects.Components.Animator.SegmentData
+  - TMPEffects.Components.Animator.TMPAnimationType
+  - TMPEffects.Components.Animator.UpdateFrom
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  type: Namespace
+  assemblies:
+  - Luca3317.TMPEffects
+references:
+- uid: TMPEffects.Components.Animator.SegmentData
+  commentId: T:TMPEffects.Components.Animator.SegmentData
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.SegmentData.html
+  name: SegmentData
+  nameWithType: SegmentData
+  fullName: TMPEffects.Components.Animator.SegmentData
+- uid: TMPEffects.Components.Animator.TMPAnimationType
+  commentId: T:TMPEffects.Components.Animator.TMPAnimationType
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.TMPAnimationType.html
+  name: TMPAnimationType
+  nameWithType: TMPAnimationType
+  fullName: TMPEffects.Components.Animator.TMPAnimationType
+- uid: TMPEffects.Components.Animator.UpdateFrom
+  commentId: T:TMPEffects.Components.Animator.UpdateFrom
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.UpdateFrom.html
+  name: UpdateFrom
+  nameWithType: UpdateFrom
+  fullName: TMPEffects.Components.Animator.UpdateFrom
+- uid: TMPEffects.Components.Animator.IAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorContext.html
+  name: IAnimatorContext
+  nameWithType: IAnimatorContext
+  fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Components.Animator.AnimatorContext
+  commentId: T:TMPEffects.Components.Animator.AnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.AnimatorContext.html
+  name: AnimatorContext
+  nameWithType: AnimatorContext
+  fullName: TMPEffects.Components.Animator.AnimatorContext
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html
+  name: ReadOnlyAnimatorContext
+  nameWithType: ReadOnlyAnimatorContext
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html

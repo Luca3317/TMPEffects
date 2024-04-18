@@ -1,0 +1,139 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ParameterUtility.VectorType
+  commentId: T:TMPEffects.ParameterUtility.VectorType
+  id: ParameterUtility.VectorType
+  parent: TMPEffects
+  children:
+  - TMPEffects.ParameterUtility.VectorType.Anchor
+  - TMPEffects.ParameterUtility.VectorType.Offset
+  - TMPEffects.ParameterUtility.VectorType.Position
+  langs:
+  - csharp
+  - vb
+  name: ParameterUtility.VectorType
+  nameWithType: ParameterUtility.VectorType
+  fullName: TMPEffects.ParameterUtility.VectorType
+  type: Enum
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: VectorType
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 393
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public enum ParameterUtility.VectorType
+    content.vb: Public Enum ParameterUtility.VectorType
+- uid: TMPEffects.ParameterUtility.VectorType.Position
+  commentId: F:TMPEffects.ParameterUtility.VectorType.Position
+  id: Position
+  parent: TMPEffects.ParameterUtility.VectorType
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: ParameterUtility.VectorType.Position
+  fullName: TMPEffects.ParameterUtility.VectorType.Position
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Position
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 395
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: Position = 0
+    return:
+      type: TMPEffects.ParameterUtility.VectorType
+- uid: TMPEffects.ParameterUtility.VectorType.Offset
+  commentId: F:TMPEffects.ParameterUtility.VectorType.Offset
+  id: Offset
+  parent: TMPEffects.ParameterUtility.VectorType
+  langs:
+  - csharp
+  - vb
+  name: Offset
+  nameWithType: ParameterUtility.VectorType.Offset
+  fullName: TMPEffects.ParameterUtility.VectorType.Offset
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Offset
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 396
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: Offset = 1
+    return:
+      type: TMPEffects.ParameterUtility.VectorType
+- uid: TMPEffects.ParameterUtility.VectorType.Anchor
+  commentId: F:TMPEffects.ParameterUtility.VectorType.Anchor
+  id: Anchor
+  parent: TMPEffects.ParameterUtility.VectorType
+  langs:
+  - csharp
+  - vb
+  name: Anchor
+  nameWithType: ParameterUtility.VectorType.Anchor
+  fullName: TMPEffects.ParameterUtility.VectorType.Anchor
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Anchor
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 397
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: Anchor = 2
+    return:
+      type: TMPEffects.ParameterUtility.VectorType
+references:
+- uid: TMPEffects
+  commentId: N:TMPEffects
+  href: TMPEffects.html
+  name: TMPEffects
+  nameWithType: TMPEffects
+  fullName: TMPEffects
+- uid: TMPEffects.ParameterUtility.VectorType
+  commentId: T:TMPEffects.ParameterUtility.VectorType
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.VectorType
+  nameWithType: ParameterUtility.VectorType
+  fullName: TMPEffects.ParameterUtility.VectorType
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html

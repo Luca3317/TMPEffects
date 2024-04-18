@@ -1,0 +1,1046 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  id: ReadOnlyAnimatorContext
+  parent: TMPEffects.Components.Animator
+  children:
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor(TMPEffects.Components.Animator.AnimatorContext)
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(System.Int32)
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(System.Int32)
+  - TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlyAnimatorContext
+  nameWithType: ReadOnlyAnimatorContext
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  type: Class
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ReadOnlyAnimatorContext
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 153
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class ReadOnlyAnimatorContext : IAnimatorContext
+    content.vb: >-
+      <Serializable>
+
+      Public Class ReadOnlyAnimatorContext Implements IAnimatorContext
+  inheritance:
+  - System.Object
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+  id: ScaleAnimations
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: ScaleAnimations
+  nameWithType: ReadOnlyAnimatorContext.ScaleAnimations
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ScaleAnimations
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 157
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: Whether animations are scaled.
+  example: []
+  syntax:
+    content: public bool ScaleAnimations { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ScaleAnimations As Boolean
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+  id: ScaleUniformly
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: ScaleUniformly
+  nameWithType: ReadOnlyAnimatorContext.ScaleUniformly
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ScaleUniformly
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 159
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: >-
+    Whether to scale animations uniformly (based on the default font size of the animator)
+
+    or on a per character basis.<br />
+
+    Ignored if <xref href="TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations" data-throw-if-not-resolved="false"></xref> is false.
+  example: []
+  syntax:
+    content: public bool ScaleUniformly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ScaleUniformly As Boolean
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+  id: UseScaledTime
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: UseScaledTime
+  nameWithType: ReadOnlyAnimatorContext.UseScaledTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: UseScaledTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 161
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: Whether animations use scaled time.
+  example: []
+  syntax:
+    content: public bool UseScaledTime { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property UseScaledTime As Boolean
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+  id: Animator
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: Animator
+  nameWithType: ReadOnlyAnimatorContext.Animator
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Animator
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 163
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: The animating <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public TMPAnimator Animator { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPAnimator
+    content.vb: Public ReadOnly Property Animator As TMPAnimator
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.Animator
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+  id: DeltaTime
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: DeltaTime
+  nameWithType: ReadOnlyAnimatorContext.DeltaTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: DeltaTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 165
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: The current delta time (=&gt; time since last animation update).
+  example: []
+  syntax:
+    content: public float DeltaTime { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property DeltaTime As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+  commentId: P:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+  id: PassedTime
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: PassedTime
+  nameWithType: ReadOnlyAnimatorContext.PassedTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: PassedTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 167
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: The time that has passed since the animator began animating.
+  example: []
+  syntax:
+    content: public float PassedTime { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property PassedTime As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.PassedTime
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  id: StateTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: StateTime(CharData)
+  nameWithType: ReadOnlyAnimatorContext.StateTime(CharData)
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: StateTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 170
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: >-
+    Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
+
+    Generally, to be used with show and hide animations.
+  example: []
+  syntax:
+    content: public float StateTime(CharData cData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The character to check.
+    return:
+      type: System.Single
+      description: How long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function StateTime(cData As CharData) As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  id: VisibleTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: VisibleTime(CharData)
+  nameWithType: ReadOnlyAnimatorContext.VisibleTime(CharData)
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: VisibleTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 172
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
+  example: []
+  syntax:
+    content: public float VisibleTime(CharData cData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The character to check.
+    return:
+      type: System.Single
+      description: How long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
+    content.vb: Public Function VisibleTime(cData As CharData) As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(System.Int32)
+  id: StateTime(System.Int32)
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: StateTime(int)
+  nameWithType: ReadOnlyAnimatorContext.StateTime(int)
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(int)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: StateTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 175
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: >-
+    Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
+
+    Generally, to be used with show and hide animations.
+  example: []
+  syntax:
+    content: public float StateTime(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the character to check.
+    return:
+      type: System.Single
+      description: How long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function StateTime(index As Integer) As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
+  nameWithType.vb: ReadOnlyAnimatorContext.StateTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(Integer)
+  name.vb: StateTime(Integer)
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(System.Int32)
+  id: VisibleTime(System.Int32)
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: VisibleTime(int)
+  nameWithType: ReadOnlyAnimatorContext.VisibleTime(int)
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(int)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: VisibleTime
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 177
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  summary: Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
+  example: []
+  syntax:
+    content: public float VisibleTime(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Single
+      description: How long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
+    content.vb: Public Function VisibleTime(index As Integer) As Single
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime*
+  implements:
+  - TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
+  nameWithType.vb: ReadOnlyAnimatorContext.VisibleTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(Integer)
+  name.vb: VisibleTime(Integer)
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor(TMPEffects.Components.Animator.AnimatorContext)
+  commentId: M:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor(TMPEffects.Components.Animator.AnimatorContext)
+  id: '#ctor(TMPEffects.Components.Animator.AnimatorContext)'
+  parent: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlyAnimatorContext(AnimatorContext)
+  nameWithType: ReadOnlyAnimatorContext.ReadOnlyAnimatorContext(AnimatorContext)
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ReadOnlyAnimatorContext(TMPEffects.Components.Animator.AnimatorContext)
+  type: Constructor
+  source:
+    remote:
+      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: .ctor
+    path: ../Assets/TMPEffects OLD/Runtime/Components/TMPAnimator/AnimatorContext.cs
+    startLine: 179
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public ReadOnlyAnimatorContext(AnimatorContext context)
+    parameters:
+    - id: context
+      type: TMPEffects.Components.Animator.AnimatorContext
+    content.vb: Public Sub New(context As AnimatorContext)
+  overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor*
+  nameWithType.vb: ReadOnlyAnimatorContext.New(AnimatorContext)
+  fullName.vb: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.New(TMPEffects.Components.Animator.AnimatorContext)
+  name.vb: New(AnimatorContext)
+references:
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Components.Animator.IAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorContext.html
+  name: IAnimatorContext
+  nameWithType: IAnimatorContext
+  fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_ScaleAnimations
+  name: ScaleAnimations
+  nameWithType: ReadOnlyAnimatorContext.ScaleAnimations
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
+- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations
+  name: ScaleAnimations
+  nameWithType: IAnimatorContext.ScaleAnimations
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_ScaleUniformly
+  name: ScaleUniformly
+  nameWithType: ReadOnlyAnimatorContext.ScaleUniformly
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly
+- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleUniformly
+  name: ScaleUniformly
+  nameWithType: IAnimatorContext.ScaleUniformly
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_UseScaledTime
+  name: UseScaledTime
+  nameWithType: ReadOnlyAnimatorContext.UseScaledTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime
+- uid: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_UseScaledTime
+  name: UseScaledTime
+  nameWithType: IAnimatorContext.UseScaledTime
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_Animator
+  name: Animator
+  nameWithType: ReadOnlyAnimatorContext.Animator
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
+- uid: TMPEffects.Components.Animator.IAnimatorContext.Animator
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.Animator
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_Animator
+  name: Animator
+  nameWithType: IAnimatorContext.Animator
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.Animator
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_DeltaTime
+  name: DeltaTime
+  nameWithType: ReadOnlyAnimatorContext.DeltaTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
+- uid: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_DeltaTime
+  name: DeltaTime
+  nameWithType: IAnimatorContext.DeltaTime
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_PassedTime
+  name: PassedTime
+  nameWithType: ReadOnlyAnimatorContext.PassedTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime
+- uid: TMPEffects.Components.Animator.IAnimatorContext.PassedTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.PassedTime
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_PassedTime
+  name: PassedTime
+  nameWithType: IAnimatorContext.PassedTime
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.PassedTime
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VisibilityState.html
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_
+  name: StateTime
+  nameWithType: ReadOnlyAnimatorContext.StateTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime
+- uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_
+  name: StateTime(CharData)
+  nameWithType: IAnimatorContext.StateTime(CharData)
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+    name: StateTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
+    name: StateTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_
+  name: VisibleTime
+  nameWithType: ReadOnlyAnimatorContext.VisibleTime
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime
+- uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_
+  name: VisibleTime(CharData)
+  nameWithType: IAnimatorContext.VisibleTime(CharData)
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  isExternal: true
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_System_Int32_
+  name: StateTime(int)
+  nameWithType: IAnimatorContext.StateTime(int)
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.StateTime(int)
+  nameWithType.vb: IAnimatorContext.StateTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.IAnimatorContext.StateTime(Integer)
+  name.vb: StateTime(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
+    name: StateTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
+    name: StateTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
+  parent: TMPEffects.Components.Animator.IAnimatorContext
+  isExternal: true
+  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_System_Int32_
+  name: VisibleTime(int)
+  nameWithType: IAnimatorContext.VisibleTime(int)
+  fullName: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(int)
+  nameWithType.vb: IAnimatorContext.VisibleTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(Integer)
+  name.vb: VisibleTime(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor*
+  commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor
+  href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext__ctor_TMPEffects_Components_Animator_AnimatorContext_
+  name: ReadOnlyAnimatorContext
+  nameWithType: ReadOnlyAnimatorContext.ReadOnlyAnimatorContext
+  fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ReadOnlyAnimatorContext
+  nameWithType.vb: ReadOnlyAnimatorContext.New
+  fullName.vb: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.New
+  name.vb: New
+- uid: TMPEffects.Components.Animator.AnimatorContext
+  commentId: T:TMPEffects.Components.Animator.AnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.AnimatorContext.html
+  name: AnimatorContext
+  nameWithType: AnimatorContext
+  fullName: TMPEffects.Components.Animator.AnimatorContext

@@ -1,0 +1,405 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.ParameterUtility.TypedVector3
+  commentId: T:TMPEffects.ParameterUtility.TypedVector3
+  id: ParameterUtility.TypedVector3
+  parent: TMPEffects
+  children:
+  - TMPEffects.ParameterUtility.TypedVector3.#ctor(TMPEffects.ParameterUtility.VectorType,UnityEngine.Vector3)
+  - TMPEffects.ParameterUtility.TypedVector3.type
+  - TMPEffects.ParameterUtility.TypedVector3.vector
+  langs:
+  - csharp
+  - vb
+  name: ParameterUtility.TypedVector3
+  nameWithType: ParameterUtility.TypedVector3
+  fullName: TMPEffects.ParameterUtility.TypedVector3
+  type: Struct
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: TypedVector3
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 413
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct ParameterUtility.TypedVector3
+    content.vb: >-
+      <Serializable>
+
+      Public Structure ParameterUtility.TypedVector3
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.ParameterUtility.TypedVector3.vector
+  commentId: F:TMPEffects.ParameterUtility.TypedVector3.vector
+  id: vector
+  parent: TMPEffects.ParameterUtility.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: vector
+  nameWithType: ParameterUtility.TypedVector3.vector
+  fullName: TMPEffects.ParameterUtility.TypedVector3.vector
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: vector
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 416
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public Vector3 vector
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public vector As Vector3
+- uid: TMPEffects.ParameterUtility.TypedVector3.type
+  commentId: F:TMPEffects.ParameterUtility.TypedVector3.type
+  id: type
+  parent: TMPEffects.ParameterUtility.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: type
+  nameWithType: ParameterUtility.TypedVector3.type
+  fullName: TMPEffects.ParameterUtility.TypedVector3.type
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: type
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 417
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public ParameterUtility.VectorType type
+    return:
+      type: TMPEffects.ParameterUtility.VectorType
+    content.vb: Public type As ParameterUtility.VectorType
+- uid: TMPEffects.ParameterUtility.TypedVector3.#ctor(TMPEffects.ParameterUtility.VectorType,UnityEngine.Vector3)
+  commentId: M:TMPEffects.ParameterUtility.TypedVector3.#ctor(TMPEffects.ParameterUtility.VectorType,UnityEngine.Vector3)
+  id: '#ctor(TMPEffects.ParameterUtility.VectorType,UnityEngine.Vector3)'
+  parent: TMPEffects.ParameterUtility.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: TypedVector3(VectorType, Vector3)
+  nameWithType: ParameterUtility.TypedVector3.TypedVector3(ParameterUtility.VectorType, Vector3)
+  fullName: TMPEffects.ParameterUtility.TypedVector3.TypedVector3(TMPEffects.ParameterUtility.VectorType, UnityEngine.Vector3)
+  type: Constructor
+  source:
+    remote:
+      path: Runtime/Effects/ParameterUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: .ctor
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/ParameterUtility.cs
+    startLine: 419
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects
+  syntax:
+    content: public TypedVector3(ParameterUtility.VectorType type, Vector3 vector)
+    parameters:
+    - id: type
+      type: TMPEffects.ParameterUtility.VectorType
+    - id: vector
+      type: UnityEngine.Vector3
+    content.vb: Public Sub New(type As ParameterUtility.VectorType, vector As Vector3)
+  overload: TMPEffects.ParameterUtility.TypedVector3.#ctor*
+  nameWithType.vb: ParameterUtility.TypedVector3.New(ParameterUtility.VectorType, Vector3)
+  fullName.vb: TMPEffects.ParameterUtility.TypedVector3.New(TMPEffects.ParameterUtility.VectorType, UnityEngine.Vector3)
+  name.vb: New(VectorType, Vector3)
+references:
+- uid: TMPEffects
+  commentId: N:TMPEffects
+  href: TMPEffects.html
+  name: TMPEffects
+  nameWithType: TMPEffects
+  fullName: TMPEffects
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine.Vector3
+  commentId: T:UnityEngine.Vector3
+  parent: UnityEngine
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: TMPEffects.ParameterUtility.VectorType
+  commentId: T:TMPEffects.ParameterUtility.VectorType
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.VectorType
+  nameWithType: ParameterUtility.VectorType
+  fullName: TMPEffects.ParameterUtility.VectorType
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html
+- uid: TMPEffects.ParameterUtility.TypedVector3.#ctor*
+  commentId: Overload:TMPEffects.ParameterUtility.TypedVector3.#ctor
+  href: TMPEffects.ParameterUtility.TypedVector3.html#TMPEffects_ParameterUtility_TypedVector3__ctor_TMPEffects_ParameterUtility_VectorType_UnityEngine_Vector3_
+  name: TypedVector3
+  nameWithType: ParameterUtility.TypedVector3.TypedVector3
+  fullName: TMPEffects.ParameterUtility.TypedVector3.TypedVector3
+  nameWithType.vb: ParameterUtility.TypedVector3.New
+  fullName.vb: TMPEffects.ParameterUtility.TypedVector3.New
+  name.vb: New

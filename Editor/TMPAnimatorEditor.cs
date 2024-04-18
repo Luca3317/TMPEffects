@@ -1,304 +1,469 @@
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
-using TMPEffects.Databases;
+using TMPEffects.Databases.AnimationDatabase;
+using UnityEngine.Playables;
+using Codice.CM.Client.Differences;
 
-[CustomEditor(typeof(TMPAnimator))]
-public class TMPAnimatorEditor : Editor
+namespace TMPEffects.Editor
 {
-    TMPAnimator animator;
-
-    bool useDefaultDatabase;
-    TMPAnimationDatabase defaultDatabase;
-
-    // Serialized properties
-    SerializedProperty databaseProp;
-    SerializedProperty updateFromProp;
-    SerializedProperty animateOnStartProp;
-    SerializedProperty animationsOverrideProp;
-    SerializedProperty contextProp;
-    SerializedProperty contextScalingProp;
-    SerializedProperty contextScaledTimeProp;
-    SerializedProperty previewProp;
-    SerializedProperty passedTimeProp;
-    SerializedProperty excludedProp;
-    SerializedProperty excludedShowProp;
-    SerializedProperty excludedHideProp;
-    SerializedProperty excludePunctuationProp;
-    SerializedProperty excludePunctuationShowProp;
-    SerializedProperty excludePunctuationHideProp;
-    //SerializedProperty animateOnTextChangeProp;
-
-    GUIContent useDefaultDatabaseLabel;
-
-    bool guiContent = false;
-    bool forceReprocess = false;
-
-    private void OnEnable()
+    [CustomEditor(typeof(TMPAnimator))]
+    public class TMPAnimatorEditor : UnityEditor.Editor
     {
-        databaseProp = serializedObject.FindProperty("database");
-        updateFromProp = serializedObject.FindProperty("updateFrom");
-        animateOnStartProp = serializedObject.FindProperty("animateOnStart");
-        animationsOverrideProp = serializedObject.FindProperty("animationsOverride");
-        contextProp = serializedObject.FindProperty("context");
-        contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
-        contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
-        passedTimeProp = contextProp.FindPropertyRelative("passedTime");
-        previewProp = serializedObject.FindProperty("preview");
-        excludedProp = serializedObject.FindProperty("excludedCharacters");
-        excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");
-        excludedHideProp = serializedObject.FindProperty("excludedCharactersHide");
-        excludePunctuationProp = serializedObject.FindProperty("excludePunctuation");
-        excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
-        excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
+        TMPAnimator animator;
 
-        animator = target as TMPAnimator;
+        // Serialized properties
+        SerializedProperty databaseProp;
+        SerializedProperty updateFromProp;
+        SerializedProperty animateOnStartProp;
+        SerializedProperty animationsOverrideProp;
+        SerializedProperty contextProp;
+        SerializedProperty contextScalingProp;
+        SerializedProperty contextUniformScalingProp;
+        SerializedProperty contextScaledTimeProp;
+        SerializedProperty previewProp;
+        SerializedProperty passedTimeProp;
+        SerializedProperty excludedProp;
+        SerializedProperty excludedShowProp;
+        SerializedProperty excludedHideProp;
+        SerializedProperty excludePunctuationProp;
+        SerializedProperty excludePunctuationShowProp;
+        SerializedProperty excludePunctuationHideProp;
+        SerializedProperty sceneAnimationsProp;
+        SerializedProperty sceneShowAnimationsProp;
+        SerializedProperty sceneHideAnimationsProp;
+        SerializedProperty defaultShowStringProp;
+        SerializedProperty defaultHideStringProp;
+        SerializedProperty useDefaultDatabaseProp;
 
-        //wasEnabled = writer.enabled;
-        defaultDatabase = (TMPAnimationDatabase)Resources.Load("DefaultAnimationDatabase");
-        useDefaultDatabase = defaultDatabase == databaseProp.objectReferenceValue || !serializedObject.FindProperty("initDatabase").boolValue;
+        // Styles
+        GUIStyle previewLabelStyle;
 
-        if (!serializedObject.FindProperty("initDatabase").boolValue)
+
+        GUIContent useDefaultDatabaseLabel;
+
+        bool initGuiContent = false;
+        bool initStyles = false;
+
+        private void OnEnable()
         {
-            databaseProp.objectReferenceValue = defaultDatabase;
-            serializedObject.FindProperty("initDatabase").boolValue = true;
-            serializedObject.ApplyModifiedProperties();
-        }
+            databaseProp = serializedObject.FindProperty("database");
+            updateFromProp = serializedObject.FindProperty("updateFrom");
+            animateOnStartProp = serializedObject.FindProperty("animateOnStart");
+            animationsOverrideProp = serializedObject.FindProperty("animationsOverride");
+            contextProp = serializedObject.FindProperty("context");
+            contextScalingProp = contextProp.FindPropertyRelative("scaleAnimations");
+            contextUniformScalingProp = contextProp.FindPropertyRelative("scaleUniformly");
+            contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
+            passedTimeProp = contextProp.FindPropertyRelative("passedTime");
+            previewProp = serializedObject.FindProperty("preview");
+            excludedProp = serializedObject.FindProperty("excludedCharacters");
+            excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");
+            excludedHideProp = serializedObject.FindProperty("excludedCharactersHide");
+            excludePunctuationProp = serializedObject.FindProperty("excludePunctuation");
+            excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
+            excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
+            useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
 
-        // TODO This line is necessary as this ensures the processors are up-to-date with the current state of
-        // the TMPAnimationDatabase. Could also do this by making TMPAnimationDatabase return with ref; fine for now
-        // even better would be a callback when changing the database so you dont have to select the gameobject for
-        // changes to show
-        animator.UpdateProcessorsWrapper();
-        animator.ForceReprocess();
+            sceneAnimationsProp = serializedObject.FindProperty("sceneAnimations");
+            sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
+            sceneHideAnimationsProp = serializedObject.FindProperty("sceneHideAnimations");
 
-        Undo.undoRedoPerformed += OnUndoRedo;
-    }
+            defaultShowStringProp = serializedObject.FindProperty("defaultShowString");
+            defaultHideStringProp = serializedObject.FindProperty("defaultHideString");
 
-    private void OnDisable()
-    {
-        Undo.undoRedoPerformed -= OnUndoRedo;
-        Undo.undoRedoPerformed -= OnUndoRedo;
-    }
+            animator = target as TMPAnimator;
 
-    void InitGUIContent()
-    {
-        if (guiContent) return;
-        guiContent = true;
+            Undo.undoRedoPerformed -= OnUndoRedo;
+            Undo.undoRedoPerformed += OnUndoRedo;
 
-        alertDialogDefaultShow = new GUIContent();
-        alertDialogDefaultHide = new GUIContent();
-        alertDialogDefaultShow.image = (Texture)EditorGUIUtility.Load("alertDialog");
-        alertDialogDefaultHide.image = (Texture)EditorGUIUtility.Load("alertDialog");
-        alertDialogDefaultShow.text = "";
-        alertDialogDefaultHide.text = "";
-        useDefaultDatabaseLabel = new GUIContent("Use default database");
-    }
+            if (!useDefaultDatabaseProp.boolValue) return;
 
-    void DrawDatabase()
-    {
-        EditorGUI.BeginChangeCheck();
-        GUILayout.BeginHorizontal();
+            TMPEffectsSettings settings = TMPEffectsSettings.Get();
+            if (settings == null) return;
 
-        var value = databaseProp.objectReferenceValue;
-
-        bool prevUseDefaultDatabase = useDefaultDatabase;
-        useDefaultDatabase = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabase);
-
-        if (prevUseDefaultDatabase != useDefaultDatabase)
-        {
-            Undo.RecordObject(animator, "Modified " + animator.name);
-        }
-
-        if (useDefaultDatabase)
-        {
-            if (databaseProp.objectReferenceValue != defaultDatabase)
+            if (settings.DefaultAnimationDatabase == null)
             {
-                databaseProp.objectReferenceValue = defaultDatabase;
+                Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+                useDefaultDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
             }
 
-            EditorGUI.BeginDisabledGroup(true);
-            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+            if (databaseProp.objectReferenceValue != settings.DefaultAnimationDatabase)
+            {
+                databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
+                serializedObject.ApplyModifiedProperties();
+                animator.OnChangedDatabase();
+            }
+        }
+
+        private void OnDisable()
+        {
+            Undo.undoRedoPerformed -= OnUndoRedo;
+        }
+
+        void InitGUIContent()
+        {
+            if (initGuiContent) return;
+            initGuiContent = true;
+
+            alertDialogDefaultShow = new GUIContent();
+            alertDialogDefaultHide = new GUIContent();
+            alertDialogDefaultShow.image = (Texture)EditorGUIUtility.Load("alertDialog");
+            alertDialogDefaultHide.image = (Texture)EditorGUIUtility.Load("alertDialog");
+            alertDialogDefaultShow.text = "";
+            alertDialogDefaultHide.text = "";
+            useDefaultDatabaseLabel = new GUIContent("Use default database");
+        }
+
+        GUIStyle horizontalLine;
+        void InitStyles()
+        {
+            if (initStyles) return;
+            initStyles = true;
+
+
+
+            horizontalLine = new GUIStyle();
+            horizontalLine.normal.background = EditorGUIUtility.whiteTexture;
+            horizontalLine.margin = new RectOffset(0, 0, 4, 4);
+            horizontalLine.fixedHeight = 1;
+
+            previewLabelStyle = new GUIStyle("LargeBoldLabel");
+        }
+
+        void DrawAnimationsFoldout()
+        {
+            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
+            if (databaseProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                DrawDatabase();
+                EditorGUI.indentLevel--;
+            }
+        }
+
+        void DrawDatabase()
+        {
+            GUILayout.BeginHorizontal();
+
+            var value = databaseProp.objectReferenceValue;
+
+            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
+            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
+
+            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
+            {
+                Undo.RecordObject(animator, "Modified " + animator.name);
+            }
+
+            EditorGUI.BeginChangeCheck();
+            if (useDefaultDatabaseProp.boolValue)
+            {
+                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
+                {
+                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
+                    if (settings == null)
+                    {
+                        //Debug.LogWarning("No settings");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else if (settings.DefaultAnimationDatabase == null)
+                    {
+                        Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+                        useDefaultDatabaseProp.boolValue = false;
+                    }
+                    else
+                    {
+                        databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
+                    }
+                }
+                else if (TMPEffectsSettingsProvider.IsSettingsAvailable() && databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
+                {
+                    databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
+                }
+
+                EditorGUI.BeginDisabledGroup(true);
+                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+                EditorGUI.EndDisabledGroup();
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+            }
+            GUILayout.EndHorizontal();
+
+            if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedDatabase();
+            }
+
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(sceneAnimationsProp);
+            EditorGUILayout.PropertyField(sceneShowAnimationsProp);
+            EditorGUILayout.PropertyField(sceneHideAnimationsProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                // SerializedObservableDictionary does not raise events when the operations involves
+                // (de)serializing the actual object (as opposed to the contained objects).
+                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                // instead of instantly performing it.
+                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                // in Update of TMPAnimator.
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedDatabase();
+            }
+        }
+
+        GUIContent alertDialogDefaultShow;
+        GUIContent alertDialogDefaultHide;
+
+        string defaultShowTooltip;
+
+        void DrawDefaultHideShow()
+        {
+            EditorGUI.BeginChangeCheck();
+
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(defaultShowStringProp, GUILayout.ExpandWidth(true));
+
+            Rect rect = GUILayoutUtility.GetLastRect();
+            rect.x = EditorGUIUtility.labelWidth;
+            rect.width = 20;
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                animator.UpdateDefaultStrings();
+                alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show); ;
+                Repaint();
+            }
+
+            EditorGUI.BeginChangeCheck();
+
+            if (alertDialogDefaultShow.tooltip != "")
+            {
+                GUI.Label(rect, alertDialogDefaultShow);
+            }
+            else
+            {
+                GUI.Label(rect, new GUIContent("", defaultShowTooltip));
+            }
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(defaultHideStringProp, GUILayout.ExpandWidth(true));
+
+            rect = GUILayoutUtility.GetLastRect();
+            rect.x = EditorGUIUtility.labelWidth;
+            rect.width = 20;
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                animator.UpdateDefaultStrings();
+                alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
+                Repaint();
+            }
+
+            if (alertDialogDefaultHide.tooltip != "")
+            {
+                GUI.Label(rect, alertDialogDefaultHide);
+            }
+            else
+            {
+                GUI.Label(rect, new GUIContent(""));
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
+        void DrawExclusions()
+        {
+            EditorGUILayout.BeginHorizontal();
+            var prev = EditorGUIUtility.labelWidth;
+            EditorGUIUtility.labelWidth = 100;
+            EditorGUILayout.LabelField("Exclude punctuation?");
+            EditorGUIUtility.labelWidth = 40;
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludePunctuationProp, new GUIContent("Basic"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedBasicExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludePunctuationShowProp, new GUIContent("Show"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedShowExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludePunctuationHideProp, new GUIContent("Hide"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedHideExclusion();
+            }
+
+
+            EditorGUIUtility.labelWidth = prev;
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
+
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludedProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedBasicExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludedShowProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedShowExclusion();
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(excludedHideProp);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                animator.OnChangedHideExclusion();
+            }
+        }
+
+        void DrawPreview()
+        {
+            bool prevPreview = previewProp.boolValue;
+
+            EditorGUILayout.LabelField(new GUIContent("Animator preview"), previewLabelStyle);
+
+            EditorGUI.BeginDisabledGroup(!PreviewEnabled());
+            EditorGUILayout.BeginHorizontal();
+
+            char c = previewProp.boolValue ? '\u2713' : '\u2717';
+
+            GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
+            buttonStyle.richText = true;
+            GUIContent buttonContent = new GUIContent("Toggle preview " + (previewProp.boolValue ? "<color=#90ee90>" : "<color=#f1807e>") + c.ToString() + "</color>");
+
+
+            if (GUILayout.Button(buttonContent, buttonStyle))
+            {
+                previewProp.boolValue = !prevPreview;
+            }
+            if (GUILayout.Button(new GUIContent("Reset time")))
+            {
+                animator.ResetTime();
+            }
+            EditorGUILayout.EndHorizontal();
             EditorGUI.EndDisabledGroup();
-        }
-        else
-        {
-            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-        }
-        GUILayout.EndHorizontal();
 
-        if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
-        {
-            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-            forceReprocess = true;
-        }
-    }
-
-    GUIContent alertDialogDefaultShow;
-    GUIContent alertDialogDefaultHide;
-    void DrawDefaultHideShow()
-    {
-        alertDialogDefaultShow.tooltip = animator.CheckDefaultShowString();
-        alertDialogDefaultHide.tooltip = animator.CheckDefaultHideString();
-
-        EditorGUI.BeginChangeCheck();
-
-        GUILayout.BeginHorizontal();
-        string warning = animator.CheckDefaultShowString();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultShowString"), GUILayout.ExpandWidth(true));
-
-        Rect rect = GUILayoutUtility.GetLastRect();
-        rect.x = EditorGUIUtility.labelWidth; ;
-        rect.width = 20;
-
-        if (warning != "")
-        {
-            GUI.Label(rect, alertDialogDefaultShow);
-        }
-        else
-        {
-            GUI.Label(rect, new GUIContent(""));
-        }
-
-        GUILayout.EndHorizontal();
-
-        GUILayout.BeginHorizontal();
-        string warning2 = animator.CheckDefaultHideString();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultHideString"), GUILayout.ExpandWidth(true));
-
-        rect = GUILayoutUtility.GetLastRect();
-        rect.x = EditorGUIUtility.labelWidth; ;
-        rect.width = 20;
-
-
-        if (warning2 != "")
-        {
-            GUI.Label(rect, alertDialogDefaultHide);
-        }
-        else
-        {
-            GUI.Label(rect, new GUIContent(""));
-        }
-
-        GUILayout.EndHorizontal();
-        if (EditorGUI.EndChangeCheck())
-        {
-            serializedObject.ApplyModifiedProperties();
-            animator.ForcePostProcess();
-        }
-    }
-
-    void DrawExclusions()
-    {
-        EditorGUI.BeginChangeCheck();
-        EditorGUILayout.BeginHorizontal();
-        var prev = EditorGUIUtility.labelWidth;
-        EditorGUIUtility.labelWidth = 100;
-        EditorGUILayout.LabelField("Exclude punctuation?");
-
-        EditorGUIUtility.labelWidth = 40;
-        EditorGUILayout.PropertyField(excludePunctuationProp, new GUIContent("Basic"));
-        EditorGUILayout.PropertyField(excludePunctuationShowProp, new GUIContent("Show"));
-        EditorGUILayout.PropertyField(excludePunctuationHideProp, new GUIContent("Hide"));
-        //EditorGUILayout.Toggle(new GUIContent("Basic"), );
-        //EditorGUILayout.Toggle(new GUIContent("Show"), true);
-        //EditorGUILayout.Toggle(new GUIContent("Hide"), true);
-        EditorGUIUtility.labelWidth = prev;
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.PropertyField(excludedProp);
-        EditorGUILayout.PropertyField(excludedShowProp);
-        EditorGUILayout.PropertyField(excludedHideProp);
-        if (EditorGUI.EndChangeCheck())
-        {
-            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-            forceReprocess = true;
-        }
-    }
-
-    void RepaintInspector()
-    {
-        bool prevPreview = previewProp.boolValue;
-
-        EditorGUI.BeginDisabledGroup(Application.isPlaying || !animator.enabled);
-        previewProp.boolValue = EditorGUILayout.Toggle(new GUIContent("Preview"), previewProp.boolValue);
-        EditorGUI.EndDisabledGroup();
-
-        //if (prevPreview != previewProp.boolValue) forceReprocess = true;
-
-        if (previewProp.boolValue)
-        {
-            if (!prevPreview)
+            if (previewProp.boolValue)
             {
-                animator.StartPreview();
+                if (!prevPreview)
+                {
+                    animator.StartPreview();
+                }
             }
-            //if (!prevPreview) animator.StartAnimating();
-
-            //animator.UpdateAnimations();
-            //EditorApplication.QueuePlayerLoopUpdate();
-        }
-        else if (prevPreview)
-        {
-            animator.StopPreview();
-            //animator.StopAnimating();
-            //animator.ResetAnimations();
-        }
-
-        if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedPropertiesWithoutUndo();
-
-        EditorGUILayout.PropertyField(updateFromProp);
-        EditorGUILayout.PropertyField(animateOnStartProp);
-
-        DrawDatabase();
-
-        EditorGUILayout.PropertyField(animationsOverrideProp);
-
-        EditorGUILayout.Space(10);
-        DrawDefaultHideShow();
-
-        EditorGUILayout.Space(10);
-        DrawExclusions();
-
-        EditorGUILayout.Space(10);
-        if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings")))
-        {
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(contextScalingProp);
-            EditorGUILayout.PropertyField(contextScaledTimeProp);
-            EditorGUI.indentLevel--;
-        }
-    }
-
-    public override void OnInspectorGUI()
-    {
-        InitGUIContent();
-
-        RepaintInspector();
-
-        if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-
-        if (forceReprocess)
-        {
-            forceReprocess = false;
-            animator.ForceReprocess();
-        }
-    }
-
-    void OnUndoRedo()
-    {
-
-        if (previewProp.boolValue)
-        {
-            //previewProp.boolValue = false;
-            animator.StopPreview();
-
-            EditorApplication.delayCall += () =>
+            else if (prevPreview)
             {
-                //serializedObject.FindProperty("preview").boolValue = true;
-                //serializedObject.ApplyModifiedProperties();
-                animator.StartPreview();
-            };
+                animator.StopPreview();
+            }
+
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedPropertiesWithoutUndo();
+
+            EditorGUILayout.Space();
+            HorizontalLine(Color.gray);
+            EditorGUILayout.Space();
+        }
+
+        // utility method
+        void HorizontalLine(Color color)
+        {
+            var c = GUI.color;
+            GUI.color = color;
+            GUILayout.Box(GUIContent.none, horizontalLine);
+            GUI.color = c;
+        }
+
+        void RepaintInspector()
+        {
+            DrawPreview();
+
+            EditorGUI.BeginDisabledGroup(Application.isPlaying);
+            EditorGUILayout.PropertyField(updateFromProp);
+            EditorGUI.EndDisabledGroup();
+            EditorGUILayout.PropertyField(animateOnStartProp);
+
+            EditorGUILayout.Space(10);
+            DrawAnimationsFoldout();
+
+            EditorGUILayout.Space(10);
+            animationsOverrideProp.isExpanded = EditorGUILayout.Foldout(animationsOverrideProp.isExpanded, new GUIContent("Animator settings"), true);
+            if (animationsOverrideProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(animationsOverrideProp);
+                EditorGUILayout.Space(10);
+                DrawDefaultHideShow();
+
+                EditorGUILayout.Space(10);
+                DrawExclusions();
+                EditorGUI.indentLevel--;
+            }
+            EditorGUILayout.Space(10);
+
+            if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings"), true))
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(contextScalingProp);
+                EditorGUILayout.PropertyField(contextUniformScalingProp);
+                EditorGUILayout.PropertyField(contextScaledTimeProp);
+                EditorGUI.indentLevel--;
+            }
+        }
+
+        public override void OnInspectorGUI()
+        {
+            InitGUIContent();
+            InitStyles();
+
+            RepaintInspector();
+
+            if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        }
+
+        bool PreviewEnabled()
+        {
+            return animator.isActiveAndEnabled && !Application.isPlaying;
+        }
+
+        void OnUndoRedo()
+        {
+            if (previewProp.boolValue)
+            {
+                animator.StopPreview();
+
+                EditorApplication.delayCall += () =>
+                {
+                    animator.StartPreview();
+                };
+            }
         }
     }
 }
