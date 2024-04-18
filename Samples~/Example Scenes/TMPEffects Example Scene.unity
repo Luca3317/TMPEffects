@@ -1124,6 +1124,7 @@ GameObject:
   - component: {fileID: 1547850282}
   - component: {fileID: 1547850283}
   - component: {fileID: 1547850284}
+  - component: {fileID: 1547850285}
   m_Layer: 5
   m_Name: Main
   m_TagString: Untagged
@@ -1338,6 +1339,19 @@ MonoBehaviour:
   useDefaultDatabase: 1
   eventsEnabled: 0
   commandsEnabled: 1
+--- !u!114 &1547850285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547850279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ebc703cb4a4524ebfe5e6d4a8d5f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraoUse: {fileID: 20129909}
 --- !u!1 &1863843253
 GameObject:
   m_ObjectHideFlags: 0
