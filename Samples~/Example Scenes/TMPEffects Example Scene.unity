@@ -710,8 +710,8 @@ GameObject:
   - component: {fileID: 689304159}
   - component: {fileID: 689304158}
   - component: {fileID: 689304157}
-  - component: {fileID: 689304161}
   - component: {fileID: 689304160}
+  - component: {fileID: 689304161}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -1124,7 +1124,6 @@ GameObject:
   - component: {fileID: 1547850282}
   - component: {fileID: 1547850283}
   - component: {fileID: 1547850284}
-  - component: {fileID: 1547850285}
   m_Layer: 5
   m_Name: Main
   m_TagString: Untagged
@@ -1179,9 +1178,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "If you are seeing this tag: <wave>\nIt means you havent imported the TMPEffects
-    \nresources yet. Click on the \"Main\" gameobject under \"Canvas\"\nand you should
-    get a prompt.\n\nOtherwise, enter play mode."
+  m_text: "If you are seeing this tag: <wave></>\nit means you havent imported the
+    TMPEffects \nresources yet. Click on the \"Main\" gameobject under \"Canvas\"\nand
+    you should get a prompt to do so.\nThen reload the scene.\n\nOtherwise, enter
+    play mode."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1338,19 +1338,6 @@ MonoBehaviour:
   useDefaultDatabase: 1
   eventsEnabled: 0
   commandsEnabled: 1
---- !u!114 &1547850285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547850279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ebc703cb4a4524ebfe5e6d4a8d5f1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraoUse: {fileID: 20129909}
 --- !u!1 &1863843253
 GameObject:
   m_ObjectHideFlags: 0

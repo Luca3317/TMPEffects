@@ -127,7 +127,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>TMPAnimator</b>\n\nFor a full overview of all (basic) animations and their parameters, see <color=lightblue><u><link=\"http://localhost:8080/docs/tmpanimator_builtinbasicanimations.html\">this page of the docs</link>");
+        animator.SetText("<b>TMPAnimator</b>\n\nFor a full overview of all (basic) animations and their parameters, see <color=lightblue><u><link=\"https://luca3317.github.io/TMPEffects-Pages/docs/tmpanimator_builtinbasicanimations.html\">this page of the docs</link>");
     }
 
     private void Sequence_8()
@@ -166,7 +166,7 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>TMPWriter</b>\n\nFor a full overview of all built-in commands and their parameters, see <color=lightblue><u><link=\"http://localhost:8080/docs/tmpwriter_builtincommands.html\">this page of the docs</link>");
+        animator.SetText("<b>TMPWriter</b>\n\nFor a full overview of all built-in commands and their parameters, see <color=lightblue><u><link=\"https://luca3317.github.io/TMPEffects-Pages/docs/tmpwriter_builtincommands.html\">this page of the docs</link>");
     }
 
     private void Sequence_14()
@@ -188,14 +188,14 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("<b>Combining them</b>\n\nFor a full overview of all show / hide animations and their parameters, see <color=lightblue><u><link=\"http://localhost:8080/docs/tmpanimator_builtinshowhideanimations.html\">this page of the docs</link>");
+        animator.SetText("<b>Combining them</b>\n\nFor a full overview of all show / hide animations and their parameters, see <color=lightblue><u><link=\"https://luca3317.github.io/TMPEffects-Pages/docs/tmpanimator_builtinshowhideanimations.html\">this page of the docs</link>");
     }
 
     private void Sequence_17()
     {
         writer.enabled = false;
         animator.enabled = false;
-        animator.SetText("The full documentation of TMPEffects can be found <color=lightblue><u><link=\"http://localhost:8080/docs/introduction.html\">here</link>");
+        animator.SetText("The full documentation of TMPEffects can be found <color=lightblue><u><link=\"https://luca3317.github.io/TMPEffects-Pages/docs/introduction.html\">here</link>");
     }
 
     public void OnPointerClick(PointerEventData eventData)
