@@ -1,0 +1,263 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  id: AnimationUtility.WaveOffsetType
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Baseline
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Index
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.SegmentIndex
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.XPos
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.YPos
+  langs:
+  - csharp
+  - vb
+  name: AnimationUtility.WaveOffsetType
+  nameWithType: AnimationUtility.WaveOffsetType
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  type: Enum
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: WaveOffsetType
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 892
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public enum AnimationUtility.WaveOffsetType
+    content.vb: Public Enum AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.SegmentIndex
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.SegmentIndex
+  id: SegmentIndex
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: SegmentIndex
+  nameWithType: AnimationUtility.WaveOffsetType.SegmentIndex
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.SegmentIndex
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SegmentIndex
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 894
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: SegmentIndex = 0
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Index
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Index
+  id: Index
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: Index
+  nameWithType: AnimationUtility.WaveOffsetType.Index
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Index
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Index
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 895
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Index = 5
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.XPos
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.XPos
+  id: XPos
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: XPos
+  nameWithType: AnimationUtility.WaveOffsetType.XPos
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.XPos
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: XPos
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 896
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: XPos = 10
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.YPos
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.YPos
+  id: YPos
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: YPos
+  nameWithType: AnimationUtility.WaveOffsetType.YPos
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.YPos
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: YPos
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 897
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: YPos = 15
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
+  id: Word
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: Word
+  nameWithType: AnimationUtility.WaveOffsetType.Word
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Word
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 901
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Word = 16
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
+  id: Line
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: Line
+  nameWithType: AnimationUtility.WaveOffsetType.Line
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Line
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 902
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Line = 17
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Baseline
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Baseline
+  id: Baseline
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: Baseline
+  nameWithType: AnimationUtility.WaveOffsetType.Baseline
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Baseline
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: Baseline
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 903
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Baseline = 18
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+references:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.WaveOffsetType
+  nameWithType: AnimationUtility.WaveOffsetType
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html

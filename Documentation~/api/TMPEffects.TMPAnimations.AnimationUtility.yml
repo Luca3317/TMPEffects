@@ -1,0 +1,1886 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.AnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility
+  id: AnimationUtility
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition(UnityEngine.Vector2,TMPEffects.CharacterData.CharData)
+  - TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  - TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod(System.Single)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetValue(UnityEngine.AnimationCurve,UnityEngine.WrapMode,System.Single)
+  - TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType)
+  - TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency(System.Single)
+  - TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter(TMPro.TMP_Character,TMPro.TMP_Character,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity(System.Single,System.Single)
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency(System.Single,System.Single)
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength(System.Single,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: AnimationUtility
+  nameWithType: AnimationUtility
+  fullName: TMPEffects.TMPAnimations.AnimationUtility
+  type: Class
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AnimationUtility
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 14
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Utility methods for animations.
+  example: []
+  syntax:
+    content: public static class AnimationUtility
+    content.vb: Public Module AnimationUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: ScaleVector(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.ScaleVector(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ScaleVector
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 16
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context)
+    parameters:
+    - id: vector
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function ScaleVector(vector As Vector3, cData As CharData, context As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: ScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: ScaleVector(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.ScaleVector(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ScaleVector
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 17
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
+    parameters:
+    - id: vector
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function ScaleVector(vector As Vector3, cData As CharData, context As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: InverseScaleVector(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.InverseScaleVector(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: InverseScaleVector
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 25
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context)
+    parameters:
+    - id: vector
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function InverseScaleVector(vector As Vector3, cData As CharData, context As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: InverseScaleVector(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: InverseScaleVector(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.InverseScaleVector(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: InverseScaleVector
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 26
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
+    parameters:
+    - id: vector
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function InverseScaleVector(vector As Vector3, cData As CharData, context As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition(UnityEngine.Vector2,TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition(UnityEngine.Vector2,TMPEffects.CharacterData.CharData)
+  id: AnchorToPosition(UnityEngine.Vector2,TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AnchorToPosition(Vector2, CharData)
+  nameWithType: AnimationUtility.AnchorToPosition(Vector2, CharData)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition(UnityEngine.Vector2, TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AnchorToPosition
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 41
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Convert an anchor to its actual position.
+  example: []
+  syntax:
+    content: public static Vector2 AnchorToPosition(Vector2 anchor, CharData cData)
+    parameters:
+    - id: anchor
+      type: UnityEngine.Vector2
+      description: ''
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    return:
+      type: UnityEngine.Vector2
+      description: ''
+    content.vb: Public Shared Function AnchorToPosition(anchor As Vector2, cData As CharData) As Vector2
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawVertex(int, Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.GetRawVertex(int, Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawVertex
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 70
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Index of the vertex.
+    - id: position
+      type: UnityEngine.Vector3
+      description: The position to set the vertex to.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawVertex(index As Integer, position As Vector3, cData As CharData, ctx As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex*
+  nameWithType.vb: AnimationUtility.GetRawVertex(Integer, Vector3, CharData, IAnimationContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  name.vb: GetRawVertex(Integer, Vector3, CharData, IAnimationContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: GetRawVertex(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawVertex(int, Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.GetRawVertex(int, Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawVertex
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 71
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: position
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawVertex(index As Integer, position As Vector3, cData As CharData, ctx As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex*
+  nameWithType.vb: AnimationUtility.GetRawVertex(Integer, Vector3, CharData, IAnimatorContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  name.vb: GetRawVertex(Integer, Vector3, CharData, IAnimatorContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawPosition(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.GetRawPosition(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawPosition
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 82
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the raw version of the passed in character position, i.e. the one that will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+      description: The position to set the character to.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawPosition(position As Vector3, cData As CharData, ctx As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: GetRawPosition(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawPosition(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.GetRawPosition(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawPosition
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 83
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawPosition(position As Vector3, cData As CharData, ctx As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawPivot(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.GetRawPivot(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawPivot
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 94
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the raw version of the passed in pivot position, i.e. the one that will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+      description: The position to set the pivot to.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawPivot(position As Vector3, cData As CharData, ctx As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: GetRawPivot(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawPivot(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.GetRawPivot(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawPivot
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 95
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawPivot(position As Vector3, cData As CharData, ctx As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawDelta(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.GetRawDelta(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawDelta
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 106
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the raw version of the passed in delta, i.e. the one that will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+      description: The delta.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawDelta(delta As Vector3, cData As CharData, ctx As IAnimationContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: GetRawDelta(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetRawDelta(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.GetRawDelta(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetRawDelta
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 107
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function GetRawDelta(delta As Vector3, cData As CharData, ctx As IAnimatorContext) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetVertexRaw(int, Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.SetVertexRaw(int, Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetVertexRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 126
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Set the raw position of the vertex at the given index. This position will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Index of the vertex.
+    - id: position
+      type: UnityEngine.Vector3
+      description: The position to set the vertex to.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub SetVertexRaw(index As Integer, position As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw*
+  nameWithType.vb: AnimationUtility.SetVertexRaw(Integer, Vector3, CharData, IAnimationContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  name.vb: SetVertexRaw(Integer, Vector3, CharData, IAnimationContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: SetVertexRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetVertexRaw(int, Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.SetVertexRaw(int, Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetVertexRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 127
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: position
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub SetVertexRaw(index As Integer, position As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw*
+  nameWithType.vb: AnimationUtility.SetVertexRaw(Integer, Vector3, CharData, IAnimatorContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  name.vb: SetVertexRaw(Integer, Vector3, CharData, IAnimatorContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetPositionRaw(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.SetPositionRaw(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetPositionRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 138
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Set the raw position of the character. This position will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+      description: The position to set the character to.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub SetPositionRaw(position As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: SetPositionRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetPositionRaw(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.SetPositionRaw(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetPositionRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 139
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: position
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub SetPositionRaw(position As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetPivotRaw(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.SetPivotRaw(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetPivotRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 150
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Set the raw pivot of the character. This position will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: pivot
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub SetPivotRaw(pivot As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: SetPivotRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetPivotRaw(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.SetPivotRaw(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetPivotRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 151
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: pivot
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub SetPivotRaw(pivot As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddVertexDeltaRaw(int, Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.AddVertexDeltaRaw(int, Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddVertexDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 163
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: Index of the vertex.
+    - id: delta
+      type: UnityEngine.Vector3
+      description: The delta to add to the vertex.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub AddVertexDeltaRaw(index As Integer, delta As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw*
+  nameWithType.vb: AnimationUtility.AddVertexDeltaRaw(Integer, Vector3, CharData, IAnimationContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  name.vb: AddVertexDeltaRaw(Integer, Vector3, CharData, IAnimationContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: AddVertexDeltaRaw(System.Int32,UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddVertexDeltaRaw(int, Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.AddVertexDeltaRaw(int, Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(int, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddVertexDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 164
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: delta
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub AddVertexDeltaRaw(index As Integer, delta As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw*
+  nameWithType.vb: AnimationUtility.AddVertexDeltaRaw(Integer, Vector3, CharData, IAnimatorContext)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw(Integer, UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  name.vb: AddVertexDeltaRaw(Integer, Vector3, CharData, IAnimatorContext)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddPositionDeltaRaw(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.AddPositionDeltaRaw(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddPositionDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 174
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+      description: The delta to add to the position of the character.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub AddPositionDeltaRaw(delta As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: AddPositionDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddPositionDeltaRaw(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.AddPositionDeltaRaw(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddPositionDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 175
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub AddPositionDeltaRaw(delta As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddPivotDeltaRaw(Vector3, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.AddPivotDeltaRaw(Vector3, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddPivotDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 185
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  summary: Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
+  example: []
+  syntax:
+    content: public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+      description: The delta to add to the pivot.
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> to act on.
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: The animation context.
+    content.vb: Public Shared Sub AddPivotDeltaRaw(delta As Vector3, cData As CharData, ctx As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  id: AddPivotDeltaRaw(UnityEngine.Vector3,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AddPivotDeltaRaw(Vector3, CharData, IAnimatorContext)
+  nameWithType: AnimationUtility.AddPivotDeltaRaw(Vector3, CharData, IAnimatorContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw(UnityEngine.Vector3, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: AddPivotDeltaRaw
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 186
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
+    parameters:
+    - id: delta
+      type: UnityEngine.Vector3
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    content.vb: Public Shared Sub AddPivotDeltaRaw(delta As Vector3, cData As CharData, ctx As IAnimatorContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  id: ClosestPointOnLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: ClosestPointOnLine(Vector3, Vector3, Vector3)
+  nameWithType: AnimationUtility.ClosestPointOnLine(Vector3, Vector3, Vector3)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine(UnityEngine.Vector3, UnityEngine.Vector3, UnityEngine.Vector3)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: ClosestPointOnLine
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 193
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static Vector3 ClosestPointOnLine(Vector3 lineStart, Vector3 lineEnd, Vector3 point)
+    parameters:
+    - id: lineStart
+      type: UnityEngine.Vector3
+    - id: lineEnd
+      type: UnityEngine.Vector3
+    - id: point
+      type: UnityEngine.Vector3
+    return:
+      type: UnityEngine.Vector3
+    content.vb: Public Shared Function ClosestPointOnLine(lineStart As Vector3, lineEnd As Vector3, point As Vector3) As Vector3
+  overload: TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod(System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod(System.Single)
+  id: FrequencyToPeriod(System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: FrequencyToPeriod(float)
+  nameWithType: AnimationUtility.FrequencyToPeriod(float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod(float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: FrequencyToPeriod
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 867
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float FrequencyToPeriod(float frequency)
+    parameters:
+    - id: frequency
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function FrequencyToPeriod(frequency As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod*
+  nameWithType.vb: AnimationUtility.FrequencyToPeriod(Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod(Single)
+  name.vb: FrequencyToPeriod(Single)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency(System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency(System.Single)
+  id: PeriodToFrequency(System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: PeriodToFrequency(float)
+  nameWithType: AnimationUtility.PeriodToFrequency(float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency(float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: PeriodToFrequency
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 872
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float PeriodToFrequency(float period)
+    parameters:
+    - id: period
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function PeriodToFrequency(period As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency*
+  nameWithType.vb: AnimationUtility.PeriodToFrequency(Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency(Single)
+  name.vb: PeriodToFrequency(Single)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency(System.Single,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency(System.Single,System.Single)
+  id: WaveLengthVelocityToFrequency(System.Single,System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: WaveLengthVelocityToFrequency(float, float)
+  nameWithType: AnimationUtility.WaveLengthVelocityToFrequency(float, float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency(float, float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: WaveLengthVelocityToFrequency
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 877
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float WaveLengthVelocityToFrequency(float wavelength, float wavevelocity)
+    parameters:
+    - id: wavelength
+      type: System.Single
+    - id: wavevelocity
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function WaveLengthVelocityToFrequency(wavelength As Single, wavevelocity As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency*
+  nameWithType.vb: AnimationUtility.WaveLengthVelocityToFrequency(Single, Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency(Single, Single)
+  name.vb: WaveLengthVelocityToFrequency(Single, Single)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity(System.Single,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity(System.Single,System.Single)
+  id: WaveLengthFrequencyToVelocity(System.Single,System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: WaveLengthFrequencyToVelocity(float, float)
+  nameWithType: AnimationUtility.WaveLengthFrequencyToVelocity(float, float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity(float, float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: WaveLengthFrequencyToVelocity
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 882
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float WaveLengthFrequencyToVelocity(float wavelength, float frequency)
+    parameters:
+    - id: wavelength
+      type: System.Single
+    - id: frequency
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function WaveLengthFrequencyToVelocity(wavelength As Single, frequency As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity*
+  nameWithType.vb: AnimationUtility.WaveLengthFrequencyToVelocity(Single, Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity(Single, Single)
+  name.vb: WaveLengthFrequencyToVelocity(Single, Single)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength(System.Single,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength(System.Single,System.Single)
+  id: WaveVelocityFrequencyToLength(System.Single,System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: WaveVelocityFrequencyToLength(float, float)
+  nameWithType: AnimationUtility.WaveVelocityFrequencyToLength(float, float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength(float, float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: WaveVelocityFrequencyToLength
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 887
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)
+    parameters:
+    - id: wavevelocity
+      type: System.Single
+    - id: frequency
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function WaveVelocityFrequencyToLength(wavevelocity As Single, frequency As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength*
+  nameWithType.vb: AnimationUtility.WaveVelocityFrequencyToLength(Single, Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength(Single, Single)
+  name.vb: WaveVelocityFrequencyToLength(Single, Single)
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType)
+  id: GetWaveOffset(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetWaveOffset(CharData, IAnimationContext, WaveOffsetType)
+  nameWithType: AnimationUtility.GetWaveOffset(CharData, IAnimationContext, AnimationUtility.WaveOffsetType)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext, TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetWaveOffset
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 906
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float GetWaveOffset(CharData cData, IAnimationContext context, AnimationUtility.WaveOffsetType type)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    - id: type
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    return:
+      type: System.Single
+    content.vb: Public Shared Function GetWaveOffset(cData As CharData, context As IAnimationContext, type As AnimationUtility.WaveOffsetType) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter(TMPro.TMP_Character,TMPro.TMP_Character,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter(TMPro.TMP_Character,TMPro.TMP_Character,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: SetToCharacter(TMPro.TMP_Character,TMPro.TMP_Character,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: SetToCharacter(TMP_Character, TMP_Character, CharData, IAnimationContext)
+  nameWithType: AnimationUtility.SetToCharacter(TMP_Character, TMP_Character, CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter(TMPro.TMP_Character, TMPro.TMP_Character, TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: SetToCharacter
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 955
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData, IAnimationContext context)
+    parameters:
+    - id: newCharacter
+      type: TMPro.TMP_Character
+    - id: originalCharacter
+      type: TMPro.TMP_Character
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    content.vb: Public Shared Sub SetToCharacter(newCharacter As TMP_Character, originalCharacter As TMP_Character, cData As CharData, context As IAnimationContext)
+  overload: TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter*
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetValue(UnityEngine.AnimationCurve,UnityEngine.WrapMode,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationUtility.GetValue(UnityEngine.AnimationCurve,UnityEngine.WrapMode,System.Single)
+  id: GetValue(UnityEngine.AnimationCurve,UnityEngine.WrapMode,System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetValue(AnimationCurve, WrapMode, float)
+  nameWithType: AnimationUtility.GetValue(AnimationCurve, WrapMode, float)
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetValue(UnityEngine.AnimationCurve, UnityEngine.WrapMode, float)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects-Fork.git
+    id: GetValue
+    path: ../Assets/TMPEffects OLD/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 985
+  assemblies:
+  - Luca3317.TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)
+    parameters:
+    - id: curve
+      type: UnityEngine.AnimationCurve
+    - id: wrapMode
+      type: UnityEngine.WrapMode
+    - id: time
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function GetValue(curve As AnimationCurve, wrapMode As WrapMode, time As Single) As Single
+  overload: TMPEffects.TMPAnimations.AnimationUtility.GetValue*
+  nameWithType.vb: AnimationUtility.GetValue(AnimationCurve, WrapMode, Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.GetValue(UnityEngine.AnimationCurve, UnityEngine.WrapMode, Single)
+  name.vb: GetValue(AnimationCurve, WrapMode, Single)
+references:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.ScaleVector
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_ScaleVector_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: ScaleVector
+  nameWithType: AnimationUtility.ScaleVector
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.ScaleVector
+- uid: UnityEngine.Vector3
+  commentId: T:UnityEngine.Vector3
+  parent: UnityEngine
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: UnityEngine.Vector3
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.Components.Animator.IAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorContext.html
+  name: IAnimatorContext
+  nameWithType: IAnimatorContext
+  fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_InverseScaleVector_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: InverseScaleVector
+  nameWithType: AnimationUtility.InverseScaleVector
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.InverseScaleVector
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_AnchorToPosition_UnityEngine_Vector2_TMPEffects_CharacterData_CharData_
+  name: AnchorToPosition
+  nameWithType: AnimationUtility.AnchorToPosition
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AnchorToPosition
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetRawVertex_System_Int32_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: GetRawVertex
+  nameWithType: AnimationUtility.GetRawVertex
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawVertex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetRawPosition_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: GetRawPosition
+  nameWithType: AnimationUtility.GetRawPosition
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPosition
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetRawPivot_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: GetRawPivot
+  nameWithType: AnimationUtility.GetRawPivot
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawPivot
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetRawDelta_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: GetRawDelta
+  nameWithType: AnimationUtility.GetRawDelta
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetRawDelta
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_SetVertexRaw_System_Int32_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: SetVertexRaw
+  nameWithType: AnimationUtility.SetVertexRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetVertexRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_SetPositionRaw_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: SetPositionRaw
+  nameWithType: AnimationUtility.SetPositionRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPositionRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_SetPivotRaw_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: SetPivotRaw
+  nameWithType: AnimationUtility.SetPivotRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetPivotRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_AddVertexDeltaRaw_System_Int32_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: AddVertexDeltaRaw
+  nameWithType: AnimationUtility.AddVertexDeltaRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddVertexDeltaRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_AddPositionDeltaRaw_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: AddPositionDeltaRaw
+  nameWithType: AnimationUtility.AddPositionDeltaRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPositionDeltaRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_AddPivotDeltaRaw_UnityEngine_Vector3_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: AddPivotDeltaRaw
+  nameWithType: AnimationUtility.AddPivotDeltaRaw
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.AddPivotDeltaRaw
+- uid: TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_ClosestPointOnLine_UnityEngine_Vector3_UnityEngine_Vector3_UnityEngine_Vector3_
+  name: ClosestPointOnLine
+  nameWithType: AnimationUtility.ClosestPointOnLine
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.ClosestPointOnLine
+- uid: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_FrequencyToPeriod_System_Single_
+  name: FrequencyToPeriod
+  nameWithType: AnimationUtility.FrequencyToPeriod
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.FrequencyToPeriod
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_PeriodToFrequency_System_Single_
+  name: PeriodToFrequency
+  nameWithType: AnimationUtility.PeriodToFrequency
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.PeriodToFrequency
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_WaveLengthVelocityToFrequency_System_Single_System_Single_
+  name: WaveLengthVelocityToFrequency
+  nameWithType: AnimationUtility.WaveLengthVelocityToFrequency
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthVelocityToFrequency
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_WaveLengthFrequencyToVelocity_System_Single_System_Single_
+  name: WaveLengthFrequencyToVelocity
+  nameWithType: AnimationUtility.WaveLengthFrequencyToVelocity
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveLengthFrequencyToVelocity
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_WaveVelocityFrequencyToLength_System_Single_System_Single_
+  name: WaveVelocityFrequencyToLength
+  nameWithType: AnimationUtility.WaveVelocityFrequencyToLength
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveVelocityFrequencyToLength
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetWaveOffset_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_TMPEffects_TMPAnimations_AnimationUtility_WaveOffsetType_
+  name: GetWaveOffset
+  nameWithType: AnimationUtility.GetWaveOffset
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetWaveOffset
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.WaveOffsetType
+  nameWithType: AnimationUtility.WaveOffsetType
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+    name: WaveOffsetType
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.html
+- uid: TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_SetToCharacter_TMPro_TMP_Character_TMPro_TMP_Character_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: SetToCharacter
+  nameWithType: AnimationUtility.SetToCharacter
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.SetToCharacter
+- uid: TMPro.TMP_Character
+  commentId: T:TMPro.TMP_Character
+  parent: TMPro
+  isExternal: true
+  name: TMP_Character
+  nameWithType: TMP_Character
+  fullName: TMPro.TMP_Character
+- uid: TMPro
+  commentId: N:TMPro
+  isExternal: true
+  name: TMPro
+  nameWithType: TMPro
+  fullName: TMPro
+- uid: TMPEffects.TMPAnimations.AnimationUtility.GetValue*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.GetValue
+  href: TMPEffects.TMPAnimations.AnimationUtility.html#TMPEffects_TMPAnimations_AnimationUtility_GetValue_UnityEngine_AnimationCurve_UnityEngine_WrapMode_System_Single_
+  name: GetValue
+  nameWithType: AnimationUtility.GetValue
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.GetValue
+- uid: UnityEngine.AnimationCurve
+  commentId: T:UnityEngine.AnimationCurve
+  parent: UnityEngine
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: UnityEngine.AnimationCurve
+- uid: UnityEngine.WrapMode
+  commentId: T:UnityEngine.WrapMode
+  parent: UnityEngine
+  isExternal: true
+  name: WrapMode
+  nameWithType: WrapMode
+  fullName: UnityEngine.WrapMode

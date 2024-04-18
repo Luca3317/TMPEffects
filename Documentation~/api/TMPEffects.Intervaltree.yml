@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Intervaltree
+  commentId: N:TMPEffects.Intervaltree
+  id: TMPEffects.Intervaltree
+  children:
+  - TMPEffects.Intervaltree.IIntervalTree`2
+  - TMPEffects.Intervaltree.IntervalTree`2
+  - TMPEffects.Intervaltree.RangeValuePair`2
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Intervaltree
+  nameWithType: TMPEffects.Intervaltree
+  fullName: TMPEffects.Intervaltree
+  type: Namespace
+  assemblies:
+  - Luca3317.TMPEffects
+references:
+- uid: TMPEffects.Intervaltree.RangeValuePair`2
+  commentId: T:TMPEffects.Intervaltree.RangeValuePair`2
+  parent: TMPEffects.Intervaltree
+  href: TMPEffects.Intervaltree.RangeValuePair-2.html
+  name: RangeValuePair<TKey, TValue>
+  nameWithType: RangeValuePair<TKey, TValue>
+  fullName: TMPEffects.Intervaltree.RangeValuePair<TKey, TValue>
+  nameWithType.vb: RangeValuePair(Of TKey, TValue)
+  fullName.vb: TMPEffects.Intervaltree.RangeValuePair(Of TKey, TValue)
+  name.vb: RangeValuePair(Of TKey, TValue)
+  spec.csharp:
+  - uid: TMPEffects.Intervaltree.RangeValuePair`2
+    name: RangeValuePair
+    href: TMPEffects.Intervaltree.RangeValuePair-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Intervaltree.RangeValuePair`2
+    name: RangeValuePair
+    href: TMPEffects.Intervaltree.RangeValuePair-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: TMPEffects.Intervaltree.IIntervalTree`2
+  commentId: T:TMPEffects.Intervaltree.IIntervalTree`2
+  href: TMPEffects.Intervaltree.IIntervalTree-2.html
+  name: IIntervalTree<TKey, TValue>
+  nameWithType: IIntervalTree<TKey, TValue>
+  fullName: TMPEffects.Intervaltree.IIntervalTree<TKey, TValue>
+  nameWithType.vb: IIntervalTree(Of TKey, TValue)
+  fullName.vb: TMPEffects.Intervaltree.IIntervalTree(Of TKey, TValue)
+  name.vb: IIntervalTree(Of TKey, TValue)
+  spec.csharp:
+  - uid: TMPEffects.Intervaltree.IIntervalTree`2
+    name: IIntervalTree
+    href: TMPEffects.Intervaltree.IIntervalTree-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Intervaltree.IIntervalTree`2
+    name: IIntervalTree
+    href: TMPEffects.Intervaltree.IIntervalTree-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: TMPEffects.Intervaltree.IntervalTree`2
+  commentId: T:TMPEffects.Intervaltree.IntervalTree`2
+  href: TMPEffects.Intervaltree.IntervalTree-2.html
+  name: IntervalTree<TKey, TValue>
+  nameWithType: IntervalTree<TKey, TValue>
+  fullName: TMPEffects.Intervaltree.IntervalTree<TKey, TValue>
+  nameWithType.vb: IntervalTree(Of TKey, TValue)
+  fullName.vb: TMPEffects.Intervaltree.IntervalTree(Of TKey, TValue)
+  name.vb: IntervalTree(Of TKey, TValue)
+  spec.csharp:
+  - uid: TMPEffects.Intervaltree.IntervalTree`2
+    name: IntervalTree
+    href: TMPEffects.Intervaltree.IntervalTree-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Intervaltree.IntervalTree`2
+    name: IntervalTree
+    href: TMPEffects.Intervaltree.IntervalTree-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: TMPEffects.Intervaltree
+  commentId: N:TMPEffects.Intervaltree
+  href: TMPEffects.html
+  name: TMPEffects.Intervaltree
+  nameWithType: TMPEffects.Intervaltree
+  fullName: TMPEffects.Intervaltree
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Intervaltree
+    name: Intervaltree
+    href: TMPEffects.Intervaltree.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Intervaltree
+    name: Intervaltree
+    href: TMPEffects.Intervaltree.html
