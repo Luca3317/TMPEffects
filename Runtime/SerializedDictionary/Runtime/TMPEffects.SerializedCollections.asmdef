@@ -1,12 +1,8 @@
 {
-    "name": "Luca3317.TMPEffects.SerializedCollections.Editor",
+    "name": "TMPEffects.SerializedCollections",
     "rootNamespace": "",
-    "references": [
-        "GUID:bc50dcdb89ada6249b1b82bd70623a05"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

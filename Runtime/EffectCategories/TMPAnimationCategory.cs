@@ -23,9 +23,10 @@ namespace TMPEffects.EffectCategories
         ///<inheritdoc/>
         public override ITMPAnimation GetEffect(string name) => database.GetEffect(name);
         ///<inheritdoc/>
-        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
         {
             data = null;
+            endIndex = -1;
             if (tagInfo.type != ParsingUtility.TagType.Open) throw new System.ArgumentException(nameof(tagInfo.type));
 
             if (tagInfo.prefix != Prefix) return false;

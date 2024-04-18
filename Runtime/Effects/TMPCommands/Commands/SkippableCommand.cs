@@ -9,7 +9,7 @@ namespace TMPEffects.TMPCommands.Commands
     [CreateAssetMenu(fileName ="new SkippableCommand", menuName ="TMPEffects/Commands/Skippable")]
     public class SkippableCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Either;
+        public override TagType TagType => TagType.Index;
 
         public override bool ExecuteInstantly => false;
 

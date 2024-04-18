@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using TMPEffects.Tags;
 
 namespace TMPEffects.TextProcessing
@@ -65,9 +66,10 @@ namespace TMPEffects.TextProcessing
         private bool Process_Open(ParsingUtility.TagInfo tagInfo, int textIndex, int orderAtIndex)
         {
             TMPEffectTag tag;
-            if (!validator.ValidateOpenTag(tagInfo, out tag)) return false;
+            int endIndex;
+            if (!validator.ValidateOpenTag(tagInfo, out tag, out endIndex)) return false;
 
-            TMPEffectTagIndices indices = new TMPEffectTagIndices(textIndex, -1, orderAtIndex);
+            TMPEffectTagIndices indices = new TMPEffectTagIndices(textIndex, endIndex, orderAtIndex);
             KeyValuePair<TMPEffectTagIndices, TMPEffectTag> kvp = new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(indices, tag);
             processedTags.Add(kvp);
 
@@ -80,7 +82,7 @@ namespace TMPEffects.TextProcessing
             {
                 return CloseMostRecent(textIndex);
             }
-            else if (tagInfo.name == ALL_KEYWORD) // TODO Const
+            else if (tagInfo.name == ALL_KEYWORD)
             {
                 CloseAll(textIndex);
                 return true;
@@ -100,7 +102,7 @@ namespace TMPEffects.TextProcessing
                 }
             }
 
-            return true;
+            return false;
         }
 
         private bool CloseMostRecent(int textIndex)

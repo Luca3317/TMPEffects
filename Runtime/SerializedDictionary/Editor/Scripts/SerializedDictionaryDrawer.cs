@@ -10,7 +10,7 @@ namespace TMPEffects.SerializedCollections.Editor
         public const string KeyName = nameof(SerializedKeyValuePair<int, int>.Key);
         public const string ValueName = nameof(SerializedKeyValuePair<int, int>.Value);
         public const string SerializedListName = nameof(SerializedDictionary<int, int>._serializedList);
-        public const string LookupTableName = nameof(SerializedDictionary<int, int>.LookupTable);
+        public const string LookupTableName = nameof(SerializedDictionary<int, int>.LookupTable); 
 
         public const int TopHeaderClipHeight = 20;
         public const int TopHeaderHeight = 19;

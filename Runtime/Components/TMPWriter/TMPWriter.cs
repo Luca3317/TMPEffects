@@ -72,6 +72,18 @@ namespace TMPEffects.Components
         /// </summary>
         public ITagCollection EventTags => tags == null ? null : tags[eventCategory];
 
+        public bool WriteOnStart
+        {
+            get => writeOnStart;
+            set => writeOnStart = value;
+        }
+
+        public bool WriteOnNewText
+        {
+            get => writeOnNewText;
+            set => writeOnNewText = value;
+        }
+
         // Events
         /// <summary>
         /// Raised when the TMPWriter reaches an event tag.
@@ -455,16 +467,6 @@ namespace TMPEffects.Components
         {
             this.database = database;
             OnDatabaseChanged();
-        }
-
-        public void SetWriteOnStart(bool writeOnStart)
-        {
-            this.writeOnStart = writeOnStart;
-        }
-
-        public void SetWriteOnNewText(bool writeOnNewText)
-        {
-            this.writeOnNewText = writeOnNewText;
         }
         #endregion
 
@@ -1099,15 +1101,15 @@ namespace TMPEffects.Components
         [SerializeField, HideInInspector] bool commandsEnabled = true;
 #pragma warning restore CS0414
 
-        public delegate void CharDataHandler(TMPWriter writer, CharData cData);
-        public delegate void IntHandler(TMPWriter writer, int index);
-        public delegate void VoidHandler(TMPWriter writer);
-        public event CharDataHandler OnCharacterShownPreview;
-        public event IntHandler OnResetWriterPreview;
-        public event IntHandler OnSkipWriterPreview;
-        public event VoidHandler OnFinishWriterPreview;
-        public event VoidHandler OnStartWriterPreview;
-        public event VoidHandler OnStopWriterPreview;
+        internal delegate void CharDataHandler(TMPWriter writer, CharData cData);
+        internal delegate void IntHandler(TMPWriter writer, int index);
+        internal delegate void VoidHandler(TMPWriter writer);
+        internal event CharDataHandler OnCharacterShownPreview;
+        internal event IntHandler OnResetWriterPreview;
+        internal event IntHandler OnSkipWriterPreview;
+        internal event VoidHandler OnFinishWriterPreview;
+        internal event VoidHandler OnStartWriterPreview;
+        internal event VoidHandler OnStopWriterPreview;
 
         private void EditorUpdate()
         {

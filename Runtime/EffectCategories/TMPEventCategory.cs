@@ -13,9 +13,10 @@ namespace TMPEffects.EffectCategories
         { }
 
         ///<inheritdoc/>
-        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
         {
             data = null;
+            endIndex = tagInfo.startIndex + 1;
             if (tagInfo.prefix != Prefix) return false;
             TMPEffectTag tagData = new(tagInfo.name, tagInfo.prefix, ParsingUtility.GetTagParametersDict(tagInfo.parameterString));
             data = tagData;

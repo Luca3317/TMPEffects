@@ -2,6 +2,7 @@ using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPCommands;
 using TMPEffects.Tags;
+using System.Diagnostics;
 
 namespace TMPEffects.EffectCategories
 {
@@ -24,18 +25,22 @@ namespace TMPEffects.EffectCategories
         public override ITMPCommand GetEffect(string name) => database.GetEffect(name);
 
         ///<inheritdoc/>
-        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data)
+        public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
         {
             data = null;
+            endIndex = -1;
             if (tagInfo.type != ParsingUtility.TagType.Open) throw new System.ArgumentException(nameof(tagInfo.type));
             if (tagInfo.prefix != Prefix) return false;
             if (database == null || !database.ContainsEffect(tagInfo.name)) return false;
 
             var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
-            if (!database.GetEffect(tagInfo.name).ValidateParameters(param)) return false;
+            var command = database.GetEffect(tagInfo.name);
+            if (!command.ValidateParameters(param)) return false;
 
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
             data = tag;
+
+            endIndex = command.TagType == TagType.Index ? tagInfo.startIndex + 1 : -1;
             return true;
         }
 
