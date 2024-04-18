@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "unity": "2021.3",
   "displayName": "TMPEffects",
-  "author": "Luca Weist <lweist3317@gmail.com> (https://github.com/Luca3317)",
+  "author": { "name": "Luca3317", "url": "https://github.com/Luca3317" },
   "dependencies": {
     "com.unity.textmeshpro": "3.0.6"
   },
