@@ -554,6 +554,7 @@ namespace TMPEffects.Editor
             progress = Mathf.InverseLerp(min, max, xPos);
 
             writer.SetWriter(Mathf.RoundToInt(((writer.TextComponent.textInfo.characterCount - 1) * progress)));
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         bool styles = false;
@@ -641,6 +642,7 @@ namespace TMPEffects.Editor
         void PauseWriter()
         {
             writer.StopWriter();
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         void StartWriter()
@@ -651,6 +653,7 @@ namespace TMPEffects.Editor
                 progress = 0;
             }
             writer.StartWriter();
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         void ResetWriter()
@@ -663,6 +666,7 @@ namespace TMPEffects.Editor
             {
                 writer.Show(0, writer.TextComponent.textInfo.characterCount, true);
             }
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         void StopWriter()
@@ -670,12 +674,14 @@ namespace TMPEffects.Editor
             writer.ResetWriter();
             progress = 0;
             writer.Show(0, writer.TextComponent.textInfo.characterCount, true);
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         void FinishWriter()
         {
             writer.SkipPlayer();
             progress = 1;
+            EditorApplication.QueuePlayerLoopUpdate();
         }
     }
 }
