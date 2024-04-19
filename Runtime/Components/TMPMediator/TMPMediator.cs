@@ -176,7 +176,6 @@ namespace TMPEffects.Components.Mediator
                 if (state == VisibilityState.Hiding) newState = VisibilityState.Hidden;
             }
 
-            bool hide = false;
             for (int i = startIndex; i < startIndex + length; i++)
             {
                 VisibilityState previous = visibilityStates[i];
@@ -190,7 +189,6 @@ namespace TMPEffects.Components.Mediator
                             Show(i);
                             break;
                         case VisibilityState.Hidden:
-                            hide = true;
                             Hide(i);
                             break;
 
@@ -204,8 +202,6 @@ namespace TMPEffects.Components.Mediator
 
             if (!processor && Text.mesh != null)
             {
-                if (hide)
-                    Debug.Log("Updating vertex data!");
                 Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
             }
         }
@@ -373,7 +369,6 @@ namespace TMPEffects.Components.Mediator
 
         private void Hide(int index)
         {
-            Debug.Log("hiding");
             CharData cData = charData[index];
 
             if (!cData.info.isVisible) return;
