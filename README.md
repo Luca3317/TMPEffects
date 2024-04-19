@@ -29,6 +29,7 @@ and [commands](https://luca3317.github.io/TMPEffects-Pages/docs/tmpwriter_builti
 
 ## Dependencies and compatibility
 - TMPEffects is compatible with Unity 2021.3 and up
+    - Tested in 2021.3, 2022.3 and 2023.2; if you have compatibility issues in another version (>= 2021.3), please open an issue for it!
 - Only dependency: Unity's TextMeshPro package (automatically included in Unity 2018.3 and up)
 
 ## Installation
