@@ -123,7 +123,7 @@ public class TMPEffectsImporterWindow : EditorWindow
         //header.style.marginTop = 2;
         box.Add(header);
 
-        Label text = new Label("This appears to be the first time you are accessing TMPEffects; you will need to import the required resources in order to be able to use the built-in animations, commands etc. These new resources will be placed at the root of your project in the \"TMPEffects\" folder.");
+        Label text = new Label("This appears to be the first time you are accessing TMPEffects; you will need to import the required resources in order to be able to use the built-in animations, commands etc. These new resources will be placed at the root of your project in the \"TMPEffects\" folder. Reload the current scene afterwards to ensure all asset references are correctly loaded.");
         //text.style.fontSize = 12;
         //text.style.color = Color.white;
         text.style.whiteSpace = WhiteSpace.Normal;
