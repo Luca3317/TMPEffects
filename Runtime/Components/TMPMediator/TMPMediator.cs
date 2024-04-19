@@ -429,7 +429,7 @@ namespace TMPEffects.Components.Mediator
                 current.y = charUV0.y;
                 uvs0[vIndex + j] = current;
 #else
-                uvs0[vIndex + j] = Mediator.CharData[index].mesh.GetUV0(j);
+                uvs0[vIndex + j] = CharData[index].mesh.GetUV0(j);
 #endif
 
                 uvs2[vIndex + j] = CharData[index].mesh.GetUV2(j);
