@@ -393,16 +393,7 @@ namespace TMPEffects.Components.Mediator
 
         private void Hide(int index, bool skipHideProcess)
         {
-            TMP_TextInfo info = Text.textInfo;
-            CharData cData;
-            TMP_CharacterInfo cInfo;
-            Vector3[] verts;
-            Color32[] colors;
-            Vector2[] uvs0;
-            Vector2[] uvs2;
-            int vIndex, mIndex;
-
-            cData = charData[index];
+            CharData cData = charData[index];
 
             if (!cData.info.isVisible) return;
 
@@ -413,36 +404,12 @@ namespace TMPEffects.Components.Mediator
             }
 
             // Apply the new vertices to the vertex array
-            cInfo = info.characterInfo[index];
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
-
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
-            uvs0 = info.meshInfo[mIndex].uvs0;
-            uvs2 = info.meshInfo[mIndex].uvs2;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = cData.mesh.GetPosition(j);
-                colors[vIndex + j] = cData.mesh.GetColor(j);
-                uvs0[vIndex + j] = cData.mesh.GetUV0(j);
-                uvs2[vIndex + j] = cData.mesh.GetUV2(j);
-            }
+            ApplyMesh(cData);
         }
 
         private void Show(int index, bool skipShowProcess)
         {
-            TMP_TextInfo info = Text.textInfo;
-            CharData cData;
-            TMP_CharacterInfo cInfo;
-            Vector3[] verts;
-            Color32[] colors;
-            Vector2[] uvs0;
-            Vector2[] uvs2;
-            int vIndex, mIndex;
-
-            cData = charData[index];
+            CharData cData = charData[index];
 
             if (!cData.info.isVisible) return;
 
@@ -453,21 +420,43 @@ namespace TMPEffects.Components.Mediator
             }
 
             // Apply the new vertices to the vertex array
-            cInfo = info.characterInfo[index];
-            vIndex = cInfo.vertexIndex;
-            mIndex = cInfo.materialReferenceIndex;
+            ApplyMesh(cData);
+        }
 
-            colors = info.meshInfo[mIndex].colors32;
-            verts = info.meshInfo[mIndex].vertices;
-            uvs0 = info.meshInfo[mIndex].uvs0;
-            uvs2 = info.meshInfo[mIndex].uvs2;
+        public void ApplyMesh(CharData cData)
+        {
+            int index = cData.info.index;
+            TMP_TextInfo info = Text.textInfo;
+
+            TMP_CharacterInfo cInfo = info.characterInfo[cData.info.index];
+            int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
+            Color32[] colors = info.meshInfo[mIndex].colors32;
+            Vector3[] verts = info.meshInfo[mIndex].vertices;
+
+#if UNITY_2023_2_OR_NEWER
+            Vector4[] uvs0 = info.meshInfo[mIndex].uvs0;
+#else
+            Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
+#endif
+
+            Vector2[] uvs2 = info.meshInfo[mIndex].uvs2;
 
             for (int j = 0; j < 4; j++)
             {
-                verts[vIndex + j] = cData.mesh.initial.GetPosition(j);
-                colors[vIndex + j] = cData.mesh.initial.GetColor(j);
-                uvs0[vIndex + j] = cData.mesh.initial.GetUV0(j);
-                uvs2[vIndex + j] = cData.mesh.initial.GetUV2(j);
+                verts[vIndex + j] = CharData[index].mesh.GetPosition(j);
+                colors[vIndex + j] = CharData[index].mesh.GetColor(j);
+
+#if UNITY_2023_2_OR_NEWER
+                Vector4 current = uvs0[vIndex + j];
+                Vector2 charUV0 = CharData[index].mesh.GetUV0(j);
+                current.x = charUV0.x;
+                current.y = charUV0.y;
+                uvs0[vIndex + j] = current;
+#else
+                uvs0[vIndex + j] = Mediator.CharData[index].mesh.GetUV0(j);
+#endif
+
+                uvs2[vIndex + j] = CharData[index].mesh.GetUV2(j);
             }
         }
     }

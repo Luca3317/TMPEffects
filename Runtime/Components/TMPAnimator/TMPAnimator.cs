@@ -20,6 +20,7 @@ using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using System.Xml.Linq;
+using System;
 
 namespace TMPEffects.Components
 {
@@ -834,22 +835,7 @@ namespace TMPEffects.Components
 
             UpdateCharacterAnimation_Impl(index);
 
-            var info = Mediator.Text.textInfo;
-            TMP_CharacterInfo cInfo = info.characterInfo[index];
-            int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
-            Color32[] colors = info.meshInfo[mIndex].colors32;
-            Vector3[] verts = info.meshInfo[mIndex].vertices;
-            Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
-            Vector2[] uvs2 = info.meshInfo[mIndex].uvs2;
-            //Vector2[] uvs4 = info.meshInfo[mIndex].uvs2;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = Mediator.CharData[index].mesh.GetPosition(j);
-                colors[vIndex + j] = Mediator.CharData[index].mesh.GetColor(j);
-                uvs0[vIndex + j] = Mediator.CharData[index].mesh.GetUV0(j);
-                uvs2[vIndex + j] = Mediator.CharData[index].mesh.GetUV2(j);
-            }
+            Mediator.ApplyMesh(cData);
 
             if (updateVertices && Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
@@ -1420,35 +1406,11 @@ namespace TMPEffects.Components
 
             void UpdateVisibility(bool show)
             {
-                TMP_TextInfo info = Mediator.Text.textInfo;
-                TMP_CharacterInfo cInfo;
-                Vector3[] verts;
-                Color32[] colors;
-                Vector2[] uvs0;
-                Vector2[] uvs2;
-                int vIndex, mIndex;
-
                 // Set the current mesh's vertices all to the initial mesh values
                 if (show) SetVerticesToDefault();
                 else SetVerticesToZero();
 
-                // Apply the new vertices to the vertex array
-                cInfo = info.characterInfo[index];
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-                uvs0 = info.meshInfo[mIndex].uvs0;
-                uvs2 = info.meshInfo[mIndex].uvs2;
-
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.mesh.GetPosition(j);
-                    colors[vIndex + j] = cData.mesh.GetColor(j);
-                    uvs0[vIndex + j] = cData.mesh.GetUV0(j);
-                    uvs2[vIndex + j] = cData.mesh.GetUV2(j);
-                }
+                Mediator.ApplyMesh(cData);
             }
 
             void SetVerticesToZero()
@@ -1503,11 +1465,6 @@ namespace TMPEffects.Components
 
             var info = Mediator.Text.textInfo;
 
-            Vector3[] verts;
-            Color32[] colors;
-            Vector2[] uvs0;
-            Vector2[] uvs2;
-            int vIndex, mIndex;
             TMP_CharacterInfo cInfo;
 
             // Iterate over all characters and apply the new meshes
@@ -1516,27 +1473,10 @@ namespace TMPEffects.Components
                 cInfo = info.characterInfo[i];
                 if (!cInfo.isVisible || Mediator.VisibilityStates[i] == VisibilityState.Hidden) continue;
 
-                vIndex = cInfo.vertexIndex;
-                mIndex = cInfo.materialReferenceIndex;
-
-                colors = info.meshInfo[mIndex].colors32;
-                verts = info.meshInfo[mIndex].vertices;
-
-                uvs0 = info.meshInfo[mIndex].uvs0;
-                uvs2 = info.meshInfo[mIndex].uvs2;
-
                 CharData cData = Mediator.CharData[i];
                 cData.Reset();
 
-                for (int j = 0; j < 4; j++)
-                {
-                    verts[vIndex + j] = cData.mesh.initial.GetPosition(j);
-                    colors[vIndex + j] = cData.mesh.initial.GetColor(j);
-                    uvs0[vIndex + j] = cData.mesh.initial.GetUV0(j);
-                    uvs2[vIndex + j] = cData.mesh.initial.GetUV2(j);
-                }
-
-                //Mediator.CharData[i] = cData;
+                Mediator.ApplyMesh(cData);
             }
 
             if (Mediator.Text.mesh != null)

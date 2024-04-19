@@ -113,7 +113,22 @@ namespace TMPEffects.CharacterData
 
             referenceScale = cInfo.scale;
             fontAsset = cInfo.fontAsset;
+
+#if UNITY_2023_2_OR_NEWER
+
+            if (cInfo.elementType == TMP_TextElementType.Sprite)
+            {
+                TMP_SpriteCharacter sprite = (TMP_SpriteCharacter)cInfo.textElement;
+                spriteAsset = sprite.textAsset as TMP_SpriteAsset;
+            }
+            else
+            {
+                spriteAsset = null;
+            }
+#else
             spriteAsset = cInfo.spriteAsset;
+#endif
+
             elementType = cInfo.elementType;
             origin = cInfo.origin;
         }
