@@ -176,6 +176,7 @@ namespace TMPEffects.Components.Mediator
                 if (state == VisibilityState.Hiding) newState = VisibilityState.Hidden;
             }
 
+            bool hide = false;
             for (int i = startIndex; i < startIndex + length; i++)
             {
                 VisibilityState previous = visibilityStates[i];
@@ -186,10 +187,11 @@ namespace TMPEffects.Components.Mediator
                     switch (newState)
                     {
                         case VisibilityState.Shown:
-                            Show(i, true);
+                            Show(i);
                             break;
                         case VisibilityState.Hidden:
-                            Hide(i, true);
+                            hide = true;
+                            Hide(i);
                             break;
 
                         default: throw new System.ArgumentException(nameof(state));
@@ -201,7 +203,11 @@ namespace TMPEffects.Components.Mediator
             }
 
             if (!processor && Text.mesh != null)
+            {
+                if (hide)
+                    Debug.Log("Updating vertex data!");
                 Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+            }
         }
 
         /// <summary>
@@ -365,34 +371,9 @@ namespace TMPEffects.Components.Mediator
 
         }
 
-        private void Hide(int startIndex, int length, bool skipHideProcess)
+        private void Hide(int index)
         {
-            if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
-            {
-                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
-            }
-
-            for (int i = startIndex; i < startIndex + length; i++)
-            {
-                Hide(i, skipHideProcess);
-            }
-        }
-
-        private void Show(int startIndex, int length, bool skipShowProcess)
-        {
-            if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
-            {
-                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
-            }
-
-            for (int i = startIndex; i < startIndex + length; i++)
-            {
-                Show(i, skipShowProcess);
-            }
-        }
-
-        private void Hide(int index, bool skipHideProcess)
-        {
+            Debug.Log("hiding");
             CharData cData = charData[index];
 
             if (!cData.info.isVisible) return;
@@ -407,7 +388,7 @@ namespace TMPEffects.Components.Mediator
             ApplyMesh(cData);
         }
 
-        private void Show(int index, bool skipShowProcess)
+        private void Show(int index)
         {
             CharData cData = charData[index];
 
