@@ -3,7 +3,6 @@ using UnityEditor;
 using TMPEffects.Components;
 using TMPEffects.Databases.AnimationDatabase;
 using UnityEngine.Playables;
-using Codice.CM.Client.Differences;
 
 namespace TMPEffects.Editor
 {
