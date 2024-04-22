@@ -1132,6 +1132,7 @@ namespace TMPEffects.Components
 
         internal void OnChangedDatabase()
         {
+            if (Mediator == null) return;
             OnDatabaseChanged();
         }
 
@@ -1142,6 +1143,22 @@ namespace TMPEffects.Components
             whiteSpaceDelay = Mathf.Max(whiteSpaceDelay, 0);
             visibleDelay = Mathf.Max(visibleDelay, 0);
             punctuationDelay = Mathf.Max(punctuationDelay, 0);
+        }
+
+        private void Reset()
+        {
+            ResetWriter();
+            ShowAll(true);
+
+            if (enabled)
+            {
+                enabled = false;
+                EditorApplication.delayCall += () => this.enabled = true;
+                EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+            }
+
+            //EditorApplication.QueuePlayerLoopUpdate();
+            //EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
         }
 
         internal void SkipPlayer()

@@ -512,7 +512,7 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
 #if UNITY_EDITOR
-            if (preview && !Application.isPlaying) StopPreviewWithouSet();
+            if (preview && !Application.isPlaying) StopPreviewWithoutSet();
 #endif
 
             basicDatabase?.Dispose();
@@ -1501,7 +1501,7 @@ namespace TMPEffects.Components
             EditorApplication.update += UpdatePreview;
         }
 
-        internal void StopPreviewWithouSet()
+        internal void StopPreviewWithoutSet()
         {
             if (Mediator == null) return;
             EditorApplication.update -= UpdatePreview;
@@ -1511,7 +1511,6 @@ namespace TMPEffects.Components
         internal void StopPreview()
         {
             if (Mediator == null) return;
-            Debug.Log("Called stopppreview with " + (Mediator != null));
             preview = false;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();
@@ -1555,8 +1554,8 @@ namespace TMPEffects.Components
             {
                 enabled = false;
                 EditorApplication.delayCall += () => this.enabled = true;
+                EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }
-            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)
