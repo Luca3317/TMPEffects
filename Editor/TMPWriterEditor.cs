@@ -443,6 +443,8 @@ namespace TMPEffects.Editor
                 DrawDatabase();
                 EditorGUI.indentLevel--;
             }
+
+            CheckDatabase();
         }
 
         static bool eventFoldout = false;
@@ -682,6 +684,19 @@ namespace TMPEffects.Editor
             writer.SkipPlayer();
             progress = 1;
             EditorApplication.QueuePlayerLoopUpdate();
+        }
+
+        void CheckDatabase()
+        {
+            if (useDefaultDatabaseProp.boolValue)
+            {
+                var settings = TMPEffectsSettings.Get();
+                if (settings == null || settings.DefaultCommandDatabase == databaseProp.objectReferenceValue) return;
+
+                databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
+                serializedObject.ApplyModifiedProperties();
+                writer.OnChangedDatabase();
+            }
         }
     }
 }

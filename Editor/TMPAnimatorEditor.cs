@@ -122,8 +122,6 @@ namespace TMPEffects.Editor
             if (initStyles) return;
             initStyles = true;
 
-
-
             horizontalLine = new GUIStyle();
             horizontalLine.normal.background = EditorGUIUtility.whiteTexture;
             horizontalLine.margin = new RectOffset(0, 0, 4, 4);
@@ -141,6 +139,8 @@ namespace TMPEffects.Editor
                 DrawDatabase();
                 EditorGUI.indentLevel--;
             }
+
+            CheckDatabase();
         }
 
         void DrawDatabase()
@@ -445,6 +445,19 @@ namespace TMPEffects.Editor
             RepaintInspector();
 
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+        }
+
+        void CheckDatabase()
+        {
+            if (useDefaultDatabaseProp.boolValue)
+            {
+                var settings = TMPEffectsSettings.Get();
+                if (settings == null || settings.DefaultAnimationDatabase == databaseProp.objectReferenceValue) return;
+
+                databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
+                serializedObject.ApplyModifiedProperties();
+                animator.OnChangedDatabase();
+            }
         }
 
         bool PreviewEnabled()
