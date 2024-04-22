@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
-using TMPEffects.Databases.AnimationDatabase;
-using UnityEngine.Playables;
 
 namespace TMPEffects.Editor
 {
@@ -34,6 +32,7 @@ namespace TMPEffects.Editor
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
         SerializedProperty useDefaultDatabaseProp;
+        SerializedProperty initDatabaseProp;
 
         // Styles
         GUIStyle previewLabelStyle;
@@ -63,6 +62,7 @@ namespace TMPEffects.Editor
             excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
             excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
+            initDatabaseProp = serializedObject.FindProperty("initDatabase");
 
             sceneAnimationsProp = serializedObject.FindProperty("sceneAnimations");
             sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
@@ -73,13 +73,53 @@ namespace TMPEffects.Editor
 
             animator = target as TMPAnimator;
 
+            animator.OnResetComponent -= SetResetDatabase;
+            animator.OnResetComponent += SetResetDatabase;
+
             Undo.undoRedoPerformed -= OnUndoRedo;
             Undo.undoRedoPerformed += OnUndoRedo;
 
-            if (!useDefaultDatabaseProp.boolValue) return;
+            InitDatabase();
+        }
 
+        private void OnDisable()
+        {
+            animator.OnResetComponent -= SetResetDatabase;
+            Undo.undoRedoPerformed -= OnUndoRedo;
+        }
+
+        private void SetResetDatabase()
+        {
+            reset = true;
+        }
+
+        private void InitDatabase()
+        {
+            if (initDatabaseProp.boolValue) return;
+            initDatabaseProp.boolValue = true;
+
+            SetDatabase();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        bool reset = false;
+        private void ResetDatabase()
+        {
+            if (!reset) return;
+            reset = false;
+
+            SetDatabase();
+        }
+
+        private void SetDatabase()
+        {
             TMPEffectsSettings settings = TMPEffectsSettings.Get();
-            if (settings == null) return;
+            if (settings == null || !useDefaultDatabaseProp.boolValue)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
 
             if (settings.DefaultAnimationDatabase == null)
             {
@@ -94,12 +134,8 @@ namespace TMPEffects.Editor
                 databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
+                return;
             }
-        }
-
-        private void OnDisable()
-        {
-            Undo.undoRedoPerformed -= OnUndoRedo;
         }
 
         void InitGUIContent()
@@ -132,6 +168,8 @@ namespace TMPEffects.Editor
 
         void DrawAnimationsFoldout()
         {
+            if (reset) ResetDatabase();
+
             databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
             if (databaseProp.isExpanded)
             {
@@ -139,66 +177,59 @@ namespace TMPEffects.Editor
                 DrawDatabase();
                 EditorGUI.indentLevel--;
             }
-
-            CheckDatabase();
         }
 
         void DrawDatabase()
         {
             GUILayout.BeginHorizontal();
 
-            var value = databaseProp.objectReferenceValue;
-
             bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
             useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
             if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
-                Undo.RecordObject(animator, "Modified " + animator.name);
-            }
-
-            EditorGUI.BeginChangeCheck();
-            if (useDefaultDatabaseProp.boolValue)
-            {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
+                if (useDefaultDatabaseProp.boolValue)
                 {
                     TMPEffectsSettings settings = TMPEffectsSettings.Get();
                     if (settings == null)
                     {
-                        //Debug.LogWarning("No settings");
                         useDefaultDatabaseProp.boolValue = false;
+                        serializedObject.ApplyModifiedProperties();
                     }
                     else if (settings.DefaultAnimationDatabase == null)
                     {
                         Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
                         useDefaultDatabaseProp.boolValue = false;
+                        serializedObject.ApplyModifiedProperties();
                     }
                     else
                     {
-                        databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
+                        databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
+                        serializedObject.ApplyModifiedProperties();
+                        animator.OnChangedDatabase();
                     }
                 }
-                else if (TMPEffectsSettingsProvider.IsSettingsAvailable() && databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultAnimationDatabase)
-                {
-                    databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultAnimationDatabase;
-                }
-
-                EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-                EditorGUI.EndDisabledGroup();
             }
             else
             {
-                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+                TMPEffectsSettings settings = TMPEffectsSettings.Get();
+                if (settings != null && settings.DefaultAnimationDatabase != databaseProp.objectReferenceValue)
+                {
+                    useDefaultDatabaseProp.boolValue = false;
+                    serializedObject.ApplyModifiedProperties();
+                }
             }
-            GUILayout.EndHorizontal();
 
-            if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
+            EditorGUI.BeginChangeCheck();
+            EditorGUI.BeginDisabledGroup(useDefaultDatabaseProp.boolValue);
+            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+            EditorGUI.EndDisabledGroup();
+            if (EditorGUI.EndChangeCheck())
             {
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
             }
-
+            GUILayout.EndHorizontal();
 
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(sceneAnimationsProp);
@@ -217,6 +248,7 @@ namespace TMPEffects.Editor
                 animator.OnChangedDatabase();
             }
         }
+
 
         GUIContent alertDialogDefaultShow;
         GUIContent alertDialogDefaultHide;
@@ -445,19 +477,6 @@ namespace TMPEffects.Editor
             RepaintInspector();
 
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-        }
-
-        void CheckDatabase()
-        {
-            if (useDefaultDatabaseProp.boolValue)
-            {
-                var settings = TMPEffectsSettings.Get();
-                if (settings == null || settings.DefaultAnimationDatabase == databaseProp.objectReferenceValue) return;
-
-                databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
-                serializedObject.ApplyModifiedProperties();
-                animator.OnChangedDatabase();
-            }
         }
 
         bool PreviewEnabled()

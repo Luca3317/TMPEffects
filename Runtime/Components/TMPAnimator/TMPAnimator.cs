@@ -19,8 +19,6 @@ using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
-using System.Xml.Linq;
-using System;
 
 namespace TMPEffects.Components
 {
@@ -1489,8 +1487,12 @@ namespace TMPEffects.Components
 #pragma warning disable CS0414
         [SerializeField, HideInInspector] private bool preview = false;
         [SerializeField, HideInInspector] private bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] private bool initDatabase = false;
         [System.NonSerialized, HideInInspector] private float lastPreviewUpdateTime = 0f;
 #pragma warning restore CS0414
+
+        internal delegate void VoidHandler();
+        internal event VoidHandler OnResetComponent;
 
         internal void StartPreview()
         {
@@ -1556,6 +1558,8 @@ namespace TMPEffects.Components
                 EditorApplication.delayCall += () => this.enabled = true;
                 EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }
+
+            OnResetComponent?.Invoke();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)

@@ -1095,6 +1095,7 @@ namespace TMPEffects.Components
 #pragma warning disable CS0414
         //[System.NonSerialized] bool reprocessFlag = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] bool initDatabase = false;
         [Tooltip("Raise text events in preview mode?")]
         [SerializeField, HideInInspector] bool eventsEnabled = false;
         [Tooltip("Raise commands in preview mode?")]
@@ -1104,12 +1105,15 @@ namespace TMPEffects.Components
         internal delegate void CharDataHandler(TMPWriter writer, CharData cData);
         internal delegate void IntHandler(TMPWriter writer, int index);
         internal delegate void VoidHandler(TMPWriter writer);
+        internal delegate void ResetHandler();
         internal event CharDataHandler OnCharacterShownPreview;
         internal event IntHandler OnResetWriterPreview;
         internal event IntHandler OnSkipWriterPreview;
         internal event VoidHandler OnFinishWriterPreview;
         internal event VoidHandler OnStartWriterPreview;
         internal event VoidHandler OnStopWriterPreview;
+        internal event ResetHandler OnResetComponent;
+
 
         private void EditorUpdate()
         {
@@ -1157,8 +1161,7 @@ namespace TMPEffects.Components
                 EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }
 
-            //EditorApplication.QueuePlayerLoopUpdate();
-            //EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+            OnResetComponent?.Invoke();
         }
 
         internal void SkipPlayer()
