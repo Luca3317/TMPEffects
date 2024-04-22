@@ -1,9 +1,7 @@
 using TMPEffects.Components;
 using UnityEditor;
 using UnityEngine;
-using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
-using TMPEffects.Databases.AnimationDatabase;
 using System.Collections;
 
 namespace TMPEffects.Editor
@@ -44,6 +42,7 @@ namespace TMPEffects.Editor
         SerializedProperty maySkipProp;
         SerializedProperty sceneCommandsProp;
         SerializedProperty useDefaultDatabaseProp;
+        SerializedProperty initDatabaseProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -147,6 +146,7 @@ namespace TMPEffects.Editor
             maySkipProp = serializedObject.FindProperty("maySkip");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
+            initDatabaseProp = serializedObject.FindProperty("initDatabase");
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -188,11 +188,65 @@ namespace TMPEffects.Editor
             writer.OnFinishWriter.RemoveListener(UpdateProgressFinish);
             writer.OnFinishWriter.AddListener(UpdateProgressFinish);
 
-            if (!useDefaultDatabaseProp.boolValue) return;
+            writer.OnResetComponent -= SetResetDatabase;
+            writer.OnResetComponent += SetResetDatabase;
 
-            if (!TMPEffectsSettingsProvider.IsSettingsAvailable()) return;
+            InitDatabase();
+        }
 
-            if (TMPEffectsSettings.Get().DefaultCommandDatabase == null)
+        private void OnDisable()
+        {
+            writer.OnResetWriterPreview -= CancelHideAfterFinish;
+            writer.OnCharacterShownPreview -= CancelHideAfterFinish;
+            writer.OnSkipWriterPreview -= CancelHideAfterFinish;
+            writer.OnStartWriterPreview -= CancelHideAfterFinish;
+            writer.OnStopWriterPreview -= CancelHideAfterFinish;
+            writer.OnFinishWriterPreview -= StartHideAfterFinish;
+
+            writer.OnResetWriterPreview -= UpdateProgress;
+            writer.OnCharacterShownPreview -= UpdateProgress;
+            writer.OnFinishWriterPreview -= UpdateProgressFinish;
+            writer.OnCharacterShown.RemoveListener(UpdateProgress);
+            writer.OnResetWriter.RemoveListener(UpdateProgress);
+            writer.OnFinishWriter.RemoveListener(UpdateProgressFinish);
+
+            writer.OnResetComponent -= SetResetDatabase;
+        }
+
+        private void SetResetDatabase()
+        {
+            reset = true;
+        }
+
+        private void InitDatabase()
+        {
+            if (initDatabaseProp.boolValue) return;
+            initDatabaseProp.boolValue = true;
+
+            SetDatabase();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        bool reset = false;
+        private void ResetDatabase()
+        {
+            if (!reset) return;
+            reset = false;
+
+            SetDatabase();
+        }
+
+        private void SetDatabase()
+        {
+            TMPEffectsSettings settings = TMPEffectsSettings.Get();
+            if (settings == null || !useDefaultDatabaseProp.boolValue)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (settings.DefaultCommandDatabase == null)
             {
                 Debug.LogWarning("No default command database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
@@ -200,18 +254,13 @@ namespace TMPEffects.Editor
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
+            if (databaseProp.objectReferenceValue != settings.DefaultCommandDatabase)
             {
-                databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
+                databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
                 serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
+                return;
             }
-        }
-
-        private void OnDisable()
-        {
-            writer.OnCharacterShown.RemoveListener(UpdateProgress);
-            writer.OnResetWriter.RemoveListener(UpdateProgress);
         }
 
         void UpdateProgress(TMPWriter writer, CharData cData) => UpdateProgress(writer, cData.info.index);
@@ -373,62 +422,65 @@ namespace TMPEffects.Editor
         {
             GUILayout.BeginHorizontal();
 
-            var value = databaseProp.objectReferenceValue;
-
             bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
             useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
             if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
-                Undo.RecordObject(writer, "Modified " + writer.name);
-            }
-
-            EditorGUI.BeginChangeCheck();
-            if (useDefaultDatabaseProp.boolValue)
-            {
-                if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
+                if (useDefaultDatabaseProp.boolValue)
                 {
                     TMPEffectsSettings settings = TMPEffectsSettings.Get();
                     if (settings == null)
                     {
-                        //Debug.LogWarning("No settings");
                         useDefaultDatabaseProp.boolValue = false;
+                        serializedObject.ApplyModifiedProperties();
                     }
                     else if (settings.DefaultCommandDatabase == null)
                     {
-                        Debug.LogWarning("No default comamnd database set in Preferences/TMPEffects");
+                        Debug.LogWarning("No default command database set in Preferences/TMPEffects");
                         useDefaultDatabaseProp.boolValue = false;
+                        serializedObject.ApplyModifiedProperties();
                     }
                     else
                     {
-                        databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
+                        databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
+                        serializedObject.ApplyModifiedProperties();
+                        writer.OnChangedDatabase();
                     }
                 }
-                else if (TMPEffectsSettingsProvider.IsSettingsAvailable() && databaseProp.objectReferenceValue != TMPEffectsSettings.Get().DefaultCommandDatabase)
-                {
-                    databaseProp.objectReferenceValue = TMPEffectsSettings.Get().DefaultCommandDatabase;
-                }
-
-                EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-                EditorGUI.EndDisabledGroup();
             }
             else
             {
-                EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+                TMPEffectsSettings settings = TMPEffectsSettings.Get();
+                if (settings != null && settings.DefaultCommandDatabase != databaseProp.objectReferenceValue)
+                {
+                    useDefaultDatabaseProp.boolValue = false;
+                    serializedObject.ApplyModifiedProperties();
+                }
             }
-            GUILayout.EndHorizontal();
 
-            if (EditorGUI.EndChangeCheck() || value != databaseProp.objectReferenceValue)
+            EditorGUI.BeginChangeCheck();
+            EditorGUI.BeginDisabledGroup(useDefaultDatabaseProp.boolValue);
+            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
+            EditorGUI.EndDisabledGroup();
+            if (EditorGUI.EndChangeCheck())
             {
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
             }
+            GUILayout.EndHorizontal();
 
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(sceneCommandsProp);
             if (EditorGUI.EndChangeCheck())
             {
+                // SerializedObservableDictionary does not raise events when the operations involves
+                // (de)serializing the actual object (as opposed to the contained objects).
+                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                // instead of instantly performing it.
+                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                // in Update of TMPAnimator.
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
             }
@@ -436,6 +488,8 @@ namespace TMPEffects.Editor
 
         void DrawCommandsFoldout()
         {
+            if (reset) ResetDatabase();
+
             databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Commands"), true);
             if (databaseProp.isExpanded)
             {

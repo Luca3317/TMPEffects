@@ -19,8 +19,6 @@ using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
-using System.Xml.Linq;
-using System;
 
 namespace TMPEffects.Components
 {
@@ -512,7 +510,7 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
 #if UNITY_EDITOR
-            if (preview && !Application.isPlaying) StopPreviewWithouSet();
+            if (preview && !Application.isPlaying) StopPreviewWithoutSet();
 #endif
 
             basicDatabase?.Dispose();
@@ -1489,8 +1487,12 @@ namespace TMPEffects.Components
 #pragma warning disable CS0414
         [SerializeField, HideInInspector] private bool preview = false;
         [SerializeField, HideInInspector] private bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] private bool initDatabase = false;
         [System.NonSerialized, HideInInspector] private float lastPreviewUpdateTime = 0f;
 #pragma warning restore CS0414
+
+        internal delegate void VoidHandler();
+        internal event VoidHandler OnResetComponent;
 
         internal void StartPreview()
         {
@@ -1501,7 +1503,7 @@ namespace TMPEffects.Components
             EditorApplication.update += UpdatePreview;
         }
 
-        internal void StopPreviewWithouSet()
+        internal void StopPreviewWithoutSet()
         {
             if (Mediator == null) return;
             EditorApplication.update -= UpdatePreview;
@@ -1545,6 +1547,19 @@ namespace TMPEffects.Components
 
             EditorApplication.QueuePlayerLoopUpdate();
             lastPreviewUpdateTime = Time.time;
+        }
+
+        private void Reset()
+        {
+            StopPreview();
+            if (enabled)
+            {
+                enabled = false;
+                EditorApplication.delayCall += () => this.enabled = true;
+                EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+            }
+
+            OnResetComponent?.Invoke();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)
