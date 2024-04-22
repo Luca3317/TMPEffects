@@ -1511,6 +1511,7 @@ namespace TMPEffects.Components
         internal void StopPreview()
         {
             if (Mediator == null) return;
+            Debug.Log("Called stopppreview with " + (Mediator != null));
             preview = false;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();
@@ -1545,6 +1546,17 @@ namespace TMPEffects.Components
 
             EditorApplication.QueuePlayerLoopUpdate();
             lastPreviewUpdateTime = Time.time;
+        }
+
+        private void Reset()
+        {
+            StopPreview();
+            if (enabled)
+            {
+                enabled = false;
+                EditorApplication.delayCall += () => this.enabled = true;
+            }
+            EditorApplication.QueuePlayerLoopUpdate();
         }
 
         internal string CheckDefaultString(TMPAnimationType type)
