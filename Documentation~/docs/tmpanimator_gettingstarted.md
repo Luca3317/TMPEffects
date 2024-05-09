@@ -29,7 +29,7 @@ You could modify the tag like so: <mark style="color: lightgray; background-colo
 </video>
 
 Try to play around with these two values to get something you like! Theres a lot more customization you can apply for almost all animation tags; a complete overview of all tags
-and their respective parameters can be found in [Built-in animations](tmpanimator_builtinanimations.md).
+and their respective parameters can be found in [Built-in animations](tmpanimator_builtinbasicanimations.md).
 
 
 ## Stacking animations
