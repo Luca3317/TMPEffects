@@ -897,6 +897,9 @@ namespace TMPEffects.TMPAnimations
             XPos = 10,
             YPos = 15,
 
+            WorldXPos = 20,
+            WorldYPos = 25,
+            WorldZPos = 30,
 
             // new
             Word,
@@ -914,42 +917,32 @@ namespace TMPEffects.TMPAnimations
                 case WaveOffsetType.Line: return cData.info.lineNumber;
                 case WaveOffsetType.Baseline: return cData.info.baseLine;
                 case WaveOffsetType.Word: return (cData.info.wordFirstIndex + cData.info.wordLastIndex) / 2f;
-
-                case WaveOffsetType.XPos:
-                    float pos = cData.InitialPosition.x;
-
-                    if (!context.AnimatorContext.ScaleAnimations)
-                        return pos / 10f;
-
-                    if (context.AnimatorContext.ScaleUniformly)
-                    {
-                        if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
-                        return pos / 10f;
-                    }
-                    else
-                    {
-                        if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
-                        return pos / 10f;
-                    }
-                case WaveOffsetType.YPos:
-                    pos = cData.InitialPosition.y;
-
-                    if (!context.AnimatorContext.ScaleAnimations)
-                        return pos / 10f;
-
-                    if (context.AnimatorContext.ScaleUniformly)
-                    {
-                        if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
-                        return pos / 10f;
-                    }
-                    else
-                    {
-                        if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
-                        return pos / 10f;
-                    }
+                  
+                case WaveOffsetType.WorldXPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
+                case WaveOffsetType.WorldYPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
+                case WaveOffsetType.WorldZPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
+                case WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
             throw new System.ArgumentException(nameof(type));
+
+            float ScalePos(float pos)
+            {
+                if (!context.AnimatorContext.ScaleAnimations)
+                    return pos / 10f;
+
+                if (context.AnimatorContext.ScaleUniformly)
+                {
+                    if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
+                    return pos / 10f;
+                }
+                else
+                {
+                    if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
+                    return pos / 10f;
+                }
+            }
         }
         #endregion
 
