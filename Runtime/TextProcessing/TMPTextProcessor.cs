@@ -88,6 +88,8 @@ namespace TMPEffects.TextProcessing
 
             TMP_StyleSheet sheet = TextComponent.styleSheet != null ? TextComponent.styleSheet : TMP_Settings.defaultStyleSheet;
 
+            if (string.IsNullOrEmpty(text)) return " ";
+
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
 using TMPEffects.Extensions;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
@@ -206,10 +204,6 @@ namespace TMPEffects.TextProcessing
             {
                 return false;
             }
-            if (closeIndex <= index + 1)
-            {
-                return false;
-            }
 
             return true;
         }
@@ -222,7 +216,8 @@ namespace TMPEffects.TextProcessing
         /// <returns>true if the the given string is a tag (of the given type, if supplied); otherwise false.</returns>
         public static bool IsTag(string tag, TagType type = TagType.Open | TagType.Close)
         {
-            if (tag.IndexOf('>') != tag.Length - 1) return false;
+            int endindex = tag.IndexOf('>');
+            if (endindex == -1 || endindex != tag.Length - 1) return false;
             return IsTag(tag, 0, tag.Length, type);
         }
 
@@ -239,11 +234,11 @@ namespace TMPEffects.TextProcessing
         /// <exception cref="System.ArgumentException"></exception>
         public static Dictionary<string, string> GetTagParametersDict(string tag)
         {
-            if (string.IsNullOrWhiteSpace(tag)) throw new System.ArgumentException(nameof(tag));
+            if (string.IsNullOrWhiteSpace(tag)) return new Dictionary<string, string>() { {"", ""} };
             tag = tag.Trim();
             if (tag[0] == '<')
             {
-                if (!IsTag(tag, TagType.Open)) throw new System.ArgumentException(nameof(tag));
+                if (!IsTag(tag/*, TagType.Open*/)) throw new System.ArgumentException(nameof(tag));
                 else tag = tag.Substring(1, tag.Length - 2);
             }
 
