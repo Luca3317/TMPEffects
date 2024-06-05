@@ -2,7 +2,6 @@ using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPCommands;
 using TMPEffects.Tags;
-using System.Diagnostics;
 
 namespace TMPEffects.EffectCategories
 {

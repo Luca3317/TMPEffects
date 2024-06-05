@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 using TMPEffects.Tags;
 
 namespace TMPEffects.TextProcessing

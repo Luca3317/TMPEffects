@@ -1,5 +1,4 @@
 using TMPEffects.TextProcessing;
-using TMPEffects.TMPEvents;
 using TMPEffects.Tags;
 
 namespace TMPEffects.EffectCategories
@@ -27,6 +26,7 @@ namespace TMPEffects.EffectCategories
         public override bool ValidateTag(TMPEffectTag tag)
         {
             if (tag.Prefix != Prefix) return false;
+            // TODO Should endindex != startindex also return false? If so, then same for index command tags
             return true;
         }
 
@@ -34,6 +34,7 @@ namespace TMPEffects.EffectCategories
         public override bool ValidateTag(ParsingUtility.TagInfo tagInfo)
         {
             if (tagInfo.prefix != Prefix) return false;
+            // TODO Should endindex != startindex also return false? If so, then same for index command tags
             return true;
         }
     }

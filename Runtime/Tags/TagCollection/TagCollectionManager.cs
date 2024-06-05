@@ -298,11 +298,11 @@ namespace TMPEffects.Tags.Collections
 
                         if (!union.SetOrder(current.Tag, current.Indices, lastOrder))
                         {
-                            Debug.LogWarning("Failed to set order in union; now undefined");
+                            Debug.LogError("Failed to set order in union; now undefined");
                         }
                         if (!(collections[prefixToKey[current.Tag.Prefix]] as NonAdjustingTagCollection).SetOrder(current.Tag, current.Indices, lastOrder))
                         {
-                            Debug.LogWarning("Failed to set order in subcollection; now undefined");
+                            Debug.LogError("Failed to set order in subcollection; now undefined");
                         }
                     }
                     else
@@ -330,6 +330,7 @@ namespace TMPEffects.Tags.Collections
                     {
                         Debug.LogError("Failed to add to union; now undefined");
                     }
+                    ValidateIndices(((TMPEffectTagTuple)args.NewItems[0]).Indices.StartIndex);
                     break;
 
                 case NotifyCollectionChangedAction.Remove:

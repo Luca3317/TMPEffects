@@ -85,8 +85,6 @@ public class TextProcessorTests
         Assert.AreEqual(0, basictagsss[0].Indices.EndIndex);
         Assert.AreEqual(0, basictagsss[0].Indices.OrderAtIndex);
 
-        yield break;
-
         text.SetText("<color=red><s><b></b><style=h3><wave></wave>");
         yield return null;
         var basictagss = animator.BasicTags.TagsAt(0).ToList();
