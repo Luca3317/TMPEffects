@@ -73,10 +73,7 @@ namespace TMPEffects.Tags.Collections
             if (collections.ContainsKey(key)) throw new System.ArgumentException(nameof(key));
             if (prefixToKey.ContainsKey(key.Prefix)) throw new System.ArgumentException(nameof(key.Prefix));
 
-            // TODO IMPORTANT
-
             ObservableTagCollection collection = new NonAdjustingTagCollection(key);
-            //ObservableTagCollection collection = new NonAdjustingTagCollection(key);
 
             collection.CollectionChanged += OnCollectionChanged;
             prefixToKey.Add(key.Prefix, key);
