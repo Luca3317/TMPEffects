@@ -139,14 +139,14 @@ namespace TMPEffects.Components
         [SerializeField] private float delay = 0.075f;
 
         [Tooltip("Whether the text may be skipped by default.")]
-        [SerializeField] private bool maySkip = false;
+        [SerializeField] private bool maySkip = true;
 
         [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnStart = true;
         [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnNewText = true;
         [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")]
-        [SerializeField] private bool useScaledTime = false;
+        [SerializeField] private bool useScaledTime = true;
 
         [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float whiteSpaceDelay;
@@ -179,24 +179,6 @@ namespace TMPEffects.Components
         [System.NonSerialized] private Coroutine writerCoroutine = null;
         [System.NonSerialized] private bool currentMaySkip;
         [System.NonSerialized] private Delays currentDelays;
-
-        private struct Delays
-        {
-            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
-            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
-            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
-            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
-
-            public float currentDelay;
-            public float currentWhitespaceDelay;
-            public DelayType currentWhitespaceDelayType;
-            public float currentLinebreakDelay;
-            public DelayType currentLinebreakDelayType;
-            public float currentPunctuationDelay;
-            public DelayType currentPunctuationDelayType;
-            public float currentVisibleDelay;
-            public DelayType currentVisibleDelayType;
-        }
 
         [System.NonSerialized] private bool shouldWait = false;
         [System.NonSerialized] private float waitAmount = 0f;
@@ -1259,6 +1241,24 @@ namespace TMPEffects.Components
         {
             Percentage,
             Raw
+        }
+
+        private struct Delays
+        {
+            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
+            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
+            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
+            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
+
+            public float currentDelay;
+            public float currentWhitespaceDelay;
+            public DelayType currentWhitespaceDelayType;
+            public float currentLinebreakDelay;
+            public DelayType currentLinebreakDelayType;
+            public float currentPunctuationDelay;
+            public DelayType currentPunctuationDelayType;
+            public float currentVisibleDelay;
+            public DelayType currentVisibleDelayType;
         }
 
         private void HideAllCharacters(bool skipAnimations = false)

@@ -39,11 +39,15 @@ namespace TMPEffects.Tags
         /// </summary>
         public int Length => IsOpen ? endIndex : endIndex - startIndex/* + 1*/;
         /// <summary>
+        /// Whether the tag is empty, i.e. doesn't contain any indices.
+        /// </summary>
+        public bool IsEmpty => startIndex == endIndex;
+        /// <summary>
         /// Whether the indices contain the given index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>true if the indices containg the given index; false otherwise.</returns>
-        public bool Contains(int index) => index >= startIndex && index < endIndex;
+        public bool Contains(int index) => !IsEmpty && index >= startIndex && index < endIndex;
         /// <summary>
         /// Enumeration of all contained indices.
         /// </summary>
@@ -66,6 +70,7 @@ namespace TMPEffects.Tags
         {
             if (startIndex < 0) throw new ArgumentOutOfRangeException(nameof(startIndex));
             if (endIndex < -1) throw new ArgumentOutOfRangeException(nameof(endIndex));
+            if (endIndex != -1 && endIndex < startIndex) throw new ArgumentOutOfRangeException(nameof(endIndex));
 
             this.startIndex = startIndex;
             this.endIndex = endIndex;
