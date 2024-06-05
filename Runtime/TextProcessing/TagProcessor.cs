@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 using TMPEffects.Tags;
 
 namespace TMPEffects.TextProcessing
@@ -68,6 +67,10 @@ namespace TMPEffects.TextProcessing
             TMPEffectTag tag;
             int endIndex;
             if (!validator.ValidateOpenTag(tagInfo, out tag, out endIndex)) return false;
+
+            // TODO I dont like this; potentially rework (split) ITMPTagValidator and its integration into TagProcessor
+            // Fix the end index
+            endIndex = endIndex == -1 ? -1 : endIndex - tagInfo.startIndex + textIndex;
 
             TMPEffectTagIndices indices = new TMPEffectTagIndices(textIndex, endIndex, orderAtIndex);
             KeyValuePair<TMPEffectTagIndices, TMPEffectTag> kvp = new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(indices, tag);

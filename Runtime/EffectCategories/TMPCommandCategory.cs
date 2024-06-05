@@ -2,7 +2,6 @@ using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPCommands;
 using TMPEffects.Tags;
-using System.Diagnostics;
 
 namespace TMPEffects.EffectCategories
 {
@@ -40,7 +39,7 @@ namespace TMPEffects.EffectCategories
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
             data = tag;
 
-            endIndex = command.TagType == TagType.Index ? tagInfo.startIndex + 1 : -1;
+            endIndex = command.TagType == TagType.Index ? tagInfo.startIndex : -1;
             return true;
         }
 

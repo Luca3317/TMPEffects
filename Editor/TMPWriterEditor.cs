@@ -40,6 +40,7 @@ namespace TMPEffects.Editor
         SerializedProperty onSkipWriterProp;
         SerializedProperty onFinishWriterProp;
         SerializedProperty maySkipProp;
+        SerializedProperty useScaledTimeProp;
         SerializedProperty sceneCommandsProp;
         SerializedProperty useDefaultDatabaseProp;
         SerializedProperty initDatabaseProp;
@@ -144,6 +145,7 @@ namespace TMPEffects.Editor
             onSkipWriterProp = serializedObject.FindProperty("OnSkipWriter");
             onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
             maySkipProp = serializedObject.FindProperty("maySkip");
+            useScaledTimeProp = serializedObject.FindProperty("useScaledTime");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
@@ -562,6 +564,7 @@ namespace TMPEffects.Editor
             EditorGUILayout.PropertyField(startOnPlayProp);
             EditorGUILayout.PropertyField(startOnNewTextProp);
             EditorGUILayout.PropertyField(maySkipProp);
+            EditorGUILayout.PropertyField(useScaledTimeProp);
 
             EditorGUILayout.Space(10);
             DrawCommandsFoldout();

@@ -143,7 +143,7 @@ namespace TMPEffects.Tags.Collections
         {
             List<TMPEffectTagTuple> removed = new List<TMPEffectTagTuple>();
             int first = BinarySearchIndexFirstIndexOf(new StartIndexOnly(startIndex));
-            if (first == -1) return 0;
+            if (first < 0) return 0;
 
             if (buffer != null)
             {

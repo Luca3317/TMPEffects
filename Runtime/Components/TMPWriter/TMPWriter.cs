@@ -84,6 +84,12 @@ namespace TMPEffects.Components
             set => writeOnNewText = value;
         }
 
+        public bool UseScaledTime
+        {
+            get => useScaledTime;
+            set => useScaledTime = value;
+        }
+
         // Events
         /// <summary>
         /// Raised when the TMPWriter reaches an event tag.
@@ -133,12 +139,14 @@ namespace TMPEffects.Components
         [SerializeField] private float delay = 0.075f;
 
         [Tooltip("Whether the text may be skipped by default.")]
-        [SerializeField] private bool maySkip = false;
+        [SerializeField] private bool maySkip = true;
 
         [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnStart = true;
         [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnNewText = true;
+        [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")]
+        [SerializeField] private bool useScaledTime = true;
 
         [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
         [SerializeField] private float whiteSpaceDelay;
@@ -169,28 +177,8 @@ namespace TMPEffects.Components
         [System.NonSerialized] private CachedCollection<CachedEvent> events;
 
         [System.NonSerialized] private Coroutine writerCoroutine = null;
-        //[System.NonSerialized] private float currentDelay;
         [System.NonSerialized] private bool currentMaySkip;
-
         [System.NonSerialized] private Delays currentDelays;
-
-        private struct Delays
-        {
-            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
-            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
-            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
-            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
-
-            public float currentDelay;
-            public float currentWhitespaceDelay;
-            public DelayType currentWhitespaceDelayType;
-            public float currentLinebreakDelay;
-            public DelayType currentLinebreakDelayType;
-            public float currentPunctuationDelay;
-            public DelayType currentPunctuationDelayType;
-            public float currentVisibleDelay;
-            public DelayType currentVisibleDelayType;
-        }
 
         [System.NonSerialized] private bool shouldWait = false;
         [System.NonSerialized] private float waitAmount = 0f;
@@ -746,6 +734,11 @@ namespace TMPEffects.Components
         {
             OnStartWriting();
 
+            // The accumulated excess waiting time (due to WaitForSeconds and frame-timing)
+            float excessWaitedTime = 0f;
+            float prevTime, tempTime;
+            bool prevScaled = useScaledTime;
+
             // This indicates the text is fully shown already
             if (currentIndex >= Mediator.CharData.Count)
             {
@@ -753,7 +746,8 @@ namespace TMPEffects.Components
                 yield break;
             }
 
-            // Reset all relevant variables
+            // If you begin writing from the very start of the text,
+            // reset all relevant variables
             if (currentIndex <= 0) ResetData();
 
             if (currentIndex == -1)
@@ -769,7 +763,10 @@ namespace TMPEffects.Components
 
                 invokable.Trigger();
 
-                if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                prevTime = useScaledTime ? Time.time : Time.unscaledTime;
+                if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                FixTimePost(waitAmount);
+
                 if (Mediator == null) yield break;
                 if (continueConditions != null) yield return HandleWaitConditions();
                 if (Mediator == null) yield break;
@@ -777,8 +774,9 @@ namespace TMPEffects.Components
 
             yield return null;
 
+            // Iterate over all characters / indices in the text
             CharData cData;
-            for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? because coroutines are not instantly cancelled (so disable writer => NRE)
+            for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? and other null checks because coroutines are not instantly cancelled (so disable writer => NRE)
             {
                 currentIndex = i;
                 cData = Mediator.CharData[i];
@@ -793,14 +791,26 @@ namespace TMPEffects.Components
 
                     invokable.Trigger();
 
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
+                    FixTimePre(ref waitAmount);
+                    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                    FixTimePost(waitAmount);
                     if (Mediator == null) yield break;
+
+                    // Wait until all wait conditions are true
                     if (continueConditions != null) yield return HandleWaitConditions();
                     if (Mediator == null) yield break;
                 }
 
-                // Calculate delay; do here to use accurate visibilitystate
+                // Calculate and wait for the delay for the current index, and accomodate for excess wait time (frame-timing)
                 float delay = CalculateDelay(i);
+                FixTimePre(ref delay);
+                if (delay > 0)
+                {
+                    yield return useScaledTime ? new WaitForSeconds(delay) : new WaitForSecondsRealtime(delay);
+                    if (Mediator == null) yield break;
+                }
+                FixTimePost(delay);
 
                 // Show the current character, if it is not already shown
                 VisibilityState vState = Mediator.VisibilityStates[i];
@@ -808,13 +818,6 @@ namespace TMPEffects.Components
                 {
                     RaiseCharacterShownEvent(cData);
                     Show(i, 1, false);
-                }
-
-                // Calculate and wait for the delay for the current index
-                if (delay > 0)
-                {
-                    yield return new WaitForSeconds(delay);
-                    if (Mediator == null) yield break;
                 }
             }
 
@@ -825,23 +828,47 @@ namespace TMPEffects.Components
                 yield break;
             }
 
-            invokables = GetInvokables(Mediator.CharData.Count);
-            foreach (var invokable in invokables)
-            {
-                waitAmount = 0f;
-                shouldWait = false;
-                continueConditions = null;
+            // TODO 
+            // This originally was required to raise commands/events at the very end
+            // of a text, e.g. "Lorem ipsum<?event>"
+            // Currently the preprocessor adds a space character to the end of every text
+            // (originally to fix a bug related to the TMP_Text not updating correctly for empty texts)
+            // If that changes, this will be required again!
+            //invokables = GetInvokables(Mediator.CharData.Count);
+            //foreach (var invokable in invokables)
+            //{
+            //    waitAmount = 0f;
+            //    shouldWait = false;
+            //    continueConditions = null;
 
-                invokable.Trigger();
+            //    invokable.Trigger();
 
-                if (shouldWait) yield return new WaitForSeconds(waitAmount);
-                if (Mediator == null) yield break;
-                if (continueConditions != null) yield return HandleWaitConditions();
-                if (Mediator == null) yield break;
-            }
+            //    FixTimePre(ref waitAmount);
+            //    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+
+            //    if (Mediator == null) yield break;
+            //    if (continueConditions != null) yield return HandleWaitConditions();
+            //    if (Mediator == null) yield break;
+            //}
 
             RaiseFinishWriterEvent();
             OnStopWriting();
+
+            // Fix excess time and passed in wait amount so both take each other into account
+            void FixTimePre(ref float time)
+            {
+                tempTime = time;
+                time = Mathf.Max(0f, time - excessWaitedTime);
+                excessWaitedTime = Mathf.Max(0f, excessWaitedTime - tempTime);
+                prevScaled = useScaledTime;
+                prevTime = useScaledTime ? Time.time : Time.unscaledTime;
+            }
+
+            // Fix excess time to account for the actual waited time
+            void FixTimePost(float time)
+            {
+                excessWaitedTime += (prevScaled ? Time.time : Time.unscaledTime) - prevTime - time;
+            }
         }
 
         private void ResetData()
@@ -1214,6 +1241,24 @@ namespace TMPEffects.Components
         {
             Percentage,
             Raw
+        }
+
+        private struct Delays
+        {
+            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
+            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
+            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
+            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
+
+            public float currentDelay;
+            public float currentWhitespaceDelay;
+            public DelayType currentWhitespaceDelayType;
+            public float currentLinebreakDelay;
+            public DelayType currentLinebreakDelayType;
+            public float currentPunctuationDelay;
+            public DelayType currentPunctuationDelayType;
+            public float currentVisibleDelay;
+            public DelayType currentVisibleDelayType;
         }
 
         private void HideAllCharacters(bool skipAnimations = false)

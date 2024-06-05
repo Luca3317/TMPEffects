@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using UnityEngine;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
 using System.Collections;
@@ -87,6 +86,8 @@ namespace TMPEffects.TextProcessing
             bool parse = true;
 
             TMP_StyleSheet sheet = TextComponent.styleSheet != null ? TextComponent.styleSheet : TMP_Settings.defaultStyleSheet;
+
+            if (string.IsNullOrEmpty(text)) return " ";
 
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {

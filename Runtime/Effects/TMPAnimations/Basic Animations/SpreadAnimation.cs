@@ -7,10 +7,6 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    // TODO 
-    // Maybe rename variables shring/growanchor/direction to up/downanchor/direction to
-    // be more in line with wave parameter names?
-
     [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Spread")]
     public class SpreadAnimation : TMPAnimation
     {

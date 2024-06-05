@@ -75,7 +75,6 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// The mesh of the character.
         /// </summary>
-        // TODO Should this not be readonly? making it readonly seems to break all animations, somehow
         public readonly VertexData mesh;
 
         /// <summary>
