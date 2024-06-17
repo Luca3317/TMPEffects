@@ -37,6 +37,7 @@ namespace TMPEffects.Components
     /// <br/>
     /// You may control when the animations are updated by setting <see cref="UpdateFrom"/> to <see cref="UpdateFrom.Script"/> and calling <see cref="UpdateAnimations(float)"/>.<br/>
     /// </remarks>
+    [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpanimator.html")]
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
     {
