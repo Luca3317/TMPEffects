@@ -48,7 +48,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimator
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 40
+    startLine: 39
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -244,7 +244,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsAnimating
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 50
+    startLine: 49
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -278,7 +278,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Database
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 56
+    startLine: 55
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -309,7 +309,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateFrom
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 61
+    startLine: 60
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -340,7 +340,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tags
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 66
+    startLine: 65
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -371,7 +371,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BasicTags
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 70
+    startLine: 69
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -402,7 +402,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowTags
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 74
+    startLine: 73
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -433,7 +433,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HideTags
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 78
+    startLine: 77
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -464,7 +464,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimateOnStart
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 83
+    startLine: 82
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -495,7 +495,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationsOverride
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 87
+    startLine: 86
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -526,7 +526,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ANIMATION_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 92
+    startLine: 91
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -555,7 +555,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SHOW_ANIMATION_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 96
+    startLine: 95
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -584,7 +584,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HIDE_ANIMATION_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 100
+    startLine: 99
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -613,7 +613,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateAnimations
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 186
+    startLine: 185
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -652,7 +652,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StartAnimating
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 215
+    startLine: 214
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -685,7 +685,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StopAnimating
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 244
+    startLine: 243
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -718,7 +718,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetAnimations
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 288
+    startLine: 287
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -746,7 +746,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetUpdateFrom
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 296
+    startLine: 295
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -778,7 +778,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 310
+    startLine: 309
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -810,7 +810,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDefaultShowString
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 320
+    startLine: 319
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -842,7 +842,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDefaultHideString
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 332
+    startLine: 331
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -874,7 +874,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedCharacters
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 346
+    startLine: 345
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -918,7 +918,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedBasicCharacters
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 363
+    startLine: 362
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -956,7 +956,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedShowCharacters
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 383
+    startLine: 382
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -994,7 +994,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedHideCharacters
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 403
+    startLine: 402
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1032,7 +1032,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcluded
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 426
+    startLine: 425
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1077,7 +1077,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedBasic
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 441
+    startLine: 440
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1115,7 +1115,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedShow
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 447
+    startLine: 446
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1153,7 +1153,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedHide
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 453
+    startLine: 452
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1191,7 +1191,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetTime
     path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 458
+    startLine: 457
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components

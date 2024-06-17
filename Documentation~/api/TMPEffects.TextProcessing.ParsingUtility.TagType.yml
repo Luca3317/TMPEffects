@@ -21,7 +21,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 21
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -61,7 +61,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Open
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 24
+    startLine: 22
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -87,7 +87,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Close
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 25
+    startLine: 23
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

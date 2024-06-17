@@ -5,6 +5,7 @@ items:
   id: TMPMediator
   parent: TMPEffects.Components.Mediator
   children:
+  - TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
   - TMPEffects.Components.Mediator.TMPMediator.CharData
   - TMPEffects.Components.Mediator.TMPMediator.Dispose
   - TMPEffects.Components.Mediator.TMPMediator.ForceReprocess
@@ -521,7 +522,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 216
+    startLine: 218
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -564,7 +565,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 225
+    startLine: 227
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -606,7 +607,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 231
+    startLine: 233
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -620,6 +621,35 @@ items:
   nameWithType.vb: TMPMediator.SetText(String)
   fullName.vb: TMPEffects.Components.Mediator.TMPMediator.SetText(String)
   name.vb: SetText(String)
+- uid: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
+  id: ApplyMesh(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Mediator.TMPMediator
+  langs:
+  - csharp
+  - vb
+  name: ApplyMesh(CharData)
+  nameWithType: TMPMediator.ApplyMesh(CharData)
+  fullName: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Runtime/Components/TMPMediator/TMPMediator.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ApplyMesh
+    path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
+    startLine: 401
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components.Mediator
+  syntax:
+    content: public void ApplyMesh(CharData cData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    content.vb: Public Sub ApplyMesh(cData As CharData)
+  overload: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*
 references:
 - uid: TMPEffects.Components.Mediator
   commentId: N:TMPEffects.Components.Mediator
@@ -1315,3 +1345,9 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*
+  commentId: Overload:TMPEffects.Components.Mediator.TMPMediator.ApplyMesh
+  href: TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_TMPEffects_CharacterData_CharData_
+  name: ApplyMesh
+  nameWithType: TMPMediator.ApplyMesh
+  fullName: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh

@@ -1237,7 +1237,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetWaveOffset
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 906
+    startLine: 909
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -1272,7 +1272,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetToCharacter
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 955
+    startLine: 948
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -1307,7 +1307,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetValue
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 985
+    startLine: 978
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations

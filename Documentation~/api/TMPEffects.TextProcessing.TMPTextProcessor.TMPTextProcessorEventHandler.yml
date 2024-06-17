@@ -19,7 +19,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPTextProcessorEventHandler
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 26
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

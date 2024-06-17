@@ -528,7 +528,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: mesh
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 78
+    startLine: 77
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -557,7 +557,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: initialMesh
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 83
+    startLine: 82
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -588,7 +588,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 87
+    startLine: 86
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -617,7 +617,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 91
+    startLine: 90
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -646,7 +646,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 95
+    startLine: 94
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -675,7 +675,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 103
+    startLine: 102
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -709,7 +709,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 118
+    startLine: 117
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -745,7 +745,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVertex
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 140
+    startLine: 139
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -783,7 +783,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddVertexDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 150
+    startLine: 149
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -821,7 +821,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 159
+    startLine: 158
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -853,7 +853,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPositionDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 168
+    startLine: 167
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -885,7 +885,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPivot
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 178
+    startLine: 177
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -920,7 +920,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPivotDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 187
+    startLine: 186
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -955,7 +955,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 196
+    startLine: 195
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -987,7 +987,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 206
+    startLine: 205
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1019,7 +1019,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 214
+    startLine: 213
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1047,7 +1047,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 226
+    startLine: 225
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1075,7 +1075,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 230
+    startLine: 229
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1103,7 +1103,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 234
+    startLine: 233
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1131,7 +1131,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPivot
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 238
+    startLine: 237
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1159,7 +1159,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetVertices
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 242
+    startLine: 241
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1187,7 +1187,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetUVs
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 246
+    startLine: 245
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1215,7 +1215,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetColors
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 250
+    startLine: 249
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData

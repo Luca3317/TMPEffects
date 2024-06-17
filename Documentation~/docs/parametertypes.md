@@ -27,7 +27,7 @@ This is an overview of how to correctly format the different parameter types in 
 - int: Just a plain integer number
     - <mark style="color: lightgray; background-color: #191a18">12</mark>  
 - bool: Either <mark style="color: lightgray; background-color: #191a18">true</mark> or <mark style="color: lightgray; background-color: #191a18">false</mark>  
-- Color: Colors may be defined either in HEX format, HSV format or RGB(A) format. In addition to that, there are bunch of [keywords](../api/TMPEffects.TextProcessing.ParsingUtility.ColorKeyWords.yml)
+- Color: Colors may be defined either in HEX format, HSV format or RGB(A) format. In addition to that, there are a bunch of supported keywords
     - <mark style="color: lightgray; background-color: #191a18">#DEADBEEF</mark>,<mark style="color: lightgray; background-color: #191a18">hsv(0.3,64,52)</mark>, <mark style="color: lightgray; background-color: #191a18">rgb(0,0.5,0.5)</mark>, <mark style="color: lightgray; background-color: #191a18">indigo</mark>  
 - Vector2: Two bracketed floats, separated by comma
     - <mark style="color: lightgray; background-color: #191a18">(0.3, 22.4)</mark>  

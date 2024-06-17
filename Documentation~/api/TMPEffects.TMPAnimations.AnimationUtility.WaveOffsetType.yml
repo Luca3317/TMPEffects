@@ -10,6 +10,9 @@ items:
   - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
   - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.SegmentIndex
   - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldXPos
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldYPos
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldZPos
   - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.XPos
   - TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.YPos
   langs:
@@ -137,6 +140,84 @@ items:
     content: YPos = 15
     return:
       type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldXPos
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldXPos
+  id: WorldXPos
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldXPos
+  nameWithType: AnimationUtility.WaveOffsetType.WorldXPos
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldXPos
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldXPos
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 899
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: WorldXPos = 20
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldYPos
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldYPos
+  id: WorldYPos
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldYPos
+  nameWithType: AnimationUtility.WaveOffsetType.WorldYPos
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldYPos
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldYPos
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 900
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: WorldYPos = 25
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldZPos
+  commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldZPos
+  id: WorldZPos
+  parent: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldZPos
+  nameWithType: AnimationUtility.WaveOffsetType.WorldZPos
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.WorldZPos
+  type: Field
+  source:
+    remote:
+      path: Runtime/Effects/TMPAnimations/AnimationUtility.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldZPos
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
+    startLine: 901
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: WorldZPos = 30
+    return:
+      type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
 - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
   commentId: F:TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Word
   id: Word
@@ -155,12 +236,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Word
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 901
+    startLine: 904
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
-    content: Word = 16
+    content: Word = 31
     return:
       type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
 - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Line
@@ -181,12 +262,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Line
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 902
+    startLine: 905
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
-    content: Line = 17
+    content: Line = 32
     return:
       type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
 - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType.Baseline
@@ -207,12 +288,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Baseline
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 903
+    startLine: 906
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
   syntax:
-    content: Baseline = 18
+    content: Baseline = 33
     return:
       type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
 references:

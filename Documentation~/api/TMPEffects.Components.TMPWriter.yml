@@ -36,6 +36,7 @@ items:
   - TMPEffects.Components.TMPWriter.StartWriter
   - TMPEffects.Components.TMPWriter.StopWriter
   - TMPEffects.Components.TMPWriter.Tags
+  - TMPEffects.Components.TMPWriter.UseScaledTime
   - TMPEffects.Components.TMPWriter.Wait(System.Single)
   - TMPEffects.Components.TMPWriter.WaitUntil(System.Func{System.Boolean})
   - TMPEffects.Components.TMPWriter.WriteOnNewText
@@ -508,6 +509,35 @@ items:
       type: System.Boolean
     content.vb: Public Property WriteOnNewText As Boolean
   overload: TMPEffects.Components.TMPWriter.WriteOnNewText*
+- uid: TMPEffects.Components.TMPWriter.UseScaledTime
+  commentId: P:TMPEffects.Components.TMPWriter.UseScaledTime
+  id: UseScaledTime
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: UseScaledTime
+  nameWithType: TMPWriter.UseScaledTime
+  fullName: TMPEffects.Components.TMPWriter.UseScaledTime
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: UseScaledTime
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 86
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool UseScaledTime { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseScaledTime As Boolean
+  overload: TMPEffects.Components.TMPWriter.UseScaledTime*
 - uid: TMPEffects.Components.TMPWriter.OnTextEvent
   commentId: F:TMPEffects.Components.TMPWriter.OnTextEvent
   id: OnTextEvent
@@ -526,7 +556,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnTextEvent
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 90
+    startLine: 96
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -555,7 +585,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnCharacterShown
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 94
+    startLine: 100
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -584,7 +614,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 98
+    startLine: 104
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -613,7 +643,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStopWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 102
+    startLine: 108
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -642,7 +672,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnFinishWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 106
+    startLine: 112
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -671,7 +701,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnSkipWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 110
+    startLine: 116
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -700,7 +730,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 115
+    startLine: 121
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -732,7 +762,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: COMMAND_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 120
+    startLine: 126
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -761,7 +791,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EVENT_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 124
+    startLine: 130
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -790,7 +820,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 208
+    startLine: 196
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -818,7 +848,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StopWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 227
+    startLine: 215
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -849,7 +879,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 247
+    startLine: 235
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -880,7 +910,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 276
+    startLine: 264
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -920,7 +950,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SkipWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 317
+    startLine: 305
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -959,7 +989,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RestartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 358
+    startLine: 346
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -990,7 +1020,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Wait
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 377
+    startLine: 365
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1029,7 +1059,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitPeriod
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 394
+    startLine: 382
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1055,7 +1085,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WaitUntil
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 404
+    startLine: 392
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1090,7 +1120,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitConditions
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 412
+    startLine: 400
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1116,7 +1146,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDelay
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 421
+    startLine: 409
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1151,7 +1181,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetWhitespaceDelay
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 426
+    startLine: 414
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1185,7 +1215,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetLinebreakDelay
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 432
+    startLine: 420
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1219,7 +1249,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibleDelay
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 438
+    startLine: 426
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1253,7 +1283,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPunctuationDelay
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 444
+    startLine: 432
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1287,7 +1317,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetSkippable
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 454
+    startLine: 442
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1322,7 +1352,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 465
+    startLine: 453
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -6168,6 +6198,12 @@ references:
   name: WriteOnNewText
   nameWithType: TMPWriter.WriteOnNewText
   fullName: TMPEffects.Components.TMPWriter.WriteOnNewText
+- uid: TMPEffects.Components.TMPWriter.UseScaledTime*
+  commentId: Overload:TMPEffects.Components.TMPWriter.UseScaledTime
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_UseScaledTime
+  name: UseScaledTime
+  nameWithType: TMPWriter.UseScaledTime
+  fullName: TMPEffects.Components.TMPWriter.UseScaledTime
 - uid: UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   commentId: T:UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   parent: UnityEngine.Events

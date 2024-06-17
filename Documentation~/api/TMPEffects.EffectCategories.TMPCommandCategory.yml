@@ -25,7 +25,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPCommandCategory
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 11
+    startLine: 10
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -71,7 +71,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -105,7 +105,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -144,7 +144,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -187,7 +187,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateOpenTag
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 27
+    startLine: 26
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -236,7 +236,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 47
+    startLine: 46
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -272,7 +272,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPCommandCategory.cs
-    startLine: 56
+    startLine: 55
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories

@@ -620,7 +620,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/CharData/Info.cs
-    startLine: 120
+    startLine: 135
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData

@@ -25,7 +25,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 10
+    startLine: 9
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -61,7 +61,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ProcessedTags
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -90,7 +90,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ALL_KEYWORD
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 20
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -119,7 +119,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: MOST_RECENT_KEYWORD
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -148,7 +148,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 26
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -180,7 +180,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Process
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 40
+    startLine: 39
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -224,7 +224,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TagProcessor.cs
-    startLine: 49
+    startLine: 48
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

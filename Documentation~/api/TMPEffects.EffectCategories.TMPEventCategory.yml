@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEventCategory
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 9
+    startLine: 8
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -66,7 +66,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 11
+    startLine: 10
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -98,7 +98,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateOpenTag
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories
@@ -147,7 +147,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
     path: ../Assets/TMPEffects/Runtime/EffectCategories/TMPEventCategory.cs
-    startLine: 26
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects.EffectCategories

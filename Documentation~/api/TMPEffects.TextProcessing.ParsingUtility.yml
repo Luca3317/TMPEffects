@@ -36,7 +36,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ParsingUtility
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 15
+    startLine: 13
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -73,7 +73,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNextTag
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 83
+    startLine: 81
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -120,7 +120,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryParseTag
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 127
+    startLine: 125
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -170,7 +170,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 173
+    startLine: 171
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -216,7 +216,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 222
+    startLine: 216
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -257,7 +257,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetTagParametersDict
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 239
+    startLine: 234
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -291,7 +291,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToInt
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 371
+    startLine: 366
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -329,7 +329,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToFloat
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 385
+    startLine: 380
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -367,7 +367,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToBool
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 399
+    startLine: 394
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -405,7 +405,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 416
+    startLine: 411
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -443,7 +443,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector3
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 454
+    startLine: 449
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -481,7 +481,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2Offset
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 506
+    startLine: 501
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -519,7 +519,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector3Offset
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 527
+    startLine: 522
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -557,7 +557,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnchor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 548
+    startLine: 543
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -597,7 +597,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnimationCurve
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 583
+    startLine: 578
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -635,7 +635,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToWaveOffsetType
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 615
+    startLine: 610
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -673,7 +673,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToColor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 656
+    startLine: 651
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -711,7 +711,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ColorKeyWords
     path: ../Assets/TMPEffects/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 823
+    startLine: 818
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

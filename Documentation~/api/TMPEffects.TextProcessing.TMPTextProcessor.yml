@@ -31,7 +31,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPTextProcessor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 16
+    startLine: 15
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -78,7 +78,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TextComponent
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -109,7 +109,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessors
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -142,7 +142,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BeginPreProcess
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 30
+    startLine: 29
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -171,7 +171,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishPreProcess
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 34
+    startLine: 33
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -200,7 +200,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BeginAdjustIndices
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 38
+    startLine: 37
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -229,7 +229,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishAdjustIndices
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 42
+    startLine: 41
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -258,7 +258,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 44
+    startLine: 43
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -290,7 +290,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddProcessor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 53
+    startLine: 52
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -344,7 +344,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveProcessor
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 55
+    startLine: 54
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -387,7 +387,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 57
+    startLine: 56
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -418,7 +418,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PreprocessText
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 67
+    startLine: 66
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing
@@ -463,7 +463,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustIndices
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 262
+    startLine: 263
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

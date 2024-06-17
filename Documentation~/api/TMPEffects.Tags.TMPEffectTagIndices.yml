@@ -13,6 +13,7 @@ items:
   - TMPEffects.Tags.TMPEffectTagIndices.Equals(System.Object)
   - TMPEffects.Tags.TMPEffectTagIndices.Equals(TMPEffects.Tags.TMPEffectTagIndices)
   - TMPEffects.Tags.TMPEffectTagIndices.GetHashCode
+  - TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
   - TMPEffects.Tags.TMPEffectTagIndices.IsOpen
   - TMPEffects.Tags.TMPEffectTagIndices.Length
   - TMPEffects.Tags.TMPEffectTagIndices.OrderAtIndex
@@ -35,7 +36,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTagIndices
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 12
+    startLine: 10
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -75,7 +76,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StartIndex
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 17
+    startLine: 15
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -106,7 +107,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EndIndex
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 21
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -137,7 +138,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OrderAtIndex
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 28
+    startLine: 26
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -175,7 +176,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsOpen
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 34
+    startLine: 32
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -209,7 +210,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Length
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 39
+    startLine: 37
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -225,6 +226,37 @@ items:
       type: System.Int32
     content.vb: Public ReadOnly Property Length As Integer
   overload: TMPEffects.Tags.TMPEffectTagIndices.Length*
+- uid: TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
+  commentId: P:TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
+  id: IsEmpty
+  parent: TMPEffects.Tags.TMPEffectTagIndices
+  langs:
+  - csharp
+  - vb
+  name: IsEmpty
+  nameWithType: TMPEffectTagIndices.IsEmpty
+  fullName: TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
+  type: Property
+  source:
+    remote:
+      path: Runtime/Tags/TMPEffectTagIndices.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: IsEmpty
+    path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
+    startLine: 41
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Tags
+  summary: Whether the tag is empty, i.e. doesn't contain any indices.
+  example: []
+  syntax:
+    content: public bool IsEmpty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsEmpty As Boolean
+  overload: TMPEffects.Tags.TMPEffectTagIndices.IsEmpty*
 - uid: TMPEffects.Tags.TMPEffectTagIndices.Contains(System.Int32)
   commentId: M:TMPEffects.Tags.TMPEffectTagIndices.Contains(System.Int32)
   id: Contains(System.Int32)
@@ -243,7 +275,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 45
+    startLine: 47
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -281,7 +313,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainedIndices
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 49
+    startLine: 51
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -312,7 +344,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 64
+    startLine: 66
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -348,7 +380,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CompareTo
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 84
+    startLine: 87
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -393,7 +425,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: op_Equality
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 91
+    startLine: 94
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -429,7 +461,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: op_Inequality
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 96
+    startLine: 99
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -465,7 +497,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: op_GreaterThan
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 101
+    startLine: 104
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -501,7 +533,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: op_LessThan
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 106
+    startLine: 109
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -537,7 +569,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 111
+    startLine: 114
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -573,7 +605,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 119
+    startLine: 122
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -607,7 +639,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetHashCode
     path: ../Assets/TMPEffects/Runtime/Tags/TMPEffectTagIndices.cs
-    startLine: 124
+    startLine: 127
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Tags
@@ -997,6 +1029,12 @@ references:
   name: Length
   nameWithType: TMPEffectTagIndices.Length
   fullName: TMPEffects.Tags.TMPEffectTagIndices.Length
+- uid: TMPEffects.Tags.TMPEffectTagIndices.IsEmpty*
+  commentId: Overload:TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
+  href: TMPEffects.Tags.TMPEffectTagIndices.html#TMPEffects_Tags_TMPEffectTagIndices_IsEmpty
+  name: IsEmpty
+  nameWithType: TMPEffectTagIndices.IsEmpty
+  fullName: TMPEffects.Tags.TMPEffectTagIndices.IsEmpty
 - uid: TMPEffects.Tags.TMPEffectTagIndices.Contains*
   commentId: Overload:TMPEffects.Tags.TMPEffectTagIndices.Contains
   href: TMPEffects.Tags.TMPEffectTagIndices.html#TMPEffects_Tags_TMPEffectTagIndices_Contains_System_Int32_

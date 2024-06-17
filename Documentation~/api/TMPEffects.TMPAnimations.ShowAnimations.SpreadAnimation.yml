@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SpreadAnimation
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/SpreadAnimation.cs
-    startLine: 13
+    startLine: 9
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
@@ -132,7 +132,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/SpreadAnimation.cs
-    startLine: 36
+    startLine: 32
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
@@ -168,7 +168,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/SpreadAnimation.cs
-    startLine: 125
+    startLine: 121
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
@@ -207,7 +207,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/SpreadAnimation.cs
-    startLine: 144
+    startLine: 140
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations
@@ -249,7 +249,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/Basic Animations/SpreadAnimation.cs
-    startLine: 163
+    startLine: 159
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations.ShowAnimations

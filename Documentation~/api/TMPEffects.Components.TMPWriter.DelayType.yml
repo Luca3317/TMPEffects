@@ -21,7 +21,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DelayType
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1192
+    startLine: 1239
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -46,7 +46,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Percentage
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1194
+    startLine: 1241
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -72,7 +72,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Raw
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1195
+    startLine: 1242
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
