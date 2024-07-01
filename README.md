@@ -41,6 +41,9 @@ https://github.com/Luca3317/TMPEffects.git
 
 If you don't know how to install packages using git urls, see the [docs](https://luca3317.github.io/TMPEffects-Pages/docs/installation.html).
 
+If you instead want to simply clone the repository,  
+you will have to manually import the required resources located under Assets > TMPEffects > Resources.
+
 ## Documentation
 The full documentation can be found [here](https://luca3317.github.io/TMPEffects-Pages/docs/introduction.html)
 
