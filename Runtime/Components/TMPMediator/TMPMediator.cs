@@ -329,6 +329,7 @@ namespace TMPEffects.Components.Mediator
         {
             charData.Clear();
 
+            int wordIndex;
             TMP_TextInfo info = Text.textInfo;
             CharData data;
             TMP_WordInfo? wordInfo;
@@ -336,6 +337,7 @@ namespace TMPEffects.Components.Mediator
             {
                 var cInfo = info.characterInfo[i];
                 wordInfo = null;
+                wordIndex = -1;
 
                 if (cInfo.isVisible)
                 {
@@ -344,12 +346,13 @@ namespace TMPEffects.Components.Mediator
                         wordInfo = info.wordInfo[j];
                         if (wordInfo.Value.firstCharacterIndex <= i && wordInfo.Value.lastCharacterIndex >= i)
                         {
+                            wordIndex = j;
                             break;
                         }
                     }
                 }
 
-                data = wordInfo == null ? new CharData(i, cInfo) : new CharData(i, cInfo, wordInfo.Value);
+                data = wordInfo == null ? new CharData(i, cInfo, wordIndex) : new CharData(i, cInfo, wordIndex, wordInfo.Value);
                 charData.Add(data);
             }
 

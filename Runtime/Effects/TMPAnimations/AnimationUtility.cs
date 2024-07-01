@@ -916,8 +916,8 @@ namespace TMPEffects.TMPAnimations
 
                 case WaveOffsetType.Line: return cData.info.lineNumber;
                 case WaveOffsetType.Baseline: return cData.info.baseLine;
-                case WaveOffsetType.Word: return (cData.info.wordFirstIndex + cData.info.wordLastIndex) / 2f;
-                  
+                case WaveOffsetType.Word: return cData.info.wordNumber;
+
                 case WaveOffsetType.WorldXPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
                 case WaveOffsetType.WorldYPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
                 case WaveOffsetType.WorldZPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);

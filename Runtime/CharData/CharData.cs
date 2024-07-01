@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using TMPEffects.Components.Mediator;
 
 namespace TMPEffects.CharacterData
 {
@@ -10,7 +9,7 @@ namespace TMPEffects.CharacterData
     /// <see cref="TMP_CharacterInfo"/>, accessible through the <see cref="info"/> field,
     /// also holds <see cref="TMPEffects"/> specific data and methods to manipulate said data.
     /// </summary>
-    public class CharData
+    public partial class CharData
     {
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
@@ -100,11 +99,11 @@ namespace TMPEffects.CharacterData
         private Vector3 pivot;
         #endregion 
 
-        public CharData(int index, TMP_CharacterInfo cInfo)
+        public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
-            info = new Info(index, cInfo);
+            info = new Info(index, cInfo, wordIndex);
 
             InitialRotation = defaultRotation;
             InitialScale = defaultScale;
@@ -115,11 +114,11 @@ namespace TMPEffects.CharacterData
             scale = defaultScale;
             pivot = InitialPosition;
         }
-        public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
+        public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo? wInfo = null)
         {
             VertexData vData = new VertexData(cInfo);
             mesh = vData;
-            info = wInfo == null ? new Info(index, cInfo) : new Info(index, cInfo, wInfo.Value);
+            info = wInfo == null ? new Info(index, cInfo, wordIndex) : new Info(index, cInfo, wordIndex, wInfo.Value);
 
             InitialRotation = defaultRotation;
             InitialScale = defaultScale;
