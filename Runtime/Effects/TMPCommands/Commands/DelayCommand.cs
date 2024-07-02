@@ -32,18 +32,22 @@ namespace TMPEffects.TMPCommands.Commands
 
             if (ParameterUtility.TryGetDefinedParameter(out string str, args.tag.Parameters, "for"))
             {
-                if (!ParameterUtility.TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
-                    throw new System.InvalidOperationException();
-
                 TMPWriter.DelayType type;
-                switch (args.tag.Parameters[typestr])
+                if (!ParameterUtility.TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
                 {
-                    case "raw": type = TMPWriter.DelayType.Raw; break;
-                    case "percentage":
-                    case "pct":
-                    case "%": type = TMPWriter.DelayType.Percentage; break;
+                    type = TMPWriter.DelayType.Raw;
+                }
+                else
+                {
+                    switch (args.tag.Parameters[typestr])
+                    {
+                        case "raw": type = TMPWriter.DelayType.Raw; break;
+                        case "percentage":
+                        case "pct":
+                        case "%": type = TMPWriter.DelayType.Percentage; break;
 
-                    default: type = TMPWriter.DelayType.Raw; break;
+                        default: type = TMPWriter.DelayType.Raw; break;
+                    }
                 }
 
                 switch (args.tag.Parameters[str])
