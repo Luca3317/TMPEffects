@@ -844,7 +844,6 @@ namespace TMPEffects.Components
             currentDelays.visibleDelay = delays.visibleDelay;
             currentDelays.visibleDelayType = delays.visibleDelayType;
 
-            //currentDelay = delay;
             currentMaySkip = maySkip;
         }
 
@@ -869,8 +868,6 @@ namespace TMPEffects.Components
 
         private float CalculateDelay(int index)
         {
-            if (currentDelays.delay <= 0) return 0;
-
             CharData cData = Mediator.CharData[index];
 
             // If character is invisible (=> is whitespace)
@@ -881,10 +878,6 @@ namespace TMPEffects.Components
                 {
                     return Mathf.Max(currentDelays.CalculatedLinebreakDelay, 0);
                 }
-                //if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
-                //{
-                //    return Mathf.Max(currentDelay * LinebreakDelay);
-                //}
 
                 return Mathf.Max(currentDelays.CalculatedWhiteSpaceDelay, 0);
             }
