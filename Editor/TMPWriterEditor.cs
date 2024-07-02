@@ -124,15 +124,16 @@ namespace TMPEffects.Editor
         {
             // Cache properties
             databaseProp = serializedObject.FindProperty("database");
-            delayProp = serializedObject.FindProperty("delay");
-            punctuationDelayProp = serializedObject.FindProperty("punctuationDelay");
-            whitespaceDelayProp = serializedObject.FindProperty("whiteSpaceDelay");
-            visibleDelayProp = serializedObject.FindProperty("visibleDelay");
-            linebreakDelayProp = serializedObject.FindProperty("linebreakDelay");
-            whitespaceDelayTypeProp = serializedObject.FindProperty("whiteSpaceDelayType");
-            visibleDelayTypeProp = serializedObject.FindProperty("visibleDelayType");
-            punctuationDelayTypeProp = serializedObject.FindProperty("punctuationDelayType");
-            linebreakDelayTypeProp = serializedObject.FindProperty("linebreakDelayType");
+            SerializedProperty delaysProp = serializedObject.FindProperty("delays");
+            delayProp = delaysProp.FindPropertyRelative("delay");
+            punctuationDelayProp = delaysProp.FindPropertyRelative("punctuationDelay");
+            whitespaceDelayProp = delaysProp.FindPropertyRelative("whitespaceDelay");
+            visibleDelayProp = delaysProp.FindPropertyRelative("visibleDelay");
+            linebreakDelayProp = delaysProp.FindPropertyRelative("linebreakDelay");
+            whitespaceDelayTypeProp = delaysProp.FindPropertyRelative("whitespaceDelayType");
+            visibleDelayTypeProp = delaysProp.FindPropertyRelative("visibleDelayType");
+            punctuationDelayTypeProp = delaysProp.FindPropertyRelative("punctuationDelayType");
+            linebreakDelayTypeProp = delaysProp.FindPropertyRelative("linebreakDelayType");
             startOnPlayProp = serializedObject.FindProperty("writeOnStart");
             startOnNewTextProp = serializedObject.FindProperty("writeOnNewText");
             eventsEnabledProp = serializedObject.FindProperty("eventsEnabled");
@@ -303,7 +304,6 @@ namespace TMPEffects.Editor
             {
                 yield return null;
                 passed += Time.deltaTime;
-
                 EditorApplication.QueuePlayerLoopUpdate();
             }
 

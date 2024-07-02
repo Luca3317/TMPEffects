@@ -91,6 +91,9 @@ namespace TMPEffects.Components
             set => useScaledTime = value;
         }
 
+        public Delays DefaultDelays => delays;
+        public Delays CurrentDelays => currentDelays;
+
         // Events
         /// <summary>
         /// Raised when the TMPWriter reaches an event tag.
@@ -136,8 +139,8 @@ namespace TMPEffects.Components
         [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")]
         [SerializeField] TMPCommandDatabase database;
 
-        [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
-        [SerializeField] private float delay = 0.075f;
+        //[Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
+        //[SerializeField] private float delay = 0.075f;
 
         [Tooltip("Whether the text may be skipped by default.")]
         [SerializeField] private bool maySkip = true;
@@ -149,18 +152,7 @@ namespace TMPEffects.Components
         [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")]
         [SerializeField] private bool useScaledTime = true;
 
-        [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
-        [SerializeField] private float whiteSpaceDelay;
-        [SerializeField] private DelayType whiteSpaceDelayType;
-        [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
-        [SerializeField] private float punctuationDelay;
-        [SerializeField] private DelayType punctuationDelayType;
-        [Tooltip("The delay after already visible characters, either as percentage of the general delay or in seconds")]
-        [SerializeField] private float visibleDelay;
-        [SerializeField] private DelayType visibleDelayType;
-        [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
-        [SerializeField] private float linebreakDelay;
-        [SerializeField] private DelayType linebreakDelayType;
+        [SerializeField] private Delays delays = new Delays();
 
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
@@ -402,39 +394,6 @@ namespace TMPEffects.Components
         public void ResetWaitConditions()
         {
             continueConditions = null;
-        }
-
-        /// <summary>
-        /// Set the current delay of the writer.
-        /// </summary>
-        /// <param name="delay">The delay between showing two characters.</param>
-        public void SetDelay(float delay)
-        {
-            currentDelays.currentDelay = delay;
-        }
-
-        public void SetWhitespaceDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentWhitespaceDelay = delay;
-            if (type != null) currentDelays.currentWhitespaceDelayType = type.Value;
-        }
-
-        public void SetLinebreakDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentLinebreakDelay = delay;
-            if (type != null) currentDelays.currentLinebreakDelayType = type.Value;
-        }
-
-        public void SetVisibleDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentVisibleDelay = delay;
-            if (type != null) currentDelays.currentVisibleDelayType = type.Value;
-        }
-
-        public void SetPunctuationDelay(float delay, DelayType? type = null)
-        {
-            currentDelays.currentPunctuationDelay = delay;
-            if (type != null) currentDelays.currentPunctuationDelayType = type.Value;
         }
 
         /// <summary>
@@ -874,19 +833,17 @@ namespace TMPEffects.Components
 
         private void ResetData()
         {
-            currentDelays = new Delays()
-            {
-                currentDelay = delay,
-                currentWhitespaceDelay = whiteSpaceDelay,
-                currentWhitespaceDelayType = whiteSpaceDelayType,
-                currentLinebreakDelay = linebreakDelay,
-                currentLinebreakDelayType = linebreakDelayType,
-                currentPunctuationDelay = punctuationDelay,
-                currentPunctuationDelayType = punctuationDelayType,
-                currentVisibleDelay = visibleDelay,
-                currentVisibleDelayType = visibleDelayType
-            };
-            //currentDelay = delay;
+            currentDelays = new Delays();
+            currentDelays.delay = delays.delay;
+            currentDelays.whitespaceDelay = delays.whitespaceDelay;
+            currentDelays.whitespaceDelayType = delays.whitespaceDelayType;
+            currentDelays.linebreakDelay = delays.linebreakDelay;
+            currentDelays.linebreakDelayType = delays.linebreakDelayType;
+            currentDelays.punctuationDelay = delays.punctuationDelay;
+            currentDelays.punctuationDelayType = delays.punctuationDelayType;
+            currentDelays.visibleDelay = delays.visibleDelay;
+            currentDelays.visibleDelayType = delays.visibleDelayType;
+
             currentMaySkip = maySkip;
         }
 
@@ -911,8 +868,6 @@ namespace TMPEffects.Components
 
         private float CalculateDelay(int index)
         {
-            if (currentDelays.currentDelay <= 0) return 0;
-
             CharData cData = Mediator.CharData[index];
 
             // If character is invisible (=> is whitespace)
@@ -921,30 +876,26 @@ namespace TMPEffects.Components
                 // If line break
                 if (cData.info.character == '\n')
                 {
-                    return Mathf.Max(currentDelays.LinebreakDelay, 0);
+                    return Mathf.Max(currentDelays.CalculatedLinebreakDelay, 0);
                 }
-                //if (index < Mediator.CharData.Count - 1 && Mediator.CharData[index + 1].info.lineNumber > Mediator.CharData[index].info.lineNumber)
-                //{
-                //    return Mathf.Max(currentDelay * LinebreakDelay);
-                //}
 
-                return Mathf.Max(currentDelays.WhiteSpaceDelay, 0);
+                return Mathf.Max(currentDelays.CalculatedWhiteSpaceDelay, 0);
             }
 
             // If character is already shown (e.g. through using the !show command)
             VisibilityState vState = Mediator.GetVisibilityState(cData);
             if (vState == VisibilityState.Shown || vState == VisibilityState.Showing)
             {
-                return Mathf.Max(currentDelays.VisibleDelay, 0);
+                return Mathf.Max(currentDelays.CalculatedVisibleDelay, 0);
             }
 
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
             if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
             {
-                return Mathf.Max(currentDelays.PunctuationDelay, 0);
+                return Mathf.Max(currentDelays.CalculatedPunctuationDelay, 0);
             }
 
-            return currentDelays.currentDelay;
+            return currentDelays.delay;
         }
 
         private IEnumerator HandleWaitConditions()
@@ -1170,11 +1121,11 @@ namespace TMPEffects.Components
 
         private void OnValidate()
         {
-            delay = Mathf.Max(delay, 0);
-            linebreakDelay = Mathf.Max(linebreakDelay, 0);
-            whiteSpaceDelay = Mathf.Max(whiteSpaceDelay, 0);
-            visibleDelay = Mathf.Max(visibleDelay, 0);
-            punctuationDelay = Mathf.Max(punctuationDelay, 0);
+            delays.delay = Mathf.Max(delays.delay, 0);
+            delays.linebreakDelay = Mathf.Max(delays.linebreakDelay, 0);
+            delays.whitespaceDelay = Mathf.Max(delays.whitespaceDelay, 0);
+            delays.visibleDelay = Mathf.Max(delays.visibleDelay, 0);
+            delays.punctuationDelay = Mathf.Max(delays.punctuationDelay, 0);
         }
 
         private void Reset()
@@ -1244,22 +1195,61 @@ namespace TMPEffects.Components
             Raw
         }
 
-        private struct Delays
+        [System.Serializable]
+        public class Delays
         {
-            public float WhiteSpaceDelay => currentWhitespaceDelayType == DelayType.Raw ? currentWhitespaceDelay : currentDelay * currentWhitespaceDelay;
-            public float PunctuationDelay => currentPunctuationDelayType == DelayType.Raw ? currentPunctuationDelay : currentDelay * currentPunctuationDelay;
-            public float VisibleDelay => currentVisibleDelayType == DelayType.Raw ? currentVisibleDelay : currentDelay * currentVisibleDelay;
-            public float LinebreakDelay => currentLinebreakDelayType == DelayType.Raw ? currentLinebreakDelay : currentDelay * currentLinebreakDelay;
+            public float CalculatedWhiteSpaceDelay => whitespaceDelayType == DelayType.Raw ? whitespaceDelay : delay * whitespaceDelay;
+            public float CalculatedPunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : delay * punctuationDelay;
+            public float CalculatedVisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : delay * visibleDelay;
+            public float CalculatedLinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : delay * linebreakDelay;
 
-            public float currentDelay;
-            public float currentWhitespaceDelay;
-            public DelayType currentWhitespaceDelayType;
-            public float currentLinebreakDelay;
-            public DelayType currentLinebreakDelayType;
-            public float currentPunctuationDelay;
-            public DelayType currentPunctuationDelayType;
-            public float currentVisibleDelay;
-            public DelayType currentVisibleDelayType;
+            [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
+            public float delay = 0.035f;
+            [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
+            public float whitespaceDelay;
+            public DelayType whitespaceDelayType;
+            [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
+            public float linebreakDelay;
+            public DelayType linebreakDelayType;
+            [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
+            public float punctuationDelay;
+            public DelayType punctuationDelayType;
+            [Tooltip("The delay after already visible characters, either as percentage of the general delay or in seconds")]
+            public float visibleDelay;
+            public DelayType visibleDelayType;
+
+            /// <summary>
+            /// Set the current delay of the writer.
+            /// </summary>
+            /// <param name="delay">The delay between showing two characters.</param>
+            public void SetDelay(float delay)
+            {
+                this.delay = delay;
+            }
+
+            public void SetWhitespaceDelay(float delay, DelayType? type = null)
+            {
+                whitespaceDelay = delay;
+                if (type != null) whitespaceDelayType = type.Value;
+            }
+
+            public void SetLinebreakDelay(float delay, DelayType? type = null)
+            {
+                linebreakDelay = delay;
+                if (type != null) linebreakDelayType = type.Value;
+            }
+
+            public void SetVisibleDelay(float delay, DelayType? type = null)
+            {
+                visibleDelay = delay;
+                if (type != null) visibleDelayType = type.Value;
+            }
+
+            public void SetPunctuationDelay(float delay, DelayType? type = null)
+            {
+                punctuationDelay = delay;
+                if (type != null) punctuationDelayType = type.Value;
+            }
         }
 
         private void HideAllCharacters(bool skipAnimations = false)
