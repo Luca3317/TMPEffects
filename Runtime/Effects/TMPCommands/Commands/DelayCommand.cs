@@ -51,13 +51,9 @@ namespace TMPEffects.TMPCommands.Commands
                     case "whitespace":
                     case "ws":
                         if (delay == -1)
-                        {
                             args.writer.CurrentDelays.SetWhitespaceDelay(args.writer.DefaultDelays.whitespaceDelay, args.writer.DefaultDelays.whitespaceDelayType);
-                        }
                         else
-                        {
                             args.writer.CurrentDelays.SetWhitespaceDelay(delay, type);
-                        }
                         return;
 
                     case "linebreak":

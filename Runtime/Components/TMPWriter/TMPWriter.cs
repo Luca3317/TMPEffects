@@ -152,7 +152,7 @@ namespace TMPEffects.Components
         [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")]
         [SerializeField] private bool useScaledTime = true;
 
-        [SerializeField] private Delays delays;
+        [SerializeField] private Delays delays = new Delays();
 
         [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
@@ -1204,7 +1204,7 @@ namespace TMPEffects.Components
             public float CalculatedLinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : delay * linebreakDelay;
 
             [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
-            public float delay;
+            public float delay = 0.035f;
             [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
             public float whitespaceDelay;
             public DelayType whitespaceDelayType;
