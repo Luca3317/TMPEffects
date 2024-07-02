@@ -54,8 +54,8 @@ public class TMPEffectsTutorial : MonoBehaviour, IPointerClickHandler
         animator.SetUpdateFrom(UpdateFrom.Script);
         animator.ResetAnimations();
 
-        writer.SetWriteOnNewText(false);
-        writer.SetWriteOnStart(false);
+        writer.WriteOnNewText = false;
+        writer.WriteOnStart = false;
 
         currentSequence = 0;
         sequence[currentSequence].Invoke();
