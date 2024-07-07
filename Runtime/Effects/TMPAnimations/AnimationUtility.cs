@@ -14,9 +14,23 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public static class AnimationUtility
     {
+        /// <summary>
+        /// Scale a given value to make it uniform between <see cref="TextMeshPro"/> and <see cref="TextMeshProUGUI"/> components. 
+        /// TODO Tried long and hard to perfectly find a way to make these uniform; for some reason just this is much closer than any of my attempts.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="value">The value to scale.</param>
+        /// <returns>The scaled value.</returns>
+        public static float ScaleTextMesh(TMP_Text text, float value)
+        {
+            if (text.canvas == null) return value * 10;
+            else return value;
+        }
+
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => ScaleVector(vector, cData, context.AnimatorContext);
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
         {
+            vector /= ScaleTextMesh(context.Animator.TextComponent, 1f);
             if (!context.ScaleAnimations) return vector;
             if (!context.ScaleUniformly) return vector * (cData.info.pointSize / 36f);
             return vector * (context.Animator.TextComponent.fontSize / 36f);
@@ -26,6 +40,7 @@ namespace TMPEffects.TMPAnimations
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => InverseScaleVector(vector, cData, context.AnimatorContext);
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
         {
+            vector *= ScaleTextMesh(context.Animator.TextComponent, 1f);
             if (!context.ScaleAnimations) return vector;
             if (!context.ScaleUniformly) return vector / (cData.info.pointSize / 36f);
             return vector / (context.Animator.TextComponent.fontSize / 36f);
@@ -929,6 +944,8 @@ namespace TMPEffects.TMPAnimations
 
             float ScalePos(float pos)
             {
+                pos = ScaleTextMesh(context.AnimatorContext.Animator.TextComponent, pos);
+
                 if (!context.AnimatorContext.ScaleAnimations)
                     return pos / 10f;
 
