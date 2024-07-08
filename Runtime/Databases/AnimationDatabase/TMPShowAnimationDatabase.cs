@@ -5,7 +5,7 @@ using TMPEffects.TMPAnimations;
 namespace TMPEffects.Databases.AnimationDatabase
 {
     /// <summary>
-    /// Stores <see cref="TMPShowAnimation"/> animations.
+    /// Stores <see cref="TMPShowAnimation"/>.
     /// </summary>
     [CreateAssetMenu(fileName = "new TMPShowAnimationDatabase", menuName = "TMPEffects/Database/Show Animation Database", order = 12)]
     public class TMPShowAnimationDatabase : TMPAnimationDatabaseBase<TMPShowAnimation>

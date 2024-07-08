@@ -113,10 +113,12 @@ namespace TMPEffects.Databases.AnimationDatabase
             if (prevBasicAnimationDatabase != basicAnimationDatabase)
             {
                 if (prevBasicAnimationDatabase != null)
-                    prevBasicAnimationDatabase.StopListenForChanges(OnChanged);
+                    prevBasicAnimationDatabase.ObjectChanged -= OnChanged;
+                //prevBasicAnimationDatabase.StopListenForChanges(OnChanged);
 
                 if (basicAnimationDatabase != null)
-                    basicAnimationDatabase.ListenForChanges(OnChanged);
+                    basicAnimationDatabase.ObjectChanged += OnChanged;
+                //basicAnimationDatabase.ListenForChanges(OnChanged);
 
                 prevBasicAnimationDatabase = basicAnimationDatabase;
             }
@@ -124,10 +126,12 @@ namespace TMPEffects.Databases.AnimationDatabase
             if (prevShowAnimationDatabase != showAnimationDatabase)
             {
                 if (prevShowAnimationDatabase != null)
-                    prevShowAnimationDatabase.StopListenForChanges(OnChanged);
+                    prevShowAnimationDatabase.ObjectChanged -= OnChanged;
+                //prevShowAnimationDatabase.StopListenForChanges(OnChanged);
 
                 if (showAnimationDatabase != null)
-                    showAnimationDatabase.ListenForChanges(OnChanged);
+                    showAnimationDatabase.ObjectChanged += OnChanged;
+                //showAnimationDatabase.ListenForChanges(OnChanged);
 
                 prevShowAnimationDatabase = showAnimationDatabase;
             }
@@ -135,10 +139,12 @@ namespace TMPEffects.Databases.AnimationDatabase
             if (prevHideAnimationDatabase != hideAnimationDatabase)
             {
                 if (prevHideAnimationDatabase != null)
-                    prevHideAnimationDatabase.StopListenForChanges(OnChanged);
+                    prevHideAnimationDatabase.ObjectChanged -= OnChanged;
+                //prevHideAnimationDatabase.StopListenForChanges(OnChanged);
 
                 if (hideAnimationDatabase != null)
-                    hideAnimationDatabase.ListenForChanges(OnChanged);
+                    hideAnimationDatabase.ObjectChanged += OnChanged;
+                //hideAnimationDatabase.ListenForChanges(OnChanged);
 
                 prevHideAnimationDatabase = hideAnimationDatabase;
             }

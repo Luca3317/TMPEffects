@@ -8,71 +8,6 @@ namespace TMPEffects.Components.Animator
     /// To be used with <see cref="TMPAnimator"/>.<br/>
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
-    public interface IAnimatorContext
-    {
-        /// <summary>
-        /// Whether animations are scaled.
-        /// </summary>
-        public bool ScaleAnimations { get; }
-        /// <summary>
-        /// Whether to scale animations uniformly (based on the default font size of the animator)
-        /// or on a per character basis.<br/>
-        /// Ignored if <see cref="ScaleAnimations"/> is false.
-        /// </summary>
-        public bool ScaleUniformly { get; }
-
-        /// <summary>
-        /// The animating <see cref="TMPAnimator"/>.
-        /// </summary>
-        public TMPAnimator Animator { get; }
-
-        /// <summary>
-        /// Whether animations use scaled time.
-        /// </summary>
-        public bool UseScaledTime { get; }
-
-        /// <summary>
-        /// The current delta time (=> time since last animation update).
-        /// </summary>
-        public float DeltaTime { get; }
-        /// <summary>
-        /// The time that has passed since the animator began animating.
-        /// </summary>
-        public float PassedTime { get; }
-
-        /// <summary>
-        /// Check how long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.<br/>
-        /// Generally, to be used with show and hide animations.
-        /// </summary>
-        /// <param name="cData">The character to check.</param>
-        /// <returns>How long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.</returns>
-        public float StateTime(CharData cData);
-        /// <summary>
-        /// Check how long the passed <see cref="CharData"/> has been visible.
-        /// </summary>
-        /// <param name="cData">The character to check.</param>
-        /// <returns>How long the passed <see cref="CharData"/> has been visible.</returns>
-        public float VisibleTime(CharData cData);
-
-        /// <summary>
-        /// Check how long the <see cref="CharData"/> at the given index has been in its current <see cref="VisibilityState"/>.<br/>
-        /// Generally, to be used with show and hide animations.
-        /// </summary>
-        /// <param name="index">The index of the character to check.</param>
-        /// <returns>How long the <see cref="CharData"/> at the given index has been in its current <see cref="VisibilityState"/>.</returns>
-        public float StateTime(int index);
-        /// <summary>
-        /// Check how long the <see cref="CharData"/> at the given index has been visible.
-        /// </summary>
-        /// <param name="cData">The character to check.</param>
-        /// <returns>How long the <see cref="CharData"/> at the given index has been visible.</returns>
-        public float VisibleTime(int index);
-    }
-
-    /// <summary>
-    /// To be used with <see cref="TMPAnimator"/>.<br/>
-    /// Contains context data of the respective <see cref="TMPAnimator"/>.
-    /// </summary>
     [System.Serializable]
     public class AnimatorContext : IAnimatorContext
     {
@@ -149,41 +84,6 @@ namespace TMPEffects.Components.Animator
         public float StateTime(int index) => _StateTime(index);
         /// <inheritdoc/>
         public float VisibleTime(int index) => _VisibleTime(index);
-    }
-
-    [System.Serializable]
-    public class ReadOnlyAnimatorContext : IAnimatorContext
-    {
-        /// <inheritdoc/>
-        public bool ScaleAnimations => context.ScaleAnimations;
-        /// <inheritdoc/>
-        public bool ScaleUniformly => context.ScaleUniformly;
-        /// <inheritdoc/>
-        public bool UseScaledTime => context.UseScaledTime;
-        /// <inheritdoc/>
-        public TMPAnimator Animator => context.Animator;
-        /// <inheritdoc/>
-        public float DeltaTime => context.deltaTime;
-        /// <inheritdoc/>
-        public float PassedTime => context.passed;
-
-        /// <inheritdoc/>
-        public float StateTime(CharData cData) => context.StateTime(cData);
-        /// <inheritdoc/>
-        public float VisibleTime(CharData cData) => context.VisibleTime(cData);
-
-        /// <inheritdoc/>
-        public float StateTime(int index) => context.StateTime(index);
-        /// <inheritdoc/>
-        public float VisibleTime(int index) => context.VisibleTime(index);
-
-        public ReadOnlyAnimatorContext(AnimatorContext context)
-        {
-            if (context == null) throw new System.ArgumentNullException(nameof(context));
-            this.context = context;
-        }
-
-        private AnimatorContext context;
     }
 }
 

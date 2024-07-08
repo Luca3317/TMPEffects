@@ -3,6 +3,9 @@ using TMPEffects.CharacterData;
 
 namespace TMPEffects.TMPAnimations
 {
+    /// <summary>
+    /// Base interface for all TMPEffects animations.
+    /// </summary>
     public interface ITMPAnimation
     {
         /// <summary>

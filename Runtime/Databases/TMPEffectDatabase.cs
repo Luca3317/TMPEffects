@@ -12,15 +12,15 @@ namespace TMPEffects.Databases
     {
         public event ObjectChangedEventHandler ObjectChanged;
 
-        public void ListenForChanges(ObjectChangedEventHandler handler)
-        {
-            ObjectChanged -= handler;
-            ObjectChanged += handler;
-        }
-        public void StopListenForChanges(ObjectChangedEventHandler handler)
-        {
-            ObjectChanged -= handler;
-        }
+        //public void ListenForChanges(ObjectChangedEventHandler handler)
+        //{
+        //    ObjectChanged -= handler;
+        //    ObjectChanged += handler;
+        //}
+        //public void StopListenForChanges(ObjectChangedEventHandler handler)
+        //{
+        //    ObjectChanged -= handler;
+        //}
 
         /// <summary>
         /// Check whether this database contains an effect associated with the given name.

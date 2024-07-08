@@ -68,7 +68,10 @@ namespace TMPEffects.TextProcessing
         {
             BeginPreProcess?.Invoke(text);
 
+            // Clear style stack, which stores the currently active styles
             styles.Clear();
+
+            // Reset all registered tag processors, clearing their tag collections
             foreach (var processor in processors)
             {
                 processor.Reset();
@@ -78,17 +81,24 @@ namespace TMPEffects.TextProcessing
             // i.e. <!wait><#someevent><!playsound> => 0,1,2 respcectively
             int currentOrderAtIndex = 0;
 
-            int indexOffset = 0;
-            int searchIndex = 0;
+            int searchIndex = 0; // The index used to search the next tag; = previousTag.EndIndex + 1
+            int indexOffset = 0; // The offset applied to a tag's text index to accomodate for previous tags
+                                 // "<wave>Lorem <shake>ipsum" <wave> has offset 0, textindex 0 => 0
+                                 // <shake> has offset 6 to accomodate for "<wave>", textindex 12 => 12 - 6 = 6
+
             sb = new StringBuilder();
             ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
 
+            // Whether to parse <=> whether a noparse tag is active
             bool parse = true;
 
+            // Get the stylesheet used by the TMP_Text component
             TMP_StyleSheet sheet = TextComponent.styleSheet != null ? TextComponent.styleSheet : TMP_Settings.defaultStyleSheet;
 
+            // If the text is empty, return " "; quick fix to an issue where empty text is not updated correctly
             if (string.IsNullOrEmpty(text)) return " ";
 
+            // Iterate over all well-formed tags of the text
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
@@ -178,7 +188,8 @@ namespace TMPEffects.TextProcessing
                     }
                 }
 
-                // if the current tag is a style tag, handle it manually
+                // if the current tag is a style tag, handle it manually;
+                // doing this instead of just allowing TextMeshPro to handle it as normal allows you to create style tags with TMPEffects tags
                 else if (sheet != null && (tagInfo.name == "style" || tagInfo.name == "STYLE"))
                 {
                     if (tagInfo.type == ParsingUtility.TagType.Close)
@@ -267,6 +278,7 @@ namespace TMPEffects.TextProcessing
 
             BeginAdjustIndices?.Invoke(info.textComponent.text);
 
+            // Create a mapping from TagProcessor to their tags with mutable indices
             Dictionary<TagProcessor, List<KeyValuePair<Indices, TMPEffectTag>>> dict = new();
             foreach (var processor in processors)
             {
@@ -277,10 +289,15 @@ namespace TMPEffects.TextProcessing
                 }
             }
 
+            // Iterate over all TagProcessors
             foreach (var kvp in dict)
             {
+                // and their processed tags
                 foreach (var thing in kvp.Value)
                 {
+                    // Set the indices of the tag to the indices indicated by the characterinfo
+                    // TODO for long texts, maybe binary search or dynamic (one full iteration and storing indices)
+                    // (tested for 1k character texts with 100 tags, slight performance loss still)
                     for (int i = 0; i < info.characterCount; i++)
                     {
                         var cinfo = info.characterInfo[i];
@@ -302,6 +319,9 @@ namespace TMPEffects.TextProcessing
                 }
             }
 
+            // Set the actual indices within the TagProcessors
+            // TODO this currently uses an internal method on TagProcessor to set the indices of a tag
+            // a little ugly, might be fine to keep
             foreach (var kvp in dict)
             {
                 foreach (var thing in kvp.Value)

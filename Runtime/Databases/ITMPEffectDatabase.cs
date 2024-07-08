@@ -2,6 +2,9 @@ using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Databases
 {
+    /// <summary>
+    /// Base interface for effect databases.
+    /// </summary>
     public interface ITMPEffectDatabase
     {
         /// <summary>
@@ -12,6 +15,10 @@ namespace TMPEffects.Databases
         public bool ContainsEffect(string name);
     }
 
+    /// <summary>
+    /// Base interface for effect databases.
+    /// </summary>
+    /// <typeparam name="T">Type of effects contained in this database.</typeparam>
     public interface ITMPEffectDatabase<out T> : ITMPEffectDatabase
     {
         /// <summary>

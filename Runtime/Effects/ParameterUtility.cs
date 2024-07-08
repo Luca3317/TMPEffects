@@ -9,9 +9,20 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects
 {
+    /// <summary>
+    /// Utility class for easy parameter handling.
+    /// </summary>
     public static class ParameterUtility
     {
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases.<br />
+        /// A parameter is well-defined if there is exactly one of the given aliases (including the name) present in the parameters.
+        /// </summary>
+        /// <param name="value">Set to the name of the defined parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if the parameter is well-defined, false otherwise.</returns>
         public static bool TryGetDefinedParameter(out string value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = null;
@@ -33,24 +44,52 @@ namespace TMPEffects
             return value != null;
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases.<br />
+        /// A parameter is well-defined if there is exactly one of the given aliases (including the name) present in the parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if the parameter is well-defined, false otherwise.</returns>
         public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetDefinedParameter(out _, parameters, name, aliases);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type float (=> can not be converted to float).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type float, false otherwise.</returns>
         public static bool HasNonFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetFloatParameter(out float _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type float (=> can be converted to float).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type float, false otherwise.</returns>
         public static bool HasFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetFloatParameter(out float _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type float (=> can be converted to float).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type float, false otherwise.</returns>
         public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = 0f;
@@ -59,18 +98,39 @@ namespace TMPEffects
             return ParsingUtility.StringToFloat(parameters[parameterName], out value, BuiltInFloatKeywords);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type int (=> can not be converted to int).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type int, false otherwise.</returns>
         public static bool HasNonIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetIntParameter(out int _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type int (=> can no be converted to int).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type int, false otherwise.</returns>
         public static bool HasIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetIntParameter(out int _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type int (=> can be converted to int).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type int, false otherwise.</returns>
         public static bool TryGetIntParameter(out int value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = 0;
@@ -79,18 +139,39 @@ namespace TMPEffects
             return ParsingUtility.StringToInt(parameters[parameterName], out value);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type bool (=> can not be converted to bool).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type bool, false otherwise.</returns>
         public static bool HasNonBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetBoolParameter(out bool _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type bool (=> can no be converted to bool).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type bool, false otherwise.</returns>
         public static bool HasBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetBoolParameter(out bool _, parameters, name, aliases);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type bool (=> can be converted to bool).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type bool, false otherwise.</returns>
         public static bool TryGetBoolParameter(out bool value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = false;
@@ -99,18 +180,37 @@ namespace TMPEffects
             return ParsingUtility.StringToBool(parameters[parameterName], out value);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Vector2 (=> can not be converted to Vector2).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Vector2, false otherwise.</returns>
         public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetVector2Parameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector2 (=> can no be converted to Vector2).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector2, false otherwise.</returns>
         public static bool HasVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetVector2Parameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector2 (=> can be converted to Vector2).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector2, false otherwise.</returns>
         public static bool TryGetVector2Parameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = Vector2.zero;
@@ -119,18 +219,37 @@ namespace TMPEffects
             return ParsingUtility.StringToVector2(parameters[parameterName], out value, BuiltInVector2Keywords);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Vector3 (=> can not be converted to Vector3).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Vector3, false otherwise.</returns>
         public static bool HasNonVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetVector3Parameter(out Vector3 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector3 (=> can no be converted to Vector3).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector3, false otherwise.</returns>
         public static bool HasVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetVector3Parameter(out Vector3 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector3 (=> can be converted to Vector3).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector3, false otherwise.</returns>
         public static bool TryGetVector3Parameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = Vector3.zero;
@@ -139,18 +258,37 @@ namespace TMPEffects
             return ParsingUtility.StringToVector3(parameters[parameterName], out value, BuiltInVector3Keywords);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Vector2Offset (=> can not be converted to Vector2Offset).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Vector2Offset, false otherwise.</returns>
         public static bool HasNonVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetVector2OffsetParameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector2Offset (=> can no be converted to Vector2Offset).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector2Offset, false otherwise.</returns>
         public static bool HasVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetVector2OffsetParameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector2Offset (=> can be converted to Vector2Offset).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector2Offset, false otherwise.</returns>
         public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = Vector2.zero;
@@ -159,18 +297,37 @@ namespace TMPEffects
             return ParsingUtility.StringToVector2Offset(parameters[parameterName], out value, BuiltInVector2Keywords);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Vector3Offset (=> can not be converted to Vector3Offset).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Vector3Offset, false otherwise.</returns>
         public static bool HasNonVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetVector3OffsetParameter(out Vector3 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector3Offset (=> can no be converted to Vector3Offset).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector3Offset, false otherwise.</returns>
         public static bool HasVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetVector3OffsetParameter(out Vector3 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Vector3Offset (=> can be converted to Vector3Offset).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Vector3Offset, false otherwise.</returns>
         public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = Vector3.zero;
@@ -179,18 +336,37 @@ namespace TMPEffects
             return ParsingUtility.StringToVector3Offset(parameters[parameterName], out value, BuiltInVector3Keywords);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Anchor (=> can not be converted to Anchor).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Anchor, false otherwise.</returns>
         public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetAnchorParameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Anchor (=> can no be converted to Anchor).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Anchor, false otherwise.</returns>
         public static bool HasAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetAnchorParameter(out Vector2 _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Anchor (=> can be converted to Anchor).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Anchor, false otherwise.</returns>
         public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = Vector2.zero;
@@ -224,18 +400,37 @@ namespace TMPEffects
             { "a:center", Vector2.zero }
         });
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type AnimationCurve (=> can not be converted to AnimationCurve).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type AnimationCurve, false otherwise.</returns>
         public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetAnimCurveParameter(out AnimationCurve _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type AnimationCurve (=> can no be converted to AnimationCurve).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type AnimationCurve, false otherwise.</returns>
         public static bool HasAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetAnimCurveParameter(out AnimationCurve _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type AnimationCurve (=> can be converted to AnimationCurve).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type AnimationCurve, false otherwise.</returns>
         public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = null;
@@ -244,18 +439,37 @@ namespace TMPEffects
             return ParsingUtility.StringToAnimationCurve(parameters[parameterName], out value);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type WaveOffsetType (=> can not be converted to WaveOffsetType).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type WaveOffsetType, false otherwise.</returns>
         public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type WaveOffsetType (=> can no be converted to WaveOffsetType).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type WaveOffsetType, false otherwise.</returns>
         public static bool HasWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type WaveOffsetType (=> can be converted to WaveOffsetType).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type WaveOffsetType, false otherwise.</returns>
         public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = WaveOffsetType.Index;
@@ -264,17 +478,37 @@ namespace TMPEffects
             return ParsingUtility.StringToWaveOffsetType(parameters[parameterName], out value);
         }
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Color (=> can not be converted to Color).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Color, false otherwise.</returns>
         public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetColorParameter(out Color _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Color (=> can no be converted to Color).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Color, false otherwise.</returns>
         public static bool HasColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return TryGetColorParameter(out Color _, parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Color (=> can be converted to Color).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Color, false otherwise.</returns>
         public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             value = default;
@@ -283,18 +517,37 @@ namespace TMPEffects
             return ParsingUtility.StringToColor(parameters[parameterName], out value);
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array<T> (=> can not be converted to Array<T>).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Array<T>, false otherwise.</returns>
         public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
         public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             return TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
         public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
             value = null;
@@ -322,18 +575,37 @@ namespace TMPEffects
         }
 
         public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
-      
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector3 (=> can not be converted to TypedVector3).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type TypedVector3, false otherwise.</returns>
         public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasNonVector3Parameter(parameters, name, aliases) && HasNonAnchorParameter(parameters, name, aliases) && HasNonVector3OffsetParameter(parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can no be converted to TypedVector3).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
         public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasVector3Parameter(parameters, name, aliases) || HasAnchorParameter(parameters, name, aliases) || HasVector3OffsetParameter(parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can be converted to TypedVector3).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
         public static bool TryGetTypedVector3Parameter(out TypedVector3 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (TryGetVector3Parameter(out Vector3 value, parameters, name, aliases))
@@ -356,17 +628,36 @@ namespace TMPEffects
             return false;
         }
 
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector2 (=> can not be converted to TypedVector2).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type TypedVector2, false otherwise.</returns>
         public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasNonVector2Parameter(parameters, name, aliases) && HasNonAnchorParameter(parameters, name, aliases) && HasNonVector2OffsetParameter(parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can no be converted to TypedVector2).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
         public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             return HasVector2Parameter(parameters, name, aliases) || HasAnchorParameter(parameters, name, aliases) || HasVector2OffsetParameter(parameters, name, aliases);
         }
-
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can be converted to TypedVector2).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
         public static bool TryGetTypedVector2Parameter(out TypedVector2 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
         {
             if (TryGetVector2Parameter(out Vector2 value, parameters, name, aliases))
@@ -391,13 +682,29 @@ namespace TMPEffects
 
 
         // TODO Move these somewhere else
+
+        /// <summary>
+        /// The different types of vectors.
+        /// </summary>
         public enum VectorType
         {
+            /// <summary>
+            /// Pure position (normal vector).
+            /// </summary>
             Position,
+            /// <summary>
+            /// Offset vector from the original position
+            /// </summary>
             Offset,
+            /// <summary>
+            /// Anchor vector, in "character space"; (0,0) is the center, (1,1) top-right, (-1,0) center-left etc.
+            /// </summary>
             Anchor
         }
 
+        /// <summary>
+        /// A <see cref="Vector2"/> with a <see cref="VectorType"/>.
+        /// </summary>
         [System.Serializable]
         public struct TypedVector2
         {
@@ -411,6 +718,9 @@ namespace TMPEffects
             }
         }
 
+        /// <summary>
+        /// A <see cref="Vector3"/> with a <see cref="VectorType"/>.
+        /// </summary>
         [System.Serializable]
         public struct TypedVector3
         {
@@ -424,6 +734,9 @@ namespace TMPEffects
             }
         }
 
+        /// <summary>
+        /// A parameter bundle that defines a <see cref="Wave"/>.
+        /// </summary>
         public struct WaveParameters
         {
             public AnimationCurve upwardCurve;
@@ -621,6 +934,9 @@ namespace TMPEffects
         public static readonly string[] PivotAliases = new string[] { "pvt" };
         public static readonly string[] RadiusAliases = new string[] { "rad" };
 
+        /// <summary>
+        /// A variety of built-in keywords for float parameters.
+        /// </summary>
         public static readonly ReadOnlyDictionary<string, float> BuiltInFloatKeywords = new ReadOnlyDictionary<string, float>(new Dictionary<string, float>()
         {
             { "e", (float)System.Math.E },
@@ -629,6 +945,9 @@ namespace TMPEffects
             { "phi", 1.61803f }
         });
 
+        /// <summary>
+        /// A variety of built-in keywords for Vector2 parameters.
+        /// </summary>
         public static readonly ReadOnlyDictionary<string, Vector2> BuiltInVector2Keywords = new ReadOnlyDictionary<string, Vector2>(new Dictionary<string, Vector2>()
         {
             { "up", Vector2.up },
@@ -662,6 +981,9 @@ namespace TMPEffects
             { "zero", Vector2.zero }
         });
 
+        /// <summary>
+        /// A variety of built-in keywords for Vector3 parameters.
+        /// </summary>
         public static readonly ReadOnlyDictionary<string, Vector3> BuiltInVector3Keywords = new ReadOnlyDictionary<string, Vector3>(new Dictionary<string, Vector3>()
         {
             { "up", Vector3.up},

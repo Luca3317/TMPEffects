@@ -79,7 +79,6 @@ namespace TMPEffects.SerializedCollections
             set
             {
                 _dictionary[key] = value;
-                Debug.Log("set with " + mayRaise);
                 RaisePropertyChanged();
             }
         }

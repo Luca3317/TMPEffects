@@ -16,7 +16,6 @@ namespace TMPEffects.TMPAnimations
     {
         /// <summary>
         /// Scale a given value to make it uniform between <see cref="TextMeshPro"/> and <see cref="TextMeshProUGUI"/> components. 
-        /// TODO Tried long and hard to perfectly find a way to make these uniform; for some reason just this is much closer than any of my attempts.
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value">The value to scale.</param>
@@ -27,7 +26,24 @@ namespace TMPEffects.TMPAnimations
             else return value;
         }
 
+        /// <summary>
+        /// Scale a vector for an animation.<br/>
+        /// Makes vectors uniform relative to the size of the text.<br/>
+        /// Used by <see cref="TMPEffects.Components.TMPAnimator"/> to automatically scale animations.
+        /// </summary>
+        /// <param name="vector">The vector to scale.</param>
+        /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
+        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => ScaleVector(vector, cData, context.AnimatorContext);
+        /// <summary>
+        /// Scale a vector for an animation.<br/>
+        /// Used by <see cref="TMPEffects.Components.TMPAnimator"/> to automatically scale animations.
+        /// </summary>
+        /// <param name="vector">The vector to scale.</param>
+        /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
+        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
         {
             vector /= ScaleTextMesh(context.Animator.TextComponent, 1f);
@@ -36,8 +52,23 @@ namespace TMPEffects.TMPAnimations
             return vector * (context.Animator.TextComponent.fontSize / 36f);
         }
 
-
+        /// <summary>
+        /// Scale a vector for an animation inversely.<br/>
+        /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
+        /// </summary>
+        /// <param name="vector">The vector to scale inversely.</param>
+        /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
+        /// <param name="context">The <see cref="IAnimationContext"/> of the animation.</param>
+        /// <returns>The inversely scaled vector.</returns>
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => InverseScaleVector(vector, cData, context.AnimatorContext);
+        /// <summary>
+        /// Scale a vector for an animation inversely.<br/>
+        /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
+        /// </summary>
+        /// <param name="vector">The vector to scale inversely.</param>
+        /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
+        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The inversely scaled vector.</returns>
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
         {
             vector *= ScaleTextMesh(context.Animator.TextComponent, 1f);
@@ -49,11 +80,11 @@ namespace TMPEffects.TMPAnimations
 
         #region Raw Positions & Deltas
         /// <summary>
-        /// Convert an anchor to its actual position.
+        /// Convert an anchor vector to its actual position vector.
         /// </summary>
-        /// <param name="anchor"></param>
-        /// <param name="cData"></param>
-        /// <returns></returns>
+        /// <param name="anchor">The anchor to convert.</param>
+        /// <param name="cData">The <see cref="CharData"/> the anchor applies to.</param>
+        /// <returns>The position vector.</returns>
         public static Vector2 AnchorToPosition(Vector2 anchor, CharData cData)
         {
             if (anchor == Vector2.zero)
@@ -82,8 +113,17 @@ namespace TMPEffects.TMPAnimations
         /// <param name="index">Index of the vertex.</param>
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx) => GetRawVertex(index, position, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="index">Index of the vertex.</param>
+        /// <param name="position">The position to set the vertex to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData, ctx);
@@ -94,8 +134,16 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in character position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPosition(position, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Calculate the raw version of the passed in character position, i.e. the one that will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="position">The position to set the character to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in character position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             return GetRawPosition(position, cData.InitialPosition, cData, ctx);
@@ -106,8 +154,16 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="position">The position to set the pivot to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in pivot position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPivot(position, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Calculate the raw version of the passed in pivot position, i.e. the one that will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="position">The position to set the pivot to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in pivot position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             return GetRawPosition(position, cData.InitialPosition, cData, ctx);
@@ -118,8 +174,16 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="delta">The delta.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx) => GetRawDelta(delta, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Calculate the raw version of the passed in delta, i.e. the one that will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="delta">The delta.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
             return InverseScaleVector(delta, cData, ctx);
@@ -138,56 +202,92 @@ namespace TMPEffects.TMPAnimations
         /// <param name="index">Index of the vertex.</param>
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx) => SetVertexRaw(index, position, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Set the raw position of the vertex at the given index. This position will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="index">Index of the vertex.</param>
+        /// <param name="position">The position to set the vertex to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             Vector3 ogPos = cData.initialMesh.GetPosition(index);
             cData.SetVertex(index, GetRawPosition(position, ogPos, cData, ctx));
         }
+
         /// <summary>
         /// Set the raw position of the character. This position will ignore the animator's scaling.
         /// </summary>
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx) => SetPositionRaw(position, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Set the raw position of the character. This position will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="position">The position to set the character to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
+
         /// <summary>
         /// Set the raw pivot of the character. This position will ignore the animator's scaling.
         /// </summary>
         /// <param name="position">The position to set the pivot to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx) => SetPivotRaw(pivot, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Set the raw pivot of the character. This position will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="position">The position to set the pivot to.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
         {
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPivot(GetRawPosition(pivot, ogPos, cData, ctx));
         }
+
         /// <summary>
         /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
         /// </summary>
         /// <param name="index">Index of the vertex.</param>
         /// <param name="delta">The delta to add to the vertex.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx) => AddVertexDeltaRaw(index, delta, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="index">Index of the vertex.</param>
+        /// <param name="delta">The delta to add to the vertex.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
             cData.AddVertexDelta(index, GetRawDelta(delta, cData, ctx));
         }
+
         /// <summary>
         /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
         /// </summary>
         /// <param name="delta">The delta to add to the position of the character.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPositionDeltaRaw(delta, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="delta">The delta to add to the position of the character.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
             cData.AddPositionDelta(GetRawDelta(delta, cData, ctx));
@@ -197,8 +297,14 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="delta">The delta to add to the pivot.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The animation context.</param>
+        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPivotDeltaRaw(delta, cData, ctx.AnimatorContext);
+        /// <summary>
+        /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
+        /// </summary>
+        /// <param name="delta">The delta to add to the pivot.</param>
+        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
+        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
             cData.AddPivotDelta(GetRawDelta(delta, cData, ctx));
@@ -206,6 +312,13 @@ namespace TMPEffects.TMPAnimations
         #endregion
 
         #region General Math
+        /// <summary>
+        /// Get the point on a line closest to the given point.
+        /// </summary>
+        /// <param name="lineStart"></param>
+        /// <param name="lineEnd"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public static Vector3 ClosestPointOnLine(Vector3 lineStart, Vector3 lineEnd, Vector3 point)
         {
             var vVector1 = point - lineStart;
@@ -229,9 +342,20 @@ namespace TMPEffects.TMPAnimations
         #endregion
 
         #region Waves
+        /// <summary>
+        /// Base class for <see cref="Wave"/>.<br/>
+        /// Allows you to easily create periodic animations.<b/>
+        /// You should take a look at the online documentation for this one:<b/>
+        /// https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
+        /// </summary>
         [System.Serializable]
         public abstract class WaveBase : ISerializationCallbackReceiver
         {
+            /// <summary>
+            /// The up period of the wave; how long it takes to travel up the wave.<br/>
+            /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
+            /// take to travel up the wave, use <see cref="EffectiveUpPeriod"/>.
+            /// </summary>
             public float UpPeriod
             {
                 get => upPeriod;
@@ -258,6 +382,11 @@ namespace TMPEffects.TMPAnimations
                 }
             }
 
+            /// <summary>
+            /// The down period of the wave; how long it takes to travel down the wave.<br/>
+            /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
+            /// take to travel down the wave, use <see cref="EffectiveDownPeriod"/>.
+            /// </summary>
             public float DownPeriod
             {
                 get => downPeriod;
@@ -284,12 +413,18 @@ namespace TMPEffects.TMPAnimations
                 }
             }
 
+            /// <summary>
+            /// The amplitude of the wave.
+            /// </summary>
             public float Amplitude
             {
                 get => amplitude;
                 set => amplitude = value;
             }
 
+            /// <summary>
+            /// The velocity at which the wave travels.
+            /// </summary>
             public float Velocity
             {
                 get => velocity;
@@ -305,31 +440,53 @@ namespace TMPEffects.TMPAnimations
                 }
             }
 
+            /// <summary>
+            /// The period of the wave; how long it takes to travel up and down the wave.<br/>
+            /// Sum of <see cref="UpPeriod"/> and <see cref="DownPeriod"/>.<br/>
+            /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
+            /// take to travel the wave, use <see cref="EffectivePeriod"/>.
+            /// </summary>
             public float Period
             {
                 get => period;
             }
 
+            /// <summary>
+            /// The wavelength of the wave.
+            /// </summary>
             public float WaveLength
             {
                 get => wavelength;
             }
 
+            /// <summary>
+            /// The amount of time it takes to travel up the wave.
+            /// </summary>
             public float EffectiveUpPeriod
             {
                 get => adjustedUpPeriod;
             }
 
+            /// <summary>
+            /// The amount of time it takes to travel down the wave.
+            /// </summary>
             public float EffectiveDownPeriod
             {
                 get => adjustedDownPeriod;
             }
 
+            /// <summary>
+            /// The amount of time it takes to travel the wave.<br/>
+            /// Sum of <see cref="EffectiveUpPeriod"/> and <see cref="EffectiveDownPeriod"/>.
+            /// </summary>
             public float EffectivePeriod
             {
                 get => adjustedPeriod;
             }
 
+            /// <summary>
+            /// The frequency of the wave.
+            /// </summary>
             public float Frequency
             {
                 get => frequency;
@@ -401,32 +558,55 @@ namespace TMPEffects.TMPAnimations
             }
         }
 
-
+        /// <summary>
+        /// A wave.
+        /// Allows you to easily create periodic animations.<b/>
+        /// You should take a look at the online documentation for this one:<b/>
+        /// https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
+        /// </summary>
         [System.Serializable]
         public class Wave : WaveBase, ISerializationCallbackReceiver
         {
+            /// <summary>
+            /// The upward curve of the wave.
+            /// </summary>
             public AnimationCurve UpwardCurve
             {
                 get => upwardCurve;
                 set => upwardCurve = value;
             }
+            /// <summary>
+            /// The downward curve of the wave.
+            /// </summary>
             public AnimationCurve DownwardCurve
             {
                 get => downwardCurve;
                 set => downwardCurve = value;
             }
 
+            /// <summary>
+            /// How long to stay at the crest of the wave.
+            /// </summary>
             public float CrestWait
             {
                 get => crestWait;
                 set => crestWait = value;
             }
+            /// <summary>
+            /// How long to stay at the trough of the wave.
+            /// </summary>
             public float TroughWait
             {
                 get => troughWait;
                 set => troughWait = value;
             }
 
+            /// <summary>
+            /// The uniformity of the wave.<br/>
+            /// Defines how much the offset passed in when evaluating the wave is considered.<br/>
+            /// A visual representation of this can be found in the online documentation:<br/>
+            /// https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
+            /// </summary>
             public float Uniformity
             {
                 get => uniformity;
@@ -460,7 +640,17 @@ namespace TMPEffects.TMPAnimations
                 TroughWait = troughWait;
             }
 
-
+            /// <summary>
+            /// Check whether an extrema was passed between (<paramref name="time"/> - <paramref name="deltaTime"/>) and <paramref name="time"/>.<br/>
+            /// This will automatically choose the correct way to interpret the wave.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="deltaTime">The delta time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
+            /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
+            /// <exception cref="System.Exception"></exception>
             public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 if (CrestWait <= 0)
@@ -479,6 +669,17 @@ namespace TMPEffects.TMPAnimations
                 return PassedOneDirectionalPulseExtrema(time, deltaTime, offset, realtimeWait, extrema);
             }
 
+            /// <summary>
+            /// Check whether an extrema was passed between (<paramref name="time"/> - <paramref name="deltaTime"/>) and <paramref name="time"/>.<br/>
+            /// Explicitly interpret the wave as a normal wave, ignoring both <see cref="CrestWait"/> and <see cref="TroughWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="deltaTime">The delta time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
+            /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
+            /// <exception cref="System.Exception"></exception>
             public int PassedWaveExtrema(float time, float deltaTime, float offset)
             {
                 float t = CalculateWaveT(time, offset, -1);
@@ -508,6 +709,17 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
 
+            /// <summary>
+            /// Check whether an extrema was passed between (<paramref name="time"/> - <paramref name="deltaTime"/>) and <paramref name="time"/>.<br/>
+            /// Explicitly interpret the wave as a pulse, ignoring the <see cref="CrestWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="deltaTime">The delta time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
+            /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
+            /// <exception cref="System.Exception"></exception>
             public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float interval = (TroughWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
@@ -551,6 +763,17 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
 
+            /// <summary>
+            /// Check whether an extrema was passed between (<paramref name="time"/> - <paramref name="deltaTime"/>) and <paramref name="time"/>.<br/>
+            /// Explicitly interpret the wave as an inverted pulse, ignoring the <see cref="TroughWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="deltaTime">The delta time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
+            /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
+            /// <exception cref="System.Exception"></exception>
             public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float interval = (CrestWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
@@ -593,6 +816,17 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
 
+            /// <summary>
+            /// Check whether an extrema was passed between (<paramref name="time"/> - <paramref name="deltaTime"/>) and <paramref name="time"/>.
+            /// Explicitly interpret the wave as a one-directional pulse.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="deltaTime">The delta time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
+            /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
+            /// <exception cref="System.Exception"></exception>
             public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float upInterval = (CrestWait) * (realtimeWait ? Velocity : 1f);
@@ -602,8 +836,6 @@ namespace TMPEffects.TMPAnimations
 
                 if (deltaTime >= interval)
                 {
-                    float ogt = t;
-
                     if (interval > 0)
                         t %= interval;
 
@@ -624,7 +856,7 @@ namespace TMPEffects.TMPAnimations
                         return -1;
                     }
 
-                    throw new System.Exception("Should not be reachable with og t " + ogt + " and interval " + interval + "; final t  " + t);
+                    throw new System.Exception("Should not be reachable");
                 }
 
                 float prevT = CalculatePulseT(time - deltaTime, offset, interval, -1);
@@ -686,7 +918,14 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
 
-
+            /// <summary>
+            /// Evaluate the wave.<br/>
+            /// This will automatically choose the correct way to interpret the wave.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
             {
                 if (CrestWait <= 0)
@@ -704,6 +943,14 @@ namespace TMPEffects.TMPAnimations
                 return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
             }
 
+            /// <summary>
+            /// Evaluate the wave as a normal wave explicitly, ignoring both <see cref="TroughWait"/> and <see cref="CrestWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
+            /// <exception cref="System.Exception"></exception>
             public (float, int) EvaluateAsWave(float time, float offset)
             {
                 float t = CalculateWaveT(time, offset, -1);
@@ -722,6 +969,14 @@ namespace TMPEffects.TMPAnimations
                 }
             }
 
+            /// <summary>
+            /// Evaluate the wave as a pulse explicitly, ignoring the <see cref="CrestWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
+            /// <exception cref="System.Exception"></exception>
             public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)
             {
                 float interval = (TroughWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
@@ -736,6 +991,14 @@ namespace TMPEffects.TMPAnimations
                 return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
             }
 
+            /// <summary>
+            /// Evaluate the wave as an inverted pulse explicitly, ignoring the <see cref="TroughWait"/>.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
+            /// <exception cref="System.Exception"></exception>
             public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)
             {
                 float interval = (CrestWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
@@ -750,6 +1013,14 @@ namespace TMPEffects.TMPAnimations
                 return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
             }
 
+            /// <summary>
+            /// Evaluate the wave as a one-directional pulse explicitly.
+            /// </summary>
+            /// <param name="time">The time value.</param>
+            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
+            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
+            /// <exception cref="System.Exception"></exception>
             public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = true)
             {
                 float upInterval = (CrestWait) * (realTimeWait ? Velocity : 1f);
@@ -786,6 +1057,9 @@ namespace TMPEffects.TMPAnimations
                 throw new System.Exception("Shouldnt be reachable (interval = " + interval + ")");
             }
 
+            /// <summary>
+            /// If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, PulseExtrema defines whether an extremum is passed once the wait time begins, or once it ends.
+            /// </summary>
             [Flags]
             public enum PulseExtrema
             {
@@ -850,22 +1124,6 @@ namespace TMPEffects.TMPAnimations
                 //EvaluateCopy(0f, 0f, true);
             }
 
-            //public (float, int) EvaluateCopy(float time, float offset, bool realtimeWait = true)
-            //{
-            //    if (CrestWait <= 0)
-            //    {
-            //        if (TroughWait <= 0)
-            //        {
-            //            return EvaluateAsWave(time, offset);
-            //        }
-
-            //        return EvaluateAsPulse(time, offset, realtimeWait);
-            //    }
-
-            //    if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset, realtimeWait);
-
-            //    return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
-            //}
 
             [Tooltip("The \"up\" part of the wave. This is the curve that is used to travel from trough to crest, or from the wave's lowest to its highest point.")]
             [SerializeField] private AnimationCurve upwardCurve;
@@ -879,32 +1137,9 @@ namespace TMPEffects.TMPAnimations
             [SerializeField] private float uniformity;
         }
 
-
-        public static float FrequencyToPeriod(float frequency)
-        {
-            return 1f / frequency;
-        }
-
-        public static float PeriodToFrequency(float period)
-        {
-            return 1f / period;
-        }
-
-        public static float WaveLengthVelocityToFrequency(float wavelength, float wavevelocity)
-        {
-            return wavevelocity / wavelength;
-        }
-
-        public static float WaveLengthFrequencyToVelocity(float wavelength, float frequency)
-        {
-            return frequency * wavelength;
-        }
-
-        public static float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)
-        {
-            return wavevelocity / frequency;
-        }
-
+        /// <summary>
+        /// Different built-in offset types, to be used with <see cref="GetWaveOffset(CharData, IAnimationContext, WaveOffsetType)"/>.
+        /// </summary>
         public enum WaveOffsetType
         {
             SegmentIndex = 0,
@@ -916,12 +1151,20 @@ namespace TMPEffects.TMPAnimations
             WorldYPos = 25,
             WorldZPos = 30,
 
-            // new
-            Word,
-            Line,
-            Baseline
+            Word = 35,
+            Line = 40,
+            Baseline = 45
         }
 
+        /// <summary>
+        /// Get the wave offset to use based on the <paramref name="type"/>.<br/>
+        /// To be used with <see cref="Wave.Evaluate(float, float, bool)"/> (and related methods).
+        /// </summary>
+        /// <param name="cData">The character to get the offset for.</param>
+        /// <param name="context">The context of the animation.</param>
+        /// <param name="type">The type of the offset.</param>
+        /// <returns>The offset for a wave.</returns>
+        /// <exception cref="System.ArgumentException"></exception>
         public static float GetWaveOffset(CharData cData, IAnimationContext context, WaveOffsetType type)
         {
             switch (type)
@@ -963,6 +1206,13 @@ namespace TMPEffects.TMPAnimations
         }
         #endregion
 
+        /// <summary>
+        /// Set a character's UVs so it will look like another character.
+        /// </summary>
+        /// <param name="newCharacter">The character to change to.</param>
+        /// <param name="originalCharacter">The original character of the <paramref name="cData"/>.</param>
+        /// <param name="cData">The <see cref="CharData"/> of the character.</param>
+        /// <param name="context">The context of the animation.</param>
         public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData, IAnimationContext context)
         {
             float baseSpriteScale = originalCharacter.scale * originalCharacter.glyph.scale;
@@ -992,7 +1242,14 @@ namespace TMPEffects.TMPAnimations
             cData.mesh.SetUV0(3, uv3);
         }
 
-
+        /// <summary>
+        /// Evaluate an <see cref="AnimationCurve"/> with different <see cref="WrapMode"/>s.
+        /// </summary>
+        /// <param name="curve">The curve to evaluate.</param>
+        /// <param name="wrapMode">The <see cref="WrapMode"/> to use.</param>
+        /// <param name="time">The time value.</param>
+        /// <returns>The value of the curve at the given time value.</returns>
+        /// <exception cref="System.ArgumentException"></exception>
         public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)
         {
             float t;

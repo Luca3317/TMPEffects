@@ -1189,62 +1189,128 @@ namespace TMPEffects.Components
 #endif
         #endregion
 
+        /// <summary>
+        /// The type of delay.<br/>
+        /// Either a percentage of the normal delay (<see cref="Delays.delay"/>) or a raw value in seconds.
+        /// </summary>
         public enum DelayType
         {
             Percentage,
             Raw
         }
 
+        /// <summary>
+        /// Stores the various delays along with their <see cref="DelayType"/> of a TMPWriter.
+        /// </summary>
         [System.Serializable]
         public class Delays
         {
+            /// <summary>
+            /// The calculated delay after "showing" a whitespace character, using <see cref="whitespaceDelay"/> and <see cref="whitespaceDelayType"/>.
+            /// </summary>
             public float CalculatedWhiteSpaceDelay => whitespaceDelayType == DelayType.Raw ? whitespaceDelay : delay * whitespaceDelay;
+            /// <summary>
+            /// The calculated delay after showing a punctuation character, using <see cref="punctuationDelay"/> and <see cref="punctuationDelayType"/>.
+            /// </summary>
             public float CalculatedPunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : delay * punctuationDelay;
+            /// <summary>
+            /// The calculated delay after "showing" an already visible character, using <see cref="visibleDelay"/> and <see cref="visibleDelayType"/>.
+            /// </summary>
             public float CalculatedVisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : delay * visibleDelay;
+            /// <summary>
+            /// The calculated delay after "showing" a linebreak character, using <see cref="linebreakDelay"/> and <see cref="linebreakDelayType"/>.
+            /// </summary>
             public float CalculatedLinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : delay * linebreakDelay;
 
+            /// <summary>
+            /// The delay after showing a character.
+            /// </summary>
             [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
             public float delay = 0.035f;
+
+           /// <summary>
+           /// The delay after "showing" a whitespace character.
+           /// </summary>
             [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
             public float whitespaceDelay;
+            /// <summary>
+            /// The <see cref="DelayType"/> of <see cref="whitespaceDelay"/>.
+            /// </summary>
             public DelayType whitespaceDelayType;
+
+            /// <summary>
+            /// The delay after "showing" a linebreak character.
+            /// </summary>
             [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
             public float linebreakDelay;
+            /// <summary>
+            /// The <see cref="DelayType"/> of <see cref="linebreakDelay"/>.
+            /// </summary>
             public DelayType linebreakDelayType;
+
+            /// <summary>
+            /// The delay after showing a punctuation character.
+            /// </summary>
             [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
             public float punctuationDelay;
+            /// <summary>
+            /// The <see cref="DelayType"/> of <see cref="punctuationDelay"/>.
+            /// </summary>
             public DelayType punctuationDelayType;
+
+            /// <summary>
+            /// The delay after "showing" an already visible character.
+            /// </summary>
             [Tooltip("The delay after already visible characters, either as percentage of the general delay or in seconds")]
             public float visibleDelay;
+            /// <summary>
+            /// The <see cref="DelayType"/> of <see cref="visibleDelay"/>.
+            /// </summary>
             public DelayType visibleDelayType;
 
             /// <summary>
-            /// Set the current delay of the writer.
+            /// Set the delay of the writer.
             /// </summary>
-            /// <param name="delay">The delay between showing two characters.</param>
+            /// <param name="delay">The delay after showing a character.</param>
             public void SetDelay(float delay)
             {
                 this.delay = delay;
             }
 
+            /// <summary>
+            /// Set the whitespace delay of the writer.
+            /// </summary>
+            /// <param name="delay">The delay after "showing" a whitespace character.</param>
             public void SetWhitespaceDelay(float delay, DelayType? type = null)
             {
                 whitespaceDelay = delay;
                 if (type != null) whitespaceDelayType = type.Value;
             }
 
+            /// <summary>
+            /// Set the linebreak delay of the writer.
+            /// </summary>
+            /// <param name="delay">The delay after "showing" a linebreak character.</param>
             public void SetLinebreakDelay(float delay, DelayType? type = null)
             {
                 linebreakDelay = delay;
                 if (type != null) linebreakDelayType = type.Value;
             }
 
+            /// <summary>
+            /// Set the visible delay of the writer.
+            /// </summary>
+            /// <param name="delay">The delay after "showing" an already visible character.</param>
             public void SetVisibleDelay(float delay, DelayType? type = null)
             {
                 visibleDelay = delay;
                 if (type != null) visibleDelayType = type.Value;
             }
 
+            /// <summary>
+            /// Set the punctuation delay of the writer.
+            /// </summary>
+            /// <param name="delay">The delay after "showing" a punctuation character.</param>
             public void SetPunctuationDelay(float delay, DelayType? type = null)
             {
                 punctuationDelay = delay;

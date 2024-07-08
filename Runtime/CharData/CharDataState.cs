@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
@@ -6,50 +7,99 @@ using UnityEngine;
 
 namespace TMPEffects.CharacterData
 {
-    public class CharDataState
+    /// <summary>
+    /// Utility class that stores a <see cref="CharData"/> and modifications to it, allowing you to make multiple modifications iteratively and to apply at once.<br />
+    /// Used in <see cref="TMPEffects.Components.TMPAnimator"/> to apply animations.
+    /// </summary>
+    public class CharDataState : ICharDataState
     {
         public CharData cData;
         public AnimatorContext context;
 
-        public Vector3 positionDelta;
-        public Matrix4x4 scaleDelta;
-        //public Quaternion rotation;
-        //public Vector3 rotationPivot;
+        /// <inheritdoc/>
+        public Vector3 positionDelta { get; set; }
+        /// <inheritdoc/>
+        public Matrix4x4 scaleDelta { get; set; }
+        /// <inheritdoc/>
+        public IEnumerable<ValueTuple<Quaternion, Vector3>> Rotations
+        {
+            get
+            {
+                for (int i = 0; i < rotations.Count; i++)
+                {
+                    yield return new ValueTuple<Quaternion, Vector3>(rotations[i], pivots[i]);
+                }
+            }
+        }
 
-        public Vector3 TL;
-        public Vector3 TR;
-        public Vector3 BR;
-        public Vector3 BL;
+        /// <inheritdoc/>
+        public Vector3 TL { get; set; }
+        /// <inheritdoc/>
+        public Vector3 TR { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BR { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BL { get; set; }
 
-        public Vector3 TLMax;
-        public Vector3 TRMax;
-        public Vector3 BRMax;
-        public Vector3 BLMax;
+        /// <inheritdoc/>
+        public Vector3 TLMax { get; set; }
+        /// <inheritdoc/>
+        public Vector3 TRMax { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BRMax { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BLMax { get; set; }
 
-        public Vector3 TLMin;
-        public Vector3 TRMin;
-        public Vector3 BRMin;
-        public Vector3 BLMin;
+        /// <inheritdoc/>
+        public Vector3 TLMin { get; set; }
+        /// <inheritdoc/>
+        public Vector3 TRMin { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BRMin { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BLMin { get; set; }
 
-        public Vector2 TL_UV;
-        public Vector2 TR_UV;
-        public Vector2 BR_UV;
-        public Vector2 BL_UV;
+        /// <inheritdoc/>
+        public Vector2 TL_UV { get; set; }
+        /// <inheritdoc/>
+        public Vector2 TR_UV { get; set; }
+        /// <inheritdoc/>
+        public Vector2 BR_UV { get; set; }
+        /// <inheritdoc/>
+        public Vector2 BL_UV { get; set; }
 
-        public Vector2 TL_UV2;
-        public Vector2 TR_UV2;
-        public Vector2 BR_UV2;
-        public Vector2 BL_UV2;
+        /// <inheritdoc/>
+        public Vector2 TL_UV2 { get; set; }
+        /// <inheritdoc/>
+        public Vector2 TR_UV2 { get; set; }
+        /// <inheritdoc/>
+        public Vector2 BR_UV2 { get; set; }
+        /// <inheritdoc/>
+        public Vector2 BL_UV2 { get; set; }
 
-        public Color32 TL_Color;
-        public Color32 TR_Color;
-        public Color32 BR_Color;
-        public Color32 BL_Color;
+        /// <inheritdoc/>
+        public Color32 TL_Color => tl_Color;
+        /// <inheritdoc/>
+        public Color32 TR_Color => tr_Color;
+        /// <inheritdoc/>
+        public Color32 BR_Color => br_Color;
+        /// <inheritdoc/>
+        public Color32 BL_Color => bl_Color;
 
-        public Vector3 TL_Result;
-        public Vector3 TR_Result;
-        public Vector3 BR_Result;
-        public Vector3 BL_Result;
+        private Color32 tl_Color;
+        private Color32 tr_Color;
+        private Color32 br_Color;
+        private Color32 bl_Color;
+
+
+        /// <inheritdoc/>
+        public Vector3 TL_Result { get; set; }
+        /// <inheritdoc/>
+        public Vector3 TR_Result { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BR_Result { get; set; }
+        /// <inheritdoc/>
+        public Vector3 BL_Result { get; set; }
 
         List<Vector3> pivots = new List<Vector3>();
         List<Quaternion> rotations = new List<Quaternion>();
@@ -91,12 +141,13 @@ namespace TMPEffects.CharacterData
             BR_UV2 = cData.mesh.initial.BR_UV2;
             BL_UV2 = cData.mesh.initial.BL_UV2;
 
-            TL_Color = cData.mesh.initial.TL_Color;
-            TR_Color = cData.mesh.initial.TR_Color;
-            BR_Color = cData.mesh.initial.BR_Color;
-            BL_Color = cData.mesh.initial.BL_Color;
+            tl_Color = cData.mesh.initial.TL_Color;
+            tr_Color = cData.mesh.initial.TR_Color;
+            br_Color = cData.mesh.initial.BR_Color;
+            bl_Color = cData.mesh.initial.BL_Color;
         }
 
+        /// <inheritdoc/>
         public void CalculateVertexPositions()
         {
             // Apply vertex transformations
@@ -198,36 +249,36 @@ namespace TMPEffects.CharacterData
             {
                 if (cData.alphasDirty)
                 {
-                    BL_Color = cData.mesh.GetColor(0);
-                    TL_Color = cData.mesh.GetColor(1);
-                    TR_Color = cData.mesh.GetColor(2);
-                    BR_Color = cData.mesh.GetColor(3);
+                    bl_Color = cData.mesh.GetColor(0);
+                    tl_Color = cData.mesh.GetColor(1);
+                    tr_Color = cData.mesh.GetColor(2);
+                    br_Color = cData.mesh.GetColor(3);
                 }
                 else
                 {
                     Color32 color = cData.mesh.GetColor(0);
-                    color.a = BL_Color.a;
-                    BL_Color = color;
+                    color.a = bl_Color.a;
+                    bl_Color = color;
 
                     color = cData.mesh.GetColor(1);
-                    color.a = TL_Color.a;
-                    TL_Color = color;
+                    color.a = tl_Color.a;
+                    tl_Color = color;
 
                     color = cData.mesh.GetColor(2);
-                    color.a = TR_Color.a;
-                    TR_Color = color;
+                    color.a = tr_Color.a;
+                    tr_Color = color;
 
                     color = cData.mesh.GetColor(3);
-                    color.a = BR_Color.a;
-                    BR_Color = color;
+                    color.a = br_Color.a;
+                    br_Color = color;
                 }
             }
             else if (cData.alphasDirty)
             {
-                BL_Color.a = cData.mesh.GetAlpha(0);
-                TL_Color.a = cData.mesh.GetAlpha(1);
-                TR_Color.a = cData.mesh.GetAlpha(2);
-                BR_Color.a = cData.mesh.GetAlpha(3);
+                bl_Color.a = cData.mesh.GetAlpha(0);
+                tl_Color.a = cData.mesh.GetAlpha(1);
+                tr_Color.a = cData.mesh.GetAlpha(2);
+                br_Color.a = cData.mesh.GetAlpha(3);
             }
 
             if (cData.uvsDirty)

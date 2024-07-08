@@ -26,6 +26,13 @@ namespace TMPEffects.Components
             else Mediator.SetText(text);
         }
 
+        /// <summary>
+        /// Show a subset of the text's characters.
+        /// </summary>
+        /// <param name="start">First character index to show.</param>
+        /// <param name="length">Amount of characters to show.</param>
+        /// <param name="skipShowProcess">Whether to skip the show process.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public void Show(int start, int length, bool skipShowProcess = false)
         {
             if (Mediator == null)
@@ -37,6 +44,13 @@ namespace TMPEffects.Components
             Mediator.SetVisibilityState(start, length, visibility);
         }
 
+        /// <summary>
+        /// Hide a subset of the text's characters.
+        /// </summary>
+        /// <param name="start">First character index to hide.</param>
+        /// <param name="length">Amount of characters to hide.</param>
+        /// <param name="skipHideProcess">Whether to skip the hide process.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public void Hide(int start, int length, bool skipHideProcess = false)
         {
             if (Mediator == null)
@@ -48,6 +62,11 @@ namespace TMPEffects.Components
             Mediator.SetVisibilityState(start, length, visibility);
         }
 
+        /// <summary>
+        /// Show all of the text's character.
+        /// </summary>
+        /// <param name="skipShowProcess">Whether to skip the show process.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public void ShowAll(bool skipShowProcess = false)
         {
             if (Mediator == null)
@@ -59,6 +78,11 @@ namespace TMPEffects.Components
             Mediator.SetVisibilityState(0, Mediator.Text.textInfo.characterCount, visibility);
         }
 
+        /// <summary>
+        /// Hide all of the text's character.
+        /// </summary>
+        /// <param name="skipShowProcess">Whether to skip the hide process.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public void HideAll(bool skipHideProcess = false)
         {
             if (Mediator == null)

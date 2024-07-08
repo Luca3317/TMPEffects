@@ -6,15 +6,23 @@ using UnityEngine.Events;
 
 namespace TMPEffects.TMPCommands
 {
+    /// <summary>
+    /// Struct defining scene commands.
+    /// </summary>
     [System.Serializable]
     public struct TMPSceneCommand : ITMPCommand
     {
+        /// <inheritdoc/>
         public TagType TagType => commandType;
+        /// <inheritdoc/>
         public bool ExecuteInstantly => executeInstantly;
+        /// <inheritdoc/>
         public bool ExecuteOnSkip => executeOnSkip;
+        /// <inheritdoc/>
         public bool ExecuteRepeatable => executeRepeatable;
 
 #if UNITY_EDITOR
+        /// <inheritdoc/>
         public bool ExecuteInPreview => false;
 #endif
         [Tooltip("Whether tags of this command operate on a range (and therefore need to be closed) or on an index.")]
@@ -28,8 +36,10 @@ namespace TMPEffects.TMPCommands
         [Tooltip("The methods to trigger.")]
         [SerializeField] private UnityEvent<TMPCommandArgs> command;
 
+        /// <inheritdoc/>
         public void ExecuteCommand(TMPCommandArgs args) => command?.Invoke(args);
 
+        /// <inheritdoc/>
         public bool ValidateParameters(IDictionary<string, string> parameters)
         {
             return true;

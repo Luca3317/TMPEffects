@@ -2,6 +2,9 @@ using System.Collections.Generic;
 
 namespace TMPEffects.TMPCommands
 {
+    /// <summary>
+    /// Base interface for all TMPEffects commands.
+    /// </summary>
     public interface ITMPCommand
     {
         /// <summary>

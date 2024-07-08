@@ -13,7 +13,7 @@ namespace TMPEffects.Components.Mediator
     /// <summary>
     /// A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).<br/>
     /// Handles the pre- and postprocessing of the text, as well as maintaining information
-    /// about it in the form of a CharData collection.
+    /// about it in the form of a <see cref="CharData"/> and <see cref="VisibilityState"/> collection.
     /// </summary>
     public class TMPMediator : IDisposable
     {
@@ -40,8 +40,6 @@ namespace TMPEffects.Components.Mediator
         /// </summary>
         public readonly TMP_Text Text;
 
-        public delegate void EmptyEventHandler();
-        public delegate void RangeEventHandler(int start, int lenght);
         public delegate void VisibilityEventHandler(int index, VisibilityState previous);
         public delegate void TextChangedEarlyEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData);
         public delegate void TextChangedLateEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
@@ -95,7 +93,9 @@ namespace TMPEffects.Components.Mediator
             if (Text != null) Text.ForceMeshUpdate(false, true);
         }
 
-        private bool disposed = false;
+        /// <summary>
+        /// Dispose the TMPMediator instance.
+        /// </summary>
         public void Dispose()
         {
             if (disposed)
@@ -230,16 +230,62 @@ namespace TMPEffects.Components.Mediator
             SetVisibilityState(index, 1, state);
         }
 
-        bool settingText = false;
+        /// <summary>
+        /// Set the text of the associated <see cref="TMP_Text"/> component.
+        /// </summary>
+        /// <param name="text"></param>
         public void SetText(string text)
         {
             settingText = true;
             Text.SetText(text);
         }
 
+        /// <summary>
+        /// Apply the mesh of the <see cref="CharData"/>.
+        /// </summary>
+        /// <param name="cData"></param>
+        public void ApplyMesh(CharData cData)
+        {
+            int index = cData.info.index;
+            TMP_TextInfo info = Text.textInfo;
+
+            TMP_CharacterInfo cInfo = info.characterInfo[cData.info.index];
+            int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
+            Color32[] colors = info.meshInfo[mIndex].colors32;
+            Vector3[] verts = info.meshInfo[mIndex].vertices;
+
+#if UNITY_2023_2_OR_NEWER
+            Vector4[] uvs0 = info.meshInfo[mIndex].uvs0;
+#else
+            Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
+#endif
+
+            Vector2[] uvs2 = info.meshInfo[mIndex].uvs2;
+
+            for (int j = 0; j < 4; j++)
+            {
+                verts[vIndex + j] = CharData[index].mesh.GetPosition(j);
+                colors[vIndex + j] = CharData[index].mesh.GetColor(j);
+
+#if UNITY_2023_2_OR_NEWER
+                Vector4 current = uvs0[vIndex + j];
+                Vector2 charUV0 = CharData[index].mesh.GetUV0(j);
+                current.x = charUV0.x;
+                current.y = charUV0.y;
+                uvs0[vIndex + j] = current;
+#else
+                uvs0[vIndex + j] = CharData[index].mesh.GetUV0(j);
+#endif
+
+                uvs2[vIndex + j] = CharData[index].mesh.GetUV2(j);
+            }
+        }
+
         private readonly List<VisibilityState> visibilityStates;
         private readonly List<CharData> charData;
         private object visibilityProcessor = null;
+        private bool disposed = false;
+        bool settingText = false;
 
         private void OnTextChanged(UnityEngine.Object obj)
         {
@@ -402,41 +448,5 @@ namespace TMPEffects.Components.Mediator
             ApplyMesh(cData);
         }
 
-        public void ApplyMesh(CharData cData)
-        {
-            int index = cData.info.index;
-            TMP_TextInfo info = Text.textInfo;
-
-            TMP_CharacterInfo cInfo = info.characterInfo[cData.info.index];
-            int vIndex = cInfo.vertexIndex, mIndex = cInfo.materialReferenceIndex;
-            Color32[] colors = info.meshInfo[mIndex].colors32;
-            Vector3[] verts = info.meshInfo[mIndex].vertices;
-
-#if UNITY_2023_2_OR_NEWER
-            Vector4[] uvs0 = info.meshInfo[mIndex].uvs0;
-#else
-            Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
-#endif
-
-            Vector2[] uvs2 = info.meshInfo[mIndex].uvs2;
-
-            for (int j = 0; j < 4; j++)
-            {
-                verts[vIndex + j] = CharData[index].mesh.GetPosition(j);
-                colors[vIndex + j] = CharData[index].mesh.GetColor(j);
-
-#if UNITY_2023_2_OR_NEWER
-                Vector4 current = uvs0[vIndex + j];
-                Vector2 charUV0 = CharData[index].mesh.GetUV0(j);
-                current.x = charUV0.x;
-                current.y = charUV0.y;
-                uvs0[vIndex + j] = current;
-#else
-                uvs0[vIndex + j] = CharData[index].mesh.GetUV0(j);
-#endif
-
-                uvs2[vIndex + j] = CharData[index].mesh.GetUV2(j);
-            }
-        }
     }
 }
