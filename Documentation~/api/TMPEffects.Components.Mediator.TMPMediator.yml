@@ -45,7 +45,7 @@ items:
 
     Handles the pre- and postprocessing of the text, as well as maintaining information
 
-    about it in the form of a CharData collection.
+    about it in the form of a <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> collection.
   example: []
   syntax:
     content: 'public class TMPMediator : IDisposable'
@@ -192,7 +192,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Early
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 53
+    startLine: 51
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -226,7 +226,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Late
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 57
+    startLine: 55
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -255,7 +255,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityStateUpdated
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 61
+    startLine: 59
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -284,7 +284,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ForceReprocess
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 92
+    startLine: 90
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
@@ -319,6 +319,7 @@ items:
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
+  summary: Dispose the TMPMediator instance.
   example: []
   syntax:
     content: public void Dispose()
@@ -607,15 +608,18 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 233
+    startLine: 236
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
+  summary: Set the text of the associated <xref href="TMPro.TMP_Text" data-throw-if-not-resolved="false"></xref> component.
+  example: []
   syntax:
     content: public void SetText(string text)
     parameters:
     - id: text
       type: System.String
+      description: ''
     content.vb: Public Sub SetText(text As String)
   overload: TMPEffects.Components.Mediator.TMPMediator.SetText*
   nameWithType.vb: TMPMediator.SetText(String)
@@ -639,18 +643,34 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ApplyMesh
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 401
+    startLine: 246
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator
+  summary: Apply the mesh of the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public void ApplyMesh(CharData cData)
     parameters:
     - id: cData
       type: TMPEffects.CharacterData.CharData
+      description: ''
     content.vb: Public Sub ApplyMesh(cData As CharData)
   overload: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*
 references:
+- uid: TMPEffects.Components.Mediator.TMPMediator.CharData
+  commentId: F:TMPEffects.Components.Mediator.TMPMediator.CharData
+  href: TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData
+  name: CharData
+  nameWithType: TMPMediator.CharData
+  fullName: TMPEffects.Components.Mediator.TMPMediator.CharData
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VisibilityState.html
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState
 - uid: TMPEffects.Components.Mediator
   commentId: N:TMPEffects.Components.Mediator
   href: TMPEffects.html
@@ -919,6 +939,28 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1157,19 +1199,6 @@ references:
   - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
     name: TextChangedLateEventHandler
     href: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html
-- uid: TMPEffects.CharacterData.VisibilityState
-  commentId: T:TMPEffects.CharacterData.VisibilityState
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.VisibilityState.html
-  name: VisibilityState
-  nameWithType: VisibilityState
-  fullName: TMPEffects.CharacterData.VisibilityState
-- uid: TMPEffects.Components.Mediator.TMPMediator.CharData
-  commentId: F:TMPEffects.Components.Mediator.TMPMediator.CharData
-  href: TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData
-  name: CharData
-  nameWithType: TMPMediator.CharData
-  fullName: TMPEffects.Components.Mediator.TMPMediator.CharData
 - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
   commentId: T:TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
   parent: TMPEffects.Components.Mediator
@@ -1193,28 +1222,6 @@ references:
   - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
     name: VisibilityEventHandler
     href: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html
-- uid: TMPEffects.CharacterData
-  commentId: N:TMPEffects.CharacterData
-  href: TMPEffects.html
-  name: TMPEffects.CharacterData
-  nameWithType: TMPEffects.CharacterData
-  fullName: TMPEffects.CharacterData
-  spec.csharp:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.CharacterData
-    name: CharacterData
-    href: TMPEffects.CharacterData.html
-  spec.vb:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.CharacterData
-    name: CharacterData
-    href: TMPEffects.CharacterData.html
 - uid: TMPEffects.Components.Mediator.TMPMediator.ForceReprocess*
   commentId: Overload:TMPEffects.Components.Mediator.TMPMediator.ForceReprocess
   href: TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_ForceReprocess

@@ -19,7 +19,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ParseDelegate
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 323
+    startLine: 576
   assemblies:
   - TMPEffects
   namespace: TMPEffects

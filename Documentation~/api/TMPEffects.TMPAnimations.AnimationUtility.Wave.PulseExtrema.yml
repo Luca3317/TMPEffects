@@ -22,10 +22,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PulseExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 773
+    startLine: 1062
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: If the wave has a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>, PulseExtrema defines whether an extremum is passed once the wait time begins, or once it ends.
+  example: []
   syntax:
     content: >-
       [Flags]
@@ -57,7 +59,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Early
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 776
+    startLine: 1065
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -83,7 +85,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Late
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 777
+    startLine: 1066
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -109,7 +111,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Both
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 778
+    startLine: 1067
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -119,6 +121,18 @@ items:
       type: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
     content.vb: Both = Early Or Late
 references:
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+  commentId: P:TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+  href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait
+  name: CrestWait
+  nameWithType: AnimationUtility.Wave.CrestWait
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
+  commentId: P:TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
+  href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait
+  name: TroughWait
+  nameWithType: AnimationUtility.Wave.TroughWait
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
 - uid: TMPEffects.TMPAnimations
   commentId: N:TMPEffects.TMPAnimations
   href: TMPEffects.html

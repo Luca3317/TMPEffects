@@ -20,10 +20,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPEffectDatabase
     path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
-    startLine: 4
+    startLine: 7
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Databases
+  summary: Base interface for effect databases.
+  example: []
   syntax:
     content: public interface ITMPEffectDatabase
     content.vb: Public Interface ITMPEffectDatabase
@@ -45,7 +47,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Databases

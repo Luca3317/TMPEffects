@@ -22,10 +22,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TypedVector2
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 400
+    startLine: 707
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: A <xref href="UnityEngine.Vector2" data-throw-if-not-resolved="false"></xref> with a <xref href="TMPEffects.ParameterUtility.VectorType" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: >-
       [Serializable]
@@ -64,7 +66,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: vector
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 403
+    startLine: 710
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -91,7 +93,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: type
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 404
+    startLine: 711
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -118,7 +120,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 406
+    startLine: 713
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -135,6 +137,36 @@ items:
   fullName.vb: TMPEffects.ParameterUtility.TypedVector2.New(TMPEffects.ParameterUtility.VectorType, UnityEngine.Vector2)
   name.vb: New(VectorType, Vector2)
 references:
+- uid: UnityEngine.Vector2
+  commentId: T:UnityEngine.Vector2
+  parent: UnityEngine
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: UnityEngine.Vector2
+- uid: TMPEffects.ParameterUtility.VectorType
+  commentId: T:TMPEffects.ParameterUtility.VectorType
+  parent: TMPEffects
+  href: TMPEffects.ParameterUtility.html
+  name: ParameterUtility.VectorType
+  nameWithType: ParameterUtility.VectorType
+  fullName: TMPEffects.ParameterUtility.VectorType
+  spec.csharp:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html
+  spec.vb:
+  - uid: TMPEffects.ParameterUtility
+    name: ParameterUtility
+    href: TMPEffects.ParameterUtility.html
+  - name: .
+  - uid: TMPEffects.ParameterUtility.VectorType
+    name: VectorType
+    href: TMPEffects.ParameterUtility.VectorType.html
 - uid: TMPEffects
   commentId: N:TMPEffects
   href: TMPEffects.html
@@ -332,6 +364,12 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
 - uid: System.ValueType
   commentId: T:System.ValueType
   parent: System
@@ -358,42 +396,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: UnityEngine.Vector2
-  commentId: T:UnityEngine.Vector2
-  parent: UnityEngine
-  isExternal: true
-  name: Vector2
-  nameWithType: Vector2
-  fullName: UnityEngine.Vector2
-- uid: UnityEngine
-  commentId: N:UnityEngine
-  isExternal: true
-  name: UnityEngine
-  nameWithType: UnityEngine
-  fullName: UnityEngine
-- uid: TMPEffects.ParameterUtility.VectorType
-  commentId: T:TMPEffects.ParameterUtility.VectorType
-  parent: TMPEffects
-  href: TMPEffects.ParameterUtility.html
-  name: ParameterUtility.VectorType
-  nameWithType: ParameterUtility.VectorType
-  fullName: TMPEffects.ParameterUtility.VectorType
-  spec.csharp:
-  - uid: TMPEffects.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.ParameterUtility.html
-  - name: .
-  - uid: TMPEffects.ParameterUtility.VectorType
-    name: VectorType
-    href: TMPEffects.ParameterUtility.VectorType.html
-  spec.vb:
-  - uid: TMPEffects.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.ParameterUtility.html
-  - name: .
-  - uid: TMPEffects.ParameterUtility.VectorType
-    name: VectorType
-    href: TMPEffects.ParameterUtility.VectorType.html
 - uid: TMPEffects.ParameterUtility.TypedVector2.#ctor*
   commentId: Overload:TMPEffects.ParameterUtility.TypedVector2.#ctor
   href: TMPEffects.ParameterUtility.TypedVector2.html#TMPEffects_ParameterUtility_TypedVector2__ctor_TMPEffects_ParameterUtility_VectorType_UnityEngine_Vector2_

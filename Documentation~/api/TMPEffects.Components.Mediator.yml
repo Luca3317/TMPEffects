@@ -5,8 +5,6 @@ items:
   id: TMPEffects.Components.Mediator
   children:
   - TMPEffects.Components.Mediator.TMPMediator
-  - TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-  - TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
   - TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
   - TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
   - TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
@@ -27,50 +25,6 @@ references:
   name: TMPMediator
   nameWithType: TMPMediator
   fullName: TMPEffects.Components.Mediator.TMPMediator
-- uid: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-  commentId: T:TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-  href: TMPEffects.Components.Mediator.TMPMediator.html
-  name: TMPMediator.EmptyEventHandler
-  nameWithType: TMPMediator.EmptyEventHandler
-  fullName: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-  spec.csharp:
-  - uid: TMPEffects.Components.Mediator.TMPMediator
-    name: TMPMediator
-    href: TMPEffects.Components.Mediator.TMPMediator.html
-  - name: .
-  - uid: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-    name: EmptyEventHandler
-    href: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler.html
-  spec.vb:
-  - uid: TMPEffects.Components.Mediator.TMPMediator
-    name: TMPMediator
-    href: TMPEffects.Components.Mediator.TMPMediator.html
-  - name: .
-  - uid: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-    name: EmptyEventHandler
-    href: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler.html
-- uid: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-  commentId: T:TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-  href: TMPEffects.Components.Mediator.TMPMediator.html
-  name: TMPMediator.RangeEventHandler
-  nameWithType: TMPMediator.RangeEventHandler
-  fullName: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-  spec.csharp:
-  - uid: TMPEffects.Components.Mediator.TMPMediator
-    name: TMPMediator
-    href: TMPEffects.Components.Mediator.TMPMediator.html
-  - name: .
-  - uid: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-    name: RangeEventHandler
-    href: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler.html
-  spec.vb:
-  - uid: TMPEffects.Components.Mediator.TMPMediator
-    name: TMPMediator
-    href: TMPEffects.Components.Mediator.TMPMediator.html
-  - name: .
-  - uid: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-    name: RangeEventHandler
-    href: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler.html
 - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
   commentId: T:TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
   parent: TMPEffects.Components.Mediator

@@ -5,8 +5,8 @@ items:
   id: CharData
   parent: TMPEffects.CharacterData
   children:
-  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo)
-  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Nullable{TMPro.TMP_WordInfo})
+  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32)
+  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32,System.Nullable{TMPro.TMP_WordInfo})
   - TMPEffects.CharacterData.CharData.AddPivotDelta(UnityEngine.Vector3)
   - TMPEffects.CharacterData.CharData.AddPositionDelta(UnityEngine.Vector3)
   - TMPEffects.CharacterData.CharData.AddVertexDelta(System.Int32,UnityEngine.Vector3)
@@ -56,7 +56,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CharData
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 12
+    startLine: 11
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -100,7 +100,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: positionDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 17
+    startLine: 16
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -131,7 +131,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: rotationDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -162,7 +162,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: scaleDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 25
+    startLine: 24
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -193,7 +193,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: verticesDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 29
+    startLine: 28
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -224,7 +224,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: colorsDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 33
+    startLine: 32
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -255,7 +255,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: alphasDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 37
+    startLine: 36
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -286,7 +286,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: uvsDirty
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 41
+    startLine: 40
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -317,7 +317,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Position
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 46
+    startLine: 45
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -348,7 +348,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Scale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 50
+    startLine: 49
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -379,7 +379,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Rotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 54
+    startLine: 53
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -410,7 +410,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RotationPivot
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 58
+    startLine: 57
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -441,7 +441,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 64
+    startLine: 63
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -470,7 +470,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 68
+    startLine: 67
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -499,17 +499,17 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: info
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 73
+    startLine: 72
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
   summary: Holds a selection of <xref href="TMPro.TMP_CharacterInfo" data-throw-if-not-resolved="false"></xref> data.
   example: []
   syntax:
-    content: public readonly Info info
+    content: public readonly CharData.Info info
     return:
-      type: TMPEffects.CharacterData.Info
-    content.vb: Public ReadOnly info As Info
+      type: TMPEffects.CharacterData.CharData.Info
+    content.vb: Public ReadOnly info As CharData.Info
 - uid: TMPEffects.CharacterData.CharData.mesh
   commentId: F:TMPEffects.CharacterData.CharData.mesh
   id: mesh
@@ -528,7 +528,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: mesh
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 77
+    startLine: 76
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -557,7 +557,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: initialMesh
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 82
+    startLine: 81
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -588,7 +588,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 86
+    startLine: 85
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -617,7 +617,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 90
+    startLine: 89
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -646,7 +646,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 94
+    startLine: 93
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -657,16 +657,16 @@ items:
     return:
       type: UnityEngine.Vector3
     content.vb: Public ReadOnly InitialScale As Vector3
-- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo)
-  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo)
-  id: '#ctor(System.Int32,TMPro.TMP_CharacterInfo)'
+- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32)
+  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32)
+  id: '#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32)'
   parent: TMPEffects.CharacterData.CharData
   langs:
   - csharp
   - vb
-  name: CharData(int, TMP_CharacterInfo)
-  nameWithType: CharData.CharData(int, TMP_CharacterInfo)
-  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMPro.TMP_CharacterInfo)
+  name: CharData(int, TMP_CharacterInfo, int)
+  nameWithType: CharData.CharData(int, TMP_CharacterInfo, int)
+  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMPro.TMP_CharacterInfo, int)
   type: Constructor
   source:
     remote:
@@ -675,32 +675,34 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 102
+    startLine: 101
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
-    content: public CharData(int index, TMP_CharacterInfo cInfo)
+    content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex)
     parameters:
     - id: index
       type: System.Int32
     - id: cInfo
       type: TMPro.TMP_CharacterInfo
-    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo)
+    - id: wordIndex
+      type: System.Int32
+    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wordIndex As Integer)
   overload: TMPEffects.CharacterData.CharData.#ctor*
-  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo)
-  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMPro.TMP_CharacterInfo)
-  name.vb: New(Integer, TMP_CharacterInfo)
-- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Nullable{TMPro.TMP_WordInfo})
-  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Nullable{TMPro.TMP_WordInfo})
-  id: '#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Nullable{TMPro.TMP_WordInfo})'
+  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo, Integer)
+  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMPro.TMP_CharacterInfo, Integer)
+  name.vb: New(Integer, TMP_CharacterInfo, Integer)
+- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32,System.Nullable{TMPro.TMP_WordInfo})
+  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32,System.Nullable{TMPro.TMP_WordInfo})
+  id: '#ctor(System.Int32,TMPro.TMP_CharacterInfo,System.Int32,System.Nullable{TMPro.TMP_WordInfo})'
   parent: TMPEffects.CharacterData.CharData
   langs:
   - csharp
   - vb
-  name: CharData(int, TMP_CharacterInfo, TMP_WordInfo?)
-  nameWithType: CharData.CharData(int, TMP_CharacterInfo, TMP_WordInfo?)
-  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMPro.TMP_CharacterInfo, TMPro.TMP_WordInfo?)
+  name: CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
+  nameWithType: CharData.CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
+  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMPro.TMP_CharacterInfo, int, TMPro.TMP_WordInfo?)
   type: Constructor
   source:
     remote:
@@ -709,24 +711,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 117
+    startLine: 116
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
   syntax:
-    content: public CharData(int index, TMP_CharacterInfo cInfo, TMP_WordInfo? wInfo = null)
+    content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo? wInfo = null)
     parameters:
     - id: index
       type: System.Int32
     - id: cInfo
       type: TMPro.TMP_CharacterInfo
+    - id: wordIndex
+      type: System.Int32
     - id: wInfo
       type: System.Nullable{TMPro.TMP_WordInfo}
-    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wInfo As TMP_WordInfo? = Nothing)
+    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wordIndex As Integer, wInfo As TMP_WordInfo? = Nothing)
   overload: TMPEffects.CharacterData.CharData.#ctor*
-  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo, TMP_WordInfo?)
-  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMPro.TMP_CharacterInfo, TMPro.TMP_WordInfo?)
-  name.vb: New(Integer, TMP_CharacterInfo, TMP_WordInfo?)
+  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo?)
+  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMPro.TMP_CharacterInfo, Integer, TMPro.TMP_WordInfo?)
+  name.vb: New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo?)
 - uid: TMPEffects.CharacterData.CharData.SetVertex(System.Int32,UnityEngine.Vector3)
   commentId: M:TMPEffects.CharacterData.CharData.SetVertex(System.Int32,UnityEngine.Vector3)
   id: SetVertex(System.Int32,UnityEngine.Vector3)
@@ -745,7 +749,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVertex
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 139
+    startLine: 138
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -783,7 +787,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddVertexDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 149
+    startLine: 148
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -821,7 +825,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 158
+    startLine: 157
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -853,7 +857,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPositionDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 167
+    startLine: 166
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -885,7 +889,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPivot
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 177
+    startLine: 176
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -920,7 +924,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddPivotDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 186
+    startLine: 185
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -955,7 +959,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 195
+    startLine: 194
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -987,7 +991,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 205
+    startLine: 204
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1019,7 +1023,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 213
+    startLine: 212
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1047,7 +1051,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetScale
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 225
+    startLine: 224
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1075,7 +1079,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPosition
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 229
+    startLine: 228
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1103,7 +1107,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetRotation
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 233
+    startLine: 232
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1131,7 +1135,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPivot
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 237
+    startLine: 236
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1159,7 +1163,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetVertices
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 241
+    startLine: 240
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1187,7 +1191,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetUVs
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 245
+    startLine: 244
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1215,7 +1219,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetColors
     path: ../Assets/TMPEffects/Runtime/CharData/CharData.cs
-    startLine: 249
+    startLine: 248
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1607,13 +1611,29 @@ references:
   name: RotationPivot
   nameWithType: CharData.RotationPivot
   fullName: TMPEffects.CharacterData.CharData.RotationPivot
-- uid: TMPEffects.CharacterData.Info
-  commentId: T:TMPEffects.CharacterData.Info
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
   parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.Info.html
-  name: Info
-  nameWithType: Info
-  fullName: TMPEffects.CharacterData.Info
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  spec.vb:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
 - uid: TMPEffects.CharacterData.VertexData
   commentId: T:TMPEffects.CharacterData.VertexData
   parent: TMPEffects.CharacterData
@@ -1636,7 +1656,7 @@ references:
   fullName: TMPEffects.CharacterData.ReadOnlyVertexData
 - uid: TMPEffects.CharacterData.CharData.#ctor*
   commentId: Overload:TMPEffects.CharacterData.CharData.#ctor
-  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData__ctor_System_Int32_TMPro_TMP_CharacterInfo_
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData__ctor_System_Int32_TMPro_TMP_CharacterInfo_System_Int32_
   name: CharData
   nameWithType: CharData.CharData
   fullName: TMPEffects.CharacterData.CharData.CharData

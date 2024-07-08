@@ -20,10 +20,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEvent
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEvent.cs
-    startLine: 5
+    startLine: 8
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
+  summary: Class used by <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> to raise event tags.
+  example: []
   syntax:
     content: >-
       [Serializable]
@@ -89,7 +91,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEvent.cs
-    startLine: 8
+    startLine: 11
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
@@ -101,6 +103,13 @@ items:
   fullName.vb: TMPEffects.TMPEvents.TMPEvent.New()
   name.vb: New()
 references:
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
 - uid: TMPEffects.TMPEvents
   commentId: N:TMPEffects.TMPEvents
   href: TMPEffects.html
@@ -1240,6 +1249,28 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
 - uid: System
   commentId: N:System
   isExternal: true

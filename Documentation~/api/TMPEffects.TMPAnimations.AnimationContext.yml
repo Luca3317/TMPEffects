@@ -26,12 +26,12 @@ items:
   type: Class
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationContext
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 53
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 7
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -64,12 +64,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 56
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 10
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -104,12 +104,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 58
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 12
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -141,12 +141,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimatorContext
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 60
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -174,12 +174,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentData
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 62
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 16
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -207,12 +207,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CustomData
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 77
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 31
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -240,23 +240,23 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: State
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 79
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 33
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
   summary: The current state of the CharData, with the previous animations applied.
   example: []
   syntax:
-    content: public ReadOnlyCharDataState State { get; }
+    content: public ICharDataState State { get; }
     parameters: []
     return:
-      type: TMPEffects.CharacterData.ReadOnlyCharDataState
-    content.vb: Public ReadOnly Property State As ReadOnlyCharDataState
+      type: TMPEffects.CharacterData.ICharDataState
+    content.vb: Public ReadOnly Property State As ICharDataState
   overload: TMPEffects.TMPAnimations.AnimationContext.State*
   implements:
   - TMPEffects.TMPAnimations.IAnimationContext.State
@@ -273,12 +273,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 83
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 37
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -311,12 +311,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetFinishAnimation
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 91
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 45
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -343,12 +343,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishAnimation
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 96
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 50
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -377,12 +377,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetFinishAnimation
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 101
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 55
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -406,12 +406,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetFinishAnimation
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 106
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 60
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -432,12 +432,12 @@ items:
   type: Field
   source:
     remote:
-      path: Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      path: Runtime/Effects/TMPAnimations/AnimationContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: finishedDict
-    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/IAnimationContext.cs
-    startLine: 114
+    path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationContext.cs
+    startLine: 68
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -922,13 +922,13 @@ references:
   name: State
   nameWithType: IAnimationContext.State
   fullName: TMPEffects.TMPAnimations.IAnimationContext.State
-- uid: TMPEffects.CharacterData.ReadOnlyCharDataState
-  commentId: T:TMPEffects.CharacterData.ReadOnlyCharDataState
+- uid: TMPEffects.CharacterData.ICharDataState
+  commentId: T:TMPEffects.CharacterData.ICharDataState
   parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.ReadOnlyCharDataState.html
-  name: ReadOnlyCharDataState
-  nameWithType: ReadOnlyCharDataState
-  fullName: TMPEffects.CharacterData.ReadOnlyCharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html
+  name: ICharDataState
+  nameWithType: ICharDataState
+  fullName: TMPEffects.CharacterData.ICharDataState
 - uid: TMPEffects.TMPAnimations.AnimationContext.#ctor*
   commentId: Overload:TMPEffects.TMPAnimations.AnimationContext.#ctor
   href: TMPEffects.TMPAnimations.AnimationContext.html#TMPEffects_TMPAnimations_AnimationContext__ctor_TMPEffects_Components_Animator_ReadOnlyAnimatorContext_TMPEffects_CharacterData_ReadOnlyCharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_
@@ -945,6 +945,13 @@ references:
   name: ReadOnlyAnimatorContext
   nameWithType: ReadOnlyAnimatorContext
   fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+- uid: TMPEffects.CharacterData.ReadOnlyCharDataState
+  commentId: T:TMPEffects.CharacterData.ReadOnlyCharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyCharDataState.html
+  name: ReadOnlyCharDataState
+  nameWithType: ReadOnlyCharDataState
+  fullName: TMPEffects.CharacterData.ReadOnlyCharDataState
 - uid: TMPEffects.TMPAnimations.AnimationContext.ResetFinishAnimation*
   commentId: Overload:TMPEffects.TMPAnimations.AnimationContext.ResetFinishAnimation
   href: TMPEffects.TMPAnimations.AnimationContext.html#TMPEffects_TMPAnimations_AnimationContext_ResetFinishAnimation_System_Int32_

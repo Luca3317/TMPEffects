@@ -77,10 +77,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ParameterUtility
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Utility class for easy parameter handling.
+  example: []
   syntax:
     content: public static class ParameterUtility
     content.vb: Public Module ParameterUtility
@@ -112,23 +114,33 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetDefinedParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 14
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: >-
+    Check if there is a well-defined parameter of the given name or aliases.<br />
+
+    A parameter is well-defined if there is exactly one of the given aliases (including the name) present in the parameters.
+  example: []
   syntax:
     content: public static bool TryGetDefinedParameter(out string value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: System.String
+      description: Set to the name of the defined parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if the parameter is well-defined, false otherwise.
     content.vb: Public Shared Function TryGetDefinedParameter(value As String, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetDefinedParameter*
   nameWithType.vb: ParameterUtility.TryGetDefinedParameter(String, IDictionary(Of String, String), String, ParamArray String())
@@ -152,21 +164,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ParameterDefined
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 36
+    startLine: 54
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: >-
+    Check if there is a well-defined parameter of the given name or aliases.<br />
+
+    A parameter is well-defined if there is exactly one of the given aliases (including the name) present in the parameters.
+  example: []
   syntax:
     content: public static bool ParameterDefined(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if the parameter is well-defined, false otherwise.
     content.vb: Public Shared Function ParameterDefined(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.ParameterDefined*
   nameWithType.vb: ParameterUtility.ParameterDefined(IDictionary(Of String, String), String, ParamArray String())
@@ -190,21 +211,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonFloatParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 42
+    startLine: 66
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type float (=&gt; can not be converted to float).<br />
+  example: []
   syntax:
     content: public static bool HasNonFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type float, false otherwise.
     content.vb: Public Shared Function HasNonFloatParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonFloatParameter*
   nameWithType.vb: ParameterUtility.HasNonFloatParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -228,21 +255,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasFloatParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 48
+    startLine: 79
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type float (=&gt; can be converted to float).<br />
+  example: []
   syntax:
     content: public static bool HasFloatParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type float, false otherwise.
     content.vb: Public Shared Function HasFloatParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasFloatParameter*
   nameWithType.vb: ParameterUtility.HasFloatParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -266,23 +299,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetFloatParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 53
+    startLine: 92
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type float (=&gt; can be converted to float).<br />
+  example: []
   syntax:
     content: public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: System.Single
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type float, false otherwise.
     content.vb: Public Shared Function TryGetFloatParameter(value As Single, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetFloatParameter*
   nameWithType.vb: ParameterUtility.TryGetFloatParameter(Single, IDictionary(Of String, String), String, ParamArray String())
@@ -306,21 +346,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonIntParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 62
+    startLine: 107
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type int (=&gt; can not be converted to int).<br />
+  example: []
   syntax:
     content: public static bool HasNonIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type int, false otherwise.
     content.vb: Public Shared Function HasNonIntParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonIntParameter*
   nameWithType.vb: ParameterUtility.HasNonIntParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -344,21 +390,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasIntParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 68
+    startLine: 120
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type int (=&gt; can no be converted to int).<br />
+  example: []
   syntax:
     content: public static bool HasIntParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type int, false otherwise.
     content.vb: Public Shared Function HasIntParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasIntParameter*
   nameWithType.vb: ParameterUtility.HasIntParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -382,23 +434,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetIntParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 73
+    startLine: 133
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type int (=&gt; can be converted to int).<br />
+  example: []
   syntax:
     content: public static bool TryGetIntParameter(out int value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: System.Int32
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type int, false otherwise.
     content.vb: Public Shared Function TryGetIntParameter(value As Integer, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetIntParameter*
   nameWithType.vb: ParameterUtility.TryGetIntParameter(Integer, IDictionary(Of String, String), String, ParamArray String())
@@ -422,21 +481,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonBoolParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 82
+    startLine: 148
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type bool (=&gt; can not be converted to bool).<br />
+  example: []
   syntax:
     content: public static bool HasNonBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type bool, false otherwise.
     content.vb: Public Shared Function HasNonBoolParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonBoolParameter*
   nameWithType.vb: ParameterUtility.HasNonBoolParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -460,21 +525,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasBoolParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 88
+    startLine: 161
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type bool (=&gt; can no be converted to bool).<br />
+  example: []
   syntax:
     content: public static bool HasBoolParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type bool, false otherwise.
     content.vb: Public Shared Function HasBoolParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasBoolParameter*
   nameWithType.vb: ParameterUtility.HasBoolParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -498,23 +569,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetBoolParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 93
+    startLine: 174
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type bool (=&gt; can be converted to bool).<br />
+  example: []
   syntax:
     content: public static bool TryGetBoolParameter(out bool value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: System.Boolean
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type bool, false otherwise.
     content.vb: Public Shared Function TryGetBoolParameter(value As Boolean, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetBoolParameter*
   nameWithType.vb: ParameterUtility.TryGetBoolParameter(Boolean, IDictionary(Of String, String), String, ParamArray String())
@@ -538,21 +616,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 102
+    startLine: 189
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Vector2 (=&gt; can not be converted to Vector2).<br />
+  example: []
   syntax:
     content: public static bool HasNonVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Vector2, false otherwise.
     content.vb: Public Shared Function HasNonVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonVector2Parameter*
   nameWithType.vb: ParameterUtility.HasNonVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -576,21 +660,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 108
+    startLine: 201
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector2 (=&gt; can no be converted to Vector2).<br />
+  example: []
   syntax:
     content: public static bool HasVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector2, false otherwise.
     content.vb: Public Shared Function HasVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasVector2Parameter*
   nameWithType.vb: ParameterUtility.HasVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -614,23 +704,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 113
+    startLine: 213
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector2 (=&gt; can be converted to Vector2).<br />
+  example: []
   syntax:
     content: public static bool TryGetVector2Parameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Vector2
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector2, false otherwise.
     content.vb: Public Shared Function TryGetVector2Parameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetVector2Parameter*
   nameWithType.vb: ParameterUtility.TryGetVector2Parameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
@@ -654,21 +751,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 122
+    startLine: 228
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Vector3 (=&gt; can not be converted to Vector3).<br />
+  example: []
   syntax:
     content: public static bool HasNonVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Vector3, false otherwise.
     content.vb: Public Shared Function HasNonVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonVector3Parameter*
   nameWithType.vb: ParameterUtility.HasNonVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -692,21 +795,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 128
+    startLine: 240
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector3 (=&gt; can no be converted to Vector3).<br />
+  example: []
   syntax:
     content: public static bool HasVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector3, false otherwise.
     content.vb: Public Shared Function HasVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasVector3Parameter*
   nameWithType.vb: ParameterUtility.HasVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -730,23 +839,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 133
+    startLine: 252
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector3 (=&gt; can be converted to Vector3).<br />
+  example: []
   syntax:
     content: public static bool TryGetVector3Parameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Vector3
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector3, false otherwise.
     content.vb: Public Shared Function TryGetVector3Parameter(value As Vector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetVector3Parameter*
   nameWithType.vb: ParameterUtility.TryGetVector3Parameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
@@ -770,21 +886,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector2OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 142
+    startLine: 267
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Vector2Offset (=&gt; can not be converted to Vector2Offset).<br />
+  example: []
   syntax:
     content: public static bool HasNonVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Vector2Offset, false otherwise.
     content.vb: Public Shared Function HasNonVector2OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonVector2OffsetParameter*
   nameWithType.vb: ParameterUtility.HasNonVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -808,21 +930,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector2OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 148
+    startLine: 279
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector2Offset (=&gt; can no be converted to Vector2Offset).<br />
+  example: []
   syntax:
     content: public static bool HasVector2OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector2Offset, false otherwise.
     content.vb: Public Shared Function HasVector2OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasVector2OffsetParameter*
   nameWithType.vb: ParameterUtility.HasVector2OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -846,23 +974,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector2OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 153
+    startLine: 291
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector2Offset (=&gt; can be converted to Vector2Offset).<br />
+  example: []
   syntax:
     content: public static bool TryGetVector2OffsetParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Vector2
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector2Offset, false otherwise.
     content.vb: Public Shared Function TryGetVector2OffsetParameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetVector2OffsetParameter*
   nameWithType.vb: ParameterUtility.TryGetVector2OffsetParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
@@ -886,21 +1021,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonVector3OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 162
+    startLine: 306
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Vector3Offset (=&gt; can not be converted to Vector3Offset).<br />
+  example: []
   syntax:
     content: public static bool HasNonVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Vector3Offset, false otherwise.
     content.vb: Public Shared Function HasNonVector3OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonVector3OffsetParameter*
   nameWithType.vb: ParameterUtility.HasNonVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -924,21 +1065,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasVector3OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 168
+    startLine: 318
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector3Offset (=&gt; can no be converted to Vector3Offset).<br />
+  example: []
   syntax:
     content: public static bool HasVector3OffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector3Offset, false otherwise.
     content.vb: Public Shared Function HasVector3OffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasVector3OffsetParameter*
   nameWithType.vb: ParameterUtility.HasVector3OffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -962,23 +1109,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetVector3OffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 173
+    startLine: 330
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Vector3Offset (=&gt; can be converted to Vector3Offset).<br />
+  example: []
   syntax:
     content: public static bool TryGetVector3OffsetParameter(out Vector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Vector3
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Vector3Offset, false otherwise.
     content.vb: Public Shared Function TryGetVector3OffsetParameter(value As Vector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetVector3OffsetParameter*
   nameWithType.vb: ParameterUtility.TryGetVector3OffsetParameter(Vector3, IDictionary(Of String, String), String, ParamArray String())
@@ -1002,21 +1156,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonAnchorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 182
+    startLine: 345
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Anchor (=&gt; can not be converted to Anchor).<br />
+  example: []
   syntax:
     content: public static bool HasNonAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Anchor, false otherwise.
     content.vb: Public Shared Function HasNonAnchorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonAnchorParameter*
   nameWithType.vb: ParameterUtility.HasNonAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1040,21 +1200,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnchorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 188
+    startLine: 357
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Anchor (=&gt; can no be converted to Anchor).<br />
+  example: []
   syntax:
     content: public static bool HasAnchorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Anchor, false otherwise.
     content.vb: Public Shared Function HasAnchorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasAnchorParameter*
   nameWithType.vb: ParameterUtility.HasAnchorParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1078,23 +1244,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetAnchorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 193
+    startLine: 369
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Anchor (=&gt; can be converted to Anchor).<br />
+  example: []
   syntax:
     content: public static bool TryGetAnchorParameter(out Vector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Vector2
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Anchor, false otherwise.
     content.vb: Public Shared Function TryGetAnchorParameter(value As Vector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetAnchorParameter*
   nameWithType.vb: ParameterUtility.TryGetAnchorParameter(Vector2, IDictionary(Of String, String), String, ParamArray String())
@@ -1118,7 +1291,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnchorKeywords
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 201
+    startLine: 377
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1145,21 +1318,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonAnimCurveParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 227
+    startLine: 409
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type AnimationCurve (=&gt; can not be converted to AnimationCurve).<br />
+  example: []
   syntax:
     content: public static bool HasNonAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type AnimationCurve, false otherwise.
     content.vb: Public Shared Function HasNonAnimCurveParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonAnimCurveParameter*
   nameWithType.vb: ParameterUtility.HasNonAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1183,21 +1362,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasAnimCurveParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 233
+    startLine: 421
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type AnimationCurve (=&gt; can no be converted to AnimationCurve).<br />
+  example: []
   syntax:
     content: public static bool HasAnimCurveParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type AnimationCurve, false otherwise.
     content.vb: Public Shared Function HasAnimCurveParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasAnimCurveParameter*
   nameWithType.vb: ParameterUtility.HasAnimCurveParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1221,23 +1406,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetAnimCurveParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 238
+    startLine: 433
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type AnimationCurve (=&gt; can be converted to AnimationCurve).<br />
+  example: []
   syntax:
     content: public static bool TryGetAnimCurveParameter(out AnimationCurve value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.AnimationCurve
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type AnimationCurve, false otherwise.
     content.vb: Public Shared Function TryGetAnimCurveParameter(value As AnimationCurve, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetAnimCurveParameter*
   nameWithType.vb: ParameterUtility.TryGetAnimCurveParameter(AnimationCurve, IDictionary(Of String, String), String, ParamArray String())
@@ -1261,21 +1453,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonWaveOffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 247
+    startLine: 448
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type WaveOffsetType (=&gt; can not be converted to WaveOffsetType).<br />
+  example: []
   syntax:
     content: public static bool HasNonWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type WaveOffsetType, false otherwise.
     content.vb: Public Shared Function HasNonWaveOffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonWaveOffsetParameter*
   nameWithType.vb: ParameterUtility.HasNonWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1299,21 +1497,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasWaveOffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 253
+    startLine: 460
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type WaveOffsetType (=&gt; can no be converted to WaveOffsetType).<br />
+  example: []
   syntax:
     content: public static bool HasWaveOffsetParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type WaveOffsetType, false otherwise.
     content.vb: Public Shared Function HasWaveOffsetParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasWaveOffsetParameter*
   nameWithType.vb: ParameterUtility.HasWaveOffsetParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1337,23 +1541,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetWaveOffsetParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 258
+    startLine: 472
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type WaveOffsetType (=&gt; can be converted to WaveOffsetType).<br />
+  example: []
   syntax:
     content: public static bool TryGetWaveOffsetParameter(out AnimationUtility.WaveOffsetType value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: TMPEffects.TMPAnimations.AnimationUtility.WaveOffsetType
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type WaveOffsetType, false otherwise.
     content.vb: Public Shared Function TryGetWaveOffsetParameter(value As AnimationUtility.WaveOffsetType, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetWaveOffsetParameter*
   nameWithType.vb: ParameterUtility.TryGetWaveOffsetParameter(AnimationUtility.WaveOffsetType, IDictionary(Of String, String), String, ParamArray String())
@@ -1377,21 +1588,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonColorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 266
+    startLine: 487
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type Color (=&gt; can not be converted to Color).<br />
+  example: []
   syntax:
     content: public static bool HasNonColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type Color, false otherwise.
     content.vb: Public Shared Function HasNonColorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonColorParameter*
   nameWithType.vb: ParameterUtility.HasNonColorParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1415,21 +1632,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasColorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 272
+    startLine: 499
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Color (=&gt; can no be converted to Color).<br />
+  example: []
   syntax:
     content: public static bool HasColorParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Color, false otherwise.
     content.vb: Public Shared Function HasColorParameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasColorParameter*
   nameWithType.vb: ParameterUtility.HasColorParameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1453,23 +1676,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetColorParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 277
+    startLine: 511
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type Color (=&gt; can be converted to Color).<br />
+  example: []
   syntax:
     content: public static bool TryGetColorParameter(out Color value, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: value
       type: UnityEngine.Color
+      description: Set to the value of the parameter if successful.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type Color, false otherwise.
     content.vb: Public Shared Function TryGetColorParameter(value As Color, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetColorParameter*
   nameWithType.vb: ParameterUtility.TryGetColorParameter(Color, IDictionary(Of String, String), String, ParamArray String())
@@ -1493,7 +1723,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonArrayParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 286
+    startLine: 526
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1535,7 +1765,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasArrayParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 292
+    startLine: 538
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1577,7 +1807,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetArrayParameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 297
+    startLine: 550
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1621,21 +1851,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonTypedVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 326
+    startLine: 585
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector3 (=&gt; can not be converted to TypedVector3).<br />
+  example: []
   syntax:
     content: public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type TypedVector3, false otherwise.
     content.vb: Public Shared Function HasNonTypedVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonTypedVector3Parameter*
   nameWithType.vb: ParameterUtility.HasNonTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1659,21 +1895,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasTypedVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 331
+    startLine: 596
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=&gt; can no be converted to TypedVector3).<br />
+  example: []
   syntax:
     content: public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type TypedVector3, false otherwise.
     content.vb: Public Shared Function HasTypedVector3Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasTypedVector3Parameter*
   nameWithType.vb: ParameterUtility.HasTypedVector3Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1697,10 +1939,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetTypedVector3Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 336
+    startLine: 608
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=&gt; can be converted to TypedVector3).<br />
+  example: []
   syntax:
     content: public static bool TryGetTypedVector3Parameter(out ParameterUtility.TypedVector3 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
@@ -1708,12 +1952,16 @@ items:
       type: TMPEffects.ParameterUtility.TypedVector3
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type TypedVector3, false otherwise.
     content.vb: Public Shared Function TryGetTypedVector3Parameter(vector As ParameterUtility.TypedVector3, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetTypedVector3Parameter*
   nameWithType.vb: ParameterUtility.TryGetTypedVector3Parameter(ParameterUtility.TypedVector3, IDictionary(Of String, String), String, ParamArray String())
@@ -1737,21 +1985,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasNonTypedVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 359
+    startLine: 637
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector2 (=&gt; can not be converted to TypedVector2).<br />
+  example: []
   syntax:
     content: public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is not of type TypedVector2, false otherwise.
     content.vb: Public Shared Function HasNonTypedVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasNonTypedVector2Parameter*
   nameWithType.vb: ParameterUtility.HasNonTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1775,21 +2029,27 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HasTypedVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 364
+    startLine: 648
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=&gt; can no be converted to TypedVector2).<br />
+  example: []
   syntax:
     content: public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type TypedVector2, false otherwise.
     content.vb: Public Shared Function HasTypedVector2Parameter(parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.HasTypedVector2Parameter*
   nameWithType.vb: ParameterUtility.HasTypedVector2Parameter(IDictionary(Of String, String), String, ParamArray String())
@@ -1813,10 +2073,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetTypedVector2Parameter
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 369
+    startLine: 660
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=&gt; can be converted to TypedVector2).<br />
+  example: []
   syntax:
     content: public static bool TryGetTypedVector2Parameter(out ParameterUtility.TypedVector2 vector, IDictionary<string, string> parameters, string name, params string[] aliases)
     parameters:
@@ -1824,12 +2086,16 @@ items:
       type: TMPEffects.ParameterUtility.TypedVector2
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters to check.
     - id: name
       type: System.String
+      description: The name to check.
     - id: aliases
       type: System.String[]
+      description: The aliases (alternative names) to check.
     return:
       type: System.Boolean
+      description: true if there is a well-defined parameter that is of type TypedVector2, false otherwise.
     content.vb: Public Shared Function TryGetTypedVector2Parameter(vector As ParameterUtility.TypedVector2, parameters As IDictionary(Of String, String), name As String, ParamArray aliases As String()) As Boolean
   overload: TMPEffects.ParameterUtility.TryGetTypedVector2Parameter*
   nameWithType.vb: ParameterUtility.TryGetTypedVector2Parameter(ParameterUtility.TypedVector2, IDictionary(Of String, String), String, ParamArray String())
@@ -1853,7 +2119,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetWaveParameters
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 472
+    startLine: 785
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1909,7 +2175,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateWaveParameters
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 544
+    startLine: 857
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1965,7 +2231,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CreateWave
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 592
+    startLine: 905
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -1998,7 +2264,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveOffsetAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 615
+    startLine: 928
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2025,7 +2291,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SpeedAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 616
+    startLine: 929
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2052,7 +2318,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CurveAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 617
+    startLine: 930
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2079,7 +2345,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FrequencyAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 618
+    startLine: 931
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2106,7 +2372,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AmplitudeAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 619
+    startLine: 932
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2133,7 +2399,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PivotAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 620
+    startLine: 933
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2160,7 +2426,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RadiusAliases
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 621
+    startLine: 934
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -2187,10 +2453,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInFloatKeywords
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 623
+    startLine: 939
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: A variety of built-in keywords for float parameters.
+  example: []
   syntax:
     content: public static readonly ReadOnlyDictionary<string, float> BuiltInFloatKeywords
     return:
@@ -2214,10 +2482,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInVector2Keywords
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 631
+    startLine: 950
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: A variety of built-in keywords for Vector2 parameters.
+  example: []
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Vector2> BuiltInVector2Keywords
     return:
@@ -2241,10 +2511,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BuiltInVector3Keywords
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 664
+    startLine: 986
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: A variety of built-in keywords for Vector3 parameters.
+  example: []
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Vector3> BuiltInVector3Keywords
     return:

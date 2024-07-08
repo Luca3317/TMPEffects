@@ -7,8 +7,10 @@ items:
   children:
   - TMPEffects.Components.TMPWriter.COMMAND_PREFIX
   - TMPEffects.Components.TMPWriter.CommandTags
+  - TMPEffects.Components.TMPWriter.CurrentDelays
   - TMPEffects.Components.TMPWriter.CurrentIndex
   - TMPEffects.Components.TMPWriter.Database
+  - TMPEffects.Components.TMPWriter.DefaultDelays
   - TMPEffects.Components.TMPWriter.EVENT_PREFIX
   - TMPEffects.Components.TMPWriter.EventTags
   - TMPEffects.Components.TMPWriter.IsWriting
@@ -26,12 +28,7 @@ items:
   - TMPEffects.Components.TMPWriter.ResetWriter(System.Int32)
   - TMPEffects.Components.TMPWriter.RestartWriter
   - TMPEffects.Components.TMPWriter.SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
-  - TMPEffects.Components.TMPWriter.SetDelay(System.Single)
-  - TMPEffects.Components.TMPWriter.SetLinebreakDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  - TMPEffects.Components.TMPWriter.SetPunctuationDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
   - TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
-  - TMPEffects.Components.TMPWriter.SetVisibleDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  - TMPEffects.Components.TMPWriter.SetWhitespaceDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
   - TMPEffects.Components.TMPWriter.SkipWriter(System.Boolean)
   - TMPEffects.Components.TMPWriter.StartWriter
   - TMPEffects.Components.TMPWriter.StopWriter
@@ -76,6 +73,8 @@ items:
   example: []
   syntax:
     content: >-
+      [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")]
+
       [ExecuteAlways]
 
       [DisallowMultipleComponent]
@@ -84,6 +83,8 @@ items:
 
       public class TMPWriter : TMPEffectComponent
     content.vb: >-
+      <HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")>
+
       <ExecuteAlways>
 
       <DisallowMultipleComponent>
@@ -223,6 +224,11 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   attributes:
+  - type: UnityEngine.HelpURLAttribute
+    ctor: UnityEngine.HelpURLAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: https://tmpeffects.luca3317.dev/docs/tmpwriter.html
   - type: UnityEngine.ExecuteAlways
     ctor: UnityEngine.ExecuteAlways.#ctor
     arguments: []
@@ -252,7 +258,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsWriting
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 44
+    startLine: 45
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -283,7 +289,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: MaySkip
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 48
+    startLine: 49
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -314,7 +320,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CurrentIndex
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 52
+    startLine: 53
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -345,7 +351,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Database
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 58
+    startLine: 59
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -376,7 +382,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tags
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 64
+    startLine: 65
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -407,7 +413,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CommandTags
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 68
+    startLine: 69
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -438,7 +444,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EventTags
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 72
+    startLine: 73
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -469,7 +475,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WriteOnStart
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 74
+    startLine: 75
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -498,7 +504,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WriteOnNewText
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 80
+    startLine: 81
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -527,7 +533,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 86
+    startLine: 87
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -538,6 +544,64 @@ items:
       type: System.Boolean
     content.vb: Public Property UseScaledTime As Boolean
   overload: TMPEffects.Components.TMPWriter.UseScaledTime*
+- uid: TMPEffects.Components.TMPWriter.DefaultDelays
+  commentId: P:TMPEffects.Components.TMPWriter.DefaultDelays
+  id: DefaultDelays
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: DefaultDelays
+  nameWithType: TMPWriter.DefaultDelays
+  fullName: TMPEffects.Components.TMPWriter.DefaultDelays
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: DefaultDelays
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 93
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components
+  syntax:
+    content: public TMPWriter.Delays DefaultDelays { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPWriter.Delays
+    content.vb: Public ReadOnly Property DefaultDelays As TMPWriter.Delays
+  overload: TMPEffects.Components.TMPWriter.DefaultDelays*
+- uid: TMPEffects.Components.TMPWriter.CurrentDelays
+  commentId: P:TMPEffects.Components.TMPWriter.CurrentDelays
+  id: CurrentDelays
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: CurrentDelays
+  nameWithType: TMPWriter.CurrentDelays
+  fullName: TMPEffects.Components.TMPWriter.CurrentDelays
+  type: Property
+  source:
+    remote:
+      path: Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CurrentDelays
+    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 94
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.Components
+  syntax:
+    content: public TMPWriter.Delays CurrentDelays { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPWriter.Delays
+    content.vb: Public ReadOnly Property CurrentDelays As TMPWriter.Delays
+  overload: TMPEffects.Components.TMPWriter.CurrentDelays*
 - uid: TMPEffects.Components.TMPWriter.OnTextEvent
   commentId: F:TMPEffects.Components.TMPWriter.OnTextEvent
   id: OnTextEvent
@@ -556,7 +620,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnTextEvent
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 96
+    startLine: 100
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -585,7 +649,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnCharacterShown
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 100
+    startLine: 104
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -614,7 +678,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 104
+    startLine: 108
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -643,7 +707,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnStopWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 108
+    startLine: 112
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -672,7 +736,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnFinishWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 112
+    startLine: 116
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -701,7 +765,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnSkipWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 116
+    startLine: 120
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -730,7 +794,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 121
+    startLine: 125
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -762,7 +826,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: COMMAND_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 126
+    startLine: 130
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -791,7 +855,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EVENT_PREFIX
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 130
+    startLine: 134
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -820,7 +884,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 196
+    startLine: 189
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -848,7 +912,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StopWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 215
+    startLine: 208
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -879,7 +943,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 235
+    startLine: 228
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -910,7 +974,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 264
+    startLine: 257
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -950,7 +1014,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SkipWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 305
+    startLine: 298
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -989,7 +1053,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RestartWriter
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 346
+    startLine: 339
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1020,7 +1084,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Wait
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 365
+    startLine: 358
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1059,7 +1123,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitPeriod
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 382
+    startLine: 375
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1085,7 +1149,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WaitUntil
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 392
+    startLine: 385
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1120,7 +1184,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetWaitConditions
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 400
+    startLine: 393
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1128,177 +1192,6 @@ items:
     content: public void ResetWaitConditions()
     content.vb: Public Sub ResetWaitConditions()
   overload: TMPEffects.Components.TMPWriter.ResetWaitConditions*
-- uid: TMPEffects.Components.TMPWriter.SetDelay(System.Single)
-  commentId: M:TMPEffects.Components.TMPWriter.SetDelay(System.Single)
-  id: SetDelay(System.Single)
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetDelay(float)
-  nameWithType: TMPWriter.SetDelay(float)
-  fullName: TMPEffects.Components.TMPWriter.SetDelay(float)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: SetDelay
-    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 409
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Components
-  summary: Set the current delay of the writer.
-  example: []
-  syntax:
-    content: public void SetDelay(float delay)
-    parameters:
-    - id: delay
-      type: System.Single
-      description: The delay between showing two characters.
-    content.vb: Public Sub SetDelay(delay As Single)
-  overload: TMPEffects.Components.TMPWriter.SetDelay*
-  nameWithType.vb: TMPWriter.SetDelay(Single)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetDelay(Single)
-  name.vb: SetDelay(Single)
-- uid: TMPEffects.Components.TMPWriter.SetWhitespaceDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  commentId: M:TMPEffects.Components.TMPWriter.SetWhitespaceDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  id: SetWhitespaceDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetWhitespaceDelay(float, DelayType?)
-  nameWithType: TMPWriter.SetWhitespaceDelay(float, TMPWriter.DelayType?)
-  fullName: TMPEffects.Components.TMPWriter.SetWhitespaceDelay(float, TMPEffects.Components.TMPWriter.DelayType?)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: SetWhitespaceDelay
-    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 414
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetWhitespaceDelay(float delay, TMPWriter.DelayType? type = null)
-    parameters:
-    - id: delay
-      type: System.Single
-    - id: type
-      type: System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-    content.vb: Public Sub SetWhitespaceDelay(delay As Single, type As TMPWriter.DelayType? = Nothing)
-  overload: TMPEffects.Components.TMPWriter.SetWhitespaceDelay*
-  nameWithType.vb: TMPWriter.SetWhitespaceDelay(Single, TMPWriter.DelayType?)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetWhitespaceDelay(Single, TMPEffects.Components.TMPWriter.DelayType?)
-  name.vb: SetWhitespaceDelay(Single, DelayType?)
-- uid: TMPEffects.Components.TMPWriter.SetLinebreakDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  commentId: M:TMPEffects.Components.TMPWriter.SetLinebreakDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  id: SetLinebreakDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetLinebreakDelay(float, DelayType?)
-  nameWithType: TMPWriter.SetLinebreakDelay(float, TMPWriter.DelayType?)
-  fullName: TMPEffects.Components.TMPWriter.SetLinebreakDelay(float, TMPEffects.Components.TMPWriter.DelayType?)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: SetLinebreakDelay
-    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 420
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetLinebreakDelay(float delay, TMPWriter.DelayType? type = null)
-    parameters:
-    - id: delay
-      type: System.Single
-    - id: type
-      type: System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-    content.vb: Public Sub SetLinebreakDelay(delay As Single, type As TMPWriter.DelayType? = Nothing)
-  overload: TMPEffects.Components.TMPWriter.SetLinebreakDelay*
-  nameWithType.vb: TMPWriter.SetLinebreakDelay(Single, TMPWriter.DelayType?)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetLinebreakDelay(Single, TMPEffects.Components.TMPWriter.DelayType?)
-  name.vb: SetLinebreakDelay(Single, DelayType?)
-- uid: TMPEffects.Components.TMPWriter.SetVisibleDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  commentId: M:TMPEffects.Components.TMPWriter.SetVisibleDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  id: SetVisibleDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetVisibleDelay(float, DelayType?)
-  nameWithType: TMPWriter.SetVisibleDelay(float, TMPWriter.DelayType?)
-  fullName: TMPEffects.Components.TMPWriter.SetVisibleDelay(float, TMPEffects.Components.TMPWriter.DelayType?)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: SetVisibleDelay
-    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 426
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetVisibleDelay(float delay, TMPWriter.DelayType? type = null)
-    parameters:
-    - id: delay
-      type: System.Single
-    - id: type
-      type: System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-    content.vb: Public Sub SetVisibleDelay(delay As Single, type As TMPWriter.DelayType? = Nothing)
-  overload: TMPEffects.Components.TMPWriter.SetVisibleDelay*
-  nameWithType.vb: TMPWriter.SetVisibleDelay(Single, TMPWriter.DelayType?)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetVisibleDelay(Single, TMPEffects.Components.TMPWriter.DelayType?)
-  name.vb: SetVisibleDelay(Single, DelayType?)
-- uid: TMPEffects.Components.TMPWriter.SetPunctuationDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  commentId: M:TMPEffects.Components.TMPWriter.SetPunctuationDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  id: SetPunctuationDelay(System.Single,System.Nullable{TMPEffects.Components.TMPWriter.DelayType})
-  parent: TMPEffects.Components.TMPWriter
-  langs:
-  - csharp
-  - vb
-  name: SetPunctuationDelay(float, DelayType?)
-  nameWithType: TMPWriter.SetPunctuationDelay(float, TMPWriter.DelayType?)
-  fullName: TMPEffects.Components.TMPWriter.SetPunctuationDelay(float, TMPEffects.Components.TMPWriter.DelayType?)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: SetPunctuationDelay
-    path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 432
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Components
-  syntax:
-    content: public void SetPunctuationDelay(float delay, TMPWriter.DelayType? type = null)
-    parameters:
-    - id: delay
-      type: System.Single
-    - id: type
-      type: System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-    content.vb: Public Sub SetPunctuationDelay(delay As Single, type As TMPWriter.DelayType? = Nothing)
-  overload: TMPEffects.Components.TMPWriter.SetPunctuationDelay*
-  nameWithType.vb: TMPWriter.SetPunctuationDelay(Single, TMPWriter.DelayType?)
-  fullName.vb: TMPEffects.Components.TMPWriter.SetPunctuationDelay(Single, TMPEffects.Components.TMPWriter.DelayType?)
-  name.vb: SetPunctuationDelay(Single, DelayType?)
 - uid: TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
   commentId: M:TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
   id: SetSkippable(System.Boolean)
@@ -1317,7 +1210,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetSkippable
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 442
+    startLine: 402
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -1352,7 +1245,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 453
+    startLine: 413
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -6204,6 +6097,41 @@ references:
   name: UseScaledTime
   nameWithType: TMPWriter.UseScaledTime
   fullName: TMPEffects.Components.TMPWriter.UseScaledTime
+- uid: TMPEffects.Components.TMPWriter.DefaultDelays*
+  commentId: Overload:TMPEffects.Components.TMPWriter.DefaultDelays
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_DefaultDelays
+  name: DefaultDelays
+  nameWithType: TMPWriter.DefaultDelays
+  fullName: TMPEffects.Components.TMPWriter.DefaultDelays
+- uid: TMPEffects.Components.TMPWriter.Delays
+  commentId: T:TMPEffects.Components.TMPWriter.Delays
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter.Delays
+  nameWithType: TMPWriter.Delays
+  fullName: TMPEffects.Components.TMPWriter.Delays
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
+- uid: TMPEffects.Components.TMPWriter.CurrentDelays*
+  commentId: Overload:TMPEffects.Components.TMPWriter.CurrentDelays
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_CurrentDelays
+  name: CurrentDelays
+  nameWithType: TMPWriter.CurrentDelays
+  fullName: TMPEffects.Components.TMPWriter.CurrentDelays
 - uid: UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   commentId: T:UnityEngine.Events.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
   parent: UnityEngine.Events
@@ -6543,90 +6471,6 @@ references:
   name: ResetWaitConditions
   nameWithType: TMPWriter.ResetWaitConditions
   fullName: TMPEffects.Components.TMPWriter.ResetWaitConditions
-- uid: TMPEffects.Components.TMPWriter.SetDelay*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetDelay
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetDelay_System_Single_
-  name: SetDelay
-  nameWithType: TMPWriter.SetDelay
-  fullName: TMPEffects.Components.TMPWriter.SetDelay
-- uid: TMPEffects.Components.TMPWriter.SetWhitespaceDelay*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetWhitespaceDelay
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetWhitespaceDelay_System_Single_System_Nullable_TMPEffects_Components_TMPWriter_DelayType__
-  name: SetWhitespaceDelay
-  nameWithType: TMPWriter.SetWhitespaceDelay
-  fullName: TMPEffects.Components.TMPWriter.SetWhitespaceDelay
-- uid: System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-  commentId: T:System.Nullable{TMPEffects.Components.TMPWriter.DelayType}
-  parent: System
-  definition: System.Nullable`1
-  href: TMPEffects.Components.TMPWriter.html
-  name: TMPWriter.DelayType?
-  nameWithType: TMPWriter.DelayType?
-  fullName: TMPEffects.Components.TMPWriter.DelayType?
-  spec.csharp:
-  - uid: TMPEffects.Components.TMPWriter
-    name: TMPWriter
-    href: TMPEffects.Components.TMPWriter.html
-  - name: .
-  - uid: TMPEffects.Components.TMPWriter.DelayType
-    name: DelayType
-    href: TMPEffects.Components.TMPWriter.DelayType.html
-  - name: '?'
-  spec.vb:
-  - uid: TMPEffects.Components.TMPWriter
-    name: TMPWriter
-    href: TMPEffects.Components.TMPWriter.html
-  - name: .
-  - uid: TMPEffects.Components.TMPWriter.DelayType
-    name: DelayType
-    href: TMPEffects.Components.TMPWriter.DelayType.html
-  - name: '?'
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: TMPEffects.Components.TMPWriter.SetLinebreakDelay*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetLinebreakDelay
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetLinebreakDelay_System_Single_System_Nullable_TMPEffects_Components_TMPWriter_DelayType__
-  name: SetLinebreakDelay
-  nameWithType: TMPWriter.SetLinebreakDelay
-  fullName: TMPEffects.Components.TMPWriter.SetLinebreakDelay
-- uid: TMPEffects.Components.TMPWriter.SetVisibleDelay*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetVisibleDelay
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetVisibleDelay_System_Single_System_Nullable_TMPEffects_Components_TMPWriter_DelayType__
-  name: SetVisibleDelay
-  nameWithType: TMPWriter.SetVisibleDelay
-  fullName: TMPEffects.Components.TMPWriter.SetVisibleDelay
-- uid: TMPEffects.Components.TMPWriter.SetPunctuationDelay*
-  commentId: Overload:TMPEffects.Components.TMPWriter.SetPunctuationDelay
-  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetPunctuationDelay_System_Single_System_Nullable_TMPEffects_Components_TMPWriter_DelayType__
-  name: SetPunctuationDelay
-  nameWithType: TMPWriter.SetPunctuationDelay
-  fullName: TMPEffects.Components.TMPWriter.SetPunctuationDelay
 - uid: TMPEffects.Components.TMPWriter.SetSkippable*
   commentId: Overload:TMPEffects.Components.TMPWriter.SetSkippable
   href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetSkippable_System_Boolean_

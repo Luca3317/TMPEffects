@@ -29,10 +29,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: WaveParameters
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 426
+    startLine: 739
   assemblies:
   - TMPEffects
   namespace: TMPEffects
+  summary: A parameter bundle that defines a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public struct ParameterUtility.WaveParameters
     content.vb: Public Structure ParameterUtility.WaveParameters
@@ -61,7 +63,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: upwardCurve
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 428
+    startLine: 741
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -88,7 +90,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: downwardCurve
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 429
+    startLine: 742
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -115,7 +117,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: upPeriod
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 431
+    startLine: 744
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -142,7 +144,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: downPeriod
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 432
+    startLine: 745
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -169,7 +171,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: crestWait
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 434
+    startLine: 747
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -196,7 +198,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: troughWait
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 435
+    startLine: 748
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -223,7 +225,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: wavevelocity
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 437
+    startLine: 750
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -250,7 +252,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: wavelength
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 438
+    startLine: 751
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -277,7 +279,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: waveuniformity
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 439
+    startLine: 752
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -304,7 +306,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: amplitude
     path: ../Assets/TMPEffects/Runtime/Effects/ParameterUtility.cs
-    startLine: 441
+    startLine: 754
   assemblies:
   - TMPEffects
   namespace: TMPEffects
@@ -314,6 +316,29 @@ items:
       type: System.Nullable{System.Single}
     content.vb: Public amplitude As Single?
 references:
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.Wave
+  nameWithType: AnimationUtility.Wave
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
 - uid: TMPEffects
   commentId: N:TMPEffects
   href: TMPEffects.html
@@ -511,6 +536,28 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
 - uid: System.ValueType
   commentId: T:System.ValueType
   parent: System

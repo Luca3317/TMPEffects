@@ -8,6 +8,7 @@ items:
   - TMPEffects.Components.TMPEffectComponent
   - TMPEffects.Components.TMPWriter
   - TMPEffects.Components.TMPWriter.DelayType
+  - TMPEffects.Components.TMPWriter.Delays
   langs:
   - csharp
   - vb
@@ -55,6 +56,29 @@ references:
   - uid: TMPEffects.Components.TMPWriter.DelayType
     name: DelayType
     href: TMPEffects.Components.TMPWriter.DelayType.html
+- uid: TMPEffects.Components.TMPWriter.Delays
+  commentId: T:TMPEffects.Components.TMPWriter.Delays
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter.Delays
+  nameWithType: TMPWriter.Delays
+  fullName: TMPEffects.Components.TMPWriter.Delays
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
 - uid: TMPEffects.Components.TMPEffectComponent
   commentId: T:TMPEffects.Components.TMPEffectComponent
   parent: TMPEffects.Components

@@ -25,10 +25,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPSceneCommand
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 8
+    startLine: 11
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
+  summary: Struct defining scene commands.
+  example: []
   syntax:
     content: >-
       [Serializable]
@@ -69,7 +71,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 11
+    startLine: 15
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -101,7 +103,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteInstantly
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 12
+    startLine: 17
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -137,7 +139,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteOnSkip
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 13
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -170,7 +172,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteRepeatable
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 14
+    startLine: 21
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -206,7 +208,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteCommand
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 30
+    startLine: 39
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -240,7 +242,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/TMPSceneCommand.cs
-    startLine: 32
+    startLine: 42
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands

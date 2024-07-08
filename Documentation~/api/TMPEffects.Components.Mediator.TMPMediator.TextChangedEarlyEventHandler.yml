@@ -19,7 +19,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChangedEarlyEventHandler
     path: ../Assets/TMPEffects/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 45
+    startLine: 43
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Mediator

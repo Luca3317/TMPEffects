@@ -21,10 +21,15 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DelayType
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1239
+    startLine: 1195
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
+  summary: >-
+    The type of delay.<br />
+
+    Either a percentage of the normal delay (<xref href="TMPEffects.Components.TMPWriter.Delays.delay" data-throw-if-not-resolved="false"></xref>) or a raw value in seconds.
+  example: []
   syntax:
     content: public enum TMPWriter.DelayType
     content.vb: Public Enum TMPWriter.DelayType
@@ -46,7 +51,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Percentage
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1241
+    startLine: 1197
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -72,7 +77,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Raw
     path: ../Assets/TMPEffects/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1242
+    startLine: 1198
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -81,6 +86,12 @@ items:
     return:
       type: TMPEffects.Components.TMPWriter.DelayType
 references:
+- uid: TMPEffects.Components.TMPWriter.Delays.delay
+  commentId: F:TMPEffects.Components.TMPWriter.Delays.delay
+  href: TMPEffects.Components.TMPWriter.Delays.html#TMPEffects_Components_TMPWriter_Delays_delay
+  name: delay
+  nameWithType: TMPWriter.Delays.delay
+  fullName: TMPEffects.Components.TMPWriter.Delays.delay
 - uid: TMPEffects.Components
   commentId: N:TMPEffects.Components
   href: TMPEffects.html

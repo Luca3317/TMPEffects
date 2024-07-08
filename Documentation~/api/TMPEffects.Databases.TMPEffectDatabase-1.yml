@@ -7,12 +7,10 @@ items:
   children:
   - TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
   - TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
-  - TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
   - TMPEffects.Databases.TMPEffectDatabase`1.ObjectChanged
   - TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
   - TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
   - TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
-  - TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
   langs:
   - csharp
   - vb
@@ -141,68 +139,6 @@ items:
   - TMPEffects.ObjectChanged.INotifyObjectChanged.ObjectChanged
   nameWithType.vb: TMPEffectDatabase(Of T).ObjectChanged
   fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ObjectChanged
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  id: ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  parent: TMPEffects.Databases.TMPEffectDatabase`1
-  langs:
-  - csharp
-  - vb
-  name: ListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<T>.ListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Databases/TMPEffectDatabase.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: ListenForChanges
-    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 14
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Databases
-  syntax:
-    content: public void ListenForChanges(ObjectChangedEventHandler handler)
-    parameters:
-    - id: handler
-      type: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    content.vb: Public Sub ListenForChanges(handler As ObjectChangedEventHandler)
-  overload: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges*
-  nameWithType.vb: TMPEffectDatabase(Of T).ListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  id: StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  parent: TMPEffects.Databases.TMPEffectDatabase`1
-  langs:
-  - csharp
-  - vb
-  name: StopListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<T>.StopListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  type: Method
-  source:
-    remote:
-      path: Runtime/Databases/TMPEffectDatabase.cs
-      branch: main
-      repo: https://github.com/Luca3317/TMPEffects.git
-    id: StopListenForChanges
-    path: ../Assets/TMPEffects/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 19
-  assemblies:
-  - TMPEffects
-  namespace: TMPEffects.Databases
-  syntax:
-    content: public void StopListenForChanges(ObjectChangedEventHandler handler)
-    parameters:
-    - id: handler
-      type: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    content.vb: Public Sub StopListenForChanges(handler As ObjectChangedEventHandler)
-  overload: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges*
-  nameWithType.vb: TMPEffectDatabase(Of T).StopListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
 - uid: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
   commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
   id: ContainsEffect(System.String)
@@ -2593,22 +2529,6 @@ references:
   name: ObjectChangedEventHandler
   nameWithType: ObjectChangedEventHandler
   fullName: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges*
-  commentId: Overload:TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: ListenForChanges
-  nameWithType: TMPEffectDatabase<T>.ListenForChanges
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ListenForChanges
-  nameWithType.vb: TMPEffectDatabase(Of T).ListenForChanges
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ListenForChanges
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges*
-  commentId: Overload:TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: StopListenForChanges
-  nameWithType: TMPEffectDatabase<T>.StopListenForChanges
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.StopListenForChanges
-  nameWithType.vb: TMPEffectDatabase(Of T).StopListenForChanges
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).StopListenForChanges
 - uid: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect*
   commentId: Overload:TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect
   href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_

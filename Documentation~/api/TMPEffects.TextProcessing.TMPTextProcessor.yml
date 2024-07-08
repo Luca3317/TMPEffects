@@ -463,7 +463,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustIndices
     path: ../Assets/TMPEffects/Runtime/TextProcessing/TMPTextProcessor.cs
-    startLine: 263
+    startLine: 274
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TextProcessing

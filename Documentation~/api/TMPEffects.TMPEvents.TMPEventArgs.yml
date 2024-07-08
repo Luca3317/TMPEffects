@@ -23,10 +23,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEventArgs
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
+  summary: The argument object for <xref href="TMPEffects.TMPEvents.TMPEvent" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: 'public class TMPEventArgs : EventArgs'
     content.vb: Public Class TMPEventArgs Inherits EventArgs
@@ -60,10 +62,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tag
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
+  summary: The tag of the event.
+  example: []
   syntax:
     content: public TMPEffectTag Tag { get; }
     parameters: []
@@ -89,10 +93,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Indices
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
-    startLine: 9
+    startLine: 18
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
+  summary: The indices of the tag.
+  example: []
   syntax:
     content: public TMPEffectTagIndices Indices { get; }
     parameters: []
@@ -118,10 +124,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Writer
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
-    startLine: 10
+    startLine: 22
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
+  summary: The <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> that invoked this event.
+  example: []
   syntax:
     content: public TMPWriter Writer { get; }
     parameters: []
@@ -147,7 +155,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/TMPEvents/TMPEventArgs.cs
-    startLine: 12
+    startLine: 24
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPEvents
@@ -166,6 +174,13 @@ items:
   fullName.vb: TMPEffects.TMPEvents.TMPEventArgs.New(TMPEffects.Tags.TMPEffectTag, TMPEffects.Tags.TMPEffectTagIndices, TMPEffects.Components.TMPWriter)
   name.vb: New(TMPEffectTag, TMPEffectTagIndices, TMPWriter)
 references:
+- uid: TMPEffects.TMPEvents.TMPEvent
+  commentId: T:TMPEffects.TMPEvents.TMPEvent
+  parent: TMPEffects.TMPEvents
+  href: TMPEffects.TMPEvents.TMPEvent.html
+  name: TMPEvent
+  nameWithType: TMPEvent
+  fullName: TMPEffects.TMPEvents.TMPEvent
 - uid: TMPEffects.TMPEvents
   commentId: N:TMPEffects.TMPEvents
   href: TMPEffects.html
@@ -489,12 +504,6 @@ references:
   name: TMPEffectTagIndices
   nameWithType: TMPEffectTagIndices
   fullName: TMPEffects.Tags.TMPEffectTagIndices
-- uid: TMPEffects.TMPEvents.TMPEventArgs.Writer*
-  commentId: Overload:TMPEffects.TMPEvents.TMPEventArgs.Writer
-  href: TMPEffects.TMPEvents.TMPEventArgs.html#TMPEffects_TMPEvents_TMPEventArgs_Writer
-  name: Writer
-  nameWithType: TMPEventArgs.Writer
-  fullName: TMPEffects.TMPEvents.TMPEventArgs.Writer
 - uid: TMPEffects.Components.TMPWriter
   commentId: T:TMPEffects.Components.TMPWriter
   parent: TMPEffects.Components
@@ -502,6 +511,12 @@ references:
   name: TMPWriter
   nameWithType: TMPWriter
   fullName: TMPEffects.Components.TMPWriter
+- uid: TMPEffects.TMPEvents.TMPEventArgs.Writer*
+  commentId: Overload:TMPEffects.TMPEvents.TMPEventArgs.Writer
+  href: TMPEffects.TMPEvents.TMPEventArgs.html#TMPEffects_TMPEvents_TMPEventArgs_Writer
+  name: Writer
+  nameWithType: TMPEventArgs.Writer
+  fullName: TMPEffects.TMPEvents.TMPEventArgs.Writer
 - uid: TMPEffects.Components
   commentId: N:TMPEffects.Components
   href: TMPEffects.html

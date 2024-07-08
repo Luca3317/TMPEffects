@@ -20,10 +20,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: INotifyObjectChanged
     path: ../Assets/TMPEffects/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
-    startLine: 4
+    startLine: 7
   assemblies:
   - TMPEffects
   namespace: TMPEffects.ObjectChanged
+  summary: Notigy clients when the object changed.
+  example: []
   syntax:
     content: public interface INotifyObjectChanged
     content.vb: Public Interface INotifyObjectChanged
@@ -45,7 +47,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
     path: ../Assets/TMPEffects/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - TMPEffects
   namespace: TMPEffects.ObjectChanged

@@ -47,8 +47,6 @@ items:
   - TMPEffects.ObjectChanged.INotifyObjectChanged
   inheritedMembers:
   - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ObjectChanged
-  - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
   - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.OnValidate
   - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.OnDestroy
   - TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.RaiseDatabaseChanged
@@ -354,62 +352,6 @@ references:
   fullName: TMPEffects.Databases.TMPEffectDatabase<TMPEffects.TMPCommands.TMPCommand>.ObjectChanged
   nameWithType.vb: TMPEffectDatabase(Of TMPCommand).ObjectChanged
   fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of TMPEffects.TMPCommands.TMPCommand).ObjectChanged
-- uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  parent: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}
-  definition: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: ListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<TMPCommand>.ListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<TMPEffects.TMPCommands.TMPCommand>.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  nameWithType.vb: TMPEffectDatabase(Of TMPCommand).ListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of TMPEffects.TMPCommands.TMPCommand).ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  spec.csharp:
-  - uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: ListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-  spec.vb:
-  - uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: ListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-- uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  parent: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}
-  definition: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: StopListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<TMPCommand>.StopListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<TMPEffects.TMPCommands.TMPCommand>.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  nameWithType.vb: TMPEffectDatabase(Of TMPCommand).StopListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of TMPEffects.TMPCommands.TMPCommand).StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  spec.csharp:
-  - uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: StopListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-  spec.vb:
-  - uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: StopListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
 - uid: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.OnValidate
   commentId: M:TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}.OnValidate
   parent: TMPEffects.Databases.TMPEffectDatabase{TMPEffects.TMPCommands.TMPCommand}
@@ -2434,58 +2376,6 @@ references:
   fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ObjectChanged
   nameWithType.vb: TMPEffectDatabase(Of T).ObjectChanged
   fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ObjectChanged
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: ListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<T>.ListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  nameWithType.vb: TMPEffectDatabase(Of T).ListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  spec.csharp:
-  - uid: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: ListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-  spec.vb:
-  - uid: TMPEffects.Databases.TMPEffectDatabase`1.ListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: ListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-- uid: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  name: StopListenForChanges(ObjectChangedEventHandler)
-  nameWithType: TMPEffectDatabase<T>.StopListenForChanges(ObjectChangedEventHandler)
-  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  nameWithType.vb: TMPEffectDatabase(Of T).StopListenForChanges(ObjectChangedEventHandler)
-  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-  spec.csharp:
-  - uid: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: StopListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
-  spec.vb:
-  - uid: TMPEffects.Databases.TMPEffectDatabase`1.StopListenForChanges(TMPEffects.ObjectChanged.ObjectChangedEventHandler)
-    name: StopListenForChanges
-    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_StopListenForChanges_TMPEffects_ObjectChanged_ObjectChangedEventHandler_
-  - name: (
-  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
-    name: ObjectChangedEventHandler
-    href: TMPEffects.ObjectChanged.ObjectChangedEventHandler.html
-  - name: )
 - uid: TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
   commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
   href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate

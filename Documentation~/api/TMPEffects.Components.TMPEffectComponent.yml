@@ -245,21 +245,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Show
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 28
+    startLine: 35
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
+  summary: Show a subset of the text's characters.
+  example: []
   syntax:
     content: public void Show(int start, int length, bool skipShowProcess = false)
     parameters:
     - id: start
       type: System.Int32
+      description: First character index to show.
     - id: length
       type: System.Int32
+      description: Amount of characters to show.
     - id: skipShowProcess
       type: System.Boolean
+      description: Whether to skip the show process.
     content.vb: Public Sub Show(start As Integer, length As Integer, skipShowProcess As Boolean = False)
   overload: TMPEffects.Components.TMPEffectComponent.Show*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
   nameWithType.vb: TMPEffectComponent.Show(Integer, Integer, Boolean)
   fullName.vb: TMPEffects.Components.TMPEffectComponent.Show(Integer, Integer, Boolean)
   name.vb: Show(Integer, Integer, Boolean)
@@ -281,21 +290,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Hide
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 39
+    startLine: 53
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
+  summary: Hide a subset of the text's characters.
+  example: []
   syntax:
     content: public void Hide(int start, int length, bool skipHideProcess = false)
     parameters:
     - id: start
       type: System.Int32
+      description: First character index to hide.
     - id: length
       type: System.Int32
+      description: Amount of characters to hide.
     - id: skipHideProcess
       type: System.Boolean
+      description: Whether to skip the hide process.
     content.vb: Public Sub Hide(start As Integer, length As Integer, skipHideProcess As Boolean = False)
   overload: TMPEffects.Components.TMPEffectComponent.Hide*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
   nameWithType.vb: TMPEffectComponent.Hide(Integer, Integer, Boolean)
   fullName.vb: TMPEffects.Components.TMPEffectComponent.Hide(Integer, Integer, Boolean)
   name.vb: Hide(Integer, Integer, Boolean)
@@ -317,17 +335,24 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowAll
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 50
+    startLine: 69
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
+  summary: Show all of the text's character.
+  example: []
   syntax:
     content: public void ShowAll(bool skipShowProcess = false)
     parameters:
     - id: skipShowProcess
       type: System.Boolean
+      description: Whether to skip the show process.
     content.vb: Public Sub ShowAll(skipShowProcess As Boolean = False)
   overload: TMPEffects.Components.TMPEffectComponent.ShowAll*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
   nameWithType.vb: TMPEffectComponent.ShowAll(Boolean)
   fullName.vb: TMPEffects.Components.TMPEffectComponent.ShowAll(Boolean)
   name.vb: ShowAll(Boolean)
@@ -349,10 +374,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HideAll
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 61
+    startLine: 85
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
+  summary: Hide all of the text's character.
+  example: []
   syntax:
     content: public void HideAll(bool skipHideProcess = false)
     parameters:
@@ -360,6 +387,10 @@ items:
       type: System.Boolean
     content.vb: Public Sub HideAll(skipHideProcess As Boolean = False)
   overload: TMPEffects.Components.TMPEffectComponent.HideAll*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: ''
   nameWithType.vb: TMPEffectComponent.HideAll(Boolean)
   fullName.vb: TMPEffects.Components.TMPEffectComponent.HideAll(Boolean)
   name.vb: HideAll(Boolean)
@@ -381,7 +412,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Mediator
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 76
+    startLine: 100
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -410,7 +441,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FreeMediator
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 85
+    startLine: 109
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -436,7 +467,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateMediator
     path: ../Assets/TMPEffects/Runtime/Components/TMPEffectComponent.cs
-    startLine: 92
+    startLine: 116
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components
@@ -4851,6 +4882,13 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
 - uid: TMPEffects.Components.TMPEffectComponent.Show*
   commentId: Overload:TMPEffects.Components.TMPEffectComponent.Show
   href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_

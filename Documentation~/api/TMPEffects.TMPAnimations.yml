@@ -146,6 +146,12 @@ references:
   name: TMPAnimationParameterless
   nameWithType: TMPAnimationParameterless
   fullName: TMPEffects.TMPAnimations.TMPAnimationParameterless
+- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html
+  name: ReadOnlyAnimationContext
+  nameWithType: ReadOnlyAnimationContext
+  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
 - uid: TMPEffects.TMPAnimations.IAnimationContext
   commentId: T:TMPEffects.TMPAnimations.IAnimationContext
   parent: TMPEffects.TMPAnimations
@@ -153,19 +159,6 @@ references:
   name: IAnimationContext
   nameWithType: IAnimationContext
   fullName: TMPEffects.TMPAnimations.IAnimationContext
-- uid: TMPEffects.TMPAnimations.AnimationContext
-  commentId: T:TMPEffects.TMPAnimations.AnimationContext
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.AnimationContext.html
-  name: AnimationContext
-  nameWithType: AnimationContext
-  fullName: TMPEffects.TMPAnimations.AnimationContext
-- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
-  commentId: T:TMPEffects.TMPAnimations.ReadOnlyAnimationContext
-  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html
-  name: ReadOnlyAnimationContext
-  nameWithType: ReadOnlyAnimationContext
-  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
 - uid: TMPEffects.TMPAnimations.TMPShowAnimation
   commentId: T:TMPEffects.TMPAnimations.TMPShowAnimation
   parent: TMPEffects.TMPAnimations
@@ -180,6 +173,13 @@ references:
   name: TMPHideAnimation
   nameWithType: TMPHideAnimation
   fullName: TMPEffects.TMPAnimations.TMPHideAnimation
+- uid: TMPEffects.TMPAnimations.AnimationContext
+  commentId: T:TMPEffects.TMPAnimations.AnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationContext.html
+  name: AnimationContext
+  nameWithType: AnimationContext
+  fullName: TMPEffects.TMPAnimations.AnimationContext
 - uid: TMPEffects.TMPAnimations.ITMPAnimation
   commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
   parent: TMPEffects.TMPAnimations

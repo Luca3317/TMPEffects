@@ -25,15 +25,20 @@ items:
   type: Class
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyAnimatorContext
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 153
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 8
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
+  summary: >-
+    To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
+
+    Contains readonly context data of the respective <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: >-
       [Serializable]
@@ -72,12 +77,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleAnimations
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 157
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 12
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -105,12 +110,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleUniformly
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 159
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 14
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -143,12 +148,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 161
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 16
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -176,12 +181,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animator
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 163
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 18
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -209,12 +214,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DeltaTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 165
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 20
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -242,12 +247,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 167
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 22
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -275,12 +280,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 170
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -315,12 +320,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 172
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 27
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -352,12 +357,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 175
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 30
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -395,12 +400,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 177
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 32
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -434,12 +439,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 179
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
+    startLine: 34
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -454,6 +459,13 @@ items:
   fullName.vb: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.New(TMPEffects.Components.Animator.AnimatorContext)
   name.vb: New(AnimatorContext)
 references:
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
 - uid: TMPEffects.Components.Animator
   commentId: N:TMPEffects.Components.Animator
   href: TMPEffects.html
@@ -721,6 +733,28 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -778,13 +812,6 @@ references:
   name: UseScaledTime
   nameWithType: IAnimatorContext.UseScaledTime
   fullName: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-- uid: TMPEffects.Components.TMPAnimator
-  commentId: T:TMPEffects.Components.TMPAnimator
-  parent: TMPEffects.Components
-  href: TMPEffects.Components.TMPAnimator.html
-  name: TMPAnimator
-  nameWithType: TMPAnimator
-  fullName: TMPEffects.Components.TMPAnimator
 - uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator*
   commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator
   href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_Animator
@@ -798,28 +825,6 @@ references:
   name: Animator
   nameWithType: IAnimatorContext.Animator
   fullName: TMPEffects.Components.Animator.IAnimatorContext.Animator
-- uid: TMPEffects.Components
-  commentId: N:TMPEffects.Components
-  href: TMPEffects.html
-  name: TMPEffects.Components
-  nameWithType: TMPEffects.Components
-  fullName: TMPEffects.Components
-  spec.csharp:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.Components
-    name: Components
-    href: TMPEffects.Components.html
-  spec.vb:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.Components
-    name: Components
-    href: TMPEffects.Components.html
 - uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime*
   commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime
   href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_DeltaTime

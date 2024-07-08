@@ -5,8 +5,9 @@ items:
   id: TMPEffects.CharacterData
   children:
   - TMPEffects.CharacterData.CharData
+  - TMPEffects.CharacterData.CharData.Info
   - TMPEffects.CharacterData.CharDataState
-  - TMPEffects.CharacterData.Info
+  - TMPEffects.CharacterData.ICharDataState
   - TMPEffects.CharacterData.ReadOnlyCharDataState
   - TMPEffects.CharacterData.ReadOnlyVertexData
   - TMPEffects.CharacterData.VertexData
@@ -21,20 +22,6 @@ items:
   assemblies:
   - TMPEffects
 references:
-- uid: TMPEffects.CharacterData.Info
-  commentId: T:TMPEffects.CharacterData.Info
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.Info.html
-  name: Info
-  nameWithType: Info
-  fullName: TMPEffects.CharacterData.Info
-- uid: TMPEffects.CharacterData.CharDataState
-  commentId: T:TMPEffects.CharacterData.CharDataState
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.CharDataState.html
-  name: CharDataState
-  nameWithType: CharDataState
-  fullName: TMPEffects.CharacterData.CharDataState
 - uid: TMPEffects.CharacterData.CharData
   commentId: T:TMPEffects.CharacterData.CharData
   parent: TMPEffects.CharacterData
@@ -42,6 +29,36 @@ references:
   name: CharData
   nameWithType: CharData
   fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  spec.vb:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+- uid: TMPEffects.CharacterData.CharDataState
+  commentId: T:TMPEffects.CharacterData.CharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharDataState.html
+  name: CharDataState
+  nameWithType: CharDataState
+  fullName: TMPEffects.CharacterData.CharDataState
 - uid: TMPEffects.CharacterData.ReadOnlyCharDataState
   commentId: T:TMPEffects.CharacterData.ReadOnlyCharDataState
   parent: TMPEffects.CharacterData
@@ -56,6 +73,13 @@ references:
   name: ReadOnlyVertexData
   nameWithType: ReadOnlyVertexData
   fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.ICharDataState
+  commentId: T:TMPEffects.CharacterData.ICharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ICharDataState.html
+  name: ICharDataState
+  nameWithType: ICharDataState
+  fullName: TMPEffects.CharacterData.ICharDataState
 - uid: TMPEffects.CharacterData.VertexData
   commentId: T:TMPEffects.CharacterData.VertexData
   parent: TMPEffects.CharacterData

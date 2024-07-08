@@ -300,7 +300,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/Commands/DelayCommand.cs
-    startLine: 67
+    startLine: 99
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands.Commands

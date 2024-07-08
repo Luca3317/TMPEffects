@@ -21,6 +21,7 @@ items:
   - TMPEffects.CharacterData.CharDataState.BR_UV2
   - TMPEffects.CharacterData.CharDataState.CalculateVertexPositions
   - TMPEffects.CharacterData.CharDataState.Reset(TMPEffects.Components.Animator.AnimatorContext,TMPEffects.CharacterData.CharData)
+  - TMPEffects.CharacterData.CharDataState.Rotations
   - TMPEffects.CharacterData.CharDataState.TL
   - TMPEffects.CharacterData.CharDataState.TLMax
   - TMPEffects.CharacterData.CharDataState.TLMin
@@ -54,15 +55,22 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CharDataState
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 8
+    startLine: 13
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    Utility class that stores a <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> and modifications to it, allowing you to make multiple modifications iteratively and to apply at once.<br />
+
+    Used in <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> to apply animations.
+  example: []
   syntax:
-    content: public class CharDataState
-    content.vb: Public Class CharDataState
+    content: 'public class CharDataState : ICharDataState'
+    content.vb: Public Class CharDataState Implements ICharDataState
   inheritance:
   - System.Object
+  implements:
+  - TMPEffects.CharacterData.ICharDataState
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -89,7 +97,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: cData
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 10
+    startLine: 15
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -116,7 +124,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: context
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 11
+    startLine: 16
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -126,7 +134,7 @@ items:
       type: TMPEffects.Components.Animator.AnimatorContext
     content.vb: Public context As AnimatorContext
 - uid: TMPEffects.CharacterData.CharDataState.positionDelta
-  commentId: F:TMPEffects.CharacterData.CharDataState.positionDelta
+  commentId: P:TMPEffects.CharacterData.CharDataState.positionDelta
   id: positionDelta
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -135,7 +143,7 @@ items:
   name: positionDelta
   nameWithType: CharDataState.positionDelta
   fullName: TMPEffects.CharacterData.CharDataState.positionDelta
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -143,17 +151,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: positionDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 13
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The accumulated position delta of all modifications.
+  example: []
   syntax:
-    content: public Vector3 positionDelta
+    content: public Vector3 positionDelta { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public positionDelta As Vector3
+    content.vb: Public Property positionDelta As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.positionDelta*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.positionDelta
 - uid: TMPEffects.CharacterData.CharDataState.scaleDelta
-  commentId: F:TMPEffects.CharacterData.CharDataState.scaleDelta
+  commentId: P:TMPEffects.CharacterData.CharDataState.scaleDelta
   id: scaleDelta
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -162,7 +176,7 @@ items:
   name: scaleDelta
   nameWithType: CharDataState.scaleDelta
   fullName: TMPEffects.CharacterData.CharDataState.scaleDelta
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -170,17 +184,56 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: scaleDelta
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 14
+    startLine: 21
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The accumulated scale delta of all modifications.
+  example: []
   syntax:
-    content: public Matrix4x4 scaleDelta
+    content: public Matrix4x4 scaleDelta { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Matrix4x4
-    content.vb: Public scaleDelta As Matrix4x4
+    content.vb: Public Property scaleDelta As Matrix4x4
+  overload: TMPEffects.CharacterData.CharDataState.scaleDelta*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.scaleDelta
+- uid: TMPEffects.CharacterData.CharDataState.Rotations
+  commentId: P:TMPEffects.CharacterData.CharDataState.Rotations
+  id: Rotations
+  parent: TMPEffects.CharacterData.CharDataState
+  langs:
+  - csharp
+  - vb
+  name: Rotations
+  nameWithType: CharDataState.Rotations
+  fullName: TMPEffects.CharacterData.CharDataState.Rotations
+  type: Property
+  source:
+    remote:
+      path: Runtime/CharData/CharDataState.cs
+      branch: main
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Rotations
+    path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
+    startLine: 23
+  assemblies:
+  - TMPEffects
+  namespace: TMPEffects.CharacterData
+  summary: All rotations and the pivot they will be applied around.
+  example: []
+  syntax:
+    content: public IEnumerable<(Quaternion, Vector3)> Rotations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{System.ValueTuple{UnityEngine.Quaternion,UnityEngine.Vector3}}
+    content.vb: Public ReadOnly Property Rotations As IEnumerable(Of (Quaternion, Vector3))
+  overload: TMPEffects.CharacterData.CharDataState.Rotations*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.Rotations
 - uid: TMPEffects.CharacterData.CharDataState.TL
-  commentId: F:TMPEffects.CharacterData.CharDataState.TL
+  commentId: P:TMPEffects.CharacterData.CharDataState.TL
   id: TL
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -189,7 +242,7 @@ items:
   name: TL
   nameWithType: CharDataState.TL
   fullName: TMPEffects.CharacterData.CharDataState.TL
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -197,17 +250,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 18
+    startLine: 35
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The position of the topleft vertex.
+  example: []
   syntax:
-    content: public Vector3 TL
+    content: public Vector3 TL { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TL As Vector3
+    content.vb: Public Property TL As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TL*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TL
 - uid: TMPEffects.CharacterData.CharDataState.TR
-  commentId: F:TMPEffects.CharacterData.CharDataState.TR
+  commentId: P:TMPEffects.CharacterData.CharDataState.TR
   id: TR
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -216,7 +275,7 @@ items:
   name: TR
   nameWithType: CharDataState.TR
   fullName: TMPEffects.CharacterData.CharDataState.TR
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -224,17 +283,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 19
+    startLine: 37
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The position of the topright vertex.
+  example: []
   syntax:
-    content: public Vector3 TR
+    content: public Vector3 TR { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TR As Vector3
+    content.vb: Public Property TR As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TR*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TR
 - uid: TMPEffects.CharacterData.CharDataState.BR
-  commentId: F:TMPEffects.CharacterData.CharDataState.BR
+  commentId: P:TMPEffects.CharacterData.CharDataState.BR
   id: BR
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -243,7 +308,7 @@ items:
   name: BR
   nameWithType: CharDataState.BR
   fullName: TMPEffects.CharacterData.CharDataState.BR
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -251,17 +316,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 20
+    startLine: 39
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The position of the bottomright vertex.
+  example: []
   syntax:
-    content: public Vector3 BR
+    content: public Vector3 BR { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BR As Vector3
+    content.vb: Public Property BR As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BR*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BR
 - uid: TMPEffects.CharacterData.CharDataState.BL
-  commentId: F:TMPEffects.CharacterData.CharDataState.BL
+  commentId: P:TMPEffects.CharacterData.CharDataState.BL
   id: BL
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -270,7 +341,7 @@ items:
   name: BL
   nameWithType: CharDataState.BL
   fullName: TMPEffects.CharacterData.CharDataState.BL
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -278,17 +349,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 21
+    startLine: 41
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The position of the bottomleft vertex.
+  example: []
   syntax:
-    content: public Vector3 BL
+    content: public Vector3 BL { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BL As Vector3
+    content.vb: Public Property BL As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BL*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BL
 - uid: TMPEffects.CharacterData.CharDataState.TLMax
-  commentId: F:TMPEffects.CharacterData.CharDataState.TLMax
+  commentId: P:TMPEffects.CharacterData.CharDataState.TLMax
   id: TLMax
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -297,7 +374,7 @@ items:
   name: TLMax
   nameWithType: CharDataState.TLMax
   fullName: TMPEffects.CharacterData.CharDataState.TLMax
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -305,17 +382,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TLMax
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 23
+    startLine: 44
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The maximum position modification of the topleft vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 TLMax
+    content: public Vector3 TLMax { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TLMax As Vector3
+    content.vb: Public Property TLMax As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TLMax*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TLMax
 - uid: TMPEffects.CharacterData.CharDataState.TRMax
-  commentId: F:TMPEffects.CharacterData.CharDataState.TRMax
+  commentId: P:TMPEffects.CharacterData.CharDataState.TRMax
   id: TRMax
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -324,7 +410,7 @@ items:
   name: TRMax
   nameWithType: CharDataState.TRMax
   fullName: TMPEffects.CharacterData.CharDataState.TRMax
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -332,17 +418,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TRMax
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 24
+    startLine: 46
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The maximum position modification of the topright vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 TRMax
+    content: public Vector3 TRMax { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TRMax As Vector3
+    content.vb: Public Property TRMax As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TRMax*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TRMax
 - uid: TMPEffects.CharacterData.CharDataState.BRMax
-  commentId: F:TMPEffects.CharacterData.CharDataState.BRMax
+  commentId: P:TMPEffects.CharacterData.CharDataState.BRMax
   id: BRMax
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -351,7 +446,7 @@ items:
   name: BRMax
   nameWithType: CharDataState.BRMax
   fullName: TMPEffects.CharacterData.CharDataState.BRMax
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -359,17 +454,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BRMax
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 25
+    startLine: 48
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The maximum position modification of the bottomright vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 BRMax
+    content: public Vector3 BRMax { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BRMax As Vector3
+    content.vb: Public Property BRMax As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BRMax*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BRMax
 - uid: TMPEffects.CharacterData.CharDataState.BLMax
-  commentId: F:TMPEffects.CharacterData.CharDataState.BLMax
+  commentId: P:TMPEffects.CharacterData.CharDataState.BLMax
   id: BLMax
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -378,7 +482,7 @@ items:
   name: BLMax
   nameWithType: CharDataState.BLMax
   fullName: TMPEffects.CharacterData.CharDataState.BLMax
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -386,17 +490,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BLMax
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 26
+    startLine: 50
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The maximum position modification of the bottomleft vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 BLMax
+    content: public Vector3 BLMax { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BLMax As Vector3
+    content.vb: Public Property BLMax As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BLMax*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BLMax
 - uid: TMPEffects.CharacterData.CharDataState.TLMin
-  commentId: F:TMPEffects.CharacterData.CharDataState.TLMin
+  commentId: P:TMPEffects.CharacterData.CharDataState.TLMin
   id: TLMin
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -405,7 +518,7 @@ items:
   name: TLMin
   nameWithType: CharDataState.TLMin
   fullName: TMPEffects.CharacterData.CharDataState.TLMin
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -413,17 +526,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TLMin
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 28
+    startLine: 53
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The minimum position modification of the topleft vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 TLMin
+    content: public Vector3 TLMin { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TLMin As Vector3
+    content.vb: Public Property TLMin As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TLMin*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TLMin
 - uid: TMPEffects.CharacterData.CharDataState.TRMin
-  commentId: F:TMPEffects.CharacterData.CharDataState.TRMin
+  commentId: P:TMPEffects.CharacterData.CharDataState.TRMin
   id: TRMin
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -432,7 +554,7 @@ items:
   name: TRMin
   nameWithType: CharDataState.TRMin
   fullName: TMPEffects.CharacterData.CharDataState.TRMin
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -440,17 +562,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TRMin
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 29
+    startLine: 55
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The minimum position modification of the topright vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 TRMin
+    content: public Vector3 TRMin { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TRMin As Vector3
+    content.vb: Public Property TRMin As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TRMin*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TRMin
 - uid: TMPEffects.CharacterData.CharDataState.BRMin
-  commentId: F:TMPEffects.CharacterData.CharDataState.BRMin
+  commentId: P:TMPEffects.CharacterData.CharDataState.BRMin
   id: BRMin
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -459,7 +590,7 @@ items:
   name: BRMin
   nameWithType: CharDataState.BRMin
   fullName: TMPEffects.CharacterData.CharDataState.BRMin
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -467,17 +598,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BRMin
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 30
+    startLine: 57
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The minimum position modification of the bottomleft vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 BRMin
+    content: public Vector3 BRMin { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BRMin As Vector3
+    content.vb: Public Property BRMin As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BRMin*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BRMin
 - uid: TMPEffects.CharacterData.CharDataState.BLMin
-  commentId: F:TMPEffects.CharacterData.CharDataState.BLMin
+  commentId: P:TMPEffects.CharacterData.CharDataState.BLMin
   id: BLMin
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -486,7 +626,7 @@ items:
   name: BLMin
   nameWithType: CharDataState.BLMin
   fullName: TMPEffects.CharacterData.CharDataState.BLMin
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -494,17 +634,26 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BLMin
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 31
+    startLine: 59
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    The minimum position modification of the bottomleft vertex.<br />
+
+    This is used in calculating the scaling of all vertex position modifications in <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>; you can most likely ignore this.
+  example: []
   syntax:
-    content: public Vector3 BLMin
+    content: public Vector3 BLMin { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BLMin As Vector3
+    content.vb: Public Property BLMin As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BLMin*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BLMin
 - uid: TMPEffects.CharacterData.CharDataState.TL_UV
-  commentId: F:TMPEffects.CharacterData.CharDataState.TL_UV
+  commentId: P:TMPEffects.CharacterData.CharDataState.TL_UV
   id: TL_UV
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -513,7 +662,7 @@ items:
   name: TL_UV
   nameWithType: CharDataState.TL_UV
   fullName: TMPEffects.CharacterData.CharDataState.TL_UV
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -521,17 +670,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 33
+    startLine: 62
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV value of the topleft vertex.
+  example: []
   syntax:
-    content: public Vector2 TL_UV
+    content: public Vector2 TL_UV { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public TL_UV As Vector2
+    content.vb: Public Property TL_UV As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.TL_UV*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TL_UV
 - uid: TMPEffects.CharacterData.CharDataState.TR_UV
-  commentId: F:TMPEffects.CharacterData.CharDataState.TR_UV
+  commentId: P:TMPEffects.CharacterData.CharDataState.TR_UV
   id: TR_UV
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -540,7 +695,7 @@ items:
   name: TR_UV
   nameWithType: CharDataState.TR_UV
   fullName: TMPEffects.CharacterData.CharDataState.TR_UV
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -548,17 +703,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 34
+    startLine: 64
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV value of the topright vertex.
+  example: []
   syntax:
-    content: public Vector2 TR_UV
+    content: public Vector2 TR_UV { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public TR_UV As Vector2
+    content.vb: Public Property TR_UV As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.TR_UV*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TR_UV
 - uid: TMPEffects.CharacterData.CharDataState.BR_UV
-  commentId: F:TMPEffects.CharacterData.CharDataState.BR_UV
+  commentId: P:TMPEffects.CharacterData.CharDataState.BR_UV
   id: BR_UV
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -567,7 +728,7 @@ items:
   name: BR_UV
   nameWithType: CharDataState.BR_UV
   fullName: TMPEffects.CharacterData.CharDataState.BR_UV
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -575,17 +736,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 35
+    startLine: 66
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV value of the bottomright vertex.
+  example: []
   syntax:
-    content: public Vector2 BR_UV
+    content: public Vector2 BR_UV { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public BR_UV As Vector2
+    content.vb: Public Property BR_UV As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.BR_UV*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BR_UV
 - uid: TMPEffects.CharacterData.CharDataState.BL_UV
-  commentId: F:TMPEffects.CharacterData.CharDataState.BL_UV
+  commentId: P:TMPEffects.CharacterData.CharDataState.BL_UV
   id: BL_UV
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -594,7 +761,7 @@ items:
   name: BL_UV
   nameWithType: CharDataState.BL_UV
   fullName: TMPEffects.CharacterData.CharDataState.BL_UV
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -602,17 +769,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 36
+    startLine: 68
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV value of the bottomleft vertex.
+  example: []
   syntax:
-    content: public Vector2 BL_UV
+    content: public Vector2 BL_UV { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public BL_UV As Vector2
+    content.vb: Public Property BL_UV As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.BL_UV*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BL_UV
 - uid: TMPEffects.CharacterData.CharDataState.TL_UV2
-  commentId: F:TMPEffects.CharacterData.CharDataState.TL_UV2
+  commentId: P:TMPEffects.CharacterData.CharDataState.TL_UV2
   id: TL_UV2
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -621,7 +794,7 @@ items:
   name: TL_UV2
   nameWithType: CharDataState.TL_UV2
   fullName: TMPEffects.CharacterData.CharDataState.TL_UV2
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -629,17 +802,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV2
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 38
+    startLine: 71
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV2 value of the topleft vertex.
+  example: []
   syntax:
-    content: public Vector2 TL_UV2
+    content: public Vector2 TL_UV2 { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public TL_UV2 As Vector2
+    content.vb: Public Property TL_UV2 As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.TL_UV2*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TL_UV2
 - uid: TMPEffects.CharacterData.CharDataState.TR_UV2
-  commentId: F:TMPEffects.CharacterData.CharDataState.TR_UV2
+  commentId: P:TMPEffects.CharacterData.CharDataState.TR_UV2
   id: TR_UV2
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -648,7 +827,7 @@ items:
   name: TR_UV2
   nameWithType: CharDataState.TR_UV2
   fullName: TMPEffects.CharacterData.CharDataState.TR_UV2
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -656,17 +835,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV2
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 39
+    startLine: 73
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV2 value of the topright vertex.
+  example: []
   syntax:
-    content: public Vector2 TR_UV2
+    content: public Vector2 TR_UV2 { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public TR_UV2 As Vector2
+    content.vb: Public Property TR_UV2 As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.TR_UV2*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TR_UV2
 - uid: TMPEffects.CharacterData.CharDataState.BR_UV2
-  commentId: F:TMPEffects.CharacterData.CharDataState.BR_UV2
+  commentId: P:TMPEffects.CharacterData.CharDataState.BR_UV2
   id: BR_UV2
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -675,7 +860,7 @@ items:
   name: BR_UV2
   nameWithType: CharDataState.BR_UV2
   fullName: TMPEffects.CharacterData.CharDataState.BR_UV2
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -683,17 +868,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV2
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 40
+    startLine: 75
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV2 value of the bottomright vertex.
+  example: []
   syntax:
-    content: public Vector2 BR_UV2
+    content: public Vector2 BR_UV2 { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public BR_UV2 As Vector2
+    content.vb: Public Property BR_UV2 As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.BR_UV2*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BR_UV2
 - uid: TMPEffects.CharacterData.CharDataState.BL_UV2
-  commentId: F:TMPEffects.CharacterData.CharDataState.BL_UV2
+  commentId: P:TMPEffects.CharacterData.CharDataState.BL_UV2
   id: BL_UV2
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -702,7 +893,7 @@ items:
   name: BL_UV2
   nameWithType: CharDataState.BL_UV2
   fullName: TMPEffects.CharacterData.CharDataState.BL_UV2
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -710,17 +901,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV2
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 41
+    startLine: 77
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The UV2 value of the bottomleft vertex.
+  example: []
   syntax:
-    content: public Vector2 BL_UV2
+    content: public Vector2 BL_UV2 { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector2
-    content.vb: Public BL_UV2 As Vector2
+    content.vb: Public Property BL_UV2 As Vector2
+  overload: TMPEffects.CharacterData.CharDataState.BL_UV2*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BL_UV2
 - uid: TMPEffects.CharacterData.CharDataState.TL_Color
-  commentId: F:TMPEffects.CharacterData.CharDataState.TL_Color
+  commentId: P:TMPEffects.CharacterData.CharDataState.TL_Color
   id: TL_Color
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -729,7 +926,7 @@ items:
   name: TL_Color
   nameWithType: CharDataState.TL_Color
   fullName: TMPEffects.CharacterData.CharDataState.TL_Color
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -737,17 +934,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Color
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 43
+    startLine: 80
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The color value of the topleft vertex.
+  example: []
   syntax:
-    content: public Color32 TL_Color
+    content: public Color32 TL_Color { get; }
+    parameters: []
     return:
       type: UnityEngine.Color32
-    content.vb: Public TL_Color As Color32
+    content.vb: Public ReadOnly Property TL_Color As Color32
+  overload: TMPEffects.CharacterData.CharDataState.TL_Color*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TL_Color
 - uid: TMPEffects.CharacterData.CharDataState.TR_Color
-  commentId: F:TMPEffects.CharacterData.CharDataState.TR_Color
+  commentId: P:TMPEffects.CharacterData.CharDataState.TR_Color
   id: TR_Color
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -756,7 +959,7 @@ items:
   name: TR_Color
   nameWithType: CharDataState.TR_Color
   fullName: TMPEffects.CharacterData.CharDataState.TR_Color
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -764,17 +967,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Color
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 44
+    startLine: 82
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The color value of the topright vertex.
+  example: []
   syntax:
-    content: public Color32 TR_Color
+    content: public Color32 TR_Color { get; }
+    parameters: []
     return:
       type: UnityEngine.Color32
-    content.vb: Public TR_Color As Color32
+    content.vb: Public ReadOnly Property TR_Color As Color32
+  overload: TMPEffects.CharacterData.CharDataState.TR_Color*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TR_Color
 - uid: TMPEffects.CharacterData.CharDataState.BR_Color
-  commentId: F:TMPEffects.CharacterData.CharDataState.BR_Color
+  commentId: P:TMPEffects.CharacterData.CharDataState.BR_Color
   id: BR_Color
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -783,7 +992,7 @@ items:
   name: BR_Color
   nameWithType: CharDataState.BR_Color
   fullName: TMPEffects.CharacterData.CharDataState.BR_Color
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -791,17 +1000,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Color
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 45
+    startLine: 84
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The color value of the bottomright vertex.
+  example: []
   syntax:
-    content: public Color32 BR_Color
+    content: public Color32 BR_Color { get; }
+    parameters: []
     return:
       type: UnityEngine.Color32
-    content.vb: Public BR_Color As Color32
+    content.vb: Public ReadOnly Property BR_Color As Color32
+  overload: TMPEffects.CharacterData.CharDataState.BR_Color*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BR_Color
 - uid: TMPEffects.CharacterData.CharDataState.BL_Color
-  commentId: F:TMPEffects.CharacterData.CharDataState.BL_Color
+  commentId: P:TMPEffects.CharacterData.CharDataState.BL_Color
   id: BL_Color
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -810,7 +1025,7 @@ items:
   name: BL_Color
   nameWithType: CharDataState.BL_Color
   fullName: TMPEffects.CharacterData.CharDataState.BL_Color
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -818,17 +1033,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Color
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 46
+    startLine: 86
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: The color value of the bottomleft vertex.
+  example: []
   syntax:
-    content: public Color32 BL_Color
+    content: public Color32 BL_Color { get; }
+    parameters: []
     return:
       type: UnityEngine.Color32
-    content.vb: Public BL_Color As Color32
+    content.vb: Public ReadOnly Property BL_Color As Color32
+  overload: TMPEffects.CharacterData.CharDataState.BL_Color*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BL_Color
 - uid: TMPEffects.CharacterData.CharDataState.TL_Result
-  commentId: F:TMPEffects.CharacterData.CharDataState.TL_Result
+  commentId: P:TMPEffects.CharacterData.CharDataState.TL_Result
   id: TL_Result
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -837,7 +1058,7 @@ items:
   name: TL_Result
   nameWithType: CharDataState.TL_Result
   fullName: TMPEffects.CharacterData.CharDataState.TL_Result
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -845,17 +1066,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Result
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 48
+    startLine: 95
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: Contains the calculated position of the topleft vertex after calling <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: public Vector3 TL_Result
+    content: public Vector3 TL_Result { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TL_Result As Vector3
+    content.vb: Public Property TL_Result As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TL_Result*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TL_Result
 - uid: TMPEffects.CharacterData.CharDataState.TR_Result
-  commentId: F:TMPEffects.CharacterData.CharDataState.TR_Result
+  commentId: P:TMPEffects.CharacterData.CharDataState.TR_Result
   id: TR_Result
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -864,7 +1091,7 @@ items:
   name: TR_Result
   nameWithType: CharDataState.TR_Result
   fullName: TMPEffects.CharacterData.CharDataState.TR_Result
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -872,17 +1099,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Result
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 49
+    startLine: 97
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: Contains the calculated position of the topright vertex after calling <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: public Vector3 TR_Result
+    content: public Vector3 TR_Result { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public TR_Result As Vector3
+    content.vb: Public Property TR_Result As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.TR_Result*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.TR_Result
 - uid: TMPEffects.CharacterData.CharDataState.BR_Result
-  commentId: F:TMPEffects.CharacterData.CharDataState.BR_Result
+  commentId: P:TMPEffects.CharacterData.CharDataState.BR_Result
   id: BR_Result
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -891,7 +1124,7 @@ items:
   name: BR_Result
   nameWithType: CharDataState.BR_Result
   fullName: TMPEffects.CharacterData.CharDataState.BR_Result
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -899,17 +1132,23 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Result
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 50
+    startLine: 99
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: Contains the calculated position of the bottomright vertex after calling <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: public Vector3 BR_Result
+    content: public Vector3 BR_Result { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BR_Result As Vector3
+    content.vb: Public Property BR_Result As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BR_Result*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BR_Result
 - uid: TMPEffects.CharacterData.CharDataState.BL_Result
-  commentId: F:TMPEffects.CharacterData.CharDataState.BL_Result
+  commentId: P:TMPEffects.CharacterData.CharDataState.BL_Result
   id: BL_Result
   parent: TMPEffects.CharacterData.CharDataState
   langs:
@@ -918,7 +1157,7 @@ items:
   name: BL_Result
   nameWithType: CharDataState.BL_Result
   fullName: TMPEffects.CharacterData.CharDataState.BL_Result
-  type: Field
+  type: Property
   source:
     remote:
       path: Runtime/CharData/CharDataState.cs
@@ -926,15 +1165,21 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Result
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 51
+    startLine: 101
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: Contains the calculated position of the bottomleft vertex after calling <xref href="TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: public Vector3 BL_Result
+    content: public Vector3 BL_Result { get; set; }
+    parameters: []
     return:
       type: UnityEngine.Vector3
-    content.vb: Public BL_Result As Vector3
+    content.vb: Public Property BL_Result As Vector3
+  overload: TMPEffects.CharacterData.CharDataState.BL_Result*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.BL_Result
 - uid: TMPEffects.CharacterData.CharDataState.Reset(TMPEffects.Components.Animator.AnimatorContext,TMPEffects.CharacterData.CharData)
   commentId: M:TMPEffects.CharacterData.CharDataState.Reset(TMPEffects.Components.Animator.AnimatorContext,TMPEffects.CharacterData.CharData)
   id: Reset(TMPEffects.Components.Animator.AnimatorContext,TMPEffects.CharacterData.CharData)
@@ -953,7 +1198,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 56
+    startLine: 106
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -984,14 +1229,21 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculateVertexPositions
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 99
+    startLine: 150
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
+  summary: >-
+    Calculate the vertex positions, applying all rotations, transformations and scale operations.<br />
+
+    Will set <xref href="TMPEffects.CharacterData.ICharDataState.BL_Result" data-throw-if-not-resolved="false"></xref>, <xref href="TMPEffects.CharacterData.ICharDataState.TL_Result" data-throw-if-not-resolved="false"></xref>, <xref href="TMPEffects.CharacterData.ICharDataState.TR_Result" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.CharacterData.ICharDataState.BR_Result" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public void CalculateVertexPositions()
     content.vb: Public Sub CalculateVertexPositions()
   overload: TMPEffects.CharacterData.CharDataState.CalculateVertexPositions*
+  implements:
+  - TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions
 - uid: TMPEffects.CharacterData.CharDataState.UpdateVertexOffsets
   commentId: M:TMPEffects.CharacterData.CharDataState.UpdateVertexOffsets
   id: UpdateVertexOffsets
@@ -1010,7 +1262,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateVertexOffsets
     path: ../Assets/TMPEffects/Runtime/CharData/CharDataState.cs
-    startLine: 146
+    startLine: 197
   assemblies:
   - TMPEffects
   namespace: TMPEffects.CharacterData
@@ -1019,6 +1271,20 @@ items:
     content.vb: Public Sub UpdateVertexOffsets()
   overload: TMPEffects.CharacterData.CharDataState.UpdateVertexOffsets*
 references:
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
 - uid: TMPEffects.CharacterData
   commentId: N:TMPEffects.CharacterData
   href: TMPEffects.html
@@ -1052,6 +1318,13 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: TMPEffects.CharacterData.ICharDataState
+  commentId: T:TMPEffects.CharacterData.ICharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ICharDataState.html
+  name: ICharDataState
+  nameWithType: ICharDataState
+  fullName: TMPEffects.CharacterData.ICharDataState
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -1271,6 +1544,28 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1278,13 +1573,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: TMPEffects.CharacterData.CharData
-  commentId: T:TMPEffects.CharacterData.CharData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.CharData.html
-  name: CharData
-  nameWithType: CharData
-  fullName: TMPEffects.CharacterData.CharData
 - uid: TMPEffects.Components.Animator.AnimatorContext
   commentId: T:TMPEffects.Components.Animator.AnimatorContext
   parent: TMPEffects.Components.Animator
@@ -1322,6 +1610,19 @@ references:
   - uid: TMPEffects.Components.Animator
     name: Animator
     href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.CharacterData.CharDataState.positionDelta*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.positionDelta
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_positionDelta
+  name: positionDelta
+  nameWithType: CharDataState.positionDelta
+  fullName: TMPEffects.CharacterData.CharDataState.positionDelta
+- uid: TMPEffects.CharacterData.ICharDataState.positionDelta
+  commentId: P:TMPEffects.CharacterData.ICharDataState.positionDelta
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_positionDelta
+  name: positionDelta
+  nameWithType: ICharDataState.positionDelta
+  fullName: TMPEffects.CharacterData.ICharDataState.positionDelta
 - uid: UnityEngine.Vector3
   commentId: T:UnityEngine.Vector3
   parent: UnityEngine
@@ -1335,6 +1636,19 @@ references:
   name: UnityEngine
   nameWithType: UnityEngine
   fullName: UnityEngine
+- uid: TMPEffects.CharacterData.CharDataState.scaleDelta*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.scaleDelta
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_scaleDelta
+  name: scaleDelta
+  nameWithType: CharDataState.scaleDelta
+  fullName: TMPEffects.CharacterData.CharDataState.scaleDelta
+- uid: TMPEffects.CharacterData.ICharDataState.scaleDelta
+  commentId: P:TMPEffects.CharacterData.ICharDataState.scaleDelta
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_scaleDelta
+  name: scaleDelta
+  nameWithType: ICharDataState.scaleDelta
+  fullName: TMPEffects.CharacterData.ICharDataState.scaleDelta
 - uid: UnityEngine.Matrix4x4
   commentId: T:UnityEngine.Matrix4x4
   parent: UnityEngine
@@ -1342,6 +1656,319 @@ references:
   name: Matrix4x4
   nameWithType: Matrix4x4
   fullName: UnityEngine.Matrix4x4
+- uid: TMPEffects.CharacterData.CharDataState.Rotations*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.Rotations
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_Rotations
+  name: Rotations
+  nameWithType: CharDataState.Rotations
+  fullName: TMPEffects.CharacterData.CharDataState.Rotations
+- uid: TMPEffects.CharacterData.ICharDataState.Rotations
+  commentId: P:TMPEffects.CharacterData.ICharDataState.Rotations
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_Rotations
+  name: Rotations
+  nameWithType: ICharDataState.Rotations
+  fullName: TMPEffects.CharacterData.ICharDataState.Rotations
+- uid: System.Collections.Generic.IEnumerable{System.ValueTuple{UnityEngine.Quaternion,UnityEngine.Vector3}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.ValueTuple{UnityEngine.Quaternion,UnityEngine.Vector3}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<(Quaternion, Vector3)>
+  nameWithType: IEnumerable<(Quaternion, Vector3)>
+  fullName: System.Collections.Generic.IEnumerable<(UnityEngine.Quaternion, UnityEngine.Vector3)>
+  nameWithType.vb: IEnumerable(Of (Quaternion, Vector3))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of (UnityEngine.Quaternion, UnityEngine.Vector3))
+  name.vb: IEnumerable(Of (Quaternion, Vector3))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: (
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: UnityEngine.Quaternion
+    name: Quaternion
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: UnityEngine.Vector3
+    name: Vector3
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.CharacterData.CharDataState.TL*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TL
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TL
+  name: TL
+  nameWithType: CharDataState.TL
+  fullName: TMPEffects.CharacterData.CharDataState.TL
+- uid: TMPEffects.CharacterData.ICharDataState.TL
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TL
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL
+  name: TL
+  nameWithType: ICharDataState.TL
+  fullName: TMPEffects.CharacterData.ICharDataState.TL
+- uid: TMPEffects.CharacterData.CharDataState.TR*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TR
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TR
+  name: TR
+  nameWithType: CharDataState.TR
+  fullName: TMPEffects.CharacterData.CharDataState.TR
+- uid: TMPEffects.CharacterData.ICharDataState.TR
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TR
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR
+  name: TR
+  nameWithType: ICharDataState.TR
+  fullName: TMPEffects.CharacterData.ICharDataState.TR
+- uid: TMPEffects.CharacterData.CharDataState.BR*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BR
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BR
+  name: BR
+  nameWithType: CharDataState.BR
+  fullName: TMPEffects.CharacterData.CharDataState.BR
+- uid: TMPEffects.CharacterData.ICharDataState.BR
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BR
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR
+  name: BR
+  nameWithType: ICharDataState.BR
+  fullName: TMPEffects.CharacterData.ICharDataState.BR
+- uid: TMPEffects.CharacterData.CharDataState.BL*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BL
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BL
+  name: BL
+  nameWithType: CharDataState.BL
+  fullName: TMPEffects.CharacterData.CharDataState.BL
+- uid: TMPEffects.CharacterData.ICharDataState.BL
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BL
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL
+  name: BL
+  nameWithType: ICharDataState.BL
+  fullName: TMPEffects.CharacterData.ICharDataState.BL
+- uid: TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions
+  commentId: M:TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions
+  name: CalculateVertexPositions()
+  nameWithType: ICharDataState.CalculateVertexPositions()
+  fullName: TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions()
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions
+    name: CalculateVertexPositions
+    href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.CharacterData.ICharDataState.CalculateVertexPositions
+    name: CalculateVertexPositions
+    href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions
+  - name: (
+  - name: )
+- uid: TMPEffects.CharacterData.CharDataState.TLMax*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TLMax
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TLMax
+  name: TLMax
+  nameWithType: CharDataState.TLMax
+  fullName: TMPEffects.CharacterData.CharDataState.TLMax
+- uid: TMPEffects.CharacterData.ICharDataState.TLMax
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TLMax
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TLMax
+  name: TLMax
+  nameWithType: ICharDataState.TLMax
+  fullName: TMPEffects.CharacterData.ICharDataState.TLMax
+- uid: TMPEffects.CharacterData.CharDataState.TRMax*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TRMax
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TRMax
+  name: TRMax
+  nameWithType: CharDataState.TRMax
+  fullName: TMPEffects.CharacterData.CharDataState.TRMax
+- uid: TMPEffects.CharacterData.ICharDataState.TRMax
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TRMax
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TRMax
+  name: TRMax
+  nameWithType: ICharDataState.TRMax
+  fullName: TMPEffects.CharacterData.ICharDataState.TRMax
+- uid: TMPEffects.CharacterData.CharDataState.BRMax*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BRMax
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BRMax
+  name: BRMax
+  nameWithType: CharDataState.BRMax
+  fullName: TMPEffects.CharacterData.CharDataState.BRMax
+- uid: TMPEffects.CharacterData.ICharDataState.BRMax
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BRMax
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BRMax
+  name: BRMax
+  nameWithType: ICharDataState.BRMax
+  fullName: TMPEffects.CharacterData.ICharDataState.BRMax
+- uid: TMPEffects.CharacterData.CharDataState.BLMax*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BLMax
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BLMax
+  name: BLMax
+  nameWithType: CharDataState.BLMax
+  fullName: TMPEffects.CharacterData.CharDataState.BLMax
+- uid: TMPEffects.CharacterData.ICharDataState.BLMax
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BLMax
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BLMax
+  name: BLMax
+  nameWithType: ICharDataState.BLMax
+  fullName: TMPEffects.CharacterData.ICharDataState.BLMax
+- uid: TMPEffects.CharacterData.CharDataState.TLMin*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TLMin
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TLMin
+  name: TLMin
+  nameWithType: CharDataState.TLMin
+  fullName: TMPEffects.CharacterData.CharDataState.TLMin
+- uid: TMPEffects.CharacterData.ICharDataState.TLMin
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TLMin
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TLMin
+  name: TLMin
+  nameWithType: ICharDataState.TLMin
+  fullName: TMPEffects.CharacterData.ICharDataState.TLMin
+- uid: TMPEffects.CharacterData.CharDataState.TRMin*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TRMin
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TRMin
+  name: TRMin
+  nameWithType: CharDataState.TRMin
+  fullName: TMPEffects.CharacterData.CharDataState.TRMin
+- uid: TMPEffects.CharacterData.ICharDataState.TRMin
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TRMin
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TRMin
+  name: TRMin
+  nameWithType: ICharDataState.TRMin
+  fullName: TMPEffects.CharacterData.ICharDataState.TRMin
+- uid: TMPEffects.CharacterData.CharDataState.BRMin*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BRMin
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BRMin
+  name: BRMin
+  nameWithType: CharDataState.BRMin
+  fullName: TMPEffects.CharacterData.CharDataState.BRMin
+- uid: TMPEffects.CharacterData.ICharDataState.BRMin
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BRMin
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BRMin
+  name: BRMin
+  nameWithType: ICharDataState.BRMin
+  fullName: TMPEffects.CharacterData.ICharDataState.BRMin
+- uid: TMPEffects.CharacterData.CharDataState.BLMin*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BLMin
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BLMin
+  name: BLMin
+  nameWithType: CharDataState.BLMin
+  fullName: TMPEffects.CharacterData.CharDataState.BLMin
+- uid: TMPEffects.CharacterData.ICharDataState.BLMin
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BLMin
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BLMin
+  name: BLMin
+  nameWithType: ICharDataState.BLMin
+  fullName: TMPEffects.CharacterData.ICharDataState.BLMin
+- uid: TMPEffects.CharacterData.CharDataState.TL_UV*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TL_UV
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TL_UV
+  name: TL_UV
+  nameWithType: CharDataState.TL_UV
+  fullName: TMPEffects.CharacterData.CharDataState.TL_UV
+- uid: TMPEffects.CharacterData.ICharDataState.TL_UV
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TL_UV
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL_UV
+  name: TL_UV
+  nameWithType: ICharDataState.TL_UV
+  fullName: TMPEffects.CharacterData.ICharDataState.TL_UV
 - uid: UnityEngine.Vector2
   commentId: T:UnityEngine.Vector2
   parent: UnityEngine
@@ -1349,6 +1976,110 @@ references:
   name: Vector2
   nameWithType: Vector2
   fullName: UnityEngine.Vector2
+- uid: TMPEffects.CharacterData.CharDataState.TR_UV*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TR_UV
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TR_UV
+  name: TR_UV
+  nameWithType: CharDataState.TR_UV
+  fullName: TMPEffects.CharacterData.CharDataState.TR_UV
+- uid: TMPEffects.CharacterData.ICharDataState.TR_UV
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TR_UV
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR_UV
+  name: TR_UV
+  nameWithType: ICharDataState.TR_UV
+  fullName: TMPEffects.CharacterData.ICharDataState.TR_UV
+- uid: TMPEffects.CharacterData.CharDataState.BR_UV*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BR_UV
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BR_UV
+  name: BR_UV
+  nameWithType: CharDataState.BR_UV
+  fullName: TMPEffects.CharacterData.CharDataState.BR_UV
+- uid: TMPEffects.CharacterData.ICharDataState.BR_UV
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BR_UV
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR_UV
+  name: BR_UV
+  nameWithType: ICharDataState.BR_UV
+  fullName: TMPEffects.CharacterData.ICharDataState.BR_UV
+- uid: TMPEffects.CharacterData.CharDataState.BL_UV*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BL_UV
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BL_UV
+  name: BL_UV
+  nameWithType: CharDataState.BL_UV
+  fullName: TMPEffects.CharacterData.CharDataState.BL_UV
+- uid: TMPEffects.CharacterData.ICharDataState.BL_UV
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BL_UV
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL_UV
+  name: BL_UV
+  nameWithType: ICharDataState.BL_UV
+  fullName: TMPEffects.CharacterData.ICharDataState.BL_UV
+- uid: TMPEffects.CharacterData.CharDataState.TL_UV2*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TL_UV2
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TL_UV2
+  name: TL_UV2
+  nameWithType: CharDataState.TL_UV2
+  fullName: TMPEffects.CharacterData.CharDataState.TL_UV2
+- uid: TMPEffects.CharacterData.ICharDataState.TL_UV2
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TL_UV2
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL_UV2
+  name: TL_UV2
+  nameWithType: ICharDataState.TL_UV2
+  fullName: TMPEffects.CharacterData.ICharDataState.TL_UV2
+- uid: TMPEffects.CharacterData.CharDataState.TR_UV2*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TR_UV2
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TR_UV2
+  name: TR_UV2
+  nameWithType: CharDataState.TR_UV2
+  fullName: TMPEffects.CharacterData.CharDataState.TR_UV2
+- uid: TMPEffects.CharacterData.ICharDataState.TR_UV2
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TR_UV2
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR_UV2
+  name: TR_UV2
+  nameWithType: ICharDataState.TR_UV2
+  fullName: TMPEffects.CharacterData.ICharDataState.TR_UV2
+- uid: TMPEffects.CharacterData.CharDataState.BR_UV2*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BR_UV2
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BR_UV2
+  name: BR_UV2
+  nameWithType: CharDataState.BR_UV2
+  fullName: TMPEffects.CharacterData.CharDataState.BR_UV2
+- uid: TMPEffects.CharacterData.ICharDataState.BR_UV2
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BR_UV2
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR_UV2
+  name: BR_UV2
+  nameWithType: ICharDataState.BR_UV2
+  fullName: TMPEffects.CharacterData.ICharDataState.BR_UV2
+- uid: TMPEffects.CharacterData.CharDataState.BL_UV2*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BL_UV2
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BL_UV2
+  name: BL_UV2
+  nameWithType: CharDataState.BL_UV2
+  fullName: TMPEffects.CharacterData.CharDataState.BL_UV2
+- uid: TMPEffects.CharacterData.ICharDataState.BL_UV2
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BL_UV2
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL_UV2
+  name: BL_UV2
+  nameWithType: ICharDataState.BL_UV2
+  fullName: TMPEffects.CharacterData.ICharDataState.BL_UV2
+- uid: TMPEffects.CharacterData.CharDataState.TL_Color*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TL_Color
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TL_Color
+  name: TL_Color
+  nameWithType: CharDataState.TL_Color
+  fullName: TMPEffects.CharacterData.CharDataState.TL_Color
+- uid: TMPEffects.CharacterData.ICharDataState.TL_Color
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TL_Color
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL_Color
+  name: TL_Color
+  nameWithType: ICharDataState.TL_Color
+  fullName: TMPEffects.CharacterData.ICharDataState.TL_Color
 - uid: UnityEngine.Color32
   commentId: T:UnityEngine.Color32
   parent: UnityEngine
@@ -1356,6 +2087,97 @@ references:
   name: Color32
   nameWithType: Color32
   fullName: UnityEngine.Color32
+- uid: TMPEffects.CharacterData.CharDataState.TR_Color*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TR_Color
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TR_Color
+  name: TR_Color
+  nameWithType: CharDataState.TR_Color
+  fullName: TMPEffects.CharacterData.CharDataState.TR_Color
+- uid: TMPEffects.CharacterData.ICharDataState.TR_Color
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TR_Color
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR_Color
+  name: TR_Color
+  nameWithType: ICharDataState.TR_Color
+  fullName: TMPEffects.CharacterData.ICharDataState.TR_Color
+- uid: TMPEffects.CharacterData.CharDataState.BR_Color*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BR_Color
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BR_Color
+  name: BR_Color
+  nameWithType: CharDataState.BR_Color
+  fullName: TMPEffects.CharacterData.CharDataState.BR_Color
+- uid: TMPEffects.CharacterData.ICharDataState.BR_Color
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BR_Color
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR_Color
+  name: BR_Color
+  nameWithType: ICharDataState.BR_Color
+  fullName: TMPEffects.CharacterData.ICharDataState.BR_Color
+- uid: TMPEffects.CharacterData.CharDataState.BL_Color*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BL_Color
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BL_Color
+  name: BL_Color
+  nameWithType: CharDataState.BL_Color
+  fullName: TMPEffects.CharacterData.CharDataState.BL_Color
+- uid: TMPEffects.CharacterData.ICharDataState.BL_Color
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BL_Color
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL_Color
+  name: BL_Color
+  nameWithType: ICharDataState.BL_Color
+  fullName: TMPEffects.CharacterData.ICharDataState.BL_Color
+- uid: TMPEffects.CharacterData.CharDataState.TL_Result*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TL_Result
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TL_Result
+  name: TL_Result
+  nameWithType: CharDataState.TL_Result
+  fullName: TMPEffects.CharacterData.CharDataState.TL_Result
+- uid: TMPEffects.CharacterData.ICharDataState.TL_Result
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TL_Result
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL_Result
+  name: TL_Result
+  nameWithType: ICharDataState.TL_Result
+  fullName: TMPEffects.CharacterData.ICharDataState.TL_Result
+- uid: TMPEffects.CharacterData.CharDataState.TR_Result*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.TR_Result
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_TR_Result
+  name: TR_Result
+  nameWithType: CharDataState.TR_Result
+  fullName: TMPEffects.CharacterData.CharDataState.TR_Result
+- uid: TMPEffects.CharacterData.ICharDataState.TR_Result
+  commentId: P:TMPEffects.CharacterData.ICharDataState.TR_Result
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR_Result
+  name: TR_Result
+  nameWithType: ICharDataState.TR_Result
+  fullName: TMPEffects.CharacterData.ICharDataState.TR_Result
+- uid: TMPEffects.CharacterData.CharDataState.BR_Result*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BR_Result
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BR_Result
+  name: BR_Result
+  nameWithType: CharDataState.BR_Result
+  fullName: TMPEffects.CharacterData.CharDataState.BR_Result
+- uid: TMPEffects.CharacterData.ICharDataState.BR_Result
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BR_Result
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR_Result
+  name: BR_Result
+  nameWithType: ICharDataState.BR_Result
+  fullName: TMPEffects.CharacterData.ICharDataState.BR_Result
+- uid: TMPEffects.CharacterData.CharDataState.BL_Result*
+  commentId: Overload:TMPEffects.CharacterData.CharDataState.BL_Result
+  href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_BL_Result
+  name: BL_Result
+  nameWithType: CharDataState.BL_Result
+  fullName: TMPEffects.CharacterData.CharDataState.BL_Result
+- uid: TMPEffects.CharacterData.ICharDataState.BL_Result
+  commentId: P:TMPEffects.CharacterData.ICharDataState.BL_Result
+  parent: TMPEffects.CharacterData.ICharDataState
+  href: TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL_Result
+  name: BL_Result
+  nameWithType: ICharDataState.BL_Result
+  fullName: TMPEffects.CharacterData.ICharDataState.BL_Result
 - uid: TMPEffects.CharacterData.CharDataState.Reset*
   commentId: Overload:TMPEffects.CharacterData.CharDataState.Reset
   href: TMPEffects.CharacterData.CharDataState.html#TMPEffects_CharacterData_CharDataState_Reset_TMPEffects_Components_Animator_AnimatorContext_TMPEffects_CharacterData_CharData_

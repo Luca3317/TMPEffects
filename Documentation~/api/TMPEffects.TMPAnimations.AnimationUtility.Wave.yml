@@ -39,10 +39,19 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Wave
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 389
+    startLine: 566
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    A wave.
+
+    Allows you to easily create periodic animations.<b></b>
+
+    You should take a look at the online documentation for this one:<b></b>
+
+    https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
+  example: []
   syntax:
     content: >-
       [Serializable]
@@ -98,10 +107,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpwardCurve
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 392
+    startLine: 572
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: The upward curve of the wave.
+  example: []
   syntax:
     content: public AnimationCurve UpwardCurve { get; set; }
     parameters: []
@@ -127,10 +138,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DownwardCurve
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 397
+    startLine: 580
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: The downward curve of the wave.
+  example: []
   syntax:
     content: public AnimationCurve DownwardCurve { get; set; }
     parameters: []
@@ -156,10 +169,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CrestWait
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 403
+    startLine: 589
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: How long to stay at the crest of the wave.
+  example: []
   syntax:
     content: public float CrestWait { get; set; }
     parameters: []
@@ -185,10 +200,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TroughWait
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 408
+    startLine: 597
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: How long to stay at the trough of the wave.
+  example: []
   syntax:
     content: public float TroughWait { get; set; }
     parameters: []
@@ -214,10 +231,19 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Uniformity
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 414
+    startLine: 609
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    The uniformity of the wave.<br />
+
+    Defines how much the offset passed in when evaluating the wave is considered.<br />
+
+    A visual representation of this can be found in the online documentation:<br />
+
+    https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
+  example: []
   syntax:
     content: public float Uniformity { get; set; }
     parameters: []
@@ -243,7 +269,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 420
+    startLine: 615
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -272,7 +298,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 424
+    startLine: 619
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -314,7 +340,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 437
+    startLine: 632
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -360,27 +386,42 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 448
+    startLine: 653
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br />
+
+    This will automatically choose the correct way to interpret the wave.
+  example: []
   syntax:
     content: public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: deltaTime
       type: System.Single
+      description: The delta time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realtimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     - id: extrema
       type: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+      description: If the wave has a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.
     return:
       type: System.Int32
+      description: 1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.
     content.vb: Public Function PassedExtrema(time As Single, deltaTime As Single, offset As Single, realtimeWait As Boolean = True, extrema As AnimationUtility.Wave.PulseExtrema = PulseExtrema.Early) As Integer
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.PassedExtrema(Single, Single, Single, Boolean, AnimationUtility.Wave.PulseExtrema)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema(Single, Single, Single, Boolean, TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)
   name.vb: PassedExtrema(Single, Single, Single, Boolean, PulseExtrema)
@@ -402,23 +443,36 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedWaveExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 466
+    startLine: 682
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br />
+
+    Explicitly interpret the wave as a normal wave, ignoring both <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public int PassedWaveExtrema(float time, float deltaTime, float offset)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: deltaTime
       type: System.Single
+      description: The delta time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.Int32
+      description: 1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.
     content.vb: Public Function PassedWaveExtrema(time As Single, deltaTime As Single, offset As Single) As Integer
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.PassedWaveExtrema(Single, Single, Single)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema(Single, Single, Single)
   name.vb: PassedWaveExtrema(Single, Single, Single)
@@ -440,27 +494,42 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedPulseExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 495
+    startLine: 722
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br />
+
+    Explicitly interpret the wave as a pulse, ignoring the <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: deltaTime
       type: System.Single
+      description: The delta time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realtimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     - id: extrema
       type: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+      description: If the wave has a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.
     return:
       type: System.Int32
+      description: 1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.
     content.vb: Public Function PassedPulseExtrema(time As Single, deltaTime As Single, offset As Single, realtimeWait As Boolean = True, extrema As AnimationUtility.Wave.PulseExtrema = PulseExtrema.Early) As Integer
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.PassedPulseExtrema(Single, Single, Single, Boolean, AnimationUtility.Wave.PulseExtrema)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema(Single, Single, Single, Boolean, TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)
   name.vb: PassedPulseExtrema(Single, Single, Single, Boolean, PulseExtrema)
@@ -482,27 +551,42 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedInvertedPulseExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 538
+    startLine: 776
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br />
+
+    Explicitly interpret the wave as an inverted pulse, ignoring the <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: deltaTime
       type: System.Single
+      description: The delta time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realtimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     - id: extrema
       type: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+      description: If the wave has a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.
     return:
       type: System.Int32
+      description: 1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.
     content.vb: Public Function PassedInvertedPulseExtrema(time As Single, deltaTime As Single, offset As Single, realtimeWait As Boolean = True, extrema As AnimationUtility.Wave.PulseExtrema = PulseExtrema.Early) As Integer
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.PassedInvertedPulseExtrema(Single, Single, Single, Boolean, AnimationUtility.Wave.PulseExtrema)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema(Single, Single, Single, Boolean, TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)
   name.vb: PassedInvertedPulseExtrema(Single, Single, Single, Boolean, PulseExtrema)
@@ -524,27 +608,42 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedOneDirectionalPulseExtrema
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 580
+    startLine: 829
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.
+
+    Explicitly interpret the wave as a one-directional pulse.
+  example: []
   syntax:
     content: public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: deltaTime
       type: System.Single
+      description: The delta time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realtimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     - id: extrema
       type: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+      description: If the wave has a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.
     return:
       type: System.Int32
+      description: 1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.
     content.vb: Public Function PassedOneDirectionalPulseExtrema(time As Single, deltaTime As Single, offset As Single, realtimeWait As Boolean = True, extrema As AnimationUtility.Wave.PulseExtrema = PulseExtrema.Early) As Integer
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.PassedOneDirectionalPulseExtrema(Single, Single, Single, Boolean, AnimationUtility.Wave.PulseExtrema)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema(Single, Single, Single, Boolean, TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)
   name.vb: PassedOneDirectionalPulseExtrema(Single, Single, Single, Boolean, PulseExtrema)
@@ -566,21 +665,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Evaluate
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 674
+    startLine: 928
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: >-
+    Evaluate the wave.<br />
+
+    This will automatically choose the correct way to interpret the wave.
+  example: []
   syntax:
     content: public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realtimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     return:
       type: System.ValueTuple{System.Single,System.Int32}
+      description: 'Item1: The value of the wave at the given time and offset.<br />Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).'
     content.vb: Public Function Evaluate(time As Single, offset As Single, realtimeWait As Boolean = True) As (Single, Integer)
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.Evaluate*
   nameWithType.vb: AnimationUtility.Wave.Evaluate(Single, Single, Boolean)
@@ -604,21 +712,30 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsWave
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 691
+    startLine: 953
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: Evaluate the wave as a normal wave explicitly, ignoring both <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public (float, int) EvaluateAsWave(float time, float offset)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     return:
       type: System.ValueTuple{System.Single,System.Int32}
+      description: 'Item1: The value of the wave at the given time and offset.<br />Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).'
     content.vb: Public Function EvaluateAsWave(time As Single, offset As Single) As (Single, Integer)
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.EvaluateAsWave(Single, Single)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave(Single, Single)
   name.vb: EvaluateAsWave(Single, Single)
@@ -640,23 +757,33 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsPulse
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 709
+    startLine: 979
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: Evaluate the wave as a pulse explicitly, ignoring the <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realTimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     return:
       type: System.ValueTuple{System.Single,System.Int32}
+      description: 'Item1: The value of the wave at the given time and offset.<br />Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).'
     content.vb: Public Function EvaluateAsPulse(time As Single, offset As Single, realTimeWait As Boolean = True) As (Single, Integer)
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.EvaluateAsPulse(Single, Single, Boolean)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse(Single, Single, Boolean)
   name.vb: EvaluateAsPulse(Single, Single, Boolean)
@@ -678,23 +805,33 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsInvertedPulse
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 723
+    startLine: 1001
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: Evaluate the wave as an inverted pulse explicitly, ignoring the <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realTimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     return:
       type: System.ValueTuple{System.Single,System.Int32}
+      description: 'Item1: The value of the wave at the given time and offset.<br />Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).'
     content.vb: Public Function EvaluateAsInvertedPulse(time As Single, offset As Single, realTimeWait As Boolean = True) As (Single, Integer)
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.EvaluateAsInvertedPulse(Single, Single, Boolean)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse(Single, Single, Boolean)
   name.vb: EvaluateAsInvertedPulse(Single, Single, Boolean)
@@ -716,23 +853,33 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EvaluateAsOneDirectionalPulse
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 737
+    startLine: 1023
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: Evaluate the wave as a one-directional pulse explicitly.
+  example: []
   syntax:
     content: public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = true)
     parameters:
     - id: time
       type: System.Single
+      description: The time value.
     - id: offset
       type: System.Single
+      description: The offset. Affected by <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity" data-throw-if-not-resolved="false"></xref>.
     - id: realTimeWait
       type: System.Boolean
+      description: Whether to use real time (i.e. whether to use <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.Period" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.EffectivePeriod" data-throw-if-not-resolved="false"></xref>).
     return:
       type: System.ValueTuple{System.Single,System.Int32}
+      description: 'Item1: The value of the wave at the given time and offset.<br />Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).'
     content.vb: Public Function EvaluateAsOneDirectionalPulse(time As Single, offset As Single, realTimeWait As Boolean = True) As (Single, Integer)
   overload: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: ''
   nameWithType.vb: AnimationUtility.Wave.EvaluateAsOneDirectionalPulse(Single, Single, Boolean)
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse(Single, Single, Boolean)
   name.vb: EvaluateAsOneDirectionalPulse(Single, Single, Boolean)
@@ -754,7 +901,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnBeforeSerialize
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 813
+    startLine: 1102
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -785,7 +932,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnAfterDeserialize
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/AnimationUtility.cs
-    startLine: 824
+    startLine: 1113
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -1228,6 +1375,31 @@ references:
   nameWithType.vb: AnimationUtility.Wave.New
   fullName.vb: TMPEffects.TMPAnimations.AnimationUtility.Wave.New
   name.vb: New
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity
+  commentId: P:TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity
+  href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity
+  name: Uniformity
+  nameWithType: AnimationUtility.Wave.Uniformity
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+  commentId: P:TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+  href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait
+  name: CrestWait
+  nameWithType: AnimationUtility.Wave.CrestWait
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
+  commentId: P:TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
+  href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait
+  name: TroughWait
+  nameWithType: AnimationUtility.Wave.TroughWait
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait
+- uid: System.Exception
+  commentId: T:System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
 - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema*
   commentId: Overload:TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema
   href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_

@@ -20,10 +20,12 @@ items:
   items:
   - uid: TMPEffects.CharacterData.CharData
     name: CharData
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: CharData.Info
   - uid: TMPEffects.CharacterData.CharDataState
     name: CharDataState
-  - uid: TMPEffects.CharacterData.Info
-    name: Info
+  - uid: TMPEffects.CharacterData.ICharDataState
+    name: ICharDataState
   - uid: TMPEffects.CharacterData.ReadOnlyCharDataState
     name: ReadOnlyCharDataState
   - uid: TMPEffects.CharacterData.ReadOnlyVertexData
@@ -43,6 +45,8 @@ items:
     name: TMPWriter
   - uid: TMPEffects.Components.TMPWriter.DelayType
     name: TMPWriter.DelayType
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: TMPWriter.Delays
 - uid: TMPEffects.Components.Animator
   name: TMPEffects.Components.Animator
   items:
@@ -63,10 +67,6 @@ items:
   items:
   - uid: TMPEffects.Components.Mediator.TMPMediator
     name: TMPMediator
-  - uid: TMPEffects.Components.Mediator.TMPMediator.EmptyEventHandler
-    name: TMPMediator.EmptyEventHandler
-  - uid: TMPEffects.Components.Mediator.TMPMediator.RangeEventHandler
-    name: TMPMediator.RangeEventHandler
   - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
     name: TMPMediator.TextChangedEarlyEventHandler
   - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler

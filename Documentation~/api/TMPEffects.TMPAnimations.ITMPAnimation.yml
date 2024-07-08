@@ -23,10 +23,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPAnimation
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
-    startLine: 5
+    startLine: 8
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
+  summary: Base interface for all TMPEffects animations.
+  example: []
   syntax:
     content: public interface ITMPAnimation
     content.vb: Public Interface ITMPAnimation
@@ -48,7 +50,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
-    startLine: 12
+    startLine: 15
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -83,7 +85,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
-    startLine: 20
+    startLine: 23
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -124,7 +126,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
-    startLine: 26
+    startLine: 29
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations
@@ -162,7 +164,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
     path: ../Assets/TMPEffects/Runtime/Effects/TMPAnimations/ITMPAnimation.cs
-    startLine: 32
+    startLine: 35
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPAnimations

@@ -25,10 +25,12 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPCommand
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 4
+    startLine: 7
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
+  summary: Base interface for all TMPEffects commands.
+  example: []
   syntax:
     content: public interface ITMPCommand
     content.vb: Public Interface ITMPCommand
@@ -50,7 +52,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 16
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -79,7 +81,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteInstantly
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -113,7 +115,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteOnSkip
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 26
+    startLine: 29
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -144,7 +146,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteRepeatable
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 31
+    startLine: 34
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -178,7 +180,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteCommand
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 46
+    startLine: 49
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands
@@ -210,7 +212,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Assets/TMPEffects/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 54
+    startLine: 57
   assemblies:
   - TMPEffects
   namespace: TMPEffects.TMPCommands

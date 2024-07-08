@@ -20,14 +20,17 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPEffectDatabase
     path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
-    startLine: 14
+    startLine: 21
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Databases
+  summary: Base interface for effect databases.
+  example: []
   syntax:
     content: 'public interface ITMPEffectDatabase<out T> : ITMPEffectDatabase'
     typeParameters:
     - id: T
+      description: Type of effects contained in this database.
     content.vb: Public Interface ITMPEffectDatabase(Of Out T) Inherits ITMPEffectDatabase
   inheritedMembers:
   - TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
@@ -52,7 +55,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Assets/TMPEffects/Runtime/Databases/ITMPEffectDatabase.cs
-    startLine: 22
+    startLine: 29
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Databases

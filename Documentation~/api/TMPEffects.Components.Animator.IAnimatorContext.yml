@@ -24,12 +24,12 @@ items:
   type: Interface
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimatorContext
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 10
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 8
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -54,12 +54,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleAnimations
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 15
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 13
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -85,12 +85,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleUniformly
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 21
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 19
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -121,12 +121,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animator
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 26
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 24
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -152,12 +152,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 31
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 29
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -183,12 +183,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DeltaTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 36
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 34
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -214,12 +214,12 @@ items:
   type: Property
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 40
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 38
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -245,12 +245,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 48
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 46
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -283,12 +283,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 54
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 52
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -318,12 +318,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 62
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 60
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
@@ -359,12 +359,12 @@ items:
   type: Method
   source:
     remote:
-      path: Runtime/Components/TMPAnimator/AnimatorContext.cs
+      path: Runtime/Components/TMPAnimator/IAnimatorContext.cs
       branch: main
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
-    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/AnimatorContext.cs
-    startLine: 68
+    path: ../Assets/TMPEffects/Runtime/Components/TMPAnimator/IAnimatorContext.cs
+    startLine: 66
   assemblies:
   - TMPEffects
   namespace: TMPEffects.Components.Animator
