@@ -8,17 +8,25 @@ If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lwei
 ***
 TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro tags using (custom) tags
 
-- Animate text blocks continuously
-<img src="/Documentation~/tmpeffects-git.gif" width=50% height=auto />
 
-- Show and hide text over time
-<img src="/Documentation~/tmpeffectwrite-git.gif" width=50% height=auto />
-
-- Animate the show / hide sequence
-<img src="/Documentation~/tmpeffectsshowhide-git.gif" width=50% height=auto />
-
-- Raise commands at any given index
-<img src="/Documentation~/tmpeffectscommands-git.gif" width=50% height=auto />
+<table style="border-collapse: collapse; border: none;">
+  <tr>
+    <td valign="middle" style="border: none;" align="center"><b>&bull; Animate text blocks continuously</b><br><br>
+    <img src="/Documentation~/tmpeffects-git.gif" width=100% height=auto />
+    </td>
+    <td valign="middle" style="border: none;" align="center"><b>&bull; Show and hide text over time</b><br><br>
+      <img src="/Documentation~/tmpeffectwrite-git.gif" width=100% height=auto />
+    </td>
+  </tr>
+  <tr>
+    <td valign="middle" style="border: none;" align="center"><b>&bull; Animate the show / hide sequence</b><br><br>
+    <img src="/Documentation~/tmpeffectsshowhide-git.gif" width=100% height=auto />
+    </td>
+    <td valign="middle" style="border: none;" align="center"><b>&bull; Raise commands at any given index</b><br><br>
+      <img src="/Documentation~/tmpeffectscommands-git.gif" width=100% height=auto />
+    </td>
+  </tr>
+</table>
 
 - Raise events at any given index
 
