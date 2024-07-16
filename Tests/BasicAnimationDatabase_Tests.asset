@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337bd111296f6ee4cabd2caa57986019, type: 3}
+  m_Name: BasicAnimationDatabase_Tests
+  m_EditorClassIdentifier: 
+  animations:
+    _serializedList:
+    - Key: char
+      Value: {fileID: 11400000, guid: 9a7b82c715f156248a70b8bb31fdaff3, type: 2}
+    - Key: fade
+      Value: {fileID: 11400000, guid: 8b1656e84fe663b49aeb3c51cf8f839f, type: 2}
+    - Key: funky
+      Value: {fileID: 11400000, guid: 9b94d225e6b8ce148ae8abbb2ce33aa6, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: 22a2fda9107f23247921dd8b16bbdd73, type: 2}
+    - Key: jump
+      Value: {fileID: 11400000, guid: 5039ed66d60ffc641a88d8bf579fe7a7, type: 2}
+    - Key: palette
+      Value: {fileID: 11400000, guid: 5d771be9bffff7d45af35dd5a29d190e, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: fd816a7e922a1794ebc91f1e1f2920c8, type: 2}
+    - Key: pivotc
+      Value: {fileID: 11400000, guid: 5927a590161780f4ca0efb17d456de19, type: 2}
+    - Key: wave
+      Value: {fileID: 11400000, guid: 633ec7df74dcb6e4a831dbd0df8af173, type: 2}
+    - Key: swing
+      Value: {fileID: 11400000, guid: eac14d9ce021e42429a3b23e1aef44cc, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: 595c47ccb902a3742bc13029e0ca5728, type: 2}
+    - Key: spread
+      Value: {fileID: 11400000, guid: 41eb70537ea14564abb22ccdae70f119, type: 2}

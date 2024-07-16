@@ -176,19 +176,21 @@ MonoBehaviour:
   OnResetWriter:
     m_PersistentCalls:
       m_Calls: []
-  database: {fileID: 11400000, guid: c596f28f8cff54044baad1faa0e5e352, type: 2}
-  delay: 0.075
+  database: {fileID: 11400000, guid: e7c09e02c6365fc448159eca75bdb2fc, type: 2}
   maySkip: 0
   writeOnStart: 1
   writeOnNewText: 1
-  whiteSpaceDelay: 0
-  whiteSpaceDelayType: 0
-  punctuationDelay: 0
-  punctuationDelayType: 0
-  visibleDelay: 0
-  visibleDelayType: 0
-  linebreakDelay: 0
-  linebreakDelayType: 0
+  useScaledTime: 1
+  delays:
+    delay: 0.035
+    whitespaceDelay: 0
+    whitespaceDelayType: 0
+    linebreakDelay: 0
+    linebreakDelayType: 0
+    punctuationDelay: 0
+    punctuationDelayType: 0
+    visibleDelay: 0
+    visibleDelayType: 0
   sceneCommands:
     _serializedList: []
   useDefaultDatabase: 0
@@ -207,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cc8a40f9848a54c94bf232155b0b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: 6206c3307df190f448a71bc2077d4a67, type: 2}
+  database: {fileID: 11400000, guid: 8e8a3ee8b0d580842a6f03c7a20e15c0, type: 2}
   context:
     scaleAnimations: 1
     scaleUniformly: 1

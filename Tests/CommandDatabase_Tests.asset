@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfd2eb468351c564a9b8301a29be1963, type: 3}
-  m_Name: TestCommandDatabase
+  m_Name: CommandDatabase_Tests
   m_EditorClassIdentifier: 
   commands:
     _serializedList:
     - Key: debug
-      Value: {fileID: 11400000, guid: 69d14dce9cbfa694dac7b9d68e4ba374, type: 2}
+      Value: {fileID: 11400000, guid: eed696c0d0b631848b3aa26380e9c6ca, type: 2}
     - Key: show
-      Value: {fileID: 11400000, guid: 7c96c58d71d4f2c4cac75cbe0037ea10, type: 2}
-    - Key: skippable
-      Value: {fileID: 11400000, guid: 345838b2a1301bc47840c9b55806a94b, type: 2}
+      Value: {fileID: 11400000, guid: 38e89461ca54d6c4eb778a656572d300, type: 2}
     - Key: delay
-      Value: {fileID: 11400000, guid: 0dd4112859a21e2439af606e828da047, type: 2}
+      Value: {fileID: 11400000, guid: f4765c4cfbd6d29469d97dfe467a4dde, type: 2}
     - Key: wait
-      Value: {fileID: 11400000, guid: 165bea6868a7a5842bcdb8430d6b456b, type: 2}
+      Value: {fileID: 11400000, guid: e82286c4dda406846805a1a9c4aab012, type: 2}
+    - Key: skippable
+      Value: {fileID: 11400000, guid: a5e28ae07f54c394b90918ab8871bd03, type: 2}

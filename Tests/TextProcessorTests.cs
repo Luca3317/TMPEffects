@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using TMPEffects.TextProcessing;
 using TMPEffects.EffectCategories;
 using System.Linq;
+using UnityEditor;
 
 public class TextProcessorTests
 {
@@ -32,7 +33,11 @@ public class TextProcessorTests
     [OneTimeSetUp]
     public void SetUp()
     {
-        Scene scene = EditorSceneManager.LoadSceneInPlayMode("Assets/TMPEffects/Tests/TestScene.unity", new LoadSceneParameters(LoadSceneMode.Single));
+        string[] folders = new string[] { "Assets", "Packages/com.luca3317.tmpeffects/Tests" };
+        var guid = AssetDatabase.FindAssets($"TMPEffects-TestScene t:scene", folders)[0];
+        var path = AssetDatabase.GUIDToAssetPath(guid);
+
+        Scene scene = EditorSceneManager.LoadSceneInPlayMode(path, new LoadSceneParameters(LoadSceneMode.Single));
         EditorSceneManager.sceneLoaded += SetUp_Components;
     }
 
