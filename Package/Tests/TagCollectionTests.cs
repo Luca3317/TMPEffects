@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -32,6 +32,21 @@ public class TagCollectionTests
     TMP_Text text;
 
     TagProcessor animationTagProcessor, showAnimationTagProcessor, hideAnimationTagProcessor, commandTagProcessor, eventTagProcessor;
+
+    [UnitySetUp]
+    public IEnumerator UnitySetUp()
+    {
+        if (Application.isPlaying) yield break;
+        
+        TMP_PackageResourceImporter.ImportResources(true, false, false);
+        yield return new EnterPlayMode();
+    }
+
+    [UnityTearDown]
+    public IEnumerator UnityTearDown()
+    {
+        yield return new ExitPlayMode();
+    }
 
     [OneTimeSetUp]
     public void SetUp()

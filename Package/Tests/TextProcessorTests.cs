@@ -30,6 +30,21 @@ public class TextProcessorTests
 
     TagProcessor animationTagProcessor, showAnimationTagProcessor, hideAnimationTagProcessor, commandTagProcessor, eventTagProcessor;
 
+    [UnitySetUp]
+    public IEnumerator UnitySetUp()
+    {
+        if (Application.isPlaying) yield break;
+        
+        TMP_PackageResourceImporter.ImportResources(true, false, false);
+        yield return new EnterPlayMode();
+    }
+
+    [UnityTearDown]
+    public IEnumerator UnityTearDown()
+    {
+        yield return new ExitPlayMode();
+    }
+
     [OneTimeSetUp]
     public void SetUp()
     {
@@ -61,7 +76,7 @@ public class TextProcessorTests
     }
 
     [UnityTest]
-    public IEnumerator EmptyPreprocessTest()
+    public IEnumerator ZEmptyPreprocessTest()
     {
         TMPTextProcessor processor = new TMPTextProcessor(text);
 
