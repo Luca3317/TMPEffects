@@ -5,8 +5,10 @@ If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lwei
 [![openupm](https://img.shields.io/npm/v/com.luca3317.tmpeffects?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.luca3317.tmpeffects/)
 [![PCKG: Version](https://img.shields.io/github/tag/Luca3317/TMPEffects?include_prereleases=&sort=semver&color=blue)](https://github.com/Luca3317/TMPEffects/releases/)
 [![issues - TMPEffects](https://img.shields.io/github/issues/Luca3317/TMPEffects)](https://github.com/Luca3317/TMPEffects/issues)
+![test-status](https://github.com/Luca3317/TMPEffects/actions/workflows/main.yml/badge.svg?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/luca3317/tmpeffects/badge)](https://www.codefactor.io/repository/github/luca3317/tmpeffects)
 ***
-TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro tags using (custom) tags
+TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro texts using (custom) tags
 
 
 <table style="border-collapse: collapse; border: none;">
@@ -44,7 +46,7 @@ and [commands](https://luca3317.github.io/TMPEffects-Pages/docs/tmpwriter_builti
 TMPEffects is available on the [OpenUPM registry](https://openupm.com/packages/com.luca3317.tmpeffects/).  
 Alternatively, you can install TMPEffects through the Unity Package Manager, using the git url:
 ```console
-https://github.com/Luca3317/TMPEffects.git
+https://github.com/Luca3317/TMPEffects.git?path=/Package
 ```
 
 If you don't know how to install packages using git urls, see the [docs](https://luca3317.github.io/TMPEffects-Pages/docs/installation.html).
