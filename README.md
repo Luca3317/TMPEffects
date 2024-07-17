@@ -12,18 +12,18 @@ TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro t
 <table style="border-collapse: collapse; border: none;">
   <tr>
     <td valign="middle" style="border: none;" align="center"><b>&bull; Animate text blocks continuously</b><br><br>
-    <img src="/Documentation~/tmpeffects-git.gif" width=100% height=auto />
+    <img src="/gifs/tmpeffects-git.gif" width=100% height=auto />
     </td>
     <td valign="middle" style="border: none;" align="center"><b>&bull; Show and hide text over time</b><br><br>
-      <img src="/Documentation~/tmpeffectwrite-git.gif" width=100% height=auto />
+      <img src="/gifs/tmpeffectwrite-git.gif" width=100% height=auto />
     </td>
   </tr>
   <tr>
     <td valign="middle" style="border: none;" align="center"><b>&bull; Animate the show / hide sequence</b><br><br>
-    <img src="/Documentation~/tmpeffectsshowhide-git.gif" width=100% height=auto />
+    <img src="/gifs/tmpeffectsshowhide-git.gif" width=100% height=auto />
     </td>
     <td valign="middle" style="border: none;" align="center"><b>&bull; Raise commands at any given index</b><br><br>
-      <img src="/Documentation~/tmpeffectscommands-git.gif" width=100% height=auto />
+      <img src="/gifs/tmpeffectscommands-git.gif" width=100% height=auto />
     </td>
   </tr>
 </table>
