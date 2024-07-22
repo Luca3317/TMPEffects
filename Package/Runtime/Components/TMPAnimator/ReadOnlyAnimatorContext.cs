@@ -21,7 +21,7 @@ namespace TMPEffects.Components.Animator
         /// <inheritdoc/>
         public float DeltaTime => context.DeltaTime;
         /// <inheritdoc/>
-        public float PassedTime => context.Passed;
+        public float PassedTime => context.PassedTime;
 
         /// <inheritdoc/>
         public float StateTime(CharData cData) => context.StateTime(cData);

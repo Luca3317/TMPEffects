@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
+using UnityEditorInternal;
+using System.Collections.Generic;
+using TMPEffects.Components.Animator;
 
 namespace TMPEffects.Editor
 {
@@ -33,6 +36,12 @@ namespace TMPEffects.Editor
         SerializedProperty defaultHideStringProp;
         SerializedProperty useDefaultDatabaseProp;
         SerializedProperty initDatabaseProp;
+
+        // Default animations
+        SerializedProperty defaultAnimationsProp, defaultShowAnimationsProp, defaultHideAnimationsProp;
+        ReorderableList defaultAnimationsList, defaultShowAnimationsList, defaultHideAnimationsList;
+        Dictionary<int, string> listWarningDict, showListWarningDict, hideListWarningDict;
+        Vector2 defaultListOffset = new Vector2(15, 2.5f);
 
         // Styles
         GUIStyle previewLabelStyle;
@@ -68,8 +77,29 @@ namespace TMPEffects.Editor
             sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
             sceneHideAnimationsProp = serializedObject.FindProperty("sceneHideAnimations");
 
-            defaultShowStringProp = serializedObject.FindProperty("defaultShowString");
-            defaultHideStringProp = serializedObject.FindProperty("defaultHideString");
+            // Default animations
+            defaultAnimationsProp = serializedObject.FindProperty("defaultAnimationsStrings");
+            defaultShowAnimationsProp = serializedObject.FindProperty("defaultShowAnimationsStrings");
+            defaultHideAnimationsProp = serializedObject.FindProperty("defaultHideAnimationsStrings");
+
+            defaultAnimationsList = new ReorderableList(serializedObject, defaultAnimationsProp, true, false, true, true)
+            {
+                drawElementCallback = DrawDefaultBasicAnimationsList
+            };
+
+            defaultShowAnimationsList = new ReorderableList(serializedObject, defaultShowAnimationsProp, true, false, true, true)
+            {
+                drawElementCallback = DrawDefaultShowAnimationsList
+            };
+
+            defaultHideAnimationsList = new ReorderableList(serializedObject, defaultHideAnimationsProp, true, false, true, true)
+            {
+                drawElementCallback = DrawDefaultHideAnimationsList
+            };
+
+            listWarningDict = new Dictionary<int, string>();
+            showListWarningDict = new Dictionary<int, string>();
+            hideListWarningDict = new Dictionary<int, string>();
 
             animator = target as TMPAnimator;
 
@@ -80,6 +110,45 @@ namespace TMPEffects.Editor
             Undo.undoRedoPerformed += OnUndoRedo;
 
             InitDatabase();
+        }
+
+        void DrawDefaultBasicAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Basic, defaultAnimationsProp, listWarningDict);
+        }
+
+        void DrawDefaultShowAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Show, defaultShowAnimationsProp, showListWarningDict);
+        }
+
+        void DrawDefaultHideAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
+        {
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Hide, defaultHideAnimationsProp, hideListWarningDict);
+        }
+
+        void DrawDefaultAnimationsList(Rect rect, int index, bool isActive, bool isFocused, TMPAnimationType type, SerializedProperty defaultAnimationProperty, IDictionary<int, string> warningDict)
+        {
+            //rect.position += defaultListOffset;
+            rect.size -= defaultListOffset;
+            rect.y += 2.5f;
+            //rect.height -= 2.5f;
+
+            Rect textRect = rect;
+            textRect.x += 25;
+            textRect.width -= 25;
+            EditorGUI.PropertyField(textRect, defaultAnimationProperty.GetArrayElementAtIndex(index), GUIContent.none);
+
+            if (warningDict.TryGetValue(index, out string warning) && warning != "")
+            {
+                GUIContent warnGUI = new GUIContent(alertDialogDefaultShow);
+                warnGUI.tooltip = warning;
+
+                Rect warnRect = rect;
+                warnRect.size = new Vector2(20, 20);
+
+                EditorGUI.LabelField(warnRect, warnGUI);
+            }
         }
 
         private void OnDisable()
@@ -255,63 +324,53 @@ namespace TMPEffects.Editor
 
         string defaultShowTooltip;
 
-        void DrawDefaultHideShow()
+        void DrawDefaults()
+        {
+            DrawDefault(
+                TMPAnimationType.Basic,
+                defaultAnimationsProp,
+                defaultAnimationsList,
+                new GUIContent("Default Animations", "Default animations that will be applied to the entire text, without needing any tags."),
+                listWarningDict);
+
+            DrawDefault(
+                TMPAnimationType.Show,
+                defaultShowAnimationsProp,
+                defaultShowAnimationsList,
+                new GUIContent("Default Show Animations", "Default show animations that will be applied to the entire text, without needing any tags."),
+                showListWarningDict);
+
+            DrawDefault(
+                TMPAnimationType.Hide,
+                defaultHideAnimationsProp,
+                defaultHideAnimationsList,
+                new GUIContent("Default Hide Animations", "Default hide animations that will be applied to the entire text, without needing any tags."),
+                hideListWarningDict);
+        }
+
+
+        void DrawDefault(TMPAnimationType type, SerializedProperty defaultAnimationsProp, ReorderableList defaultAnimationsList, GUIContent label, IDictionary<int, string> warningDict)
         {
             EditorGUI.BeginChangeCheck();
 
-            GUILayout.BeginHorizontal();
-            EditorGUILayout.PropertyField(defaultShowStringProp, GUILayout.ExpandWidth(true));
-
-            Rect rect = GUILayoutUtility.GetLastRect();
-            rect.x = EditorGUIUtility.labelWidth;
-            rect.width = 20;
+            if ((defaultAnimationsProp.isExpanded = EditorGUILayout.Foldout(defaultAnimationsProp.isExpanded, label, true)))
+            {
+                Rect rect = GUILayoutUtility.GetRect(0f, defaultAnimationsList.GetHeight());
+                rect = new Rect(rect.x + defaultListOffset.x, rect.y + defaultListOffset.y, rect.width - defaultListOffset.x, rect.height - defaultListOffset.y);
+                defaultAnimationsList.DoList(rect);
+            }
 
             if (EditorGUI.EndChangeCheck())
             {
+                warningDict.Clear();
+                for (int i = 0; i < defaultAnimationsProp.arraySize; i++)
+                {
+                    warningDict.Add(i, animator.CheckDefaultString(type, defaultAnimationsProp.GetArrayElementAtIndex(i).stringValue));
+                }
+
                 serializedObject.ApplyModifiedProperties();
-                animator.UpdateDefaultStrings();
-                alertDialogDefaultShow.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Show); ;
-                Repaint();
+                animator.UpdateDefaultAnimations(type);
             }
-
-            EditorGUI.BeginChangeCheck();
-
-            if (alertDialogDefaultShow.tooltip != "")
-            {
-                GUI.Label(rect, alertDialogDefaultShow);
-            }
-            else
-            {
-                GUI.Label(rect, new GUIContent("", defaultShowTooltip));
-            }
-
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            EditorGUILayout.PropertyField(defaultHideStringProp, GUILayout.ExpandWidth(true));
-
-            rect = GUILayoutUtility.GetLastRect();
-            rect.x = EditorGUIUtility.labelWidth;
-            rect.width = 20;
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                serializedObject.ApplyModifiedProperties();
-                animator.UpdateDefaultStrings();
-                alertDialogDefaultHide.tooltip = animator.CheckDefaultString(Components.Animator.TMPAnimationType.Hide);
-                Repaint();
-            }
-
-            if (alertDialogDefaultHide.tooltip != "")
-            {
-                GUI.Label(rect, alertDialogDefaultHide);
-            }
-            else
-            {
-                GUI.Label(rect, new GUIContent(""));
-            }
-
-            GUILayout.EndHorizontal();
         }
 
         void DrawExclusions()
@@ -451,7 +510,7 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(animationsOverrideProp);
                 EditorGUILayout.Space(10);
-                DrawDefaultHideShow();
+                DrawDefaults();
 
                 EditorGUILayout.Space(10);
                 DrawExclusions();
