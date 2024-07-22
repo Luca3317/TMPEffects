@@ -432,10 +432,10 @@ namespace TMPEffects.CharacterData
             value = new Color32(value.r, value.g, value.b, initial.GetAlpha(i));
             switch (i)
             {
-                case 0: vertex_BL.color = value; break;
-                case 1: vertex_TL.color = value; break;
-                case 2: vertex_TR.color = value; break;
-                case 3: vertex_BR.color = value; break;
+                case 0: vertex_BL.color = new Color32(value.r, value.g, value.b, vertex_BL.color.a); break;
+                case 1: vertex_TL.color = new Color32(value.r, value.g, value.b, vertex_BL.color.a); break;
+                case 2: vertex_TR.color = new Color32(value.r, value.g, value.b, vertex_BL.color.a); break;
+                case 3: vertex_BR.color = new Color32(value.r, value.g, value.b, vertex_BL.color.a); break;
                 default: throw new System.ArgumentOutOfRangeException();
             }
 
