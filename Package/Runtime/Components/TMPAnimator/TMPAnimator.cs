@@ -169,9 +169,6 @@ namespace TMPEffects.Components
         [System.NonSerialized] private CachedAnimation dummyShow;
         [System.NonSerialized] private CachedAnimation dummyHide;
 
-        [System.NonSerialized] private CachedAnimation defaultShow;
-        [System.NonSerialized] private CachedAnimation defaultHide;
-
         [System.NonSerialized] private List<float> visibleTimes = new List<float>();
         [System.NonSerialized] private List<float> stateTimes = new List<float>();
         [System.NonSerialized] private object timesIdentifier;
@@ -653,6 +650,7 @@ namespace TMPEffects.Components
                     anims = defaultAnimations;
                     cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedBasic(x));
                     strings = defaultAnimationsStrings;
+                    QueueCharacterReset();
                     break;
 
                 case TMPAnimationType.Show:
@@ -855,27 +853,6 @@ namespace TMPEffects.Components
                         AnimateBasic(true);
                     }
                 }
-                else if (show.Count == 0)
-                {
-                    if (isExcludedBasic)
-                    {
-                        Animate(defaultShow, defaultShow.late);
-                    }
-                    else if (defaultShow.late)
-                    {
-                        AnimateBasic(false);
-                        Animate(defaultShow, true);
-                        AnimateBasic(true);
-                    }
-                    else
-                    {
-                        Animate(defaultShow, false);
-                        AnimateBasic(false);
-                        AnimateBasic(true);
-                    }
-
-                    allDone = defaultShow.Finished(cData.info.index);
-                }
                 else
                 {
                     allDone = AnimateShowList(false);
@@ -912,33 +889,12 @@ namespace TMPEffects.Components
 
                 if (IsExcludedHide(cData.info.character))
                 {
-                    Animate(dummyHide, false);
+                    Animate(dummyShow, false);
                     if (!isExcludedBasic)
                     {
                         AnimateBasic(false);
                         AnimateBasic(true);
                     }
-                }
-                else if (hide.Count == 0)
-                {
-                    if (isExcludedBasic)
-                    {
-                        Animate(defaultHide, defaultHide.late);
-                    }
-                    else if (defaultShow.late)
-                    {
-                        AnimateBasic(false);
-                        Animate(defaultHide, true);
-                        AnimateBasic(true);
-                    }
-                    else
-                    {
-                        Animate(defaultHide, false);
-                        AnimateBasic(false);
-                        AnimateBasic(true);
-                    }
-
-                    done = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
@@ -996,6 +952,12 @@ namespace TMPEffects.Components
 
             void AnimateBasic(bool late)
             {
+                for (int i = 0; i < defaultAnimations.Count; i++)
+                {
+                    var anim = defaultAnimations[i];
+                    Animate(anim, late);
+                }
+
                 CachedCollection<CachedAnimation>.MinMax mm = basic.MinMaxAt(index);
                 if (mm == null) return;
 
@@ -1055,10 +1017,21 @@ namespace TMPEffects.Components
 
             bool AnimateShowList(bool late)
             {
-                CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
-                if (mm == null) return true;
-
                 bool allDone = true;
+
+                for (int i = 0; i < defaultShowAnimations.Count; i++)
+                {
+                    var anim = defaultShowAnimations[i];
+                    Animate(anim, late);
+                    if (!anim.context.Finished(index))
+                    {
+                        allDone = false;
+                    }
+                }
+
+                CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
+                if (mm == null) return allDone;
+
                 if (animationsOverride)
                 {
                     int start = mm.MinIndex;
@@ -1133,8 +1106,16 @@ namespace TMPEffects.Components
 
             bool AnimateHideList(bool late)
             {
+                for (int i = 0; i < defaultHideAnimations.Count; i++)
+                {
+                    var anim = defaultHideAnimations[i];
+                    Animate(anim, late);
+                    if (anim.context.Finished(index))
+                        return true;
+                }
+
                 CachedCollection<CachedAnimation>.MinMax mm = hide.MinMaxAt(index);
-                if (mm == null) return true;
+                if (mm == null) return defaultHideAnimations.Count == 0;
 
                 bool done = false;
                 if (animationsOverride)
@@ -1336,7 +1317,9 @@ namespace TMPEffects.Components
             // Reset the "finished" status of the relevant animations
             if (state == VisibilityState.Showing)
             {
-                defaultShow.context.ResetFinishAnimation(index);
+                for (int i = 0; i < defaultShowAnimations.Count; i++)
+                    defaultShowAnimations[i].context.ResetFinishAnimation(index);
+
                 dummyShow.context.ResetFinishAnimation(index);
 
                 var mm = show.MinMaxAt(index);
@@ -1354,7 +1337,9 @@ namespace TMPEffects.Components
             }
             else if (state == VisibilityState.Hiding)
             {
-                defaultHide.context.ResetFinishAnimation(index);
+                for (int i = 0; i < defaultHideAnimations.Count; i++)
+                    defaultHideAnimations[i].context.ResetFinishAnimation(index);
+
                 dummyHide.context.ResetFinishAnimation(index);
 
                 var mm = hide.MinMaxAt(index);
@@ -1677,7 +1662,6 @@ namespace TMPEffects.Components
 
         internal void UpdateDefaultAnimations(TMPAnimationType type)
         {
-            Debug.Log("Updating with " + type.ToString() + " and " + defaultAnimationsStrings[0]);
             SetDefaultAnimations(type);
         }
 

@@ -15,7 +15,7 @@ public class HideAnimationStackObject : TMPHideAnimation
     public override void SetParameters(object customData, IDictionary<string, string> parameters) => stack.SetParameters(customData, parameters);
     public override bool ValidateParameters(IDictionary<string, string> parameters) => stack.ValidateParameters(parameters);
 
-    #region Editor
+#if UNITY_EDITOR
     new void OnValidate()
     {
         for (int i = 0; i < stack.Animations.Count; i++)
@@ -29,5 +29,5 @@ public class HideAnimationStackObject : TMPHideAnimation
         EditorApplication.QueuePlayerLoopUpdate();
         base.OnValidate();
     }
-    #endregion
+#endif
 }
