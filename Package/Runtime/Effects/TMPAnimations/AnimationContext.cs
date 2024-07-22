@@ -35,7 +35,7 @@ namespace TMPEffects.TMPAnimations
 
         private SegmentData segmentData;
 
-        public AnimationContext(ReadOnlyAnimatorContext animatorContext, ReadOnlyCharDataState state, SegmentData segmentData, object customData)
+        public AnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)
         {
             this.CustomData = customData;
             this.State = state;
