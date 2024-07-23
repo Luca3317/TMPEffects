@@ -318,7 +318,6 @@ namespace TMPEffects.Editor
             }
         }
 
-
         GUIContent alertDialogDefaultShow;
         GUIContent alertDialogDefaultHide;
 

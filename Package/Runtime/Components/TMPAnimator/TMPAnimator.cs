@@ -112,20 +112,10 @@ namespace TMPEffects.Components
 
         [Tooltip("Whether animation tags override each other by default. You can set this individually on a per-tag basis by adding the override=true/false parameter to them")]
         [SerializeField] private bool animationsOverride = false;
-        ////[Tooltip("The default show animation to use, if a TMPWriter component is present")] Set in editor
-        //[SerializeField] private string defaultShowString = "";
-        ////[Tooltip("The default hide animation to use, if a TMPWriter component is present")]
-        //[SerializeField] private string defaultHideString = "";
-
 
         [SerializeField] private List<string> defaultAnimationsStrings = new List<string>();
         [SerializeField] private List<string> defaultShowAnimationsStrings = new List<string>();
         [SerializeField] private List<string> defaultHideAnimationsStrings = new List<string>();
-
-        [System.NonSerialized] private List<CachedAnimation> defaultAnimations = new List<CachedAnimation>();
-        [System.NonSerialized] private List<CachedAnimation> defaultShowAnimations = new List<CachedAnimation>();
-        [System.NonSerialized] private List<CachedAnimation> defaultHideAnimations = new List<CachedAnimation>();
-
 
         [Tooltip("Characters that are excluded from basic animations")]
         [SerializeField] private string excludedCharacters = "";
@@ -168,6 +158,10 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private CachedAnimation dummyShow;
         [System.NonSerialized] private CachedAnimation dummyHide;
+
+        [System.NonSerialized] private List<CachedAnimation> defaultAnimations = new List<CachedAnimation>();
+        [System.NonSerialized] private List<CachedAnimation> defaultShowAnimations = new List<CachedAnimation>();
+        [System.NonSerialized] private List<CachedAnimation> defaultHideAnimations = new List<CachedAnimation>();
 
         [System.NonSerialized] private List<float> visibleTimes = new List<float>();
         [System.NonSerialized] private List<float> stateTimes = new List<float>();
@@ -579,7 +573,6 @@ namespace TMPEffects.Components
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
 
-
             basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase == null ? null : database.BasicAnimationDatabase, sceneAnimations);
             showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
             hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
@@ -619,11 +612,6 @@ namespace TMPEffects.Components
             processors.AddProcessor(hideCategory.Prefix, new TagProcessor(hideCategory));
 
             processors.RegisterTo(Mediator.Processor);
-        }
-
-        private void MainDatabaseWrapper_ObjectChanged(object sender)
-        {
-            throw new System.NotImplementedException();
         }
 
         // Reset all visible character when a tag is added / removed / replaced;
@@ -940,11 +928,6 @@ namespace TMPEffects.Components
 
                 cData.Reset();
 
-                //for (int i = 0; i < 4; i++)
-                //{
-                //    cData.SetVertex(i, cData.mesh.initial.GetVertex(i)); // cData.initialMesh.GetPosition(i));
-                //}
-
                 ca.animation.Animate(cData, ca.roContext);
 
                 state.UpdateVertexOffsets();
@@ -1218,8 +1201,6 @@ namespace TMPEffects.Components
             PopulateTimes(textContentChanged, oldCharData);
             SetDummies();
             PostProcessTags();
-            //SetDefault(TMPAnimationType.Show);
-            //SetDefault(TMPAnimationType.Hide);
             SetDefaultAnimations(TMPAnimationType.Basic);
             SetDefaultAnimations(TMPAnimationType.Show);
             SetDefaultAnimations(TMPAnimationType.Hide);
@@ -1593,72 +1574,6 @@ namespace TMPEffects.Components
 
             return "";
         }
-
-        //internal string CheckDefaultString(TMPAnimationType type)
-        //{
-        //    string str;
-        //    ITMPEffectDatabase<ITMPAnimation> tempDatabase;
-        //    switch (type)
-        //    {
-        //        case TMPAnimationType.Show:
-        //            tempDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
-        //            str = defaultShowString;
-        //            break;
-
-        //        case TMPAnimationType.Hide:
-        //            tempDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
-        //            str = defaultHideString;
-        //            break;
-
-        //        default:
-        //            throw new System.ArgumentException(nameof(type));
-        //    }
-
-        //    ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
-        //    Dictionary<string, string> tagParams;
-        //    ITMPAnimation animation;
-
-        //    if (string.IsNullOrWhiteSpace(str))
-        //    {
-        //        return "";
-        //    }
-        //    str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
-        //    if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open))
-        //    {
-        //        return "Not a well-formed tag";
-        //    }
-
-        //    if (!tempDatabase.ContainsEffect(tagInfo.name))
-        //    {
-        //        return "Tag with name " + tagInfo.name + " not defined;";
-        //    }
-
-        //    if ((animation = tempDatabase.GetEffect(tagInfo.name)) == null)
-        //    {
-        //        return "Tag with name " + tagInfo.name + " is defined, but not assigned an animation";
-        //    }
-
-        //    try
-        //    {
-        //        tagParams = ParsingUtility.GetTagParametersDict(str);
-        //        if (!animation.ValidateParameters(tagParams))
-        //        {
-        //            return "Parameters are not valid for this tag";
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return "Parameters are not valid for this tag";
-        //    }
-
-        //    return "";
-        //}
-
-        //internal void UpdateDefaultStrings()
-        //{
-        //    SetDefaultShowString(defaultShowString);
-        //    SetDefaultHideString(defaultHideString);
-        //}
 
         internal void UpdateDefaultAnimations(TMPAnimationType type)
         {
