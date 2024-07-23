@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using TMPEffects.TMPAnimations;
 using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using System.Collections.ObjectModel;
-using TMPEffects.Extensions;
 using TMPEffects.SerializedCollections;
 using TMPEffects.EffectCategories;
 using TMPEffects.Components.Animator;
@@ -19,6 +17,8 @@ using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
+using UnityEditor;
+using TMPEffects.Extensions;
 
 namespace TMPEffects.Components
 {
@@ -112,10 +112,10 @@ namespace TMPEffects.Components
 
         [Tooltip("Whether animation tags override each other by default. You can set this individually on a per-tag basis by adding the override=true/false parameter to them")]
         [SerializeField] private bool animationsOverride = false;
-        //[Tooltip("The default show animation to use, if a TMPWriter component is present")] Set in editor
-        [SerializeField] private string defaultShowString = "";
-        //[Tooltip("The default hide animation to use, if a TMPWriter component is present")]
-        [SerializeField] private string defaultHideString = "";
+
+        [SerializeField] private List<string> defaultAnimationsStrings = new List<string>();
+        [SerializeField] private List<string> defaultShowAnimationsStrings = new List<string>();
+        [SerializeField] private List<string> defaultHideAnimationsStrings = new List<string>();
 
         [Tooltip("Characters that are excluded from basic animations")]
         [SerializeField] private string excludedCharacters = "";
@@ -159,8 +159,9 @@ namespace TMPEffects.Components
         [System.NonSerialized] private CachedAnimation dummyShow;
         [System.NonSerialized] private CachedAnimation dummyHide;
 
-        [System.NonSerialized] private CachedAnimation defaultShow;
-        [System.NonSerialized] private CachedAnimation defaultHide;
+        [System.NonSerialized] private List<CachedAnimation> defaultAnimations = new List<CachedAnimation>();
+        [System.NonSerialized] private List<CachedAnimation> defaultShowAnimations = new List<CachedAnimation>();
+        [System.NonSerialized] private List<CachedAnimation> defaultHideAnimations = new List<CachedAnimation>();
 
         [System.NonSerialized] private List<float> visibleTimes = new List<float>();
         [System.NonSerialized] private List<float> stateTimes = new List<float>();
@@ -314,29 +315,29 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
-        /// <summary>
-        /// Set the default show animation.
-        /// </summary>
-        /// <param name="str">The default show animation as a string, e.g. "<+fade>".</param>
-        public void SetDefaultShowString(string str)
-        {
-            defaultShowString = str;
+        ///// <summary>
+        ///// Set the default show animation.
+        ///// </summary>
+        ///// <param name="str">The default show animation as a string, e.g. "<+fade>".</param>
+        //public void SetDefaultShowString(string str)
+        //{
+        //    defaultShowString = str;
 
-            if (Mediator == null) return;
-            SetDefault(TMPAnimationType.Show);
-        }
+        //    if (Mediator == null) return;
+        //    SetDefault(TMPAnimationType.Show);
+        //}
 
-        /// <summary>
-        /// Set the default hide animation.
-        /// </summary>
-        /// <param name="str">The default hide animation as a string, e.g. "<-fade>".</param>
-        public void SetDefaultHideString(string str)
-        {
-            defaultHideString = str;
+        ///// <summary>
+        ///// Set the default hide animation.
+        ///// </summary>
+        ///// <param name="str">The default hide animation as a string, e.g. "<-fade>".</param>
+        //public void SetDefaultHideString(string str)
+        //{
+        //    defaultHideString = str;
 
-            if (Mediator == null) return;
-            SetDefault(TMPAnimationType.Hide);
-        }
+        //    if (Mediator == null) return;
+        //    SetDefault(TMPAnimationType.Hide);
+        //}
 
         /// <summary>
         /// Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
@@ -572,14 +573,12 @@ namespace TMPEffects.Components
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
 
-
             basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase == null ? null : database.BasicAnimationDatabase, sceneAnimations);
             showDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
             hideDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
             mainDatabaseWrapper = new AnimationDatabase<TMPAnimationDatabase, TMPSceneAnimation>(database == null ? null : database, null);
 
             basicDatabase.AddAnimation("sprite", new SpriteAnimation());
-
 
             basicDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
@@ -615,11 +614,6 @@ namespace TMPEffects.Components
             processors.RegisterTo(Mediator.Processor);
         }
 
-        private void MainDatabaseWrapper_ObjectChanged(object sender)
-        {
-            throw new System.NotImplementedException();
-        }
-
         // Reset all visible character when a tag is added / removed / replaced;
         // Mostly required when tag is removed or replaced so that previously animated text
         // is no longer animated; would remain in last animated state otherwise
@@ -628,91 +622,65 @@ namespace TMPEffects.Components
             ResetAllVisible();
         }
 
-        private void SetDefault(TMPAnimationType type)
+        private void SetDefaultAnimations(TMPAnimationType type)
         {
-            //if (Mediator == null)
-            //{
-            //    SetToDummy();
-            //    return;
-            //}
-
-            string str;
             ITMPEffectDatabase<ITMPAnimation> database;
+            List<string> strings;
+            List<CachedAnimation> anims;
 
+            AnimationCacher cacher;
+            var roCDataState = new ReadOnlyCharDataState(state);
 
             switch (type)
             {
+                case TMPAnimationType.Basic:
+                    database = basicDatabase;
+                    anims = defaultAnimations;
+                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedBasic(x));
+                    strings = defaultAnimationsStrings;
+                    QueueCharacterReset();
+                    break;
 
                 case TMPAnimationType.Show:
-                    defaultShow = dummyShow;
-                    str = defaultShowString;
                     database = showDatabase;
+                    anims = defaultShowAnimations;
+                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedShow(x));
+                    strings = defaultShowAnimationsStrings;
                     break;
 
                 case TMPAnimationType.Hide:
-                    defaultHide = dummyHide;
-                    str = defaultHideString;
                     database = hideDatabase;
+                    anims = defaultHideAnimations;
+                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedHide(x));
+                    strings = defaultHideAnimationsStrings;
                     break;
 
                 default:
                     throw new System.ArgumentException(nameof(type));
             }
 
+            anims.Clear();
             ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
             Dictionary<string, string> tagParams;
             ITMPAnimation animation;
-
-            if (string.IsNullOrWhiteSpace(str))
+            for (int i = 0; i < strings.Count; i++)
             {
-                SetToDummy();
-                return;
-            }
-            str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
-            if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name))
-            {
-                SetToDummy();
-                return;
-            }
+                string str = strings[i];
 
-            if ((animation = database.GetEffect(tagInfo.name)) == null)
-            {
-                SetToDummy();
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(str)) continue;
 
-            tagParams = ParsingUtility.GetTagParametersDict(str);
-            if (!animation.ValidateParameters(tagParams))
-            {
-                SetToDummy();
-                return;
-            }
+                str = (str.Trim()[0] == '<' ? str : "<" + str + ">");
+                if (!ParsingUtility.TryParseTag(str, 0, str.Length - 1, ref tagInfo, ParsingUtility.TagType.Open) || !database.ContainsEffect(tagInfo.name))
+                    continue;
 
-            AnimationCacher cacher;
-            var roCDataState = new ReadOnlyCharDataState(state);
-            switch (type)
-            {
-                case TMPAnimationType.Show:
-                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedShow(x));
-                    defaultShow = cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams), new TMPEffectTagIndices(0, -1, 0));
-                    break;
+                if ((animation = database.GetEffect(tagInfo.name)) == null)
+                    continue;
 
-                case TMPAnimationType.Hide:
-                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedHide(x));
-                    defaultHide = cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams), new TMPEffectTagIndices(0, -1, 0));
-                    break;
-            }
+                tagParams = ParsingUtility.GetTagParametersDict(str);
+                if (!animation.ValidateParameters(tagParams))
+                    continue;
 
-
-            void SetToDummy()
-            {
-                switch (type)
-                {
-                    case TMPAnimationType.Show: defaultShow = dummyShow; break;
-                    case TMPAnimationType.Hide: defaultHide = dummyHide; break;
-                }
-
-                if (dummyShow == null || dummyHide == null) Debug.LogWarning("Set default while dummy null - bug!");
+                anims.Add(cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams), new TMPEffectTagIndices(0, -1, 0)));
             }
         }
 
@@ -845,7 +813,7 @@ namespace TMPEffects.Components
             VisibilityState vState = Mediator.VisibilityStates[index];
             return cData.info.isVisible && // If not visible, e.g. whitespace, dont animate
                vState != VisibilityState.Hidden && // If hidden, dont animate
-                (basic.HasAnyContaining(index) || vState != VisibilityState.Shown); // If has no animations, dont animate
+                (defaultAnimations.Count != 0 || basic.HasAnyContaining(index) || vState != VisibilityState.Shown); // If has no animations, dont animate
         }
 
         private void UpdateCharacterAnimation_Impl(int index)
@@ -872,27 +840,6 @@ namespace TMPEffects.Components
                         AnimateBasic(false);
                         AnimateBasic(true);
                     }
-                }
-                else if (show.Count == 0)
-                {
-                    if (isExcludedBasic)
-                    {
-                        Animate(defaultShow, defaultShow.late);
-                    }
-                    else if (defaultShow.late)
-                    {
-                        AnimateBasic(false);
-                        Animate(defaultShow, true);
-                        AnimateBasic(true);
-                    }
-                    else
-                    {
-                        Animate(defaultShow, false);
-                        AnimateBasic(false);
-                        AnimateBasic(true);
-                    }
-
-                    allDone = defaultShow.Finished(cData.info.index);
                 }
                 else
                 {
@@ -930,33 +877,12 @@ namespace TMPEffects.Components
 
                 if (IsExcludedHide(cData.info.character))
                 {
-                    Animate(dummyHide, false);
+                    Animate(dummyShow, false);
                     if (!isExcludedBasic)
                     {
                         AnimateBasic(false);
                         AnimateBasic(true);
                     }
-                }
-                else if (hide.Count == 0)
-                {
-                    if (isExcludedBasic)
-                    {
-                        Animate(defaultHide, defaultHide.late);
-                    }
-                    else if (defaultShow.late)
-                    {
-                        AnimateBasic(false);
-                        Animate(defaultHide, true);
-                        AnimateBasic(true);
-                    }
-                    else
-                    {
-                        Animate(defaultHide, false);
-                        AnimateBasic(false);
-                        AnimateBasic(true);
-                    }
-
-                    done = defaultHide.Finished(cData.info.index);
                 }
                 else
                 {
@@ -1002,11 +928,6 @@ namespace TMPEffects.Components
 
                 cData.Reset();
 
-                //for (int i = 0; i < 4; i++)
-                //{
-                //    cData.SetVertex(i, cData.mesh.initial.GetVertex(i)); // cData.initialMesh.GetPosition(i));
-                //}
-
                 ca.animation.Animate(cData, ca.roContext);
 
                 state.UpdateVertexOffsets();
@@ -1014,6 +935,12 @@ namespace TMPEffects.Components
 
             void AnimateBasic(bool late)
             {
+                for (int i = 0; i < defaultAnimations.Count; i++)
+                {
+                    var anim = defaultAnimations[i];
+                    Animate(anim, late);
+                }
+
                 CachedCollection<CachedAnimation>.MinMax mm = basic.MinMaxAt(index);
                 if (mm == null) return;
 
@@ -1073,10 +1000,21 @@ namespace TMPEffects.Components
 
             bool AnimateShowList(bool late)
             {
-                CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
-                if (mm == null) return true;
-
                 bool allDone = true;
+
+                for (int i = 0; i < defaultShowAnimations.Count; i++)
+                {
+                    var anim = defaultShowAnimations[i];
+                    Animate(anim, late);
+                    if (!anim.context.Finished(index))
+                    {
+                        allDone = false;
+                    }
+                }
+
+                CachedCollection<CachedAnimation>.MinMax mm = show.MinMaxAt(index);
+                if (mm == null) return allDone;
+
                 if (animationsOverride)
                 {
                     int start = mm.MinIndex;
@@ -1151,8 +1089,16 @@ namespace TMPEffects.Components
 
             bool AnimateHideList(bool late)
             {
+                for (int i = 0; i < defaultHideAnimations.Count; i++)
+                {
+                    var anim = defaultHideAnimations[i];
+                    Animate(anim, late);
+                    if (anim.context.Finished(index))
+                        return true;
+                }
+
                 CachedCollection<CachedAnimation>.MinMax mm = hide.MinMaxAt(index);
-                if (mm == null) return true;
+                if (mm == null) return defaultHideAnimations.Count == 0;
 
                 bool done = false;
                 if (animationsOverride)
@@ -1255,8 +1201,9 @@ namespace TMPEffects.Components
             PopulateTimes(textContentChanged, oldCharData);
             SetDummies();
             PostProcessTags();
-            SetDefault(TMPAnimationType.Show);
-            SetDefault(TMPAnimationType.Hide);
+            SetDefaultAnimations(TMPAnimationType.Basic);
+            SetDefaultAnimations(TMPAnimationType.Show);
+            SetDefaultAnimations(TMPAnimationType.Hide);
         }
 
         private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
@@ -1351,7 +1298,9 @@ namespace TMPEffects.Components
             // Reset the "finished" status of the relevant animations
             if (state == VisibilityState.Showing)
             {
-                defaultShow.context.ResetFinishAnimation(index);
+                for (int i = 0; i < defaultShowAnimations.Count; i++)
+                    defaultShowAnimations[i].context.ResetFinishAnimation(index);
+
                 dummyShow.context.ResetFinishAnimation(index);
 
                 var mm = show.MinMaxAt(index);
@@ -1369,7 +1318,9 @@ namespace TMPEffects.Components
             }
             else if (state == VisibilityState.Hiding)
             {
-                defaultHide.context.ResetFinishAnimation(index);
+                for (int i = 0; i < defaultHideAnimations.Count; i++)
+                    defaultHideAnimations[i].context.ResetFinishAnimation(index);
+
                 dummyHide.context.ResetFinishAnimation(index);
 
                 var mm = hide.MinMaxAt(index);
@@ -1563,20 +1514,21 @@ namespace TMPEffects.Components
             OnResetComponent?.Invoke();
         }
 
-        internal string CheckDefaultString(TMPAnimationType type)
+        internal string CheckDefaultString(TMPAnimationType type, string str)
         {
-            string str;
             ITMPEffectDatabase<ITMPAnimation> tempDatabase;
             switch (type)
             {
+                case TMPAnimationType.Basic:
+                    tempDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(database == null ? null : database.BasicAnimationDatabase == null ? null : database.BasicAnimationDatabase, sceneAnimations);
+                    break;
+
                 case TMPAnimationType.Show:
                     tempDatabase = new AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation>(database == null ? null : database.ShowAnimationDatabase == null ? null : database.ShowAnimationDatabase, sceneShowAnimations);
-                    str = defaultShowString;
                     break;
 
                 case TMPAnimationType.Hide:
                     tempDatabase = new AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation>(database == null ? null : database.HideAnimationDatabase == null ? null : database.HideAnimationDatabase, sceneHideAnimations);
-                    str = defaultHideString;
                     break;
 
                 default:
@@ -1623,10 +1575,9 @@ namespace TMPEffects.Components
             return "";
         }
 
-        internal void UpdateDefaultStrings()
+        internal void UpdateDefaultAnimations(TMPAnimationType type)
         {
-            SetDefaultShowString(defaultShowString);
-            SetDefaultHideString(defaultHideString);
+            SetDefaultAnimations(type);
         }
 
         internal void OnChangedBasicExclusion()

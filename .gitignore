@@ -3,4 +3,6 @@ Resources/Commands*
 Resources/Databases*
 Resources/TMPEffectsSettings.asset
 Resources/TMPEffectsSettings.asset.meta
+gifs/*.meta
+/*.meta
 
