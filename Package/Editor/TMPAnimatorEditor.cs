@@ -36,6 +36,7 @@ namespace TMPEffects.Editor
         SerializedProperty defaultHideStringProp;
         SerializedProperty useDefaultDatabaseProp;
         SerializedProperty initDatabaseProp;
+        SerializedProperty previewUpdatesProp;
 
         // Default animations
         SerializedProperty defaultAnimationsProp, defaultShowAnimationsProp, defaultHideAnimationsProp;
@@ -72,6 +73,7 @@ namespace TMPEffects.Editor
             excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
+            previewUpdatesProp = serializedObject.FindProperty("previewUpdatesPerSecond");
 
             sceneAnimationsProp = serializedObject.FindProperty("sceneAnimations");
             sceneShowAnimationsProp = serializedObject.FindProperty("sceneShowAnimations");
@@ -378,7 +380,7 @@ namespace TMPEffects.Editor
             var prev = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 100;
             EditorGUILayout.LabelField("Exclude punctuation?");
-            EditorGUIUtility.labelWidth = 40;
+            EditorGUIUtility.labelWidth = 50;
 
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationProp, new GUIContent("Basic"));
@@ -388,6 +390,7 @@ namespace TMPEffects.Editor
                 animator.OnChangedBasicExclusion();
             }
 
+            EditorGUIUtility.labelWidth = 50;
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationShowProp, new GUIContent("Show"));
             if (EditorGUI.EndChangeCheck())
@@ -396,6 +399,7 @@ namespace TMPEffects.Editor
                 animator.OnChangedShowExclusion();
             }
 
+            EditorGUIUtility.labelWidth = 45;
             EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(excludePunctuationHideProp, new GUIContent("Hide"));
             if (EditorGUI.EndChangeCheck())
@@ -439,8 +443,19 @@ namespace TMPEffects.Editor
         {
             bool prevPreview = previewProp.boolValue;
 
+            // Draw Label and update slider
+            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(new GUIContent("Animator preview"), previewLabelStyle);
+            EditorGUI.BeginChangeCheck();
+            previewUpdatesProp.intValue = EditorGUILayout.IntSlider(GUIContent.none, previewUpdatesProp.intValue, 1, 100);
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
+                animator.UpdatePreviewUpdates();
+            }
+            EditorGUILayout.EndHorizontal();
 
+            // Draw preview toggle and reset time button
             EditorGUI.BeginDisabledGroup(!PreviewEnabled());
             EditorGUILayout.BeginHorizontal();
 
@@ -460,6 +475,7 @@ namespace TMPEffects.Editor
                 animator.ResetTime();
             }
             EditorGUILayout.EndHorizontal();
+
             EditorGUI.EndDisabledGroup();
 
             if (previewProp.boolValue)

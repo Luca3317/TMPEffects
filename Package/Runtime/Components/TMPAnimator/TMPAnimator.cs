@@ -1440,7 +1440,9 @@ namespace TMPEffects.Components
         [SerializeField, HideInInspector] private bool preview = false;
         [SerializeField, HideInInspector] private bool useDefaultDatabase = true;
         [SerializeField, HideInInspector] private bool initDatabase = false;
-        [System.NonSerialized, HideInInspector] private float lastPreviewUpdateTime = 0f;
+        [SerializeField] private uint previewUpdatesPerSecond = 60;
+        [System.NonSerialized] private float lastPreviewUpdateTime = 0f;
+        [System.NonSerialized] private AnimationUpdater previewUpdater;
 #pragma warning restore CS0414
 
         internal delegate void VoidHandler();
@@ -1449,6 +1451,8 @@ namespace TMPEffects.Components
         internal void StartPreview()
         {
             if (Mediator == null) return;
+
+            previewUpdater = new AnimationUpdater(this, previewUpdatesPerSecond);
 
             preview = true;
             EditorApplication.update -= UpdatePreview;
@@ -1468,6 +1472,14 @@ namespace TMPEffects.Components
             preview = false;
             EditorApplication.update -= UpdatePreview;
             ResetAnimations();
+        }
+
+        internal void UpdatePreviewUpdates()
+        {
+            if (previewUpdater != null)
+            {
+                previewUpdater.SetMaxUpdatesPerSecond(previewUpdatesPerSecond);
+            }
         }
 
         [MenuItem("CONTEXT/TMP_Text/Add animator")]
@@ -1494,7 +1506,8 @@ namespace TMPEffects.Components
             }
             else
             {
-                UpdateAnimations_Impl(Time.time - lastPreviewUpdateTime);
+                previewUpdater.Update(Time.time - lastPreviewUpdateTime);
+                //UpdateAnimations_Impl(Time.time - lastPreviewUpdateTime);
             }
 
             EditorApplication.QueuePlayerLoopUpdate();
