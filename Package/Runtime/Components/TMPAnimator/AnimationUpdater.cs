@@ -4,54 +4,57 @@ using System.Collections.Generic;
 using TMPEffects.Components;
 using UnityEngine;
 
-[Serializable]
-public class AnimationUpdater
+namespace TMPEffects.Components.Animator
 {
-    public uint MaxUpdatesPerSecond => maxUpdatesPerSecond;
-
-    uint maxUpdatesPerSecond;
-
-    float delta;
-    TMPAnimator animator;
-    float updateTiming;
-    float over;
-
-    public AnimationUpdater(TMPAnimator animator, uint maxUpdatesPerSecond)
+    [Serializable]
+    public class AnimationUpdater
     {
-        this.animator = animator;
-        this.animator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom.Script);
-        this.maxUpdatesPerSecond = maxUpdatesPerSecond;
-        updateTiming = 1f / maxUpdatesPerSecond;
-        delta = 0;
-        over = 0;
-    }
+        public uint MaxUpdatesPerSecond => maxUpdatesPerSecond;
 
-    public void SetMaxUpdatesPerSecond(uint maxUpdatesPerSecond)
-    {
-        this.maxUpdatesPerSecond = maxUpdatesPerSecond;
-        updateTiming = 1f / maxUpdatesPerSecond;
-        delta = 0;
-        over = 0;
-    }
+        uint maxUpdatesPerSecond;
 
-    public bool Update(float deltaTime)
-    {
-        delta += deltaTime;
+        float delta;
+        float updateTiming;
+        float over;
 
-        if (delta + over >= updateTiming)
+        Action<float> updateAction;
+
+        public AnimationUpdater(Action<float> updateAction, uint maxUpdatesPerSecond)
         {
-            over = (delta + over) % updateTiming;
-            animator.UpdateAnimations(delta);
+            this.updateAction = updateAction;
+            this.maxUpdatesPerSecond = maxUpdatesPerSecond;
+            updateTiming = 1f / maxUpdatesPerSecond;
             delta = 0;
-            return true;
+            over = 0;
         }
 
-        return false;
-    }
+        public void SetMaxUpdatesPerSecond(uint maxUpdatesPerSecond)
+        {
+            this.maxUpdatesPerSecond = maxUpdatesPerSecond;
+            updateTiming = 1f / maxUpdatesPerSecond;
+            delta = 0;
+            over = 0;
+        }
 
-    public void Reset()
-    {
-        delta = 0;
-        over = 0;
+        public bool Update(float deltaTime)
+        {
+            delta += deltaTime;
+
+            if (delta + over >= updateTiming)
+            {
+                over = (delta + over) % updateTiming;
+                updateAction.Invoke(delta);
+                delta = 0;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            delta = 0;
+            over = 0;
+        }
     }
 }

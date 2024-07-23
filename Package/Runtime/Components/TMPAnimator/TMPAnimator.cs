@@ -1452,7 +1452,7 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
 
-            previewUpdater = new AnimationUpdater(this, previewUpdatesPerSecond);
+            previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond);
 
             preview = true;
             EditorApplication.update -= UpdatePreview;
@@ -1507,7 +1507,6 @@ namespace TMPEffects.Components
             else
             {
                 previewUpdater.Update(Time.time - lastPreviewUpdateTime);
-                //UpdateAnimations_Impl(Time.time - lastPreviewUpdateTime);
             }
 
             EditorApplication.QueuePlayerLoopUpdate();
