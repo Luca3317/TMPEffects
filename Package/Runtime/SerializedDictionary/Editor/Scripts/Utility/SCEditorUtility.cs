@@ -90,7 +90,7 @@ namespace TMPEffects.SerializedCollections.Editor
             return settings.AlwaysShowSearch ? true : pages >= settings.PageCountForSearch;
         }
 
-        public static bool HasDrawerForType(Type type)
+        public static bool HasDrawerForType(Type type, bool isPropertyManagedReferenceType)
         {
             Type attributeUtilityType = typeof(SerializedProperty).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
             if (attributeUtilityType == null)
@@ -98,7 +98,19 @@ namespace TMPEffects.SerializedCollections.Editor
             var getDrawerMethod = attributeUtilityType.GetMethod("GetDrawerTypeForType", BindingFlags.Static | BindingFlags.NonPublic);
             if (getDrawerMethod == null)
                 return false;
-            return getDrawerMethod.Invoke(null, new object[] { type }) != null;
+
+#if UNITY_2022_3_OR_NEWER
+            if (getDrawerMethod.GetParameters().Length == 2)
+            {
+                return getDrawerMethod.Invoke(type, new object[] { type, isPropertyManagedReferenceType }) != null;
+            }
+            else
+            {
+                return getDrawerMethod.Invoke(type, new object[] { type }) != null;
+            }
+#else
+            return getDrawerMethod.Invoke(type, new object[] { type }) != null;
+#endif
         }
 
         internal static void AddGenericMenuItem(GenericMenu genericMenu, bool isOn, bool isEnabled, GUIContent content, GenericMenu.MenuFunction action)
