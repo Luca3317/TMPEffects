@@ -22,7 +22,7 @@ namespace TMPEffects.SerializedCollections.Editor
 
         public static bool HasKey(string path)
         {
-            return EditorPrefs.HasKey( EditorPrefsPrefix + path );
+            return EditorPrefs.HasKey(EditorPrefsPrefix + path);
         }
 
         public static void SetPersistentBool(string path, bool value)
@@ -90,6 +90,19 @@ namespace TMPEffects.SerializedCollections.Editor
             return settings.AlwaysShowSearch ? true : pages >= settings.PageCountForSearch;
         }
 
+#if UNITY_2022_3_OR_NEWER
+        public static bool HasDrawerForType(Type type, bool isPropertyManagedReferenceType)
+        {
+            Type attributeUtilityType = typeof(SerializedProperty).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
+            if (attributeUtilityType == null)
+                return false;
+            var getDrawerMethod = attributeUtilityType.GetMethod("GetDrawerTypeForType", BindingFlags.Static | BindingFlags.NonPublic);
+            if (getDrawerMethod == null)
+                return false;
+
+            return getDrawerMethod.Invoke(type, new object[] { type, isPropertyManagedReferenceType }) != null;
+        }
+#else
         public static bool HasDrawerForType(Type type)
         {
             Type attributeUtilityType = typeof(SerializedProperty).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
@@ -98,8 +111,10 @@ namespace TMPEffects.SerializedCollections.Editor
             var getDrawerMethod = attributeUtilityType.GetMethod("GetDrawerTypeForType", BindingFlags.Static | BindingFlags.NonPublic);
             if (getDrawerMethod == null)
                 return false;
-            return getDrawerMethod.Invoke(null, new object[] { type }) != null;
+
+            return getDrawerMethod.Invoke(type, new object[] { type }) != null;
         }
+#endif
 
         internal static void AddGenericMenuItem(GenericMenu genericMenu, bool isOn, bool isEnabled, GUIContent content, GenericMenu.MenuFunction action)
         {
@@ -125,7 +140,7 @@ namespace TMPEffects.SerializedCollections.Editor
                 var methodInfo = classType.GetMethod("GetFieldInfoFromProperty", BindingFlags.Static | BindingFlags.NonPublic);
                 var parameters = new object[] { property, null };
                 methodInfo.Invoke(null, parameters);
-                type = (Type) parameters[1];
+                type = (Type)parameters[1];
                 return true;
             }
             catch

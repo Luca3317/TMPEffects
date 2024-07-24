@@ -274,7 +274,11 @@ namespace TMPEffects.SerializedCollections.Editor
 
         private (DisplayType displayType, bool canToggleListDrawer) CreateDisplaySettings(SerializedProperty property, Type type)
         {
+#if UNITY_2022_3_OR_NEWER
+            bool hasCustomEditor = SCEditorUtility.HasDrawerForType(type, property.propertyType == SerializedPropertyType.ManagedReference);
+#else
             bool hasCustomEditor = SCEditorUtility.HasDrawerForType(type);
+#endif
             bool isGenericWithChildren = property.propertyType == SerializedPropertyType.Generic && property.hasVisibleChildren;
             bool isArray = property.isArray && property.propertyType != SerializedPropertyType.String;
             bool canToggleListDrawer = isArray || (isGenericWithChildren && hasCustomEditor);
