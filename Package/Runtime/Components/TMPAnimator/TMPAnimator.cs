@@ -46,9 +46,9 @@ namespace TMPEffects.Components
         /// If <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>, this will always evaluate to true.
         /// </summary>
 #if UNITY_EDITOR
-        public bool IsAnimating => updateFrom == UpdateFrom.Script || isAnimating || preview;
+        public bool IsAnimating => isActiveAndEnabled && (updateFrom == UpdateFrom.Script || isAnimating || (!Application.isPlaying && preview));
 #else
-        public bool IsAnimating => updateFrom == UpdateFrom.Script || isAnimating;
+        public bool IsAnimating => isActiveAndEnabled && (updateFrom == UpdateFrom.Script || isAnimating);
 #endif
 
         /// <summary>
@@ -494,7 +494,11 @@ namespace TMPEffects.Components
             Mediator.ForceReprocess();
 
 #if UNITY_EDITOR
-            if (preview && !Application.isPlaying) StartPreview();
+            if (preview)
+            {
+                if (!Application.isPlaying) StartPreview();
+                else preview = false;
+            }
 #endif
         }
 
