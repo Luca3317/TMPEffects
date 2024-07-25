@@ -441,6 +441,31 @@ namespace TMPEffects.Editor
 
         void DrawPreview()
         {
+            if (Application.isPlaying)
+            {
+                EditorGUILayout.Space();
+
+                GUIStyle animationButtonStyle = new GUIStyle(GUI.skin.button);
+                animationButtonStyle.richText = true;
+                char animationC = animator.IsAnimating ? '\u2713' : '\u2717';
+                GUIContent animationButtonContent = new GUIContent("Toggle animation " + (animator.IsAnimating ? "<color=#90ee90>" : "<color=#f1807e>") + animationC.ToString() + "</color>");
+
+                EditorGUI.BeginDisabledGroup(/*!animator.IsAnimating || */animator.UpdateFrom == UpdateFrom.Script);
+
+                if (GUILayout.Button(animationButtonContent, animationButtonStyle))
+                {
+                    if (animator.IsAnimating) animator.StopAnimating();
+                    else animator.StartAnimating();
+                }
+
+                EditorGUI.EndDisabledGroup();
+
+                EditorGUILayout.Space();
+                HorizontalLine(Color.gray);
+                EditorGUILayout.Space();
+                return;
+            }
+
             bool prevPreview = previewProp.boolValue;
 
             // Draw Label and update slider
