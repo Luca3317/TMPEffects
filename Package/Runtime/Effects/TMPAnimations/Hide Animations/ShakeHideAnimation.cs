@@ -6,7 +6,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new ShakeHideAnimation", menuName = "TMPEffects/Hide Animations/Shake")]
+    [CreateAssetMenu(fileName = "new ShakeHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Shake")]
     public class ShakeHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]

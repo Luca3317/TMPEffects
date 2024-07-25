@@ -9,7 +9,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Fade")]
+    [CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Fade")]
     public class FadeAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]

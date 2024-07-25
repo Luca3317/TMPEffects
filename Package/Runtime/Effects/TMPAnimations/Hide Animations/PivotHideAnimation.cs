@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new PivotHideAnimation", menuName = "TMPEffects/Hide Animations/Pivot")]
+    [CreateAssetMenu(fileName = "new PivotHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Pivot")]
     public class PivotHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]

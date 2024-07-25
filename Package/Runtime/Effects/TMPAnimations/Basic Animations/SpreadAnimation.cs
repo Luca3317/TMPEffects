@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Spread")]
+    [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Spread")]
     public class SpreadAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]

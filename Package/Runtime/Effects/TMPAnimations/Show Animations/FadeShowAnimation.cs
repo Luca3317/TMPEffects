@@ -8,7 +8,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Show Animations/Fade")]
+    [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Animations/Show Animations/Built-in/Fade")]
     public class FadeShowAnimation : TMPShowAnimation
     {
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]

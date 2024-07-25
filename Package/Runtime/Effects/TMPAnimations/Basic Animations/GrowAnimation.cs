@@ -8,7 +8,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new GrowAnimation", menuName = "TMPEffects/Animations/Grow")]
+    [CreateAssetMenu(fileName = "new GrowAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Grow")]
     public class GrowAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]

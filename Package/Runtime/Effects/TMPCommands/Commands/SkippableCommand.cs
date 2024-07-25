@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName ="new SkippableCommand", menuName ="TMPEffects/Commands/Skippable")]
+    [CreateAssetMenu(fileName ="new SkippableCommand", menuName = "TMPEffects/Commands/Built-in/Skippable")]
     public class SkippableCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;

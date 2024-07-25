@@ -8,7 +8,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new MoveInHideAnimation", menuName = "TMPEffects/Hide Animations/MoveIn")]
+    [CreateAssetMenu(fileName = "new MoveInHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/MoveIn")]
     public class MoveInHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]

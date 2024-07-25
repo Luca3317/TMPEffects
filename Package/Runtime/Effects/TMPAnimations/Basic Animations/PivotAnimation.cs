@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new PivotAnimation", menuName = "TMPEffects/Animations/Pivot")]
+    [CreateAssetMenu(fileName = "new PivotAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Pivot")]
     public class PivotAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]

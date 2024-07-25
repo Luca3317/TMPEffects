@@ -6,7 +6,7 @@ using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName = "new WaitCommand", menuName = "TMPEffects/Commands/Wait")]
+    [CreateAssetMenu(fileName = "new WaitCommand", menuName = "TMPEffects/Commands/Built-in/Wait")]
     public class WaitCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;

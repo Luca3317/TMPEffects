@@ -10,7 +10,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new CharAnimation", menuName = "TMPEffects/Animations/Char")]
+    [CreateAssetMenu(fileName = "new CharAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Char")]
     public class CharAnimation : TMPAnimation
     {
         [Tooltip("The pool of characters to change to.\nAliases: characters, chars, char, c")]

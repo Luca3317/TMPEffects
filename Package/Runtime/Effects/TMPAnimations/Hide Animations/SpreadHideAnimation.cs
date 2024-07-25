@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new SpreadHideAnimation", menuName = "TMPEffects/Hide Animations/Spread")]
+    [CreateAssetMenu(fileName = "new SpreadHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Spread")]
     public class SpreadHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]

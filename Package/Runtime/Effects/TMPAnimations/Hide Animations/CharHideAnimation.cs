@@ -9,7 +9,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new CharHideAnimation", menuName = "TMPEffects/Hide Animations/Char")]
+    [CreateAssetMenu(fileName = "new CharHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Char")]
     public class CharHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]

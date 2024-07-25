@@ -8,7 +8,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new MoveInShowAnimation", menuName = "TMPEffects/Show Animations/MoveIn")]
+    [CreateAssetMenu(fileName = "new MoveInShowAnimation", menuName = "TMPEffects/Animations/Show Animations/Built-in/MoveIn")]
     public class MoveInShowAnimation : TMPShowAnimation
     {
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Debug")]
+    [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Built-in/Debug")]
     public class DebugCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;

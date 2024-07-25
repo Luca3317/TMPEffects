@@ -8,7 +8,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new FunkyAnimation", menuName = "TMPEffects/Animations/Funky")]
+    [CreateAssetMenu(fileName = "new FunkyAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Funky")]
     public class FunkyAnimation : TMPAnimation
     {
         [Tooltip("The speed at which the animation plays.\nAliases: speed, sp, s")]

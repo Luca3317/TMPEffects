@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPEffects.TMPAnimations.Animations;
 
-[CustomEditor(typeof(AnimationStackObject))]
-public class AnimationStackObjectEditor : Editor
+namespace TMPEffects.Editor
 {
-    SerializedProperty animsProp;
-
-    void OnEnable()
+    [CustomEditor(typeof(AnimationStackObject))]
+    public class AnimationStackObjectEditor : UnityEditor.Editor
     {
-        animsProp = serializedObject.FindProperty("stack").FindPropertyRelative("animations");
-    }
+        SerializedProperty animsProp;
 
-    public override void OnInspectorGUI()
-    {
-        EditorGUILayout.PropertyField(animsProp);
-
-        if (serializedObject.hasModifiedProperties)
+        void OnEnable()
         {
-            serializedObject.ApplyModifiedProperties();
+            animsProp = serializedObject.FindProperty("stack").FindPropertyRelative("animations");
+        }
+
+        public override void OnInspectorGUI()
+        {
+            EditorGUILayout.PropertyField(animsProp);
+
+            if (serializedObject.hasModifiedProperties)
+            {
+                serializedObject.ApplyModifiedProperties();
+            }
         }
     }
 }

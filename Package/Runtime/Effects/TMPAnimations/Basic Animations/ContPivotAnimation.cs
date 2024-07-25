@@ -6,7 +6,7 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new ContPivotAnimation", menuName = "TMPEffects/Animations/ContPivot")]
+    [CreateAssetMenu(fileName = "new ContPivotAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/ContPivot")]
     public class ContPivotAnimation : TMPAnimation
     {
         [Tooltip("The speed of the rotation, in rotations per second.\nAliased: speed, sp, s")]

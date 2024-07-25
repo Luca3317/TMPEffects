@@ -7,7 +7,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Show Animations/Grow")]
+    [CreateAssetMenu(fileName = "new GrowShowAnimation", menuName = "TMPEffects/Animations/Show Animations/Built-in/Grow")]
     public class GrowShowAnimation : TMPShowAnimation
     {
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]

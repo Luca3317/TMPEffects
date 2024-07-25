@@ -8,7 +8,7 @@ using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new PaletteAnimation", menuName = "TMPEffects/Animations/Palette")]
+    [CreateAssetMenu(fileName = "new PaletteAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
     public class PaletteAnimation : TMPAnimation
     {
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]

@@ -5,7 +5,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new ShakeAnimation", menuName = "TMPEffects/Animations/Shake")]
+    [CreateAssetMenu(fileName = "new ShakeAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Shake")]
     public class ShakeAnimation : TMPAnimation
     {
         [Tooltip("Whether to apply the shake uniformly across the text.\nAliases: uniform, uni")]

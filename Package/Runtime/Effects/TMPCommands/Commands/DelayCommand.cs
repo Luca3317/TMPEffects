@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName = "new DelayCommand", menuName = "TMPEffects/Commands/Delay")]
+    [CreateAssetMenu(fileName = "new DelayCommand", menuName = "TMPEffects/Commands/Built-in/Delay")]
     public class DelayCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;

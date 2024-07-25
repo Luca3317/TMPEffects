@@ -7,7 +7,7 @@ using static TMPEffects.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
-    [CreateAssetMenu(fileName = "new GrowHideAnimation", menuName = "TMPEffects/Hide Animations/Grow")]
+    [CreateAssetMenu(fileName = "new GrowHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Grow")]
     public class GrowHideAnimation : TMPHideAnimation
     {
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]

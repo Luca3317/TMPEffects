@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new SpreadShowAnimation", menuName = "TMPEffects/Show Animations/Spread")]
+    [CreateAssetMenu(fileName = "new SpreadShowAnimation", menuName = "TMPEffects/Animations/Show Animations/Built-in/Spread")]
     public class SpreadShowAnimation : TMPShowAnimation
     {
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]

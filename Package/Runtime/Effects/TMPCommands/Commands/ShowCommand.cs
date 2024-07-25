@@ -7,7 +7,7 @@ using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName = "new ShowCommand", menuName = "TMPEffects/Commands/Show")]
+    [CreateAssetMenu(fileName = "new ShowCommand", menuName = "TMPEffects/Commands/Built-in/Show")]
     public class ShowCommand : TMPCommand
     {
         public override TagType TagType => TagType.Block;
