@@ -187,24 +187,15 @@ namespace TMPEffects.Components
         /// </summary>
         public void UpdateAnimations(float deltaTime)
         {
-            if (Mediator == null)
+            if (!isActiveAndEnabled || Mediator == null)
             {
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom != UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
-                return;
-            }
-#else
             if (updateFrom != UpdateFrom.Script) 
             {
-                Debug.LogWarning(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
-                return;
+                throw new System.InvalidOperationException(string.Format(falseUpdateAnimationsCallWarning, name, updateFrom.ToString()));
             }
-#endif
 
             UpdateAnimations_Impl(deltaTime);
         }
@@ -216,24 +207,22 @@ namespace TMPEffects.Components
         /// </summary>
         public void StartAnimating()
         {
-            if (Mediator == null)
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                throw new System.InvalidOperationException("If you want to animate the TMPAnimator in edit mode, set the UpdateFrom property to Script and call UpdateAnimations manually.");
+            }
+#endif
+
+            if (!isActiveAndEnabled || Mediator == null)
             {
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
-                return;
-            }
-#else
             if (updateFrom == UpdateFrom.Script)
             {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StartAnimating", name));
-                return;
+                throw new System.InvalidOperationException(string.Format(falseStartStopAnimatingCallWarning, name, updateFrom.ToString()));
             }
-#endif
 
             isAnimating = true;
         }
@@ -245,24 +234,22 @@ namespace TMPEffects.Components
         /// </summary>
         public void StopAnimating()
         {
-            if (Mediator == null)
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                throw new System.InvalidOperationException("If you want to animate the TMPAnimator in edit mode, set the UpdateFrom property to Script and call UpdateAnimations manually.");
+            }
+#endif
+
+            if (!isActiveAndEnabled || Mediator == null)
             {
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-#if UNITY_EDITOR
-            if (Application.isPlaying && updateFrom == UpdateFrom.Script)
-            {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
-                return;
-            }
-#else
             if (updateFrom == UpdateFrom.Script)
             {
-                Debug.LogWarning(string.Format(falseStartStopAnimatingCallWarning, "StopAnimating", name));
-                return;
+                throw new System.InvalidOperationException(string.Format(falseStartStopAnimatingCallWarning, name, updateFrom.ToString()));
             }
-#endif
 
             isAnimating = false;
 
