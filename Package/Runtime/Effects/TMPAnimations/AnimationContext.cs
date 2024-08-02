@@ -8,7 +8,7 @@ namespace TMPEffects.TMPAnimations
     public class AnimationContext : IAnimationContext
     {
         /// <inheritdoc/>
-        public bool Finished(int index) => finishedDict[index];
+        public bool Finished(int index) => finishedDict.TryGetValue(index, out bool res) ? res : false;
         /// <inheritdoc/>
         public bool Finished(CharData cData) => finishedDict[cData.info.index];
         /// <inheritdoc/>

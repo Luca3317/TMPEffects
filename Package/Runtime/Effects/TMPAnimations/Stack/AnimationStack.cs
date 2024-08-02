@@ -132,36 +132,6 @@ namespace TMPEffects.TMPAnimations.Animations
             return data;
         }
 
-        // public void OnAfterDeserialize()
-        // {
-        //     for (int i = 0; i < animations.Count; i++)
-        //     {
-        //         if (animations[i].animation is AnimationStack<T>)
-        //         {
-        //             Debug.Log("got one");
-        //             animations.RemoveAt(i);
-        //             i--;
-        //         }
-        //     }
-        // }
-
-        // public void OnBeforeSerialize()
-        // {
-        //     for (int i = 0; i < animations.Count; i++)
-        //     {
-        //         if (animations[i].animation is AnimationStack<T>)
-        //         {
-        //             Debug.Log("got one");
-        //             animations.RemoveAt(i);
-        //             i--;
-        //         }
-        //         else if (animations[i].animation == null)
-        //         {
-
-        //         }
-        //     }
-        // }
-
         public void SetParameters(object customData, IDictionary<string, string> parameters)
         {
             Data data = customData as Data;

@@ -19,6 +19,7 @@ using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
+using TMPEffects.Components.Mediator;
 
 namespace TMPEffects.Components
 {
@@ -55,6 +56,10 @@ namespace TMPEffects.Components
         /// The database used to parse animation tags.
         /// </summary>
         public TMPAnimationDatabase Database => database;
+
+        public IDictionary<string, TMPSceneAnimation> SceneAnimations => sceneAnimations;
+        public IDictionary<string, TMPSceneShowAnimation> SceneShowAnimations => sceneShowAnimations;
+        public IDictionary<string, TMPSceneHideAnimation> SceneHideAnimations => sceneHideAnimations;
 
         /// <summary>
         /// Where the animations are currently being updated from.
@@ -132,11 +137,11 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationHide = false;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
-        private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations;
+        private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations = new SerializedObservableDictionary<string, TMPSceneAnimation>();
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Show Animation")]
-        private SerializedObservableDictionary<string, TMPSceneShowAnimation> sceneShowAnimations;
+        private SerializedObservableDictionary<string, TMPSceneShowAnimation> sceneShowAnimations = new SerializedObservableDictionary<string, TMPSceneShowAnimation>();
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Hide Animation")]
-        private SerializedObservableDictionary<string, TMPSceneHideAnimation> sceneHideAnimations;
+        private SerializedObservableDictionary<string, TMPSceneHideAnimation> sceneHideAnimations = new SerializedObservableDictionary<string, TMPSceneHideAnimation>();
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPAnimationCategory> tags;
@@ -500,7 +505,7 @@ namespace TMPEffects.Components
 
         private void OnDisable()
         {
-            processors.UnregisterFrom(Mediator.Processor);
+            processors.UnregisterFrom(Mediator.Processor); 
 
 #if UNITY_EDITOR
             if (preview && !Application.isPlaying) StopPreviewWithoutSet();
@@ -510,7 +515,7 @@ namespace TMPEffects.Components
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
-
+            
             UnsubscribeFromMediator();
 
 #if UNITY_EDITOR
