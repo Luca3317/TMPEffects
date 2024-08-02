@@ -50,7 +50,7 @@ public class TMPAnimatorEditModeTests
         yield break;
     }
 
-    [OneTimeSetUp] 
+    [OneTimeSetUp]
     public void SetUp()
     {
         string[] folders = new string[] { "Assets", "Packages/com.luca3317.tmpeffects/Tests" };
