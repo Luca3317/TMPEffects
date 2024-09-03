@@ -1213,24 +1213,48 @@ namespace TMPEffects.TMPAnimations
         /// <param name="originalCharacter">The original character of the <paramref name="cData"/>.</param>
         /// <param name="cData">The <see cref="CharData"/> of the character.</param>
         /// <param name="context">The context of the animation.</param>
-        public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData, IAnimationContext context)
+        public static void SetToCharacter(TMP_Character newCharacter, TMP_Character originalCharacter, CharData cData,
+            IAnimationContext context)
         {
             float baseSpriteScale = originalCharacter.scale * originalCharacter.glyph.scale;
             Vector2 origin = new Vector2(cData.info.origin, cData.info.baseLine);
-            float spriteScale = cData.info.referenceScale / baseSpriteScale * newCharacter.scale * newCharacter.glyph.scale;
+            float spriteScale = cData.info.referenceScale / baseSpriteScale * newCharacter.scale *
+                                newCharacter.glyph.scale;
 
-            Vector3 bl = new Vector3(origin.x + newCharacter.glyph.metrics.horizontalBearingX * spriteScale, origin.y + (newCharacter.glyph.metrics.horizontalBearingY - newCharacter.glyph.metrics.height) * spriteScale);
-            Vector3 tl = new Vector3(bl.x, origin.y + newCharacter.glyph.metrics.horizontalBearingY * spriteScale);
-            Vector3 tr = new Vector3(origin.x + (newCharacter.glyph.metrics.horizontalBearingX + newCharacter.glyph.metrics.width) * spriteScale, tl.y);
+            float horizontalBearingXDelta = newCharacter.glyph.metrics.horizontalBearingX -
+                                            originalCharacter.glyph.metrics.horizontalBearingX;
+            float horizontalBearingYDelta = newCharacter.glyph.metrics.horizontalBearingY -
+                                            originalCharacter.glyph.metrics.horizontalBearingY;
+            float heightDelta = newCharacter.glyph.metrics.height - originalCharacter.glyph.metrics.height;
+            float widthDelta = newCharacter.glyph.metrics.width - originalCharacter.glyph.metrics.width;
+
+
+            Vector3 bl = new Vector3(cData.initialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
+                cData.initialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
+            Vector3 tl = new Vector3(bl.x,
+                cData.initialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
+            Vector3 tr = new Vector3(
+                cData.initialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
+                tl.y);
             Vector3 br = new Vector3(tr.x, bl.y);
 
             var fontAsset = cData.info.fontAsset;
+            
+            Rect glyphRectDelta = new Rect(
+                newCharacter.glyph.glyphRect.x - originalCharacter.glyph.glyphRect.x,
+                newCharacter.glyph.glyphRect.y - originalCharacter.glyph.glyphRect.y,
+                newCharacter.glyph.glyphRect.width- originalCharacter.glyph.glyphRect.width,
+                newCharacter.glyph.glyphRect.height - originalCharacter.glyph.glyphRect.height
+            );
 
-            Vector2 uv0 = new Vector2((float)newCharacter.glyph.glyphRect.x / fontAsset.atlasWidth, (float)newCharacter.glyph.glyphRect.y / fontAsset.atlasHeight);
-            Vector2 uv1 = new Vector2(uv0.x, (float)(newCharacter.glyph.glyphRect.y + newCharacter.glyph.glyphRect.height) / fontAsset.atlasHeight);
-            Vector2 uv2 = new Vector2((float)(newCharacter.glyph.glyphRect.x + newCharacter.glyph.glyphRect.width) / fontAsset.atlasWidth, uv1.y);
+            Vector2 uv0 = new Vector2(cData.initialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
+                cData.initialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
+            Vector2 uv1 = new Vector2(uv0.x,
+                cData.initialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
+            Vector2 uv2 = new Vector2(cData.initialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
+                uv1.y);            
             Vector2 uv3 = new Vector2(uv2.x, uv0.y);
-
+            
             SetVertexRaw(0, bl, cData, context);
             SetVertexRaw(1, tl, cData, context);
             SetVertexRaw(2, tr, cData, context);
@@ -1269,4 +1293,3 @@ namespace TMPEffects.TMPAnimations
         }
     }
 }
-
