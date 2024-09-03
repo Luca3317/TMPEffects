@@ -30,7 +30,7 @@ namespace TMPEffects.Components.Animator
             customAnimations = new Dictionary<string, ITMPAnimation>();
 
             if (database != null) database.ObjectChanged += RaiseObjectChanged;
-            if (sceneAnimations != null) sceneAnimations.PropertyChanged += RaiseObjectChanged;
+            if (sceneAnimations != null) sceneAnimations.ObjectChanged += RaiseObjectChanged;
         }
 
         public void AddAnimation(string key, ITMPAnimation animation)
@@ -78,7 +78,7 @@ namespace TMPEffects.Components.Animator
             if (disposed) return;
             disposed = true;
             if (database != null) database.ObjectChanged -= RaiseObjectChanged;
-            if (sceneAnimations != null) sceneAnimations.PropertyChanged -= RaiseObjectChanged;
+            if (sceneAnimations != null) sceneAnimations.ObjectChanged -= RaiseObjectChanged;
             database = null;
             sceneAnimations = null;
             customAnimations = null;

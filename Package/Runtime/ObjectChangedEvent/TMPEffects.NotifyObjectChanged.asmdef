@@ -1,13 +1,8 @@
 {
-    "name": "TMPEffects.SerializedCollections.Editor",
+    "name": "TMPEffects.NotifyObjectChanged",
     "rootNamespace": "",
-    "references": [
-        "GUID:bc50dcdb89ada6249b1b82bd70623a05",
-        "GUID:3af83a76aff21f94faea8408f8eb05d3"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

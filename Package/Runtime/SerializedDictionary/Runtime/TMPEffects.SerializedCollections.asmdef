@@ -1,7 +1,7 @@
 {
     "name": "TMPEffects.SerializedCollections",
     "rootNamespace": "",
-    "references": [],
+    "references": ["GUID:3af83a76aff21f94faea8408f8eb05d3"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

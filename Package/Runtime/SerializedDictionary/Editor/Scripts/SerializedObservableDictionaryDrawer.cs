@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPEffects.ObjectChanged;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,8 +11,8 @@ namespace TMPEffects.SerializedCollections.Editor
     {
         public const string KeyName = nameof(SerializedKeyValuePair<int, int>.Key);
         public const string ValueName = nameof(SerializedKeyValuePair<int, int>.Value);
-        public const string SerializedListName = nameof(SerializedObservableDictionary<int, INotifyPropertyChanged>._serializedList);
-        public const string LookupTableName = nameof(SerializedObservableDictionary<int, INotifyPropertyChanged>.LookupTable);
+        public const string SerializedListName = nameof(SerializedObservableDictionary<int, INotifyObjectChanged>._serializedList);
+        public const string LookupTableName = nameof(SerializedObservableDictionary<int, INotifyObjectChanged>.LookupTable);
 
         public const int TopHeaderClipHeight = 20;
         public const int TopHeaderHeight = 19;

@@ -8,7 +8,8 @@
         "Unity.PerformanceTesting.Editor",
         "TMPEffects",
         "Unity.TextMeshPro",
-        "TMPEffects.Editor"
+        "TMPEffects.Editor",
+        "TMPEffects.NotifyObjectChanged"
     ],
     "includePlatforms": [
         "Editor"

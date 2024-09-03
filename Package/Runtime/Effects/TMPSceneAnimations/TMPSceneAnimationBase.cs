@@ -11,19 +11,29 @@ namespace TMPEffects.TMPSceneAnimations
     /// <summary>
     /// Base class for all SceneAnimations.
     /// </summary>
-    public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyPropertyChanged
+    public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyObjectChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public abstract void Animate(CharData cData, IAnimationContext context);
         public abstract object GetNewCustomData();
 
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
         public abstract bool ValidateParameters(IDictionary<string, string> parameters);
-
+        
+        public event ObjectChangedEventHandler ObjectChanged;
+        
         protected virtual void OnValidate()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+            RaiseObjectChanged();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            RaiseObjectChanged();
+        }
+
+        protected void RaiseObjectChanged()
+        {
+            ObjectChanged?.Invoke(this);
         }
     }
 }

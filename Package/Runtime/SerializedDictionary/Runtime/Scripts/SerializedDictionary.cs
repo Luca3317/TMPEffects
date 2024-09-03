@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPEffects.ObjectChanged;
 using UnityEngine;
 
 namespace TMPEffects.SerializedCollections
@@ -68,7 +69,7 @@ namespace TMPEffects.SerializedCollections
     }
 
     [System.Serializable]
-    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyPropertyChanged, IDisposable where TValue : INotifyPropertyChanged
+    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyObjectChanged, IDisposable where TValue : INotifyObjectChanged
     {
         protected bool mayRaise = true;
         private Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
@@ -91,7 +92,7 @@ namespace TMPEffects.SerializedCollections
 
         public bool IsReadOnly => ((ICollection<KeyValuePair<TKey, TValue>>)_dictionary).IsReadOnly;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event ObjectChangedEventHandler ObjectChanged;
 
         public void Add(TKey key, TValue value)
         {
@@ -99,7 +100,7 @@ namespace TMPEffects.SerializedCollections
             RaisePropertyChanged();
             if (value != null)
             {
-                value.PropertyChanged += RaisePropertyChanged;
+                value.ObjectChanged += RaisePropertyChanged;
             }
         }
 
@@ -108,7 +109,7 @@ namespace TMPEffects.SerializedCollections
             ((ICollection<KeyValuePair<TKey, TValue>>)_dictionary).Add(item);
             RaisePropertyChanged();
             if (item.Value != null)
-                item.Value.PropertyChanged += RaisePropertyChanged;
+                item.Value.ObjectChanged += RaisePropertyChanged;
         }
 
         public void Clear()
@@ -116,7 +117,7 @@ namespace TMPEffects.SerializedCollections
             foreach (var kvp in _dictionary)
             {
                 if (kvp.Value != null)
-                    kvp.Value.PropertyChanged -= RaisePropertyChanged;
+                    kvp.Value.ObjectChanged -= RaisePropertyChanged;
             }
 
             _dictionary.Clear();
@@ -147,7 +148,7 @@ namespace TMPEffects.SerializedCollections
         {
             if (_dictionary.ContainsKey(key))
             {
-                _dictionary[key].PropertyChanged -= RaisePropertyChanged;
+                _dictionary[key].ObjectChanged -= RaisePropertyChanged;
                 if (!_dictionary.Remove(key))
                 {
                     throw new System.InvalidOperationException("Failed to remove key despite it being present?");
@@ -163,7 +164,7 @@ namespace TMPEffects.SerializedCollections
         {
             if (((IDictionary<TKey, TValue>)_dictionary).Contains(item))
             {
-                _dictionary[item.Key].PropertyChanged -= RaisePropertyChanged;
+                _dictionary[item.Key].ObjectChanged -= RaisePropertyChanged;
                 if (!_dictionary.Remove(item.Key))
                 {
                     throw new System.InvalidOperationException("Failed to remove key despite it being present?");
@@ -192,17 +193,17 @@ namespace TMPEffects.SerializedCollections
 
         protected void RaisePropertyChanged()
         {
-            if (mayRaise) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("dictionary"));
+            if (mayRaise) ObjectChanged?.Invoke(this);
         }
 
-        protected void RaisePropertyChanged(object sender, PropertyChangedEventArgs args)
+        protected void RaisePropertyChanged(object sender)
         {
-            if (mayRaise) PropertyChanged?.Invoke(this, args);
+            if (mayRaise) ObjectChanged?.Invoke(this);
         }
     }
 
     [System.Serializable]
-    public partial class SerializedObservableDictionary<TKey, TValue> : ObservableDictionary<TKey, TValue>, ISerializedDictionary<TKey, TValue>, ISerializationCallbackReceiver where TValue : INotifyPropertyChanged
+    public partial class SerializedObservableDictionary<TKey, TValue> : ObservableDictionary<TKey, TValue>, ISerializedDictionary<TKey, TValue>, ISerializationCallbackReceiver where TValue : INotifyObjectChanged
     {
         public List<SerializedKeyValuePair<TKey, TValue>> SerializedList
         {
