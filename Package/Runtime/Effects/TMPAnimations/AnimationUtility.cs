@@ -52,6 +52,12 @@ namespace TMPEffects.TMPAnimations
             return vector * (context.Animator.TextComponent.fontSize / 36f);
         }
 
+        public static Vector3 ScaleVector(Vector3 vector, float pointSize, float fontSize, bool scaleUniformly)
+        {
+            if (!scaleUniformly) return vector * (pointSize / 36f);
+            return vector * (fontSize / 36f);
+        }
+
         /// <summary>
         /// Scale a vector for an animation inversely.<br/>
         /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
