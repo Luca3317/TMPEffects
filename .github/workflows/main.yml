@@ -1,6 +1,6 @@
 name: Test package
 
-on: workflow_dispatch
+on: [push, pull_request_target]
 
 jobs:
   testAllModes:
