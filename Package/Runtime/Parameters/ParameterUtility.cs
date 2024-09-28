@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.Parameters.ParameterTypes;
@@ -11,9 +9,21 @@ namespace TMPEffects.Parameters
     /// <summary>
     /// Utility class for easy parameter handling.
     /// </summary>
-    [GenerateParameterUtility]
+    [ParameterType(typeof(int), "Int")]
+    [ParameterType(typeof(float), "Float")]
+    [ParameterType(typeof(bool), "Bool")]
+    [ParameterType(typeof(Color), "Color")]
+    [ParameterType(typeof(Vector2), "Vector2")]
+    [ParameterType(typeof(Vector3), "Vector3")]
+    [ParameterType(typeof(Vector2), "Vector2Offset")]
+    [ParameterType(typeof(Vector3), "Vector3Offset")]
+    [ParameterType(typeof(Vector2), "Anchor")]
+    [ParameterType(typeof(TypedVector2), "TypedVector2")]
+    [ParameterType(typeof(TypedVector3), "TypedVector3")]
+    [ParameterType(typeof(WaveOffsetType), "WaveOffset")]
+    [ParameterType(typeof(AnimationCurve), "AnimCurve")]
     public static partial class ParameterUtility
-    { 
+    {
         /// <summary>
         /// Check if there is a well-defined parameter of the given name or aliases.<br />
         /// A parameter is well-defined if there is exactly one of the given aliases (including the name) present in the parameters.
@@ -34,7 +44,7 @@ namespace TMPEffects.Parameters
 
             for (int i = 0; i < aliases.Length; i++)
             {
-                if (parameters.ContainsKey(aliases[i])) 
+                if (parameters.ContainsKey(aliases[i]))
                 {
                     if (value != null) return false;
                     else value = aliases[i];
@@ -231,8 +241,8 @@ namespace TMPEffects.Parameters
             if (amplitude && TryGetFloatParameter(out f, parameters, prefix + "amplitude", prefix + "amp")) wp.amplitude = f;
 
             return wp;
-        } 
- 
+        }
+
         /// <summary>
         /// Validate all parameters relevant to a wave.<br/>
         /// Important: this reserves the following parameter names:
@@ -615,9 +625,5 @@ namespace TMPEffects.Parameters
             { "backdownright", Vector3.back + Vector3.down + Vector3.right},
             { "backdownleft", Vector3.back + Vector3.down + Vector3.left},
         });
-    }
-
-    public class GenerateParameterUtilityAttribute : Attribute
-    {
     }
 }
