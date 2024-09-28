@@ -4,8 +4,8 @@ using System;
 using TMPEffects.Extensions;
 using TMPEffects.Components.Animator;
 using TMPro;
-using System.Runtime.CompilerServices;
-using UnityEngine.TextCore;
+using TMPEffects.Components;
+using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -1138,25 +1138,6 @@ namespace TMPEffects.TMPAnimations
         }
 
         /// <summary>
-        /// Different built-in offset types, to be used with <see cref="GetWaveOffset(CharData, IAnimationContext, WaveOffsetType)"/>.
-        /// </summary>
-        public enum WaveOffsetType
-        {
-            SegmentIndex = 0,
-            Index = 5,
-            XPos = 10,
-            YPos = 15,
-
-            WorldXPos = 20,
-            WorldYPos = 25,
-            WorldZPos = 30,
-
-            Word = 35,
-            Line = 40,
-            Baseline = 45
-        }
-
-        /// <summary>
         /// Get the wave offset to use based on the <paramref name="type"/>.<br/>
         /// To be used with <see cref="Wave.Evaluate(float, float, bool)"/> (and related methods).
         /// </summary>
@@ -1165,22 +1146,22 @@ namespace TMPEffects.TMPAnimations
         /// <param name="type">The type of the offset.</param>
         /// <returns>The offset for a wave.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static float GetWaveOffset(CharData cData, IAnimationContext context, WaveOffsetType type)
+        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type)
         {
             switch (type)
             {
-                case WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
-                case WaveOffsetType.Index: return cData.info.index;
+                case ParameterTypes.WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
+                case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
 
-                case WaveOffsetType.Line: return cData.info.lineNumber;
-                case WaveOffsetType.Baseline: return cData.info.baseLine;
-                case WaveOffsetType.Word: return cData.info.wordNumber;
+                case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
+                case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
+                case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
 
-                case WaveOffsetType.WorldXPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
-                case WaveOffsetType.WorldYPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
-                case WaveOffsetType.WorldZPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
-                case WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
-                case WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+                case ParameterTypes.WaveOffsetType.WorldXPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
+                case ParameterTypes.WaveOffsetType.WorldYPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
+                case ParameterTypes.WaveOffsetType.WorldZPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
+                case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
             throw new System.ArgumentException(nameof(type));

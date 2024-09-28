@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.ParameterTypes;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {

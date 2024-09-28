@@ -1,8 +1,6 @@
-using TMPEffects.TextProcessing;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
-using static TMPEffects.ParameterUtility;
-using UnityEngine;
+using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.Components.Animator
 {
