@@ -925,8 +925,8 @@ namespace TMPEffects.TMPAnimations
             /// <param name="time">The time value.</param>
             /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
-            /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
-            public (float, int) Evaluate(float time, float offset, bool realtimeWait = true)
+            /// <returns>Value: The value of the wave at the given time and offset.<br/>Direction: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
+            public (float Value, int Direction) Evaluate(float time, float offset, bool realtimeWait = true)
             {
                 if (CrestWait <= 0)
                 {
