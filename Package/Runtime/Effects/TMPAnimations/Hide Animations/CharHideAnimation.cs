@@ -5,7 +5,7 @@ using TMPEffects.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {

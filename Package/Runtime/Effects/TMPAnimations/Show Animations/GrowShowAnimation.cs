@@ -3,7 +3,7 @@ using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {

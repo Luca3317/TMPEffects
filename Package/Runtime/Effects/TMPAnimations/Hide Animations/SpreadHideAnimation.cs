@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.ParameterTypes;
 using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.HideAnimations

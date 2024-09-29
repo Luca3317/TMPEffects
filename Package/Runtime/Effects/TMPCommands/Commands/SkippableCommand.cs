@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPEffects;
-using TMPEffects.TextProcessing;
 using UnityEngine;
+using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -24,14 +22,14 @@ namespace TMPEffects.TMPCommands.Commands
         public override void ExecuteCommand(TMPCommandArgs args)
         {
             bool val;
-            ParsingUtility.StringToBool(args.tag.Parameters[""], out val);
+            ParameterParsing.StringToBool(args.tag.Parameters[""], out val);
             args.writer.SetSkippable(val);
         }
 
         public override bool ValidateParameters(IDictionary<string, string> parameters)
         {
             if (parameters == null) return false;
-            return ParsingUtility.StringToBool(parameters[""], out _);
+            return ParameterParsing.StringToBool(parameters[""], out _);
         }
     }
 }
