@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
 using UnityEngine;
+using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -18,7 +19,7 @@ namespace TMPEffects.TMPCommands.Commands
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            if (!ParameterUtility.TryGetFloatParameter(out float delay, args.tag.Parameters, ""))
+            if (!TryGetFloatParameter(out float delay, args.tag.Parameters, ""))
             {
                 if (args.tag.Parameters[""] == "" || args.tag.Parameters[""] == "default")
                     delay = -1;
@@ -30,10 +31,10 @@ namespace TMPEffects.TMPCommands.Commands
                 }
             }
 
-            if (ParameterUtility.TryGetDefinedParameter(out string str, args.tag.Parameters, "for"))
+            if (TryGetDefinedParameter(out string str, args.tag.Parameters, "for"))
             {
                 TMPWriter.DelayType type;
-                if (!ParameterUtility.TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
+                if (!TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
                 {
                     type = TMPWriter.DelayType.Raw;
                 }
@@ -105,7 +106,7 @@ namespace TMPEffects.TMPCommands.Commands
                 return false;
             }
 
-            if (ParameterUtility.TryGetDefinedParameter(out string str, parameters, "for"))
+            if (TryGetDefinedParameter(out string str, parameters, "for"))
             {
                 switch (parameters[str])
                 {
@@ -122,7 +123,7 @@ namespace TMPEffects.TMPCommands.Commands
                     default: return false;
                 }
 
-                if (ParameterUtility.TryGetDefinedParameter(out str, parameters, "type"))
+                if (TryGetDefinedParameter(out str, parameters, "type"))
                 {
                     switch (parameters[str])
                     {
@@ -136,7 +137,7 @@ namespace TMPEffects.TMPCommands.Commands
                 }
             }
 
-            return ParameterUtility.HasFloatParameter(parameters, "") || parameters[""] == "" || parameters[""] == "default";
+            return HasFloatParameter(parameters, "") || parameters[""] == "" || parameters[""] == "default";
         }
     }
 }

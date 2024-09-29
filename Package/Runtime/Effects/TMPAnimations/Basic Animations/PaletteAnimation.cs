@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Parameters;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.ParameterTypes;
 using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPAnimations.Animations
@@ -122,7 +124,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Data d = (Data)customData;
             if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-            if (TryGetArrayParameter<Color>(out var array, parameters, ParsingUtility.StringToColor, "colors", "clrs")) d.colors = array;
+            if (TryGetArrayParameter<Color>(out var array, parameters, ParameterParsing.StringToColor, "colors", "clrs")) d.colors = array;
 
             if (d.colors == null || d.colors.Length == 0)
             {
@@ -137,7 +139,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return true;
 
             if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            if (HasNonArrayParameter<Color>(parameters, ParsingUtility.StringToColor, "colors", "clrs")) return false;
+            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, "colors", "clrs")) return false;
 
             return ValidateWaveParameters(parameters);
         }

@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPEffects.Tags;
-using TMPEffects.Components;
-using TMPEffects.TextProcessing;
+using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -20,7 +18,7 @@ namespace TMPEffects.TMPCommands.Commands
 
         public override void ExecuteCommand(TMPCommandArgs args)
         {
-            ParsingUtility.StringToFloat(args.tag.Parameters[""], out var value);
+            ParameterParsing.StringToFloat(args.tag.Parameters[""], out var value);
             args.writer.Wait(value);
         }
 
@@ -30,7 +28,7 @@ namespace TMPEffects.TMPCommands.Commands
             if (!parameters.ContainsKey(""))
                 return false;
 
-            return ParsingUtility.StringToFloat(parameters[""], out _);
+            return ParameterParsing.StringToFloat(parameters[""], out _);
         }
     }
 }

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Parameters;
 using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
 
 
 namespace TMPEffects.TMPAnimations.Animations
@@ -199,15 +200,15 @@ namespace TMPEffects.TMPAnimations.Animations
             Data d = customData as Data;
 
             var split = parameters["anim"].Split(',');
-            if (ParsingUtility.StringToInt(split[0], out int result))
+            if (ParameterParsing.StringToInt(split[0], out int result))
             {
                 d.start = result;
             }
-            if (ParsingUtility.StringToInt(split[1], out result))
+            if (ParameterParsing.StringToInt(split[1], out result))
             {
                 d.end = result;
             }
-            if (ParsingUtility.StringToInt(split[2], out result))
+            if (ParameterParsing.StringToInt(split[2], out result))
             {
                 d.framerate = result;
             }

@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using UnityEngine.TextCore;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
