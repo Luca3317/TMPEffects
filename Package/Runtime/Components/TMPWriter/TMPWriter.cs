@@ -112,13 +112,13 @@ namespace TMPEffects.Components
         /// </summary>
         public UnityEvent<TMPWriter> OnStopWriter;
         /// <summary>
-        /// Raised when the TMPWriter pauses while writing (due to a wait).
+        /// Raised when the TMPWriter starts waiting.
         /// </summary>
-        public UnityEvent<TMPWriter> OnPauseStartedWriter;
+        public UnityEvent<TMPWriter> OnWaitStarted;
         /// <summary>
-        /// Raised when the TMPWriter unpauses writing (due to a ending a wait).
+        /// Raised when the TMPWriter ends waiting.
         /// </summary>
-        public UnityEvent<TMPWriter> OnPauseEndedWriter;
+        public UnityEvent<TMPWriter> OnWaitEnded;
         /// <summary>
         /// Raised when the TMPWriter is done writing the current text.
         /// </summary>
@@ -666,30 +666,30 @@ namespace TMPEffects.Components
             OnStopWriter?.Invoke(this);
         }
 
-        private void RaisePauseStartedWriterEvent()
+        private void RaiseWaitStartedEvent()
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnPauseStartedWriter?.Invoke(this);
+                OnWaitStarted?.Invoke(this);
                 return;
             }
 #endif
 
-            OnPauseStartedWriter?.Invoke(this);
+            OnWaitStarted?.Invoke(this);
         }
 
-        private void RaisePauseEndedWriterEvent()
+        private void RaiseWaitEndedEvent()
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnPauseEndedWriter?.Invoke(this);
+                OnWaitEnded?.Invoke(this);
                 return;
             }
 #endif
 
-            OnPauseEndedWriter?.Invoke(this);
+            OnWaitEnded?.Invoke(this);
         }
 
         private void RaiseSkipWriterEvent(int index)
@@ -760,9 +760,9 @@ namespace TMPEffects.Components
                 prevTime = useScaledTime ? Time.time : Time.unscaledTime;
                 if (shouldWait && waitAmount > 0)
                 {
-                    RaisePauseStartedWriterEvent();
+                    RaiseWaitStartedEvent();
                     yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-                    RaisePauseEndedWriterEvent();
+                    RaiseWaitEndedEvent();
                 }
                 FixTimePost(waitAmount);
 
@@ -794,9 +794,9 @@ namespace TMPEffects.Components
                     FixTimePre(ref waitAmount);
                     if (shouldWait && waitAmount > 0)
                     {
-                        RaisePauseStartedWriterEvent();
+                        RaiseWaitStartedEvent();
                         yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-                        RaisePauseEndedWriterEvent();
+                        RaiseWaitEndedEvent();
                     }
                     FixTimePost(waitAmount);
                     if (Mediator == null) yield break;
@@ -1135,8 +1135,8 @@ namespace TMPEffects.Components
         internal event VoidHandler OnFinishWriterPreview;
         internal event VoidHandler OnStartWriterPreview;
         internal event VoidHandler OnStopWriterPreview;
-        internal event VoidHandler OnPauseStartedWriterPreview;
-        internal event VoidHandler OnPauseEndedWriterPreview;
+        internal event VoidHandler OnWaitStartedPreview;
+        internal event VoidHandler OnWaitEndedPreview;
         internal event ResetHandler OnResetComponent;
 
 

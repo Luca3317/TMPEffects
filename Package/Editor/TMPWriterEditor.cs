@@ -36,8 +36,8 @@ namespace TMPEffects.Editor
         SerializedProperty onShowCharacterProp;
         SerializedProperty onStartWriterProp;
         SerializedProperty onStopWriterProp;
-        SerializedProperty onPauseStartedWriterProp;
-        SerializedProperty onPauseEndedWriterProp;
+        SerializedProperty onWaitStartedProp;
+        SerializedProperty onWaitEndedProp;
         SerializedProperty onResetWriterProp;
         SerializedProperty onSkipWriterProp;
         SerializedProperty onFinishWriterProp;
@@ -144,8 +144,8 @@ namespace TMPEffects.Editor
             onShowCharacterProp = serializedObject.FindProperty("OnCharacterShown");
             onStartWriterProp = serializedObject.FindProperty("OnStartWriter");
             onStopWriterProp = serializedObject.FindProperty("OnStopWriter");
-            onPauseStartedWriterProp = serializedObject.FindProperty("OnPauseStartedWriter");
-            onPauseEndedWriterProp = serializedObject.FindProperty("OnPauseEndedWriter");
+            onWaitStartedProp = serializedObject.FindProperty("OnWaitStarted");
+            onWaitEndedProp = serializedObject.FindProperty("OnWaitEnded");
             onResetWriterProp = serializedObject.FindProperty("OnResetWriter");
             onSkipWriterProp = serializedObject.FindProperty("OnSkipWriter");
             onFinishWriterProp = serializedObject.FindProperty("OnFinishWriter");
@@ -179,10 +179,10 @@ namespace TMPEffects.Editor
             writer.OnStartWriterPreview += CancelHideAfterFinish;
             writer.OnStopWriterPreview -= CancelHideAfterFinish;
             writer.OnStopWriterPreview += CancelHideAfterFinish;
-            writer.OnPauseStartedWriterPreview -= CancelHideAfterFinish;
-            writer.OnPauseStartedWriterPreview += CancelHideAfterFinish;
-            writer.OnPauseEndedWriterPreview -= CancelHideAfterFinish;
-            writer.OnPauseEndedWriterPreview += CancelHideAfterFinish;
+            writer.OnWaitStartedPreview -= CancelHideAfterFinish;
+            writer.OnWaitStartedPreview += CancelHideAfterFinish;
+            writer.OnWaitEndedPreview -= CancelHideAfterFinish;
+            writer.OnWaitEndedPreview += CancelHideAfterFinish;
             writer.OnFinishWriterPreview -= StartHideAfterFinish;
             writer.OnFinishWriterPreview += StartHideAfterFinish;
 
@@ -212,8 +212,8 @@ namespace TMPEffects.Editor
             writer.OnSkipWriterPreview -= CancelHideAfterFinish;
             writer.OnStartWriterPreview -= CancelHideAfterFinish;
             writer.OnStopWriterPreview -= CancelHideAfterFinish;
-            writer.OnPauseStartedWriterPreview -= CancelHideAfterFinish;
-            writer.OnPauseEndedWriterPreview -= CancelHideAfterFinish;
+            writer.OnWaitStartedPreview -= CancelHideAfterFinish;
+            writer.OnWaitEndedPreview -= CancelHideAfterFinish;
             writer.OnFinishWriterPreview -= StartHideAfterFinish;
 
             writer.OnResetWriterPreview -= UpdateProgress;
@@ -522,8 +522,8 @@ namespace TMPEffects.Editor
                 EditorGUILayout.PropertyField(onShowCharacterProp);
                 EditorGUILayout.PropertyField(onStartWriterProp);
                 EditorGUILayout.PropertyField(onStopWriterProp);
-                EditorGUILayout.PropertyField(onPauseStartedWriterProp);
-                EditorGUILayout.PropertyField(onPauseEndedWriterProp);
+                EditorGUILayout.PropertyField(onWaitStartedProp);
+                EditorGUILayout.PropertyField(onWaitEndedProp);
                 EditorGUILayout.PropertyField(onResetWriterProp);
                 EditorGUILayout.PropertyField(onSkipWriterProp);
                 EditorGUILayout.PropertyField(onFinishWriterProp);
