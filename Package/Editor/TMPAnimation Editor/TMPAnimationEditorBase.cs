@@ -71,8 +71,12 @@ namespace TMPEffects.Editor
                 animate = !animate;
                 if (!animate) animator.ResetAnimations();
             }
+
             if (GUILayout.Button("Restart"))
+            {
+                animator.ResetTime();
                 OnChange(anim);
+            }
         }
 
         public override void DrawPreview(Rect previewArea)

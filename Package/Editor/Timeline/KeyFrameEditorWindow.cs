@@ -11,8 +11,6 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UIElements;
 using AnimationUtility = TMPEffects.TMPAnimations.AnimationUtility;
 using Object = UnityEngine.Object;
 

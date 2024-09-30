@@ -10,6 +10,7 @@ namespace TMPEffects.CharacterData
     // This should store all types of modifications made to a mesh; vertex positions, colors, etc
     // That is *very* close to what VertexData does, except this stores deltas and not raw values 
     // => how to combine
+    [Serializable]
     public class TMPMeshModifiers
     {
         public Vector3 PositionDelta
@@ -89,9 +90,13 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public Color32? BL_Color
+        public UnityNullable<Color32> BL_Color
         {
-            get => bl_Color;
+            get
+            {
+                bl_Color ??= new UnityNullable<Color32>();
+                return bl_Color;
+            }
             set
             {
                 if (value.Equals(bl_Color)) return;
@@ -100,9 +105,13 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public Color32? TL_Color
+        public UnityNullable<Color32> TL_Color
         {
-            get => tl_Color;
+            get
+            {
+                tl_Color ??= new UnityNullable<Color32>();
+                return tl_Color;
+            }
             set
             {
                 if (value.Equals(tl_Color)) return;
@@ -111,9 +120,13 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public Color32? TR_Color
+        public UnityNullable<Color32> TR_Color
         {
-            get => tr_Color;
+            get
+            {
+                tr_Color ??= new UnityNullable<Color32>();
+                return tr_Color;
+            }
             set
             {
                 if (value.Equals(tr_Color)) return;
@@ -122,9 +135,13 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public Color32? BR_Color
+        public UnityNullable<Color32> BR_Color
         {
-            get => br_Color;
+            get
+            {
+                br_Color ??= new UnityNullable<Color32>();
+                return br_Color;
+            }
             set
             {
                 if (value.Equals(br_Color)) return;
@@ -177,30 +194,126 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        private Vector3 positionDelta = Vector3.zero;
-        private Matrix4x4 scaleDelta = Matrix4x4.identity;
-        private Quaternion rotationDelta = Quaternion.identity;
+        [SerializeField] private Vector3 positionDelta = Vector3.zero;
+        [SerializeField] private Matrix4x4 scaleDelta = Matrix4x4.identity;
+        [SerializeField] private Quaternion rotationDelta = Quaternion.identity;
         // TODO RotationPivot? Not needed for keyframe editor likely, but this should be generic
 
-        private Vector3 bl_Delta;
-        private Vector3 tl_Delta;
-        private Vector3 tr_Delta;
-        private Vector3 br_Delta;
+        [SerializeField] private Vector3 bl_Delta;
+        [SerializeField] private Vector3 tl_Delta;
+        [SerializeField] private Vector3 tr_Delta;
+        [SerializeField] private Vector3 br_Delta;
 
-        private Color32? bl_Color;
-        private Color32? tl_Color;
-        private Color32? tr_Color;
-        private Color32? br_Color;
+        [SerializeField] public UnityNullable<Color32> bl_Color;
+        [SerializeField] private UnityNullable<Color32> tl_Color;
+        [SerializeField] private UnityNullable<Color32> tr_Color;
+        [SerializeField] private UnityNullable<Color32> br_Color;
 
-        private Vector3 bl_UV0;
-        private Vector3 tl_UV0;
-        private Vector3 tr_UV0;
-        private Vector3 br_UV0;
+        [SerializeField] private Vector3 bl_UV0;
+        [SerializeField] private Vector3 tl_UV0;
+        [SerializeField] private Vector3 tr_UV0;
+        [SerializeField] private Vector3 br_UV0;
 
         private Vector3 BLMax, BLMin;
         private Vector3 TLMax, TLMin;
         private Vector3 TRMax, TRMin;
         private Vector3 BRMax, BRMin;
+
+        public static TMPMeshModifiers operator +(TMPMeshModifiers lhs, TMPMeshModifiers rhs)
+        {
+            TMPMeshModifiers result = new TMPMeshModifiers();
+            result.PositionDelta = lhs.PositionDelta + rhs.PositionDelta;
+            // result.ScaleDelta = lhs.ScaleDelta * rhs.ScaleDelta;
+            result.RotationDelta = lhs.RotationDelta * rhs.RotationDelta;
+
+            result.BL_Delta = lhs.BL_Delta + rhs.BL_Delta;
+            result.TL_Delta = lhs.TL_Delta + rhs.TL_Delta;
+            result.TR_Delta = lhs.TR_Delta + rhs.TR_Delta;
+            result.BR_Delta = lhs.BR_Delta + rhs.BR_Delta;
+
+            result.BL_Color =
+                rhs.BL_Color.HasValue ? rhs.BL_Color : lhs.BL_Color; // Use rhs color if set, otherwise use lhs
+            result.TL_Color = rhs.TL_Color.HasValue ? rhs.TL_Color : lhs.TL_Color;
+            result.TR_Color = rhs.TR_Color.HasValue ? rhs.TR_Color : lhs.TR_Color;
+            result.BR_Color = rhs.BR_Color.HasValue ? rhs.BR_Color : lhs.BR_Color;
+
+            result.BL_UV0 = lhs.BL_UV0 + rhs.BL_UV0;
+            result.TL_UV0 = lhs.TL_UV0 + rhs.TL_UV0;
+            result.TR_UV0 = lhs.TR_UV0 + rhs.TR_UV0;
+            result.BR_UV0 = lhs.BR_UV0 + rhs.BR_UV0;
+            return result;
+        }
+
+        public static TMPMeshModifiers LerpUnclamped(CharData cData, TMPMeshModifiers modifiers, float t)
+        {
+            TMPMeshModifiers result = new TMPMeshModifiers();
+
+            if (modifiers.PositionDelta != Vector3.zero)
+                result.PositionDelta = modifiers.PositionDelta * t;
+
+            if (modifiers.RotationDelta != Quaternion.identity)
+                result.RotationDelta = Quaternion.LerpUnclamped(cData.InitialRotation, modifiers.RotationDelta, t);
+
+            // TODO I want to be able to use simple V3 scale -- why didnt i originally? some shit with order of applying?
+            // if (step.Modifiers.ScaleDelta != Vector3.one)
+
+            if (modifiers.BL_Delta != Vector3.zero)
+                result.BL_Delta = modifiers.BL_Delta * t;
+
+            if (modifiers.TL_Delta != Vector3.zero)
+                result.TL_Delta = modifiers.TL_Delta * t;
+
+            if (modifiers.TR_Delta != Vector3.zero)
+                result.TR_Delta = modifiers.TR_Delta * t;
+
+            if (modifiers.BR_Delta != Vector3.zero)
+                result.BR_Delta = modifiers.BR_Delta * t;
+
+            if (modifiers.BL_Color.HasValue)
+                result.BL_Color.Value = Color32.LerpUnclamped(cData.initialMesh.BL_Color, modifiers.BL_Color.Value, t);
+
+            if (modifiers.TL_Color.HasValue)
+                result.TL_Color.Value = Color32.LerpUnclamped(cData.initialMesh.TL_Color, modifiers.TL_Color.Value, t);
+
+            if (modifiers.TR_Color.HasValue)
+                result.TR_Color.Value = Color32.LerpUnclamped(cData.initialMesh.TR_Color, modifiers.TR_Color.Value, t);
+
+            if (modifiers.BR_Color.HasValue)
+                result.BR_Color.Value = Color32.LerpUnclamped(cData.initialMesh.BR_Color, modifiers.BR_Color.Value, t);
+
+            if (modifiers.BL_UV0 != Vector3.zero)
+                result.BL_UV0 = modifiers.BL_UV0 * t;
+
+            if (modifiers.TL_UV0 != Vector3.zero)
+                result.TL_UV0 = modifiers.TL_UV0 * t;
+
+            if (modifiers.TR_UV0 != Vector3.zero)
+                result.TR_UV0 = modifiers.TR_UV0 * t;
+
+            if (modifiers.BR_UV0 != Vector3.zero)
+                result.BR_UV0 = modifiers.BR_UV0 * t;
+            
+            return result;
+
+            // TMPMeshModifiers result = new TMPMeshModifiers();
+            // result.PositionDelta = Vector3.LerpUnclamped(a.PositionDelta, b.PositionDelta, t);
+            // // TODO scale
+            // result.RotationDelta = Quaternion.LerpUnclamped(a.RotationDelta, b.RotationDelta, t);
+            //
+            // // TODO This actually doesnt make THAT much sense, since if you dont override delta etc
+            // // you dont want it to be dirty (and therefore used)
+            // result.BL_Delta = Vector3.LerpUnclamped(a.BL_Delta, b.BL_Delta, t);
+            // result.TL_Delta = Vector3.LerpUnclamped(a.TL_Delta, b.TL_Delta, t);
+            // result.TR_Delta = Vector3.LerpUnclamped(a.TR_Delta, b.TR_Delta, t);
+            // result.BR_Delta = Vector3.LerpUnclamped(a.BR_Delta, b.BR_Delta, t);
+            //
+            // result.BL_Color.Value = b.BL_Color.HasValue
+            //     ? (a.BL_Color.HasValue
+            //         ? Color32.LerpUnclamped(a.BL_Color.Value, b.BL_Color.Value, t)
+            //         : Color32.LerpUnclamped(cData.initialMesh.BL_Color, b.BL_Color.Value, t))
+            //     
+            //     : a.BL_Color.HasValue ? Color32.LerpUnclamped(a.BL_Color.Value, cData.initialMesh.BL_Color, t) : default;
+        }
 
         [Flags]
         public enum DirtyFlags : byte
@@ -235,6 +348,56 @@ namespace TMPEffects.CharacterData
 
         public SmthThatAppliesModifiers()
         {
+        }
+
+        // TODO The applier (TMPMeshModifierApplier or so) should be reused within the actual animator
+        // (/ in the chardatastate). Does this method still make sense then?
+        public void ApplyToCharData(CharData cData, TMPMeshModifiers modifiers)
+        {
+            if (modifiers.PositionDelta != Vector3.zero)
+                cData.SetPosition(cData.InitialPosition + modifiers.PositionDelta);
+
+            if (modifiers.RotationDelta != Quaternion.identity)
+                cData.SetRotation(cData.InitialRotation * modifiers.RotationDelta);
+
+            // TODO I want to be able to use simple V3 scale -- why didnt i originally? some shit with order of applying?
+            // if (step.Modifiers.ScaleDelta != Vector3.one)
+
+            if (modifiers.BL_Delta != Vector3.zero)
+                cData.SetVertex(0, cData.initialMesh.BL_Position + modifiers.BL_Delta);
+
+            if (modifiers.TL_Delta != Vector3.zero)
+                cData.SetVertex(1, cData.initialMesh.BL_Position + modifiers.TL_Delta);
+
+            if (modifiers.TR_Delta != Vector3.zero)
+                cData.SetVertex(2, cData.initialMesh.BL_Position + modifiers.TR_Delta);
+
+            if (modifiers.BR_Delta != Vector3.zero)
+                cData.SetVertex(3, cData.initialMesh.BL_Position + modifiers.BR_Delta);
+
+            if (modifiers.BL_Color.HasValue)
+                cData.mesh.SetColor(0, modifiers.BL_Color.Value);
+
+            if (modifiers.TL_Color.HasValue)
+                cData.mesh.SetColor(1, modifiers.TL_Color.Value);
+
+            if (modifiers.TR_Color.HasValue)
+                cData.mesh.SetColor(2, modifiers.TR_Color.Value);
+
+            if (modifiers.BR_Color.HasValue)
+                cData.mesh.SetColor(3, modifiers.BR_Color.Value);
+
+            if (modifiers.BL_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(0, modifiers.BL_UV0);
+
+            if (modifiers.TL_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(1, modifiers.TL_UV0);
+
+            if (modifiers.TR_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(2, modifiers.TR_UV0);
+
+            if (modifiers.BR_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(3, modifiers.BR_UV0);
         }
 
         // TODO shouldnt have to pass in cdata; make some interface or w/e
@@ -291,10 +454,10 @@ namespace TMPEffects.CharacterData
         {
             return
             (
-                modifiers.BL_Color ?? cData.initialMesh.BL_Color, 
-                modifiers.TL_Color ?? cData.initialMesh.TL_Color, 
-                modifiers.TR_Color ?? cData.initialMesh.TR_Color, 
-                modifiers.BR_Color ?? cData.initialMesh.BR_Color
+                modifiers.BL_Color.HasValue ? modifiers.BL_Color.Value : cData.initialMesh.BL_Color,
+                modifiers.TL_Color.HasValue ? modifiers.TL_Color.Value : cData.initialMesh.TL_Color,
+                modifiers.TR_Color.HasValue ? modifiers.TR_Color.Value : cData.initialMesh.TR_Color,
+                modifiers.BR_Color.HasValue ? modifiers.BR_Color.Value : cData.initialMesh.BR_Color
             );
         }
 
