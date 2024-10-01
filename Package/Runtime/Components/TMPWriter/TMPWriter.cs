@@ -33,8 +33,8 @@ namespace TMPEffects.Components
     /// <item><see cref="TMPSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
     /// </list>
     /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
-    /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent. 
-    /// </remarks>    
+    /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
+    /// </remarks>
     [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")]
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPWriter : TMPEffectComponent
@@ -111,6 +111,15 @@ namespace TMPEffects.Components
         /// Raised when the TMPWriter stops writing.
         /// </summary>
         public UnityEvent<TMPWriter> OnStopWriter;
+        /// <summary>
+        /// Raised when the TMPWriter starts waiting.
+        /// The float parameter indicates the amount of time the TMPWriter will wait, in seconds.
+        /// </summary>
+        public UnityEvent<TMPWriter, float> OnWaitStarted;
+        /// <summary>
+        /// Raised when the TMPWriter ends waiting.
+        /// </summary>
+        public UnityEvent<TMPWriter> OnWaitEnded;
         /// <summary>
         /// Raised when the TMPWriter is done writing the current text.
         /// </summary>
@@ -573,7 +582,7 @@ namespace TMPEffects.Components
             }
 
 #if UNITY_EDITOR
-            // If is preview 
+            // If is preview
             if (!Application.isPlaying)
             {
                 bool wasWriting = writing;
@@ -658,6 +667,32 @@ namespace TMPEffects.Components
             OnStopWriter?.Invoke(this);
         }
 
+        private void RaiseWaitStartedEvent(float waitAmount)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnWaitStarted?.Invoke(this, waitAmount);
+                return;
+            }
+#endif
+
+            OnWaitStarted?.Invoke(this, waitAmount);
+        }
+
+        private void RaiseWaitEndedEvent()
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                OnWaitEnded?.Invoke(this);
+                return;
+            }
+#endif
+
+            OnWaitEnded?.Invoke(this);
+        }
+
         private void RaiseSkipWriterEvent(int index)
         {
 #if UNITY_EDITOR
@@ -724,7 +759,12 @@ namespace TMPEffects.Components
                 invokable.Trigger();
 
                 prevTime = useScaledTime ? Time.time : Time.unscaledTime;
-                if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                if (shouldWait && waitAmount > 0)
+                {
+                    RaiseWaitStartedEvent(waitAmount);
+                    yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                    RaiseWaitEndedEvent();
+                }
                 FixTimePost(waitAmount);
 
                 if (Mediator == null) yield break;
@@ -753,7 +793,12 @@ namespace TMPEffects.Components
 
                     // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
                     FixTimePre(ref waitAmount);
-                    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                    if (shouldWait && waitAmount > 0)
+                    {
+                        RaiseWaitStartedEvent(waitAmount);
+                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        RaiseWaitEndedEvent();
+                    }
                     FixTimePost(waitAmount);
                     if (Mediator == null) yield break;
 
@@ -788,7 +833,7 @@ namespace TMPEffects.Components
                 yield break;
             }
 
-            // TODO 
+            // TODO
             // This originally was required to raise commands/events at the very end
             // of a text, e.g. "Lorem ipsum<?event>"
             // Currently the preprocessor adds a space character to the end of every text
@@ -804,8 +849,12 @@ namespace TMPEffects.Components
             //    invokable.Trigger();
 
             //    FixTimePre(ref waitAmount);
-            //    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-
+            //    if (shouldWait && waitAmount > 0)
+            //    {
+            //        RaiseWaitStartedEvent(waitAmount);
+            //        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+            //        RaiseWaitEndedEvent();
+            //    }
             //    if (Mediator == null) yield break;
             //    if (continueConditions != null) yield return HandleWaitConditions();
             //    if (Mediator == null) yield break;
@@ -1026,7 +1075,12 @@ namespace TMPEffects.Components
 
                 if (block)
                 {
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (shouldWait && waitAmount > 0)
+                    {
+                        RaiseWaitStartedEvent(waitAmount);
+                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        RaiseWaitEndedEvent();
+                    }
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1048,7 +1102,12 @@ namespace TMPEffects.Components
 
                 if (block)
                 {
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (shouldWait && waitAmount > 0)
+                    {
+                        RaiseWaitStartedEvent(waitAmount);
+                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        RaiseWaitEndedEvent();
+                    }
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1091,6 +1150,8 @@ namespace TMPEffects.Components
         internal event VoidHandler OnFinishWriterPreview;
         internal event VoidHandler OnStartWriterPreview;
         internal event VoidHandler OnStopWriterPreview;
+        internal event VoidHandler OnWaitStartedPreview;
+        internal event VoidHandler OnWaitEndedPreview;
         internal event ResetHandler OnResetComponent;
 
 
