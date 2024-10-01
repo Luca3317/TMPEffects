@@ -113,8 +113,9 @@ namespace TMPEffects.Components
         public UnityEvent<TMPWriter> OnStopWriter;
         /// <summary>
         /// Raised when the TMPWriter starts waiting.
+        /// The float parameter indicates the amount of time the TMPWriter will wait, in seconds.
         /// </summary>
-        public UnityEvent<TMPWriter> OnWaitStarted;
+        public UnityEvent<TMPWriter, float> OnWaitStarted;
         /// <summary>
         /// Raised when the TMPWriter ends waiting.
         /// </summary>
@@ -666,17 +667,17 @@ namespace TMPEffects.Components
             OnStopWriter?.Invoke(this);
         }
 
-        private void RaiseWaitStartedEvent()
+        private void RaiseWaitStartedEvent(float waitAmount)
         {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnWaitStarted?.Invoke(this);
+                OnWaitStarted?.Invoke(this, waitAmount);
                 return;
             }
 #endif
 
-            OnWaitStarted?.Invoke(this);
+            OnWaitStarted?.Invoke(this, waitAmount);
         }
 
         private void RaiseWaitEndedEvent()
@@ -760,7 +761,7 @@ namespace TMPEffects.Components
                 prevTime = useScaledTime ? Time.time : Time.unscaledTime;
                 if (shouldWait && waitAmount > 0)
                 {
-                    RaiseWaitStartedEvent();
+                    RaiseWaitStartedEvent(waitAmount);
                     yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
                     RaiseWaitEndedEvent();
                 }
@@ -794,7 +795,7 @@ namespace TMPEffects.Components
                     FixTimePre(ref waitAmount);
                     if (shouldWait && waitAmount > 0)
                     {
-                        RaiseWaitStartedEvent();
+                        RaiseWaitStartedEvent(waitAmount);
                         yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
@@ -848,8 +849,12 @@ namespace TMPEffects.Components
             //    invokable.Trigger();
 
             //    FixTimePre(ref waitAmount);
-            //    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-
+            //    if (shouldWait && waitAmount > 0)
+            //    {
+            //        RaiseWaitStartedEvent(waitAmount);
+            //        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+            //        RaiseWaitEndedEvent();
+            //    }
             //    if (Mediator == null) yield break;
             //    if (continueConditions != null) yield return HandleWaitConditions();
             //    if (Mediator == null) yield break;
@@ -1070,7 +1075,12 @@ namespace TMPEffects.Components
 
                 if (block)
                 {
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (shouldWait && waitAmount > 0)
+                    {
+                        RaiseWaitStartedEvent(waitAmount);
+                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        RaiseWaitEndedEvent();
+                    }
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1092,7 +1102,12 @@ namespace TMPEffects.Components
 
                 if (block)
                 {
-                    if (shouldWait) yield return new WaitForSeconds(waitAmount);
+                    if (shouldWait && waitAmount > 0)
+                    {
+                        RaiseWaitStartedEvent(waitAmount);
+                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        RaiseWaitEndedEvent();
+                    }
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
