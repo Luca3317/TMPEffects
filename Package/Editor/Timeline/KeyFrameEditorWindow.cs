@@ -366,11 +366,11 @@ namespace TMPEffects.Editor.Timeline
                 {
                     EditorGUILayout.EndHorizontal();
                     if (!modifier.BL_Color.HasValue)
-                        modifier.BL_Color = Color.white;
+                        modifier.BL_Color.Value = Color.white;
 
                     Color c = modifier.BL_Color.Value;
 
-                    modifier.BL_Color = EditorGUILayout.ColorField("Color", c);
+                    modifier.BL_Color.Value = EditorGUILayout.ColorField("Color", c);
                 }
                 else
                 {
@@ -390,11 +390,11 @@ namespace TMPEffects.Editor.Timeline
                 {
                     EditorGUILayout.EndHorizontal();
                     if (!modifier.TL_Color.HasValue)
-                        modifier.TL_Color = Color.white;
+                        modifier.TL_Color.Value = Color.white;
 
                     Color c = modifier.TL_Color.Value;
 
-                    modifier.TL_Color = EditorGUILayout.ColorField("Color", c);
+                    modifier.TL_Color.Value = EditorGUILayout.ColorField("Color", c);
                 }
                 else
                 {
@@ -414,11 +414,11 @@ namespace TMPEffects.Editor.Timeline
                 {
                     EditorGUILayout.EndHorizontal();
                     if (!modifier.TR_Color.HasValue)
-                        modifier.TR_Color = Color.white;
+                        modifier.TR_Color.Value = Color.white;
 
                     Color c = modifier.TR_Color.Value;
 
-                    modifier.TR_Color = EditorGUILayout.ColorField("Color", c);
+                    modifier.TR_Color.Value = EditorGUILayout.ColorField("Color", c);
                 }
                 else
                 {
@@ -438,11 +438,11 @@ namespace TMPEffects.Editor.Timeline
                 {
                     EditorGUILayout.EndHorizontal();
                     if (!modifier.BR_Color.HasValue)
-                        modifier.BR_Color = Color.white;
+                        modifier.BR_Color.Value = Color.white;
 
                     Color c = modifier.BR_Color.Value;
 
-                    modifier.BR_Color = EditorGUILayout.ColorField("Color", c);
+                    modifier.BR_Color.Value = EditorGUILayout.ColorField("Color", c);
                 }
                 else
                 {
