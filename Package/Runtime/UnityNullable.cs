@@ -37,6 +37,18 @@ public class UnityNullable<T> : IEquatable<UnityNullable<T>>
     [SerializeField] private T value;
     [SerializeField] private bool hasValue;
 
+    public UnityNullable()
+    {
+        value = default;
+        hasValue = false;
+    }
+    
+    public UnityNullable(T value)
+    {
+        this.value = value;
+        hasValue = true;
+    }
+    
     public bool Equals(UnityNullable<T> other)
     {
         if (other == null) return false;

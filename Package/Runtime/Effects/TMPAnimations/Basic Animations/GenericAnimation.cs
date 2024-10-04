@@ -14,6 +14,7 @@ using UnityEngine.Serialization;
     menuName = "TMPEffects/Animations/Basic Animations/Generic Animation")]
 public partial class GenericAnimation : TMPAnimation
 {
+    // Serailize Reference to be able to cast managedReferenceValue back to AnimationStep in Generator
     [SerializeReference] private List<AnimationStep> animationSteps = new List<AnimationStep>()
     {
         new AnimationStep()
@@ -31,7 +32,7 @@ public partial class GenericAnimation : TMPAnimation
         float timeValue =
             data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 
-        TMPMeshModifiers accModifier = new TMPMeshModifiers();
+        TMPMeshModifiers accModifier = new TMPMeshModifiers(); 
 
         // TODO Probably should use an IntervalTree or smth for this
         int count = 0;
@@ -39,6 +40,7 @@ public partial class GenericAnimation : TMPAnimation
                  animationSteps) // TODO No longer using the sorted version (to respect order for overrides); remove it
         {
             if (step == null) continue;
+            if (!step.animate) continue;
             if (step.startTime > timeValue) continue;
             if (step.EndTime < timeValue) continue;
 
@@ -78,6 +80,7 @@ public partial class GenericAnimation : TMPAnimation
     public class AnimationStep
     {
         public string name;
+        public bool animate = true;
         
         public AnimationCurve entryCurve;
         public float entryDuration;

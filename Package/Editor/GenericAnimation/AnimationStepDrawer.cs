@@ -38,9 +38,6 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (property.managedReferenceValue == null)
-            property.managedReferenceValue = new GenericAnimation.AnimationStep();
-        
         Init(property);
 
         EditorGUI.BeginProperty(position, label, property);
@@ -95,7 +92,11 @@ public class AnimationStepDrawer : PropertyDrawer
         rect.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(rect, duration);
         rect.y += EditorGUIUtility.singleLineHeight;
-
+        
+        float start = startTime.floatValue, end = start + duration.floatValue;
+        startTime.floatValue = start;
+        duration.floatValue = end - start;
+        
         EditorGUI.PropertyField(rect, useWave);
         rect.y += EditorGUIUtility.singleLineHeight;
 
@@ -122,9 +123,6 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        if (property.managedReferenceValue == null)
-            property.managedReferenceValue = new GenericAnimation.AnimationStep();
-        
         Init(property);
         float totalHeight = EditorGUIUtility.singleLineHeight ; // foldout
         if (!property.isExpanded) return totalHeight;
