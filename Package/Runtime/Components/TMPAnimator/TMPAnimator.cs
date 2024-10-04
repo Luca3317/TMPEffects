@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -42,6 +43,10 @@ namespace TMPEffects.Components
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
     {
+        // TODO Quick solution for testing
+        // Should definitely return a readonly context (which should probably be cached by this class as well)
+        public IAnimatorContext AnimatorContext => context;
+        
         /// <summary>
         /// Whether the text is currently being animated.<br/>
         /// If <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>, this will always evaluate to true.
@@ -448,19 +453,21 @@ namespace TMPEffects.Components
 
         /// <summary>
         /// Reset the time of the animator.
+        /// <param name="time">The time value to set the animator to. 0 by default, must be positive.</param>
         /// </summary>
-        public void ResetTime()
+        public void ResetTime(float time = 0f)
         {
+            if (time < 0) throw new System.ArgumentOutOfRangeException(nameof(time));
             if (Mediator == null) return;
 
-            context.passed = 0f;
+            context.passed = time;
             for (int i = 0; i < stateTimes.Count; i++)
             {
-                stateTimes[i] = 0f;
+                stateTimes[i] = time;
             }
             for (int i = 0; i < visibleTimes.Count; i++)
             {
-                visibleTimes[i] = 0f;
+                visibleTimes[i] = time;
             }
 
 #if UNITY_EDITOR
@@ -1446,7 +1453,7 @@ namespace TMPEffects.Components
 
         internal void StartPreview()
         {
-            if (Mediator == null) return;
+            if (Mediator == null || preview) return;
 
             previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond);
 
