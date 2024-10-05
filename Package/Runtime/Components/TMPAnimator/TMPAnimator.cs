@@ -1453,10 +1453,13 @@ namespace TMPEffects.Components
 
         internal void StartPreview()
         {
-            if (Mediator == null || preview) return;
+            if (Mediator == null) return;
 
-            previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond);
-
+            if (!preview || previewUpdater?.MaxUpdatesPerSecond != previewUpdatesPerSecond)
+            {
+                previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond);
+            }
+            
             preview = true;
             EditorApplication.update -= UpdatePreview;
             EditorApplication.update += UpdatePreview;

@@ -21,6 +21,8 @@ public class AnimationStepDrawer : PropertyDrawer
     private SerializedProperty waveOffsetType;
     private SerializedProperty useWave;
 
+    private Color backgroundColor;
+
     private void Init(SerializedProperty property)
     {
         entryCurve = property.FindPropertyRelative("entryCurve");
@@ -35,6 +37,9 @@ public class AnimationStepDrawer : PropertyDrawer
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
+        backgroundColor = EditorGUIUtility.isProSkin
+            ? new Color32(56, 56, 56, 255)
+            : new Color32(194, 194, 194, 255);
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -54,32 +59,6 @@ public class AnimationStepDrawer : PropertyDrawer
         EditorGUI.PropertyField(rect, property.FindPropertyRelative("name"));
         rect.y += EditorGUIUtility.singleLineHeight * 2f;
 
-        entryCurve.isExpanded = EditorGUI.Foldout(rect, entryCurve.isExpanded, "Entry");
-        rect.y += EditorGUIUtility.singleLineHeight;
-
-        if (entryCurve.isExpanded)
-        {
-            EditorGUI.indentLevel++;
-            EditorGUI.PropertyField(rect, entryDuration);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, entryCurve);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.indentLevel--;
-        }
-
-        exitCurve.isExpanded = EditorGUI.Foldout(rect, exitCurve.isExpanded, "Exit");
-        rect.y += EditorGUIUtility.singleLineHeight;
-
-        if (exitCurve.isExpanded)
-        {
-            EditorGUI.indentLevel++;
-            EditorGUI.PropertyField(rect, exitDuration);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, exitCurve);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.indentLevel--;
-        }
-
         EditorGUI.PropertyField(rect, loops);
         rect.y += EditorGUIUtility.singleLineHeight;
 
@@ -93,11 +72,40 @@ public class AnimationStepDrawer : PropertyDrawer
         rect.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(rect, duration);
         rect.y += EditorGUIUtility.singleLineHeight;
-        
+        entryCurve.isExpanded = EditorGUI.Foldout(rect, entryCurve.isExpanded, "Entry");
+        rect.y += EditorGUIUtility.singleLineHeight;
+
+        if (entryCurve.isExpanded)
+        {
+            EditorGUI.indentLevel++;
+            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
+            EditorGUI.DrawRect(bgRect, backgroundColor);
+            EditorGUI.PropertyField(rect, entryDuration);
+            rect.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(rect, entryCurve);
+            rect.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.indentLevel--;
+        }
+
+        exitCurve.isExpanded = EditorGUI.Foldout(rect, exitCurve.isExpanded, "Exit");
+        rect.y += EditorGUIUtility.singleLineHeight;
+
+        if (exitCurve.isExpanded)
+        {
+            EditorGUI.indentLevel++;
+            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
+            EditorGUI.DrawRect(bgRect, backgroundColor);
+            EditorGUI.PropertyField(rect, exitDuration);
+            rect.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(rect, exitCurve);
+            rect.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.indentLevel--;
+        }
+
         float start = startTime.floatValue, end = start + duration.floatValue;
         startTime.floatValue = start;
         duration.floatValue = end - start;
-        
+
         EditorGUI.PropertyField(rect, useWave);
         rect.y += EditorGUIUtility.singleLineHeight;
 
@@ -105,6 +113,13 @@ public class AnimationStepDrawer : PropertyDrawer
         {
             EditorGUI.PropertyField(rect, waveOffsetType);
             rect.y += EditorGUIUtility.singleLineHeight;
+            
+            if (wave.isExpanded)
+            {
+                var bgRect = new Rect(rect.x, rect.y + EditorGUIUtility.singleLineHeight, rect.width,
+                    EditorGUI.GetPropertyHeight(wave, true) - EditorGUIUtility.singleLineHeight);
+                EditorGUI.DrawRect(bgRect, backgroundColor);
+            }
             EditorGUI.PropertyField(rect, wave, true);
             rect.y += EditorGUI.GetPropertyHeight(wave, true);
         }
@@ -125,7 +140,7 @@ public class AnimationStepDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         Init(property);
-        float totalHeight = EditorGUIUtility.singleLineHeight ; // foldout
+        float totalHeight = EditorGUIUtility.singleLineHeight; // foldout
         if (!property.isExpanded) return totalHeight;
 
         totalHeight += EditorGUIUtility.singleLineHeight * 2f; // For the "name" property
@@ -158,7 +173,7 @@ public class AnimationStepDrawer : PropertyDrawer
         }
 
         totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
-        
+
         return totalHeight;
     }
 }
