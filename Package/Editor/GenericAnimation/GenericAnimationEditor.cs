@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TMPEffects.CharacterData;
 using TMPEffects.Editor;
 using TMPEffects.Extensions;
+using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -254,15 +257,21 @@ public static class GenericAnimationExporter
             throw new System.InvalidOperationException(
                 "The passed in serializedObject's target object is not a GenericAnimation");
 
+        var steps = GetAnimationSteps(serializedObject.FindProperty("animationSteps"));
+        var repeats = serializedObject.FindProperty("repeat").boolValue;
+        var duration = serializedObject.FindProperty("duration").floatValue;
+        GenerateScriptFromModifier(name, exportPath, repeats, duration, steps);
+    }
 
+    static List<GenericAnimation.AnimationStep> GetAnimationSteps(SerializedProperty animationStepsProp)
+    {
         List<GenericAnimation.AnimationStep> steps = new List<GenericAnimation.AnimationStep>();
-        for (int i = 0; i < serializedObject.FindProperty("animationSteps").arraySize; i++)
+        for (int i = 0; i < animationStepsProp.arraySize; i++)
         {
-            var stepProp = serializedObject.FindProperty("animationSteps").GetArrayElementAtIndex(i);
+            var stepProp = animationStepsProp.GetArrayElementAtIndex(i);
             steps.Add(GetAnimationStep(stepProp));
         }
-
-        GenerateScriptFromModifier(name, exportPath, steps);
+        return steps;
     }
 
     static GenericAnimation.AnimationStep GetAnimationStep(SerializedProperty prop)
@@ -272,9 +281,57 @@ public static class GenericAnimationExporter
         return animationStep;
     }
 
-    static bool GenerateScriptFromModifier(string className, string fileNamePath,
-        List<GenericAnimation.AnimationStep> steps)
+    private class OrderedHashSet<T> : KeyedCollection<T, T>
     {
+        protected override T GetKeyForItem(T item)
+        {
+            return item;
+        }
+    }
+
+    static OrderedHashSet<string> GetAnimationStepNames(List<GenericAnimation.AnimationStep> steps)
+    {
+        OrderedHashSet<string> names = new OrderedHashSet<string>();
+
+        foreach (var step in steps)
+        {
+            string nameToAdd;
+            if (string.IsNullOrWhiteSpace(step.name))
+            {
+                nameToAdd = "Element_" + names.Count;
+            }
+            else nameToAdd = step.name;
+
+            if (names.Contains(nameToAdd))
+            { 
+                nameToAdd += "_";
+
+                int counter = 0;
+                while (names.Contains(nameToAdd + counter.ToString()))
+                {
+                    counter++;
+                }
+
+                nameToAdd = nameToAdd + counter.ToString();
+            }
+
+            nameToAdd = ReplaceWhitespaceWithUnderscore(nameToAdd);
+            names.Add(nameToAdd);
+        }
+
+        return names;
+    }
+
+    static string ReplaceWhitespaceWithUnderscore(string s)
+    {
+        return Regex.Replace(s, @"\s+", "_");
+    }
+
+    static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration, List<GenericAnimation.AnimationStep> steps)
+    {
+        OrderedHashSet<string> names = GetAnimationStepNames(steps);
+        className = ReplaceWhitespaceWithUnderscore(className);
+
         string code = string.Format(@"using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.TMPAnimations;
@@ -284,70 +341,80 @@ using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using UnityEngine;
 
-[AutoParameters]
-[CreateAssetMenu(fileName=""new " + className + @""", menuName=""TMPEffects/Animations/Exported/" + className + @""")]
-public partial class " + className + @" : TMPAnimation
+namespace TMPEffects.TMPAnimations.GenericExports
 {{
-    [AutoParameter(""repeat"", ""rp""), SerializeField]
-    private bool repeat;
-
-    [AutoParameter(""duration"", ""dur""), SerializeField]
-    private float duration;
-
-    {0}
-
-    private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
+    // This class was generated off of a <see cref=""TMPEffects.TMPAnimations.GenericAnimation""/>
+    [AutoParameters]
+    [CreateAssetMenu(fileName=""new " + className + @""", menuName=""TMPEffects/Animations/Exported/" + className +
+                                    @""")]
+    public partial class " + className + @" : TMPAnimation
     {{
-        {1}
-    }}
+        [AutoParameter(""repeat"", ""rp""), SerializeField]
+        private bool repeat = " + repeats.ToString().ToLower() + @";
 
-    {2}
-}}", GenerateStepParameters(steps), GenerateAnimateCode(steps), GenerateStepMethods(steps));
+        [AutoParameter(""duration"", ""dur""), SerializeField]
+        private float duration = " + GetFloatString(duration) + @";
+
+{0}
+        private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
+        {{
+{1}
+        }}
+
+{2}
+    }}
+}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names), GenerateStepMethods(steps, names));
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
-    private static string GenerateStepParameters(List<GenericAnimation.AnimationStep> steps)
+    private static string GenerateStepParameters(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
     {
         string code = "";
 
-        foreach (var step in steps)
-        {
-            code += $@"
-    [SerializeField] private GenericAnimation.AnimationStep Step_{step.name} = new GenericAnimation.AnimationStep()
-    {{
-        name = ""{step.name}"",
-        entryDuration = {GetFloatString(step.entryDuration)},
-        entryCurve = {GetAnimCurveString(step.entryCurve)},
-        exitDuration = {GetFloatString(step.exitDuration)},
-        exitCurve = {GetAnimCurveString(step.exitCurve)},
-        loops = {step.loops.ToString().ToLower()},
-        startTime = {GetFloatString(step.startTime)},
-        duration = {GetFloatString(step.duration)},
-        useWave = {step.useWave.ToString().ToLower()},
-        wave = new AnimationUtility.Wave( 
-            {GetAnimCurveString(step.wave.UpwardCurve)}, 
-            {GetAnimCurveString(step.wave.DownwardCurve)}, 
-            {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
-            {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
-        modifiers = new TMPMeshModifiers()
+        for (int i = 0; i < steps.Count; i++)
+        { 
+            var step = steps[i];
+            var name = names[i];
+            
+             code +=
+                $@"
+        [SerializeField] private GenericAnimation.AnimationStep Step_{name} = new GenericAnimation.AnimationStep()
         {{
-            PositionDelta = {GetVector3String(step.modifiers.PositionDelta)},
-            RotationDelta = {GetQuaternionString(step.modifiers.RotationDelta)}, 
-            BL_Delta = {GetVector3String(step.modifiers.BL_Delta)},
-            TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
-            TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
-            BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
-            {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
-            {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
-            {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
-            {(step.modifiers.BR_Color.HasValue ? "BR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BR_Color.Value) + ")," : "")}
-        }}
-    }};";
+            name = ""{step.name}"",
+            entryDuration = {GetFloatString(step.entryDuration)},
+            entryCurve = {GetAnimCurveString(step.entryCurve)},
+            exitDuration = {GetFloatString(step.exitDuration)},
+            exitCurve = {GetAnimCurveString(step.exitCurve)},
+            loops = {step.loops.ToString().ToLower()},
+            startTime = {GetFloatString(step.startTime)},
+            duration = {GetFloatString(step.duration)},
+            useWave = {step.useWave.ToString().ToLower()},
+            wave = new AnimationUtility.Wave( 
+                {GetAnimCurveString(step.wave.UpwardCurve)}, 
+                {GetAnimCurveString(step.wave.DownwardCurve)}, 
+                {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
+                {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
+            modifiers = new TMPMeshModifiers()
+            {{
+                PositionDelta = {GetVector3String(step.modifiers.PositionDelta)},
+                RotationDelta = {GetQuaternionString(step.modifiers.RotationDelta)}, 
+                BL_Delta = {GetVector3String(step.modifiers.BL_Delta)},
+                TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
+                TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
+                BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
+                {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
+                {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
+                {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
+                {(step.modifiers.BR_Color.HasValue ? "BR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BR_Color.Value) + ")," : "")}
+            }}
+        }};";
             code = string.Join(Environment.NewLine, code
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Where(line => !string.IsNullOrWhiteSpace(line)));
-        }
 
+            code += "\n";
+        }
+        
         return code;
     }
 
@@ -357,10 +424,12 @@ public partial class " + className + @" : TMPAnimation
         for (int i = 0; i < curve.keys.Length; i++)
         {
             var keyframe = curve.keys[i];
-            str += $" new Keyframe({GetFloatString(keyframe.time)}, {GetFloatString(keyframe.value)}, {GetFloatString(keyframe.inTangent)}, {GetFloatString(keyframe.outTangent)})";
+            str +=
+                $" new Keyframe({GetFloatString(keyframe.time)}, {GetFloatString(keyframe.value)}, {GetFloatString(keyframe.inTangent)}, {GetFloatString(keyframe.outTangent)})";
             if (i == curve.keys.Length - 1) break;
             str += ",";
         }
+
         str += ")";
         return str;
     }
@@ -369,36 +438,36 @@ public partial class " + className + @" : TMPAnimation
     {
         return vcalue.ToString("0.######", CultureInfo.InvariantCulture) + "f";
     }
-    
+
     private static string GetVector3String(Vector3 vector)
     {
         return
             $"new Vector3({GetFloatString(vector.x)}, {GetFloatString(vector.y)}, {GetFloatString(vector.z)})";
     }
-    
+
     private static string GetQuaternionString(Quaternion quat)
     {
         return
             $"new Quaternion({GetFloatString(quat.x)}, {GetFloatString(quat.y)}, {GetFloatString(quat.z)}, {GetFloatString(quat.w)})";
     }
-    
+
     private static string GetColorString(Color32 color)
     {
         return
             $"new Color32({color.r}, {color.g}, {color.b}, {color.a})";
     }
 
-    static string GenerateAnimateCode(List<GenericAnimation.AnimationStep> steps)
+    static string GenerateAnimateCode(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
     {
-        string code = @"
-            TMPMeshModifiers result = new TMPMeshModifiers();
+        string code = @"            TMPMeshModifiers result = new TMPMeshModifiers();
             TMPMeshModifiers tmp;
             float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;";
 
-        foreach (var step in steps)
+        for (int i = 0; i < steps.Count; i++)
         {
+            var name = names[i];
             code += $@"
-            tmp = Animate_{step.name}(timeValue, Step_{step.name}, cData, data, context);
+            tmp = Animate_{name}(timeValue, Step_{name}, cData, data, context);
             if (tmp != null) result += tmp;
 ";
         }
@@ -410,14 +479,15 @@ public partial class " + className + @" : TMPAnimation
         return code;
     }
 
-    static string GenerateStepMethods(List<GenericAnimation.AnimationStep> steps)
+    static string GenerateStepMethods(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
     {
         string code = "";
 
-        foreach (var step in steps)
+        for (int i = 0; i < steps.Count; i++)
         {
+            var name = names[i];
             code += @$"
-        private TMPMeshModifiers Animate_{step.name}(float timeValue, GenericAnimation.AnimationStep step, CharData cData, AutoParametersData data, IAnimationContext context)
+        private TMPMeshModifiers Animate_{name}(float timeValue, GenericAnimation.AnimationStep step, CharData cData, AutoParametersData data, IAnimationContext context)
         {{
             if (step.startTime > timeValue) return null;
             if (step.EndTime < timeValue) return null;
