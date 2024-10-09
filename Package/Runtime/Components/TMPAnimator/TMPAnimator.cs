@@ -56,7 +56,7 @@ namespace TMPEffects.Components
 #else
         public bool IsAnimating => isActiveAndEnabled && (updateFrom == UpdateFrom.Script || isAnimating);
 #endif
-
+        
         /// <summary>
         /// The database used to parse animation tags.
         /// </summary>
@@ -797,6 +797,10 @@ namespace TMPEffects.Components
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
+
+        public delegate void OnCharacterAnimatedEventHandler(CharData cData);
+        public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
+        
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true, bool forced = false)
         {
             if (!cData.info.isVisible || (!forced && !AnimateCharacter(index, cData))) return;
@@ -804,7 +808,14 @@ namespace TMPEffects.Components
             context.deltaTime = deltaTime;
 
             UpdateCharacterAnimation_Impl(index);
-
+            
+            // TODO Some post animation event that allows listeners to modify the chardata before its applies
+            // For performance reason probably want this in UpdateAnimations... but actually, that would
+            // lead to issues with cases where only one character is updated eg when visbility changes
+            OnCharacterAnimated?.Invoke(cData);
+            if (index == 0) Debug.LogWarning("Post pos " +cData.Position);
+            
+            
             Mediator.ApplyMesh(cData);
 
             if (updateVertices && Mediator.Text.mesh != null)

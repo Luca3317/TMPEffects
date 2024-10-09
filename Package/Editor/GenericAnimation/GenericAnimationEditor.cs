@@ -429,12 +429,15 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
                 TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
                 BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
-                {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
-                {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
-                {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
-                {(step.modifiers.BR_Color.HasValue ? "BR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BR_Color.Value) + ")," : "")}
+
             }}
         }};";
+
+            // TODO Redo with ColorOverrides
+            // {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
+            // {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
+            // {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
+            // {(step.modifiers.BR_Color.HasValue ? "BR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BR_Color.Value) + ")," : "")}
             code = string.Join(Environment.NewLine, code
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Where(line => !string.IsNullOrWhiteSpace(line)));

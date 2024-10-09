@@ -15,6 +15,140 @@ namespace TMPEffects.CharacterData
     [Serializable]
     public class TMPMeshModifiers
     {
+        [System.Serializable]
+        public class ColorOverride /* : UnityNullable<Color32>*/
+        {
+            public OverrideMode Override;
+
+            public Color32 Color;
+
+            public bool OverrideAlpha => Override.HasFlag(OverrideMode.Alpha);
+            public bool OverrideColor => Override.HasFlag(OverrideMode.Color);
+
+            public ColorOverride(ColorOverride original)
+            {
+                Color = original.Color;
+                Override = original.Override;
+            }
+
+            public ColorOverride()
+            {
+            }
+
+            [Flags]
+            public enum OverrideMode : byte
+            {
+                None = 0,
+                Color = 1,
+                Alpha = 1 << 1
+            }
+
+            public static ColorOverride LerpUnclamped(Color32 start, ColorOverride end, float t)
+            {
+                if (t >= 1)
+                {
+                    return new ColorOverride(end);
+                }
+
+                if (t <= 0)
+                {
+                    return new ColorOverride()
+                    {
+                        Color = start,
+                        Override = end.Override
+                    };
+                }
+
+                ColorOverride result = new ColorOverride();
+                result.Color = Color32.LerpUnclamped(start, end.Color, t);
+                result.Override = end.Override;
+                return result;
+            }
+
+            public static ColorOverride LerpUnclamped(ColorOverride start, ColorOverride end, float t)
+            {
+                ColorOverride result = new ColorOverride();
+
+                byte r = 0, g = 0, b = 0, a = 0;
+
+                Color32 color;
+                if (t >= 1)
+                {
+                    if (end.OverrideAlpha)
+                        result.Override |= OverrideMode.Alpha;
+                    a = end.Color.a;
+
+                    if (end.OverrideColor)
+                        result.Override |= OverrideMode.Color;
+                    r = end.Color.r;
+                    g = end.Color.g;
+                    b = end.Color.b;
+                    color = new Color32(r, g, b, a);
+                }
+                else if (t <= 0)
+                {
+                    if (start.OverrideAlpha)
+                        result.Override |= OverrideMode.Alpha;
+                    a = start.Color.a;
+
+                    if (start.OverrideColor)
+                        result.Override |= OverrideMode.Color;
+                    r = start.Color.r;
+                    g = start.Color.g;
+                    b = start.Color.b;
+                    color = new Color32(r, g, b, a);
+                }
+                else
+                {
+                    // TODO When should result.overridealpha flip from start.oa to end.oa
+                    color = Color32.Lerp(start.Color, end.Color, t);
+
+                    if (start.OverrideAlpha || end.OverrideAlpha)
+                        result.Override |= OverrideMode.Alpha;
+                    if (start.OverrideColor || end.OverrideColor)
+                        result.Override |= OverrideMode.Color;
+                }
+
+                result.Color = color;
+                return result;
+            }
+
+            public static ColorOverride operator +(ColorOverride lhs, ColorOverride rhs)
+            {
+                ColorOverride result = new ColorOverride();
+
+                byte r = 0, g = 0, b = 0, a = 0;
+                if (rhs.OverrideAlpha)
+                {
+                    result.Override |= OverrideMode.Alpha;
+                    a = rhs.Color.a;
+                }
+                else if (lhs.OverrideAlpha)
+                {
+                    result.Override |= OverrideMode.Alpha;
+                    a = lhs.Color.a;
+                }
+
+                if (rhs.OverrideColor)
+                {
+                    result.Override |= OverrideMode.Color;
+                    r = rhs.Color.r;
+                    g = rhs.Color.g;
+                    b = rhs.Color.b;
+                }
+                else if (lhs.OverrideColor)
+                {
+                    result.Override |= OverrideMode.Color;
+                    r = lhs.Color.r;
+                    g = lhs.Color.g;
+                    b = lhs.Color.b;
+                }
+
+                result.Color = new Color32(r, g, b, a);
+                return result;
+            }
+        }
+
         public Vector3 PositionDelta
         {
             get => positionDelta;
@@ -147,11 +281,11 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public UnityNullable<Color32> BL_Color
+        public ColorOverride BL_Color
         {
             get
             {
-                bl_Color ??= new UnityNullable<Color32>();
+                bl_Color ??= new ColorOverride();
                 return bl_Color;
             }
             set
@@ -162,11 +296,11 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public UnityNullable<Color32> TL_Color
+        public ColorOverride TL_Color
         {
             get
             {
-                tl_Color ??= new UnityNullable<Color32>();
+                tl_Color ??= new ColorOverride();
                 return tl_Color;
             }
             set
@@ -177,11 +311,11 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public UnityNullable<Color32> TR_Color
+        public ColorOverride TR_Color
         {
             get
             {
-                tr_Color ??= new UnityNullable<Color32>();
+                tr_Color ??= new ColorOverride();
                 return tr_Color;
             }
             set
@@ -192,11 +326,11 @@ namespace TMPEffects.CharacterData
             }
         }
 
-        public UnityNullable<Color32> BR_Color
+        public ColorOverride BR_Color
         {
             get
             {
-                br_Color ??= new UnityNullable<Color32>();
+                br_Color ??= new ColorOverride();
                 return br_Color;
             }
             set
@@ -267,10 +401,10 @@ namespace TMPEffects.CharacterData
         [SerializeField] private Vector3 br_Delta;
         [SerializeField] private bool br_DeltaIsRaw = false;
 
-        [SerializeField] public UnityNullable<Color32> bl_Color;
-        [SerializeField] private UnityNullable<Color32> tl_Color;
-        [SerializeField] private UnityNullable<Color32> tr_Color;
-        [SerializeField] private UnityNullable<Color32> br_Color;
+        [SerializeField] private ColorOverride bl_Color;
+        [SerializeField] private ColorOverride tl_Color;
+        [SerializeField] private ColorOverride tr_Color;
+        [SerializeField] private ColorOverride br_Color;
 
         [SerializeField] private Vector3 bl_UV0;
         [SerializeField] private Vector3 tl_UV0;
@@ -330,11 +464,10 @@ namespace TMPEffects.CharacterData
             result.TR_Delta = lhs.TR_Delta + rhs.TR_Delta;
             result.BR_Delta = lhs.BR_Delta + rhs.BR_Delta;
 
-            result.BL_Color =
-                rhs.BL_Color.HasValue ? rhs.BL_Color : lhs.BL_Color; // Use rhs color if set, otherwise use lhs
-            result.TL_Color = rhs.TL_Color.HasValue ? rhs.TL_Color : lhs.TL_Color;
-            result.TR_Color = rhs.TR_Color.HasValue ? rhs.TR_Color : lhs.TR_Color;
-            result.BR_Color = rhs.BR_Color.HasValue ? rhs.BR_Color : lhs.BR_Color;
+            result.BL_Color = lhs.BL_Color + rhs.BL_Color; // TODO does thiswork
+            result.TL_Color = lhs.TL_Color + rhs.TL_Color;
+            result.TR_Color = lhs.TR_Color + rhs.TR_Color;
+            result.BR_Color = lhs.BR_Color + rhs.BR_Color;
 
             result.BL_UV0 = lhs.BL_UV0 + rhs.BL_UV0;
             result.TL_UV0 = lhs.TL_UV0 + rhs.TL_UV0;
@@ -371,17 +504,17 @@ namespace TMPEffects.CharacterData
             if (modifiers.BR_Delta != Vector3.zero)
                 result.BR_Delta = modifiers.BR_Delta * t;
 
-            if (modifiers.BL_Color.HasValue)
-                result.BL_Color.Value = Color32.LerpUnclamped(cData.initialMesh.BL_Color, modifiers.BL_Color.Value, t);
+            if (modifiers.BL_Color.Override != ColorOverride.OverrideMode.None)
+                result.BL_Color = ColorOverride.LerpUnclamped(cData.initialMesh.BL_Color, modifiers.BL_Color, t);
 
-            if (modifiers.TL_Color.HasValue)
-                result.TL_Color.Value = Color32.LerpUnclamped(cData.initialMesh.TL_Color, modifiers.TL_Color.Value, t);
+            if (modifiers.TL_Color.Override != ColorOverride.OverrideMode.None)
+                result.TL_Color = ColorOverride.LerpUnclamped(cData.initialMesh.TL_Color, modifiers.TL_Color, t);
 
-            if (modifiers.TR_Color.HasValue)
-                result.TR_Color.Value = Color32.LerpUnclamped(cData.initialMesh.TR_Color, modifiers.TR_Color.Value, t);
+            if (modifiers.TR_Color.Override != ColorOverride.OverrideMode.None)
+                result.TR_Color = ColorOverride.LerpUnclamped(cData.initialMesh.TR_Color, modifiers.TR_Color, t);
 
-            if (modifiers.BR_Color.HasValue)
-                result.BR_Color.Value = Color32.LerpUnclamped(cData.initialMesh.BR_Color, modifiers.BR_Color.Value, t);
+            if (modifiers.BR_Color.Override != ColorOverride.OverrideMode.None)
+                result.BR_Color = ColorOverride.LerpUnclamped(cData.initialMesh.BR_Color, modifiers.BR_Color, t);
 
             if (modifiers.BL_UV0 != Vector3.zero)
                 result.BL_UV0 = modifiers.BL_UV0 * t;
@@ -394,7 +527,7 @@ namespace TMPEffects.CharacterData
 
             if (modifiers.BR_UV0 != Vector3.zero)
                 result.BR_UV0 = modifiers.BR_UV0 * t;
-            
+
             return result;
 
             // TMPMeshModifiers result = new TMPMeshModifiers();
@@ -464,28 +597,28 @@ namespace TMPEffects.CharacterData
                 modifiers.PositionDelta = AnimationUtility.InverseScaleVector(modifiers.PositionDelta, textCmp,
                     true, true, pointSize, fontSize);
             }
-            
+
             if (!modifiers.BL_DeltaIsRaw && modifiers.BL_Delta != Vector3.zero)
             {
                 modifiers.BL_DeltaIsRaw = true;
                 modifiers.BL_Delta = AnimationUtility.InverseScaleVector(modifiers.BL_Delta, textCmp,
                     true, true, pointSize, fontSize);
             }
-            
+
             if (!modifiers.TL_DeltaIsRaw && modifiers.TL_Delta != Vector3.zero)
             {
                 modifiers.TL_DeltaIsRaw = true;
                 modifiers.TL_Delta = AnimationUtility.InverseScaleVector(modifiers.TL_Delta, textCmp,
                     true, true, pointSize, fontSize);
             }
-            
+
             if (!modifiers.TR_DeltaIsRaw && modifiers.TR_Delta != Vector3.zero)
             {
                 modifiers.TR_DeltaIsRaw = true;
                 modifiers.TR_Delta = AnimationUtility.InverseScaleVector(modifiers.TR_Delta, textCmp,
                     true, true, pointSize, fontSize);
             }
-            
+
             if (!modifiers.BR_DeltaIsRaw && modifiers.BR_Delta != Vector3.zero)
             {
                 modifiers.BR_DeltaIsRaw = true;
@@ -496,12 +629,8 @@ namespace TMPEffects.CharacterData
 
         // TODO The applier (TMPMeshModifierApplier or so) should be reused within the actual animator
         // (/ in the chardatastate). Does this method still make sense then?
-        public void ApplyToCharData(CharData cData, IAnimationContext ctx, TMPMeshModifiers modifiers)
+        public void ApplyToCharData(CharData cData, TMPMeshModifiers modifiers)
         {
-            var textCmp = ctx.AnimatorContext.Animator.TextComponent;
-            var pointSize = cData.info.pointSize;
-            var fontSize = ctx.AnimatorContext.Animator.TextComponent.fontSize;
-
             if (modifiers.PositionDelta != Vector3.zero)
                 cData.SetPosition(cData.InitialPosition + modifiers.PositionDelta);
 
@@ -523,17 +652,84 @@ namespace TMPEffects.CharacterData
             if (modifiers.BR_Delta != Vector3.zero)
                 cData.SetVertex(3, cData.initialMesh.BR_Position + modifiers.BR_Delta);
 
-            if (modifiers.BL_Color.HasValue)
-                cData.mesh.SetColor(0, modifiers.BL_Color.Value);
 
-            if (modifiers.TL_Color.HasValue)
-                cData.mesh.SetColor(1, modifiers.TL_Color.Value);
+            if (modifiers.BL_Color.OverrideColor)
+                cData.mesh.SetColor(0, modifiers.BL_Color.Color, !modifiers.BL_Color.OverrideAlpha);
+            else if (modifiers.BL_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(0, modifiers.BL_Color.Color.a);
 
-            if (modifiers.TR_Color.HasValue)
-                cData.mesh.SetColor(2, modifiers.TR_Color.Value);
+            if (modifiers.TL_Color.OverrideColor)
+                cData.mesh.SetColor(1, modifiers.TL_Color.Color, !modifiers.TL_Color.OverrideAlpha);
+            else if (modifiers.TL_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(1, modifiers.TL_Color.Color.a);
 
-            if (modifiers.BR_Color.HasValue)
-                cData.mesh.SetColor(3, modifiers.BR_Color.Value);
+            if (modifiers.TR_Color.OverrideColor)
+                cData.mesh.SetColor(2, modifiers.TR_Color.Color, !modifiers.TR_Color.OverrideAlpha);
+            else if (modifiers.TR_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(2, modifiers.TR_Color.Color.a);
+
+            if (modifiers.BR_Color.OverrideColor)
+                cData.mesh.SetColor(3, modifiers.BR_Color.Color, !modifiers.BR_Color.OverrideAlpha);
+            else if (modifiers.BR_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(3, modifiers.TL_Color.Color.a);
+
+            if (modifiers.BL_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(0, modifiers.BL_UV0);
+
+            if (modifiers.TL_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(1, modifiers.TL_UV0);
+
+            if (modifiers.TR_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(2, modifiers.TR_UV0);
+
+            if (modifiers.BR_UV0 != Vector3.zero)
+                cData.mesh.SetUV0(3, modifiers.BR_UV0);
+        }
+
+        // TODO qucik test method to see if TMPMEshmodifiers works in concept
+        public void ApplyToCurrentCharData(CharData cData, TMPMeshModifiers modifiers)
+        {
+            if (modifiers.PositionDelta != Vector3.zero)
+                cData.SetPosition(cData.Position + modifiers.PositionDelta);
+
+            if (modifiers.RotationDelta != Quaternion.identity)
+                cData.SetRotation(cData.Rotation * modifiers.RotationDelta);
+
+            // TODO I want to be able to use simple V3 scale -- why didnt i originally? some shit with order of applying?
+            // if (step.Modifiers.ScaleDelta != Vector3.one)
+
+            if (modifiers.BL_Delta != Vector3.zero)
+                cData.AddVertexDelta(0, modifiers.BL_Delta);
+
+            if (modifiers.TL_Delta != Vector3.zero)
+                cData.AddVertexDelta(1, modifiers.TL_Delta);
+
+            if (modifiers.TR_Delta != Vector3.zero)
+                cData.AddVertexDelta(2, modifiers.TR_Delta);
+
+            if (modifiers.BR_Delta != Vector3.zero)
+                cData.AddVertexDelta(3, modifiers.BR_Delta);
+
+
+            if (modifiers.BL_Color.OverrideColor)
+                cData.mesh.SetColor(0, modifiers.BL_Color.Color, !modifiers.BL_Color.OverrideAlpha);
+            else if (modifiers.BL_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(0, modifiers.BL_Color.Color.a);
+
+            if (modifiers.TL_Color.OverrideColor)
+                cData.mesh.SetColor(1, modifiers.TL_Color.Color, !modifiers.TL_Color.OverrideAlpha);
+            else if (modifiers.TL_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(1, modifiers.TL_Color.Color.a);
+
+            if (modifiers.TR_Color.OverrideColor)
+                cData.mesh.SetColor(2, modifiers.TR_Color.Color, !modifiers.TR_Color.OverrideAlpha);
+            else if (modifiers.TR_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(2, modifiers.TR_Color.Color.a);
+
+            if (modifiers.BR_Color.OverrideColor)
+                cData.mesh.SetColor(3, modifiers.BR_Color.Color, !modifiers.BR_Color.OverrideAlpha);
+            else if (modifiers.BR_Color.OverrideAlpha)
+                cData.mesh.SetAlpha(3, modifiers.TL_Color.Color.a);
 
             if (modifiers.BL_UV0 != Vector3.zero)
                 cData.mesh.SetUV0(0, modifiers.BL_UV0);
@@ -596,17 +792,17 @@ namespace TMPEffects.CharacterData
             return prevResult.Value;
         }
 
-        // TODO same as above + need to have some default value for colors (=> not set); probably nullable
         public (Color32 BL, Color32 TL, Color32 TR, Color32 BR) CalculateVertexColors(CharData cData,
             TMPMeshModifiers modifiers)
         {
-            return
-            (
-                modifiers.BL_Color.HasValue ? modifiers.BL_Color.Value : cData.initialMesh.BL_Color,
-                modifiers.TL_Color.HasValue ? modifiers.TL_Color.Value : cData.initialMesh.TL_Color,
-                modifiers.TR_Color.HasValue ? modifiers.TR_Color.Value : cData.initialMesh.TR_Color,
-                modifiers.BR_Color.HasValue ? modifiers.BR_Color.Value : cData.initialMesh.BR_Color
-            );
+            throw new System.NotImplementedException();
+            // return
+            // (
+            //     modifiers.BL_Color.HasValue ? modifiers.BL_Color.Value : cData.initialMesh.BL_Color,
+            //     modifiers.TL_Color.HasValue ? modifiers.TL_Color.Value : cData.initialMesh.TL_Color,
+            //     modifiers.TR_Color.HasValue ? modifiers.TR_Color.Value : cData.initialMesh.TR_Color,
+            //     modifiers.BR_Color.HasValue ? modifiers.BR_Color.Value : cData.initialMesh.BR_Color
+            // );
         }
 
         // TODO same as above + need to have some default value for colors (=> not set); probably nullable

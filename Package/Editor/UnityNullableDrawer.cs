@@ -5,7 +5,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CustomPropertyDrawer(typeof(UnityNullable<>), true)]
+[CustomPropertyDrawer(typeof(UnityNullable<>), false)]
 public class UnityNullableDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

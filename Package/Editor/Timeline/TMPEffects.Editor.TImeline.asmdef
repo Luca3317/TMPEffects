@@ -6,7 +6,8 @@
         "GUID:2c6405daa630a0d46993e21d14b1fa30",
         "GUID:02f771204943f4a40949438e873e3eff",
         "GUID:f06555f75b070af458a003d92f9efb00",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:a86700a2afb0a6d4f8916928522caee6"
     ],
     "includePlatforms": [
         "Editor"
@@ -16,7 +17,15 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
+    "defineConstraints": [
+        "TIMELINE_INSTALLED"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.timeline",
+            "expression": "1.4.8",
+            "define": "TIMELINE_INSTALLED"
+        }
+    ],
     "noEngineReferences": false
 }

@@ -74,7 +74,7 @@ namespace TMPEffects.TMPAnimations
             }
 
             SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-            applier.ApplyToCharData(cData, context, accModifier);
+            applier.ApplyToCharData(cData, accModifier);
         }
 
         [Serializable]

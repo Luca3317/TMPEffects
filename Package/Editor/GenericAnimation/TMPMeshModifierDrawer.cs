@@ -42,6 +42,7 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             EditorGUI.Foldout(rect, property.FindPropertyRelative("positionDelta").isExpanded, "Character Deltas");
         rect.y += EditorGUIUtility.singleLineHeight;
         
+        
         var ctrlRect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight);
         var togglerect = new Rect(ctrlRect.x + EditorGUIUtility.labelWidth - 20, rect.y, ctrlRect.width, EditorGUIUtility.singleLineHeight);
         var labelRect = new Rect(togglerect.x - 45, togglerect.y, togglerect.width, EditorGUIUtility.singleLineHeight);
@@ -87,9 +88,6 @@ public class TMPMeshModifierDrawer : PropertyDrawer
 
         if (property.FindPropertyRelative("bl_Color").isExpanded)
         {
-            togglerect.y = rect.y;
-            labelRect.y = rect.y;
-            
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
             EditorGUI.DrawRect(bgRect, backgroundColor);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("bl_Color"));

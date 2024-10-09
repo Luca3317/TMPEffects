@@ -1,22 +1,20 @@
 {
-    "name": "TMPEffects.Editor",
+    "name": "TMPEffects.Timeline",
     "rootNamespace": "",
     "references": [
         "GUID:96c64e576ede81e46ad482a315c680f9",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:4bd7a8fb744c5fd43886f1e1d2e6bde3",
-        "GUID:bc50dcdb89ada6249b1b82bd70623a05",
-        "GUID:3af83a76aff21f94faea8408f8eb05d3"
+        "GUID:f06555f75b070af458a003d92f9efb00",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
-    "defineConstraints": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "TIMELINE_INSTALLED"
+    ],
     "versionDefines": [
         {
             "name": "com.unity.timeline",
