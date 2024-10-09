@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.TMPAnimations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +22,17 @@ namespace TMPEffects.CharacterData
             {
                 if (value == positionDelta) return;
                 positionDelta = value;
+                Dirty |= DirtyFlags.Position;
+            }
+        }
+
+        public bool PositionDeltaIsRaw
+        {
+            get => positionDeltaIsRaw;
+            set
+            {
+                if (value == positionDeltaIsRaw) return;
+                positionDeltaIsRaw = value;
                 Dirty |= DirtyFlags.Position;
             }
         }
@@ -57,6 +70,17 @@ namespace TMPEffects.CharacterData
             }
         }
 
+        public bool BL_DeltaIsRaw
+        {
+            get => bl_DeltaIsRaw;
+            set
+            {
+                if (value == bl_DeltaIsRaw) return;
+                bl_DeltaIsRaw = value;
+                Dirty |= DirtyFlags.Vertices;
+            }
+        }
+
         public Vector3 TL_Delta
         {
             get => tl_Delta;
@@ -64,6 +88,17 @@ namespace TMPEffects.CharacterData
             {
                 if (value == tl_Delta) return;
                 tl_Delta = value;
+                Dirty |= DirtyFlags.Vertices;
+            }
+        }
+
+        public bool TL_DeltaIsRaw
+        {
+            get => tl_DeltaIsRaw;
+            set
+            {
+                if (value == tl_DeltaIsRaw) return;
+                tl_DeltaIsRaw = value;
                 Dirty |= DirtyFlags.Vertices;
             }
         }
@@ -79,6 +114,17 @@ namespace TMPEffects.CharacterData
             }
         }
 
+        public bool TR_DeltaIsRaw
+        {
+            get => tr_DeltaIsRaw;
+            set
+            {
+                if (value == tr_DeltaIsRaw) return;
+                tr_DeltaIsRaw = value;
+                Dirty |= DirtyFlags.Vertices;
+            }
+        }
+
         public Vector3 BR_Delta
         {
             get => br_Delta;
@@ -86,6 +132,17 @@ namespace TMPEffects.CharacterData
             {
                 if (value == br_Delta) return;
                 br_Delta = value;
+                Dirty |= DirtyFlags.Vertices;
+            }
+        }
+
+        public bool BR_DeltaIsRaw
+        {
+            get => br_DeltaIsRaw;
+            set
+            {
+                if (value == br_DeltaIsRaw) return;
+                br_DeltaIsRaw = value;
                 Dirty |= DirtyFlags.Vertices;
             }
         }
@@ -195,14 +252,20 @@ namespace TMPEffects.CharacterData
         }
 
         [SerializeField] private Vector3 positionDelta = Vector3.zero;
+        [SerializeField] private bool positionDeltaIsRaw = false;
+
         [SerializeField] private Matrix4x4 scaleDelta = Matrix4x4.identity;
         [SerializeField] private Quaternion rotationDelta = Quaternion.identity;
         // TODO RotationPivot? Not needed for keyframe editor likely, but this should be generic
 
         [SerializeField] private Vector3 bl_Delta;
+        [SerializeField] private bool bl_DeltaIsRaw = false;
         [SerializeField] private Vector3 tl_Delta;
+        [SerializeField] private bool tl_DeltaIsRaw = false;
         [SerializeField] private Vector3 tr_Delta;
+        [SerializeField] private bool tr_DeltaIsRaw = false;
         [SerializeField] private Vector3 br_Delta;
+        [SerializeField] private bool br_DeltaIsRaw = false;
 
         [SerializeField] public UnityNullable<Color32> bl_Color;
         [SerializeField] private UnityNullable<Color32> tl_Color;
@@ -219,9 +282,45 @@ namespace TMPEffects.CharacterData
         private Vector3 TRMax, TRMin;
         private Vector3 BRMax, BRMin;
 
+        public TMPMeshModifiers()
+        {
+        }
+
+        public TMPMeshModifiers(TMPMeshModifiers original)
+        {
+            positionDelta = original.PositionDelta;
+            rotationDelta = original.RotationDelta;
+            scaleDelta = original.ScaleDelta;
+
+            positionDeltaIsRaw = original.positionDeltaIsRaw;
+
+            bl_Delta = original.bl_Delta;
+            tl_Delta = original.tl_Delta;
+            tr_Delta = original.tr_Delta;
+            br_Delta = original.br_Delta;
+
+            bl_DeltaIsRaw = original.bl_DeltaIsRaw;
+            tl_DeltaIsRaw = original.tl_DeltaIsRaw;
+            tr_DeltaIsRaw = original.tr_DeltaIsRaw;
+            br_DeltaIsRaw = original.br_DeltaIsRaw;
+
+            bl_UV0 = original.bl_UV0;
+            tl_UV0 = original.tl_UV0;
+            tr_UV0 = original.tr_UV0;
+            br_UV0 = original.br_UV0;
+
+            bl_Color = original.bl_Color;
+            tl_Color = original.tl_Color;
+            tr_Color = original.tr_Color;
+            br_Color = original.br_Color;
+
+            Dirty = 0;
+        }
+
         public static TMPMeshModifiers operator +(TMPMeshModifiers lhs, TMPMeshModifiers rhs)
         {
             TMPMeshModifiers result = new TMPMeshModifiers();
+
             result.PositionDelta = lhs.PositionDelta + rhs.PositionDelta;
             // result.ScaleDelta = lhs.ScaleDelta * rhs.ScaleDelta;
             result.RotationDelta = lhs.RotationDelta * rhs.RotationDelta;
@@ -244,9 +343,12 @@ namespace TMPEffects.CharacterData
             return result;
         }
 
+        // TODO Should be rewritable to lerp between two meshmodifiers?
+        // Since all values are deltas (except colors) should be equivalent to
+        // LerpUnclamped(modifiersWithEverythingZeroOrNull, targetModifier, t)
         public static TMPMeshModifiers LerpUnclamped(CharData cData, TMPMeshModifiers modifiers, float t)
         {
-            TMPMeshModifiers result = new TMPMeshModifiers();
+            TMPMeshModifiers result = new TMPMeshModifiers(modifiers);
 
             if (modifiers.PositionDelta != Vector3.zero)
                 result.PositionDelta = modifiers.PositionDelta * t;
@@ -350,10 +452,56 @@ namespace TMPEffects.CharacterData
         {
         }
 
+        public void MakeModifierDeltasRaw(CharData cData, IAnimationContext ctx, TMPMeshModifiers modifiers)
+        {
+            var textCmp = ctx.AnimatorContext.Animator.TextComponent;
+            var pointSize = cData.info.pointSize;
+            var fontSize = ctx.AnimatorContext.Animator.TextComponent.fontSize;
+
+            if (!modifiers.PositionDeltaIsRaw && modifiers.PositionDelta != Vector3.zero)
+            {
+                modifiers.PositionDeltaIsRaw = true;
+                modifiers.PositionDelta = AnimationUtility.InverseScaleVector(modifiers.PositionDelta, textCmp,
+                    true, true, pointSize, fontSize);
+            }
+            
+            if (!modifiers.BL_DeltaIsRaw && modifiers.BL_Delta != Vector3.zero)
+            {
+                modifiers.BL_DeltaIsRaw = true;
+                modifiers.BL_Delta = AnimationUtility.InverseScaleVector(modifiers.BL_Delta, textCmp,
+                    true, true, pointSize, fontSize);
+            }
+            
+            if (!modifiers.TL_DeltaIsRaw && modifiers.TL_Delta != Vector3.zero)
+            {
+                modifiers.TL_DeltaIsRaw = true;
+                modifiers.TL_Delta = AnimationUtility.InverseScaleVector(modifiers.TL_Delta, textCmp,
+                    true, true, pointSize, fontSize);
+            }
+            
+            if (!modifiers.TR_DeltaIsRaw && modifiers.TR_Delta != Vector3.zero)
+            {
+                modifiers.TR_DeltaIsRaw = true;
+                modifiers.TR_Delta = AnimationUtility.InverseScaleVector(modifiers.TR_Delta, textCmp,
+                    true, true, pointSize, fontSize);
+            }
+            
+            if (!modifiers.BR_DeltaIsRaw && modifiers.BR_Delta != Vector3.zero)
+            {
+                modifiers.BR_DeltaIsRaw = true;
+                modifiers.BR_Delta = AnimationUtility.InverseScaleVector(modifiers.BR_Delta, textCmp,
+                    true, true, pointSize, fontSize);
+            }
+        }
+
         // TODO The applier (TMPMeshModifierApplier or so) should be reused within the actual animator
         // (/ in the chardatastate). Does this method still make sense then?
-        public void ApplyToCharData(CharData cData, TMPMeshModifiers modifiers)
+        public void ApplyToCharData(CharData cData, IAnimationContext ctx, TMPMeshModifiers modifiers)
         {
+            var textCmp = ctx.AnimatorContext.Animator.TextComponent;
+            var pointSize = cData.info.pointSize;
+            var fontSize = ctx.AnimatorContext.Animator.TextComponent.fontSize;
+
             if (modifiers.PositionDelta != Vector3.zero)
                 cData.SetPosition(cData.InitialPosition + modifiers.PositionDelta);
 
@@ -367,13 +515,13 @@ namespace TMPEffects.CharacterData
                 cData.SetVertex(0, cData.initialMesh.BL_Position + modifiers.BL_Delta);
 
             if (modifiers.TL_Delta != Vector3.zero)
-                cData.SetVertex(1, cData.initialMesh.BL_Position + modifiers.TL_Delta);
+                cData.SetVertex(1, cData.initialMesh.TL_Position + modifiers.TL_Delta);
 
             if (modifiers.TR_Delta != Vector3.zero)
-                cData.SetVertex(2, cData.initialMesh.BL_Position + modifiers.TR_Delta);
+                cData.SetVertex(2, cData.initialMesh.TR_Position + modifiers.TR_Delta);
 
             if (modifiers.BR_Delta != Vector3.zero)
-                cData.SetVertex(3, cData.initialMesh.BL_Position + modifiers.BR_Delta);
+                cData.SetVertex(3, cData.initialMesh.BR_Position + modifiers.BR_Delta);
 
             if (modifiers.BL_Color.HasValue)
                 cData.mesh.SetColor(0, modifiers.BL_Color.Value);

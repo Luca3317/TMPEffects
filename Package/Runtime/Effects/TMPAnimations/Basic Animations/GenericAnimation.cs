@@ -52,7 +52,7 @@ namespace TMPEffects.TMPAnimations
                 }
                 else
                 {
-                    result = step.modifiers;
+                    result = new TMPMeshModifiers(step.modifiers);
                 }
 
                 float entry = timeValue - step.startTime;
@@ -69,11 +69,12 @@ namespace TMPEffects.TMPAnimations
                         step.exitCurve.Evaluate(exit / step.exitDuration));
                 }
 
+                (new SmthThatAppliesModifiers()).MakeModifierDeltasRaw(cData, context, result);
                 accModifier += result;
             }
 
             SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-            applier.ApplyToCharData(cData, accModifier);
+            applier.ApplyToCharData(cData, context, accModifier);
         }
 
         [Serializable]

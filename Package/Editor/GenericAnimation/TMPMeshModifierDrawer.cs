@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 [CustomPropertyDrawer(typeof(TMPMeshModifiers))]
 public class TMPMeshModifierDrawer : PropertyDrawer
@@ -16,6 +17,14 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             : new Color32(194, 194, 194, 255);
     }
 
+    private void DrawRawToggle(float y, SerializedProperty rawProp, Rect toggleRect, Rect labelRect)
+    {
+        toggleRect.y = y;
+        labelRect.y = y;
+        EditorGUI.LabelField(labelRect, "Scaled");
+        rawProp.boolValue =
+            EditorGUI.Toggle(toggleRect, rawProp.boolValue);
+    }
     
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -32,12 +41,17 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         property.FindPropertyRelative("positionDelta").isExpanded =
             EditorGUI.Foldout(rect, property.FindPropertyRelative("positionDelta").isExpanded, "Character Deltas");
         rect.y += EditorGUIUtility.singleLineHeight;
+        
+        var ctrlRect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight);
+        var togglerect = new Rect(ctrlRect.x + EditorGUIUtility.labelWidth - 20, rect.y, ctrlRect.width, EditorGUIUtility.singleLineHeight);
+        var labelRect = new Rect(togglerect.x - 45, togglerect.y, togglerect.width, EditorGUIUtility.singleLineHeight);
 
         if (property.FindPropertyRelative("positionDelta").isExpanded)
         {
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 3);
             EditorGUI.DrawRect(bgRect, backgroundColor);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("positionDelta"));
+            DrawRawToggle(rect.y, property.FindPropertyRelative("positionDeltaIsRaw"), togglerect, labelRect);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("rotationDelta"));
             rect.y += EditorGUIUtility.singleLineHeight;
@@ -54,12 +68,16 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
             EditorGUI.DrawRect(bgRect, backgroundColor);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("bl_Delta"));
+            DrawRawToggle(rect.y, property.FindPropertyRelative("bl_DeltaIsRaw"), togglerect, labelRect);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("tl_Delta"));
+            DrawRawToggle(rect.y, property.FindPropertyRelative("tl_DeltaIsRaw"), togglerect, labelRect);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("tr_Delta"));
+            DrawRawToggle(rect.y, property.FindPropertyRelative("tr_DeltaIsRaw"), togglerect, labelRect);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("br_Delta"));
+            DrawRawToggle(rect.y, property.FindPropertyRelative("br_DeltaIsRaw"), togglerect, labelRect);
             rect.y += EditorGUIUtility.singleLineHeight;
         }
 
@@ -69,6 +87,9 @@ public class TMPMeshModifierDrawer : PropertyDrawer
 
         if (property.FindPropertyRelative("bl_Color").isExpanded)
         {
+            togglerect.y = rect.y;
+            labelRect.y = rect.y;
+            
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
             EditorGUI.DrawRect(bgRect, backgroundColor);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("bl_Color"));
@@ -87,6 +108,9 @@ public class TMPMeshModifierDrawer : PropertyDrawer
 
         if (property.FindPropertyRelative("bl_UV0").isExpanded)
         {
+            togglerect.y = rect.y;
+            labelRect.y = rect.y;
+            
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
             EditorGUI.DrawRect(bgRect, backgroundColor);
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("bl_UV0"));

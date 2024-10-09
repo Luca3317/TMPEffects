@@ -17,11 +17,18 @@ using UnityEngine;
 [CustomEditor(typeof(GenericAnimation))]
 public class GenericAnimationEditor : TMPAnimationEditorBase
 {
+    private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
     private static string exportPath = "Assets/Exported TMPEffects Animations";
     private static string exportName = "";
 
     private GUIStyle fileBrowserButtonStyle;
 
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
+    }
 
     private void DrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
@@ -103,7 +110,14 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         GUILayoutUtility.GetRect(EditorGUIUtility.currentViewWidth, EditorGUIUtility.currentViewWidth,
             EditorGUIUtility.singleLineHeight, EditorGUIUtility.singleLineHeight, fileBrowserButtonStyle);
 
-        exportPath = EditorGUI.TextField(textrect, "Export path", exportPath);
+
+        var newExportPath = EditorGUI.TextField(textrect, "Export path", exportPath);
+        if (newExportPath != exportPath)
+        {
+            Debug.Log("Setting!");
+            EditorPrefs.SetString(ExportPathKey, newExportPath);
+            exportPath = newExportPath;
+        }
 
         textrect.x += EditorGUIUtility.labelWidth - 35;
         textrect.width = EditorGUIUtility.singleLineHeight * 1.5f;
@@ -111,8 +125,12 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         textrect.y -= 10;
         if (GUI.Button(textrect, "", fileBrowserButtonStyle))
         {
-            string path = EditorUtility.OpenFolderPanel("cock", "", "Huh");
-            if (!string.IsNullOrWhiteSpace(path)) exportPath = path;
+            string path = EditorUtility.OpenFolderPanel("Select folder to export to", "Assets", "");
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                EditorPrefs.SetString(ExportPathKey, path);
+                exportPath = path;
+            }
         }
 
         exportName = EditorGUILayout.TextField("Export name", exportName);
@@ -120,14 +138,20 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         if (GUILayout.Button("Export"))
         {
-            bool okay = EditorUtility.DisplayDialog("Exporting Generic Animation",
-                "This will export this GenericAnimation animation as a .cs file, allowing you to make further edits.\nThe file will be saved as: " +
-                exportPath + "/" +
-                (string.IsNullOrWhiteSpace(exportName)
-                    ? "GenericAnimation" + DateTime.Now.ToString("yyyyMMddHHmmss")
-                    : exportName), "Okay", "Cancel");
+            if (string.IsNullOrWhiteSpace(exportName))
+            {
+                EditorUtility.DisplayDialog("Empty export name", "You must specify a name for the exported file",
+                    "Okay");
+            }
+            else
+            {
+                string exportNameUnderscored = Regex.Replace(exportName, @"\s+", "_");
+                bool okay = EditorUtility.DisplayDialog("Exporting Generic Animation",
+                    "This will export this GenericAnimation animation as a .cs file, allowing you to make further edits.\nThe file will be saved as: \n" +
+                    exportPath + "/" + exportNameUnderscored + ".cs", "Okay", "Cancel");
 
-            if (okay) GenericAnimationExporter.Export(serializedObject, exportPath, exportName);
+                if (okay) GenericAnimationExporter.Export(serializedObject, exportPath, exportNameUnderscored);
+            }
         }
 
 
@@ -271,6 +295,7 @@ public static class GenericAnimationExporter
             var stepProp = animationStepsProp.GetArrayElementAtIndex(i);
             steps.Add(GetAnimationStep(stepProp));
         }
+
         return steps;
     }
 
@@ -303,7 +328,7 @@ public static class GenericAnimationExporter
             else nameToAdd = step.name;
 
             if (names.Contains(nameToAdd))
-            { 
+            {
                 nameToAdd += "_";
 
                 int counter = 0;
@@ -327,7 +352,8 @@ public static class GenericAnimationExporter
         return Regex.Replace(s, @"\s+", "_");
     }
 
-    static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration, List<GenericAnimation.AnimationStep> steps)
+    static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration,
+        List<GenericAnimation.AnimationStep> steps)
     {
         OrderedHashSet<string> names = GetAnimationStepNames(steps);
         className = ReplaceWhitespaceWithUnderscore(className);
@@ -367,16 +393,17 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
-    private static string GenerateStepParameters(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
+    private static string GenerateStepParameters(List<GenericAnimation.AnimationStep> steps,
+        OrderedHashSet<string> names)
     {
         string code = "";
 
         for (int i = 0; i < steps.Count; i++)
-        { 
+        {
             var step = steps[i];
             var name = names[i];
-            
-             code +=
+
+            code +=
                 $@"
         [SerializeField] private GenericAnimation.AnimationStep Step_{name} = new GenericAnimation.AnimationStep()
         {{
@@ -414,7 +441,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
             code += "\n";
         }
-        
+
         return code;
     }
 
