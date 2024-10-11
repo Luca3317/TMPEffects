@@ -857,8 +857,7 @@ namespace TMPEffects.Components
             if (!cData.info.isVisible || vState == VisibilityState.Hidden) return;
 
             // state.Reset(context, cData);
-            stateNew.SetContext(cData, context);
-            stateNew.Reset();
+            stateNew.Reset(cData, context);
             
             if (vState == VisibilityState.Showing)
             {
@@ -966,7 +965,7 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                stateNew.Update();
+                stateNew.UpdateFromCharDataState();
                 // state.UpdateVertexOffsets();
             }
 
@@ -1206,28 +1205,28 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                cData.Reset();
-                stateNew.Apply();
+                // stateNew.ApplyToCharData();
+                stateNew.CalculateVertexPositions();
 
-                // cData.SetVertex(0, state.BL_Result);
-                // cData.SetVertex(1, state.TL_Result);
-                // cData.SetVertex(2, state.TR_Result);
-                // cData.SetVertex(3, state.BR_Result);
-                //
-                // cData.mesh.SetColor(0, state.BL_Color);
-                // cData.mesh.SetColor(1, state.TL_Color);
-                // cData.mesh.SetColor(2, state.TR_Color);
-                // cData.mesh.SetColor(3, state.BR_Color);
-                //
-                // cData.mesh.SetUV0(0, state.BL_UV);
-                // cData.mesh.SetUV0(1, state.TL_UV);
-                // cData.mesh.SetUV0(2, state.TR_UV);
-                // cData.mesh.SetUV0(3, state.BR_UV);
-                //
-                // cData.mesh.SetUV2(0, state.BL_UV2);
-                // cData.mesh.SetUV2(1, state.TL_UV2);
-                // cData.mesh.SetUV2(2, state.TR_UV2);
-                // cData.mesh.SetUV2(3, state.BR_UV2);
+                cData.mesh.SetPosition(0, stateNew.BL_Result);
+                cData.mesh.SetPosition(1, stateNew.TL_Result);
+                cData.mesh.SetPosition(2, stateNew.TR_Result);
+                cData.mesh.SetPosition(3, stateNew.BR_Result);
+
+                cData.mesh.SetColor(0, stateNew.MeshModifiers.BL_Color.GetValue(cData.initialMesh.GetColor(0)));
+                cData.mesh.SetColor(1, stateNew.MeshModifiers.TL_Color.GetValue(cData.initialMesh.GetColor(1)));
+                cData.mesh.SetColor(2, stateNew.MeshModifiers.TR_Color.GetValue(cData.initialMesh.GetColor(2)));
+                cData.mesh.SetColor(3, stateNew.MeshModifiers.BR_Color.GetValue(cData.initialMesh.GetColor(3)));
+
+                cData.mesh.SetUV0(0, stateNew.MeshModifiers.BL_UV0.GetValue(cData.initialMesh.GetUV0(0)));
+                cData.mesh.SetUV0(1, stateNew.MeshModifiers.TL_UV0.GetValue(cData.initialMesh.GetUV0(1)));
+                cData.mesh.SetUV0(2, stateNew.MeshModifiers.TR_UV0.GetValue(cData.initialMesh.GetUV0(2)));
+                cData.mesh.SetUV0(3, stateNew.MeshModifiers.BR_UV0.GetValue(cData.initialMesh.GetUV0(3)));
+
+                cData.mesh.SetUV2(0, stateNew.MeshModifiers.BL_UV2.GetValue(cData.initialMesh.GetUV2(0)));
+                cData.mesh.SetUV2(1, stateNew.MeshModifiers.TL_UV2.GetValue(cData.initialMesh.GetUV2(1)));
+                cData.mesh.SetUV2(2, stateNew.MeshModifiers.TR_UV2.GetValue(cData.initialMesh.GetUV2(2)));
+                cData.mesh.SetUV2(3, stateNew.MeshModifiers.BR_UV2.GetValue(cData.initialMesh.GetUV2(3)));
             }
         }
         #endregion

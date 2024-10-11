@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(CharDataModifiers.Rotation))]
+[CustomPropertyDrawer(typeof(Rotation))]
 public class RotationDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -17,28 +17,8 @@ public class RotationDrawer : PropertyDrawer
 
         EditorGUI.PropertyField(rect, property.FindPropertyRelative("pivot"));
         rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, property.FindPropertyRelative("eulerAngles"));
 
-        // var rotProp = property.FindPropertyRelative("rotation");
-        // var quat = rotProp.quaternionValue;
-        // var vector = EditorGUI.Vector3Field(rect, "Rotation", new Vector3(quat.x, quat.y, quat.z));
-        // if (vector != new Vector3(quat.x, quat.y, quat.z))
-        // {
-        //     rotProp.quaternionValue = new Quaternion(vector.x, vector.y, vector.z, quat.w);
-        // }
-        
-        
-        // var rotProp = property.FindPropertyRelative("rotation");
-        // var quat = rotProp.quaternionValue;
-        // var vector = EditorGUI.Vector3Field(rect, "Rotation", quat.eulerAngles);
-        // if (vector != quat.eulerAngles)
-        // {
-        //     rotProp.quaternionValue = Quaternion.Euler(vector);
-        // }
-        
-        
-        EditorGUI.PropertyField(rect, property.FindPropertyRelative("rotation"));
-        
-        
         if (property.serializedObject.hasModifiedProperties)
             property.serializedObject.ApplyModifiedProperties();
     }

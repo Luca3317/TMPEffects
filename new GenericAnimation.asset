@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: new GenericAnimation
   m_EditorClassIdentifier: 
   animationSteps:
-  - rid: 3184736772110155782
+  - rid: 3184736787671810052
   repeat: 0
   duration: 0
   references:
     version: 2
     RefIds:
-    - rid: 3184736772110155782
+    - rid: 3184736787671810052
       type: {class: GenericAnimation/AnimationStep, ns: TMPEffects.TMPAnimations, asm: TMPEffects}
       data:
         name: 
@@ -38,7 +38,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         exitDuration: 0
-        loops: 0
+        loops: 1
         repetitions: 0
         useWave: 0
         waveOffsetType: 0
@@ -119,25 +119,28 @@ MonoBehaviour:
         startTime: 0
         duration: 0
         charModifiers:
-          positionDelta: {x: 0, y: 0, z: 0}
-          scaleDelta:
-            e00: 1
-            e01: 0
-            e02: 0
-            e03: 0
-            e10: 0
-            e11: 1
-            e12: 0
-            e13: 0
-            e20: 0
-            e21: 0
-            e22: 1
-            e23: 0
-            e30: 0
-            e31: 0
-            e32: 0
-            e33: 1
-          rotations: []
+          characterMeshModifiers:
+            positionDelta: {x: 0, y: 0, z: 0}
+            scaleDelta:
+              e00: 1
+              e01: 0
+              e02: 0
+              e03: 0
+              e10: 0
+              e11: 1
+              e12: 0
+              e13: 0
+              e20: 0
+              e21: 0
+              e22: 1
+              e23: 0
+              e30: 0
+              e31: 0
+              e32: 0
+              e33: 1
+            rotations:
+            - pivot: {x: 0, y: 0, z: 0}
+              eulerAngles: {x: 0, y: 0, z: 0}
           meshModifiers:
             bl_Delta: {x: 0, y: 0, z: 0}
             tl_Delta: {x: 0, y: 0, z: 0}

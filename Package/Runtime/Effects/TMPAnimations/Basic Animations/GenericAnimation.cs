@@ -31,6 +31,7 @@ namespace TMPEffects.TMPAnimations
                 data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 
             CharDataModifiers accModifier = new CharDataModifiers();
+            accModifier.Reset(cData, context.AnimatorContext);
 
             // TODO Probably should use an IntervalTree or smth for this
             int count = 0;
@@ -74,10 +75,7 @@ namespace TMPEffects.TMPAnimations
                 accModifier += result;
             }
 
-            // SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-            accModifier.SetContext(cData, context.AnimatorContext);
-            accModifier.Apply();
-            // applier.ApplyToCharData(cData, accModifier);
+            accModifier.ApplyToCharData();
         }
 
         [Serializable]

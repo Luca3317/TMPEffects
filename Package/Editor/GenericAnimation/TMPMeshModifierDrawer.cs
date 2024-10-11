@@ -19,15 +19,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
     private SerializedProperty scaleDeltaProp;
     private SerializedProperty rotationsProp;
     private SerializedProperty meshModifierProp;
+    private SerializedProperty characterMeshModifierProp;
     private SerializedProperty blDeltaProp, tlDeltaProp, trDeltaProp, brDeltaProp;
     private SerializedProperty blColorProp, tlColorProp, trColorProp, brColorProp;
     private SerializedProperty blUV0Prop, tlUV0Prop, trUV0Prop, brUV0Prop;
+    
+    private const float TypedVectorFoldoutWidth = 20f;
 
     private void Init(SerializedProperty property)
     {
-        positionDeltaProp = property.FindPropertyRelative("positionDelta");
-        scaleDeltaProp = property.FindPropertyRelative("scaleDelta");
-        rotationsProp = property.FindPropertyRelative("rotations");
+        characterMeshModifierProp = property.FindPropertyRelative("characterMeshModifiers");
+        
+        positionDeltaProp = characterMeshModifierProp.FindPropertyRelative("positionDelta");
+        scaleDeltaProp = characterMeshModifierProp.FindPropertyRelative("scaleDelta");
+        rotationsProp = characterMeshModifierProp.FindPropertyRelative("rotations");
 
         meshModifierProp = property.FindPropertyRelative("meshModifiers");
 
