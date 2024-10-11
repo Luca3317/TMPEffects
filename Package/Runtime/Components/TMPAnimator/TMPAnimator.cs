@@ -181,7 +181,10 @@ namespace TMPEffects.Components
         [System.NonSerialized] private object timesIdentifier;
 
         [System.NonSerialized] private CharDataState state = new CharDataState();
-        [System.NonSerialized] private CharDataModifiers stateNew = new CharDataModifiers();
+        // [System.NonSerialized] private CharDataModifiers stateNew = new CharDataModifiers();
+        // [System.NonSerialized] private TMPCharacterMeshModifiers charModifiers = new TMPCharacterMeshModifiers();
+        // [System.NonSerialized] private TMPMeshModifiers2 meshModifiers = new TMPMeshModifiers2();
+        [System.NonSerialized] private TMPCharDataModifiers myState = new TMPCharDataModifiers();
 
         private const string falseUpdateAnimationsCallWarning = "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
             "If you want to manually control the animation updates, set its UpdateFrom property to \"Script\", " +
@@ -807,15 +810,15 @@ namespace TMPEffects.Components
 
             sw.Stop();
             count++;
-            if (count >= 10000)
+            if (count >= 1000)
             {
-                Debug.LogWarning("10000 anims took " + sw.Elapsed.TotalMilliseconds);
+                Debug.LogWarning("1000 anims took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
             else if (count % 100 == 0)
             {
-                // Debug.Log(count);
+                Debug.Log(count);
             }
         }
 
@@ -857,7 +860,8 @@ namespace TMPEffects.Components
             if (!cData.info.isVisible || vState == VisibilityState.Hidden) return;
 
             // state.Reset(context, cData);
-            stateNew.Reset(cData, context);
+            // stateNew.Reset(cData, context);
+            myState.Reset();
             
             if (vState == VisibilityState.Showing)
             {
@@ -965,8 +969,9 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                stateNew.UpdateFromCharDataState();
-                // state.UpdateVertexOffsets();
+                myState.meshModifiers += cData.mesh.modifiers;
+                myState.characterMeshModifiers += cData.CharacterMeshModifiers;
+                // stateNew.UpdateFromCharDataState();
             }
 
             void AnimateBasic(bool late)
@@ -1205,32 +1210,38 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                // stateNew.ApplyToCharData();
-                stateNew.CalculateVertexPositions();
-
-                cData.mesh.SetPosition(0, stateNew.BL_Result);
-                cData.mesh.SetPosition(1, stateNew.TL_Result);
-                cData.mesh.SetPosition(2, stateNew.TR_Result);
-                cData.mesh.SetPosition(3, stateNew.BR_Result);
-
-                cData.mesh.SetColor(0, stateNew.MeshModifiers.BL_Color.GetValue(cData.initialMesh.GetColor(0)));
-                cData.mesh.SetColor(1, stateNew.MeshModifiers.TL_Color.GetValue(cData.initialMesh.GetColor(1)));
-                cData.mesh.SetColor(2, stateNew.MeshModifiers.TR_Color.GetValue(cData.initialMesh.GetColor(2)));
-                cData.mesh.SetColor(3, stateNew.MeshModifiers.BR_Color.GetValue(cData.initialMesh.GetColor(3)));
-
-                cData.mesh.SetUV0(0, stateNew.MeshModifiers.BL_UV0.GetValue(cData.initialMesh.GetUV0(0)));
-                cData.mesh.SetUV0(1, stateNew.MeshModifiers.TL_UV0.GetValue(cData.initialMesh.GetUV0(1)));
-                cData.mesh.SetUV0(2, stateNew.MeshModifiers.TR_UV0.GetValue(cData.initialMesh.GetUV0(2)));
-                cData.mesh.SetUV0(3, stateNew.MeshModifiers.BR_UV0.GetValue(cData.initialMesh.GetUV0(3)));
-
-                cData.mesh.SetUV2(0, stateNew.MeshModifiers.BL_UV2.GetValue(cData.initialMesh.GetUV2(0)));
-                cData.mesh.SetUV2(1, stateNew.MeshModifiers.TL_UV2.GetValue(cData.initialMesh.GetUV2(1)));
-                cData.mesh.SetUV2(2, stateNew.MeshModifiers.TR_UV2.GetValue(cData.initialMesh.GetUV2(2)));
-                cData.mesh.SetUV2(3, stateNew.MeshModifiers.BR_UV2.GetValue(cData.initialMesh.GetUV2(3)));
+                myState.CalculateVertexPositions(cData, context);
+                
+                cData.mesh.SetPosition(0, myState.BL_Result);
+                cData.mesh.SetPosition(1, myState.TL_Result);
+                cData.mesh.SetPosition(2, myState.TR_Result);
+                cData.mesh.SetPosition(3, myState.BR_Result);
+                
+                cData.mesh.SetColor(0, myState.meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
+                cData.mesh.SetColor(1, myState.meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
+                cData.mesh.SetColor(2, myState.meshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
+                cData.mesh.SetColor(3, myState.meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
+                
+                cData.mesh.SetUV0(0, myState.meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
+                cData.mesh.SetUV0(1, myState.meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
+                cData.mesh.SetUV0(2, myState.meshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
+                cData.mesh.SetUV0(3, myState.meshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
+                
+                cData.mesh.SetUV2(0, myState.meshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
+                cData.mesh.SetUV2(1, myState.meshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
+                cData.mesh.SetUV2(2, myState.meshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
+                cData.mesh.SetUV2(3, myState.meshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
             }
         }
         #endregion
 
+        private Vector3 bl, tl, tr, br;
+        
+        private void test()
+        {
+            
+        }
+        
         #region Event Callbacks
 
         private void OnTextChanged_Early(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)

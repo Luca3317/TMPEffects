@@ -130,8 +130,8 @@ namespace TMPEffects.TMPAnimations
             Vector2 dist;
             Vector2 ret = cData.InitialPosition;
 
-            Vector2 up = (cData.initialMesh.TL_Position - cData.initialMesh.BL_Position) / 2f;
-            Vector2 right = (cData.initialMesh.BR_Position - cData.initialMesh.BL_Position) / 2f;
+            Vector2 up = (cData.InitialMesh.TL_Position - cData.InitialMesh.BL_Position) / 2f;
+            Vector2 right = (cData.InitialMesh.BR_Position - cData.InitialMesh.BL_Position) / 2f;
 
             dist.x = (cData.mesh.initial.BL_Position - cData.mesh.initial.BR_Position).magnitude / 2f;
             dist.y = (cData.mesh.initial.BL_Position - cData.mesh.initial.TL_Position).magnitude / 2f;
@@ -163,7 +163,7 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData, ctx);
+            return GetRawPosition(position, cData.InitialMesh.GetPosition(index), cData, ctx);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            Vector3 ogPos = cData.initialMesh.GetPosition(index);
+            Vector3 ogPos = cData.InitialMesh.GetPosition(index);
             cData.SetVertex(index, GetRawPosition(position, ogPos, cData, ctx));
         }
 
@@ -1331,12 +1331,12 @@ namespace TMPEffects.TMPAnimations
             float widthDelta = newCharacter.glyph.metrics.width - originalCharacter.glyph.metrics.width;
 
 
-            Vector3 bl = new Vector3(cData.initialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
-                cData.initialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
+            Vector3 bl = new Vector3(cData.InitialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
+                cData.InitialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
             Vector3 tl = new Vector3(bl.x,
-                cData.initialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
+                cData.InitialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
             Vector3 tr = new Vector3(
-                cData.initialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
+                cData.InitialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
                 tl.y);
             Vector3 br = new Vector3(tr.x, bl.y);
 
@@ -1349,12 +1349,12 @@ namespace TMPEffects.TMPAnimations
                 newCharacter.glyph.glyphRect.height - originalCharacter.glyph.glyphRect.height
             );
 
-            Vector2 uv0 = new Vector2(cData.initialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
-                cData.initialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
+            Vector2 uv0 = new Vector2(cData.InitialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
+                cData.InitialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
             Vector2 uv1 = new Vector2(uv0.x,
-                cData.initialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
+                cData.InitialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
             Vector2 uv2 = new Vector2(
-                cData.initialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
+                cData.InitialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
                 uv1.y);
             Vector2 uv3 = new Vector2(uv2.x, uv0.y);
 

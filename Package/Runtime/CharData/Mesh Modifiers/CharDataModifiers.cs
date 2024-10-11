@@ -20,6 +20,81 @@ public struct Rotation
 }
 
 [Serializable]
+public class TMPCharDataModifiers
+{
+    public TMPMeshModifiers2 meshModifiers;
+    public TMPCharacterMeshModifiers characterMeshModifiers;
+
+    public Vector3 BL_Result { get; private set; }
+    public Vector3 TL_Result { get; private set; }
+    public Vector3 TR_Result { get; private set; }
+    public Vector3 BR_Result { get; private set; }
+
+    public TMPCharDataModifiers()
+    {
+        meshModifiers = new TMPMeshModifiers2();
+        characterMeshModifiers = new TMPCharacterMeshModifiers();
+    }
+
+    public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
+    {
+         // Apply vertex transformations
+        Vector3 vbl = cData.InitialMesh.BL_Position + meshModifiers.BL_Delta;
+        Vector3 vtl = cData.InitialMesh.TL_Position + meshModifiers.TL_Delta;
+        Vector3 vtr = cData.InitialMesh.TR_Position + meshModifiers.TR_Delta;
+        Vector3 vbr = cData.InitialMesh.BR_Position + meshModifiers.BR_Delta;
+
+        if (cData.InitialMesh.BL_Position != vbl) Debug.LogWarning("NOT EQWUAL: DELTA: " + meshModifiers.BL_Delta);
+
+        // TODO Clamp
+        // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
+        // vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
+        // vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
+        // vbr = new Vector3(Mathf.Clamp(vbr.x, BRMin.x, BRMax.x), Mathf.Clamp(vbr.y, BRMin.y, BRMax.y), Mathf.Clamp(vbr.z, BRMin.z, BRMax.z));
+        // vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
+
+        // Apply scale
+        vtl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) + cData.InitialPosition;
+        vtr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) + cData.InitialPosition;
+        vbr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) + cData.InitialPosition;
+        vbl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) + cData.InitialPosition;
+
+        // Apply rotation
+        Vector3 pivot;
+        Matrix4x4 matrix;
+        foreach (var rot in characterMeshModifiers.Rotations)
+        {
+            pivot = rot.pivot;
+            matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
+            // Debug.LogWarning("After rot pos with eulerangles " + rot.eulerAngles + ", vtl is " + (matrix.MultiplyPoint3x4(vtl - pivot) + pivot) + "; was " + vtl);
+
+            vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
+            vtl = matrix.MultiplyPoint3x4(vtl - pivot) + pivot;
+            vtr = matrix.MultiplyPoint3x4(vtr - pivot) + pivot;
+            vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
+        }
+
+        // Apply transformation
+        var scaled = AnimationUtility.ScaleVector(characterMeshModifiers.PositionDelta, cData, context);
+        vtl += scaled;
+        vtr += scaled;
+        vbr += scaled;
+        vbl += scaled;
+
+        BL_Result = vbl;
+        TL_Result = vtl;
+        TR_Result = vtr;
+        BR_Result = vbr;
+    }
+
+    public void Reset()
+    {
+        meshModifiers.Reset();
+        characterMeshModifiers.Reset();
+    }
+}
+
+[Serializable]
 public class TMPCharacterMeshModifiers
 {
     public DirtyFlags Dirty => dirty;
@@ -81,6 +156,13 @@ public class TMPCharacterMeshModifiers
         scaleDelta = original.scaleDelta;
         rotations = new List<Rotation>(original.rotations);
         dirty = 0;
+    }
+
+    public void Reset()
+    {
+        positionDelta = Vector3.zero;
+        scaleDelta = Matrix4x4.Scale(Vector3.one);
+        rotations.Clear();
     }
 
     public static TMPCharacterMeshModifiers operator +(TMPCharacterMeshModifiers lhs, TMPCharacterMeshModifiers rhs)
@@ -174,6 +256,7 @@ public class CharDataModifiers
                 new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
                     rot.pivot));
         }
+
         result.characterMeshModifiers.Rotations = rotations;
 
         Vector3 startScale = cData.InitialScale;
@@ -203,16 +286,16 @@ public class CharDataModifiers
             result.BR_Delta = target.BR_Delta * t;
 
         if (target.BL_Color.Override != ColorOverride.OverrideMode.None)
-            result.BL_Color = ColorOverride.LerpUnclamped(cData.initialMesh.BL_Color, target.BL_Color, t);
+            result.BL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BL_Color, target.BL_Color, t);
 
         if (target.TL_Color.Override != ColorOverride.OverrideMode.None)
-            result.TL_Color = ColorOverride.LerpUnclamped(cData.initialMesh.TL_Color, target.TL_Color, t);
+            result.TL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TL_Color, target.TL_Color, t);
 
         if (target.TR_Color.Override != ColorOverride.OverrideMode.None)
-            result.TR_Color = ColorOverride.LerpUnclamped(cData.initialMesh.TR_Color, target.TR_Color, t);
+            result.TR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TR_Color, target.TR_Color, t);
 
         if (target.BR_Color.Override != ColorOverride.OverrideMode.None)
-            result.BR_Color = ColorOverride.LerpUnclamped(cData.initialMesh.BR_Color, target.BR_Color, t);
+            result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, target.BR_Color, t);
 
         if (target.BL_UV0.Override)
             result.BL_UV0 = new TMPMeshModifiers2.UVOverride(target.BL_UV0.OverrideValue * t);
@@ -244,12 +327,12 @@ public class CharDataModifiers
     public void CalculateVertexPositions()
     {
         // Apply vertex transformations
-        Vector3 vbl = cData.initialMesh.BL_Position + meshModifiers.BL_Delta;
-        Vector3 vtl = cData.initialMesh.TL_Position + meshModifiers.TL_Delta;
-        Vector3 vtr = cData.initialMesh.TR_Position + meshModifiers.TR_Delta;
-        Vector3 vbr = cData.initialMesh.BR_Position + meshModifiers.BR_Delta;
+        Vector3 vbl = cData.InitialMesh.BL_Position + meshModifiers.BL_Delta;
+        Vector3 vtl = cData.InitialMesh.TL_Position + meshModifiers.TL_Delta;
+        Vector3 vtr = cData.InitialMesh.TR_Position + meshModifiers.TR_Delta;
+        Vector3 vbr = cData.InitialMesh.BR_Position + meshModifiers.BR_Delta;
 
-        if (cData.initialMesh.BL_Position != vbl) Debug.LogWarning("NOT EQWUAL: DELTA: " + meshModifiers.BL_Delta);
+        if (cData.InitialMesh.BL_Position != vbl) Debug.LogWarning("NOT EQWUAL: DELTA: " + meshModifiers.BL_Delta);
 
         // TODO Clamp
         // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
@@ -308,7 +391,7 @@ public class CharDataModifiers
         Quaternion finalRotation = Quaternion.identity;
         Vector3 finalPivot = Vector3.zero;
         Matrix4x4 matrix;
-        
+
         // TODO There is no way to combine rotations with different pivots
         // TODO => Update CharData to use a list for rotations as well!
         foreach (var rot in characterMeshModifiers.Rotations)
@@ -316,37 +399,38 @@ public class CharDataModifiers
             finalPivot += rot.pivot;
             finalRotation = Quaternion.Euler(rot.eulerAngles) * finalRotation;
         }
+
         cData.SetPivot(finalPivot);
         cData.SetRotation(finalRotation);
-        
-        cData.mesh.SetPosition(0, cData.initialMesh.BL_Position + meshModifiers.BL_Delta);
-        cData.mesh.SetPosition(1, cData.initialMesh.TL_Position + meshModifiers.TL_Delta);
-        cData.mesh.SetPosition(2, cData.initialMesh.TR_Position + meshModifiers.TR_Delta);
-        cData.mesh.SetPosition(3, cData.initialMesh.BR_Position + meshModifiers.BR_Delta);
 
-        cData.mesh.SetColor(0, meshModifiers.BL_Color.GetValue(cData.initialMesh.GetColor(0)));
-        cData.mesh.SetColor(1, meshModifiers.TL_Color.GetValue(cData.initialMesh.GetColor(1)));
-        cData.mesh.SetColor(2, meshModifiers.TR_Color.GetValue(cData.initialMesh.GetColor(2)));
-        cData.mesh.SetColor(3, meshModifiers.BR_Color.GetValue(cData.initialMesh.GetColor(3)));
+        cData.mesh.SetPosition(0, cData.InitialMesh.BL_Position + meshModifiers.BL_Delta);
+        cData.mesh.SetPosition(1, cData.InitialMesh.TL_Position + meshModifiers.TL_Delta);
+        cData.mesh.SetPosition(2, cData.InitialMesh.TR_Position + meshModifiers.TR_Delta);
+        cData.mesh.SetPosition(3, cData.InitialMesh.BR_Position + meshModifiers.BR_Delta);
 
-        cData.mesh.SetUV0(0, meshModifiers.BL_UV0.GetValue(cData.initialMesh.GetUV0(0)));
-        cData.mesh.SetUV0(1, meshModifiers.TL_UV0.GetValue(cData.initialMesh.GetUV0(1)));
-        cData.mesh.SetUV0(2, meshModifiers.TR_UV0.GetValue(cData.initialMesh.GetUV0(2)));
-        cData.mesh.SetUV0(3, meshModifiers.BR_UV0.GetValue(cData.initialMesh.GetUV0(3)));
+        cData.mesh.SetColor(0, meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
+        cData.mesh.SetColor(1, meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
+        cData.mesh.SetColor(2, meshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
+        cData.mesh.SetColor(3, meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
 
-        cData.mesh.SetUV2(0, meshModifiers.BL_UV2.GetValue(cData.initialMesh.GetUV2(0)));
-        cData.mesh.SetUV2(1, meshModifiers.TL_UV2.GetValue(cData.initialMesh.GetUV2(1)));
-        cData.mesh.SetUV2(2, meshModifiers.TR_UV2.GetValue(cData.initialMesh.GetUV2(2)));
-        cData.mesh.SetUV2(3, meshModifiers.BR_UV2.GetValue(cData.initialMesh.GetUV2(3)));
+        cData.mesh.SetUV0(0, meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
+        cData.mesh.SetUV0(1, meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
+        cData.mesh.SetUV0(2, meshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
+        cData.mesh.SetUV0(3, meshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
+
+        cData.mesh.SetUV2(0, meshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
+        cData.mesh.SetUV2(1, meshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
+        cData.mesh.SetUV2(2, meshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
+        cData.mesh.SetUV2(3, meshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
     }
 
     public void PushCharacterMeshModifiersIntoVertexMeshModifiers()
     {
         CalculateVertexPositions();
-        meshModifiers.BL_Delta = BL_Result - cData.initialMesh.BL_Position;
-        meshModifiers.TL_Delta = TL_Result - cData.initialMesh.TL_Position;
-        meshModifiers.TR_Delta = TR_Result - cData.initialMesh.TR_Position;
-        meshModifiers.BR_Delta = BR_Result - cData.initialMesh.BR_Position;
+        meshModifiers.BL_Delta = BL_Result - cData.InitialMesh.BL_Position;
+        meshModifiers.TL_Delta = TL_Result - cData.InitialMesh.TL_Position;
+        meshModifiers.TR_Delta = TR_Result - cData.InitialMesh.TR_Position;
+        meshModifiers.BR_Delta = BR_Result - cData.InitialMesh.BR_Position;
         ClearCharModifiers();
     }
 
@@ -362,15 +446,15 @@ public class CharDataModifiers
     {
         meshModifiers = new TMPMeshModifiers2();
 
-        meshModifiers.BL_UV0 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV0(0));
-        meshModifiers.TL_UV0 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV0(1));
-        meshModifiers.TR_UV0 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV0(2));
-        meshModifiers.BR_UV0 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV0(3));
+        meshModifiers.BL_UV0 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV0(0));
+        meshModifiers.TL_UV0 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV0(1));
+        meshModifiers.TR_UV0 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV0(2));
+        meshModifiers.BR_UV0 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV0(3));
 
-        meshModifiers.BL_UV2 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV2(0));
-        meshModifiers.TL_UV2 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV2(1));
-        meshModifiers.TR_UV2 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV2(2));
-        meshModifiers.BR_UV2 = new TMPMeshModifiers2.UVOverride(cData.initialMesh.GetUV2(3));
+        meshModifiers.BL_UV2 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV2(0));
+        meshModifiers.TL_UV2 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV2(1));
+        meshModifiers.TR_UV2 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV2(2));
+        meshModifiers.BR_UV2 = new TMPMeshModifiers2.UVOverride(cData.InitialMesh.GetUV2(3));
         // meshModifiers.ClearDirtyFlags();
     }
 
@@ -390,10 +474,11 @@ public class CharDataModifiers
                 var scaled = cData.InitialPosition +
                              AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData,
                                  context);
-                Rotation rot = new Rotation( cData.Rotation.eulerAngles, scaled );
-                
+                Rotation rot = new Rotation(cData.Rotation.eulerAngles, scaled);
+
                 // TODO this is not okay lol
-                characterMeshModifiers.Rotations = characterMeshModifiers.Rotations.Concat( new List<Rotation>() { rot } ).ToList();
+                characterMeshModifiers.Rotations =
+                    characterMeshModifiers.Rotations.Concat(new List<Rotation>() { rot }).ToList();
                 // rotations.Add(new Rotation(cData.Rotation.eulerAngles, scaled));
             }
         }

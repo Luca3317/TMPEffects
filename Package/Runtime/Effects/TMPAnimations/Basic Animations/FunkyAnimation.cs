@@ -25,8 +25,8 @@ namespace TMPEffects.TMPAnimations.Animations
             float t = Mathf.Sin(context.AnimatorContext.PassedTime * d.speed) / 2 + 0.5f;
             bool movingUp = Mathf.Cos(context.AnimatorContext.PassedTime * d.speed) > 0;
 
-            var delta0 = cData.initialMesh.TL_Position - cData.mesh.initial.BL_Position;
-            var delta1 = cData.initialMesh.TR_Position - cData.mesh.initial.BR_Position;
+            var delta0 = cData.InitialMesh.TL_Position - cData.mesh.initial.BL_Position;
+            var delta1 = cData.InitialMesh.TR_Position - cData.mesh.initial.BR_Position;
 
             Vector3 keyframe0_1 = cData.mesh.initial.GetPosition(0);
             Vector3 keyframe0_2 = cData.mesh.initial.GetPosition(3);
