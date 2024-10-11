@@ -53,6 +53,15 @@ public struct ColorOverride
         Alpha = 1 << 1
     }
 
+    public bool Equals(ColorOverride obj)
+    {
+        return Override == obj.Override &&
+               Color.r == obj.Color.r &&
+               Color.g == obj.Color.g &&
+               Color.b == obj.Color.b &&
+               Color.a == obj.Color.a;
+    }
+
     public static ColorOverride LerpUnclamped(Color32 start, ColorOverride end, float t)
     {
         if (t >= 1)
