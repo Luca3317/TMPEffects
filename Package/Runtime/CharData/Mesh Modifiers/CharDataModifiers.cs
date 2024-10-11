@@ -171,7 +171,6 @@ public class TMPCharacterMeshModifiers
     {
         rotations.Add(rotation);
         dirty |= DirtyFlags.Rotations;
-        Debug.Log("added rotation with " + rotation.eulerAngles + "; dirty flags now " + dirty);
     }
 
     public void RemoveRotation(int index)
