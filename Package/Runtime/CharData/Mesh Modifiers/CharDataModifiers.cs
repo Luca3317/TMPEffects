@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [Serializable]
 public struct Rotation
@@ -36,15 +38,29 @@ public class TMPCharDataModifiers
         characterMeshModifiers = new TMPCharacterMeshModifiers();
     }
 
+    public void Update(CharData cData)
+    {
+        if (cData.positionDirty)
+        {
+            characterMeshModifiers.PositionDelta += cData.CharacterMeshModifiers.PositionDelta;
+        }
+    }
+
     public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
     {
-         // Apply vertex transformations
-        Vector3 vbl = cData.InitialMesh.BL_Position + meshModifiers.BL_Delta;
-        Vector3 vtl = cData.InitialMesh.TL_Position + meshModifiers.TL_Delta;
-        Vector3 vtr = cData.InitialMesh.TR_Position + meshModifiers.TR_Delta;
-        Vector3 vbr = cData.InitialMesh.BR_Position + meshModifiers.BR_Delta;
+        // Apply vertex transformations
+        Vector3 vbl = cData.InitialMesh.BL_Position;
+        Vector3 vtl = cData.InitialMesh.TL_Position;
+        Vector3 vtr = cData.InitialMesh.TR_Position;
+        Vector3 vbr = cData.InitialMesh.BR_Position;
 
-        if (cData.InitialMesh.BL_Position != vbl) Debug.LogWarning("NOT EQWUAL: DELTA: " + meshModifiers.BL_Delta);
+        if (meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Deltas))
+        {
+            vbl += meshModifiers.BL_Delta;
+            vtl += meshModifiers.TL_Delta;
+            vtr += meshModifiers.TR_Delta;
+            vbr += meshModifiers.BR_Delta;
+        }
 
         // TODO Clamp
         // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
@@ -54,32 +70,45 @@ public class TMPCharDataModifiers
         // vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
 
         // Apply scale
-        vtl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) + cData.InitialPosition;
-        vtr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) + cData.InitialPosition;
-        vbr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) + cData.InitialPosition;
-        vbl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) + cData.InitialPosition;
+        if (characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.Scale))
+        {
+            vtl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) +
+                  cData.InitialPosition;
+            vtr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) +
+                  cData.InitialPosition;
+            vbr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) +
+                  cData.InitialPosition;
+            vbl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) +
+                  cData.InitialPosition;
+        }
 
         // Apply rotation
-        Vector3 pivot;
-        Matrix4x4 matrix;
-        foreach (var rot in characterMeshModifiers.Rotations)
+        if (characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.Rotations))
         {
-            pivot = rot.pivot;
-            matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
-            // Debug.LogWarning("After rot pos with eulerangles " + rot.eulerAngles + ", vtl is " + (matrix.MultiplyPoint3x4(vtl - pivot) + pivot) + "; was " + vtl);
+            Vector3 pivot;
+            Matrix4x4 matrix;
+            foreach (var rot in characterMeshModifiers.Rotations)
+            {
+                pivot = rot.pivot;
+                matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
+                // Debug.LogWarning("After rot pos with eulerangles " + rot.eulerAngles + ", vtl is " + (matrix.MultiplyPoint3x4(vtl - pivot) + pivot) + "; was " + vtl);
 
-            vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
-            vtl = matrix.MultiplyPoint3x4(vtl - pivot) + pivot;
-            vtr = matrix.MultiplyPoint3x4(vtr - pivot) + pivot;
-            vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
+                vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
+                vtl = matrix.MultiplyPoint3x4(vtl - pivot) + pivot;
+                vtr = matrix.MultiplyPoint3x4(vtr - pivot) + pivot;
+                vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
+            }
         }
 
         // Apply transformation
-        var scaled = AnimationUtility.ScaleVector(characterMeshModifiers.PositionDelta, cData, context);
-        vtl += scaled;
-        vtr += scaled;
-        vbr += scaled;
-        vbl += scaled;
+        if (characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.PositionDelta))
+        {
+            var scaled = AnimationUtility.ScaleVector(characterMeshModifiers.PositionDelta, cData, context);
+            vtl += scaled;
+            vtr += scaled;
+            vbr += scaled;
+            vbl += scaled;
+        }
 
         BL_Result = vbl;
         TL_Result = vtl;
@@ -121,29 +150,40 @@ public class TMPCharacterMeshModifiers
         }
     }
 
-    // TODO Either: Implement it so that you can add / remove rotations
-    // and the dirty flag is set accordingly; OR, just dont allow setting
-    // scale and positiondelta either
-    public IEnumerable<Rotation> Rotations
+    // TODO Unacceptable this allocates since it will be called often
+    public ReadOnlyCollection<Rotation> Rotations
     {
         get
         {
-            for (int i = 0; i < rotations.Count; i++)
-            {
-                yield return rotations[i];
-            }
+            if (rotationsReadOnly == null)
+                rotationsReadOnly = new ReadOnlyCollection<Rotation>(rotations);
+            return rotationsReadOnly;
         }
-        set
-        {
-            rotations.Clear();
-            rotations.AddRange(value);
-            dirty |= DirtyFlags.Rotations;
-        }
+    }
+
+    public void InsertRotation(int index, Rotation rotation)
+    {
+        rotations.Insert(index, rotation);
+        dirty |= DirtyFlags.Rotations;
+    }
+
+    public void AddRotation(Rotation rotation)
+    {
+        rotations.Add(rotation);
+        dirty |= DirtyFlags.Rotations;
+        Debug.Log("added rotation with " + rotation.eulerAngles + "; dirty flags now " + dirty);
+    }
+
+    public void RemoveRotation(int index)
+    {
+        rotations.RemoveAt(index);
+        dirty |= DirtyFlags.Rotations;
     }
 
     [SerializeField] private Vector3 positionDelta = Vector3.zero;
     [SerializeField] private Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
     [SerializeField] private List<Rotation> rotations = new List<Rotation>();
+    private ReadOnlyCollection<Rotation> rotationsReadOnly;
     private DirtyFlags dirty;
 
     public TMPCharacterMeshModifiers()
@@ -161,16 +201,55 @@ public class TMPCharacterMeshModifiers
     public void Reset()
     {
         positionDelta = Vector3.zero;
-        scaleDelta = Matrix4x4.Scale(Vector3.one);
+        scaleDelta = Default; /*Matrix4x4.Scale(Vector3.one);*/
         rotations.Clear();
+        dirty = 0;
+    }
+
+    public static Matrix4x4 Default = Matrix4x4.identity;
+
+    public void Combine(TMPCharacterMeshModifiers other)
+    {
+        if (other.Dirty.HasFlag(DirtyFlags.PositionDelta))
+        {
+            positionDelta += other.positionDelta;
+        }
+
+        if (other.Dirty.HasFlag(DirtyFlags.Scale))
+        {
+            scaleDelta *= other.ScaleDelta;
+        }
+
+        if (other.Dirty.HasFlag(DirtyFlags.Rotations))
+        {
+            for (int i = 0; i < other.rotations.Count; i++)
+            {
+                rotations.Add(other.rotations[i]);
+            }
+        }
+
+        dirty |= other.Dirty;
     }
 
     public static TMPCharacterMeshModifiers operator +(TMPCharacterMeshModifiers lhs, TMPCharacterMeshModifiers rhs)
     {
         TMPCharacterMeshModifiers result = new TMPCharacterMeshModifiers();
-        result.positionDelta = lhs.positionDelta + rhs.positionDelta;
-        result.scaleDelta = lhs.ScaleDelta * rhs.ScaleDelta;
-        result.rotations = lhs.rotations.Concat(rhs.rotations).ToList();
+
+        if (rhs.Dirty.HasFlag(DirtyFlags.PositionDelta))
+        {
+            result.positionDelta = lhs.positionDelta + rhs.positionDelta;
+        }
+
+        if (rhs.Dirty.HasFlag(DirtyFlags.Scale))
+        {
+            result.scaleDelta = lhs.ScaleDelta * rhs.ScaleDelta;
+        }
+
+        if (rhs.Dirty.HasFlag(DirtyFlags.Rotations))
+        {
+            result.rotations = lhs.rotations.Concat(rhs.rotations).ToList();
+        }
+
         return result;
     }
 
@@ -185,6 +264,11 @@ public class TMPCharacterMeshModifiers
     public void ClearDirtyFlags()
     {
         dirty = 0;
+    }
+
+    public void ClearRotations()
+    {
+        rotations.Clear();
     }
 }
 
@@ -248,16 +332,12 @@ public class CharDataModifiers
         if (modifiers.characterMeshModifiers.PositionDelta != Vector3.zero)
             result.characterMeshModifiers.PositionDelta = modifiers.characterMeshModifiers.PositionDelta * t;
 
-        List<Rotation> rotations = new List<Rotation>();
         foreach (var rot in modifiers.characterMeshModifiers.Rotations)
         {
-            rotations.Add(
-                // new Rotation(Quaternion.LerpUnclamped(cData.InitialRotation, rot.rotation, t),
-                new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
-                    rot.pivot));
+            result.characterMeshModifiers.AddRotation(new Rotation(
+                Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
+                rot.pivot));
         }
-
-        result.characterMeshModifiers.Rotations = rotations;
 
         Vector3 startScale = cData.InitialScale;
         Vector3 endScale = modifiers.characterMeshModifiers.ScaleDelta.lossyScale;
@@ -400,8 +480,8 @@ public class CharDataModifiers
             finalRotation = Quaternion.Euler(rot.eulerAngles) * finalRotation;
         }
 
-        cData.SetPivot(finalPivot);
-        cData.SetRotation(finalRotation);
+        // cData.SetPivot(finalPivot);
+        // cData.SetRotation(finalRotation);
 
         cData.mesh.SetPosition(0, cData.InitialMesh.BL_Position + meshModifiers.BL_Delta);
         cData.mesh.SetPosition(1, cData.InitialMesh.TL_Position + meshModifiers.TL_Delta);
@@ -438,7 +518,7 @@ public class CharDataModifiers
     {
         characterMeshModifiers.PositionDelta = Vector3.zero;
         characterMeshModifiers.ScaleDelta = Matrix4x4.Scale(Vector3.one);
-        characterMeshModifiers.Rotations = new List<Rotation>();
+        characterMeshModifiers.ClearRotations();
         // characterMeshModifiers.ClearDirtyFlags();
     }
 
@@ -467,21 +547,18 @@ public class CharDataModifiers
         if (cData.scaleDirty)
             characterMeshModifiers.ScaleDelta *= Matrix4x4.Scale(cData.Scale);
 
-        if (cData.rotationDirty)
-        {
-            if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles != Vector3.zero)
-            {
-                var scaled = cData.InitialPosition +
-                             AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData,
-                                 context);
-                Rotation rot = new Rotation(cData.Rotation.eulerAngles, scaled);
-
-                // TODO this is not okay lol
-                characterMeshModifiers.Rotations =
-                    characterMeshModifiers.Rotations.Concat(new List<Rotation>() { rot }).ToList();
-                // rotations.Add(new Rotation(cData.Rotation.eulerAngles, scaled));
-            }
-        }
+        // if (cData.rotationDirty)
+        // {
+        //     if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles != Vector3.zero)
+        //     {
+        //         var scaled = cData.InitialPosition +
+        //                      AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData,
+        //                          context);
+        //         Rotation rot = new Rotation(cData.Rotation.eulerAngles, scaled);
+        //
+        //         characterMeshModifiers.AddRotation(rot);
+        //     }
+        // }
 
         if (cData.verticesDirty)
         {

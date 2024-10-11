@@ -207,15 +207,15 @@ namespace TMPEffects.CharacterData
                 scaleDelta *= Matrix4x4.Scale(cData.Scale);
             }
 
-            if (cData.rotationDirty)
-            {
-                if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
-                {
-                    rotations.Add(cData.Rotation);
-                    var scaled = cData.InitialPosition + AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData, context);
-                    pivots.Add(scaled);
-                }
-            }
+            // if (cData.rotationDirty)
+            // {
+            //     if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
+            //     {
+            //         rotations.Add(cData.Rotation);
+            //         var scaled = cData.InitialPosition + AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData, context);
+            //         pivots.Add(scaled);
+            //     }
+            // }
 
             if (cData.verticesDirty)
             {

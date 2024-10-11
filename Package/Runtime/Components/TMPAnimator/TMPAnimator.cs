@@ -16,6 +16,7 @@ using TMPEffects.CharacterData;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Codice.Client.Common.EventTracking;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
@@ -810,9 +811,9 @@ namespace TMPEffects.Components
 
             sw.Stop();
             count++;
-            if (count >= 1000)
+            if (count >= 10000)
             {
-                Debug.LogWarning("1000 anims took " + sw.Elapsed.TotalMilliseconds);
+                Debug.LogWarning("10000 anims took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
@@ -969,8 +970,8 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                myState.meshModifiers += cData.mesh.modifiers;
-                myState.characterMeshModifiers += cData.CharacterMeshModifiers;
+                myState.meshModifiers.Combine(cData.mesh.modifiers);
+                myState.characterMeshModifiers.Combine(cData.CharacterMeshModifiers);
                 // stateNew.UpdateFromCharDataState();
             }
 
@@ -1210,27 +1211,35 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                myState.CalculateVertexPositions(cData, context);
+                if (myState.characterMeshModifiers.Dirty != 0 || myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Deltas))
+                {
+                    myState.CalculateVertexPositions(cData, context);
+                    cData.mesh.SetPosition(0, myState.BL_Result);
+                    cData.mesh.SetPosition(1, myState.TL_Result);
+                    cData.mesh.SetPosition(2, myState.TR_Result);
+                    cData.mesh.SetPosition(3, myState.BR_Result);
+                }
+
+                if (myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Colors))
+                {
+                    cData.mesh.SetColor(0, myState.meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
+                    cData.mesh.SetColor(1, myState.meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
+                    cData.mesh.SetColor(2, myState.meshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
+                    cData.mesh.SetColor(3, myState.meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
+                }
+
+                if (myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.UVs))
+                {
+                    cData.mesh.SetUV0(0, myState.meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
+                    cData.mesh.SetUV0(1, myState.meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
+                    cData.mesh.SetUV0(2, myState.meshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
+                    cData.mesh.SetUV0(3, myState.meshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
                 
-                cData.mesh.SetPosition(0, myState.BL_Result);
-                cData.mesh.SetPosition(1, myState.TL_Result);
-                cData.mesh.SetPosition(2, myState.TR_Result);
-                cData.mesh.SetPosition(3, myState.BR_Result);
-                
-                cData.mesh.SetColor(0, myState.meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
-                cData.mesh.SetColor(1, myState.meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
-                cData.mesh.SetColor(2, myState.meshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
-                cData.mesh.SetColor(3, myState.meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
-                
-                cData.mesh.SetUV0(0, myState.meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
-                cData.mesh.SetUV0(1, myState.meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
-                cData.mesh.SetUV0(2, myState.meshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
-                cData.mesh.SetUV0(3, myState.meshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
-                
-                cData.mesh.SetUV2(0, myState.meshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
-                cData.mesh.SetUV2(1, myState.meshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
-                cData.mesh.SetUV2(2, myState.meshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
-                cData.mesh.SetUV2(3, myState.meshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
+                    cData.mesh.SetUV2(0, myState.meshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
+                    cData.mesh.SetUV2(1, myState.meshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
+                    cData.mesh.SetUV2(2, myState.meshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
+                    cData.mesh.SetUV2(3, myState.meshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
+                }
             }
         }
         #endregion

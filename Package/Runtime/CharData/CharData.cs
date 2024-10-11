@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using TMPEffects.Parameters;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace TMPEffects.CharacterData
 {
     public partial class CharData
     {
-        internal readonly TMPCharacterMeshModifiers CharacterMeshModifiers;
+        internal  TMPCharacterMeshModifiers CharacterMeshModifiers;
 
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
@@ -56,15 +57,10 @@ namespace TMPEffects.CharacterData
         public Vector3 Scale => CharacterMeshModifiers.ScaleDelta.lossyScale;
 
         /// <summary>
-        /// The character's rotation.
+        /// The character's rotations;
         /// </summary>
-        public Quaternion Rotation => Quaternion.Euler(CharacterMeshModifiers.Rotations.First().eulerAngles);
-
-        /// <summary>
-        /// The character's rotation pivot.
-        /// </summary>
-        public Vector3 RotationPivot => CharacterMeshModifiers.Rotations.First().pivot;
-
+        public IReadOnlyList<Rotation> Rotations => CharacterMeshModifiers.Rotations;
+        
         #region Fields
 
         /// <summary>
@@ -174,8 +170,24 @@ namespace TMPEffects.CharacterData
             CharacterMeshModifiers.PositionDelta += delta;
         }
 
-        public void AddRotation(Vector3 eulerAngles, ParameterTypes.TypedVector3 pivot)
+        public void AddRotation(Vector3 eulerAngles, Vector3 pivot)
         {
+            CharacterMeshModifiers.AddRotation(new Rotation(eulerAngles, pivot));
+        }
+
+        public void RemoveRotation(int index)
+        {
+            CharacterMeshModifiers.RemoveRotation(index);
+        }
+
+        public void InsertRotation(int index, Vector3 eulerAngles, Vector3 pivot)
+        {
+            CharacterMeshModifiers.InsertRotation(index, new Rotation(eulerAngles, pivot));
+        }
+
+        public void ClearRotations()
+        {
+            CharacterMeshModifiers.ClearRotations();
         }
 
         /// <summary>
@@ -192,42 +204,9 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public void Reset()
         {
-            ResetPosition();
-            ResetRotation();
-            ResetScale();
+            CharacterMeshModifiers.Reset();
             mesh.Reset();
         }
-
-        /// <summary>
-        /// Reset the character's scale.
-        /// </summary>
-        public void ResetScale() => this.CharacterMeshModifiers.ScaleDelta = Matrix4x4.Scale(defaultScale);
-
-        /// <summary>
-        /// Reset the character's position.
-        /// </summary>
-        public void ResetPosition() => this.CharacterMeshModifiers.PositionDelta = Vector3.zero;
-
-        /// <summary>
-        /// Reset the character's rotation.
-        /// </summary>
-        public void ResetRotation() => this.CharacterMeshModifiers.Rotations = new List<Rotation>();
-
-        /// <summary>
-        /// Reset the character's vertices.
-        /// </summary>
-        public void ResetVertices() => mesh.ResetPositions();
-
-        /// <summary>
-        /// Reset the character's UVs.
-        /// </summary>
-        public void ResetUVs() => mesh.ResetUVs();
-
-        /// <summary>
-        /// Reset the character's vertex colors.
-        /// </summary>
-        public void ResetColors() => mesh.ResetColors();
-
 
         private Vector3 GetCenter(in ReadOnlyVertexData data)
         {
@@ -238,20 +217,6 @@ namespace TMPEffects.CharacterData
             }
 
             return center / 4;
-        }
-
-
-        // TODO PLACEHOLDERS FOR COMPILE
-        public void SetPivot(Vector3 cDataInitialPosition)
-        {
-        }
-
-        public void AddPivotDelta(Vector3 getRawDelta)
-        {
-        }
-
-        public void SetRotation(Quaternion finalRotation)
-        {
         }
     }
 

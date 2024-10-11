@@ -496,36 +496,34 @@ namespace TMPEffects.CharacterData
                 return;
             }
 
-            value = new Color32(value.r, value.g, value.b, initial.GetAlpha(i));
-
             ColorOverride colorOverride;
             Color32 currentColor;
             switch (i)
             {
                 case 0:
                     colorOverride = modifiers.BL_Color;
-                    colorOverride.Override |= ColorOverride.OverrideMode.Alpha;
+                    colorOverride.Override |= ColorOverride.OverrideMode.Color;
                     currentColor = colorOverride.Color;
                     colorOverride.Color = new Color32(value.r, value.g, value.b, currentColor.a);
                     modifiers.BL_Color = colorOverride;
                     break;
                 case 1:
                     colorOverride = modifiers.TL_Color;
-                    colorOverride.Override |= ColorOverride.OverrideMode.Alpha;
+                    colorOverride.Override |= ColorOverride.OverrideMode.Color;
                     currentColor = colorOverride.Color;
                     colorOverride.Color = new Color32(value.r, value.g, value.b, currentColor.a);
                     modifiers.TL_Color = colorOverride;
                     break;
                 case 2:
                     colorOverride = modifiers.TR_Color;
-                    colorOverride.Override |= ColorOverride.OverrideMode.Alpha;
+                    colorOverride.Override |= ColorOverride.OverrideMode.Color;
                     currentColor = colorOverride.Color;
                     colorOverride.Color = new Color32(value.r, value.g, value.b, currentColor.a);
                     modifiers.TR_Color = colorOverride;
                     break;
                 case 3:
                     colorOverride = modifiers.BR_Color;
-                    colorOverride.Override |= ColorOverride.OverrideMode.Alpha;
+                    colorOverride.Override |= ColorOverride.OverrideMode.Color;
                     currentColor = colorOverride.Color;
                     colorOverride.Color = new Color32(value.r, value.g, value.b, currentColor.a);
                     modifiers.BR_Color = colorOverride;
@@ -700,10 +698,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public void Reset()
         {
-            ResetColors();
-            ResetAlphas();
-            ResetPositions();
-            ResetUVs();
+            modifiers.Reset();
         }
 
         /// <summary>

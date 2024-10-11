@@ -282,27 +282,7 @@ namespace TMPEffects.TMPAnimations
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
-
-        /// <summary>
-        /// Set the raw pivot of the character. This position will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="position">The position to set the pivot to.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx) =>
-            SetPivotRaw(pivot, cData, ctx.AnimatorContext);
-
-        /// <summary>
-        /// Set the raw pivot of the character. This position will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="position">The position to set the pivot to.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
-        {
-            Vector3 ogPos = cData.InitialPosition;
-            cData.SetPivot(GetRawPosition(pivot, ogPos, cData, ctx));
-        }
+        
 
         /// <summary>
         /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
@@ -344,26 +324,6 @@ namespace TMPEffects.TMPAnimations
         public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
             cData.AddPositionDelta(GetRawDelta(delta, cData, ctx));
-        }
-
-        /// <summary>
-        /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the pivot.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) =>
-            AddPivotDeltaRaw(delta, cData, ctx.AnimatorContext);
-
-        /// <summary>
-        /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the pivot.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddPivotDelta(GetRawDelta(delta, cData, ctx));
         }
 
         #endregion

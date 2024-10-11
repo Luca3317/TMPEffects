@@ -11,7 +11,7 @@ public struct TMPMeshModifiers2
         {
             if (value == bl_Delta) return;
             bl_Delta = value;
-            Dirty |= DirtyFlags.Deltas;
+            dirty |= DirtyFlags.Deltas;
         }
     }
 
@@ -22,7 +22,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tl_Delta) return;
             tl_Delta = value;
-            Dirty |= DirtyFlags.Deltas;
+            dirty |= DirtyFlags.Deltas;
         }
     }
 
@@ -33,7 +33,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tr_Delta) return;
             tr_Delta = value;
-            Dirty |= DirtyFlags.Deltas;
+            dirty |= DirtyFlags.Deltas;
         }
     }
 
@@ -44,7 +44,7 @@ public struct TMPMeshModifiers2
         {
             if (value == br_Delta) return;
             br_Delta = value;
-            Dirty |= DirtyFlags.Deltas;
+            dirty |= DirtyFlags.Deltas;
         }
     }
 
@@ -55,7 +55,7 @@ public struct TMPMeshModifiers2
         {
             if (value.Equals(bl_Color)) return;
             bl_Color = value;
-            Dirty |= DirtyFlags.Colors;
+            dirty |= DirtyFlags.Colors;
         }
     }
 
@@ -66,7 +66,7 @@ public struct TMPMeshModifiers2
         {
             if (value.Equals(tl_Color)) return;
             tl_Color = value;
-            Dirty |= DirtyFlags.Colors;
+            dirty |= DirtyFlags.Colors;
         }
     }
 
@@ -77,7 +77,7 @@ public struct TMPMeshModifiers2
         {
             if (value.Equals(tr_Color)) return;
             tr_Color = value;
-            Dirty |= DirtyFlags.Colors;
+            dirty |= DirtyFlags.Colors;
         }
     }
 
@@ -88,7 +88,7 @@ public struct TMPMeshModifiers2
         {
             if (value.Equals(br_Color)) return;
             br_Color = value;
-            Dirty |= DirtyFlags.Colors;
+            dirty |= DirtyFlags.Colors;
         }
     }
 
@@ -99,7 +99,7 @@ public struct TMPMeshModifiers2
         {
             if (value == bl_UV0) return;
             bl_UV0 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -110,7 +110,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tl_UV0) return;
             tl_UV0 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -121,7 +121,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tr_UV0) return;
             tr_UV0 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -132,7 +132,7 @@ public struct TMPMeshModifiers2
         {
             if (value == br_UV0) return;
             br_UV0 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -143,7 +143,7 @@ public struct TMPMeshModifiers2
         {
             if (value == bl_UV2) return;
             bl_UV2 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -154,7 +154,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tl_UV2) return;
             tl_UV2 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -165,7 +165,7 @@ public struct TMPMeshModifiers2
         {
             if (value == tr_UV2) return;
             tr_UV2 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -176,7 +176,7 @@ public struct TMPMeshModifiers2
         {
             if (value == br_UV2) return;
             br_UV2 = value;
-            Dirty |= DirtyFlags.UVs;
+            dirty |= DirtyFlags.UVs;
         }
     }
 
@@ -200,7 +200,8 @@ public struct TMPMeshModifiers2
     [SerializeField] private UVOverride tr_UV2;
     [SerializeField] private UVOverride br_UV2;
 
-    private DirtyFlags Dirty;
+    public DirtyFlags Dirty => dirty;
+    private DirtyFlags dirty;
 
     [Serializable]
     public struct UVOverride
@@ -210,6 +211,9 @@ public struct TMPMeshModifiers2
 
         private bool _override;
         private Vector3 _overrideValue;
+
+        public static UVOverride Default = new UVOverride(null);
+        public static UVOverride GetDefault => Default;
 
         public UVOverride(Vector3? overrideValue = null)
         {
@@ -280,8 +284,8 @@ public struct TMPMeshModifiers2
         tr_Color = original.tr_Color;
         br_Color = original.br_Color;
 
-        Dirty = 0;
-    } 
+        dirty = 0;
+    }
 
     public void Reset()
     {
@@ -289,39 +293,79 @@ public struct TMPMeshModifiers2
         tl_Delta = Vector3.zero;
         tr_Delta = Vector3.zero;
         br_Delta = Vector3.zero;
-        
+
         bl_Color = new ColorOverride();
         tl_Color = new ColorOverride();
         tr_Color = new ColorOverride();
         br_Color = new ColorOverride();
-        
-        bl_UV0 = new UVOverride(null);
-        tl_UV0 = new UVOverride(null);
-        tr_UV0 = new UVOverride(null);
-        br_UV0 = new UVOverride(null);
-        
-        bl_UV2 = new UVOverride(null);
-        tl_UV2 = new UVOverride(null);
-        tr_UV2 = new UVOverride(null);
-        br_UV2 = new UVOverride(null);
+
+        bl_UV0 = UVOverride.GetDefault; //new UVOverride(null);
+        tl_UV0 = UVOverride.GetDefault; //new UVOverride(null);
+        tr_UV0 = UVOverride.GetDefault; //new UVOverride(null);
+        br_UV0 = UVOverride.GetDefault; //new UVOverride(null);
+
+        bl_UV2 = UVOverride.GetDefault; //new UVOverride(null);
+        tl_UV2 = UVOverride.GetDefault; //new UVOverride(null);
+        tr_UV2 = UVOverride.GetDefault; //new UVOverride(null);
+        br_UV2 = UVOverride.GetDefault; //new UVOverride(null);
+
+        dirty = 0;
+    }
+
+    public void Combine(TMPMeshModifiers2 other)
+    {
+        if (other.dirty.HasFlag(DirtyFlags.Deltas))
+        {
+            BL_Delta += other.BL_Delta;
+            TL_Delta += other.TL_Delta;
+            TR_Delta += other.TR_Delta;
+            BR_Delta += other.BR_Delta;
+        }
+
+        if (other.dirty.HasFlag(DirtyFlags.Colors))
+        {
+            BL_Color += other.BL_Color; // TODO does thiswork
+            TL_Color += other.TL_Color;
+            TR_Color += other.TR_Color;
+            BR_Color += other.BR_Color;
+        }
+
+        if (other.dirty.HasFlag(DirtyFlags.UVs))
+        {
+            BL_UV0 += other.BL_UV0;
+            TL_UV0 += other.TL_UV0;
+            TR_UV0 += other.TR_UV0;
+            BR_UV0 += other.BR_UV0;
+        }
+
+        dirty |= other.dirty;
     }
 
     public static TMPMeshModifiers2 operator +(TMPMeshModifiers2 lhs, TMPMeshModifiers2 rhs)
     {
-        lhs.BL_Delta += rhs.BL_Delta;
-        lhs.TL_Delta += rhs.TL_Delta;
-        lhs.TR_Delta += rhs.TR_Delta;
-        lhs.BR_Delta += rhs.BR_Delta;
+        if (rhs.dirty.HasFlag(DirtyFlags.Deltas))
+        {
+            lhs.BL_Delta += rhs.BL_Delta;
+            lhs.TL_Delta += rhs.TL_Delta;
+            lhs.TR_Delta += rhs.TR_Delta;
+            lhs.BR_Delta += rhs.BR_Delta;
+        }
 
-        lhs.BL_Color += rhs.BL_Color; // TODO does thiswork
-        lhs.TL_Color += rhs.TL_Color;
-        lhs.TR_Color += rhs.TR_Color;
-        lhs.BR_Color += rhs.BR_Color;
+        if (rhs.dirty.HasFlag(DirtyFlags.Colors))
+        {
+            lhs.BL_Color += rhs.BL_Color; // TODO does thiswork
+            lhs.TL_Color += rhs.TL_Color;
+            lhs.TR_Color += rhs.TR_Color;
+            lhs.BR_Color += rhs.BR_Color;
+        }
 
-        lhs.BL_UV0 += rhs.BL_UV0;
-        lhs.TL_UV0 += rhs.TL_UV0;
-        lhs.TR_UV0 += rhs.TR_UV0;
-        lhs.BR_UV0 += rhs.BR_UV0;
+        if (rhs.dirty.HasFlag(DirtyFlags.UVs))
+        {
+            lhs.BL_UV0 += rhs.BL_UV0;
+            lhs.TL_UV0 += rhs.TL_UV0;
+            lhs.TR_UV0 += rhs.TR_UV0;
+            lhs.BR_UV0 += rhs.BR_UV0;
+        }
         return lhs;
     }
 

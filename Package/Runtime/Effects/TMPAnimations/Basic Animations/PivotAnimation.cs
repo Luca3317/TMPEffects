@@ -40,16 +40,20 @@ namespace TMPEffects.TMPAnimations.Animations
             // Calculate the angle based on the evaluate wave
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
 
-            // Set the rotation using the rotationaxis and current angle
-            cData.SetRotation(Quaternion.AngleAxis(angle, d.rotationAxis));
-
-            // Set the pivot depending on its type
-            switch (d.pivot.type)
-            {
-                case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, context); break;
-                case VectorType.Offset: cData.SetPivot(cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f)); break;
-                case VectorType.Anchor: SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, context); break;
-            }
+            // TODO This should implement the offset version; update to work for position and anchor
+            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+                cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f) );
+            
+            // // Set the rotation using the rotationaxis and current angle
+            // cData.SetRotation();
+            //
+            // // Set the pivot depending on its type
+            // switch (d.pivot.type)
+            // {
+            //     case VectorType.Position: SetPivotRaw(d.pivot.vector, cData, context); break;
+            //     case VectorType.Offset: cData.SetPivot(cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f)); break;
+            //     case VectorType.Anchor: SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, context); break;
+            // }
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
