@@ -34,7 +34,7 @@ public class AnimationStepDrawer : PropertyDrawer
         repetitions = property.FindPropertyRelative("repetitions");
         startTime = property.FindPropertyRelative("startTime");
         duration = property.FindPropertyRelative("duration");
-        modifiers = property.FindPropertyRelative("modifiers");
+        modifiers = property.FindPropertyRelative("charModifiers");
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
@@ -71,7 +71,6 @@ public class AnimationStepDrawer : PropertyDrawer
 
         if (property.serializedObject.targetObject is not PlayableAsset)
         {
-            Debug.LogWarning("type was " + property.serializedObject.targetObject.GetType());
             EditorGUI.PropertyField(rect, startTime);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, duration);
@@ -180,7 +179,7 @@ public class AnimationStepDrawer : PropertyDrawer
             totalHeight += EditorGUI.GetPropertyHeight(wave, true);
         }
 
-        totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
+         totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
 
         return totalHeight;
     }

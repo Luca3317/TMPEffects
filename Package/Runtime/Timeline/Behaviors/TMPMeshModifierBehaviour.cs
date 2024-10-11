@@ -8,6 +8,6 @@ public class TMPMeshModifierBehaviour : PlayableBehaviour
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
         var meshModifier = info.output.GetUserData() as TMPMeshModifier;
-        meshModifier.SetModifiers( Step.modifiers );
+        meshModifier.SetModifiers( Step.charModifiers );
     }
 }

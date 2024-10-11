@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(TMPAnimator))]
 public class TMPMeshModifier : MonoBehaviour
 {
-    private TMPMeshModifiers _modifiers;
+    private CharDataModifiers _modifiers;
     private TMPAnimator _animator;
 
     private void OnEnable()
@@ -17,7 +17,7 @@ public class TMPMeshModifier : MonoBehaviour
         if (_animator == null)
             _animator = GetComponent<TMPAnimator>();
 
-        _modifiers = new TMPMeshModifiers();
+        _modifiers = new CharDataModifiers();
         _animator.OnCharacterAnimated += OnCharacterAnimated;
     }
 
@@ -28,11 +28,11 @@ public class TMPMeshModifier : MonoBehaviour
 
     private void OnCharacterAnimated(CharData cdata)
     {
-        SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-        applier.ApplyToCharData(cdata, _modifiers);
+        // SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
+        // applier.ApplyToCurrentCharData(cdata, _modifiers);
     }
 
-    public void SetModifiers(TMPMeshModifiers modifiers)
+    public void SetModifiers(CharDataModifiers modifiers)
     {
         _modifiers = modifiers;
     }

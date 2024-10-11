@@ -30,7 +30,7 @@ namespace TMPEffects.TMPAnimations
             float timeValue =
                 data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 
-            TMPMeshModifiers accModifier = new TMPMeshModifiers();
+            CharDataModifiers accModifier = new CharDataModifiers();
 
             // TODO Probably should use an IntervalTree or smth for this
             int count = 0;
@@ -42,39 +42,42 @@ namespace TMPEffects.TMPAnimations
                 if (step.startTime > timeValue) continue;
                 if (step.EndTime < timeValue) continue;
 
-                TMPMeshModifiers result;
+                CharDataModifiers result;
+                
                 if (step.useWave)
                 {
                     result =
-                        TMPMeshModifiers.LerpUnclamped(cData, step.modifiers,
+                        CharDataModifiers.LerpUnclamped(cData, step.charModifiers,
                             step.wave.Evaluate(timeValue,
                                 AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value);
                 }
                 else
                 {
-                    result = new TMPMeshModifiers(step.modifiers);
+                    result = new CharDataModifiers(step.charModifiers);
                 }
-
+                
                 float entry = timeValue - step.startTime;
                 if (entry <= step.entryDuration)
                 {
-                    result = TMPMeshModifiers.LerpUnclamped(cData, result,
+                    result = CharDataModifiers.LerpUnclamped(cData, result,
                         step.entryCurve.Evaluate(entry / step.entryDuration));
                 }
 
                 float exit = step.EndTime - timeValue;
                 if (exit <= step.exitDuration)
                 {
-                    result = TMPMeshModifiers.LerpUnclamped(cData, result,
+                    result = CharDataModifiers.LerpUnclamped(cData, result,
                         step.exitCurve.Evaluate(exit / step.exitDuration));
                 }
 
-                (new SmthThatAppliesModifiers()).MakeModifierDeltasRaw(cData, context, result);
+                // (new SmthThatAppliesModifiers()).MakeModifierDeltasRaw(cData, context, result);
                 accModifier += result;
             }
 
-            SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-            applier.ApplyToCharData(cData, accModifier);
+            // SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
+            accModifier.SetContext(cData, context.AnimatorContext);
+            accModifier.Apply();
+            // applier.ApplyToCharData(cData, accModifier);
         }
 
         [Serializable]
@@ -104,7 +107,7 @@ namespace TMPEffects.TMPAnimations
                     ? startTime + duration
                     : (repetitions != 0 ? startTime + duration * repetitions : float.MaxValue);
 
-            public TMPMeshModifiers modifiers;
+            public CharDataModifiers charModifiers;
         }
 
         public struct AnimationStepComparer : IComparer<AnimationStep>

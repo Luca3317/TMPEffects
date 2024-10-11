@@ -14,6 +14,8 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.Tags;
 using TMPEffects.CharacterData;
 using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
@@ -21,6 +23,7 @@ using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
 using TMPEffects.Components.Mediator;
+using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components
 {
@@ -178,6 +181,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private object timesIdentifier;
 
         [System.NonSerialized] private CharDataState state = new CharDataState();
+        [System.NonSerialized] private CharDataModifiers stateNew = new CharDataModifiers();
 
         private const string falseUpdateAnimationsCallWarning = "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
             "If you want to manually control the animation updates, set its UpdateFrom property to \"Script\", " +
@@ -776,8 +780,13 @@ namespace TMPEffects.Components
             if (updateFrom == UpdateFrom.FixedUpdate && isAnimating) UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
+            Stopwatch sw = new Stopwatch();
+            private int count = 0;
         private void UpdateAnimations_Impl(float deltaTime)
         {
+            if (sw == null) sw = new Stopwatch();
+            sw.Start();
+            
             context.passed += deltaTime;
 
             if (characterResetQueued)
@@ -795,6 +804,19 @@ namespace TMPEffects.Components
 
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+            sw.Stop();
+            count++;
+            if (count >= 10000)
+            {
+                Debug.LogWarning("10000 anims took " + sw.Elapsed.TotalMilliseconds);
+                sw.Reset();
+                count = 0;
+            }
+            else if (count % 100 == 0)
+            {
+                // Debug.Log(count);
+            }
         }
 
 
@@ -813,8 +835,6 @@ namespace TMPEffects.Components
             // For performance reason probably want this in UpdateAnimations... but actually, that would
             // lead to issues with cases where only one character is updated eg when visbility changes
             OnCharacterAnimated?.Invoke(cData);
-            if (index == 0) Debug.LogWarning("Post pos " +cData.Position);
-            
             
             Mediator.ApplyMesh(cData);
 
@@ -836,8 +856,10 @@ namespace TMPEffects.Components
             VisibilityState vState = Mediator.VisibilityStates[index];
             if (!cData.info.isVisible || vState == VisibilityState.Hidden) return;
 
-            state.Reset(context, cData);
-
+            // state.Reset(context, cData);
+            stateNew.SetContext(cData, context);
+            stateNew.Reset();
+            
             if (vState == VisibilityState.Showing)
             {
                 bool prev = ignoreVisibilityChanges;
@@ -944,7 +966,8 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                state.UpdateVertexOffsets();
+                stateNew.Update();
+                // state.UpdateVertexOffsets();
             }
 
             void AnimateBasic(bool late)
@@ -1183,27 +1206,28 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                state.CalculateVertexPositions();
+                cData.Reset();
+                stateNew.Apply();
 
-                cData.SetVertex(0, state.BL_Result);
-                cData.SetVertex(1, state.TL_Result);
-                cData.SetVertex(2, state.TR_Result);
-                cData.SetVertex(3, state.BR_Result);
-
-                cData.mesh.SetColor(0, state.BL_Color);
-                cData.mesh.SetColor(1, state.TL_Color);
-                cData.mesh.SetColor(2, state.TR_Color);
-                cData.mesh.SetColor(3, state.BR_Color);
-
-                cData.mesh.SetUV0(0, state.BL_UV);
-                cData.mesh.SetUV0(1, state.TL_UV);
-                cData.mesh.SetUV0(2, state.TR_UV);
-                cData.mesh.SetUV0(3, state.BR_UV);
-
-                cData.mesh.SetUV2(0, state.BL_UV2);
-                cData.mesh.SetUV2(1, state.TL_UV2);
-                cData.mesh.SetUV2(2, state.TR_UV2);
-                cData.mesh.SetUV2(3, state.BR_UV2);
+                // cData.SetVertex(0, state.BL_Result);
+                // cData.SetVertex(1, state.TL_Result);
+                // cData.SetVertex(2, state.TR_Result);
+                // cData.SetVertex(3, state.BR_Result);
+                //
+                // cData.mesh.SetColor(0, state.BL_Color);
+                // cData.mesh.SetColor(1, state.TL_Color);
+                // cData.mesh.SetColor(2, state.TR_Color);
+                // cData.mesh.SetColor(3, state.BR_Color);
+                //
+                // cData.mesh.SetUV0(0, state.BL_UV);
+                // cData.mesh.SetUV0(1, state.TL_UV);
+                // cData.mesh.SetUV0(2, state.TR_UV);
+                // cData.mesh.SetUV0(3, state.BR_UV);
+                //
+                // cData.mesh.SetUV2(0, state.BL_UV2);
+                // cData.mesh.SetUV2(1, state.TL_UV2);
+                // cData.mesh.SetUV2(2, state.TR_UV2);
+                // cData.mesh.SetUV2(3, state.BR_UV2);
             }
         }
         #endregion

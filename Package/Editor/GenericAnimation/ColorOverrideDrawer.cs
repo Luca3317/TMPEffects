@@ -4,7 +4,7 @@ using TMPEffects.CharacterData;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(TMPMeshModifiers.ColorOverride))]
+[CustomPropertyDrawer(typeof(ColorOverride))]
 public class ColorOverrideDrawer : PropertyDrawer
 {
     private SerializedProperty flagProp;
@@ -26,20 +26,20 @@ public class ColorOverrideDrawer : PropertyDrawer
         var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
 
         var flagsRect = new Rect(rect.x - 75, rect.y, 100, rect.height);
-        var flags = (TMPMeshModifiers.ColorOverride.OverrideMode)EditorGUI.EnumFlagsField(flagsRect,
-            (TMPMeshModifiers.ColorOverride.OverrideMode)flagProp.enumValueFlag);
+        var flags = (ColorOverride.OverrideMode)EditorGUI.EnumFlagsField(flagsRect,
+            (ColorOverride.OverrideMode)flagProp.enumValueFlag);
         flagProp.enumValueFlag = (int)flags;
 
 
         var colorRect = new Rect(rect.x, rect.y, rect.width, rect.height);
 
-        if (flags.HasFlag(TMPMeshModifiers.ColorOverride.OverrideMode.Color))
+        if (flags.HasFlag(ColorOverride.OverrideMode.Color))
         {
             colorProp.colorValue =
                 EditorGUI.ColorField(colorRect, GUIContent.none, colorProp.colorValue, true,
-                    flags.HasFlag(TMPMeshModifiers.ColorOverride.OverrideMode.Alpha), false);
+                    flags.HasFlag(ColorOverride.OverrideMode.Alpha), false);
         }
-        else if (flags.HasFlag(TMPMeshModifiers.ColorOverride.OverrideMode.Alpha))
+        else if (flags.HasFlag(ColorOverride.OverrideMode.Alpha))
         {
             float alpha = EditorGUI.Slider(colorRect, colorProp.colorValue.a, 0f, 1f);
             

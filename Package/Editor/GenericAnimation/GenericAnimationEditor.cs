@@ -423,17 +423,18 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
             modifiers = new TMPMeshModifiers()
             {{
-                PositionDelta = {GetVector3String(step.modifiers.PositionDelta)},
-                RotationDelta = {GetQuaternionString(step.modifiers.RotationDelta)}, 
-                BL_Delta = {GetVector3String(step.modifiers.BL_Delta)},
-                TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
-                TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
-                BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
+
 
             }}
         }};";
 
-            // TODO Redo with ColorOverrides
+            // TODO Redo with chardatamodifier
+            // PositionDelta = {GetVector3String(step.modifiers.PositionDelta)},
+            // RotationDelta = {GetQuaternionString(step.modifiers.RotationDelta)}, 
+            // BL_Delta = {GetVector3String(step.modifiers.BL_Delta)},
+            // TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
+            // TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
+            // BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
             // {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
             // {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
             // {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
