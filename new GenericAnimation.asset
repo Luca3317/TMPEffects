@@ -53,29 +53,20 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 0
-              outSlope: -0.0012029491
+              inSlope: 2
+              outSlope: 2
               tangentMode: 0
-              weightedMode: 3
+              weightedMode: 0
               inWeight: 0
-              outWeight: 0.36078
-            - serializedVersion: 3
-              time: 0.5
-              value: 0.5
-              inSlope: 1.5725082
-              outSlope: 1.5733721
-              tangentMode: 0
-              weightedMode: 3
-              inWeight: 0.326514
-              outWeight: 0.33093
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: -0.0009312395
+              inSlope: 0
               outSlope: 0
               tangentMode: 0
-              weightedMode: 3
-              inWeight: 0.358688
+              weightedMode: 0
+              inWeight: 0
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -87,47 +78,73 @@ MonoBehaviour:
               time: 0
               value: 0
               inSlope: 0
-              outSlope: -0.0012029491
+              outSlope: 0
               tangentMode: 0
-              weightedMode: 3
+              weightedMode: 0
               inWeight: 0
-              outWeight: 0.36078
+              outWeight: 0
             - serializedVersion: 3
-              time: 0.5
-              value: 0.5
-              inSlope: 1.5725082
-              outSlope: 1.5733721
+              time: 0.7004815
+              value: 0.19897781
+              inSlope: 0.7700481
+              outSlope: 0.7700481
               tangentMode: 0
-              weightedMode: 3
-              inWeight: 0.326514
-              outWeight: 0.33093
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: -0.0009312395
-              outSlope: 0
+              inSlope: 2
+              outSlope: 2
               tangentMode: 0
-              weightedMode: 3
-              inWeight: 0.358688
+              weightedMode: 0
+              inWeight: 0
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-          crestWait: 0
-          troughWait: 0
-          uniformity: 0.15
+          crestWait: 0.1
+          troughWait: 1
+          uniformity: 0.43
         startTime: 0
         duration: 0
         charModifiers:
+          meshModifiers:
+            bl_Delta: {x: 0, y: 0, z: 0}
+            tl_Delta: {x: 0, y: 0, z: 0}
+            tr_Delta: {x: 0, y: 0, z: 0}
+            br_Delta: {x: 0, y: 0, z: 0}
+            bl_Color:
+              Override: 1
+              Color:
+                serializedVersion: 2
+                rgba: 255
+            tl_Color:
+              Override: 1
+              Color:
+                serializedVersion: 2
+                rgba: 255
+            tr_Color:
+              Override: 1
+              Color:
+                serializedVersion: 2
+                rgba: 255
+            br_Color:
+              Override: 1
+              Color:
+                serializedVersion: 2
+                rgba: 255
+            dirty: 2
           characterMeshModifiers:
-            positionDelta: {x: 26.64, y: 15, z: 0}
+            positionDelta: {x: 0, y: 18.99, z: 0}
             scaleDelta:
-              e00: 1
+              e00: 1.23
               e01: 0
               e02: 0
               e03: 0
               e10: 0
-              e11: 0.91
+              e11: 1.36
               e12: 0
               e13: 0
               e20: 0
@@ -141,28 +158,4 @@ MonoBehaviour:
             rotations:
             - pivot: {x: 0, y: 0, z: 0}
               eulerAngles: {x: 0, y: 0, z: 0}
-          meshModifiers:
-            bl_Delta: {x: 0, y: 0, z: 0}
-            tl_Delta: {x: 0, y: 0, z: 0}
-            tr_Delta: {x: 0, y: 0, z: 0}
-            br_Delta: {x: 0, y: 0, z: 0}
-            bl_Color:
-              Override: 0
-              Color:
-                serializedVersion: 2
-                rgba: 0
-            tl_Color:
-              Override: 0
-              Color:
-                serializedVersion: 2
-                rgba: 0
-            tr_Color:
-              Override: 0
-              Color:
-                serializedVersion: 2
-                rgba: 0
-            br_Color:
-              Override: 0
-              Color:
-                serializedVersion: 2
-                rgba: 0
+            dirty: 7

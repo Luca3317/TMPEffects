@@ -38,6 +38,12 @@ public class TMPCharDataModifiers
         characterMeshModifiers = new TMPCharacterMeshModifiers();
     }
 
+    public TMPCharDataModifiers(TMPCharDataModifiers original)
+    {
+        meshModifiers = new TMPMeshModifiers2(original.meshModifiers);
+        characterMeshModifiers = new TMPCharacterMeshModifiers(original.characterMeshModifiers);
+    }
+
     public void Update(CharData cData)
     {
         if (cData.positionDirty)
@@ -116,6 +122,84 @@ public class TMPCharDataModifiers
         BR_Result = vbr;
     }
 
+    public static TMPCharDataModifiers LerpUnclamped(CharData cData, TMPCharDataModifiers modifiers, float t)
+    {
+        TMPCharDataModifiers result = new TMPCharDataModifiers();
+
+        if (modifiers.characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.PositionDelta))
+        {
+            result.characterMeshModifiers.PositionDelta =
+                modifiers.characterMeshModifiers.PositionDelta * t;
+        }
+
+        if (modifiers.characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.Rotations))
+        {
+            for (int i = 0; i < modifiers.characterMeshModifiers.Rotations.Count; i++)
+            {
+                var rot = modifiers.characterMeshModifiers.Rotations[i];
+                result.characterMeshModifiers.AddRotation(
+                    new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
+                        rot.pivot));
+            }
+        }
+
+        if (modifiers.characterMeshModifiers.Dirty.HasFlag(TMPCharacterMeshModifiers.DirtyFlags.Scale))
+        {
+            Vector3 startScale = cData.InitialScale;
+            Vector3 endScale = modifiers.characterMeshModifiers.ScaleDelta.lossyScale;
+            Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
+            result.characterMeshModifiers.ScaleDelta = Matrix4x4.Scale(lerpedScale);
+        }
+
+        result.meshModifiers = LerpMeshModifiersUnclamped(cData, modifiers.meshModifiers, t);
+
+        return result;
+    }
+
+    private static TMPMeshModifiers2 LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers2 modifiers, float t)
+    {
+        if (t <= 0) return new TMPMeshModifiers2();
+
+        TMPMeshModifiers2 result = new TMPMeshModifiers2();
+
+        if (modifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Deltas))
+        {
+            result.BL_Delta = modifiers.BL_Delta * t;
+            result.TL_Delta = modifiers.TL_Delta * t;
+            result.TR_Delta = modifiers.TR_Delta * t;
+            result.BR_Delta = modifiers.BR_Delta * t;
+        }
+
+        if (modifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Colors))
+        {
+            result.BL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BL_Color, modifiers.BL_Color, t);
+            result.TL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TL_Color, modifiers.TL_Color, t);
+            result.TR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TR_Color, modifiers.TR_Color, t);
+            result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, modifiers.BR_Color, t);
+        }
+
+        if (modifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.UVs))
+        {
+            var vector = modifiers.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);
+            result.BL_UV0 =
+                new TMPMeshModifiers2.UVOverride(Vector3.LerpUnclamped(cData.InitialMesh.BL_UV0, vector, t));
+            
+            vector = modifiers.TL_UV0.GetValue(cData.InitialMesh.TL_UV0);
+            result.TL_UV0 =
+                new TMPMeshModifiers2.UVOverride(Vector3.LerpUnclamped(cData.InitialMesh.TL_UV0, vector, t));
+            
+            vector = modifiers.TR_UV0.GetValue(cData.InitialMesh.TR_UV0);
+            result.TR_UV0 =
+                new TMPMeshModifiers2.UVOverride(Vector3.LerpUnclamped(cData.InitialMesh.TR_UV0, vector, t));
+            
+            vector = modifiers.BR_UV0.GetValue(cData.InitialMesh.BR_UV0);
+            result.BR_UV0 =
+                new TMPMeshModifiers2.UVOverride(Vector3.LerpUnclamped(cData.InitialMesh.BR_UV0, vector, t));
+        }
+
+        return result;
+    }
+
     public void Reset()
     {
         meshModifiers.Reset();
@@ -182,8 +266,8 @@ public class TMPCharacterMeshModifiers
     [SerializeField] private Vector3 positionDelta = Vector3.zero;
     [SerializeField] private Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
     [SerializeField] private List<Rotation> rotations = new List<Rotation>();
+    [SerializeField] private DirtyFlags dirty;
     private ReadOnlyCollection<Rotation> rotationsReadOnly;
-    private DirtyFlags dirty;
 
     public TMPCharacterMeshModifiers()
     {
@@ -194,7 +278,7 @@ public class TMPCharacterMeshModifiers
         positionDelta = original.positionDelta;
         scaleDelta = original.scaleDelta;
         rotations = new List<Rotation>(original.rotations);
-        dirty = 0;
+        dirty = original.Dirty;
     }
 
     public void Reset()
@@ -207,8 +291,20 @@ public class TMPCharacterMeshModifiers
 
     public static Matrix4x4 Default = Matrix4x4.identity;
 
-    public void Combine(TMPCharacterMeshModifiers other)
+    public void Combine(TMPCharacterMeshModifiers other, bool useFlags = true)
     {
+        if (!useFlags)
+        {
+            positionDelta += other.positionDelta;
+            scaleDelta *= other.scaleDelta;
+            for (int i = 0; i < other.rotations.Count; i++)
+            {
+                rotations.Add(other.rotations[i]);
+            }
+
+            return;
+        }
+        
         if (other.Dirty.HasFlag(DirtyFlags.PositionDelta))
         {
             positionDelta += other.positionDelta;
@@ -253,7 +349,7 @@ public class TMPCharacterMeshModifiers
     }
 
     [Flags]
-    public enum DirtyFlags
+    public enum DirtyFlags : int
     {
         PositionDelta = 1,
         Rotations = 1 << 1,

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [Serializable]
@@ -201,7 +202,7 @@ public struct TMPMeshModifiers2
     [SerializeField] private UVOverride br_UV2;
 
     public DirtyFlags Dirty => dirty;
-    private DirtyFlags dirty;
+    [SerializeField] private DirtyFlags dirty;
 
     [Serializable]
     public struct UVOverride
@@ -260,8 +261,8 @@ public struct TMPMeshModifiers2
 
             return new UVOverride();
         }
-    }
-
+    } 
+    
     public TMPMeshModifiers2(TMPMeshModifiers2 original)
     {
         bl_Delta = original.bl_Delta;
@@ -284,7 +285,7 @@ public struct TMPMeshModifiers2
         tr_Color = original.tr_Color;
         br_Color = original.br_Color;
 
-        dirty = 0;
+        dirty = original.Dirty;
     }
 
     public void Reset()
@@ -312,8 +313,33 @@ public struct TMPMeshModifiers2
         dirty = 0;
     }
 
-    public void Combine(TMPMeshModifiers2 other)
+    public void Combine(TMPMeshModifiers2 other, bool useFlags = true)
     {
+        if (!useFlags)
+        {
+            BL_Delta += other.BL_Delta;
+            TL_Delta += other.TL_Delta;
+            TR_Delta += other.TR_Delta;
+            BR_Delta += other.BR_Delta;
+            
+            BL_Color += other.BL_Color;
+            TL_Color += other.TL_Color;
+            TR_Color += other.TR_Color;
+            BR_Color += other.BR_Color;
+            
+            BL_UV0 += other.BL_UV0;
+            TL_UV0 += other.TL_UV0;
+            TR_UV0 += other.TR_UV0;
+            BR_UV0 += other.BR_UV0;
+            
+            BL_UV2 += other.BL_UV2;
+            TL_UV2 += other.TL_UV2;
+            TR_UV2 += other.TR_UV2;
+            BR_UV2 += other.BR_UV2;
+            
+            return;
+        }
+        
         if (other.dirty.HasFlag(DirtyFlags.Deltas))
         {
             BL_Delta += other.BL_Delta;
@@ -336,6 +362,11 @@ public struct TMPMeshModifiers2
             TL_UV0 += other.TL_UV0;
             TR_UV0 += other.TR_UV0;
             BR_UV0 += other.BR_UV0;
+            
+            BL_UV2 += other.BL_UV2;
+            TL_UV2 += other.TL_UV2;
+            TR_UV2 += other.TR_UV2;
+            BR_UV2 += other.BR_UV2;
         }
 
         dirty |= other.dirty;

@@ -24,7 +24,7 @@ namespace TMPEffects.TMPAnimations.Animations
             float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
 
             // Move the character up based on the wave evaluation
-            cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
+            cData.AddPositionDelta(Vector3.up * eval);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

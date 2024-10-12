@@ -10,7 +10,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using Vector4 = UnityEngine.Vector4;
 
-[CustomPropertyDrawer(typeof(CharDataModifiers))]
+[CustomPropertyDrawer(typeof(TMPCharDataModifiers))]
 public class TMPMeshModifierDrawer : PropertyDrawer
 {
     private Color32 backgroundColor;
@@ -23,16 +23,19 @@ public class TMPMeshModifierDrawer : PropertyDrawer
     private SerializedProperty blDeltaProp, tlDeltaProp, trDeltaProp, brDeltaProp;
     private SerializedProperty blColorProp, tlColorProp, trColorProp, brColorProp;
     private SerializedProperty blUV0Prop, tlUV0Prop, trUV0Prop, brUV0Prop;
-    
+    private SerializedProperty meshModifierDirtyProp;
+    private SerializedProperty characterMeshModifierDirtyProp;
+
     private const float TypedVectorFoldoutWidth = 20f;
 
     private void Init(SerializedProperty property)
     {
         characterMeshModifierProp = property.FindPropertyRelative("characterMeshModifiers");
-        
+
         positionDeltaProp = characterMeshModifierProp.FindPropertyRelative("positionDelta");
         scaleDeltaProp = characterMeshModifierProp.FindPropertyRelative("scaleDelta");
         rotationsProp = characterMeshModifierProp.FindPropertyRelative("rotations");
+        characterMeshModifierDirtyProp = characterMeshModifierProp.FindPropertyRelative("dirty");
 
         meshModifierProp = property.FindPropertyRelative("meshModifiers");
 
@@ -50,6 +53,8 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         tlUV0Prop = meshModifierProp.FindPropertyRelative("tl_UV0");
         trUV0Prop = meshModifierProp.FindPropertyRelative("tr_UV0");
         brUV0Prop = meshModifierProp.FindPropertyRelative("br_UV0");
+
+        meshModifierDirtyProp = meshModifierProp.FindPropertyRelative("dirty");
 
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
@@ -86,7 +91,7 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         matrix.m33 = scaleDeltaProp.FindPropertyRelative("e33").floatValue;
         return matrix;
     }
-    
+
     public static Vector3 ExtractScale(Matrix4x4 matrix)
     {
         Vector3 scale;
@@ -95,10 +100,10 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         scale.z = new Vector4(matrix.m02, matrix.m12, matrix.m22, matrix.m32).magnitude;
         return scale;
     }
-    
+
     private void ApplyBackToMatrix(Vector3 scale)
     {
-        Debug.Log("Scale " +scale);
+        Debug.Log("Scale " + scale);
         // matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scale);
         var matrix = Matrix4x4.Scale(scale);
         Debug.Log("mat scale " + matrix.lossyScale);
@@ -120,24 +125,254 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         // scaleDeltaProp.FindPropertyRelative("e33").floatValue = matrix.m33;
 
         for (int i = 0; i < 16; i++)
-            if (matrix[i] < 0) Debug.LogWarning( i+ " negative!! " + matrix[i]);
+            if (matrix[i] < 0)
+                Debug.LogWarning(i + " negative!! " + matrix[i]);
 
         var newmat = GetMatrix();
         Debug.Log("3rd mat scale " + newmat.lossyScale);
     }
 
+    private Rect DrawCharacterModifier(Rect rect)
+    {
+        var bgRect = new Rect(rect.x, rect.y, rect.width,
+            EditorGUIUtility.singleLineHeight * 2 + EditorGUI.GetPropertyHeight(rotationsProp, true));
+        EditorGUI.DrawRect(bgRect, backgroundColor);
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.PropertyField(rect, positionDeltaProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is 0 (= default), but bit is set as dirty, fix
+            if (positionDeltaProp.vector3Value == Vector3.zero)
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.PositionDelta) != 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPCharacterMeshModifiers.DirtyFlags.PositionDelta;
+                }
+            }
+            // If is not 0 (!= default), but bit is not set as dirty, fix
+            else
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.PositionDelta) == 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPCharacterMeshModifiers.DirtyFlags.PositionDelta;
+                }
+            }
+        }
+
+        EditorGUI.BeginChangeCheck();
+        rect.height = EditorGUI.GetPropertyHeight(rotationsProp, true);
+        EditorGUI.PropertyField(rect, rotationsProp, true);
+        rect.y += rect.height;
+        rect.height = EditorGUIUtility.singleLineHeight;
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is 0 (= default), but bit is set as dirty, fix
+            if (rotationsProp.arraySize == 0)
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.Rotations) != 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPCharacterMeshModifiers.DirtyFlags.Rotations;
+                }
+            }
+            // If is not 0 (!= default), but bit is not set as dirty, fix
+            else
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.Rotations) == 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPCharacterMeshModifiers.DirtyFlags.Rotations;
+                }
+            }
+        }
+
+        EditorGUI.BeginChangeCheck();
+        Matrix4x4 mat = GetMatrix();
+        for (int i = 0; i < 16; i++)
+            if (mat[i] < 0)
+                Debug.LogWarning(i + " MATT!!! negative!! " + mat[i]);
+        var lossyScale = ExtractScale(mat);
+
+        var newScale = EditorGUI.Vector3Field(rect, "Scale", lossyScale);
+        if (newScale != lossyScale)
+        {
+            ApplyBackToMatrix(newScale);
+        }
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is V3.one (= default), but bit is set as dirty, fix
+            if (newScale == Vector3.one)
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.Scale) != 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPCharacterMeshModifiers.DirtyFlags.Scale;
+                }
+            }
+            // If is not V3.one (!= default), but bit is not set as dirty, fix
+            else
+            {
+                if ((characterMeshModifierDirtyProp.enumValueFlag &
+                     (int)TMPCharacterMeshModifiers.DirtyFlags.Scale) == 0)
+                {
+                    characterMeshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPCharacterMeshModifiers.DirtyFlags.Scale;
+                }
+            }
+        }
+
+        rect.y += EditorGUIUtility.singleLineHeight;
+        return rect;
+    }
+
+    private Rect DrawMeshDeltaModifier(Rect rect)
+    {
+        var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
+        EditorGUI.DrawRect(bgRect, backgroundColor);
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.PropertyField(rect, blDeltaProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, tlDeltaProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, trDeltaProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, brDeltaProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is not 0 (!= default), but bit is not set as dirty, fix
+            if (blDeltaProp.vector3Value != Vector3.zero || tlDeltaProp.vector3Value != Vector3.zero || 
+                trDeltaProp.vector3Value != Vector3.zero || brDeltaProp.vector3Value != Vector3.zero)
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.Deltas) == 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPMeshModifiers2.DirtyFlags.Deltas;
+                }
+            }
+            // If is 0 (= default), but bit is set as dirty, fix
+            else
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.Deltas) != 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPMeshModifiers2.DirtyFlags.Deltas;
+                }
+            }
+        }
+        
+        return rect;
+    }
+
+    private Rect DrawMeshColorModifier(Rect rect)
+    {
+        var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
+        EditorGUI.DrawRect(bgRect, backgroundColor);
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.PropertyField(rect, blColorProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, tlColorProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, trColorProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, brColorProp);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is not 0 (!= default), but bit is not set as dirty, fix
+            if (blColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || tlColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || 
+                trColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || brColorProp.FindPropertyRelative("Override").enumValueFlag != 0)
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.Colors) == 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPMeshModifiers2.DirtyFlags.Colors;
+                }
+            }
+            // If is 0 (= default), but bit is set as dirty, fix
+            else
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.Colors) != 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPMeshModifiers2.DirtyFlags.Colors;
+                }
+            }
+        }
+
+        return rect;
+    }
+
+    private Rect DrawMeshUVModifier(Rect rect)
+    {
+        var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
+        EditorGUI.DrawRect(bgRect, backgroundColor);
+
+        EditorGUI.PropertyField(rect, blUV0Prop);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, tlUV0Prop);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, trUV0Prop);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, brUV0Prop);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        
+        if (EditorGUI.EndChangeCheck())
+        {
+            // If is not 0 (!= default), but bit is not set as dirty, fix
+            if (blUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || tlUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || 
+                trUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || brUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0)
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.UVs) == 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag |=
+                        (int)TMPMeshModifiers2.DirtyFlags.UVs;
+                }
+            }
+            // If is 0 (= default), but bit is set as dirty, fix
+            else
+            {
+                if ((meshModifierDirtyProp.enumValueFlag &
+                     (int)TMPMeshModifiers2.DirtyFlags.UVs) != 0)
+                {
+                    meshModifierDirtyProp.enumValueFlag &=
+                        ~(int)TMPMeshModifiers2.DirtyFlags.UVs;
+                }
+            }
+        }
+
+        return rect;
+    }
+   
+    
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         Init(property);
 
-        
         var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
 
         property.isExpanded = EditorGUI.Foldout(rect, property.isExpanded, property.displayName);
         EditorGUI.indentLevel++;
 
         if (!property.isExpanded) return;
-        
+
         rect.y += EditorGUIUtility.singleLineHeight;
         positionDeltaProp.isExpanded =
             EditorGUI.Foldout(rect, positionDeltaProp.isExpanded, "Character Deltas");
@@ -149,98 +384,28 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         var labelRect = new Rect(togglerect.x - 45, togglerect.y, togglerect.width, EditorGUIUtility.singleLineHeight);
 
         if (positionDeltaProp.isExpanded)
-        {
-            var bgRect = new Rect(rect.x, rect.y, rect.width,
-                EditorGUIUtility.singleLineHeight * 2 + EditorGUI.GetPropertyHeight(rotationsProp, true));
-            EditorGUI.DrawRect(bgRect, backgroundColor);
-
-            EditorGUI.PropertyField(rect, positionDeltaProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-
-            rect.height = EditorGUI.GetPropertyHeight(rotationsProp, true);
-            EditorGUI.PropertyField(rect, rotationsProp, true);
-            rect.y += rect.height;
-            rect.height = EditorGUIUtility.singleLineHeight;
-
-            Matrix4x4 mat = GetMatrix();
-            for (int i = 0; i < 16; i++)
-                if (mat[i] < 0) Debug.LogWarning( i+ " MATT!!! negative!! " + mat[i]);
-            var lossyScale = ExtractScale(mat);
-            
-            var newScale = EditorGUI.Vector3Field(rect, "Scale", lossyScale);
-            if (newScale != lossyScale)
-            {
-                ApplyBackToMatrix(newScale);
-            }
-
-            rect.y += EditorGUIUtility.singleLineHeight;
-            // EditorGUI.PropertyField(rect, scaleDeltaProp, true);
-            // rect.y += EditorGUIUtility.singleLineHeight;
-        }
+            rect = DrawCharacterModifier(rect);
 
         blDeltaProp.isExpanded =
             EditorGUI.Foldout(rect, blDeltaProp.isExpanded, "Vertex Deltas");
         rect.y += EditorGUIUtility.singleLineHeight;
 
         if (blDeltaProp.isExpanded)
-        {
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
-            EditorGUI.DrawRect(bgRect, backgroundColor);
-
-            EditorGUI.PropertyField(rect, blDeltaProp);
-            // DrawRawToggle(rect.y, property.FindPropertyRelative("bl_DeltaIsRaw"), togglerect, labelRect);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, tlDeltaProp);
-            // DrawRawToggle(rect.y, property.FindPropertyRelative("tl_DeltaIsRaw"), togglerect, labelRect);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, trDeltaProp);
-            // DrawRawToggle(rect.y, property.FindPropertyRelative("tr_DeltaIsRaw"), togglerect, labelRect);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, brDeltaProp);
-            // DrawRawToggle(rect.y, property.FindPropertyRelative("br_DeltaIsRaw"), togglerect, labelRect);
-            rect.y += EditorGUIUtility.singleLineHeight;
-        }
+            rect = DrawMeshDeltaModifier(rect);
 
         blColorProp.isExpanded =
             EditorGUI.Foldout(rect, blColorProp.isExpanded, "Vertex Colors");
         rect.y += EditorGUIUtility.singleLineHeight;
 
         if (blColorProp.isExpanded)
-        {
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
-            EditorGUI.DrawRect(bgRect, backgroundColor);
-
-            EditorGUI.PropertyField(rect, blColorProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, tlColorProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, trColorProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, brColorProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-        }
+            rect = DrawMeshColorModifier(rect);
 
         blUV0Prop.isExpanded =
             EditorGUI.Foldout(rect, blUV0Prop.isExpanded, "Vertex UVs");
         rect.y += EditorGUIUtility.singleLineHeight;
 
         if (blUV0Prop.isExpanded)
-        {
-            togglerect.y = rect.y;
-            labelRect.y = rect.y;
-
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
-            EditorGUI.DrawRect(bgRect, backgroundColor);
-
-            EditorGUI.PropertyField(rect, blUV0Prop);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, tlUV0Prop);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, trUV0Prop);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, brUV0Prop);
-            rect.y += EditorGUIUtility.singleLineHeight;
-        }
+            rect = DrawMeshUVModifier(rect);
 
         EditorGUI.indentLevel--;
     }

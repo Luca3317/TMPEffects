@@ -9,6 +9,15 @@ namespace TMPEffects.CharacterData
 {
     public partial class CharData
     {
+        // TODO FOR TESTING; THESE SHOULD (PROBABLY) NOT BE PUBLIC
+        public TMPCharacterMeshModifiers CharacterMeshModifierss => CharacterMeshModifiers;
+
+        public TMPMeshModifiers2 MeshModifiers
+        {
+            get => mesh.modifiers;
+            set => mesh.modifiers = value;
+        }
+        
         internal  TMPCharacterMeshModifiers CharacterMeshModifiers;
 
         /// <summary>
