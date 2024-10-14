@@ -203,68 +203,10 @@ public class TMPMeshModifiers
     [SerializeField] private Vector3Override br_UV2;
 
     public ModifierFlags Modifier => modifier;
-    [FormerlySerializedAs("dirty")] [SerializeField] private ModifierFlags modifier;
-
-    // [Serializable]
-    // public struct UVOverride
-    // {
-    //     public Vector3 OverrideValue => _overrideValue;
-    //     public bool Override => _override;
-    //
-    //     private bool _override;
-    //     private Vector3 _overrideValue;
-    //
-    //     public static UVOverride Default = new UVOverride(null);
-    //     public static UVOverride GetDefault => Default;
-    //
-    //     public UVOverride(Vector3? overrideValue = null)
-    //     {
-    //         if (overrideValue.HasValue)
-    //         {
-    //             _overrideValue = overrideValue.Value;
-    //             _override = true;
-    //         }
-    //         else
-    //         {
-    //             _overrideValue = Vector3.zero;
-    //             _override = false;
-    //         }
-    //     }
-    //
-    //     public Vector3 GetValue(Vector3 fallback)
-    //     {
-    //         if (Override) return OverrideValue;
-    //         return fallback;
-    //     }
-    //
-    //     public static bool operator ==(UVOverride a, UVOverride b)
-    //     {
-    //         return a.Override == b.Override && a.OverrideValue == b.OverrideValue;
-    //     }
-    //
-    //     public static bool operator !=(UVOverride a, UVOverride b)
-    //     {
-    //         return a.Override != b.Override || a.OverrideValue != b.OverrideValue;
-    //     }
-    //
-    //     public static UVOverride operator +(UVOverride a, UVOverride b)
-    //     {
-    //         if (a.Override)
-    //         {
-    //             if (b.Override)
-    //                 return new UVOverride(a.OverrideValue + b.OverrideValue);
-    //
-    //             return new UVOverride(a.OverrideValue);
-    //         }
-    //
-    //         if (b.Override)
-    //             return new UVOverride(b.OverrideValue);
-    //
-    //         return new UVOverride();
-    //     }
-    // } 
+    [SerializeField] private ModifierFlags modifier;
     
-    public TMPMeshModifiers(){}
+    public TMPMeshModifiers()
+    {}
     
     public TMPMeshModifiers(TMPMeshModifiers original)
     {

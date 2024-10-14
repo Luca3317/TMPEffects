@@ -807,15 +807,15 @@ namespace TMPEffects.Components
 
             sw.Stop();
             count++;
-            if (count >= 10000)
+            if (count >= 1000)
             {
-                Debug.LogWarning("10000 anims took " + sw.Elapsed.TotalMilliseconds);
+                Debug.LogWarning("1000 anims took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
             else if (count % 100 == 0)
             {
-                // Debug.Log(count);
+                Debug.Log(count);
             }
         }
 

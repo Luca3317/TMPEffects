@@ -12,7 +12,6 @@ namespace TMPEffects.TMPAnimations
         menuName = "TMPEffects/Animations/Basic Animations/Generic Animation")]
     public partial class GenericAnimation : TMPAnimation
     {
-        // Serailize Reference to be able to cast managedReferenceValue back to AnimationStep in Generator
         [SerializeReference] private List<AnimationStep> animationSteps = new List<AnimationStep>()
         {
             new AnimationStep()
@@ -24,9 +23,12 @@ namespace TMPEffects.TMPAnimations
         [AutoParameter("duration", "dur"), SerializeField]
         private float duration;
 
+        private CharDataModifiers modifiersStorage;
 
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
+            modifiersStorage ??= new CharDataModifiers();
+
             float timeValue =
                 data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 
@@ -49,38 +51,36 @@ namespace TMPEffects.TMPAnimations
                     result =
                         CharDataModifiers.LerpUnclamped(cData, step.charModifiers,
                             step.wave.Evaluate(timeValue,
-                                AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value);
+                                AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value,
+                            modifiersStorage);
                 }
                 else
                 {
-                    result = new CharDataModifiers(step.charModifiers); 
+                    result = new CharDataModifiers(step.charModifiers);
                 }
 
                 float entry = timeValue - step.startTime;
                 if (entry <= step.entryDuration)
                 {
                     result = CharDataModifiers.LerpUnclamped(cData, result,
-                        step.entryCurve.Evaluate(entry / step.entryDuration));
+                        step.entryCurve.Evaluate(entry / step.entryDuration), modifiersStorage);
                 }
 
                 float exit = step.EndTime - timeValue;
                 if (exit <= step.exitDuration)
                 {
                     result = CharDataModifiers.LerpUnclamped(cData, result,
-                        step.exitCurve.Evaluate(exit / step.exitDuration));
+                        step.exitCurve.Evaluate(exit / step.exitDuration), modifiersStorage);
                 }
 
-                accModifier.CharacterModifiers.Combine(result.CharacterModifiers);
                 accModifier.MeshModifiers.Combine(result.MeshModifiers);
+                accModifier.CharacterModifiers.Combine(result.CharacterModifiers);
             }
-            
-            // Have to reassign cause struct
-            var meshMods = cData.MeshModifiers;
-            meshMods.Combine(accModifier.MeshModifiers);
-            cData.MeshModifiers = meshMods;
+
+            cData.MeshModifiers.Combine(accModifier.MeshModifiers);
             cData.CharacterModifiers.Combine(accModifier.CharacterModifiers);
         }
-        
+
         [Serializable]
         public class AnimationStep
         {

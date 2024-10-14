@@ -15,7 +15,7 @@ MonoBehaviour:
   animationSteps:
   - rid: 3184736787671810052
   repeat: 0
-  duration: 1000
+  duration: 10
   references:
     version: 2
     RefIds:
@@ -26,7 +26,25 @@ MonoBehaviour:
         animate: 1
         entryCurve:
           serializedVersion: 2
-          m_Curve: []
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 1
+            outSlope: 1
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 1
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -105,46 +123,46 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           crestWait: 0.1
-          troughWait: 1
+          troughWait: 2.59
           uniformity: 0.43
         startTime: 0
-        duration: 0
+        duration: 11.01
         charModifiers:
           meshModifiers:
-            bl_Delta: {x: 0, y: 0, z: 0}
+            bl_Delta: {x: 0, y: -5, z: 0}
             tl_Delta: {x: 0, y: 0, z: 0}
             tr_Delta: {x: 0, y: 0, z: 0}
-            br_Delta: {x: 0, y: 0, z: 0}
+            br_Delta: {x: 0, y: -5, z: 0}
             bl_Color:
-              Override: 1
+              Override: 255
               Color:
                 serializedVersion: 2
-                rgba: 255
+                rgba: 4278190335
             tl_Color:
-              Override: 1
+              Override: 0
               Color:
                 serializedVersion: 2
-                rgba: 255
+                rgba: 0
             tr_Color:
-              Override: 1
+              Override: 0
               Color:
                 serializedVersion: 2
-                rgba: 255
+                rgba: 0
             br_Color:
-              Override: 1
+              Override: 255
               Color:
                 serializedVersion: 2
-                rgba: 255
-            dirty: 2
-          characterMeshModifiers:
-            positionDelta: {x: 0, y: 18.99, z: 0}
+                rgba: 4278190335
+            modifier: 3
+          characterModifiers:
+            positionDelta: {x: 0, y: 5, z: 0}
             scaleDelta:
-              e00: 1.23
+              e00: 1
               e01: 0
               e02: 0
               e03: 0
               e10: 0
-              e11: 1.36
+              e11: 1
               e12: 0
               e13: 0
               e20: 0
@@ -155,7 +173,5 @@ MonoBehaviour:
               e31: 0
               e32: 0
               e33: 1
-            rotations:
-            - pivot: {x: 0, y: 0, z: 0}
-              eulerAngles: {x: 0, y: 0, z: 0}
-            dirty: 7
+            rotations: []
+            modifier: 2

@@ -11,7 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 using Vector4 = UnityEngine.Vector4;
 
 [CustomPropertyDrawer(typeof(CharDataModifiers))]
-public class TMPMeshModifierDrawer : PropertyDrawer
+public class CharDataModifierDrawer : PropertyDrawer
 {
     private Color32 backgroundColor;
 
@@ -19,7 +19,7 @@ public class TMPMeshModifierDrawer : PropertyDrawer
     private SerializedProperty scaleDeltaProp;
     private SerializedProperty rotationsProp;
     private SerializedProperty meshModifierProp;
-    private SerializedProperty characterMeshModifierProp;
+    private SerializedProperty characterModifierProp;
     private SerializedProperty blDeltaProp, tlDeltaProp, trDeltaProp, brDeltaProp;
     private SerializedProperty blColorProp, tlColorProp, trColorProp, brColorProp;
     private SerializedProperty blUV0Prop, tlUV0Prop, trUV0Prop, brUV0Prop;
@@ -30,12 +30,12 @@ public class TMPMeshModifierDrawer : PropertyDrawer
 
     private void Init(SerializedProperty property)
     {
-        characterMeshModifierProp = property.FindPropertyRelative("characterMeshModifiers");
+        characterModifierProp = property.FindPropertyRelative("characterModifiers");
 
-        positionDeltaProp = characterMeshModifierProp.FindPropertyRelative("positionDelta");
-        scaleDeltaProp = characterMeshModifierProp.FindPropertyRelative("scaleDelta");
-        rotationsProp = characterMeshModifierProp.FindPropertyRelative("rotations");
-        characterMeshModifierDirtyProp = characterMeshModifierProp.FindPropertyRelative("dirty");
+        positionDeltaProp = characterModifierProp.FindPropertyRelative("positionDelta");
+        scaleDeltaProp = characterModifierProp.FindPropertyRelative("scaleDelta");
+        rotationsProp = characterModifierProp.FindPropertyRelative("rotations");
+        characterMeshModifierDirtyProp = characterModifierProp.FindPropertyRelative("modifier");
 
         meshModifierProp = property.FindPropertyRelative("meshModifiers");
 
@@ -43,7 +43,7 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         tlDeltaProp = meshModifierProp.FindPropertyRelative("tl_Delta");
         trDeltaProp = meshModifierProp.FindPropertyRelative("tr_Delta");
         brDeltaProp = meshModifierProp.FindPropertyRelative("br_Delta");
-
+        
         blColorProp = meshModifierProp.FindPropertyRelative("bl_Color");
         tlColorProp = meshModifierProp.FindPropertyRelative("tl_Color");
         trColorProp = meshModifierProp.FindPropertyRelative("tr_Color");
@@ -54,8 +54,8 @@ public class TMPMeshModifierDrawer : PropertyDrawer
         trUV0Prop = meshModifierProp.FindPropertyRelative("tr_UV0");
         brUV0Prop = meshModifierProp.FindPropertyRelative("br_UV0");
 
-        meshModifierDirtyProp = meshModifierProp.FindPropertyRelative("dirty");
-
+        meshModifierDirtyProp = meshModifierProp.FindPropertyRelative("modifier");
+        
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
             : new Color32(194, 194, 194, 255);
@@ -406,8 +406,10 @@ public class TMPMeshModifierDrawer : PropertyDrawer
 
         if (blUV0Prop.isExpanded)
             rect = DrawMeshUVModifier(rect);
-
+        
+        
         EditorGUI.indentLevel--;
+        Debug.Log("Made it to the very very end!!");
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
