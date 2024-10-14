@@ -1,0 +1,15 @@
+using System;
+using UnityEngine;
+
+[Serializable]
+public struct Rotation
+{
+    public Vector3 pivot;
+    public Vector3 eulerAngles;
+
+    public Rotation(Vector3 eulerAngles, Vector3 pivot)
+    {
+        this.eulerAngles = eulerAngles;
+        this.pivot = pivot;
+    }
+}

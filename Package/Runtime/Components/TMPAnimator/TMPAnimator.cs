@@ -181,11 +181,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private List<float> stateTimes = new List<float>();
         [System.NonSerialized] private object timesIdentifier;
 
-        [System.NonSerialized] private CharDataState state = new CharDataState();
-        // [System.NonSerialized] private CharDataModifiers stateNew = new CharDataModifiers();
-        // [System.NonSerialized] private TMPCharacterMeshModifiers charModifiers = new TMPCharacterMeshModifiers();
-        // [System.NonSerialized] private TMPMeshModifiers2 meshModifiers = new TMPMeshModifiers2();
-        [System.NonSerialized] private TMPCharDataModifiers myState = new TMPCharDataModifiers();
+        [System.NonSerialized] private CharDataModifiers state = new CharDataModifiers();
 
         private const string falseUpdateAnimationsCallWarning = "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
             "If you want to manually control the animation updates, set its UpdateFrom property to \"Script\", " +
@@ -640,14 +636,14 @@ namespace TMPEffects.Components
             List<CachedAnimation> anims;
 
             AnimationCacher cacher;
-            var roCDataState = new ReadOnlyCharDataState(state);
+            // var roCDataState = new CharDataModifiers(state);
 
             switch (type)
             {
                 case TMPAnimationType.Basic:
                     database = basicDatabase;
                     anims = defaultAnimations;
-                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedBasic(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedBasic(x));
                     strings = defaultAnimationsStrings;
                     QueueCharacterReset();
                     break;
@@ -655,14 +651,14 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Show:
                     database = showDatabase;
                     anims = defaultShowAnimations;
-                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedShow(x));
                     strings = defaultShowAnimationsStrings;
                     break;
 
                 case TMPAnimationType.Hide:
                     database = hideDatabase;
                     anims = defaultHideAnimations;
-                    cacher = new AnimationCacher(database, roCDataState, context, Mediator.CharData, x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedHide(x));
                     strings = defaultHideAnimationsStrings;
                     break;
 
@@ -719,7 +715,7 @@ namespace TMPEffects.Components
             TMPEffectTag tag = new TMPEffectTag("Dummy Show Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Show Animation", ScriptableObject.CreateInstance<DummyShowAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, Mediator.CharData, (x) => !IsExcludedShow(x));
+            AnimationCacher cacher = new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedShow(x));
             dummyShow = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
 
@@ -729,7 +725,7 @@ namespace TMPEffects.Components
             TMPEffectTag tag = new TMPEffectTag("Dummy Hide Animation", ' ', null);
 
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation", ScriptableObject.CreateInstance<DummyHideAnimation>());
-            AnimationCacher cacher = new AnimationCacher(database, new ReadOnlyCharDataState(state), context, Mediator.CharData, (x) => !IsExcludedHide(x));
+            AnimationCacher cacher = new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedHide(x));
             dummyHide = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
         #endregion
@@ -862,7 +858,7 @@ namespace TMPEffects.Components
 
             // state.Reset(context, cData);
             // stateNew.Reset(cData, context);
-            myState.Reset();
+            state.Reset();
             
             if (vState == VisibilityState.Showing)
             {
@@ -970,8 +966,8 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                myState.meshModifiers.Combine(cData.mesh.modifiers);
-                myState.characterMeshModifiers.Combine(cData.CharacterMeshModifiers);
+                state.MeshModifiers.Combine(cData.mesh.modifiers);
+                state.CharacterModifiers.Combine(cData.CharacterModifiers);
                 // stateNew.UpdateFromCharDataState();
             }
 
@@ -1211,34 +1207,34 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                if (myState.characterMeshModifiers.Modifier != 0 || myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Deltas))
+                if (state.CharacterModifiers.Modifier != 0 || state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
                 {
-                    myState.CalculateVertexPositions(cData, context);
-                    cData.mesh.SetPosition(0, myState.BL_Result);
-                    cData.mesh.SetPosition(1, myState.TL_Result);
-                    cData.mesh.SetPosition(2, myState.TR_Result);
-                    cData.mesh.SetPosition(3, myState.BR_Result);
+                    state.CalculateVertexPositions(cData, context);
+                    cData.mesh.SetPosition(0, state.BL_Result);
+                    cData.mesh.SetPosition(1, state.TL_Result);
+                    cData.mesh.SetPosition(2, state.TR_Result);
+                    cData.mesh.SetPosition(3, state.BR_Result);
                 }
 
-                if (myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Colors))
+                if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
                 {
-                    cData.mesh.SetColor(0, myState.meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
-                    cData.mesh.SetColor(1, myState.meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
-                    cData.mesh.SetColor(2, myState.meshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
-                    cData.mesh.SetColor(3, myState.meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
+                    cData.mesh.SetColor(0, state.MeshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
+                    cData.mesh.SetColor(1, state.MeshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
+                    cData.mesh.SetColor(2, state.MeshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
+                    cData.mesh.SetColor(3, state.MeshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
                 }
 
-                if (myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.UVs))
+                if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
                 {
-                    cData.mesh.SetUV0(0, myState.meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
-                    cData.mesh.SetUV0(1, myState.meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
-                    cData.mesh.SetUV0(2, myState.meshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
-                    cData.mesh.SetUV0(3, myState.meshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
+                    cData.mesh.SetUV0(0, state.MeshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
+                    cData.mesh.SetUV0(1, state.MeshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
+                    cData.mesh.SetUV0(2, state.MeshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
+                    cData.mesh.SetUV0(3, state.MeshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
                 
-                    cData.mesh.SetUV2(0, myState.meshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
-                    cData.mesh.SetUV2(1, myState.meshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
-                    cData.mesh.SetUV2(2, myState.meshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
-                    cData.mesh.SetUV2(3, myState.meshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
+                    cData.mesh.SetUV2(0, state.MeshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
+                    cData.mesh.SetUV2(1, state.MeshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
+                    cData.mesh.SetUV2(2, state.MeshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
+                    cData.mesh.SetUV2(3, state.MeshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
                 }
             }
         }
@@ -1442,7 +1438,7 @@ namespace TMPEffects.Components
         private void PostProcessTags()
         {
             var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            var roCDataState = new ReadOnlyCharDataState(state);
+            var roCDataState = state;
 
             var kvpBasic = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(basicCategory, processors.TagProcessors[basicCategory.Prefix][0].ProcessedTags);
             var kvpShow = new KeyValuePair<TMPAnimationCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(showCategory, processors.TagProcessors[showCategory.Prefix][0].ProcessedTags);
@@ -1466,9 +1462,7 @@ namespace TMPEffects.Components
         private void ResetAllVisible()
         {
             if (Mediator == null)
-            {
                 return;
-            }
 
             var info = Mediator.Text.textInfo;
 

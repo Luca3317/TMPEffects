@@ -16,14 +16,14 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public object CustomData => context.CustomData;
         /// <inheritdoc/>
-        public ICharDataState State => context.State;
+        public CharDataModifiers Modifiers => context.Modifiers;
 
         public ReadOnlyAnimationContext(IAnimationContext context)
         {
             this.context = context;
         }
 
-        public ReadOnlyAnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData) 
+        public ReadOnlyAnimationContext(IAnimatorContext animatorContext, CharDataModifiers state, SegmentData segmentData, object customData) 
             : this(new AnimationContext(animatorContext, state, segmentData, customData))
         { }
 

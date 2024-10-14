@@ -1,48 +1,35 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 [Serializable]
-public struct Rotation
+public class CharDataModifiers
 {
-    public Vector3 pivot;
-    public Vector3 eulerAngles;
+    public TMPMeshModifiers MeshModifiers => meshModifiers;
+    public TMPCharacterModifiers CharacterModifiers => _characterModifiers;
 
-    public Rotation(Vector3 eulerAngles, Vector3 pivot)
-    {
-        this.eulerAngles = eulerAngles;
-        this.pivot = pivot;
-    }
-}
-
-[Serializable]
-public class TMPCharDataModifiers
-{
-    public TMPMeshModifiers meshModifiers;
-    public TMPCharacterMeshModifiers characterMeshModifiers;
-
+    
+    private readonly TMPMeshModifiers meshModifiers;
+    private TMPCharacterModifiers _characterModifiers;
+    
     public Vector3 BL_Result { get; private set; }
     public Vector3 TL_Result { get; private set; }
     public Vector3 TR_Result { get; private set; }
     public Vector3 BR_Result { get; private set; }
 
-    public TMPCharDataModifiers()
+    public CharDataModifiers()
     {
         meshModifiers = new TMPMeshModifiers();
-        characterMeshModifiers = new TMPCharacterMeshModifiers();
+        _characterModifiers = new TMPCharacterModifiers();
     }
 
-    public TMPCharDataModifiers(TMPCharDataModifiers original)
+    public CharDataModifiers(CharDataModifiers original)
     {
         meshModifiers = new TMPMeshModifiers(original.meshModifiers);
-        characterMeshModifiers = new TMPCharacterMeshModifiers(original.characterMeshModifiers);
+        _characterModifiers = new TMPCharacterModifiers(original._characterModifiers);
     }
 
     public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
@@ -55,10 +42,10 @@ public class TMPCharDataModifiers
 
         if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
-            vbl += AnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);;
-            vtl += AnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);;
-            vtr += AnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);;
-            vbr += AnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);;
+            vbl += AnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);
+            vtl += AnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);
+            vtr += AnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);
+            vbr += AnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);
         }
 
         // TODO Clamp
@@ -70,24 +57,24 @@ public class TMPCharDataModifiers
         // vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
 
         // Apply scale
-        if (characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.Scale))
+        if (_characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
         {
-            vtl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) +
+            vtl = _characterModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) +
                   cData.InitialPosition;
-            vtr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) +
+            vtr = _characterModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) +
                   cData.InitialPosition;
-            vbr = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) +
+            vbr = _characterModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) +
                   cData.InitialPosition;
-            vbl = characterMeshModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) +
+            vbl = _characterModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) +
                   cData.InitialPosition;
         }
 
         // Apply rotation
-        if (characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.Rotations))
+        if (_characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
         {
             Vector3 pivot;
             Matrix4x4 matrix;
-            foreach (var rot in characterMeshModifiers.Rotations)
+            foreach (var rot in _characterModifiers.Rotations)
             {
                 pivot = rot.pivot;
                 matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
@@ -101,19 +88,19 @@ public class TMPCharDataModifiers
         }
 
         // Apply transformation
-        if (characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.Position))
+        if (_characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Position))
         {
-            var pos = characterMeshModifiers.Position.GetValue(cData.InitialPosition);
+            var pos = _characterModifiers.Position.GetValue(cData.InitialPosition);
             var delta = pos - cData.InitialPosition;
             vbl += delta;
             vtl += delta;
             vtr += delta;
             vbr += delta;
         }
-        
-        if (characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.PositionDelta))
+
+        if (_characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
-            var scaled = AnimationUtility.ScaleVector(characterMeshModifiers.PositionDelta, cData, context);
+            var scaled = AnimationUtility.ScaleVector(_characterModifiers.PositionDelta, cData, context);
             vtl += scaled;
             vtr += scaled;
             vbr += scaled;
@@ -126,36 +113,36 @@ public class TMPCharDataModifiers
         BR_Result = vbr;
     }
 
-    public static TMPCharDataModifiers LerpUnclamped(CharData cData, TMPCharDataModifiers modifiers, float t)
+    public static CharDataModifiers LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t)
     {
-        TMPCharDataModifiers result = new TMPCharDataModifiers();
+        CharDataModifiers result = new CharDataModifiers();
 
-        if (modifiers.characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.PositionDelta))
+        if (modifiers._characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
-            result.characterMeshModifiers.PositionDelta =
-                modifiers.characterMeshModifiers.PositionDelta * t;
+            result._characterModifiers.PositionDelta =
+                modifiers._characterModifiers.PositionDelta * t;
         }
 
-        if (modifiers.characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.Rotations))
+        if (modifiers._characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
         {
-            for (int i = 0; i < modifiers.characterMeshModifiers.Rotations.Count; i++)
+            for (int i = 0; i < modifiers._characterModifiers.Rotations.Count; i++)
             {
-                var rot = modifiers.characterMeshModifiers.Rotations[i];
-                result.characterMeshModifiers.AddRotation(
+                var rot = modifiers._characterModifiers.Rotations[i];
+                result._characterModifiers.AddRotation(
                     new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
                         rot.pivot));
             }
         }
 
-        if (modifiers.characterMeshModifiers.Modifier.HasFlag(TMPCharacterMeshModifiers.ModifierFlags.Scale))
+        if (modifiers._characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
         {
             Vector3 startScale = cData.InitialScale;
-            Vector3 endScale = modifiers.characterMeshModifiers.ScaleDelta.lossyScale;
+            Vector3 endScale = modifiers._characterModifiers.ScaleDelta.lossyScale;
             Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
-            result.characterMeshModifiers.ScaleDelta = Matrix4x4.Scale(lerpedScale);
+            result._characterModifiers.ScaleDelta = Matrix4x4.Scale(lerpedScale);
         }
 
-        result.meshModifiers = LerpMeshModifiersUnclamped(cData, modifiers.meshModifiers, t);
+        LerpMeshModifiersUnclamped(cData, modifiers.meshModifiers, t);
 
         return result;
     }
@@ -207,194 +194,6 @@ public class TMPCharDataModifiers
     public void Reset()
     {
         meshModifiers.ClearModifiers();
-        characterMeshModifiers.ClearModifierFlags();
-    }
-}
-
-[Serializable]
-public class TMPCharacterMeshModifiers
-{
-    public ModifierFlags Modifier => modifier;
-
-    public Vector3Override Position
-    {
-        get => position;
-        set
-        {
-            if (value == position) return;
-            if (!value.Override)
-            {
-                ClearScale();
-                return;
-            }
-            position = value;
-            modifier |= ModifierFlags.Position;
-        }
-    }
-
-    public Vector3 PositionDelta
-    {
-        get => positionDelta;
-        set
-        {
-            if (value == positionDelta) return;
-            if (value == Vector3.zero)
-            {
-                ClearPositionDelta();
-                return;
-            }
-            positionDelta = value;
-            modifier |= ModifierFlags.PositionDelta;
-        }
-    }
-
-    public Matrix4x4 ScaleDelta
-    {
-        get => scaleDelta;
-        set
-        {
-            if (value == scaleDelta) return;
-            if (value == Matrix4x4.identity)
-            {
-                ClearScale();
-                return;
-            }
-            scaleDelta = value;
-            modifier |= ModifierFlags.Scale;
-        }
-    }
-
-    public ReadOnlyCollection<Rotation> Rotations
-    {
-        get
-        {
-            if (rotationsReadOnly == null)
-                rotationsReadOnly = new ReadOnlyCollection<Rotation>(rotations);
-            return rotationsReadOnly;
-        }
-    }
-
-    public void InsertRotation(int index, Rotation rotation)
-    {
-        rotations.Insert(index, rotation);
-        modifier |= ModifierFlags.Rotations;
-    }
-
-    public void AddRotation(Rotation rotation)
-    {
-        rotations.Add(rotation);
-        modifier |= ModifierFlags.Rotations;
-    }
-
-    public void RemoveRotation(int index)
-    {
-        rotations.RemoveAt(index);
-        if (rotations.Count == 0) ClearRotations();
-    }
-
-    [SerializeField] private Vector3Override position = Vector3Override.GetDefault;
-    [SerializeField] private Vector3 positionDelta = Vector3.zero;
-    [SerializeField] private Matrix4x4 scaleDelta = Matrix4x4.Scale(Vector3.one);
-    [SerializeField] private List<Rotation> rotations = new List<Rotation>();
-    [SerializeField] private ModifierFlags modifier;
-    private ReadOnlyCollection<Rotation> rotationsReadOnly;
-
-    public TMPCharacterMeshModifiers()
-    {
-    }
-
-    public TMPCharacterMeshModifiers(TMPCharacterMeshModifiers original)
-    {
-        position = original.position;
-        positionDelta = original.positionDelta;
-        scaleDelta = original.scaleDelta;
-        rotations = new List<Rotation>(original.rotations);
-        modifier = original.Modifier;
-    }
-    
-    public void Combine(TMPCharacterMeshModifiers other)
-    {
-        if (other.Position.Override)
-        {
-            position = other.position;
-        }
-
-        if (other.Modifier.HasFlag(ModifierFlags.PositionDelta))
-        {
-            positionDelta += other.positionDelta;
-        }
-
-        if (other.Modifier.HasFlag(ModifierFlags.Scale))
-        {
-            scaleDelta *= other.ScaleDelta;
-        }
-
-        if (other.Modifier.HasFlag(ModifierFlags.Rotations))
-        {
-            for (int i = 0; i < other.rotations.Count; i++)
-            {
-                rotations.Add(other.rotations[i]);
-            }
-        }
-
-        modifier |= other.Modifier;
-    }
-
-    [Flags]
-    public enum ModifierFlags : int
-    {
-        Position = 1,
-        PositionDelta = 1 << 1,
-        Rotations = 1 << 2,
-        Scale = 1 << 3
-    }
-
-    public void ClearModifierFlags()
-    {
-        ClearPosition();
-        ClearPositionDelta();
-        ClearRotations();
-        ClearScale();
-    }
-
-    public void ClearModifierFlags(ModifierFlags flags)
-    {
-        var both = modifier & flags;
-        
-        if (both.HasFlag(ModifierFlags.Position))
-            ClearPosition();
-        
-        if (both.HasFlag(ModifierFlags.PositionDelta))
-            ClearPositionDelta();
-
-        if (both.HasFlag(ModifierFlags.Rotations))
-            ClearRotations();
-      
-        if (both.HasFlag(ModifierFlags.Scale))
-            ClearScale();
-    }
-
-    private void ClearPosition()
-    {
-        modifier &= ~ModifierFlags.Position;
-        position = Vector3Override.GetDefault;
-    }
-
-    private void ClearRotations()
-    {
-        modifier &= ~ModifierFlags.Rotations;
-        rotations.Clear();
-    }
-    
-    private void ClearPositionDelta()
-    {
-        modifier &= ~ModifierFlags.PositionDelta;
-        positionDelta = Vector3.zero;
-    }
-    
-    private void ClearScale()
-    {
-        modifier &= ~ModifierFlags.Scale;
-        scaleDelta = Matrix4x4.identity;
+        _characterModifiers.ClearModifierFlags();
     }
 }

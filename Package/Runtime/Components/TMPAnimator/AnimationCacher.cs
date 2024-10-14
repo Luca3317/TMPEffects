@@ -15,16 +15,16 @@ namespace TMPEffects.Components.Animator
         private readonly IList<CharData> charData;
         private readonly AnimatorContext context;
         private readonly Predicate<char> animates;
-        private readonly ReadOnlyCharDataState state;
+        private readonly CharDataModifiers modifiers;
         private readonly ReadOnlyAnimatorContext roContext;
 
-        public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, ReadOnlyCharDataState state, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
+        public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, CharDataModifiers modifiers, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
         {
             this.context = context;
             this.database = database;
             this.charData = charData;
             this.animates = animates;
-            this.state = state;
+            this.modifiers = modifiers;
             roContext = new ReadOnlyAnimatorContext(context);
         }
 
@@ -36,7 +36,7 @@ namespace TMPEffects.Components.Animator
             animation.SetParameters(customAnimationData, tag.Parameters);
 
             SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
-            AnimationContext animationContext = new AnimationContext(roContext, state, segmentData, customAnimationData);
+            AnimationContext animationContext = new AnimationContext(roContext, modifiers, segmentData, customAnimationData);
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

@@ -10,7 +10,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using Vector4 = UnityEngine.Vector4;
 
-[CustomPropertyDrawer(typeof(TMPCharDataModifiers))]
+[CustomPropertyDrawer(typeof(CharDataModifiers))]
 public class TMPMeshModifierDrawer : PropertyDrawer
 {
     private Color32 backgroundColor;
@@ -147,20 +147,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             if (positionDeltaProp.vector3Value == Vector3.zero)
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.PositionDelta) != 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.PositionDelta) != 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPCharacterMeshModifiers.ModifierFlags.PositionDelta;
+                        ~(int)TMPCharacterModifiers.ModifierFlags.PositionDelta;
                 }
             }
             // If is not 0 (!= default), but bit is not set as dirty, fix
             else
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.PositionDelta) == 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.PositionDelta) == 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPCharacterMeshModifiers.ModifierFlags.PositionDelta;
+                        (int)TMPCharacterModifiers.ModifierFlags.PositionDelta;
                 }
             }
         }
@@ -176,20 +176,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             if (rotationsProp.arraySize == 0)
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.Rotations) != 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.Rotations) != 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPCharacterMeshModifiers.ModifierFlags.Rotations;
+                        ~(int)TMPCharacterModifiers.ModifierFlags.Rotations;
                 }
             }
             // If is not 0 (!= default), but bit is not set as dirty, fix
             else
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.Rotations) == 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.Rotations) == 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPCharacterMeshModifiers.ModifierFlags.Rotations;
+                        (int)TMPCharacterModifiers.ModifierFlags.Rotations;
                 }
             }
         }
@@ -212,20 +212,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
             if (newScale == Vector3.one)
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.Scale) != 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.Scale) != 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPCharacterMeshModifiers.ModifierFlags.Scale;
+                        ~(int)TMPCharacterModifiers.ModifierFlags.Scale;
                 }
             }
             // If is not V3.one (!= default), but bit is not set as dirty, fix
             else
             {
                 if ((characterMeshModifierDirtyProp.enumValueFlag &
-                     (int)TMPCharacterMeshModifiers.ModifierFlags.Scale) == 0)
+                     (int)TMPCharacterModifiers.ModifierFlags.Scale) == 0)
                 {
                     characterMeshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPCharacterMeshModifiers.ModifierFlags.Scale;
+                        (int)TMPCharacterModifiers.ModifierFlags.Scale;
                 }
             }
         }
@@ -255,20 +255,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
                 trDeltaProp.vector3Value != Vector3.zero || brDeltaProp.vector3Value != Vector3.zero)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.Deltas) == 0)
+                     (int)TMPMeshModifiers.ModifierFlags.Deltas) == 0)
                 {
                     meshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPMeshModifiers2.ModifierFlags.Deltas;
+                        (int)TMPMeshModifiers.ModifierFlags.Deltas;
                 }
             }
             // If is 0 (= default), but bit is set as dirty, fix
             else
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.Deltas) != 0)
+                     (int)TMPMeshModifiers.ModifierFlags.Deltas) != 0)
                 {
                     meshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPMeshModifiers2.ModifierFlags.Deltas;
+                        ~(int)TMPMeshModifiers.ModifierFlags.Deltas;
                 }
             }
         }
@@ -298,20 +298,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
                 trColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || brColorProp.FindPropertyRelative("Override").enumValueFlag != 0)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.Colors) == 0)
+                     (int)TMPMeshModifiers.ModifierFlags.Colors) == 0)
                 {
                     meshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPMeshModifiers2.ModifierFlags.Colors;
+                        (int)TMPMeshModifiers.ModifierFlags.Colors;
                 }
             }
             // If is 0 (= default), but bit is set as dirty, fix
             else
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.Colors) != 0)
+                     (int)TMPMeshModifiers.ModifierFlags.Colors) != 0)
                 {
                     meshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPMeshModifiers2.ModifierFlags.Colors;
+                        ~(int)TMPMeshModifiers.ModifierFlags.Colors;
                 }
             }
         }
@@ -340,20 +340,20 @@ public class TMPMeshModifierDrawer : PropertyDrawer
                 trUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || brUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.UVs) == 0)
+                     (int)TMPMeshModifiers.ModifierFlags.UVs) == 0)
                 {
                     meshModifierDirtyProp.enumValueFlag |=
-                        (int)TMPMeshModifiers2.ModifierFlags.UVs;
+                        (int)TMPMeshModifiers.ModifierFlags.UVs;
                 }
             }
             // If is 0 (= default), but bit is set as dirty, fix
             else
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
-                     (int)TMPMeshModifiers2.ModifierFlags.UVs) != 0)
+                     (int)TMPMeshModifiers.ModifierFlags.UVs) != 0)
                 {
                     meshModifierDirtyProp.enumValueFlag &=
-                        ~(int)TMPMeshModifiers2.ModifierFlags.UVs;
+                        ~(int)TMPMeshModifiers.ModifierFlags.UVs;
                 }
             }
         }
