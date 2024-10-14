@@ -1220,9 +1220,12 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The character to get the offset for.</param>
         /// <param name="context">The context of the animation.</param>
         /// <param name="type">The type of the offset.</param>
+        /// <param name="ignoreScaling">Whether to ignore the scaling of the character, if applicable.<br/>
+        /// For example, an <see cref="ParameterTypes.WaveOffsetType.XPos"/> will return a different offset based on the size of the text,
+        /// as it directly considers the x position of the character.</param>
         /// <returns>The offset for a wave.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type)
+        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type, bool ignoreScaling = false)
         {
             switch (type)
             {
@@ -1247,6 +1250,10 @@ namespace TMPEffects.TMPAnimations
 
             float ScalePos(float pos)
             {
+                if (ignoreScaling) return pos;
+                
+                // Rewrote ScaleVector with float here for performance
+                // Ideally would reuse same code
                 pos = ScaleTextMesh(context.AnimatorContext.Animator.TextComponent, pos);
 
                 if (!context.AnimatorContext.ScaleAnimations)
