@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
+using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 namespace TMPEffects.Parameters
@@ -24,7 +27,7 @@ namespace TMPEffects.Parameters
             Line = 40,
             Baseline = 45
         }
-        
+
         /// <summary>
         /// The different types of vectors.
         /// </summary>
@@ -34,10 +37,12 @@ namespace TMPEffects.Parameters
             /// Pure position (normal vector).
             /// </summary>
             Position,
+
             /// <summary>
             /// Offset vector from the original position
             /// </summary>
             Offset,
+
             /// <summary>
             /// Anchor vector, in "character space"; (0,0) is the center, (1,1) top-right, (-1,0) center-left etc.
             /// </summary>
@@ -58,6 +63,46 @@ namespace TMPEffects.Parameters
                 this.type = type;
                 this.vector = vector;
             }
+
+            public static implicit operator TypedVector2(TypedVector3 v)
+            {
+                return new TypedVector2() { vector = v.vector, type = v.type };
+            }
+
+            public static TypedVector2 operator +(TypedVector2 a, Vector2 b)
+            {
+                a.vector += b;
+                return a;
+            }
+
+            public static TypedVector2 operator -(TypedVector2 a, Vector2 b)
+            {
+                a.vector -= b;
+                return a;
+            }
+
+            public Vector2 ToPosition(CharData cData)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData),
+                    VectorType.Offset => (Vector3)vector + cData.InitialPosition,
+                    _ => throw new System.NotImplementedException()
+                };
+            }
+
+            public Vector2 ToDelta(CharData cData)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector - (Vector2)cData.InitialPosition,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData) -
+                                         (Vector2)cData.InitialPosition,
+                    VectorType.Offset => vector,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
         }
 
         /// <summary>
@@ -73,6 +118,66 @@ namespace TMPEffects.Parameters
             {
                 this.type = type;
                 this.vector = vector;
+            }
+
+            public bool Equals(TypedVector3 other)
+            {
+                return vector == other.vector && type == other.type;
+            }
+
+            public static implicit operator TypedVector3(TypedVector2 v)
+            {
+                return new TypedVector3() { vector = v.vector, type = v.type };
+            }
+
+            public static TypedVector3 operator +(TypedVector3 a, Vector3 b)
+            {
+                a.vector += b;
+                return a;
+            }
+
+            public static TypedVector3 operator -(TypedVector3 a, Vector3 b)
+            {
+                a.vector -= b;
+                return a;
+            }
+
+            public enum ScaleMode
+            {
+                UseDefault,
+                InverseScale
+            }
+
+            public TypedVector3 IgnoreScaling(CharData cData, IAnimationContext context)
+                => IgnoreScaling(cData, context.AnimatorContext);
+
+            public TypedVector3 IgnoreScaling(CharData cData, IAnimatorContext context)
+            {
+                vector = AnimationUtility.InverseScaleVector(vector, cData, context);
+                return this;
+            }
+
+            public Vector3 ToPosition(CharData cData)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData),
+                    VectorType.Offset => vector + cData.InitialPosition,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
+            
+            public Vector3 ToDelta(CharData cData)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector - cData.InitialPosition,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData) -
+                                         (Vector2)cData.InitialPosition,
+                    VectorType.Offset => vector,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
             }
         }
     }
