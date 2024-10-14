@@ -153,7 +153,7 @@ namespace TMPEffects.Parameters
 
             public TypedVector3 IgnoreScaling(CharData cData, IAnimatorContext context)
             {
-                vector = AnimationUtility.InverseScaleVector(vector, cData, context);
+                vector = AnimationUtility.IgnoreScaling(vector, cData, context);
                 return this;
             }
 

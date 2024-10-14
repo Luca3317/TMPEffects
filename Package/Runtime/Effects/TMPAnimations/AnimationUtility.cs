@@ -14,23 +14,27 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public static class AnimationUtility
     {
+        #region Scaling
         /// <summary>
         /// Scale a given value to make it uniform between <see cref="TextMeshPro"/> and <see cref="TextMeshProUGUI"/> components. 
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value">The value to scale.</param>
         /// <returns>The scaled value.</returns>
-        public static float ScaleTextMesh(TMP_Text text, float value)
-        {
-            if (text.canvas == null) return value * 10;
-            else return value;
-        }
-
+        public static float ScaleTextMesh(TMP_Text text, float value) =>
+            ScaleTextMesh(text.canvas != null, value);
+        
         public static float ScaleTextMesh(IAnimatorContext ctx, float value)
-            => ScaleTextMesh(ctx.Animator.TextComponent, value);
+            => ScaleTextMesh(ctx.Animator.TextComponent.canvas != null, value);
 
         public static float ScaleTextMesh(IAnimationContext ctx, float value)
-            => ScaleTextMesh(ctx.AnimatorContext.Animator.TextComponent, value);
+            => ScaleTextMesh(ctx.AnimatorContext.Animator.TextComponent.canvas != null, value);
+
+        public static float ScaleTextMesh(bool isTMProUGUI, float value)
+        {
+            if (!isTMProUGUI) return value * 10;
+            return value;
+        }
 
         /// <summary>
         /// Scale a vector for an animation.<br/>
@@ -42,7 +46,8 @@ namespace TMPEffects.TMPAnimations
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
-            ScaleVector(vector, cData, context.AnimatorContext);
+            ScaleVector(vector, context.AnimatorContext.Animator.TextComponent.canvas != null, context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+                cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
 
         /// <summary>
         /// Scale a vector for an animation.<br/>
@@ -52,29 +57,37 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
-        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
-        {
-            vector /= ScaleTextMesh(context.Animator.TextComponent, 1f); // Scale for textMesh
-            if (!context.ScaleAnimations) return vector; // if animation doesnt scale vectors, return
-            if (!context.ScaleUniformly)
-                // if not scale uniformly, scale based on character size
-                return vector * (cData.info.pointSize / 36f);
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            ScaleVector(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations, context.ScaleUniformly,
+                cData.info.pointSize, context.Animator.TextComponent.fontSize);
+            
 
-            // else, scale based on font size
-            return vector * (context.Animator.TextComponent.fontSize / 36f);
-        }
-
-        // TODO make other scale methods use this?
-        // Needed a way to scale without a context / where scaleAnimations and scaleUniformly was context independent
-        public static Vector3 ScaleVector(Vector3 vector, TMP_Text text, bool scaleAnimations, bool scaleUniformly,
+        public static Vector3 ScaleVector(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
             float pointSize, float fontSize)
         {
-            vector /= ScaleTextMesh(text, 1f);
+            vector /= ScaleTextMesh(isTMProUGUI, 1f);
             if (!scaleAnimations) return vector;
             if (!scaleUniformly) return vector * (pointSize / 36f);
             return vector * (fontSize / 36f);
         }
+        
+        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimationContext context) =>
+            IgnoreScaling(vector, context.AnimatorContext.Animator.TextComponent.canvas != null, context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+                cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
 
+        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            IgnoreScaling(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations, context.ScaleUniformly,
+                cData.info.pointSize, context.Animator.TextComponent.fontSize);
+        
+        public static Vector3 IgnoreScaling(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
+            float pointSize, float fontSize)
+        {
+            vector *= ScaleTextMesh(isTMProUGUI, 1f);
+            if (!scaleAnimations) return vector;
+            if (!scaleUniformly) return vector / (pointSize / 36f);
+            return vector / (fontSize / 36f);
+        }
+       
         /// <summary>
         /// Scale a vector for an animation inversely.<br/>
         /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
@@ -84,7 +97,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="context">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The inversely scaled vector.</returns>
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
-            InverseScaleVector(vector, cData, context.AnimatorContext);
+            IgnoreScaling(vector, cData, context.AnimatorContext);
 
         /// <summary>
         /// Scale a vector for an animation inversely.<br/>
@@ -94,24 +107,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The inversely scaled vector.</returns>
-        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
-        {
-            vector *= ScaleTextMesh(context.Animator.TextComponent, 1f);
-            if (!context.ScaleAnimations) return vector;
-            if (!context.ScaleUniformly) return vector / (cData.info.pointSize / 36f);
-            return vector / (context.Animator.TextComponent.fontSize / 36f);
-        }
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            IgnoreScaling(vector, cData, context);
+        #endregion
+
         
-        public static Vector3 InverseScaleVector(Vector3 vector, TMP_Text text, bool scaleAnimations, bool scaleUniformly,
-            float pointSize, float fontSize)
-        {
-            vector *= ScaleTextMesh(text, 1f);
-            if (!scaleAnimations) return vector;
-            if (!scaleUniformly) return vector / (pointSize / 36f);
-            return vector / (fontSize / 36f);
-        }
-
-
         #region Raw Positions & Deltas
 
         /// <summary>
@@ -229,13 +229,13 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            return InverseScaleVector(delta, cData, ctx);
+            return IgnoreScaling(delta, cData, ctx);
         }
 
         internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, CharData cData,
             IAnimatorContext ctx)
         {
-            return InverseScaleVector(position - referencePosition, cData, ctx) + referencePosition;
+            return IgnoreScaling(position - referencePosition, cData, ctx) + referencePosition;
         }
 
 
@@ -282,50 +282,6 @@ namespace TMPEffects.TMPAnimations
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
-        
-
-        /// <summary>
-        /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="index">Index of the vertex.</param>
-        /// <param name="delta">The delta to add to the vertex.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx) =>
-            AddVertexDeltaRaw(index, delta, cData, ctx.AnimatorContext);
-
-        /// <summary>
-        /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="index">Index of the vertex.</param>
-        /// <param name="delta">The delta to add to the vertex.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddVertexDelta(index, GetRawDelta(delta, cData, ctx));
-        }
-
-        /// <summary>
-        /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the position of the character.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) =>
-            AddPositionDeltaRaw(delta, cData, ctx.AnimatorContext);
-
-        /// <summary>
-        /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the position of the character.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddPositionDelta(GetRawDelta(delta, cData, ctx));
-        }
-
         #endregion
 
         #region General Math
