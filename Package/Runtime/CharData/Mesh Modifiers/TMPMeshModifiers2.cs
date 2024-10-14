@@ -342,33 +342,8 @@ public struct TMPMeshModifiers2
         modifier &= ~ModifierFlags.UVs;
     }
 
-    public void Combine(TMPMeshModifiers2 other, bool useFlags = true)
+    public void Combine(TMPMeshModifiers2 other)
     {
-        if (!useFlags)
-        {
-            BL_Delta += other.BL_Delta;
-            TL_Delta += other.TL_Delta;
-            TR_Delta += other.TR_Delta;
-            BR_Delta += other.BR_Delta;
-            
-            BL_Color += other.BL_Color;
-            TL_Color += other.TL_Color;
-            TR_Color += other.TR_Color;
-            BR_Color += other.BR_Color;
-            
-            BL_UV0 += other.BL_UV0;
-            TL_UV0 += other.TL_UV0;
-            TR_UV0 += other.TR_UV0;
-            BR_UV0 += other.BR_UV0;
-            
-            BL_UV2 += other.BL_UV2;
-            TL_UV2 += other.TL_UV2;
-            TR_UV2 += other.TR_UV2;
-            BR_UV2 += other.BR_UV2;
-            
-            return;
-        }
-        
         if (other.modifier.HasFlag(ModifierFlags.Deltas))
         {
             BL_Delta += other.BL_Delta;

@@ -63,10 +63,10 @@ public class TMPCharDataModifiers
 
         if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Deltas))
         {
-            vbl += meshModifiers.BL_Delta;
-            vtl += meshModifiers.TL_Delta;
-            vtr += meshModifiers.TR_Delta;
-            vbr += meshModifiers.BR_Delta;
+            vbl += AnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);;
+            vtl += AnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);;
+            vtr += AnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);;
+            vbr += AnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);;
         }
 
         // TODO Clamp
