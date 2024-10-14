@@ -72,8 +72,8 @@ namespace TMPEffects.TMPAnimations.Animations
                 }
             }
 
-            cData.SetVertex(1, p1);
-            cData.SetVertex(2, p2);
+            cData.mesh.SetPosition(1, p1);
+            cData.mesh.SetPosition(2, p2);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

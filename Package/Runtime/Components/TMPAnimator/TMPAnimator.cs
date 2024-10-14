@@ -811,9 +811,9 @@ namespace TMPEffects.Components
 
             sw.Stop();
             count++;
-            if (count >= 1000)
+            if (count >= 10000)
             {
-                Debug.LogWarning("1000 anims took " + sw.Elapsed.TotalMilliseconds);
+                Debug.LogWarning("10000 anims took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
@@ -1211,7 +1211,7 @@ namespace TMPEffects.Components
 
             void ApplyVertices()
             {
-                if (myState.characterMeshModifiers.Dirty != 0 || myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Deltas))
+                if (myState.characterMeshModifiers.Modifier != 0 || myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Deltas))
                 {
                     myState.CalculateVertexPositions(cData, context);
                     cData.mesh.SetPosition(0, myState.BL_Result);
@@ -1220,7 +1220,7 @@ namespace TMPEffects.Components
                     cData.mesh.SetPosition(3, myState.BR_Result);
                 }
 
-                if (myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.Colors))
+                if (myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Colors))
                 {
                     cData.mesh.SetColor(0, myState.meshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
                     cData.mesh.SetColor(1, myState.meshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
@@ -1228,7 +1228,7 @@ namespace TMPEffects.Components
                     cData.mesh.SetColor(3, myState.meshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
                 }
 
-                if (myState.meshModifiers.Dirty.HasFlag(TMPMeshModifiers2.DirtyFlags.UVs))
+                if (myState.meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.UVs))
                 {
                     cData.mesh.SetUV0(0, myState.meshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
                     cData.mesh.SetUV0(1, myState.meshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
@@ -1425,7 +1425,7 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.SetVertex(j, cData.InitialPosition);// cData.initialPosition);
+                    cData.mesh.SetPosition(j, cData.InitialPosition);// cData.initialPosition);
                 }
             }
 
@@ -1434,7 +1434,7 @@ namespace TMPEffects.Components
                 // Set the current mesh's vertices all to the initial mesh values
                 for (int j = 0; j < 4; j++)
                 {
-                    cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                    cData.mesh.SetPosition(j, cData.mesh.initial.GetPosition(j));
                 }
             }
         }

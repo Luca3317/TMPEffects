@@ -11,20 +11,27 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new WaveAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Wave")]
     public class WaveAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f, 1f, 1f, 0.2f);
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        [SerializeField]
+        Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f,
+            1f, 1f, 0.2f);
+
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        [SerializeField]
+        WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
 
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data data = (Data)context.CustomData;
 
             // Evaluate the wave based on time and offset
-            float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+            float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime,
+                GetWaveOffset(cData, context, data.waveOffsetType)).Value;
 
             // Move the character up based on the wave evaluation
-            cData.AddPositionDelta(Vector3.up * eval);
+            cData.PositionDelta = Vector3.up * eval;
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)
@@ -32,7 +39,8 @@ namespace TMPEffects.TMPAnimations.Animations
             if (parameters == null) return;
 
             Data data = (Data)customData;
-            if (TryGetWaveOffsetParameter(out var wot, parameters, "waveoffset", WaveOffsetAliases)) data.waveOffsetType = wot;
+            if (TryGetWaveOffsetParameter(out var wot, parameters, "waveoffset", WaveOffsetAliases))
+                data.waveOffsetType = wot;
             data.wave = CreateWave(this.wave, GetWaveParameters(parameters));
         }
 

@@ -257,7 +257,7 @@ namespace TMPEffects.CharacterData
             set
             {
                 modifiers.BL_UV0 =
-                    new TMPMeshModifiers2.UVOverride(
+                    new Vector3Override(
                         value); // TODO maybe rewrite overrides so they store the fallback value? ever so slightly faster
                 uvsDirty = true;
             }
@@ -271,7 +271,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.TL_UV0.GetValue(vertex_TL.uv);
             set
             {
-                modifiers.TL_UV0 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.TL_UV0 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -284,7 +284,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.TR_UV0.GetValue(vertex_TR.uv);
             set
             {
-                modifiers.TR_UV0 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.TR_UV0 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -297,7 +297,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.BR_UV0.GetValue(vertex_BR.uv);
             set
             {
-                modifiers.BR_UV0 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.BR_UV0 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -310,7 +310,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.BL_UV2.GetValue(vertex_BL.uv2);
             set
             {
-                modifiers.BL_UV2 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.BL_UV2 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -323,7 +323,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.TL_UV2.GetValue(vertex_TL.uv2);
             set
             {
-                modifiers.TL_UV2 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.TL_UV2 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -336,7 +336,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.TR_UV2.GetValue(vertex_TR.uv2);
             set
             {
-                modifiers.TR_UV2 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.TR_UV2 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -349,7 +349,7 @@ namespace TMPEffects.CharacterData
             get => modifiers.BR_UV2.GetValue(vertex_BR.uv2);
             set
             {
-                modifiers.BR_UV2 = new TMPMeshModifiers2.UVOverride(value);
+                modifiers.BR_UV2 = new Vector3Override(value);
                 uvsDirty = true;
             }
         }
@@ -698,7 +698,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public void Reset()
         {
-            modifiers.Reset();
+            modifiers.ClearModifiers();
         }
 
         /// <summary>
@@ -756,15 +756,15 @@ namespace TMPEffects.CharacterData
         public void ResetUVs()
         {
             if (!uvsDirty) return;
-            modifiers.BL_UV0 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.TL_UV0 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.TR_UV0 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.BR_UV0 = new TMPMeshModifiers2.UVOverride(null);
+            modifiers.BL_UV0 = Vector3Override.GetDefault;
+            modifiers.TL_UV0 = Vector3Override.GetDefault;
+            modifiers.TR_UV0 = Vector3Override.GetDefault;
+            modifiers.BR_UV0 = Vector3Override.GetDefault;
 
-            modifiers.BL_UV2 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.TL_UV2 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.TR_UV2 = new TMPMeshModifiers2.UVOverride(null);
-            modifiers.BR_UV2 = new TMPMeshModifiers2.UVOverride(null);
+            modifiers.BL_UV2 = Vector3Override.GetDefault;
+            modifiers.TL_UV2 = Vector3Override.GetDefault;
+            modifiers.TR_UV2 = Vector3Override.GetDefault;
+            modifiers.BR_UV2 = Vector3Override.GetDefault;
             uvsDirty = false;
         }
     }

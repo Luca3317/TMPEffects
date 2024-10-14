@@ -259,7 +259,7 @@ namespace TMPEffects.TMPAnimations
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
             Vector3 ogPos = cData.InitialMesh.GetPosition(index);
-            cData.SetVertex(index, GetRawPosition(position, ogPos, cData, ctx));
+            cData.mesh.SetPosition(index, GetRawPosition(position, ogPos, cData, ctx));
         }
 
         /// <summary>

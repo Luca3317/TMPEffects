@@ -199,7 +199,7 @@ namespace TMPEffects.CharacterData
         {
             if (cData.positionDirty)
             {
-                positionDelta += (cData.Position - cData.InitialPosition);
+                positionDelta += (cData.PositionDelta - cData.InitialPosition);
             }
 
             if (cData.scaleDirty)

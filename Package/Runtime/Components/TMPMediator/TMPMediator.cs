@@ -425,7 +425,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, Vector3.zero);// cData.initialPosition);
+                cData.mesh.SetPosition(j, Vector3.zero);
             }
 
             // Apply the new vertices to the vertex array
@@ -441,7 +441,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                cData.mesh.SetPosition(j, cData.mesh.initial.GetPosition(j));
             }
 
             // Apply the new vertices to the vertex array

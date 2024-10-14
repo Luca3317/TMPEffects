@@ -142,18 +142,26 @@ namespace TMPEffects.Parameters
                 return a;
             }
 
-            public enum ScaleMode
-            {
-                UseDefault,
-                InverseScale
-            }
-
             public TypedVector3 IgnoreScaling(CharData cData, IAnimationContext context)
                 => IgnoreScaling(cData, context.AnimatorContext);
 
             public TypedVector3 IgnoreScaling(CharData cData, IAnimatorContext context)
             {
-                vector = AnimationUtility.IgnoreScaling(vector, cData, context);
+                switch (type)
+                {
+                    case VectorType.Position:
+                        vector = AnimationUtility.GetRawPosition(vector, cData, context);
+                        break;
+                    case VectorType.Anchor:
+                        // TODO Dont have to do anything i think. Since based on anchors of character,
+                        // inherently ignores scaling
+                        // vector = AnimationUtility.GetRawPosition(AnimationUtility.AnchorToPosition(vector, cData),
+                        //     cData, context);
+                        break;
+                    case VectorType.Offset:
+                        vector = AnimationUtility.GetRawDelta(vector, cData, context);
+                        break;
+                }
                 return this;
             }
 
@@ -167,7 +175,7 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
-            
+
             public Vector3 ToDelta(CharData cData)
             {
                 return type switch
