@@ -25,7 +25,7 @@ public struct Rotation
 [Serializable]
 public class TMPCharDataModifiers
 {
-    public TMPMeshModifiers2 meshModifiers;
+    public TMPMeshModifiers meshModifiers;
     public TMPCharacterMeshModifiers characterMeshModifiers;
 
     public Vector3 BL_Result { get; private set; }
@@ -35,22 +35,14 @@ public class TMPCharDataModifiers
 
     public TMPCharDataModifiers()
     {
-        meshModifiers = new TMPMeshModifiers2();
+        meshModifiers = new TMPMeshModifiers();
         characterMeshModifiers = new TMPCharacterMeshModifiers();
     }
 
     public TMPCharDataModifiers(TMPCharDataModifiers original)
     {
-        meshModifiers = new TMPMeshModifiers2(original.meshModifiers);
+        meshModifiers = new TMPMeshModifiers(original.meshModifiers);
         characterMeshModifiers = new TMPCharacterMeshModifiers(original.characterMeshModifiers);
-    }
-
-    public void Update(CharData cData)
-    {
-        if (cData.positionDirty)
-        {
-            characterMeshModifiers.PositionDelta += cData.CharacterMeshModifiers.PositionDelta;
-        }
     }
 
     public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
@@ -61,7 +53,7 @@ public class TMPCharDataModifiers
         Vector3 vtr = cData.InitialMesh.TR_Position;
         Vector3 vbr = cData.InitialMesh.BR_Position;
 
-        if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Deltas))
+        if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
             vbl += AnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);;
             vtl += AnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);;
@@ -71,6 +63,7 @@ public class TMPCharDataModifiers
 
         // TODO Clamp
         // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
+        // If i want to do that again, ill need to update those in combine.
         // vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
         // vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
         // vbr = new Vector3(Mathf.Clamp(vbr.x, BRMin.x, BRMax.x), Mathf.Clamp(vbr.y, BRMin.y, BRMax.y), Mathf.Clamp(vbr.z, BRMin.z, BRMax.z));
@@ -167,13 +160,13 @@ public class TMPCharDataModifiers
         return result;
     }
 
-    private static TMPMeshModifiers2 LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers2 modifiers, float t)
+    private static TMPMeshModifiers LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t)
     {
-        if (t <= 0) return new TMPMeshModifiers2();
+        if (t <= 0) return new TMPMeshModifiers();
 
-        TMPMeshModifiers2 result = new TMPMeshModifiers2();
+        TMPMeshModifiers result = new TMPMeshModifiers();
 
-        if (modifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Deltas))
+        if (modifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
             result.BL_Delta = modifiers.BL_Delta * t;
             result.TL_Delta = modifiers.TL_Delta * t;
@@ -181,7 +174,7 @@ public class TMPCharDataModifiers
             result.BR_Delta = modifiers.BR_Delta * t;
         }
 
-        if (modifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.Colors))
+        if (modifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
         {
             result.BL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BL_Color, modifiers.BL_Color, t);
             result.TL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TL_Color, modifiers.TL_Color, t);
@@ -189,7 +182,7 @@ public class TMPCharDataModifiers
             result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, modifiers.BR_Color, t);
         }
 
-        if (modifiers.Modifier.HasFlag(TMPMeshModifiers2.ModifierFlags.UVs))
+        if (modifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
         {
             var vector = modifiers.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);
             result.BL_UV0 =
