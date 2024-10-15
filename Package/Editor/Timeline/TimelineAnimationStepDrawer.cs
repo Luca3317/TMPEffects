@@ -2,9 +2,10 @@ using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
-[CustomPropertyDrawer(typeof(AnimationStep), false)]
-public class AnimationStepDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(TimelineAnimationStep))]
+public class TimelineAnimationStepDrawer : PropertyDrawer
 {
     private bool entry = false;
 
@@ -69,43 +70,6 @@ public class AnimationStepDrawer : PropertyDrawer
             rect.y += EditorGUIUtility.singleLineHeight;
         }
 
-        if (property.serializedObject.targetObject is not PlayableAsset)
-        {
-            EditorGUI.PropertyField(rect, startTime);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, duration);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            entryCurve.isExpanded = EditorGUI.Foldout(rect, entryCurve.isExpanded, "Entry");
-            rect.y += EditorGUIUtility.singleLineHeight;
-
-            if (entryCurve.isExpanded)
-            {
-                EditorGUI.indentLevel++;
-                var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
-                EditorGUI.DrawRect(bgRect, backgroundColor);
-                EditorGUI.PropertyField(rect, entryDuration);
-                rect.y += EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(rect, entryCurve);
-                rect.y += EditorGUIUtility.singleLineHeight;
-                EditorGUI.indentLevel--;
-            }
-
-            exitCurve.isExpanded = EditorGUI.Foldout(rect, exitCurve.isExpanded, "Exit");
-            rect.y += EditorGUIUtility.singleLineHeight;
-
-            if (exitCurve.isExpanded)
-            {
-                EditorGUI.indentLevel++;
-                var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
-                EditorGUI.DrawRect(bgRect, backgroundColor);
-                EditorGUI.PropertyField(rect, exitDuration);
-                rect.y += EditorGUIUtility.singleLineHeight;
-                EditorGUI.PropertyField(rect, exitCurve);
-                rect.y += EditorGUIUtility.singleLineHeight;
-                EditorGUI.indentLevel--;
-            }
-        }
-
         float start = startTime.floatValue, end = start + duration.floatValue;
         startTime.floatValue = start;
         duration.floatValue = end - start;
@@ -139,6 +103,31 @@ public class AnimationStepDrawer : PropertyDrawer
             property.serializedObject.ApplyModifiedProperties();
         }
 
+        //
+        // if (property.serializedObject.targetObject is PlayableAsset pa)
+        // {
+        //     if (pa != null)
+        //     {
+        //         // Now, access the TimelineClip containing this PlayableAsset
+        //         TimelineClip clip = FindTimelineClip(pa);
+        //         if (clip != null)
+        //         {
+        //             // Access blend curves
+        //             AnimationCurve blendInCurve = clip.curves.FindCurve(AnimationTrack.BlendInCurveName);
+        //             AnimationCurve blendOutCurve = clip.curves.FindCurve(AnimationTrack.BlendOutCurveName);
+        //
+        //             // Display the blend curves or use them as needed
+        //             EditorGUI.CurveField(new Rect(position.x, position.y, position.width, position.height / 2), "Blend In Curve", blendInCurve);
+        //             EditorGUI.CurveField(new Rect(position.x, position.y + position.height / 2, position.width, position.height / 2), "Blend Out Curve", blendOutCurve);
+        //         }
+        //         else
+        //         {
+        //             EditorGUI.LabelField(position, label.text, "Cannot find the timeline clip.");
+        //         }
+        //     }
+        // }
+        //
+
         EditorGUI.EndProperty();
     }
 
@@ -149,22 +138,6 @@ public class AnimationStepDrawer : PropertyDrawer
         if (!property.isExpanded) return totalHeight;
 
         totalHeight += EditorGUIUtility.singleLineHeight * 2f; // For the "name" property
-
-        if (property.serializedObject.targetObject is not PlayableAsset)
-        {
-            totalHeight += EditorGUIUtility.singleLineHeight * 2f; // startTime, duration
-            totalHeight += EditorGUIUtility.singleLineHeight; // entry foldout
-            if (entryCurve.isExpanded)
-            {
-                totalHeight += EditorGUIUtility.singleLineHeight * 2f; // entryDuration and entryCurve
-            }
-
-            totalHeight += EditorGUIUtility.singleLineHeight; // exit foldout
-            if (exitCurve.isExpanded)
-            {
-                totalHeight += EditorGUIUtility.singleLineHeight * 2f; // exitDuration and exitCurve
-            }
-        }
 
         totalHeight += EditorGUIUtility.singleLineHeight * 2; // loops and useWave
 
@@ -179,7 +152,7 @@ public class AnimationStepDrawer : PropertyDrawer
             totalHeight += EditorGUI.GetPropertyHeight(wave, true);
         }
 
-         totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
+        totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
 
         return totalHeight;
     }

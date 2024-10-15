@@ -50,7 +50,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var animStepsProp = serializedObject.FindProperty("animationSteps");
         animStepsProp.arraySize++;
         var newElement = animStepsProp.GetArrayElementAtIndex(animStepsProp.arraySize - 1);
-        newElement.managedReferenceValue = new GenericAnimation.AnimationStep();
+        newElement.managedReferenceValue = new AnimationStep();
     }
 
     // TODO Calling this all the properties of the arrayElement property are null? When adding a new element to list
@@ -287,9 +287,17 @@ public static class GenericAnimationExporter
         GenerateScriptFromModifier(name, exportPath, repeats, duration, steps);
     }
 
-    static List<GenericAnimation.AnimationStep> GetAnimationSteps(SerializedProperty animationStepsProp)
+    public static void Export(GenericAnimation anim, string filePath)
     {
-        List<GenericAnimation.AnimationStep> steps = new List<GenericAnimation.AnimationStep>();
+        var steps = anim.AnimationSteps;
+        var repeats = anim.Repeat;
+        var duration = anim.Duration;
+        GenerateScriptFromModifier(filePath, repeats, duration, steps);
+    }
+
+    static List<AnimationStep> GetAnimationSteps(SerializedProperty animationStepsProp)
+    {
+        List<AnimationStep> steps = new List<AnimationStep>();
         for (int i = 0; i < animationStepsProp.arraySize; i++)
         {
             var stepProp = animationStepsProp.GetArrayElementAtIndex(i);
@@ -299,9 +307,9 @@ public static class GenericAnimationExporter
         return steps;
     }
 
-    static GenericAnimation.AnimationStep GetAnimationStep(SerializedProperty prop)
+    static AnimationStep GetAnimationStep(SerializedProperty prop)
     {
-        var animationStep = prop.managedReferenceValue as GenericAnimation.AnimationStep;
+        var animationStep = prop.managedReferenceValue as AnimationStep;
         if (animationStep == null) throw new System.InvalidOperationException("Couldnt cast animationsteps");
         return animationStep;
     }
@@ -314,18 +322,22 @@ public static class GenericAnimationExporter
         }
     }
 
-    static OrderedHashSet<string> GetAnimationStepNames(List<GenericAnimation.AnimationStep> steps)
+    static OrderedHashSet<string> GetAnimationStepNames(List<AnimationStep> steps)
     {
         OrderedHashSet<string> names = new OrderedHashSet<string>();
 
         foreach (var step in steps)
         {
-            string nameToAdd;
-            if (string.IsNullOrWhiteSpace(step.name))
+            string nameToAdd = step.name;
+
+            // replace invlid characters
+            Debug.Log("Turned " + nameToAdd + " into " + Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "") );
+            nameToAdd = Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "");
+            
+            if (string.IsNullOrWhiteSpace(nameToAdd))
             {
                 nameToAdd = "Element_" + names.Count;
             }
-            else nameToAdd = step.name;
 
             if (names.Contains(nameToAdd))
             {
@@ -352,8 +364,16 @@ public static class GenericAnimationExporter
         return Regex.Replace(s, @"\s+", "_");
     }
 
+    static bool GenerateScriptFromModifier(string filePath, bool repeats, float duration,
+        List<AnimationStep> steps)
+    {
+        var name = Path.GetFileNameWithoutExtension(filePath);
+        var path = Path.GetDirectoryName(filePath);
+        return GenerateScriptFromModifier(name, path, repeats, duration, steps);
+    }
+    
     static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration,
-        List<GenericAnimation.AnimationStep> steps)
+        List<AnimationStep> steps)
     {
         OrderedHashSet<string> names = GetAnimationStepNames(steps);
         className = ReplaceWhitespaceWithUnderscore(className);
@@ -393,7 +413,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
-    private static string GenerateStepParameters(List<GenericAnimation.AnimationStep> steps,
+    private static string GenerateStepParameters(List<AnimationStep> steps,
         OrderedHashSet<string> names)
     {
         string code = "";
@@ -405,7 +425,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
             code +=
                 $@"
-        [SerializeField] private GenericAnimation.AnimationStep Step_{name} = new GenericAnimation.AnimationStep()
+        [SerializeField] private AnimationStep Step_{name} = new AnimationStep()
         {{
             name = ""{step.name}"",
             entryDuration = {GetFloatString(step.entryDuration)},
@@ -421,11 +441,6 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {GetAnimCurveString(step.wave.DownwardCurve)}, 
                 {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
                 {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
-            modifiers = new TMPMeshModifiers()
-            {{
-
-
-            }}
         }};";
 
             // TODO Redo with chardatamodifier
@@ -488,10 +503,10 @@ namespace TMPEffects.TMPAnimations.GenericExports
             $"new Color32({color.r}, {color.g}, {color.b}, {color.a})";
     }
 
-    static string GenerateAnimateCode(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
+    static string GenerateAnimateCode(List<AnimationStep> steps, OrderedHashSet<string> names)
     {
-        string code = @"            TMPMeshModifiers result = new TMPMeshModifiers();
-            TMPMeshModifiers tmp;
+        string code = @"            CharDataModifiers result = new CharDataModifiers();
+            CharDataModifiers tmp;
             float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;";
 
         for (int i = 0; i < steps.Count; i++)
@@ -499,18 +514,14 @@ namespace TMPEffects.TMPAnimations.GenericExports
             var name = names[i];
             code += $@"
             tmp = Animate_{name}(timeValue, Step_{name}, cData, data, context);
-            if (tmp != null) result += tmp;
+            if (tmp != null) result.Combine(tmp);
 ";
         }
-
-        code += @"
-            SmthThatAppliesModifiers applier = new SmthThatAppliesModifiers();
-            applier.ApplyToCharData(cData, result);";
 
         return code;
     }
 
-    static string GenerateStepMethods(List<GenericAnimation.AnimationStep> steps, OrderedHashSet<string> names)
+    static string GenerateStepMethods(List<AnimationStep> steps, OrderedHashSet<string> names)
     {
         string code = "";
 
@@ -518,34 +529,34 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {
             var name = names[i];
             code += @$"
-        private TMPMeshModifiers Animate_{name}(float timeValue, GenericAnimation.AnimationStep step, CharData cData, AutoParametersData data, IAnimationContext context)
+        private CharDataModifiers Animate_{name}(float timeValue, AnimationStep step, CharData cData, AutoParametersData data, IAnimationContext context)
         {{
             if (step.startTime > timeValue) return null;
             if (step.EndTime < timeValue) return null;
 
-            TMPMeshModifiers result;
+            CharDataModifiers result;
             if (step.useWave)
             {{
                 result =
-                    TMPMeshModifiers.LerpUnclamped(cData, step.modifiers,
+                    CharDataModifiers.LerpUnclamped(cData, step.charModifiers,
                         step.wave.Evaluate(timeValue,
                             AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value);
             }}
             else
             {{
-                result = step.modifiers;
+                result = step.charModifiers;
             }}
          
             float entry = timeValue - step.startTime;
             if (entry <= step.entryDuration)
             {{
-                result = TMPMeshModifiers.LerpUnclamped(cData, result, step.entryCurve.Evaluate(entry / step.entryDuration));
+                result = CharDataModifiers.LerpUnclamped(cData, result, step.entryCurve.Evaluate(entry / step.entryDuration));
             }}
 
             float exit = step.EndTime - timeValue;
             if (exit <= step.exitDuration)
             {{
-                result = TMPMeshModifiers.LerpUnclamped(cData, result, step.exitCurve.Evaluate(exit / step.exitDuration));
+                result = CharDataModifiers.LerpUnclamped(cData, result, step.exitCurve.Evaluate(exit / step.exitDuration));
             }}
 
             return result;

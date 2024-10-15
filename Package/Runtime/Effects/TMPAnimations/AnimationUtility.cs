@@ -15,6 +15,7 @@ namespace TMPEffects.TMPAnimations
     public static class AnimationUtility
     {
         #region Scaling
+
         /// <summary>
         /// Scale a given value to make it uniform between <see cref="TextMeshPro"/> and <see cref="TextMeshProUGUI"/> components. 
         /// </summary>
@@ -23,7 +24,7 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The scaled value.</returns>
         public static float ScaleTextMesh(TMP_Text text, float value) =>
             ScaleTextMesh(text.canvas != null, value);
-        
+
         public static float ScaleTextMesh(IAnimatorContext ctx, float value)
             => ScaleTextMesh(ctx.Animator.TextComponent.canvas != null, value);
 
@@ -46,7 +47,8 @@ namespace TMPEffects.TMPAnimations
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
-            ScaleVector(vector, context.AnimatorContext.Animator.TextComponent.canvas != null, context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+            ScaleVector(vector, context.AnimatorContext.Animator.TextComponent.canvas != null,
+                context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
                 cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
 
         /// <summary>
@@ -58,9 +60,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
-            ScaleVector(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations, context.ScaleUniformly,
+            ScaleVector(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
+                context.ScaleUniformly,
                 cData.info.pointSize, context.Animator.TextComponent.fontSize);
-            
+
 
         public static Vector3 ScaleVector(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
             float pointSize, float fontSize)
@@ -70,15 +73,17 @@ namespace TMPEffects.TMPAnimations
             if (!scaleUniformly) return vector * (pointSize / 36f);
             return vector * (fontSize / 36f);
         }
-        
+
         public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimationContext context) =>
-            IgnoreScaling(vector, context.AnimatorContext.Animator.TextComponent.canvas != null, context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+            IgnoreScaling(vector, context.AnimatorContext.Animator.TextComponent.canvas != null,
+                context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
                 cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
 
         public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimatorContext context) =>
-            IgnoreScaling(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations, context.ScaleUniformly,
+            IgnoreScaling(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
+                context.ScaleUniformly,
                 cData.info.pointSize, context.Animator.TextComponent.fontSize);
-        
+
         public static Vector3 IgnoreScaling(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
             float pointSize, float fontSize)
         {
@@ -87,7 +92,7 @@ namespace TMPEffects.TMPAnimations
             if (!scaleUniformly) return vector / (pointSize / 36f);
             return vector / (fontSize / 36f);
         }
-       
+
         /// <summary>
         /// Scale a vector for an animation inversely.<br/>
         /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
@@ -109,9 +114,10 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The inversely scaled vector.</returns>
         public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
             IgnoreScaling(vector, cData, context);
+
         #endregion
 
-        
+
         #region Raw Positions & Deltas
 
         /// <summary>
@@ -282,6 +288,7 @@ namespace TMPEffects.TMPAnimations
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
+
         #endregion
 
         #region General Math
@@ -1169,6 +1176,14 @@ namespace TMPEffects.TMPAnimations
             private float uniformity;
         }
 
+
+        public static float GetWaveOffset(CharData cData, ParameterTypes.WaveOffsetType type, int segmentIndex = 0,
+            bool ignoreScaling = false)
+        {
+            if (type == ParameterTypes.WaveOffsetType.SegmentIndex) return segmentIndex;
+            return GetWaveOffset(cData, null, type, ignoreScaling);
+        }
+
         /// <summary>
         /// Get the wave offset to use based on the <paramref name="type"/>.<br/>
         /// To be used with <see cref="Wave.Evaluate(float, float, bool)"/> (and related methods).
@@ -1180,12 +1195,14 @@ namespace TMPEffects.TMPAnimations
         /// For example, an <see cref="ParameterTypes.WaveOffsetType.XPos"/> will return a different offset based on the size of the text,
         /// as it directly considers the x position of the character.</param>
         /// <returns>The offset for a wave.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type, bool ignoreScaling = false)
+        /// <exception cref="System.NotImplementedException"></exception>
+        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type,
+            bool ignoreScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
+                case ParameterTypes.WaveOffsetType.SegmentIndex:
+                    return context.SegmentData.SegmentIndexOf(cData);
                 case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
 
                 case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
@@ -1202,12 +1219,12 @@ namespace TMPEffects.TMPAnimations
                 case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
-            throw new System.ArgumentException(nameof(type));
+            throw new System.NotImplementedException(nameof(type));
 
             float ScalePos(float pos)
             {
                 if (ignoreScaling) return pos;
-                
+
                 // Rewrote ScaleVector with float here for performance
                 // Ideally would reuse same code
                 pos = ScaleTextMesh(context.AnimatorContext.Animator.TextComponent, pos);

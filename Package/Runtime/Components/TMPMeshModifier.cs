@@ -29,10 +29,10 @@ public class TMPMeshModifier : MonoBehaviour
 
     private void OnCharacterAnimated(CharData cdata)
     {
-        Debug.Log("before " + cdata.CharacterModifiers.PositionDelta);
+        // Debug.Log("before " + cdata.CharacterModifiers.PositionDelta + " w/ " + _modifiers.CharacterModifiers.PositionDelta);
         cdata.MeshModifiers.Combine(_modifiers.MeshModifiers);
         cdata.CharacterModifiers.Combine(_modifiers.CharacterModifiers);
-        Debug.Log("after " + cdata.CharacterModifiers.PositionDelta);
+        // Debug.Log("after " + cdata.CharacterModifiers.PositionDelta);
     }
 
     public void SetModifiers(CharDataModifiers modifiers)

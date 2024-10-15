@@ -41,6 +41,12 @@ public class CharDataModifiers
         characterModifiers = new TMPCharacterModifiers(original.characterModifiers);
     }
 
+    public void Combine(CharDataModifiers other)
+    {
+        meshModifiers.Combine(other.meshModifiers);
+        characterModifiers.Combine(other.characterModifiers);
+    }
+
     public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
     {
         // Apply vertex transformations

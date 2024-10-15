@@ -43,7 +43,7 @@ public class CharDataModifierDrawer : PropertyDrawer
         tlDeltaProp = meshModifierProp.FindPropertyRelative("tl_Delta");
         trDeltaProp = meshModifierProp.FindPropertyRelative("tr_Delta");
         brDeltaProp = meshModifierProp.FindPropertyRelative("br_Delta");
-        
+
         blColorProp = meshModifierProp.FindPropertyRelative("bl_Color");
         tlColorProp = meshModifierProp.FindPropertyRelative("tl_Color");
         trColorProp = meshModifierProp.FindPropertyRelative("tr_Color");
@@ -55,7 +55,7 @@ public class CharDataModifierDrawer : PropertyDrawer
         brUV0Prop = meshModifierProp.FindPropertyRelative("br_UV0");
 
         meshModifierDirtyProp = meshModifierProp.FindPropertyRelative("modifier");
-        
+
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
             : new Color32(194, 194, 194, 255);
@@ -206,6 +206,7 @@ public class CharDataModifierDrawer : PropertyDrawer
         {
             ApplyBackToMatrix(newScale);
         }
+
         if (EditorGUI.EndChangeCheck())
         {
             // If is V3.one (= default), but bit is set as dirty, fix
@@ -251,7 +252,7 @@ public class CharDataModifierDrawer : PropertyDrawer
         if (EditorGUI.EndChangeCheck())
         {
             // If is not 0 (!= default), but bit is not set as dirty, fix
-            if (blDeltaProp.vector3Value != Vector3.zero || tlDeltaProp.vector3Value != Vector3.zero || 
+            if (blDeltaProp.vector3Value != Vector3.zero || tlDeltaProp.vector3Value != Vector3.zero ||
                 trDeltaProp.vector3Value != Vector3.zero || brDeltaProp.vector3Value != Vector3.zero)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
@@ -272,7 +273,7 @@ public class CharDataModifierDrawer : PropertyDrawer
                 }
             }
         }
-        
+
         return rect;
     }
 
@@ -290,12 +291,14 @@ public class CharDataModifierDrawer : PropertyDrawer
         rect.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(rect, brColorProp);
         rect.y += EditorGUIUtility.singleLineHeight;
-        
+
         if (EditorGUI.EndChangeCheck())
         {
             // If is not 0 (!= default), but bit is not set as dirty, fix
-            if (blColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || tlColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || 
-                trColorProp.FindPropertyRelative("Override").enumValueFlag != 0 || brColorProp.FindPropertyRelative("Override").enumValueFlag != 0)
+            if (blColorProp.FindPropertyRelative("Override").enumValueFlag != 0 ||
+                tlColorProp.FindPropertyRelative("Override").enumValueFlag != 0 ||
+                trColorProp.FindPropertyRelative("Override").enumValueFlag != 0 ||
+                brColorProp.FindPropertyRelative("Override").enumValueFlag != 0)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
                      (int)TMPMeshModifiers.ModifierFlags.Colors) == 0)
@@ -332,12 +335,14 @@ public class CharDataModifierDrawer : PropertyDrawer
         rect.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(rect, brUV0Prop);
         rect.y += EditorGUIUtility.singleLineHeight;
-        
+
         if (EditorGUI.EndChangeCheck())
         {
             // If is not 0 (!= default), but bit is not set as dirty, fix
-            if (blUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || tlUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || 
-                trUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 || brUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0)
+            if (blUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 ||
+                tlUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 ||
+                trUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0 ||
+                brUV0Prop.FindPropertyRelative("_override").enumValueFlag != 0)
             {
                 if ((meshModifierDirtyProp.enumValueFlag &
                      (int)TMPMeshModifiers.ModifierFlags.UVs) == 0)
@@ -360,8 +365,8 @@ public class CharDataModifierDrawer : PropertyDrawer
 
         return rect;
     }
-   
-    
+
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         Init(property);
@@ -406,10 +411,8 @@ public class CharDataModifierDrawer : PropertyDrawer
 
         if (blUV0Prop.isExpanded)
             rect = DrawMeshUVModifier(rect);
-        
-        
+
         EditorGUI.indentLevel--;
-        Debug.Log("Made it to the very very end!!");
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
