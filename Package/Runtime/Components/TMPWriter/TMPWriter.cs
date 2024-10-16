@@ -724,7 +724,10 @@ namespace TMPEffects.Components
                 invokable.Trigger();
 
                 prevTime = useScaledTime ? Time.time : Time.unscaledTime;
-                if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                if (shouldWait && waitAmount > 0)
+                    yield return useScaledTime
+                        ? new WaitForSeconds(waitAmount)
+                        : new WaitForSecondsRealtime(waitAmount);
                 FixTimePost(waitAmount);
 
                 if (Mediator == null) yield break;
@@ -736,7 +739,9 @@ namespace TMPEffects.Components
 
             // Iterate over all characters / indices in the text
             CharData cData;
-            for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? and other null checks because coroutines are not instantly cancelled (so disable writer => NRE)
+            for (int i = Mathf.Max(currentIndex, 0);
+                 i < Mediator?.CharData.Count;
+                 i++) // .? and other null checks because coroutines are not instantly cancelled (so disable writer => NRE)
             {
                 currentIndex = i;
                 cData = Mediator.CharData[i];
@@ -745,22 +750,44 @@ namespace TMPEffects.Components
                 invokables = GetInvokables(i);
                 foreach (var invokable in invokables)
                 {
-                    waitAmount = 0f;
-                    shouldWait = false;
-                    continueConditions = null;
-
                     invokable.Trigger();
 
-                    // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
-                    FixTimePre(ref waitAmount);
-                    if (shouldWait && waitAmount > 0) yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-                    FixTimePost(waitAmount);
+                    // // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
+                    // FixTimePre(ref waitAmount);
+                    // if (shouldWait && waitAmount > 0)
+                    // {
+                    //     Debug.LogWarning("HEY!!!");
+                    //     yield return useScaledTime
+                    //         ? new WaitForSeconds(waitAmount)
+                    //         : new WaitForSecondsRealtime(waitAmount);
+                    // }
+                    // FixTimePost(waitAmount);
                     if (Mediator == null) yield break;
 
                     // Wait until all wait conditions are true
-                    if (continueConditions != null) yield return HandleWaitConditions();
+                    // if (continueConditions != null) yield return HandleWaitConditions();
+                    // if (Mediator == null) yield break;
+                }
+
+                // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
+                FixTimePre(ref waitAmount);
+                if (shouldWait && waitAmount > 0)
+                {
+                    yield return useScaledTime
+                        ? new WaitForSeconds(waitAmount)
+                        : new WaitForSecondsRealtime(waitAmount);
+                }
+                FixTimePost(waitAmount);
+
+                while (continueConditions != null)
+                {
+                    yield return HandleWaitConditions();
                     if (Mediator == null) yield break;
                 }
+                
+                waitAmount = 0f;
+                shouldWait = false;
+                continueConditions = null;
 
                 // Calculate and wait for the delay for the current index, and accomodate for excess wait time (frame-timing)
                 float delay = CalculateDelay(i);
@@ -770,6 +797,7 @@ namespace TMPEffects.Components
                     yield return useScaledTime ? new WaitForSeconds(delay) : new WaitForSecondsRealtime(delay);
                     if (Mediator == null) yield break;
                 }
+
                 FixTimePost(delay);
 
                 // Show the current character, if it is not already shown
