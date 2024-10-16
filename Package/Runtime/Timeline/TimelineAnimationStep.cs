@@ -6,4 +6,8 @@ using UnityEngine;
 // (couldnt work into normal editor because of reliance on timeline package)
 [System.Serializable]
 public class TimelineAnimationStep : AnimationStep
-{ }
+{
+#if UNITY_EDITOR
+    public int lastMovedEntry = 0;
+#endif
+}

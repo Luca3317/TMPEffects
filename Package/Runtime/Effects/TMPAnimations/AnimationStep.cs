@@ -35,4 +35,5 @@ public class AnimationStep
             : (repetitions != 0 ? startTime + duration * repetitions : float.MaxValue);
 
     public CharDataModifiers charModifiers;
+    public GenericAnimation.GenericAnimationModifiers genModifiers;
 }

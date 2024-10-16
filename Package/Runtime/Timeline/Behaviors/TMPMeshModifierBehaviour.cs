@@ -13,7 +13,7 @@ public class TMPMeshModifierBehaviour : PlayableBehaviour
     private TMPAnimator animator;
     private float weight;
     private PlayableDirector director;
-
+    
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
         animator ??= info.output.GetUserData() as TMPAnimator;
@@ -49,7 +49,7 @@ public class TMPMeshModifierBehaviour : PlayableBehaviour
 
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
-        if (animator == null) return;
+        animator ??= info.output.GetUserData() as TMPAnimator;
         animator.OnCharacterAnimated -= OnCharacterAnimated;
     }
 

@@ -39,7 +39,7 @@ namespace TMPEffects.Parameters
             Position,
 
             /// <summary>
-            /// Offset vector from the original position
+            /// Offset vector from the original position.
             /// </summary>
             Offset,
 
@@ -99,6 +99,28 @@ namespace TMPEffects.Parameters
                     VectorType.Position => vector - (Vector2)cData.InitialPosition,
                     VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData) -
                                          (Vector2)cData.InitialPosition,
+                    VectorType.Offset => vector,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
+            
+            public Vector2 ToPosition(CharData cData, Vector2 referencePos)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData),
+                    VectorType.Offset => vector + referencePos,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
+            
+            public Vector2 ToDelta(CharData cData, Vector2 referencePos)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector - referencePos,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData) - referencePos,
                     VectorType.Offset => vector,
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
@@ -183,6 +205,28 @@ namespace TMPEffects.Parameters
                     VectorType.Position => vector - cData.InitialPosition,
                     VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData) -
                                          (Vector2)cData.InitialPosition,
+                    VectorType.Offset => vector,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
+
+            public Vector3 ToPosition(CharData cData, Vector3 referencePos)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector,
+                    VectorType.Anchor => AnimationUtility.AnchorToPosition(vector, cData),
+                    VectorType.Offset => vector + referencePos,
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
+            
+            public Vector3 ToDelta(CharData cData, Vector3 referencePos)
+            {
+                return type switch
+                {
+                    VectorType.Position => vector - referencePos,
+                    VectorType.Anchor => (Vector3)AnimationUtility.AnchorToPosition(vector, cData) - referencePos,
                     VectorType.Offset => vector,
                     _ => throw new System.NotImplementedException(nameof(type))
                 };

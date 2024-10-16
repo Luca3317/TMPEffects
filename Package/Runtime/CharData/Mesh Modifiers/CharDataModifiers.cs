@@ -93,7 +93,6 @@ public class CharDataModifiers
             {
                 pivot = rot.pivot;
                 matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
-                // Debug.LogWarning("After rot pos with eulerangles " + rot.eulerAngles + ", vtl is " + (matrix.MultiplyPoint3x4(vtl - pivot) + pivot) + "; was " + vtl);
 
                 vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
                 vtl = matrix.MultiplyPoint3x4(vtl - pivot) + pivot;
