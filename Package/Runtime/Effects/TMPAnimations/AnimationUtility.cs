@@ -1177,11 +1177,55 @@ namespace TMPEffects.TMPAnimations
         }
 
 
-        public static float GetWaveOffset(CharData cData, ParameterTypes.WaveOffsetType type, int segmentIndex = 0,
+        // TODO Quick solution for using this from TMPMeshModifier, where no AnimationContext is available
+        // Could probably mock it instead
+        public static float GetWaveOffset(CharData cData, IAnimatorContext context, ParameterTypes.WaveOffsetType type, int segmentIndex = 0,
             bool ignoreScaling = false)
         {
-            if (type == ParameterTypes.WaveOffsetType.SegmentIndex) return segmentIndex;
-            return GetWaveOffset(cData, null, type, ignoreScaling);
+            switch (type)
+            {
+                case ParameterTypes.WaveOffsetType.SegmentIndex: return segmentIndex;
+                case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
+
+                case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
+                case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
+                case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
+
+                case ParameterTypes.WaveOffsetType.WorldXPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).x);
+                case ParameterTypes.WaveOffsetType.WorldYPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).y);
+                case ParameterTypes.WaveOffsetType.WorldZPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).z);
+                case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+            }
+
+            throw new System.NotImplementedException(nameof(type));
+
+            float ScalePos(float pos)
+            {
+                if (ignoreScaling) return pos;
+
+                // Rewrote ScaleVector with float here for performance
+                // Ideally would reuse same code
+                pos = ScaleTextMesh(context.Animator.TextComponent, pos);
+
+                if (!context.ScaleAnimations)
+                    return pos / 10f;
+
+                if (context.ScaleUniformly)
+                {
+                    if (context.Animator.TextComponent.fontSize != 0)
+                        pos /= (context.Animator.TextComponent.fontSize / 36f);
+                    return pos / 10f;
+                }
+                else
+                {
+                    if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
+                    return pos / 10f;
+                }
+            }
         }
 
         /// <summary>

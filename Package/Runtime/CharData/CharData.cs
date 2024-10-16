@@ -58,6 +58,12 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public bool uvsDirty => mesh.uvsDirty;
 
+        public Vector3 Position
+        {
+            get => CharacterModifiers.PositionDelta + InitialPosition;
+            set => CharacterModifiers.PositionDelta = value - InitialPosition;
+        }
+        
         /// <summary>
         /// The character's position.
         /// </summary>
@@ -77,7 +83,7 @@ namespace TMPEffects.CharacterData
         }
 
         /// <summary>
-        /// The character's rotations;
+        /// The character's rotations.
         /// </summary>
         public IReadOnlyList<Rotation> Rotations => CharacterModifiers.Rotations;
 
@@ -161,10 +167,10 @@ namespace TMPEffects.CharacterData
             CharacterModifiers.PositionDelta = position - InitialPosition;
         }
 
-        public void ClearPosition()
-        {
-            CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Position);
-        }
+        // public void ClearPosition()
+        // {
+        //     CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Position);
+        // }
         #endregion
 
         #region PositionDelta
@@ -173,8 +179,8 @@ namespace TMPEffects.CharacterData
             CharacterModifiers.PositionDelta = delta;
         }
 
-        public void ClearPositionDelta()
-        {
+        public void ClearPosition()
+        { 
             CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.PositionDelta);
         }
         #endregion

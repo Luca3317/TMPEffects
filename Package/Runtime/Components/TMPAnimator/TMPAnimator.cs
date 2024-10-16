@@ -520,6 +520,7 @@ namespace TMPEffects.Components
         /// </summary>
         public void ResetTime(float time = 0f)
         {
+            return;
             if (time < 0) throw new System.ArgumentOutOfRangeException(nameof(time));
             if (Mediator == null) return;
 

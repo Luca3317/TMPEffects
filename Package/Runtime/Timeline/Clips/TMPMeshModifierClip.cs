@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-public class TMPMeshModifierClip : PlayableAsset, ITimelineClipAsset
+public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
 {
     public ClipCaps clipCaps
     {
         get { return ClipCaps.None; }
     }
 
-    public ExposedReference<PlayableDirector> director;
+    private ExposedReference<PlayableDirector> director;
     [SerializeField] private TimelineAnimationStep step;
     
     public TimelineAnimationStep Step => step;
@@ -26,7 +26,7 @@ public class TMPMeshModifierClip : PlayableAsset, ITimelineClipAsset
         
         PlayableDirector director = (PlayableDirector)graph.GetResolver();
         playable.GetGraph().GetResolver().SetReferenceValue(this.director.exposedName, director);
-        behaviour.Initialize(this.director.Resolve(graph.GetResolver()));
+        // behaviour.Initialize(this.director.Resolve(graph.GetResolver()));
         
         return playable;
     }

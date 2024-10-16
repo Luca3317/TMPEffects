@@ -12,4 +12,9 @@ public struct Rotation
         this.eulerAngles = eulerAngles;
         this.pivot = pivot;
     }
+
+    public bool Equals(Rotation other)
+    {
+        return pivot.Equals(other.pivot) && eulerAngles.Equals(other.eulerAngles);
+    }
 }

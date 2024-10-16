@@ -80,6 +80,26 @@ namespace TMPEffects.Parameters
                 a.vector -= b;
                 return a;
             }
+            
+            public TypedVector2 IgnoreScaling(CharData cData, IAnimationContext context)
+                => IgnoreScaling(cData, context.AnimatorContext);
+
+            public TypedVector2 IgnoreScaling(CharData cData, IAnimatorContext context)
+            {
+                return type switch
+                {
+                    VectorType.Position => new TypedVector2(type,
+                        AnimationUtility.GetRawPosition(vector, cData, context)),
+                    VectorType.Anchor =>
+                        // TODO Dont have to do anything i think. Since based on anchors of character,
+                        // inherently ignores scaling
+                        // vector = AnimationUtility.GetRawPosition(AnimationUtility.AnchorToPosition(vector, cData),
+                        //     cData, context);
+                        new TypedVector2(type, vector),
+                    VectorType.Offset => new TypedVector2(type, AnimationUtility.GetRawDelta(vector, cData, context)),
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
+            }
 
             public Vector2 ToPosition(CharData cData)
             {
@@ -114,6 +134,7 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
+            
             
             public Vector2 ToDelta(CharData cData, Vector2 referencePos)
             {
@@ -169,22 +190,19 @@ namespace TMPEffects.Parameters
 
             public TypedVector3 IgnoreScaling(CharData cData, IAnimatorContext context)
             {
-                switch (type)
+                return type switch
                 {
-                    case VectorType.Position:
-                        vector = AnimationUtility.GetRawPosition(vector, cData, context);
-                        break;
-                    case VectorType.Anchor:
+                    VectorType.Position => new TypedVector3(type,
+                        AnimationUtility.GetRawPosition(vector, cData, context)),
+                    VectorType.Anchor =>
                         // TODO Dont have to do anything i think. Since based on anchors of character,
                         // inherently ignores scaling
                         // vector = AnimationUtility.GetRawPosition(AnimationUtility.AnchorToPosition(vector, cData),
                         //     cData, context);
-                        break;
-                    case VectorType.Offset:
-                        vector = AnimationUtility.GetRawDelta(vector, cData, context);
-                        break;
-                }
-                return this;
+                        new TypedVector3(type, AnimationUtility.GetRawDelta(vector, cData, context)),
+                    VectorType.Offset => new TypedVector3(type, AnimationUtility.GetRawDelta(vector, cData, context)),
+                    _ => throw new System.NotImplementedException(nameof(type))
+                };
             }
 
             public Vector3 ToPosition(CharData cData)

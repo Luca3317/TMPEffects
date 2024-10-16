@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: new GenericAnimation
   m_EditorClassIdentifier: 
   animationSteps:
-  - rid: 3184736899956211719
+  - rid: 3184736902746472450
   repeat: 0
   duration: 0
   references:
     version: 2
     RefIds:
-    - rid: 3184736899956211719
+    - rid: 3184736902746472450
       type: {class: AnimationStep, ns: , asm: TMPEffects}
       data:
         name: 
@@ -166,7 +166,7 @@ MonoBehaviour:
               e33: 1
             rotations: []
             modifier: 0
-        genModifiers:
+        editorModifiers:
           Position:
             vector: {x: 0, y: 0, z: 0}
             type: 1

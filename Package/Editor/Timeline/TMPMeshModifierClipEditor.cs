@@ -14,6 +14,7 @@ public class TMPMeshModifierClipEditor : ClipEditor
     {
         var mClip = clip.asset as TMPMeshModifierClip;
         mClip.Step.duration = (float)clip.duration;
+        mClip.name = clip.displayName;
 
         if (mClip.Step.lastMovedEntry == 0)
         {
@@ -30,7 +31,6 @@ public class TMPMeshModifierClipEditor : ClipEditor
     public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
     {
         var mClip = clip.asset as TMPMeshModifierClip;
-        clip.displayName = string.IsNullOrWhiteSpace(mClip.Step.name) ? mClip.name : mClip.Step.name;
 
         float leftWidth, rightWidth;
         leftWidth = (mClip.Step.entryDuration / (float)clip.duration) * region.position.width;

@@ -34,6 +34,5 @@ public class AnimationStep
             ? startTime + duration
             : (repetitions != 0 ? startTime + duration * repetitions : float.MaxValue);
 
-    public CharDataModifiers charModifiers;
-    public GenericAnimation.GenericAnimationModifiers genModifiers;
+    public EditorFriendlyCharDataModifiers editorModifiers;
 }

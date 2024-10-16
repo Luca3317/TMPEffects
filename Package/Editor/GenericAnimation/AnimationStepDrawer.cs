@@ -17,7 +17,7 @@ public class AnimationStepDrawer : PropertyDrawer
     private SerializedProperty repetitions;
     private SerializedProperty startTime;
     private SerializedProperty duration;
-    private SerializedProperty modifiers;
+    // private SerializedProperty modifiers;
     private SerializedProperty wave;
     private SerializedProperty waveOffsetType;
     private SerializedProperty useWave;
@@ -36,12 +36,12 @@ public class AnimationStepDrawer : PropertyDrawer
         repetitions = property.FindPropertyRelative("repetitions");
         startTime = property.FindPropertyRelative("startTime");
         duration = property.FindPropertyRelative("duration");
-        modifiers = property.FindPropertyRelative("charModifiers");
+        // modifiers = property.FindPropertyRelative("charModifiers");
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
         
-        genModifiers = property.FindPropertyRelative("genModifiers");
+        genModifiers = property.FindPropertyRelative("editorModifiers");
         
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
@@ -135,8 +135,8 @@ public class AnimationStepDrawer : PropertyDrawer
             rect.y += EditorGUI.GetPropertyHeight(wave, true);
         }
 
-        EditorGUI.PropertyField(rect, modifiers, true);
-        rect.y += EditorGUI.GetPropertyHeight(modifiers, true);
+        // EditorGUI.PropertyField(rect, modifiers, true);
+        // rect.y += EditorGUI.GetPropertyHeight(modifiers, true);
 
         rect.height = EditorGUI.GetPropertyHeight(genModifiers,true);
         EditorGUI.PropertyField(rect, genModifiers,true);
@@ -189,7 +189,7 @@ public class AnimationStepDrawer : PropertyDrawer
             totalHeight += EditorGUI.GetPropertyHeight(wave, true);
         }
 
-         totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
+         // totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
 
          totalHeight += EditorGUI.GetPropertyHeight(genModifiers,true);
 
