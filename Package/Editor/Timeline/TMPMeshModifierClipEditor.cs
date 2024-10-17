@@ -85,13 +85,6 @@ public class TMPMeshModifierClipEditor : ClipEditor
         };
     }
 
-    private AnimationCurve curveIn;
-    private AnimationCurve curveOut;
-    private float inWidth;
-    private float outWidth;
-    private Vector3[] arrIn;
-    private Vector3[] arrOut;
-
     void DrawBackgroundWithCurve(AnimationCurve curve, Rect position, float width, bool blendin)
     {
         if (curve == null)
@@ -100,45 +93,18 @@ public class TMPMeshModifierClipEditor : ClipEditor
             return;
 
         Rect rect = position;
-        Vector3[] points;
-        if ((blendin && inWidth == width && arrIn != null && arrIn.Length == (int)(width * 5) &&
-             curve.Equals(this.curveIn)))
-        {
-            points = arrIn;
-        }
-        else if ((!blendin && outWidth == width && arrOut != null && arrOut.Length == (int)(width * 5) &&
-                  curve.Equals(this.curveOut)))
-        {
-            points = arrOut;
-        }
-        else
-        {
-            points = new Vector3[(int)(width * 5)];
-            points[0] = new Vector3(rect.xMin + width, rect.yMin, 0);
-            points[1] = new Vector3(rect.xMin + width, rect.yMax, 0);
-            points[2] = new Vector3(rect.xMin, rect.yMax, 0);
+        Vector3[] points = new Vector3[(int)(width * 5)];
+        points[0] = new Vector3(rect.xMin + width, rect.yMin, 0);
+        points[1] = new Vector3(rect.xMin + width, rect.yMax, 0);
+        points[2] = new Vector3(rect.xMin, rect.yMax, 0);
 
-            for (int i = 0; i < points.Length - 3; i++)
-            {
-                float t = (float)i / (points.Length - 4);
+        for (int i = 0; i < points.Length - 3; i++)
+        {
+            float t = (float)i / (points.Length - 4);
 
-                float x = Mathf.Lerp(rect.xMin, rect.xMin + width, t);
-                float y = rect.yMax - curve.Evaluate(blendin ? t : 1 - t) * rect.height;
-                points[i + 3] = new Vector3(x, y, 0);
-            }
-
-            if (blendin)
-            {
-                curveIn = curve;
-                inWidth = width;
-                arrIn = points;
-            }
-            else
-            {
-                curveOut = curve;
-                outWidth = width;
-                arrOut = points;
-            }
+            float x = Mathf.Lerp(rect.xMin, rect.xMin + width, t);
+            float y = rect.yMax - curve.Evaluate(blendin ? t : 1 - t) * rect.height;
+            points[i + 3] = new Vector3(x, y, 0);
         }
 
         Handles.BeginGUI();
