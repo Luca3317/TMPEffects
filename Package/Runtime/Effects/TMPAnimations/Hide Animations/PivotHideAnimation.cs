@@ -36,22 +36,24 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             float t2 = d.curve.Evaluate(t);
             Vector3 angle = Vector3.LerpUnclamped(d.startAngle, d.targetAngle, t2);
 
-            cData.SetRotation(Quaternion.Euler(angle));
-
-            switch (d.pivot.type)
-            {
-                case VectorType.Position:
-                    cData.SetPivot(d.pivot.vector);
-                    break;
-                case VectorType.Offset:
-                    cData.SetPivot(cData.InitialPosition + (Vector3)d.pivot.vector);
-                    break;
-                case VectorType.Anchor:
-                    Vector3 position = AnchorToPosition(d.pivot.vector, cData);
-                    position.z = 0;
-                    SetPivotRaw(position, cData, context);
-                    break;
-            }
+            // TODO This should implement the offset version; update to work for position and anchor
+            cData.AddRotation(angle, cData.InitialPosition + (Vector3)d.pivot.vector );
+            
+            // cData.SetRotation(Quaternion.Euler(angle));
+            // switch (d.pivot.type)
+            // {
+            //     case VectorType.Position:
+            //         cData.SetPivot(d.pivot.vector);
+            //         break;
+            //     case VectorType.Offset:
+            //         cData.SetPivot(cData.InitialPosition + (Vector3)d.pivot.vector);
+            //         break;
+            //     case VectorType.Anchor:
+            //         Vector3 position = AnchorToPosition(d.pivot.vector, cData);
+            //         position.z = 0;
+            //         SetPivotRaw(position, cData, context);
+            //         break;
+            // }
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters)

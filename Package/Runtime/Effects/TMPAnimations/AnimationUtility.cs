@@ -14,16 +14,27 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public static class AnimationUtility
     {
+        #region Scaling
+
         /// <summary>
         /// Scale a given value to make it uniform between <see cref="TextMeshPro"/> and <see cref="TextMeshProUGUI"/> components. 
         /// </summary>
         /// <param name="text"></param>
         /// <param name="value">The value to scale.</param>
         /// <returns>The scaled value.</returns>
-        public static float ScaleTextMesh(TMP_Text text, float value)
+        public static float ScaleTextMesh(TMP_Text text, float value) =>
+            ScaleTextMesh(text.canvas != null, value);
+
+        public static float ScaleTextMesh(IAnimatorContext ctx, float value)
+            => ScaleTextMesh(ctx.Animator.TextComponent.canvas != null, value);
+
+        public static float ScaleTextMesh(IAnimationContext ctx, float value)
+            => ScaleTextMesh(ctx.AnimatorContext.Animator.TextComponent.canvas != null, value);
+
+        public static float ScaleTextMesh(bool isTMProUGUI, float value)
         {
-            if (text.canvas == null) return value * 10;
-            else return value;
+            if (!isTMProUGUI) return value * 10;
+            return value;
         }
 
         /// <summary>
@@ -35,7 +46,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
-        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => ScaleVector(vector, cData, context.AnimatorContext);
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
+            ScaleVector(vector, context.AnimatorContext.Animator.TextComponent.canvas != null,
+                context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+                cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
+
         /// <summary>
         /// Scale a vector for an animation.<br/>
         /// Used by <see cref="TMPEffects.Components.TMPAnimator"/> to automatically scale animations.
@@ -44,12 +59,38 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
-        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            ScaleVector(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
+                context.ScaleUniformly,
+                cData.info.pointSize, context.Animator.TextComponent.fontSize);
+
+
+        public static Vector3 ScaleVector(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
+            float pointSize, float fontSize)
         {
-            vector /= ScaleTextMesh(context.Animator.TextComponent, 1f);
-            if (!context.ScaleAnimations) return vector;
-            if (!context.ScaleUniformly) return vector * (cData.info.pointSize / 36f);
-            return vector * (context.Animator.TextComponent.fontSize / 36f);
+            vector /= ScaleTextMesh(isTMProUGUI, 1f);
+            if (!scaleAnimations) return vector;
+            if (!scaleUniformly) return vector * (pointSize / 36f);
+            return vector * (fontSize / 36f);
+        }
+
+        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimationContext context) =>
+            IgnoreScaling(vector, context.AnimatorContext.Animator.TextComponent.canvas != null,
+                context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
+                cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
+
+        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            IgnoreScaling(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
+                context.ScaleUniformly,
+                cData.info.pointSize, context.Animator.TextComponent.fontSize);
+
+        public static Vector3 IgnoreScaling(Vector3 vector, bool isTMProUGUI, bool scaleAnimations, bool scaleUniformly,
+            float pointSize, float fontSize)
+        {
+            vector *= ScaleTextMesh(isTMProUGUI, 1f);
+            if (!scaleAnimations) return vector;
+            if (!scaleUniformly) return vector / (pointSize / 36f);
+            return vector / (fontSize / 36f);
         }
 
         /// <summary>
@@ -60,7 +101,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
         /// <param name="context">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The inversely scaled vector.</returns>
-        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) => InverseScaleVector(vector, cData, context.AnimatorContext);
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
+            IgnoreScaling(vector, cData, context.AnimatorContext);
+
         /// <summary>
         /// Scale a vector for an animation inversely.<br/>
         /// <see cref="TMPAnimator"/> automatically scales animations; using this method scales the vector in a way that makes it effectively ignore the <see cref="TMPAnimator"/>'s scaling.
@@ -69,16 +112,14 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
         /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
         /// <returns>The inversely scaled vector.</returns>
-        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context)
-        {
-            vector *= ScaleTextMesh(context.Animator.TextComponent, 1f);
-            if (!context.ScaleAnimations) return vector;
-            if (!context.ScaleUniformly) return vector / (cData.info.pointSize / 36f);
-            return vector / (context.Animator.TextComponent.fontSize / 36f);
-        }
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+            IgnoreScaling(vector, cData, context);
+
+        #endregion
 
 
         #region Raw Positions & Deltas
+
         /// <summary>
         /// Convert an anchor vector to its actual position vector.
         /// </summary>
@@ -95,8 +136,8 @@ namespace TMPEffects.TMPAnimations
             Vector2 dist;
             Vector2 ret = cData.InitialPosition;
 
-            Vector2 up = (cData.initialMesh.TL_Position - cData.initialMesh.BL_Position) / 2f;
-            Vector2 right = (cData.initialMesh.BR_Position - cData.initialMesh.BL_Position) / 2f;
+            Vector2 up = (cData.InitialMesh.TL_Position - cData.InitialMesh.BL_Position) / 2f;
+            Vector2 right = (cData.InitialMesh.BR_Position - cData.InitialMesh.BL_Position) / 2f;
 
             dist.x = (cData.mesh.initial.BL_Position - cData.mesh.initial.BR_Position).magnitude / 2f;
             dist.y = (cData.mesh.initial.BL_Position - cData.mesh.initial.TL_Position).magnitude / 2f;
@@ -115,7 +156,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx) => GetRawVertex(index, position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimationContext ctx) =>
+            GetRawVertex(index, position, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.
         /// </summary>
@@ -126,7 +169,7 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            return GetRawPosition(position, cData.initialMesh.GetPosition(index), cData, ctx);
+            return GetRawPosition(position, cData.InitialMesh.GetPosition(index), cData, ctx);
         }
 
         /// <summary>
@@ -136,7 +179,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The raw version of the passed in character position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPosition(position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimationContext ctx) =>
+            GetRawPosition(position, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Calculate the raw version of the passed in character position, i.e. the one that will ignore the animator's scaling.
         /// </summary>
@@ -156,7 +201,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The raw version of the passed in pivot position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx) => GetRawPivot(position, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimationContext ctx) =>
+            GetRawPivot(position, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Calculate the raw version of the passed in pivot position, i.e. the one that will ignore the animator's scaling.
         /// </summary>
@@ -176,7 +223,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx) => GetRawDelta(delta, cData, ctx.AnimatorContext);
+        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimationContext ctx) =>
+            GetRawDelta(delta, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Calculate the raw version of the passed in delta, i.e. the one that will ignore the animator's scaling.
         /// </summary>
@@ -186,14 +235,14 @@ namespace TMPEffects.TMPAnimations
         /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
         public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
         {
-            return InverseScaleVector(delta, cData, ctx);
+            return IgnoreScaling(delta, cData, ctx);
         }
 
-        internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, CharData cData, IAnimatorContext ctx)
+        internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, CharData cData,
+            IAnimatorContext ctx)
         {
-            return InverseScaleVector(position - referencePosition, cData, ctx) + referencePosition;
+            return IgnoreScaling(position - referencePosition, cData, ctx) + referencePosition;
         }
-
 
 
         /// <summary>
@@ -203,7 +252,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx) => SetVertexRaw(index, position, cData, ctx.AnimatorContext);
+        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx) =>
+            SetVertexRaw(index, position, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Set the raw position of the vertex at the given index. This position will ignore the animator's scaling.
         /// </summary>
@@ -213,8 +264,8 @@ namespace TMPEffects.TMPAnimations
         /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
         public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
         {
-            Vector3 ogPos = cData.initialMesh.GetPosition(index);
-            cData.SetVertex(index, GetRawPosition(position, ogPos, cData, ctx));
+            Vector3 ogPos = cData.InitialMesh.GetPosition(index);
+            cData.mesh.SetPosition(index, GetRawPosition(position, ogPos, cData, ctx));
         }
 
         /// <summary>
@@ -223,7 +274,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
         /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx) => SetPositionRaw(position, cData, ctx.AnimatorContext);
+        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx) =>
+            SetPositionRaw(position, cData, ctx.AnimatorContext);
+
         /// <summary>
         /// Set the raw position of the character. This position will ignore the animator's scaling.
         /// </summary>
@@ -236,82 +289,10 @@ namespace TMPEffects.TMPAnimations
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
         }
 
-        /// <summary>
-        /// Set the raw pivot of the character. This position will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="position">The position to set the pivot to.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimationContext ctx) => SetPivotRaw(pivot, cData, ctx.AnimatorContext);
-        /// <summary>
-        /// Set the raw pivot of the character. This position will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="position">The position to set the pivot to.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void SetPivotRaw(Vector3 pivot, CharData cData, IAnimatorContext ctx)
-        {
-            Vector3 ogPos = cData.InitialPosition;
-            cData.SetPivot(GetRawPosition(pivot, ogPos, cData, ctx));
-        }
-
-        /// <summary>
-        /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="index">Index of the vertex.</param>
-        /// <param name="delta">The delta to add to the vertex.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx) => AddVertexDeltaRaw(index, delta, cData, ctx.AnimatorContext);
-        /// <summary>
-        /// Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="index">Index of the vertex.</param>
-        /// <param name="delta">The delta to add to the vertex.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddVertexDelta(index, GetRawDelta(delta, cData, ctx));
-        }
-
-        /// <summary>
-        /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the position of the character.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPositionDeltaRaw(delta, cData, ctx.AnimatorContext);
-        /// <summary>
-        /// Add a raw delta to the position of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the position of the character.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddPositionDelta(GetRawDelta(delta, cData, ctx));
-        }
-        /// <summary>
-        /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the pivot.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimationContext"/> of the animation.</param>
-        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx) => AddPivotDeltaRaw(delta, cData, ctx.AnimatorContext);
-        /// <summary>
-        /// Add a raw delta to the pivot of the character. This delta will ignore the animator's scaling.
-        /// </summary>
-        /// <param name="delta">The delta to add to the pivot.</param>
-        /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void AddPivotDeltaRaw(Vector3 delta, CharData cData, IAnimatorContext ctx)
-        {
-            cData.AddPivotDelta(GetRawDelta(delta, cData, ctx));
-        }
         #endregion
 
         #region General Math
+
         /// <summary>
         /// Get the point on a line closest to the given point.
         /// </summary>
@@ -339,9 +320,11 @@ namespace TMPEffects.TMPAnimations
 
             return vClosestPoint;
         }
+
         #endregion
 
         #region Waves
+
         /// <summary>
         /// Base class for <see cref="Wave"/>.<br/>
         /// Allows you to easily create periodic animations.<b/>
@@ -362,7 +345,9 @@ namespace TMPEffects.TMPAnimations
                 set
                 {
                     if (value < 0f) throw new System.ArgumentException(nameof(UpPeriod) + " may not be negative");
-                    if (value + downPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
+                    if (value + downPeriod <= 0)
+                        throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " +
+                                                           nameof(DownPeriod) + " must be larger than zero");
 
                     upPeriod = value;
                     period = upPeriod + downPeriod;
@@ -393,7 +378,9 @@ namespace TMPEffects.TMPAnimations
                 set
                 {
                     if (value < 0f) throw new System.ArgumentException(nameof(DownPeriod) + " may not be negative");
-                    if (value + upPeriod <= 0) throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " + nameof(DownPeriod) + " must be larger than zero");
+                    if (value + upPeriod <= 0)
+                        throw new System.ArgumentException("The sum of " + nameof(UpPeriod) + " and " +
+                                                           nameof(DownPeriod) + " must be larger than zero");
 
                     downPeriod = value;
                     period = upPeriod + downPeriod;
@@ -493,7 +480,8 @@ namespace TMPEffects.TMPAnimations
             }
 
             public WaveBase() : this(1f, 1f, 1f, 1f)
-            { }
+            {
+            }
 
             public WaveBase(float upPeriod, float downPeriod, float velocity, float amplitude)
             {
@@ -516,12 +504,19 @@ namespace TMPEffects.TMPAnimations
                 Amplitude = amplitude;
             }
 
-            [Tooltip("The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds")]
-            [SerializeField] private float upPeriod;
-            [Tooltip("The time it takes for the wave to travel from crest to trough, or from its highest to its lowest point, in seconds")]
-            [SerializeField] private float downPeriod;
-            [Tooltip("The amplitude of the wave")]
-            [SerializeField] private float amplitude;
+            [Tooltip(
+                "The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds")]
+            [SerializeField]
+            private float upPeriod;
+
+            [Tooltip(
+                "The time it takes for the wave to travel from crest to trough, or from its highest to its lowest point, in seconds")]
+            [SerializeField]
+            private float downPeriod;
+
+            [Tooltip("The amplitude of the wave")] [SerializeField]
+            private float amplitude;
+
             [SerializeField, HideInInspector] private float velocity;
 
             [System.NonSerialized] private float period;
@@ -575,6 +570,7 @@ namespace TMPEffects.TMPAnimations
                 get => upwardCurve;
                 set => upwardCurve = value;
             }
+
             /// <summary>
             /// The downward curve of the wave.
             /// </summary>
@@ -592,6 +588,7 @@ namespace TMPEffects.TMPAnimations
                 get => crestWait;
                 set => crestWait = value;
             }
+
             /// <summary>
             /// How long to stay at the trough of the wave.
             /// </summary>
@@ -613,24 +610,30 @@ namespace TMPEffects.TMPAnimations
                 set => uniformity = value;
             }
 
-            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f, 1f, 0f, 0f, 1f)
-            { }
+            public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f,
+                1f, 0f, 0f, 1f)
+            {
+            }
 
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, 1f, amplitude)
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod,
+                float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, 1f, amplitude)
             {
                 if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
                 if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
                 if (upPeriod < 0) throw new System.ArgumentException(nameof(upPeriod) + " may not be negative");
                 if (downPeriod < 0) throw new System.ArgumentException(nameof(downPeriod) + " may not be negative");
-                if ((upPeriod + downPeriod) <= 0) throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) + " must be larger than zero");
+                if ((upPeriod + downPeriod) <= 0)
+                    throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) +
+                                                       " must be larger than zero");
 
                 this.uniformity = uniformity;
                 UpwardCurve = upwardCurve;
                 DownwardCurve = downwardCurve;
             }
 
-            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float crestWait, float troughWait, float uniformity = 1f)
+            public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod,
+                float amplitude, float crestWait, float troughWait, float uniformity = 1f)
                 : this(upwardCurve, downwardCurve, upPeriod, downPeriod, amplitude, uniformity)
             {
                 if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
@@ -651,7 +654,8 @@ namespace TMPEffects.TMPAnimations
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
             /// <exception cref="System.Exception"></exception>
-            public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true,
+                PulseExtrema extrema = PulseExtrema.Early)
             {
                 if (CrestWait <= 0)
                 {
@@ -720,7 +724,8 @@ namespace TMPEffects.TMPAnimations
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
             /// <exception cref="System.Exception"></exception>
-            public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true,
+                PulseExtrema extrema = PulseExtrema.Early)
             {
                 float interval = (TroughWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
                 float t = CalculatePulseT(time, offset, interval, -1);
@@ -774,7 +779,8 @@ namespace TMPEffects.TMPAnimations
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
             /// <exception cref="System.Exception"></exception>
-            public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true,
+                PulseExtrema extrema = PulseExtrema.Early)
             {
                 float interval = (CrestWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
                 float t = CalculatePulseT(time, offset, interval, -1);
@@ -827,7 +833,8 @@ namespace TMPEffects.TMPAnimations
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
             /// <exception cref="System.Exception"></exception>
-            public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
+            public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset,
+                bool realtimeWait = true, PulseExtrema extrema = PulseExtrema.Early)
             {
                 float upInterval = (CrestWait) * (realtimeWait ? Velocity : 1f);
                 float downInterval = (TroughWait) * (realtimeWait ? Velocity : 1f);
@@ -986,8 +993,14 @@ namespace TMPEffects.TMPAnimations
                     t %= interval;
 
                 if (t <= 0) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
-                if (t <= EffectiveUpPeriod) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
-                if (t <= (EffectivePeriod)) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
+                if (t <= EffectiveUpPeriod)
+                    return (
+                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
+                        1);
+                if (t <= (EffectivePeriod))
+                    return (
+                        Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
+                            Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
                 return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
             }
 
@@ -1008,8 +1021,14 @@ namespace TMPEffects.TMPAnimations
                     t %= interval;
 
                 if (t <= 0) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 1f), -1);
-                if (t <= EffectiveDownPeriod) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
-                if (t <= EffectivePeriod) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
+                if (t <= EffectiveDownPeriod)
+                    return (
+                        Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
+                            Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                if (t <= EffectivePeriod)
+                    return (
+                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong,
+                            Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
                 return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
             }
 
@@ -1033,7 +1052,9 @@ namespace TMPEffects.TMPAnimations
 
                 if (t <= EffectiveUpPeriod)
                 {
-                    return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)), 1);
+                    return (
+                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
+                        1);
                 }
 
                 t -= EffectiveUpPeriod;
@@ -1045,7 +1066,9 @@ namespace TMPEffects.TMPAnimations
                 t -= upInterval;
                 if (t <= EffectiveDownPeriod)
                 {
-                    return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
+                    return (
+                        Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
+                            Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
                 }
 
                 t -= EffectiveDownPeriod;
@@ -1081,6 +1104,7 @@ namespace TMPEffects.TMPAnimations
                     int times = (int)Math.Ceiling(Mathf.Abs(t / interval));
                     t += times * interval;
                 }
+
                 return t;
             }
 
@@ -1104,8 +1128,10 @@ namespace TMPEffects.TMPAnimations
             {
                 base.OnBeforeSerialize();
 
-                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
-                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (upwardCurve == null || upwardCurve.keys.Length == 0)
+                    upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0)
+                    downwardCurve = AnimationCurveUtility.EaseInOutSine();
 
                 crestWait = Mathf.Max(crestWait, 0f);
                 troughWait = Mathf.Max(troughWait, 0f);
@@ -1115,8 +1141,10 @@ namespace TMPEffects.TMPAnimations
             {
                 base.OnAfterDeserialize();
 
-                if (upwardCurve == null || upwardCurve.keys.Length == 0) upwardCurve = AnimationCurveUtility.EaseInOutSine();
-                if (downwardCurve == null || downwardCurve.keys.Length == 0) downwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (upwardCurve == null || upwardCurve.keys.Length == 0)
+                    upwardCurve = AnimationCurveUtility.EaseInOutSine();
+                if (downwardCurve == null || downwardCurve.keys.Length == 0)
+                    downwardCurve = AnimationCurveUtility.EaseInOutSine();
 
                 troughWait = Mathf.Max(troughWait, 0f);
                 crestWait = Mathf.Max(crestWait, 0f);
@@ -1125,57 +1153,71 @@ namespace TMPEffects.TMPAnimations
             }
 
 
-            [Tooltip("The \"up\" part of the wave. This is the curve that is used to travel from trough to crest, or from the wave's lowest to its highest point.")]
-            [SerializeField] private AnimationCurve upwardCurve;
-            [Tooltip("The \"down\" part of the wave. This is the curve that is used to travel from crest to trough, or from the wave's highest to its lowest point.")]
-            [SerializeField] private AnimationCurve downwardCurve;
+            [Tooltip(
+                "The \"up\" part of the wave. This is the curve that is used to travel from trough to crest, or from the wave's lowest to its highest point.")]
+            [SerializeField]
+            private AnimationCurve upwardCurve;
+
+            [Tooltip(
+                "The \"down\" part of the wave. This is the curve that is used to travel from crest to trough, or from the wave's highest to its lowest point.")]
+            [SerializeField]
+            private AnimationCurve downwardCurve;
+
             [Tooltip("The amount of time to remain at the crest before moving down again, in seconds.")]
-            [SerializeField] private float crestWait;
-            [Tooltip("The amount of time to remain at the trough before moving up again, in seconds.")]
-            [SerializeField] private float troughWait;
-            [Tooltip("The uniformity of the wave. The closer to zero, the more uniform the wave is applied to the effected characters.")]
-            [SerializeField] private float uniformity;
+            [SerializeField]
+            private float crestWait;
+
+            [Tooltip("The amount of time to remain at the trough before moving up again, in seconds.")] [SerializeField]
+            private float troughWait;
+
+            [Tooltip(
+                "The uniformity of the wave. The closer to zero, the more uniform the wave is applied to the effected characters.")]
+            [SerializeField]
+            private float uniformity;
         }
 
-        /// <summary>
-        /// Get the wave offset to use based on the <paramref name="type"/>.<br/>
-        /// To be used with <see cref="Wave.Evaluate(float, float, bool)"/> (and related methods).
-        /// </summary>
-        /// <param name="cData">The character to get the offset for.</param>
-        /// <param name="context">The context of the animation.</param>
-        /// <param name="type">The type of the offset.</param>
-        /// <returns>The offset for a wave.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type)
+
+        // TODO Quick solution for using this from TMPMeshModifier, where no AnimationContext is available
+        // Could probably mock it instead
+        public static float GetWaveOffset(CharData cData, IAnimatorContext context, ParameterTypes.WaveOffsetType type, int segmentIndex = 0,
+            bool ignoreScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.WaveOffsetType.SegmentIndex: return context.SegmentData.SegmentIndexOf(cData);
+                case ParameterTypes.WaveOffsetType.SegmentIndex: return segmentIndex;
                 case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
 
                 case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
                 case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
                 case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
 
-                case ParameterTypes.WaveOffsetType.WorldXPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
-                case ParameterTypes.WaveOffsetType.WorldYPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
-                case ParameterTypes.WaveOffsetType.WorldZPos: return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
+                case ParameterTypes.WaveOffsetType.WorldXPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).x);
+                case ParameterTypes.WaveOffsetType.WorldYPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).y);
+                case ParameterTypes.WaveOffsetType.WorldZPos:
+                    return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).z);
                 case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
                 case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
-            throw new System.ArgumentException(nameof(type));
+            throw new System.NotImplementedException(nameof(type));
 
             float ScalePos(float pos)
             {
-                pos = ScaleTextMesh(context.AnimatorContext.Animator.TextComponent, pos);
+                if (ignoreScaling) return pos;
 
-                if (!context.AnimatorContext.ScaleAnimations)
+                // Rewrote ScaleVector with float here for performance
+                // Ideally would reuse same code
+                pos = ScaleTextMesh(context.Animator.TextComponent, pos);
+
+                if (!context.ScaleAnimations)
                     return pos / 10f;
 
-                if (context.AnimatorContext.ScaleUniformly)
+                if (context.ScaleUniformly)
                 {
-                    if (context.AnimatorContext.Animator.TextComponent.fontSize != 0) pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
+                    if (context.Animator.TextComponent.fontSize != 0)
+                        pos /= (context.Animator.TextComponent.fontSize / 36f);
                     return pos / 10f;
                 }
                 else
@@ -1185,6 +1227,69 @@ namespace TMPEffects.TMPAnimations
                 }
             }
         }
+
+        /// <summary>
+        /// Get the wave offset to use based on the <paramref name="type"/>.<br/>
+        /// To be used with <see cref="Wave.Evaluate(float, float, bool)"/> (and related methods).
+        /// </summary>
+        /// <param name="cData">The character to get the offset for.</param>
+        /// <param name="context">The context of the animation.</param>
+        /// <param name="type">The type of the offset.</param>
+        /// <param name="ignoreScaling">Whether to ignore the scaling of the character, if applicable.<br/>
+        /// For example, an <see cref="ParameterTypes.WaveOffsetType.XPos"/> will return a different offset based on the size of the text,
+        /// as it directly considers the x position of the character.</param>
+        /// <returns>The offset for a wave.</returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type,
+            bool ignoreScaling = false)
+        {
+            switch (type)
+            {
+                case ParameterTypes.WaveOffsetType.SegmentIndex:
+                    return context.SegmentData.SegmentIndexOf(cData);
+                case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
+
+                case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
+                case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
+                case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
+
+                case ParameterTypes.WaveOffsetType.WorldXPos:
+                    return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
+                case ParameterTypes.WaveOffsetType.WorldYPos:
+                    return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
+                case ParameterTypes.WaveOffsetType.WorldZPos:
+                    return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
+                case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+            }
+
+            throw new System.NotImplementedException(nameof(type));
+
+            float ScalePos(float pos)
+            {
+                if (ignoreScaling) return pos;
+
+                // Rewrote ScaleVector with float here for performance
+                // Ideally would reuse same code
+                pos = ScaleTextMesh(context.AnimatorContext.Animator.TextComponent, pos);
+
+                if (!context.AnimatorContext.ScaleAnimations)
+                    return pos / 10f;
+
+                if (context.AnimatorContext.ScaleUniformly)
+                {
+                    if (context.AnimatorContext.Animator.TextComponent.fontSize != 0)
+                        pos /= (context.AnimatorContext.Animator.TextComponent.fontSize / 36f);
+                    return pos / 10f;
+                }
+                else
+                {
+                    if (cData.info.pointSize != 0) pos /= (cData.info.pointSize / 36f);
+                    return pos / 10f;
+                }
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -1210,32 +1315,33 @@ namespace TMPEffects.TMPAnimations
             float widthDelta = newCharacter.glyph.metrics.width - originalCharacter.glyph.metrics.width;
 
 
-            Vector3 bl = new Vector3(cData.initialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
-                cData.initialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
+            Vector3 bl = new Vector3(cData.InitialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
+                cData.InitialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
             Vector3 tl = new Vector3(bl.x,
-                cData.initialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
+                cData.InitialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
             Vector3 tr = new Vector3(
-                cData.initialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
+                cData.InitialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
                 tl.y);
             Vector3 br = new Vector3(tr.x, bl.y);
 
             var fontAsset = cData.info.fontAsset;
-            
+
             Rect glyphRectDelta = new Rect(
                 newCharacter.glyph.glyphRect.x - originalCharacter.glyph.glyphRect.x,
                 newCharacter.glyph.glyphRect.y - originalCharacter.glyph.glyphRect.y,
-                newCharacter.glyph.glyphRect.width- originalCharacter.glyph.glyphRect.width,
+                newCharacter.glyph.glyphRect.width - originalCharacter.glyph.glyphRect.width,
                 newCharacter.glyph.glyphRect.height - originalCharacter.glyph.glyphRect.height
             );
 
-            Vector2 uv0 = new Vector2(cData.initialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
-                cData.initialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
+            Vector2 uv0 = new Vector2(cData.InitialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
+                cData.InitialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
             Vector2 uv1 = new Vector2(uv0.x,
-                cData.initialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
-            Vector2 uv2 = new Vector2(cData.initialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
-                uv1.y);            
+                cData.InitialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
+            Vector2 uv2 = new Vector2(
+                cData.InitialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
+                uv1.y);
             Vector2 uv3 = new Vector2(uv2.x, uv0.y);
-            
+
             SetVertexRaw(0, bl, cData, context);
             SetVertexRaw(1, tl, cData, context);
             SetVertexRaw(2, tr, cData, context);

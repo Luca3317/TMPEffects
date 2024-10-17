@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6404631941017001298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a2b6138e421674ab63be04d6e651bf, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StartAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 6.133333333333334
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &-4678166090481077685
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7242dec46b72434dac4b691c11257c9, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StopAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 3.316666666666667
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &-2121526219653686571
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafa5418cc90b004d9390012df8d2183, type: 3}
+  m_Name: TMPEffects Marker/TMPWriter/Skip writer
+  m_EditorClassIdentifier: 
+  m_Time: 13.25
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  skipShowAnimation: 0
+--- !u!114 &-335252597493789669
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1576421adbf314691b25c98e115f0f, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/ResetTime
+  m_EditorClassIdentifier: 
+  m_Time: 11.733333333333333
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  time: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfda56da833e2384a9677cd3c976a436, type: 3}
+  m_Name: Text (TMP)Timeline
+  m_EditorClassIdentifier: 
+  m_Version: 0
+  m_Tracks: []
+  m_FixedDuration: 0
+  m_EditorSettings:
+    m_Framerate: 60
+    m_ScenePreview: 1
+  m_DurationMode: 0
+  m_MarkerTrack: {fileID: 4044837976509043262}
+--- !u!114 &1288886231570745822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafa5418cc90b004d9390012df8d2183, type: 3}
+  m_Name: TMPEffects Marker/TMPWriter/Skip writer
+  m_EditorClassIdentifier: 
+  m_Time: 3.316666666666667
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  skipShowAnimation: 0
+--- !u!114 &2340318704934266811
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7242dec46b72434dac4b691c11257c9, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StopAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 19.633333333333333
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &2589944188081182643
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a38d115d4136f645a0d67a27170cf90, type: 3}
+  m_Name: TMP Writer Marker
+  m_EditorClassIdentifier: 
+  m_Time: 6.95
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 1
+--- !u!114 &4044837976509043262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a16748d9461eae46a725db9776d5390, type: 3}
+  m_Name: Markers
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+--- !u!114 &4214735987468328310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a2b6138e421674ab63be04d6e651bf, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StartAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 0.6666666666666666
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &6927350400576192886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a38d115d4136f645a0d67a27170cf90, type: 3}
+  m_Name: TMP Writer Marker
+  m_EditorClassIdentifier: 
+  m_Time: 2.75
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 1
+--- !u!114 &7699456443339576638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e56f425e6af1c741b7a78d99790a979, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/ResetAnimations
+  m_EditorClassIdentifier: 
+  m_Time: 9.1
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0

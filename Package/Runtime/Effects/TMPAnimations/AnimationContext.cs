@@ -31,14 +31,14 @@ namespace TMPEffects.TMPAnimations
         /// <inheritdoc/>
         public object CustomData { get; }
         /// <inheritdoc/>
-        public ICharDataState State { get; }
+        public CharDataModifiers Modifiers { get; }
 
         private SegmentData segmentData;
 
-        public AnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)
+        public AnimationContext(IAnimatorContext animatorContext, CharDataModifiers modifiers, SegmentData segmentData, object customData)
         {
             this.CustomData = customData;
-            this.State = state;
+            this.Modifiers = modifiers;
             this.AnimatorContext = animatorContext;
             this.SegmentData = segmentData;
         }

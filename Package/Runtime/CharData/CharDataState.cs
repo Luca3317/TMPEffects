@@ -151,10 +151,10 @@ namespace TMPEffects.CharacterData
         public void CalculateVertexPositions()
         {
             // Apply vertex transformations
-            Vector3 vtl = cData.initialMesh.TL_Position + TL;
-            Vector3 vtr = cData.initialMesh.TR_Position + TR;
-            Vector3 vbr = cData.initialMesh.BR_Position + BR;
-            Vector3 vbl = cData.initialMesh.BL_Position + BL;
+            Vector3 vtl = cData.InitialMesh.TL_Position + TL;
+            Vector3 vtr = cData.InitialMesh.TR_Position + TR;
+            Vector3 vbr = cData.InitialMesh.BR_Position + BR;
+            Vector3 vbl = cData.InitialMesh.BL_Position + BL;
 
             // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
             vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
@@ -199,7 +199,7 @@ namespace TMPEffects.CharacterData
         {
             if (cData.positionDirty)
             {
-                positionDelta += (cData.Position - cData.InitialPosition);
+                positionDelta += (cData.PositionDelta - cData.InitialPosition);
             }
 
             if (cData.scaleDirty)
@@ -207,15 +207,15 @@ namespace TMPEffects.CharacterData
                 scaleDelta *= Matrix4x4.Scale(cData.Scale);
             }
 
-            if (cData.rotationDirty)
-            {
-                if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
-                {
-                    rotations.Add(cData.Rotation);
-                    var scaled = cData.InitialPosition + AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData, context);
-                    pivots.Add(scaled);
-                }
-            }
+            // if (cData.rotationDirty)
+            // {
+            //     if (cData.Rotation != Quaternion.identity || cData.Rotation.eulerAngles == Vector3.zero)
+            //     {
+            //         rotations.Add(cData.Rotation);
+            //         var scaled = cData.InitialPosition + AnimationUtility.ScaleVector((cData.RotationPivot - cData.InitialPosition), cData, context);
+            //         pivots.Add(scaled);
+            //     }
+            // }
 
             if (cData.verticesDirty)
             {

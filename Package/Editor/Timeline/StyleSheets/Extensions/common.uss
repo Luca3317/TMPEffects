@@ -1,0 +1,110 @@
+TMPWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/typewriter");
+}
+
+.TMPWriterMarkerStyle:checked
+{
+    width: 50px;
+    height: 20px;
+}
+
+.TMPWriterMarkerStyle:hover:focus:checked
+{
+    width: 20px;
+    height: 50px;
+}
+
+
+TMPStartWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-play");
+}
+
+TMPStopWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-stop");
+}
+
+TMPRestartWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-restart");
+}
+
+TMPResetWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-reset");
+}
+
+TMPSkipWriterMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-skip");
+}
+
+TMPWriterWaitMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-wait");
+}
+
+TMPSetSkippableMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-settings");
+}
+
+TMPStartAnimatingMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-start");
+}
+
+TMPStopAnimatingMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-stop");
+}
+
+TMPUpdateAnimationsMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-updateonce");
+}
+
+TMPSettingsMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-settings");
+}
+
+TMPResetAnimationsMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-resetanimations");
+}
+
+TMPResetTimeMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/animator-resetanimations");
+}

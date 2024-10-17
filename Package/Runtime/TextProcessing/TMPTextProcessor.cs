@@ -258,14 +258,15 @@ namespace TMPEffects.TextProcessing
             sb.Append(text.AsSpan(searchIndex, text.Length - searchIndex));
 
             string parsed;
+            // Add a space at the end of the text;
+            // Quick fix to issues with texts that are empty either after this
+            // preprocess or after the native tag processing
+            if (sb.Length == 0) sb.Append(" ");
             parsed = sb.ToString();
 
             FinishPreProcess?.Invoke(parsed);
 
-            // Add a space at the end of the text;
-            // Quick fix to issues with texts that are empty either after this
-            // preprocess or after the native tag processing
-            return parsed + " ";
+            return parsed;
         }
 
         /// <summary>
