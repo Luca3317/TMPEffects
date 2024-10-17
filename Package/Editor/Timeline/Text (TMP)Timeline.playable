@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6735373501345598008
+--- !u!114 &-6404631941017001298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,89 +9,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 904f8d22bfe6f2147af0c2edc5912739, type: 3}
-  m_Name: TMP Mesh Modifier Track
+  m_Script: {fileID: 11500000, guid: e9a2b6138e421674ab63be04d6e651bf, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StartAnimating
   m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0.6333333333333333
-    m_ClipIn: 0
-    m_Asset: {fileID: 9162135320200021560}
-    m_Duration: 3.2666666666666666
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -6735373501345598008}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TMPMeshModifierClip
-  m_Markers:
-    m_Objects: []
+  m_Time: 6.133333333333334
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &-4678166090481077685
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7242dec46b72434dac4b691c11257c9, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StopAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 3.316666666666667
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &-2121526219653686571
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafa5418cc90b004d9390012df8d2183, type: 3}
+  m_Name: TMPEffects Marker/TMPWriter/Skip writer
+  m_EditorClassIdentifier: 
+  m_Time: 13.25
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  skipShowAnimation: 0
+--- !u!114 &-335252597493789669
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1576421adbf314691b25c98e115f0f, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/ResetTime
+  m_EditorClassIdentifier: 
+  m_Time: 11.733333333333333
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  time: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,15 +79,14 @@ MonoBehaviour:
   m_Name: Text (TMP)Timeline
   m_EditorClassIdentifier: 
   m_Version: 0
-  m_Tracks:
-  - {fileID: -6735373501345598008}
+  m_Tracks: []
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
   m_DurationMode: 0
-  m_MarkerTrack: {fileID: 0}
---- !u!114 &9162135320200021560
+  m_MarkerTrack: {fileID: 4044837976509043262}
+--- !u!114 &1288886231570745822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,209 +95,114 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73fa5eac7a691b04692db83c6d3e95f3, type: 3}
-  m_Name: TMPMeshModifierClip
+  m_Script: {fileID: 11500000, guid: dafa5418cc90b004d9390012df8d2183, type: 3}
+  m_Name: TMPEffects Marker/TMPWriter/Skip writer
   m_EditorClassIdentifier: 
-  director:
-    exposedName: 
-    defaultValue: {fileID: 0}
-  step:
-    name: 
-    animate: 1
-    entryCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0.013942428
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0
-        outWeight: 0.434788
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 3.9858418
-        outSlope: 3.985834
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.26909798
-        outWeight: 0.26909804
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0.013942499
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.434788
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    entryDuration: 1
-    exitCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0.013942428
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0
-        outWeight: 0.434788
-      - serializedVersion: 3
-        time: 0.5
-        value: 0.5
-        inSlope: 3.9858418
-        outSlope: 3.985834
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.26909798
-        outWeight: 0.26909804
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0.013942499
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.434788
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    exitDuration: 1
-    loops: 1
-    repetitions: 0
-    useWave: 1
-    waveOffsetType: 0
-    wave:
-      upPeriod: 1
-      downPeriod: 1
-      amplitude: 1
-      velocity: 1
-      upwardCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: -0.0012029491
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.36078
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 1.5725082
-          outSlope: 1.5733721
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.326514
-          outWeight: 0.33093
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.0009312395
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.358688
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      downwardCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: -0.0012029491
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.36078
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 1.5725082
-          outSlope: 1.5733721
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.326514
-          outWeight: 0.33093
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.0009312395
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.358688
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      crestWait: 0
-      troughWait: 0
-      uniformity: 1
-    startTime: 0
-    duration: 3.2666667
-    charModifiers:
-      meshModifiers:
-        bl_Delta: {x: 0, y: 0, z: 0}
-        tl_Delta: {x: 0, y: 0, z: 0}
-        tr_Delta: {x: 0, y: 0, z: 0}
-        br_Delta: {x: 0, y: 0, z: 0}
-        bl_Color:
-          Override: 0
-          Color:
-            serializedVersion: 2
-            rgba: 0
-        tl_Color:
-          Override: 0
-          Color:
-            serializedVersion: 2
-            rgba: 0
-        tr_Color:
-          Override: 0
-          Color:
-            serializedVersion: 2
-            rgba: 0
-        br_Color:
-          Override: 0
-          Color:
-            serializedVersion: 2
-            rgba: 0
-        modifier: 0
-      characterModifiers:
-        positionDelta: {x: -33.25, y: 6.1, z: 0}
-        scaleDelta:
-          e00: 1
-          e01: 0
-          e02: 0
-          e03: 0
-          e10: 0
-          e11: 1
-          e12: 0
-          e13: 0
-          e20: 0
-          e21: 0
-          e22: 1
-          e23: 0
-          e30: 0
-          e31: 0
-          e32: 0
-          e33: 1
-        rotations: []
-        modifier: 2
-    lastMovedEntry: 1
+  m_Time: 3.316666666666667
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+  skipShowAnimation: 0
+--- !u!114 &2340318704934266811
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7242dec46b72434dac4b691c11257c9, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StopAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 19.633333333333333
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &2589944188081182643
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a38d115d4136f645a0d67a27170cf90, type: 3}
+  m_Name: TMP Writer Marker
+  m_EditorClassIdentifier: 
+  m_Time: 6.95
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 1
+--- !u!114 &4044837976509043262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a16748d9461eae46a725db9776d5390, type: 3}
+  m_Name: Markers
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects: []
+--- !u!114 &4214735987468328310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a2b6138e421674ab63be04d6e651bf, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/StartAnimating
+  m_EditorClassIdentifier: 
+  m_Time: 0.6666666666666666
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0
+--- !u!114 &6927350400576192886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a38d115d4136f645a0d67a27170cf90, type: 3}
+  m_Name: TMP Writer Marker
+  m_EditorClassIdentifier: 
+  m_Time: 2.75
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 1
+--- !u!114 &7699456443339576638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e56f425e6af1c741b7a78d99790a979, type: 3}
+  m_Name: TMPEffects Marker/TMPAnimator/ResetAnimations
+  m_EditorClassIdentifier: 
+  m_Time: 9.1
+  retroactive: 0
+  triggerOnce: 0
+  triggerInEditMode: 0

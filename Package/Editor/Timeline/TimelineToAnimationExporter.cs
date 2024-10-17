@@ -30,16 +30,24 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         anim.AnimationSteps.Clear();
         var clips = context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>()
             .SelectMany(track => track.GetClips());
-
+        
         foreach (var clip in clips)
         {
             TMPMeshModifierClip mClip = clip.asset as TMPMeshModifierClip;
             if (mClip == null) continue;
 
             var copy = UnityEngine.Object.Instantiate(mClip);
-            copy.Step.name = copy.name + "_" + copy.Step.name;
-            anim.AnimationSteps.Add(copy.Step);
+            copy.Step.Step.name = copy.name + "_" + copy.Step.Step.name;
+            anim.AnimationSteps.Add(copy.Step.Step);
+
+            float endTime = (float)clip.end;
+            if (endTime > anim.Duration)
+            {
+                anim.Duration = endTime;
+            }
         }
+
+        anim.Repeat = true;
 
         return anim;
     }
@@ -57,10 +65,23 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
 
             var copy = UnityEngine.Object.Instantiate(mClip);
             copy.name = mClip.name;
-            copy.Step.name = copy.name +  (string.IsNullOrWhiteSpace(copy.Step.name) ? "" : "_" + copy.Step.name);
-            anim.AnimationSteps.Add(copy.Step);
+            copy.Step.Step.name = copy.name +  (string.IsNullOrWhiteSpace(copy.Step.Step.name) ? "" : "_" + copy.Step.Step.name);
+
+            copy.Step.Step.duration = (float)clip.duration;
+            copy.Step.Step.startTime = (float)clip.start;
+            anim.AnimationSteps.Add(copy.Step.Step);
+            
+            
+            
+            float endTime = (float)clip.end;
+            if (endTime > anim.Duration)
+            {
+                anim.Duration = endTime;
+            }
         }
 
+        anim.Repeat = true;
+        
         return anim;
     }
     

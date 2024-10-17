@@ -13,8 +13,18 @@ namespace TMPEffects.TMPAnimations
     public partial class GenericAnimation : TMPAnimation
     {
         public List<AnimationStep> AnimationSteps => animationSteps;
-        public bool Repeat => repeat;
-        public float Duration => duration;
+
+        public bool Repeat
+        {
+            get => repeat;
+            set => repeat = value;
+        }
+
+        public float Duration
+        {
+            get => duration;
+            set => duration = value;
+        }
 
         [SerializeReference] private List<AnimationStep> animationSteps = new List<AnimationStep>()
         {
@@ -49,34 +59,34 @@ namespace TMPEffects.TMPAnimations
                 if (step.startTime > timeValue) continue;
                 if (step.EndTime < timeValue) continue;
 
-                CharDataModifiers toUse = step.editorModifiers.ToCharDataModifiers(cData, context.AnimatorContext);
-                CharDataModifiers result = new CharDataModifiers(); // TODO cache
-
-                if (step.useWave)
-                {
-                        CharDataModifiers.LerpUnclamped(cData, toUse,
-                            step.wave.Evaluate(timeValue,
-                                AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value,
-                            result);
-                }
-                else
-                {
-                    result = toUse;
-                }
-
+                float weight = 1;
                 float entry = timeValue - step.startTime;
                 if (entry <= step.entryDuration)
                 {
-                    CharDataModifiers.LerpUnclamped(cData, result,
-                        step.entryCurve.Evaluate(entry / step.entryDuration), result);
+                    weight = step.entryCurve.Evaluate(entry / step.entryDuration);
                 }
 
                 float exit = step.EndTime - timeValue;
                 if (exit <= step.exitDuration)
                 {
-                    CharDataModifiers.LerpUnclamped(cData, result,
-                        step.exitCurve.Evaluate(exit / step.exitDuration), result);
+                    weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
                 }
+                
+                CharDataModifiers toUse = step.modifiers.ToCharDataModifiers(cData, context.AnimatorContext);
+                CharDataModifiers result = new CharDataModifiers(); // TODO cache
+
+                if (step.useWave)
+                {
+                    var offset = AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType);
+                        CharDataModifiers.LerpUnclamped(cData, toUse,
+                            step.wave.Evaluate(timeValue, offset).Value * weight,
+                            result);
+                }
+                else
+                {
+                    CharDataModifiers.LerpUnclamped(cData, toUse, weight, result);
+                }
+
 
                 accModifier.MeshModifiers.Combine(result.MeshModifiers);
                 accModifier.CharacterModifiers.Combine(result.CharacterModifiers);

@@ -1,3 +1,4 @@
+using System;
 using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 [CustomPropertyDrawer(typeof(TimelineAnimationStep), false)]
-public class AnimationStepDrawer : PropertyDrawer
+public class TimelineAnimationStepDrawer : PropertyDrawer
 {
     private bool entry = false;
 
@@ -23,11 +24,12 @@ public class AnimationStepDrawer : PropertyDrawer
 
     private void Init(SerializedProperty property)
     {
+        property = property.FindPropertyRelative("Step");
         entryCurve = property.FindPropertyRelative("entryCurve");
         exitCurve = property.FindPropertyRelative("exitCurve");
         entryDuration = property.FindPropertyRelative("entryDuration");
         exitDuration = property.FindPropertyRelative("exitDuration");
-        modifiers = property.FindPropertyRelative("editorModifiers");
+        modifiers = property.FindPropertyRelative("modifiers");
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
@@ -47,7 +49,7 @@ public class AnimationStepDrawer : PropertyDrawer
         EditorGUI.BeginChangeCheck();
 
         EditorGUI.LabelField(rect, "Blending", EditorStyles.boldLabel);
-        rect.y += EditorGUIUtility.singleLineHeight;
+        rect.y += EditorGUIUtility.singleLineHeight; 
 
         entryCurve.isExpanded = EditorGUI.Foldout(rect, entryCurve.isExpanded, "Entry");
         rect.y += EditorGUIUtility.singleLineHeight;

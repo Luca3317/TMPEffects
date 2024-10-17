@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;
 
 [CustomPropertyDrawer(typeof(EditorFriendlyCharDataModifiers))]
 public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
@@ -164,7 +166,7 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
 
         height += EditorGUIUtility.singleLineHeight;
         if (blColorProp.isExpanded) height += EditorGUIUtility.singleLineHeight * 5;
-        
+
         return height;
     }
 }

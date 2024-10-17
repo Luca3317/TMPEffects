@@ -8,24 +8,34 @@ using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 [System.Serializable]
-public class EditorFriendlyCharDataModifiers
+public class EditorFriendlyRotation
 {
-    [System.Serializable]
-    public class RotationsStruct
-    {
-        public Vector3 eulerAngles = Vector3.zero;
+    public Vector3 eulerAngles = Vector3.zero;
 
-        public ParameterTypes.TypedVector3 pivot =
-            new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public ParameterTypes.TypedVector3 pivot =
+        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+
+    public EditorFriendlyRotation()
+    {
     }
 
+    public EditorFriendlyRotation(Vector3 eulerAngles, ParameterTypes.TypedVector3 pivot)
+    {
+        this.eulerAngles = eulerAngles;
+        this.pivot = pivot;
+    }
+}
+
+[System.Serializable]
+public class EditorFriendlyCharDataModifiers
+{
     public ParameterTypes.TypedVector3 Position =
         new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
 
     public Vector3 Scale = Vector3.one;
 
-    public List<RotationsStruct> Rotations =
-        new List<RotationsStruct>();
+    public List<EditorFriendlyRotation> Rotations =
+        new List<EditorFriendlyRotation>();
 
     public ParameterTypes.TypedVector3 BL_Position =
         new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
@@ -56,6 +66,10 @@ public class EditorFriendlyCharDataModifiers
     public ParameterTypes.TypedVector3 BR_UV0 =
         new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
 
+
+    public CharDataModifiers ToCharDataModifiers(CharData cData, IAnimationContext ctx)
+        => ToCharDataModifiers(cData, ctx.AnimatorContext);
+    
     public CharDataModifiers ToCharDataModifiers(CharData cData, IAnimatorContext ctx)
     {
         CharDataModifiers result = new CharDataModifiers();

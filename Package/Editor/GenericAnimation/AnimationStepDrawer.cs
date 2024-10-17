@@ -41,7 +41,7 @@ public class AnimationStepDrawer : PropertyDrawer
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
         
-        genModifiers = property.FindPropertyRelative("editorModifiers");
+        genModifiers = property.FindPropertyRelative("modifiers");
         
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)

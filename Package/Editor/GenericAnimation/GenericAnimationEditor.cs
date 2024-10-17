@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using TMPEffects.CharacterData;
 using TMPEffects.Editor;
 using TMPEffects.Extensions;
+using TMPEffects.Parameters;
 using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditorInternal;
@@ -378,7 +379,8 @@ public static class GenericAnimationExporter
         OrderedHashSet<string> names = GetAnimationStepNames(steps);
         className = ReplaceWhitespaceWithUnderscore(className);
 
-        string code = string.Format(@"using TMPEffects.AutoParameters.Attributes;
+        string code = string.Format(@"using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.TMPAnimations;
 using static TMPEffects.Parameters.ParameterUtility;
@@ -389,7 +391,7 @@ using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.GenericExports
 {{
-    // This class was generated off of a <see cref=""TMPEffects.TMPAnimations.GenericAnimation""/>
+    // This class was generated off of a <see cref=""TMPEffects.TMPAnimations.GenericAnimation""/>.
     [AutoParameters]
     [CreateAssetMenu(fileName=""new " + className + @""", menuName=""TMPEffects/Animations/Exported/" + className +
                                     @""")]
@@ -400,14 +402,19 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         [AutoParameter(""duration"", ""dur""), SerializeField]
         private float duration = " + GetFloatString(duration) + @";
-
+        
+        #region Generated Animation Step Fields
 {0}
+        #endregion
+        
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {{
 {1}
         }}
 
+        #region Generated Animation Step Methods
 {2}
+        #endregion
     }}
 }}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names), GenerateStepMethods(steps, names));
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
@@ -422,7 +429,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {
             var step = steps[i];
             var name = names[i];
-
+            
             code +=
                 $@"
         [SerializeField] private AnimationStep Step_{name} = new AnimationStep()
@@ -441,19 +448,24 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {GetAnimCurveString(step.wave.DownwardCurve)}, 
                 {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
                 {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
+            modifiers = new EditorFriendlyCharDataModifiers()
+            {{
+                {(!step.modifiers.Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.modifiers.Position)}," : "")}
+                {(!step.modifiers.Scale.Equals(Vector3.one) ? $"Scale = {GetVector3String(step.modifiers.Scale)}," : "")}
+                {(step.modifiers.Rotations.Count != 0 ? @$"Rotations = new List<EditorFriendlyRotation>()
+                {{{GetRotationsString(step.modifiers.Rotations)}
+                }}," : "")}
+                {(!step.modifiers.BL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.modifiers.BL_Position)}," : "")}
+                {(!step.modifiers.TL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.modifiers.TL_Position)}," : "")}
+                {(!step.modifiers.TR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.modifiers.TR_Position)}," : "")}
+                {(!step.modifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.modifiers.BR_Position)}," : "")}
+                {(step.modifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BL_Color)}," : "")}
+                {(step.modifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.modifiers.TL_Color)}," : "")}
+                {(step.modifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.TR_Color)}," : "")}
+                {(step.modifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BR_Color)}," : "")}
+            }}
         }};";
-
-            // TODO Redo with chardatamodifier
-            // PositionDelta = {GetVector3String(step.modifiers.PositionDelta)},
-            // RotationDelta = {GetQuaternionString(step.modifiers.RotationDelta)}, 
-            // BL_Delta = {GetVector3String(step.modifiers.BL_Delta)},
-            // TL_Delta = {GetVector3String(step.modifiers.TL_Delta)},
-            // TR_Delta = {GetVector3String(step.modifiers.TR_Delta)},
-            // BR_Delta = {GetVector3String(step.modifiers.BR_Delta)},
-            // {(step.modifiers.BL_Color.HasValue ? "BL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BL_Color.Value) + ")," : "")}
-            // {(step.modifiers.TL_Color.HasValue ? "TL_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TL_Color.Value) + ")," : "")}
-            // {(step.modifiers.TR_Color.HasValue ? "TR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.TR_Color.Value) + ")," : "")}
-            // {(step.modifiers.BR_Color.HasValue ? "BR_Color = new UnityNullable<Color32>(" + GetColorString(step.modifiers.BR_Color.Value) + ")," : "")}
+            
             code = string.Join(Environment.NewLine, code
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Where(line => !string.IsNullOrWhiteSpace(line)));
@@ -462,6 +474,34 @@ namespace TMPEffects.TMPAnimations.GenericExports
         }
 
         return code;
+    }
+
+    private static string GetColorOverrideString(ColorOverride modifiersBLColor)
+    {
+        return $"new ColorOverride({GetColorString(modifiersBLColor.Color)}, {GetColorOverrideModeString(modifiersBLColor.Override)})";
+    }
+
+    private static string GetColorOverrideModeString(ColorOverride.OverrideMode overr)
+    {
+        if (overr.HasFlag(ColorOverride.OverrideMode.Color) && overr.HasFlag(ColorOverride.OverrideMode.Alpha))
+        {
+            return "ColorOverride.OverrideMode.Alpha | ColorOverride.OverrideMode.Color";
+        }
+
+        if (overr == 0) return "0";
+        
+        return "ColorOverride.OverrideMode." + overr;
+    }
+
+    private static string GetRotationsString(List<EditorFriendlyRotation> modifiersRotations)
+    {
+        string str = " ";
+        foreach (var rot in modifiersRotations)
+        {
+            str += $"\nnew EditorFriendlyRotation({GetVector3String(rot.eulerAngles)}, {GetTypedVector3String(rot.pivot)}),";
+        }
+
+        return str.Substring(0, str.Length - 1);
     }
 
     private static string GetAnimCurveString(AnimationCurve curve)
@@ -485,6 +525,16 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return vcalue.ToString("0.######", CultureInfo.InvariantCulture) + "f";
     }
 
+    private static string GetTypedVector3String(ParameterTypes.TypedVector3 vector)
+    {
+        return $"new TypedVector3({GetVectorTypeString(vector.type)}, {GetVector3String(vector.vector)})";
+    }
+
+    private static string GetVectorTypeString(ParameterTypes.VectorType type)
+    {
+        return "VectorType." + type;
+    }
+    
     private static string GetVector3String(Vector3 vector)
     {
         return
@@ -507,7 +557,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
     {
         string code = @"            CharDataModifiers result = new CharDataModifiers();
             CharDataModifiers tmp;
-            float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;";
+            float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
+";
 
         for (int i = 0; i < steps.Count; i++)
         {
@@ -517,6 +568,10 @@ namespace TMPEffects.TMPAnimations.GenericExports
             if (tmp != null) result.Combine(tmp);
 ";
         }
+
+        code += $@"
+            cData.CharacterModifierss.Combine(result.CharacterModifiers);
+            cData.MeshModifiers.Combine(result.MeshModifiers);";
 
         return code;
     }
@@ -534,31 +589,33 @@ namespace TMPEffects.TMPAnimations.GenericExports
             if (step.startTime > timeValue) return null;
             if (step.EndTime < timeValue) return null;
 
-            CharDataModifiers result;
-            if (step.useWave)
-            {{
-                result =
-                    CharDataModifiers.LerpUnclamped(cData, step.charModifiers,
-                        step.wave.Evaluate(timeValue,
-                            AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType)).Value);
-            }}
-            else
-            {{
-                result = step.charModifiers;
-            }}
-         
+            float weight = 1;
             float entry = timeValue - step.startTime;
             if (entry <= step.entryDuration)
             {{
-                result = CharDataModifiers.LerpUnclamped(cData, result, step.entryCurve.Evaluate(entry / step.entryDuration));
+                weight = step.entryCurve.Evaluate(entry / step.entryDuration);
             }}
 
             float exit = step.EndTime - timeValue;
             if (exit <= step.exitDuration)
             {{
-                result = CharDataModifiers.LerpUnclamped(cData, result, step.exitCurve.Evaluate(exit / step.exitDuration));
+                weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
             }}
 
+            CharDataModifiers result;
+            CharDataModifiers modifiers = step.modifiers.ToCharDataModifiers(cData, context);
+            if (step.useWave)
+            {{
+                var offset = GetWaveOffset(cData, context, step.waveOffsetType);
+                result =
+                    CharDataModifiers.LerpUnclamped(cData, modifiers,
+                        step.wave.Evaluate(timeValue, offset).Value * weight);
+            }}
+            else
+            {{
+                 result = CharDataModifiers.LerpUnclamped(cData, modifiers, weight);
+            }}
+      
             return result;
         }}
 ";
@@ -566,7 +623,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         return code;
     }
-
+    
     static bool GenerateScriptFromContext(string fileNamePath, string code)
     {
         var hierarchy = fileNamePath.Split('/');

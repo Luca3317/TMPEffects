@@ -13,18 +13,18 @@ public class TMPMeshModifierClipEditor : ClipEditor
     public override void OnClipChanged(TimelineClip clip)
     {
         var mClip = clip.asset as TMPMeshModifierClip;
-        mClip.Step.duration = (float)clip.duration;
+        mClip.Step.Step.duration = (float)clip.duration;
         mClip.name = clip.displayName;
 
         if (mClip.Step.lastMovedEntry == 0)
         {
-            mClip.Step.entryDuration = Mathf.Clamp(mClip.Step.entryDuration, 0f, (float)clip.duration);
-            mClip.Step.exitDuration = Mathf.Clamp(mClip.Step.exitDuration, 0f, (float)clip.duration - mClip.Step.entryDuration);
+            mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f, (float)clip.duration);
+            mClip.Step.Step.exitDuration = Mathf.Clamp(mClip.Step.Step.exitDuration, 0f, (float)clip.duration - mClip.Step.Step.entryDuration);
         }
         else 
         {
-            mClip.Step.exitDuration = Mathf.Clamp(mClip.Step.exitDuration, 0f, (float)clip.duration);
-            mClip.Step.entryDuration = Mathf.Clamp(mClip.Step.entryDuration, 0f, (float)clip.duration - mClip.Step.exitDuration);
+            mClip.Step.Step.exitDuration = Mathf.Clamp(mClip.Step.Step.exitDuration, 0f, (float)clip.duration);
+            mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f, (float)clip.duration - mClip.Step.Step.exitDuration);
         }
     }
 
@@ -33,8 +33,12 @@ public class TMPMeshModifierClipEditor : ClipEditor
         var mClip = clip.asset as TMPMeshModifierClip;
 
         float leftWidth, rightWidth;
-        leftWidth = (mClip.Step.entryDuration / (float)clip.duration) * region.position.width;
-        rightWidth = (mClip.Step.exitDuration / (float)clip.duration) * region.position.width;
+        
+        // TODO I think i can fix the ugliness of the moving entry/exit areas using region.start/endTime
+        // Debug.Log("Region " + region.startTime + " " + region.endTime );
+        
+        leftWidth = (mClip.Step.Step.entryDuration / (float)clip.duration) * region.position.width;
+        rightWidth = (mClip.Step.Step.exitDuration / (float)clip.duration) * region.position.width;
 
         //     Debug.Log(leftWidth + "   " + mClip.Step.entryDuration + "   " + clip.duration );
         // // Calculate the blend in/out visual areas
@@ -64,8 +68,8 @@ public class TMPMeshModifierClipEditor : ClipEditor
         EditorGUI.DrawRect(inRect, new Color(0.2f, 0.6f, 1f, 0.3f));
         EditorGUI.DrawRect(outRect, new Color(0.2f, 0.6f, 1f, 0.3f));
 
-        DrawBackgroundWithCurve(mClip.Step.entryCurve, inRect, leftWidth, true);
-        DrawBackgroundWithCurve(mClip.Step.exitCurve, outRect, rightWidth, false);
+        DrawBackgroundWithCurve(mClip.Step.Step.entryCurve, inRect, leftWidth, true);
+        DrawBackgroundWithCurve(mClip.Step.Step.exitCurve, outRect, rightWidth, false);
     }
 
     public override ClipDrawOptions GetClipOptions(TimelineClip clip)

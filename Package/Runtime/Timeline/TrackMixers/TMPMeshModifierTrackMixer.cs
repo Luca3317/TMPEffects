@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components;
+using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -42,7 +43,9 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         }
 
         if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
-        animator.UpdateAnimations(0f);
+        
+        if (animator.UpdateFrom == UpdateFrom.Script)
+            animator.UpdateAnimations(0f);
     }
 
     private void OnAnimatedCallback(CharData cdata)
@@ -56,14 +59,14 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             float duration = (float)active[i].GetDuration();
             float weight = 1;
 
-            if (currTime <= behaviour.Step.entryDuration)
+            if (currTime <= behaviour.Step.Step.entryDuration)
             {
-                weight = behaviour.Step.entryCurve.Evaluate(currTime / behaviour.Step.entryDuration);
+                weight = behaviour.Step.Step.entryCurve.Evaluate(currTime / behaviour.Step.Step.entryDuration);
             }
-            else if (currTime >= duration - behaviour.Step.exitDuration)
+            else if (currTime >= duration - behaviour.Step.Step.exitDuration)
             {
-                float preTime = duration - behaviour.Step.exitDuration;
-                weight = 1f - behaviour.Step.exitCurve.Evaluate((currTime - preTime) / behaviour.Step.exitDuration);
+                float preTime = duration - behaviour.Step.Step.exitDuration;
+                weight = 1f - behaviour.Step.Step.exitCurve.Evaluate((currTime - preTime) / behaviour.Step.Step.exitDuration);
             }
 
             var result = Calc(animator, behaviour.Step, cdata, weight, time);
@@ -81,19 +84,19 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         // CharDataModifiers result = new CharDataModifiers(); // TODO Cache
         storage ??= new CharDataModifiers();
 
-        if (step.useWave)
+        if (step.Step.useWave)
         {
-            var offset = AnimationUtility.GetWaveOffset(cData, animator.AnimatorContext, step.waveOffsetType,
+            var offset = AnimationUtility.GetWaveOffset(cData, animator.AnimatorContext, step.Step.waveOffsetType,
                 cData.info.index);
 
             CharDataModifiers.LerpUnclamped(cData,
-                step.editorModifiers.ToCharDataModifiers(cData, animator.AnimatorContext),
-                step.wave.Evaluate(t, offset).Value * weight,
+                step.Step.modifiers.ToCharDataModifiers(cData, animator.AnimatorContext),
+                step.Step.wave.Evaluate(t, offset).Value * weight,
                 storage);
         }
         else
         {
-            var res = step.editorModifiers.ToCharDataModifiers(cData, animator.AnimatorContext);
+            var res = step.Step.modifiers.ToCharDataModifiers(cData, animator.AnimatorContext);
             CharDataModifiers.LerpUnclamped(cData, res, weight, storage);
         }
         

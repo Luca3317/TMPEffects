@@ -6,6 +6,7 @@ using TMPEffects.Components.Animator;
 using TMPEffects.Parameters;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class AnimationStep
@@ -34,5 +35,5 @@ public class AnimationStep
             ? startTime + duration
             : (repetitions != 0 ? startTime + duration * repetitions : float.MaxValue);
 
-    public EditorFriendlyCharDataModifiers editorModifiers;
+    public EditorFriendlyCharDataModifiers modifiers;
 }
