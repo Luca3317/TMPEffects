@@ -8,7 +8,6 @@ using UnityEngine.Timeline;
 public class TMPStartWriterMarker : TMPEffectsMarker
 {
     public override PropertyName id => new PropertyName();
-
     public override NotificationFlags flags =>
         (retroactive ? NotificationFlags.Retroactive : default) |
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |

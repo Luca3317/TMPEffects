@@ -67,13 +67,13 @@ public class EditorFriendlyCharDataModifiers
         new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
 
 
-    public CharDataModifiers ToCharDataModifiers(CharData cData, IAnimationContext ctx)
-        => ToCharDataModifiers(cData, ctx.AnimatorContext);
+    private bool dirty = false;
     
-    public CharDataModifiers ToCharDataModifiers(CharData cData, IAnimatorContext ctx)
+    public void ToCharDataModifiers(CharData cData, IAnimationContext ctx, CharDataModifiers result)
+        => ToCharDataModifiers(cData, ctx.AnimatorContext, result);
+    
+    public void ToCharDataModifiers(CharData cData, IAnimatorContext ctx, CharDataModifiers result)
     {
-        CharDataModifiers result = new CharDataModifiers();
-
         // Position(Delta)
         if (Position.type == ParameterTypes.VectorType.Position)
         {
@@ -172,7 +172,5 @@ public class EditorFriendlyCharDataModifiers
             Vector3 posDelta = BR_Position.ToDelta(cData, cData.InitialMesh.BR_Position);
             result.MeshModifiers.BR_Delta = posDelta;
         }
-
-        return result;
     }
 }

@@ -905,7 +905,7 @@ namespace TMPEffects.Components
 
 
         public delegate void OnCharacterAnimatedEventHandler(CharData cData);
-
+        
         public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
 
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true,

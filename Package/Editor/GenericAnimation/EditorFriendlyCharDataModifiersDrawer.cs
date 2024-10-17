@@ -159,7 +159,11 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
         float height = 0f;
 
         height += EditorGUIUtility.singleLineHeight;
-        if (scaleProp.isExpanded) height += EditorGUIUtility.singleLineHeight * 4;
+        if (scaleProp.isExpanded)
+        {
+            height += EditorGUIUtility.singleLineHeight * 3;
+            height += EditorGUI.GetPropertyHeight(rotationsProp, true);
+        }
 
         height += EditorGUIUtility.singleLineHeight;
         if (blPositionProp.isExpanded) height += EditorGUIUtility.singleLineHeight * 5;

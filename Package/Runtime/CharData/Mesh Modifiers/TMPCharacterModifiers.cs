@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,6 +35,7 @@ public class TMPCharacterModifiers
                 ClearPositionDelta();
                 return;
             }
+
             positionDelta = value;
             modifier |= ModifierFlags.PositionDelta;
         }
@@ -46,12 +46,14 @@ public class TMPCharacterModifiers
         get => scaleDelta;
         set
         {
-            if (value == scaleDelta) return;
-            if (value == Matrix4x4.identity)
-            {
-                ClearScale();
-                return;
-            }
+            // TODO This comparison is slowish
+            // if (value == scaleDelta) return;
+            // Maybe go back to having to explicitly clear the changes?
+            // if (value == Matrix4x4.identity)
+            // {
+            //     ClearScale();
+            //     return;
+            // }
             scaleDelta = value;
             modifier |= ModifierFlags.Scale;
         }
@@ -105,7 +107,7 @@ public class TMPCharacterModifiers
         rotations = new List<Rotation>(original.rotations);
         modifier = original.Modifier;
     }
-    
+
     public void Combine(TMPCharacterModifiers other)
     {
         // if (other.Position.Override)
@@ -145,25 +147,27 @@ public class TMPCharacterModifiers
 
     public void ClearModifierFlags()
     {
-        // ClearPosition();
-        ClearPositionDelta();
-        ClearRotations();
-        ClearScale();
+        if (modifier.HasFlag(ModifierFlags.PositionDelta))
+            ClearPositionDelta();
+        if (modifier.HasFlag(ModifierFlags.Rotations))
+            ClearRotations();
+        if (modifier.HasFlag(ModifierFlags.Scale))
+            ClearScale();
     }
 
     public void ClearModifierFlags(ModifierFlags flags)
     {
         var both = modifier & flags;
-        
+
         // if (both.HasFlag(ModifierFlags.Position))
         //     ClearPosition();
-        
+
         if (both.HasFlag(ModifierFlags.PositionDelta))
             ClearPositionDelta();
 
         if (both.HasFlag(ModifierFlags.Rotations))
             ClearRotations();
-      
+
         if (both.HasFlag(ModifierFlags.Scale))
             ClearScale();
     }
@@ -179,13 +183,13 @@ public class TMPCharacterModifiers
         modifier &= ~ModifierFlags.Rotations;
         rotations.Clear();
     }
-    
+
     private void ClearPositionDelta()
     {
         modifier &= ~ModifierFlags.PositionDelta;
         positionDelta = Vector3.zero;
     }
-    
+
     private void ClearScale()
     {
         modifier &= ~ModifierFlags.Scale;

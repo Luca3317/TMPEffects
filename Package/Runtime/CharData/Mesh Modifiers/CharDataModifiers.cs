@@ -5,6 +5,7 @@ using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 [Serializable]
 public class CharDataModifiers
@@ -20,10 +21,10 @@ public class CharDataModifiers
         get => characterModifiers;
         set => characterModifiers = value;
     }
-    
+
     [SerializeField] private TMPMeshModifiers meshModifiers;
     [SerializeField] private TMPCharacterModifiers characterModifiers;
-    
+
     public Vector3 BL_Result { get; private set; }
     public Vector3 TL_Result { get; private set; }
     public Vector3 TR_Result { get; private set; }
@@ -89,8 +90,9 @@ public class CharDataModifiers
         {
             Vector3 pivot;
             Matrix4x4 matrix;
-            foreach (var rot in characterModifiers.Rotations)
+            for (int i = 0; i < characterModifiers.Rotations.Count; i++)
             {
+                var rot = characterModifiers.Rotations[i];
                 pivot = rot.pivot;
                 matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
 
@@ -127,6 +129,115 @@ public class CharDataModifiers
         BR_Result = vbr;
     }
 
+    static Vector3 GetPreciseScale(Matrix4x4 matrix)
+    {
+        return new Vector3(
+            matrix.GetColumn(0).magnitude * Mathf.Sign(matrix.m00),
+            matrix.GetColumn(1).magnitude * Mathf.Sign(matrix.m11),
+            matrix.GetColumn(2).magnitude * Mathf.Sign(matrix.m22)
+        );
+    }
+    
+    public static void LerpUnclamped(CharData cData, CharDataModifiers start, CharDataModifiers end, float t,
+        CharDataModifiers result)
+    {
+        result.CharacterModifiers.ClearModifierFlags();
+
+        var combinedFlags = end.characterModifiers.Modifier | start.CharacterModifiers.Modifier;
+
+        if (combinedFlags.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
+        {
+            result.characterModifiers.PositionDelta =
+                Vector3.LerpUnclamped(start.characterModifiers.PositionDelta, end.characterModifiers.PositionDelta, t);
+        }
+
+        if (combinedFlags.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
+        {
+            Vector3 endScale = GetPreciseScale(end.characterModifiers.ScaleDelta);
+            Vector3 startScale = GetPreciseScale(start.characterModifiers.ScaleDelta);
+            Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
+
+            result.characterModifiers.ScaleDelta = Matrix4x4.Scale(lerpedScale);
+        }
+
+        if (combinedFlags.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
+        {
+            // TODO THis probably isnt right
+            try
+            {
+                for (int i = 0; i < start.characterModifiers.Rotations.Count; i++)
+                {
+                    var rot = start.characterModifiers.Rotations[i];
+                    result.characterModifiers.AddRotation(
+                        new Rotation(Vector3.LerpUnclamped(rot.eulerAngles, cData.InitialRotation.eulerAngles, t),
+                            rot.pivot));
+                }
+
+                for (int i = 0; i < end.characterModifiers.Rotations.Count; i++)
+                {
+                    var rot = end.characterModifiers.Rotations[i];
+                    result.characterModifiers.AddRotation(
+                        new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
+                            rot.pivot));
+                }
+            }
+            catch
+            {
+                Debug.LogError("Tried to add to many with " + end.characterModifiers.Rotations.Count);
+            }
+        }
+
+        LerpMeshModifiersUnclamped(cData, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
+    }
+
+    private static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers start, TMPMeshModifiers end,
+        float t,
+        TMPMeshModifiers result)
+    {
+        result.ClearModifiers();
+
+        var combinedFlags = start.Modifier | end.Modifier;
+
+        if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
+        {
+            result.BL_Delta = Vector3.LerpUnclamped(start.BL_Delta, end.BL_Delta, t);
+            result.TL_Delta = Vector3.LerpUnclamped(start.TL_Delta, end.TL_Delta, t);
+            result.TR_Delta = Vector3.LerpUnclamped(start.TR_Delta, end.TR_Delta, t);
+            result.BR_Delta = Vector3.LerpUnclamped(start.BR_Delta, end.BR_Delta, t);
+        }
+
+        if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
+        {
+            result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color, t);
+            result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color, t);
+            result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color, t);
+            result.BR_Color = ColorOverride.LerpUnclamped(start.BR_Color, end.BR_Color, t);
+        }
+
+        if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
+        {
+            var startVector = start.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);
+            var endVector = end.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);
+            result.BL_UV0 =
+                new Vector3Override(Vector3.LerpUnclamped(startVector, endVector, t));
+
+            startVector = start.TL_UV0.GetValue(cData.InitialMesh.TL_UV0);
+            endVector = end.TL_UV0.GetValue(cData.InitialMesh.TL_UV0);
+            result.TL_UV0 =
+                new Vector3Override(Vector3.LerpUnclamped(startVector, endVector, t));
+
+            startVector = start.TR_UV0.GetValue(cData.InitialMesh.TR_UV0);
+            endVector = end.TR_UV0.GetValue(cData.InitialMesh.TR_UV0);
+            result.TR_UV0 =
+                new Vector3Override(Vector3.LerpUnclamped(startVector, endVector, t));
+
+            startVector = start.BR_UV0.GetValue(cData.InitialMesh.BR_UV0);
+            endVector = end.BR_UV0.GetValue(cData.InitialMesh.BR_UV0);
+            result.BR_UV0 =
+                new Vector3Override(Vector3.LerpUnclamped(startVector, endVector, t));
+        }
+    }
+
     public static CharDataModifiers LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t)
     {
         CharDataModifiers storage = new CharDataModifiers();
@@ -138,8 +249,7 @@ public class CharDataModifiers
         CharDataModifiers result)
     {
         result.CharacterModifiers.ClearModifierFlags();
-        if (t <= 0) return;
-        
+
         if (modifiers.characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
             result.characterModifiers.PositionDelta =
@@ -157,7 +267,6 @@ public class CharDataModifiers
                         new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
                             rot.pivot));
                 }
-
             }
             catch
             {
@@ -171,7 +280,7 @@ public class CharDataModifiers
             // LossyScale is more lossy than I thought, so this is not an option
             // For example: Matrix4x4.Scale(1, -1.5, 1).lossyScale = (-1, 1.5, 0)
             // Vector3 endScale = modifiers.characterModifiers.ScaleDelta.lossyScale;
-            
+
             // For now; GetPreciseScale. Probably fuggin slow though
             // Alternatively; store list of vector3s that is combined when needed?
             // Could cache that result. Hm
@@ -179,27 +288,18 @@ public class CharDataModifiers
             Vector3 endScale = GetPreciseScale(modifiers.characterModifiers.ScaleDelta);
             Vector3 startScale = cData.InitialScale;
             Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
-            
+
             result.characterModifiers.ScaleDelta = Matrix4x4.Scale(lerpedScale);
-            
-            Vector3 GetPreciseScale(Matrix4x4 matrix)
-            {
-                return new Vector3(
-                    matrix.GetColumn(0).magnitude * Mathf.Sign(matrix.m00),
-                    matrix.GetColumn(1).magnitude * Mathf.Sign(matrix.m11),
-                    matrix.GetColumn(2).magnitude * Mathf.Sign(matrix.m22)
-                );
-            }
         }
 
         LerpMeshModifiersUnclamped(cData, modifiers.MeshModifiers, t, result.MeshModifiers);
     }
-    
-    private static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t, TMPMeshModifiers result)
+
+    private static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t,
+        TMPMeshModifiers result)
     {
         result.ClearModifiers();
-        if (t <= 0) return;
-        
+
         if (modifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
             result.BL_Delta = modifiers.BL_Delta * t;

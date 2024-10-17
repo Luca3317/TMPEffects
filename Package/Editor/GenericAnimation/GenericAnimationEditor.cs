@@ -37,7 +37,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var nameProp = itemProp.FindPropertyRelative("name");
         var animateProp = itemProp.FindPropertyRelative("animate");
 
-        var toggleRect = new Rect(rect.x + 10, rect.y, 15f, EditorGUIUtility.singleLineHeight);
+        var toggleRect = new Rect(rect.x + 20, rect.y, 15f, EditorGUIUtility.singleLineHeight);
         animateProp.boolValue = EditorGUI.ToggleLeft(toggleRect, GUIContent.none, animateProp.boolValue);
         toggleRect.x += 17.5f;
         toggleRect.width = rect.width - 17.5f;
@@ -159,66 +159,6 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         serializedObject.ApplyModifiedProperties();
     }
 
-
-    // public override void OnInspectorGUI()
-    // {
-    //     EditorGUILayout.LabelField("Animation settings", EditorStyles.boldLabel);
-    //     EditorGUI.indentLevel++;
-    //     EditorGUILayout.PropertyField(serializedObject.FindProperty("repeat"));
-    //     EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
-    //     EditorGUI.indentLevel--;
-    //
-    //     EditorGUILayout.Space();
-    //
-    //     var animStepsProp = serializedObject.FindProperty("animationSteps");
-    //     EditorGUILayout.PropertyField(animStepsProp);
-    //     var list = ReorderableList.GetReorderableListFromSerializedProperty(animStepsProp);
-    //     list.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
-    //     {
-    //         var itemProp = animStepsProp.GetArrayElementAtIndex(index);
-    //
-    //         var toggleRect = new Rect(rect.x, rect.y, 15f, EditorGUIUtility.singleLineHeight);
-    //         EditorGUI.ToggleLeft(toggleRect, itemProp.FindPropertyRelative("name").stringValue, true);
-    //         // if (itemProp.isExpanded)
-    //         // {
-    //         // }
-    //         // else
-    //         // {
-    //         //     itemProp.isExpanded =
-    //         //         EditorGUI.Foldout(rect, itemProp.isExpanded, itemProp.FindPropertyRelative("name").stringValue);
-    //         // }
-    //         EditorGUI.PropertyField(rect, itemProp, GUIContent.none);
-    //     };
-    //     // list.drawHeaderCallback = (Rect rect) =>
-    //     // {
-    //     //     animStepsProp.isExpanded = EditorGUI.Foldout(rect, animStepsProp.isExpanded, "Element hey");
-    //     // };
-    //
-    //     EditorGUILayout.Space();
-    //
-    //     EditorGUILayout.LabelField("Export", EditorStyles.boldLabel);
-    //     EditorGUI.indentLevel++;
-    //     exportPath = EditorGUILayout.TextField("Export path", exportPath);
-    //     exportName = EditorGUILayout.TextField("Export name", exportName);
-    //     EditorGUI.indentLevel--;
-    //
-    //     if (GUILayout.Button("Export"))
-    //     {
-    //         bool okay = EditorUtility.DisplayDialog("Exporting Generic Animation",
-    //             "This will export this GenericAnimation animation as a .cs file, allowing you to make further edits.\nThe file will be saved as: " +
-    //             exportPath + "/" +
-    //             (string.IsNullOrWhiteSpace(exportName)
-    //                 ? "GenericAnimation" + DateTime.Now.ToString("yyyyMMddHHmmss")
-    //                 : exportName), "Okay", "Cancel");
-    //
-    //         if (okay) GenericAnimationExporter.Export(serializedObject, exportPath, exportName);
-    //     }
-    //
-    //     if (serializedObject.hasModifiedProperties)
-    //     {
-    //         serializedObject.ApplyModifiedProperties();
-    //     }
-    // }
 
     private int sliderControlID;
     private bool? wasPlaying = null;
@@ -412,11 +352,74 @@ namespace TMPEffects.TMPAnimations.GenericExports
 {1}
         }}
 
-        #region Generated Animation Step Methods
-{2}
-        #endregion
+        private CharDataModifiers storage, storage2;
+        private CharDataModifiers current, accumulated;
+
+        // Apply an AnimationStep, storing into the ""current"" CharDataModifier.
+        private bool ApplyAnimationStep(AnimationStep step, float timeValue, CharData cData, IAnimationContext context)
+        {{
+            // Check if should apply
+            if (step == null) return false;
+            if (!step.animate) return false;
+            if (step.startTime > timeValue) return false;
+            if (step.EndTime < timeValue) return false;
+
+            // Calculate weight, based on the currently relevant blend curve
+            float weight = 1;
+            float entry = timeValue - step.startTime;
+            if (entry <= step.entryDuration)
+            {{
+                weight = step.entryCurve.Evaluate(entry / step.entryDuration);
+            }}
+
+            float exit = step.EndTime - timeValue;
+            if (exit <= step.exitDuration)
+            {{
+                weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
+            }}
+
+            // Apply the wave to the weight
+            if (step.useWave)
+            {{
+                var offset = AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType);
+                weight *= step.wave.Evaluate(timeValue, offset).Value;
+            }}
+            
+            // Reset the current, since it'll be used to store the result
+            current.Reset();
+            
+            // If you should use initial modifiers
+            if (step.useInitialModifiers)
+            {{
+                // Reset storage
+                storage.Reset();
+                storage2.Reset();
+
+                // Set modifiers
+                step.initModifiers.ToCharDataModifiers(cData, context, storage);
+                step.modifiers.ToCharDataModifiers(cData, context, storage2);
+
+                // Lerp modifiers and store into current
+                CharDataModifiers.LerpUnclamped(cData, storage, storage2, weight, current);
+            }}
+            // If you should lerp from the CharData itself
+            else
+            {{
+                // Reset storage
+                storage.Reset();
+
+                // Set modifier
+                step.modifiers.ToCharDataModifiers(cData, context, storage);
+
+                // Lerp modifier and store into current
+                CharDataModifiers.LerpUnclamped(cData, storage, weight, current);
+            }}
+
+            // Return true to indicate that ""current"" should be applied
+            return true;
+        }}
     }}
-}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names), GenerateStepMethods(steps, names));
+}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names)/*, GenerateStepMethods(steps, names)*/);
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
@@ -463,7 +466,23 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {(step.modifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.modifiers.TL_Color)}," : "")}
                 {(step.modifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.TR_Color)}," : "")}
                 {(step.modifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BR_Color)}," : "")}
-            }}
+            }},
+            {(step.useInitialModifiers ? @$"initModifiers = new EditorFriendlyCharDataModifiers()
+            {{
+                {(!step.initModifiers.Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.initModifiers.Position)}," : "")}
+                {(!step.initModifiers.Scale.Equals(Vector3.one) ? $"Scale = {GetVector3String(step.initModifiers.Scale)}," : "")}
+                {(step.initModifiers.Rotations.Count != 0 ? @$"Rotations = new List<EditorFriendlyRotation>()
+                {{{GetRotationsString(step.initModifiers.Rotations)}
+                }}," : "")}
+                {(!step.initModifiers.BL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.initModifiers.BL_Position)}," : "")}
+                {(!step.initModifiers.TL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.initModifiers.TL_Position)}," : "")}
+                {(!step.initModifiers.TR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.initModifiers.TR_Position)}," : "")}
+                {(!step.initModifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.initModifiers.BR_Position)}," : "")}
+                {(step.initModifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BL_Color)}," : "")}
+                {(step.initModifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.initModifiers.TL_Color)}," : "")}
+                {(step.initModifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.TR_Color)}," : "")}
+                {(step.initModifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BR_Color)}," : "")}
+            }}" : "" )}
         }};";
             
             code = string.Join(Environment.NewLine, code
@@ -555,8 +574,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
     static string GenerateAnimateCode(List<AnimationStep> steps, OrderedHashSet<string> names)
     {
-        string code = @"            CharDataModifiers result = new CharDataModifiers();
-            CharDataModifiers tmp;
+        string code = @"            accumulated.Reset();
             float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 ";
 
@@ -564,14 +582,14 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {
             var name = names[i];
             code += $@"
-            tmp = Animate_{name}(timeValue, Step_{name}, cData, data, context);
-            if (tmp != null) result.Combine(tmp);
+            if (ApplyAnimationStep(Step_{name}, timeValue, cData, context))
+                accumulated.Combine(current);
 ";
         }
 
         code += $@"
-            cData.CharacterModifierss.Combine(result.CharacterModifiers);
-            cData.MeshModifiers.Combine(result.MeshModifiers);";
+            cData.CharacterModifierss.Combine(accumulated.CharacterModifiers);
+            cData.MeshModifiers.Combine(accumulated.MeshModifiers);";
 
         return code;
     }

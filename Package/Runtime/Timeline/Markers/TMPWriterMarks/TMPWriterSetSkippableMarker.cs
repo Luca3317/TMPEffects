@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPWriterMarkerStyle")]
+[CustomStyle("TMPSetSkippableMarkerStyle")]
 [TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/SetSkippable")]
 public class TMPWriterSetSkippableMarker : TMPEffectsMarker
@@ -16,7 +16,8 @@ public class TMPWriterSetSkippableMarker : TMPEffectsMarker
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |
         (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
-
+    [Space] [Tooltip("Whether the current text should be skippable.")]
     [SerializeField] private bool skippable = false;
+    
     public bool Skippable => skippable;
 }

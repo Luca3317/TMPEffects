@@ -60,6 +60,13 @@ TMPWriterWaitMarkerStyle
     background-image: resource("MarkerIcons/writer-wait");
 }
 
+TMPSetSkippableMarkerStyle
+{
+    width: 30px;
+    height: 30px;
+    background-image: resource("MarkerIcons/writer-settings");
+}
+
 TMPStartAnimatingMarkerStyle
 {
     width: 30px;
@@ -101,11 +108,3 @@ TMPResetTimeMarkerStyle
     height: 30px;
     background-image: resource("MarkerIcons/animator-resetanimations");
 }
-
-
-
-
-
-
-
-

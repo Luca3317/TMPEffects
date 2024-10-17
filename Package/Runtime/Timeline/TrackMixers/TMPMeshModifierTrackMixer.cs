@@ -43,13 +43,18 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         }
 
         if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
-        
+
         if (animator.UpdateFrom == UpdateFrom.Script)
             animator.UpdateAnimations(0f);
     }
 
     private void OnAnimatedCallback(CharData cdata)
     {
+        modifiersStorage ??= new CharDataModifiers();
+        modifiersStorage2 ??= new CharDataModifiers();
+        accModifier ??= new CharDataModifiers();
+        current ??= new CharDataModifiers();
+
         for (int i = 0; i < active.Count; i++)
         {
             if (!active[i].IsValid()) continue;
@@ -59,6 +64,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             float duration = (float)active[i].GetDuration();
             float weight = 1;
 
+
             if (currTime <= behaviour.Step.Step.entryDuration)
             {
                 weight = behaviour.Step.Step.entryCurve.Evaluate(currTime / behaviour.Step.Step.entryDuration);
@@ -66,47 +72,31 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             else if (currTime >= duration - behaviour.Step.Step.exitDuration)
             {
                 float preTime = duration - behaviour.Step.Step.exitDuration;
-                weight = 1f - behaviour.Step.Step.exitCurve.Evaluate((currTime - preTime) / behaviour.Step.Step.exitDuration);
+                weight = behaviour.Step.Step.exitCurve.Evaluate(1f - (currTime - preTime) /
+                    behaviour.Step.Step.exitDuration);
             }
 
-            var result = Calc(animator, behaviour.Step, cdata, weight, time);
-            cdata.CharacterModifierss.Combine(result.CharacterModifiers);
-            cdata.MeshModifiers.Combine(result.MeshModifiers);
+            if (behaviour.Step.Step.useWave)
+            {
+                var offset = AnimationUtility.GetWaveOffset(cdata, animator.AnimatorContext,
+                    behaviour.Step.Step.waveOffsetType);
+                weight *= behaviour.Step.Step.wave.Evaluate(currTime, offset).Value;
+            }
+
+
+            GenericAnimation.ApplyAnimationStepWeighted(behaviour.Step.Step, weight, cdata, animator.AnimatorContext,
+                modifiersStorage, modifiersStorage2, current);
+
+            // var result = Calc(animator, behaviour.Step, cdata, weight, time);
+            cdata.CharacterModifierss.Combine(current.CharacterModifiers);
+            cdata.MeshModifiers.Combine(current.MeshModifiers);
         }
     }
 
 
-    private CharDataModifiers storage;
-
-    private CharDataModifiers Calc(TMPAnimator animator, TimelineAnimationStep step, CharData cData, float weight,
-        float t)
-    {
-        // CharDataModifiers result = new CharDataModifiers(); // TODO Cache
-        storage ??= new CharDataModifiers();
-
-        if (step.Step.useWave)
-        {
-            var offset = AnimationUtility.GetWaveOffset(cData, animator.AnimatorContext, step.Step.waveOffsetType,
-                cData.info.index);
-
-            CharDataModifiers.LerpUnclamped(cData,
-                step.Step.modifiers.ToCharDataModifiers(cData, animator.AnimatorContext),
-                step.Step.wave.Evaluate(t, offset).Value * weight,
-                storage);
-        }
-        else
-        {
-            var res = step.Step.modifiers.ToCharDataModifiers(cData, animator.AnimatorContext);
-            CharDataModifiers.LerpUnclamped(cData, res, weight, storage);
-        }
-        
-
-        // if (weight != 1)
-        // {
-        //     CharDataModifiers.LerpUnclamped(cData, result,
-        //         weight, result);
-        // }
-
-        return storage;
-    }
+    // TODO
+    // Calc and genericanimation should use some shared implementation
+    // Probably generated animations as well?
+    private CharDataModifiers modifiersStorage, modifiersStorage2;
+    private CharDataModifiers accModifier, current;
 }

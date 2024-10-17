@@ -40,19 +40,5 @@ public class TMPMeshModifier : MonoBehaviour
         _modifiers = modifiers;
     }
 
-    [System.NonSerialized] private bool apply = false;
-    public void StartApplying()
-    {
-        if (_animator == null)
-            _animator = GetComponent<TMPAnimator>();
-        _animator.OnCharacterAnimated -= OnCharacterAnimated;
-        _animator.OnCharacterAnimated += OnCharacterAnimated;
-    }
 
-    public void StopApplying()
-    {
-        if (_animator == null)
-            _animator = GetComponent<TMPAnimator>();
-        _animator.OnCharacterAnimated -= OnCharacterAnimated;
-    }
 }

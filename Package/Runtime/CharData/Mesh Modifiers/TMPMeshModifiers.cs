@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -204,10 +205,11 @@ public class TMPMeshModifiers
 
     public ModifierFlags Modifier => modifier;
     [SerializeField] private ModifierFlags modifier;
-    
+
     public TMPMeshModifiers()
-    {}
-    
+    {
+    }
+
     public TMPMeshModifiers(TMPMeshModifiers original)
     {
         bl_Delta = original.bl_Delta;
@@ -235,21 +237,24 @@ public class TMPMeshModifiers
 
     public void ClearModifiers()
     {
-        ClearDeltas();
-        ClearColors();
-        ClearUVs();
+        if (modifier.HasFlag(ModifierFlags.Deltas))
+            ClearDeltas();
+        if (modifier.HasFlag(ModifierFlags.Colors))
+            ClearColors();
+        if (modifier.HasFlag(ModifierFlags.UVs))
+            ClearUVs();
     }
 
     public void ClearModifiers(ModifierFlags flags)
     {
         var both = modifier & flags;
-        
+
         if (both.HasFlag(ModifierFlags.Deltas))
             ClearDeltas();
-        
+
         if (both.HasFlag(ModifierFlags.Colors))
             ClearColors();
-        
+
         if (both.HasFlag(ModifierFlags.UVs))
             ClearUVs();
     }
@@ -310,7 +315,7 @@ public class TMPMeshModifiers
             TL_UV0 += other.TL_UV0;
             TR_UV0 += other.TR_UV0;
             BR_UV0 += other.BR_UV0;
-            
+
             BL_UV2 += other.BL_UV2;
             TL_UV2 += other.TL_UV2;
             TR_UV2 += other.TR_UV2;
@@ -345,6 +350,7 @@ public class TMPMeshModifiers
             lhs.TR_UV0 += rhs.TR_UV0;
             lhs.BR_UV0 += rhs.BR_UV0;
         }
+
         return lhs;
     }
 

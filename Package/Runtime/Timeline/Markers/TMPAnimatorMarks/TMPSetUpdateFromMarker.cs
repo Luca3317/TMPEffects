@@ -17,6 +17,7 @@ public class TMPSetUpdateFromMarker : TMPEffectsMarker
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |
         (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
+    [Space] [Tooltip("Where the TMPAnimator should be updated from.")]
     [SerializeField] private UpdateFrom updateFrom;
     
     public UpdateFrom UpdateFrom => updateFrom;

@@ -35,5 +35,7 @@ public class AnimationStep
             ? startTime + duration
             : (repetitions != 0 ? startTime + duration * repetitions : float.MaxValue);
 
+    public bool useInitialModifiers = false;
+    public EditorFriendlyCharDataModifiers initModifiers;
     public EditorFriendlyCharDataModifiers modifiers;
 }

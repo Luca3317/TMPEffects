@@ -17,8 +17,9 @@ public class TMPResetTimeMarker : TMPEffectsMarker
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |
         (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
-    [SerializeField] private float time;
-
+    [Space] [Tooltip("The time value to reset the TMPAnimator to.")]
+    [SerializeField] private new float time;
+    
     public float Time => time;
     
     private void OnValidate()

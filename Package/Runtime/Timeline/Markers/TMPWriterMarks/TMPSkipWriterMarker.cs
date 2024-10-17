@@ -16,6 +16,7 @@ public class TMPSkipWriterMarker : TMPEffectsMarker
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |
         (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
+    [Space] [Tooltip("Whether to skip the show animations (if any) when skipping the current text.")]
     [SerializeField] private bool skipShowAnimation = false;
     
     public bool SkipShowAnimation => skipShowAnimation;

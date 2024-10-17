@@ -17,16 +17,17 @@ public class AnimationStepDrawer : PropertyDrawer
     private SerializedProperty repetitions;
     private SerializedProperty startTime;
     private SerializedProperty duration;
-    // private SerializedProperty modifiers;
+    private SerializedProperty modifiers;
+    private SerializedProperty initModifiers;
+    private SerializedProperty useInitModifiers;
     private SerializedProperty wave;
     private SerializedProperty waveOffsetType;
     private SerializedProperty useWave;
-    
-    private SerializedProperty genModifiers;
+
 
     private Color backgroundColor;
 
-    private void Init(SerializedProperty property)
+    protected void Init(SerializedProperty property)
     {
         entryCurve = property.FindPropertyRelative("entryCurve");
         exitCurve = property.FindPropertyRelative("exitCurve");
@@ -36,52 +37,45 @@ public class AnimationStepDrawer : PropertyDrawer
         repetitions = property.FindPropertyRelative("repetitions");
         startTime = property.FindPropertyRelative("startTime");
         duration = property.FindPropertyRelative("duration");
-        // modifiers = property.FindPropertyRelative("charModifiers");
+        modifiers = property.FindPropertyRelative("modifiers");
+        initModifiers = property.FindPropertyRelative("initModifiers");
+        useInitModifiers = property.FindPropertyRelative("useInitialModifiers");
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
-        
-        genModifiers = property.FindPropertyRelative("modifiers");
-        
+
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
             : new Color32(194, 194, 194, 255);
     }
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    protected float GetCommonHeight(SerializedProperty property)
     {
-        Init(property);
+        float height = EditorGUIUtility.singleLineHeight * 3; // Blending + in out headers
 
-        EditorGUI.BeginProperty(position, label, property);
+        if (entryCurve.isExpanded) height += EditorGUIUtility.singleLineHeight * 2;
+        if (exitCurve.isExpanded) height += EditorGUIUtility.singleLineHeight * 2;
 
-        var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-        property.isExpanded = EditorGUI.Foldout(rect, property.isExpanded, label);
+        height += EditorGUIUtility.singleLineHeight * 3; // Space + waves
+
+        if (useWave.boolValue) height += EditorGUI.GetPropertyHeight(wave, true) + EditorGUIUtility.singleLineHeight;
+
+        height += EditorGUIUtility.singleLineHeight * 2; // Space + initial
+
+        if (useInitModifiers.boolValue) height += EditorGUI.GetPropertyHeight(initModifiers, true);
+
+        height += EditorGUIUtility.singleLineHeight * 2; // Space + modifiers
+
+        height += EditorGUI.GetPropertyHeight(modifiers, true);
+
+        return height;
+    }
+
+    protected void DrawCommon(Rect rect, SerializedProperty property, GUIContent label)
+    {
+        EditorGUI.LabelField(rect, "Blending", EditorStyles.boldLabel);
         rect.y += EditorGUIUtility.singleLineHeight;
-        if (!property.isExpanded) return;
 
-        EditorGUI.indentLevel++;
-        EditorGUI.BeginChangeCheck();
-
-        EditorGUI.PropertyField(rect, property.FindPropertyRelative("name"));
-        rect.y += EditorGUIUtility.singleLineHeight * 2f;
-
-        EditorGUI.PropertyField(rect, loops);
-        rect.y += EditorGUIUtility.singleLineHeight;
-
-        if (loops.boolValue)
-        {
-            EditorGUI.PropertyField(rect, repetitions, new GUIContent("Repetitions (0 = forever)"));
-            rect.y += EditorGUIUtility.singleLineHeight;
-        }
-
-        if (property.serializedObject.targetObject is not PlayableAsset)
-        {
-            EditorGUI.PropertyField(rect, startTime);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, duration);
-            rect.y += EditorGUIUtility.singleLineHeight;
-        }
-        
         entryCurve.isExpanded = EditorGUI.Foldout(rect, entryCurve.isExpanded, "Entry");
         rect.y += EditorGUIUtility.singleLineHeight;
 
@@ -90,7 +84,15 @@ public class AnimationStepDrawer : PropertyDrawer
             EditorGUI.indentLevel++;
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
             EditorGUI.DrawRect(bgRect, backgroundColor);
+
+            EditorGUI.BeginChangeCheck();
             EditorGUI.PropertyField(rect, entryDuration);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (property.FindPropertyRelative("lastMovedEntry") != null)
+                    property.FindPropertyRelative("lastMovedEntry").intValue = 0;
+            }
+
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, entryCurve);
             rect.y += EditorGUIUtility.singleLineHeight;
@@ -105,17 +107,26 @@ public class AnimationStepDrawer : PropertyDrawer
             EditorGUI.indentLevel++;
             var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
             EditorGUI.DrawRect(bgRect, backgroundColor);
+
+            EditorGUI.BeginChangeCheck();
             EditorGUI.PropertyField(rect, exitDuration);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (property.FindPropertyRelative("lastMovedEntry") != null)
+                    property.FindPropertyRelative("lastMovedEntry").intValue = 1;
+            }
+
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, exitCurve);
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.indentLevel--;
         }
 
-        float start = startTime.floatValue, end = start + duration.floatValue;
-        startTime.floatValue = start;
-        duration.floatValue = end - start;
+        rect.y += EditorGUIUtility.singleLineHeight;
 
+
+        EditorGUI.LabelField(rect, "Waves", EditorStyles.boldLabel);
+        rect.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(rect, useWave);
         rect.y += EditorGUIUtility.singleLineHeight;
 
@@ -131,29 +142,87 @@ public class AnimationStepDrawer : PropertyDrawer
                 EditorGUI.DrawRect(bgRect, backgroundColor);
             }
 
+            // EditorGUI.indentLevel++;
             EditorGUI.PropertyField(rect, wave, true);
             rect.y += EditorGUI.GetPropertyHeight(wave, true);
+            // EditorGUI.indentLevel--;
         }
 
-        // EditorGUI.PropertyField(rect, modifiers, true);
-        // rect.y += EditorGUI.GetPropertyHeight(modifiers, true);
+        rect.y += EditorGUIUtility.singleLineHeight;
 
-        rect.height = EditorGUI.GetPropertyHeight(genModifiers,true);
-        EditorGUI.PropertyField(rect, genModifiers,true);
-        
-        EditorGUI.indentLevel--;
 
-        if (EditorGUI.EndChangeCheck())
+        GUIContent content = new GUIContent();
+        content.text = "Initial Modifiers";
+        content.tooltip =
+            "Whether to use initial modifiers. If so, the lerp will be between InitialModifiers and Modifiers. Otherwise, the lerp will be between the CharData and Modifiers.";
+
+        // useInitModifiers.boolValue = EditorGUI.Toggle(rect, content, useInitModifiers.boolValue, EditorStyles.boldLabel);
+        Vector2 labelSize = EditorStyles.boldLabel.CalcSize(content);
+        EditorGUI.BeginDisabledGroup(!useInitModifiers.boolValue);
+        EditorGUI.LabelField(rect, content, EditorStyles.boldLabel);
+        EditorGUI.EndDisabledGroup();
+        var toggleRect = new Rect(rect.x + labelSize.x + 10, rect.y, rect.width - labelSize.x - 10, rect.height);
+        useInitModifiers.boolValue = EditorGUI.Toggle(toggleRect, useInitModifiers.boolValue);
+
+        // EditorGUI.PropertyField(rect, useInitModifiers, content);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        if (useInitModifiers.boolValue)
         {
-            property.serializedObject.ApplyModifiedProperties();
+            EditorGUI.PropertyField(rect, initModifiers, true);
+            rect.y += EditorGUI.GetPropertyHeight(initModifiers, true);
         }
 
+        rect.y += EditorGUIUtility.singleLineHeight;
+
+        EditorGUI.LabelField(rect, "Modifier", EditorStyles.boldLabel);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, modifiers, true);
+        rect.y += EditorGUI.GetPropertyHeight(modifiers, true);
+    }
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        Init(property);
+        EditorGUI.BeginProperty(position, label, property);
+        EditorGUI.indentLevel++;
+
+        var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+        property.isExpanded = EditorGUI.Foldout(rect, property.isExpanded, label);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        if (!property.isExpanded) return;
+
+        EditorGUI.PropertyField(rect, property.FindPropertyRelative("name"));
+        rect.y += EditorGUIUtility.singleLineHeight * 2f;
+
+        EditorGUI.PropertyField(rect, loops);
+        rect.y += EditorGUIUtility.singleLineHeight;
+
+        if (loops.boolValue)
+        {
+            EditorGUI.PropertyField(rect, repetitions, new GUIContent("Repetitions (0 = forever)"));
+            rect.y += EditorGUIUtility.singleLineHeight;
+        }
+
+        EditorGUI.PropertyField(rect, startTime);
+        rect.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(rect, duration);
+        rect.y += EditorGUIUtility.singleLineHeight * 2;
+
+        DrawCommon(rect, property, label);
+
+        EditorGUI.indentLevel--;
         EditorGUI.EndProperty();
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         Init(property);
+
+        if (property.isExpanded)
+            return GetCommonHeight(property) + EditorGUIUtility.singleLineHeight * 7;
+
+        return EditorGUIUtility.singleLineHeight;
+
         float totalHeight = EditorGUIUtility.singleLineHeight; // foldout
         if (!property.isExpanded) return totalHeight;
 
@@ -189,9 +258,9 @@ public class AnimationStepDrawer : PropertyDrawer
             totalHeight += EditorGUI.GetPropertyHeight(wave, true);
         }
 
-         // totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
+        // totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
 
-         totalHeight += EditorGUI.GetPropertyHeight(genModifiers,true);
+        totalHeight += EditorGUI.GetPropertyHeight(modifiers, true);
 
         return totalHeight;
     }

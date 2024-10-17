@@ -7,6 +7,11 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
+internal static class TMPEffectsTimelineEditorPrefsKeys
+{
+    internal const string DRAW_CURVES_EDITORPREFS_KEY = "TMPEffects.Timeline.DrawCurves.EditorPrefs";
+}
+
 [CustomTimelineEditor(typeof(TMPMeshModifierClip))]
 public class TMPMeshModifierClipEditor : ClipEditor
 {
@@ -19,12 +24,14 @@ public class TMPMeshModifierClipEditor : ClipEditor
         if (mClip.Step.lastMovedEntry == 0)
         {
             mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f, (float)clip.duration);
-            mClip.Step.Step.exitDuration = Mathf.Clamp(mClip.Step.Step.exitDuration, 0f, (float)clip.duration - mClip.Step.Step.entryDuration);
+            mClip.Step.Step.exitDuration = Mathf.Clamp(mClip.Step.Step.exitDuration, 0f,
+                (float)clip.duration - mClip.Step.Step.entryDuration);
         }
-        else 
+        else
         {
             mClip.Step.Step.exitDuration = Mathf.Clamp(mClip.Step.Step.exitDuration, 0f, (float)clip.duration);
-            mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f, (float)clip.duration - mClip.Step.Step.exitDuration);
+            mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f,
+                (float)clip.duration - mClip.Step.Step.exitDuration);
         }
     }
 
@@ -33,22 +40,9 @@ public class TMPMeshModifierClipEditor : ClipEditor
         var mClip = clip.asset as TMPMeshModifierClip;
 
         float leftWidth, rightWidth;
-        
-        // TODO I think i can fix the ugliness of the moving entry/exit areas using region.start/endTime
-        // Debug.Log("Region " + region.startTime + " " + region.endTime );
-        
+
         leftWidth = (mClip.Step.Step.entryDuration / (float)clip.duration) * region.position.width;
         rightWidth = (mClip.Step.Step.exitDuration / (float)clip.duration) * region.position.width;
-
-        //     Debug.Log(leftWidth + "   " + mClip.Step.entryDuration + "   " + clip.duration );
-        // // Calculate the blend in/out visual areas
-        // Rect blendInRect = new Rect(region.position.x, region.position.y, leftWidth, region.position.height);
-        // Rect blendOutRect = new Rect(region.position.x + region.position.width - rightWidth, region.position.y, rightWidth, region.position.height);
-        //
-        // // Draw custom blend in/out visuals
-        // EditorGUI.DrawRect(blendInRect, new Color(0.2f, 0.6f, 1f, 0.3f)); // Blend In
-        // EditorGUI.DrawRect(blendOutRect, new Color(0.2f, 0.6f, 1f, 0.3f)); // Blend Out
-        //
 
         var rect = region.position;
         if (TimelineEditor.selectedClips.Contains(clip))
@@ -68,8 +62,18 @@ public class TMPMeshModifierClipEditor : ClipEditor
         EditorGUI.DrawRect(inRect, new Color(0.2f, 0.6f, 1f, 0.3f));
         EditorGUI.DrawRect(outRect, new Color(0.2f, 0.6f, 1f, 0.3f));
 
-        DrawBackgroundWithCurve(mClip.Step.Step.entryCurve, inRect, leftWidth, true);
-        DrawBackgroundWithCurve(mClip.Step.Step.exitCurve, outRect, rightWidth, false);
+        var drawCurves = EditorPrefs.GetBool(TMPEffectsTimelineEditorPrefsKeys.DRAW_CURVES_EDITORPREFS_KEY);
+        if (drawCurves)
+        {
+            DrawBackgroundWithCurve(mClip.Step.Step.entryCurve, inRect, leftWidth, true);
+            DrawBackgroundWithCurve(mClip.Step.Step.exitCurve, outRect, rightWidth, false);
+        }
+        else
+        {
+            Handles.color = Color.black;
+            Handles.DrawAAPolyLine(new Vector3(inRect.xMin, inRect.yMax), new Vector3(inRect.xMax, inRect.yMin));
+            Handles.DrawAAPolyLine(outRect.min, outRect.max);
+        }
     }
 
     public override ClipDrawOptions GetClipOptions(TimelineClip clip)
@@ -81,75 +85,65 @@ public class TMPMeshModifierClipEditor : ClipEditor
         };
     }
 
+    private AnimationCurve curveIn;
+    private AnimationCurve curveOut;
+    private float inWidth;
+    private float outWidth;
+    private Vector3[] arrIn;
+    private Vector3[] arrOut;
+
     void DrawBackgroundWithCurve(AnimationCurve curve, Rect position, float width, bool blendin)
     {
         if (curve == null)
             return;
-        if ((int)(width * 50) <= 3)
+        if ((int)(width * 5) <= 3)
             return;
 
         Rect rect = position;
-        Handles.BeginGUI();
-
-        Vector3[] points = new Vector3[(int)(width * 50)];
-        points[0] = new Vector3(rect.xMin + width, rect.yMin, 0);
-        points[1] = new Vector3(rect.xMin + width, rect.yMax, 0);
-        points[2] = new Vector3(rect.xMin, rect.yMax, 0);
-
-        for (int i = 0; i < points.Length - 3; i++)
+        Vector3[] points;
+        if ((blendin && inWidth == width && arrIn != null && arrIn.Length == (int)(width * 5) &&
+             curve.Equals(this.curveIn)))
         {
-            float t = (float)i / (points.Length - 4);
+            points = arrIn;
+        }
+        else if ((!blendin && outWidth == width && arrOut != null && arrOut.Length == (int)(width * 5) &&
+                  curve.Equals(this.curveOut)))
+        {
+            points = arrOut;
+        }
+        else
+        {
+            points = new Vector3[(int)(width * 5)];
+            points[0] = new Vector3(rect.xMin + width, rect.yMin, 0);
+            points[1] = new Vector3(rect.xMin + width, rect.yMax, 0);
+            points[2] = new Vector3(rect.xMin, rect.yMax, 0);
 
-            float x = Mathf.Lerp(rect.xMin, rect.xMin + width, t);
-            float y = rect.yMax - curve.Evaluate(blendin ? t : 1 - t) * rect.height;
-            points[i + 3] = new Vector3(x, y, 0);
+            for (int i = 0; i < points.Length - 3; i++)
+            {
+                float t = (float)i / (points.Length - 4);
+
+                float x = Mathf.Lerp(rect.xMin, rect.xMin + width, t);
+                float y = rect.yMax - curve.Evaluate(blendin ? t : 1 - t) * rect.height;
+                points[i + 3] = new Vector3(x, y, 0);
+            }
+
+            if (blendin)
+            {
+                curveIn = curve;
+                inWidth = width;
+                arrIn = points;
+            }
+            else
+            {
+                curveOut = curve;
+                outWidth = width;
+                arrOut = points;
+            }
         }
 
-        Handles.color = Color.black;
-        // Handles.DrawAAConvexPolygon(points);
-        // DrawAAConcavePolygon2(points, position.yMax);
+        Handles.BeginGUI();
         Handles.color = Color.black;
         Handles.DrawAAPolyLine(points);
         Handles.EndGUI();
-    }
-
-    private void DrawAAConcavePolygon(Vector3[] points)
-    {
-        var sum = Vector3.zero;
-        for (int i = 0; i < points.Length; i++)
-        {
-            sum += points[i];
-        }
-
-        var avg = sum / points.Length;
-
-        Vector3[] tmp = new Vector3[3];
-        tmp[0] = avg;
-        for (int i = 0; i < points.Length - 1; i++)
-        {
-            tmp[1] = points[i];
-            tmp[2] = points[i + 1];
-            Handles.DrawAAConvexPolygon(tmp);
-        }
-    }
-
-    private void DrawAAConcavePolygon2(Vector3[] points, float ymin)
-    {
-        var topRight = points[0];
-        var bottomRight = points[1];
-        Vector3 currentPoint;
-
-        for (int i = points.Length - 1; i >= 3; i--)
-        {
-            currentPoint = points[i];
-            var currPointBttm = currentPoint;
-            currPointBttm.y = ymin;
-
-            Handles.DrawAAConvexPolygon(currentPoint, topRight, bottomRight, currPointBttm);
-
-            topRight = currentPoint;
-            bottomRight = topRight;
-            bottomRight.y = ymin;
-        }
     }
 }
