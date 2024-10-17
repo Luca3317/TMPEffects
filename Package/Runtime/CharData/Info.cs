@@ -20,14 +20,17 @@ namespace TMPEffects.CharacterData
             /// The first index of the word this character belongs to.
             /// </summary>
             public readonly int wordFirstIndex;
+
             /// <summary>
             /// The last index of the word this character belongs to.
             /// </summary>
             public readonly int wordLastIndex;
+
             /// <summary>
             /// The length of the word this character belongs to.
             /// </summary>
             public readonly int wordLen;
+
             /// <summary>
             /// The color of this character.
             /// </summary>
@@ -52,10 +55,12 @@ namespace TMPEffects.CharacterData
             /// The line number of the line this character belongs to.
             /// </summary>
             public readonly int lineNumber;
+
             /// <summary>
             /// The page number of the page this character belongs to.
             /// </summary>
             public readonly int pageNumber;
+
             /// <summary>
             /// The inde
             /// </summary>
@@ -65,14 +70,17 @@ namespace TMPEffects.CharacterData
             /// The baseline of the character.
             /// </summary>
             public readonly float baseLine;
+
             /// <summary>
             /// The ascender of the character.
             /// </summary>
             public readonly float ascender;
+
             /// <summary>
             /// The descender of the character.
             /// </summary>
             public readonly float descender;
+
             /// <summary>
             /// The xAdvance factor of the character.
             /// </summary>
@@ -82,6 +90,7 @@ namespace TMPEffects.CharacterData
             /// The font asset used for this character.
             /// </summary>
             public readonly TMP_FontAsset fontAsset;
+
             /// <summary>
             /// The sprite asset used for this sprite.
             /// </summary>
@@ -121,8 +130,7 @@ namespace TMPEffects.CharacterData
                 referenceScale = cInfo.scale;
                 fontAsset = cInfo.fontAsset;
 
-#if UNITY_2023_2_OR_NEWER
-
+#if TMPRO_3_2_0_PRE_10_OR_NEWER
             if (cInfo.elementType == TMP_TextElementType.Sprite)
             {
                 TMP_SpriteCharacter sprite = (TMP_SpriteCharacter)cInfo.textElement;
@@ -140,7 +148,8 @@ namespace TMPEffects.CharacterData
                 origin = cInfo.origin;
             }
 
-            public Info(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo wInfo) : this(index, cInfo, wordIndex)
+            public Info(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo wInfo) : this(index, cInfo,
+                wordIndex)
             {
                 wordFirstIndex = wInfo.firstCharacterIndex;
                 wordLastIndex = wInfo.lastCharacterIndex;
@@ -148,5 +157,4 @@ namespace TMPEffects.CharacterData
             }
         }
     }
-
 }

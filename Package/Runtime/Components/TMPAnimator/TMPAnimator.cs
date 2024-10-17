@@ -893,37 +893,66 @@ namespace TMPEffects.Components
             count++;
             if (count >= 1000)
             {
-                // Debug.LogWarning("1000 anims took " + sw.Elapsed.TotalMilliseconds);
+                Debug.LogWarning("1000 took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
             else if (count % 100 == 0)
             {
-                // Debug.Log(count);
+                Debug.Log(count);
             }
         }
 
-
         public delegate void OnCharacterAnimatedEventHandler(CharData cData);
-        
+
         public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
 
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true,
             bool forced = false)
         {
-            if (!cData.info.isVisible || (!forced && !AnimateCharacter(index, cData))) return;
+            if (!cData.info.isVisible) return;
+            VisibilityState vState = Mediator.VisibilityStates[index];
+            if (vState == VisibilityState.Hidden) return;
 
-            context.deltaTime = deltaTime;
-
-            UpdateCharacterAnimation_Impl(index);
-
-            // TODO Some post animation event that allows listeners to modify the chardata before its applied
-            if (OnCharacterAnimated != null)
+            if (defaultAnimations.Count != 0 || basic.HasAnyContaining(index) ||
+                vState != VisibilityState.Shown)
             {
-                cData.Reset();
-                OnCharacterAnimated.Invoke(cData);
-                state.MeshModifiers.Combine(cData.MeshModifiers);
-                state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                context.deltaTime = deltaTime;
+                state.Reset();
+                UpdateCharacterAnimation_Impl(index);
+
+                if (OnCharacterAnimated != null)
+                {
+                    // TODO Issue; this needs to be called before every invoked method
+                    // maybe make list of actions instead
+                    // Actually; not necessarily. Just the cdata modifiers will already be dirty
+                    // meaning some of the api will be a lil different than for normal animations
+                    // which is fine? for example for genericanimations or tmpmeshmodifierbehaviours
+                    // this makes 0 difference
+                    cData.Reset();
+                    OnCharacterAnimated.Invoke(cData);
+                    state.MeshModifiers.Combine(cData.MeshModifiers);
+                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                }
+            }
+            else
+            {
+                context.deltaTime = deltaTime;
+                if (OnCharacterAnimated != null)
+                {
+                    state.Reset();
+                    // TODO Issue; this needs to be called before every invoked method
+                    // maybe make list of actions instead
+                    // Actually; not necessarily. Just the cdata modifiers will already be dirty
+                    // meaning some of the api will be a lil different than for normal animations
+                    // which is fine? for example for genericanimations or tmpmeshmodifierbehaviours
+                    // this makes 0 difference
+                    cData.Reset();
+                    OnCharacterAnimated.Invoke(cData);
+                    state.MeshModifiers.Combine(cData.MeshModifiers);
+                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                }
+                else return;
             }
 
             ApplyVertices();
@@ -981,10 +1010,6 @@ namespace TMPEffects.Components
             CharData cData = Mediator.CharData[index];
             VisibilityState vState = Mediator.VisibilityStates[index];
             if (!cData.info.isVisible || vState == VisibilityState.Hidden) return;
-
-            // state.Reset(context, cData);
-            // stateNew.Reset(cData, context);
-            state.Reset();
 
             if (vState == VisibilityState.Showing)
             {
