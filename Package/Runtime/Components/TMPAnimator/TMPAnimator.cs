@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,15 +14,12 @@ using TMPEffects.Tags;
 using TMPEffects.CharacterData;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using Codice.Client.Common.EventTracking;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
-using TMPEffects.Components.Mediator;
 using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components
