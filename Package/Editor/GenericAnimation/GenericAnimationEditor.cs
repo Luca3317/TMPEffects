@@ -367,13 +367,13 @@ namespace TMPEffects.TMPAnimations.GenericExports
             // Calculate weight, based on the currently relevant blend curve
             float weight = 1;
             float entry = timeValue - step.startTime;
-            if (entry <= step.entryDuration)
+            if (step.entryDuration > 0 && entry <= step.entryDuration)
             {{
                 weight = step.entryCurve.Evaluate(entry / step.entryDuration);
             }}
 
             float exit = step.EndTime - timeValue;
-            if (exit <= step.exitDuration)
+            if (step.exitDuration > 0 && exit <= step.exitDuration)
             {{
                 weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
             }}

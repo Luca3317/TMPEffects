@@ -65,11 +65,11 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             float weight = 1;
 
 
-            if (currTime <= behaviour.Step.Step.entryDuration)
+            if (behaviour.Step.Step.entryDuration > 0 && currTime <= behaviour.Step.Step.entryDuration)
             {
                 weight = behaviour.Step.Step.entryCurve.Evaluate(currTime / behaviour.Step.Step.entryDuration);
             }
-            else if (currTime >= duration - behaviour.Step.Step.exitDuration)
+            else if (behaviour.Step.Step.exitDuration > 0 && currTime >= duration - behaviour.Step.Step.exitDuration)
             {
                 float preTime = duration - behaviour.Step.Step.exitDuration;
                 weight = behaviour.Step.Step.exitCurve.Evaluate(1f - (currTime - preTime) /
