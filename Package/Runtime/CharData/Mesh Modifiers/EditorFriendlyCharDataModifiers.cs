@@ -89,7 +89,7 @@ public class EditorFriendlyCharDataModifiers
         // Scale
         if (Scale != Vector3.one)
         {
-            result.CharacterModifiers.Scale = Matrix4x4.Scale(Scale);
+            result.CharacterModifiers.ScaleDelta = Matrix4x4.Scale(Scale);
         }
 
         // Rotations
@@ -117,67 +117,6 @@ public class EditorFriendlyCharDataModifiers
                 }
             }
         }
-
-
-
-
-
-        for (int i = 0; i < 4; i++)
-        {
-            // Position(Delta)
-            if (Position.type == ParameterTypes.VectorType.Position)
-            {
-                Vector3 position = Position.IgnoreScaling(cData, ctx).ToDelta(cData);
-                if (position != Vector3.zero) result.CharacterModifiers.PositionDelta = position;
-            }
-            else if (Position.vector != Vector3.zero)
-            {
-                Vector3 posDelta = Position.ToDelta(cData);
-                if (posDelta != Vector3.zero) result.CharacterModifiers.PositionDelta = posDelta;
-            }
-
-            // Scale
-            if (Scale != Vector3.one)
-            {
-                result.CharacterModifiers.Scale = Matrix4x4.Scale(Scale);
-            }
-
-            // Rotations
-            if (Rotations.Count > 0)
-            {
-                for (int i = 0; i < Rotations.Count; i++)
-                {
-                    var rot = Rotations[i];
-                    if (rot.eulerAngles != Vector3.zero)
-                    {
-                        Vector3 pivot = Vector3.zero;
-                        if (rot.pivot.type == ParameterTypes.VectorType.Offset)
-                        {
-                            Vector3 posDelta = rot.pivot.ToPosition(cData);
-                            pivot = posDelta;
-                        }
-                        else
-                        {
-                            Vector3 position = rot.pivot /*.IgnoreScaling(cData, ctx)*/
-                                .ToPosition(cData);
-                            pivot = position;
-                        }
-
-                        result.CharacterModifiers.AddRotation(new Rotation(rot.eulerAngles, pivot));
-                    }
-                }
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
         // Vertex colors
         result.MeshModifiers.BL_Color = BL_Color;
