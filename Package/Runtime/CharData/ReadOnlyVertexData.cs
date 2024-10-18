@@ -25,12 +25,6 @@ namespace TMPEffects.CharacterData
         /// </summary>
         private TMP_Vertex vertex_BR;
 
-
-        /// <summary>
-        /// The initial vertex of the character.
-        /// </summary>
-        public readonly ReadOnlyVertexData initial;
-
         /// <summary>
         /// Get or set the color of the bottom left vertex.<br/>
         /// Note that this will mark both colors and alphas as dirty.<br/>

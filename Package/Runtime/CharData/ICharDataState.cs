@@ -23,64 +23,64 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public IEnumerable<ValueTuple<Quaternion, Vector3>> Rotations { get; }
 
-        /// <summary>
-        /// The position of the topleft vertex.
-        /// </summary>
-        public Vector3 TL { get; }
-        /// <summary>
-        /// The position of the topright vertex.
-        /// </summary>
-        public Vector3 TR { get; }
-        /// <summary>
-        /// The position of the bottomright vertex.
-        /// </summary>
-        public Vector3 BR { get; }
-        /// <summary>
-        /// The position of the bottomleft vertex.
-        /// </summary>
-        public Vector3 BL { get; }
+        // /// <summary>
+        // /// The position of the topleft vertex.
+        // /// </summary>
+        // public Vector3 TL { get; }
+        // /// <summary>
+        // /// The position of the topright vertex.
+        // /// </summary>
+        // public Vector3 TR { get; }
+        // /// <summary>
+        // /// The position of the bottomright vertex.
+        // /// </summary>
+        // public Vector3 BR { get; }
+        // /// <summary>
+        // /// The position of the bottomleft vertex.
+        // /// </summary>
+        // public Vector3 BL { get; }
 
-        /// <summary>
-        /// The maximum position modification of the topleft vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 TLMax { get; }
-        /// <summary>
-        /// The maximum position modification of the topright vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 TRMax { get; }
-        /// <summary>
-        /// The maximum position modification of the bottomright vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 BRMax { get; }
-        /// <summary>
-        /// The maximum position modification of the bottomleft vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 BLMax { get; }
+        // /// <summary>
+        // /// The maximum position modification of the topleft vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 TLMax { get; }
+        // /// <summary>
+        // /// The maximum position modification of the topright vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 TRMax { get; }
+        // /// <summary>
+        // /// The maximum position modification of the bottomright vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 BRMax { get; }
+        // /// <summary>
+        // /// The maximum position modification of the bottomleft vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 BLMax { get; }
 
-        /// <summary>
-        /// The minimum position modification of the topleft vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 TLMin { get; }
-        /// <summary>
-        /// The minimum position modification of the topright vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 TRMin { get; }
-        /// <summary>
-        /// The minimum position modification of the bottomleft vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 BRMin { get; }
-        /// <summary>
-        /// The minimum position modification of the bottomleft vertex.<br/>
-        /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
-        /// </summary>
-        public Vector3 BLMin { get; }
+        // /// <summary>
+        // /// The minimum position modification of the topleft vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 TLMin { get; }
+        // /// <summary>
+        // /// The minimum position modification of the topright vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 TRMin { get; }
+        // /// <summary>
+        // /// The minimum position modification of the bottomleft vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 BRMin { get; }
+        // /// <summary>
+        // /// The minimum position modification of the bottomleft vertex.<br/>
+        // /// This is used in calculating the scaling of all vertex position modifications in <see cref="CalculateVertexPositions"/>; you can most likely ignore this.
+        // /// </summary>
+        // public Vector3 BLMin { get; }
 
         /// <summary>
         /// The UV value of the topleft vertex.
