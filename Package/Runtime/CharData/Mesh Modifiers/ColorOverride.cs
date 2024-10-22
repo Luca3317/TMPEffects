@@ -62,6 +62,11 @@ public struct ColorOverride
                Color.a == obj.Color.a;
     }
 
+    public static ColorOverride LerpUnclamped(ColorOverride start, Color32 end, float t)
+    {
+        return LerpUnclamped(end, start, 1 - t);
+    }
+
     public static ColorOverride LerpUnclamped(Color32 start, ColorOverride end, float t)
     {
         if (t >= 1)
@@ -165,5 +170,10 @@ public struct ColorOverride
 
         result.Color = new Color32(r, g, b, a);
         return result;
+    }
+
+    public override string ToString()
+    {
+        return "{ Color: " + Color + " Override: " + Override + " }";
     }
 }

@@ -13,6 +13,17 @@ namespace TMPEffects.TMPAnimations
         menuName = "TMPEffects/Animations/Basic Animations/Generic Animation")]
     public partial class GenericAnimation : TMPAnimation
     {
+        [Serializable]
+        public class SomeClass : List<List<AnimationStep>> {}
+
+        [Serializable]
+        public class ClipList
+        {
+            public List<AnimationStep> Clips;
+        }
+        
+        [SerializeField] private List<ClipList> Sief;
+        
         public List<AnimationStep> AnimationSteps => animationSteps;
 
         public bool Repeat
@@ -41,12 +52,56 @@ namespace TMPEffects.TMPAnimations
         private CharDataModifiers modifiersStorage, modifiersStorage2;
         private CharDataModifiers accModifier, current;
 
-        public static bool ApplyAnimationStep(AnimationStep step, float timeValue, CharData cData, IAnimatorContext context,
+        public static bool ApplyAnimationStep(AnimationStep step, float timeValue, CharData cData,
+            IAnimatorContext context,
             CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
         {
             if (step == null) return false;
             if (!step.animate) return false;
+
+
+            if (timeValue < step.startTime)
+            {
+                switch (step.preExtrapolation)
+                {
+                    case AnimationStep.ExtrapolationMode.Continue:
+                    case AnimationStep.ExtrapolationMode.Hold:
+                        timeValue = step.startTime;
+                        break;
+                    case AnimationStep.ExtrapolationMode.Loop:
+                        float diff = (step.startTime - timeValue) % step.duration;
+                        timeValue = step.EndTime - diff;
+                        break;
+                    case AnimationStep.ExtrapolationMode.PingPong:
+                        diff = (step.startTime - timeValue) % step.duration;
+                        timeValue = step.startTime + diff;
+                        break;
+                }
+            }
+
+            if (timeValue > step.EndTime)
+            {
+                switch (step.postExtrapolation)
+                {
+                    case AnimationStep.ExtrapolationMode.Continue:
+                    case AnimationStep.ExtrapolationMode.Hold:
+                        timeValue = step.EndTime;
+                        break;
+                    case AnimationStep.ExtrapolationMode.Loop:
+                        float diff = (timeValue - step.EndTime) % step.duration;
+                        timeValue = step.startTime + diff;
+                        break;
+                    case AnimationStep.ExtrapolationMode.PingPong:
+                        diff = (timeValue - step.EndTime) % step.duration;
+                        timeValue = step.EndTime - diff;
+                        break;
+                }
+            }
+
+            // If time before clip starts (after adjusting for extrapolation)
             if (step.startTime > timeValue) return false;
+
+            // If time after clip ends (after adjusting for extrapolation)
             if (step.EndTime < timeValue) return false;
 
             float weight = 1;
@@ -67,9 +122,9 @@ namespace TMPEffects.TMPAnimations
                 var offset = AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType);
                 weight *= step.wave.Evaluate(timeValue, offset).Value;
             }
-            
+
             result.Reset();
-            
+
             if (step.useInitialModifiers)
             {
                 // Reset storage
@@ -98,11 +153,13 @@ namespace TMPEffects.TMPAnimations
             return true;
         }
 
-        public static void ApplyAnimationStepWeighted(AnimationStep step, float weight, CharData cData, IAnimatorContext context,
+        public static void ApplyAnimationStepWeighted(AnimationStep step, float weight, CharData cData,
+            IAnimatorContext context,
             CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
         {
             result.Reset();
-            
+
+
             if (step.useInitialModifiers)
             {
                 // Reset storage
@@ -114,7 +171,9 @@ namespace TMPEffects.TMPAnimations
                 step.modifiers.ToCharDataModifiers(cData, context, storage2);
 
                 // Lerp modifiers and store into current
+                Debug.LogWarning("inbetween is now br color " + result.MeshModifiers.BR_Color);
                 CharDataModifiers.LerpUnclamped(cData, storage, storage2, weight, result);
+                Debug.LogWarning("inbetween 2 is now br color " + result.MeshModifiers.BR_Color);
             }
             else
             {
@@ -148,59 +207,9 @@ namespace TMPEffects.TMPAnimations
             {
                 if (!ApplyAnimationStep(step, timeValue, cData, context.AnimatorContext, modifiersStorage,
                         modifiersStorage2, current)) continue;
-                
+
                 accModifier.MeshModifiers.Combine(current.MeshModifiers);
                 accModifier.CharacterModifiers.Combine(current.CharacterModifiers);
-                //
-                // // Continue checks
-                // if (step == null) continue;
-                // if (!step.animate) continue;
-                // if (step.startTime > timeValue) continue;
-                // if (step.EndTime < timeValue) continue;
-                //
-                // // Calculate weight / t value for current step
-                // float weight = 1;
-                // float entry = timeValue - step.startTime;
-                // if (entry <= step.entryDuration)
-                // {
-                //     weight = step.entryCurve.Evaluate(entry / step.entryDuration);
-                // }
-                //
-                // float exit = step.EndTime - timeValue;
-                // if (exit <= step.exitDuration)
-                // {
-                //     weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
-                // }
-                //
-                // if (step.useWave)
-                // {
-                //     var offset = AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType);
-                //     weight *= step.wave.Evaluate(timeValue, offset).Value;
-                // }
-                //
-                // // Reset storage
-                // modifiersStorage.Reset();
-                //
-                // if (step.useInitialModifiers)
-                // {
-                //     // Set modifiers
-                //     step.initModifiers.ToCharDataModifiers(cData, context, modifiersStorage);
-                //     step.modifiers.ToCharDataModifiers(cData, context, modifiersStorage2);
-                //
-                //     // Lerp modifiers and store into current
-                //     CharDataModifiers.LerpUnclamped(cData, modifiersStorage, modifiersStorage2, weight, current);
-                // }
-                // else
-                // {
-                //     // Set modifier
-                //     step.modifiers.ToCharDataModifiers(cData, context, modifiersStorage);
-                //
-                //     // Lerp modifier and store into current
-                //     CharDataModifiers.LerpUnclamped(cData, modifiersStorage, weight, current);
-                // }
-                //
-                // accModifier.MeshModifiers.Combine(current.MeshModifiers);
-                // accModifier.CharacterModifiers.Combine(current.CharacterModifiers);
             }
 
             cData.MeshModifiers.Combine(accModifier.MeshModifiers);

@@ -20,6 +20,11 @@ public class AnimationStep
     public AnimationCurve exitCurve;
     public float exitDuration;
 
+    public float extrapolateFrom;
+    public ExtrapolationMode preExtrapolation;
+    public float extrapolateUntil;
+    public ExtrapolationMode postExtrapolation;
+
     public bool loops;
     public uint repetitions;
     public bool useWave;
@@ -38,4 +43,13 @@ public class AnimationStep
     public bool useInitialModifiers = false;
     public EditorFriendlyCharDataModifiers initModifiers;
     public EditorFriendlyCharDataModifiers modifiers;
+
+    public enum ExtrapolationMode
+    {
+        None,
+        Hold,
+        Loop,
+        PingPong,
+        Continue
+    }
 }

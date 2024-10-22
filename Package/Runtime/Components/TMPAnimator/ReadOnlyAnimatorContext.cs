@@ -10,6 +10,8 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     public class ReadOnlyAnimatorContext : IAnimatorContext
     {
+        public CharDataModifiers Modifiers => context.Modifiers;
+        
         /// <inheritdoc/>
         public bool ScaleAnimations => context.ScaleAnimations;
         /// <inheritdoc/>

@@ -889,13 +889,13 @@ namespace TMPEffects.Components
             count++;
             if (count >= 1000)
             {
-                Debug.LogWarning("1000 took " + sw.Elapsed.TotalMilliseconds);
+                // Debug.LogWarning("1000 took " + sw.Elapsed.TotalMilliseconds);
                 sw.Reset();
                 count = 0;
             }
             else if (count % 100 == 0)
             {
-                Debug.Log(count);
+                // Debug.Log(count);
             }
         }
 
@@ -914,6 +914,7 @@ namespace TMPEffects.Components
                 vState != VisibilityState.Shown)
             {
                 context.deltaTime = deltaTime;
+                context.Modifiers = state;
                 state.Reset();
                 UpdateCharacterAnimation_Impl(index);
 
@@ -932,8 +933,9 @@ namespace TMPEffects.Components
                 }
             }
             else
-            {
+            {           
                 context.deltaTime = deltaTime;
+                context.Modifiers = state;
                 if (OnCharacterAnimated != null)
                 {
                     state.Reset();

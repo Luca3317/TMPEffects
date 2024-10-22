@@ -80,6 +80,8 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     {
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("Sief"), true);
+
         EditorGUILayout.LabelField("Animation settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
         EditorGUILayout.PropertyField(serializedObject.FindProperty("repeat"));

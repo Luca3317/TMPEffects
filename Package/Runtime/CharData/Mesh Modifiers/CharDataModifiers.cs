@@ -141,14 +141,15 @@ public class CharDataModifiers
     public static void LerpUnclamped(CharData cData, CharDataModifiers start, CharDataModifiers end, float t,
         CharDataModifiers result)
     {
-        LerpCharacterModifiersUnclamped(cData, start.CharacterModifiers, end.CharacterModifiers, t, result.CharacterModifiers);
+        LerpCharacterModifiersUnclamped(cData, start.CharacterModifiers, end.CharacterModifiers, t,
+            result.CharacterModifiers);
         LerpMeshModifiersUnclamped(cData, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
     }
 
     public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers start,
         TMPCharacterModifiers end, float t, TMPCharacterModifiers result)
     {
-                result.ClearModifierFlags();
+        result.ClearModifierFlags();
 
         var combinedFlags = end.Modifier | start.Modifier;
 
@@ -195,6 +196,8 @@ public class CharDataModifiers
         }
     }
 
+    public static IAnimatorContext ctx; 
+
     public static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers start, TMPMeshModifiers end,
         float t,
         TMPMeshModifiers result)
@@ -211,14 +214,40 @@ public class CharDataModifiers
             result.BR_Delta = Vector3.LerpUnclamped(start.BR_Delta, end.BR_Delta, t);
         }
 
-        if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
+        Debug.LogWarning("You better " + result.BR_Color + "; " + start.Modifier + " : " + end.Modifier);
+        if (end.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
         {
-            result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color, t);
-            result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color, t);
-            result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color, t);
-            result.BR_Color = ColorOverride.LerpUnclamped(start.BR_Color, end.BR_Color, t);
+            if (start.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
+            {
+                result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color,t);
+                result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color,t);
+                result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color,t);
+                result.BR_Color = ColorOverride.LerpUnclamped(start.BR_Color, end.BR_Color,t);
+            }
+            else if (cData.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
+            {
+                result.BL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BL_Color, end.BL_Color,t);
+                result.TL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TL_Color, end.TL_Color,t);
+                result.TR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TR_Color, end.TR_Color,t);
+                result.BR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BR_Color, end.BR_Color,t);
+            }           
+            else if (ctx.Modifiers.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
+            {
+                result.BL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BL_Color, end.BL_Color,t);
+                result.TL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TL_Color, end.TL_Color,t);
+                result.TR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TR_Color, end.TR_Color,t);
+                result.BR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BR_Color, end.BR_Color,t);
+            }
+            else
+            {
+                result.BL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BL_Color, end.BL_Color, t);
+                result.TL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TL_Color, end.TL_Color, t);
+                result.TR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TR_Color, end.TR_Color, t);
+                result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, end.BR_Color, t);
+            }
         }
-
+        Debug.LogWarning("You better 2 " + result.BR_Color);
+        
         if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
         {
             var startVector = start.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);
@@ -304,7 +333,7 @@ public class CharDataModifiers
             result.ScaleDelta = Matrix4x4.Scale(lerpedScale);
         }
     }
-    
+
     public static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t,
         TMPMeshModifiers result)
     {

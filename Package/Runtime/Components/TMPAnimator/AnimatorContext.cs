@@ -11,6 +11,8 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     public class AnimatorContext : IAnimatorContext
     {
+        public CharDataModifiers Modifiers { get; set; }
+        
         /// <inheritdoc/>
         public bool ScaleAnimations
         {

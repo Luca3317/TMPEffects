@@ -29,7 +29,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
         time = (float)director.time;
 
-
+        
         int inputCount = playable.GetInputCount();
         for (int i = 0; i < inputCount; i++)
         {
@@ -38,7 +38,41 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
             ScriptPlayable<TMPMeshModifierBehaviour> behaviour =
                 (ScriptPlayable<TMPMeshModifierBehaviour>)playable.GetInput(i);
+            
+            active.Add(behaviour);
+        }
 
+        if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
+
+        if (animator.UpdateFrom == UpdateFrom.Script)
+            animator.UpdateAnimations(0f);
+    }
+    
+    public void ProcessFrameOLD(Playable playable, FrameData info, object playerData)
+    {
+        Debug.Log("TIME: " + time);
+        animator = playerData as TMPAnimator;
+
+        if (animator == null) return;
+
+        PlayableDirector director = (PlayableDirector)playable.GetGraph().GetResolver();
+
+        active ??= new List<ScriptPlayable<TMPMeshModifierBehaviour>>();
+        active.Clear();
+
+        animator.OnCharacterAnimated -= OnAnimatedCallback;
+
+        time = (float)playable.GetTime(); /*(float)director.time;*/
+        
+        int inputCount = playable.GetInputCount();
+        for (int i = 0; i < inputCount; i++)
+        {
+            float weight = playable.GetInputWeight(i);
+            if (weight <= 0) continue;
+
+            ScriptPlayable<TMPMeshModifierBehaviour> behaviour =
+                (ScriptPlayable<TMPMeshModifierBehaviour>)playable.GetInput(i);
+            
             active.Add(behaviour);
         }
 
@@ -61,21 +95,25 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             var behaviour = active[i].GetBehaviour();
             if (behaviour == null) continue;
             float currTime = (float)active[i].GetTime();
-            float duration = (float)active[i].GetDuration();
+            float duration =  (float)behaviour.Clip.duration;
+            // float dur2 = (float)behaviour.Clip.duration;
             float weight = 1;
 
-
+            // Debug.Log("CURRTIME: " + currTime + "; DURATION: " + duration + "; DURATION2: " + dur2);
+            
+            
             if (behaviour.Step.Step.entryDuration > 0 && currTime <= behaviour.Step.Step.entryDuration)
             {
                 weight = behaviour.Step.Step.entryCurve.Evaluate(currTime / behaviour.Step.Step.entryDuration);
             }
+            
             else if (behaviour.Step.Step.exitDuration > 0 && currTime >= duration - behaviour.Step.Step.exitDuration)
             {
                 float preTime = duration - behaviour.Step.Step.exitDuration;
                 weight = behaviour.Step.Step.exitCurve.Evaluate(1f - (currTime - preTime) /
                     behaviour.Step.Step.exitDuration);
             }
-
+            
             if (behaviour.Step.Step.useWave)
             {
                 var offset = AnimationUtility.GetWaveOffset(cdata, animator.AnimatorContext,
@@ -83,7 +121,8 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
                 weight *= behaviour.Step.Step.wave.Evaluate(currTime, offset).Value;
             }
 
-
+            current.Reset();
+            CharDataModifiers.ctx = animator.AnimatorContext;
             GenericAnimation.ApplyAnimationStepWeighted(behaviour.Step.Step, weight, cdata, animator.AnimatorContext,
                 modifiersStorage, modifiersStorage2, current);
 

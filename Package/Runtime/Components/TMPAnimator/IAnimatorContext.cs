@@ -8,6 +8,9 @@ namespace TMPEffects.Components.Animator
     /// </summary>
     public interface IAnimatorContext
     {
+        public CharDataModifiers Modifiers { get; }
+        
+        
         /// <summary>
         /// Whether animations are scaled.
         /// </summary>

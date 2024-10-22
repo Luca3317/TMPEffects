@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.TMPAnimations;
@@ -7,11 +8,13 @@ using UnityEngine.Timeline;
 
 public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
 {
+    [NonSerialized] public TimelineClip Clip = null;
+    
     public ClipCaps clipCaps
     {
-        get { return ClipCaps.None; }
+        get { return ClipCaps.Extrapolation; }
     }
-
+ 
     private ExposedReference<PlayableDirector> director;
     [SerializeField] private TimelineAnimationStep step;
     
@@ -23,6 +26,7 @@ public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
         var behaviour = playable.GetBehaviour();
         playable.GetDuration();
         behaviour.Step = step;
+        behaviour.Clip = Clip;
         
         PlayableDirector director = (PlayableDirector)graph.GetResolver();
         playable.GetGraph().GetResolver().SetReferenceValue(this.director.exposedName, director);

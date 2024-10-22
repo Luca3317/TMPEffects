@@ -57,6 +57,11 @@ public class TMPMeshModifiers
         set
         {
             if (value.Equals(bl_Color)) return;
+            if (value.Override == 0)
+            {
+                ClearColors();
+                return;
+            }
             bl_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -68,6 +73,11 @@ public class TMPMeshModifiers
         set
         {
             if (value.Equals(tl_Color)) return;
+            if (value.Override == 0)
+            {
+                ClearColors();
+                return;
+            }
             tl_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -79,6 +89,11 @@ public class TMPMeshModifiers
         set
         {
             if (value.Equals(tr_Color)) return;
+            if (value.Override == 0)
+            {
+                ClearColors();
+                return;
+            }
             tr_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -90,6 +105,11 @@ public class TMPMeshModifiers
         set
         {
             if (value.Equals(br_Color)) return;
+            if (value.Override == 0)
+            {
+                ClearColors();
+                return;
+            }
             br_Color = value;
             modifier |= ModifierFlags.Colors;
         }
