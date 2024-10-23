@@ -275,6 +275,16 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         EditorGUILayout.Space();
 
+        if (GUILayout.Button("Sort Steps"))
+        {
+            var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+            for (int i = 0; i < trackProp.arraySize; i++)
+            {
+                var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("Clips");
+                QuickSort(clips, 0, clips.arraySize-1, new SortClipComparer());
+            }
+        }
+
         UpdateLists();
         EditorGUILayout.LabelField("Animation Steps", EditorStyles.boldLabel);
         trackList.DoLayoutList();
