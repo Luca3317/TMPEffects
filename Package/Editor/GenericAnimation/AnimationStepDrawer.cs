@@ -192,7 +192,11 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (property== null) Debug.LogWarning("EARLY NUL!!!!");
+        if (property.managedReferenceValue == null)
+        {
+            Debug.LogWarning("Had to init");
+            property.managedReferenceValue = new AnimationStep();
+        }
         
         Init(property);
         EditorGUI.BeginProperty(position, label, property);
@@ -233,6 +237,12 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
+        if (property.managedReferenceValue == null)
+        {
+            Debug.LogWarning("Had to init");
+            property.managedReferenceValue = new AnimationStep();
+        }
+        
         Init(property);
 
         if (property.isExpanded)

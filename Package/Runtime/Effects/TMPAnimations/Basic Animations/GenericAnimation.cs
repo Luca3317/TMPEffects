@@ -18,6 +18,8 @@ namespace TMPEffects.TMPAnimations
         {
             [SerializeReference] private List<AnimationStep> Clips = new List<AnimationStep>();
         }
+        
+        public Track MyTrack = new Track();
 
         [Serializable]
         public class TrackList
@@ -25,7 +27,7 @@ namespace TMPEffects.TMPAnimations
             public List<Track> Tracks = new List<Track>();
         }
         
-        public List<Track> Tracks = new List<Track>();
+        public TrackList Tracks = new TrackList();
         
         public List<AnimationStep> AnimationSteps => animationSteps;
 

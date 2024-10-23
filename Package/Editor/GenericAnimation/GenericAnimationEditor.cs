@@ -29,25 +29,31 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     {
         base.OnEnable();
         exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
+
+        _ = new ReorderableList(serializedObject,
+            serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks"), true, false, true, true);
+        UpdateLists();
     }
 
     // Update all other durations when one was changed in the inspector
-    // ChangedIndex: the index that was changed,
+    // ChangedIndex: the index that was changed, 
     // ignoreIndex: further indices that should remain unchanged
-    private void OnChangedStartOrDuration(int changedIndex, params int[] ignoreIndex)
+    private void OnChangedStartOrDuration(int listIndex, int changedIndex, params int[] ignoreIndex)
     {
-        var steps = serializedObject.FindProperty("animationSteps");
-        var changedProp = serializedObject.FindProperty("animationSteps").GetArrayElementAtIndex(changedIndex);
+        var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
+            .GetArrayElementAtIndex(listIndex).FindPropertyRelative("Clips");
+        var changedProp = clips.GetArrayElementAtIndex(changedIndex);
+
         float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
         float changedDuration = changedProp.FindPropertyRelative("duration").floatValue;
         float changedEndTime = changedStartTime + changedDuration;
 
         // Update all start times and durations to accomodate for changed time
-        for (int i = 0; i < steps.arraySize; i++)
+        for (int i = 0; i < clips.arraySize; i++)
         {
             if (i == changedIndex || ignoreIndex.Contains(i)) continue;
 
-            var step = steps.GetArrayElementAtIndex(i);
+            var step = clips.GetArrayElementAtIndex(i);
 
             float startTime = step.FindPropertyRelative("startTime").floatValue;
             if (startTime > changedEndTime) continue; // If starts after changed ends, cont
@@ -64,14 +70,14 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
                 if (endTime >= changedEndTime)
                 {
                     step.FindPropertyRelative("startTime").floatValue = changedEndTime;
-                    OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+                    OnChangedStartOrDuration(listIndex, i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
                 }
                 // else meaning fully within the changed step
                 else
                 {
                     step.FindPropertyRelative("startTime").floatValue = changedStartTime;
                     step.FindPropertyRelative("duration").floatValue = 0f;
-                    OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+                    OnChangedStartOrDuration(listIndex, i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
                 }
             }
 
@@ -79,14 +85,16 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             else if (changedStartTime >= startTime)
             {
                 step.FindPropertyRelative("duration").floatValue = changedStartTime - startTime;
-                OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+                OnChangedStartOrDuration(listIndex, i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
             }
         }
     }
 
-    private void DrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
+    private void DrawElementCallback(int listindex, Rect rect, int index, bool isactive, bool isfocused)
     {
-        var itemProp = serializedObject.FindProperty("animationSteps").GetArrayElementAtIndex(index);
+        var itemProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
+            .GetArrayElementAtIndex(listindex).FindPropertyRelative("Clips").GetArrayElementAtIndex(index);
+
         var nameProp = itemProp.FindPropertyRelative("name");
         var animateProp = itemProp.FindPropertyRelative("animate");
 
@@ -118,16 +126,40 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         if (newTime != startTimeProp.floatValue)
         {
             startTimeProp.floatValue = newTime;
-            OnChangedStartOrDuration(index);
+            OnChangedStartOrDuration(listindex, index);
         }
         else if (newEndTime != startTimeProp.floatValue + durationProp.floatValue)
         {
             durationProp.floatValue = newEndTime - startTimeProp.floatValue;
-            OnChangedStartOrDuration(index);
+            OnChangedStartOrDuration(listindex, index);
         }
 
         EditorGUIUtility.labelWidth = 0;
         EditorGUI.PropertyField(rect, itemProp, GUIContent.none);
+    }
+
+    private float MainElementHeightCallback(int index)
+    {
+        var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("Clips");
+        return EditorGUI.GetPropertyHeight(clips);
+    }
+
+    private void MainAddCallback(ReorderableList list)
+    {
+        Debug.LogWarning("ADD");
+        var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        trackprop.arraySize++;
+        trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("Clips").ClearArray();
+    }
+
+    private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
+    {
+        EditorGUI.indentLevel++;
+        var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("Clips");
+        EditorGUI.PropertyField(rect, clips);
+        EditorGUI.indentLevel--;
     }
 
     private void AddCallback(ReorderableList list)
@@ -181,9 +213,10 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             {
                 // Swap
                 var tmp = prop.GetArrayElementAtIndex(i).managedReferenceValue;
-                prop.GetArrayElementAtIndex(i).managedReferenceValue = prop.GetArrayElementAtIndex(j).managedReferenceValue;
+                prop.GetArrayElementAtIndex(i).managedReferenceValue =
+                    prop.GetArrayElementAtIndex(j).managedReferenceValue;
                 prop.GetArrayElementAtIndex(j).managedReferenceValue = tmp;
-                
+
                 i++;
                 j--;
             }
@@ -196,6 +229,39 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             QuickSort(prop, i, right, comparer);
     }
 
+    private ReorderableList trackList;
+
+    private void UpdateLists()
+    {
+        try
+        {
+            var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+            // EditorGUILayout.PropertyField(trackprop);
+            trackList = ReorderableList.GetReorderableListFromSerializedProperty(trackprop);
+            trackList.onAddCallback = MainAddCallback;
+            trackList.drawElementCallback = MainDrawElementCallback;
+            trackList.elementHeightCallback = MainElementHeightCallback;
+            for (int i = 0; i < trackprop.arraySize; i++)
+            {
+                var list =
+                    ReorderableList.GetReorderableListFromSerializedProperty(trackprop.GetArrayElementAtIndex(i)
+                        .FindPropertyRelative("Clips"));
+
+                if (list == null)
+                {
+                    continue;
+                }
+
+
+                int listindex = i;
+                list.drawElementCallback = (a, b, c, d) => DrawElementCallback(listindex, a, b, c, d);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning(e.Message);
+        }
+    }
 
     public override void OnInspectorGUI()
     {
@@ -209,18 +275,10 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         EditorGUILayout.Space();
 
-        var tracks = serializedObject.FindProperty("Tracks");
-        if (GUILayout.Button("Sort clips"))
-        {
-            for (int i = 0; i < tracks.arraySize; i++)
-            {
-                var track = tracks.GetArrayElementAtIndex(i).FindPropertyRelative("Clips");
-                if (track.arraySize >= 2)
-                    QuickSort(track, 0, track.arraySize - 1, new SortClipComparer());
-            }
-        }
+        UpdateLists();
+        EditorGUILayout.LabelField("Animation Steps", EditorStyles.boldLabel);
+        trackList.DoLayoutList();
 
-        EditorGUILayout.PropertyField(tracks);
 
         EditorGUILayout.Space();
 
@@ -285,7 +343,6 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         serializedObject.ApplyModifiedProperties();
     }
-
 
     private int sliderControlID;
     private bool? wasPlaying = null;
