@@ -1,5 +1,221 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6142259828328378184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fa5eac7a691b04692db83c6d3e95f3, type: 3}
+  m_Name: TMPMeshModifierClip
+  m_EditorClassIdentifier: 
+  step:
+    Step:
+      name: 
+      animate: 1
+      entryCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      entryDuration: 0
+      exitCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      exitDuration: 0
+      extrapolateFrom: 0
+      preExtrapolation: 0
+      extrapolateUntil: 0
+      postExtrapolation: 0
+      loops: 0
+      repetitions: 0
+      useWave: 0
+      waveOffsetType: 0
+      wave:
+        upPeriod: 1
+        downPeriod: 1
+        amplitude: 1
+        velocity: 1
+        upwardCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: -0.0012029491
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0
+            outWeight: 0.36078
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.5
+            inSlope: 1.5725082
+            outSlope: 1.5733721
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.326514
+            outWeight: 0.33093
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: -0.0009312395
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.358688
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        downwardCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: -0.0012029491
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0
+            outWeight: 0.36078
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.5
+            inSlope: 1.5725082
+            outSlope: 1.5733721
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.326514
+            outWeight: 0.33093
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: -0.0009312395
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.358688
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        crestWait: 0
+        troughWait: 0
+        uniformity: 1
+      startTime: 0
+      duration: 5
+      useInitialModifiers: 0
+      initModifiers:
+        Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        Scale: {x: 1, y: 1, z: 1}
+        Rotations: []
+        BL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+      modifiers:
+        Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        Scale: {x: 1, y: 1, z: 1}
+        Rotations: []
+        BL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+    lastMovedEntry: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +312,10 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       exitDuration: 3.05
+      extrapolateFrom: 0
+      preExtrapolation: 0
+      extrapolateUntil: 0
+      postExtrapolation: 0
       loops: 0
       repetitions: 0
       useWave: 0
@@ -282,6 +502,222 @@ MonoBehaviour:
           vector: {x: 0, y: 0, z: 0}
           type: 1
     lastMovedEntry: 0
+--- !u!114 &7237167247931217711
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73fa5eac7a691b04692db83c6d3e95f3, type: 3}
+  m_Name: TMPMeshModifierClip
+  m_EditorClassIdentifier: 
+  step:
+    Step:
+      name: 
+      animate: 1
+      entryCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      entryDuration: 0
+      exitCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      exitDuration: 0
+      extrapolateFrom: 0
+      preExtrapolation: 0
+      extrapolateUntil: 0
+      postExtrapolation: 0
+      loops: 0
+      repetitions: 0
+      useWave: 0
+      waveOffsetType: 0
+      wave:
+        upPeriod: 1
+        downPeriod: 1
+        amplitude: 1
+        velocity: 1
+        upwardCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: -0.0012029491
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0
+            outWeight: 0.36078
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.5
+            inSlope: 1.5725082
+            outSlope: 1.5733721
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.326514
+            outWeight: 0.33093
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: -0.0009312395
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.358688
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        downwardCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: -0.0012029491
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0
+            outWeight: 0.36078
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.5
+            inSlope: 1.5725082
+            outSlope: 1.5733721
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.326514
+            outWeight: 0.33093
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: -0.0009312395
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 3
+            inWeight: 0.358688
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        crestWait: 0
+        troughWait: 0
+        uniformity: 1
+      startTime: 0
+      duration: 5
+      useInitialModifiers: 0
+      initModifiers:
+        Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        Scale: {x: 1, y: 1, z: 1}
+        Rotations: []
+        BL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+      modifiers:
+        Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        Scale: {x: 1, y: 1.75, z: 1}
+        Rotations: []
+        BL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_Position:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TL_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        TR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BR_Color:
+          Override: 0
+          Color:
+            serializedVersion: 2
+            rgba: 0
+        BL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TL_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        TR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+        BR_UV0:
+          vector: {x: 0, y: 0, z: 0}
+          type: 1
+    lastMovedEntry: 0
 --- !u!114 &8825731739713252798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,10 +803,148 @@ MonoBehaviour:
     m_ExposedParameterNames: []
     m_AnimationCurves: {fileID: 0}
     m_Recordable: 0
-    m_PostExtrapolationMode: 3
-    m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: Infinity
+    m_PostExtrapolationMode: 1
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 2.1999999999999993
     m_PreExtrapolationTime: 1.6166666666666667
+    m_DisplayName: TMPMeshModifierClip
+  - m_Version: 1
+    m_Start: 8.816666666666666
+    m_ClipIn: 0
+    m_Asset: {fileID: 7237167247931217711}
+    m_Duration: 5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 8825731739713252798}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 1
+    m_PostExtrapolationTime: 2.9499999999999993
+    m_PreExtrapolationTime: 0
+    m_DisplayName: TMPMeshModifierClip
+  - m_Version: 1
+    m_Start: 16.766666666666666
+    m_ClipIn: 0
+    m_Asset: {fileID: -6142259828328378184}
+    m_Duration: 5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 8825731739713252798}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: Infinity
+    m_PreExtrapolationTime: 2.9499999999999993
     m_DisplayName: TMPMeshModifierClip
   m_Markers:
     m_Objects: []

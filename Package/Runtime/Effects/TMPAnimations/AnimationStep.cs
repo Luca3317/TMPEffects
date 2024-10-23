@@ -25,8 +25,14 @@ public class AnimationStep
     public float extrapolateUntil;
     public ExtrapolationMode postExtrapolation;
 
+    [Tooltip("Whether this animation step should automatically loop over time. " +
+             "For GenericAnimations, this can be disregarded if the animation itself is set to repeat.")]
     public bool loops;
+
+    [Tooltip("How many times this animation step should automatically loop over time. " +
+             "For GenericAnimations, this can be disregarded if the animation itself is set to repeat.")]
     public uint repetitions;
+
     public bool useWave;
     public ParameterTypes.WaveOffsetType waveOffsetType;
     public AnimationUtility.Wave wave;

@@ -31,6 +31,59 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
     }
 
+    // Update all other durations when one was changed in the inspector
+    // ChangedIndex: the index that was changed,
+    // ignoreIndex: further indices that should remain unchanged
+    private void OnChangedStartOrDuration(int changedIndex, params int[] ignoreIndex)
+    {
+        var steps = serializedObject.FindProperty("animationSteps");
+        var changedProp = serializedObject.FindProperty("animationSteps").GetArrayElementAtIndex(changedIndex);
+        float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
+        float changedDuration = changedProp.FindPropertyRelative("duration").floatValue;
+        float changedEndTime = changedStartTime + changedDuration;
+
+        // Update all start times and durations to accomodate for changed time
+        for (int i = 0; i < steps.arraySize; i++)
+        {
+            if (i == changedIndex || ignoreIndex.Contains(i)) continue;
+
+            var step = steps.GetArrayElementAtIndex(i);
+
+            float startTime = step.FindPropertyRelative("startTime").floatValue;
+            if (startTime > changedEndTime) continue; // If starts after changed ends, cont
+
+            float duration = step.FindPropertyRelative("duration").floatValue;
+            float endTime = startTime + duration;
+            if (endTime < changedStartTime) continue; // If ends before changed starts, cont
+            // else, effected
+
+            // if starts while changed already running
+            if (startTime >= changedStartTime)
+            {
+                // if ends after changed, clamp starttime
+                if (endTime >= changedEndTime)
+                {
+                    step.FindPropertyRelative("startTime").floatValue = changedEndTime;
+                    OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+                }
+                // else meaning fully within the changed step
+                else
+                {
+                    step.FindPropertyRelative("startTime").floatValue = changedStartTime;
+                    step.FindPropertyRelative("duration").floatValue = 0f;
+                    OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+                }
+            }
+
+            // if changed starts while this is already running, clamp the duration
+            else if (changedStartTime >= startTime)
+            {
+                step.FindPropertyRelative("duration").floatValue = changedStartTime - startTime;
+                OnChangedStartOrDuration(i, ignoreIndex.Concat(new int[] { changedIndex }).ToArray());
+            }
+        }
+    }
+
     private void DrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
         var itemProp = serializedObject.FindProperty("animationSteps").GetArrayElementAtIndex(index);
@@ -43,6 +96,37 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         toggleRect.width = rect.width - 17.5f;
         EditorGUI.LabelField(toggleRect,
             string.IsNullOrWhiteSpace(nameProp.stringValue) ? "Element " + index : nameProp.stringValue);
+
+        float fromWidth = 75;
+        float gap = 10;
+        var fromRect = new Rect(rect.x + rect.width - fromWidth * 2 - gap * 1.5f, rect.y, fromWidth,
+            EditorGUIUtility.singleLineHeight);
+        var toRect = new Rect(rect.x + rect.width - fromWidth - gap, rect.y, fromWidth,
+            EditorGUIUtility.singleLineHeight);
+
+        var startTimeProp = itemProp.FindPropertyRelative("startTime");
+        var durationProp = itemProp.FindPropertyRelative("duration");
+
+        EditorGUIUtility.labelWidth = 30;
+        float newTime = Mathf.Max(0, EditorGUI.FloatField(fromRect, new GUIContent("from:"), startTimeProp.floatValue));
+        EditorGUIUtility.labelWidth = 15;
+        float newEndTime = Mathf.Max(newTime, EditorGUI.FloatField(toRect, new GUIContent("to:"),
+            startTimeProp.floatValue + durationProp.floatValue));
+
+        if (newEndTime < newTime) newEndTime = newTime;
+
+        if (newTime != startTimeProp.floatValue)
+        {
+            startTimeProp.floatValue = newTime;
+            OnChangedStartOrDuration(index);
+        }
+        else if (newEndTime != startTimeProp.floatValue + durationProp.floatValue)
+        {
+            durationProp.floatValue = newEndTime - startTimeProp.floatValue;
+            OnChangedStartOrDuration(index);
+        }
+
+        EditorGUIUtility.labelWidth = 0;
         EditorGUI.PropertyField(rect, itemProp, GUIContent.none);
     }
 
@@ -54,33 +138,68 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         newElement.managedReferenceValue = new AnimationStep();
     }
 
-    // TODO Calling this all the properties of the arrayElement property are null? When adding a new element to list
-    private void UpdateAnimationDuration()
+    private struct SortClipComparer : IComparer<SerializedProperty>
     {
-        var durationProp = serializedObject.FindProperty("duration");
-        var animStepsProp = serializedObject.FindProperty("animationSteps");
-
-        float reqLength = 0f;
-        Debug.Log("animstepsporp array size " + animStepsProp.arraySize);
-        for (int i = 0; i < animStepsProp.arraySize; i++)
+        public int Compare(SerializedProperty x, SerializedProperty y)
         {
-            var arrayElement = animStepsProp.GetArrayElementAtIndex(i);
-            if (arrayElement == null) continue;
-            if (arrayElement.FindPropertyRelative("duration") == null) Debug.Log("NO DURATION=!");
-            if (arrayElement.FindPropertyRelative("startTime") == null) Debug.Log("NO startTime=!");
-            reqLength += Mathf.Max(0f,
-                arrayElement.FindPropertyRelative("duration").floatValue +
-                arrayElement.FindPropertyRelative("startTime").floatValue);
+            float
+                xStart = x.FindPropertyRelative("startTime").floatValue,
+                yStart = y.FindPropertyRelative("startTime").floatValue;
+
+            if (xStart < yStart) return -1;
+            if (yStart < xStart) return 1;
+
+            float
+                xDuration = x.FindPropertyRelative("duration").floatValue,
+                yDuration = y.FindPropertyRelative("duration").floatValue;
+
+            if (xDuration < yDuration) return -1;
+            if (yDuration < xDuration) return 1;
+            return 0;
+        }
+    }
+
+    public static void QuickSort(SerializedProperty prop, int left, int right, IComparer<SerializedProperty> comparer)
+    {
+        int i = left, j = right;
+        var pivot = prop.GetArrayElementAtIndex(left);
+
+        while (i <= j)
+        {
+            while (comparer.Compare(prop.GetArrayElementAtIndex(i), pivot) == -1)
+                i++;
+
+            while (comparer.Compare(prop.GetArrayElementAtIndex(j), pivot) == 1)
+                j--;
+
+            // while (array[i] < pivot)
+            //     i++;
+            // while (array[j] > pivot)
+            //     j--;
+
+            if (i <= j)
+            {
+                // Swap
+                var tmp = prop.GetArrayElementAtIndex(i).managedReferenceValue;
+                prop.GetArrayElementAtIndex(i).managedReferenceValue = prop.GetArrayElementAtIndex(j).managedReferenceValue;
+                prop.GetArrayElementAtIndex(j).managedReferenceValue = tmp;
+                
+                i++;
+                j--;
+            }
         }
 
-        durationProp.floatValue = Mathf.Max(durationProp.floatValue, reqLength);
+        // Recursive calls
+        if (left < j)
+            QuickSort(prop, left, j, comparer);
+        if (i < right)
+            QuickSort(prop, i, right, comparer);
     }
+
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("Sief"), true);
 
         EditorGUILayout.LabelField("Animation settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
@@ -90,14 +209,20 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         EditorGUILayout.Space();
 
-        var animStepsProp = serializedObject.FindProperty("animationSteps");
-        EditorGUILayout.PropertyField(animStepsProp);
-        var list = ReorderableList.GetReorderableListFromSerializedProperty(animStepsProp);
-        list.drawElementCallback = DrawElementCallback;
-        list.onAddCallback = AddCallback;
+        var tracks = serializedObject.FindProperty("Tracks");
+        if (GUILayout.Button("Sort clips"))
+        {
+            for (int i = 0; i < tracks.arraySize; i++)
+            {
+                var track = tracks.GetArrayElementAtIndex(i).FindPropertyRelative("Clips");
+                if (track.arraySize >= 2)
+                    QuickSort(track, 0, track.arraySize - 1, new SortClipComparer());
+            }
+        }
+
+        EditorGUILayout.PropertyField(tracks);
 
         EditorGUILayout.Space();
-
 
         fileBrowserButtonStyle = new GUIStyle(GUI.skin.button);
         fileBrowserButtonStyle.normal.background = EditorGUIUtility.IconContent("d_Folder Icon").image as Texture2D;
@@ -274,9 +399,9 @@ public static class GenericAnimationExporter
             string nameToAdd = step.name;
 
             // replace invlid characters
-            Debug.Log("Turned " + nameToAdd + " into " + Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "") );
+            Debug.Log("Turned " + nameToAdd + " into " + Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", ""));
             nameToAdd = Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "");
-            
+
             if (string.IsNullOrWhiteSpace(nameToAdd))
             {
                 nameToAdd = "Element_" + names.Count;
@@ -314,7 +439,7 @@ public static class GenericAnimationExporter
         var path = Path.GetDirectoryName(filePath);
         return GenerateScriptFromModifier(name, path, repeats, duration, steps);
     }
-    
+
     static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration,
         List<AnimationStep> steps)
     {
@@ -421,7 +546,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
             return true;
         }}
     }}
-}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names)/*, GenerateStepMethods(steps, names)*/);
+}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names) /*, GenerateStepMethods(steps, names)*/);
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
@@ -434,7 +559,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {
             var step = steps[i];
             var name = names[i];
-            
+
             code +=
                 $@"
         [SerializeField] private AnimationStep Step_{name} = new AnimationStep()
@@ -484,9 +609,9 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {(step.initModifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.initModifiers.TL_Color)}," : "")}
                 {(step.initModifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.TR_Color)}," : "")}
                 {(step.initModifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BR_Color)}," : "")}
-            }}" : "" )}
+            }}" : "")}
         }};";
-            
+
             code = string.Join(Environment.NewLine, code
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Where(line => !string.IsNullOrWhiteSpace(line)));
@@ -499,7 +624,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
     private static string GetColorOverrideString(ColorOverride modifiersBLColor)
     {
-        return $"new ColorOverride({GetColorString(modifiersBLColor.Color)}, {GetColorOverrideModeString(modifiersBLColor.Override)})";
+        return
+            $"new ColorOverride({GetColorString(modifiersBLColor.Color)}, {GetColorOverrideModeString(modifiersBLColor.Override)})";
     }
 
     private static string GetColorOverrideModeString(ColorOverride.OverrideMode overr)
@@ -510,7 +636,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
         }
 
         if (overr == 0) return "0";
-        
+
         return "ColorOverride.OverrideMode." + overr;
     }
 
@@ -519,7 +645,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
         string str = " ";
         foreach (var rot in modifiersRotations)
         {
-            str += $"\nnew EditorFriendlyRotation({GetVector3String(rot.eulerAngles)}, {GetTypedVector3String(rot.pivot)}),";
+            str +=
+                $"\nnew EditorFriendlyRotation({GetVector3String(rot.eulerAngles)}, {GetTypedVector3String(rot.pivot)}),";
         }
 
         return str.Substring(0, str.Length - 1);
@@ -555,7 +682,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
     {
         return "VectorType." + type;
     }
-    
+
     private static string GetVector3String(Vector3 vector)
     {
         return
@@ -643,7 +770,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         return code;
     }
-    
+
     static bool GenerateScriptFromContext(string fileNamePath, string code)
     {
         var hierarchy = fileNamePath.Split('/');

@@ -24,6 +24,9 @@ public class AnimationStepDrawer : PropertyDrawer
     private SerializedProperty waveOffsetType;
     private SerializedProperty useWave;
 
+    private SerializedProperty preExtrapolation;
+    private SerializedProperty postExtrapolation;
+
 
     private Color backgroundColor;
 
@@ -43,6 +46,8 @@ public class AnimationStepDrawer : PropertyDrawer
         useWave = property.FindPropertyRelative("useWave");
         waveOffsetType = property.FindPropertyRelative("waveOffsetType");
         wave = property.FindPropertyRelative("wave");
+        preExtrapolation = property.FindPropertyRelative("preExtrapolation");
+        postExtrapolation = property.FindPropertyRelative("postExtrapolation");
 
         backgroundColor = EditorGUIUtility.isProSkin
             ? new Color32(56, 56, 56, 255)
@@ -124,10 +129,17 @@ public class AnimationStepDrawer : PropertyDrawer
 
         rect.y += EditorGUIUtility.singleLineHeight;
 
+        GUIContent content = new GUIContent();
+        content.text = "Wave";
+        content.tooltip =
+            "Whether to use a wave.";
 
-        EditorGUI.LabelField(rect, "Waves", EditorStyles.boldLabel);
-        rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, useWave);
+        Vector2 labelSize = EditorStyles.boldLabel.CalcSize(content);
+        EditorGUI.BeginDisabledGroup(!useWave.boolValue);
+        EditorGUI.LabelField(rect, content, EditorStyles.boldLabel);
+        EditorGUI.EndDisabledGroup();
+        var toggleRect = new Rect(rect.x + labelSize.x + 10, rect.y, rect.width - labelSize.x - 10, rect.height);
+        useWave.boolValue = EditorGUI.Toggle(toggleRect, useWave.boolValue);
         rect.y += EditorGUIUtility.singleLineHeight;
 
         if (useWave.boolValue)
@@ -151,20 +163,18 @@ public class AnimationStepDrawer : PropertyDrawer
         rect.y += EditorGUIUtility.singleLineHeight;
 
 
-        GUIContent content = new GUIContent();
+        content = new GUIContent();
         content.text = "Initial Modifiers";
         content.tooltip =
             "Whether to use initial modifiers. If so, the lerp will be between InitialModifiers and Modifiers. Otherwise, the lerp will be between the CharData and Modifiers.";
 
-        // useInitModifiers.boolValue = EditorGUI.Toggle(rect, content, useInitModifiers.boolValue, EditorStyles.boldLabel);
-        Vector2 labelSize = EditorStyles.boldLabel.CalcSize(content);
+        labelSize = EditorStyles.boldLabel.CalcSize(content);
         EditorGUI.BeginDisabledGroup(!useInitModifiers.boolValue);
         EditorGUI.LabelField(rect, content, EditorStyles.boldLabel);
         EditorGUI.EndDisabledGroup();
-        var toggleRect = new Rect(rect.x + labelSize.x + 10, rect.y, rect.width - labelSize.x - 10, rect.height);
+        toggleRect = new Rect(rect.x + labelSize.x + 10, rect.y, rect.width - labelSize.x - 10, rect.height);
         useInitModifiers.boolValue = EditorGUI.Toggle(toggleRect, useInitModifiers.boolValue);
 
-        // EditorGUI.PropertyField(rect, useInitModifiers, content);
         rect.y += EditorGUIUtility.singleLineHeight;
         if (useInitModifiers.boolValue)
         {
@@ -182,6 +192,8 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        if (property== null) Debug.LogWarning("EARLY NUL!!!!");
+        
         Init(property);
         EditorGUI.BeginProperty(position, label, property);
         EditorGUI.indentLevel++;
@@ -189,7 +201,12 @@ public class AnimationStepDrawer : PropertyDrawer
         var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         property.isExpanded = EditorGUI.Foldout(rect, property.isExpanded, label);
         rect.y += EditorGUIUtility.singleLineHeight;
-        if (!property.isExpanded) return;
+        if (!property.isExpanded)
+        {
+            EditorGUI.EndProperty();
+            EditorGUI.indentLevel--;
+            return;
+        }
 
         EditorGUI.PropertyField(rect, property.FindPropertyRelative("name"));
         rect.y += EditorGUIUtility.singleLineHeight * 2f;
@@ -203,9 +220,9 @@ public class AnimationStepDrawer : PropertyDrawer
             rect.y += EditorGUIUtility.singleLineHeight;
         }
 
-        EditorGUI.PropertyField(rect, startTime);
+        EditorGUI.PropertyField(rect, preExtrapolation);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, duration);
+        EditorGUI.PropertyField(rect, postExtrapolation);
         rect.y += EditorGUIUtility.singleLineHeight * 2;
 
         DrawCommon(rect, property, label);
@@ -219,7 +236,7 @@ public class AnimationStepDrawer : PropertyDrawer
         Init(property);
 
         if (property.isExpanded)
-            return GetCommonHeight(property) + EditorGUIUtility.singleLineHeight * 7;
+            return GetCommonHeight(property) + EditorGUIUtility.singleLineHeight * 6;
 
         return EditorGUIUtility.singleLineHeight;
 

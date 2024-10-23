@@ -14,15 +14,18 @@ namespace TMPEffects.TMPAnimations
     public partial class GenericAnimation : TMPAnimation
     {
         [Serializable]
-        public class SomeClass : List<List<AnimationStep>> {}
+        public class Track
+        {
+            [SerializeReference] private List<AnimationStep> Clips = new List<AnimationStep>();
+        }
 
         [Serializable]
-        public class ClipList
+        public class TrackList
         {
-            public List<AnimationStep> Clips;
+            public List<Track> Tracks = new List<Track>();
         }
         
-        [SerializeField] private List<ClipList> Sief;
+        public List<Track> Tracks = new List<Track>();
         
         public List<AnimationStep> AnimationSteps => animationSteps;
 
@@ -39,6 +42,10 @@ namespace TMPEffects.TMPAnimations
         }
 
         [SerializeReference] private List<AnimationStep> animationSteps = new List<AnimationStep>()
+        {
+            new AnimationStep()
+        };
+        [SerializeReference] private List<AnimationStep> animationSteps2 = new List<AnimationStep>()
         {
             new AnimationStep()
         };
