@@ -1,0 +1,39 @@
+{
+    "name": "TMPEffects.Timeline.Tests",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Unity.PerformanceTesting",
+        "Unity.PerformanceTesting.Editor",
+        "TMPEffects",
+        "Unity.TextMeshPro",
+        "TMPEffects.Editor",
+        "TMPEffects.NotifyObjectChanged",
+        "TMPEffects.Timeline",
+        "TMPEffects.Timeline.Editor",
+        "Unity.Timeline"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS",
+        "TIMELINE_INSTALLED"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.timeline",
+            "expression": "1.4.8",
+            "define": "TIMELINE_INSTALLED"
+        }
+    ],
+    "noEngineReferences": false
+}

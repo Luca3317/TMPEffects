@@ -20,9 +20,7 @@ public class AnimationStep
     public AnimationCurve exitCurve;
     public float exitDuration;
 
-    public float extrapolateFrom;
     public ExtrapolationMode preExtrapolation;
-    public float extrapolateUntil;
     public ExtrapolationMode postExtrapolation;
 
     [Tooltip("Whether this animation step should automatically loop over time. " +
@@ -49,6 +47,44 @@ public class AnimationStep
     public bool useInitialModifiers = false;
     public EditorFriendlyCharDataModifiers initModifiers;
     public EditorFriendlyCharDataModifiers modifiers;
+
+    public AnimationStep()
+    {
+    }
+
+    /*
+     * TODO
+     * Added this constructor because AnimSteps are serialized as reference; for exporting need to clone
+     * TODO
+     * Test whether this works fine or also need to create new instance of all held classes (prolly yes)
+     */
+    public AnimationStep(AnimationStep original)
+    {
+        name = original.name;
+        animate = original.animate;
+        
+        entryCurve = original.entryCurve;
+        entryDuration = original.entryDuration;
+        exitCurve = original.exitCurve;
+        exitDuration = original.exitDuration;
+        
+        preExtrapolation = original.preExtrapolation;
+        postExtrapolation = original.postExtrapolation;
+        
+        loops = original.loops;
+        repetitions = original.repetitions;
+        
+        useWave = original.useWave;
+        waveOffsetType = original.waveOffsetType;
+        wave = original.wave;
+        
+        startTime = original.startTime;
+        duration = original.duration;
+        
+        useInitialModifiers = original.useInitialModifiers;
+        initModifiers = original.initModifiers;
+        modifiers = original.modifiers;
+    }
 
     public enum ExtrapolationMode
     {
