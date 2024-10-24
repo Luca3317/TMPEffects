@@ -41,7 +41,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     private void OnChangedStartOrDuration(int listIndex, int changedIndex, params int[] ignoreIndex)
     {
         var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
-            .GetArrayElementAtIndex(listIndex).FindPropertyRelative("Clips");
+            .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
         var changedProp = clips.GetArrayElementAtIndex(changedIndex);
 
         float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
@@ -93,7 +93,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     private void DrawElementCallback(int listindex, Rect rect, int index, bool isactive, bool isfocused)
     {
         var itemProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
-            .GetArrayElementAtIndex(listindex).FindPropertyRelative("Clips").GetArrayElementAtIndex(index);
+            .GetArrayElementAtIndex(listindex).FindPropertyRelative("clips").GetArrayElementAtIndex(index);
 
         var nameProp = itemProp.FindPropertyRelative("name");
         var animateProp = itemProp.FindPropertyRelative("animate");
@@ -141,7 +141,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     private float MainElementHeightCallback(int index)
     {
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
-        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("Clips");
+        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         return EditorGUI.GetPropertyHeight(clips);
     }
 
@@ -150,14 +150,14 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         Debug.LogWarning("ADD");
         var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         trackprop.arraySize++;
-        trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("Clips").ClearArray();
+        trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("clips").ClearArray();
     }
 
     private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
         EditorGUI.indentLevel++;
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
-        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("Clips");
+        var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
         EditorGUI.indentLevel--;
     }
@@ -245,7 +245,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             {
                 var list =
                     ReorderableList.GetReorderableListFromSerializedProperty(trackprop.GetArrayElementAtIndex(i)
-                        .FindPropertyRelative("Clips"));
+                        .FindPropertyRelative("clips"));
 
                 if (list == null)
                 {
@@ -280,7 +280,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
             for (int i = 0; i < trackProp.arraySize; i++)
             {
-                var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("Clips");
+                var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
                 QuickSort(clips, 0, clips.arraySize-1, new SortClipComparer());
             }
         }
@@ -424,10 +424,10 @@ public static class GenericAnimationExporter
 
     public static void Export(GenericAnimation anim, string filePath)
     {
-        var steps = anim.AnimationSteps;
-        var repeats = anim.Repeat;
-        var duration = anim.Duration;
-        GenerateScriptFromModifier(filePath, repeats, duration, steps);
+        // var steps = anim.AnimationSteps;
+        // var repeats = anim.Repeat;
+        // var duration = anim.Duration;
+        // GenerateScriptFromModifier(filePath, repeats, duration, steps);
     }
 
     static List<AnimationStep> GetAnimationSteps(SerializedProperty animationStepsProp)

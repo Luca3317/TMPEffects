@@ -11,23 +11,28 @@ namespace TMPEffects.TMPAnimations
     [AutoParameters]
     [CreateAssetMenu(fileName = "new GenericAnimation",
         menuName = "TMPEffects/Animations/Basic Animations/Generic Animation")]
-    public partial class GenericAnimation : TMPAnimation
+    public sealed partial class GenericAnimation : TMPAnimation
     {
         [Serializable]
         public class Track
         {
-            [SerializeReference] private List<AnimationStep> Clips = new List<AnimationStep>();
+            public List<AnimationStep> Clips => clips;
+            [SerializeReference] private List<AnimationStep> clips = new List<AnimationStep>();
         }
-        
+
         [Serializable]
         public class TrackList
         {
             public List<Track> Tracks = new List<Track>();
+
+            public Track this[int index]
+            {
+                get => Tracks[index];
+                set => Tracks[index] = value;
+            }
         }
-        
+
         public TrackList Tracks = new TrackList();
-        
-        public List<AnimationStep> AnimationSteps => animationSteps;
 
         public bool Repeat
         {
@@ -40,11 +45,6 @@ namespace TMPEffects.TMPAnimations
             get => duration;
             set => duration = value;
         }
-
-        [SerializeReference] private List<AnimationStep> animationSteps = new List<AnimationStep>()
-        {
-            new AnimationStep()
-        };
 
         [AutoParameter("repeat", "rp"), SerializeField]
         private bool repeat;
@@ -61,7 +61,6 @@ namespace TMPEffects.TMPAnimations
         {
             if (step == null) return false;
             if (!step.animate) return false;
-
 
             if (timeValue < step.startTime)
             {
@@ -100,7 +99,7 @@ namespace TMPEffects.TMPAnimations
                         break;
                 }
             }
-
+            
             // If time before clip starts (after adjusting for extrapolation)
             if (step.startTime > timeValue) return false;
 
@@ -193,6 +192,11 @@ namespace TMPEffects.TMPAnimations
 
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
+            Animate(cData, context.AnimatorContext, data.repeat, data.duration);
+        }
+
+        public void Animate(CharData cData, IAnimatorContext context, bool repeat, float duration)
+        {
             // Create modifiers if needed
             modifiersStorage ??= new CharDataModifiers();
             modifiersStorage2 ??= new CharDataModifiers();
@@ -201,18 +205,21 @@ namespace TMPEffects.TMPAnimations
 
             // Calculate timeValue
             float timeValue =
-                data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
+                repeat ? context.PassedTime % duration : context.PassedTime;
 
             // Reset accModifier
             accModifier.Reset();
 
-            foreach (var step in animationSteps)
+            foreach (var track in Tracks.Tracks)
             {
-                if (!ApplyAnimationStep(step, timeValue, cData, context.AnimatorContext, modifiersStorage,
-                        modifiersStorage2, current)) continue;
+                foreach (var step in track.Clips)
+                {
+                    if (!ApplyAnimationStep(step, timeValue, cData, context, modifiersStorage,
+                            modifiersStorage2, current)) continue;
 
-                accModifier.MeshModifiers.Combine(current.MeshModifiers);
-                accModifier.CharacterModifiers.Combine(current.CharacterModifiers);
+                    accModifier.MeshModifiers.Combine(current.MeshModifiers);
+                    accModifier.CharacterModifiers.Combine(current.CharacterModifiers);
+                }
             }
 
             cData.MeshModifiers.Combine(accModifier.MeshModifiers);

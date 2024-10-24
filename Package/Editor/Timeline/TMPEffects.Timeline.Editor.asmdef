@@ -1,5 +1,5 @@
 {
-    "name": "TMPEffects.Editor.TImeline",
+    "name": "TMPEffects.Timeline.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:96c64e576ede81e46ad482a315c680f9",

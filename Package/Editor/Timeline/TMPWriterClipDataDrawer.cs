@@ -4,37 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TMPEffects.Components;
+using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
+using Object = UnityEngine.Object;
 
-public class ExportToGenericAnimationUtilityWindow : EditorWindow
+
+[MenuEntry("Unpack Generic Animation")]
+public class UnpackGenericAnimation : TimelineAction
 {
-    private string path;
-
-    internal static void Init(string path)
+    public override bool Execute(ActionContext context)
     {
-        ExportToGenericAnimationUtilityWindow window =
-            EditorWindow.GetWindow<ExportToGenericAnimationUtilityWindow>(true, "Export animation");
-        window.path = path;
-        window.ShowModalUtility();
+        bool result = TimelineUtility.UnpackGenericDialog(context);
+        
+        if (!result)
+            return false;
+        
+        return TimelineUtility.UnpackGeneric(context);
     }
 
-    private void OnGUI()
+    public override ActionValidity Validate(ActionContext context)
     {
-        var rect = EditorGUILayout.GetControlRect(true, EditorGUIUtility.singleLineHeight);
-        rect.x += 20;
-        rect.width -= 40;
-
-        EditorGUILayout.LabelField("You are exporting to a generic animation asset.");
-        rect.y += rect.height;
-        EditorGUILayout.LabelField("Select the path to save to:");
-        rect.y += rect.height;
-        EditorGUILayout.LabelField(path);
+        return context.clips.Any(clip => clip.asset is TMPAnimationClip)
+            ? ActionValidity.Valid
+            : ActionValidity.NotApplicable;
     }
 }
 
@@ -44,12 +41,12 @@ public class ExportToGenericAnimation : TimelineAction
     public override bool Execute(ActionContext context)
     {
         // Export to generic
-        int result = TimelineToAnimationExporter.ExportAsGenericDialog(context);
+        int result = TimelineUtility.ExportAsGenericDialog(context);
 
         if (result == 1)
             return false;
         
-        return TimelineToAnimationExporter.ExportAsGeneric(context, result);
+        return TimelineUtility.ExportAsGeneric(context, result);
     }
 
     public override ActionValidity Validate(ActionContext context)
@@ -66,12 +63,12 @@ public class ExportToTMPAnimationScript : TimelineAction
     public override bool Execute(ActionContext context)
     {
         // Export to script
-        int result = TimelineToAnimationExporter.ExportAsScriptDialog(context);
+        int result = TimelineUtility.ExportAsScriptDialog(context);
 
         if (result == 1)
             return false;
         
-        return TimelineToAnimationExporter.ExportAsScript(context, result);
+        return TimelineUtility.ExportAsScript(context, result);
     }
 
     public override ActionValidity Validate(ActionContext context)

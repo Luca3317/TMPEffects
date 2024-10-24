@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
+[DisplayName("TMPEffects Clip/TMPMeshModifier Clip")]
 public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
 {
     [NonSerialized] public TimelineClip Clip = null;
