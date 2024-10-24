@@ -254,7 +254,7 @@ namespace TMPEffects.Components.Mediator
             Color32[] colors = info.meshInfo[mIndex].colors32;
             Vector3[] verts = info.meshInfo[mIndex].vertices;
 
-#if UNITY_2023_2_OR_NEWER
+#if TMPRO_3_2_0_PRE_10_OR_NEWER
             Vector4[] uvs0 = info.meshInfo[mIndex].uvs0;
 #else
             Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
@@ -267,7 +267,7 @@ namespace TMPEffects.Components.Mediator
                 verts[vIndex + j] = CharData[index].mesh.GetPosition(j);
                 colors[vIndex + j] = CharData[index].mesh.GetColor(j);
 
-#if UNITY_2023_2_OR_NEWER
+#if TMPRO_3_2_0_PRE_10_OR_NEWER
                 Vector4 current = uvs0[vIndex + j];
                 Vector2 charUV0 = CharData[index].mesh.GetUV0(j);
                 current.x = charUV0.x;
@@ -425,7 +425,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, Vector3.zero);// cData.initialPosition);
+                cData.mesh.SetPosition(j, Vector3.zero);
             }
 
             // Apply the new vertices to the vertex array
@@ -441,7 +441,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                cData.mesh.SetPosition(j, cData.mesh.initial.GetPosition(j));
             }
 
             // Apply the new vertices to the vertex array

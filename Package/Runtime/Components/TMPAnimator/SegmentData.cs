@@ -11,7 +11,7 @@ namespace TMPEffects.Components.Animator
     /// To be used with <see cref="TMPAnimator"/> and its animations.<br/>
     /// Contains data about a given animation segment.
     /// </summary>
-    public struct SegmentData
+    public struct SegmentData 
     {
         /// <summary>
         /// The first index of the segment within the containing text.
@@ -58,6 +58,19 @@ namespace TMPEffects.Components.Animator
         public int SegmentIndexOf(CharData cData)
         {
             return IndexToSegmentIndex(cData.info.index);
+        }
+
+        internal SegmentData(int startIndex, int length)
+        {
+            this.startIndex = startIndex;
+            this.length = length;
+            firstVisibleIndex = startIndex;
+            lastVisibleIndex = startIndex + length;
+            firstAnimationIndex = startIndex;
+            lastAnimationIndex = startIndex + length;
+            effectiveLength = length;
+            max = default;
+            min = default;
         }
 
         internal SegmentData(TMPEffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)

@@ -1,0 +1,64 @@
+TMPWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPStartWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPStopWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPRestartWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPResetWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPSkipWriterMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPWriterWaitMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPStartAnimatingMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPStopAnimatingMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPUpdateAnimationsMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPSettingsMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPResetAnimationsMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}
+
+TMPResetTimeMarkerStyle
+{
+    color: rgb(0, 0, 0);
+}

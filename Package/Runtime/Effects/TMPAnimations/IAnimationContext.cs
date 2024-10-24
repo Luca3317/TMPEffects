@@ -26,7 +26,7 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The current state of the CharData, with the previous animations applied.
         /// </summary>
-        public ICharDataState State { get; }
+        public CharDataModifiers Modifiers { get; }
 
         /// <summary>
         /// Check if the animation is considered finished for the character at the given index.
