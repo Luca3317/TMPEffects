@@ -14,6 +14,7 @@ using ScriptableWizard = UnityEditor.ScriptableWizard;
 
 internal static class TimelineUtility
 {
+    #region ExportAsGeneric
     public static int ExportAsGenericDialog(ActionContext context)
     {
         GenericAnimation animation = ScriptableObject.CreateInstance<GenericAnimation>();
@@ -49,6 +50,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
                 var step = copy.Step.Step;
 
                 // Copy over clip properties
+                step.name = clip.displayName;
                 step.duration = (float)clip.duration;
                 step.startTime = (float)clip.start;
                 step.preExtrapolation = clip.preExtrapolationMode.ConvertExtrapolation();
@@ -92,6 +94,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
                 var step = copy.Step.Step;
 
                 // Copy over clip properties
+                step.name = clip.displayName;
                 step.duration = (float)clip.duration;
                 step.startTime = (float)clip.start;
                 step.preExtrapolation = clip.preExtrapolationMode.ConvertExtrapolation();
@@ -135,8 +138,10 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
 
         return false;
     }
+    #endregion
 
-    public static string MakeRelative(string filePath, string referencePath)
+    #region Directory stuff
+    static string MakeRelative(string filePath, string referencePath)
     {
         var fileUri = new Uri(filePath);
         var referenceUri = new Uri(referencePath);
@@ -160,6 +165,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
             dirPath += "/" + hierarchy[i];
         }
     }
+    #endregion
 
     static void GenerateScriptableFromContext(string filePath, GenericAnimation anim)
     {
@@ -206,6 +212,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         return true;
     }
 
+    #region ExportAsScript
     public static int ExportAsScriptDialog(ActionContext context)
     {
         int result = EditorUtility.DisplayDialogComplex("Export to TMPAnimation Script",
@@ -237,7 +244,9 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
 
         return false;
     }
-
+    #endregion
+    
+    #region UnpackGeneric
     public static bool UnpackGenericDialog(ActionContext context)
     {
         bool result = EditorUtility.DisplayDialog("Unpack generic animation",
@@ -271,7 +280,9 @@ Proceed?", "Ok", "Cancel");
                 {
                     var timelineClip = parentTrack.CreateClip<TMPMeshModifierClip>();
                     var modClip = timelineClip.asset as TMPMeshModifierClip;
-                    modClip.Step.Step = animClip; // TODO Will this cause issues with serializerference? maybe clone here?
+                    modClip.Step.Step = new AnimationStep(animClip); 
+                    
+                    timelineClip.displayName = animClip.name;
                     
                     timelineClip.start = animClip.startTime;
                     timelineClip.duration = animClip.duration;
@@ -286,7 +297,7 @@ Proceed?", "Ok", "Cancel");
             }
             
             EditorUtility.SetDirty(context.timeline);
-            TimelineEditor.Refresh(RefreshReason.ContentsAddedOrRemoved );
+            TimelineEditor.Refresh(RefreshReason.ContentsAddedOrRemoved);
         }
 
         // foreach (var track in tracks)
@@ -296,4 +307,5 @@ Proceed?", "Ok", "Cancel");
 
         return true;
     }
+    #endregion
 }

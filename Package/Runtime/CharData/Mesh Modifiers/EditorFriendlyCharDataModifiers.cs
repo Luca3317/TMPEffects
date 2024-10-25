@@ -66,6 +66,30 @@ public class EditorFriendlyCharDataModifiers
     public ParameterTypes.TypedVector3 BR_UV0 =
         new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
 
+    
+    public EditorFriendlyCharDataModifiers() {}
+
+    public EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers other)
+    {
+        Position = other.Position;
+        Scale = other.Scale;
+        Rotations = new List<EditorFriendlyRotation>(other.Rotations);
+        
+        BL_Position = other.BL_Position;
+        TL_Position = other.TL_Position;
+        TR_Position = other.TR_Position;
+        BR_Position = other.BR_Position;
+        
+        BL_Color = other.BL_Color;
+        TL_Color = other.TL_Color;
+        TR_Color = other.TR_Color;
+        BR_Color = other.BR_Color;
+        
+        BL_UV0 = other.BL_UV0;
+        TL_UV0 = other.TL_UV0;
+        TR_UV0 = other.TR_UV0;
+        BR_UV0 = other.BR_UV0;
+    }
 
     private bool dirty = false;
     

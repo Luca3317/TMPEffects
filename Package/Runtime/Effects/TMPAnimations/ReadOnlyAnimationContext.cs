@@ -15,8 +15,6 @@ namespace TMPEffects.TMPAnimations
         public SegmentData SegmentData => context.SegmentData;
         /// <inheritdoc/>
         public object CustomData => context.CustomData;
-        /// <inheritdoc/>
-        public CharDataModifiers Modifiers => context.Modifiers;
 
         public ReadOnlyAnimationContext(IAnimationContext context)
         {

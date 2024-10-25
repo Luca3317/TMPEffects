@@ -8,8 +8,10 @@ namespace TMPEffects.Components.Animator
     /// </summary>
     public interface IAnimatorContext
     {
+        /// <summary>
+        /// The current state of the CharData, with the previous animations applied.
+        /// </summary>
         public CharDataModifiers Modifiers { get; }
-        
         
         /// <summary>
         /// Whether animations are scaled.

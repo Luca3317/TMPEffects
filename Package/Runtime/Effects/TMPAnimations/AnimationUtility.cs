@@ -6,6 +6,8 @@ using TMPEffects.Components.Animator;
 using TMPro;
 using TMPEffects.Components;
 using TMPEffects.Parameters;
+using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 namespace TMPEffects.TMPAnimations
 {
@@ -322,6 +324,67 @@ namespace TMPEffects.TMPAnimations
         }
 
         #endregion
+
+        [System.Serializable]
+        public class FancyAnimationCurve
+        {
+            public AnimationCurve Curve
+            {
+                get => curve;
+                set => curve = value;
+            }
+
+            public float Uniformity
+            {
+                get => uniformity;
+                set => uniformity = value;
+            }
+
+            public ParameterTypes.WaveOffsetType OffsetType
+            {
+                get => offsetType;
+                set => offsetType = value;
+            }
+
+            public TMPWrapMode WrapMode
+            {
+                get => wrapMode;
+                set => wrapMode = value;
+            }
+            
+            [SerializeField] private AnimationCurve curve;
+            [SerializeField] private float uniformity;
+            [SerializeField] private ParameterTypes.WaveOffsetType offsetType;
+            [SerializeField] private TMPWrapMode wrapMode;
+
+            public FancyAnimationCurve() {}
+
+            public FancyAnimationCurve(FancyAnimationCurve original)
+            {
+                curve = new AnimationCurve(original.curve.keys);
+                uniformity = original.uniformity;
+                offsetType = original.offsetType;
+                wrapMode = original.wrapMode;
+            }
+            
+            // TODO Quick addition to make evaluation without anim context possible
+            // TODO If i do split interfaces up further wont be necessary anymore i think
+            public float Evaluate(CharData cData, IAnimatorContext ctx, float time)
+            {
+                float offset = GetWaveOffset(cData, ctx, offsetType);
+                float t = time - offset * uniformity;
+                return GetValue(curve, wrapMode, t);
+            }
+            
+            public float Evaluate(CharData cData, IAnimationContext ctx, float time)
+            {
+                float offset = GetWaveOffset(cData, ctx, offsetType);
+                float t = time - offset * uniformity;
+                // t = Mathf.Abs(t); // TODO ?
+                return GetValue(curve, wrapMode, t);
+            }
+        }
+
 
         #region Waves
 
@@ -641,6 +704,16 @@ namespace TMPEffects.TMPAnimations
 
                 CrestWait = crestWait;
                 TroughWait = troughWait;
+            }
+
+            public Wave(Wave wave)
+            {
+                uniformity = wave.uniformity;
+                crestWait = wave.crestWait;
+                troughWait = wave.troughWait;
+                downwardCurve = new AnimationCurve(wave.downwardCurve.keys);
+                upwardCurve = new AnimationCurve(wave.upwardCurve.keys);
+                wavelength = wave.wavelength;
             }
 
             /// <summary>
@@ -1179,7 +1252,8 @@ namespace TMPEffects.TMPAnimations
 
         // TODO Quick solution for using this from TMPMeshModifier, where no AnimationContext is available
         // Could probably mock it instead
-        public static float GetWaveOffset(CharData cData, IAnimatorContext context, ParameterTypes.WaveOffsetType type, int segmentIndex = 0,
+        public static float GetWaveOffset(CharData cData, IAnimatorContext context, ParameterTypes.WaveOffsetType type,
+            int segmentIndex = 0,
             bool ignoreScaling = false)
         {
             switch (type)
@@ -1361,22 +1435,57 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <returns>The value of the curve at the given time value.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)
+        public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time) 
+        {
+            return GetValue(curve, wrapMode.ToTMPWrapMode(), time);
+        }
+        
+        public static float GetValue(AnimationCurve curve, TMPWrapMode wrapMode, float time)
         {
             float t;
             switch (wrapMode)
             {
-                case WrapMode.Loop:
+                case TMPWrapMode.Loop:
                     t = Mathf.Repeat(time, 1);
                     return curve.Evaluate(t);
-                case WrapMode.PingPong:
+                case TMPWrapMode.PingPong:
                     t = Mathf.PingPong(time, 1);
                     return curve.Evaluate(t);
-                case WrapMode.Once:
+                case TMPWrapMode.Clamp:
                     return curve.Evaluate(time);
 
-                default: throw new System.ArgumentException("WrapMode " + wrapMode.ToString() + " not supported");
+                default: throw new System.ArgumentException("TMPWrapMode " + wrapMode.ToString() + " not supported");
             }
+        }
+
+        internal static TMPWrapMode ToTMPWrapMode(this WrapMode wrapMode)
+        {
+            switch (wrapMode)
+            {
+                case WrapMode.PingPong: return TMPWrapMode.PingPong;
+                case WrapMode.Clamp: return TMPWrapMode.Clamp;
+                case WrapMode.Loop: return TMPWrapMode.Loop;
+                default: throw new System.NotSupportedException("WrapMode " + wrapMode.ToString() + " can not be converted to TMPWrapMode");
+            }
+        }
+
+        public static WrapMode ToWrapMode(this TMPWrapMode wrapMode)
+        {
+            switch (wrapMode)
+            {
+                case TMPWrapMode.PingPong: return WrapMode.PingPong;
+                case TMPWrapMode.Clamp: return WrapMode.Clamp;
+                case TMPWrapMode.Loop: return WrapMode.Loop;
+                default: throw new System.NotSupportedException("TMPWrapMode " + wrapMode.ToString() + " can not be converted to WrapMode");
+            }
+        }
+
+        [Serializable]
+        public enum TMPWrapMode
+        {
+            Clamp,
+            Loop,
+            PingPong,
         }
     }
 }

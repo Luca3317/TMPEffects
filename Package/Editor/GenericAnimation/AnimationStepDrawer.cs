@@ -58,8 +58,15 @@ public class AnimationStepDrawer : PropertyDrawer
     {
         float height = EditorGUIUtility.singleLineHeight * 3; // Blending + in out headers
 
-        if (entryCurve.isExpanded) height += EditorGUIUtility.singleLineHeight * 2;
-        if (exitCurve.isExpanded) height += EditorGUIUtility.singleLineHeight * 2;
+        if (entryCurve.isExpanded)
+        {
+            height += EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(entryCurve);
+        }
+
+        if (exitCurve.isExpanded)
+        {
+            height += EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(exitCurve);
+        }
 
         height += EditorGUIUtility.singleLineHeight * 3; // Space + waves
 
@@ -87,7 +94,7 @@ public class AnimationStepDrawer : PropertyDrawer
         if (entryCurve.isExpanded)
         {
             EditorGUI.indentLevel++;
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
+            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight +EditorGUI.GetPropertyHeight(entryCurve));
             EditorGUI.DrawRect(bgRect, backgroundColor);
 
             EditorGUI.BeginChangeCheck();
@@ -100,7 +107,7 @@ public class AnimationStepDrawer : PropertyDrawer
 
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, entryCurve);
-            rect.y += EditorGUIUtility.singleLineHeight;
+            rect.y += EditorGUI.GetPropertyHeight(entryCurve);
             EditorGUI.indentLevel--;
         }
 
@@ -110,7 +117,7 @@ public class AnimationStepDrawer : PropertyDrawer
         if (exitCurve.isExpanded)
         {
             EditorGUI.indentLevel++;
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 2);
+            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(exitCurve));
             EditorGUI.DrawRect(bgRect, backgroundColor);
 
             EditorGUI.BeginChangeCheck();
@@ -123,7 +130,7 @@ public class AnimationStepDrawer : PropertyDrawer
 
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, exitCurve);
-            rect.y += EditorGUIUtility.singleLineHeight;
+            rect.y += EditorGUI.GetPropertyHeight(exitCurve);
             EditorGUI.indentLevel--;
         }
 

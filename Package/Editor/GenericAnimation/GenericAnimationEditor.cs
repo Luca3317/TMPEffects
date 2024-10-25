@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
 using TMPEffects.CharacterData;
 using TMPEffects.Editor;
 using TMPEffects.Extensions;
@@ -14,6 +15,7 @@ using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using AnimationUtility = TMPEffects.TMPAnimations.AnimationUtility;
 
 [CustomEditor(typeof(GenericAnimation))]
 public class GenericAnimationEditor : TMPAnimationEditorBase
@@ -33,6 +35,79 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         _ = new ReorderableList(serializedObject,
             serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks"), true, false, true, true);
         UpdateLists();
+
+        var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        for (int i = 0; i < trackProp.arraySize; i++)
+        {
+            var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
+            QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        for (int i = 0; i < trackProp.arraySize; i++)
+        {
+            var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
+            QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
+        }
+    }
+
+    // Alternatively:
+    // Clamp value to not interfere with any other values
+    // TODO Didnt work at all; might still want that
+    private void OnChangedStartOrDurationAlt(int listIndex, int changedIndex, params int[] ignoreIndex)
+    {
+        var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
+            .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
+        var changedProp = clips.GetArrayElementAtIndex(changedIndex);
+
+        float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
+        float changedDuration = changedProp.FindPropertyRelative("duration").floatValue;
+        float changedEndTime = changedStartTime + changedDuration;
+
+        // Update all start times and durations to accomodate for changed time
+        for (int i = 0; i < clips.arraySize; i++)
+        {
+            if (i == changedIndex || ignoreIndex.Contains(i)) continue;
+
+            var step = clips.GetArrayElementAtIndex(i);
+            
+            // Cases
+            
+            float startTime = step.FindPropertyRelative("startTime").floatValue;
+            float duration = step.FindPropertyRelative("duration").floatValue;
+            float endTime = startTime + duration;
+            
+            // if changed starts after clip
+            if (changedStartTime > startTime)
+            {
+                // if changed start contained in clip
+                if (changedStartTime < endTime)
+                {
+                    float prev = changedStartTime;
+                    changedStartTime = endTime;
+                    changedDuration = Mathf.Max(0f, duration - (changedStartTime - prev));
+                    changedEndTime = changedStartTime + changedDuration;
+                }
+                
+                continue;
+            }
+
+            // if changed ends in clip
+            if (changedEndTime > startTime)
+            {
+                if (changedEndTime < endTime)
+                {
+                    changedDuration = changedStartTime + (endTime - changedEndTime);
+                    changedEndTime = changedStartTime + changedDuration;
+                }
+            }
+        }
+
+        changedProp.FindPropertyRelative("startTime").floatValue = changedStartTime;
+        changedProp.FindPropertyRelative("duration").floatValue = changedDuration;
     }
 
     // Update all other durations when one was changed in the inspector
@@ -137,14 +212,14 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         EditorGUIUtility.labelWidth = 0;
         EditorGUI.PropertyField(rect, itemProp, GUIContent.none);
     }
-
+    
     private float MainElementHeightCallback(int index)
     {
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         return EditorGUI.GetPropertyHeight(clips);
     }
-
+ 
     private void MainAddCallback(ReorderableList list)
     {
         Debug.LogWarning("ADD");
@@ -281,7 +356,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             for (int i = 0; i < trackProp.arraySize; i++)
             {
                 var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
-                QuickSort(clips, 0, clips.arraySize-1, new SortClipComparer());
+                QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
             }
         }
 
@@ -416,10 +491,10 @@ public static class GenericAnimationExporter
             throw new System.InvalidOperationException(
                 "The passed in serializedObject's target object is not a GenericAnimation");
 
-        var steps = GetAnimationSteps(serializedObject.FindProperty("animationSteps"));
+        var tracks = GetTracks(serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks"));
         var repeats = serializedObject.FindProperty("repeat").boolValue;
         var duration = serializedObject.FindProperty("duration").floatValue;
-        GenerateScriptFromModifier(name, exportPath, repeats, duration, steps);
+        GenerateScriptFromModifier(name, exportPath, repeats, duration, tracks);
     }
 
     public static void Export(GenericAnimation anim, string filePath)
@@ -428,6 +503,19 @@ public static class GenericAnimationExporter
         // var repeats = anim.Repeat;
         // var duration = anim.Duration;
         // GenerateScriptFromModifier(filePath, repeats, duration, steps);
+    }
+
+    static List<List<AnimationStep>> GetTracks(SerializedProperty property)
+    {
+        List<List<AnimationStep>> tracks = new List<List<AnimationStep>>();
+        for (int i = 0; i < property.arraySize; i++)
+        {
+            var trackProp = property.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
+            var clips = GetAnimationSteps(trackProp);
+            tracks.Add(clips);
+        }
+
+        return tracks;
     }
 
     static List<AnimationStep> GetAnimationSteps(SerializedProperty animationStepsProp)
@@ -457,38 +545,50 @@ public static class GenericAnimationExporter
         }
     }
 
-    static OrderedHashSet<string> GetAnimationStepNames(List<AnimationStep> steps)
+    static Dictionary<int, List<string>> GetAnimationStepNames(List<List<AnimationStep>> tracks)
     {
-        OrderedHashSet<string> names = new OrderedHashSet<string>();
+        Dictionary<int, List<string>> names = new Dictionary<int, List<string>>();
 
-        foreach (var step in steps)
+        int trackCounter = 0;
+        int stepCounter = 0;
+        foreach (var track in tracks)
         {
-            string nameToAdd = step.name;
+            List<string> currnames = new List<string>();
+            names[trackCounter] = currnames;
 
-            // replace invlid characters
-            Debug.Log("Turned " + nameToAdd + " into " + Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", ""));
-            nameToAdd = Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "");
-
-            if (string.IsNullOrWhiteSpace(nameToAdd))
+            foreach (var step in track)
             {
-                nameToAdd = "Element_" + names.Count;
-            }
+                string nameToAdd = step.name;
 
-            if (names.Contains(nameToAdd))
-            {
-                nameToAdd += "_";
+                // replace invlid characters
+                nameToAdd = Regex.Replace(nameToAdd, @"[^a-zA-Z0-9_]", "");
 
-                int counter = 0;
-                while (names.Contains(nameToAdd + counter.ToString()))
+                if (string.IsNullOrWhiteSpace(nameToAdd))
                 {
-                    counter++;
+                    nameToAdd = "Track_" + trackCounter + "_" + stepCounter;
+                }
+                else nameToAdd = "Track_" + trackCounter + "_" + nameToAdd;
+
+                nameToAdd = ReplaceWhitespaceWithUnderscore(nameToAdd);
+
+                if (currnames.Contains(nameToAdd))
+                {
+                    nameToAdd += "_";
+
+                    int counter = 0;
+                    while (currnames.Contains(nameToAdd + counter.ToString()))
+                    {
+                        counter++;
+                    }
+
+                    nameToAdd += counter.ToString();
                 }
 
-                nameToAdd = nameToAdd + counter.ToString();
+                currnames.Add(nameToAdd);
+                stepCounter++;
             }
 
-            nameToAdd = ReplaceWhitespaceWithUnderscore(nameToAdd);
-            names.Add(nameToAdd);
+            trackCounter++;
         }
 
         return names;
@@ -500,7 +600,7 @@ public static class GenericAnimationExporter
     }
 
     static bool GenerateScriptFromModifier(string filePath, bool repeats, float duration,
-        List<AnimationStep> steps)
+        List<List<AnimationStep>> steps)
     {
         var name = Path.GetFileNameWithoutExtension(filePath);
         var path = Path.GetDirectoryName(filePath);
@@ -508,9 +608,9 @@ public static class GenericAnimationExporter
     }
 
     static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration,
-        List<AnimationStep> steps)
+        List<List<AnimationStep>> steps)
     {
-        OrderedHashSet<string> names = GetAnimationStepNames(steps);
+        var names = GetAnimationStepNames(steps);
         className = ReplaceWhitespaceWithUnderscore(className);
 
         string code = string.Format(@"using System.Collections.Generic;
@@ -617,25 +717,29 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
-    private static string GenerateStepParameters(List<AnimationStep> steps,
-        OrderedHashSet<string> names)
+    private static string GenerateStepParameters(List<List<AnimationStep>> tracks,
+        Dictionary<int, List<string>> names)
     {
         string code = "";
-
-        for (int i = 0; i < steps.Count; i++)
+        int trackIndex = -1;
+        foreach (var steps in tracks)
         {
-            var step = steps[i];
-            var name = names[i];
+            trackIndex++;
 
-            code +=
-                $@"
+            for (int i = 0; i < steps.Count; i++)
+            {
+                var step = steps[i];
+                var name = names[trackIndex][i];
+
+                code +=
+                    $@"
         [SerializeField] private AnimationStep Step_{name} = new AnimationStep()
         {{
             name = ""{step.name}"",
             entryDuration = {GetFloatString(step.entryDuration)},
-            entryCurve = {GetAnimCurveString(step.entryCurve)},
+            entryCurve = {GetFancyAnimCurveString(step.entryCurve)},
             exitDuration = {GetFloatString(step.exitDuration)},
-            exitCurve = {GetAnimCurveString(step.exitCurve)},
+            exitCurve = {GetFancyAnimCurveString(step.exitCurve)},
             loops = {step.loops.ToString().ToLower()},
             startTime = {GetFloatString(step.startTime)},
             duration = {GetFloatString(step.duration)},
@@ -658,8 +762,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {(!step.modifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.modifiers.BR_Position)}," : "")}
                 {(step.modifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BL_Color)}," : "")}
                 {(step.modifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.modifiers.TL_Color)}," : "")}
-                {(step.modifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.TR_Color)}," : "")}
-                {(step.modifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BR_Color)}," : "")}
+                {(step.modifiers.TR_Color.Override != 0 ? $"TR_Color = {GetColorOverrideString(step.modifiers.TR_Color)}," : "")}
+                {(step.modifiers.BR_Color.Override != 0 ? $"BR_Color = {GetColorOverrideString(step.modifiers.BR_Color)}," : "")}
             }},
             {(step.useInitialModifiers ? @$"initModifiers = new EditorFriendlyCharDataModifiers()
             {{
@@ -674,16 +778,17 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {(!step.initModifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.initModifiers.BR_Position)}," : "")}
                 {(step.initModifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BL_Color)}," : "")}
                 {(step.initModifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.initModifiers.TL_Color)}," : "")}
-                {(step.initModifiers.TR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.TR_Color)}," : "")}
-                {(step.initModifiers.BR_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BR_Color)}," : "")}
+                {(step.initModifiers.TR_Color.Override != 0 ? $"TR_Color = {GetColorOverrideString(step.initModifiers.TR_Color)}," : "")}
+                {(step.initModifiers.BR_Color.Override != 0 ? $"BR_Color = {GetColorOverrideString(step.initModifiers.BR_Color)}," : "")}
             }}" : "")}
         }};";
 
-            code = string.Join(Environment.NewLine, code
-                .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                .Where(line => !string.IsNullOrWhiteSpace(line)));
+                code = string.Join(Environment.NewLine, code
+                    .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
+                    .Where(line => !string.IsNullOrWhiteSpace(line)));
 
-            code += "\n";
+                code += "\n";
+            }
         }
 
         return code;
@@ -719,6 +824,18 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return str.Substring(0, str.Length - 1);
     }
 
+    private static string GetFancyAnimCurveString(AnimationUtility.FancyAnimationCurve curve)
+    {
+        // TODO TMPWrapMode and WaveOffsetType (for that second one wait to see if i do poweroffsettype)
+        var str = $@"new FancyAnimationCurve()
+{{
+    Curve = {GetAnimCurveString(curve.Curve)},
+    Uniformity = {GetFloatString(curve.Uniformity)},
+}}
+";
+        return str;
+    }
+    
     private static string GetAnimCurveString(AnimationCurve curve)
     {
         var str = "new AnimationCurve(";
@@ -768,19 +885,25 @@ namespace TMPEffects.TMPAnimations.GenericExports
             $"new Color32({color.r}, {color.g}, {color.b}, {color.a})";
     }
 
-    static string GenerateAnimateCode(List<AnimationStep> steps, OrderedHashSet<string> names)
+    static string GenerateAnimateCode(List<List<AnimationStep>> tracks, Dictionary<int, List<string>> names)
     {
         string code = @"            accumulated.Reset();
             float timeValue = data.repeat ? context.AnimatorContext.PassedTime % data.duration : context.AnimatorContext.PassedTime;
 ";
 
-        for (int i = 0; i < steps.Count; i++)
+        int trackIndex = -1;
+        foreach (var steps in tracks)
         {
-            var name = names[i];
-            code += $@"
+            trackIndex++;
+
+            for (int i = 0; i < steps.Count; i++)
+            {
+                var name = names[trackIndex][i];
+                code += $@"
             if (ApplyAnimationStep(Step_{name}, timeValue, cData, context))
                 accumulated.Combine(current);
 ";
+            }
         }
 
         code += $@"

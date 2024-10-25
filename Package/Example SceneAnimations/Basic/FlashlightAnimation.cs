@@ -71,7 +71,7 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 Debug.LogError("Failed to calculate ScreenPointToWorldPointInRectangle");
             }
 
-            context.Modifiers.CalculateVertexPositions(cData, context.AnimatorContext);
+            context.AnimatorContext.Modifiers.CalculateVertexPositions(cData, context.AnimatorContext);
             for (int i = 0; i < 4; i++)
             {
                 Vector3 vertex;
@@ -79,23 +79,23 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 switch (i)
                 {
                     case 0:
-                        vertex = text.transform.TransformPoint(context.Modifiers.BL_Result);
+                        vertex = text.transform.TransformPoint(context.AnimatorContext.Modifiers.BL_Result);
                         break;
                     case 1:
-                        vertex = text.transform.TransformPoint(context.Modifiers.TL_Result);
+                        vertex = text.transform.TransformPoint(context.AnimatorContext.Modifiers.TL_Result);
                         break;
                     case 2:
-                        vertex = text.transform.TransformPoint(context.Modifiers.TR_Result);
+                        vertex = text.transform.TransformPoint(context.AnimatorContext.Modifiers.TR_Result);
                         break;
                     case 3:
-                        vertex = text.transform.TransformPoint(context.Modifiers.BR_Result);
+                        vertex = text.transform.TransformPoint(context.AnimatorContext.Modifiers.BR_Result);
                         break;
                     default: throw new System.Exception();
                 }
 
                 float magnitude = (res - vertex).magnitude;
 
-                Color32 color = context.Modifiers.MeshModifiers.TL_Color.GetValue(cData.InitialMesh.TL_Color);
+                Color32 color = context.AnimatorContext.Modifiers.MeshModifiers.TL_Color.GetValue(cData.InitialMesh.TL_Color);
 
                 if (magnitude < d.radius)
                 {

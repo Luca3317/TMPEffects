@@ -14,19 +14,20 @@ public class AnimationStep
     public string name;
     public bool animate = true;
 
-    public AnimationCurve entryCurve;
+    public AnimationUtility.FancyAnimationCurve entryCurve;
     public float entryDuration;
 
-    public AnimationCurve exitCurve;
+    public AnimationUtility.FancyAnimationCurve exitCurve;
     public float exitDuration;
 
     public ExtrapolationMode preExtrapolation;
     public ExtrapolationMode postExtrapolation;
 
+    // TODO These dont really make much sense anymore right now since itll just overwrite the following steps / clips
+    // Then: Need to figure out how to do oneshot vs looping animations. Maybe loop per track. or smth idk.
     [Tooltip("Whether this animation step should automatically loop over time. " +
              "For GenericAnimations, this can be disregarded if the animation itself is set to repeat.")]
     public bool loops;
-
     [Tooltip("How many times this animation step should automatically loop over time. " +
              "For GenericAnimations, this can be disregarded if the animation itself is set to repeat.")]
     public uint repetitions;
@@ -52,20 +53,14 @@ public class AnimationStep
     {
     }
 
-    /*
-     * TODO
-     * Added this constructor because AnimSteps are serialized as reference; for exporting need to clone
-     * TODO
-     * Test whether this works fine or also need to create new instance of all held classes (prolly yes)
-     */
     public AnimationStep(AnimationStep original)
     {
         name = original.name;
         animate = original.animate;
         
-        entryCurve = original.entryCurve;
+        entryCurve = new AnimationUtility.FancyAnimationCurve(original.entryCurve);
         entryDuration = original.entryDuration;
-        exitCurve = original.exitCurve;
+        exitCurve = new AnimationUtility.FancyAnimationCurve(original.exitCurve);
         exitDuration = original.exitDuration;
         
         preExtrapolation = original.preExtrapolation;
@@ -76,14 +71,14 @@ public class AnimationStep
         
         useWave = original.useWave;
         waveOffsetType = original.waveOffsetType;
-        wave = original.wave;
+        wave = new AnimationUtility.Wave(original.wave); // TODO Wave is class so need to copy here
         
         startTime = original.startTime;
         duration = original.duration;
         
         useInitialModifiers = original.useInitialModifiers;
-        initModifiers = original.initModifiers;
-        modifiers = original.modifiers;
+        initModifiers = new EditorFriendlyCharDataModifiers(original.initModifiers);
+        modifiers = new EditorFriendlyCharDataModifiers(original.modifiers);
     }
 
     public enum ExtrapolationMode

@@ -13,6 +13,7 @@ namespace TMPEffects.TMPAnimations
         /// The context of the animating TMPAnimator.
         /// </summary>
         public IAnimatorContext AnimatorContext { get; }
+        
         /// <summary>
         /// Data about the animation segment.
         /// </summary>
@@ -22,12 +23,7 @@ namespace TMPEffects.TMPAnimations
         /// The custom data object.
         /// </summary>
         public object CustomData { get; }
-
-        /// <summary>
-        /// The current state of the CharData, with the previous animations applied.
-        /// </summary>
-        public CharDataModifiers Modifiers { get; }
-
+        
         /// <summary>
         /// Check if the animation is considered finished for the character at the given index.
         /// </summary>

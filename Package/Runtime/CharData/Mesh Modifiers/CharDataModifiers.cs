@@ -246,7 +246,6 @@ public class CharDataModifiers
                 result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, end.BR_Color, t);
             }
         }
-        Debug.LogWarning("You better 2 " + result.BR_Color);
         
         if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
         {

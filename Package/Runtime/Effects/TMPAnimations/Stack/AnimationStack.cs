@@ -172,8 +172,6 @@ namespace TMPEffects.TMPAnimations.Animations
 
             public object CustomData => customData;
 
-            public CharDataModifiers Modifiers => context.Modifiers;
-
             public AnimContext(IAnimationContext context, object customData)
             {
                 this.context = context;

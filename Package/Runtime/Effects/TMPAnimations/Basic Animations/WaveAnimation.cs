@@ -22,6 +22,8 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField]
         WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
 
+        [SerializeField] private OffsetTypePowerEnum powerEnum;
+        
         public override void Animate(CharData cData, IAnimationContext context)
         {
             Data data = (Data)context.CustomData;
