@@ -10,3 +10,4 @@ public abstract class TMPOffsetType : MonoBehaviour
     public abstract float GetOffset(CharData cData, IAnimationContext context);
 }
 
+ 
