@@ -5,7 +5,7 @@ using TMPEffects.Databases.CommandDatabase;
 
 namespace TMPEffects.Editor
 {
-    internal sealed class TMPEffectsSettings : ScriptableObject
+    internal sealed class TMPEffectsPreferences : ScriptableObject
     {
         public TMPAnimationDatabase DefaultAnimationDatabase => defaultAnimationDatabase;
         public TMPCommandDatabase DefaultCommandDatabase => defaultCommandDatabase;
@@ -13,15 +13,15 @@ namespace TMPEffects.Editor
         [SerializeField] private TMPAnimationDatabase defaultAnimationDatabase;
         [SerializeField] private TMPCommandDatabase defaultCommandDatabase;
 
-        internal static TMPEffectsSettings Get()
+        internal static TMPEffectsPreferences Get()
         {
-            var settings = Resources.Load<TMPEffectsSettings>("TMPEffectsSettings");
+            var preferences = Resources.Load<TMPEffectsPreferences>("TMPEffectsSettings");
 
-            if (settings != null) return settings;
+            if (preferences != null) return preferences;
 
             TMPEffectsImporterWindow.ShowImporterWindow();
 
             return null;
         }
     }
-} 
+}  

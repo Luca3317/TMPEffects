@@ -252,14 +252,14 @@ namespace TMPEffects.Editor
 
         private void SetDatabase()
         {
-            TMPEffectsSettings settings = TMPEffectsSettings.Get();
-            if (settings == null || !useDefaultDatabaseProp.boolValue)
+            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+            if (preferences == null || !useDefaultDatabaseProp.boolValue)
             {
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (settings.DefaultCommandDatabase == null)
+            if (preferences.DefaultCommandDatabase == null)
             {
                 Debug.LogWarning("No default command database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
@@ -267,9 +267,9 @@ namespace TMPEffects.Editor
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != settings.DefaultCommandDatabase)
+            if (databaseProp.objectReferenceValue != preferences.DefaultCommandDatabase)
             {
-                databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
+                databaseProp.objectReferenceValue = preferences.DefaultCommandDatabase;
                 serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
                 return;
@@ -441,13 +441,13 @@ namespace TMPEffects.Editor
             {
                 if (useDefaultDatabaseProp.boolValue)
                 {
-                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                    if (settings == null)
+                    TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+                    if (preferences == null)
                     {
                         useDefaultDatabaseProp.boolValue = false;
                         serializedObject.ApplyModifiedProperties();
                     }
-                    else if (settings.DefaultCommandDatabase == null)
+                    else if (preferences.DefaultCommandDatabase == null)
                     {
                         Debug.LogWarning("No default command database set in Preferences/TMPEffects");
                         useDefaultDatabaseProp.boolValue = false;
@@ -455,7 +455,7 @@ namespace TMPEffects.Editor
                     }
                     else
                     {
-                        databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
+                        databaseProp.objectReferenceValue = preferences.DefaultCommandDatabase;
                         serializedObject.ApplyModifiedProperties();
                         writer.OnChangedDatabase();
                     }
@@ -463,8 +463,8 @@ namespace TMPEffects.Editor
             }
             else
             {
-                TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                if (settings != null && settings.DefaultCommandDatabase != databaseProp.objectReferenceValue)
+                TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+                if (preferences != null && preferences.DefaultCommandDatabase != databaseProp.objectReferenceValue)
                 {
                     useDefaultDatabaseProp.boolValue = false;
                     serializedObject.ApplyModifiedProperties();

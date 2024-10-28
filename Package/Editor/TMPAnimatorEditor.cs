@@ -37,6 +37,7 @@ namespace TMPEffects.Editor
         SerializedProperty useDefaultDatabaseProp;
         SerializedProperty initDatabaseProp;
         SerializedProperty previewUpdatesProp;
+        SerializedProperty keywordDatabaseProp;
 
         // Default animations
         SerializedProperty defaultAnimationsProp, defaultShowAnimationsProp, defaultHideAnimationsProp;
@@ -64,6 +65,7 @@ namespace TMPEffects.Editor
             contextUniformScalingProp = contextProp.FindPropertyRelative("scaleUniformly");
             contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
             passedTimeProp = contextProp.FindPropertyRelative("passedTime");
+            keywordDatabaseProp = contextProp.FindPropertyRelative("KeywordDatabase");
             previewProp = serializedObject.FindProperty("preview");
             excludedProp = serializedObject.FindProperty("excludedCharacters");
             excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");
@@ -84,20 +86,23 @@ namespace TMPEffects.Editor
             defaultShowAnimationsProp = serializedObject.FindProperty("defaultShowAnimationsStrings");
             defaultHideAnimationsProp = serializedObject.FindProperty("defaultHideAnimationsStrings");
 
-            defaultAnimationsList = new ReorderableList(serializedObject, defaultAnimationsProp, true, false, true, true)
-            {
-                drawElementCallback = DrawDefaultBasicAnimationsList
-            };
+            defaultAnimationsList =
+                new ReorderableList(serializedObject, defaultAnimationsProp, true, false, true, true)
+                {
+                    drawElementCallback = DrawDefaultBasicAnimationsList
+                };
 
-            defaultShowAnimationsList = new ReorderableList(serializedObject, defaultShowAnimationsProp, true, false, true, true)
-            {
-                drawElementCallback = DrawDefaultShowAnimationsList
-            };
+            defaultShowAnimationsList =
+                new ReorderableList(serializedObject, defaultShowAnimationsProp, true, false, true, true)
+                {
+                    drawElementCallback = DrawDefaultShowAnimationsList
+                };
 
-            defaultHideAnimationsList = new ReorderableList(serializedObject, defaultHideAnimationsProp, true, false, true, true)
-            {
-                drawElementCallback = DrawDefaultHideAnimationsList
-            };
+            defaultHideAnimationsList =
+                new ReorderableList(serializedObject, defaultHideAnimationsProp, true, false, true, true)
+                {
+                    drawElementCallback = DrawDefaultHideAnimationsList
+                };
 
             listWarningDict = new Dictionary<int, string>();
             showListWarningDict = new Dictionary<int, string>();
@@ -116,20 +121,24 @@ namespace TMPEffects.Editor
 
         void DrawDefaultBasicAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
         {
-            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Basic, defaultAnimationsProp, listWarningDict);
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Basic, defaultAnimationsProp,
+                listWarningDict);
         }
 
         void DrawDefaultShowAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
         {
-            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Show, defaultShowAnimationsProp, showListWarningDict);
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Show,
+                defaultShowAnimationsProp, showListWarningDict);
         }
 
         void DrawDefaultHideAnimationsList(Rect rect, int index, bool isActive, bool isFocused)
         {
-            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Hide, defaultHideAnimationsProp, hideListWarningDict);
+            DrawDefaultAnimationsList(rect, index, isActive, isFocused, TMPAnimationType.Hide,
+                defaultHideAnimationsProp, hideListWarningDict);
         }
 
-        void DrawDefaultAnimationsList(Rect rect, int index, bool isActive, bool isFocused, TMPAnimationType type, SerializedProperty defaultAnimationProperty, IDictionary<int, string> warningDict)
+        void DrawDefaultAnimationsList(Rect rect, int index, bool isActive, bool isFocused, TMPAnimationType type,
+            SerializedProperty defaultAnimationProperty, IDictionary<int, string> warningDict)
         {
             //rect.position += defaultListOffset;
             rect.size -= defaultListOffset;
@@ -175,6 +184,7 @@ namespace TMPEffects.Editor
         }
 
         bool reset = false;
+
         private void ResetDatabase()
         {
             if (!reset) return;
@@ -185,14 +195,14 @@ namespace TMPEffects.Editor
 
         private void SetDatabase()
         {
-            TMPEffectsSettings settings = TMPEffectsSettings.Get();
-            if (settings == null || !useDefaultDatabaseProp.boolValue)
+            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+            if (preferences == null || !useDefaultDatabaseProp.boolValue)
             {
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (settings.DefaultAnimationDatabase == null)
+            if (preferences.DefaultAnimationDatabase == null)
             {
                 Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
@@ -200,9 +210,9 @@ namespace TMPEffects.Editor
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != settings.DefaultAnimationDatabase)
+            if (databaseProp.objectReferenceValue != preferences.DefaultAnimationDatabase)
             {
-                databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
+                databaseProp.objectReferenceValue = preferences.DefaultAnimationDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
                 return;
@@ -224,6 +234,7 @@ namespace TMPEffects.Editor
         }
 
         GUIStyle horizontalLine;
+
         void InitStyles()
         {
             if (initStyles) return;
@@ -241,7 +252,8 @@ namespace TMPEffects.Editor
         {
             if (reset) ResetDatabase();
 
-            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
+            databaseProp.isExpanded =
+                EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Animations"), true);
             if (databaseProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
@@ -255,19 +267,20 @@ namespace TMPEffects.Editor
             GUILayout.BeginHorizontal();
 
             bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
-            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
+            useDefaultDatabaseProp.boolValue =
+                EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
 
             if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
             {
                 if (useDefaultDatabaseProp.boolValue)
                 {
-                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                    if (settings == null)
+                    TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+                    if (preferences == null)
                     {
                         useDefaultDatabaseProp.boolValue = false;
                         serializedObject.ApplyModifiedProperties();
                     }
-                    else if (settings.DefaultAnimationDatabase == null)
+                    else if (preferences.DefaultAnimationDatabase == null)
                     {
                         Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
                         useDefaultDatabaseProp.boolValue = false;
@@ -275,7 +288,7 @@ namespace TMPEffects.Editor
                     }
                     else
                     {
-                        databaseProp.objectReferenceValue = settings.DefaultAnimationDatabase;
+                        databaseProp.objectReferenceValue = preferences.DefaultAnimationDatabase;
                         serializedObject.ApplyModifiedProperties();
                         animator.OnChangedDatabase();
                     }
@@ -283,8 +296,8 @@ namespace TMPEffects.Editor
             }
             else
             {
-                TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                if (settings != null && settings.DefaultAnimationDatabase != databaseProp.objectReferenceValue)
+                TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+                if (preferences != null && preferences.DefaultAnimationDatabase != databaseProp.objectReferenceValue)
                 {
                     useDefaultDatabaseProp.boolValue = false;
                     serializedObject.ApplyModifiedProperties();
@@ -300,6 +313,7 @@ namespace TMPEffects.Editor
                 if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
             }
+
             GUILayout.EndHorizontal();
 
             EditorGUI.BeginChangeCheck();
@@ -331,33 +345,39 @@ namespace TMPEffects.Editor
                 TMPAnimationType.Basic,
                 defaultAnimationsProp,
                 defaultAnimationsList,
-                new GUIContent("Default Animations", "Default animations that will be applied to the entire text, without needing any tags."),
+                new GUIContent("Default Animations",
+                    "Default animations that will be applied to the entire text, without needing any tags."),
                 listWarningDict);
 
             DrawDefault(
                 TMPAnimationType.Show,
                 defaultShowAnimationsProp,
                 defaultShowAnimationsList,
-                new GUIContent("Default Show Animations", "Default show animations that will be applied to the entire text, without needing any tags."),
+                new GUIContent("Default Show Animations",
+                    "Default show animations that will be applied to the entire text, without needing any tags."),
                 showListWarningDict);
 
             DrawDefault(
                 TMPAnimationType.Hide,
                 defaultHideAnimationsProp,
                 defaultHideAnimationsList,
-                new GUIContent("Default Hide Animations", "Default hide animations that will be applied to the entire text, without needing any tags."),
+                new GUIContent("Default Hide Animations",
+                    "Default hide animations that will be applied to the entire text, without needing any tags."),
                 hideListWarningDict);
         }
 
 
-        void DrawDefault(TMPAnimationType type, SerializedProperty defaultAnimationsProp, ReorderableList defaultAnimationsList, GUIContent label, IDictionary<int, string> warningDict)
+        void DrawDefault(TMPAnimationType type, SerializedProperty defaultAnimationsProp,
+            ReorderableList defaultAnimationsList, GUIContent label, IDictionary<int, string> warningDict)
         {
             EditorGUI.BeginChangeCheck();
 
-            if ((defaultAnimationsProp.isExpanded = EditorGUILayout.Foldout(defaultAnimationsProp.isExpanded, label, true)))
+            if ((defaultAnimationsProp.isExpanded =
+                    EditorGUILayout.Foldout(defaultAnimationsProp.isExpanded, label, true)))
             {
                 Rect rect = GUILayoutUtility.GetRect(0f, defaultAnimationsList.GetHeight());
-                rect = new Rect(rect.x + defaultListOffset.x, rect.y + defaultListOffset.y, rect.width - defaultListOffset.x, rect.height - defaultListOffset.y);
+                rect = new Rect(rect.x + defaultListOffset.x, rect.y + defaultListOffset.y,
+                    rect.width - defaultListOffset.x, rect.height - defaultListOffset.y);
                 defaultAnimationsList.DoList(rect);
             }
 
@@ -366,7 +386,8 @@ namespace TMPEffects.Editor
                 warningDict.Clear();
                 for (int i = 0; i < defaultAnimationsProp.arraySize; i++)
                 {
-                    warningDict.Add(i, animator.CheckDefaultString(type, defaultAnimationsProp.GetArrayElementAtIndex(i).stringValue));
+                    warningDict.Add(i,
+                        animator.CheckDefaultString(type, defaultAnimationsProp.GetArrayElementAtIndex(i).stringValue));
                 }
 
                 serializedObject.ApplyModifiedProperties();
@@ -448,9 +469,13 @@ namespace TMPEffects.Editor
                 GUIStyle animationButtonStyle = new GUIStyle(GUI.skin.button);
                 animationButtonStyle.richText = true;
                 char animationC = animator.IsAnimating ? '\u2713' : '\u2717';
-                GUIContent animationButtonContent = new GUIContent("Toggle animation " + (animator.IsAnimating ? "<color=#90ee90>" : "<color=#f1807e>") + animationC.ToString() + "</color>");
+                GUIContent animationButtonContent = new GUIContent("Toggle animation " +
+                                                                   (animator.IsAnimating
+                                                                       ? "<color=#90ee90>"
+                                                                       : "<color=#f1807e>") + animationC.ToString() +
+                                                                   "</color>");
 
-                EditorGUI.BeginDisabledGroup(/*!animator.IsAnimating || */animator.UpdateFrom == UpdateFrom.Script);
+                EditorGUI.BeginDisabledGroup( /*!animator.IsAnimating || */animator.UpdateFrom == UpdateFrom.Script);
 
                 if (GUILayout.Button(animationButtonContent, animationButtonStyle))
                 {
@@ -472,12 +497,14 @@ namespace TMPEffects.Editor
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(new GUIContent("Animator preview"), previewLabelStyle);
             EditorGUI.BeginChangeCheck();
-            previewUpdatesProp.intValue = EditorGUILayout.IntSlider(GUIContent.none, previewUpdatesProp.intValue, 1, 100);
+            previewUpdatesProp.intValue =
+                EditorGUILayout.IntSlider(GUIContent.none, previewUpdatesProp.intValue, 1, 100);
             if (EditorGUI.EndChangeCheck())
             {
                 serializedObject.ApplyModifiedProperties();
                 animator.UpdatePreviewUpdates();
             }
+
             EditorGUILayout.EndHorizontal();
 
             // Draw preview toggle and reset time button
@@ -488,17 +515,21 @@ namespace TMPEffects.Editor
 
             GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
             buttonStyle.richText = true;
-            GUIContent buttonContent = new GUIContent("Toggle preview " + (previewProp.boolValue ? "<color=#90ee90>" : "<color=#f1807e>") + c.ToString() + "</color>");
+            GUIContent buttonContent = new GUIContent("Toggle preview " +
+                                                      (previewProp.boolValue ? "<color=#90ee90>" : "<color=#f1807e>") +
+                                                      c.ToString() + "</color>");
 
 
             if (GUILayout.Button(buttonContent, buttonStyle))
             {
                 previewProp.boolValue = !prevPreview;
             }
+
             if (GUILayout.Button(new GUIContent("Reset time")))
             {
                 animator.ResetTime();
             }
+
             EditorGUILayout.EndHorizontal();
 
             EditorGUI.EndDisabledGroup();
@@ -544,7 +575,8 @@ namespace TMPEffects.Editor
             DrawAnimationsFoldout();
 
             EditorGUILayout.Space(10);
-            animationsOverrideProp.isExpanded = EditorGUILayout.Foldout(animationsOverrideProp.isExpanded, new GUIContent("Animator settings"), true);
+            animationsOverrideProp.isExpanded = EditorGUILayout.Foldout(animationsOverrideProp.isExpanded,
+                new GUIContent("Animator settings"), true);
             if (animationsOverrideProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
@@ -554,11 +586,24 @@ namespace TMPEffects.Editor
 
                 EditorGUILayout.Space(10);
                 DrawExclusions();
+
+                
+                // TODO Figure out how / if there is a way to use correct filters for objectpicker with this setup 
+                EditorGUILayout.Space(10);
+                GUIContent cont = new GUIContent("Keyword Database");
+                cont.tooltip = "A keyword database defining additional keywords. " +
+                               "If the same keyword is present in the Global Keyword Database defined in the project settings, this database will override it.";
+                keywordDatabaseProp.objectReferenceValue = 
+                    EditorGUILayout.ObjectField(cont, keywordDatabaseProp.objectReferenceValue, typeof(ITMPKeywordDatabase), true);
+                
                 EditorGUI.indentLevel--;
             }
+
             EditorGUILayout.Space(10);
 
-            if (contextProp.isExpanded = EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings"), true))
+            contextProp.isExpanded =
+                EditorGUILayout.Foldout(contextProp.isExpanded, new GUIContent("Animation Settings"), true);
+            if (contextProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(contextScalingProp);
@@ -589,10 +634,7 @@ namespace TMPEffects.Editor
             {
                 animator.StopPreview();
 
-                EditorApplication.delayCall += () =>
-                {
-                    animator.StartPreview();
-                };
+                EditorApplication.delayCall += () => { animator.StartPreview(); };
             }
         }
     }

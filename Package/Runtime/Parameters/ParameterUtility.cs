@@ -56,6 +56,42 @@ namespace TMPEffects.Parameters
         {
             return TryGetDefinedParameter(out _, parameters, name, aliases);
         }
+        
+        
+        public static bool HasFloatParameter(IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
+        {
+            return TryGetFloatParameter(out float _, parameters, keywords, name, aliases);
+        }
+ 
+        
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type float (=> can not be converted to float).<br />
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type float, false otherwise.</returns>
+        public static bool HasNonFloatParameter(IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetFloatParameter(out float _, parameters, keywords, name, aliases);
+        }
+        
+
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type float (=> can be converted to float).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type float, false otherwise.</returns>
+        public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
+        {
+            value = default;
+            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
+            return ParameterParsing.StringToFloat(parameters[parameterName], out value, keywords);
+        }
 
         public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords = new ReadOnlyDictionary<string, Vector2>(new Dictionary<string, Vector2>()
         {
@@ -329,7 +365,7 @@ namespace TMPEffects.Parameters
         }
 
 
-
+        // TODO Either make usage of these consistent or delete totally
         // Aliases for common parameters
         public static readonly string[] WaveOffsetAliases = new string[] { "woffset", "waveoff", "woff" };
         public static readonly string[] SpeedAliases = new string[] { "sp", "s" };

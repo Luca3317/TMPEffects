@@ -36,11 +36,13 @@ public class PowerEnumDrawer : PropertyDrawer
             var ctrlRect2 = new Rect(ctrlRect.x + ctrlRect.width, ctrlRect.y, width * 0.75f, ctrlRect.height);
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
             EditorGUI.PropertyField(ctrlRect2, customProp, GUIContent.none);
-        }
+        } 
         // Normal
         else
         {
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
+            if (index < options.Count - 1)
+                enumProp.enumValueIndex = index;
         }
 
         useCustomProp.boolValue = index == options.Count - 1;

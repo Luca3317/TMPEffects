@@ -11,7 +11,10 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     public class AnimatorContext : IAnimatorContext
     {
+        // TODO Hastily added these two, check they fit interface and encapsulatione etc
         public CharDataModifiers Modifiers { get; set; }
+        public UnityEngine.Object KeywordDatabase;
+
         
         /// <inheritdoc/>
         public bool ScaleAnimations

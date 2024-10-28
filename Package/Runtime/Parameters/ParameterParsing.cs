@@ -10,17 +10,39 @@ namespace TMPEffects.Parameters
 {
     public static class ParameterParsing
     {
-        #region Parsing
+        public static TMPKeywordDatabase GlobalKeywordDatabase
+        {
+            get
+            {
+                if (globalKeywordDatabase == null)
+                {
+                    var settings = Resources.Load<TMPEffectsSettings>("TMPEffectsSettings_Project");
+                    globalKeywordDatabase = settings.GlobalKeywordDatabase;
+                }
+                
+                return globalKeywordDatabase;
+            }
+        }
 
+        private static TMPKeywordDatabase globalKeywordDatabase = null;
+        
+        #region Parsing
         public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
         {
             result = 0;
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
+            if (keywords != null && keywords.TryGetValue(str, out result))
                 return true;
 
-            if (keywords != null && keywords.TryGetValue(str, out result))
+            if (GlobalKeywordDatabase.IntKeywords.TryGetValue(str, out result))
+                return true;
+            
+            // TODO need to decide on order
+            // Either   Passed In keywords -> global key words -> parse
+            // Or       Parse -> passed in -> global
+            // And then fix for all of stringtoX methods
+            if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
                 return true;
 
             return true;
@@ -30,13 +52,16 @@ namespace TMPEffects.Parameters
         {
             result = 0;
             if (string.IsNullOrWhiteSpace(str)) return false;
+            
+            if (keywords != null && keywords.TryGetValue(str, out result)) 
+                return true;
+            
+            if (GlobalKeywordDatabase.FloatKeywords.TryGetValue(str, out result))
+                return true;
 
             if (float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
                 return true;
-
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
+            
             return false;
         }
 
