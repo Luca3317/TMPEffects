@@ -138,12 +138,12 @@ public class CharDataModifiers
         );
     }
 
-    public static void LerpUnclamped(CharData cData, CharDataModifiers start, CharDataModifiers end, float t,
+    public static void LerpUnclamped(CharData cData, IAnimatorContext ctx, CharDataModifiers start, CharDataModifiers end, float t,
         CharDataModifiers result)
     {
         LerpCharacterModifiersUnclamped(cData, start.CharacterModifiers, end.CharacterModifiers, t,
             result.CharacterModifiers);
-        LerpMeshModifiersUnclamped(cData, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
+        LerpMeshModifiersUnclamped(cData, ctx, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
     }
 
     public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers start,
@@ -196,9 +196,7 @@ public class CharDataModifiers
         }
     }
 
-    public static IAnimatorContext ctx; 
-
-    public static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers start, TMPMeshModifiers end,
+    public static void LerpMeshModifiersUnclamped(CharData cData, IAnimatorContext ctx, TMPMeshModifiers start, TMPMeshModifiers end,
         float t,
         TMPMeshModifiers result)
     {

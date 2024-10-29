@@ -48,7 +48,9 @@ namespace TMPEffects.TMPCommands
         /// </summary>
         /// <param name="args">The arguments for the command.</param>
         public void ExecuteCommand(TMPCommandArgs args);
-
+        
+        // TODO This also needs keyword access (as does ExecuteCommand)
+        // TODO Might pass TMPWriter directly; might want to give TMPWriter a context as well instead?
         /// <summary>
         /// Validate the parameters.<br/>
         /// Used to validate tags.

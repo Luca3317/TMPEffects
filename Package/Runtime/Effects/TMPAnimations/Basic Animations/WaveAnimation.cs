@@ -31,7 +31,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             // Evaluate the wave based on time and offset
             float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime,
-                GetWaveOffset(cData, context, data.waveOffsetType)).Value;
+                powerEnum.GetOffset(cData, context)).Value;
 
             // Move the character up based on the wave evaluation
             cData.PositionDelta = Vector3.up * eval;

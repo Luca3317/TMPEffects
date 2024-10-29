@@ -87,3 +87,7 @@ MonoBehaviour:
     troughWait: 0
     uniformity: 0.1
   waveOffsetType: 10
+  powerEnum:
+    enumValue: 10
+    customValue: {fileID: 0}
+    useCustom: 1

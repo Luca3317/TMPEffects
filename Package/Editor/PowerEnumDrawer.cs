@@ -35,7 +35,7 @@ public class PowerEnumDrawer : PropertyDrawer
             ctrlRect.width *= 0.25f;
             var ctrlRect2 = new Rect(ctrlRect.x + ctrlRect.width, ctrlRect.y, width * 0.75f, ctrlRect.height);
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
-            EditorGUI.PropertyField(ctrlRect2, customProp, GUIContent.none);
+            customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue, typeof(ITMPOffsetType), !EditorUtility.IsPersistent(property.serializedObject.targetObject));
         } 
         // Normal
         else

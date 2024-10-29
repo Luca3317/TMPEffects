@@ -220,13 +220,12 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         return EditorGUI.GetPropertyHeight(clips);
     }
  
-    private void MainAddCallback(ReorderableList list)
+    private void MainAddCallback(ReorderableList list) 
     {
-        Debug.LogWarning("ADD");
         var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         trackprop.arraySize++;
         trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("clips").ClearArray();
-    }
+    } 
 
     private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
@@ -234,7 +233,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
-        EditorGUI.indentLevel--;
+        EditorGUI.indentLevel--; 
     }
 
     private void AddCallback(ReorderableList list)

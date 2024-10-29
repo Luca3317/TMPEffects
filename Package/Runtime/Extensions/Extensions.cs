@@ -14,7 +14,7 @@ namespace TMPEffects.Extensions
         /// <typeparam name="T">The type of Component to search for.</typeparam>
         /// <param name="gameObject"></param>
         /// <returns>A reference to a component of the type <see cref="T"/>.</returns>
-        public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+        internal static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
         {
             T comp = gameObject.GetComponent<T>();
             if (comp == null) comp = gameObject.AddComponent<T>();

@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 409867536}
   - component: {fileID: 409867539}
   - component: {fileID: 409867540}
+  - component: {fileID: 409867541}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: f0a33761ff6919d4a9979ee36980a29d, type: 2}
   context:
-    KeywordDatabase: {fileID: 409867540}
+    keywordDatabase: {fileID: 409867540}
     scaleAnimations: 1
     scaleUniformly: 1
     useScaledTime: 1
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <palette colors=penis>Lorem ipsum dolor sit amet.
+  m_text: TMPEffectsTMPEffects
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -419,7 +420,17 @@ PlayableDirector:
   - key: {fileID: 0}
     value: {fileID: 409867536}
   - key: {fileID: 652458105842936744, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 409867536}
+  - key: {fileID: -622382836431159365, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 409867536}
+  - key: {fileID: 2616812642323265316, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 409867536}
+  - key: {fileID: 6741184185172513431, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 409867536}
+  - key: {fileID: -1432901197914315242, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 409867536}
+  - key: {fileID: -7155408658991447752, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 409867536}
   m_ExposedReferences:
     m_References:
     - : {fileID: 409867539}
@@ -435,24 +446,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b836cd9c7c5852147bf732a8b3a5bd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorKeywords:
-    _serializedList:
-    - Key: penis
-      Value: {r: 0.5660378, g: 0.30170882, b: 0.30170882, a: 0}
-  vector3Keywords:
-    _serializedList: []
-  vector2Keywords:
-    _serializedList: []
   floatKeywords:
     _serializedList: []
   intKeywords:
     _serializedList: []
   boolKeywords:
     _serializedList: []
+  colorKeywords:
+    _serializedList:
+    - Key: penis
+      Value: {r: 1, g: 0, b: 0.02752304, a: 1}
+    - Key: a
+      Value: {r: 0.0625, g: 1, b: 0, a: 1}
+    - Key: b
+      Value: {r: 0, g: 0.47674417, b: 1, a: 1}
+  vector3Keywords:
+    _serializedList:
+    - Key: hi
+      Value: {x: 2, y: 2, z: 2}
+  anchorKeywords:
+    _serializedList:
+    - Key: hi
+      Value: {x: 23, y: 23}
   animationCurveKeywords:
     _serializedList: []
   offsetTypeKeywords:
     _serializedList: []
+--- !u!114 &409867541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409867534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf9594e2a3b8eb4eaf3cc57f263076f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTextEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCharacterShown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaitStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaitEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSkipWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResetWriter:
+    m_PersistentCalls:
+      m_Calls: []
+  database: {fileID: 11400000, guid: 290ad04254a96934aa269d5b8d258008, type: 2}
+  maySkip: 1
+  writeOnStart: 1
+  writeOnNewText: 1
+  useScaledTime: 1
+  delays:
+    delay: 0.035
+    whitespaceDelay: 0
+    whitespaceDelayType: 0
+    linebreakDelay: 0
+    linebreakDelayType: 0
+    punctuationDelay: 0
+    punctuationDelayType: 0
+    visibleDelay: 0
+    visibleDelayType: 0
+  sceneCommands:
+    _serializedList: []
+  useDefaultDatabase: 1
+  initDatabase: 1
+  eventsEnabled: 0
+  commandsEnabled: 1
 --- !u!1 &874370643
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +543,8 @@ GameObject:
   - component: {fileID: 874370646}
   - component: {fileID: 874370645}
   - component: {fileID: 874370644}
+  - component: {fileID: 874370647}
+  - component: {fileID: 874370648}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -521,6 +602,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874370647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874370643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7acc12357cac724e9b4369926452ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetTypePower:
+    enumValue: 0
+    customValue: {fileID: 11400000, guid: e175c55e203be964bbd4891a7fbd7b47, type: 2}
+    useCustom: 1
+--- !u!114 &874370648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874370643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e819fab8bbe2a874ea3f0a7d363ea8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 0.27
 --- !u!1 &1617959750
 GameObject:
   m_ObjectHideFlags: 0

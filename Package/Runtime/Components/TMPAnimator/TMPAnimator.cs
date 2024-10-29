@@ -662,18 +662,6 @@ namespace TMPEffects.Components
             showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase, context);
             hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase, context);
 
-
-            // Reset tagcollection & cachedcollection => moved to postprocesstags
-            //if (tags != null) tags.CollectionChanged -= OnTagCollectionChanged;
-            //tags = new TagCollectionManager<TMPAnimationCategory>();
-            //tags.CollectionChanged += OnTagCollectionChanged;
-
-            //var roCData = new ReadOnlyCollection<CharData>(Mediator.CharData);
-            //var roCDataState = new ReadOnlyCharDataState(state);
-            //basic = new CachedCollection<CachedAnimation>(new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x)), tags.AddKey(basicCategory));
-            //show = new CachedCollection<CachedAnimation>(new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x)), tags.AddKey(showCategory));
-            //hide = new CachedCollection<CachedAnimation>(new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x)), tags.AddKey(hideCategory));
-
             // Reset processors
             processors ??= new();
             processors.UnregisterFrom(Mediator.Processor);

@@ -28,7 +28,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         animator.OnCharacterAnimated -= OnAnimatedCallback;
 
         time = (float)director.time;
-        
+
         int inputCount = playable.GetInputCount();
         for (int i = 0; i < inputCount; i++)
         {
@@ -37,7 +37,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
             ScriptPlayable<TMPMeshModifierBehaviour> behaviour =
                 (ScriptPlayable<TMPMeshModifierBehaviour>)playable.GetInput(i);
-            
+
             active.Add(behaviour);
         }
 
@@ -60,33 +60,12 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             var behaviour = active[i].GetBehaviour();
             if (behaviour == null) continue;
             float currTime = (float)active[i].GetTime();
-            float duration =  (float)behaviour.Clip.duration;
+            float duration = (float)behaviour.Clip.duration;
             // float dur2 = (float)behaviour.Clip.duration;
-            float weight = 1;
 
-            
-            if (behaviour.Step.Step.entryDuration > 0 && currTime <= behaviour.Step.Step.entryDuration)
-            {
-                weight = behaviour.Step.Step.entryCurve.Evaluate(cdata, animator.AnimatorContext, currTime / behaviour.Step.Step.entryDuration);
-            }
-            
-            else if (behaviour.Step.Step.exitDuration > 0 && currTime >= duration - behaviour.Step.Step.exitDuration)
-            {
-                float preTime = duration - behaviour.Step.Step.exitDuration;
-                weight = behaviour.Step.Step.exitCurve.Evaluate(cdata, animator.AnimatorContext, 1f - (currTime - preTime) /
-                    behaviour.Step.Step.exitDuration);
-            }
-            
-            if (behaviour.Step.Step.useWave)
-            {
-                var offset = AnimationUtility.GetWaveOffset(cdata, animator.AnimatorContext,
-                    behaviour.Step.Step.waveOffsetType);
-                weight *= behaviour.Step.Step.wave.Evaluate(currTime, offset).Value;
-            }
-
-            current.Reset();
-            CharDataModifiers.ctx = animator.AnimatorContext;
-            GenericAnimation.ApplyAnimationStepWeighted(behaviour.Step.Step, weight, cdata, animator.AnimatorContext,
+            float weight = GenericAnimation.CalcWeight(behaviour.Step.Step, currTime, duration, cdata,
+                animator.AnimatorContext);
+            GenericAnimation.LerpAnimationStepWeighted(behaviour.Step.Step, weight, cdata, animator.AnimatorContext,
                 modifiersStorage, modifiersStorage2, current);
 
             // var result = Calc(animator, behaviour.Step, cdata, weight, time);

@@ -101,9 +101,6 @@ namespace TMPEffects.Databases.AnimationDatabase
             throw new KeyNotFoundException();
         }
 
-
-
-
         [SerializeField, HideInInspector] private TMPBasicAnimationDatabase prevBasicAnimationDatabase;
         [SerializeField, HideInInspector] private TMPShowAnimationDatabase prevShowAnimationDatabase;
         [SerializeField, HideInInspector] private TMPHideAnimationDatabase prevHideAnimationDatabase;
