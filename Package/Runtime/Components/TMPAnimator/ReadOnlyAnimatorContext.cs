@@ -11,7 +11,9 @@ namespace TMPEffects.Components.Animator
     public class ReadOnlyAnimatorContext : IAnimatorContext
     {
         public CharDataModifiers Modifiers => context.Modifiers;
-        
+
+        public ITMPKeywordDatabase KeywordDatabase => context.KeywordDatabase;
+
         /// <inheritdoc/>
         public bool ScaleAnimations => context.ScaleAnimations;
         /// <inheritdoc/>

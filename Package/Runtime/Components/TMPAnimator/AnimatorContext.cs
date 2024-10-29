@@ -9,12 +9,26 @@ namespace TMPEffects.Components.Animator
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
     [System.Serializable]
-    public class AnimatorContext : IAnimatorContext
+    public class AnimatorContext : IAnimatorContext, ISerializationCallbackReceiver
     {
         // TODO Hastily added these two, check they fit interface and encapsulatione etc
         public CharDataModifiers Modifiers { get; set; }
-        public UnityEngine.Object KeywordDatabase;
+        public UnityEngine.Object keywordDatabase;
 
+        public ITMPKeywordDatabase KeywordDatabase { get; private set; }
+        
+        // TODO Same for this
+        public void OnBeforeSerialize()
+        {
+            if (KeywordDatabase != null)
+                keywordDatabase = KeywordDatabase as UnityEngine.Object;
+        }
+
+        public void OnAfterDeserialize()
+        {
+            KeywordDatabase = keywordDatabase as ITMPKeywordDatabase;
+        }
+        
         
         /// <inheritdoc/>
         public bool ScaleAnimations

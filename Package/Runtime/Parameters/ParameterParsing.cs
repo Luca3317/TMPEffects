@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using TMPEffects.Extensions;
 using UnityEngine;
 
@@ -80,7 +81,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
+        public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector3> keywords = null)
         {
             result = new Vector2(0, 0);
 
@@ -91,8 +92,11 @@ namespace TMPEffects.Parameters
                 return true;
             }
 
-            if (keywords != null && keywords.TryGetValue(str, out result))
+            if (keywords != null && keywords.TryGetValue(str, out Vector3 vec))
+            {
+                result = vec;
                 return true;
+            }
 
             return false;
 
@@ -119,21 +123,21 @@ namespace TMPEffects.Parameters
         }
 
         public static bool StringToTypedVector3(string str, out ParameterTypes.TypedVector3 result,
-            IDictionary<string, string> keywords = null)
+            IDictionary<string, Vector3> keywords = null, IDictionary<string, Vector2> anchorKeywords = null)
         {
-            if (StringToVector3(str, out Vector3 vec))
+            if (StringToVector3(str, out Vector3 vec, keywords))
             {
                 result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Position, vec);
                 return true;
             }
             
-            if (StringToAnchor(str, out Vector2 vec2))
+            if (StringToAnchor(str, out Vector2 vec2, anchorKeywords, keywords))
             {
                 result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Anchor, vec2);
                 return true;
             }
             
-            if (StringToVector3Offset(str, out vec))
+            if (StringToVector3Offset(str, out vec, keywords))
             {
                 result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, vec);
                 return true;
@@ -144,21 +148,21 @@ namespace TMPEffects.Parameters
         }
         
         public static bool StringToTypedVector2(string str, out ParameterTypes.TypedVector2 result,
-            IDictionary<string, string> keywords = null)
+            IDictionary<string, Vector3> keywords = null, IDictionary<string, Vector2> anchorKeywords = null)
         {
-            if (StringToVector2(str, out Vector2 vec))
+            if (StringToVector2(str, out Vector2 vec, keywords))
             {
                 result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Position, vec);
                 return true;
             }
             
-            if (StringToAnchor(str, out vec))
+            if (StringToAnchor(str, out vec, anchorKeywords, keywords))
             {
                 result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Anchor, vec);
                 return true;
             }
             
-            if (StringToVector2Offset(str, out vec))
+            if (StringToVector2Offset(str, out vec, keywords))
             {
                 result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Offset, vec);
                 return true;
@@ -221,7 +225,7 @@ namespace TMPEffects.Parameters
         }
 
         public static bool StringToVector2Offset(string str, out Vector2 result,
-            IDictionary<string, Vector2> keywords = null)
+            IDictionary<string, Vector3> keywords = null)
         {
             str = str.Trim();
             if (str.Length < 3 || str[0] != 'o' || str[1] != ':')
@@ -231,8 +235,11 @@ namespace TMPEffects.Parameters
             }
 
             str = str.Substring(2, str.Length - 2);
-            if (keywords != null && keywords.TryGetValue(str, out result))
+            if (keywords != null && keywords.TryGetValue(str, out Vector3 vec))
+            {
+                result = vec;
                 return true;
+            }
 
             if (StringToVector2(str, out result, keywords))
             {
@@ -265,7 +272,7 @@ namespace TMPEffects.Parameters
         }
 
         public static bool StringToAnchor(string str, out Vector2 result,
-            IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector2> vectorKeywords = null)
+            IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector3> vectorKeywords = null)
         {
             str = str.Trim();
             if (str.Length < 3 || str[0] != 'a' || str[1] != ':')
@@ -274,10 +281,10 @@ namespace TMPEffects.Parameters
                 return false;
             }
 
+            str = str.Substring(2, str.Length - 2);
             if (anchorKeywords != null && anchorKeywords.TryGetValue(str, out result))
                 return true;
 
-            str = str.Substring(2, str.Length - 2);
             if (StringToVector2(str, out result, vectorKeywords))
             {
                 return true;

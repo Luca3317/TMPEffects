@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1b1a5230080374e9e961f1c760c7bb, type: 3}
   m_Name: TMPEffectsSettings_Project
   m_EditorClassIdentifier: 
-  globalKeywordDatabase: {fileID: 0}
+  globalKeywordDatabase: {fileID: 11400000, guid: 7eb8ba21e8270614984f5298068c04cd, type: 2}
   animationTagPrefix: 0
   showAnimationTagPrefix: 43
   hideAnimationTagPrefix: 45

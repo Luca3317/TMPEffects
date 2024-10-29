@@ -96,7 +96,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -108,7 +109,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetVector2Parameter(out var v3, parameters, "direction", "dir")) d.direction = v3;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -120,7 +121,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {

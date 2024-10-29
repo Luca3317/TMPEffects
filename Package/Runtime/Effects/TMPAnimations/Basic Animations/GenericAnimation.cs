@@ -21,6 +21,18 @@ namespace TMPEffects.TMPAnimations
             EnsureNonOverlappingTimings();
         }
 
+        //TODO delete
+        public void SetParameters_Hook(object customData, System.Collections.Generic.IDictionary<string, string> parameters, TMPEffects.TMPAnimations.IAnimationContext context)
+        {}
+
+        //TODO delete
+        public bool ValidateParameters_Hook(System.Collections.Generic.IDictionary<string, string> parameters,
+            IAnimatorContext context)
+        {
+            return true;
+            
+        }
+
         private void EnsureNonOverlappingTimings()
         {
             for (int i = 0; i < Tracks.Tracks.Count; i++)
@@ -251,7 +263,7 @@ namespace TMPEffects.TMPAnimations
 
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
-            if (data.Steps == null)
+            if (data.Steps == null) 
             {
                 data.Steps = new List<List<AnimationStep>>();
                 for (int i = 0; i < Tracks.Tracks.Count; i++)

@@ -146,6 +146,11 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
+
+            public override string ToString()
+            {
+                return "{ " + vector + ", " + type +" }";
+            }
         }
 
         /// <summary>
@@ -248,6 +253,11 @@ namespace TMPEffects.Parameters
                     VectorType.Offset => vector,
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
+            }
+            
+            public override string ToString()
+            {
+                return "{ " + vector + ", " + type +" }";
             }
         }
     }

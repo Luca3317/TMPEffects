@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
@@ -10,16 +11,17 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             context.FinishAnimation(cData);
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return null;
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             return true;
         }

@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 409867537}
   - component: {fileID: 409867536}
   - component: {fileID: 409867539}
+  - component: {fileID: 409867540}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -270,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: f0a33761ff6919d4a9979ee36980a29d, type: 2}
   context:
+    KeywordDatabase: {fileID: 409867540}
     scaleAnimations: 1
     scaleUniformly: 1
     useScaledTime: 1
@@ -316,7 +318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet.
+  m_text: <palette colors=penis>Lorem ipsum dolor sit amet.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -416,9 +418,41 @@ PlayableDirector:
     value: {fileID: 409867536}
   - key: {fileID: 0}
     value: {fileID: 409867536}
+  - key: {fileID: 652458105842936744, guid: 382de03df39e3e24bbf6adca2f12364a, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - : {fileID: 409867539}
+--- !u!114 &409867540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409867534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b836cd9c7c5852147bf732a8b3a5bd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorKeywords:
+    _serializedList:
+    - Key: penis
+      Value: {r: 0.5660378, g: 0.30170882, b: 0.30170882, a: 0}
+  vector3Keywords:
+    _serializedList: []
+  vector2Keywords:
+    _serializedList: []
+  floatKeywords:
+    _serializedList: []
+  intKeywords:
+    _serializedList: []
+  boolKeywords:
+    _serializedList: []
+  animationCurveKeywords:
+    _serializedList: []
+  offsetTypeKeywords:
+    _serializedList: []
 --- !u!1 &874370643
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +626,6 @@ GameObject:
   - component: {fileID: 1994222724}
   - component: {fileID: 1994222723}
   - component: {fileID: 1994222727}
-  - component: {fileID: 1994222728}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -693,18 +726,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e93ffeb8b91241449193e65c5b2bf59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1994222728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994222722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e8361d5a4da4343817c661446ebb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

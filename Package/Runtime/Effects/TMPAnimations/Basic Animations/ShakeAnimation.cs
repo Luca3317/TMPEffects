@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using UnityEngine;
 using static TMPEffects.Parameters.ParameterUtility;
 
@@ -184,7 +185,8 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -199,7 +201,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw")) d.maxDelay = f;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -214,7 +216,7 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {

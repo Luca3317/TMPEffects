@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,9 +12,10 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField] private BasicAnimationStack stack;
 
         public override void Animate(CharData cData, IAnimationContext context) => stack.Animate(cData, context);
-        public override object GetNewCustomData() => stack.GetNewCustomData();
-        public override void SetParameters(object customData, IDictionary<string, string> parameters) => stack.SetParameters(customData, parameters);
-        public override bool ValidateParameters(IDictionary<string, string> parameters) => stack.ValidateParameters(parameters);
+        public override object GetNewCustomData(IAnimationContext context) => stack.GetNewCustomData(context);
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context) => stack.SetParameters(customData, parameters, context);
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context) => stack.ValidateParameters(parameters, context);
 
 #if UNITY_EDITOR
         new void OnValidate()

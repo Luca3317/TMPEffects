@@ -119,20 +119,20 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public object GetNewCustomData()
+        public object GetNewCustomData(IAnimationContext context)
         {
             Data data = new Data();
 
             foreach (var anim in animations)
             {
                 if (anim.animation == null) continue;
-                data.ObjectCache[anim.animation] = anim.animation.GetNewCustomData();
+                data.ObjectCache[anim.animation] = anim.animation.GetNewCustomData(context);
             }
 
             return data;
         }
 
-        public void SetParameters(object customData, IDictionary<string, string> parameters)
+        public void SetParameters(object customData, IDictionary<string, string> parameters, IAnimationContext context)
         {
             Data data = customData as Data;
 
@@ -144,11 +144,11 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams);
+                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams, context);
             }
         }
 
-        public bool ValidateParameters(IDictionary<string, string> parameters)
+        public bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             foreach (var anim in animations)
             {
@@ -158,7 +158,7 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                if (!anim.animation.ValidateParameters(animParams)) return false;
+                if (!anim.animation.ValidateParameters(animParams, context)) return false;
             }
 
             return true;

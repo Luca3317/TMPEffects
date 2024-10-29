@@ -31,7 +31,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (t == 1) context.FinishAnimation(cData);
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             Data d = customData as Data;
             if (TryGetFloatParameter(out float duration, parameters, "duration", "dur", "d")) d.duration = duration;
@@ -39,7 +40,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetVector3Parameter(out Vector3 v3, parameters, "startscale", "startscl", "start")) d.startScale = v3;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
             if (HasNonFloatParameter(parameters, "duration", "d", "dur")) return false;
@@ -48,7 +49,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data { curve = this.curve, duration = this.duration, startScale = this.startScale };
         }

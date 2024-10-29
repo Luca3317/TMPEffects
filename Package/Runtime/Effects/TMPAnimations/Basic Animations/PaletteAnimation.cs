@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using TMPEffects.Parameters;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
@@ -108,7 +109,7 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {
@@ -118,14 +119,24 @@ namespace TMPEffects.TMPAnimations.Animations
             };
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
             Data d = (Data)customData;
+            
+            if (TryGetArrayParameter(out var array, parameters, ParameterParsing.StringToColor, context.AnimatorContext.KeywordDatabase.ColorKeywords, "colors", "clrs")) d.colors = array;
             if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-            if (TryGetArrayParameter<Color>(out var array, parameters, ParameterParsing.StringToColor, "colors", "clrs")) d.colors = array;
 
+            // TODO Should have some quick and easy way to do this in ParameterUtility/parsing
+            // if (TryGetArrayParameter<TypedVector2>(out TypedVector2[] l, parameters,
+            //         (string a, out TypedVector2 b, IDictionary<string, TypedVector2> c) =>
+            //             ParameterParsing.StringToTypedVector2(a, out b, context.AnimatorContext.KeywordDatabase.Vector3Keywords, context.AnimatorContext.KeywordDatabase.AnchorKeywords),
+            //         ""))
+            // {
+            // }
+            
             if (d.colors == null || d.colors.Length == 0)
             {
                 d.colors = new Color[1] { Color.black };
@@ -134,12 +145,12 @@ namespace TMPEffects.TMPAnimations.Animations
             d.wave = CreateWave(wave, GetWaveParameters(parameters));
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
             if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, "colors", "clrs")) return false;
+            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, context.KeywordDatabase.ColorKeywords,  "colors", "clrs")) return false;
 
             return ValidateWaveParameters(parameters);
         }

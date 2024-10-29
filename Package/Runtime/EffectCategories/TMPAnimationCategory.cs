@@ -3,6 +3,7 @@ using TMPEffects.TextProcessing;
 using TMPEffects.TMPAnimations;
 using TMPEffects.Tags;
 using System.Diagnostics;
+using TMPEffects.Components.Animator;
 
 namespace TMPEffects.EffectCategories
 {
@@ -12,16 +13,20 @@ namespace TMPEffects.EffectCategories
     public class TMPAnimationCategory : TMPEffectCategory<ITMPAnimation>
     {
         private ITMPEffectDatabase<ITMPAnimation> database;
+        private IAnimatorContext context;
 
-        public TMPAnimationCategory(char prefix, ITMPEffectDatabase<ITMPAnimation> database) : base(prefix)
+        public TMPAnimationCategory(char prefix, ITMPEffectDatabase<ITMPAnimation> database, IAnimatorContext context) : base(prefix)
         {
             this.database = database;
+            this.context = context;
         }
 
         ///<inheritdoc/>
         public override bool ContainsEffect(string name) => database.ContainsEffect(name);
+
         ///<inheritdoc/>
         public override ITMPAnimation GetEffect(string name) => database.GetEffect(name);
+
         ///<inheritdoc/>
         public override bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)
         {
@@ -33,7 +38,9 @@ namespace TMPEffects.EffectCategories
             if (database == null || !database.ContainsEffect(tagInfo.name)) return false;
 
             var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
-            if (!database.GetEffect(tagInfo.name).ValidateParameters(param)) return false;
+
+            // TODO HUH! WTF TO DO ABOUT THIS
+            if (!database.GetEffect(tagInfo.name).ValidateParameters(param, context)) return false;
 
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
             data = tag;
@@ -46,7 +53,8 @@ namespace TMPEffects.EffectCategories
             if (tag.Prefix != Prefix) return false;
             if (database == null || !database.ContainsEffect(tag.Name)) return false;
 
-            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters)) return false;
+            // TODO HUH! WTF TO DO ABOUT THIS
+            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters, context)) return false;
 
             return true;
         }
@@ -59,8 +67,9 @@ namespace TMPEffects.EffectCategories
 
             if (tagInfo.type == ParsingUtility.TagType.Open)
             {
+                // TODO HUH! WTF TO DO ABOUT THIS
                 var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
-                if (!database.GetEffect(tagInfo.name).ValidateParameters(param)) return false;
+                if (!database.GetEffect(tagInfo.name).ValidateParameters(param, context)) return false;
             }
 
             return true;

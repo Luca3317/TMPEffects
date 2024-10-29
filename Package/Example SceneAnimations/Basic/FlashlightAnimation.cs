@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
@@ -114,7 +115,8 @@ namespace TMPEffects.TMPSceneAnimations.Animations
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -127,7 +129,7 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 d.fallOffCurve = crv;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -138,7 +140,7 @@ namespace TMPEffects.TMPSceneAnimations.Animations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {

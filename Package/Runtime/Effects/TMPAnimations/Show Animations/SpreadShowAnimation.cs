@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.Parameters.ParameterUtility;
@@ -74,7 +75,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         }
 
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -86,8 +88,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetTypedVector2Parameter(out var tv2, parameters, "anchor", "anc", "a")) d.anchor = tv2;
             if (TryGetAnimCurveParameter(out AnimationCurve crv, parameters, "curve", "crv", "c")) d.curve = crv;
         }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+ 
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -100,7 +102,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {

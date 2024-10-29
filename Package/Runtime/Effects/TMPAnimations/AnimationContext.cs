@@ -29,7 +29,7 @@ namespace TMPEffects.TMPAnimations
             }
         }
         /// <inheritdoc/>
-        public object CustomData { get; }
+        public object CustomData { get; set; }
         /// <inheritdoc/>
         public CharDataModifiers Modifiers { get; }
 

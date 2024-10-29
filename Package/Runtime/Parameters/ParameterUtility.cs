@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TMPEffects.AutoParameters.Attributes;
+using TMPEffects.ParameterUtilityGenerator.Attributes;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.Parameters.ParameterTypes;
@@ -11,7 +12,7 @@ namespace TMPEffects.Parameters
     /// <summary>
     /// Utility class for easy parameter handling.
     /// </summary>
-    [GenerateParameterUtility]
+    [GenerateParameterUtility] 
     public static partial class ParameterUtility
     { 
         /// <summary>
@@ -57,42 +58,6 @@ namespace TMPEffects.Parameters
             return TryGetDefinedParameter(out _, parameters, name, aliases);
         }
         
-        
-        public static bool HasFloatParameter(IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
-        {
-            return TryGetFloatParameter(out float _, parameters, keywords, name, aliases);
-        }
- 
-        
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is not of type float (=> can not be converted to float).<br />
-        /// </summary>
-        /// <param name="parameters">The parameters to check.</param>
-        /// <param name="name">The name to check.</param>
-        /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type float, false otherwise.</returns>
-        public static bool HasNonFloatParameter(IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
-        {
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetFloatParameter(out float _, parameters, keywords, name, aliases);
-        }
-        
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type float (=> can be converted to float).<br />
-        /// </summary>
-        /// <param name="value">Set to the value of the parameter if successful.</param>
-        /// <param name="parameters">The parameters to check.</param>
-        /// <param name="name">The name to check.</param>
-        /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type float, false otherwise.</returns>
-        public static bool TryGetFloatParameter(out float value, IDictionary<string, string> parameters, IDictionary<string, float> keywords, string name, params string[] aliases)
-        {
-            value = default;
-            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringToFloat(parameters[parameterName], out value, keywords);
-        }
-
         public static readonly ReadOnlyDictionary<string, Vector2> AnchorKeywords = new ReadOnlyDictionary<string, Vector2>(new Dictionary<string, Vector2>()
         {
             { "a:top", Vector2.up },
@@ -118,18 +83,33 @@ namespace TMPEffects.Parameters
             { "a:center", Vector2.zero }
         });
 
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array&lt;T&gt; (=> can not be converted to Array&lt;T&gt;).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type Array<T>, false otherwise.</returns>
+        /// <returns>true if there is a well-defined parameter that is not of type Array&lt;T&gt;, false otherwise.</returns>
         public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
+            return HasNonArrayParameter(parameters, func, null, name, aliases);
         }
+        
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).<br />
+        /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array&lt;T&gt; (=> can not be converted to Array&lt;T&gt;).
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is not of type Array&lt;T&gt;, false otherwise.</returns>
+        public static bool HasNonArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, IDictionary<string, T> keywords, string name, params string[] aliases)
+        {
+            if (!ParameterDefined(parameters, name, aliases)) return false;
+            return !TryGetArrayParameter(out T[] _, parameters, func, keywords, name, aliases);
+        }
+        
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
         /// <param name="name">The name to check.</param>
@@ -137,8 +117,20 @@ namespace TMPEffects.Parameters
         /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
         public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
         {
+            return HasArrayParameter(parameters, func, null, name, aliases);
+        }
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).
+        /// </summary>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        public static bool HasArrayParameter<T>(IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, IDictionary<string, T> keywords, string name, params string[] aliases)
+        {
             return TryGetArrayParameter(out T[] _, parameters, func, name, aliases);
         }
+        
         /// <summary>
         /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
         /// </summary>
@@ -148,6 +140,19 @@ namespace TMPEffects.Parameters
         /// <param name="aliases">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
         public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, string name, params string[] aliases)
+        {
+            return TryGetArrayParameter(out value, parameters, func, null, name, aliases);
+        }
+
+        /// <summary>
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
+        /// </summary>
+        /// <param name="value">Set to the value of the parameter if successful.</param>
+        /// <param name="parameters">The parameters to check.</param>
+        /// <param name="name">The name to check.</param>
+        /// <param name="aliases">The aliases (alternative names) to check.</param>
+        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters, ParseDelegate<string, T, IDictionary<string, T>, bool> func, IDictionary<string, T> keywords, string name, params string[] aliases)
         {
             value = null;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
@@ -160,10 +165,9 @@ namespace TMPEffects.Parameters
             {
                 string contentValue = contents[i];
 
-                if (!func(contentValue, out T t, null))
+                if (!func(contentValue, out T t, keywords))
                 {
                     return false;
-                    //throw new System.Exception("Parameter " + defined + " contains invalid type");
                 }
 
                 result.Add(t);
@@ -172,7 +176,7 @@ namespace TMPEffects.Parameters
             value = result.ToArray();
             return true;
         }
-
+        
         public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
 
         /// <summary>

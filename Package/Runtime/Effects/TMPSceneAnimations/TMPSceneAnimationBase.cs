@@ -14,10 +14,11 @@ namespace TMPEffects.TMPSceneAnimations
     public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyObjectChanged
     {
         public abstract void Animate(CharData cData, IAnimationContext context);
-        public abstract object GetNewCustomData();
+        public abstract object GetNewCustomData(IAnimationContext context);
 
-        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters);
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context);
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context);
         
         public event ObjectChangedEventHandler ObjectChanged;
         

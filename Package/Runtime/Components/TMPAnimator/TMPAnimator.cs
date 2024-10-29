@@ -658,9 +658,9 @@ namespace TMPEffects.Components
             mainDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
-            basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase);
-            showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase);
-            hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase);
+            basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase, context);
+            showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase, context);
+            hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase, context);
 
 
             // Reset tagcollection & cachedcollection => moved to postprocesstags
@@ -750,7 +750,7 @@ namespace TMPEffects.Components
                     continue;
 
                 tagParams = ParsingUtility.GetTagParametersDict(str);
-                if (!animation.ValidateParameters(tagParams))
+                if (!animation.ValidateParameters(tagParams, context))
                     continue;
 
                 anims.Add(cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams),
@@ -1808,7 +1808,7 @@ namespace TMPEffects.Components
             try
             {
                 tagParams = ParsingUtility.GetTagParametersDict(str);
-                if (!animation.ValidateParameters(tagParams))
+                if (!animation.ValidateParameters(tagParams, context))
                 {
                     return "Parameters are not valid for this tag";
                 }

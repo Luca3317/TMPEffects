@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
@@ -54,7 +55,8 @@ namespace TMPEffects.TMPAnimations.Animations
             // }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -65,7 +67,7 @@ namespace TMPEffects.TMPAnimations.Animations
             if (TryGetFloatParameter(out var speed, parameters, "speed", "sp", "s")) d.speed = speed;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -75,7 +77,7 @@ namespace TMPEffects.TMPAnimations.Animations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
 using TMPEffects.Extensions;
 using TMPro;
 using UnityEngine;
@@ -154,7 +155,8 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             if (parameters == null) return;
 
@@ -172,7 +174,7 @@ namespace TMPEffects.TMPAnimations.Animations
             d.Wave = CreateWave(wave, GetWaveParameters(parameters));
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
 
@@ -189,7 +191,7 @@ namespace TMPEffects.TMPAnimations.Animations
             return ValidateWaveParameters(parameters);
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data()
             {

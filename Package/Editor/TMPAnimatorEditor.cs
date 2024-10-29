@@ -65,7 +65,7 @@ namespace TMPEffects.Editor
             contextUniformScalingProp = contextProp.FindPropertyRelative("scaleUniformly");
             contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
             passedTimeProp = contextProp.FindPropertyRelative("passedTime");
-            keywordDatabaseProp = contextProp.FindPropertyRelative("KeywordDatabase");
+            keywordDatabaseProp = contextProp.FindPropertyRelative("keywordDatabase");
             previewProp = serializedObject.FindProperty("preview");
             excludedProp = serializedObject.FindProperty("excludedCharacters");
             excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");

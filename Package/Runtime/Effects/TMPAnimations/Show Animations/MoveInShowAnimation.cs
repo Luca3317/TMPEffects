@@ -45,7 +45,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (t == 1) context.FinishAnimation(cData);
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            IAnimationContext context)
         {
             Data d = customData as Data;
             if (TryGetFloatParameter(out float duration, parameters, "duration", "dur", "d")) d.duration = duration;
@@ -53,7 +54,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             if (TryGetAnimCurveParameter(out AnimationCurve curve, parameters, "curve", "crv", "c")) d.curve = curve;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
         {
             if (parameters == null) return true;
             if (HasNonFloatParameter(parameters, "duration", "d", "dur")) return false;
@@ -62,7 +63,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             return true;
         }
 
-        public override object GetNewCustomData()
+        public override object GetNewCustomData(IAnimationContext context)
         {
             return new Data { curve = this.curve, duration = this.duration, startPosition = this.startPosition };
         }

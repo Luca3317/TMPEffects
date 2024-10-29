@@ -32,11 +32,17 @@ namespace TMPEffects.Components.Animator
         {
             ITMPAnimation animation = database.GetEffect(tag.Name);
             TMPEffectTagIndices closedIndices = new TMPEffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
-            object customAnimationData = animation.GetNewCustomData();
-            animation.SetParameters(customAnimationData, tag.Parameters);
 
             SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
-            AnimationContext animationContext = new AnimationContext(roContext, modifiers, segmentData, customAnimationData);
+            AnimationContext animationContext = new AnimationContext(roContext, modifiers, segmentData, null);
+            
+            // TODO this passes a writable context (but wrapped as readonly interface)
+            // Prolly shouldnt do that
+            object customAnimationData = animation.GetNewCustomData(animationContext);
+            animationContext.CustomData = customAnimationData;
+            animation.SetParameters(customAnimationData, tag.Parameters, animationContext);
+            
+
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

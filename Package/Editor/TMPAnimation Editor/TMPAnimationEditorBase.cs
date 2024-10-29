@@ -8,6 +8,7 @@ using TMPEffects.TMPSceneAnimations;
 using TMPEffects.CharacterData;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
+using TMPEffects.Components.Animator;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Editor
@@ -166,7 +167,7 @@ namespace TMPEffects.Editor
         public override bool HasPreviewGUI()
         {
             ITMPAnimation t = target as ITMPAnimation;
-            return t != null && t.ValidateParameters(dummyDict);
+            return t != null && t.ValidateParameters(dummyDict, animator.AnimatorContext);
         }
 
         protected class WrapperAnimation : TMPSceneAnimation
@@ -181,13 +182,14 @@ namespace TMPEffects.Editor
                 tmpanimation.Animate(cData, context);
             }
 
-            public override object GetNewCustomData() => tmpanimation.GetNewCustomData();
+            public override object GetNewCustomData(IAnimationContext context) => tmpanimation.GetNewCustomData(context);
 
-            public override void SetParameters(object customData, IDictionary<string, string> parameters)
-                 => tmpanimation.SetParameters(customData, parameters);
+            public override void SetParameters(object customData, IDictionary<string, string> parameters,
+                IAnimationContext context1)
+                 => tmpanimation.SetParameters(customData, parameters, context);
 
-            public override bool ValidateParameters(IDictionary<string, string> parameters)
-                => tmpanimation.ValidateParameters(parameters);
+            public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+                => tmpanimation.ValidateParameters(parameters, context);
         }
 
         protected ReadOnlyDictionary<string, string> dummyDict = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
