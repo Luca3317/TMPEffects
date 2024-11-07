@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using TMPEffects.Components;
+using TMPEffects.Components.Writer;
 
 namespace TMPEffects.TMPCommands
 {
@@ -11,11 +13,15 @@ namespace TMPEffects.TMPCommands
         /// The type of command this is.
         /// </summary>
         /// <remarks>
-        /// <list type="table">
-        /// <item><see cref="TagType.Index"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index. It does not need to be closed. Example: This is <!delay=0.01> my text</item>
-        /// <item><see cref="TagType.Block"/>: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text. Example: This <!show>is my</!show> text</item>
-        /// <item><see cref="TagType.Either"/>: Both applications are valid.</item>
-        /// </list>
+        /// <para>
+        /// Index: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index. It does not need to be closed.<br/> Example: This is &lt;!delay=0.01&gt; my text
+        /// </para>
+        /// <para>
+        /// Block: This type of command is executed when the <see cref="TMPWriter"/> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br/> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+        /// </para>
+        /// <para>
+        /// Either: Both applications are valid.
+        /// </para>
         /// </remarks>
         public TagType TagType { get; }
 
@@ -37,6 +43,8 @@ namespace TMPEffects.TMPCommands
 #if UNITY_EDITOR
         /// <summary>
         /// Whether the command may be executed in preview mode.<br/>
+        /// ! ONLY AVAILABLE IN THE EDITOR !<br/>
+        /// You must wrap usages and implementations of this in a #if UNITY_EDITOR directive.<br/>
         /// This should be false for any command that makes changes, for example manipulating assets.<br/>
         /// It's recommended to set this to false by default.
         /// </summary>
@@ -46,17 +54,17 @@ namespace TMPEffects.TMPCommands
         /// <summary>
         /// Execute the command.
         /// </summary>
-        /// <param name="args">The arguments for the command.</param>
-        public void ExecuteCommand(TMPCommandArgs args);
-        
-        // TODO This also needs keyword access (as does ExecuteCommand)
-        // TODO Might pass TMPWriter directly; might want to give TMPWriter a context as well instead?
+        /// <param name="parameters"></param>
+        /// <param name="context"></param>
+        public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
+
         /// <summary>
         /// Validate the parameters.<br/>
         /// Used to validate tags.
         /// </summary>
         /// <param name="parameters">The parameters to validate.</param>
+        /// <param name="context"></param>
         /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
-        public bool ValidateParameters(IDictionary<string, string> parameters);
+        public bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context);
     }
 }

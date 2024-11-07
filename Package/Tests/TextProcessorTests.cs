@@ -377,7 +377,7 @@ public class TextProcessorTests
         animationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.ANIMATION_PREFIX, animator.Database.BasicAnimationDatabase, animator.AnimatorContext));
         showAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.SHOW_ANIMATION_PREFIX, animator.Database.ShowAnimationDatabase, animator.AnimatorContext));
         hideAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.HIDE_ANIMATION_PREFIX, animator.Database.HideAnimationDatabase, animator.AnimatorContext));
-        commandTagProcessor = new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database));
+        commandTagProcessor = new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database, writer.WriterContext));
         eventTagProcessor = new TagProcessor(new TMPEventCategory(TMPWriter.EVENT_PREFIX));
     }
 }

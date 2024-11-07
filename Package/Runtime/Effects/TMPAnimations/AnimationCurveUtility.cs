@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace TMPEffects.Extensions
 {
+    // TODO Populate the keyword database with these
     public static class AnimationCurveUtility
     {
         #region Linear

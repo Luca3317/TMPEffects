@@ -27,7 +27,7 @@ namespace TMPEffects.Components.Animator
             this.indices = indices;
             
             overrides = null;
-            if (TryGetBoolParameter(out bool b, tag.Parameters, "override", "or"))
+            if (TryGetBoolParameter(out bool b, tag.Parameters, context.AnimatorContext.KeywordDatabase, "override", "or"))
             {
                 overrides = b;
             }

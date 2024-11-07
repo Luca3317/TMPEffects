@@ -45,18 +45,9 @@ public struct Vector3Override
 
     public static Vector3Override operator +(Vector3Override a, Vector3Override b)
     {
-        if (a.Override)
-        {
-            if (b.Override)
-                return new Vector3Override(a.OverrideValue + b.OverrideValue);
-
-            return new Vector3Override(a.OverrideValue);
-        }
-
-        if (b.Override)
-            return new Vector3Override(b.OverrideValue);
-
-        return new Vector3Override();
+        if (b.Override) return b;
+        if (a.Override) return a;
+        return GetDefault;
     }
 
     public bool Equals(Vector3Override other)
@@ -64,6 +55,5 @@ public struct Vector3Override
         if (!other._override) return !_override;
         if (!_override) return false;
         return _overrideValue == other._overrideValue;
-
     }
 }

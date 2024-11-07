@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using UnityEngine;
@@ -8,35 +9,52 @@ using static TMPEffects.Parameters.ParameterTypes;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new SpreadAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Spread")]
-    public class SpreadAnimation : TMPAnimation
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new SpreadAnimation",
+        menuName = "TMPEffects/Animations/Basic Animations/Built-in/Spread")]
+    public partial class SpreadAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave;
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffsetType;
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        Wave wave;
 
+        [SerializeField, AutoParameter("waveoffset", "woffset", "woff", "waveoff")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetTypePowerEnum waveOffsetType;
+
+        [SerializeField, AutoParameter("growanchor", "growanc", "ganc")]
         [Tooltip("The anchor used for growing.\nAliases: growanchor, growanc, ganc")]
-        [SerializeField] TypedVector3 growAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+        TypedVector3 growAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+
+        [SerializeField, AutoParameter("growdirection", "growdir", "gdir")]
         [Tooltip("The direction used for growing.\nAliases: growdirection, growdir, gdir")]
-        [SerializeField] Vector3 growDirection = Vector3.up;
+        Vector3 growDirection = Vector3.up;
 
-        [Tooltip("The anchor used for shrinking.\nAliases: shrinkanchor, shrinkanc, sanc")]
-        [SerializeField] TypedVector3 shrinkAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+        [SerializeField, AutoParameter("shrinkanchor", "shrinkanc", "sanc")]
+        [Tooltip("The anchor used for shrinking.\nAliases: shrinkanchor, shrinkanc, sanc")] 
+        TypedVector3 shrinkAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
+
+        [SerializeField, AutoParameter("shrinkdirection", "shrinkdir", "sdir")]
         [Tooltip("The direction used for shrinking.\nAliases: shrinkdirection, shrinkdir, sdir")]
-        [SerializeField] Vector3 shrinkDirection = Vector3.up;
+        Vector3 shrinkDirection = Vector3.up;
 
-        [Tooltip("The maximum percentage to spread to, at 1 being completely shown.\nAliases: maxpercentage, maxp, max")]
-        [SerializeField] float maxPercentage = 1;
-        [Tooltip("The minimum percentage to unspread to, at 0 being completely hidden.\nAliases: minpercentage, minp, min")]
-        [SerializeField] float minPercentage = 0;
+        [SerializeField, AutoParameter("maxpercentage", "maxp", "max")]
+        [Tooltip(
+            "The maximum percentage to spread to, at 1 being completely shown.\nAliases: maxpercentage, maxp, max")]
+        float maxPercentage = 1;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        [SerializeField, AutoParameter("minpercentage", "minp", "min")]
+        [Tooltip(
+            "The minimum percentage to unspread to, at 0 being completely hidden.\nAliases: minpercentage, minp, min")]
+        float minPercentage = 0;
+        
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
             // Evaluate the wave based on time and offset
-            (float, int) result = d.Wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.offsetType));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
+                d.waveOffsetType.GetOffset(cData, context));
 
             // If the wave is moving up, grow the character
             if (result.Item2 > 0)
@@ -50,7 +68,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        private void Grow(CharData cData, IAnimationContext context, Data d, float t)
+        private void Grow(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
@@ -85,7 +103,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
         }
 
-        private void Shrink(CharData cData, IAnimationContext context, Data d, float t)
+        private void Shrink(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             float percentage = Mathf.LerpUnclamped(d.minPercentage, d.maxPercentage, t);
 
@@ -118,79 +136,6 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
 
                 SetVertexRaw(i, pos, cData, context);
             }
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetVector3Parameter(out Vector3 v, parameters, "growDirection", "growdir", "gdir")) d.growDirection = v;
-            if (TryGetTypedVector3Parameter(out TypedVector3 tv, parameters, "growanchor", "growanc", "ganc")) d.growAnchor = tv;
-
-            if (TryGetVector3Parameter(out v, parameters, "shrinkdirection", "shrinkdir", "sdir")) d.shrinkDirection = v;
-            if (TryGetTypedVector3Parameter(out tv, parameters, "shrinkanchor", "shrinkanc", "sanc")) d.shrinkAnchor = tv;
-
-            if (TryGetFloatParameter(out float f, parameters, "maxpercentage", "maxp", "max")) d.maxPercentage = f;
-            if (TryGetFloatParameter(out f, parameters, "minpercentage", "minp", "min")) d.minPercentage = f;
-
-            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.offsetType = offset;
-
-            d.Wave = CreateWave(wave, GetWaveParameters(parameters));
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (!ValidateWaveParameters(parameters)) return false;
-            if (HasNonVector3Parameter(parameters, "growdirection", "growdir", "gdir")) return false;
-            if (HasNonTypedVector3Parameter(parameters, "growanchor", "growanc", "ganc")) return false;
-
-            if (HasNonVector3Parameter(parameters, "shrinkdirection", "shrinkdir", "sdir")) return false;
-            if (HasNonTypedVector3Parameter(parameters, "shrinkanchor", "shrinkanc", "sanc")) return false;
-
-            if (HasNonFloatParameter(parameters, "maxpercentage", "maxp", "max")) return false;
-            if (HasNonFloatParameter(parameters, "minpercentage", "minp", "min")) return false;
-
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-
-            return ValidateWaveParameters(parameters);
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                Wave = null,
-                offsetType = this.waveOffsetType,
-
-                growAnchor = this.growAnchor,
-                growDirection = this.growDirection,
-
-                shrinkAnchor = this.shrinkAnchor,
-                shrinkDirection = this.shrinkDirection,
-
-                maxPercentage = this.maxPercentage,
-                minPercentage = this.minPercentage,
-            };
-        }
-
-        private class Data
-        {
-            public Wave Wave;
-
-            public WaveOffsetType offsetType;
-
-            public TypedVector3 growAnchor;
-            public Vector3 growDirection;
-
-            public TypedVector3 shrinkAnchor;
-            public Vector3 shrinkDirection;
-
-            public float maxPercentage = 1;
-            public float minPercentage = 1;
         }
     }
 }

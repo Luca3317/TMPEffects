@@ -46,6 +46,8 @@ namespace TMPEffects.Editor
         SerializedProperty sceneCommandsProp;
         SerializedProperty useDefaultDatabaseProp;
         SerializedProperty initDatabaseProp;
+        SerializedProperty writerContextProp;
+        SerializedProperty keywordDatabaseProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -154,6 +156,8 @@ namespace TMPEffects.Editor
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
+            writerContextProp = serializedObject.FindProperty("context");
+            keywordDatabaseProp = writerContextProp.FindPropertyRelative("keywordDatabase"); 
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -514,7 +518,7 @@ namespace TMPEffects.Editor
         static bool eventFoldout = false;
         void DrawEventsFoldout()
         {
-            eventFoldout = EditorGUILayout.Foldout(eventFoldout, new GUIContent("Events"));
+            eventFoldout = EditorGUILayout.Foldout(eventFoldout, new GUIContent("Events"), true);
 
             if (eventFoldout)
             {
@@ -536,7 +540,7 @@ namespace TMPEffects.Editor
             DrawPlayer();
 
             EditorGUILayout.BeginHorizontal();
-            delayFoldout = EditorGUILayout.Foldout(delayFoldout, "Delay");
+            delayFoldout = EditorGUILayout.Foldout(delayFoldout, "Delay", true);
             var pre = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 0;
             EditorGUILayout.PropertyField(delayProp, new GUIContent(""));
@@ -573,11 +577,19 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel--;
             }
 
-            EditorGUILayout.PropertyField(startOnPlayProp);
-            EditorGUILayout.PropertyField(startOnNewTextProp);
-            EditorGUILayout.PropertyField(maySkipProp);
-            EditorGUILayout.PropertyField(useScaledTimeProp);
-
+            EditorGUILayout.Space(10);
+            writerContextProp.isExpanded = EditorGUILayout.Foldout(writerContextProp.isExpanded, new GUIContent("Writer Settings"), true);
+            if (writerContextProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(startOnPlayProp);
+                EditorGUILayout.PropertyField(startOnNewTextProp);
+                EditorGUILayout.PropertyField(maySkipProp);
+                EditorGUILayout.PropertyField(useScaledTimeProp);
+                EditorGUILayout.PropertyField(keywordDatabaseProp);
+                EditorGUI.indentLevel--;
+            }
+            
             EditorGUILayout.Space(10);
             DrawCommandsFoldout();
 

@@ -1,6 +1,8 @@
 using TMPEffects.CharacterData;
 using UnityEngine;
 using System;
+using TMPEffects.Databases;
+using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Components.Animator
 {
@@ -13,20 +15,31 @@ namespace TMPEffects.Components.Animator
     {
         // TODO Hastily added these two, check they fit interface and encapsulatione etc
         public CharDataModifiers Modifiers { get; set; }
-        public UnityEngine.Object keywordDatabase;
+        [SerializeField] private UnityEngine.Object keywordDatabase;
 
-        public ITMPKeywordDatabase KeywordDatabase { get; private set; }
+        public ITMPKeywordDatabase KeywordDatabase { get; set; }
+        internal INotifyObjectChanged KeyWordDatabaseCallbacK;
         
         // TODO Same for this
         public void OnBeforeSerialize()
         {
             if (KeywordDatabase != null)
+            {
                 keywordDatabase = KeywordDatabase as UnityEngine.Object;
+                if (keywordDatabase is INotifyObjectChanged inoc)
+                    KeyWordDatabaseCallbacK = inoc;
+            }
         }
 
         public void OnAfterDeserialize()
         {
             KeywordDatabase = keywordDatabase as ITMPKeywordDatabase;
+            if (KeywordDatabase != null)
+            {
+                keywordDatabase = KeywordDatabase as UnityEngine.Object;
+                if (keywordDatabase is INotifyObjectChanged inoc)
+                    KeyWordDatabaseCallbacK = inoc;
+            }
         }
         
         

@@ -1,4 +1,5 @@
 ﻿using TMPEffects.CharacterData;
+using TMPEffects.Databases;
 
 namespace TMPEffects.Components.Animator
 {

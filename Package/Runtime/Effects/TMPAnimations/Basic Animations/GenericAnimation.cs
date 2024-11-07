@@ -145,7 +145,7 @@ namespace TMPEffects.TMPAnimations
 
             Animate(cData, data.Steps, context.AnimatorContext, data.repeat, data.duration);
         }
-        
+
         public static float AdjustTimeForExtrapolation(AnimationStep step, float timeValue, CharData cData,
             IAnimatorContext context)
         {
@@ -191,7 +191,7 @@ namespace TMPEffects.TMPAnimations
 
             return timeValue;
         }
-        
+
         public static float CalcWeight(AnimationStep step, float timeValue, float duration,
             CharData cData, IAnimatorContext context)
         {
@@ -205,21 +205,23 @@ namespace TMPEffects.TMPAnimations
             if (step.exitDuration > 0 /*&& currTime >= duration - behaviour.Step.Step.exitDuration*/)
             {
                 float preTime = duration - step.exitDuration;
-                weight *= (1f - step.exitCurve.Evaluate(cData, context,
-                    (timeValue - preTime) /
+                var multiplier = (step.exitCurve.Evaluate(cData, context,
+                    1f - (timeValue - preTime) /
                     step.exitDuration));
+                
+                weight *= multiplier;
             }
 
             if (step.useWave)
             {
-                var offset = AnimationUtility.GetWaveOffset(cData, context,
-                    step.waveOffsetType);
+                var offset = AnimationUtility.GetOffset(cData, context,
+                    step.offsetType);
                 weight *= step.wave.Evaluate(timeValue, offset).Value;
             }
 
             return weight;
         }
-        
+
         public static void LerpAnimationStepWeighted(AnimationStep step, float weight, CharData cData,
             IAnimatorContext context,
             CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
@@ -237,9 +239,7 @@ namespace TMPEffects.TMPAnimations
                 step.modifiers.ToCharDataModifiers(cData, context, storage2);
 
                 // Lerp modifiers and store into current
-                Debug.LogWarning("inbetween is now br color " + result.MeshModifiers.BR_Color);
                 CharDataModifiers.LerpUnclamped(cData, context, storage, storage2, weight, result);
-                Debug.LogWarning("inbetween 2 is now br color " + result.MeshModifiers.BR_Color);
             }
             else
             {
@@ -282,14 +282,15 @@ namespace TMPEffects.TMPAnimations
                 float t = AdjustTimeForExtrapolation(step, timeValue, cData, context);
                 t = t - step.startTime;
                 float weight = CalcWeight(step, t, step.duration, cData, context);
-                if (step.name == "sief" && cData.info.index ==0) Debug.LogWarning("animating sief with " + t + " w " + weight);
-                
-                LerpAnimationStepWeighted(step, weight, cData, context, 
+                if (step.name == "sief" && cData.info.index == 0)
+                    Debug.LogWarning("animating sief with " + t + " w " + weight);
+
+                LerpAnimationStepWeighted(step, weight, cData, context,
                     modifiersStorage, modifiersStorage2, current);
 
                 accModifier.MeshModifiers.Combine(current.MeshModifiers);
                 accModifier.CharacterModifiers.Combine(current.CharacterModifiers);
-            } 
+            }
 
             cData.MeshModifiers.Combine(accModifier.MeshModifiers);
             cData.CharacterModifiers.Combine(accModifier.CharacterModifiers);
@@ -349,7 +350,7 @@ namespace TMPEffects.TMPAnimations
         {
             public List<List<AnimationStep>> Steps = null;
         }
-        
+
         private struct StepComparer : IComparer<AnimationStep>
         {
             public int Compare(AnimationStep x, AnimationStep y)
@@ -362,6 +363,5 @@ namespace TMPEffects.TMPAnimations
                 return 0;
             }
         }
-
     }
 }

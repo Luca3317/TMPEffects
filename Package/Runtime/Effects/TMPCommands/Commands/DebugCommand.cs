@@ -1,46 +1,45 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
+using TMPEffects.Components.Writer;
 using UnityEngine;
 
 namespace TMPEffects.TMPCommands.Commands
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Built-in/Debug")]
-    public class DebugCommand : TMPCommand
+    public partial class DebugCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Index;
+        public override TagType TagType => TagType.Index; 
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
         public override bool ExecuteRepeatable => true;
 #if UNITY_EDITOR
         public override bool ExecuteInPreview => true;
 #endif
+        
+        [AutoParameter("type")]
+        private string type;
 
-        public override void ExecuteCommand(TMPCommandArgs args)
+        [AutoParameter(true, "")]
+        private string message;
+
+        private partial void ExecuteCommand(IDictionary<string, string> parameters, AutoParametersData data,
+            ICommandContext context)
         {
-            if (args.tag.Parameters != null)
+            if (data.type == "")
             {
-                if (args.tag.Parameters.ContainsKey("type"))
-                {
-                    switch (args.tag.Parameters["type"])
-                    {
-                        case "w":
-                        case "warning": Debug.LogWarning(args.tag.Parameters[""]); break;
-                        case "e":
-                        case "error": Debug.LogError(args.tag.Parameters[""]); break;
-                        case "l":
-                        case "log":
-                        default: Debug.Log(args.tag.Parameters[""]); break;
-                    }
-                }
-                else
-                {
-                    Debug.Log(args.tag.Parameters[""]);
-                }
+                Debug.Log(data.message);
+                return;
             }
-        }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            return true;
+            switch (data.type)
+            {
+                case "w":
+                case "warning": Debug.LogWarning(parameters[""]); break;
+                case "e":
+                case "error": Debug.LogError(parameters[""]); break;
+                default: Debug.Log(parameters[""]); break;
+            }
         }
     }
 }

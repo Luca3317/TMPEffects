@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.Extensions;
@@ -10,33 +11,44 @@ using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
+    [AutoParameters] 
     [CreateAssetMenu(fileName = "new CharHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Char")]
-    public class CharHideAnimation : TMPHideAnimation
+    public partial class CharHideAnimation : TMPHideAnimation
     {
+        [SerializeField, AutoParameter("duration", "dur", "d")]
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]
-        [SerializeField] float duration = 1f;
+        float duration = 1f;
 
+        [SerializeField, AutoParameter("characters", "chars", "char", "c")]
         [Tooltip("The pool of characters to change to.\nAliases: characters, chars, char, c")]
-        [SerializeField] string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        
+        [SerializeField, AutoParameter("probability", "prob", "p")]
         [Tooltip("The probability to change to a character different from the original.\nAliases: probability, prob, p")]
-        [SerializeField] float probability = 0.95f;
+        float probability = 0.95f;
+        
+        [SerializeField, AutoParameter("minwait", "minw", "min")]
         [Tooltip("The minimum amount of time to wait once a character changed (or did not change).\nAliases: minwait, minw, min")]
-        [SerializeField] float minWait = 0.1f;
+        float minWait = 0.1f;
+        
+        [SerializeField, AutoParameter("maxwait", "maxw", "max")]
         [Tooltip("The maximum amount of time to wait once a character changed (or did not change).\nAliases: maxwait, maxw, max")]
-        [SerializeField] float minDelay = 0.1f;
+        float maxWait = 0.1f;
+        
+        [SerializeField, AutoParameter("autocase", "case")]
         [Tooltip("Whether to ensure capitalized characters are only changed to other capitalized characters, and vice versa.\nautocase, case")]
-        [SerializeField] bool autoCase = true;
+        bool autoCase = true;
 
+        [SerializeField, AutoParameter("waitcurve", "waitcrv", "wait")]
         [Tooltip("The curve that defines the falloff of the wait between each change.\nAliases: waitcurve, waitcrv, waitc")]
-        [SerializeField] AnimationCurve waitCurve = AnimationCurveUtility.Linear();
+        AnimationCurve waitCurve = AnimationCurveUtility.Linear();
+        
+        [SerializeField, AutoParameter("probabilitycurve", "probabilitycrv", "probabilityc", "probcurve", "probcrv", "probc")]
         [Tooltip("The curve that defines the falloff of the probability of changing to a character other than the original.\nAliases: probabilitycurve, probabilitycrv, probabilityc, probcurve, probcrv, probc")]
-        [SerializeField] AnimationCurve probabilityCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
+        AnimationCurve probabilityCurve = AnimationCurveUtility.Invert(AnimationCurveUtility.Linear());
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
-
             if (string.IsNullOrWhiteSpace(d.characters) || cData.info.elementType != TMP_TextElementType.Character)
             {
                 context.FinishAnimation(cData);
@@ -47,10 +59,10 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             {
                 d.init = true;
 
-                InitRNGDict(context);
-                InitLastUpdatedDict(context);
-                InitDelayDict(context);
-                InitCharactersDict(context);
+                InitRNGDict(d, context);
+                InitLastUpdatedDict(d, context);
+                InitDelayDict(d, context);
+                InitCharactersDict(d, context);
             }
 
             int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
@@ -70,7 +82,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             float t = Mathf.Lerp(0, 1, (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / d.duration);
 
             float delayMult = d.waitCurve.Evaluate(1 - t);
-            float probMult = d.probCurve.Evaluate(1 - t);
+            float probMult = d.probabilityCurve.Evaluate(1 - t);
 
             float remaining = d.duration - (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData));
 
@@ -145,9 +157,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
 
 
-        private void InitRNGDict(IAnimationContext context)
+        private void InitRNGDict(AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
             int seed = (int)(context.AnimatorContext.PassedTime * 1000);
             d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.length);
             for (int i = 0; i < context.SegmentData.length; i++)
@@ -156,9 +167,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             }
         }
 
-        private void InitLastUpdatedDict(IAnimationContext context)
+        private void InitLastUpdatedDict(AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
             d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.length);
             for (int i = 0; i < context.SegmentData.length; i++)
             {
@@ -166,9 +176,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             }
         }
 
-        private void InitDelayDict(IAnimationContext context)
+        private void InitDelayDict(AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
             d.delayDict = new Dictionary<int, float>(context.SegmentData.length);
 
             for (int i = 0; i < context.SegmentData.length; i++)
@@ -177,78 +186,16 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             }
         }
 
-        private void InitCharactersDict(IAnimationContext context)
+        private void InitCharactersDict(AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
             d.currentCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
             d.originalCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
         }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
+        
+        [AutoParametersStorage]
+        private partial class AutoParametersData
         {
-            if (parameters == null) return;
-            Data d = (Data)customData;
-
-            if (TryGetFloatParameter(out float f, parameters, "probability", "prob", "p")) d.probability = f;
-            if (TryGetFloatParameter(out f, parameters, "duration", "dur", "d")) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "minwait", "minw", "min")) d.minWait = f;
-            if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw", "max")) d.maxWait = f;
-            if (TryGetDefinedParameter(out string s, parameters, "characters", "char", "c")) d.characters = parameters[s];
-            if (TryGetBoolParameter(out bool b, parameters, "autocase", "case")) d.autoCase = b;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "waitcurve", "waitcrv", "waitc")) d.waitCurve = crv;
-            if (TryGetAnimCurveParameter(out crv, parameters, "probabilitycurve", "probabilitycrv", "probabilityc", "probcurve", "probcrv", "probc")) d.probCurve = crv;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "probability", "prob", "p")) return false;
-            if (HasNonFloatParameter(parameters, "duration", "dur", "d")) return false;
-            if (HasNonFloatParameter(parameters, "minwait", "minw", "min")) return false;
-            if (HasNonFloatParameter(parameters, "maxwait", "maxw", "max")) return false;
-            if (HasNonBoolParameter(parameters, "autocase", "case")) return false;
-            if (HasNonAnimCurveParameter(parameters, "waitcurve", "waitcrv", "waitc")) return false;
-            if (HasNonAnimCurveParameter(parameters, "probabilitycurve", "probabilitycrv", "probabilityc", "probcurve", "probcrv", "probc")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                init = false,
-                duration = this.duration,
-                characters = this.characters,
-                probability = this.probability,
-                minWait = this.minWait,
-                maxWait = this.minDelay,
-                autoCase = this.autoCase,
-
-                waitCurve = this.waitCurve,
-                probCurve = this.probabilityCurve,
-
-                lastUpdatedDict = null,
-                delayDict = null,
-                rngDict = null,
-            };
-        }
-
-        private class Data
-        {
-            public bool init;
-
-            public float duration;
-            public string characters;
-            public float probability;
-            public float minWait;
-            public float maxWait;
-            public bool autoCase;
-
-            public AnimationCurve waitCurve;
-            public AnimationCurve probCurve;
-
+            public bool init = false;
             public System.Random random = null;
             public Dictionary<int, TMP_Character> currentCharacterCache = null;
             public Dictionary<int, TMP_Character> originalCharacterCache = null;
@@ -256,5 +203,6 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             public Dictionary<int, float> delayDict = null;
             public Dictionary<int, System.Random> rngDict = null;
         }
+
     }
 }

@@ -42,7 +42,6 @@ namespace TMPEffects.Components.Animator
             animationContext.CustomData = customAnimationData;
             animation.SetParameters(customAnimationData, tag.Parameters, animationContext);
             
-
             CachedAnimation ca = new CachedAnimation(
                 tag, 
                 closedIndices,

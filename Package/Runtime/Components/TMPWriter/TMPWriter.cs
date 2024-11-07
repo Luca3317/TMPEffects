@@ -125,10 +125,12 @@ namespace TMPEffects.Components
         /// The float parameter indicates the amount of time the TMPWriter will wait, in seconds.
         /// </summary>
         public UnityEvent<TMPWriter, float> OnWaitStarted;
+
         /// <summary>
         /// Raised when the TMPWriter ends waiting.
         /// </summary>
         public UnityEvent<TMPWriter> OnWaitEnded;
+
         /// <summary>
         /// Raised when the TMPWriter is done writing the current text.
         /// </summary>
@@ -154,6 +156,11 @@ namespace TMPEffects.Components
         /// The prefix used for event tags.
         /// </summary>
         public const char EVENT_PREFIX = '?';
+
+        // TODO
+        public IWriterContext WriterContext => roContext;
+        private ReadOnlyWriterContext roContext;
+        [SerializeField] private WriterContext context = new WriterContext();
 
         #region Fields
 
@@ -403,14 +410,12 @@ namespace TMPEffects.Components
                 return;
             }
 
-            Debug.LogWarning("Setting to " + seconds);
             shouldWait = true;
             waitAmount = seconds;
         }
 
         public void ResetWaitPeriod()
         {
-            Debug.LogWarning("oops");
             shouldWait = false;
             waitAmount = 0f;
         }
@@ -467,8 +472,12 @@ namespace TMPEffects.Components
 
             SubscribeToMediator();
 
+            // TODO Make init of this nicer;
+            context.Writer = this;
+            roContext = new ReadOnlyWriterContext(context);
+            
             PrepareForProcessing();
-
+            
             if (database != null)
             {
                 database.ObjectChanged += ReprocessOnDatabaseChange;
@@ -532,7 +541,7 @@ namespace TMPEffects.Components
             commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
-            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, commandDatabase);
+            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, roContext);
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
@@ -803,7 +812,9 @@ namespace TMPEffects.Components
                 if (shouldWait && waitAmount > 0)
                 {
                     RaiseWaitStartedEvent(waitAmount);
-                    yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                    yield return useScaledTime
+                        ? new WaitForSeconds(waitAmount)
+                        : new WaitForSecondsRealtime(waitAmount);
                     RaiseWaitEndedEvent();
                 }
 
@@ -829,43 +840,28 @@ namespace TMPEffects.Components
                 invokables = GetInvokables(i);
                 foreach (var invokable in invokables)
                 {
+                    waitAmount = 0f;
+                    shouldWait = false;
+                    continueConditions = null;
+
                     invokable.Trigger();
 
-                    // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
-                    FixTimePre(ref waitAmount);
+                    prevTime = useScaledTime ? Time.time : Time.unscaledTime;
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
-                    }
-                    FixTimePost(waitAmount);
-                    if (Mediator == null) yield break;
+                    } 
 
-                    // Wait until all wait conditions are true
+                    FixTimePost(waitAmount);
+
+                    if (Mediator == null) yield break;
                     if (continueConditions != null) yield return HandleWaitConditions();
                     if (Mediator == null) yield break;
                 }
-
-                // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
-                FixTimePre(ref waitAmount);
-                if (shouldWait && waitAmount > 0)
-                {
-                    yield return useScaledTime
-                        ? new WaitForSeconds(waitAmount)
-                        : new WaitForSecondsRealtime(waitAmount);
-                }
-                FixTimePost(waitAmount);
-
-                while (continueConditions != null)
-                {
-                    yield return HandleWaitConditions();
-                    if (Mediator == null) yield break;
-                }
-                
-                waitAmount = 0f;
-                shouldWait = false;
-                continueConditions = null;
 
                 // Calculate and wait for the delay for the current index, and accomodate for excess wait time (frame-timing)
                 float delay = CalculateDelay(i);
@@ -1145,9 +1141,12 @@ namespace TMPEffects.Components
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
+
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1172,9 +1171,12 @@ namespace TMPEffects.Components
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
+
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1485,7 +1487,7 @@ namespace TMPEffects.Components
 
             tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
-            var commandCacher = new CommandCacher(Mediator.CharData, this, commandCategory);
+            var commandCacher = new CommandCacher(Mediator.CharData, this, roContext, commandCategory);
             var eventCacher = new EventCacher(this, OnTextEvent);
 
             commands = new CachedCollection<CachedCommand>(commandCacher, tags[commandCategory]);

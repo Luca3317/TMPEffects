@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Parameters;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 
-public class ExampleOffsetType : TMPOffsetType
+public class ExampleOffset : ParameterTypes.TMPOffsetProvider
 {
     public override float GetOffset(CharData cData, IAnimationContext context)
     {

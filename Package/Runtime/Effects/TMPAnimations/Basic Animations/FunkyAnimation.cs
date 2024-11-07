@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.Extensions;
@@ -9,20 +10,22 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new FunkyAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Funky")]
-    public class FunkyAnimation : TMPAnimation
+    public partial class FunkyAnimation : TMPAnimation
     {
+        [SerializeField, AutoParameter("speed", "sp", "s")] 
         [Tooltip("The speed at which the animation plays.\nAliases: speed, sp, s")]
-        [SerializeField] float speed;
+        float speed;
+        [SerializeField, AutoParameter("squeezefactor", "squeeze", "sqz")] 
         [Tooltip("The percentage of its original size the text is squeezed to.\nAliases: squeezefactor, squeeze, sqz")]
-        [SerializeField] float squeezeFactor;
+        float squeezeFactor;
+        [SerializeField, AutoParameter("amplitude", "amp")] 
         [Tooltip("The amplitude the text pushes to the left / right.\nAliases: amplitude, amp")]
-        [SerializeField] float amplitude;
+        float amplitude;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
             float t = Mathf.Sin(context.AnimatorContext.PassedTime * d.speed) / 2 + 0.5f;
             bool movingUp = Mathf.Cos(context.AnimatorContext.PassedTime * d.speed) > 0;
 
@@ -75,44 +78,6 @@ namespace TMPEffects.TMPAnimations.Animations
 
             cData.mesh.SetPosition(1, p1);
             cData.mesh.SetPosition(2, p2);
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "speed", SpeedAliases)) d.speed = f;
-            if (TryGetFloatParameter(out f, parameters, "amplitude", AmplitudeAliases)) d.amplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "squeezefactor", "squeeze", "sqz")) d.squeezeFactor = f;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "speed", SpeedAliases)) return false;
-            if (HasNonFloatParameter(parameters, "amplitude", AmplitudeAliases)) return false;
-            if (HasNonFloatParameter(parameters, "squeezeFactor", "squeeze", "sqz")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                amplitude = this.amplitude,
-                speed = this.speed,
-                squeezeFactor = this.squeezeFactor
-            };
-        }
-
-        private class Data
-        {
-            public float speed;
-            public float squeezeFactor;
-            public float amplitude;
         }
     }
 }

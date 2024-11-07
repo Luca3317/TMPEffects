@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPEffects.Components.Writer;
 using TMPEffects.TMPCommands;
 using UnityEngine;
 using UnityEngine.Events;
@@ -34,13 +35,13 @@ namespace TMPEffects.TMPCommands
         [Tooltip("Whether the command should be allowed to be executed multiple times. Relevant for when the writer is reset while writing.")]
         [SerializeField] private bool executeRepeatable;
         [Tooltip("The methods to trigger.")]
-        [SerializeField] private UnityEvent<TMPCommandArgs> command;
+        [SerializeField] private UnityEvent<IDictionary<string, string>, ICommandContext> command;
 
         /// <inheritdoc/>
-        public void ExecuteCommand(TMPCommandArgs args) => command?.Invoke(args);
+        public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context) => command?.Invoke(parameters, context);
 
         /// <inheritdoc/>
-        public bool ValidateParameters(IDictionary<string, string> parameters)
+        public bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context)
         {
             return true;
         }

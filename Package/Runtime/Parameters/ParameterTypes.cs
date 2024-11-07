@@ -9,10 +9,27 @@ namespace TMPEffects.Parameters
 {
     public static class ParameterTypes
     {
+        public interface ITMPOffsetProvider
+        {
+            public float GetOffset(CharData cData, IAnimationContext context);
+        }
+
+        public abstract class TMPOffsetProvider : ScriptableObject, ITMPOffsetProvider
+        {
+            // TODO What other params might make sense?
+            public abstract float GetOffset(CharData cData, IAnimationContext context);
+        }
+
+        public abstract class TMPSceneOffsetProvider : MonoBehaviour, ITMPOffsetProvider
+        {
+            public abstract float GetOffset(CharData cData, IAnimationContext context);
+        }
+        
+        
         /// <summary>
-        /// Different built-in offset types, to be used with <see cref="GetWaveOffset(CharData, IAnimationContext, WaveOffsetType)"/>.
+        /// Different built-in offset types, to be used with <see cref="GetOffset(CharData, IAnimationContext, OffsetType)"/>.
         /// </summary>
-        public enum WaveOffsetType
+        public enum OffsetType
         {
             SegmentIndex = 0,
             Index = 5,
@@ -80,7 +97,7 @@ namespace TMPEffects.Parameters
                 a.vector -= b;
                 return a;
             }
-            
+
             public TypedVector2 IgnoreScaling(CharData cData, IAnimationContext context)
                 => IgnoreScaling(cData, context.AnimatorContext);
 
@@ -123,7 +140,7 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
-            
+
             public Vector2 ToPosition(CharData cData, Vector2 referencePos)
             {
                 return type switch
@@ -134,8 +151,8 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
-            
-            
+
+
             public Vector2 ToDelta(CharData cData, Vector2 referencePos)
             {
                 return type switch
@@ -149,7 +166,7 @@ namespace TMPEffects.Parameters
 
             public override string ToString()
             {
-                return "{ " + vector + ", " + type +" }";
+                return "{ " + vector + ", " + type + " }";
             }
         }
 
@@ -199,13 +216,8 @@ namespace TMPEffects.Parameters
                 {
                     VectorType.Position => new TypedVector3(type,
                         AnimationUtility.GetRawPosition(vector, cData, context)),
-                    VectorType.Anchor =>
-                        // TODO Dont have to do anything i think. Since based on anchors of character,
-                        // inherently ignores scaling
-                        // vector = AnimationUtility.GetRawPosition(AnimationUtility.AnchorToPosition(vector, cData),
-                        //     cData, context);
-                        new TypedVector3(type, AnimationUtility.GetRawDelta(vector, cData, context)),
                     VectorType.Offset => new TypedVector3(type, AnimationUtility.GetRawDelta(vector, cData, context)),
+                    VectorType.Anchor => this,
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
@@ -243,7 +255,7 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
-            
+
             public Vector3 ToDelta(CharData cData, Vector3 referencePos)
             {
                 return type switch
@@ -254,10 +266,10 @@ namespace TMPEffects.Parameters
                     _ => throw new System.NotImplementedException(nameof(type))
                 };
             }
-            
+
             public override string ToString()
             {
-                return "{ " + vector + ", " + type +" }";
+                return "{ " + vector + ", " + type + " }";
             }
         }
     }

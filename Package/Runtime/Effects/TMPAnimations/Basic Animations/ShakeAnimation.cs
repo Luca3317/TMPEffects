@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using UnityEngine;
@@ -6,29 +7,45 @@ using static TMPEffects.Parameters.ParameterUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new ShakeAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Shake")]
-    public class ShakeAnimation : TMPAnimation
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new ShakeAnimation",
+        menuName = "TMPEffects/Animations/Basic Animations/Built-in/Shake")]
+    public partial class ShakeAnimation : TMPAnimation
     {
+        [SerializeField, AutoParameter("uniform", "uni")]
         [Tooltip("Whether to apply the shake uniformly across the text.\nAliases: uniform, uni")]
-        [SerializeField] bool uniform = false;
+        bool uniform = false;
 
+        [SerializeField, AutoParameter("maxxamplitude", "maxxamp", "maxxa", "maxx")]
         [Tooltip("The maximum X amplitude of each shake.\nAliases: maxxamplitude, maxxamp, maxxa, maxx")]
-        [SerializeField] float maxXAmplitude = 5;
+        float maxXAmplitude = 5;
+
+        [SerializeField, AutoParameter("minxamplitude", "minxamp", "minxa", "minx")]
         [Tooltip("The minimum X amplitude of each shake.\nAliases: minxamplitude, minxamp, minxa, minx")]
-        [SerializeField] float minXAmplitude = 5;
+        float minXAmplitude = 5;
+
+        [SerializeField, AutoParameter("maxyamplitude", "maxyamp", "maxya", "maxy")]
         [Tooltip("The maximum Y amplitude of each shake.\nAliases: maxyamplitude, maxyamp, maxya, maxy")]
-        [SerializeField] float maxYAmplitude = 5;
+        float maxYAmplitude = 5;
+
+        [SerializeField, AutoParameter("minyamplitude", "minyamp", "minya", "miny")]
         [Tooltip("The minimum Y amplitude of each shake.\nAliases: minyamplitude, minyamp, minya, miny")]
-        [SerializeField] float minYAmplitude = 5;
+        float minYAmplitude = 5;
 
-        [Tooltip("Whether to use uniform wait time across the text. Ignored if uniform is true.\nAliases: uniformdelay, unidelay, unid")]
-        [SerializeField] bool uniformWait = true;
-        [Tooltip("The minimum amount of time to wait after each shake.\nAliases: minwait, minw")]
-        [SerializeField] float minWait = 0.1f;
-        [Tooltip("The maximum amount of time to wait after each shake.\nAliases: maxwait, maxw")]
-        [SerializeField] float maxWait = 0.1f;
+        [SerializeField, AutoParameter("uniformwait", "uniwait", "uniw")]
+        [Tooltip(
+            "Whether to use uniform wait time across the text. Ignored if uniform is true.\nAliases: uniformwait, uniwait, uniw")]
+        bool uniformWait = true;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        [SerializeField, AutoParameter("minwait", "minw")]
+        [Tooltip("The minimum amount of time to wait after each shake.\nAliases: minwait, minw")] 
+        float minWait = 0.1f;
+
+        [SerializeField, AutoParameter("maxwait", "maxw")]
+        [Tooltip("The maximum amount of time to wait after each shake.\nAliases: maxwait, maxw")] 
+        float maxWait = 0.1f;
+        
+        private partial void Animate(CharData cData, Data data, IAnimationContext context)
         {
             Data d = context.CustomData as Data;
 
@@ -44,7 +61,7 @@ namespace TMPEffects.TMPAnimations.Animations
                     InitDelayDict(context);
                     InitOffsetDict(context);
 
-                    if (d.uniformDelay) InitAutoUpdateDict(context);
+                    if (d.uniformWait) InitAutoUpdateDict(context);
                 }
                 else
                 {
@@ -60,10 +77,16 @@ namespace TMPEffects.TMPAnimations.Animations
                 // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delay
                 if (context.AnimatorContext.PassedTime - d.lastUpdated >= d.delay)
                 {
-                    float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rng.NextDouble());
-                    float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rng.NextDouble());
+                    float xAmp = d.maxXAmplitude == d.minXAmplitude
+                        ? d.maxXAmplitude
+                        : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rng.NextDouble());
+                    float yAmp = d.maxYAmplitude == d.minYAmplitude
+                        ? d.maxYAmplitude
+                        : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rng.NextDouble());
 
-                    d.delay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rng.NextDouble());
+                    d.delay = d.maxWait == d.minWait
+                        ? d.maxWait
+                        : Mathf.Lerp(d.minWait, d.maxWait, (float)d.rng.NextDouble());
                     d.lastUpdated = context.AnimatorContext.PassedTime;
 
                     d.xOffset = ((float)d.rng.NextDouble() * 2f - 1f) * xAmp;
@@ -74,20 +97,27 @@ namespace TMPEffects.TMPAnimations.Animations
             }
 
             // else if the shake uses uniform delay (all character shake at the same time)
-            else if (d.uniformDelay)
+            else if (d.uniformWait)
             {
                 int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
 
                 // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude for each character a new delay
-                if (d.autoUpdateDict[segmentIndex] || context.AnimatorContext.PassedTime - d.sharedLastUpdated >= d.sharedDelay)
+                if (d.autoUpdateDict[segmentIndex] ||
+                    context.AnimatorContext.PassedTime - d.sharedLastUpdated >= d.sharedDelay)
                 {
-                    float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
-                    float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
+                    float xAmp = d.maxXAmplitude == d.minXAmplitude
+                        ? d.maxXAmplitude
+                        : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
+                    float yAmp = d.maxYAmplitude == d.minYAmplitude
+                        ? d.maxYAmplitude
+                        : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
 
                     if (d.autoUpdateDict[segmentIndex]) d.autoUpdateDict[segmentIndex] = false;
                     else
                     {
-                        d.sharedDelay = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
+                        d.sharedDelay = d.maxWait == d.minWait
+                            ? d.maxWait
+                            : Mathf.Lerp(d.minWait, d.maxWait, (float)d.rngDict[segmentIndex].NextDouble());
                         d.sharedLastUpdated = context.AnimatorContext.PassedTime;
 
                         for (int i = 0; i < context.SegmentData.length; i++)
@@ -113,10 +143,16 @@ namespace TMPEffects.TMPAnimations.Animations
                 // if the delay time of the current character is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delays for each character
                 if (context.AnimatorContext.PassedTime - d.lastUpdatedDict[segmentIndex] >= d.delayDict[segmentIndex])
                 {
-                    float xAmp = d.maxXAmplitude == d.minXAmplitude ? d.maxXAmplitude : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
-                    float yAmp = d.maxYAmplitude == d.minYAmplitude ? d.maxYAmplitude : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
+                    float xAmp = d.maxXAmplitude == d.minXAmplitude
+                        ? d.maxXAmplitude
+                        : Mathf.Lerp(d.minXAmplitude, d.maxXAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
+                    float yAmp = d.maxYAmplitude == d.minYAmplitude
+                        ? d.maxYAmplitude
+                        : Mathf.Lerp(d.minYAmplitude, d.maxYAmplitude, (float)d.rngDict[segmentIndex].NextDouble());
 
-                    d.delayDict[segmentIndex] = d.maxDelay == d.minDelay ? d.maxDelay : Mathf.Lerp(d.minDelay, d.maxDelay, (float)d.rngDict[segmentIndex].NextDouble());
+                    d.delayDict[segmentIndex] = d.maxWait == d.minWait
+                        ? d.maxWait
+                        : Mathf.Lerp(d.minWait, d.maxWait, (float)d.rngDict[segmentIndex].NextDouble());
                     d.lastUpdatedDict[segmentIndex] = context.AnimatorContext.PassedTime;
 
                     float xOffset = ((float)d.rngDict[segmentIndex].NextDouble() * 2f - 1f) * xAmp;
@@ -162,7 +198,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 d.delayDict.Add(i, 0);
             }
         }
-
+ 
         private void InitOffsetDict(IAnimationContext context)
         {
             Data d = context.CustomData as Data;
@@ -184,65 +220,11 @@ namespace TMPEffects.TMPAnimations.Animations
                 d.autoUpdateDict.Add(i, false);
             }
         }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "maxxamplitude", "maxxamp", "maxxa", "maxx")) d.maxXAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "maxyamplitude", "maxyamp", "maxya", "maxy")) d.maxYAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "minxamplitude", "minxamp", "minxa", "minx")) d.minXAmplitude = f;
-            if (TryGetFloatParameter(out f, parameters, "minyamplitude", "minyamp", "minya", "miny")) d.minYAmplitude = f;
-            if (TryGetBoolParameter(out bool b, parameters, "uniform", "uni")) d.uniform = b;
-            if (TryGetBoolParameter(out b, parameters, "uniformwait", "uniwait", "uniw")) d.uniformDelay = b;
-            if (TryGetFloatParameter(out f, parameters, "minwait", "minw")) d.minDelay = f;
-            if (TryGetFloatParameter(out f, parameters, "maxwait", "maxw")) d.maxDelay = f;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "maxxamplitude", "maxxamp", "maxxa", "maxx")) return false;
-            if (HasNonFloatParameter(parameters, "maxyamplitude", "maxyamp", "maxya", "maxy")) return false;
-            if (HasNonFloatParameter(parameters, "minxamplitude", "minxamp", "minxa", "minx")) return false;
-            if (HasNonFloatParameter(parameters, "minyamplitude", "minyamp", "minya", "miny")) return false;
-            if (HasNonBoolParameter(parameters, "uniform", "uni")) return false;
-            if (HasNonBoolParameter(parameters, "uniformwait", "uniwait", "uniw")) return false;
-            if (HasNonFloatParameter(parameters, "minwait", "minw")) return false;
-            if (HasNonFloatParameter(parameters, "maxwait", "maxw")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                uniform = this.uniform,
-                maxXAmplitude = this.maxXAmplitude,
-                minXAmplitude = this.minXAmplitude,
-                minYAmplitude = this.minYAmplitude,
-                maxYAmplitude = this.maxYAmplitude,
-                uniformDelay = this.uniformWait,
-                minDelay = this.minWait,
-                maxDelay = this.maxWait,
-            };
-        }
-
-        private class Data
+        
+        [AutoParametersStorage]
+        private partial class Data
         {
             public bool init = false;
-
-            public bool uniform;
-            public float maxXAmplitude;
-            public float minXAmplitude;
-            public float maxYAmplitude;
-            public float minYAmplitude;
-            public bool uniformDelay;
-            public float minDelay;
-            public float maxDelay;
 
             // uniform
             public System.Random rng = null;

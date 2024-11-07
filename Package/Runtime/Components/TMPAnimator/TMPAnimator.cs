@@ -358,6 +358,12 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
+        public void SetKeywordDatabase(ITMPKeywordDatabase database)
+        {
+            context.KeywordDatabase = database;
+            OnDatabaseChanged();
+        }
+
         ///// <summary>
         ///// Set the default show animation.
         ///// </summary>
@@ -657,6 +663,12 @@ namespace TMPEffects.Components
             hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             mainDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
 
+            if (context.KeyWordDatabaseCallbacK != null)
+            {
+                context.KeyWordDatabaseCallbacK.ObjectChanged -= ReprocessOnDatabaseChange;            
+                context.KeyWordDatabaseCallbacK.ObjectChanged += ReprocessOnDatabaseChange;            
+            }
+
             // Reset categories
             basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase, context);
             showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase, context);
@@ -905,9 +917,9 @@ namespace TMPEffects.Components
                 context.Modifiers = state;
                 state.Reset();
                 UpdateCharacterAnimation_Impl(index);
-
-                if (OnCharacterAnimated != null)
-                {
+                
+                if (Mediator.VisibilityStates[index] != VisibilityState.Hidden && OnCharacterAnimated != null)
+                { 
                     // TODO Issue; this needs to be called before every invoked method
                     // maybe make list of actions instead
                     // Actually; not necessarily. Just the cdata modifiers will already be dirty

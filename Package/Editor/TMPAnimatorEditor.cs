@@ -4,6 +4,7 @@ using TMPEffects.Components;
 using UnityEditorInternal;
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 
 namespace TMPEffects.Editor
 {

@@ -33,7 +33,7 @@ public class AnimationStep
     public uint repetitions;
 
     public bool useWave;
-    public ParameterTypes.WaveOffsetType waveOffsetType;
+    public ParameterTypes.OffsetType offsetType;
     public AnimationUtility.Wave wave;
 
     public float startTime;
@@ -70,7 +70,7 @@ public class AnimationStep
         repetitions = original.repetitions;
         
         useWave = original.useWave;
-        waveOffsetType = original.waveOffsetType;
+        offsetType = original.offsetType;
         wave = new AnimationUtility.Wave(original.wave); // TODO Wave is class so need to copy here
         
         startTime = original.startTime;

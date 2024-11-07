@@ -17,7 +17,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         [SerializeField] Wave wave;
         [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffset;
+        [SerializeField] OffsetTypePowerEnum waveOffset;
 
         [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         [SerializeField] Color[] colors;
@@ -27,7 +27,7 @@ namespace TMPEffects.TMPAnimations.Animations
             Data d = context.CustomData as Data;
 
             // Evaluate the wave based on time and offset
-            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, d.waveOffset.GetOffset(cData, context));
 
             // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
@@ -126,8 +126,8 @@ namespace TMPEffects.TMPAnimations.Animations
 
             Data d = (Data)customData;
             
-            if (TryGetArrayParameter(out var array, parameters, ParameterParsing.StringToColor, context.AnimatorContext.KeywordDatabase.ColorKeywords, "colors", "clrs")) d.colors = array;
-            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
+            if (TryGetArrayParameter(out Color[] array, parameters, ParameterParsing.StringToColor, context.AnimatorContext.KeywordDatabase, "colors", "clrs")) d.colors = array;
+            if (TryGetOffsetProviderParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
 
             // TODO Should have some quick and easy way to do this in ParameterUtility/parsing
             // if (TryGetArrayParameter<TypedVector2>(out TypedVector2[] l, parameters,
@@ -149,8 +149,8 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             if (parameters == null) return true;
 
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, context.KeywordDatabase.ColorKeywords,  "colors", "clrs")) return false;
+            if (HasNonOffsetProviderParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
+            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, context.KeywordDatabase,  "colors", "clrs")) return false;
 
             return ValidateWaveParameters(parameters);
         }
@@ -158,7 +158,7 @@ namespace TMPEffects.TMPAnimations.Animations
         private class Data
         {
             public Wave wave;
-            public WaveOffsetType waveOffset;
+            public ITMPOffsetProvider waveOffset;
             public Color[] colors;
         }
     }

@@ -95,7 +95,10 @@ MonoBehaviour:
     crestWait: 0.2
     troughWait: 0.6
     uniformity: 0.2
-  waveOffsetType: 10
+  waveOffsetType:
+    enumValue: 0
+    customValue: {fileID: 0}
+    useCustom: 0
   growAnchor:
     vector: {x: 0, y: 0, z: 0}
     type: 2

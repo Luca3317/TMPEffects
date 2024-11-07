@@ -3,6 +3,7 @@ using System.Globalization;
 using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.Components;
+using TMPEffects.Components.Writer;
 using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
@@ -18,12 +19,12 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
+        public override void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context)
         {
-            args.writer.Show(args.indices.StartIndex, args.indices.Length, true);
+            context.WriterContext.Writer.Show(context.Indices.StartIndex, context.Indices.Length, true);
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context)
         {
             return true;
         }

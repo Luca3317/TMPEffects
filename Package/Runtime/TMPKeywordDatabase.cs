@@ -2,138 +2,108 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TMPEffects.ObjectChanged;
 using TMPEffects.Parameters;
 using TMPEffects.SerializedCollections;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-public interface ITMPKeywordDatabase
+namespace TMPEffects.Databases
 {
-    public ReadOnlyDictionary<string, float> FloatKeywords { get; }
-    public ReadOnlyDictionary<string, int> IntKeywords { get; }
-    public ReadOnlyDictionary<string, bool> BoolKeywords { get; }
-    public ReadOnlyDictionary<string, Color> ColorKeywords { get; }
-    public ReadOnlyDictionary<string, Vector3> Vector3Keywords { get; }
-    public ReadOnlyDictionary<string, Vector2> AnchorKeywords { get; }
-    public ReadOnlyDictionary<string, AnimationCurve> AnimationCurveKeywords { get; }
-    public ReadOnlyDictionary<string, OffsetTypePowerEnum> OffsetTypeKeywords { get; }
-}
+    [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
+    public class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
+    {
+        public event ObjectChangedEventHandler ObjectChanged;
+        
+        [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
+        internal SerializedDictionary<string, float> floatKeywords;
 
-[CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
-public class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase
-{
-public ReadOnlyDictionary<string, float> FloatKeywords
-    {
-        get
-        {
-            if (floatKeywordsRo == null)
-                floatKeywordsRo = new ReadOnlyDictionary<string, float>(floatKeywords);
-            
-            return floatKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, int> IntKeywords
-    {
-        get
-        {
-            if (intKeywordsRo == null)
-                intKeywordsRo = new ReadOnlyDictionary<string, int>(intKeywords);
-            
-            return intKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, bool> BoolKeywords
-    {
-        get
-        {
-            if (boolKeywordsRo == null)
-                boolKeywordsRo = new ReadOnlyDictionary<string, bool>(boolKeywords);
-            
-            return boolKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, Color> ColorKeywords
-    {
-        get
-        {
-            if (colorKeywordsRo == null)
-                colorKeywordsRo = new ReadOnlyDictionary<string, Color>(colorKeywords);
-            
-            return colorKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, Vector3> Vector3Keywords     
-    {
-        get
-        {
-            if (vectorKeywordsRo == null)
-                vectorKeywordsRo = new ReadOnlyDictionary<string, Vector3>(vector3Keywords);
-            
-            return vectorKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, Vector2> AnchorKeywords     
-    {
-        get
-        {
-            if (anchorKeywordsRo == null)
-                anchorKeywordsRo = new ReadOnlyDictionary<string, Vector2>(anchorKeywords);
-            
-            return anchorKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, AnimationCurve> AnimationCurveKeywords     
-    {
-        get
-        {
-            if (animKeywordsRo == null)
-                animKeywordsRo = new ReadOnlyDictionary<string, AnimationCurve>(animationCurveKeywords);
-            
-            return animKeywordsRo;
-        }
-    }
-    public ReadOnlyDictionary<string, OffsetTypePowerEnum> OffsetTypeKeywords     
-    {
-        get
-        {
-            if (offsetTypeKeywordsRo == null)
-                offsetTypeKeywordsRo = new ReadOnlyDictionary<string, OffsetTypePowerEnum>(offsetTypeKeywords);
-            
-            return offsetTypeKeywordsRo;
-        }
-    }
+        [SerializedDictionary(keyName: "Keyword", valueName: "Int")] [SerializeField]
+        internal SerializedDictionary<string, int> intKeywords;
 
-    [System.NonSerialized] private ReadOnlyDictionary<string, float> floatKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, int> intKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, bool> boolKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, Color> colorKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, Vector3> vectorKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, Vector2> anchorKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, AnimationCurve> animKeywordsRo = null;
-    [System.NonSerialized] private ReadOnlyDictionary<string, OffsetTypePowerEnum> offsetTypeKeywordsRo = null;
+        // Really pointless but here for completions sake
+        [SerializedDictionary(keyName: "Keyword", valueName: "Bool")] [SerializeField]
+        internal SerializedDictionary<string, bool> boolKeywords;
 
-    [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
-    SerializedDictionary<string, float> floatKeywords;
+        [SerializedDictionary(keyName: "Keyword", valueName: "Color")] [SerializeField]
+        internal SerializedDictionary<string, Color> colorKeywords;
 
-    [SerializedDictionary(keyName: "Keyword", valueName: "Int")] [SerializeField]
-    SerializedDictionary<string, int> intKeywords;
+        [SerializedDictionary(keyName: "Keyword", valueName: "Vector3")] [SerializeField]
+        internal SerializedDictionary<string, Vector3> vector3Keywords;
 
-    // Really pointless but here for completions sake
-    [SerializedDictionary(keyName: "Keyword", valueName: "Bool")] [SerializeField]
-    SerializedDictionary<string, bool> boolKeywords;
+        [SerializedDictionary(keyName: "Keyword", valueName: "Anchor")] [SerializeField]
+        internal SerializedDictionary<string, Vector2> anchorKeywords;
 
-    [SerializedDictionary(keyName: "Keyword", valueName: "Color")] [SerializeField]
-    SerializedDictionary<string, Color> colorKeywords;
-    
-    [SerializedDictionary(keyName: "Keyword", valueName: "Vector3")] [SerializeField]
-    SerializedDictionary<string, Vector3> vector3Keywords;
-    
-    [SerializedDictionary(keyName: "Keyword", valueName: "Anchor")] [SerializeField]
-    SerializedDictionary<string, Vector2> anchorKeywords;
-    
-    [SerializedDictionary(keyName: "Keyword", valueName: "Curve")] [SerializeField]
-    SerializedDictionary<string, AnimationCurve> animationCurveKeywords;
+        [SerializedDictionary(keyName: "Keyword", valueName: "Curve")] [SerializeField]
+        internal SerializedDictionary<string, AnimationCurve> animationCurveKeywords;
 
-    [SerializedDictionary(keyName: "Keyword", valueName: "OffsetType")] [SerializeField]
-    SerializedDictionary<string, OffsetTypePowerEnum> offsetTypeKeywords;
+        [SerializedDictionary(keyName: "Keyword", valueName: "OffsetType")] [SerializeField]
+        internal SerializedDictionary<string, OffsetTypePowerEnum> offsetTypeKeywords;
+
+        [SerializedDictionary(keyName: "Keyword", valueName: "Unity Object")] [SerializeField]
+        internal SerializedDictionary<string, UnityEngine.Object> unityObjectKeywords;
+
+        public bool TryGetFloat(string str, out float result)
+        {
+            return floatKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetInt(string str, out int result)
+        {
+            return intKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetBool(string str, out bool result)
+        {
+            return boolKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetColor(string str, out Color result)
+        {
+            return colorKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetVector3(string str, out Vector3 result)
+        {
+            return vector3Keywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetAnchor(string str, out Vector2 result)
+        {
+            return anchorKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetAnimCurve(string str, out AnimationCurve result)
+        {
+            return animationCurveKeywords.TryGetValue(str, out result);
+        }
+
+        public bool TryGetOffsetType(string str, out ParameterTypes.ITMPOffsetProvider result)
+        {
+            bool success = offsetTypeKeywords.TryGetValue(str, out var offset);
+            result = offset;
+            return success;
+        }
+
+        public bool TryGetUnityObject(string str, out UnityEngine.Object result)
+        {
+            return unityObjectKeywords.TryGetValue(str, out result);
+        }
+        
+        protected virtual void OnValidate()
+        {
+            RaiseDatabaseChanged();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            RaiseDatabaseChanged();
+        }
+
+        protected void RaiseDatabaseChanged()
+        {
+            ObjectChanged?.Invoke(this);
+        }
+    }
 }

@@ -186,7 +186,13 @@ namespace TMPEffects.Editor
 
             public override void SetParameters(object customData, IDictionary<string, string> parameters,
                 IAnimationContext context1)
-                 => tmpanimation.SetParameters(customData, parameters, context);
+            {
+                if (customData == null) Debug.LogWarning("CustomData is null");
+                if (parameters == null) Debug.LogWarning("params is null");
+                if (context1 == null) Debug.LogWarning("context1 is null");
+                if (context1.AnimatorContext == null) Debug.LogWarning("animcontext is null");
+                tmpanimation.SetParameters(customData, parameters, context1);
+            }
 
             public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
                 => tmpanimation.ValidateParameters(parameters, context);

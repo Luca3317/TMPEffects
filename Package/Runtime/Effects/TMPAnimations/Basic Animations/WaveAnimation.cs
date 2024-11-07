@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
@@ -6,64 +7,37 @@ using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using TMPEffects.Extensions;
+using TMPEffects.Parameters;
+using TMPro;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
     [CreateAssetMenu(fileName = "new WaveAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Wave")]
-    public class WaveAnimation : TMPAnimation
+    [AutoParameters]
+    public partial class WaveAnimation : TMPAnimation
     {
-        [Tooltip(
-            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         [SerializeField]
+        [AutoParameterBundle("")]
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\n" +
+                 "For more information about Wave, see the section on it in the documentation.")]
         Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f,
             1f, 1f, 0.2f);
 
-        [Tooltip(
-            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         [SerializeField]
-        WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
-
-        [SerializeField] private OffsetTypePowerEnum powerEnum;
+        [AutoParameter("waveoffset")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\n" +
+            "For more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetTypePowerEnum waveOffsetType = OffsetType.XPos;
         
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
-            Data data = (Data)context.CustomData;
-
             // Evaluate the wave based on time and offset
             float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime,
-                powerEnum.GetOffset(cData, context)).Value;
+                data.waveOffsetType.GetOffset(cData, context)).Value;
 
             // Move the character up based on the wave evaluation
             cData.PositionDelta = Vector3.up * eval;
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data data = (Data)customData;
-            if (TryGetWaveOffsetParameter(out var wot, parameters, "waveoffset", WaveOffsetAliases))
-                data.waveOffsetType = wot;
-            data.wave = CreateWave(this.wave, GetWaveParameters(parameters));
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            return ValidateWaveParameters(parameters);
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data() { wave = this.wave, waveOffsetType = this.waveOffsetType };
-        }
-
-        private class Data
-        {
-            public Wave wave;
-            public WaveOffsetType waveOffsetType;
         }
     }
 }

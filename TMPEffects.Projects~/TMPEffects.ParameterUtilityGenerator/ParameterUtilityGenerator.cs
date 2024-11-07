@@ -135,6 +135,7 @@ namespace TMPEffects.ParameterUtilityGenerator
                 @"using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPEffects.Databases;
 using static TMPEffects.Parameters.ParameterTypes;
 
 namespace TMPEffects.Parameters
@@ -189,156 +190,12 @@ namespace TMPEffects.Parameters
         private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasParameterDelegate(
             string type)
         {
-            if (type == Strings.TypedVector3Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
-        public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            return TryGetTypedVector3Parameter(out TypedVector3 _, parameters, name, aliases);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
-        public static bool HasTypedVector3Parameter(IDictionary<string, string> parameters, IDictionary<string, Vector3> vectorKeywords, 
-            IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            return TryGetTypedVector3Parameter(out TypedVector3 _, parameters, vectorKeywords, anchorKeywords, name, aliases);
-        }}
-";
-                };
-            }
-
-            if (type == Strings.TypedVector2Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
-        public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            return TryGetTypedVector2Parameter(out TypedVector2 _, parameters, name, aliases);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
-        public static bool HasTypedVector2Parameter(IDictionary<string, string> parameters, IDictionary<string, Vector3> vectorKeywords, 
-            IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            return TryGetTypedVector2Parameter(out TypedVector2 _, parameters, vectorKeywords, anchorKeywords, name, aliases);
-        }}
-";
-                };
-            }
-
             return HandleHasParameter;
         }
 
         private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasNonParameterDelegate(
             string type)
         {
-            if (type == Strings.TypedVector3Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector3 (=> can not be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type TypedVector3, false otherwise.</returns>
-        public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetTypedVector3Parameter(out TypedVector3 _, parameters, name, aliases);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector3 (=> can not be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type TypedVector3, false otherwise.</returns>
-        public static bool HasNonTypedVector3Parameter(IDictionary<string, string> parameters, IDictionary<string, Vector3> vectorKeywords, 
-            IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetTypedVector3Parameter(out TypedVector3 _, parameters, vectorKeywords, anchorKeywords, name, aliases);
-        }}
-";
-                };
-            }
-
-            if (type == Strings.TypedVector2Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector2 (=> can not be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type TypedVector2, false otherwise.</returns>
-        public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetTypedVector2Parameter(out TypedVector2 _, parameters, name, aliases);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is not of type TypedVector2 (=> can not be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is not of type TypedVector2, false otherwise.</returns>
-        public static bool HasNonTypedVector2Parameter(IDictionary<string, string> parameters, IDictionary<string, Vector3> vectorKeywords, 
-            IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGetTypedVector2Parameter(out TypedVector2 _, parameters, vectorKeywords, anchorKeywords, name, aliases);
-        }}
-";
-                };
-            }
-
             return HandleHasNonParameter;
         }
 
@@ -346,88 +203,6 @@ namespace TMPEffects.Parameters
         private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetTryGetParameterDelegate(
             string type)
         {
-            if (type == Strings.TypedVector3Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""value"">Set to the value of the parameter if successful.</param>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
-        public static bool TryGetTypedVector3Parameter(out TypedVector3 value, IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            value = default;
-            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringToTypedVector3(parameters[parameterName], out value);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector3 (=> can be converted to TypedVector3).<br />
-        /// </summary>
-        /// <param name=""value"">Set to the value of the parameter if successful.</param>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector3, false otherwise.</returns>
-        public static bool TryGetTypedVector3Parameter(out TypedVector3 value, IDictionary<string, string> parameters, 
-            IDictionary<string, Vector3> vectorKeywords, IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            value = default;
-            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringToTypedVector3(parameters[parameterName], out value, vectorKeywords, anchorKeywords);
-        }}
-";
-                };
-            }
-
-            if (type == Strings.TypedVector2Name)
-            {
-                return (a, b, c) =>
-                {
-                    return c + $@"
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""value"">Set to the value of the parameter if successful.</param>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
-        public static bool TryGetTypedVector2Parameter(out TypedVector2 value, IDictionary<string, string> parameters, string name, params string[] aliases)
-        {{
-            value = default;
-            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringToTypedVector2(parameters[parameterName], out value);
-        }}
-
-        /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type TypedVector2 (=> can be converted to TypedVector2).<br />
-        /// </summary>
-        /// <param name=""value"">Set to the value of the parameter if successful.</param>
-        /// <param name=""parameters"">The parameters to check.</param>
-        /// <param name=""vectorKeywords"">Vector keywords to test when parsing the parameter.</param>
-        /// <param name=""anchorKeywords"">Anchor keywords to test when parsing the parameter.</param>
-        /// <param name=""name"">The name to check.</param>
-        /// <param name=""aliases"">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type TypedVector2, false otherwise.</returns>
-        public static bool TryGetTypedVector2Parameter(out TypedVector2 value, IDictionary<string, string> parameters, 
-            IDictionary<string, Vector3> vectorKeywords, IDictionary<string, Vector2> anchorKeywords, string name, params string[] aliases)
-        {{
-            value = default;
-            if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringToTypedVector2(parameters[parameterName], out value, vectorKeywords, anchorKeywords);
-        }}
-";
-                };
-            }
-
             return HandleTryGetParameter;
         }
 
@@ -472,7 +247,7 @@ namespace TMPEffects.Parameters
         /// <param name=""name"">The name to check.</param>
         /// <param name=""aliases"">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is of type {name}, false otherwise.</returns>
-        public static bool Has{values.displayName}Parameter(IDictionary<string, string> parameters, IDictionary<string, {Strings.ReturnTypeToKeywordType(values.displayName)}> keywords, string name, params string[] aliases)
+        public static bool Has{values.displayName}Parameter(IDictionary<string, string> parameters, ITMPKeywordDatabase keywords, string name, params string[] aliases)
         {{
             return TryGet{values.displayName}Parameter(out {fullName} _, parameters, keywords, name, aliases);
         }}
@@ -524,7 +299,7 @@ namespace TMPEffects.Parameters
         /// <param name=""name"">The name to check.</param>
         /// <param name=""aliases"">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is not of type {name}, false otherwise.</returns>
-        public static bool HasNon{values.displayName}Parameter(IDictionary<string, string> parameters, IDictionary<string, {Strings.ReturnTypeToKeywordType(values.displayName)}> keywords, string name, params string[] aliases)
+        public static bool HasNon{values.displayName}Parameter(IDictionary<string, string> parameters, ITMPKeywordDatabase keywords, string name, params string[] aliases)
         {{
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGet{values.displayName}Parameter(out {fullName} _, parameters, keywords, name, aliases);
@@ -580,7 +355,7 @@ namespace TMPEffects.Parameters
         /// <param name=""name"">The name to check.</param>
         /// <param name=""aliases"">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is of type {name}, false otherwise.</returns>
-        public static bool TryGet{values.displayName}Parameter(out {fullName} value, IDictionary<string, string> parameters, IDictionary<string, {Strings.ReturnTypeToKeywordType(values.displayName)}> keywords, string name, params string[] aliases)
+        public static bool TryGet{values.displayName}Parameter(out {fullName} value, IDictionary<string, string> parameters, ITMPKeywordDatabase keywords, string name, params string[] aliases)
         {{
             value = default;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;

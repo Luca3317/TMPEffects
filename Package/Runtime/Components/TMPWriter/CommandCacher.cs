@@ -10,15 +10,17 @@ namespace TMPEffects.Components.Writer
 {
     internal class CommandCacher : ITagCacher<CachedCommand>
     {
+        private IWriterContext writerContext;
         private ITMPEffectDatabase<ITMPCommand> database;
         private TMPWriter writer;
         private IList<CharData> charData;
 
-        public CommandCacher(IList<CharData> charData, TMPWriter writer, ITMPEffectDatabase<ITMPCommand> database)
+        public CommandCacher(IList<CharData> charData, TMPWriter writer, IWriterContext context, ITMPEffectDatabase<ITMPCommand> database)
         {
             this.charData = charData;
             this.writer = writer;
             this.database = database;
+            this.writerContext = context;
         }
 
         public CachedCommand CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
@@ -37,8 +39,9 @@ namespace TMPEffects.Components.Writer
             }
 
             TMPEffectTagIndices fixedIndices = new TMPEffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex);
-            TMPCommandArgs args = new TMPCommandArgs(tag, fixedIndices, writer);
-            CachedCommand cc = new CachedCommand(args, command);
+
+            CommandContext cContext = new CommandContext(writerContext, fixedIndices);
+            CachedCommand cc = new CachedCommand(tag, fixedIndices, cContext, command);
             return cc;
         }
     }

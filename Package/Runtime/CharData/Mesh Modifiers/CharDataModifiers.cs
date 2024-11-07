@@ -75,13 +75,13 @@ public class CharDataModifiers
         // Apply scale
         if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
         {
+            vbl = characterModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) +
+                  cData.InitialPosition;
             vtl = characterModifiers.ScaleDelta.MultiplyPoint3x4(vtl - cData.InitialPosition) +
                   cData.InitialPosition;
             vtr = characterModifiers.ScaleDelta.MultiplyPoint3x4(vtr - cData.InitialPosition) +
                   cData.InitialPosition;
             vbr = characterModifiers.ScaleDelta.MultiplyPoint3x4(vbr - cData.InitialPosition) +
-                  cData.InitialPosition;
-            vbl = characterModifiers.ScaleDelta.MultiplyPoint3x4(vbl - cData.InitialPosition) +
                   cData.InitialPosition;
         }
 
@@ -90,10 +90,16 @@ public class CharDataModifiers
         {
             Vector3 pivot;
             Matrix4x4 matrix;
+
             for (int i = 0; i < characterModifiers.Rotations.Count; i++)
             {
                 var rot = characterModifiers.Rotations[i];
-                pivot = rot.pivot;
+                
+                if (rot.eulerAngles == Vector3.zero) continue;
+                
+                pivot = cData.InitialPosition +
+                        AnimationUtility.ScaleVector(rot.pivot - cData.InitialPosition, cData, context);
+
                 matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
 
                 vbl = matrix.MultiplyPoint3x4(vbl - pivot) + pivot;
@@ -103,24 +109,13 @@ public class CharDataModifiers
             }
         }
 
-        // Apply transformation
-        // if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Position))
-        // {
-        //     var pos = characterModifiers.Position.GetValue(cData.InitialPosition);
-        //     var delta = pos - cData.InitialPosition;
-        //     vbl += delta;
-        //     vtl += delta;
-        //     vtr += delta;
-        //     vbr += delta;
-        // }
-
         if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
             var scaled = AnimationUtility.ScaleVector(characterModifiers.PositionDelta, cData, context);
+            vbl += scaled;
             vtl += scaled;
             vtr += scaled;
             vbr += scaled;
-            vbl += scaled;
         }
 
         BL_Result = vbl;
@@ -138,7 +133,8 @@ public class CharDataModifiers
         );
     }
 
-    public static void LerpUnclamped(CharData cData, IAnimatorContext ctx, CharDataModifiers start, CharDataModifiers end, float t,
+    public static void LerpUnclamped(CharData cData, IAnimatorContext ctx, CharDataModifiers start,
+        CharDataModifiers end, float t,
         CharDataModifiers result)
     {
         LerpCharacterModifiersUnclamped(cData, start.CharacterModifiers, end.CharacterModifiers, t,
@@ -196,7 +192,8 @@ public class CharDataModifiers
         }
     }
 
-    public static void LerpMeshModifiersUnclamped(CharData cData, IAnimatorContext ctx, TMPMeshModifiers start, TMPMeshModifiers end,
+    public static void LerpMeshModifiersUnclamped(CharData cData, IAnimatorContext ctx, TMPMeshModifiers start,
+        TMPMeshModifiers end,
         float t,
         TMPMeshModifiers result)
     {
@@ -212,29 +209,28 @@ public class CharDataModifiers
             result.BR_Delta = Vector3.LerpUnclamped(start.BR_Delta, end.BR_Delta, t);
         }
 
-        Debug.LogWarning("You better " + result.BR_Color + "; " + start.Modifier + " : " + end.Modifier);
         if (end.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
         {
             if (start.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
-                result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color,t);
-                result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color,t);
-                result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color,t);
-                result.BR_Color = ColorOverride.LerpUnclamped(start.BR_Color, end.BR_Color,t);
+                result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color, t);
+                result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color, t);
+                result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color, t);
+                result.BR_Color = ColorOverride.LerpUnclamped(start.BR_Color, end.BR_Color, t);
             }
             else if (cData.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
-                result.BL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BL_Color, end.BL_Color,t);
-                result.TL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TL_Color, end.TL_Color,t);
-                result.TR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TR_Color, end.TR_Color,t);
-                result.BR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BR_Color, end.BR_Color,t);
-            }           
+                result.BL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BL_Color, end.BL_Color, t);
+                result.TL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TL_Color, end.TL_Color, t);
+                result.TR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TR_Color, end.TR_Color, t);
+                result.BR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BR_Color, end.BR_Color, t);
+            }
             else if (ctx.Modifiers.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
-                result.BL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BL_Color, end.BL_Color,t);
-                result.TL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TL_Color, end.TL_Color,t);
-                result.TR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TR_Color, end.TR_Color,t);
-                result.BR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BR_Color, end.BR_Color,t);
+                result.BL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BL_Color, end.BL_Color, t);
+                result.TL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TL_Color, end.TL_Color, t);
+                result.TR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TR_Color, end.TR_Color, t);
+                result.BR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BR_Color, end.BR_Color, t);
             }
             else
             {
@@ -244,7 +240,7 @@ public class CharDataModifiers
                 result.BR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BR_Color, end.BR_Color, t);
             }
         }
-        
+
         if (combinedFlags.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
         {
             var startVector = start.BL_UV0.GetValue(cData.InitialMesh.BL_UV0);

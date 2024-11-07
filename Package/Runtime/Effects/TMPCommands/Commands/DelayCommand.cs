@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
+using TMPEffects.Components.Writer;
 using UnityEngine;
 using static TMPEffects.Parameters.ParameterUtility;
 
@@ -17,11 +18,13 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
+        public override void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context)
         {
-            if (!TryGetFloatParameter(out float delay, args.tag.Parameters, ""))
+            var writer = context.WriterContext.Writer;
+            
+            if (!TryGetFloatParameter(out float delay, parameters, context.WriterContext.KeywordDatabase, ""))
             {
-                if (args.tag.Parameters[""] == "" || args.tag.Parameters[""] == "default")
+                if (parameters[""] == "" || parameters[""] == "default")
                     delay = -1;
                 else
                 {
@@ -31,16 +34,16 @@ namespace TMPEffects.TMPCommands.Commands
                 }
             }
 
-            if (TryGetDefinedParameter(out string str, args.tag.Parameters, "for"))
+            if (TryGetDefinedParameter(out string str, parameters, "for"))
             {
                 TMPWriter.DelayType type;
-                if (!TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
+                if (!TryGetDefinedParameter(out string typestr, parameters, "type"))
                 {
                     type = TMPWriter.DelayType.Raw;
                 }
                 else
                 {
-                    switch (args.tag.Parameters[typestr])
+                    switch (parameters[typestr])
                     {
                         case "raw": type = TMPWriter.DelayType.Raw; break;
                         case "percentage":
@@ -51,39 +54,39 @@ namespace TMPEffects.TMPCommands.Commands
                     }
                 }
 
-                switch (args.tag.Parameters[str])
+                switch (parameters[str])
                 {
                     case "whitespace":
                     case "ws":
                         if (delay == -1)
-                            args.writer.CurrentDelays.SetWhitespaceDelay(args.writer.DefaultDelays.whitespaceDelay, args.writer.DefaultDelays.whitespaceDelayType);
+                            writer.CurrentDelays.SetWhitespaceDelay(writer.DefaultDelays.whitespaceDelay, writer.DefaultDelays.whitespaceDelayType);
                         else
-                            args.writer.CurrentDelays.SetWhitespaceDelay(delay, type);
+                            writer.CurrentDelays.SetWhitespaceDelay(delay, type);
                         return;
 
                     case "linebreak":
                     case "linebr":
                     case "br":
                         if (delay == -1)
-                            args.writer.CurrentDelays.SetLinebreakDelay(args.writer.DefaultDelays.linebreakDelay, args.writer.DefaultDelays.linebreakDelayType);
+                            writer.CurrentDelays.SetLinebreakDelay(writer.DefaultDelays.linebreakDelay, writer.DefaultDelays.linebreakDelayType);
                         else
-                            args.writer.CurrentDelays.SetLinebreakDelay(delay, type);
+                            writer.CurrentDelays.SetLinebreakDelay(delay, type);
                         return;
 
                     case "punctuation":
                     case "punct":
                         if (delay == -1)
-                            args.writer.CurrentDelays.SetPunctuationDelay(args.writer.DefaultDelays.punctuationDelay, args.writer.DefaultDelays.punctuationDelayType);
+                            writer.CurrentDelays.SetPunctuationDelay(writer.DefaultDelays.punctuationDelay, writer.DefaultDelays.punctuationDelayType);
                         else
-                            args.writer.CurrentDelays.SetPunctuationDelay(delay, type);
+                            writer.CurrentDelays.SetPunctuationDelay(delay, type);
                         return;
 
                     case "visible":
                     case "vis":
                         if (delay == -1)
-                            args.writer.CurrentDelays.SetVisibleDelay(args.writer.DefaultDelays.visibleDelay, args.writer.DefaultDelays.visibleDelayType);
+                            writer.CurrentDelays.SetVisibleDelay(writer.DefaultDelays.visibleDelay, writer.DefaultDelays.visibleDelayType);
                         else
-                            args.writer.CurrentDelays.SetVisibleDelay(delay, type);
+                            writer.CurrentDelays.SetVisibleDelay(delay, type);
                         return;
 
                     default: throw new System.InvalidOperationException();
@@ -92,20 +95,21 @@ namespace TMPEffects.TMPCommands.Commands
             else
             {
                 if (delay == -1)
-                    args.writer.CurrentDelays.SetDelay(args.writer.DefaultDelays.delay);
+                    writer.CurrentDelays.SetDelay(writer.DefaultDelays.delay);
                 else
-                    args.writer.CurrentDelays.SetDelay(delay);
+                    writer.CurrentDelays.SetDelay(delay);
             }
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context)
         {
             if (parameters == null) return false;
             if (!parameters.ContainsKey(""))
             {
                 return false;
             }
-
+            
+            // If defines a "for", validate its value
             if (TryGetDefinedParameter(out string str, parameters, "for"))
             {
                 switch (parameters[str])
@@ -123,6 +127,7 @@ namespace TMPEffects.TMPCommands.Commands
                     default: return false;
                 }
 
+                // If defines a "type", validate its value
                 if (TryGetDefinedParameter(out str, parameters, "type"))
                 {
                     switch (parameters[str])
@@ -137,7 +142,8 @@ namespace TMPEffects.TMPCommands.Commands
                 }
             }
 
-            return HasFloatParameter(parameters, "") || parameters[""] == "" || parameters[""] == "default";
+            // Check whether value is float
+            return HasFloatParameter(parameters, context.KeywordDatabase, "") || parameters[""] == "" || parameters[""] == "default";
         }
     }
 }

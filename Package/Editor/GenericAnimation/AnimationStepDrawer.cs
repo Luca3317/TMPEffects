@@ -44,7 +44,7 @@ public class AnimationStepDrawer : PropertyDrawer
         initModifiers = property.FindPropertyRelative("initModifiers");
         useInitModifiers = property.FindPropertyRelative("useInitialModifiers");
         useWave = property.FindPropertyRelative("useWave");
-        waveOffsetType = property.FindPropertyRelative("waveOffsetType");
+        waveOffsetType = property.FindPropertyRelative("offsetType");
         wave = property.FindPropertyRelative("wave");
         preExtrapolation = property.FindPropertyRelative("preExtrapolation");
         postExtrapolation = property.FindPropertyRelative("postExtrapolation");

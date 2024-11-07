@@ -11,19 +11,27 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Editing;
 using TMPEffects.AutoParameters.Analyzer;
+using TMPEffects.AutoParameters.TMPEffects.AutoParameters.Generator;
 using TMPEffects.StringLibrary;
 
 namespace TMPEffects.AutoParameters.Analyzers
 {
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AutoParametersCodeFixProvider)), Shared]
-    public class AutoParametersCodeFixProvider : CodeFixProvider
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AutoParametersImplementAnimateFix)), Shared]
+    public class AutoParametersImplementAnimateFix : CodeFixProvider
     {
-        public sealed override ImmutableArray<string> FixableDiagnosticIds
-            => ImmutableArray.Create(AutoParametersAnalyzer.DiagnosticId_5);
+        public override ImmutableArray<string> FixableDiagnosticIds
+        {
+            get
+            {
+                return ImmutableArray.Create
+                (
+                    AutoParametersAnalyzer.DiagnosticId_1005
+                );
+            }
+        }
 
         public sealed override FixAllProvider GetFixAllProvider()
             => WellKnownFixAllProviders.BatchFixer;
-
 
         public sealed override async Task RegisterCodeFixesAsync(CodeFixContext context)
         {
@@ -115,21 +123,6 @@ namespace TMPEffects.AutoParameters.Analyzers
             // Add the method to the class
             var newClassDeclaration = classDeclaration.AddMembers(methodDeclaration);
             editor.ReplaceNode(classDeclaration, newClassDeclaration);
-
-            // var newUsings = new[]
-            // {
-            //     Constants.CharDataPath,
-            //     Constants.IAnimationContextPath
-            // };
-            //
-            // var root = editor.OriginalRoot as CompilationUnitSyntax;
-            // var usings = root.Usings.Select(ns => ns.Name.ToString());
-            // var addUsings = newUsings.Where(ns => !usings.Contains(ns));
-            //
-            // foreach (var usng in addUsings)
-            // {
-            //     editor.InsertBefore(root.Members.First(), SyntaxFactory.UsingDirective(SyntaxFactory.ParseName(usng)));
-            // }
 
             return editor.GetChangedDocument();
         }

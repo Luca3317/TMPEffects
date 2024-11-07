@@ -340,7 +340,7 @@ namespace TMPEffects.TMPAnimations
                 set => uniformity = value;
             }
 
-            public ParameterTypes.WaveOffsetType OffsetType
+            public ParameterTypes.OffsetType OffsetType
             {
                 get => offsetType;
                 set => offsetType = value;
@@ -351,13 +351,15 @@ namespace TMPEffects.TMPAnimations
                 get => wrapMode;
                 set => wrapMode = value;
             }
-            
+
             [SerializeField] private AnimationCurve curve;
             [SerializeField] private float uniformity;
-            [SerializeField] private ParameterTypes.WaveOffsetType offsetType;
+            [SerializeField] private ParameterTypes.OffsetType offsetType;
             [SerializeField] private TMPWrapMode wrapMode;
 
-            public FancyAnimationCurve() {}
+            public FancyAnimationCurve()
+            {
+            }
 
             public FancyAnimationCurve(FancyAnimationCurve original)
             {
@@ -366,19 +368,19 @@ namespace TMPEffects.TMPAnimations
                 offsetType = original.offsetType;
                 wrapMode = original.wrapMode;
             }
-            
+
             // TODO Quick addition to make evaluation without anim context possible
             // TODO If i do split interfaces up further wont be necessary anymore i think
             public float Evaluate(CharData cData, IAnimatorContext ctx, float time)
             {
-                float offset = GetWaveOffset(cData, ctx, offsetType);
+                float offset = GetOffset(cData, ctx, offsetType);
                 float t = time - offset * uniformity;
                 return GetValue(curve, wrapMode, t);
             }
-            
+
             public float Evaluate(CharData cData, IAnimationContext ctx, float time)
             {
-                float offset = GetWaveOffset(cData, ctx, offsetType);
+                float offset = GetOffset(cData, ctx, offsetType);
                 float t = time - offset * uniformity;
                 // t = Mathf.Abs(t); // TODO ?
                 return GetValue(curve, wrapMode, t);
@@ -1252,27 +1254,27 @@ namespace TMPEffects.TMPAnimations
 
         // TODO Quick solution for using this from TMPMeshModifier, where no AnimationContext is available
         // Could probably mock it instead
-        public static float GetWaveOffset(CharData cData, IAnimatorContext context, ParameterTypes.WaveOffsetType type,
+        public static float GetOffset(CharData cData, IAnimatorContext context, ParameterTypes.OffsetType type,
             int segmentIndex = 0,
             bool ignoreScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.WaveOffsetType.SegmentIndex: return segmentIndex;
-                case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
+                case ParameterTypes.OffsetType.SegmentIndex: return segmentIndex;
+                case ParameterTypes.OffsetType.Index: return cData.info.index;
 
-                case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
-                case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
-                case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
+                case ParameterTypes.OffsetType.Line: return cData.info.lineNumber;
+                case ParameterTypes.OffsetType.Baseline: return cData.info.baseLine;
+                case ParameterTypes.OffsetType.Word: return cData.info.wordNumber;
 
-                case ParameterTypes.WaveOffsetType.WorldXPos:
+                case ParameterTypes.OffsetType.WorldXPos:
                     return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).x);
-                case ParameterTypes.WaveOffsetType.WorldYPos:
+                case ParameterTypes.OffsetType.WorldYPos:
                     return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).y);
-                case ParameterTypes.WaveOffsetType.WorldZPos:
+                case ParameterTypes.OffsetType.WorldZPos:
                     return ScalePos(context.Animator.transform.TransformPoint(cData.InitialPosition).z);
-                case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
-                case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+                case ParameterTypes.OffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case ParameterTypes.OffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
             throw new System.NotImplementedException(nameof(type));
@@ -1310,31 +1312,31 @@ namespace TMPEffects.TMPAnimations
         /// <param name="context">The context of the animation.</param>
         /// <param name="type">The type of the offset.</param>
         /// <param name="ignoreScaling">Whether to ignore the scaling of the character, if applicable.<br/>
-        /// For example, an <see cref="ParameterTypes.WaveOffsetType.XPos"/> will return a different offset based on the size of the text,
+        /// For example, an <see cref="ParameterTypes.OffsetType.XPos"/> will return a different offset based on the size of the text,
         /// as it directly considers the x position of the character.</param>
         /// <returns>The offset for a wave.</returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static float GetWaveOffset(CharData cData, IAnimationContext context, ParameterTypes.WaveOffsetType type,
+        public static float GetOffset(CharData cData, IAnimationContext context, ParameterTypes.OffsetType type,
             bool ignoreScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.WaveOffsetType.SegmentIndex:
+                case ParameterTypes.OffsetType.SegmentIndex:
                     return context.SegmentData.SegmentIndexOf(cData);
-                case ParameterTypes.WaveOffsetType.Index: return cData.info.index;
+                case ParameterTypes.OffsetType.Index: return cData.info.index;
 
-                case ParameterTypes.WaveOffsetType.Line: return cData.info.lineNumber;
-                case ParameterTypes.WaveOffsetType.Baseline: return cData.info.baseLine;
-                case ParameterTypes.WaveOffsetType.Word: return cData.info.wordNumber;
+                case ParameterTypes.OffsetType.Line: return cData.info.lineNumber;
+                case ParameterTypes.OffsetType.Baseline: return cData.info.baseLine;
+                case ParameterTypes.OffsetType.Word: return cData.info.wordNumber;
 
-                case ParameterTypes.WaveOffsetType.WorldXPos:
+                case ParameterTypes.OffsetType.WorldXPos:
                     return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).x);
-                case ParameterTypes.WaveOffsetType.WorldYPos:
+                case ParameterTypes.OffsetType.WorldYPos:
                     return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).y);
-                case ParameterTypes.WaveOffsetType.WorldZPos:
+                case ParameterTypes.OffsetType.WorldZPos:
                     return ScalePos(context.AnimatorContext.Animator.transform.TransformPoint(cData.InitialPosition).z);
-                case ParameterTypes.WaveOffsetType.XPos: return ScalePos(cData.InitialPosition.x);
-                case ParameterTypes.WaveOffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+                case ParameterTypes.OffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case ParameterTypes.OffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
             throw new System.NotImplementedException(nameof(type));
@@ -1416,6 +1418,25 @@ namespace TMPEffects.TMPAnimations
                 uv1.y);
             Vector2 uv3 = new Vector2(uv2.x, uv0.y);
 
+            // TODO Now i again feel like the modifiers should be accessible
+            // through the chardata directly and not the context
+            context.AnimatorContext.Modifiers.MeshModifiers.BL_Delta = Vector3.zero;
+            context.AnimatorContext.Modifiers.MeshModifiers.TL_Delta = Vector3.zero;
+            context.AnimatorContext.Modifiers.MeshModifiers.TR_Delta = Vector3.zero;
+            context.AnimatorContext.Modifiers.MeshModifiers.BR_Delta = Vector3.zero;
+
+            // TODO
+            // This'll fuck up when you got multiple
+            // <char> chained, or more realistically
+            // <char><+char>Lorem ipsum</></+>
+            // Potential TODO
+            // Add back concept of SetPosition for 
+            // CharData + its indices that override
+            // previous changes to stuff
+            // Or: just dont chain those lol
+            // 
+            // For now: Do the reset on top
+            // Might actually be fine to keep like that.
             SetVertexRaw(0, bl, cData, context);
             SetVertexRaw(1, tl, cData, context);
             SetVertexRaw(2, tr, cData, context);
@@ -1435,11 +1456,11 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <returns>The value of the curve at the given time value.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time) 
+        public static float GetValue(AnimationCurve curve, WrapMode wrapMode, float time)
         {
             return GetValue(curve, wrapMode.ToTMPWrapMode(), time);
         }
-        
+
         public static float GetValue(AnimationCurve curve, TMPWrapMode wrapMode, float time)
         {
             float t;
@@ -1465,7 +1486,9 @@ namespace TMPEffects.TMPAnimations
                 case WrapMode.PingPong: return TMPWrapMode.PingPong;
                 case WrapMode.Clamp: return TMPWrapMode.Clamp;
                 case WrapMode.Loop: return TMPWrapMode.Loop;
-                default: throw new System.NotSupportedException("WrapMode " + wrapMode.ToString() + " can not be converted to TMPWrapMode");
+                default:
+                    throw new System.NotSupportedException("WrapMode " + wrapMode.ToString() +
+                                                           " can not be converted to TMPWrapMode");
             }
         }
 
@@ -1476,7 +1499,9 @@ namespace TMPEffects.TMPAnimations
                 case TMPWrapMode.PingPong: return WrapMode.PingPong;
                 case TMPWrapMode.Clamp: return WrapMode.Clamp;
                 case TMPWrapMode.Loop: return WrapMode.Loop;
-                default: throw new System.NotSupportedException("TMPWrapMode " + wrapMode.ToString() + " can not be converted to WrapMode");
+                default:
+                    throw new System.NotSupportedException("TMPWrapMode " + wrapMode.ToString() +
+                                                           " can not be converted to WrapMode");
             }
         }
 

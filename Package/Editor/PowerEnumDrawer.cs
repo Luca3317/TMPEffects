@@ -9,6 +9,9 @@ public class PowerEnumDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
+        var fieldType = fieldInfo.FieldType;
+        var type = fieldType.BaseType.GetGenericArguments()[1];
+
         EditorGUI.BeginProperty(position, label, property);
 
         var enumProp = property.FindPropertyRelative("enumValue");
@@ -35,8 +38,9 @@ public class PowerEnumDrawer : PropertyDrawer
             ctrlRect.width *= 0.25f;
             var ctrlRect2 = new Rect(ctrlRect.x + ctrlRect.width, ctrlRect.y, width * 0.75f, ctrlRect.height);
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
-            customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue, typeof(ITMPOffsetType), !EditorUtility.IsPersistent(property.serializedObject.targetObject));
-        } 
+            customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue,
+                type, !EditorUtility.IsPersistent(property.serializedObject.targetObject));
+        }
         // Normal
         else
         {

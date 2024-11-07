@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
@@ -8,93 +9,45 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new ContPivotAnimation",
         menuName = "TMPEffects/Animations/Basic Animations/Built-in/ContPivot")]
-    public class ContPivotAnimation : TMPAnimation
+    public partial class ContPivotAnimation : TMPAnimation
     {
-        [Tooltip("The speed of the rotation, in rotations per second.\nAliased: speed, sp, s")] [SerializeField]
+        [SerializeField, AutoParameter("speed", "sp", "s")]
+        [Tooltip("The speed of the rotation, in rotations per second.\nAliased: speed, sp, s")]
         private float speed;
 
-        [Tooltip("The pivot position of the rotation.\nAliases: pivot, pv, p")] [SerializeField]
+        [SerializeField, AutoParameter("pivot", "pv", "p")]
+        [Tooltip("The pivot position of the rotation.\nAliases: pivot, pv, p")] 
         private TypedVector3 pivot = new TypedVector3(VectorType.Anchor, Vector3.zero);
 
-        [Tooltip("The axis to rotate around.\nAliases: rotationaxis, axis, a")] [SerializeField]
+        [SerializeField, AutoParameter("rotationaxis", "axis", "a")]
+        [Tooltip("The axis to rotate around.\nAliases: rotationaxis, axis, a")]
         private Vector3 rotationAxis = Vector3.right;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            ContinuousRotation(cData, context);
-        }
-
-        private void ContinuousRotation(CharData cData, IAnimationContext context)
-        {
-            Data d = context.CustomData as Data;
-
             // Calculate the angle based on the evaluate wave
             float angle = (context.AnimatorContext.PassedTime * d.speed * 360) % 360;
-
-            // TODO This should implement the offset version; update to work for position and anchor
-            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f));
-
-            // // Set the rotation using the rotationaxis and current angle
-            // cData.SetRotation(Quaternion.AngleAxis(angle, d.rotationAxis));
-            //
-            // // Set the pivot depending on its type
-            // switch (d.pivot.type)
-            // {
-            //     case VectorType.Position:
-            //         SetPivotRaw(d.pivot.vector, cData, context);
-            //         break;
-            //     case VectorType.Offset:
-            //         cData.SetPivot(cData.InitialPosition + new Vector3(d.pivot.vector.x, d.pivot.vector.y, 0f));
-            //         break;
-            //     case VectorType.Anchor:
-            //         SetPivotRaw(AnchorToPosition(d.pivot.vector, cData), cData, context);
-            //         break;
-            // }
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetVector3Parameter(out Vector3 v3, parameters, "rotationaxis", rotationAxisAliases))
-                d.rotationAxis = v3;
-            if (TryGetTypedVector3Parameter(out var tv3, parameters, "pivot", pivotAliases)) d.pivot = tv3;
-            if (TryGetFloatParameter(out var speed, parameters, "speed", "sp", "s")) d.speed = speed;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonVector3Parameter(parameters, "rotationaxis", rotationAxisAliases)) return false;
-            if (HasNonTypedVector3Parameter(parameters, "pivot", pivotAliases)) return false;
-            if (HasNonFloatParameter(parameters, "speed", "sp", "s")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data
+            
+            // Set the pivot depending on its type
+            switch (d.pivot.type)
             {
-                speed = this.speed,
-                pivot = this.pivot,
-                rotationAxis = this.rotationAxis,
-            };
-        }
-
-        private readonly string[] pivotAliases = new string[] { "p", "pv" };
-        private readonly string[] rotationAxisAliases = new string[] { "axis", "a" };
-
-        private class Data
-        {
-            public float speed;
-            public TypedVector3 pivot;
-            public Vector3 rotationAxis;
+                case VectorType.Position:
+                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+                        d.pivot.IgnoreScaling(cData, context).ToPosition(cData));
+                    break;
+                case VectorType.Offset:
+                    Debug.LogWarning("Delta is " + d.pivot.ToDelta(cData) + " ( / " + d.pivot.vector+ ")");
+                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+                        cData.InitialPosition + d.pivot.ToDelta(cData));
+                    break;
+                case VectorType.Anchor:
+                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+                        d.pivot.ToPosition(cData));
+                    break;
+            }
         }
     }
 }

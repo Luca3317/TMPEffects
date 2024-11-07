@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
@@ -8,25 +9,33 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new FadeHideAnimation", menuName = "TMPEffects/Animations/Hide Animations/Built-in/Fade")]
-    public class FadeHideAnimation : TMPHideAnimation
+    public partial class FadeHideAnimation : TMPHideAnimation
     {
+        [SerializeField, AutoParameter("duration", "dur", "d")] 
         [Tooltip("How long the animation will take to fully hide the character.\nAliases: duration, dur, d")]
-        [SerializeField] float duration = 1;
+        float duration = 1;
+        
+        [SerializeField, AutoParameter("curve", "crv", "c")] 
         [Tooltip("The curve used for fading out.\nAliases: curve, crv, c")]
-        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseOutSine();
+        AnimationCurve curve = AnimationCurveUtility.EaseOutSine();
 
+        [SerializeField, AutoParameter("targetopacity", "targetop", "target")] 
         [Tooltip("The opacity that is faded out to.\nAliases: targetopacity, targetop, target")]
-        [SerializeField] float targetOpacity = 0;
+        float targetOpacity = 0;
+        
+        [SerializeField, AutoParameter("anchor", "anc", "a")] 
         [Tooltip("The anchor that is faded out from.\nAliases: anchor, anc, a")]
-        [SerializeField] Vector3 anchor = Vector3.zero;
+        Vector3 anchor = Vector3.zero;
+        
+        [SerializeField, AutoParameter("direction", "dir")]
         [Tooltip("The direction used for fading out.\nAliases: direction, dir")]
-        [SerializeField] Vector3 direction = Vector3.up;
+        Vector3 direction = Vector3.up;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
             IAnimatorContext ac = context.AnimatorContext;
-            Data d = context.CustomData as Data;
 
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
             float t2 = d.curve.Evaluate(t);
@@ -36,7 +45,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             FadeOut(cData, context, d, t2);
         }
 
-        private void FadeOut(CharData cData, IAnimationContext context, Data d, float t)
+        private void FadeOut(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             Vector2 anchor = d.anchor;
             FixAnchor(ref anchor);
@@ -93,71 +102,6 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                 if (v.y > 0) v.y = 1;
                 else v.y = -1;
             }
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = (Data)customData;
-            if (TryGetAnimCurveParameter(out var c, parameters, "curve", curveAliases)) d.curve = c;
-            if (TryGetFloatParameter(out float f, parameters, "duration", durationAliases)) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "targetopacity", targetOpacityAliases)) d.targetOpacity = f;
-            if (TryGetTypedVector2Parameter(out var tv3, parameters, "anchor", anchorAliases)) d.anchor = tv3.vector;
-            if (TryGetVector2Parameter(out var v3, parameters, "direction", "dir")) d.direction = v3;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "targetopacity", targetOpacityAliases)) return false;
-            if (HasNonFloatParameter(parameters, "duration", durationAliases)) return false;
-            if (HasNonAnimCurveParameter(parameters, "curve", curveAliases)) return false;
-            if (HasNonTypedVector2Parameter(parameters, "anchor", anchorAliases) || HasVector2OffsetParameter(parameters, "anchor", anchorAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "direction", "dir")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                targetOpacity = this.targetOpacity,
-                curve = this.curve,
-                anchor = anchor,
-                duration = this.duration,
-                direction = this.direction,
-
-                waitingSince = -1,
-                cycleTime = -1,
-                lastT = 0
-            };
-        }
-
-        private readonly string[] targetOpacityAliases = new string[] { "target", "targetop" };
-        private readonly string[] anchorAliases = new string[] { "anc", "a" };
-        private readonly string[] durationAliases = new string[] { "dur", "d" };
-        private readonly string[] curveAliases = new string[] { "crv", "c" };
-
-        private class Data
-        {
-            public float targetOpacity;
-            public AnimationCurve curve;
-            public float duration;
-            public Vector2 anchor;
-            public Vector2 direction;
-            public float afterFadeInWaitDuration;
-
-            public int lastT;
-            public float waitingSince;
-            public bool fadeIn;
-
-            public float cycleTime;
-
-            public readonly float sqrt2 = Mathf.Sqrt(8);
-            public readonly float[] dists = new float[4];
         }
     }
 }

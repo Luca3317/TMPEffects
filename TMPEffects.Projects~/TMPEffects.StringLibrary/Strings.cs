@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.CodeAnalysis;
 
 namespace TMPEffects.StringLibrary
 {
@@ -8,6 +9,16 @@ namespace TMPEffects.StringLibrary
     {
         public const string DefaultStorageName = "AutoParametersData";
 
+        public const string IAnimatorContextKeywordDatabasePath = ".KeywordDatabase";
+        public const string IAnimationContextKeywordDatabasePath = ".AnimatorContext.KeywordDatabase";
+        
+        public const string IWriterContexKeywordDatabasePath = ".KeywordDatabase";
+        public const string ICommandContexKeywordDatabasePath = ".WriterContext.KeywordDatabase";
+        
+        public const string ITMPAnimationName = "TMPEffects.TMPAnimations.ITMPAnimation";
+        public const string ITMPCommandName = "TMPEffects.TMPCommands.ITMPCommand";
+
+        public const string IDictionaryName = "System.Collections.Generic.IDictionary<string, string>";
 
         #region AutoParametersAttribute
 
@@ -36,6 +47,9 @@ namespace TMPEffects.StringLibrary
         public const string CharDataName = "TMPEffects.CharacterData.CharData";
         public const string IAnimationContextName = "TMPEffects.TMPAnimations.IAnimationContext";
         public const string IAnimatorContextName = "TMPEffects.Components.Animator.IAnimatorContext";
+        
+        public const string ICommandContextName = "TMPEffects.TMPCommands.ICommandContext";
+        public const string IWriterContextName = "TMPEffects.Components.Writer.IWriterContext";
         #endregion
 
         #region Supported Types
@@ -48,11 +62,14 @@ namespace TMPEffects.StringLibrary
         public const string Vector2Name = "UnityEngine.Vector2";
         public const string AnimationCurveName = "UnityEngine.AnimationCurve";
         public const string ColorName = "UnityEngine.Color";
+        public const string UnityObjectName = "UnityEngine.Object";
 
         #endregion
 
         #region Custom
 
+        public const string ITMPOffsetProviderName = ParameterTypesPath + ".ITMPOffsetProvider";
+        
         public const string WaveOffsetTypeName = ParameterTypesPath + ".WaveOffsetType";
         public const string WaveName = AnimationUtilityPath + ".Wave";
         public const string TypedVector3Name = ParameterTypesPath + ".TypedVector3";
@@ -77,18 +94,119 @@ namespace TMPEffects.StringLibrary
 
         public const string GenerateParametersAttributeName = "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";
         
-        public static Dictionary<string, string> TypeToDisplayString =>
+        private static Dictionary<string, string> TypeToDisplayString =>
             SupportedTypesList.GroupBy(t => t.Item1)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item1, t => t.Item2);
 
+        public static bool TypeToStringForStorage(ITypeSymbol type, out string displayString)
+        {
+            if (type.SpecialType == SpecialType.System_String)
+            {
+                displayString = "string";
+                return true;
+            }
+
+            if (type.SpecialType == SpecialType.System_Array)
+            {
+                displayString = type.ToDisplayString();
+                return true;
+            }
+            
+            var dict = TypeToDisplayString;
+            if (dict.TryGetValue(type.ToDisplayString(), out displayString))
+            {
+                displayString = type.ToDisplayString();
+                return true;
+            }
+            
+            if (ValidAutoParameterBundleTypes.Contains(type.ToDisplayString()))
+            {
+                displayString = type.ToDisplayString();
+                return true;
+            }
+
+            foreach (var interf in type.AllInterfaces)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
+                {
+                    displayString = interf.ToDisplayString();
+                    return true;
+                }
+            }
+            
+            var curr = type.BaseType;
+            while (curr != null)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
+                {
+                    displayString = curr.ToDisplayString();
+                    return true;
+                }
+                curr = curr.BaseType;
+            }
+
+            return false;
+        }
+        
+        public static bool TypeStringToDisplayString(ITypeSymbol type, out string displayString)
+        {
+            var dict = TypeToDisplayString;
+            if (dict.TryGetValue(type.ToDisplayString(), out displayString))
+                return true;
+
+            foreach (var interf in type.AllInterfaces)
+            {
+                if (dict.TryGetValue(interf.ToDisplayString(), out displayString))
+                    return true;
+            }
+
+            var curr = type.BaseType;
+            while (curr != null)
+            {
+                if (dict.TryGetValue(curr.ToDisplayString(), out displayString))
+                    return true;
+                curr = curr.BaseType;
+            }
+
+            return false;
+        }
+        
+        
         public static Dictionary<string, string> DisplayStringToType =>
             SupportedTypesList.GroupBy(t => t.Item2)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item2, t => t.Item1);
 
 
-        
+        public static bool IsValidAutoParameterType(ITypeSymbol type)
+        {
+            if (ValidAutoParameterTypes.Contains(type.ToDisplayString()))
+                return true;
+
+            foreach (var interf in type.AllInterfaces)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
+                    return true;
+            }
+            
+            var curr = type.BaseType;
+            while (curr != null)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
+                    return true;
+                curr = curr.BaseType;
+            }
+
+            return false;
+        }
+
+        public static bool IsValidAutoParameterBundleType(ITypeSymbol type)
+        {
+            return ValidAutoParameterBundleTypes.Contains(type.ToDisplayString());
+        }
+
+
         // TypedVector3/2 should use Vector3/2 keywords, this is a quick workaround for
         // how ParameterUtilityGenerator decided keywordtype
         // Changed tvectors to be handled in special case now; still keeping this for vec2
@@ -100,13 +218,16 @@ namespace TMPEffects.StringLibrary
             return DisplayStringToType[type];
         }
         
+        // Used to create the parameter utility methods (and nothing more)
         public static readonly List<(string, string)> SupportedTypesList = new List<(string, string)>()
         {
             ("float", "Float"),
             ("int", "Int"),
             ("bool", "Bool"),
 
-            (WaveOffsetTypeName, "WaveOffset"),
+            (ITMPOffsetProviderName, "OffsetProvider"),
+            (UnityObjectName, "UnityObject"),
+            
             (TypedVector3Name, "TypedVector3"),
             (TypedVector2Name, "TypedVector2"),
             (Vector2Name, "Vector2"),
@@ -118,13 +239,13 @@ namespace TMPEffects.StringLibrary
             (AnimationCurveName, "AnimCurve"),
         };
         
-        public static readonly List<string> ValidAutoParameterTypes = new List<string>()
+        // Used to check whether a field is a valid auto parameter (and nothing more)
+        private static readonly List<string> ValidAutoParameterTypes = new List<string>()
         {
             "float",
             "int",
             "bool",
             "string",
-            WaveOffsetTypeName,
             TypedVector3Name,
             TypedVector2Name,
             Vector3Name,
@@ -132,8 +253,14 @@ namespace TMPEffects.StringLibrary
             ColorName,
             AnimationCurveName,
         };
+        
+        private static readonly List<string> ValidAutoParameterBaseTypes = new List<string>()
+        {
+            ITMPOffsetProviderName,
+            UnityObjectName
+        };
 
-        public static readonly List<string> ValidAutoParameterBundleTypes = new List<string>()
+        private static readonly List<string> ValidAutoParameterBundleTypes = new List<string>()
         {
             WaveName
         };

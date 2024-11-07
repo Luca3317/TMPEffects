@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPEffects.Components.Writer;
 using TMPEffects.ObjectChanged;
 using UnityEngine;
 
@@ -27,10 +28,10 @@ namespace TMPEffects.TMPCommands
 #endif
 
         ///<inheritdoc/>
-        public abstract void ExecuteCommand(TMPCommandArgs args);
+        public abstract void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
         
         ///<inheritdoc/>
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters);
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context);
 
         public event ObjectChangedEventHandler ObjectChanged;
 
