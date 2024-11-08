@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TMPEffects.Databases
 {
     // TODO Potentially auto-generate this (+ implementations)
-    public interface ITMPKeywordDatabase
+    public partial interface ITMPKeywordDatabase
     {
         // public ReadOnlyDictionary<string, float> FloatKeywords { get; }
         // public ReadOnlyDictionary<string, int> IntKeywords { get; }
