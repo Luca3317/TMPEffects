@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 namespace TMPEffects.Databases
 {
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
-    public class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
+    public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
     {
         public event ObjectChangedEventHandler ObjectChanged;
         
