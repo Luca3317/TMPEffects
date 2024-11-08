@@ -69,7 +69,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
                 modifiersStorage, modifiersStorage2, current);
 
             // var result = Calc(animator, behaviour.Step, cdata, weight, time);
-            cdata.CharacterModifierss.Combine(current.CharacterModifiers);
+            cdata.CharacterModifiers.Combine(current.CharacterModifiers);
             cdata.MeshModifiers.Combine(current.MeshModifiers);
         }
     }

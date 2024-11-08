@@ -33,7 +33,7 @@ public class AnimationStep
     public uint repetitions;
 
     public bool useWave;
-    public ParameterTypes.OffsetType offsetType;
+    public OffsetTypePowerEnum offsetType;
     public AnimationUtility.Wave wave;
 
     public float startTime;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,7 @@ using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
+using TMPEffects.ObjectChanged;
 using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components
@@ -132,6 +134,33 @@ namespace TMPEffects.Components
         private TMPAnimationDatabase database = null;
 
         [SerializeField] private AnimatorContext context = new AnimatorContext();
+        private KeywordDatabaseListener keywordDatabaseListener;
+
+        private class KeywordDatabaseListener : INotifyObjectChanged
+        {
+            public INotifyObjectChanged db = null;
+            public event ObjectChangedEventHandler ObjectChanged;
+
+            public void Reset(INotifyObjectChanged db = null)
+            {
+                ObjectChanged = null;
+                if (this.db != null)
+                {
+                    this.db.ObjectChanged -= RaiseObjectChanged;
+                }
+                
+                this.db = db;
+                if (this.db != null)
+                {
+                    this.db.ObjectChanged += RaiseObjectChanged;
+                }
+            }
+
+            private void RaiseObjectChanged(object sender)
+            {
+                ObjectChanged?.Invoke(this); 
+            }
+        }
 
         [Tooltip(
             "Where to update the animations from. If set to Script, you will have to manually update animations from your own script")]
@@ -358,7 +387,7 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
-        public void SetKeywordDatabase(ITMPKeywordDatabase database)
+        public void SetKeywordDatabase(TMPSceneKeywordDatabase database)
         {
             context.KeywordDatabase = database;
             OnDatabaseChanged();
@@ -637,12 +666,13 @@ namespace TMPEffects.Components
 
         private void PrepareForProcessing()
         {
-            // Reset database wrappers
+            // Dispose database wrappers, if needed
             basicDatabase?.Dispose();
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
 
+            // Create new database wrappers
             basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(
                 database == null ? null :
                 database.BasicAnimationDatabase == null ? null : database.BasicAnimationDatabase, sceneAnimations);
@@ -656,18 +686,18 @@ namespace TMPEffects.Components
                 new AnimationDatabase<TMPAnimationDatabase, TMPSceneAnimation>(database == null ? null : database,
                     null);
 
+            keywordDatabaseListener ??= new KeywordDatabaseListener();
+            keywordDatabaseListener.Reset(context.KeywordDatabase);
+
+            // Add sprite animation
             basicDatabase.AddAnimation("sprite", new SpriteAnimation());
 
+            // Subscribe to objectChanged event
             basicDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             mainDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
-
-            if (context.KeyWordDatabaseCallbacK != null)
-            {
-                context.KeyWordDatabaseCallbacK.ObjectChanged -= ReprocessOnDatabaseChange;            
-                context.KeyWordDatabaseCallbacK.ObjectChanged += ReprocessOnDatabaseChange;            
-            }
+            keywordDatabaseListener.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
             basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase, context);
@@ -917,9 +947,9 @@ namespace TMPEffects.Components
                 context.Modifiers = state;
                 state.Reset();
                 UpdateCharacterAnimation_Impl(index);
-                
+
                 if (Mediator.VisibilityStates[index] != VisibilityState.Hidden && OnCharacterAnimated != null)
-                { 
+                {
                     // TODO Issue; this needs to be called before every invoked method
                     // maybe make list of actions instead
                     // Actually; not necessarily. Just the cdata modifiers will already be dirty
@@ -929,11 +959,11 @@ namespace TMPEffects.Components
                     cData.Reset();
                     OnCharacterAnimated.Invoke(cData);
                     state.MeshModifiers.Combine(cData.MeshModifiers);
-                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                    state.CharacterModifiers.Combine(cData._CharacterModifiers);
                 }
             }
             else
-            {           
+            {
                 context.deltaTime = deltaTime;
                 context.Modifiers = state;
                 if (OnCharacterAnimated != null)
@@ -948,7 +978,7 @@ namespace TMPEffects.Components
                     cData.Reset();
                     OnCharacterAnimated.Invoke(cData);
                     state.MeshModifiers.Combine(cData.MeshModifiers);
-                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                    state.CharacterModifiers.Combine(cData._CharacterModifiers);
                 }
                 else return;
             }
@@ -1047,12 +1077,11 @@ namespace TMPEffects.Components
                     Mediator.SetVisibilityState(cData, VisibilityState.Shown);
                 }
 
-                ApplyVertices();
                 ignoreVisibilityChanges = prev;
                 return;
             }
 
-            else if (vState == VisibilityState.Hiding)
+            if (vState == VisibilityState.Hiding)
             {
                 bool prev = ignoreVisibilityChanges;
                 ignoreVisibilityChanges = true;
@@ -1072,21 +1101,28 @@ namespace TMPEffects.Components
                 else
                 {
                     done = AnimateHideList(false);
-                    if (!isExcludedBasic) AnimateBasic(false);
-                    if (!done) done = AnimateHideList(true);
-                    if (!isExcludedBasic) AnimateBasic(true);
+                    if (!done)
+                    {
+                        if (!isExcludedBasic) AnimateBasic(false);
+                        done = AnimateHideList(true);
+                        if (!done && !isExcludedBasic) AnimateBasic(true);
+                    }
                 }
 
+                // If the hiding animations are done, the character is now hidden
                 if (done)
                 {
+                    // Undo all changes made to this character
+                    // Required because afterward "state" is checked for changes
+                    // If any present they will be applied, making the character
+                    // visible again.
+                    // TODO I dont necessarily like this being here. Maybe move.
+                    state.Reset();
+                    
                     ignoreVisibilityChanges = false;
                     Mediator.SetVisibilityState(cData, VisibilityState.Hidden);
                     ignoreVisibilityChanges = prev;
                     return;
-                }
-                else
-                {
-                    ApplyVertices();
                 }
 
                 ignoreVisibilityChanges = prev;
@@ -1105,7 +1141,6 @@ namespace TMPEffects.Components
 
             AnimateBasic(false);
             AnimateBasic(true);
-            ApplyVertices();
             return;
 
             void Animate(CachedAnimation ca, bool late)
@@ -1118,7 +1153,7 @@ namespace TMPEffects.Components
                 ca.animation.Animate(cData, ca.roContext);
 
                 state.MeshModifiers.Combine(cData.mesh.modifiers);
-                state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                state.CharacterModifiers.Combine(cData._CharacterModifiers);
                 // stateNew.UpdateFromCharDataState();
             }
 
@@ -1355,41 +1390,6 @@ namespace TMPEffects.Components
 
                 return done;
             }
-
-            void ApplyVertices()
-            {
-                return;
-                if (state.CharacterModifiers.Modifier != 0 ||
-                    state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
-                {
-                    state.CalculateVertexPositions(cData, context);
-                    cData.mesh.SetPosition(0, state.BL_Result);
-                    cData.mesh.SetPosition(1, state.TL_Result);
-                    cData.mesh.SetPosition(2, state.TR_Result);
-                    cData.mesh.SetPosition(3, state.BR_Result);
-                }
-
-                if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
-                {
-                    cData.mesh.SetColor(0, state.MeshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0)));
-                    cData.mesh.SetColor(1, state.MeshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1)));
-                    cData.mesh.SetColor(2, state.MeshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2)));
-                    cData.mesh.SetColor(3, state.MeshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3)));
-                }
-
-                if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.UVs))
-                {
-                    cData.mesh.SetUV0(0, state.MeshModifiers.BL_UV0.GetValue(cData.InitialMesh.GetUV0(0)));
-                    cData.mesh.SetUV0(1, state.MeshModifiers.TL_UV0.GetValue(cData.InitialMesh.GetUV0(1)));
-                    cData.mesh.SetUV0(2, state.MeshModifiers.TR_UV0.GetValue(cData.InitialMesh.GetUV0(2)));
-                    cData.mesh.SetUV0(3, state.MeshModifiers.BR_UV0.GetValue(cData.InitialMesh.GetUV0(3)));
-
-                    cData.mesh.SetUV2(0, state.MeshModifiers.BL_UV2.GetValue(cData.InitialMesh.GetUV2(0)));
-                    cData.mesh.SetUV2(1, state.MeshModifiers.TL_UV2.GetValue(cData.InitialMesh.GetUV2(1)));
-                    cData.mesh.SetUV2(2, state.MeshModifiers.TR_UV2.GetValue(cData.InitialMesh.GetUV2(2)));
-                    cData.mesh.SetUV2(3, state.MeshModifiers.BR_UV2.GetValue(cData.InitialMesh.GetUV2(3)));
-                }
-            }
         }
 
         #endregion
@@ -1459,6 +1459,8 @@ namespace TMPEffects.Components
                     Mediator.SetVisibilityState(index, VisibilityState.Hidden);
                     return;
                 }
+                
+                Debug.LogWarning("Aint animating!!?!?");
             }
 
             if (prev == state)
@@ -1470,16 +1472,6 @@ namespace TMPEffects.Components
             // Update timings of the character
             stateTimes[index] = context.passed;
             if (state == VisibilityState.Hidden || prev == VisibilityState.Hidden) visibleTimes[index] = context.passed;
-
-            //if (state == VisibilityState.Shown)
-            //{
-            //    cData.Reset();
-            //    UpdateVisibility(true);
-            //}
-            //else if (state == VisibilityState.Hidden)
-            //{
-            //    UpdateVisibility(false);
-            //}
 
             if (state == VisibilityState.Hidden)
             {

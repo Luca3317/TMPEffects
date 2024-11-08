@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TMPEffects.Databases;
+using TMPEffects.ObjectChanged;
 using TMPEffects.Parameters;
 using TMPEffects.SerializedCollections;
+using TMPEffects.TMPAnimations;
 using UnityEngine;
 
-public class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase
+public class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase, INotifyObjectChanged
 {
+    public event ObjectChangedEventHandler ObjectChanged;
+    
     [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
     SerializedDictionary<string, float> floatKeywords;
 
@@ -81,5 +85,20 @@ public class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase
     public bool TryGetUnityObject(string str, out UnityEngine.Object result)
     {
         return unityObjectKeywords.TryGetValue(str, out result);
+    }
+    
+    protected virtual void OnValidate()
+    {
+        RaiseDatabaseChanged();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        RaiseDatabaseChanged();
+    }
+
+    protected void RaiseDatabaseChanged()
+    {
+        ObjectChanged?.Invoke(this);
     }
 }

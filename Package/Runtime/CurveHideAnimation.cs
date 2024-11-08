@@ -27,8 +27,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             }
 
             animation.Animate(cData, context);
-            CharDataModifiers.LerpCharacterModifiersUnclamped(cData, cData.CharacterModifiers, t,
-                cData.CharacterModifiers);
+            CharDataModifiers.LerpCharacterModifiersUnclamped(cData, cData._CharacterModifiers, t,
+                cData._CharacterModifiers);
             CharDataModifiers.LerpMeshModifiersUnclamped(cData, cData.MeshModifiers, t, cData.MeshModifiers);
         }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   floatKeywords:
     _serializedList:
     - Key: e
-      Value: 2.7182817
+      Value: 2.718282
     - Key: pi
       Value: 3.1415927
     - Key: epsilon

@@ -36,12 +36,19 @@ internal static class TypedVectorDrawerUtility
     public static void Draw(Rect position, SerializedProperty property, GUIContent label, float toggleWidth)
     {
         position = EditorGUI.PrefixLabel(position, label);
+
+        int indent = EditorGUI.indentLevel;
+        for (int i = 0; i < indent; i++) EditorGUI.indentLevel--;
+
         EditorGUI.PropertyField(position, property.FindPropertyRelative("vector"), GUIContent.none);
-        
-        position.x -= toggleWidth;
+
+        position.x -= toggleWidth + 5;
         position.width = toggleWidth;
-        
+
+        for (int i = 0; i < indent; i++) EditorGUI.indentLevel++;
+
         property.FindPropertyRelative("type").enumValueIndex = (int)(ParameterTypes.VectorType)
-            EditorGUI.EnumPopup(position, GUIContent.none,(ParameterTypes.VectorType)property.FindPropertyRelative("type").enumValueIndex);
+            EditorGUI.EnumPopup(position, GUIContent.none,
+                (ParameterTypes.VectorType)property.FindPropertyRelative("type").enumValueIndex);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.Parameters;
@@ -8,26 +9,43 @@ using static TMPEffects.TMPAnimations.AnimationUtility;
 using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
 using TMPEffects.TextProcessing;
+using TMPro;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new PaletteAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
-    public class PaletteAnimation : TMPAnimation
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new PaletteAnimation",
+        menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
+    public partial class PaletteAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave;
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] OffsetTypePowerEnum waveOffset;
+        [SerializeField, AutoParameterBundle("")] 
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        Wave wave;
 
-        [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
-        [SerializeField] Color[] colors;
+        [SerializeField, AutoParameter("waveoffset", "woff", "woffset", "waveoff")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetTypePowerEnum waveOffset;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        Color[] colors;
+
+        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        int[] colors1;
+
+        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        float[] colors2;
+
+        // [SerializeField, AutoParameter("colors, clrs")] 
+        // [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        // string[] colors3;
+
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
             // Evaluate the wave based on time and offset
-            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, d.waveOffset.GetOffset(cData, context));
+            (float, int) result =
+                d.wave.Evaluate(context.AnimatorContext.PassedTime, d.waveOffset.GetOffset(cData, context));
 
             // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
@@ -108,59 +126,5 @@ namespace TMPEffects.TMPAnimations.Animations
                 cData.mesh.SetColor(i, color, true);
             }
         }
-
-        public override object GetNewCustomData(IAnimationContext context)
-        {
-            return new Data()
-            {
-                colors = this.colors,
-                wave = this.wave,
-                waveOffset = this.waveOffset,
-            };
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
-        {
-            if (parameters == null) return;
-
-            Data d = (Data)customData;
-            
-            if (TryGetArrayParameter(out Color[] array, parameters, ParameterParsing.StringToColor, context.AnimatorContext.KeywordDatabase, "colors", "clrs")) d.colors = array;
-            if (TryGetOffsetProviderParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-
-            // TODO Should have some quick and easy way to do this in ParameterUtility/parsing
-            // if (TryGetArrayParameter<TypedVector2>(out TypedVector2[] l, parameters,
-            //         (string a, out TypedVector2 b, IDictionary<string, TypedVector2> c) =>
-            //             ParameterParsing.StringToTypedVector2(a, out b, context.AnimatorContext.KeywordDatabase.Vector3Keywords, context.AnimatorContext.KeywordDatabase.AnchorKeywords),
-            //         ""))
-            // {
-            // }
-            
-            if (d.colors == null || d.colors.Length == 0)
-            {
-                d.colors = new Color[1] { Color.black };
-            }
-
-            d.wave = CreateWave(wave, GetWaveParameters(parameters));
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonOffsetProviderParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, context.KeywordDatabase,  "colors", "clrs")) return false;
-
-            return ValidateWaveParameters(parameters);
-        }
-
-        private class Data
-        {
-            public Wave wave;
-            public ITMPOffsetProvider waveOffset;
-            public Color[] colors;
-        }
     }
 }
-

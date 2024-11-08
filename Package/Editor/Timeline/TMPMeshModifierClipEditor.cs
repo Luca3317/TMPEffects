@@ -20,7 +20,7 @@ public class TMPMeshModifierClipEditor : ClipEditor
         var mClip = clip.asset as TMPMeshModifierClip;
         mClip.Step.Step.duration = (float)clip.duration;
         mClip.name = clip.displayName;
-
+        
         if (mClip.Step.lastMovedEntry == 0)
         {
             mClip.Step.Step.entryDuration = Mathf.Clamp(mClip.Step.Step.entryDuration, 0f, (float)clip.duration);

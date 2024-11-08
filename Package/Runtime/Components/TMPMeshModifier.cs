@@ -31,7 +31,7 @@ public class TMPMeshModifier : MonoBehaviour
     {
         // Debug.Log("before " + cdata.CharacterModifiers.PositionDelta + " w/ " + _modifiers.CharacterModifiers.PositionDelta);
         cdata.MeshModifiers.Combine(_modifiers.MeshModifiers);
-        cdata.CharacterModifiers.Combine(_modifiers.CharacterModifiers);
+        cdata._CharacterModifiers.Combine(_modifiers.CharacterModifiers);
         // Debug.Log("after " + cdata.CharacterModifiers.PositionDelta);
     }
 

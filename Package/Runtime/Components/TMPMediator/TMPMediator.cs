@@ -175,7 +175,7 @@ namespace TMPEffects.Components.Mediator
                 if (state == VisibilityState.Showing) newState = VisibilityState.Shown;
                 if (state == VisibilityState.Hiding) newState = VisibilityState.Hidden;
             }
-
+            
             for (int i = startIndex; i < startIndex + length; i++)
             {
                 VisibilityState previous = visibilityStates[i];

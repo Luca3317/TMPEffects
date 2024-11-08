@@ -340,7 +340,7 @@ namespace TMPEffects.TMPAnimations
                 set => uniformity = value;
             }
 
-            public ParameterTypes.OffsetType OffsetType
+            public OffsetTypePowerEnum OffsetType
             {
                 get => offsetType;
                 set => offsetType = value;
@@ -354,7 +354,7 @@ namespace TMPEffects.TMPAnimations
 
             [SerializeField] private AnimationCurve curve;
             [SerializeField] private float uniformity;
-            [SerializeField] private ParameterTypes.OffsetType offsetType;
+            [SerializeField] private OffsetTypePowerEnum offsetType;
             [SerializeField] private TMPWrapMode wrapMode;
 
             public FancyAnimationCurve()
@@ -373,15 +373,15 @@ namespace TMPEffects.TMPAnimations
             // TODO If i do split interfaces up further wont be necessary anymore i think
             public float Evaluate(CharData cData, IAnimatorContext ctx, float time)
             {
-                float offset = GetOffset(cData, ctx, offsetType);
-                float t = time - offset * uniformity;
+                float offset = offsetType.GetOffset(cData, ctx);
+                float t = time - offset;
                 return GetValue(curve, wrapMode, t);
             }
 
             public float Evaluate(CharData cData, IAnimationContext ctx, float time)
             {
-                float offset = GetOffset(cData, ctx, offsetType);
-                float t = time - offset * uniformity;
+                float offset = offsetType.GetOffset(cData, ctx);
+                float t = time - offset;
                 // t = Mathf.Abs(t); // TODO ?
                 return GetValue(curve, wrapMode, t);
             }
@@ -1067,15 +1067,22 @@ namespace TMPEffects.TMPAnimations
                 if (interval > 0)
                     t %= interval;
 
+                // If 0, we are at start of up curve.
                 if (t <= 0) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+
+                // If smaller than effective up period, we are travelling up the curve
                 if (t <= EffectiveUpPeriod)
                     return (
                         Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
                         1);
+
+                // There is no crest wait, so if we are smaller than the effective period, we are travelling down the curve
                 if (t <= (EffectivePeriod))
                     return (
                         Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
                             Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
+
+                // If larger than effective period, is trough waiting
                 return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
             }
 
@@ -1089,22 +1096,29 @@ namespace TMPEffects.TMPAnimations
             /// <exception cref="System.Exception"></exception>
             public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)
             {
-                float interval = (CrestWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
+                float wait = CrestWait * (realTimeWait ? Velocity : 1f);
+                float interval = wait + EffectivePeriod;
                 float t = CalculatePulseT(time, offset, interval, -1);
 
                 if (interval > 0)
                     t %= interval;
 
-                if (t <= 0) return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, 1f), -1);
-                if (t <= EffectiveDownPeriod)
+                // If 0, we are at start of up curve.
+                if (t <= 0) return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+
+                // If smaller than effective up period, we are travelling up the curve
+                if (t <= EffectiveUpPeriod)
                     return (
-                        Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
-                            Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
-                if (t <= EffectivePeriod)
+                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
+                        1);
+
+                // If smaller than effective up period + wait, we are waiting
+                if (t <= EffectiveUpPeriod + wait)
                     return (
-                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong,
-                            Mathf.Lerp(0f, 1f, (t - EffectiveDownPeriod) / EffectiveUpPeriod)), 1);
-                return (Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                        Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1), 1);
+
+                // Otherwise we are travelling down the curve
+                return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod - wait) / EffectiveDownPeriod)), -1);
             }
 
             /// <summary>

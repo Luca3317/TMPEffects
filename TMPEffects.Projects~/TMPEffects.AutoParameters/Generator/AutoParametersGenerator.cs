@@ -63,19 +63,21 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 if (!isDecorated) continue;
 
                 INamedTypeSymbol typeSymbol = symbol as INamedTypeSymbol;
-                
+
                 try
                 {
                     CreateAutoParameters(context, model, typeDecl, symbol);
                 }
                 catch (System.Exception ex)
                 {
+#if myflag
                     Diagnostic d = Diagnostic.Create(Rule___, typeDecl.GetLocation(),
                         "Failed to create AutoParameters on " +
                         typeDecl.Identifier.Text + ". " +
                         "This is most likely a bug -- feel free to open an issue or a pull request with your fix on " +
-                        "https://github.com/Luca3317/TMPEffects\n" + ex.Message);
+                        "https://github.com/Luca3317/TMPEffects");
                     context.ReportDiagnostic(d);
+#endif
                 }
             }
         }

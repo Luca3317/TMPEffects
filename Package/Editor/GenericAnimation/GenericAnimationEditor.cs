@@ -54,62 +54,6 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         }
     }
 
-    // Alternatively:
-    // Clamp value to not interfere with any other values
-    // TODO Didnt work at all; might still want that
-    private void OnChangedStartOrDurationAlt(int listIndex, int changedIndex, params int[] ignoreIndex)
-    {
-        var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
-            .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
-        var changedProp = clips.GetArrayElementAtIndex(changedIndex);
-
-        float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
-        float changedDuration = changedProp.FindPropertyRelative("duration").floatValue;
-        float changedEndTime = changedStartTime + changedDuration;
-
-        // Update all start times and durations to accomodate for changed time
-        for (int i = 0; i < clips.arraySize; i++)
-        {
-            if (i == changedIndex || ignoreIndex.Contains(i)) continue;
-
-            var step = clips.GetArrayElementAtIndex(i);
-            
-            // Cases
-            
-            float startTime = step.FindPropertyRelative("startTime").floatValue;
-            float duration = step.FindPropertyRelative("duration").floatValue;
-            float endTime = startTime + duration;
-            
-            // if changed starts after clip
-            if (changedStartTime > startTime)
-            {
-                // if changed start contained in clip
-                if (changedStartTime < endTime)
-                {
-                    float prev = changedStartTime;
-                    changedStartTime = endTime;
-                    changedDuration = Mathf.Max(0f, duration - (changedStartTime - prev));
-                    changedEndTime = changedStartTime + changedDuration;
-                }
-                
-                continue;
-            }
-
-            // if changed ends in clip
-            if (changedEndTime > startTime)
-            {
-                if (changedEndTime < endTime)
-                {
-                    changedDuration = changedStartTime + (endTime - changedEndTime);
-                    changedEndTime = changedStartTime + changedDuration;
-                }
-            }
-        }
-
-        changedProp.FindPropertyRelative("startTime").floatValue = changedStartTime;
-        changedProp.FindPropertyRelative("duration").floatValue = changedDuration;
-    }
-
     // Update all other durations when one was changed in the inspector
     // ChangedIndex: the index that was changed, 
     // ignoreIndex: further indices that should remain unchanged
@@ -118,6 +62,17 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
             .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
         var changedProp = clips.GetArrayElementAtIndex(changedIndex);
+
+        // TODO This clamps the entry and exit to not be longer than the duration
+        // In AnimationStepDrawer there is a method that clamps entry and exit when changed
+        // Might be a little too spaghetti to have both of those
+        changedProp.FindPropertyRelative("entryDuration").floatValue = Mathf.Min(
+            changedProp.FindPropertyRelative("entryDuration").floatValue,
+            changedProp.FindPropertyRelative("duration").floatValue);
+        changedProp.FindPropertyRelative("exitDuration").floatValue = Mathf.Min(
+            changedProp.FindPropertyRelative("exitDuration").floatValue,
+            changedProp.FindPropertyRelative("duration").floatValue -
+            changedProp.FindPropertyRelative("entryDuration").floatValue);
 
         float changedStartTime = changedProp.FindPropertyRelative("startTime").floatValue;
         float changedDuration = changedProp.FindPropertyRelative("duration").floatValue;
@@ -212,20 +167,20 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         EditorGUIUtility.labelWidth = 0;
         EditorGUI.PropertyField(rect, itemProp, GUIContent.none);
     }
-    
+
     private float MainElementHeightCallback(int index)
     {
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         return EditorGUI.GetPropertyHeight(clips);
     }
- 
-    private void MainAddCallback(ReorderableList list) 
+
+    private void MainAddCallback(ReorderableList list)
     {
         var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         trackprop.arraySize++;
         trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("clips").ClearArray();
-    } 
+    }
 
     private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
@@ -233,7 +188,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
-        EditorGUI.indentLevel--; 
+        EditorGUI.indentLevel--;
     }
 
     private void AddCallback(ReorderableList list)
@@ -485,6 +440,7 @@ public static class GenericAnimationExporter
 {
     public static void Export(SerializedObject serializedObject, string exportPath, string name)
     {
+        Debug.LogWarning("HI");
         var anim = serializedObject.targetObject as GenericAnimation;
         if (anim == null)
             throw new System.InvalidOperationException(
@@ -498,10 +454,10 @@ public static class GenericAnimationExporter
 
     public static void Export(GenericAnimation anim, string filePath)
     {
-        // var steps = anim.AnimationSteps;
-        // var repeats = anim.Repeat;
-        // var duration = anim.Duration;
-        // GenerateScriptFromModifier(filePath, repeats, duration, steps);
+        var repeats = anim.Repeat;
+        var duration = anim.Duration;
+        var tracks = anim.Tracks.Tracks.Select(track => track.Clips).ToList();
+        GenerateScriptFromModifier2(filePath, repeats, duration, tracks);
     }
 
     static List<List<AnimationStep>> GetTracks(SerializedProperty property)
@@ -598,7 +554,7 @@ public static class GenericAnimationExporter
         return Regex.Replace(s, @"\s+", "_");
     }
 
-    static bool GenerateScriptFromModifier(string filePath, bool repeats, float duration,
+    static bool GenerateScriptFromModifier2(string filePath, bool repeats, float duration,
         List<List<AnimationStep>> steps)
     {
         var name = Path.GetFileNameWithoutExtension(filePath);
@@ -615,9 +571,7 @@ public static class GenericAnimationExporter
         string code = string.Format(@"using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.TMPAnimations;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterParsing;
+using TMPEffects.Components.Animator;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using UnityEngine;
@@ -639,49 +593,201 @@ namespace TMPEffects.TMPAnimations.GenericExports
         #region Generated Animation Step Fields
 {0}
         #endregion
-        
+
+        // The Animate method automatically called
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {{
-{1}
+            CreateStepsSorted(ref data.Steps);
+
+            IAnimatorContext ac = context.AnimatorContext;
+            var steps = data.Steps;
+            
+            // Create modifiers if needed
+            data.modifiersStorage ??= new CharDataModifiers();
+            data.modifiersStorage2 ??= new CharDataModifiers();
+            data.accModifier ??= new CharDataModifiers();
+            data.current ??= new CharDataModifiers();
+
+            // Calculate timeValue
+            float timeValue =
+                data.repeat ? ac.PassedTime % data.duration : ac.PassedTime;
+
+            // Reset accModifier
+            data.accModifier.Reset();
+
+            // For every track
+            foreach (var track in steps)
+            {{
+                // Find the currently active clip (max 1)
+                var active = FindCurrentlyActive(timeValue, track);
+                if (active == -1) continue;
+                
+                // If that clip is disabled continue
+                var step = track[active];
+                if (!step.animate) continue;
+
+                // Adjust the timeValue for extrapolation setting
+                float t = AdjustTimeForExtrapolation(step, timeValue, cData, ac);
+                t -= - step.startTime;
+                
+                // Calculate the weight of the current clip
+                float weight = CalcWeight(step, t, step.duration, cData, ac);
+
+                // Lerp the animation step using the weight
+                LerpAnimationStepWeighted(step, weight, cData, ac,
+                    data.modifiersStorage, data.modifiersStorage2, data.current);
+
+                // Combine the lerped modifiers with the previously calculated ones
+                data.accModifier.MeshModifiers.Combine(data.current.MeshModifiers);
+                data.accModifier.CharacterModifiers.Combine(data.current.CharacterModifiers);
+            }}
+
+            // Combine the calculated modifiers into the CharData's one
+            cData.MeshModifiers.Combine(data.accModifier.MeshModifiers);
+            cData.CharacterModifiers.Combine(data.accModifier.CharacterModifiers);
         }}
 
-        private CharDataModifiers storage, storage2;
-        private CharDataModifiers current, accumulated;
-
-        // Apply an AnimationStep, storing into the ""current"" CharDataModifier.
-        private bool ApplyAnimationStep(AnimationStep step, float timeValue, CharData cData, IAnimationContext context)
+        // Ensure steps are sorted
+        private void CreateStepsSorted(ref List<List<AnimationStep>> steps)
         {{
-            // Check if should apply
-            if (step == null) return false;
-            if (!step.animate) return false;
-            if (step.startTime > timeValue) return false;
-            if (step.EndTime < timeValue) return false;
+            if (steps != null) return;
 
-            // Calculate weight, based on the currently relevant blend curve
+            steps = CreateStepList();
+            
+            for (int i = 0; i < steps.Count; i++)
+            {{
+                steps[i].Sort(new StepComparer());
+            }}
+
+            List<List<AnimationStep>> CreateStepList()
+            {{
+                {1}
+            }}
+        }}
+        
+        // Get the currently active step
+        private int FindCurrentlyActive(float timeValue, List<AnimationStep> steps)
+        {{
+            if (steps == null || steps.Count == 0) return -1;
+
+            // TODO This asssumes each track is sorted
+            for (int i = 0; i < steps.Count; i++)
+            {{
+                var step = steps[i];
+
+                if (step == null) continue;
+
+                // If on step
+                if (step.startTime < timeValue && step.EndTime > timeValue)
+                    return i;
+
+                // If before step
+                if (step.startTime > timeValue)
+                {{
+                    if (i == 0)
+                    {{
+                        if (step.preExtrapolation != AnimationStep.ExtrapolationMode.None) return i;
+                        return -1;
+                    }}
+
+                    if (steps[i - 1].postExtrapolation != AnimationStep.ExtrapolationMode.None)
+                        return i - 1;
+
+                    if (step.preExtrapolation != AnimationStep.ExtrapolationMode.None)
+                        return i;
+
+                    return -1;
+                }}
+            }}
+
+            return steps.Count - 1;
+        }}
+        
+        // Adjust the raw time value according to the extrapolation
+        public static float AdjustTimeForExtrapolation(AnimationStep step, float timeValue, CharData cData,
+            IAnimatorContext context)
+        {{
+            if (timeValue < step.startTime)
+            {{
+                switch (step.preExtrapolation)
+                {{
+                    case AnimationStep.ExtrapolationMode.Continue:
+                        break; // Continue only different in how the value should be handled
+                    case AnimationStep.ExtrapolationMode.Hold:
+                        timeValue = step.startTime;
+                        break;
+                    case AnimationStep.ExtrapolationMode.Loop:
+                        float diff = (step.startTime - timeValue) % step.duration;
+                        timeValue = step.EndTime - diff;
+                        break;
+                    case AnimationStep.ExtrapolationMode.PingPong:
+                        diff = (step.startTime - timeValue) % step.duration;
+                        timeValue = step.startTime + diff;
+                        break;
+                }}
+            }}
+
+            if (timeValue > step.EndTime)
+            {{
+                switch (step.postExtrapolation)
+                {{
+                    case AnimationStep.ExtrapolationMode.Continue:
+                        break; // Continue only different in how the value should be handled
+                    case AnimationStep.ExtrapolationMode.Hold:
+                        timeValue = step.EndTime;
+                        break;
+                    case AnimationStep.ExtrapolationMode.Loop:
+                        float diff = (timeValue - step.EndTime) % step.duration;
+                        timeValue = step.startTime + diff;
+                        break;
+                    case AnimationStep.ExtrapolationMode.PingPong:
+                        diff = (timeValue - step.EndTime) % step.duration;
+                        timeValue = step.EndTime - diff;
+                        break;
+                }}
+            }}
+
+            return timeValue;
+        }}
+
+        // Calculate the weight of the step using the time value
+        public static float CalcWeight(AnimationStep step, float timeValue, float duration,
+            CharData cData, IAnimatorContext context)
+        {{
             float weight = 1;
-            float entry = timeValue - step.startTime;
-            if (step.entryDuration > 0 && entry <= step.entryDuration)
+            if (step.entryDuration > 0 /*&& currTime <= behaviour.Step.Step.entryDuration*/)
             {{
-                weight = step.entryCurve.Evaluate(entry / step.entryDuration);
+                weight = step.entryCurve.Evaluate(cData, context,
+                    timeValue / step.entryDuration);
             }}
 
-            float exit = step.EndTime - timeValue;
-            if (step.exitDuration > 0 && exit <= step.exitDuration)
+            if (step.exitDuration > 0 /*&& currTime >= duration - behaviour.Step.Step.exitDuration*/)
             {{
-                weight *= step.exitCurve.Evaluate(exit / step.exitDuration);
+                float preTime = duration - step.exitDuration;
+                var multiplier = (step.exitCurve.Evaluate(cData, context,
+                    1f - (timeValue - preTime) /
+                    step.exitDuration));
+
+                weight *= multiplier;
             }}
 
-            // Apply the wave to the weight
             if (step.useWave)
             {{
-                var offset = AnimationUtility.GetWaveOffset(cData, context, step.waveOffsetType);
+                var offset = AnimationUtility.GetOffset(cData, context,
+                    step.offsetType);
                 weight *= step.wave.Evaluate(timeValue, offset).Value;
             }}
-            
-            // Reset the current, since it'll be used to store the result
-            current.Reset();
-            
-            // If you should use initial modifiers
+
+            return weight;
+        }}
+
+        // Lerp the step using the weight
+        public static void LerpAnimationStepWeighted(AnimationStep step, float weight, CharData cData,
+            IAnimatorContext context,
+            CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
+        {{
+            result.Reset();
+
             if (step.useInitialModifiers)
             {{
                 // Reset storage
@@ -693,9 +799,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 step.modifiers.ToCharDataModifiers(cData, context, storage2);
 
                 // Lerp modifiers and store into current
-                CharDataModifiers.LerpUnclamped(cData, storage, storage2, weight, current);
+                CharDataModifiers.LerpUnclamped(cData, context, storage, storage2, weight, result);
             }}
-            // If you should lerp from the CharData itself
             else
             {{
                 // Reset storage
@@ -705,15 +810,69 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 step.modifiers.ToCharDataModifiers(cData, context, storage);
 
                 // Lerp modifier and store into current
-                CharDataModifiers.LerpUnclamped(cData, storage, weight, current);
+                CharDataModifiers.LerpUnclamped(cData, storage, weight, result);
             }}
-
-            // Return true to indicate that ""current"" should be applied
-            return true;
         }}
+
+        [AutoParametersStorage]
+        private partial class AutoParametersData
+        {{
+            public List<List<AnimationStep>> Steps = null;
+
+            public CharDataModifiers modifiersStorage;
+            public CharDataModifiers modifiersStorage2;
+            public CharDataModifiers accModifier;
+            public CharDataModifiers current;
+        }}
+
+        private struct StepComparer : IComparer<AnimationStep>
+        {{
+            public int Compare(AnimationStep x, AnimationStep y)
+            {{
+                if (x == null || y == null) return 0;
+                if (x.startTime < y.startTime) return -1;
+                if (x.startTime > y.startTime) return 1;
+                if (x.EndTime < y.EndTime) return -1;
+                if (x.EndTime > y.EndTime) return 1;
+                return 0;
+            }}
+        }}
+
     }}
-}}", GenerateStepParameters(steps, names), GenerateAnimateCode(steps, names) /*, GenerateStepMethods(steps, names)*/);
+}}", GenerateStepParameters(steps, names), GenerateCreateStepListCode(steps, names));
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
+    }
+
+    private static string GenerateCreateStepListCode(List<List<AnimationStep>> steps,
+        Dictionary<int, List<string>> names)
+    {
+        string code = @"
+                return new List<List<AnimationStep>>
+                {";
+
+        List<List<string>> nameslist = names
+            .OrderBy(pair => pair.Key)
+            .Select(pair => pair.Value)
+            .ToList();
+
+        for (int i = 0; i < nameslist.Count; i++)
+        {
+            code += @"new List<AnimationStep>()
+                    {";
+            foreach (var name in nameslist[i])
+            {
+                code += @$"
+                        Step_{name},";
+            }
+
+            code += @"
+                    },";
+        }
+
+        code += @"
+                };";
+
+        return code;
     }
 
     private static string GenerateStepParameters(List<List<AnimationStep>> tracks,
@@ -834,7 +993,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 ";
         return str;
     }
-    
+
     private static string GetAnimCurveString(AnimationCurve curve)
     {
         var str = "new AnimationCurve(";

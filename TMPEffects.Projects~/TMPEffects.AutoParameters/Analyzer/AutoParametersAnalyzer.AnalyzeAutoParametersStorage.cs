@@ -6,6 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using TMPEffects.AutoParameters.Generator;
+using TMPEffects.AutoParameters.TMPEffects.AutoParameters.Generator;
 using TMPEffects.StringLibrary;
 using Diagnostic = Microsoft.CodeAnalysis.Diagnostic;
 using INamedTypeSymbol = Microsoft.CodeAnalysis.INamedTypeSymbol;

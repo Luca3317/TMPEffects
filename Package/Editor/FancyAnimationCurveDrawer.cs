@@ -33,7 +33,7 @@ public class FancyAnimationCurveDrawer : PropertyDrawer
             EditorGUI.indentLevel++; 
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("offsetType"));
-            rect.y += EditorGUIUtility.singleLineHeight;
+            rect.y += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("offsetType"));
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("wrapMode"));
             rect.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(rect, property.FindPropertyRelative("uniformity"));
@@ -48,7 +48,7 @@ public class FancyAnimationCurveDrawer : PropertyDrawer
         var curveProp = property.FindPropertyRelative("curve");
         if (curveProp.isExpanded)
         {
-            return EditorGUIUtility.singleLineHeight * 4;
+            return EditorGUIUtility.singleLineHeight * 3 + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("offsetType"));
         }
         
         return EditorGUIUtility.singleLineHeight;

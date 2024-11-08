@@ -14,7 +14,7 @@ namespace TMPEffects.CharacterData
     public class CharDataState : ICharDataState
     {
         public CharData cData;
-        public AnimatorContext context;
+        public IAnimatorContext context;
 
         /// <inheritdoc/>
         public Vector3 positionDelta { get; set; }
@@ -104,7 +104,7 @@ namespace TMPEffects.CharacterData
         List<Vector3> pivots = new List<Vector3>();
         List<Quaternion> rotations = new List<Quaternion>();
 
-        public void Reset(AnimatorContext context, CharData cData)
+        public void Reset(IAnimatorContext context, CharData cData)
         {
             this.cData = cData;
             this.context = context;

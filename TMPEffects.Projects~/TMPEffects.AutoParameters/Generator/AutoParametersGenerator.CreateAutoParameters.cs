@@ -14,16 +14,33 @@ namespace TMPEffects.AutoParameters.Generator.Generator
     public partial class AutoParametersGenerator
     {
         private void CreateAutoParameters(GeneratorExecutionContext context, SemanticModel model,
-            TypeDeclarationSyntax syntax, ISymbol symbol)
+            TypeDeclarationSyntax type, ISymbol symbol)
         {
-            INamedTypeSymbol typeSymbol = symbol as INamedTypeSymbol;
-            if (typeSymbol == null) return;
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "Attempting to create AutoParameters"));
+#endif
 
-            bool implementsITMPAnimation = Utility2.Implements(typeSymbol, Strings.ITMPAnimationName);
-            bool implementsITMPCommand = Utility2.Implements(typeSymbol, Strings.ITMPCommandName);
+            INamedTypeSymbol typeSymbol = symbol as INamedTypeSymbol;
+            if (typeSymbol == null)
+            {
+#if DEBUG
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "Early return - not a type"));
+#endif
+                return;
+            }
+
+            bool implementsITMPAnimation = Utility.Implements(typeSymbol, Strings.ITMPAnimationName);
+            bool implementsITMPCommand = Utility.Implements(typeSymbol, Strings.ITMPCommandName);
 
             if (!implementsITMPAnimation && !implementsITMPCommand)
+            {
+#if DEBUG
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                    "Early return - not ITMPAnimation nor ITMPCommand"));
+#endif
                 return;
+            }
 
             // Get namespace
             var namespaceName = typeSymbol.ContainingNamespace.ToDisplayString();
@@ -33,12 +50,21 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             var fullTypeName = typeSymbol.ToDisplayString();
 
             // Get all auto parameters
-            var parameters = Utility2.GetAutoParameters(typeSymbol);
-            var bundles = Utility2.GetAutoParameterBundles(typeSymbol);
+            var parameters = Utility.GetAutoParameters(typeSymbol);
+            var bundles = Utility.GetAutoParameterBundles(typeSymbol);
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.Item1.ToString()))));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.Item1.ToString()))));
+#endif
             parameters.AddRange(bundles);
 
             // Get auto parameters storage (or null)
-            var storage = Utility2.GetAutoParametersStorage(typeSymbol);
+            var storage = Utility.GetAutoParametersStorage(typeSymbol);
+            
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "Storage: " + (storage == null ? "null" : storage.Name)));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "Got everything successfully"));
+#endif
 
             // Prepare the type declaration
             TypeDeclarationSyntax typeDecl;
@@ -57,6 +83,11 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             typeDecl = typeDecl.AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword))
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PartialKeyword));
 
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "Typedeclaration prepared: " + (typeDecl != null)));
+#endif
+
             // Add storage to new type
             ClassDeclarationSyntax storageDecl;
             if (storage == null)
@@ -68,8 +99,14 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 foreach (var p in parameters)
                 {
                     if (!Strings.TypeToStringForStorage(p.Item1.Type, out string displayString))
+                    {
+#if DEBUG
+                        context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                            "Failed at creating storage for type " + p.Item1.Type.ToDisplayString() +  "SpecialType " + p.Item1.Type.SpecialType));
+#endif
                         throw new System.InvalidOperationException();
-                    
+                    }
+
                     var fieldDeclaration = SyntaxFactory.FieldDeclaration(
                         SyntaxFactory.VariableDeclaration(
                             SyntaxFactory.IdentifierName(displayString),
@@ -95,8 +132,14 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 foreach (var p in parameters)
                 {
                     if (!Strings.TypeToStringForStorage(p.Item1.Type, out string displayString))
+                    {
+#if DEBUG
+                        context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                            "Failed at extending storage"));
+#endif
                         throw new System.InvalidOperationException();
-                    
+                    }
+
                     var fieldDeclaration = SyntaxFactory.FieldDeclaration(
                         SyntaxFactory.VariableDeclaration(
                             SyntaxFactory.IdentifierName(displayString),
@@ -113,10 +156,29 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             }
 
             List<MethodDeclarationSyntax> methods = new List<MethodDeclarationSyntax>();
+
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "Successfully created storage"));
+#endif
+
             if (implementsITMPAnimation)
+            {
                 methods.AddRange(CreateITMPAnimationSpecific(typeSymbol, context, parameters, storageDecl));
+#if DEBUG
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                    "Successfully created animation specific"));
+#endif
+            }
+
             if (implementsITMPCommand)
+            {
                 methods.AddRange(CreateITMPCommandSpecific(typeSymbol, context, parameters, storageDecl));
+#if DEBUG
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                    "Successfully created command specific"));
+#endif
+            }
 
             // Add methods to type declaration
             typeDecl = typeDecl.AddMembers(methods.Cast<MemberDeclarationSyntax>().ToArray());
@@ -159,7 +221,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             var animate = CreateAnimate(storageDecl.Identifier.Text);
 
             var partialAnimate = CreatePartialAnimate(storageDecl.Identifier.Text);
-            
+
             return new List<MethodDeclarationSyntax>()
             {
                 partialAnimate,
@@ -282,7 +344,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             foreach (var param in parameters)
             {
                 var validationSyntax =
-                    Utility2.GetValidationSyntax("parameters", param.Item1, param.Item2, keywordsPath);
+                    Utility.GetValidationSyntax("parameters", param.Item1, param.Item2, keywordsPath);
                 if (validationSyntax != null) statements.Add(validationSyntax);
             }
 

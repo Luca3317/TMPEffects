@@ -13,7 +13,7 @@ namespace TMPEffects.CharacterData
         internal IAnimationContext context;
 
         // TODO FOR TESTING; THESE SHOULD (PROBABLY) NOT BE PUBLIC
-        public TMPCharacterModifiers CharacterModifierss => CharacterModifiers;
+        public TMPCharacterModifiers CharacterModifiers => _CharacterModifiers;
 
         public TMPMeshModifiers MeshModifiers
         {
@@ -21,22 +21,22 @@ namespace TMPEffects.CharacterData
             set => mesh.modifiers = value;
         }
 
-        internal TMPCharacterModifiers CharacterModifiers;
+        internal TMPCharacterModifiers _CharacterModifiers;
 
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
         /// </summary>
-        public bool positionDirty => CharacterModifiers.PositionDelta != Vector3.zero;
+        public bool positionDirty => _CharacterModifiers.PositionDelta != Vector3.zero;
 
         /// <summary>
         /// Whether the rotation has been manipulated from the character's initial rotation.
         /// </summary>
-        public bool rotationDirty => CharacterModifiers.Rotations.Any();
+        public bool rotationDirty => _CharacterModifiers.Rotations.Any();
 
         /// <summary>
         /// Whether the scale has been manipulated from the character's initial scale.
         /// </summary>
-        public bool scaleDirty => CharacterModifiers.ScaleDelta != Matrix4x4.identity;
+        public bool scaleDirty => _CharacterModifiers.ScaleDelta != Matrix4x4.identity;
 
         /// <summary>
         /// Whether the vertices have been manipulated.
@@ -60,8 +60,8 @@ namespace TMPEffects.CharacterData
 
         public Vector3 Position
         {
-            get => CharacterModifiers.PositionDelta + InitialPosition;
-            set => CharacterModifiers.PositionDelta = value - InitialPosition;
+            get => _CharacterModifiers.PositionDelta + InitialPosition;
+            set => _CharacterModifiers.PositionDelta = value - InitialPosition;
         }
         
         /// <summary>
@@ -69,8 +69,8 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public Vector3 PositionDelta
         {
-            get => CharacterModifiers.PositionDelta;
-            set => CharacterModifiers.PositionDelta = value;
+            get => _CharacterModifiers.PositionDelta;
+            set => _CharacterModifiers.PositionDelta = value;
         }
 
         /// <summary>
@@ -78,14 +78,14 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public Vector3 Scale
         {
-            get => CharacterModifiers.ScaleDelta.lossyScale;
-            set => CharacterModifiers.ScaleDelta = Matrix4x4.Scale(value);
+            get => _CharacterModifiers.ScaleDelta.lossyScale;
+            set => _CharacterModifiers.ScaleDelta = Matrix4x4.Scale(value);
         }
 
         /// <summary>
         /// The character's rotations.
         /// </summary>
-        public IReadOnlyList<Rotation> Rotations => CharacterModifiers.Rotations;
+        public IReadOnlyList<Rotation> Rotations => _CharacterModifiers.Rotations;
 
         #region Fields
 
@@ -140,7 +140,7 @@ namespace TMPEffects.CharacterData
             InitialRotation = defaultRotation;
             InitialScale = defaultScale;
             InitialPosition = GetCenter(InitialMesh);
-            CharacterModifiers = new TMPCharacterModifiers();
+            _CharacterModifiers = new TMPCharacterModifiers();
         }
 
         public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo? wInfo = null)
@@ -154,7 +154,7 @@ namespace TMPEffects.CharacterData
             InitialRotation = defaultRotation;
             InitialScale = defaultScale;
             InitialPosition = GetCenter(InitialMesh);
-            CharacterModifiers = new TMPCharacterModifiers();
+            _CharacterModifiers = new TMPCharacterModifiers();
         }
 
         #region Position
@@ -164,7 +164,7 @@ namespace TMPEffects.CharacterData
         /// <param name="position">The new position of the character.</param>
         public void SetPosition(Vector3 position)
         {
-            CharacterModifiers.PositionDelta = position - InitialPosition;
+            _CharacterModifiers.PositionDelta = position - InitialPosition;
         }
 
         // public void ClearPosition()
@@ -176,34 +176,34 @@ namespace TMPEffects.CharacterData
         #region PositionDelta
         public void SetPositionDelta(Vector3 delta)
         {
-            CharacterModifiers.PositionDelta = delta;
+            _CharacterModifiers.PositionDelta = delta;
         }
 
         public void ClearPosition()
         { 
-            CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.PositionDelta);
+            _CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.PositionDelta);
         }
         #endregion
         
         #region Rotations
         public void AddRotation(Vector3 eulerAngles, Vector3 pivot)
         {
-            CharacterModifiers.AddRotation(new Rotation(eulerAngles, pivot));
+            _CharacterModifiers.AddRotation(new Rotation(eulerAngles, pivot));
         }
 
         public void RemoveRotation(int index)
         {
-            CharacterModifiers.RemoveRotation(index);
+            _CharacterModifiers.RemoveRotation(index);
         }
 
         public void InsertRotation(int index, Vector3 eulerAngles, Vector3 pivot)
         {
-            CharacterModifiers.InsertRotation(index, new Rotation(eulerAngles, pivot));
+            _CharacterModifiers.InsertRotation(index, new Rotation(eulerAngles, pivot));
         }
 
         public void ClearRotations()
         {
-            CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Rotations);
+            _CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Rotations);
         }
         #endregion
         
@@ -214,12 +214,12 @@ namespace TMPEffects.CharacterData
         /// <param name="scale">The new scale of this character.</param>
         public void SetScale(Vector3 scale)
         {
-            CharacterModifiers.ScaleDelta = Matrix4x4.Scale(scale);
+            _CharacterModifiers.ScaleDelta = Matrix4x4.Scale(scale);
         }
 
         public void ClearScale()
         {
-            CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Scale);
+            _CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Scale);
         }
         #endregion
 
@@ -228,7 +228,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public void Reset()
         {
-            CharacterModifiers.ClearModifierFlags();
+            _CharacterModifiers.ClearModifierFlags();
             mesh.modifiers.ClearModifiers();
         }
 

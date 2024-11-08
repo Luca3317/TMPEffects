@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(PowerEnum<,>), true)]
+[CustomPropertyDrawer(typeof(PowerEnum<,>))]
 public class PowerEnumDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -27,10 +27,14 @@ public class PowerEnumDrawer : PropertyDrawer
         else selectedIndex = options.Count - 1;
 
         var rect = new Rect(position.x, position.y, position.width, position.height);
-        var ctrlRect = EditorGUI.PrefixLabel(rect, label);
 
+        var ctrlRect = EditorGUI.PrefixLabel(rect, label);
         int index;
 
+        // TODO For some reason the rect returned by prefix label is offset to the right
+        int indent = EditorGUI.indentLevel;
+        for (int i = 0; i < indent; i++) EditorGUI.indentLevel--;
+        
         // Custom
         if (selectedIndex == options.Count - 1)
         {
@@ -38,8 +42,9 @@ public class PowerEnumDrawer : PropertyDrawer
             ctrlRect.width *= 0.25f;
             var ctrlRect2 = new Rect(ctrlRect.x + ctrlRect.width, ctrlRect.y, width * 0.75f, ctrlRect.height);
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
-            customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue,
-                type, !EditorUtility.IsPersistent(property.serializedObject.targetObject));
+            EditorGUI.PropertyField(ctrlRect2, customProp, GUIContent.none);
+            // customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue,
+            //     type, !EditorUtility.IsPersistent(property.serializedObject.targetObject));
         }
         // Normal
         else
@@ -51,6 +56,8 @@ public class PowerEnumDrawer : PropertyDrawer
 
         useCustomProp.boolValue = index == options.Count - 1;
 
+        for (int i = 0; i < indent; i++) EditorGUI.indentLevel++;
+        
         EditorGUI.EndProperty();
     }
 }

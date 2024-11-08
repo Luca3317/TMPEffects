@@ -33,7 +33,13 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             IAnimatorContext ac = context.AnimatorContext;
 
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
-            float t2 = d.curve.Evaluate(t);
+            float t2 = d.curve.Evaluate(t);          
+            
+            if (t >= 1)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }
 
             Vector3 targetPos;
 
@@ -56,7 +62,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             cData.SetPosition(pos);
 
-            if (t >= 1) context.FinishAnimation(cData);
+
         }
     }
 }

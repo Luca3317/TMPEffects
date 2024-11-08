@@ -21,6 +21,8 @@ public class ColorOverrideDrawer : PropertyDrawer
         Init(property);
         
         position = EditorGUI.PrefixLabel(position, label);
+
+        EditorGUI.indentLevel--;
         
         var flags = (ColorOverride.OverrideMode)flagProp.enumValueFlag;
         if (flags.HasFlag(ColorOverride.OverrideMode.Color))
@@ -40,11 +42,14 @@ public class ColorOverrideDrawer : PropertyDrawer
             }
         }
 
-        position.x -= 100;
+        position.x -= 105;
         position.width = 100;
+        
+        EditorGUI.indentLevel++;
         
         flagProp.enumValueFlag = (int)(ColorOverride.OverrideMode)
             EditorGUI.EnumFlagsField(position, GUIContent.none,(ColorOverride.OverrideMode)flagProp.enumValueFlag);
+        
     }
     
     // public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

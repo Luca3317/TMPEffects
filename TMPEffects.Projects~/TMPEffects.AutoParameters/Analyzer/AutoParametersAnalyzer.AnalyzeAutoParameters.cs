@@ -378,7 +378,7 @@ namespace TMPEffects.AutoParameters.Analyzer
             SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl, bool forAnimation)
         {
             var autoParameters = typeDecl.Members.OfType<FieldDeclarationSyntax>()
-                .Where(field => Utility2.IsAutoParameter(context, field)).ToList();
+                .Where(field => Utility.IsAutoParameter(context, field)).ToList();
 
             var autoParameterSymbols = autoParameters.SelectMany(field => field.Declaration.Variables)
                 .Select(variable => context.SemanticModel.GetDeclaredSymbol(variable));

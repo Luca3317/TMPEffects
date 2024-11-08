@@ -594,8 +594,15 @@ namespace TMPEffects.Editor
                 GUIContent cont = new GUIContent("Keyword Database");
                 cont.tooltip = "A keyword database defining additional keywords. " +
                                "If the same keyword is present in the Global Keyword Database defined in the project settings, this database will override it.";
-                keywordDatabaseProp.objectReferenceValue = 
-                    EditorGUILayout.ObjectField(cont, keywordDatabaseProp.objectReferenceValue, typeof(ITMPKeywordDatabase), true);
+                EditorGUI.BeginChangeCheck();
+                // keywordDatabaseProp.objectReferenceValue = 
+                //     EditorGUILayout.ObjectField(cont, keywordDatabaseProp.objectReferenceValue, typeof(ITMPKeywordDatabase), true);
+                EditorGUILayout.PropertyField(keywordDatabaseProp, cont);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    serializedObject.ApplyModifiedProperties();
+                    animator.OnChangedDatabase(); 
+                }
                 
                 EditorGUI.indentLevel--;
             }

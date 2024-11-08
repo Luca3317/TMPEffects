@@ -11,10 +11,10 @@ namespace TMPEffects.StringLibrary
 
         public const string IAnimatorContextKeywordDatabasePath = ".KeywordDatabase";
         public const string IAnimationContextKeywordDatabasePath = ".AnimatorContext.KeywordDatabase";
-        
+
         public const string IWriterContexKeywordDatabasePath = ".KeywordDatabase";
         public const string ICommandContexKeywordDatabasePath = ".WriterContext.KeywordDatabase";
-        
+
         public const string ITMPAnimationName = "TMPEffects.TMPAnimations.ITMPAnimation";
         public const string ITMPCommandName = "TMPEffects.TMPCommands.ITMPCommand";
 
@@ -47,9 +47,10 @@ namespace TMPEffects.StringLibrary
         public const string CharDataName = "TMPEffects.CharacterData.CharData";
         public const string IAnimationContextName = "TMPEffects.TMPAnimations.IAnimationContext";
         public const string IAnimatorContextName = "TMPEffects.Components.Animator.IAnimatorContext";
-        
+
         public const string ICommandContextName = "TMPEffects.TMPCommands.ICommandContext";
         public const string IWriterContextName = "TMPEffects.Components.Writer.IWriterContext";
+
         #endregion
 
         #region Supported Types
@@ -69,7 +70,7 @@ namespace TMPEffects.StringLibrary
         #region Custom
 
         public const string ITMPOffsetProviderName = ParameterTypesPath + ".ITMPOffsetProvider";
-        
+
         public const string WaveOffsetTypeName = ParameterTypesPath + ".WaveOffsetType";
         public const string WaveName = AnimationUtilityPath + ".Wave";
         public const string TypedVector3Name = ParameterTypesPath + ".TypedVector3";
@@ -92,12 +93,58 @@ namespace TMPEffects.StringLibrary
 
         #endregion
 
-        public const string GenerateParametersAttributeName = "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";
-        
+        public const string GenerateParametersAttributeName =
+            "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";
+
         private static Dictionary<string, string> TypeToDisplayString =>
             SupportedTypesList.GroupBy(t => t.Item1)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item1, t => t.Item2);
+
+        public static string GetClosestTypeFit(ITypeSymbol type)
+        {
+            if (type.SpecialType == SpecialType.System_String)
+            {
+                return "string";
+            }
+
+            if (type.SpecialType == SpecialType.System_Array)
+            {
+                return type.ToDisplayString();
+            }
+
+            var dict = TypeToDisplayString;
+            if (dict.TryGetValue(type.ToDisplayString(), out var typeName))
+            {
+                return type.ToDisplayString();
+            }
+
+            if (ValidAutoParameterBundleTypes.Contains(type.ToDisplayString()))
+            {
+                return type.ToDisplayString();
+            }
+
+            foreach (var interf in type.AllInterfaces)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
+                {
+                    return interf.ToDisplayString();
+                }
+            }
+
+            var curr = type.BaseType;
+            while (curr != null)
+            {
+                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
+                {
+                    return curr.ToDisplayString();
+                }
+
+                curr = curr.BaseType;
+            }
+
+            return null;
+        }
 
         public static bool TypeToStringForStorage(ITypeSymbol type, out string displayString)
         {
@@ -107,19 +154,19 @@ namespace TMPEffects.StringLibrary
                 return true;
             }
 
-            if (type.SpecialType == SpecialType.System_Array)
+            if (type.TypeKind == TypeKind.Array)
             {
-                displayString = type.ToDisplayString();
+                displayString = (type as IArrayTypeSymbol).ElementType.ToDisplayString() + "[]";
                 return true;
             }
-            
+
             var dict = TypeToDisplayString;
             if (dict.TryGetValue(type.ToDisplayString(), out displayString))
             {
                 displayString = type.ToDisplayString();
                 return true;
             }
-            
+
             if (ValidAutoParameterBundleTypes.Contains(type.ToDisplayString()))
             {
                 displayString = type.ToDisplayString();
@@ -134,7 +181,7 @@ namespace TMPEffects.StringLibrary
                     return true;
                 }
             }
-            
+
             var curr = type.BaseType;
             while (curr != null)
             {
@@ -143,12 +190,13 @@ namespace TMPEffects.StringLibrary
                     displayString = curr.ToDisplayString();
                     return true;
                 }
+
                 curr = curr.BaseType;
             }
 
             return false;
         }
-        
+
         public static bool TypeStringToDisplayString(ITypeSymbol type, out string displayString)
         {
             var dict = TypeToDisplayString;
@@ -171,16 +219,93 @@ namespace TMPEffects.StringLibrary
 
             return false;
         }
-        
-        
+
+
         public static Dictionary<string, string> DisplayStringToType =>
             SupportedTypesList.GroupBy(t => t.Item2)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item2, t => t.Item1);
 
 
+
+
+        
+        public static bool TryGetAutoParameterInfo(ITypeSymbol type, out AutoParameterInfo info)
+        {
+            info = new AutoParameterInfo();
+            
+            
+
+            info.TypeSymbol = type;
+            
+            
+
+        }
+        
+        
+        public static bool TryGetClosestFitAutoParameterType(IFieldSymbol field, out ITypeSymbol closestType)
+        {
+            var tmp = field.Type;
+            if (field.Type is IArrayTypeSymbol array)
+                tmp = array.ElementType;
+            
+            if (ValidAutoParameterBundleTypes.Contains(tmp.ToDisplayString()))
+            {
+                closestType = tmp;
+                return true;
+            }
+
+            if (ValidAutoParameterTypes.Contains(tmp.ToDisplayString()))
+            {
+                closestType = tmp;
+                return true;
+            }
+            
+            var curr = tmp.BaseType;
+            while (curr != null)
+            {
+                if (ValidAutoParameterBundleTypes.Contains(curr.ToDisplayString()))
+                {
+                    closestType = curr;
+                    return true;
+                }
+                
+                if (ValidAutoParameterTypes.Contains(curr.ToDisplayString()))
+                {
+                    closestType = curr;
+                    return true;
+                }
+                
+                curr = curr.BaseType;
+            }
+
+            foreach (var interf in tmp.AllInterfaces)
+            {
+                if (ValidAutoParameterBundleTypes.Contains(tmp.ToDisplayString()))
+                {
+                    closestType = tmp;
+                    return true;
+                }
+                
+                if (ValidAutoParameterTypes.Contains(interf.ToDisplayString()))
+                {
+                    closestType = interf;
+                    return true;
+                }
+            }
+
+            closestType = null;
+            return false;
+        }
+        
+        
         public static bool IsValidAutoParameterType(ITypeSymbol type)
         {
+            if (type is IArrayTypeSymbol arr)
+            {
+                type = arr.ElementType;
+            }
+            
             if (ValidAutoParameterTypes.Contains(type.ToDisplayString()))
                 return true;
 
@@ -189,8 +314,8 @@ namespace TMPEffects.StringLibrary
                 if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
                     return true;
             }
-            
-            var curr = type.BaseType;
+
+            var curr = type;
             while (curr != null)
             {
                 if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
@@ -199,6 +324,66 @@ namespace TMPEffects.StringLibrary
             }
 
             return false;
+        }
+        
+        public static AttributeData AutoParameterDecorations(ISymbol symbol)
+        {
+            AutoParametersDecoration decorations = 0;
+            var attributes = symbol.GetAttributes();
+            foreach (var attribute in attributes)
+            {
+                var attr = attribute.AttributeClass;
+                if (attr == null) continue;
+                var attrString = attr.ToDisplayString();
+
+                switch (attrString)
+                {
+                    case AutoParameterAttributeName:
+                        decorations |= AutoParametersDecoration.AutoParameter;
+                        break;
+                    case AutoParameterBundleAttributeName:
+                        decorations |= AutoParametersDecoration.AutoParameterBundle;
+                        break;
+                }
+            }
+
+            return null;
+        }
+        
+        public struct AutoParameterInfo
+        {
+            public ITypeSymbol TypeSymbol;
+            
+            public string TypeString;
+            public string NameString;
+
+            public bool specifiesRequirement;
+            public bool required;
+
+            public string[] Aliases;
+        }
+
+        public struct AutoParameterBundleInfo
+        {
+            public ITypeSymbol TypeSymbol;
+            
+            public string TypeString;
+            public string NameString;
+
+            public string prefix;
+        }
+        
+        [Flags]
+        public enum AutoParametersDecoration : byte
+        {
+            None = 0,
+            AutoParameter = 1,
+            AutoParameterBundle = 1 << 1,
+            All = byte.MaxValue
+            
+            // TODO Put other stuff in here to do to be more universally reusable?
+            // AutoParameterStorage = 1 << 2,
+            // AutoParameters = 1 << 3,
         }
 
         public static bool IsValidAutoParameterBundleType(ITypeSymbol type)
@@ -214,11 +399,10 @@ namespace TMPEffects.StringLibrary
         {
             if (type == "Vector2Offset") return Vector3Name;
             if (type == "Vector2") return Vector3Name;
-            
+
             return DisplayStringToType[type];
         }
-        
-        // Used to create the parameter utility methods (and nothing more)
+
         public static readonly List<(string, string)> SupportedTypesList = new List<(string, string)>()
         {
             ("float", "Float"),
@@ -227,7 +411,7 @@ namespace TMPEffects.StringLibrary
 
             (ITMPOffsetProviderName, "OffsetProvider"),
             (UnityObjectName, "UnityObject"),
-            
+
             (TypedVector3Name, "TypedVector3"),
             (TypedVector2Name, "TypedVector2"),
             (Vector2Name, "Vector2"),
@@ -238,7 +422,7 @@ namespace TMPEffects.StringLibrary
             (ColorName, "Color"),
             (AnimationCurveName, "AnimCurve"),
         };
-        
+
         // Used to check whether a field is a valid auto parameter (and nothing more)
         private static readonly List<string> ValidAutoParameterTypes = new List<string>()
         {
@@ -253,7 +437,7 @@ namespace TMPEffects.StringLibrary
             ColorName,
             AnimationCurveName,
         };
-        
+
         private static readonly List<string> ValidAutoParameterBaseTypes = new List<string>()
         {
             ITMPOffsetProviderName,

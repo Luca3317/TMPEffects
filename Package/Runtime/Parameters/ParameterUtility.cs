@@ -131,13 +131,13 @@ namespace TMPEffects.Parameters
         }
 
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can be converted to Array&lt;T&gt;).<br />
         /// </summary>
         /// <param name="value">Set to the value of the parameter if successful.</param>
         /// <param name="parameters">The parameters to check.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
         public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters,
             ParseDelegate<string, T, ITMPKeywordDatabase, bool> func, ITMPKeywordDatabase keywords, string name,
             params string[] aliases)
@@ -188,6 +188,7 @@ namespace TMPEffects.Parameters
             public float? amplitude;
         }
 
+        // TODO Streamline, less parameters
         /// <summary>
         /// Get all parameter relevant to a wave.<br/>
         /// Important: this reserves the following parameter names:
@@ -203,6 +204,7 @@ namespace TMPEffects.Parameters
         /// <item>waveuniformity, waveuni, wuniformity, wuni</item>
         /// <item>waveamplitude, wamplitude, waveamp, wamp</item>
         /// </list>
+        /// </summary>
         /// <param name="parameters">The dictionary containing the parameters.</param>
         /// <param name="upwardCurve">Whether to get the upwardCurve parameter.</param>
         /// <param name="downwardCurve">Whether to get the downwardCurve parameter.</param>

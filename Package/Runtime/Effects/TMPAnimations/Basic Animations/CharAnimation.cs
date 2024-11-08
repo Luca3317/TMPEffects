@@ -36,25 +36,25 @@ namespace TMPEffects.TMPAnimations.Animations
             "Whether to ensure capitalized characters are only changed to other capitalized characters, and vice versa.\nautocase, case")]
         bool autoCase = true;
 
-        private partial void Animate(CharData cData, Data d, IAnimationContext context)
+        private partial void Animate(CharData cData, Data data, IAnimationContext context)
         {
-            if (string.IsNullOrWhiteSpace(d.characters)) return;
+            if (string.IsNullOrWhiteSpace(data.characters)) return;
             if (cData.info.elementType != TMP_TextElementType.Character) return;
 
             int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
 
-            if (d.waitingSince == null)
+            if (data.waitingSince == null)
             {
-                Init(cData, d, context);
+                Init(cData, data, context);
             }
 
-            if (!d.originalCharacterCache.ContainsKey(segmentIndex))
+            if (!data.originalCharacterCache.ContainsKey(segmentIndex))
             {
                 if (cData.info.fontAsset.characterLookupTable.TryGetValue(cData.info.character,
                         out TMP_Character original))
                 {
-                    d.originalCharacterCache[segmentIndex] = original;
-                    d.currentCharacterCache[segmentIndex] = original;
+                    data.originalCharacterCache[segmentIndex] = original;
+                    data.currentCharacterCache[segmentIndex] = original;
                 }
                 else
                 {
@@ -63,37 +63,37 @@ namespace TMPEffects.TMPAnimations.Animations
             }
 
             // If waiting
-            if (d.waitingSince[segmentIndex] != -1)
+            if (data.waitingSince[segmentIndex] != -1)
             {
                 // If done waiting
-                if (context.AnimatorContext.PassedTime - d.waitingSince[segmentIndex] >= d.waitDuration[segmentIndex])
+                if (context.AnimatorContext.PassedTime - data.waitingSince[segmentIndex] >= data.waitDuration[segmentIndex])
                 {
-                    d.waitingSince[segmentIndex] = -1;
+                    data.waitingSince[segmentIndex] = -1;
                 }
                 else
                 {
-                    TMP_Character current = d.currentCharacterCache[segmentIndex];
-                    TMP_Character original = d.originalCharacterCache[segmentIndex];
+                    TMP_Character current = data.currentCharacterCache[segmentIndex];
+                    TMP_Character original = data.originalCharacterCache[segmentIndex];
                     AnimationUtility.SetToCharacter(current, original, cData, context);
                     return;
                 }
             }
 
             // Set to original character
-            if (d.random.NextDouble() > d.probability)
+            if (data.random.NextDouble() > data.probability)
             {
-                d.currentCharacterCache[segmentIndex] = d.originalCharacterCache[segmentIndex];
-                TMP_Character current = d.currentCharacterCache[segmentIndex];
-                TMP_Character original = d.originalCharacterCache[segmentIndex];
+                data.currentCharacterCache[segmentIndex] = data.originalCharacterCache[segmentIndex];
+                TMP_Character current = data.currentCharacterCache[segmentIndex];
+                TMP_Character original = data.originalCharacterCache[segmentIndex];
                 AnimationUtility.SetToCharacter(current, original, cData, context);
             }
 
             // Set to new random character
             else
             {
-                int index = d.random.Next(0, d.characters.Length);
-                char character = d.characters[index];
-                if (d.autoCase && char.IsLetter(cData.info.character) && char.IsLetter(character))
+                int index = data.random.Next(0, data.characters.Length);
+                char character = data.characters[index];
+                if (data.autoCase && char.IsLetter(cData.info.character) && char.IsLetter(character))
                 {
                     if (char.IsUpper(cData.info.character))
                         character = char.ToUpper(character);
@@ -106,16 +106,16 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 if (succ)
                 {
-                    d.currentCharacterCache[segmentIndex] = newCharacter;
-                    AnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData,
+                    data.currentCharacterCache[segmentIndex] = newCharacter;
+                    AnimationUtility.SetToCharacter(newCharacter, data.originalCharacterCache[segmentIndex], cData,
                         context);
                 }
                 else
                     Debug.LogError($"Failed to get character {character} from lookup table");
             }
 
-            d.waitingSince[segmentIndex] = context.AnimatorContext.PassedTime;
-            d.waitDuration[segmentIndex] = Mathf.Lerp(d.minWait, d.maxWait, (float)d.random.NextDouble());
+            data.waitingSince[segmentIndex] = context.AnimatorContext.PassedTime;
+            data.waitDuration[segmentIndex] = Mathf.Lerp(data.minWait, data.maxWait, (float)data.random.NextDouble());
         }
         
         private void Init(CharData cData, Data d, IAnimationContext context)

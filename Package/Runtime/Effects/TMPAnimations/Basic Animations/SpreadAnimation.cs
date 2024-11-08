@@ -54,7 +54,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             // Evaluate the wave based on time and offset
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
-                d.waveOffsetType.GetOffset(cData, context));
+                d.waveOffsetType.GetOffset(cData, context) / context.SegmentData.length);
+            
 
             // If the wave is moving up, grow the character
             if (result.Item2 > 0)

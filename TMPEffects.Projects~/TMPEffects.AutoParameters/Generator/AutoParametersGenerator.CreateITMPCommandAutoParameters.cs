@@ -40,7 +40,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             foreach (var param in parameters)
             {
-                var setParameterSyntax = Utility2.GetSetParameterSyntax("parameters", "d", param.Item1, param.Item2,
+                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param.Item1, param.Item2,
                     Strings.ICommandContexKeywordDatabasePath);
                 if (setParameterSyntax != null) statements.Add(setParameterSyntax);
             }

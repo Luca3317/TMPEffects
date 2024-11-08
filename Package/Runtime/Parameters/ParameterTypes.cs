@@ -11,18 +11,21 @@ namespace TMPEffects.Parameters
     {
         public interface ITMPOffsetProvider
         {
+            // TODO Split up context interfaces
             public float GetOffset(CharData cData, IAnimationContext context);
+            public float GetOffset(CharData cData, IAnimatorContext context);
         }
 
         public abstract class TMPOffsetProvider : ScriptableObject, ITMPOffsetProvider
         {
-            // TODO What other params might make sense?
             public abstract float GetOffset(CharData cData, IAnimationContext context);
+            public abstract float GetOffset(CharData cData, IAnimatorContext context);
         }
 
         public abstract class TMPSceneOffsetProvider : MonoBehaviour, ITMPOffsetProvider
         {
             public abstract float GetOffset(CharData cData, IAnimationContext context);
+            public abstract float GetOffset(CharData cData, IAnimatorContext context);
         }
         
         

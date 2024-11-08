@@ -3,6 +3,8 @@ using UnityEngine;
 using System;
 using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
+using TMPEffects.Parameters;
+using Object = UnityEngine.Object;
 
 namespace TMPEffects.Components.Animator
 {
@@ -11,37 +13,26 @@ namespace TMPEffects.Components.Animator
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
     [System.Serializable]
-    public class AnimatorContext : IAnimatorContext, ISerializationCallbackReceiver
+    internal class AnimatorContext : IAnimatorContext
     {
         // TODO Hastily added these two, check they fit interface and encapsulatione etc
         public CharDataModifiers Modifiers { get; set; }
-        [SerializeField] private UnityEngine.Object keywordDatabase;
-
-        public ITMPKeywordDatabase KeywordDatabase { get; set; }
-        internal INotifyObjectChanged KeyWordDatabaseCallbacK;
         
-        // TODO Same for this
-        public void OnBeforeSerialize()
-        {
-            if (KeywordDatabase != null)
-            {
-                keywordDatabase = KeywordDatabase as UnityEngine.Object;
-                if (keywordDatabase is INotifyObjectChanged inoc)
-                    KeyWordDatabaseCallbacK = inoc;
-            }
-        }
+        // TODO
+        // Originally this was supposed to be UnityEngine.Object with
+        // the inspector + ISerializationCallbackReceiver insuring the object implements
+        // ITMPKeywordDatabase
+        // Worked fine, but inspector object picker doesnt show valid assets
+        // so for now, enforce this being a TMPSceneKeywordDatabase
+        [SerializeField] private TMPSceneKeywordDatabase keywordDatabase;
 
-        public void OnAfterDeserialize()
+        ITMPKeywordDatabase IAnimatorContext.KeywordDatabase => keywordDatabase;
+
+        public TMPSceneKeywordDatabase KeywordDatabase
         {
-            KeywordDatabase = keywordDatabase as ITMPKeywordDatabase;
-            if (KeywordDatabase != null)
-            {
-                keywordDatabase = KeywordDatabase as UnityEngine.Object;
-                if (keywordDatabase is INotifyObjectChanged inoc)
-                    KeyWordDatabaseCallbacK = inoc;
-            }
+            get => keywordDatabase;
+            set => keywordDatabase = value;
         }
-        
         
         /// <inheritdoc/>
         public bool ScaleAnimations

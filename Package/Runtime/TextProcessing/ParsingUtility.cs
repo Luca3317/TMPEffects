@@ -216,7 +216,7 @@ namespace TMPEffects.TextProcessing
         /// <returns>true if the the given string is a tag (of the given type, if supplied); otherwise false.</returns>
         public static bool IsTag(string tag, TagType type = TagType.Open | TagType.Close)
         {
-            int endindex = tag.IndexOf('>');
+            int endindex = tag.LastIndexOf('>');
             if (endindex == -1 || endindex != tag.Length - 1) return false;
             return IsTag(tag, 0, tag.Length, type);
         }

@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using TMPEffects.AutoParameters.Generator;
+using TMPEffects.AutoParameters.TMPEffects.AutoParameters.Generator;
 using TMPEffects.StringLibrary;
 
 namespace TMPEffects.AutoParameters.Analyzer

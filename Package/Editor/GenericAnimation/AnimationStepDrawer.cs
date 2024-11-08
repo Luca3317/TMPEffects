@@ -70,7 +70,7 @@ public class AnimationStepDrawer : PropertyDrawer
 
         height += EditorGUIUtility.singleLineHeight * 3; // Space + waves
 
-        if (useWave.boolValue) height += EditorGUI.GetPropertyHeight(wave, true) + EditorGUIUtility.singleLineHeight;
+        if (useWave.boolValue) height += EditorGUI.GetPropertyHeight(wave, true) + EditorGUI.GetPropertyHeight(waveOffsetType, true);
 
         height += EditorGUIUtility.singleLineHeight * 2; // Space + initial
 
@@ -81,6 +81,32 @@ public class AnimationStepDrawer : PropertyDrawer
         height += EditorGUI.GetPropertyHeight(modifiers, true);
 
         return height;
+    }
+
+    protected void OnClipDurationChanged(int control)
+    {
+        entryDuration.floatValue = Mathf.Max(0, entryDuration.floatValue);
+        exitDuration.floatValue = Mathf.Max(0, exitDuration.floatValue);
+        duration.floatValue = Mathf.Max(0, duration.floatValue);
+        
+        // if step duration changed
+        if (control == 0)
+        {
+            entryDuration.floatValue = Mathf.Min(entryDuration.floatValue, duration.floatValue);
+            exitDuration.floatValue = Mathf.Min(exitDuration.floatValue, duration.floatValue - entryDuration.floatValue);
+        }
+        // if entry duration changed
+        else if (control == 1)
+        {
+            entryDuration.floatValue = Mathf.Min(entryDuration.floatValue, duration.floatValue);
+            exitDuration.floatValue = Mathf.Min(exitDuration.floatValue, duration.floatValue - entryDuration.floatValue);
+        }
+        // if exit duration changed
+        else if (control == 2)
+        {
+            exitDuration.floatValue = Mathf.Min(exitDuration.floatValue, duration.floatValue);
+            entryDuration.floatValue = Mathf.Min(entryDuration.floatValue, duration.floatValue - exitDuration.floatValue);
+        }
     }
 
     protected void DrawCommon(Rect rect, SerializedProperty property, GUIContent label)
@@ -94,7 +120,8 @@ public class AnimationStepDrawer : PropertyDrawer
         if (entryCurve.isExpanded)
         {
             EditorGUI.indentLevel++;
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight +EditorGUI.GetPropertyHeight(entryCurve));
+            var bgRect = new Rect(rect.x, rect.y, rect.width,
+                EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(entryCurve));
             EditorGUI.DrawRect(bgRect, backgroundColor);
 
             EditorGUI.BeginChangeCheck();
@@ -103,6 +130,8 @@ public class AnimationStepDrawer : PropertyDrawer
             {
                 if (property.FindPropertyRelative("lastMovedEntry") != null)
                     property.FindPropertyRelative("lastMovedEntry").intValue = 0;
+                
+                OnClipDurationChanged(1);
             }
 
             rect.y += EditorGUIUtility.singleLineHeight;
@@ -117,7 +146,8 @@ public class AnimationStepDrawer : PropertyDrawer
         if (exitCurve.isExpanded)
         {
             EditorGUI.indentLevel++;
-            var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(exitCurve));
+            var bgRect = new Rect(rect.x, rect.y, rect.width,
+                EditorGUIUtility.singleLineHeight + EditorGUI.GetPropertyHeight(exitCurve));
             EditorGUI.DrawRect(bgRect, backgroundColor);
 
             EditorGUI.BeginChangeCheck();
@@ -126,6 +156,8 @@ public class AnimationStepDrawer : PropertyDrawer
             {
                 if (property.FindPropertyRelative("lastMovedEntry") != null)
                     property.FindPropertyRelative("lastMovedEntry").intValue = 1;
+                
+                OnClipDurationChanged(2);
             }
 
             rect.y += EditorGUIUtility.singleLineHeight;
@@ -152,7 +184,7 @@ public class AnimationStepDrawer : PropertyDrawer
         if (useWave.boolValue)
         {
             EditorGUI.PropertyField(rect, waveOffsetType);
-            rect.y += EditorGUIUtility.singleLineHeight;
+            rect.y += EditorGUI.GetPropertyHeight(waveOffsetType);
 
             if (wave.isExpanded)
             {
@@ -199,12 +231,15 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (property.managedReferenceValue == null)
+        if (property.propertyType == SerializedPropertyType.ManagedReference)
         {
-            Debug.LogWarning("Had to init");
-            property.managedReferenceValue = new AnimationStep();
+            if (property.managedReferenceValue == null)
+            {
+                Debug.LogWarning("Had to init");
+                property.managedReferenceValue = new AnimationStep();
+            }
         }
-        
+
         Init(property);
         EditorGUI.BeginProperty(position, label, property);
         EditorGUI.indentLevel++;
@@ -244,12 +279,15 @@ public class AnimationStepDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        if (property.managedReferenceValue == null)
+        if (property.propertyType == SerializedPropertyType.ManagedReference)
         {
-            Debug.LogWarning("Had to init");
-            property.managedReferenceValue = new AnimationStep();
+            if (property.managedReferenceValue == null)
+            {
+                Debug.LogWarning("Had to init");
+                property.managedReferenceValue = new AnimationStep();
+            }
         }
-        
+
         Init(property);
 
         if (property.isExpanded)
