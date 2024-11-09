@@ -230,17 +230,17 @@ namespace TMPEffects.StringLibrary
 
 
         
-        public static bool TryGetAutoParameterInfo(ITypeSymbol type, out AutoParameterInfo info)
-        {
-            info = new AutoParameterInfo();
-            
-            
-
-            info.TypeSymbol = type;
-            
-            
-
-        }
+        // public static bool TryGetAutoParameterInfo(ITypeSymbol type, out AutoParameterInfo info)
+        // {
+        //     info = new AutoParameterInfo();
+        //     
+        //     
+        //
+        //     info.TypeSymbol = type;
+        //     
+        //     
+        //
+        // }
         
         
         public static bool TryGetClosestFitAutoParameterType(IFieldSymbol field, out ITypeSymbol closestType)

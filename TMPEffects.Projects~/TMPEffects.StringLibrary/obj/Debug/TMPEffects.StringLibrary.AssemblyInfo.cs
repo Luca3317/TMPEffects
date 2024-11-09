@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TMPEffects.StringLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04a257325b8a0bd6ba5f3446023985b0c10f64ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+832da0faabaa9eeec5b2a7d4e7477b25760dd8a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("TMPEffects.StringLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TMPEffects.StringLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

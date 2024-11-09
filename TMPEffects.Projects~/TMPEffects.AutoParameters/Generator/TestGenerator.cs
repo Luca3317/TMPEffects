@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
 using TMPEffects.AutoParameters.Analyzer;
 using TMPEffects.AutoParameters.TMPEffects.AutoParameters.Generator;
 using TMPEffects.StringLibrary;
@@ -9,9 +12,9 @@ using TMPEffects.StringLibrary;
 namespace TMPEffects.AutoParameters.Generator.Generator
 {
     [Generator]
-    public partial class AutoParametersGenerator : ISourceGenerator
+    public class TestGenerator : ISourceGenerator
     {
-        public const string DiagnosticId___ = "DebuggingError2";
+        public const string DiagnosticId___ = "DebuggingError3";
         private static readonly LocalizableString Title___ = "Debugerror";
         private static readonly LocalizableString MessageFormat___ = "{0}";
         private const string Category___ = "Usage";
@@ -22,7 +25,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            context.RegisterForSyntaxNotifications(() => new AttributeSyntaxReceiver("AutoParameters"));
+            context.RegisterForSyntaxNotifications(() => new AttributeSyntaxReceiver("TestAttribute"));
         }
 
         public void Execute(GeneratorExecutionContext context)
@@ -45,7 +48,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             foreach (var typeDecl in receiver.TypeDeclarations)
             {
                 SemanticModel model = context.Compilation.GetSemanticModel(typeDecl.SyntaxTree);
-                ISymbol symbol = model.GetDeclaredSymbol(typeDecl);
+                ISymbol symbol = ModelExtensions.GetDeclaredSymbol(model, typeDecl);
 
                 // Check whether attribute actually is the correct attribute
                 bool isDecorated = false;
@@ -53,7 +56,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 {
                     var attClass = attributeData.AttributeClass;
 
-                    if (attClass.ToDisplayString() == Strings.AutoParametersAttributeName)
+                    if (attClass.ToDisplayString() == "TMPEffects.TestAttribute")
                     {
                         isDecorated = true;
                         break;
@@ -65,8 +68,44 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 INamedTypeSymbol typeSymbol = symbol as INamedTypeSymbol;
 
                 try
-                {
-                    CreateAutoParameters(context, model, typeDecl, symbol);
+                {            
+                    string code = @"
+using System;
+using UnityEngine;
+using TMPEffects.SerializedCollections;
+
+namespace TMPEffects.Databases
+{{
+    public partial interface ITMPKeywordDatabase
+    {{
+        public bool TryGetDouble(string str, out double result);
+    }}
+
+
+    public partial class TMPKeywordDatabase
+    {{
+        public bool TryGetDouble(string str, out double result)
+        {{
+            return doubleKeywords.TryGetValue(str, out result);
+        }}
+
+        [SerializeField, SerializedDictionary(keyName: ""Keyword"", valueName: ""Double""))]
+        private SerializedDictionary<string, double> doubleKeywords;
+    }}
+
+    public partial class TMPSceneKeywordDatabase
+    {{
+        public bool TryGetDouble(string str, out double result)
+        {{
+            return doubleKeywords.TryGetValue(str, out result);
+        }}
+
+        [SerializeField, SerializedDictionary(keyName: ""Keyword"", valueName: ""Double""))]
+        private SerializedDictionary<string, double> doubleKeywords;
+    }}
+}}";
+                    
+                    context.AddSource($"ITMPKeywordDatabase.double.g.cs", code);
                 }
                 catch (System.Exception ex)
                 {
