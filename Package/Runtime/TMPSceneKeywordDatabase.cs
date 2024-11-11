@@ -12,8 +12,16 @@ namespace TMPEffects.Databases
 {
     public partial class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase, INotifyObjectChanged
     {
-        public event ObjectChangedEventHandler ObjectChanged;
+        public bool TryGetSomeShit(string str, out TryingToTestAttr2 result)
+        {
+            return SomeShitDict.TryGetValue(str, out result);
+        }
 
+        [SerializeField, SerializedDictionary("Keyword", "SomeShit")]
+        private SerializedDictionary<string, TryingToTestAttr2> SomeShitDict = new SerializedDictionary<string, TryingToTestAttr2>();
+        
+        public event ObjectChangedEventHandler ObjectChanged;
+        
         [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
         SerializedDictionary<string, float> floatKeywords;
 

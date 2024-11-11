@@ -137,6 +137,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Databases;
 using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.Parameters.ParameterParsing;
 
 namespace TMPEffects.Parameters
 {
@@ -207,7 +208,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        private string HandleHasParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
+        public static string HandleHasParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
             string str)
         {
             bool addHasParameter = !ImplementsHasParameter(typeSymbol, values);
@@ -258,7 +259,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        private string HandleHasNonParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
+        public static string HandleHasNonParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
             string str)
         {
             bool addHasNonParameter = !ImplementsHasNonParameter(typeSymbol, values);
@@ -311,7 +312,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        private string HandleTryGetParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
+        public static string HandleTryGetParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
             string str)
         {
             bool addTryGetParameter = !ImplementsTryGetParameter(typeSymbol, values);
@@ -335,7 +336,7 @@ namespace TMPEffects.Parameters
         {{
             value = default;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringTo{values.displayName}(parameters[parameterName], out value);
+            return StringTo{values.displayName}(parameters[parameterName], out value);
         }}
 ";
             }
@@ -359,7 +360,7 @@ namespace TMPEffects.Parameters
         {{
             value = default;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return ParameterParsing.StringTo{values.displayName}(parameters[parameterName], out value, keywords);
+            return StringTo{values.displayName}(parameters[parameterName], out value, keywords);
         }}
 ";
             }
@@ -376,7 +377,7 @@ namespace TMPEffects.Parameters
             return (type, displayName);
         }
 
-        private bool ImplementsKeywordTryGetParameter(INamedTypeSymbol symbol,
+        public static bool ImplementsKeywordTryGetParameter(INamedTypeSymbol symbol,
             (string type, string displayName) values)
         {
             return symbol.GetMembers()
@@ -394,7 +395,7 @@ namespace TMPEffects.Parameters
                                    (method.Parameters[4].Type as IArrayTypeSymbol).ElementType, stringType));
         }
 
-        private bool ImplementsTryGetParameter(INamedTypeSymbol symbol,
+        public static bool ImplementsTryGetParameter(INamedTypeSymbol symbol,
             (string type, string displayName) values)
         {
             return symbol.GetMembers()
@@ -412,7 +413,7 @@ namespace TMPEffects.Parameters
 
         private static GeneratorExecutionContext exc;
 
-        private bool ImplementsHasParameter(INamedTypeSymbol symbol, (string type, string displayName) values)
+        public static bool ImplementsHasParameter(INamedTypeSymbol symbol, (string type, string displayName) values)
         {
             return symbol.GetMembers()
                 .OfType<IMethodSymbol>()
@@ -426,7 +427,7 @@ namespace TMPEffects.Parameters
                                    (method.Parameters[2].Type as IArrayTypeSymbol).ElementType, stringType));
         }
 
-        private bool ImplementsHasKeywordParameter(INamedTypeSymbol symbol, (string type, string displayName) values)
+        public static bool ImplementsHasKeywordParameter(INamedTypeSymbol symbol, (string type, string displayName) values)
         {
             return symbol.GetMembers()
                 .OfType<IMethodSymbol>()
@@ -443,7 +444,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        private bool ImplementsHasKeywordNonParameter(INamedTypeSymbol symbol,
+        public static bool ImplementsHasKeywordNonParameter(INamedTypeSymbol symbol,
             (string type, string displayName) values)
         {
             return symbol.GetMembers()
@@ -460,7 +461,7 @@ namespace TMPEffects.Parameters
                                    (method.Parameters[3].Type as IArrayTypeSymbol).ElementType, stringType));
         }
 
-        private bool ImplementsHasNonParameter(INamedTypeSymbol symbol,
+        public static bool ImplementsHasNonParameter(INamedTypeSymbol symbol,
             (string type, string displayName) values)
         {
             return symbol.GetMembers()
@@ -476,7 +477,7 @@ namespace TMPEffects.Parameters
         }
 
 
-        private bool IsSymbolDictionaryStringVar(IParameterSymbol param, string displayName)
+        public static bool IsSymbolDictionaryStringVar(IParameterSymbol param, string displayName)
         {
             if (!(param.Type is INamedTypeSymbol type)) return false;
             if (!type.IsGenericType) return false;

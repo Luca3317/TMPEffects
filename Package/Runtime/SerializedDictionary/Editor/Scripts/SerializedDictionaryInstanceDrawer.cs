@@ -557,7 +557,7 @@ namespace TMPEffects.SerializedCollections.Editor
         }
 
         private void OnDrawElement(Rect rect, int index, bool isActive, bool isFocused)
-        {
+        { 
             const int lineLeftSpace = 2;
             const int lineWidth = 1;
             const int lineRightSpace = 12;

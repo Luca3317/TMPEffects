@@ -24,12 +24,12 @@ namespace TMPEffects.TMPAnimations.Animations
             1f, 1f, 0.2f);
 
         [SerializeField]
-        [AutoParameter("waveoffset")]
+        [AutoParameter("waveoffset", "woffset", "waveoff", "woff")]
         [Tooltip(
             "The way the offset for the wave is calculated.\n" +
             "For more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         OffsetTypePowerEnum waveOffsetType = OffsetType.XPos;
-
+        
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
             // Evaluate the wave based on time and offset

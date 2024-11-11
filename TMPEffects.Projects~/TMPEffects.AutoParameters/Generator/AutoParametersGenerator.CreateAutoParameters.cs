@@ -50,13 +50,17 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             var fullTypeName = typeSymbol.ToDisplayString();
 
             // Get all auto parameters
-            var parameters = Utility.GetAutoParameters(typeSymbol);
-            var bundles = Utility.GetAutoParameterBundles(typeSymbol);
+            // var parameters = Utility.GetAutoParameters(typeSymbol);
+            // var bundles = Utility.GetAutoParameterBundles(typeSymbol);
+            var parameters = Utility.GetAutoParametersNEW(typeSymbol);
+            var bundles = Utility.GetAutoParameterBundlesNEW(typeSymbol);
 #if DEBUG
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.Item1.ToString()))));
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.Item1.ToString()))));
+            // context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.Item1.ToString()))));
+            // context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.Item1.ToString()))));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.NameString))));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.NameString))));
 #endif
-            parameters.AddRange(bundles);
+            // parameters.AddRange(bundles);
 
             // Get auto parameters storage (or null)
             var storage = Utility.GetAutoParametersStorage(typeSymbol);

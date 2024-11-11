@@ -94,9 +94,11 @@ namespace TMPEffects.StringLibrary
         #endregion
 
         public const string GenerateParametersAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";
+            "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";       
+        public const string TMPParameterTypeName =
+            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterTypeAttribute";
 
-        private static Dictionary<string, string> TypeToDisplayString =>
+        public static Dictionary<string, string> TypeToDisplayString =>
             SupportedTypesList.GroupBy(t => t.Item1)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item1, t => t.Item2);
@@ -226,21 +228,7 @@ namespace TMPEffects.StringLibrary
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item2, t => t.Item1);
 
-
-
-
         
-        // public static bool TryGetAutoParameterInfo(ITypeSymbol type, out AutoParameterInfo info)
-        // {
-        //     info = new AutoParameterInfo();
-        //     
-        //     
-        //
-        //     info.TypeSymbol = type;
-        //     
-        //     
-        //
-        // }
         
         
         public static bool TryGetClosestFitAutoParameterType(IFieldSymbol field, out ITypeSymbol closestType)

@@ -21,7 +21,7 @@ namespace TMPEffects.CharacterData
             set => mesh.modifiers = value;
         }
 
-        internal TMPCharacterModifiers _CharacterModifiers;
+        internal TMPCharacterModifiers _CharacterModifiers; 
 
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.

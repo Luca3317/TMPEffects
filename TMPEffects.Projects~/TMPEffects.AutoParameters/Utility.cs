@@ -441,10 +441,8 @@ namespace TMPEffects.AutoParameters
                     SyntaxFactory.TypeArgumentList(
                         SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
                             SyntaxFactory.IdentifierName(
-                                
                                 arrayTypeSymbol.ElementType.ToDisplayString()
-                                
-                                )))
+                            )))
                 );
 
                 invocation = SyntaxFactory.InvocationExpression(
@@ -580,6 +578,46 @@ namespace TMPEffects.AutoParameters
 
             #region Get AutoParameters
 
+            public static List<AutoParameterInfo> GetAutoParametersNEW(INamedTypeSymbol typeSymbol)
+            {
+                List<AutoParameterInfo> autoParameters = new List<AutoParameterInfo>();
+
+                IFieldSymbol field;
+                AttributeData attrData;
+                foreach (var member in typeSymbol.GetMembers())
+                {
+                    field = member as IFieldSymbol;
+                    if (field == null) continue;
+
+                    if (TryGetAutoParameterInfo(field, out var info))
+                    {
+                        autoParameters.Add(info);
+                    }
+                }
+
+                return autoParameters;
+            }
+
+            public static List<AutoParameterBundleInfo> GetAutoParameterBundlesNEW(INamedTypeSymbol typeSymbol)
+            {
+                List<AutoParameterBundleInfo> autoParameters = new List<AutoParameterBundleInfo>();
+
+                IFieldSymbol field;
+                AttributeData attrData;
+                foreach (var member in typeSymbol.GetMembers())
+                {
+                    field = member as IFieldSymbol;
+                    if (field == null) continue;
+
+                    if (TryGetAutoParameterBundleInfo(field, out var info))
+                    {
+                        autoParameters.Add(info);
+                    }
+                }
+
+                return autoParameters;
+            }
+            
             public static List<(IFieldSymbol, AttributeData)> GetAutoParameters(INamedTypeSymbol typeSymbol)
             {
                 List<(IFieldSymbol, AttributeData)> autoParameters = new List<(IFieldSymbol, AttributeData)>();
@@ -662,6 +700,230 @@ namespace TMPEffects.AutoParameters
                 if (attrData.ConstructorArguments[0].Type.SpecialType != SpecialType.System_Boolean) return false;
                 if (attrData.ConstructorArguments.Count() < 2) throw new System.ArgumentException(nameof(attrData));
                 return (bool)attrData.ConstructorArguments[0].Value;
+            }
+
+
+            public static bool TryGetAutoParameterBundleInfo(IFieldSymbol symbol, out AutoParameterBundleInfo info)
+            {
+                info = new AutoParameterBundleInfo();
+
+                // Check if is a valid AutoParameter
+                if (!IsDecoratedAsAutoParameterBundle(symbol, out var attData)) return false;
+                if (!TryGetClosestFitAutoParamBundleType(symbol, out var fitType)) return false;
+                
+                // Parse name & aliases
+                var arguments = attData.ConstructorArguments.SelectMany(tc =>
+                        tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc })
+                    .Select(val => val.Value as string);
+
+                info.prefix = arguments.First() as string;
+                
+                info.TypeSymbol = fitType;
+                info.TypeString = fitType.ToDisplayString();
+                Strings.TypeStringToDisplayString(fitType, out info.NameString);
+                info.RawData = attData;
+
+                return true;
+            }
+            
+            public static bool TryGetAutoParameterInfo(IFieldSymbol symbol, out AutoParameterInfo info)
+            {
+                info = new AutoParameterInfo();
+
+                // Check if is a valid AutoParameter
+                if (!IsDecoratedAsAutoParameter(symbol, out var attData)) return false;
+                if (!TryGetClosestFitAutoParamType(symbol, out var fitType)) return false;
+
+                // Check whether requirement specified
+                info.specifiesRequirement = SpecifiesRequirement(attData);
+
+                int index = 0;
+                if (info.specifiesRequirement)
+                {
+                    index++;
+                    info.required = (bool)attData.ConstructorArguments[0].Value;
+                }
+                else
+                {
+                    info.required = false;
+                }
+
+
+                // Parse name & aliases
+                var arguments = attData.ConstructorArguments.Skip(index).SelectMany(tc =>
+                        tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc })
+                    .Select(val => val.Value as string);
+
+                info.AliasesWithName = arguments.ToArray();
+                info.FirstAlias = info.AliasesWithName.First();
+                info.Aliases = info.AliasesWithName.Skip(1).ToArray();
+
+                info.TypeSymbol = fitType;
+                info.TypeString = fitType.ToDisplayString();
+                Strings.TypeStringToDisplayString(fitType, out info.NameString);
+                info.RawData = attData;
+
+                return true;
+            }
+
+            private static bool IsDecoratedAsAutoParameter(IFieldSymbol symbol, out AttributeData attData)
+            {
+                var attributes = symbol.GetAttributes();
+                foreach (var attribute in attributes)
+                {
+                    var baseClass = attribute?.AttributeClass;
+                    while (baseClass != null)
+                    {
+                        if (baseClass.ToDisplayString() == Strings.AutoParameterAttributeName)
+                        {
+                            attData = attribute;
+                            return true;
+                        }
+
+                        baseClass = baseClass.BaseType;
+                    }
+                }
+
+                attData = null;
+                return false;
+            }
+
+            private static bool IsDecoratedAsAutoParameterBundle(IFieldSymbol symbol, out AttributeData attData)
+            {
+                var attributes = symbol.GetAttributes();
+                foreach (var attribute in attributes)
+                {
+                    var baseClass = attribute?.AttributeClass;
+                    while (baseClass != null)
+                    {
+                        if (baseClass.ToDisplayString() == Strings.AutoParameterBundleAttributeName)
+                        {
+                            attData = attribute;
+                            return true;
+                        }
+
+                        baseClass = baseClass.BaseType;
+                    }
+                }
+
+                attData = null;
+                return false;
+            }
+            
+            private static bool TryGetClosestFitAutoParamType(IFieldSymbol symbol, out ITypeSymbol fit)
+            {
+                fit = symbol.Type;
+
+                // Check direct type
+                if (Strings.IsValidAutoParameterType(fit))
+                    return true;
+
+                // All base types
+                var tmp = fit.BaseType;
+                while (tmp != null)
+                {
+                    if (IsValidAutoParameterType(tmp))
+                    {
+                        fit = tmp;
+                        return true;
+                    }
+
+                    tmp = tmp.BaseType;
+                }
+
+                // All interfaces
+                foreach (var i in fit.AllInterfaces)
+                {
+                    if (Strings.IsValidAutoParameterType(i))
+                    {
+                        fit = i;
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            private static bool TryGetClosestFitAutoParamBundleType(IFieldSymbol symbol, out ITypeSymbol fit)
+            {
+                fit = symbol.Type;
+
+                // Check direct type
+                if (Strings.IsValidAutoParameterBundleType(fit))
+                    return true;
+
+                // All base types
+                var tmp = fit.BaseType;
+                while (tmp != null)
+                {
+                    if (IsValidAutoParameterBundleType(tmp))
+                    {
+                        fit = tmp;
+                        return true;
+                    }
+
+                    tmp = tmp.BaseType;
+                }
+
+                // All interfaces
+                foreach (var i in fit.AllInterfaces)
+                {
+                    if (Strings.IsValidAutoParameterBundleType(i))
+                    {
+                        fit = i;
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            public struct AutoParameterInfo
+            {
+                public ITypeSymbol TypeSymbol;
+
+                public string TypeString;
+                public string NameString;
+
+                public bool specifiesRequirement;
+                public bool required;
+
+                public string FirstAlias;
+                public string[] Aliases;
+                public string[] AliasesWithName;
+                public AttributeData RawData;
+            }
+
+            public struct AutoParameterBundleInfo
+            {
+                public ITypeSymbol TypeSymbol;
+
+                public string TypeString;
+                public string NameString;
+
+                public string prefix;
+
+                public AttributeData RawData;
+            }
+
+            [Flags]
+            public enum AutoParametersDecoration : byte
+            {
+                None = 0,
+                AutoParameter = 1,
+                AutoParameterBundle = 1 << 1,
+                All = byte.MaxValue
+
+                // TODO Put other stuff in here to do to be more universally reusable?
+                // AutoParameterStorage = 1 << 2,
+                // AutoParameters = 1 << 3,
+            }
+
+
+            public static bool IsValidAutoParameter(IFieldSymbol fieldSymbol, out AttributeData attData)
+            {
+                attData = IsValidAutoParameter(fieldSymbol);
+                return attData != null;
             }
 
             // Check whether the given field is a valid AutoParameter
