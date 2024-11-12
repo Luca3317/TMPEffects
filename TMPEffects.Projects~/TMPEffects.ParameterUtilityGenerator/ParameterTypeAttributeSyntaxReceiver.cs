@@ -17,7 +17,7 @@ namespace TMPEffects.AutoParameters.Generator
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
         {
             TypeDeclarationSyntax typeDecl;
-            if ((typeDecl = syntaxNode as TypeDeclarationSyntax) == null || syntaxNode is InterfaceDeclarationSyntax)
+            if ((typeDecl = syntaxNode as TypeDeclarationSyntax) == null)
                 return;
 
             if (typeDecl.AttributeLists.Count == 0)

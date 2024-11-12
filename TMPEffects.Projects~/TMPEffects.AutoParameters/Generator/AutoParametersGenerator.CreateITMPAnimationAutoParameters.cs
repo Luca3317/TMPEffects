@@ -11,7 +11,8 @@ namespace TMPEffects.AutoParameters.Generator.Generator
     public partial class AutoParametersGenerator
     {
         private MethodDeclarationSyntax CreateAnimationSetParameters(INamedTypeSymbol symbol, string storageName,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters)
+            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters,
+            List<Utility.AutoParameterBundleInfo> bundles)
         {
             // Prepare the parameters
             var paramList = SyntaxFactory.ParameterList()
@@ -43,7 +44,14 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             foreach (var param in parameters)
             {
-                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param.Item1, param.Item2,
+                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param,
+                    Strings.IAnimationContextKeywordDatabasePath);
+                if (setParameterSyntax != null) statements.Add(setParameterSyntax);
+            }
+
+            foreach (var bundle in bundles)
+            {
+                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", bundle,
                     Strings.IAnimationContextKeywordDatabasePath);
                 if (setParameterSyntax != null) statements.Add(setParameterSyntax);
             }
@@ -90,7 +98,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
         }
 
         private MethodDeclarationSyntax CreateGetNewCustomData(INamedTypeSymbol symbol, string storageSymbol,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters)
+            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters, List<Utility.AutoParameterBundleInfo> bundles)
         {
             // Prepare the parameters
             var paramList = SyntaxFactory.ParameterList()
@@ -109,7 +117,11 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             foreach (var p in parameters)
             {
-                statements.Add(SyntaxFactory.ParseStatement($"d.{p.Item1.Name} = this.{p.Item1.Name};"));
+                statements.Add(SyntaxFactory.ParseStatement($"d.{p.FieldName} = this.{p.FieldName};"));
+            }
+            foreach (var b in bundles)
+            {
+                statements.Add(SyntaxFactory.ParseStatement($"d.{b.FieldName} = this.{b.FieldName};"));
             }
 
             var hookCandidates = symbol.GetMembers().Where(member => member.Kind == SymbolKind.Method)

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using TMPEffects.AutoParameters.Analyzer;
-using TMPEffects.AutoParameters.TMPEffects.AutoParameters.Generator;
 using TMPEffects.StringLibrary;
 
 namespace TMPEffects.AutoParameters.Generator.Generator

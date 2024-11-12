@@ -9,6 +9,8 @@ namespace TMPEffects.StringLibrary
     {
         public const string DefaultStorageName = "AutoParametersData";
 
+        public const string ITMPKeywordDatabaseName = "TMPEffects.Databases.ITMPKeywordDatabase";
+
         public const string IAnimatorContextKeywordDatabasePath = ".KeywordDatabase";
         public const string IAnimationContextKeywordDatabasePath = ".AnimatorContext.KeywordDatabase";
 
@@ -95,109 +97,13 @@ namespace TMPEffects.StringLibrary
 
         public const string GenerateParametersAttributeName =
             "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";       
-        public const string TMPParameterTypeName =
+        public const string TMPParameterTypeAttributeName =
             "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterTypeAttribute";
 
         public static Dictionary<string, string> TypeToDisplayString =>
             SupportedTypesList.GroupBy(t => t.Item1)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item1, t => t.Item2);
-
-        public static string GetClosestTypeFit(ITypeSymbol type)
-        {
-            if (type.SpecialType == SpecialType.System_String)
-            {
-                return "string";
-            }
-
-            if (type.SpecialType == SpecialType.System_Array)
-            {
-                return type.ToDisplayString();
-            }
-
-            var dict = TypeToDisplayString;
-            if (dict.TryGetValue(type.ToDisplayString(), out var typeName))
-            {
-                return type.ToDisplayString();
-            }
-
-            if (ValidAutoParameterBundleTypes.Contains(type.ToDisplayString()))
-            {
-                return type.ToDisplayString();
-            }
-
-            foreach (var interf in type.AllInterfaces)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
-                {
-                    return interf.ToDisplayString();
-                }
-            }
-
-            var curr = type.BaseType;
-            while (curr != null)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
-                {
-                    return curr.ToDisplayString();
-                }
-
-                curr = curr.BaseType;
-            }
-
-            return null;
-        }
-
-        public static bool TypeToStringForStorage(ITypeSymbol type, out string displayString)
-        {
-            if (type.SpecialType == SpecialType.System_String)
-            {
-                displayString = "string";
-                return true;
-            }
-
-            if (type.TypeKind == TypeKind.Array)
-            {
-                displayString = (type as IArrayTypeSymbol).ElementType.ToDisplayString() + "[]";
-                return true;
-            }
-
-            var dict = TypeToDisplayString;
-            if (dict.TryGetValue(type.ToDisplayString(), out displayString))
-            {
-                displayString = type.ToDisplayString();
-                return true;
-            }
-
-            if (ValidAutoParameterBundleTypes.Contains(type.ToDisplayString()))
-            {
-                displayString = type.ToDisplayString();
-                return true;
-            }
-
-            foreach (var interf in type.AllInterfaces)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
-                {
-                    displayString = interf.ToDisplayString();
-                    return true;
-                }
-            }
-
-            var curr = type.BaseType;
-            while (curr != null)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
-                {
-                    displayString = curr.ToDisplayString();
-                    return true;
-                }
-
-                curr = curr.BaseType;
-            }
-
-            return false;
-        }
 
         public static bool TypeStringToDisplayString(ITypeSymbol type, out string displayString)
         {
@@ -227,8 +133,6 @@ namespace TMPEffects.StringLibrary
             SupportedTypesList.GroupBy(t => t.Item2)
                 .Select(t => t.First())
                 .ToDictionary(t => t.Item2, t => t.Item1);
-
-        
         
         
         public static bool TryGetClosestFitAutoParameterType(IFieldSymbol field, out ITypeSymbol closestType)
@@ -286,33 +190,6 @@ namespace TMPEffects.StringLibrary
             return false;
         }
         
-        
-        public static bool IsValidAutoParameterType(ITypeSymbol type)
-        {
-            if (type is IArrayTypeSymbol arr)
-            {
-                type = arr.ElementType;
-            }
-            
-            if (ValidAutoParameterTypes.Contains(type.ToDisplayString()))
-                return true;
-
-            foreach (var interf in type.AllInterfaces)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(interf.ToDisplayString()))
-                    return true;
-            }
-
-            var curr = type;
-            while (curr != null)
-            {
-                if (ValidAutoParameterBaseTypes.Contains(curr.ToDisplayString()))
-                    return true;
-                curr = curr.BaseType;
-            }
-
-            return false;
-        }
         
         public static AttributeData AutoParameterDecorations(ISymbol symbol)
         {
@@ -374,12 +251,6 @@ namespace TMPEffects.StringLibrary
             // AutoParameters = 1 << 3,
         }
 
-        public static bool IsValidAutoParameterBundleType(ITypeSymbol type)
-        {
-            return ValidAutoParameterBundleTypes.Contains(type.ToDisplayString());
-        }
-
-
         // TypedVector3/2 should use Vector3/2 keywords, this is a quick workaround for
         // how ParameterUtilityGenerator decided keywordtype
         // Changed tvectors to be handled in special case now; still keeping this for vec2
@@ -397,7 +268,7 @@ namespace TMPEffects.StringLibrary
             ("int", "Int"),
             ("bool", "Bool"),
 
-            (ITMPOffsetProviderName, "OffsetProvider"),
+            // (ITMPOffsetProviderName, "OffsetProvider"),
             (UnityObjectName, "UnityObject"),
 
             (TypedVector3Name, "TypedVector3"),
@@ -412,7 +283,7 @@ namespace TMPEffects.StringLibrary
         };
 
         // Used to check whether a field is a valid auto parameter (and nothing more)
-        private static readonly List<string> ValidAutoParameterTypes = new List<string>()
+        public static readonly List<string> ValidAutoParameterTypes = new List<string>()
         {
             "float",
             "int",
@@ -424,15 +295,11 @@ namespace TMPEffects.StringLibrary
             Vector2Name,
             ColorName,
             AnimationCurveName,
-        };
-
-        private static readonly List<string> ValidAutoParameterBaseTypes = new List<string>()
-        {
-            ITMPOffsetProviderName,
+            // ITMPOffsetProviderName,
             UnityObjectName
         };
 
-        private static readonly List<string> ValidAutoParameterBundleTypes = new List<string>()
+        public static readonly List<string> ValidAutoParameterBundleTypes = new List<string>()
         {
             WaveName
         };

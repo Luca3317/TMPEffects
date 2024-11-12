@@ -16,16 +16,23 @@ namespace TMPEffects.Parameters
         {
             get
             {
-                if (globalKeywordDatabase == null)
-                {
+                // TODO How to make sure this is fully up to date while still caching?
+                // Maybe listen to onvalidate in editor
+                // No, cause that wont update when reassigning to new instance in settings
+                // Hmmm
+                // I will generally want a better solution than this so figure that out once
+                // switched
+                
+                // if (globalKeywordDatabase == null)
+                // {
                     var settings = Resources.Load<TMPEffectsSettings>("TMPEffectsSettings_Project");
                     globalKeywordDatabase = settings.GlobalKeywordDatabase;
-                }
+                // }
 
                 return globalKeywordDatabase;
             }
         }
-
+        
         private static TMPKeywordDatabase globalKeywordDatabase = null;
 
         private static string TrimIfNeeded(string text)
@@ -385,19 +392,19 @@ namespace TMPEffects.Parameters
         }
 
         
-        public static bool StringToOffsetProvider(string str, out ParameterTypes.ITMPOffsetProvider result,
-            ITMPKeywordDatabase keywords = null)
-        {
-            result = default;
-            
-            str = TrimIfNeeded(str);
-            if (str.Length == 0) return false;
-
-            if (keywords != null && keywords.TryGetOffsetType(str, out result))
-                return true;
-            
-            return GlobalKeywordDatabase.TryGetOffsetType(str, out result);
-        }
+        // public static bool StringToOffsetProvider(string str, out ITMPOffsetProvider result,
+        //     ITMPKeywordDatabase keywords = null)
+        // {
+        //     result = default;
+        //     
+        //     str = TrimIfNeeded(str);
+        //     if (str.Length == 0) return false;
+        //
+        //     if (keywords != null && keywords.TryGetOffsetType(str, out result))
+        //         return true;
+        //     
+        //     return GlobalKeywordDatabase.TryGetOffsetType(str, out result);
+        // }
         
         public static bool StringToColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {

@@ -12,7 +12,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
     public partial class AutoParametersGenerator
     {
         private MethodDeclarationSyntax CreateCommandSetParameters(INamedTypeSymbol symbol, string storageName,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters)
+            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters, List<Utility.AutoParameterBundleInfo> bundles)
         {
             // Prepare the parameters
             var paramList = SyntaxFactory.ParameterList()
@@ -40,11 +40,17 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             foreach (var param in parameters)
             {
-                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param.Item1, param.Item2,
+                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param,
                     Strings.ICommandContexKeywordDatabasePath);
                 if (setParameterSyntax != null) statements.Add(setParameterSyntax);
             }
-
+            
+            foreach (var bundle in bundles)
+            {
+                var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", bundle,
+                    Strings.ICommandContexKeywordDatabasePath);
+                if (setParameterSyntax != null) statements.Add(setParameterSyntax);
+            }
 
             var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
             var hookCandidates = symbol.GetMembers().Where(member => member.Kind == SymbolKind.Method)

@@ -12,14 +12,6 @@ namespace TMPEffects.Databases
 {
     public partial class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase, INotifyObjectChanged
     {
-        public bool TryGetSomeShit(string str, out TryingToTestAttr2 result)
-        {
-            return SomeShitDict.TryGetValue(str, out result);
-        }
-
-        [SerializeField, SerializedDictionary("Keyword", "SomeShit")]
-        private SerializedDictionary<string, TryingToTestAttr2> SomeShitDict = new SerializedDictionary<string, TryingToTestAttr2>();
-        
         public event ObjectChangedEventHandler ObjectChanged;
         
         [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
@@ -85,7 +77,7 @@ namespace TMPEffects.Databases
             return animationCurveKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetOffsetType(string str, out ParameterTypes.ITMPOffsetProvider result)
+        public bool TryGetOffsetType(string str, out ITMPOffsetProvider result)
         {
             bool success = offsetTypeKeywords.TryGetValue(str, out var offset);
             result = offset;
@@ -97,17 +89,17 @@ namespace TMPEffects.Databases
             return unityObjectKeywords.TryGetValue(str, out result);
         }
 
-        protected virtual void OnValidate()
+        private void OnValidate()
         {
             RaiseDatabaseChanged();
         }
 
-        protected virtual void OnDestroy()
+        private void OnDestroy()
         {
             RaiseDatabaseChanged();
         }
 
-        protected void RaiseDatabaseChanged()
+        private void RaiseDatabaseChanged()
         {
             ObjectChanged?.Invoke(this);
         }

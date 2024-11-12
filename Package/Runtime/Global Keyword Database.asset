@@ -2770,80 +2770,131 @@ MonoBehaviour:
         enumValue: 0
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: sindex
       Value:
         enumValue: 0
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: segmentindex
       Value:
         enumValue: 0
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: idx
       Value:
         enumValue: 5
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: index
       Value:
         enumValue: 5
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: word
       Value:
         enumValue: 35
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: wordidx
       Value:
         enumValue: 35
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: wordindex
       Value:
         enumValue: 35
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: line
       Value:
         enumValue: 40
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: linenumber
       Value:
         enumValue: 40
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: base
       Value:
         enumValue: 45
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: baseline
       Value:
         enumValue: 45
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: x
       Value:
         enumValue: 10
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: xpos
       Value:
         enumValue: 10
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: y
       Value:
         enumValue: 15
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
     - Key: ypos
       Value:
         enumValue: 15
         customValue: {fileID: 0}
         useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
   unityObjectKeywords:
     _serializedList: []
+  SomeShitDict:
+    _serializedList:
+    - Key: 

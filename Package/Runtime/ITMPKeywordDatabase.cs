@@ -23,7 +23,6 @@ namespace TMPEffects.Databases
         public bool TryGetVector3(string str, out Vector3 result);
         public bool TryGetAnchor(string str, out Vector2 result);
         public bool TryGetAnimCurve(string str, out AnimationCurve result);
-        public bool TryGetOffsetType(string str, out ParameterTypes.ITMPOffsetProvider result);
         public bool TryGetUnityObject(string str, out UnityEngine.Object obj);
     }
 }

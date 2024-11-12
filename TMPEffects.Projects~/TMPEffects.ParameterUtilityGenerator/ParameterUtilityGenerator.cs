@@ -148,9 +148,9 @@ namespace TMPEffects.Parameters
 
             try
             {
-                code = GetHasParameterDelegate(values.type).Invoke(typeSymbol, values, code);
+                code = HandleHasParameter(typeSymbol, values, code);
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
                     "fuck 0 " + e.Message));
@@ -159,9 +159,9 @@ namespace TMPEffects.Parameters
 
             try
             {
-                code = GetHasNonParameterDelegate(values.type).Invoke(typeSymbol, values, code);
+                code = HandleHasNonParameter(typeSymbol, values, code);
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
                     "fuck 1 " + e.Message));
@@ -170,9 +170,9 @@ namespace TMPEffects.Parameters
 
             try
             {
-                code = GetTryGetParameterDelegate(values.type).Invoke(typeSymbol, values, code);
+                code = HandleTryGetParameter(typeSymbol, values, code);
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
                     "fuck 2 " + e.Message));
@@ -181,38 +181,38 @@ namespace TMPEffects.Parameters
 
             code += @"
     }
-}"; 
+}";
 
             // Prepare and add source
             var source = SourceText.From(code, Encoding.UTF8);
             context.AddSource($"{typeName}.{values.displayName}.g.cs", source);
         }
 
-        private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasParameterDelegate(
-            string type)
-        {
-            return HandleHasParameter;
-        }
+        // private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasParameterDelegate(
+        //     string type)
+        // {
+        //     return HandleHasParameter;
+        // }
 
-        private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasNonParameterDelegate(
-            string type)
-        {
-            return HandleHasNonParameter;
-        }
-
-
-        private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetTryGetParameterDelegate(
-            string type)
-        {
-            return HandleTryGetParameter;
-        }
+        // private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetHasNonParameterDelegate(
+        //     string type)
+        // {
+        //     return HandleHasNonParameter;
+        // }
+        //
+        //
+        // private Func<INamedTypeSymbol, (string type, string displayName), string, string> GetTryGetParameterDelegate(
+        //     string type)
+        // {
+        //     return HandleTryGetParameter;
+        // }
 
 
         public static string HandleHasParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
-            string str)
+            string str, bool addHasParameter = true, bool addHasKeywordParameter = true)
         {
-            bool addHasParameter = !ImplementsHasParameter(typeSymbol, values);
-            bool addHasKeywordParameter = !ImplementsHasKeywordParameter(typeSymbol, values);
+            addHasParameter = addHasParameter && !ImplementsHasParameter(typeSymbol, values);
+            addHasKeywordParameter = addHasKeywordParameter && !ImplementsHasKeywordParameter(typeSymbol, values);
 
             if (addHasParameter)
             {
@@ -229,7 +229,7 @@ namespace TMPEffects.Parameters
         /// <returns>true if there is a well-defined parameter that is of type {name}, false otherwise.</returns>
         public static bool Has{values.displayName}Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {{
-            return TryGet{values.displayName}Parameter(out {fullName} _, parameters, name, aliases);
+            return TryGet{values.displayName}Parameter(out {fullName} _, parameters, null, name, aliases);
         }}
 ";
             }
@@ -259,11 +259,13 @@ namespace TMPEffects.Parameters
         }
 
 
-        public static string HandleHasNonParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
-            string str)
+        public static string HandleHasNonParameter(INamedTypeSymbol typeSymbol,
+            (string type, string displayName) values,
+            string str, bool addHasNonParameter = true, bool addHasKeywordNonParameter = true)
         {
-            bool addHasNonParameter = !ImplementsHasNonParameter(typeSymbol, values);
-            bool addHasKeywordNonParameter = !ImplementsHasKeywordNonParameter(typeSymbol, values);
+            addHasNonParameter = addHasNonParameter && !ImplementsHasNonParameter(typeSymbol, values);
+            addHasKeywordNonParameter =
+                addHasKeywordNonParameter && !ImplementsHasKeywordNonParameter(typeSymbol, values);
 
             if (addHasNonParameter)
             {
@@ -281,7 +283,7 @@ namespace TMPEffects.Parameters
         public static bool HasNon{values.displayName}Parameter(IDictionary<string, string> parameters, string name, params string[] aliases)
         {{
             if (!ParameterDefined(parameters, name, aliases)) return false;
-            return !TryGet{values.displayName}Parameter(out {fullName} _, parameters, name, aliases);
+            return !TryGet{values.displayName}Parameter(out {fullName} _, parameters, null, name, aliases);
         }}
 ";
             }
@@ -312,11 +314,12 @@ namespace TMPEffects.Parameters
         }
 
 
-        public static string HandleTryGetParameter(INamedTypeSymbol typeSymbol, (string type, string displayName) values,
-            string str)
+        public static string HandleTryGetParameter(INamedTypeSymbol typeSymbol,
+            (string type, string displayName) values,
+            string str, bool addTryGetParameter = true, bool addKeywordTryGetParameter = true)
         {
-            bool addTryGetParameter = !ImplementsTryGetParameter(typeSymbol, values);
-            bool addKeywordTryGetParameter = !ImplementsKeywordTryGetParameter(typeSymbol, values);
+            addTryGetParameter = addTryGetParameter && !ImplementsTryGetParameter(typeSymbol, values);
+            addKeywordTryGetParameter = addKeywordTryGetParameter && !ImplementsKeywordTryGetParameter(typeSymbol, values);
 
             if (addTryGetParameter)
             {
@@ -336,7 +339,7 @@ namespace TMPEffects.Parameters
         {{
             value = default;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            return StringTo{values.displayName}(parameters[parameterName], out value);
+            return StringTo{values.displayName}(parameters[parameterName], out value, null);
         }}
 ";
             }
@@ -388,7 +391,8 @@ namespace TMPEffects.Parameters
                 .Where(method => method.Parameters[0].Type.ToDisplayString() == values.type)
                 .Where(method => IsSymbolIDictionaryStringString(method.Parameters[1]))
                 .Where(method =>
-                    IsSymbolDictionaryStringVar(method.Parameters[2], Strings.ReturnTypeToKeywordType(values.displayName)))
+                    IsSymbolDictionaryStringVar(method.Parameters[2],
+                        Strings.ReturnTypeToKeywordType(values.displayName)))
                 .Where(method => SymbolEqualityComparer.Default.Equals(method.Parameters[3].Type, stringType))
                 .Any(method => method.Parameters[4].IsParams &&
                                SymbolEqualityComparer.Default.Equals(
@@ -427,7 +431,8 @@ namespace TMPEffects.Parameters
                                    (method.Parameters[2].Type as IArrayTypeSymbol).ElementType, stringType));
         }
 
-        public static bool ImplementsHasKeywordParameter(INamedTypeSymbol symbol, (string type, string displayName) values)
+        public static bool ImplementsHasKeywordParameter(INamedTypeSymbol symbol,
+            (string type, string displayName) values)
         {
             return symbol.GetMembers()
                 .OfType<IMethodSymbol>()
@@ -436,7 +441,8 @@ namespace TMPEffects.Parameters
                 .Where(method => method.Parameters.Length == 4)
                 .Where(method => IsSymbolIDictionaryStringString(method.Parameters[0]))
                 .Where(method =>
-                    IsSymbolDictionaryStringVar(method.Parameters[1], Strings.ReturnTypeToKeywordType(values.displayName)))
+                    IsSymbolDictionaryStringVar(method.Parameters[1],
+                        Strings.ReturnTypeToKeywordType(values.displayName)))
                 .Where(method => SymbolEqualityComparer.Default.Equals(method.Parameters[2].Type, stringType))
                 .Any(method => method.Parameters[3].IsParams &&
                                SymbolEqualityComparer.Default.Equals(
@@ -454,7 +460,8 @@ namespace TMPEffects.Parameters
                 .Where(method => method.Parameters.Length == 4)
                 .Where(method => IsSymbolIDictionaryStringString(method.Parameters[0]))
                 .Where(method =>
-                    IsSymbolDictionaryStringVar(method.Parameters[1], Strings.ReturnTypeToKeywordType(values.displayName)))
+                    IsSymbolDictionaryStringVar(method.Parameters[1],
+                        Strings.ReturnTypeToKeywordType(values.displayName)))
                 .Where(method => SymbolEqualityComparer.Default.Equals(method.Parameters[2].Type, stringType))
                 .Any(method => method.Parameters[3].IsParams &&
                                SymbolEqualityComparer.Default.Equals(

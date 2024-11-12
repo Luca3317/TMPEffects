@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
@@ -50,23 +51,28 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             var fullTypeName = typeSymbol.ToDisplayString();
 
             // Get all auto parameters
-            // var parameters = Utility.GetAutoParameters(typeSymbol);
-            // var bundles = Utility.GetAutoParameterBundles(typeSymbol);
             var parameters = Utility.GetAutoParametersNEW(typeSymbol);
+            
+            foreach (var par in parameters)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                    "PARAMETER: " + par.FieldName + " : " + par.TypeString + " " + par.DisplayNameString));
+            }
+            
             var bundles = Utility.GetAutoParameterBundlesNEW(typeSymbol);
 #if DEBUG
-            // context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.Item1.ToString()))));
-            // context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.Item1.ToString()))));
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameters: " + string.Join(", ", parameters.Select(n => n.NameString))));
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.NameString))));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "AutoParameters: " + string.Join(", ", parameters.Select(n => n.DisplayNameString))));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "AutoParameter Bundles: " + string.Join(", ", bundles.Select(n => n.DisplayNameString))));
 #endif
-            // parameters.AddRange(bundles);
 
             // Get auto parameters storage (or null)
             var storage = Utility.GetAutoParametersStorage(typeSymbol);
-            
+
 #if DEBUG
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "Storage: " + (storage == null ? "null" : storage.Name)));
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
+                "Storage: " + (storage == null ? "null" : storage.Name)));
             context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0], "Got everything successfully"));
 #endif
 
@@ -92,75 +98,9 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 "Typedeclaration prepared: " + (typeDecl != null)));
 #endif
 
-            // Add storage to new type
-            ClassDeclarationSyntax storageDecl;
-            if (storage == null)
-            {
-                storageDecl = SyntaxFactory.ClassDeclaration(Strings.DefaultStorageName)
-                    .AddModifiers(SyntaxFactory.Token(SyntaxKind.PrivateKeyword))
-                    .AddModifiers(SyntaxFactory.Token(SyntaxKind.PartialKeyword));
-
-                foreach (var p in parameters)
-                {
-                    if (!Strings.TypeToStringForStorage(p.Item1.Type, out string displayString))
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
-                            "Failed at creating storage for type " + p.Item1.Type.ToDisplayString() +  "SpecialType " + p.Item1.Type.SpecialType));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-
-                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
-                        SyntaxFactory.VariableDeclaration(
-                            SyntaxFactory.IdentifierName(displayString),
-                            SyntaxFactory.SingletonSeparatedList(
-                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(p.Item1.Name))
-                            )
-                        )
-                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
-
-                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
-                }
-
-                typeDecl = typeDecl.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(storageDecl));
-            }
-            else
-            {
-                storageDecl = storage.DeclaringSyntaxReferences[0].GetSyntax() as ClassDeclarationSyntax;
-
-                storageDecl = SyntaxFactory.ClassDeclaration(storageDecl.Identifier)
-                    .WithModifiers(storageDecl.Modifiers).WithTypeParameterList(storageDecl.TypeParameterList)
-                    .WithBaseList(storageDecl.BaseList).WithConstraintClauses(storageDecl.ConstraintClauses);
-
-                foreach (var p in parameters)
-                {
-                    if (!Strings.TypeToStringForStorage(p.Item1.Type, out string displayString))
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
-                            "Failed at extending storage"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-
-                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
-                        SyntaxFactory.VariableDeclaration(
-                            SyntaxFactory.IdentifierName(displayString),
-                            SyntaxFactory.SingletonSeparatedList(
-                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(p.Item1.Name))
-                            )
-                        )
-                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
-
-                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
-                }
-
-                typeDecl = typeDecl.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(storageDecl));
-            }
+            var storageDecl = CreateStorage(ref typeDecl, parameters, bundles, storage);
 
             List<MethodDeclarationSyntax> methods = new List<MethodDeclarationSyntax>();
-
 #if DEBUG
             context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
                 "Successfully created storage"));
@@ -168,7 +108,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             if (implementsITMPAnimation)
             {
-                methods.AddRange(CreateITMPAnimationSpecific(typeSymbol, context, parameters, storageDecl));
+                methods.AddRange(CreateITMPAnimationSpecific(typeSymbol, context, parameters, bundles, storageDecl));
 #if DEBUG
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
                     "Successfully created animation specific"));
@@ -177,7 +117,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             if (implementsITMPCommand)
             {
-                methods.AddRange(CreateITMPCommandSpecific(typeSymbol, context, parameters, storageDecl));
+                methods.AddRange(CreateITMPCommandSpecific(typeSymbol, context, parameters, bundles, storageDecl));
 #if DEBUG
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
                     "Successfully created command specific"));
@@ -207,20 +147,107 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             context.AddSource($"{fullTypeName}.autoparams.g.cs", source);
         }
 
-        private IEnumerable<MethodDeclarationSyntax> CreateITMPAnimationSpecific(INamedTypeSymbol typeSymbol,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters,
+
+        private ClassDeclarationSyntax CreateStorage(ref TypeDeclarationSyntax typeDecl,
+            List<Utility.AutoParameterInfo> parameters,
+            List<Utility.AutoParameterBundleInfo> bundles, INamedTypeSymbol storage)
+        {
+            // Add storage to new type
+            ClassDeclarationSyntax storageDecl;
+            if (storage == null)
+            {
+                storageDecl = SyntaxFactory.ClassDeclaration(Strings.DefaultStorageName)
+                    .AddModifiers(SyntaxFactory.Token(SyntaxKind.PrivateKeyword))
+                    .AddModifiers(SyntaxFactory.Token(SyntaxKind.PartialKeyword));
+
+                foreach (var p in parameters)
+                {
+                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
+                        SyntaxFactory.VariableDeclaration(
+                            SyntaxFactory.IdentifierName(p.TypeString + (p.IsArray ? "[]" : "")),
+                            SyntaxFactory.SingletonSeparatedList(
+                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(p.FieldName))
+                            )
+                        )
+                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
+
+                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
+                }
+
+                foreach (var b in bundles)
+                {
+                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
+                        SyntaxFactory.VariableDeclaration(
+                            SyntaxFactory.IdentifierName(b.TypeString),
+                            SyntaxFactory.SingletonSeparatedList(
+                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(b.FieldName))
+                            )
+                        )
+                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
+
+                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
+                }
+
+                typeDecl = typeDecl.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(storageDecl));
+            }
+            else
+            {
+                storageDecl = storage.DeclaringSyntaxReferences[0].GetSyntax() as ClassDeclarationSyntax;
+
+                storageDecl = SyntaxFactory.ClassDeclaration(storageDecl.Identifier)
+                    .WithModifiers(storageDecl.Modifiers).WithTypeParameterList(storageDecl.TypeParameterList)
+                    .WithBaseList(storageDecl.BaseList).WithConstraintClauses(storageDecl.ConstraintClauses);
+
+                foreach (var p in parameters)
+                {
+                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
+                        SyntaxFactory.VariableDeclaration(
+                            SyntaxFactory.IdentifierName(p.TypeString),
+                            SyntaxFactory.SingletonSeparatedList(
+                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(p.FieldName))
+                            )
+                        )
+                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
+
+                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
+                }
+
+                foreach (var b in bundles)
+                {
+                    var fieldDeclaration = SyntaxFactory.FieldDeclaration(
+                        SyntaxFactory.VariableDeclaration(
+                            SyntaxFactory.IdentifierName(b.TypeString),
+                            SyntaxFactory.SingletonSeparatedList(
+                                SyntaxFactory.VariableDeclarator(SyntaxFactory.Identifier(b.FieldName))
+                            )
+                        )
+                    ).AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
+
+                    storageDecl = storageDecl.AddMembers(fieldDeclaration);
+                }
+
+                typeDecl = typeDecl.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(storageDecl));
+            }
+
+            return storageDecl;
+        }
+
+
+        private IEnumerable<MethodDeclarationSyntax> CreateITMPAnimationSpecific(
+            INamedTypeSymbol typeSymbol, GeneratorExecutionContext context,
+            List<Utility.AutoParameterInfo> parameters, List<Utility.AutoParameterBundleInfo> bundles,
             ClassDeclarationSyntax storageDecl)
         {
             // Get ValidateParameters syntax
             var validateParameters =
-                CreateValidateParameters(typeSymbol, context, parameters, Strings.IAnimatorContextName,
+                CreateValidateParameters(typeSymbol, context, parameters, bundles, Strings.IAnimatorContextName,
                     Strings.IAnimatorContextKeywordDatabasePath);
 
             var setParameters =
-                CreateAnimationSetParameters(typeSymbol, storageDecl.Identifier.Text, context, parameters);
+                CreateAnimationSetParameters(typeSymbol, storageDecl.Identifier.Text, context, parameters, bundles);
 
             var getNewCustomData =
-                CreateGetNewCustomData(typeSymbol, storageDecl.Identifier.Text, context, parameters);
+                CreateGetNewCustomData(typeSymbol, storageDecl.Identifier.Text, context, parameters, bundles);
 
             var animate = CreateAnimate(storageDecl.Identifier.Text);
 
@@ -236,16 +263,17 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             };
         }
 
-        private IEnumerable<MethodDeclarationSyntax> CreateITMPCommandSpecific(INamedTypeSymbol typeSymbol,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters,
+        private IEnumerable<MethodDeclarationSyntax> CreateITMPCommandSpecific(
+            INamedTypeSymbol typeSymbol, GeneratorExecutionContext context,
+            List<Utility.AutoParameterInfo> parameters, List<Utility.AutoParameterBundleInfo> bundles,
             ClassDeclarationSyntax storageDecl)
         {
             // Get ValidateParameters syntax
-            var validateParameters = CreateValidateParameters(typeSymbol, context, parameters,
+            var validateParameters = CreateValidateParameters(typeSymbol, context, parameters, bundles,
                 Strings.IWriterContextName, Strings.IWriterContexKeywordDatabasePath);
 
             var setParameters =
-                CreateCommandSetParameters(typeSymbol, storageDecl.Identifier.Text, context, parameters);
+                CreateCommandSetParameters(typeSymbol, storageDecl.Identifier.Text, context, parameters, bundles);
 
             var execute = CreateExecute(storageDecl.Identifier.Text);
             var partialExecute = CreatePartialExecute(storageDecl.Identifier.Text);
@@ -261,7 +289,8 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
         // Works for both Commands and Animations
         public static MethodDeclarationSyntax CreateValidateParameters(INamedTypeSymbol symbol,
-            GeneratorExecutionContext context, List<(IFieldSymbol, AttributeData)> parameters,
+            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters,
+            List<Utility.AutoParameterBundleInfo> bundles,
             string contextName, string keywordsPath)
         {
             // Prepare the parameters
@@ -278,21 +307,6 @@ namespace TMPEffects.AutoParameters.Generator.Generator
 
             // Prepare all statements
             var statements = new List<StatementSyntax>();
-
-            // Check if there are any required parameters
-            bool hasRequired = false;
-            foreach (var param in parameters)
-            {
-                if (param.Item2.ConstructorArguments.Length == 0)
-                    continue;
-
-                var arg0 = param.Item2.ConstructorArguments[0];
-                if (arg0.Type.SpecialType == SpecialType.System_Boolean && (bool)arg0.Value)
-                {
-                    hasRequired = true;
-                    break;
-                }
-            }
 
             // Get all hookCandidates (potential hook methods)
             var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
@@ -338,7 +352,7 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                 SyntaxKind.EqualsExpression, SyntaxFactory.IdentifierName("parameters"),
                 SyntaxFactory.LiteralExpression(SyntaxKind.NullLiteralExpression));
             var returnStatement = SyntaxFactory.ReturnStatement(
-                SyntaxFactory.LiteralExpression(!hasRequired
+                SyntaxFactory.LiteralExpression(!parameters.Any(x => x.required)
                     ? SyntaxKind.TrueLiteralExpression
                     : SyntaxKind.FalseLiteralExpression));
             var ifStatement = SyntaxFactory.IfStatement(condition, returnStatement);
@@ -348,7 +362,14 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             foreach (var param in parameters)
             {
                 var validationSyntax =
-                    Utility.GetValidationSyntax("parameters", param.Item1, param.Item2, keywordsPath);
+                    Utility.GetValidationSyntax("parameters", param, keywordsPath);
+                if (validationSyntax != null) statements.Add(validationSyntax);
+            }
+
+            foreach (var bundle in bundles)
+            {
+                var validationSyntax =
+                    Utility.GetValidationSyntax("parameters", bundle, keywordsPath);
                 if (validationSyntax != null) statements.Add(validationSyntax);
             }
 

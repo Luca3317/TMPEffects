@@ -73,25 +73,29 @@ namespace TMPEffects.AutoParameters
 
             #region Parameter Validation Syntax Creation
 
-            public static StatementSyntax GetValidationSyntax(string parametersName, IFieldSymbol fieldSymbol,
-                AttributeData attrData, string keywordsPath)
+            public static StatementSyntax GetValidationSyntax(string parametersName, AutoParameterBundleInfo info,
+                string keywordsPath)
             {
-                if (attrData.ConstructorArguments.Length == 0) /*throw new System.ArgumentException();*/ return null;
+                // TODO For now only Waves are valid bundles
+                // Later on maybe: Allow easily creating custom bundles
+                // [AutoParametersBundleType]
+                // public class SomeClass
+                // {
+                //      [BundleParameter("x", "alias1", "alias2")]
+                //      public float x;
+                // }
 
-                if (!Strings.TypeStringToDisplayString(fieldSymbol.Type, out string typeString))
-                {
-                    if (fieldSymbol.Type is IArrayTypeSymbol)
-                        return GetArrayValidationSyntax(parametersName, fieldSymbol.Type as IArrayTypeSymbol, attrData);
-                    if (fieldSymbol.Type.SpecialType == SpecialType.System_String)
-                        return GetStringValidationSyntax(parametersName, fieldSymbol, attrData);
-                    if (fieldSymbol.Type.ToDisplayString() == Strings.WaveName)
-                        return GetWaveValidationSyntax(parametersName, fieldSymbol, attrData, keywordsPath);
-                    throw new System.ArgumentException(nameof(fieldSymbol));
-                }
+                return GetWaveValidationSyntax(parametersName, info, keywordsPath);
+            }
 
-                var arg0 = attrData.ConstructorArguments[0];
-                int firstAliasIndex = 0;
-                bool required = false;
+            public static StatementSyntax GetValidationSyntax(string parametersName, AutoParameterInfo info,
+                string keywordsPath)
+            {
+                if (info.IsArray)
+                    return GetArrayValidationSyntax(parametersName, info, keywordsPath);
+
+                if (info.TypeSymbol.SpecialType == SpecialType.System_String)
+                    return GetStringValidationSyntax(parametersName, info);
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
@@ -99,12 +103,10 @@ namespace TMPEffects.AutoParameters
                 PrefixUnaryExpressionSyntax negationS;
                 IfStatementSyntax ifStatementSyntaxxx;
 
-                // If this is a required parameter            
-                if (SpecifiesRequirement(attrData))
-                {
+                // If this is a required parameter     
+                int firstAliasIndex = 0;
+                if (info.specifiesRequirement)
                     firstAliasIndex++;
-                    required = IsRequiredAutoParameter(attrData);
-                }
 
                 arguments =
                     new List<ArgumentSyntax>()
@@ -113,7 +115,7 @@ namespace TMPEffects.AutoParameters
                             SyntaxFactory.Argument(
                                 SyntaxFactory.IdentifierName("context" + keywordsPath))
                         }
-                        .Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                        .Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                                 tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc })
                             .Select(
                                 val =>
@@ -125,10 +127,14 @@ namespace TMPEffects.AutoParameters
                 returnStatement =
                     SyntaxFactory.ReturnStatement(SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression));
 
-                if (required)
+                if (info.required)
                 {
                     invocation = SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName(string.Format(Strings.HasTypeParameterName, typeString)),
+                        SyntaxFactory.IdentifierName(
+                            info.BuiltIn
+                                ? string.Format(Strings.HasTypeParameterName, info.DisplayNameString)
+                                : info.TypeString + ".Has" + info.DisplayNameString + "Parameter"
+                        ),
                         SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
 
                     negationS = SyntaxFactory.PrefixUnaryExpression(SyntaxKind.LogicalNotExpression, invocation);
@@ -137,7 +143,11 @@ namespace TMPEffects.AutoParameters
                 else
                 {
                     invocation = SyntaxFactory.InvocationExpression(
-                        SyntaxFactory.IdentifierName(string.Format(Strings.HasNonTypeParameterName, typeString)),
+                        SyntaxFactory.IdentifierName(
+                            info.BuiltIn
+                                ? string.Format(Strings.HasNonTypeParameterName, info.DisplayNameString)
+                                : info.TypeString + ".HasNon" + info.DisplayNameString + "Parameter"
+                        ),
                         SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
 
                     ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, returnStatement);
@@ -146,20 +156,15 @@ namespace TMPEffects.AutoParameters
                 return ifStatementSyntaxxx;
             }
 
-            private static StatementSyntax GetArrayValidationSyntax(string parametersName, IArrayTypeSymbol fieldSymbol,
-                AttributeData attrData)
+            private static StatementSyntax GetArrayValidationSyntax(string parametersName, AutoParameterInfo info,
+                string keywordsPath)
             {
-                if (!Strings.TypeStringToDisplayString(fieldSymbol.ElementType, out string typeString))
-                {
-                    if (fieldSymbol.ElementType.SpecialType == SpecialType.System_String)
-                        return GetStringArrayValidationSyntax(parametersName, fieldSymbol, attrData);
+                if (info.TypeSymbol.SpecialType == SpecialType.System_String)
+                    return GetStringArrayValidationSyntax(parametersName, info);
 
-                    throw new System.ArgumentException(nameof(fieldSymbol));
-                }
-
-                var arg0 = attrData.ConstructorArguments[0];
                 int firstAliasIndex = 0;
-                bool required = false;
+                if (info.specifiesRequirement)
+                    firstAliasIndex++;
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
@@ -167,19 +172,18 @@ namespace TMPEffects.AutoParameters
                 PrefixUnaryExpressionSyntax negationS;
                 IfStatementSyntax ifStatementSyntaxxx;
 
-                // If this is a required parameter            
-                if (SpecifiesRequirement(attrData))
-                {
-                    firstAliasIndex++;
-                    required = IsRequiredAutoParameter(attrData);
-                }
-
                 arguments = new List<ArgumentSyntax>()
                 {
                     SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)),
                     SyntaxFactory.Argument(
-                        SyntaxFactory.IdentifierName(string.Format(Strings.StringToTypeName, typeString)))
-                }.Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                        SyntaxFactory.IdentifierName(
+                            info.BuiltIn
+                                ? string.Format(Strings.StringToTypeName, info.DisplayNameString)
+                                : info.TypeString + ".StringTo" + info.DisplayNameString
+                        )),
+                    SyntaxFactory.Argument(
+                        SyntaxFactory.IdentifierName("context" + keywordsPath))
+                }.Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                     tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc }).Select(val =>
                     SyntaxFactory.Argument(
                         SyntaxFactory.LiteralExpression(
@@ -189,13 +193,13 @@ namespace TMPEffects.AutoParameters
                 returnStatement =
                     SyntaxFactory.ReturnStatement(SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression));
 
-                if (required)
+                if (info.required)
                 {
                     var genericName = SyntaxFactory.GenericName(
                         SyntaxFactory.Identifier(string.Format(Strings.HasTypeParameterName, "Array")),
                         SyntaxFactory.TypeArgumentList(
                             SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
-                                SyntaxFactory.IdentifierName(fieldSymbol.ElementType.ToDisplayString())))
+                                SyntaxFactory.IdentifierName(info.TypeString)))
                     );
 
                     invocation = SyntaxFactory.InvocationExpression(
@@ -212,7 +216,7 @@ namespace TMPEffects.AutoParameters
                         SyntaxFactory.Identifier(string.Format(Strings.HasNonTypeParameterName, "Array")),
                         SyntaxFactory.TypeArgumentList(
                             SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
-                                SyntaxFactory.IdentifierName(fieldSymbol.ElementType.ToDisplayString())))
+                                SyntaxFactory.IdentifierName(info.TypeString)))
                     );
 
                     invocation = SyntaxFactory.InvocationExpression(
@@ -227,11 +231,9 @@ namespace TMPEffects.AutoParameters
             }
 
             private static StatementSyntax GetStringArrayValidationSyntax(string parametersName,
-                IArrayTypeSymbol fieldSymbol, AttributeData attrData)
+                AutoParameterInfo info)
             {
-                var arg0 = attrData.ConstructorArguments[0];
                 int firstAliasIndex = 0;
-                bool required = false;
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
@@ -240,15 +242,12 @@ namespace TMPEffects.AutoParameters
                 IfStatementSyntax ifStatementSyntaxxx;
 
                 // If this is a required parameter                    
-                if (SpecifiesRequirement(attrData))
-                {
+                if (info.specifiesRequirement)
                     firstAliasIndex++;
-                    required = IsRequiredAutoParameter(attrData);
-                }
 
                 arguments =
                     new List<ArgumentSyntax>() { SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)) }
-                        .Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                        .Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                                 tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc })
                             .Select(
                                 val =>
@@ -260,7 +259,7 @@ namespace TMPEffects.AutoParameters
                 returnStatement =
                     SyntaxFactory.ReturnStatement(SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression));
 
-                if (required)
+                if (info.required)
                 {
                     invocation = SyntaxFactory.InvocationExpression(
                         SyntaxFactory.IdentifierName(string.Format(Strings.HasTypeParameterName, "Array")),
@@ -279,6 +278,39 @@ namespace TMPEffects.AutoParameters
                 }
 
                 return ifStatementSyntaxxx;
+            }
+
+            private static StatementSyntax GetStringValidationSyntax(string parametersName, AutoParameterInfo info)
+            {
+                if (info.required)
+                {
+                    var returnStatement =
+                        SyntaxFactory.ReturnStatement(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression));
+                    var arguments =
+                        new List<ArgumentSyntax>()
+                                { SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)) }
+                            .Concat(info.RawData.ConstructorArguments.Skip(1).SelectMany(tc =>
+                                    tc.Kind == TypedConstantKind.Array
+                                        ? tc.Values.ToArray()
+                                        : new TypedConstant[] { tc })
+                                .Select(val =>
+                                    SyntaxFactory.Argument(
+                                        SyntaxFactory.LiteralExpression(
+                                            SyntaxKind.StringLiteralExpression,
+                                            SyntaxFactory.Literal((string)val.Value)))));
+
+                    var invocation = SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.IdentifierName(Strings.ParameterDefinedName),
+                        SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
+
+                    var ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, returnStatement);
+                    return ifStatementSyntaxxx;
+                }
+                else
+                {
+                    return SyntaxFactory.EmptyStatement();
+                }
             }
 
             private static StatementSyntax GetStringValidationSyntax(string parametersName, IFieldSymbol fieldSymbol,
@@ -316,13 +348,13 @@ namespace TMPEffects.AutoParameters
             }
 
             // Wave special case handling
-            private static StatementSyntax GetWaveValidationSyntax(string parametersName, IFieldSymbol fieldSymbol,
-                AttributeData attrData, string keywordsPath)
+            private static StatementSyntax GetWaveValidationSyntax(string parametersName, AutoParameterBundleInfo info,
+                string keywordsPath)
             {
                 return SyntaxFactory.ParseStatement(
                     $"if (!{Strings.ValidateWaveParameters}({parametersName}, " +
                     $"{"context" + keywordsPath}, " +
-                    $"\"{(string)attrData.ConstructorArguments[0].Value}\")) return false;");
+                    $"\"{info.prefix}\")) return false;");
             }
 
             #endregion
@@ -330,30 +362,19 @@ namespace TMPEffects.AutoParameters
             #region Parameter Setting Syntax Creation
 
             public static StatementSyntax GetSetParameterSyntax(string parametersName, string storageName,
-                IFieldSymbol fieldSymbol, AttributeData attrData, string keywordsPath)
+                AutoParameterInfo info, string keywordsPath)
             {
-                if (attrData.ConstructorArguments.Length == 0) return null;
+                if (info.IsArray)
+                    return GetSetArraySyntax(parametersName, storageName, info, keywordsPath);
 
-                if (!Strings.TypeStringToDisplayString(fieldSymbol.Type, out string typeString))
-                {
-                    if (fieldSymbol.Type is IArrayTypeSymbol)
-                        return GetSetArraySyntax(parametersName, storageName, fieldSymbol,
-                            fieldSymbol.Type as IArrayTypeSymbol, attrData);
-                    if (fieldSymbol.Type.SpecialType == SpecialType.System_String)
-                        return GetSetStringSyntax(parametersName, storageName, fieldSymbol, attrData);
-                    if (fieldSymbol.Type.ToDisplayString() == Strings.WaveName)
-                        return GetSetWaveSyntax(parametersName, storageName, fieldSymbol, attrData, keywordsPath);
-                    throw new System.ArgumentException(nameof(fieldSymbol));
-                }
+                if (info.TypeSymbol.SpecialType == SpecialType.System_String)
+                    return GetSetStringSyntax(parametersName, storageName, info);
 
-                var arg0 = attrData.ConstructorArguments[0];
                 int firstAliasIndex = 0;
 
                 // If this is a required parameter            
-                if (SpecifiesRequirement(attrData))
-                {
+                if (info.specifiesRequirement)
                     firstAliasIndex++;
-                }
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
@@ -362,7 +383,7 @@ namespace TMPEffects.AutoParameters
                 ExpressionStatementSyntax assignment;
 
                 outArg = SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(SyntaxFactory.IdentifierName("var"),
-                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(fieldSymbol.Name))));
+                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(info.FieldName))));
 
                 arguments = new List<ArgumentSyntax>()
                 {
@@ -370,7 +391,7 @@ namespace TMPEffects.AutoParameters
                     SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)),
                     SyntaxFactory.Argument(
                         SyntaxFactory.IdentifierName("context" + keywordsPath))
-                }.Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                }.Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                     tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc }).Select(val =>
                     SyntaxFactory.Argument(
                         SyntaxFactory.LiteralExpression(
@@ -378,58 +399,64 @@ namespace TMPEffects.AutoParameters
                             SyntaxFactory.Literal((string)val.Value)))));
 
                 invocation = SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.IdentifierName(string.Format(Strings.TryGetTypeParameterName, typeString)),
+                    SyntaxFactory.IdentifierName(
+                        info.BuiltIn
+                            ? string.Format(Strings.TryGetTypeParameterName, info.DisplayNameString)
+                            : info.TypeString + ".TryGet" + info.DisplayNameString + "Parameter"
+                    ),
                     SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
+
 
                 assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
                     SyntaxKind.SimpleAssignmentExpression,
                     SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(fieldSymbol.Name)),
-                    SyntaxFactory.IdentifierName(fieldSymbol.Name)));
+                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(info.FieldName)),
+                    SyntaxFactory.IdentifierName(info.FieldName)));
 
                 ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, assignment);
 
                 return ifStatementSyntaxxx;
             }
 
-            private static StatementSyntax GetSetArraySyntax(string parametersName, string storageName,
-                IFieldSymbol fieldSymbol, IArrayTypeSymbol arrayTypeSymbol, AttributeData attrData)
+
+            public static StatementSyntax GetSetParameterSyntax(string parametersName, string storageName,
+                AutoParameterBundleInfo info, string keywordsPath)
             {
-                if (!Strings.TypeStringToDisplayString(arrayTypeSymbol.ElementType, out var typeString))
-                {
-                    if (arrayTypeSymbol.ElementType.SpecialType == SpecialType.System_String)
-                        return GetSetStringArraySyntax(parametersName, storageName, fieldSymbol, arrayTypeSymbol,
-                            attrData);
+                // TODO See comment in GetValidationSyntax
+                return GetSetWaveSyntax(parametersName, storageName, info, keywordsPath);
+            }
 
-                    throw new System.ArgumentException(nameof(fieldSymbol));
-                }
+            private static StatementSyntax GetSetArraySyntax(string parametersName, string storageName,
+                AutoParameterInfo info, string keywordsPath)
+            {
+                if (info.TypeSymbol.SpecialType == SpecialType.System_String)
+                    return GetSetStringArraySyntax(parametersName, storageName, info);
 
-                var arg0 = attrData.ConstructorArguments[0];
                 int firstAliasIndex = 0;
-                bool required = false;
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
                 IfStatementSyntax ifStatementSyntaxxx;
 
                 // If this is a required parameter                      
-                if (SpecifiesRequirement(attrData))
-                {
+                if (info.specifiesRequirement)
                     firstAliasIndex++;
-                    required = IsRequiredAutoParameter(attrData);
-                }
 
                 var outArg = SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
                     SyntaxFactory.IdentifierName("var"),
-                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(fieldSymbol.Name))));
+                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(info.FieldName))));
 
                 arguments = new List<ArgumentSyntax>()
                 {
                     outArg.WithRefKindKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
                     SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)),
                     SyntaxFactory.Argument(
-                        SyntaxFactory.IdentifierName(string.Format(Strings.StringToTypeName, typeString)))
-                }.Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                        SyntaxFactory.IdentifierName(info.BuiltIn
+                            ? string.Format(Strings.StringToTypeName, info.DisplayNameString)
+                            : info.TypeString + ".StringTo" + info.DisplayNameString)),
+                    SyntaxFactory.Argument(
+                        SyntaxFactory.IdentifierName("context" + keywordsPath))
+                }.Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                     tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc }).Select(val =>
                     SyntaxFactory.Argument(
                         SyntaxFactory.LiteralExpression(
@@ -441,7 +468,7 @@ namespace TMPEffects.AutoParameters
                     SyntaxFactory.TypeArgumentList(
                         SyntaxFactory.SingletonSeparatedList<TypeSyntax>(
                             SyntaxFactory.IdentifierName(
-                                arrayTypeSymbol.ElementType.ToDisplayString()
+                                info.TypeString
                             )))
                 );
 
@@ -453,8 +480,8 @@ namespace TMPEffects.AutoParameters
                 var assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
                     SyntaxKind.SimpleAssignmentExpression,
                     SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(fieldSymbol.Name)),
-                    SyntaxFactory.IdentifierName(fieldSymbol.Name)));
+                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(info.FieldName)),
+                    SyntaxFactory.IdentifierName(info.FieldName)));
 
                 ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, assignment);
 
@@ -462,50 +489,85 @@ namespace TMPEffects.AutoParameters
             }
 
             private static StatementSyntax GetSetStringArraySyntax(string parametersName, string storageName,
-                IFieldSymbol fieldSymbol, IArrayTypeSymbol arrayTypeSymbol, AttributeData attrData)
+                AutoParameterInfo info)
             {
-                var arg0 = attrData.ConstructorArguments[0];
                 int firstAliasIndex = 0;
-                bool required = false;
 
                 IEnumerable<ArgumentSyntax> arguments;
                 InvocationExpressionSyntax invocation;
                 IfStatementSyntax ifStatementSyntaxxx;
-                ExpressionStatementSyntax assignment;
 
-                // If this is a required parameter            
-                if (SpecifiesRequirement(attrData))
-                {
+                // If this is a required parameter                      
+                if (info.specifiesRequirement)
                     firstAliasIndex++;
-                    required = IsRequiredAutoParameter(attrData);
-                }
 
                 var outArg = SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
                     SyntaxFactory.IdentifierName("var"),
-                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(fieldSymbol.Name))));
+                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(info.FieldName))));
 
                 arguments = new List<ArgumentSyntax>()
                 {
                     outArg.WithRefKindKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
                     SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName))
-                }.Concat(attrData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                }.Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
                     tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc }).Select(val =>
                     SyntaxFactory.Argument(
                         SyntaxFactory.LiteralExpression(
                             SyntaxKind.StringLiteralExpression,
                             SyntaxFactory.Literal((string)val.Value)))));
-
+                
+                
                 invocation = SyntaxFactory.InvocationExpression(
                     SyntaxFactory.IdentifierName(string.Format(Strings.TryGetTypeParameterName, "Array")),
                     SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
 
-                assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
+                var assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
                     SyntaxKind.SimpleAssignmentExpression,
                     SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
-                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(fieldSymbol.Name)),
-                    SyntaxFactory.IdentifierName(fieldSymbol.Name)));
+                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(info.FieldName)),
+                    SyntaxFactory.IdentifierName(info.FieldName)));
 
                 ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, assignment);
+
+                return ifStatementSyntaxxx;
+            }
+
+            private static StatementSyntax GetSetStringSyntax(string parametersName, string storageName,
+                AutoParameterInfo info)
+            {
+                int firstAliasIndex = 0;
+                if (info.specifiesRequirement)
+                    firstAliasIndex++;
+
+                var outArg = SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                    SyntaxFactory.IdentifierName("var"),
+                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(info.FieldName))));
+
+                var arguments =
+                    new List<ArgumentSyntax>()
+                    {
+                        outArg.WithRefKindKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                        SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName))
+                    }.Concat(info.RawData.ConstructorArguments.Skip(firstAliasIndex).SelectMany(tc =>
+                        tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc }).Select(
+                        val =>
+                            SyntaxFactory.Argument(
+                                SyntaxFactory.LiteralExpression(
+                                    SyntaxKind.StringLiteralExpression,
+                                    SyntaxFactory.Literal((string)val.Value)))));
+
+                var invocation = SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName(Strings.TryGetDefinedParameter),
+                    SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
+
+                var assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
+                    SyntaxKind.SimpleAssignmentExpression,
+                    SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
+                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(info.FieldName)),
+                    SyntaxFactory.IdentifierName(info.FieldName)));
+
+                var ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, assignment);
+
                 return ifStatementSyntaxxx;
             }
 
@@ -551,13 +613,13 @@ namespace TMPEffects.AutoParameters
             }
 
             private static StatementSyntax GetSetWaveSyntax(string parametersName, string storageName,
-                IFieldSymbol fieldSymbol, AttributeData attrData, string keywordsPath)
+                AutoParameterBundleInfo info, string keywordsPath)
             {
-                return SyntaxFactory.ParseStatement($"{storageName}.{fieldSymbol.Name} = " +
-                                                    $"{Strings.ParameterUtilityPath}.CreateWave({storageName}.{fieldSymbol.Name}, " +
+                return SyntaxFactory.ParseStatement($"{storageName}.{info.FieldName} = " +
+                                                    $"{Strings.ParameterUtilityPath}.CreateWave({storageName}.{info.FieldName}, " +
                                                     $"{Strings.ParameterUtilityPath}.GetWaveParameters({parametersName}, " +
                                                     $"{"context" + keywordsPath}, " +
-                                                    $"\"{(string)attrData.ConstructorArguments[0].Value}\"));");
+                                                    $"\"{info.prefix}\"));");
             }
 
             #endregion
@@ -617,7 +679,7 @@ namespace TMPEffects.AutoParameters
 
                 return autoParameters;
             }
-            
+
             public static List<(IFieldSymbol, AttributeData)> GetAutoParameters(INamedTypeSymbol typeSymbol)
             {
                 List<(IFieldSymbol, AttributeData)> autoParameters = new List<(IFieldSymbol, AttributeData)>();
@@ -709,30 +771,68 @@ namespace TMPEffects.AutoParameters
 
                 // Check if is a valid AutoParameter
                 if (!IsDecoratedAsAutoParameterBundle(symbol, out var attData)) return false;
-                if (!TryGetClosestFitAutoParamBundleType(symbol, out var fitType)) return false;
-                
+
+                ITypeSymbol fitType;
+                if (symbol.Type is IArrayTypeSymbol arr)
+                {
+                    if (!TryGetClosestFitAutoParamBundleType(arr.ElementType, out fitType)) return false;
+                }
+                else
+                {
+                    if (!TryGetClosestFitAutoParamBundleType(symbol.Type, out fitType)) return false;
+                }
+
                 // Parse name & aliases
                 var arguments = attData.ConstructorArguments.SelectMany(tc =>
                         tc.Kind == TypedConstantKind.Array ? tc.Values.ToArray() : new TypedConstant[] { tc })
                     .Select(val => val.Value as string);
 
                 info.prefix = arguments.First() as string;
-                
+
                 info.TypeSymbol = fitType;
                 info.TypeString = fitType.ToDisplayString();
-                Strings.TypeStringToDisplayString(fitType, out info.NameString);
                 info.RawData = attData;
+
+                info.FieldSymbol = symbol;
+                info.FieldName = symbol.Name;
+
+                info.BuiltIn = IsBuiltInAutoBundle(info.TypeSymbol);
+
+                if (info.BuiltIn)
+                {
+                    string str;
+                    Strings.TypeStringToDisplayString(fitType, out str);
+                    info.DisplayNameString = str;
+                }
+                else
+                {
+                    throw new SystemException("There shouldnt be any non builtin bundles (yet)");
+                    // var attrs = info.TypeSymbol.GetAttributes();
+                    // info.DisplayNameString = attrs
+                    //     .First(a => a.AttributeClass.ToDisplayString() == Strings.TMPParameterTypeAttributeName).ConstructorArguments[0].Value as string;
+                }
 
                 return true;
             }
-            
+
             public static bool TryGetAutoParameterInfo(IFieldSymbol symbol, out AutoParameterInfo info)
             {
                 info = new AutoParameterInfo();
 
                 // Check if is a valid AutoParameter
                 if (!IsDecoratedAsAutoParameter(symbol, out var attData)) return false;
-                if (!TryGetClosestFitAutoParamType(symbol, out var fitType)) return false;
+
+                ITypeSymbol fitType;
+                if (symbol.Type is IArrayTypeSymbol arr)
+                {
+                    info.IsArray = true;
+                    if (!TryGetClosestFitAutoParamType(arr.ElementType, out fitType)) return false;
+                }
+                else
+                {
+                    info.IsArray = false;
+                    if (!TryGetClosestFitAutoParamType(symbol.Type, out fitType)) return false;
+                }
 
                 // Check whether requirement specified
                 info.specifiesRequirement = SpecifiesRequirement(attData);
@@ -760,10 +860,40 @@ namespace TMPEffects.AutoParameters
 
                 info.TypeSymbol = fitType;
                 info.TypeString = fitType.ToDisplayString();
-                Strings.TypeStringToDisplayString(fitType, out info.NameString);
+                info.BuiltIn = IsBuiltInAutoParameter(info.TypeSymbol);
+
+                if (info.BuiltIn)
+                {
+                    string str;
+                    Strings.TypeStringToDisplayString(fitType, out str);
+                    info.DisplayNameString = str;
+                }
+                else
+                {
+                    var attrs = info.TypeSymbol.GetAttributes();
+                    info.DisplayNameString = attrs
+                        .First(a => a.AttributeClass.ToDisplayString() == Strings.TMPParameterTypeAttributeName)
+                        .ConstructorArguments[0].Value as string;
+                }
+
+
                 info.RawData = attData;
 
+                info.FieldSymbol = symbol;
+                info.FieldName = symbol.Name;
+
+
                 return true;
+            }
+
+            private static bool IsBuiltInAutoParameter(ITypeSymbol symbol)
+            {
+                return Strings.ValidAutoParameterTypes.Contains(symbol.ToDisplayString());
+            }
+
+            private static bool IsBuiltInAutoBundle(ITypeSymbol symbol)
+            {
+                return Strings.ValidAutoParameterBundleTypes.Contains(symbol.ToDisplayString());
             }
 
             private static bool IsDecoratedAsAutoParameter(IFieldSymbol symbol, out AttributeData attData)
@@ -809,13 +939,14 @@ namespace TMPEffects.AutoParameters
                 attData = null;
                 return false;
             }
-            
-            private static bool TryGetClosestFitAutoParamType(IFieldSymbol symbol, out ITypeSymbol fit)
+
+            public static bool TryGetClosestFitAutoParamType(ITypeSymbol symbol, out ITypeSymbol fit)
             {
-                fit = symbol.Type;
+                fit = symbol;
 
                 // Check direct type
-                if (Strings.IsValidAutoParameterType(fit))
+                // TODO Special case for string, array; Handle here or in Strings
+                if (IsValidAutoParameterType(fit))
                     return true;
 
                 // All base types
@@ -834,7 +965,7 @@ namespace TMPEffects.AutoParameters
                 // All interfaces
                 foreach (var i in fit.AllInterfaces)
                 {
-                    if (Strings.IsValidAutoParameterType(i))
+                    if (IsValidAutoParameterType(i))
                     {
                         fit = i;
                         return true;
@@ -844,12 +975,12 @@ namespace TMPEffects.AutoParameters
                 return false;
             }
 
-            private static bool TryGetClosestFitAutoParamBundleType(IFieldSymbol symbol, out ITypeSymbol fit)
+            public static bool TryGetClosestFitAutoParamBundleType(ITypeSymbol symbol, out ITypeSymbol fit)
             {
-                fit = symbol.Type;
+                fit = symbol;
 
                 // Check direct type
-                if (Strings.IsValidAutoParameterBundleType(fit))
+                if (Utility.IsValidAutoParameterBundleType(fit))
                     return true;
 
                 // All base types
@@ -868,7 +999,7 @@ namespace TMPEffects.AutoParameters
                 // All interfaces
                 foreach (var i in fit.AllInterfaces)
                 {
-                    if (Strings.IsValidAutoParameterBundleType(i))
+                    if (Utility.IsValidAutoParameterBundleType(i))
                     {
                         fit = i;
                         return true;
@@ -880,10 +1011,13 @@ namespace TMPEffects.AutoParameters
 
             public struct AutoParameterInfo
             {
+                public IFieldSymbol FieldSymbol;
+                public string FieldName;
+
                 public ITypeSymbol TypeSymbol;
 
                 public string TypeString;
-                public string NameString;
+                public string DisplayNameString;
 
                 public bool specifiesRequirement;
                 public bool required;
@@ -892,18 +1026,25 @@ namespace TMPEffects.AutoParameters
                 public string[] Aliases;
                 public string[] AliasesWithName;
                 public AttributeData RawData;
+
+                public bool IsArray;
+                public bool BuiltIn;
             }
 
             public struct AutoParameterBundleInfo
             {
+                public IFieldSymbol FieldSymbol;
+                public string FieldName;
+
                 public ITypeSymbol TypeSymbol;
 
                 public string TypeString;
-                public string NameString;
+                public string DisplayNameString;
 
                 public string prefix;
 
                 public AttributeData RawData;
+                public bool BuiltIn;
             }
 
             [Flags]
@@ -938,12 +1079,24 @@ namespace TMPEffects.AutoParameters
             }
 
             // Check whether the given type is valid to be an AutoParameter
-            public static bool IsValidAutoParameterType(ITypeSymbol typeSymbol)
+            public static bool IsValidAutoParameterType(ITypeSymbol typeSymbol, bool traverseBaseTypes = false)
             {
-                if (Strings.IsValidAutoParameterType(typeSymbol))
+                if (typeSymbol is IArrayTypeSymbol arr)
+                    typeSymbol = arr.ElementType;
+
+                if (traverseBaseTypes)
+                    return TryGetClosestFitAutoParamType(typeSymbol, out _);
+
+                if (Strings.ValidAutoParameterTypes.Contains(typeSymbol.ToDisplayString()))
                     return true;
 
-                return false;
+                return IsGeneratedParameterType(typeSymbol);
+            }
+
+            public static bool IsGeneratedParameterType(ITypeSymbol typeSymbol)
+            {
+                var attrs = typeSymbol.GetAttributes();
+                return attrs.Any(a => a.AttributeClass.ToDisplayString() == Strings.TMPParameterTypeAttributeName);
             }
 
             public static bool IsAutoParameter(SyntaxNodeAnalysisContext context, FieldDeclarationSyntax field)
@@ -991,9 +1144,20 @@ namespace TMPEffects.AutoParameters
             }
 
             // Check whether the given type is valid to be an AutoParameterBundle
-            public static bool IsValidAutoParameterBundleType(ITypeSymbol typeSymbol)
+            public static bool IsValidAutoParameterBundleType(ITypeSymbol typeSymbol, bool traverseBaseTypes = false)
             {
-                return Strings.IsValidAutoParameterBundleType(typeSymbol);
+                // Bundles cant be arrays
+                // if (typeSymbol is IArrayTypeSymbol arr)
+                //     typeSymbol = arr.ElementType;
+
+                if (traverseBaseTypes)
+                    return TryGetClosestFitAutoParamBundleType(typeSymbol, out _);
+
+                if (Strings.ValidAutoParameterBundleTypes.Contains(typeSymbol.ToDisplayString()))
+                    return true;
+
+                // return IsGeneratedParameterType(typeSymbol);
+                return false;
             }
 
             // Check whether the given field an AutoParameterBundle

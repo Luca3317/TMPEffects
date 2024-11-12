@@ -1,14 +1,11 @@
-using System.Collections.Generic;
+using Placeholde.Namess;
 using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
-using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using TMPEffects.Extensions;
-using TMPEffects.Parameters;
-using TMPro;
+using TMPEffects.TMPAnimations;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -29,7 +26,7 @@ namespace TMPEffects.TMPAnimations.Animations
             "The way the offset for the wave is calculated.\n" +
             "For more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         OffsetTypePowerEnum waveOffsetType = OffsetType.XPos;
-        
+
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
             // Evaluate the wave based on time and offset

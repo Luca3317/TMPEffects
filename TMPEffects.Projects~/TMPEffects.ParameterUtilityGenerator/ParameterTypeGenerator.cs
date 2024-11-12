@@ -58,7 +58,7 @@ namespace TMPEffects.ParameterUtilityGenerator
                 // Check whether attribute actually is the correct attribute
                 List<string> displayNames = new List<string>();
 
-                if (symbol.ContainingType.ToDisplayString() == Strings.TMPParameterTypeName)
+                if (symbol.ContainingType.ToDisplayString() == Strings.TMPParameterTypeAttributeName)
                 {
                     d1 = Diagnostic.Create(Rule___, attribute.GetLocation(),
                         "XYZ I AM RUNNING 2.8");
@@ -96,7 +96,7 @@ namespace TMPEffects.ParameterUtilityGenerator
             context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
                 "Attempting to create ParameterType"));
 #endif
-            ParameterTypeData ptd = GetParameterTypeData(attrSyntax, context, model);
+            Utility.ParameterTypeData ptd = Utility.GetParameterTypeData(attrSyntax, model);
 #if DEBUG
             context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
                 "Successfully got all parameter types"));
@@ -113,19 +113,35 @@ namespace TMPEffects.ParameterUtilityGenerator
                 return;
             }
 
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "HERE 1"));
+
             var typeSymbol = model.GetDeclaredSymbol(typeDecl);
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "HERE 2"));
 
             // Create all necessary static functions on the type
             CreateHasNonTryGet(typeDecl, typeSymbol, ptd, context);
 
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "HERE 3"));
+
             // Create the keyword database stuff, if specified
             if (ptd.GenerateKeywordDatabase)
                 CreateKeywordDatabases(typeDecl, typeSymbol, ptd, context);
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "HERE 4"));
         }
 
         private void CreateKeywordDatabases(TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,
-            ParameterTypeData ptd, GeneratorExecutionContext context)
+            Utility.ParameterTypeData ptd, GeneratorExecutionContext context)
         {
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 7???"));
+
             string code = $@"using UnityEngine;
 using TMPEffects.SerializedCollections;
 
@@ -137,6 +153,9 @@ namespace TMPEffects.Databases
     }}
 }}
 ";
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 8???"));
+
             var source = SourceText.From(code, Encoding.UTF8);
             context.AddSource($"ITMPKeywordDatabase.{ptd.DisplayName}.g.cs", source);
 
@@ -145,55 +164,81 @@ using TMPEffects.SerializedCollections;
 
 namespace TMPEffects.Databases
 {{
-    public partial class TMPKeywordDatabase
+    public sealed partial class TMPKeywordDatabase
     {{
         public bool TryGet{ptd.DisplayName}(string str, out {ptd.SharedTypeName} result)
         {{
             {(ptd.SharedTypeName == ptd.DiskTypeName ? $"return {ptd.DisplayName}Dict.TryGetValue(str, out result);" :
-                @"bool success = {ptd.DisplayName}Dict.TryGetValue(str, out var tmp);
+                $@"bool success = {ptd.DisplayName}Dict.TryGetValue(str, out var tmp);
             result = tmp;
             return success;")}
         }}
 
         [SerializeField, SerializedDictionary(""Keyword"", ""{ptd.DisplayName}"")]
-        private SerializedDictionary<string, {ptd.DiskTypeName}> {ptd.DisplayName}Dict = new SerializedDictionary<string, {ptd.SharedTypeName}>();
+        private SerializedDictionary<string, {ptd.DiskTypeName}> {ptd.DisplayName}Dict = new SerializedDictionary<string, {ptd.DiskTypeName}>();
     }}
 }}
 ";
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 9???"));
+
             source = SourceText.From(code, Encoding.UTF8);
-            context.AddSource($"TMPSceneKeywordDatabase.{ptd.DisplayName}.g.cs", source);
+            context.AddSource($"TMPKeywordDatabase.{ptd.DisplayName}.g.cs", source);
 
             code = $@"using UnityEngine;
 using TMPEffects.SerializedCollections;
 
 namespace TMPEffects.Databases
 {{
-    public partial class TMPSceneKeywordDatabase
+    public sealed partial class TMPSceneKeywordDatabase
     {{
         public bool TryGet{ptd.DisplayName}(string str, out {ptd.SharedTypeName} result)
         {{
             {(ptd.SharedTypeName == ptd.SceneTypeName ? $"return {ptd.DisplayName}Dict.TryGetValue(str, out result);" :
-                @"bool success = {ptd.DisplayName}Dict.TryGetValue(str, out var tmp);
+                $@"bool success = {ptd.DisplayName}Dict.TryGetValue(str, out var tmp);
             result = tmp;
             return success;")}
         }}
 
         [SerializeField, SerializedDictionary(""Keyword"", ""{ptd.DisplayName}"")]
-        private SerializedDictionary<string, {ptd.SceneTypeName}> {ptd.DisplayName}Dict = new SerializedDictionary<string, {ptd.SharedTypeName}>();
+        private SerializedDictionary<string, {ptd.SceneTypeName}> {ptd.DisplayName}Dict = new SerializedDictionary<string, {ptd.SceneTypeName}>();
     }}
 }}
 ";
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 10???"));
+
             source = SourceText.From(code, Encoding.UTF8);
-            context.AddSource($"TMPSceneKeywordDatabase.{ptd.DisplayName}.g.cs", source);
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 11??? " + ptd.DisplayName));
+
+            try
+            {
+                context.AddSource($"TMPSceneKeywordDatabase.{ptd.DisplayName}.g.cs", source);
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                    "DID DO IT"));
+            }
+            catch (Exception e)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                    "THREW: " + e.Message));
+            }
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
+                "HERE 12???"));
         }
 
         private void CreateHasNonTryGet(TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,
-            ParameterTypeData ptd, GeneratorExecutionContext context)
+            Utility.ParameterTypeData ptd, GeneratorExecutionContext context)
         {
             string t = typeDecl.Modifiers.ToString() + " " + typeDecl.Keyword.ToString() + " " +
                        typeDecl.Identifier.Text;
 
-            string code = $@"using System;
+            string code;
+            if (typeSymbol.ContainingNamespace.IsGlobalNamespace)
+            {
+                code = $@"using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Databases;
@@ -201,209 +246,406 @@ using TMPEffects.Parameters;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.Parameters.ParameterUtility;
 
+// <auto-generated />
+// This class is auto-generated; changing it might break [AutoParameters] and existing animations + commands
+{t}
+{{
+    public static partial bool StringTo{ptd.DisplayName}(string str, out {ptd.SharedTypeName} result, ITMPKeywordDatabase db);
+";
+                code = ParameterUtilityGenerator.HandleHasParameter(typeSymbol, (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
+                code = ParameterUtilityGenerator.HandleHasNonParameter(typeSymbol,
+                    (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
+                code = ParameterUtilityGenerator.HandleTryGetParameter(typeSymbol,
+                    (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
+
+                code += @"
+    }";
+            }
+            else
+            {
+                code = $@"using System;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPEffects.Databases;
+using TMPEffects.Parameters;
+using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.Parameters.ParameterUtility;
+
+namespace {typeSymbol.ContainingNamespace.ToDisplayString()}
+{{
     // <auto-generated />
     // This class is auto-generated; changing it might break [AutoParameters] and existing animations + commands
     {t}
     {{
-        public static partial bool StringTo{ptd.DisplayName}(string str, out {ptd.SharedTypeName} result, ITMPKeywordDatabase db = null);
+        public static partial bool StringTo{ptd.DisplayName}(string str, out {ptd.SharedTypeName} result, ITMPKeywordDatabase db);
 ";
 
-            code = ParameterUtilityGenerator.HandleHasParameter(typeSymbol, (ptd.SharedTypeName, ptd.DisplayName),
-                code);
-            code = ParameterUtilityGenerator.HandleHasNonParameter(typeSymbol, (ptd.SharedTypeName, ptd.DisplayName),
-                code);
-            code = ParameterUtilityGenerator.HandleTryGetParameter(typeSymbol, (ptd.SharedTypeName, ptd.DisplayName),
-                code);
+                code = ParameterUtilityGenerator.HandleHasParameter(typeSymbol, (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
+                code = ParameterUtilityGenerator.HandleHasNonParameter(typeSymbol,
+                    (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
+                code = ParameterUtilityGenerator.HandleTryGetParameter(typeSymbol,
+                    (ptd.SharedTypeName, ptd.DisplayName),
+                    code);
 
-            code += @"
-    }";
+                code += @"
+    }
+}";
+            }
 
             // Prepare and add source
             var source = SourceText.From(code, Encoding.UTF8);
             context.AddSource($"{typeDecl.Identifier.Text}.{ptd.DisplayName}.g.cs", source);
         }
-
-        private ParameterTypeData GetParameterTypeData(AttributeSyntax attrSyntax, GeneratorExecutionContext context,
-            SemanticModel model)
+        
+        public static MethodDeclarationSyntax BuildHasParameterMethod(string displayName, string typeName)
         {
-            // Get the attribute arguments
-            var arguments = attrSyntax.ArgumentList.Arguments;
+            // Create the method declaration
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.HasTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.InvocationExpression(
+                                SyntaxFactory.IdentifierName(
+                                    string.Format(Strings.TryGetTypeParameterName, displayName)))
+                            .AddArgumentListArguments(
+                                SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                        SyntaxFactory.IdentifierName(typeName),
+                                        SyntaxFactory.DiscardDesignation(
+                                            SyntaxFactory.Token(SyntaxKind.UnderscoreToken))))
+                                    .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.LiteralExpression(SyntaxKind.NullLiteralExpression)),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                            )
+                    )
+                ));
 
-            AttributeArgumentSyntax displayNameArg;
-            AttributeArgumentSyntax typeArg;
-            AttributeArgumentSyntax sceneTypeArg;
-            AttributeArgumentSyntax diskTypeArg;
-            AttributeArgumentSyntax sharedBaseTypeArg;
-            AttributeArgumentSyntax generateKeywordDatabaseArg = null;
-
-
-            ParameterTypeData parameterTypeData = new ParameterTypeData();
-            if (arguments.Count <= 3)
-            {
-                displayNameArg = arguments[0];
-                typeArg = arguments[1];
-
-                if (arguments.Count > 2)
-                    generateKeywordDatabaseArg = arguments[2];
-
-                var constval = model.GetConstantValue(displayNameArg.Expression);
-                if (constval.HasValue && constval.Value is string str)
-                {
-                    parameterTypeData.DisplayName = str;
-                }
-                else
-                {
-#if DEBUG
-                    context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                        "DisplayName argument not set"));
-#endif
-                    throw new System.InvalidOperationException();
-                }
-
-                if (typeArg.Expression is TypeOfExpressionSyntax typeOfExpressionSyntax)
-                {
-                    var ti = ModelExtensions.GetTypeInfo(model, typeOfExpressionSyntax.Type);
-                    if (ti.Type != null)
-                    {
-                        parameterTypeData.SharedTypeName = ti.Type.ToDisplayString();
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "TypeArg argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-
-                if (generateKeywordDatabaseArg != null)
-                {
-                    constval = model.GetConstantValue(generateKeywordDatabaseArg.Expression);
-                    if (constval.HasValue && constval.Value is bool bl)
-                    {
-                        parameterTypeData.GenerateKeywordDatabase = bl;
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "GenerateKeywordDatabase argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-            }
-            else
-            {
-                displayNameArg = arguments[0];
-                typeArg = arguments[1];
-                sceneTypeArg = arguments[2];
-                diskTypeArg = arguments[3];
-
-                if (arguments.Count > 4)
-                    generateKeywordDatabaseArg = arguments[4];
-
-                var constval = model.GetConstantValue(displayNameArg.Expression);
-                if (constval.HasValue && constval.Value is string str)
-                {
-                    parameterTypeData.DisplayName = str;
-                }
-                else
-                {
-#if DEBUG
-                    context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                        "DisplayName argument not set"));
-#endif
-                    throw new System.InvalidOperationException();
-                }
-
-                if (typeArg.Expression is TypeOfExpressionSyntax typeOfExpressionSyntax)
-                {
-                    var ti = ModelExtensions.GetTypeInfo(model, typeOfExpressionSyntax.Type);
-                    if (ti.Type != null)
-                    {
-                        parameterTypeData.SharedTypeName = ti.Type.ToDisplayString();
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "TypeArg argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-
-                if (sceneTypeArg.Expression is TypeOfExpressionSyntax typeOfExpressionSyntax2)
-                {
-                    var ti = ModelExtensions.GetTypeInfo(model, typeOfExpressionSyntax2.Type);
-                    if (ti.Type != null)
-                    {
-                        parameterTypeData.SceneTypeName = ti.Type.ToDisplayString();
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "SceneTypeArg argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-
-                if (diskTypeArg.Expression is TypeOfExpressionSyntax typeOfExpressionSyntax3)
-                {
-                    var ti = ModelExtensions.GetTypeInfo(model, typeOfExpressionSyntax3.Type);
-                    if (ti.Type != null)
-                    {
-                        parameterTypeData.DiskTypeName = ti.Type.ToDisplayString();
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "DiskTypeArg argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-
-                if (generateKeywordDatabaseArg != null)
-                {
-                    constval = model.GetConstantValue(generateKeywordDatabaseArg.Expression);
-                    if (constval.HasValue && constval.Value is bool bl)
-                    {
-                        parameterTypeData.GenerateKeywordDatabase = bl;
-                    }
-                    else
-                    {
-#if DEBUG
-                        context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                            "GenerateKeywordDatabase argument not set"));
-#endif
-                        throw new System.InvalidOperationException();
-                    }
-                }
-            }
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                "Made it to the end! DisplayName: " + parameterTypeData.DisplayName +
-                " SceneTypeName: " + parameterTypeData.SceneTypeName +
-                " DiskTypeName: " + parameterTypeData.DiskTypeName +
-                " SharedTypeName: " + parameterTypeData.SharedTypeName +
-                " GenKeyword: " + parameterTypeData.GenerateKeywordDatabase));
-
-            return parameterTypeData;
+            return methodDeclaration;
         }
 
-        public struct ParameterTypeData
+        public static MethodDeclarationSyntax BuildHasKeywordsParameterMethod(string displayName, string typeName)
         {
-            public string DisplayName;
-            public string SceneTypeName;
-            public string DiskTypeName;
-            public string SharedTypeName;
-            public bool GenerateKeywordDatabase;
+            // Create the method declaration
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.HasTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.InvocationExpression(
+                                SyntaxFactory.IdentifierName(
+                                    string.Format(Strings.TryGetTypeParameterName, displayName)))
+                            .AddArgumentListArguments(
+                                SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                        SyntaxFactory.IdentifierName(typeName),
+                                        SyntaxFactory.DiscardDesignation(
+                                            SyntaxFactory.Token(SyntaxKind.UnderscoreToken))))
+                                    .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.LiteralExpression(SyntaxKind.NullLiteralExpression)),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                            )
+                    )
+                ));
+
+            return methodDeclaration;
+        }
+
+        public static MethodDeclarationSyntax BuildHasNonParameterMethod(string displayName, string typeName)
+        {
+            // Create the method declaration
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.HasNonTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.IfStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName("ParameterDefined"))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        ),
+                        SyntaxFactory.ReturnStatement(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression))
+                    ),
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName(string.Format(Strings.TryGetTypeParameterName,
+                                        displayName)))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                            SyntaxFactory.IdentifierName(typeName),
+                                            SyntaxFactory.DiscardDesignation(
+                                                SyntaxFactory.Token(SyntaxKind.UnderscoreToken))))
+                                        .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(
+                                        SyntaxFactory.LiteralExpression(SyntaxKind.NullLiteralExpression)),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        )
+                    )
+                ));
+
+            return methodDeclaration;
+        }
+
+        public static MethodDeclarationSyntax BuildHasNonKeywordParameterMethod(string displayName, string typeName)
+        {
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.HasNonTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("keywords"))
+                        .WithType(SyntaxFactory.ParseTypeName("ITMPKeywordDatabase")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.IfStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName("ParameterDefined"))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        ),
+                        SyntaxFactory.ReturnStatement(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression))
+                    ),
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName(string.Format(Strings.TryGetTypeParameterName,
+                                        displayName)))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                            SyntaxFactory.IdentifierName(typeName),
+                                            SyntaxFactory.DiscardDesignation(
+                                                SyntaxFactory.Token(SyntaxKind.UnderscoreToken))))
+                                        .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("keywords")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        )
+                    )
+                ));
+
+            return methodDeclaration;
+        }
+
+        public static MethodDeclarationSyntax BuildTryGetParameterMethod(string displayName, string typeName)
+        {
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.TryGetTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("value"))
+                        .WithType(SyntaxFactory.ParseTypeName(typeName))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.OutKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.ExpressionStatement(
+                        SyntaxFactory.AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            SyntaxFactory.IdentifierName("value"),
+                            SyntaxFactory.DefaultExpression(
+                                SyntaxFactory.ParseTypeName(typeName)))),
+                    SyntaxFactory.IfStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName(string.Format(Strings.TryGetTypeParameterName,
+                                        displayName)))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                            SyntaxFactory.IdentifierName("string"),
+                                            SyntaxFactory.SingleVariableDesignation(
+                                                SyntaxFactory.Identifier("parameterName"))))
+                                        .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        ),
+                        SyntaxFactory.ReturnStatement(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression))
+                    ),
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.InvocationExpression(
+                                SyntaxFactory.IdentifierName("StringTo" + displayName))
+                            .AddArgumentListArguments(
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.ElementAccessExpression(SyntaxFactory.IdentifierName("parameters"))
+                                        .AddArgumentListArguments(
+                                            SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameterName")))),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("value"))
+                                    .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.LiteralExpression(SyntaxKind.NullLiteralExpression))
+                            )
+                    )
+                ));
+            return methodDeclaration;
+        }
+
+        public static MethodDeclarationSyntax BuildTryGetKeywordParameterMethod(string displayName, string typeName)
+        {
+            var methodDeclaration = SyntaxFactory.MethodDeclaration(
+                    SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.BoolKeyword)),
+                    string.Format(Strings.TryGetTypeParameterName, displayName))
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword),
+                    SyntaxFactory.Token(SyntaxKind.StaticKeyword))
+                .AddParameterListParameters(
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("value"))
+                        .WithType(SyntaxFactory.ParseTypeName(typeName))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.OutKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
+                        .WithType(SyntaxFactory.ParseTypeName("IDictionary<string, string>")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("keywords"))
+                        .WithType(SyntaxFactory.ParseTypeName("ITMPKeywordDatabase")),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("name"))
+                        .WithType(SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword))),
+                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("aliases"))
+                        .WithType(SyntaxFactory.ArrayType(
+                            SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                            SyntaxFactory.SingletonList<ArrayRankSpecifierSyntax>(
+                                SyntaxFactory.ArrayRankSpecifier(
+                                    SyntaxFactory.SingletonSeparatedList<ExpressionSyntax>(
+                                        SyntaxFactory.OmittedArraySizeExpression())))))
+                        .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.ParamsKeyword))))
+                .WithBody(SyntaxFactory.Block(
+                    SyntaxFactory.ExpressionStatement(
+                        SyntaxFactory.AssignmentExpression(
+                            SyntaxKind.SimpleAssignmentExpression,
+                            SyntaxFactory.IdentifierName("value"),
+                            SyntaxFactory.DefaultExpression(SyntaxFactory.ParseTypeName(typeName)))),
+                    SyntaxFactory.IfStatement(
+                        SyntaxFactory.PrefixUnaryExpression(
+                            SyntaxKind.LogicalNotExpression,
+                            SyntaxFactory.InvocationExpression(
+                                    SyntaxFactory.IdentifierName("TryGetDefinedParameter"))
+                                .AddArgumentListArguments(
+                                    SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                                            SyntaxFactory.IdentifierName("string"),
+                                            SyntaxFactory.SingleVariableDesignation(
+                                                SyntaxFactory.Identifier("parameterName"))))
+                                        .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("name")),
+                                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("aliases"))
+                                )
+                        ),
+                        SyntaxFactory.ReturnStatement(
+                            SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression))
+                    ),
+                    SyntaxFactory.ReturnStatement(
+                        SyntaxFactory.InvocationExpression(
+                                SyntaxFactory.IdentifierName("StringTo" + displayName))
+                            .AddArgumentListArguments(
+                                SyntaxFactory.Argument(
+                                    SyntaxFactory.ElementAccessExpression(SyntaxFactory.IdentifierName("parameters"))
+                                        .AddArgumentListArguments(
+                                            SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameterName")))),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("value"))
+                                    .WithRefOrOutKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                                SyntaxFactory.Argument(SyntaxFactory.IdentifierName("keywords"))
+                            )
+                    )
+                ));
+
+            return methodDeclaration;
         }
     }
 }

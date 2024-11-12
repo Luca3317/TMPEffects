@@ -17,7 +17,10 @@ namespace TMPEffects.AutoParameters.Analyzer
             foreach (var v in fieldDecl.Declaration.Variables)
             {
                 IFieldSymbol varSymbol = context.SemanticModel.GetDeclaredSymbol(v) as IFieldSymbol;
-                if (Utility.IsAutoParameter(varSymbol) != null) AnalyzeSyntaxAutoParameter(context, v, varSymbol);
+                if (Utility.IsAutoParameter(varSymbol) == null)
+                    continue;
+
+                AnalyzeSyntaxAutoParameter(context, v, varSymbol);
             }
         }
 
@@ -30,9 +33,9 @@ namespace TMPEffects.AutoParameters.Analyzer
             if (Utility.IsAutoParameterBundle(varSymbol) != null)
             {
                 string typestring = varSymbol.Type.ToDisplayString();
-                if (!Strings.IsValidAutoParameterBundleType(varSymbol.Type))
+                if (!Utility.IsValidAutoParameterBundleType(varSymbol.Type, true))
                 {
-                    if (Strings.IsValidAutoParameterType(varSymbol.Type))
+                    if (Utility.IsValidAutoParameterType(varSymbol.Type, true))
                     {
                         diagnostic = Diagnostic.Create(Rule_1_4, varDecl.GetLocation(), varSymbol.Name,
                             varSymbol.Type.ToMinimalDisplayString(context.SemanticModel, 0));
@@ -51,9 +54,10 @@ namespace TMPEffects.AutoParameters.Analyzer
                 string typestring = varSymbol.Type is IArrayTypeSymbol arr
                     ? arr.ElementType.ToDisplayString()
                     : varSymbol.Type.ToDisplayString();
-                if (!Strings.IsValidAutoParameterType(varSymbol.Type))
+                
+                if (!Utility.IsValidAutoParameterType(varSymbol.Type, true))
                 {
-                    if (Strings.IsValidAutoParameterBundleType(varSymbol.Type))
+                    if (Utility.IsValidAutoParameterBundleType(varSymbol.Type, true))
                     {
                         if (varSymbol.Type is IArrayTypeSymbol)
                         {
@@ -91,17 +95,7 @@ namespace TMPEffects.AutoParameters.Analyzer
             {
                 diagnostic = Diagnostic.Create(Rule_1_5, varDecl.GetLocation(), varDecl.Identifier.Text);
                 context.ReportDiagnostic(diagnostic);
-                return;
             }
-
-            // // If is not serialized (public or SerializedField), report
-            // if (varSymbol.DeclaredAccessibility == Accessibility.Public) return;
-            // if (varSymbol.GetAttributes().Any(attr =>
-            //         attr.AttributeClass?.ToDisplayString() == Strings.SerializeFieldAttributeName
-            //         || attr.AttributeClass?.ToDisplayString() == Strings.SerializeReferenceAttributeName)) return;
-            //
-            // diagnostic = Diagnostic.Create(Rule_1_7, varDecl.Identifier.GetLocation(), varDecl.Identifier.Text);
-            // context.ReportDiagnostic(diagnostic);
         }
     }
 }

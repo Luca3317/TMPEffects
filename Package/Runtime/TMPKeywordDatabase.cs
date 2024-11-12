@@ -79,7 +79,7 @@ namespace TMPEffects.Databases
             return animationCurveKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetOffsetType(string str, out ParameterTypes.ITMPOffsetProvider result)
+        public bool TryGetOffsetType(string str, out ITMPOffsetProvider result)
         {
             bool success = offsetTypeKeywords.TryGetValue(str, out var offset);
             result = offset;
@@ -91,17 +91,17 @@ namespace TMPEffects.Databases
             return unityObjectKeywords.TryGetValue(str, out result);
         }
         
-        protected virtual void OnValidate()
+        private void OnValidate()
         {
             RaiseDatabaseChanged();
         }
 
-        protected virtual void OnDestroy()
+        private void OnDestroy()
         {
             RaiseDatabaseChanged();
         }
 
-        protected void RaiseDatabaseChanged()
+        private void RaiseDatabaseChanged()
         {
             ObjectChanged?.Invoke(this);
         }

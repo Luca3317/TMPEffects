@@ -9,8 +9,8 @@ using UnityEngine;
 namespace TMPEffects.TMPAnimations
 {
     [Serializable]
-    public class SceneOffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, ParameterTypes.TMPSceneOffsetProvider>,
-        IEquatable<SceneOffsetTypePowerEnum>, ParameterTypes.ITMPOffsetProvider
+    public class SceneOffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, TMPSceneOffsetProvider>,
+        IEquatable<SceneOffsetTypePowerEnum>, ITMPOffsetProvider
     {
         // TODO maybe make base class / alternative class that doesnt do this; more basic version essentially
         [SerializeField] bool ignoreAnimatorScaling;
@@ -21,13 +21,13 @@ namespace TMPEffects.TMPAnimations
         }
 
         public SceneOffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
-            ParameterTypes.TMPSceneOffsetProvider customOffsetProvider)
+            TMPSceneOffsetProvider customOffsetProvider)
             : base(offsetType, customOffsetProvider)
         {
         }
 
         public SceneOffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
-            ParameterTypes.TMPSceneOffsetProvider customOffsetProvider, bool useCustom)
+            TMPSceneOffsetProvider customOffsetProvider, bool useCustom)
             : base(offsetType, customOffsetProvider, useCustom)
         {
         }
@@ -84,8 +84,8 @@ namespace TMPEffects.TMPAnimations
     }
 
     [Serializable]
-    public class OffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, ParameterTypes.TMPOffsetProvider>,
-        IEquatable<OffsetTypePowerEnum>, ParameterTypes.ITMPOffsetProvider
+    public class OffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, TMPOffsetProvider>,
+        IEquatable<OffsetTypePowerEnum>, ITMPOffsetProvider
     {
         // TODO maybe make base class / alternative class that doesnt do this; more basic version essentially
         [SerializeField] bool ignoreAnimatorScaling;
@@ -101,13 +101,13 @@ namespace TMPEffects.TMPAnimations
         }
 
         public OffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
-            ParameterTypes.TMPOffsetProvider customOffsetProvider)
+            TMPOffsetProvider customOffsetProvider)
             : base(offsetType, customOffsetProvider)
         {
         }
 
         public OffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
-            ParameterTypes.TMPOffsetProvider customOffsetProvider, bool useCustom)
+            TMPOffsetProvider customOffsetProvider, bool useCustom)
             : base(offsetType, customOffsetProvider, useCustom)
         {
         }

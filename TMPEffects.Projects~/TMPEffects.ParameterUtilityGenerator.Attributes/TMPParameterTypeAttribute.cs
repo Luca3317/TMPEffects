@@ -2,6 +2,8 @@
 
 namespace TMPEffects.ParameterUtilityGenerator.Attributes
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct,
+        AllowMultiple = false, Inherited = false)]
     public class TMPParameterTypeAttribute : System.Attribute
     {
         private bool generateKeywordDatabase;
@@ -10,21 +12,18 @@ namespace TMPEffects.ParameterUtilityGenerator.Attributes
         private Type diskType;
         private Type sharedBaseType;
 
-        public TMPParameterTypeAttribute(string displayName, Type type, bool generateKeywordDatabase = false)
+        public TMPParameterTypeAttribute(string displayName, bool generateKeywordDatabase = false)
         {
             this.displayName = displayName;
-            this.sceneType = type;
-            this.diskType = type;
-            this.sharedBaseType = type;
             this.generateKeywordDatabase = generateKeywordDatabase;
         }
 
-        public TMPParameterTypeAttribute(string displayName, Type sharedBaseType, Type diskType, Type sceneType, bool generateKeywordDatabase = false)
+        public TMPParameterTypeAttribute(string displayName, Type diskType, Type sceneType,
+            bool generateKeywordDatabase = false)
         {
             this.displayName = displayName;
             this.diskType = diskType;
             this.sceneType = sceneType;
-            this.sharedBaseType = sharedBaseType;
             this.generateKeywordDatabase = generateKeywordDatabase;
         }
     }

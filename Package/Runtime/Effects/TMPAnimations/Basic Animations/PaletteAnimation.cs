@@ -18,7 +18,7 @@ namespace TMPEffects.TMPAnimations.Animations
         menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
     public partial class PaletteAnimation : TMPAnimation
     {
-        [SerializeField, AutoParameterBundle("")] 
+        [SerializeField, AutoParameterBundle("")]  
         [Tooltip(
             "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         Wave wave;
@@ -36,6 +36,9 @@ namespace TMPEffects.TMPAnimations.Animations
 
         [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         float[] colors2;
+
+        [SerializeField, AutoParameter("siefman")]
+        private string s; 
 
         // [SerializeField, AutoParameter("colors, clrs")] 
         // [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
