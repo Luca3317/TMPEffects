@@ -480,13 +480,13 @@ namespace TMPEffects.TMPAnimations
             public float Velocity
             {
                 get => velocity;
-                set
+                private set
                 {
                     velocity = value;
                     wavelength = velocity / frequency;
                     frequency = velocity / wavelength;
                     period = 1 / frequency;
-
+                
                     UpPeriod = upPeriod;
                     DownPeriod = downPeriod;
                 }
@@ -544,11 +544,11 @@ namespace TMPEffects.TMPAnimations
                 get => frequency;
             }
 
-            public WaveBase() : this(1f, 1f, 1f, 1f)
+            public WaveBase() : this(1f, 1f, 1f)
             {
             }
 
-            public WaveBase(float upPeriod, float downPeriod, float velocity, float amplitude)
+            public WaveBase(float upPeriod, float downPeriod, float amplitude)
             {
                 this.upPeriod = 1f;
                 this.downPeriod = 1f;
@@ -663,26 +663,14 @@ namespace TMPEffects.TMPAnimations
                 set => troughWait = value;
             }
 
-            /// <summary>
-            /// The uniformity of the wave.<br/>
-            /// Defines how much the offset passed in when evaluating the wave is considered.<br/>
-            /// A visual representation of this can be found in the online documentation:<br/>
-            /// https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html
-            /// </summary>
-            public float Uniformity
-            {
-                get => uniformity;
-                set => uniformity = value;
-            }
-
             public Wave() : this(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 1f, 1f,
-                1f, 0f, 0f, 1f)
+                1f, 0f, 0f)
             {
             }
 
 
             public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod,
-                float amplitude, float uniformity = 1f) : base(upPeriod, downPeriod, 1f, amplitude)
+                float amplitude) : base(upPeriod, downPeriod, amplitude)
             {
                 if (upwardCurve == null) throw new System.ArgumentNullException(nameof(upwardCurve));
                 if (downwardCurve == null) throw new System.ArgumentNullException(nameof(downwardCurve));
@@ -692,14 +680,13 @@ namespace TMPEffects.TMPAnimations
                     throw new System.ArgumentException("The sum of " + nameof(upPeriod) + " and " + nameof(downPeriod) +
                                                        " must be larger than zero");
 
-                this.uniformity = uniformity;
                 UpwardCurve = upwardCurve;
                 DownwardCurve = downwardCurve;
             }
 
             public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod,
-                float amplitude, float crestWait, float troughWait, float uniformity = 1f)
-                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, amplitude, uniformity)
+                float amplitude, float crestWait, float troughWait)
+                : this(upwardCurve, downwardCurve, upPeriod, downPeriod, amplitude)
             {
                 if (crestWait < 0) throw new System.ArgumentException(nameof(crestWait) + " may not be negative");
                 if (TroughWait < 0) throw new System.ArgumentException(nameof(TroughWait) + " may not be negative");
@@ -710,7 +697,6 @@ namespace TMPEffects.TMPAnimations
 
             public Wave(Wave wave)
             {
-                uniformity = wave.uniformity;
                 crestWait = wave.crestWait;
                 troughWait = wave.troughWait;
                 downwardCurve = new AnimationCurve(wave.downwardCurve.keys);
@@ -724,7 +710,7 @@ namespace TMPEffects.TMPAnimations
             /// </summary>
             /// <param name="time">The time value.</param>
             /// <param name="deltaTime">The delta time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset..</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
@@ -754,7 +740,7 @@ namespace TMPEffects.TMPAnimations
             /// </summary>
             /// <param name="time">The time value.</param>
             /// <param name="deltaTime">The delta time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
@@ -794,7 +780,7 @@ namespace TMPEffects.TMPAnimations
             /// </summary>
             /// <param name="time">The time value.</param>
             /// <param name="deltaTime">The delta time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
@@ -849,7 +835,7 @@ namespace TMPEffects.TMPAnimations
             /// </summary>
             /// <param name="time">The time value.</param>
             /// <param name="deltaTime">The delta time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
@@ -903,7 +889,7 @@ namespace TMPEffects.TMPAnimations
             /// </summary>
             /// <param name="time">The time value.</param>
             /// <param name="deltaTime">The delta time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
             /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
@@ -1005,7 +991,7 @@ namespace TMPEffects.TMPAnimations
             /// This will automatically choose the correct way to interpret the wave.
             /// </summary>
             /// <param name="time">The time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <returns>Value: The value of the wave at the given time and offset.<br/>Direction: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             public (float Value, int Direction) Evaluate(float time, float offset, bool realtimeWait = true)
@@ -1029,7 +1015,7 @@ namespace TMPEffects.TMPAnimations
             /// Evaluate the wave as a normal wave explicitly, ignoring both <see cref="TroughWait"/> and <see cref="CrestWait"/>.
             /// </summary>
             /// <param name="time">The time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             /// <exception cref="System.Exception"></exception>
@@ -1055,7 +1041,7 @@ namespace TMPEffects.TMPAnimations
             /// Evaluate the wave as a pulse explicitly, ignoring the <see cref="CrestWait"/>.
             /// </summary>
             /// <param name="time">The time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             /// <exception cref="System.Exception"></exception>
@@ -1090,7 +1076,7 @@ namespace TMPEffects.TMPAnimations
             /// Evaluate the wave as an inverted pulse explicitly, ignoring the <see cref="TroughWait"/>.
             /// </summary>
             /// <param name="time">The time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             /// <exception cref="System.Exception"></exception>
@@ -1125,7 +1111,7 @@ namespace TMPEffects.TMPAnimations
             /// Evaluate the wave as a one-directional pulse explicitly.
             /// </summary>
             /// <param name="time">The time value.</param>
-            /// <param name="offset">The offset. Affected by <see cref="Uniformity"/>.</param>
+            /// <param name="offset">The offset.</param>
             /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="WaveBase.Period"/> or <see cref="WaveBase.EffectivePeriod"/>).</param>
             /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
             /// <exception cref="System.Exception"></exception>
@@ -1207,7 +1193,7 @@ namespace TMPEffects.TMPAnimations
                 else
                 {
                     float v = Velocity * WaveLength;
-                    t = (time * v) / WaveLength + (offset / WaveLength) * mult * uniformity;
+                    t = (time * v) / WaveLength + (offset / WaveLength) * mult;
                 }
 
                 return t;
@@ -1258,11 +1244,6 @@ namespace TMPEffects.TMPAnimations
 
             [Tooltip("The amount of time to remain at the trough before moving up again, in seconds.")] [SerializeField]
             private float troughWait;
-
-            [Tooltip(
-                "The uniformity of the wave. The closer to zero, the more uniform the wave is applied to the effected characters.")]
-            [SerializeField]
-            private float uniformity;
         }
 
 

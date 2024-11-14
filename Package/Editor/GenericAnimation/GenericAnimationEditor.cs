@@ -906,7 +906,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {GetAnimCurveString(step.wave.UpwardCurve)}, 
                 {GetAnimCurveString(step.wave.DownwardCurve)}, 
                 {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
-                {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}, {GetFloatString(step.wave.Uniformity)}),
+                {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}),
             modifiers = new EditorFriendlyCharDataModifiers()
             {{
                 {(!step.modifiers.Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.modifiers.Position)}," : "")}

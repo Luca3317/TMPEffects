@@ -431,8 +431,8 @@ namespace TMPEffects.Parameters
                 downPeriod,
                 wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value,
                 wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
-                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value,
-                wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
+                wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value
+                // wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
             );
 
             return newWave;

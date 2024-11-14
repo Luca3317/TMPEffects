@@ -2901,3 +2901,13 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 2c81883ffb438b545b14d584b39a13b2, type: 2}
     - Key: disk2
       Value: {fileID: 11400000, guid: 2c81883ffb438b545b14d584b39a13b2, type: 2}
+  OffsetProviderDict:
+    _serializedList:
+    - Key: sie
+      Value:
+        enumValue: 0
+        customValue: {fileID: 0}
+        useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0

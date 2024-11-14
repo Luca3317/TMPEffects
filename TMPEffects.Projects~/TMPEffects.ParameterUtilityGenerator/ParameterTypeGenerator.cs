@@ -38,17 +38,9 @@ namespace TMPEffects.ParameterUtilityGenerator
 
         public void Execute(GeneratorExecutionContext context)
         {
-            Diagnostic d1 = Diagnostic.Create(Rule___, context.Compilation.SyntaxTrees.First().GetRoot().GetLocation(),
-                "XYZ I AM RUNNING");
-            context.ReportDiagnostic(d1);
-
             ParameterTypeAttributeSyntaxReceiver receiver =
                 context.SyntaxReceiver as ParameterTypeAttributeSyntaxReceiver;
             if (receiver == null) return;
-
-            d1 = Diagnostic.Create(Rule___, context.Compilation.SyntaxTrees.First().GetRoot().GetLocation(),
-                "XYZ I AM RUNNING 2: " + receiver.AttributeSyntaxes.Count);
-            context.ReportDiagnostic(d1);
 
             foreach (var attribute in receiver.AttributeSyntaxes)
             {
@@ -60,21 +52,9 @@ namespace TMPEffects.ParameterUtilityGenerator
 
                 if (symbol.ContainingType.ToDisplayString() == Strings.TMPParameterTypeAttributeName)
                 {
-                    d1 = Diagnostic.Create(Rule___, attribute.GetLocation(),
-                        "XYZ I AM RUNNING 2.8");
-                    context.ReportDiagnostic(d1);
-
                     try
                     {
-                        d1 = Diagnostic.Create(Rule___, attribute.GetLocation(),
-                            "XYZ I AM RUNNING 2.9");
-                        context.ReportDiagnostic(d1);
-
                         CreateParameterType(context, model, attribute, symbol, displayNames);
-
-                        d1 = Diagnostic.Create(Rule___, attribute.GetLocation(),
-                            "XYZ I AM RUNNING 2.95");
-                        context.ReportDiagnostic(d1);
                     }
                     catch (System.Exception ex)
                     {
@@ -113,35 +93,19 @@ namespace TMPEffects.ParameterUtilityGenerator
                 return;
             }
 
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                "HERE 1"));
-
             var typeSymbol = model.GetDeclaredSymbol(typeDecl);
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                "HERE 2"));
 
             // Create all necessary static functions on the type
             CreateHasNonTryGet(typeDecl, typeSymbol, ptd, context);
 
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                "HERE 3"));
-
             // Create the keyword database stuff, if specified
             if (ptd.GenerateKeywordDatabase)
                 CreateKeywordDatabases(typeDecl, typeSymbol, ptd, context);
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
-                "HERE 4"));
         }
 
         private void CreateKeywordDatabases(TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,
             Utility.ParameterTypeData ptd, GeneratorExecutionContext context)
         {
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 7???"));
-
             string code = $@"using UnityEngine;
 using TMPEffects.SerializedCollections;
 
@@ -153,9 +117,6 @@ namespace TMPEffects.Databases
     }}
 }}
 ";
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 8???"));
-
             var source = SourceText.From(code, Encoding.UTF8);
             context.AddSource($"ITMPKeywordDatabase.{ptd.DisplayName}.g.cs", source);
 
@@ -179,9 +140,6 @@ namespace TMPEffects.Databases
     }}
 }}
 ";
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 9???"));
-
             source = SourceText.From(code, Encoding.UTF8);
             context.AddSource($"TMPKeywordDatabase.{ptd.DisplayName}.g.cs", source);
 
@@ -205,28 +163,17 @@ namespace TMPEffects.Databases
     }}
 }}
 ";
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 10???"));
-
             source = SourceText.From(code, Encoding.UTF8);
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 11??? " + ptd.DisplayName));
 
             try
             {
                 context.AddSource($"TMPSceneKeywordDatabase.{ptd.DisplayName}.g.cs", source);
-                context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                    "DID DO IT"));
             }
             catch (Exception e)
             {
                 context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
                     "THREW: " + e.Message));
             }
-
-            context.ReportDiagnostic(Diagnostic.Create(Rule___, typeDecl.GetLocation(),
-                "HERE 12???"));
         }
 
         private void CreateHasNonTryGet(TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,

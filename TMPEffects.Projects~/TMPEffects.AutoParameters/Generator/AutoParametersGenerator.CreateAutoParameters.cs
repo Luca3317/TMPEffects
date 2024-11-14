@@ -53,12 +53,6 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             // Get all auto parameters
             var parameters = Utility.GetAutoParametersNEW(typeSymbol);
             
-            foreach (var par in parameters)
-            {
-                context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],
-                    "PARAMETER: " + par.FieldName + " : " + par.TypeString + " " + par.DisplayNameString));
-            }
-            
             var bundles = Utility.GetAutoParameterBundlesNEW(typeSymbol);
 #if DEBUG
             context.ReportDiagnostic(Diagnostic.Create(Rule___, symbol.Locations[0],

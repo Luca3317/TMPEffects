@@ -17,7 +17,7 @@ namespace TMPEffects.TMPAnimations.Animations
     {
         [SerializeField, AutoParameterBundle("")] 
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.3f, 0.3f, 1f, 0f, 1f, 0.04f);
+        Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.3f, 0.3f, 1f, 0f, 1f);
         
         [SerializeField, AutoParameter("waveoffset", "woffset", "waveoff", "woff")]
         [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]

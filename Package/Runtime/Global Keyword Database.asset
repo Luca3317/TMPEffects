@@ -2895,6 +2895,15 @@ MonoBehaviour:
         uniformity: 0
   unityObjectKeywords:
     _serializedList: []
-  SomeShitDict:
+  MyTypeDict:
+    _serializedList: []
+  OffsetProviderDict:
     _serializedList:
-    - Key: 
+    - Key: sie
+      Value:
+        enumValue: 0
+        customValue: {fileID: 0}
+        useCustom: 0
+        ignoreAnimatorScaling: 0
+        considerSegmentLength: 0
+        uniformity: 0
