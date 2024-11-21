@@ -54,7 +54,7 @@ namespace TMPEffects.AutoParameters.Analyzers
             context.RegisterCodeFix(
                 CodeAction.Create(
                     title: "Implement ExecuteCommand",
-                    createChangedDocument: c => ImplementPartialExecuteCommand(context.Document, classDeclaration, c, name),
+                    createChangedDocument: c => ImplementPartialExecuteCommand(context, context.Document, classDeclaration, c, name),
                     equivalenceKey: "Implement ExecuteCommand"),
                 diagnostic);
         }
@@ -100,10 +100,13 @@ namespace TMPEffects.AutoParameters.Analyzers
             }
         }
         
-        private async Task<Document> ImplementPartialExecuteCommand(Document document, ClassDeclarationSyntax classDeclaration,
+        private async Task<Document> ImplementPartialExecuteCommand(CodeFixContext context, Document document, ClassDeclarationSyntax classDeclaration,
             CancellationToken cancellationToken, string storageName)
         {
-            var editor = await DocumentEditor.CreateAsync(document, cancellationToken).ConfigureAwait(false);
+            var usingDirective2 =
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName(Strings.ICommandContextPath));
+
+            var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
 
             var methodDeclaration = SyntaxFactory.MethodDeclaration(
                     SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
@@ -111,8 +114,6 @@ namespace TMPEffects.AutoParameters.Analyzers
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PrivateKeyword),
                     SyntaxFactory.Token(SyntaxKind.PartialKeyword))
                 .AddParameterListParameters(
-                    SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
-                        .WithType(SyntaxFactory.IdentifierName("IDictionary<string, string>")),
                     SyntaxFactory.Parameter(SyntaxFactory.Identifier("data"))
                         .WithType(SyntaxFactory.IdentifierName(storageName)),
                     SyntaxFactory.Parameter(SyntaxFactory.Identifier("context"))
@@ -120,11 +121,20 @@ namespace TMPEffects.AutoParameters.Analyzers
                 )
                 .WithBody(SyntaxFactory.Block());
 
-            // Add the method to the class
-            var newClassDeclaration = classDeclaration.AddMembers(methodDeclaration);
-            editor.ReplaceNode(classDeclaration, newClassDeclaration);
+            var compilationUnit = root as CompilationUnitSyntax;
 
-            return editor.GetChangedDocument();
+            var newclassdecl = classDeclaration.AddMembers(methodDeclaration);
+            compilationUnit = compilationUnit.ReplaceNode(classDeclaration, newclassdecl);
+
+            if (compilationUnit.Usings.All(u => u.Name.ToString() != Strings.ICommandContextPath))
+            {
+                compilationUnit =
+                    compilationUnit.AddUsings(usingDirective2);
+            }
+
+            var newdocument = document.WithSyntaxRoot(compilationUnit);
+
+            return newdocument;
         }
     }
 }

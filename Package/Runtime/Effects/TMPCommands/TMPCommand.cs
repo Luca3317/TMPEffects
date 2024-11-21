@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPEffects.Components.Writer;
+using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 using UnityEngine;
 
@@ -28,10 +29,16 @@ namespace TMPEffects.TMPCommands
 #endif
 
         ///<inheritdoc/>
-        public abstract void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
+        public abstract void ExecuteCommand(ICommandContext context);
         
         ///<inheritdoc/>
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context);
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
+        
+        ///<inheritdoc/>
+        public abstract void SetParameters(object obj, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
+
+        ///<inheritdoc/>
+        public abstract object GetNewCustomData();
 
         public event ObjectChangedEventHandler ObjectChanged;
 

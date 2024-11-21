@@ -24,9 +24,9 @@ namespace TMPEffects.TMPCommands.Commands
 
         [AutoParameter(true, "")] private bool skippable = false;
 
-        private partial void ExecuteCommand(IDictionary<string, string> parameters, AutoParametersData data, ICommandContext context)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            context.WriterContext.Writer.SetSkippable(data.skippable);
+            context.Writer.SetSkippable(data.skippable);
         }
     }
 }

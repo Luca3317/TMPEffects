@@ -9,10 +9,8 @@ using UnityEngine.Playables;
 
 public class TMPMeshModifierTrackMixer : PlayableBehaviour
 {
-    private ExposedReference<PlayableDirector> director;
     private List<ScriptPlayable<TMPMeshModifierBehaviour>> active;
     private TMPAnimator animator;
-    private float time;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
@@ -20,14 +18,10 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
         if (animator == null) return;
 
-        PlayableDirector director = (PlayableDirector)playable.GetGraph().GetResolver();
-
         active ??= new List<ScriptPlayable<TMPMeshModifierBehaviour>>();
         active.Clear();
 
         animator.OnCharacterAnimated -= OnAnimatedCallback;
-
-        time = (float)director.time;
 
         int inputCount = playable.GetInputCount();
         for (int i = 0; i < inputCount; i++)
@@ -43,8 +37,10 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
         if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
 
-        if (animator.UpdateFrom == UpdateFrom.Script)
-            animator.UpdateAnimations(0f);
+        // if (animator.UpdateFrom == UpdateFrom.Script)
+        //     animator.UpdateAnimations(0f);
+        // TODO
+        // When no other animation, and there is no active clip, wont update anims => characters remain in last state
     }
 
     private void OnAnimatedCallback(CharData cdata)
@@ -61,7 +57,6 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             if (behaviour == null) continue;
             float currTime = (float)active[i].GetTime();
             float duration = (float)behaviour.Clip.duration;
-            // float dur2 = (float)behaviour.Clip.duration;
 
             float weight = GenericAnimation.CalcWeight(behaviour.Step.Step, currTime, duration, cdata,
                 animator.AnimatorContext);

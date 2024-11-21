@@ -17,40 +17,43 @@ namespace TMPEffects.TMPAnimations.Animations
     public partial class FadeAnimation : TMPAnimation
     {
         [SerializeField, AutoParameterBundle("")]
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         Wave wave;
-        
-        [SerializeField, AutoParameter("waveoffset", "woffset", "waveoff", "woff")] 
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        OffsetTypePowerEnum waveOffsetType;
 
-        [SerializeField, AutoParameter("maxopacity", "maxop", "max")] 
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetBundle waveOffset;
+
+        [SerializeField, AutoParameter("maxopacity", "maxop", "max")]
         [Tooltip("The maximum opacity that is reached.\nAliases: maxopacity, maxop, max")]
-        float maxOpacity = 255;
-        
-        [SerializeField, AutoParameter("fadeinanchor", "fianchor", "fianc", "fia")] 
+        [Range(0, 255)] float maxOpacity = 255;
+
+        [SerializeField, AutoParameter("fadeinanchor", "fianchor", "fianc", "fia")]
         [Tooltip("The anchor used for fading in.\nAliases: fadeinanchor, fianchor, fianc, fia")]
         Vector3 fadeInAnchor = Vector3.zero;
-        
-        [SerializeField, AutoParameter("fadeindirection", "fidirection", "fidir", "fid")] 
+
+        [SerializeField, AutoParameter("fadeindirection", "fidirection", "fidir", "fid")]
         [Tooltip("The direction to fade in in.\nAliases: fadeindirection, fidirection, fidir, fid")]
         Vector3 fadeInDirection = Vector3.up;
 
         [SerializeField, AutoParameter("minopacity", "minop", "min")]
         [Tooltip("The minimum opacity that is reached.\nAliases: minopacity, minop, min")]
-        float minOpacity = 0;
-        
+        [Range(0, 255)] float minOpacity = 0;
+
         [SerializeField, AutoParameter("fadeoutanchor", "foanchor", "foanc", "foa")]
         [Tooltip("The anchor used for fading out.\nAliases: fadeoutanchor, foanchor, foanc, foa")]
         Vector3 fadeOutAnchor = Vector3Int.zero;
-        
+
         [SerializeField, AutoParameter("fadeoutdirection", "fodirection", "fodir", "fod")]
         [Tooltip("The direction to fade out in.\nAliases: fadeoutdirection, fodirection, fodir, fod")]
         Vector3 fadeOutDirection = Vector3.up;
 
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, d.waveOffsetType.GetOffset(cData, context));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
+                d.waveOffset.GetOffset(cData, context), d.waveOffset.GetUniformity(context));
 
             if (result.Item2 > 0)
             {
@@ -161,6 +164,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 if (v.x > 0) v.x = 1;
                 else v.x = -1;
             }
+
             if (v.y != 0)
             {
                 if (v.y > 0) v.y = 1;

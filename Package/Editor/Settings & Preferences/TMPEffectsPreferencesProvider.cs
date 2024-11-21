@@ -12,6 +12,7 @@ namespace TMPEffects.Editor
         private SerializedObject serializedObject;
         private SerializedProperty defaultAnimationDatabaseProp;
         private SerializedProperty defaultCommandDatabaseProp;
+        private SerializedProperty defaultKeywordDatabaseProp;
 
         class Styles
         {
@@ -46,6 +47,7 @@ namespace TMPEffects.Editor
                 serializedObject = new SerializedObject(settings);
                 defaultAnimationDatabaseProp = serializedObject.FindProperty("defaultAnimationDatabase");
                 defaultCommandDatabaseProp = serializedObject.FindProperty("defaultCommandDatabase");
+                defaultKeywordDatabaseProp = serializedObject.FindProperty("defaultKeywordDatabase");
             }
 
             return true;
@@ -58,15 +60,18 @@ namespace TMPEffects.Editor
             EditorGUI.indentLevel = 1;
 
             serializedObject.UpdateIfRequiredOrScript();
-
+      
+            EditorGUIUtility.labelWidth = 180;
             EditorGUILayout.PropertyField(defaultAnimationDatabaseProp);
             EditorGUILayout.PropertyField(defaultCommandDatabaseProp);
+            EditorGUILayout.PropertyField(defaultKeywordDatabaseProp);
+            EditorGUIUtility.labelWidth = -1;
 
             bool changed = serializedObject.ApplyModifiedProperties();
             if (changed)
             {
                 AssetDatabase.SaveAssetIfDirty(serializedObject.targetObject);
-            }
+            } 
         }
     }
 }

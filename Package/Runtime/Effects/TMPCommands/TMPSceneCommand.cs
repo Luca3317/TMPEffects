@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPEffects.Components.Writer;
+using TMPEffects.Databases;
 using TMPEffects.TMPCommands;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,10 @@ namespace TMPEffects.TMPCommands
 {
     /// <summary>
     /// Struct defining scene commands.
+    /// TODO Im not so sure about this struct anymore,
+    /// or at least not about it being called that;
+    /// Generally scene commands will still want to implement
+    /// their own validation etc.
     /// </summary>
     [System.Serializable]
     public struct TMPSceneCommand : ITMPCommand
@@ -38,12 +43,33 @@ namespace TMPEffects.TMPCommands
         [SerializeField] private UnityEvent<IDictionary<string, string>, ICommandContext> command;
 
         /// <inheritdoc/>
-        public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context) => command?.Invoke(parameters, context);
+        public void ExecuteCommand(ICommandContext context)
+        {
+            var parameters = ((ParameterContainer)context.CustomData).parameters;
+            command?.Invoke(parameters, context);
+        }
 
         /// <inheritdoc/>
-        public bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context)
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             return true;
+        }
+
+        /// <inheritdoc/>
+        public object GetNewCustomData()
+        {
+            return new ParameterContainer();
+        }
+
+        /// <inheritdoc/>
+        public void SetParameters(object obj, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+        {
+            ((ParameterContainer)obj).parameters = parameters;
+        }
+
+        private class ParameterContainer
+        {
+            public IDictionary<string, string> parameters;
         }
     }
 }

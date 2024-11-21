@@ -382,21 +382,27 @@ namespace TMPEffects.Editor
             EditorGUIUtility.labelWidth += 50;
             EditorGUILayout.LabelField("Keywords", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(globalKeywordDatabaseProp);
-            if (GUILayout.Button("Reset Global KeywordDatabase"))
+            if (globalKeywordDatabaseProp.objectReferenceValue != null)
             {
-                var assetObject = new SerializedObject(globalKeywordDatabaseProp.objectReferenceValue);
-                var dict = AnimationCurveUtility.NameConstructorMapping.ToDictionary(t => t.Key, t => t.Value.Invoke());
+                if (GUILayout.Button("Reset Global KeywordDatabase"))
+                {
+                    var assetObject = new SerializedObject(globalKeywordDatabaseProp.objectReferenceValue);
+                    var dict = AnimationCurveUtility.NameConstructorMapping.ToDictionary(t => t.Key,
+                        t => t.Value.Invoke());
 
 #if UNITY_2022_2_OR_NEWER
-                Reset(assetObject.FindProperty("animationCurveKeywords").FindPropertyRelative("_serializedList"), dict);
-                Reset(assetObject.FindProperty("colorKeywords").FindPropertyRelative("_serializedList"), ColorKeywords);
-                Reset(assetObject.FindProperty("floatKeywords").FindPropertyRelative("_serializedList"), FloatKeywords);
-                Reset(assetObject.FindProperty("offsetTypeKeywords").FindPropertyRelative("_serializedList"),
-                    OffsetKeywords);
-                Reset(assetObject.FindProperty("anchorKeywords").FindPropertyRelative("_serializedList"),
-                    AnchorKeywords);
-                Reset(assetObject.FindProperty("vector3Keywords").FindPropertyRelative("_serializedList"),
-                    Vector3Keywords); 
+                    Reset(assetObject.FindProperty("animationCurveKeywords").FindPropertyRelative("_serializedList"),
+                        dict);
+                    Reset(assetObject.FindProperty("colorKeywords").FindPropertyRelative("_serializedList"),
+                        ColorKeywords);
+                    Reset(assetObject.FindProperty("floatKeywords").FindPropertyRelative("_serializedList"),
+                        FloatKeywords);
+                    Reset(assetObject.FindProperty("offsetTypeKeywords").FindPropertyRelative("_serializedList"),
+                        OffsetKeywords);
+                    Reset(assetObject.FindProperty("anchorKeywords").FindPropertyRelative("_serializedList"),
+                        AnchorKeywords);
+                    Reset(assetObject.FindProperty("vector3Keywords").FindPropertyRelative("_serializedList"),
+                        Vector3Keywords);
 #else
                 // TODO Test these in a version lower than 2022_2
                 ResetColors(assetObject.FindProperty("colorKeywords").FindPropertyRelative("_serializedList"));
@@ -407,8 +413,10 @@ namespace TMPEffects.Editor
                 ResetAnchors(assetObject.FindProperty("anchorKeywords").FindPropertyRelative("_serializedList"));
 #endif
 
-                if (assetObject.hasModifiedProperties) assetObject.ApplyModifiedProperties();
+                    if (assetObject.hasModifiedProperties) assetObject.ApplyModifiedProperties();
+                }
             }
+
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Tags", EditorStyles.boldLabel);

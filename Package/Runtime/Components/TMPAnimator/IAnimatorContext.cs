@@ -14,8 +14,6 @@ namespace TMPEffects.Components.Animator
         /// </summary>
         public CharDataModifiers Modifiers { get; }
         
-        public ITMPKeywordDatabase KeywordDatabase { get; }
-        
         /// <summary>
         /// Whether animations are scaled.
         /// </summary>

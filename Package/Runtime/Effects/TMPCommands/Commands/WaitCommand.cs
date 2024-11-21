@@ -21,25 +21,9 @@ namespace TMPEffects.TMPCommands.Commands
 
         [AutoParameter(true, "")] private float waitTime;
 
-        private partial void ExecuteCommand(IDictionary<string, string> parameters, AutoParametersData data,
-            ICommandContext context)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            context.WriterContext.Writer.Wait(data.waitTime);
+            context.Writer.Wait(data.waitTime);
         }
-
-        // public override void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context)
-        // {
-        //     ParameterParsing.StringToFloat(parameters[""], out var value, context.WriterContext.KeywordDatabase);
-        //     context.WriterContext.Writer.Wait(value);
-        // }
-        //
-        // public override bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context)
-        // {
-        //     if (parameters == null) return false;
-        //     if (!parameters.ContainsKey(""))
-        //         return false;
-        //     
-        //     return ParameterParsing.StringToFloat(parameters[""], out _, context.KeywordDatabase);
-        // }
     }
 }

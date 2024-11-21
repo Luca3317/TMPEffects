@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Components;
@@ -5,6 +6,7 @@ using UnityEditorInternal;
 using System.Collections.Generic;
 using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
+using Object = UnityEngine.Object;
 
 namespace TMPEffects.Editor
 {
@@ -36,9 +38,11 @@ namespace TMPEffects.Editor
         SerializedProperty defaultShowStringProp;
         SerializedProperty defaultHideStringProp;
         SerializedProperty useDefaultDatabaseProp;
+        SerializedProperty useDefaultKeywordDatabaseProp;
         SerializedProperty initDatabaseProp;
         SerializedProperty previewUpdatesProp;
         SerializedProperty keywordDatabaseProp;
+        SerializedProperty sceneKeywordDatabaseProp;
 
         // Default animations
         SerializedProperty defaultAnimationsProp, defaultShowAnimationsProp, defaultHideAnimationsProp;
@@ -66,7 +70,8 @@ namespace TMPEffects.Editor
             contextUniformScalingProp = contextProp.FindPropertyRelative("scaleUniformly");
             contextScaledTimeProp = contextProp.FindPropertyRelative("useScaledTime");
             passedTimeProp = contextProp.FindPropertyRelative("passedTime");
-            keywordDatabaseProp = contextProp.FindPropertyRelative("keywordDatabase");
+            keywordDatabaseProp = serializedObject.FindProperty("keywordDatabase");
+            sceneKeywordDatabaseProp = serializedObject.FindProperty("sceneKeywordDatabase");
             previewProp = serializedObject.FindProperty("preview");
             excludedProp = serializedObject.FindProperty("excludedCharacters");
             excludedShowProp = serializedObject.FindProperty("excludedCharactersShow");
@@ -75,6 +80,7 @@ namespace TMPEffects.Editor
             excludePunctuationShowProp = serializedObject.FindProperty("excludePunctuationShow");
             excludePunctuationHideProp = serializedObject.FindProperty("excludePunctuationHide");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
+            useDefaultKeywordDatabaseProp = serializedObject.FindProperty("useDefaultKeywordDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
             previewUpdatesProp = serializedObject.FindProperty("previewUpdatesPerSecond");
 
@@ -180,6 +186,7 @@ namespace TMPEffects.Editor
             initDatabaseProp.boolValue = true;
 
             SetDatabase();
+            SetKeywordDatabase();
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -192,6 +199,32 @@ namespace TMPEffects.Editor
             reset = false;
 
             SetDatabase();
+        }
+
+        private void SetKeywordDatabase()
+        {
+            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+            if (preferences == null || !useDefaultKeywordDatabaseProp.boolValue)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (preferences.DefaultKeywordDatabase == null)
+            {
+                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
+                useDefaultKeywordDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (keywordDatabaseProp.objectReferenceValue != preferences.DefaultKeywordDatabase)
+            {
+                keywordDatabaseProp.objectReferenceValue = preferences.DefaultKeywordDatabase;
+                serializedObject.ApplyModifiedProperties();
+                animator.OnChangedDatabase();
+                return;
+            }
         }
 
         private void SetDatabase()
@@ -258,81 +291,52 @@ namespace TMPEffects.Editor
             if (databaseProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
-                DrawDatabase();
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(databaseProp, useDefaultDatabaseProp,
+                        useDefaultDatabaseLabel,
+                        GetDefaultAnimationDatabase))
+                {
+                    animator.OnChangedDatabase();
+                }
+
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(sceneAnimationsProp);
+                EditorGUILayout.PropertyField(sceneShowAnimationsProp);
+                EditorGUILayout.PropertyField(sceneHideAnimationsProp);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    // SerializedObservableDictionary does not raise events when the operations involves
+                    // (de)serializing the actual object (as opposed to the contained objects).
+                    // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                    // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                    // instead of instantly performing it.
+                    // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                    // in Update of TMPAnimator.
+                    if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                    animator.OnChangedDatabase();
+                }
+
                 EditorGUI.indentLevel--;
             }
         }
 
-        void DrawDatabase()
+        private Object GetDefaultAnimationDatabase()
         {
-            GUILayout.BeginHorizontal();
+            var prefs = TMPEffectsPreferences.Get();
+            if (prefs == null) return null;
 
-            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
-            useDefaultDatabaseProp.boolValue =
-                EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
+            if (prefs.DefaultAnimationDatabase == null)
+                Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
+            return prefs.DefaultAnimationDatabase;
+        }
 
-            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
-            {
-                if (useDefaultDatabaseProp.boolValue)
-                {
-                    TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-                    if (preferences == null)
-                    {
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else if (preferences.DefaultAnimationDatabase == null)
-                    {
-                        Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else
-                    {
-                        databaseProp.objectReferenceValue = preferences.DefaultAnimationDatabase;
-                        serializedObject.ApplyModifiedProperties();
-                        animator.OnChangedDatabase();
-                    }
-                }
-            }
-            else
-            {
-                TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-                if (preferences != null && preferences.DefaultAnimationDatabase != databaseProp.objectReferenceValue)
-                {
-                    useDefaultDatabaseProp.boolValue = false;
-                    serializedObject.ApplyModifiedProperties();
-                }
-            }
+        private Object GetDefaultKeywordDatabase()
+        {
+            var prefs = TMPEffectsPreferences.Get();
+            if (prefs == null) return null;
 
-            EditorGUI.BeginChangeCheck();
-            EditorGUI.BeginDisabledGroup(useDefaultDatabaseProp.boolValue);
-            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-            EditorGUI.EndDisabledGroup();
-            if (EditorGUI.EndChangeCheck())
-            {
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                animator.OnChangedDatabase();
-            }
-
-            GUILayout.EndHorizontal();
-
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(sceneAnimationsProp);
-            EditorGUILayout.PropertyField(sceneShowAnimationsProp);
-            EditorGUILayout.PropertyField(sceneHideAnimationsProp);
-            if (EditorGUI.EndChangeCheck())
-            {
-                // SerializedObservableDictionary does not raise events when the operations involves
-                // (de)serializing the actual object (as opposed to the contained objects).
-                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
-                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
-                // instead of instantly performing it.
-                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
-                // in Update of TMPAnimator.
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                animator.OnChangedDatabase();
-            }
+            if (prefs.DefaultKeywordDatabase == null)
+                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
+            return prefs.DefaultKeywordDatabase;
         }
 
         GUIContent alertDialogDefaultShow;
@@ -359,7 +363,7 @@ namespace TMPEffects.Editor
                 showListWarningDict);
 
             DrawDefault(
-                TMPAnimationType.Hide,
+                TMPAnimationType.Hide, 
                 defaultHideAnimationsProp,
                 defaultHideAnimationsList,
                 new GUIContent("Default Hide Animations",
@@ -588,22 +592,31 @@ namespace TMPEffects.Editor
                 EditorGUILayout.Space(10);
                 DrawExclusions();
 
-                
-                // TODO Figure out how / if there is a way to use correct filters for objectpicker with this setup 
+
                 EditorGUILayout.Space(10);
                 GUIContent cont = new GUIContent("Keyword Database");
                 cont.tooltip = "A keyword database defining additional keywords. " +
-                               "If the same keyword is present in the Global Keyword Database defined in the project settings, this database will override it.";
+                               "If the same keyword is present in the global keyword Database, this database will override it.";
+
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp, cont,
+                    GetDefaultKeywordDatabase))
+                {
+                    animator.OnChangedDatabase();
+                }
+
                 EditorGUI.BeginChangeCheck();
-                // keywordDatabaseProp.objectReferenceValue = 
-                //     EditorGUILayout.ObjectField(cont, keywordDatabaseProp.objectReferenceValue, typeof(ITMPKeywordDatabase), true);
-                EditorGUILayout.PropertyField(keywordDatabaseProp, cont);
+                // TODO Will i still want to have a global database?
+                // TODO If not update the tooltip for both databases
+                cont = new GUIContent("Scene Keyword Database");
+                cont.tooltip = "A scene keyword database defining additional keywords. " +
+                               "If the same keyword is present in the global keyword Database or keyword database on this animator, this database will override it.";
+                EditorGUILayout.PropertyField(sceneKeywordDatabaseProp, cont);
                 if (EditorGUI.EndChangeCheck())
                 {
                     serializedObject.ApplyModifiedProperties();
-                    animator.OnChangedDatabase(); 
+                    animator.OnChangedDatabase();
                 }
-                
+
                 EditorGUI.indentLevel--;
             }
 
@@ -644,6 +657,75 @@ namespace TMPEffects.Editor
 
                 EditorApplication.delayCall += () => { animator.StartPreview(); };
             }
+        }
+    }
+
+
+    internal static class TMPEffectsDrawerUtility
+    {
+        public static bool DrawDefaultableDatabase(SerializedProperty dbProp, SerializedProperty useDefaultProp,
+            GUIContent label,
+            Func<UnityEngine.Object> getDefault)
+        {
+            SerializedObject serializedObject = dbProp.serializedObject;
+            bool changed = false;
+            GUILayout.BeginHorizontal();
+
+            // EditorGUILayout.LabelField("Use default database?");
+            var rect = EditorGUILayout.GetControlRect();
+
+            GUIStyle style = EditorStyles.toggle;
+            Vector2 size = style.CalcSize(GUIContent.none);
+
+            size.x -= 10;
+            var toggleRect = new Rect(rect.x, rect.y, size.x, rect.height);
+            var dbRect = new Rect(rect.x + EditorGUIUtility.labelWidth + size.x, rect.y,
+                rect.width - EditorGUIUtility.labelWidth - size.x, rect.height);
+
+            bool prevUseDefaultDatabase = useDefaultProp.boolValue;
+            useDefaultProp.boolValue =
+                EditorGUI.Toggle(toggleRect, label, useDefaultProp.boolValue);
+
+            if (prevUseDefaultDatabase != useDefaultProp.boolValue)
+            {
+                if (useDefaultProp.boolValue)
+                {
+                    var defaultDatabase = getDefault();
+                    if (defaultDatabase == null)
+                    {
+                        useDefaultProp.boolValue = false;
+                        serializedObject.ApplyModifiedProperties();
+                    }
+                    else
+                    {
+                        dbProp.objectReferenceValue = defaultDatabase;
+                        serializedObject.ApplyModifiedProperties();
+                        changed = true;
+                    }
+                }
+            }
+            else
+            {
+                var defaultDatabase = getDefault();
+                if (defaultDatabase != null && defaultDatabase != dbProp.objectReferenceValue)
+                {
+                    useDefaultProp.boolValue = false;
+                    serializedObject.ApplyModifiedProperties();
+                }
+            }
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUI.BeginDisabledGroup(useDefaultProp.boolValue);
+            EditorGUI.PropertyField(dbRect, dbProp, GUIContent.none);
+            EditorGUI.EndDisabledGroup();
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                changed = true;
+            }
+
+            GUILayout.EndHorizontal();
+            return changed;
         }
     }
 }

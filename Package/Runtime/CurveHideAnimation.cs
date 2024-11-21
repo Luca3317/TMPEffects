@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 
@@ -32,23 +33,23 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             CharDataModifiers.LerpMeshModifiersUnclamped(cData, cData.MeshModifiers, t, cData.MeshModifiers);
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             if (animation == null) return false;
-            return animation.ValidateParameters(parameters, context);
+            return animation.ValidateParameters(parameters, keywordDatabase);
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
+            ITMPKeywordDatabase keywordDatabase)
         {
             if (animation == null) return;
-            animation.SetParameters(customData, parameters, context);
+            animation.SetParameters(customData, parameters, keywordDatabase);
         }
 
-        public override object GetNewCustomData(IAnimationContext context)
+        public override object GetNewCustomData()
         {
             if (animation == null) return null;
-            return animation.GetNewCustomData(context);
+            return animation.GetNewCustomData();
         }
     }
 }

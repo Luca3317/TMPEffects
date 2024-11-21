@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPEffects.CharacterData;
 using System;
+using System.Collections.Generic;
 using TMPEffects.Extensions;
 using TMPEffects.Components.Animator;
 using TMPro;
 using TMPEffects.Components;
+using TMPEffects.Databases;
 using TMPEffects.Parameters;
+using static TMPEffects.Parameters.ParameterUtility;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
@@ -325,6 +328,19 @@ namespace TMPEffects.TMPAnimations
 
         #endregion
 
+
+
+        public static float GetOffset(CharData cData, IAnimationContext context, ITMPOffsetProvider provider,
+            bool ignoreScaling = false, bool ignoreSegmentLenght = false)
+        {
+            float offset = provider.GetOffset(cData, context, ignoreScaling);
+
+            if (!ignoreSegmentLenght)
+                offset /= context.SegmentData.length == 0 ? 0.001f : context.SegmentData.length;
+
+            return offset;
+        }
+        
         [System.Serializable]
         public class FancyAnimationCurve
         {
@@ -334,56 +350,33 @@ namespace TMPEffects.TMPAnimations
                 set => curve = value;
             }
 
-            public float Uniformity
-            {
-                get => uniformity;
-                set => uniformity = value;
-            }
-
-            public OffsetTypePowerEnum OffsetType
-            {
-                get => offsetType;
-                set => offsetType = value;
-            }
-
-            public TMPWrapMode WrapMode
-            {
-                get => wrapMode;
-                set => wrapMode = value;
-            }
-
             [SerializeField] private AnimationCurve curve;
-            [SerializeField] private float uniformity;
-            [SerializeField] private OffsetTypePowerEnum offsetType;
-            [SerializeField] private TMPWrapMode wrapMode;
 
             public FancyAnimationCurve()
             {
             }
 
-            public FancyAnimationCurve(FancyAnimationCurve original)
+            public FancyAnimationCurve(AnimationCurve curve)
             {
-                curve = new AnimationCurve(original.curve.keys);
-                uniformity = original.uniformity;
-                offsetType = original.offsetType;
-                wrapMode = original.wrapMode;
+                this.curve = curve;
+            }
+            
+            public FancyAnimationCurve(FancyAnimationCurve curve)
+            {
+                this.curve = curve.curve;
             }
 
-            // TODO Quick addition to make evaluation without anim context possible
-            // TODO If i do split interfaces up further wont be necessary anymore i think
-            public float Evaluate(CharData cData, IAnimatorContext ctx, float time)
+            public float Evaluate(float time, float offset, float uniformity)
             {
-                float offset = offsetType.GetOffset(cData, ctx);
-                float t = time - offset;
-                return GetValue(curve, wrapMode, t);
+                float t = CalculateT(time, offset,uniformity);
+                return curve.Evaluate(time);
             }
 
-            public float Evaluate(CharData cData, IAnimationContext ctx, float time)
+            private float CalculateT(float time, float offset, float uniformity)
             {
-                float offset = offsetType.GetOffset(cData, ctx);
-                float t = time - offset;
-                // t = Mathf.Abs(t); // TODO ?
-                return GetValue(curve, wrapMode, t);
+                float t;
+                t = (time) + offset * uniformity;
+                return t;
             }
         }
 
@@ -486,7 +479,7 @@ namespace TMPEffects.TMPAnimations
                     wavelength = velocity / frequency;
                     frequency = velocity / wavelength;
                     period = 1 / frequency;
-                
+
                     UpPeriod = upPeriod;
                     DownPeriod = downPeriod;
                 }
@@ -627,6 +620,219 @@ namespace TMPEffects.TMPAnimations
         [System.Serializable]
         public class Wave : WaveBase, ISerializationCallbackReceiver
         {
+            // !! TODO !!
+            // Moved these in here temporarily so it compiles for now
+
+            /// <summary>
+            /// Get all parameter relevant to a wave.<br/>
+            /// Important: this reserves the following parameter names:
+            /// <list type="bullet">
+            /// <item>upcurve, upcrv, upc</item>
+            /// <item>downcurve, downcrv, downc, dcrv, dc</item>
+            /// <item>upperiod, uppd</item>
+            /// <item>downperiod, downpd, dpd</item>
+            /// <item>crestwait, crestw, cwait</item>
+            /// <item>troughwait, troughw, twait</item>
+            /// <item>wavevelocity, wavevlc, wvelocity, wvlc</item>
+            /// <item>wavelength, wavelen, wlength, wlen</item>
+            /// <item>waveuniformity, waveuni, wuniformity, wuni</item>
+            /// <item>waveamplitude, wamplitude, waveamp, wamp</item>
+            /// </list>
+            /// </summary>
+            /// <param name="parameters">The dictionary containing the parameters.</param>
+            /// <param name="upwardCurve">Whether to get the upwardCurve parameter.</param>
+            /// <param name="downwardCurve">Whether to get the downwardCurve parameter.</param>
+            /// <param name="upPeriod">Whether to get the upPeriod parameter.</param>
+            /// <param name="downPeriod">Whether to get the downPeriod parameter.</param>
+            /// <param name="crestWait">Whether to get the crestWait parameter.</param>
+            /// <param name="troughWait">Whether to get the troughWait parameter.</param>
+            /// <param name="waveVelocity">Whether to get the waveVelocity parameter.</param>
+            /// <param name="waveLength">Whether to get the waveLength parameter.</param>
+            /// <param name="waveUniformity">Whether to get the waveUniformity parameter.</param>
+            /// <param name="amplitude">Whether to get the amplitude parameter.</param>
+            /// <returns>A <see cref="ParameterUtility.WaveParameters"/> object containing the parsed fields.</returns>
+            /// <exception cref="System.Exception">If conflicting parameters are specified</exception>
+            public static ParameterUtility.WaveParameters GetParameters(IDictionary<string, string> parameters,
+                ITMPKeywordDatabase keywords = null,
+                string prefix = "",
+                bool upwardCurve = true,
+                bool downwardCurve = true,
+                bool upPeriod = true,
+                bool downPeriod = true,
+                bool crestWait = true,
+                bool troughWait = true,
+                bool waveVelocity = true,
+                bool waveLength = true,
+                bool waveUniformity = true,
+                bool amplitude = true
+            )
+            {
+                ParameterUtility.WaveParameters wp = new ParameterUtility.WaveParameters();
+
+                wp.upwardCurve = null;
+                wp.downwardCurve = null;
+                wp.upPeriod = null;
+                wp.downPeriod = null;
+                wp.crestWait = null;
+                wp.troughWait = null;
+                wp.wavevelocity = null;
+                wp.amplitude = null;
+
+                if (waveVelocity &&
+                    TryGetFloatParameter(out float f, parameters, keywords, prefix + "velocity", prefix + "vlc"))
+                    wp.wavevelocity = f;
+                if (waveLength && TryGetFloatParameter(out f, parameters, keywords, prefix + "wavelength",
+                        prefix + "wavelen",
+                        prefix + "wlength", prefix + "wlen"))
+                {
+                    if (wp.wavevelocity != null)
+                        throw new System.Exception(
+                            "Must define either wave velocity, wave length or uniformity; not multiple");
+
+                    wp.wavelength = f;
+                }
+
+                if (waveUniformity &&
+                    TryGetFloatParameter(out f, parameters, keywords, prefix + "uniformity", prefix + "uni"))
+                    wp.waveuniformity = f;
+                if (upwardCurve && TryGetAnimCurveParameter(out AnimationCurve crv, parameters, keywords,
+                        prefix + "upcurve",
+                        prefix + "upcrv", prefix + "up")) wp.upwardCurve = crv;
+                if (downwardCurve && TryGetAnimCurveParameter(out crv, parameters, keywords, prefix + "downcurve",
+                        prefix + "downcrv",
+                        prefix + "down", prefix + "dn")) wp.downwardCurve = crv;
+                if (upPeriod && TryGetFloatParameter(out f, parameters, keywords, prefix + "upperiod", prefix + "uppd"))
+                    wp.upPeriod = f;
+                if (downPeriod && TryGetFloatParameter(out f, parameters, keywords, prefix + "downperiod",
+                        prefix + "downpd",
+                        prefix + "dnpd")) wp.downPeriod = f;
+                if (crestWait && TryGetFloatParameter(out f, parameters, keywords, prefix + "crestwait",
+                        prefix + "crestw",
+                        prefix + "cwait", prefix + "cw")) wp.crestWait = f;
+                if (troughWait && TryGetFloatParameter(out f, parameters, keywords, prefix + "troughwait",
+                        prefix + "troughw",
+                        prefix + "twait", prefix + "tw")) wp.troughWait = f;
+                if (amplitude &&
+                    TryGetFloatParameter(out f, parameters, keywords, prefix + "amplitude", prefix + "amp"))
+                    wp.amplitude = f;
+
+                return wp;
+            }
+
+            /// <summary>
+            /// Validate all parameters relevant to a wave.<br/>
+            /// Important: this reserves the following parameter names:
+            /// <list type="bullet">
+            /// <item>upcurve, upcrv, upc</item>
+            /// <item>downcurve, downcrv, downc, dcrv, dc</item>
+            /// <item>upperiod, uppd</item>
+            /// <item>downperiod, downpd, dpd</item>
+            /// <item>crestwait, crestw, cwait</item>
+            /// <item>troughwait, troughw, twait</item>
+            /// <item>wavevelocity, wavevlc, wvelocity, wvlc</item>
+            /// <item>wavelength, wavelen, wlength, wlen</item>
+            /// <item>waveuniformity, waveuni, wuniformity, wuni</item>
+            /// <item>waveamplitude, wamplitude, waveamp, wamp</item>
+            /// </list>
+            /// <param name="parameters">The dictionary containing the parameters.</param>
+            /// <param name="upwardCurve">Whether to validate the upwardCurve parameter.</param>
+            /// <param name="downwardCurve">Whether to validate the downwardCurve parameter.</param>
+            /// <param name="upPeriod">Whether to validate the upPeriod parameter.</param>
+            /// <param name="downPeriod">Whether to validate the downPeriod parameter.</param>
+            /// <param name="crestWait">Whether to validate the crestWait parameter.</param>
+            /// <param name="troughWait">Whether to validate the troughWait parameter.</param>
+            /// <param name="waveVelocity">Whether to validate the waveVelocity parameter.</param>
+            /// <param name="waveLength">Whether to validate the waveLength parameter.</param>
+            /// <param name="waveUniformity">Whether to validate the waveUniformity parameter.</param>
+            /// <param name="amplitude">Whether to validate the amplitude parameter.</param>
+            /// <returns>true if all specified fields were successfully validate; otherwise, false.</returns>
+            public static bool ValidateParameters(IDictionary<string, string> parameters,
+                ITMPKeywordDatabase keywords = null,
+                string prefix = "",
+                bool upwardCurve = true,
+                bool downwardCurve = true,
+                bool upPeriod = true,
+                bool downPeriod = true,
+                bool crestWait = true,
+                bool troughWait = true,
+                bool waveVelocity = true,
+                bool waveLength = true,
+                bool waveUniformity = true,
+                bool amplitude = true
+            )
+            {
+                bool contained = false;
+                string defined;
+
+                if (waveVelocity &&
+                    TryGetDefinedParameter(out defined, parameters, prefix + "velocity", prefix + "vlc"))
+                {
+                    if (HasNonFloatParameter(parameters, keywords, defined)) return false;
+                    contained = true;
+                }
+
+                if (waveLength && TryGetDefinedParameter(out defined, parameters, prefix + "wavelength",
+                        prefix + "wavelen",
+                        prefix + "wlength", prefix + "wlen"))
+                {
+                    if (contained) return false;
+                    if (HasNonFloatParameter(parameters, keywords, defined)) return false;
+                }
+
+                if (waveUniformity && HasNonFloatParameter(parameters, keywords, prefix + "uniformity", prefix + "uni"))
+                    return false;
+                if (upwardCurve &&
+                    HasNonAnimCurveParameter(parameters, keywords, prefix + "upcurve", prefix + "upcrv", prefix + "up"))
+                    return false;
+                if (downwardCurve && HasNonAnimCurveParameter(parameters, keywords, prefix + "downcurve",
+                        prefix + "downcrv",
+                        prefix + "down", prefix + "dn")) return false;
+                if (upPeriod && HasNonFloatParameter(parameters, keywords, prefix + "upperiod", prefix + "uppd"))
+                    return false;
+                if (downPeriod &&
+                    HasNonFloatParameter(parameters, keywords, prefix + "downperiod", prefix + "downpd",
+                        prefix + "dnpd"))
+                    return false;
+                if (crestWait && HasNonFloatParameter(parameters, keywords, prefix + "crestwait", prefix + "crestw",
+                        prefix + "cwait",
+                        prefix + "cw")) return false;
+                if (troughWait && HasNonFloatParameter(parameters, keywords, prefix + "troughwait", prefix + "troughw",
+                        prefix + "twait", prefix + "tw")) return false;
+                if (amplitude && HasNonFloatParameter(parameters, keywords, prefix + "amplitude", prefix + "amp"))
+                    return false;
+
+                return true;
+            }
+
+
+            /// <summary>
+            /// Create a new <see cref="Wave"/> using the passed in one as a template, and replacing any of its properties that are defined in the passed in <see cref="ParameterUtility.WaveParameters"/>.<br/>
+            /// This is not in-place. The passed in <see cref="Wave"> will not be modified.
+            /// </summary>
+            /// <param name="wave"></param>
+            /// <param name="wp"></param>
+            /// <returns>A new <see cref="Wave"/>, that combines the properties of the passed in objects.</returns>
+            public static Wave Create(Wave wave, ParameterUtility.WaveParameters wp)
+            {
+                float upPeriod = wp.upPeriod == null ? wave.UpPeriod : wp.upPeriod.Value;
+                float downPeriod = wp.downPeriod == null ? wave.DownPeriod : wp.downPeriod.Value;
+
+                Wave newWave = new Wave
+                (
+                    wp.upwardCurve == null ? wave.UpwardCurve : wp.upwardCurve,
+                    wp.downwardCurve == null ? wave.DownwardCurve : wp.downwardCurve,
+                    upPeriod,
+                    downPeriod,
+                    wp.amplitude == null ? wave.Amplitude : wp.amplitude.Value,
+                    wp.crestWait == null ? wave.CrestWait : wp.crestWait.Value,
+                    wp.troughWait == null ? wave.TroughWait : wp.troughWait.Value
+                    // wp.waveuniformity == null ? wave.Uniformity : wp.waveuniformity.Value
+                );
+
+                return newWave;
+            }
+
+
             /// <summary>
             /// The upward curve of the wave.
             /// </summary>
@@ -1011,6 +1217,27 @@ namespace TMPEffects.TMPAnimations
                 return EvaluateAsOneDirectionalPulse(time, offset, realtimeWait);
             }
 
+            private float uniformity;
+
+            public (float Value, int Direction) Evaluate(float time, float offset, float uniformity)
+            {
+                this.uniformity = uniformity;
+
+                if (CrestWait <= 0)
+                {
+                    if (TroughWait <= 0)
+                    {
+                        return EvaluateAsWave(time, offset);
+                    }
+
+                    return EvaluateAsPulse(time, offset);
+                }
+
+                if (TroughWait <= 0) return EvaluateAsInvertedPulse(time, offset);
+
+                return EvaluateAsOneDirectionalPulse(time, offset);
+            }
+
             /// <summary>
             /// Evaluate the wave as a normal wave explicitly, ignoring both <see cref="TroughWait"/> and <see cref="CrestWait"/>.
             /// </summary>
@@ -1104,7 +1331,9 @@ namespace TMPEffects.TMPAnimations
                         Amplitude * GetValue(UpwardCurve, WrapMode.PingPong, 1), 1);
 
                 // Otherwise we are travelling down the curve
-                return (Amplitude * GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod - wait) / EffectiveDownPeriod)), -1);
+                return (
+                    Amplitude * GetValue(DownwardCurve, WrapMode.PingPong,
+                        Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod - wait) / EffectiveDownPeriod)), -1);
             }
 
             /// <summary>
@@ -1193,7 +1422,7 @@ namespace TMPEffects.TMPAnimations
                 else
                 {
                     float v = Velocity * WaveLength;
-                    t = (time * v) / WaveLength + (offset / WaveLength) * mult;
+                    t = (time * v) / WaveLength + (offset / WaveLength) * mult * uniformity;
                 }
 
                 return t;

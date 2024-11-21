@@ -15,16 +15,15 @@ public class OffsetTypeDrawer : PropertyDrawer
         var enumProp = property.FindPropertyRelative("enumValue");
         var customProp = property.FindPropertyRelative("customValue");
         var useCustomProp = property.FindPropertyRelative("useCustom");
-        var ignoreScalingProp = property.FindPropertyRelative("ignoreAnimatorScaling");
-        var considerSegmentLengthProp = property.FindPropertyRelative("considerSegmentLength");
-        var uniformityProp = property.FindPropertyRelative("uniformity");
+        // var ignoreScalingProp = property.FindPropertyRelative("ignoreAnimatorScaling");
+        // var considerSegmentLengthProp = property.FindPropertyRelative("considerSegmentLength");
+        // var uniformityProp = property.FindPropertyRelative("uniformity");
 
         var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
 
         var width = EditorStyles.label.CalcSize(label);
         var foldoutRect = new Rect(rect.x, rect.y, 20, EditorGUIUtility.singleLineHeight);
         var ctrlRect = EditorGUI.PrefixLabel(rect, GUIUtility.GetControlID(FocusType.Passive, rect), label);
-        ignoreScalingProp.isExpanded = EditorGUI.Foldout(foldoutRect, ignoreScalingProp.isExpanded, GUIContent.none);
 
 
         List<string> options = new List<string>(enumProp.enumDisplayNames);
@@ -62,30 +61,12 @@ public class OffsetTypeDrawer : PropertyDrawer
         useCustomProp.boolValue = index == options.Count - 1;
         
         for (int i = 0; i < indent; i++) EditorGUI.indentLevel++;
-        
-        if (ignoreScalingProp.isExpanded)
-        {
-            EditorGUI.indentLevel++; 
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, ignoreScalingProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, considerSegmentLengthProp);
-            rect.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(rect, uniformityProp);
-            EditorGUI.indentLevel--;
-        }
 
         EditorGUI.EndProperty();
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        var scalingProp = property.FindPropertyRelative("ignoreAnimatorScaling");
-        if (scalingProp.isExpanded)
-        {
-            return EditorGUIUtility.singleLineHeight * 4;
-        }
-        
         return EditorGUIUtility.singleLineHeight;
     }
 }

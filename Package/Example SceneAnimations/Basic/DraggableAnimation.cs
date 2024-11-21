@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
@@ -136,16 +137,16 @@ namespace TMPEffects.TMPSceneAnimations
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
+            ITMPKeywordDatabase keywordDatabase)
         {
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             return true;
         }
 
-        public override object GetNewCustomData(IAnimationContext context)
+        public override object GetNewCustomData()
         {
             return new Data();
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -43,7 +44,6 @@ namespace TMPEffects.AutoParameters.Analyzer
         {
             Diagnostic diagnostic;
 
-            // TODO Report here if on a class that does not implement ITMPCommand or ITMPAnimation (and return)
             bool implementsITMPAnimation = Implements(context, symbol, Strings.ITMPAnimationName);
             bool implementsITMPCommand = Implements(context, symbol, Strings.ITMPCommandName);
 
@@ -56,6 +56,8 @@ namespace TMPEffects.AutoParameters.Analyzer
                 return;
             }
 
+            CheckIsNotNested(context, symbol);
+            
             // Get all methods
             var methods = typeDecl.Members.Where(member => member.Kind() == SyntaxKind.MethodDeclaration)
                 .Select(method => method as MethodDeclarationSyntax);
@@ -91,13 +93,33 @@ namespace TMPEffects.AutoParameters.Analyzer
 
             // ITMPAnimation specific checks
             if (implementsITMPAnimation)
-                ITMPAnimationSpecificChecks(context, typeDecl, methods, firstFoundName);
+                ITMPAnimationSpecificChecks(context, typeDecl, symbol, methods, firstFoundName);
 
             // ITMPCommand specific checks
             if (implementsITMPCommand)
-                ITMPCommandSpecificChecks(context, typeDecl, methods, firstFoundName);
+                ITMPCommandSpecificChecks(context, typeDecl, symbol, methods, firstFoundName);
         }
 
+        private void CheckIsNotNested(SyntaxNodeAnalysisContext context, INamedTypeSymbol symbol)
+        {
+            if (symbol.ContainingType == null) return;
+            context.ReportDiagnostic(Diagnostic.Create(Rule_1, symbol.Locations[0], symbol.Name));
+        }
+
+        private void CheckHookMethods(string storageName, SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol)
+        {
+            var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
+            var validateHook = Utility.ImplementsValidateParametersHook(typeSymbol, stringType);
+            var setParamsHook = Utility.ImplementsSetParametersHook(typeSymbol, stringType);
+            var getCustomHook = Utility.ImplementsGetNewCustomDataHook(storageName, typeSymbol);
+
+            if (!validateHook)
+                context.ReportDiagnostic(Diagnostic.Create(Rule_900, typeSymbol.Locations[0]));
+            if (!setParamsHook)
+                context.ReportDiagnostic(Diagnostic.Create(Rule_901, typeSymbol.Locations[0]));
+            if (!getCustomHook)
+                context.ReportDiagnostic(Diagnostic.Create(Rule_902, typeSymbol.Locations[0]));
+        }
 
         private bool Implements(SyntaxNodeAnalysisContext context, INamedTypeSymbol symbol, string interfacename)
         {
@@ -114,7 +136,7 @@ namespace TMPEffects.AutoParameters.Analyzer
 
         #region ITMPAnimation-specific
 
-        private void ITMPAnimationSpecificChecks(SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl,
+        private void ITMPAnimationSpecificChecks(SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,
             IEnumerable<MethodDeclarationSyntax> methods, string storageName)
         {
             var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
@@ -123,8 +145,9 @@ namespace TMPEffects.AutoParameters.Analyzer
             CheckSyntaxValidateParameters(context, typeDecl, methods, stringType, Strings.IAnimatorContextName, true);
             CheckSyntaxSetParameters(context, typeDecl, methods, stringType, true);
             CheckSyntaxGetNewCustomData(context, typeDecl, methods);
-            // TODO Probably Check and Report if main Animate implemented? same for execute command
 
+            CheckHookMethods(storageName, context, typeDecl, typeSymbol);
+            
             // If no partial Animate is implemented, report
             // (and return, no need to check the method if not implemented)
             if (!CheckPartialAnimate(context, typeDecl, methods, storageName))
@@ -192,12 +215,7 @@ namespace TMPEffects.AutoParameters.Analyzer
             foreach (var candidate in setParamCandidates)
             {
                 // If has parameters, continue
-                if (candidate.ParameterList.Parameters.Count != 1) continue;
-
-                var type = ModelExtensions
-                    .GetTypeInfo(context.SemanticModel, candidate.ParameterList.Parameters[0].Type)
-                    .Type as INamedTypeSymbol;
-                if (type.ToDisplayString() != Strings.IAnimationContextName) continue;
+                if (candidate.ParameterList.Parameters.Count != 0) continue;
 
                 Diagnostic diagnostic =
                     Diagnostic.Create(Rule_1003, typeDecl.Identifier.GetLocation(), typeDecl.Identifier.Text);
@@ -267,7 +285,7 @@ namespace TMPEffects.AutoParameters.Analyzer
             {
                 // If doesnt have exactly three parameter, continue
                 if (candidate.ParameterList.Parameters == null ||
-                    candidate.ParameterList.Parameters.Count != 3) continue;
+                    candidate.ParameterList.Parameters.Count != 2) continue;
 
                 // If has no body, continue
                 if (candidate.Body == null) continue;
@@ -277,18 +295,14 @@ namespace TMPEffects.AutoParameters.Analyzer
                 // bool isPrivate = candidate.Modifiers.Any(SyntaxKind.PrivateKeyword);
                 if (!isPartial /*|| !isPrivate*/) continue;
 
-                // If first parameter is not IDict<string,string>, continue
-                if (!Utility.IsSyntaxIDictionaryStringString(context, candidate.ParameterList.Parameters[0],
-                        stringType)) continue;
-
-                // If second parameter is not the storage, continue
-                var expressionSyntax = candidate.ParameterList.Parameters[1].Type;
+                // If first parameter is not the storage, continue
+                var expressionSyntax = candidate.ParameterList.Parameters[0].Type;
                 if (expressionSyntax == null) continue;
                 var type = context.SemanticModel.GetTypeInfo(expressionSyntax).Type as INamedTypeSymbol;
                 if (type == null || type.ToDisplayString() != storageDeclName) continue;
 
-                // If third parameter is not the commandcontext, continue
-                expressionSyntax = candidate.ParameterList.Parameters[2].Type;
+                // If second parameter is not the commandcontext, continue
+                expressionSyntax = candidate.ParameterList.Parameters[1].Type;
                 if (expressionSyntax == null) continue;
                 type = context.SemanticModel.GetTypeInfo(expressionSyntax).Type as INamedTypeSymbol;
                 if (type == null || type.ToDisplayString() != Strings.ICommandContextName) continue;
@@ -306,14 +320,17 @@ namespace TMPEffects.AutoParameters.Analyzer
 
         #region ITMPCommand-specific
 
-        private void ITMPCommandSpecificChecks(SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl,
+        private void ITMPCommandSpecificChecks(SyntaxNodeAnalysisContext context, TypeDeclarationSyntax typeDecl, INamedTypeSymbol symbol,
             IEnumerable<MethodDeclarationSyntax> methods, string storageName)
         {
             var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
 
             CheckSyntaxValidateParameters(context, typeDecl, methods, stringType, Strings.IWriterContextName, false);
             CheckSyntaxSetParameters(context, typeDecl, methods, stringType, false);
+            CheckSyntaxGetNewCustomData(context, typeDecl, methods);
 
+            CheckHookMethods(storageName, context, typeDecl, symbol);
+            
             // If no partial Animate is implemented, report
             // (and return, no need to check the method if not implemented)
             if (!CheckPartialExecute(context, typeDecl, methods, storageName, stringType))

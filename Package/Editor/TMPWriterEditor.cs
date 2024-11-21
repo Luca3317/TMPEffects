@@ -45,9 +45,10 @@ namespace TMPEffects.Editor
         SerializedProperty useScaledTimeProp;
         SerializedProperty sceneCommandsProp;
         SerializedProperty useDefaultDatabaseProp;
+        SerializedProperty useDefaultKeywordDatabaseProp;
         SerializedProperty initDatabaseProp;
-        SerializedProperty writerContextProp;
         SerializedProperty keywordDatabaseProp;
+        SerializedProperty sceneKeywordDatabaseProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -155,9 +156,10 @@ namespace TMPEffects.Editor
             useScaledTimeProp = serializedObject.FindProperty("useScaledTime");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
+            useDefaultKeywordDatabaseProp = serializedObject.FindProperty("useDefaultKeywordDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
-            writerContextProp = serializedObject.FindProperty("context");
-            keywordDatabaseProp = writerContextProp.FindPropertyRelative("keywordDatabase"); 
+            keywordDatabaseProp = serializedObject.FindProperty("keywordDatabase"); 
+            sceneKeywordDatabaseProp = serializedObject.FindProperty("sceneKeywordDatabase"); 
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -241,6 +243,7 @@ namespace TMPEffects.Editor
             initDatabaseProp.boolValue = true;
 
             SetDatabase();
+            SetKeywordDatabase();
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -274,6 +277,32 @@ namespace TMPEffects.Editor
             if (databaseProp.objectReferenceValue != preferences.DefaultCommandDatabase)
             {
                 databaseProp.objectReferenceValue = preferences.DefaultCommandDatabase;
+                serializedObject.ApplyModifiedProperties();
+                writer.OnChangedDatabase();
+                return;
+            }
+        }
+        
+        private void SetKeywordDatabase()
+        {
+            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+            if (preferences == null || !useDefaultKeywordDatabaseProp.boolValue)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (preferences.DefaultKeywordDatabase == null)
+            {
+                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
+                useDefaultKeywordDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (keywordDatabaseProp.objectReferenceValue != preferences.DefaultKeywordDatabase)
+            {
+                keywordDatabaseProp.objectReferenceValue = preferences.DefaultKeywordDatabase;
                 serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
                 return;
@@ -433,75 +462,26 @@ namespace TMPEffects.Editor
             EditorGUI.EndDisabledGroup();
         }
 
-
-        void DrawDatabase()
+        UnityEngine.Object GetDefaultCommandDatabase()
         {
-            GUILayout.BeginHorizontal();
+            var prefs = TMPEffectsPreferences.Get();
+            if (prefs == null) return null;
 
-            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
-            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
-
-            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
-            {
-                if (useDefaultDatabaseProp.boolValue)
-                {
-                    TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-                    if (preferences == null)
-                    {
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else if (preferences.DefaultCommandDatabase == null)
-                    {
-                        Debug.LogWarning("No default command database set in Preferences/TMPEffects");
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else
-                    {
-                        databaseProp.objectReferenceValue = preferences.DefaultCommandDatabase;
-                        serializedObject.ApplyModifiedProperties();
-                        writer.OnChangedDatabase();
-                    }
-                }
-            }
-            else
-            {
-                TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-                if (preferences != null && preferences.DefaultCommandDatabase != databaseProp.objectReferenceValue)
-                {
-                    useDefaultDatabaseProp.boolValue = false;
-                    serializedObject.ApplyModifiedProperties();
-                }
-            }
-
-            EditorGUI.BeginChangeCheck();
-            EditorGUI.BeginDisabledGroup(useDefaultDatabaseProp.boolValue);
-            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-            EditorGUI.EndDisabledGroup();
-            if (EditorGUI.EndChangeCheck())
-            {
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                writer.OnChangedDatabase();
-            }
-            GUILayout.EndHorizontal();
-
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(sceneCommandsProp);
-            if (EditorGUI.EndChangeCheck())
-            {
-                // SerializedObservableDictionary does not raise events when the operations involves
-                // (de)serializing the actual object (as opposed to the contained objects).
-                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
-                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
-                // instead of instantly performing it.
-                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
-                // in Update of TMPAnimator.
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                writer.OnChangedDatabase();
-            }
+            if (prefs.DefaultCommandDatabase == null)
+                Debug.LogWarning("No default command database set in Preferences/TMPEffects");
+            return prefs.DefaultCommandDatabase;
         }
+        
+        UnityEngine.Object GetDefaultKeywordDatabase()
+        {
+            var prefs = TMPEffectsPreferences.Get();
+            if (prefs == null) return null;
 
+            if (prefs.DefaultKeywordDatabase == null)
+                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
+            return prefs.DefaultKeywordDatabase;
+        }
+        
         void DrawCommandsFoldout()
         {
             if (reset) ResetDatabase();
@@ -510,7 +490,28 @@ namespace TMPEffects.Editor
             if (databaseProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
-                DrawDatabase();
+
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(databaseProp, useDefaultDatabaseProp,
+                        useDefaultDatabaseLabel, GetDefaultCommandDatabase))
+                {
+                    writer.OnChangedDatabase();
+                }
+                
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(sceneCommandsProp);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    // SerializedObservableDictionary does not raise events when the operations involves
+                    // (de)serializing the actual object (as opposed to the contained objects).
+                    // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                    // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                    // instead of instantly performing it.
+                    // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                    // in Update of TMPAnimator.
+                    if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                    writer.OnChangedDatabase();
+                }
+                
                 EditorGUI.indentLevel--;
             }
         }
@@ -576,22 +577,44 @@ namespace TMPEffects.Editor
 
                 EditorGUI.indentLevel--;
             }
+            
+            EditorGUILayout.Space(10);
+            DrawCommandsFoldout();
 
             EditorGUILayout.Space(10);
-            writerContextProp.isExpanded = EditorGUILayout.Foldout(writerContextProp.isExpanded, new GUIContent("Writer Settings"), true);
-            if (writerContextProp.isExpanded)
+            startOnPlayProp.isExpanded = EditorGUILayout.Foldout(startOnPlayProp.isExpanded, new GUIContent("Writer Settings"), true);
+            if (startOnPlayProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(startOnPlayProp);
                 EditorGUILayout.PropertyField(startOnNewTextProp);
                 EditorGUILayout.PropertyField(maySkipProp);
                 EditorGUILayout.PropertyField(useScaledTimeProp);
-                EditorGUILayout.PropertyField(keywordDatabaseProp);
-                EditorGUI.indentLevel--;
+                
+                EditorGUILayout.Space(10);
+                GUIContent cont = new GUIContent("Keyword Database");
+                cont.tooltip = "A keyword database defining additional keywords. " +
+                               "If the same keyword is present in the global keyword Database, this database will override it.";
+
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp,
+                        cont, GetDefaultKeywordDatabase))
+                {
+                    writer.OnChangedDatabase();
+                }
+                
+                EditorGUI.BeginChangeCheck();
+                cont = new GUIContent("Scene Keyword Database");
+                cont.tooltip = "A scene keyword database defining additional keywords. " +
+                               "If the same keyword is present in the global keyword Database or keyword database on this animator, this database will override it.";
+                EditorGUILayout.PropertyField(sceneKeywordDatabaseProp, cont);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    serializedObject.ApplyModifiedProperties();
+                    writer.OnChangedDatabase(); 
+                }
+                
+                EditorGUI.indentLevel--; 
             }
-            
-            EditorGUILayout.Space(10);
-            DrawCommandsFoldout();
 
             EditorGUILayout.Space(10);
             DrawEventsFoldout();

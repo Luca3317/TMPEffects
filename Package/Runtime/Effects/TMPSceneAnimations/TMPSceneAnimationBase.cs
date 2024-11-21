@@ -5,6 +5,7 @@ using TMPEffects.TMPAnimations;
 using TMPEffects.CharacterData;
 using TMPEffects.ObjectChanged;
 using System.ComponentModel;
+using TMPEffects.Databases;
 
 namespace TMPEffects.TMPSceneAnimations
 {
@@ -14,14 +15,16 @@ namespace TMPEffects.TMPSceneAnimations
     public abstract class TMPSceneAnimationBase : MonoBehaviour, ITMPAnimation, INotifyObjectChanged
     {
         public abstract void Animate(CharData cData, IAnimationContext context);
-        public abstract object GetNewCustomData(IAnimationContext context);
+        public abstract object GetNewCustomData();
 
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context);
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context);
-        
+            ITMPKeywordDatabase keywordDatabase);
+
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
+
         public event ObjectChangedEventHandler ObjectChanged;
-        
+
         protected virtual void OnValidate()
         {
             RaiseObjectChanged();

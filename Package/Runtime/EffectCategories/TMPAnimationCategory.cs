@@ -13,12 +13,12 @@ namespace TMPEffects.EffectCategories
     public class TMPAnimationCategory : TMPEffectCategory<ITMPAnimation>
     {
         private ITMPEffectDatabase<ITMPAnimation> database;
-        private IAnimatorContext context;
+        private ITMPKeywordDatabase keywordDatabase;
 
-        public TMPAnimationCategory(char prefix, ITMPEffectDatabase<ITMPAnimation> database, IAnimatorContext context) : base(prefix)
+        public TMPAnimationCategory(char prefix, ITMPEffectDatabase<ITMPAnimation> database, ITMPKeywordDatabase keywordDatabase) : base(prefix)
         {
             this.database = database;
-            this.context = context;
+            this.keywordDatabase = keywordDatabase;
         }
 
         ///<inheritdoc/>
@@ -40,7 +40,7 @@ namespace TMPEffects.EffectCategories
             var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
 
             // TODO HUH! WTF TO DO ABOUT THIS
-            if (!database.GetEffect(tagInfo.name).ValidateParameters(param, context)) return false;
+            if (!database.GetEffect(tagInfo.name).ValidateParameters(param, keywordDatabase)) return false;
 
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
             data = tag;
@@ -54,7 +54,7 @@ namespace TMPEffects.EffectCategories
             if (database == null || !database.ContainsEffect(tag.Name)) return false;
 
             // TODO HUH! WTF TO DO ABOUT THIS
-            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters, context)) return false;
+            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters, keywordDatabase)) return false;
 
             return true;
         }
@@ -69,7 +69,7 @@ namespace TMPEffects.EffectCategories
             {
                 // TODO HUH! WTF TO DO ABOUT THIS
                 var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
-                if (!database.GetEffect(tagInfo.name).ValidateParameters(param, context)) return false;
+                if (!database.GetEffect(tagInfo.name).ValidateParameters(param, keywordDatabase)) return false;
             }
 
             return true;

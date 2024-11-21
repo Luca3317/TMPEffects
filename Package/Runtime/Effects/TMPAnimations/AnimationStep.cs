@@ -15,9 +15,11 @@ public class AnimationStep
     public bool animate = true;
 
     public AnimationUtility.FancyAnimationCurve entryCurve;
+    public OffsetBundle entryOffset;
     public float entryDuration;
 
     public AnimationUtility.FancyAnimationCurve exitCurve;
+    public OffsetBundle exitOffset;
     public float exitDuration;
 
     public ExtrapolationMode preExtrapolation;

@@ -17,6 +17,8 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.Tags;
 using UnityEngine.Playables;
 
@@ -157,16 +159,15 @@ namespace TMPEffects.Components
         /// </summary>
         public const char EVENT_PREFIX = '?';
 
-        // TODO
-        public IWriterContext WriterContext => roContext;
-        private ReadOnlyWriterContext roContext;
-        [SerializeField] private WriterContext context = new WriterContext();
-
         #region Fields
 
         // Settings
+
+        [SerializeField] private TMPKeywordDatabase keywordDatabase;
+        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
+
         [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")] [SerializeField]
-        TMPCommandDatabase database;
+        private TMPCommandDatabase database;
 
         //[Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
         //[SerializeField] private float delay = 0.075f;
@@ -199,6 +200,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private TMPCommandCategory commandCategory;
         [System.NonSerialized] private TMPEventCategory eventCategory;
 
+        [System.NonSerialized] private KeywordDatabaseWrapper keywordDatabaseWrapper;
         [System.NonSerialized] private CommandDatabase commandDatabase;
 
         [System.NonSerialized] private CachedCollection<CachedCommand> commands;
@@ -472,12 +474,8 @@ namespace TMPEffects.Components
 
             SubscribeToMediator();
 
-            // TODO Make init of this nicer;
-            context.Writer = this;
-            roContext = new ReadOnlyWriterContext(context);
-            
             PrepareForProcessing();
-            
+
             if (database != null)
             {
                 database.ObjectChanged += ReprocessOnDatabaseChange;
@@ -507,12 +505,10 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
             commandDatabase?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
 
             UnsubscribeFromMediator();
 
-            //#if UNITY_EDITOR
-            //            if (!Application.isPlaying)
-            //            {
 #if UNITY_EDITOR
             EditorApplication.update -= EditorUpdate;
 #endif
@@ -520,8 +516,6 @@ namespace TMPEffects.Components
             currentIndex = -1;
             Show(0, Mediator.CharData.Count, true);
             writing = false;
-            //            }
-            //#endif
 
             var textComponent = Mediator.Text;
             FreeMediator();
@@ -532,16 +526,22 @@ namespace TMPEffects.Components
             EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
 #endif
         }
-
+        
         private void PrepareForProcessing()
         {
             // Reset database wrappers
             commandDatabase?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
+            
             commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
+            keywordDatabaseWrapper = new KeywordDatabaseWrapper(sceneKeywordDatabase, keywordDatabase);
+            
             commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
-
+            keywordDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
+            
             // Reset categories
-            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, roContext);
+            commandCategory =
+                new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, keywordDatabaseWrapper.Database); 
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
@@ -559,7 +559,7 @@ namespace TMPEffects.Components
             processors.AddProcessor(eventCategory.Prefix, new TagProcessor(eventCategory));
 
             processors.RegisterTo(Mediator.Processor);
-        }
+        } 
 
         private void SubscribeToMediator()
         {
@@ -854,7 +854,7 @@ namespace TMPEffects.Components
                             ? new WaitForSeconds(waitAmount)
                             : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
-                    } 
+                    }
 
                     FixTimePost(waitAmount);
 
@@ -1204,6 +1204,7 @@ namespace TMPEffects.Components
 #pragma warning disable CS0414
         //[System.NonSerialized] bool reprocessFlag = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] bool useDefaultKeywordDatabase = true;
         [SerializeField, HideInInspector] bool initDatabase = false;
 
         [Tooltip("Raise text events in preview mode?")] [SerializeField, HideInInspector]
@@ -1487,7 +1488,7 @@ namespace TMPEffects.Components
 
             tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
-            var commandCacher = new CommandCacher(Mediator.CharData, this, roContext, commandCategory);
+            var commandCacher = new CommandCacher(Mediator.CharData, this, commandCategory, keywordDatabaseWrapper.Database);
             var eventCacher = new EventCacher(this, OnTextEvent);
 
             commands = new CachedCollection<CachedCommand>(commandCacher, tags[commandCategory]);

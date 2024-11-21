@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.Parameters;
 using TMPEffects.TextProcessing;
 using TMPro;
@@ -191,12 +192,12 @@ namespace TMPEffects.TMPAnimations.Animations
             cData.mesh.SetUV0(3, d2.uv0_3);
         }
 
-        public object GetNewCustomData(IAnimationContext context)
+        public object GetNewCustomData()
         {
             return new Data() { datas = new Dictionary<int, Data2>(), start = 0, end = 0, framerate = 0, evaluation = "loop", iterations = -1 };
         }
 
-        public void SetParameters(object customData, IDictionary<string, string> parameters, IAnimationContext context)
+        public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             Data d = customData as Data;
 
@@ -227,7 +228,7 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             if (parameters == null) return false;
 

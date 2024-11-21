@@ -54,7 +54,7 @@ namespace TMPEffects.AutoParameters.Analyzers
             context.RegisterCodeFix(
                 CodeAction.Create(
                     title: "Implement Animate",
-                    createChangedDocument: c => ImplementPartialAnimate(context.Document, classDeclaration, c, name),
+                    createChangedDocument: c => ImplementPartialAnimate(context, context.Document, classDeclaration, c, name),
                     equivalenceKey: "Implement Animate"),
                 diagnostic);
         }
@@ -100,10 +100,15 @@ namespace TMPEffects.AutoParameters.Analyzers
             }
         }
 
-        private async Task<Document> ImplementPartialAnimate(Document document, ClassDeclarationSyntax classDeclaration,
+        private async Task<Document> ImplementPartialAnimate(CodeFixContext context, Document document, ClassDeclarationSyntax classDeclaration,
             CancellationToken cancellationToken, string storageName)
         {
-            var editor = await DocumentEditor.CreateAsync(document, cancellationToken).ConfigureAwait(false);
+            var usingDirective =
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName(Strings.CharDataPath));
+            var usingDirective2 =
+                SyntaxFactory.UsingDirective(SyntaxFactory.ParseName(Strings.IAnimationContextPath));
+
+            var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
 
             var methodDeclaration = SyntaxFactory.MethodDeclaration(
                     SyntaxFactory.PredefinedType(SyntaxFactory.Token(SyntaxKind.VoidKeyword)),
@@ -120,11 +125,26 @@ namespace TMPEffects.AutoParameters.Analyzers
                 )
                 .WithBody(SyntaxFactory.Block());
 
-            // Add the method to the class
-            var newClassDeclaration = classDeclaration.AddMembers(methodDeclaration);
-            editor.ReplaceNode(classDeclaration, newClassDeclaration);
 
-            return editor.GetChangedDocument();
+            var compilationUnit = root as CompilationUnitSyntax;
+
+            var newclassdecl = classDeclaration.AddMembers(methodDeclaration);
+            compilationUnit = compilationUnit.ReplaceNode(classDeclaration, newclassdecl);
+
+            if (compilationUnit.Usings.All(u => u.Name.ToString() != Strings.IAnimationContextPath))
+            {
+                compilationUnit =
+                    compilationUnit.AddUsings(usingDirective);
+            }
+            if (compilationUnit.Usings.All(u => u.Name.ToString() != Strings.CharDataPath))
+            {
+                compilationUnit =
+                    compilationUnit.AddUsings(usingDirective2);
+            }
+
+            var newdocument = document.WithSyntaxRoot(compilationUnit);
+
+            return newdocument;
         }
     }
 }

@@ -20,8 +20,8 @@ namespace TMPEffects.AutoParameters.Generator.Generator
                     .WithType(SyntaxFactory.ParseTypeName("object")))
                 .AddParameters(SyntaxFactory.Parameter(SyntaxFactory.Identifier("parameters"))
                     .WithType(SyntaxFactory.ParseTypeName(Strings.IDictionaryName)))
-                .AddParameters(SyntaxFactory.Parameter(SyntaxFactory.Identifier("context"))
-                    .WithType(SyntaxFactory.ParseTypeName(Strings.IAnimationContextName)));
+                .AddParameters(SyntaxFactory.Parameter(SyntaxFactory.Identifier("keywordDatabase"))
+                    .WithType(SyntaxFactory.ParseTypeName(Strings.ITMPKeywordDatabaseName)));
 
             // Prepare the method
             var method = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("void"), "SetParameters")
@@ -45,45 +45,29 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             foreach (var param in parameters)
             {
                 var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", param,
-                    Strings.IAnimationContextKeywordDatabasePath);
+                    "keywordDatabase");
                 if (setParameterSyntax != null) statements.Add(setParameterSyntax);
             }
 
             foreach (var bundle in bundles)
             {
                 var setParameterSyntax = Utility.GetSetParameterSyntax("parameters", "d", bundle,
-                    Strings.IAnimationContextKeywordDatabasePath);
+                    "keywordDatabase");
                 if (setParameterSyntax != null) statements.Add(setParameterSyntax);
             }
 
             var stringType = context.Compilation.GetSpecialType(SpecialType.System_String);
-            var hookCandidates = symbol.GetMembers().Where(member => member.Kind == SymbolKind.Method)
-                .Select(member => member as IMethodSymbol).Where(hookMethod => hookMethod.Name == "SetParameters_Hook");
-            bool present = false;
-            foreach (var candidate in hookCandidates)
-            {
-                if (candidate.Parameters == null || candidate.Parameters.Length != 3) continue;
 
-                // If first parameter is not object, continue
-                if (candidate.Parameters[0].Type.SpecialType != SpecialType.System_Object) continue;
-
-                // If second parameter is not IDictionary<string, string>, continue
-                if (!Utility.IsSymbolIDictionaryStringString(candidate.Parameters[1], stringType)) continue;
-
-                if (candidate.Parameters[2].Type.ToDisplayString() != Strings.IAnimationContextName) continue;
-
-                present = true;
-                break;
-            }
+            bool present = Utility.ImplementsSetParametersHook(symbol, stringType);
 
             // Call hook
             if (present)
             {
                 var arguments = new List<ArgumentSyntax>()
                 {
-                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("customData")),
+                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("d")),
                     SyntaxFactory.Argument(SyntaxFactory.IdentifierName("parameters")),
-                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("context"))
+                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("keywordDatabase"))
                 };
                 var hc = SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("SetParameters_Hook"),
                     SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
@@ -98,17 +82,13 @@ namespace TMPEffects.AutoParameters.Generator.Generator
         }
 
         private MethodDeclarationSyntax CreateGetNewCustomData(INamedTypeSymbol symbol, string storageSymbol,
-            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters, List<Utility.AutoParameterBundleInfo> bundles)
+            GeneratorExecutionContext context, List<Utility.AutoParameterInfo> parameters,
+            List<Utility.AutoParameterBundleInfo> bundles)
         {
-            // Prepare the parameters
-            var paramList = SyntaxFactory.ParameterList()
-                .AddParameters(SyntaxFactory.Parameter(SyntaxFactory.Identifier("context"))
-                    .WithType(SyntaxFactory.ParseTypeName(Strings.IAnimationContextName)));
-
             // Prepare the method
             var method = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("object"), "GetNewCustomData")
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword))
-                .AddModifiers(SyntaxFactory.Token(SyntaxKind.OverrideKeyword)).WithParameterList(paramList);
+                .AddModifiers(SyntaxFactory.Token(SyntaxKind.OverrideKeyword));
 
             List<StatementSyntax> statements = new List<StatementSyntax>();
 
@@ -119,33 +99,20 @@ namespace TMPEffects.AutoParameters.Generator.Generator
             {
                 statements.Add(SyntaxFactory.ParseStatement($"d.{p.FieldName} = this.{p.FieldName};"));
             }
+
             foreach (var b in bundles)
             {
                 statements.Add(SyntaxFactory.ParseStatement($"d.{b.FieldName} = this.{b.FieldName};"));
             }
 
-            var hookCandidates = symbol.GetMembers().Where(member => member.Kind == SymbolKind.Method)
-                .Select(member => member as IMethodSymbol)
-                .Where(hookMethod => hookMethod.Name == "GetNewCustomData_Hook");
-            bool present = false;
-            foreach (var candidate in hookCandidates)
-            {
-                if (candidate.Parameters == null || candidate.Parameters.Length != 2) continue;
-
-                if (candidate.Parameters[0].Type.SpecialType != SpecialType.System_Object) continue;
-                if (candidate.Parameters[1].Type.ToDisplayString() != Strings.IAnimationContextName) continue;
-
-                present = true;
-                break;
-            }
+            bool present = Utility.ImplementsGetNewCustomDataHook(storageSymbol, symbol);
 
             // Call hook
             if (present)
             {
                 var arguments = new List<ArgumentSyntax>()
                 {
-                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("d")),
-                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("context"))
+                    SyntaxFactory.Argument(SyntaxFactory.IdentifierName("d"))
                 };
                 var hc = SyntaxFactory.InvocationExpression(SyntaxFactory.IdentifierName("GetNewCustomData_Hook"),
                     SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));

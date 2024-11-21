@@ -1,21 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using TMPEffects.ObjectChanged;
 using TMPEffects.Parameters;
 using TMPEffects.SerializedCollections;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace TMPEffects.Databases
 {
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
     public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
     {
+        public static TMPKeywordDatabase Global
+        {
+            get
+            {
+                if (globalInstance == null)
+                {
+                    globalInstance = Resources.Load<TMPKeywordDatabase>("TMPEffects.GlobalKeywordDatabase");
+                }
+
+                return globalInstance;
+            }
+        }
+
+        private static TMPKeywordDatabase globalInstance = null;
+
+
         public event ObjectChangedEventHandler ObjectChanged;
-        
+
         [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
         internal SerializedDictionary<string, float> floatKeywords;
 
@@ -90,7 +102,7 @@ namespace TMPEffects.Databases
         {
             return unityObjectKeywords.TryGetValue(str, out result);
         }
-        
+
         private void OnValidate()
         {
             RaiseDatabaseChanged();

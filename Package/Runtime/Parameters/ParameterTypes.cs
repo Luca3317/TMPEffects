@@ -12,16 +12,16 @@ namespace TMPEffects.Parameters
     public partial interface ITMPOffsetProvider
     {
         // TODO Split up context interfaces 
-        public float GetOffset(CharData cData, IAnimationContext context);
-        public float GetOffset(CharData cData, IAnimatorContext context);
+        public float GetOffset(CharData cData, IAnimationContext context, bool ignoreAnimatorScaling = false);
+        public float GetOffset(CharData cData, IAnimatorContext context, bool ignoreAnimatorScaling = false);
 
         public static partial bool StringToOffsetProvider(string str, out ITMPOffsetProvider result,
             TMPEffects.Databases.ITMPKeywordDatabase keywords)
         {
             result = null;
             
-            if (ParameterParsing.GlobalKeywordDatabase.TryGetOffsetProvider(str, out result)) return true;
-            if (keywords != null && keywords.TryGetOffsetProvider(str, out result)) return true;
+            // if (ParameterParsing.GlobalKeywordDatabase.TryGetOffsetProvider(str, out result)) return true;
+            // if (keywords != null && keywords.TryGetOffsetProvider(str, out result)) return true;
             
             switch (str)
             {
@@ -85,14 +85,14 @@ namespace TMPEffects.Parameters
 
     public abstract class TMPOffsetProvider : ScriptableObject, ITMPOffsetProvider
     {
-        public abstract float GetOffset(CharData cData, IAnimationContext context);
-        public abstract float GetOffset(CharData cData, IAnimatorContext context);
+        public abstract float GetOffset(CharData cData, IAnimationContext context, bool ignoreAnimatorScaling = false);
+        public abstract float GetOffset(CharData cData, IAnimatorContext context, bool ignoreAnimatorScaling = false);
     }
 
     public abstract class TMPSceneOffsetProvider : MonoBehaviour, ITMPOffsetProvider
     {
-        public abstract float GetOffset(CharData cData, IAnimationContext context);
-        public abstract float GetOffset(CharData cData, IAnimatorContext context);
+        public abstract float GetOffset(CharData cData, IAnimationContext context, bool ignoreAnimatorScaling = false);
+        public abstract float GetOffset(CharData cData, IAnimatorContext context, bool ignoreAnimatorScaling = false);
     }
 
     public static class ParameterTypes

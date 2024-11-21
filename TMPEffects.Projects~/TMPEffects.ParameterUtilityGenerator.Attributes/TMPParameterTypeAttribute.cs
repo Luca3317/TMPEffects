@@ -2,6 +2,11 @@
 
 namespace TMPEffects.ParameterUtilityGenerator.Attributes
 {
+    // TODO Update link once docs updated
+    /// <summary>
+    /// Turn this type into a valid parameter type for use with AutoParameters.<br/>
+    /// To learn more about AutoParameters and creating your own types, read <see href="https://tmpeffects.luca3317.dev/plugins/autoparameters.html">HERE</see>
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct,
         AllowMultiple = false, Inherited = false)]
     public class TMPParameterTypeAttribute : System.Attribute

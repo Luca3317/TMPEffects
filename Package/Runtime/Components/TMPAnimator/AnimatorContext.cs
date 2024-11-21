@@ -15,59 +15,48 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     internal class AnimatorContext : IAnimatorContext
     {
-        // TODO Hastily added these two, check they fit interface and encapsulatione etc
-        public CharDataModifiers Modifiers { get; set; }
-        
-        // TODO
-        // Originally this was supposed to be UnityEngine.Object with
-        // the inspector + ISerializationCallbackReceiver insuring the object implements
-        // ITMPKeywordDatabase
-        // Worked fine, but inspector object picker doesnt show valid assets
-        // so for now, enforce this being a TMPSceneKeywordDatabase
-        [SerializeField] private TMPSceneKeywordDatabase keywordDatabase;
-
-        ITMPKeywordDatabase IAnimatorContext.KeywordDatabase => keywordDatabase;
-
-        public TMPSceneKeywordDatabase KeywordDatabase
-        {
-            get => keywordDatabase;
-            set => keywordDatabase = value;
-        }
+        // TODO Is modifiers correctly set up everywhere
+        public CharDataModifiers Modifiers { get; internal set; }
+        // TODO I dont necessarily like this being in the context;
+        // feels more like it should only be in the animator.
+        // Would require quite large rewrite of autoparameters and every place that uses
+        // context.Keyworddb (incl itmpanimation) though; so probably not worth it
+        public ITMPKeywordDatabase KeywordDatabase { get; internal set; }
         
         /// <inheritdoc/>
         public bool ScaleAnimations
         {
             get => scaleAnimations;
-            set => scaleAnimations = value;
+            internal set => scaleAnimations = value;
         }
         /// <inheritdoc/>
         public bool ScaleUniformly
         {
             get => scaleUniformly;
-            set => scaleUniformly = value;
+            internal set => scaleUniformly = value;
         }
         /// <inheritdoc/>
         public bool UseScaledTime
         {
             get => useScaledTime;
-            set => useScaledTime = value;
+            internal set => useScaledTime = value;
         }
         public TMPAnimator Animator
         {
             get => tmpAnimator;
-            set => tmpAnimator = value;
+            internal set => tmpAnimator = value;
         }
         /// <inheritdoc/>
         public float DeltaTime
         {
             get => deltaTime;
-            set => deltaTime = value;
+            internal set => deltaTime = value;
         }
         /// <inheritdoc/>
         public float PassedTime
         {
             get => passed;
-            set => passed = value;
+            internal set => passed = value;
         }
 
         [Tooltip("Whether to scale the animations. If true, they will look the same no matter how large or small the individual characters")]

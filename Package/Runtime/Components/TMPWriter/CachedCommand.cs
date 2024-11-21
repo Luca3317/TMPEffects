@@ -27,7 +27,7 @@ namespace TMPEffects.Components.Writer
             if (Triggered) return;
 
             Triggered = true;
-            command.ExecuteCommand(Tag.Parameters, roContext);
+            command.ExecuteCommand(roContext);
         }
 
         public void Reset()

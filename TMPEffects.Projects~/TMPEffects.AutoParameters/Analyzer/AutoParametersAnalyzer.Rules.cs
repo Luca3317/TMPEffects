@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Data;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using TMPEffects.StringLibrary;
@@ -14,6 +15,7 @@ namespace TMPEffects.AutoParameters.Analyzer
                 return ImmutableArray.Create
                 (
                     Rule_0,
+                    Rule_1,
                     
                     // Animation Specific
                     Rule_1001,
@@ -41,7 +43,13 @@ namespace TMPEffects.AutoParameters.Analyzer
                     Rule_2_2,
                     Rule_2_3,
                     Rule_2_4,
-                    Rule___
+                    Rule___,
+                    
+                    Rule_900,
+                    Rule_901,
+                    Rule_902,
+                    Rule_903,
+                    Rule_904
                 );
             }
         }
@@ -190,9 +198,9 @@ namespace TMPEffects.AutoParameters.Analyzer
         private const string Category_1005 = "Usage";
 #pragma warning disable RS2008 // Enable analyzer release tracking
         private static readonly DiagnosticDescriptor Rule_1005 = new DiagnosticDescriptor(DiagnosticId_1005, Title_1005,
-            MessageFormat_1005, Category_1005, DiagnosticSeverity.Warning, isEnabledByDefault: true);
+            MessageFormat_1005, Category_1005, DiagnosticSeverity.Error, isEnabledByDefault: true);
 #pragma warning restore RS2008 // Enable analyzer release tracking
-
+        
         #endregion
 
 
@@ -201,15 +209,29 @@ namespace TMPEffects.AutoParameters.Analyzer
         public const string DiagnosticId_0 = "TMPAP000";
 
         private static readonly LocalizableString Title_0 =
-            "Types decorated with " + Strings.AutoParametersAttributeName + " must be partial";
+            "Types decorated with " + Strings.AutoParametersAttribute + " must be partial";
 
         private static readonly LocalizableString MessageFormat_0 =
-            "Type {0} decorated with " + Strings.AutoParametersAttributeName + " is not partial";
+            "Type {0} decorated with " + Strings.AutoParametersAttribute + " is not partial";
 
         private const string Category_0 = "Usage";
 #pragma warning disable RS2008 // Enable analyzer release tracking
         private static readonly DiagnosticDescriptor Rule_0 = new DiagnosticDescriptor(DiagnosticId_0, Title_0,
             MessageFormat_0, Category_0, DiagnosticSeverity.Error, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        public const string DiagnosticId_1 = "TMPAP001";
+
+        private static readonly LocalizableString Title_1 =
+            "Types decorated with " + Strings.AutoParametersAttribute + " must not be nested";
+
+        private static readonly LocalizableString MessageFormat_1 =
+            "Type {0} decorated with " + Strings.AutoParametersAttribute + " must not be nested";
+
+        private const string Category_1 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_1 = new DiagnosticDescriptor(DiagnosticId_1, Title_1,
+            MessageFormat_1, Category_1, DiagnosticSeverity.Error, isEnabledByDefault: true);
 #pragma warning restore RS2008 // Enable analyzer release tracking
 
         #endregion
@@ -408,6 +430,73 @@ namespace TMPEffects.AutoParameters.Analyzer
 #pragma warning restore RS2008 // Enable analyzer release tracking
 
         #endregion
+        
+        
+        public const string DiagnosticId_900 = "TMPAP900";
+
+        private static readonly LocalizableString Title_900 = "ValidateParameters hook method not implemented";
+
+        private static readonly LocalizableString MessageFormat_900 = "Consider implementing the ValidateParameters hook method, if you need custom logic";
+
+        private const string Category_900 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_900 = new DiagnosticDescriptor(DiagnosticId_900, Title_900,
+            MessageFormat_900, Category_900, DiagnosticSeverity.Info, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
+        public const string DiagnosticId_901 = "TMPAP901";
+
+        private static readonly LocalizableString Title_901 = "SetParameters hook method not implemented";
+
+        private static readonly LocalizableString MessageFormat_901 = "Consider implementing the SetParameters hook method, if you need custom logic";
+
+        private const string Category_901 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_901 = new DiagnosticDescriptor(DiagnosticId_901, Title_901,
+            MessageFormat_901, Category_901, DiagnosticSeverity.Info, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
+        public const string DiagnosticId_902 = "TMPAP902";
+
+        private static readonly LocalizableString Title_902 = "GetNewCustomData hook method not implemented";
+
+        private static readonly LocalizableString MessageFormat_902 = "Consider implementing the GetNewCustomData hook method, if you need custom logic";
+
+        private const string Category_902 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_902 = new DiagnosticDescriptor(DiagnosticId_902, Title_902,
+            MessageFormat_902, Category_902, DiagnosticSeverity.Info, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
+        public const string DiagnosticId_903 = "TMPAP903";
+
+        private static readonly LocalizableString Title_903 = "ValidateParameters hook method not implemented";
+
+        private static readonly LocalizableString MessageFormat_903 = "Consider implementing the ValidateParameters hook method, if you need custom logic";
+
+        private const string Category_903 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_903 = new DiagnosticDescriptor(DiagnosticId_903, Title_903,
+            MessageFormat_903, Category_903, DiagnosticSeverity.Info, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
+        public const string DiagnosticId_904 = "TMPAP904";
+
+        private static readonly LocalizableString Title_904 = "SetParameters hook method not implemented";
+
+        private static readonly LocalizableString MessageFormat_904 = "Consider implementing the SetParameters hook method, if you need custom logic";
+
+        private const string Category_904 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_904 = new DiagnosticDescriptor(DiagnosticId_904, Title_904,
+            MessageFormat_904, Category_904, DiagnosticSeverity.Info, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
 
         public const string DiagnosticId___ = "AutoParametersException";
         private static readonly LocalizableString Title___ = "AutoParametersException";
@@ -415,7 +504,7 @@ namespace TMPEffects.AutoParameters.Analyzer
         private const string Category___ = "Usage";
 #pragma warning disable RS2008 // Enable analyzer release tracking
         private static readonly DiagnosticDescriptor Rule___ = new DiagnosticDescriptor(DiagnosticId___, Title___,
-            MessageFormat___, Category___, DiagnosticSeverity.Error, isEnabledByDefault: true);
+            MessageFormat___, Category___, DiagnosticSeverity.Warning, isEnabledByDefault: true);
 #pragma warning restore RS2008 // Enable analyzer release tracking
     }
 }

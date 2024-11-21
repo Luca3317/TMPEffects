@@ -1,3 +1,4 @@
+using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
 using static TMPEffects.Parameters.ParameterUtility;
@@ -11,6 +12,8 @@ namespace TMPEffects.Components.Animator
 
         public bool Finished(int index) => context.Finished(index);
 
+        public readonly ExtendedAnimationTagData TagData;
+        
         private TMPEffectTag tag;
         private TMPEffectTagIndices indices;
 
@@ -21,22 +24,29 @@ namespace TMPEffects.Components.Animator
         public readonly ReadOnlyAnimationContext roContext;
         public readonly int firstAffectingAnimationIndex = -1;
 
-        public CachedAnimation(TMPEffectTag tag, TMPEffectTagIndices indices, ITMPAnimation animation, AnimationContext context)
+        public CachedAnimation(TMPEffectTag tag, TMPEffectTagIndices indices, ITMPAnimation animation, AnimationContext context, ExtendedAnimationTagData tagData)
         {
             this.tag = tag;
             this.indices = indices;
-            
-            overrides = null;
-            if (TryGetBoolParameter(out bool b, tag.Parameters, context.AnimatorContext.KeywordDatabase, "override", "or"))
-            {
-                overrides = b;
-            }
-
-            late = tag.Parameters.ContainsKey("late");
-
             this.animation = animation;
             this.context = context;
             this.roContext = new ReadOnlyAnimationContext(context);
+            this.TagData = tagData;
+        }
+    }
+
+    internal class ExtendedAnimationTagData
+    {
+        public readonly bool late;
+        public readonly bool? overrides;
+
+        public ExtendedAnimationTagData(TMPEffectTag tag, ITMPKeywordDatabase keywordDatabase)
+        {
+            late = tag.Parameters.ContainsKey("late");
+            if (TryGetBoolParameter(out bool b, tag.Parameters, keywordDatabase, "override", "or"))
+            {
+                overrides = b;
+            }
         }
     }
 }

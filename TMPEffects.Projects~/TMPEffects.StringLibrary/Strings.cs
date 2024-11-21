@@ -10,6 +10,8 @@ namespace TMPEffects.StringLibrary
         public const string DefaultStorageName = "AutoParametersData";
 
         public const string ITMPKeywordDatabaseName = "TMPEffects.Databases.ITMPKeywordDatabase";
+        public const string ITMPKeywordDatabasePath = "TMPEffects.Databases";
+        public const string ITMPKeywordDatabase = "ITMPKeywordDatabase";
 
         public const string IAnimatorContextKeywordDatabasePath = ".KeywordDatabase";
         public const string IAnimationContextKeywordDatabasePath = ".AnimatorContext.KeywordDatabase";
@@ -26,6 +28,9 @@ namespace TMPEffects.StringLibrary
 
         public const string AutoParametersAttributeName =
             "TMPEffects.AutoParameters.Attributes.AutoParametersAttribute";
+        
+        public const string AutoParametersAttribute =
+            "AutoParametersAttribute";
 
         public const string AutoParametersStorageAttributeName =
             "TMPEffects.AutoParameters.Attributes.AutoParametersStorageAttribute";
@@ -47,11 +52,16 @@ namespace TMPEffects.StringLibrary
         public const string ParameterParsingPath = "TMPEffects.Parameters.ParameterParsing";
 
         public const string CharDataName = "TMPEffects.CharacterData.CharData";
+        public const string CharDataPath = "TMPEffects.CharacterData";
         public const string IAnimationContextName = "TMPEffects.TMPAnimations.IAnimationContext";
+        public const string IAnimationContextPath = "TMPEffects.TMPAnimations";
         public const string IAnimatorContextName = "TMPEffects.Components.Animator.IAnimatorContext";
+        public const string IAnimatorContextPath = "TMPEffects.Components.Animator";
 
         public const string ICommandContextName = "TMPEffects.TMPCommands.ICommandContext";
+        public const string ICommandContextPath = "TMPEffects.TMPCommands";
         public const string IWriterContextName = "TMPEffects.Components.Writer.IWriterContext";
+        public const string IWriterContextPath = "TMPEffects.Components.Writer";
 
         #endregion
 
@@ -98,7 +108,17 @@ namespace TMPEffects.StringLibrary
         public const string GenerateParametersAttributeName =
             "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";       
         public const string TMPParameterTypeAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterTypeAttribute";
+            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterTypeAttribute";  
+        public const string TMPParameterTypeAttribute =
+            "TMPParameterTypeAttribute";  
+        public const string TMPParameterBundleAttributeName =
+            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterBundleAttribute";
+        public const string TMPParameterBundleAttribute =
+            "TMPParameterBundleAttribute";
+        public const string TMPParameterBundleFieldAttributeName =
+            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterBundleFieldAttribute";
+        public const string TMPParameterBundleFieldAttribute =
+            "TMPParameterBundleFieldAttribute";
 
         public static Dictionary<string, string> TypeToDisplayString =>
             SupportedTypesList.GroupBy(t => t.Item1)

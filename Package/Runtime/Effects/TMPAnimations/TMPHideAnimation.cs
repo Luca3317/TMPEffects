@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
+using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.TMPAnimations
@@ -15,13 +16,12 @@ namespace TMPEffects.TMPAnimations
         public abstract void Animate(CharData charData, IAnimationContext context);
         ///<inheritdoc/>
         public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context);
+            ITMPKeywordDatabase keywordDatabase);
         ///<inheritdoc/>
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context);
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
 
-        /// <param name="context"></param>
         /// <inheritdoc/>
-        public abstract object GetNewCustomData(IAnimationContext context);
+        public abstract object GetNewCustomData();
 
 
         public event ObjectChangedEventHandler ObjectChanged;

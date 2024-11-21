@@ -66,6 +66,13 @@ namespace TMPEffects.Components
         /// </summary>
         public TMPAnimationDatabase Database => database;
 
+        /// <summary>
+        /// The keyword database used to parse tag parameters.
+        /// TODO How to ensure this is set asap. If not document when is ready
+        /// TODO Might already be ensured by setting it in OnEnable
+        /// </summary>
+        public ITMPKeywordDatabase KeywordDatabase => keywordDatabaseWrapper?.Database;
+
         public IDictionary<string, TMPSceneAnimation> SceneAnimations => sceneAnimations;
         public IDictionary<string, TMPSceneShowAnimation> SceneShowAnimations => sceneShowAnimations;
         public IDictionary<string, TMPSceneHideAnimation> SceneHideAnimations => sceneHideAnimations;
@@ -83,17 +90,17 @@ namespace TMPEffects.Components
         /// <summary>
         /// All basic animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection BasicTags => tags == null ? null : tags[basicCategory];
+        public ITagCollection BasicTags => tags?[basicCategory];
 
         /// <summary>
         /// All show animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection ShowTags => tags == null ? null : tags[showCategory];
+        public ITagCollection ShowTags => tags?[showCategory];
 
         /// <summary>
         /// All hide animation tags parsed by the TMPAnimator.
         /// </summary>
-        public ITagCollection HideTags => tags == null ? null : tags[hideCategory];
+        public ITagCollection HideTags => tags?[hideCategory];
 
         /// <summary>
         /// Whether the TMPAnimator should automatically begin animating on <see cref="Start"/>.
@@ -134,33 +141,6 @@ namespace TMPEffects.Components
         private TMPAnimationDatabase database = null;
 
         [SerializeField] private AnimatorContext context = new AnimatorContext();
-        private KeywordDatabaseListener keywordDatabaseListener;
-
-        private class KeywordDatabaseListener : INotifyObjectChanged
-        {
-            public INotifyObjectChanged db = null;
-            public event ObjectChangedEventHandler ObjectChanged;
-
-            public void Reset(INotifyObjectChanged db = null)
-            {
-                ObjectChanged = null;
-                if (this.db != null)
-                {
-                    this.db.ObjectChanged -= RaiseObjectChanged;
-                }
-                
-                this.db = db;
-                if (this.db != null)
-                {
-                    this.db.ObjectChanged += RaiseObjectChanged;
-                }
-            }
-
-            private void RaiseObjectChanged(object sender)
-            {
-                ObjectChanged?.Invoke(this); 
-            }
-        }
 
         [Tooltip(
             "Where to update the animations from. If set to Script, you will have to manually update animations from your own script")]
@@ -199,6 +179,10 @@ namespace TMPEffects.Components
         [Tooltip("Whether to exclude punctuation characters from hide animations")] [SerializeField]
         private bool excludePunctuationHide = false;
 
+
+        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
+        [SerializeField] private TMPKeywordDatabase keywordDatabase;
+
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
         private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations =
             new SerializedObservableDictionary<string, TMPSceneAnimation>();
@@ -220,6 +204,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private TMPAnimationCategory showCategory;
         [System.NonSerialized] private TMPAnimationCategory hideCategory;
 
+        [System.NonSerialized] private KeywordDatabaseWrapper keywordDatabaseWrapper = null;
         [System.NonSerialized] private AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation> basicDatabase;
         [System.NonSerialized] private AnimationDatabase<TMPShowAnimationDatabase, TMPSceneShowAnimation> showDatabase;
         [System.NonSerialized] private AnimationDatabase<TMPHideAnimationDatabase, TMPSceneHideAnimation> hideDatabase;
@@ -242,12 +227,12 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private CharDataModifiers state = new CharDataModifiers();
 
-        private const string falseUpdateAnimationsCallWarning =
+        private const string FalseUpdateAnimationsCallWarning =
             "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
             "If you want to manually control the animation updates, set its UpdateFrom property to \"Script\", " +
             "either through the inspector or through a script using the SetUpdateFrom method.";
 
-        private const string falseStartStopAnimatingCallWarning =
+        private const string FalseStartStopAnimatingCallWarning =
             "Called {0} while TMPAnimator {1} is set to manually update from script; " +
             "If you want the TMPAnimator to automatically update and to use the Start / StopAnimating methods, set its UpdateFrom property to \"Update\", \"LateUpdate\" or \"FixedUpdate\", " +
             "either through the inspector or through a script using the SetUpdateFrom method.";
@@ -272,7 +257,7 @@ namespace TMPEffects.Components
 
             if (updateFrom != UpdateFrom.Script)
             {
-                throw new System.InvalidOperationException(string.Format(falseUpdateAnimationsCallWarning, name,
+                throw new System.InvalidOperationException(string.Format(FalseUpdateAnimationsCallWarning, name,
                     updateFrom.ToString()));
             }
 
@@ -301,7 +286,7 @@ namespace TMPEffects.Components
 
             if (updateFrom == UpdateFrom.Script)
             {
-                throw new System.InvalidOperationException(string.Format(falseStartStopAnimatingCallWarning, name,
+                throw new System.InvalidOperationException(string.Format(FalseStartStopAnimatingCallWarning, name,
                     updateFrom.ToString()));
             }
 
@@ -330,7 +315,7 @@ namespace TMPEffects.Components
 
             if (updateFrom == UpdateFrom.Script)
             {
-                throw new System.InvalidOperationException(string.Format(falseStartStopAnimatingCallWarning, name,
+                throw new System.InvalidOperationException(string.Format(FalseStartStopAnimatingCallWarning, name,
                     updateFrom.ToString()));
             }
 
@@ -387,9 +372,22 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
-        public void SetKeywordDatabase(TMPSceneKeywordDatabase database)
+        // TODO 
+        // Im still not sure whether i want to actually support putting a scene AND
+        // a disk database on the animator.
+        // The alternative would be to just allow a scene one, and users could make a wrapper
+        // for each.
+        // Though: Will be a little annoying for them to implement ITMPKeywordDatabase since it wont
+        // auto update when adding a new type.
+        public void SetSceneKeywordDatabase(TMPSceneKeywordDatabase database)
         {
-            context.KeywordDatabase = database;
+            sceneKeywordDatabase = database;
+            OnDatabaseChanged();
+        }
+
+        public void SetKeywordDatabase(TMPKeywordDatabase database)
+        {
+            keywordDatabase = database;
             OnDatabaseChanged();
         }
 
@@ -580,9 +578,9 @@ namespace TMPEffects.Components
 
             CreateContext();
 
-            SetDummies();
-
             PrepareForProcessing();
+
+            SetDummies();
 
             SubscribeToMediator();
 
@@ -618,6 +616,7 @@ namespace TMPEffects.Components
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
 
             UnsubscribeFromMediator();
 
@@ -671,6 +670,7 @@ namespace TMPEffects.Components
             showDatabase?.Dispose();
             hideDatabase?.Dispose();
             mainDatabaseWrapper?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
 
             // Create new database wrappers
             basicDatabase = new AnimationDatabase<TMPBasicAnimationDatabase, TMPSceneAnimation>(
@@ -685,9 +685,10 @@ namespace TMPEffects.Components
             mainDatabaseWrapper =
                 new AnimationDatabase<TMPAnimationDatabase, TMPSceneAnimation>(database == null ? null : database,
                     null);
-
-            keywordDatabaseListener ??= new KeywordDatabaseListener();
-            keywordDatabaseListener.Reset(context.KeywordDatabase);
+            keywordDatabaseWrapper = new KeywordDatabaseWrapper(
+                sceneKeywordDatabase,
+                keywordDatabase,
+                TMPKeywordDatabase.Global);
 
             // Add sprite animation
             basicDatabase.AddAnimation("sprite", new SpriteAnimation());
@@ -697,12 +698,14 @@ namespace TMPEffects.Components
             showDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             hideDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             mainDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
-            keywordDatabaseListener.ObjectChanged += ReprocessOnDatabaseChange;
+            keywordDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
-            basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase, context);
-            showCategory = new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase, context);
-            hideCategory = new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase, context);
+            basicCategory = new TMPAnimationCategory(ANIMATION_PREFIX, basicDatabase, keywordDatabaseWrapper.Database);
+            showCategory =
+                new TMPAnimationCategory(SHOW_ANIMATION_PREFIX, showDatabase, keywordDatabaseWrapper.Database);
+            hideCategory =
+                new TMPAnimationCategory(HIDE_ANIMATION_PREFIX, hideDatabase, keywordDatabaseWrapper.Database);
 
             // Reset processors
             processors ??= new();
@@ -738,7 +741,8 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Basic:
                     database = basicDatabase;
                     anims = defaultAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedBasic(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedBasic(x),
+                        keywordDatabaseWrapper.Database);
                     strings = defaultAnimationsStrings;
                     QueueCharacterReset();
                     break;
@@ -746,14 +750,16 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Show:
                     database = showDatabase;
                     anims = defaultShowAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedShow(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedShow(x),
+                        keywordDatabaseWrapper.Database);
                     strings = defaultShowAnimationsStrings;
                     break;
 
                 case TMPAnimationType.Hide:
                     database = hideDatabase;
                     anims = defaultHideAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedHide(x));
+                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedHide(x),
+                        keywordDatabaseWrapper.Database);
                     strings = defaultHideAnimationsStrings;
                     break;
 
@@ -780,7 +786,7 @@ namespace TMPEffects.Components
                     continue;
 
                 tagParams = ParsingUtility.GetTagParametersDict(str);
-                if (!animation.ValidateParameters(tagParams, context))
+                if (!animation.ValidateParameters(tagParams, keywordDatabaseWrapper?.Database))
                     continue;
 
                 anims.Add(cacher.CacheTag(new TMPEffectTag(tagInfo.name, tagInfo.prefix, tagParams),
@@ -814,7 +820,8 @@ namespace TMPEffects.Components
             DummyDatabase database = new DummyDatabase("Dummy Show Animation",
                 ScriptableObject.CreateInstance<DummyShowAnimation>());
             AnimationCacher cacher =
-                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedShow(x));
+                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedShow(x),
+                    keywordDatabaseWrapper.Database);
             dummyShow = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
 
@@ -826,7 +833,8 @@ namespace TMPEffects.Components
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation",
                 ScriptableObject.CreateInstance<DummyHideAnimation>());
             AnimationCacher cacher =
-                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedHide(x));
+                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedHide(x),
+                    keywordDatabaseWrapper.Database);
             dummyHide = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
 
@@ -1118,7 +1126,7 @@ namespace TMPEffects.Components
                     // visible again.
                     // TODO I dont necessarily like this being here. Maybe move.
                     state.Reset();
-                    
+
                     ignoreVisibilityChanges = false;
                     Mediator.SetVisibilityState(cData, VisibilityState.Hidden);
                     ignoreVisibilityChanges = prev;
@@ -1459,8 +1467,6 @@ namespace TMPEffects.Components
                     Mediator.SetVisibilityState(index, VisibilityState.Hidden);
                     return;
                 }
-                
-                Debug.LogWarning("Aint animating!!?!?");
             }
 
             if (prev == state)
@@ -1602,11 +1608,14 @@ namespace TMPEffects.Components
             tags.CollectionChanged += OnTagCollectionChanged;
 
             var basicCacher =
-                new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x));
+                new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x),
+                    keywordDatabaseWrapper.Database);
             var showCacher =
-                new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x));
+                new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x),
+                    keywordDatabaseWrapper.Database);
             var hideCacher =
-                new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x));
+                new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x),
+                    keywordDatabaseWrapper.Database);
 
             basic = new CachedCollection<CachedAnimation>(basicCacher, tags[basicCategory]);
             show = new CachedCollection<CachedAnimation>(showCacher, tags[showCategory]);
@@ -1650,6 +1659,7 @@ namespace TMPEffects.Components
 #pragma warning disable CS0414
         [SerializeField, HideInInspector] private bool preview = false;
         [SerializeField, HideInInspector] private bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] private bool useDefaultKeywordDatabase = true;
         [SerializeField, HideInInspector] private bool initDatabase = false;
         [SerializeField] private uint previewUpdatesPerSecond = 60;
         [System.NonSerialized] private float lastPreviewUpdateTime = 0f;
@@ -1800,7 +1810,7 @@ namespace TMPEffects.Components
             try
             {
                 tagParams = ParsingUtility.GetTagParametersDict(str);
-                if (!animation.ValidateParameters(tagParams, context))
+                if (!animation.ValidateParameters(tagParams, keywordDatabaseWrapper?.Database))
                 {
                     return "Parameters are not valid for this tag";
                 }

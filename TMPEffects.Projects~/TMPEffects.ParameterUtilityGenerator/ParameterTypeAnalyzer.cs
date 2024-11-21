@@ -124,6 +124,20 @@ namespace TMPEffects.ParameterUtilityGenerator
         private static readonly DiagnosticDescriptor Rule_106 = new DiagnosticDescriptor(DiagnosticId_106, Title_106,
             MessageFormat_106, Category_106, DiagnosticSeverity.Error, isEnabledByDefault: true);
 #pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        public const string DiagnosticId_107 = "TMPPT107";
+
+        private static readonly LocalizableString Title_107 =
+            "Types decorated with " + Strings.TMPParameterTypeAttribute + " must not be nested";
+
+        private static readonly LocalizableString MessageFormat_107 =
+            "Type {0} decorated with " + Strings.TMPParameterTypeAttribute + " must not be nested";
+
+        private const string Category_107 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_107 = new DiagnosticDescriptor(DiagnosticId_107, Title_107,
+            MessageFormat_107, Category_107, DiagnosticSeverity.Error, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
         {
@@ -138,6 +152,7 @@ namespace TMPEffects.ParameterUtilityGenerator
                     Rule_104,
                     Rule_105,
                     Rule_106,
+                    Rule_107,
                     Rule___
                 );
             }
@@ -146,13 +161,6 @@ namespace TMPEffects.ParameterUtilityGenerator
 
         public override void Initialize(AnalysisContext context)
         {
-            // Rules that need to be enforced
-            //
-            // 1. Scene and Disk type must implement the class type
-            // 2. DisplayName must be unique (at the very least when generating keywords)
-            // 4. Has to implement from string method
-
-
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
 
@@ -183,6 +191,13 @@ namespace TMPEffects.ParameterUtilityGenerator
             }
         }
 
+        
+        private void CheckIsNotNested(SyntaxNodeAnalysisContext context, INamedTypeSymbol symbol)
+        {
+            if (symbol.ContainingType == null) return;
+            context.ReportDiagnostic(Diagnostic.Create(Rule_107, symbol.Locations[0], symbol.Name));
+        }
+        
         private void AnalyzeParameterTypeAttributeSyntax(SyntaxNodeAnalysisContext context,
             AttributeSyntax attributeSyntax, IMethodSymbol attributeSymbol)
         {
@@ -204,6 +219,8 @@ namespace TMPEffects.ParameterUtilityGenerator
                 m.IsStatic && (m.PartialDefinitionPart != null || m.PartialImplementationPart != null) &&
                 m.Name == "StringTo" + data.DisplayName &&
                 m.ReturnType.SpecialType == SpecialType.System_Boolean).ToList();
+            
+            CheckIsNotNested(context, typeSymbol);
 
             bool present = false;
             foreach (var method in methods)

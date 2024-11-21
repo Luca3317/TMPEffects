@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.Components.Writer;
 using UnityEngine;
+using TMPEffects.Databases;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -9,22 +10,18 @@ namespace TMPEffects.TMPCommands.Commands
     [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Built-in/Debug")]
     public partial class DebugCommand : TMPCommand
     {
-        public override TagType TagType => TagType.Index; 
+        public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
         public override bool ExecuteOnSkip => true;
         public override bool ExecuteRepeatable => true;
 #if UNITY_EDITOR
         public override bool ExecuteInPreview => true;
 #endif
-        
-        [AutoParameter("type")]
-        private string type;
 
-        [AutoParameter(true, "")]
-        private string message;
+        [AutoParameter("type")] private string type;
+        [AutoParameter(true, "")] private string message;
 
-        private partial void ExecuteCommand(IDictionary<string, string> parameters, AutoParametersData data,
-            ICommandContext context)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
             if (data.type == "")
             {
@@ -35,10 +32,16 @@ namespace TMPEffects.TMPCommands.Commands
             switch (data.type)
             {
                 case "w":
-                case "warning": Debug.LogWarning(parameters[""]); break;
+                case "warning":
+                    Debug.LogWarning(message);
+                    break;
                 case "e":
-                case "error": Debug.LogError(parameters[""]); break;
-                default: Debug.Log(parameters[""]); break;
+                case "error":
+                    Debug.LogError(message);
+                    break;
+                default:
+                    Debug.Log(message);
+                    break;
             }
         }
     }

@@ -1,3 +1,4 @@
+using TMPEffects.Databases;
 using UnityEngine;
 using UnityEditor;
 using TMPEffects.Databases.AnimationDatabase;
@@ -9,9 +10,11 @@ namespace TMPEffects.Editor
     {
         public TMPAnimationDatabase DefaultAnimationDatabase => defaultAnimationDatabase;
         public TMPCommandDatabase DefaultCommandDatabase => defaultCommandDatabase;
+        public TMPKeywordDatabase DefaultKeywordDatabase => defaultKeywordDatabase;
 
         [SerializeField] private TMPAnimationDatabase defaultAnimationDatabase;
         [SerializeField] private TMPCommandDatabase defaultCommandDatabase;
+        [SerializeField] private TMPKeywordDatabase defaultKeywordDatabase;
 
         internal static TMPEffectsPreferences Get()
         {

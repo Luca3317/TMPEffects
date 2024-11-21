@@ -199,7 +199,7 @@ namespace TMPEffects.TMPAnimations
 
             // Calculate timeValue
             float timeValue =
-                repeat ? ac.PassedTime % duration : ac.PassedTime;
+                data.repeat ? ac.PassedTime % data.duration : ac.PassedTime;
 
             // Reset accModifier
             accModifier.Reset();
@@ -353,27 +353,36 @@ namespace TMPEffects.TMPAnimations
             CharData cData, IAnimatorContext context)
         {
             float weight = 1;
+
             if (step.entryDuration > 0 /*&& currTime <= behaviour.Step.Step.entryDuration*/)
             {
-                weight = step.entryCurve.Evaluate(cData, context,
-                    timeValue / step.entryDuration);
+                if (timeValue < step.entryDuration)
+                {
+                    weight = step.entryCurve.Evaluate(
+                        timeValue / step.entryDuration,
+                        step.entryOffset.GetOffset(cData, context),
+                        step.entryOffset.GetUniformity(context));
+                }
             }
 
             if (step.exitDuration > 0 /*&& currTime >= duration - behaviour.Step.Step.exitDuration*/)
             {
                 float preTime = duration - step.exitDuration;
-                var multiplier = (step.exitCurve.Evaluate(cData, context,
-                    1f - (timeValue - preTime) /
-                    step.exitDuration));
-
-                weight *= multiplier;
+                if (preTime < timeValue)
+                {
+                    var eval = 1f - (timeValue - preTime) / step.exitDuration;
+                    var multiplier = step.exitCurve.Evaluate(eval, 
+                        step.exitOffset.GetOffset(cData, context),
+                        step.exitOffset.GetUniformity(context));
+                    weight *= multiplier;
+                }
             }
 
             if (step.useWave)
             {
-                var offset = AnimationUtility.GetOffset(cData, context,
-                    step.offsetType);
-                weight *= step.wave.Evaluate(timeValue, offset).Value;
+                // TODO Put back, just commented for quick compilation
+                // var offset = AnimationUtility.GetOffset(cData, context, step.offsetType);
+                // weight *= step.wave.Evaluate(timeValue, offset).Value;
             }
 
             return weight;

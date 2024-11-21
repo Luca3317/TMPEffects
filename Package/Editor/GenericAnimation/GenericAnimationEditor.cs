@@ -987,8 +987,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
         // TODO TMPWrapMode and WaveOffsetType (for that second one wait to see if i do poweroffsettype)
         var str = $@"new FancyAnimationCurve()
 {{
-    Curve = {GetAnimCurveString(curve.Curve)},
-    Uniformity = {GetFloatString(curve.Uniformity)},
+    Curve = {GetAnimCurveString(curve.Curve)}
 }}
 ";
         return str;

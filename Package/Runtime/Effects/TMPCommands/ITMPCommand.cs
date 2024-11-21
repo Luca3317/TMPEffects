@@ -1,13 +1,27 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.Components.Writer;
+using TMPEffects.Databases;
+using UnityEngine;
 
 namespace TMPEffects.TMPCommands
 {
+    // TODO What fing namespace; TMPEffects.Parameters?
+    public interface ITMPParameterValidator
+    {
+        /// <summary>
+        /// Validate the given parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters as key-value pairs</param>
+        /// <param name="keywordDatabase">A keyword database for parsing the parameter values</param>
+        /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
+    }
+
     /// <summary>
     /// Base interface for all TMPEffects commands.
     /// </summary>
-    public interface ITMPCommand
+    public interface ITMPCommand : ITMPParameterValidator
     {
         /// <summary>
         /// The type of command this is.
@@ -56,15 +70,12 @@ namespace TMPEffects.TMPCommands
         /// </summary>
         /// <param name="parameters"></param>
         /// <param name="context"></param>
-        public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
+        // public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
+        public void ExecuteCommand(ICommandContext context);
 
-        /// <summary>
-        /// Validate the parameters.<br/>
-        /// Used to validate tags.
-        /// </summary>
-        /// <param name="parameters">The parameters to validate.</param>
-        /// <param name="context"></param>
-        /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
-        public bool ValidateParameters(IDictionary<string, string> parameters, IWriterContext context);
+        // TODO docuemtn
+        public object GetNewCustomData();
+        
+        public void SetParameters(object obj, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
     }
 }

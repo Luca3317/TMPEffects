@@ -12,29 +12,6 @@ namespace TMPEffects.Parameters
 {
     public static class ParameterParsing
     {
-        public static TMPKeywordDatabase GlobalKeywordDatabase
-        {
-            get
-            {
-                // TODO How to make sure this is fully up to date while still caching?
-                // Maybe listen to onvalidate in editor
-                // No, cause that wont update when reassigning to new instance in settings
-                // Hmmm
-                // I will generally want a better solution than this so figure that out once
-                // switched
-                
-                // if (globalKeywordDatabase == null)
-                // {
-                    var settings = Resources.Load<TMPEffectsSettings>("TMPEffectsSettings_Project");
-                    globalKeywordDatabase = settings.GlobalKeywordDatabase;
-                // }
-
-                return globalKeywordDatabase;
-            }
-        }
-        
-        private static TMPKeywordDatabase globalKeywordDatabase = null;
-
         private static string TrimIfNeeded(string text)
         {
             if (text.Length == 0) return text;
@@ -54,9 +31,6 @@ namespace TMPEffects.Parameters
             if (keywords != null && keywords.TryGetInt(str, out result))
                 return true;
 
-            if (GlobalKeywordDatabase.TryGetInt(str, out result))
-                return true;
-
             if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
                 return true;
 
@@ -71,9 +45,6 @@ namespace TMPEffects.Parameters
             if (str.Length == 0) return false;
 
             if (keywords != null && keywords.TryGetFloat(str, out result))
-                return true;
-
-            if (GlobalKeywordDatabase.TryGetFloat(str, out result))
                 return true;
 
             if (float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
@@ -92,9 +63,6 @@ namespace TMPEffects.Parameters
             if (keywords != null && keywords.TryGetBool(str, out result))
                 return true;
 
-            if (GlobalKeywordDatabase.TryGetBool(str, out result))
-                return true;
-
             if (bool.TryParse(str, out result))
                 return true;
 
@@ -110,12 +78,6 @@ namespace TMPEffects.Parameters
             if (str.Length == 0) return false;
 
             if (keywords != null && keywords.TryGetVector3(str, out Vector3 result3))
-            {
-                result = result3;
-                return true;
-            }
-
-            if (GlobalKeywordDatabase.TryGetVector3(str, out result3))
             {
                 result = result3;
                 return true;
@@ -213,9 +175,6 @@ namespace TMPEffects.Parameters
             if (keywords != null && keywords.TryGetVector3(str, out result))
                 return true;
 
-            if (GlobalKeywordDatabase.TryGetVector3(str, out result))
-                return true;
-
             Vector3? v;
             if ((v = TryParse()) != null)
             {
@@ -286,7 +245,7 @@ namespace TMPEffects.Parameters
         public static bool StringToVector3Offset(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)
         {
             result = Vector3.zero;
-            
+
             str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
 
@@ -303,10 +262,10 @@ namespace TMPEffects.Parameters
         public static bool StringToAnchor(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
-            
+
             str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
-            
+
             // check for "a:" prefix
             if (str.Length < 3 || str[0] != 'a' || str[1] != ':')
             {
@@ -316,9 +275,6 @@ namespace TMPEffects.Parameters
 
             str = str.Substring(2, str.Length - 2);
             if (keywords != null && keywords.TryGetAnchor(str, out result))
-                return true;
-
-            if (GlobalKeywordDatabase.TryGetAnchor(str, out result))
                 return true;
 
             if (StringToVector2(str, out result, keywords))
@@ -346,17 +302,11 @@ namespace TMPEffects.Parameters
         public static bool StringToAnimCurve(string str, out AnimationCurve result, ITMPKeywordDatabase keywords = null)
         {
             result = null;
-            
+
             str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
 
             if (keywords != null && keywords.TryGetAnimCurve(str, out result))
-            {
-                result = new AnimationCurve(result.keys);
-                return true;
-            }
-
-            if (GlobalKeywordDatabase.TryGetAnimCurve(str, out result))
             {
                 result = new AnimationCurve(result.keys);
                 return true;
@@ -381,17 +331,14 @@ namespace TMPEffects.Parameters
             ITMPKeywordDatabase keywords = null)
         {
             result = null;
-            
+
             str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
-            
-            if (keywords != null && keywords.TryGetUnityObject(str, out result))
-                return true;
 
-            return GlobalKeywordDatabase.TryGetUnityObject(str, out result);
+            return keywords != null && keywords.TryGetUnityObject(str, out result);
         }
 
-        
+
         // public static bool StringToOffsetProvider(string str, out ITMPOffsetProvider result,
         //     ITMPKeywordDatabase keywords = null)
         // {
@@ -405,18 +352,15 @@ namespace TMPEffects.Parameters
         //     
         //     return GlobalKeywordDatabase.TryGetOffsetType(str, out result);
         // }
-        
+
         public static bool StringToColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
-            
+
             str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
 
             if (keywords != null && keywords.TryGetColor(str, out result))
-                return true;
-
-            if (GlobalKeywordDatabase.TryGetColor(str, out result))
                 return true;
 
             if (StringToHexColor(str, out result, keywords)) return true;
@@ -436,14 +380,9 @@ namespace TMPEffects.Parameters
             }
             catch
             {
-                if (keywords != null && keywords.TryGetInt(str, out result))
-                    return true;
-
-                if (GlobalKeywordDatabase.TryGetInt(str, out result))
-                    return true;
+                result = default;
+                return keywords != null && keywords.TryGetInt(str, out result);
             }
-
-            return false;
         }
 
         internal static bool StringToHexColor(string str, out Color result, ITMPKeywordDatabase keywords = null)

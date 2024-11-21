@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.Animations
@@ -119,20 +120,20 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public object GetNewCustomData(IAnimationContext context)
+        public object GetNewCustomData()
         {
             Data data = new Data();
 
             foreach (var anim in animations)
             {
                 if (anim.animation == null) continue;
-                data.ObjectCache[anim.animation] = anim.animation.GetNewCustomData(context);
+                data.ObjectCache[anim.animation] = anim.animation.GetNewCustomData();
             }
 
             return data;
         }
 
-        public void SetParameters(object customData, IDictionary<string, string> parameters, IAnimationContext context)
+        public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             Data data = customData as Data;
 
@@ -144,11 +145,11 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams, context);
+                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams, keywordDatabase);
             }
         }
 
-        public bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             foreach (var anim in animations)
             {
@@ -158,7 +159,7 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                if (!anim.animation.ValidateParameters(animParams, context)) return false;
+                if (!anim.animation.ValidateParameters(animParams, keywordDatabase)) return false;
             }
 
             return true;

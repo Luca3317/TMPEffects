@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
@@ -116,31 +117,31 @@ namespace TMPEffects.TMPSceneAnimations.Animations
         }
 
         public override void SetParameters(object customData, IDictionary<string, string> parameters,
-            IAnimationContext context)
+            ITMPKeywordDatabase keywordDatabase)
         {
             if (parameters == null) return;
 
             Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden"))
+            if (TryGetFloatParameter(out float f, parameters, keywordDatabase, "hiddenOpacity", "hOpacity", "hOp", "hidden"))
                 d.hiddenOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "shownOpacity", "sOpacity", "sOp", "shown")) d.shownOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "radius", "rad", "r")) d.radius = f;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "fallOffCurve", "foCurve", "foCrv"))
+            if (TryGetFloatParameter(out f, parameters,keywordDatabase, "shownOpacity", "sOpacity", "sOp", "shown")) d.shownOpacity = f;
+            if (TryGetFloatParameter(out f, parameters,keywordDatabase, "radius", "rad", "r")) d.radius = f;
+            if (TryGetAnimCurveParameter(out var crv, parameters,keywordDatabase, "fallOffCurve", "foCurve", "foCrv"))
                 d.fallOffCurve = crv;
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
+        public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             if (parameters == null) return true;
 
-            if (HasNonFloatParameter(parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden")) return false;
-            if (HasNonFloatParameter(parameters, "shownOpacity", "sOpacity", "sOp", "shown")) return false;
-            if (HasNonFloatParameter(parameters, "radius", "rad", "r")) return false;
-            if (HasNonAnimCurveParameter(parameters, "fallOffCurve", "foCurve", "foCrv")) return false;
+            if (HasNonFloatParameter(parameters, keywordDatabase, "hiddenOpacity", "hOpacity", "hOp", "hidden")) return false;
+            if (HasNonFloatParameter(parameters, keywordDatabase, "shownOpacity", "sOpacity", "sOp", "shown")) return false;
+            if (HasNonFloatParameter(parameters, keywordDatabase, "radius", "rad", "r")) return false;
+            if (HasNonAnimCurveParameter(parameters, keywordDatabase, "fallOffCurve", "foCurve", "foCrv")) return false;
             return true;
         }
 
-        public override object GetNewCustomData(IAnimationContext context)
+        public override object GetNewCustomData()
         {
             return new Data()
             {

@@ -39,14 +39,20 @@ namespace TMPEffects.SerializedCollections.Editor
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (!_arrayData.ContainsKey(property.propertyPath))
+            {
+                
                 _arrayData.Add(property.propertyPath, new SerializedDictionaryInstanceDrawer(property, fieldInfo));
+            }
             _arrayData[property.propertyPath].OnGUI(position, label);
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!_arrayData.ContainsKey(property.propertyPath))
+            {
+                
                 _arrayData.Add(property.propertyPath, new SerializedDictionaryInstanceDrawer(property, fieldInfo));
+            }
             return _arrayData[property.propertyPath].GetPropertyHeight(label);
         }
     }

@@ -9,6 +9,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Editor
@@ -167,7 +168,7 @@ namespace TMPEffects.Editor
         public override bool HasPreviewGUI()
         {
             ITMPAnimation t = target as ITMPAnimation;
-            return t != null && t.ValidateParameters(dummyDict, animator.AnimatorContext);
+            return t != null && t.ValidateParameters(dummyDict, animator.KeywordDatabase);
         }
 
         protected class WrapperAnimation : TMPSceneAnimation
@@ -182,20 +183,16 @@ namespace TMPEffects.Editor
                 tmpanimation.Animate(cData, context);
             }
 
-            public override object GetNewCustomData(IAnimationContext context) => tmpanimation.GetNewCustomData(context);
+            public override object GetNewCustomData() => tmpanimation.GetNewCustomData();
 
             public override void SetParameters(object customData, IDictionary<string, string> parameters,
-                IAnimationContext context1)
+                ITMPKeywordDatabase keywordDatabase)
             {
-                if (customData == null) Debug.LogWarning("CustomData is null");
-                if (parameters == null) Debug.LogWarning("params is null");
-                if (context1 == null) Debug.LogWarning("context1 is null");
-                if (context1.AnimatorContext == null) Debug.LogWarning("animcontext is null");
-                tmpanimation.SetParameters(customData, parameters, context1);
+                tmpanimation.SetParameters(customData, parameters, keywordDatabase);
             }
 
-            public override bool ValidateParameters(IDictionary<string, string> parameters, IAnimatorContext context)
-                => tmpanimation.ValidateParameters(parameters, context);
+            public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+                => tmpanimation.ValidateParameters(parameters, keywordDatabase);
         }
 
         protected ReadOnlyDictionary<string, string> dummyDict = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
