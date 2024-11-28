@@ -23,8 +23,6 @@ internal static class TimelineUtility
             @"You are exporting to a generic animation asset.
 Which clips do you want to use for the export?", "Selected Only", "Cancel", "All Clips");
 
-        // ExportToGenericAnimationUtilityWindow.Init(Application.dataPath);
-        
         return result;
     }
 
@@ -58,7 +56,6 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
                 
                 animTrack.Clips.Add(step);
             
-                // TODO What was this about again?
                 float endTime = (float)clip.end;
                 if (endTime > anim.Duration)
                 {
@@ -102,7 +99,6 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
                 
                 animTrack.Clips.Add(step);
             
-                // TODO What was this about again?
                 float endTime = (float)clip.end;
                 if (endTime > anim.Duration)
                 {
@@ -116,7 +112,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         return anim;
     }
 
-    public static bool ExportAsGeneric(ActionContext context, int option)
+    public static bool ExportAsGeneric(ActionContext context, string directoryPath, string assetName, int option)
     {
         if (option == 1) throw new SystemException();
 
@@ -124,7 +120,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         if (option == 0)
         {
             var anim = CreateGenericAnimationFromSelectedClips(context);
-            GenerateScriptableFromContext(Application.dataPath + "/GenericExpors.asset", anim);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
             return true;
         }
 
@@ -132,7 +128,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         if (option == 2)
         {
             var anim = CreateGenericFromAllClips(context);
-            GenerateScriptableFromContext(Application.dataPath + "/GenericExpors.asset", anim);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
             return true;
         }
 
@@ -172,7 +168,6 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         EnsureDirectoryExists(filePath);
 
         string relativePath = MakeRelative(filePath, Application.dataPath);
-        Debug.Log(relativePath);
         AssetDatabase.CreateAsset(anim, relativePath);
         AssetDatabase.SaveAssets();
         EditorUtility.FocusProjectWindow();
@@ -222,7 +217,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         return result;
     }
 
-    public static bool ExportAsScript(ActionContext context, int option)
+    public static bool ExportAsScript(ActionContext context, string directoryPath, string scriptName, int option)
     {
         if (option == 1) throw new SystemException();
 
@@ -230,7 +225,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         if (option == 0)
         {
             var anim = CreateGenericAnimationFromSelectedClips(context);
-            GenericAnimationExporter.Export(anim, Application.dataPath + "/GenericExpors.cs");
+            GenericAnimationExporter.Export(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
             return true;
         }
 
@@ -238,7 +233,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         if (option == 2)
         {
             var anim = CreateGenericFromAllClips(context);
-            GenericAnimationExporter.Export(anim, Application.dataPath + "/GenericExpors.cs");
+            GenericAnimationExporter.Export(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
             return true;
         }
 
@@ -287,7 +282,7 @@ Proceed?", "Ok", "Cancel");
                     timelineClip.start = animClip.startTime;
                     timelineClip.duration = animClip.duration;
                     
-                    // TODO Is there really no way to set the mode on creation...
+                    // There is no way to set the mode on creation; workaround
                     var reflected = typeof(TimelineClip).GetField("m_PostExtrapolationMode", BindingFlags.NonPublic | BindingFlags.Instance);
                     reflected.SetValue(timelineClip, animClip.postExtrapolation.ConvertExtrapolation());
                     

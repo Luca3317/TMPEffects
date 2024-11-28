@@ -184,7 +184,6 @@ namespace TMPEffects.TMPAnimations.Animations
                 finishedDict[cData.info.index] = true;
             }
 
-            // TODO might remove this method from IAnimatorContext
             public bool Finished(int index)
             {
                 return finishedDict[index];

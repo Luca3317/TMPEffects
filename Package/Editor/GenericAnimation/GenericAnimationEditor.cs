@@ -54,6 +54,10 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         }
     }
 
+    // Dont love this, might want to clean up duration clamp stuff
+    // This clamps the entry and exit to not be longer than the duration
+    // In AnimationStepDrawer there is a method that clamps entry and exit when changed
+    // Might be a little too spaghetti to have both of those
     // Update all other durations when one was changed in the inspector
     // ChangedIndex: the index that was changed, 
     // ignoreIndex: further indices that should remain unchanged
@@ -63,9 +67,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
             .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
         var changedProp = clips.GetArrayElementAtIndex(changedIndex);
 
-        // TODO This clamps the entry and exit to not be longer than the duration
-        // In AnimationStepDrawer there is a method that clamps entry and exit when changed
-        // Might be a little too spaghetti to have both of those
+
         changedProp.FindPropertyRelative("entryDuration").floatValue = Mathf.Min(
             changedProp.FindPropertyRelative("entryDuration").floatValue,
             changedProp.FindPropertyRelative("duration").floatValue);
@@ -339,7 +341,6 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         var newExportPath = EditorGUI.TextField(textrect, "Export path", exportPath);
         if (newExportPath != exportPath)
         {
-            Debug.Log("Setting!");
             EditorPrefs.SetString(ExportPathKey, newExportPath);
             exportPath = newExportPath;
         }
@@ -440,7 +441,6 @@ public static class GenericAnimationExporter
 {
     public static void Export(SerializedObject serializedObject, string exportPath, string name)
     {
-        Debug.LogWarning("HI");
         var anim = serializedObject.targetObject as GenericAnimation;
         if (anim == null)
             throw new System.InvalidOperationException(
@@ -572,6 +572,7 @@ public static class GenericAnimationExporter
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Parameters;
 using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 using UnityEngine;
@@ -594,14 +595,13 @@ namespace TMPEffects.TMPAnimations.GenericExports
 {0}
         #endregion
 
-        // The Animate method automatically called
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {{
             CreateStepsSorted(ref data.Steps);
 
             IAnimatorContext ac = context.AnimatorContext;
             var steps = data.Steps;
-            
+
             // Create modifiers if needed
             data.modifiersStorage ??= new CharDataModifiers();
             data.modifiersStorage2 ??= new CharDataModifiers();
@@ -621,15 +621,15 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 // Find the currently active clip (max 1)
                 var active = FindCurrentlyActive(timeValue, track);
                 if (active == -1) continue;
-                
+
                 // If that clip is disabled continue
                 var step = track[active];
                 if (!step.animate) continue;
 
                 // Adjust the timeValue for extrapolation setting
-                float t = AdjustTimeForExtrapolation(step, timeValue, cData, ac);
-                t -= - step.startTime;
-                
+                float t = timeValue - step.startTime;
+                t = AdjustTimeForExtrapolation(step, t, cData, ac);
+
                 // Calculate the weight of the current clip
                 float weight = CalcWeight(step, t, step.duration, cData, ac);
 
@@ -670,7 +670,6 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {{
             if (steps == null || steps.Count == 0) return -1;
 
-            // TODO This asssumes each track is sorted
             for (int i = 0; i < steps.Count; i++)
             {{
                 var step = steps[i];
@@ -755,27 +754,24 @@ namespace TMPEffects.TMPAnimations.GenericExports
             CharData cData, IAnimatorContext context)
         {{
             float weight = 1;
-            if (step.entryDuration > 0 /*&& currTime <= behaviour.Step.Step.entryDuration*/)
+
+            if (step.entryDuration > 0)
             {{
-                weight = step.entryCurve.Evaluate(cData, context,
-                    timeValue / step.entryDuration);
+                weight = step.entryCurve.EvaluateIn(cData, context, timeValue, step.entryDuration);
             }}
 
-            if (step.exitDuration > 0 /*&& currTime >= duration - behaviour.Step.Step.exitDuration*/)
+            if (step.exitDuration > 0)
             {{
                 float preTime = duration - step.exitDuration;
-                var multiplier = (step.exitCurve.Evaluate(cData, context,
-                    1f - (timeValue - preTime) /
-                    step.exitDuration));
-
+                var multiplier =
+                    step.exitCurve.EvaluateOut(cData, context, timeValue, step.exitDuration, preTime);
                 weight *= multiplier;
             }}
 
             if (step.useWave)
             {{
-                var offset = AnimationUtility.GetOffset(cData, context,
-                    step.offsetType);
-                weight *= step.wave.Evaluate(timeValue, offset).Value;
+                var waveOffset = step.waveOffset.GetOffset(cData, context);
+                weight *= step.wave.Evaluate(timeValue, waveOffset).Value;
             }}
 
             return weight;
@@ -895,14 +891,15 @@ namespace TMPEffects.TMPAnimations.GenericExports
         {{
             name = ""{step.name}"",
             entryDuration = {GetFloatString(step.entryDuration)},
-            entryCurve = {GetFancyAnimCurveString(step.entryCurve)},
+            entryCurve = {GetTMPBlendCurveString(step.entryCurve)},
             exitDuration = {GetFloatString(step.exitDuration)},
-            exitCurve = {GetFancyAnimCurveString(step.exitCurve)},
+            exitCurve = {GetTMPBlendCurveString(step.exitCurve)},
             loops = {step.loops.ToString().ToLower()},
             startTime = {GetFloatString(step.startTime)},
             duration = {GetFloatString(step.duration)},
             useWave = {step.useWave.ToString().ToLower()},
-            wave = new AnimationUtility.Wave( 
+            waveOffset = {GetOffsetBundleString(step.waveOffset)},
+            wave = new Wave( 
                 {GetAnimCurveString(step.wave.UpwardCurve)}, 
                 {GetAnimCurveString(step.wave.DownwardCurve)}, 
                 {GetFloatString(step.wave.UpPeriod)}, {GetFloatString(step.wave.DownPeriod)}, {GetFloatString(step.wave.Amplitude)},
@@ -951,7 +948,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         return code;
     }
-
+    
     private static string GetColorOverrideString(ColorOverride modifiersBLColor)
     {
         return
@@ -982,15 +979,35 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return str.Substring(0, str.Length - 1);
     }
 
-    private static string GetFancyAnimCurveString(AnimationUtility.FancyAnimationCurve curve)
+    private static string GetTMPBlendCurveString(TMPBlendCurve curve)
     {
-        // TODO TMPWrapMode and WaveOffsetType (for that second one wait to see if i do poweroffsettype)
-        var str = $@"new FancyAnimationCurve()
-{{
-    Curve = {GetAnimCurveString(curve.Curve)}
-}}
-";
+        var str = $@"new TMPBlendCurve()
+            {{
+                curve = {GetAnimCurveString(curve.curve)},
+                provider = {GetOffsetTypePowerEnum(curve.provider as OffsetTypePowerEnum)},
+                uniformity = {GetFloatString(curve.uniformity)},
+                ignoreAnimatorScaling = {curve.ignoreAnimatorScaling.ToString().ToLower()},
+                finishWholeSegmentInTime = {curve.finishWholeSegmentInTime.ToString().ToLower()},
+                zeroBasedOffset = {curve.zeroBasedOffset.ToString().ToLower()}
+            }}"; 
         return str;
+    }
+    
+    private static string GetOffsetBundleString(OffsetBundle offsetBundle)
+    {
+        var str = $@"new OffsetBundle()
+            {{
+                provider = {GetOffsetTypePowerEnum(offsetBundle.provider as OffsetTypePowerEnum)},
+                uniformity = {GetFloatString(offsetBundle.uniformity)},
+                ignoreAnimatorScaling = {offsetBundle.ignoreAnimatorScaling.ToString().ToLower()},
+                zeroBasedOffset = {offsetBundle.zeroBasedOffset.ToString().ToLower()}
+            }}"; 
+        return str;
+    }
+
+    private static string GetOffsetTypePowerEnum(OffsetTypePowerEnum offset)
+    {
+        return $@"new OffsetTypePowerEnum(OffsetType.{offset.EnumValue}, null, {offset.UseCustom.ToString().ToLower()})";
     }
 
     private static string GetAnimCurveString(AnimationCurve curve)
@@ -1124,10 +1141,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
         string filename = hierarchy[hierarchy.Length - 1];
         string dirPath = hierarchy[0];
 
-        Debug.Log("Creating w " + fileNamePath);
         for (int i = 1; i < hierarchy.Length; i++)
         {
-            Debug.Log("dirpatrh now " + dirPath);
             if (!Directory.Exists(dirPath))
             {
                 Directory.CreateDirectory(dirPath);
@@ -1146,7 +1161,6 @@ namespace TMPEffects.TMPAnimations.GenericExports
             }
         }
 
-        Debug.Log("writing to " + dirPath);
         File.WriteAllText(dirPath, code);
         AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();

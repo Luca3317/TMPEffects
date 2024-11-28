@@ -44,7 +44,7 @@ public class AnimationStepDrawer : PropertyDrawer
         initModifiers = property.FindPropertyRelative("initModifiers");
         useInitModifiers = property.FindPropertyRelative("useInitialModifiers");
         useWave = property.FindPropertyRelative("useWave");
-        waveOffsetType = property.FindPropertyRelative("offsetType");
+        waveOffsetType = property.FindPropertyRelative("waveOffset");
         wave = property.FindPropertyRelative("wave");
         preExtrapolation = property.FindPropertyRelative("preExtrapolation");
         postExtrapolation = property.FindPropertyRelative("postExtrapolation");
@@ -83,6 +83,7 @@ public class AnimationStepDrawer : PropertyDrawer
         return height;
     }
 
+    // Clamp entry / exit blend duration when either, or clip duration changed
     protected void OnClipDurationChanged(int control)
     {
         entryDuration.floatValue = Mathf.Max(0, entryDuration.floatValue);
@@ -183,7 +184,7 @@ public class AnimationStepDrawer : PropertyDrawer
 
         if (useWave.boolValue)
         {
-            EditorGUI.PropertyField(rect, waveOffsetType);
+            EditorGUI.PropertyField(rect, waveOffsetType, true);
             rect.y += EditorGUI.GetPropertyHeight(waveOffsetType);
 
             if (wave.isExpanded)

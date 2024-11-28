@@ -10,6 +10,8 @@ namespace TMPEffects.Databases
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
     public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
     {
+        // TODO Is this a working solution?
+        // Definitely will require reload when changing global instance
         public static TMPKeywordDatabase Global
         {
             get

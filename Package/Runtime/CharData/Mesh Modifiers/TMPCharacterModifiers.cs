@@ -8,22 +8,6 @@ public class TMPCharacterModifiers
 {
     public ModifierFlags Modifier => modifier;
 
-    // public Vector3Override Position
-    // {
-    //     get => position;
-    //     set
-    //     {
-    //         if (value == position) return;
-    //         if (!value.Override)
-    //         {
-    //             ClearScale();
-    //             return;
-    //         }
-    //         position = value;
-    //         modifier |= ModifierFlags.Position;
-    //     }
-    // }
-
     public Vector3 PositionDelta
     {
         get => positionDelta;

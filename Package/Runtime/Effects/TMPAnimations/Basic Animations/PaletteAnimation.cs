@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using TMPEffects.Parameters;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
-using TMPEffects.TextProcessing;
-using TMPro;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -18,31 +11,18 @@ namespace TMPEffects.TMPAnimations.Animations
         menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
     public partial class PaletteAnimation : TMPAnimation
     {
-        [SerializeField, AutoParameterBundle("")]  
+        [SerializeField, AutoParameterBundle("")]
         [Tooltip(
             "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         Wave wave;
 
-        [SerializeField, AutoParameter("waveoffset", "woff", "woffset", "waveoff")]
+        [SerializeField, AutoParameterBundle("")]
         [Tooltip(
             "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        OffsetTypePowerEnum waveOffset;
+        OffsetBundle waveOffset;
 
         [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         Color[] colors;
-
-        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
-        int[] colors1;
-
-        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
-        float[] colors2;
-
-        [SerializeField, AutoParameter("siefman")]
-        private string s; 
-
-        // [SerializeField, AutoParameter("colors, clrs")] 
-        // [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
-        // string[] colors3;
 
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {

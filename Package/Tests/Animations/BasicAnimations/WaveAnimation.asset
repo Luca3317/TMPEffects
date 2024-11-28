@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e448cd9263ab7f45b2ebab2a5e08dd6, type: 3}
   m_Name: WaveAnimation
   m_EditorClassIdentifier: 
+  offsetProvider:
+    offsetProvider:
+      enumValue: 10
+      customValue: {fileID: 0}
+      useCustom: 0
+    uniformity: 0.025
+    ignoreAnimatorScaling: 0
+    zeroBasedOffset: 0
   wave:
     upPeriod: 0.5
     downPeriod: 0.5
     amplitude: 10
-    velocity: 1
     upwardCurve:
       serializedVersion: 2
       m_Curve:
@@ -85,9 +92,4 @@ MonoBehaviour:
       m_RotationOrder: 4
     crestWait: 0
     troughWait: 0
-    uniformity: 0.1
-  waveOffsetType: 10
-  powerEnum:
-    enumValue: 10
-    customValue: {fileID: 0}
-    useCustom: 1
+    velocity: 1

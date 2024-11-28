@@ -12,6 +12,10 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
     private List<ScriptPlayable<TMPMeshModifierBehaviour>> active;
     private TMPAnimator animator;
 
+    private bool needsReset = false;
+    private CharDataModifiers modifiersStorage, modifiersStorage2;
+    private CharDataModifiers accModifier, current;
+    
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
         animator = playerData as TMPAnimator;
@@ -36,13 +40,13 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         }
 
         if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
-
-        // if (animator.UpdateFrom == UpdateFrom.Script)
-        //     animator.UpdateAnimations(0f);
-        // TODO
-        // When no other animation, and there is no active clip, wont update anims => characters remain in last state
+        else if (needsReset)
+        {
+            needsReset = false;
+            animator.QueueCharacterReset();
+        }
     }
-
+ 
     private void OnAnimatedCallback(CharData cdata)
     {
         modifiersStorage ??= new CharDataModifiers();
@@ -66,13 +70,9 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             // var result = Calc(animator, behaviour.Step, cdata, weight, time);
             cdata.CharacterModifiers.Combine(current.CharacterModifiers);
             cdata.MeshModifiers.Combine(current.MeshModifiers);
+            
+            needsReset = true;
         }
+        
     }
-
-
-    // TODO
-    // Calc and genericanimation should use some shared implementation
-    // Probably generated animations as well?
-    private CharDataModifiers modifiersStorage, modifiersStorage2;
-    private CharDataModifiers accModifier, current;
 }

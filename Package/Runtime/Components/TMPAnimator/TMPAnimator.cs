@@ -45,9 +45,10 @@ namespace TMPEffects.Components
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPAnimator : TMPEffectComponent
     {
-        // TODO Quick solution for testing
-        // Should definitely return a readonly context (which should probably be cached by this class as well)
-        public IAnimatorContext AnimatorContext => context;
+        /// <summary>
+        /// The context used by this animator.
+        /// </summary>
+        public IAnimatorContext AnimatorContext => readonlyContext;
 
         /// <summary>
         /// Whether the text is currently being animated.<br/>
@@ -68,13 +69,22 @@ namespace TMPEffects.Components
 
         /// <summary>
         /// The keyword database used to parse tag parameters.
-        /// TODO How to ensure this is set asap. If not document when is ready
-        /// TODO Might already be ensured by setting it in OnEnable
         /// </summary>
         public ITMPKeywordDatabase KeywordDatabase => keywordDatabaseWrapper?.Database;
 
+        /// <summary>
+        /// The <see cref="TMPSceneAnimation"/> used by this animator.
+        /// </summary>
         public IDictionary<string, TMPSceneAnimation> SceneAnimations => sceneAnimations;
+
+        /// <summary>
+        /// The <see cref="TMPSceneShowAnimation"/> used by this animator.
+        /// </summary>
         public IDictionary<string, TMPSceneShowAnimation> SceneShowAnimations => sceneShowAnimations;
+
+        /// <summary>
+        /// The <see cref="TMPSceneHideAnimation"/> used by this animator.
+        /// </summary>
         public IDictionary<string, TMPSceneHideAnimation> SceneHideAnimations => sceneHideAnimations;
 
         /// <summary>
@@ -141,6 +151,7 @@ namespace TMPEffects.Components
         private TMPAnimationDatabase database = null;
 
         [SerializeField] private AnimatorContext context = new AnimatorContext();
+        [System.NonSerialized] private ReadOnlyAnimatorContext readonlyContext;
 
         [Tooltip(
             "Where to update the animations from. If set to Script, you will have to manually update animations from your own script")]
@@ -372,19 +383,20 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
-        // TODO 
-        // Im still not sure whether i want to actually support putting a scene AND
-        // a disk database on the animator.
-        // The alternative would be to just allow a scene one, and users could make a wrapper
-        // for each.
-        // Though: Will be a little annoying for them to implement ITMPKeywordDatabase since it wont
-        // auto update when adding a new type.
+        /// <summary>
+        /// Set the scene keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
         public void SetSceneKeywordDatabase(TMPSceneKeywordDatabase database)
         {
             sceneKeywordDatabase = database;
             OnDatabaseChanged();
         }
 
+        /// <summary>
+        /// Set the keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
         public void SetKeywordDatabase(TMPKeywordDatabase database)
         {
             keywordDatabase = database;
@@ -661,6 +673,8 @@ namespace TMPEffects.Components
             context._StateTime = (i) => stateTimes[i];
             context.Animator = this;
             ResetTime();
+
+            readonlyContext = new ReadOnlyAnimatorContext(context);
         }
 
         private void PrepareForProcessing()
@@ -741,7 +755,8 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Basic:
                     database = basicDatabase;
                     anims = defaultAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedBasic(x),
+                    cacher = new AnimationCacher(database, state, readonlyContext, Mediator.CharData,
+                        x => !IsExcludedBasic(x),
                         keywordDatabaseWrapper.Database);
                     strings = defaultAnimationsStrings;
                     QueueCharacterReset();
@@ -750,7 +765,8 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Show:
                     database = showDatabase;
                     anims = defaultShowAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedShow(x),
+                    cacher = new AnimationCacher(database, state, readonlyContext, Mediator.CharData,
+                        x => !IsExcludedShow(x),
                         keywordDatabaseWrapper.Database);
                     strings = defaultShowAnimationsStrings;
                     break;
@@ -758,7 +774,8 @@ namespace TMPEffects.Components
                 case TMPAnimationType.Hide:
                     database = hideDatabase;
                     anims = defaultHideAnimations;
-                    cacher = new AnimationCacher(database, state, context, Mediator.CharData, x => !IsExcludedHide(x),
+                    cacher = new AnimationCacher(database, state, readonlyContext, Mediator.CharData,
+                        x => !IsExcludedHide(x),
                         keywordDatabaseWrapper.Database);
                     strings = defaultHideAnimationsStrings;
                     break;
@@ -820,7 +837,7 @@ namespace TMPEffects.Components
             DummyDatabase database = new DummyDatabase("Dummy Show Animation",
                 ScriptableObject.CreateInstance<DummyShowAnimation>());
             AnimationCacher cacher =
-                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedShow(x),
+                new AnimationCacher(database, state, readonlyContext, Mediator.CharData, (x) => !IsExcludedShow(x),
                     keywordDatabaseWrapper.Database);
             dummyShow = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
@@ -833,7 +850,7 @@ namespace TMPEffects.Components
             DummyDatabase database = new DummyDatabase("Dummy Hide Animation",
                 ScriptableObject.CreateInstance<DummyHideAnimation>());
             AnimationCacher cacher =
-                new AnimationCacher(database, state, context, Mediator.CharData, (x) => !IsExcludedHide(x),
+                new AnimationCacher(database, state, readonlyContext, Mediator.CharData, (x) => !IsExcludedHide(x),
                     keywordDatabaseWrapper.Database);
             dummyHide = cacher.CacheTag(tag, new TMPEffectTagIndices(0, -1, 0));
         }
@@ -948,48 +965,35 @@ namespace TMPEffects.Components
             VisibilityState vState = Mediator.VisibilityStates[index];
             if (vState == VisibilityState.Hidden) return;
 
+            context.deltaTime = deltaTime;
+            context.Modifiers = state;
+            
+            // If there are any animations to be applied
             if (defaultAnimations.Count != 0 || basic.HasAnyContaining(index) ||
                 vState != VisibilityState.Shown)
             {
-                context.deltaTime = deltaTime;
-                context.Modifiers = state;
                 state.Reset();
                 UpdateCharacterAnimation_Impl(index);
 
                 if (Mediator.VisibilityStates[index] != VisibilityState.Hidden && OnCharacterAnimated != null)
                 {
-                    // TODO Issue; this needs to be called before every invoked method
-                    // maybe make list of actions instead
-                    // Actually; not necessarily. Just the cdata modifiers will already be dirty
-                    // meaning some of the api will be a lil different than for normal animations
-                    // which is fine? for example for genericanimations or tmpmeshmodifierbehaviours
-                    // this makes 0 difference
                     cData.Reset();
                     OnCharacterAnimated.Invoke(cData);
                     state.MeshModifiers.Combine(cData.MeshModifiers);
-                    state.CharacterModifiers.Combine(cData._CharacterModifiers);
+                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
                 }
             }
-            else
+            // Otherwise, if there are post animation listeners
+            else if (OnCharacterAnimated != null)
             {
-                context.deltaTime = deltaTime;
-                context.Modifiers = state;
-                if (OnCharacterAnimated != null)
-                {
-                    state.Reset();
-                    // TODO Issue; this needs to be called before every invoked method
-                    // maybe make list of actions instead
-                    // Actually; not necessarily. Just the cdata modifiers will already be dirty
-                    // meaning some of the api will be a lil different than for normal animations
-                    // which is fine? for example for genericanimations or tmpmeshmodifierbehaviours
-                    // this makes 0 difference
-                    cData.Reset();
-                    OnCharacterAnimated.Invoke(cData);
-                    state.MeshModifiers.Combine(cData.MeshModifiers);
-                    state.CharacterModifiers.Combine(cData._CharacterModifiers);
-                }
-                else return;
+                state.Reset();
+                cData.Reset();
+                OnCharacterAnimated.Invoke(cData);
+                state.MeshModifiers.Combine(cData.MeshModifiers);
+                state.CharacterModifiers.Combine(cData.CharacterModifiers);
             }
+            // else, we can just return
+            else return;
 
             ApplyVertices();
             Mediator.ApplyMesh(cData);
@@ -1124,7 +1128,6 @@ namespace TMPEffects.Components
                     // Required because afterward "state" is checked for changes
                     // If any present they will be applied, making the character
                     // visible again.
-                    // TODO I dont necessarily like this being here. Maybe move.
                     state.Reset();
 
                     ignoreVisibilityChanges = false;
@@ -1139,7 +1142,8 @@ namespace TMPEffects.Components
 
             if (vState != VisibilityState.Shown)
             {
-                Debug.LogWarning("This should be unreachable! - BUG");
+                StackTrace stackTrace = new StackTrace();
+                TMPEffectsBugReport.BugReportPrompt("This should be unreachable:\n" + stackTrace);
             }
 
             if (IsExcludedBasic(cData.info.character))
@@ -1160,8 +1164,8 @@ namespace TMPEffects.Components
 
                 ca.animation.Animate(cData, ca.roContext);
 
-                state.MeshModifiers.Combine(cData.mesh.modifiers);
-                state.CharacterModifiers.Combine(cData._CharacterModifiers);
+                state.MeshModifiers.Combine(cData.mesh.Modifiers);
+                state.CharacterModifiers.Combine(cData.CharacterModifiers);
                 // stateNew.UpdateFromCharDataState();
             }
 
@@ -1608,13 +1612,13 @@ namespace TMPEffects.Components
             tags.CollectionChanged += OnTagCollectionChanged;
 
             var basicCacher =
-                new AnimationCacher(basicCategory, roCDataState, context, roCData, (x) => !IsExcludedBasic(x),
+                new AnimationCacher(basicCategory, roCDataState, readonlyContext, roCData, (x) => !IsExcludedBasic(x),
                     keywordDatabaseWrapper.Database);
             var showCacher =
-                new AnimationCacher(showCategory, roCDataState, context, roCData, (x) => !IsExcludedShow(x),
+                new AnimationCacher(showCategory, roCDataState, readonlyContext, roCData, (x) => !IsExcludedShow(x),
                     keywordDatabaseWrapper.Database);
             var hideCacher =
-                new AnimationCacher(hideCategory, roCDataState, context, roCData, (x) => !IsExcludedHide(x),
+                new AnimationCacher(hideCategory, roCDataState, readonlyContext, roCData, (x) => !IsExcludedHide(x),
                     keywordDatabaseWrapper.Database);
 
             basic = new CachedCollection<CachedAnimation>(basicCacher, tags[basicCategory]);
@@ -1860,7 +1864,7 @@ namespace TMPEffects.Components
 
         private bool characterResetQueued = false;
 
-        private void QueueCharacterReset()
+        public void QueueCharacterReset()
         {
             characterResetQueued = true;
         }

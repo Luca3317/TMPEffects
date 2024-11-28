@@ -124,7 +124,6 @@ public struct ColorOverride
         }
         else
         {
-            // TODO When should result.overridealpha flip from start.oa to end.oa
             color = Color32.Lerp(start.Color, end.Color, t);
 
             if (start.OverrideAlpha || end.OverrideAlpha)

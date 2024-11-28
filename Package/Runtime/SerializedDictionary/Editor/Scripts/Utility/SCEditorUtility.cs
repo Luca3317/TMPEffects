@@ -37,6 +37,9 @@ namespace TMPEffects.SerializedCollections.Editor
 
         public static float CalculateHeight(SerializedProperty property, bool drawAsList)
         {
+            // Safeguard against non-serializable entries
+            if (property == null) return EditorGUIUtility.singleLineHeight * 3;
+            
             if (drawAsList)
             {
                 float height = 0;

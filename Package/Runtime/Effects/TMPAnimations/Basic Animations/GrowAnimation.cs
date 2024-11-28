@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
 using TMPEffects.Extensions;
+using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -36,7 +32,7 @@ namespace TMPEffects.TMPAnimations.Animations
         {
             // Evaluate the wave based on time and offsets
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
-                d.offsetProvider.GetOffset(cData, context), d.offsetProvider.GetUniformity(context));
+                d.offsetProvider.GetOffset(cData, context));
 
             // Calculate the current scale and set it
             float scale = Mathf.LerpUnclamped(d.minScale, d.maxScale, result.Item1);

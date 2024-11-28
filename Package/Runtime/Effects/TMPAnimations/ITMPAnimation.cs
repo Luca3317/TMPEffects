@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
-using TMPEffects.TMPCommands;
+using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPAnimations
 {
     /// <summary>
     /// Base interface for all TMPEffects animations.
-    /// TODO Set / ValidateParameters should be in their own interface
-    /// (which is also reused then by ITMPCommand)
     /// </summary>
     public interface ITMPAnimation : ITMPParameterValidator
     {
@@ -25,13 +22,13 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="customData">The custom data for this animation.</param>
         /// <param name="parameters">Parameters as key-value-pairs.</param>
-        /// <param name="context">The context object for this animation.</param>
+        /// <param name="keywordDatabase">The keyword database used for parsing the parameter values.</param>
         public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
 
         /// <summary>
-        /// Create and get a new custom data object for this animation.
+        /// Get a new custom data object for this animation.
         /// </summary>
         /// <returns>The custom data object for this animation.</returns>
-        public object GetNewCustomData(); // TODO Should this still get the context? Prolly not id say
+        public object GetNewCustomData();
     }
 }

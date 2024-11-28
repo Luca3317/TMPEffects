@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using TMPEffects.Parameters;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class AnimationStep
@@ -14,12 +9,11 @@ public class AnimationStep
     public string name;
     public bool animate = true;
 
-    public AnimationUtility.FancyAnimationCurve entryCurve;
-    public OffsetBundle entryOffset;
+    // HideInInspector so it doesnt show "Add from TMPOffsetProvider" in context menu of timeline
+    [HideInInspector] public TMPBlendCurve entryCurve;
     public float entryDuration;
 
-    public AnimationUtility.FancyAnimationCurve exitCurve;
-    public OffsetBundle exitOffset;
+    [HideInInspector] public TMPBlendCurve exitCurve;
     public float exitDuration;
 
     public ExtrapolationMode preExtrapolation;
@@ -35,8 +29,8 @@ public class AnimationStep
     public uint repetitions;
 
     public bool useWave;
-    public OffsetTypePowerEnum offsetType;
-    public AnimationUtility.Wave wave;
+    public Wave wave; 
+    public OffsetBundle waveOffset;
 
     public float startTime;
     public float duration;
@@ -60,9 +54,9 @@ public class AnimationStep
         name = original.name;
         animate = original.animate;
         
-        entryCurve = new AnimationUtility.FancyAnimationCurve(original.entryCurve);
+        entryCurve = new TMPBlendCurve(original.entryCurve);
         entryDuration = original.entryDuration;
-        exitCurve = new AnimationUtility.FancyAnimationCurve(original.exitCurve);
+        exitCurve = new TMPBlendCurve(original.exitCurve);
         exitDuration = original.exitDuration;
         
         preExtrapolation = original.preExtrapolation;
@@ -72,8 +66,8 @@ public class AnimationStep
         repetitions = original.repetitions;
         
         useWave = original.useWave;
-        offsetType = original.offsetType;
-        wave = new AnimationUtility.Wave(original.wave); // TODO Wave is class so need to copy here
+        waveOffset = original.waveOffset;
+        wave = new Wave(original.wave); // TODO Wave is class so need to copy here
         
         startTime = original.startTime;
         duration = original.duration;

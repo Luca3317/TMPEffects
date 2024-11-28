@@ -62,7 +62,7 @@ namespace TMPEffects.CharacterData
             public readonly int pageNumber;
 
             /// <summary>
-            /// The inde
+            /// The index of the word the character belongs to.
             /// </summary>
             public readonly int wordNumber;
 
@@ -105,6 +105,26 @@ namespace TMPEffects.CharacterData
             /// </summary>
             public readonly float referenceScale;
 
+            /// <summary>
+            /// The initial mesh of this character.
+            /// </summary>
+            public readonly ReadOnlyVertexData initialMesh;
+            
+            /// <summary>
+            /// The initial position of this character.
+            /// </summary>
+            public readonly Vector3 InitialPosition;
+
+            /// <summary>
+            /// The initial rotation of this character.
+            /// </summary>
+            public readonly Quaternion InitialRotation;
+
+            /// <summary>
+            /// The initial scale of this character.
+            /// </summary>
+            public readonly Vector3 InitialScale;
+
             internal Info(int index, TMP_CharacterInfo cInfo, int wordIndex)
             {
                 this.index = index; /*cInfo.index;*/
@@ -129,6 +149,13 @@ namespace TMPEffects.CharacterData
 
                 referenceScale = cInfo.scale;
                 fontAsset = cInfo.fontAsset;
+                
+                InitialRotation = defaultRotation;
+                InitialScale = defaultScale;
+
+                var initMesh = new ReadOnlyVertexData(cInfo);
+                initialMesh = initMesh;
+                InitialPosition = GetCenter(initialMesh);
 
 #if TMPRO_3_2_0_PRE_10_OR_NEWER
             if (cInfo.elementType == TMP_TextElementType.Sprite)
@@ -155,6 +182,19 @@ namespace TMPEffects.CharacterData
                 wordLastIndex = wInfo.lastCharacterIndex;
                 wordLen = wInfo.characterCount;
             }
+            
+            
+            private static Vector3 GetCenter(in ReadOnlyVertexData data)
+            {
+                Vector3 center = Vector3.zero;
+                for (int i = 0; i < 4; i++)
+                {
+                    center += data.GetPosition(i);
+                }
+
+                return center / 4;
+            }
         }
+        
     }
 }

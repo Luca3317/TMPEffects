@@ -57,8 +57,8 @@ namespace TMPEffects.TMPSceneAnimations
             // Initialize all offsets to 0
             if (d.offsets == null)
             {
-                d.offsets = new(context.SegmentData.length);
-                for (int i = 0; i < context.SegmentData.length; i++)
+                d.offsets = new(context.SegmentData.Length);
+                for (int i = 0; i < context.SegmentData.Length; i++)
                 {
                     d.offsets.Add(i, Vector3.zero);
                 }

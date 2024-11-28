@@ -117,8 +117,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
         private void InitRNGDict(AutoParametersData d, IAnimationContext context)
         {
             int seed = (int)(context.AnimatorContext.PassedTime * 1000);
-            d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.length);
-            for (int i = 0; i < context.SegmentData.length; i++)
+            d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.Length);
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.rngDict.Add(i, new System.Random(seed + i));
             }
@@ -126,8 +126,8 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         private void InitLastUpdatedDict(AutoParametersData d, IAnimationContext context)
         {
-            d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.length);
-            for (int i = 0; i < context.SegmentData.length; i++)
+            d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.Length);
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.lastUpdatedDict.Add(i, context.AnimatorContext.PassedTime);
             }
@@ -135,9 +135,9 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         private void InitDelayDict(AutoParametersData d, IAnimationContext context)
         {
-            d.delayDict = new Dictionary<int, float>(context.SegmentData.length);
+            d.delayDict = new Dictionary<int, float>(context.SegmentData.Length);
 
-            for (int i = 0; i < context.SegmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.delayDict.Add(i, 0);
             }
@@ -145,9 +145,9 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
         private void InitOffsetDict(AutoParametersData d, IAnimationContext context)
         {
-            d.offsetDict = new Dictionary<int, Vector2>(context.SegmentData.length);
+            d.offsetDict = new Dictionary<int, Vector2>(context.SegmentData.Length);
 
-            for (int i = 0; i < context.SegmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.offsetDict.Add(i, Vector2.zero);
             }

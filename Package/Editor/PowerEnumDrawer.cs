@@ -31,7 +31,7 @@ public class PowerEnumDrawer : PropertyDrawer
         var ctrlRect = EditorGUI.PrefixLabel(rect, label);
         int index;
 
-        // TODO For some reason the rect returned by prefix label is offset to the right
+        // Weird ugly fix for indenting issue w/ prefixlabel
         int indent = EditorGUI.indentLevel;
         for (int i = 0; i < indent; i++) EditorGUI.indentLevel--;
         
@@ -43,8 +43,6 @@ public class PowerEnumDrawer : PropertyDrawer
             var ctrlRect2 = new Rect(ctrlRect.x + ctrlRect.width, ctrlRect.y, width * 0.75f, ctrlRect.height);
             index = EditorGUI.Popup(ctrlRect, selectedIndex, options.ToArray());
             EditorGUI.PropertyField(ctrlRect2, customProp, GUIContent.none);
-            // customProp.objectReferenceValue = EditorGUI.ObjectField(ctrlRect2, customProp.objectReferenceValue,
-            //     type, !EditorUtility.IsPersistent(property.serializedObject.targetObject));
         }
         // Normal
         else

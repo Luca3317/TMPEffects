@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f88d8a32ae6922429db0f721f9bcced, type: 3}
+  m_Name: Ac
+  m_EditorClassIdentifier: 
+  Tracks:
+    Tracks:
+    - clips:
+      - rid: 1950491372622708736
+  repeat: 1
+  duration: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 1950491372622708736
+      type: {class: AnimationStep, ns: , asm: TMPEffects}
+      data:
+        name: TMPMeshModifierClip
+        animate: 1
+        entryCurve:
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          offsetProvider:
+            enumValue: 5
+            customValue: {fileID: 0}
+            useCustom: 0
+          uniformity: 1
+          ignoreAnimatorScaling: 0
+          finishWholeSegmentInTime: 0
+          zeroBasedOffset: 0
+        entryDuration: 0
+        exitCurve:
+          curve:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          offsetProvider:
+            enumValue: 5
+            customValue: {fileID: 0}
+            useCustom: 0
+          uniformity: 1
+          ignoreAnimatorScaling: 0
+          finishWholeSegmentInTime: 0
+          zeroBasedOffset: 0
+        exitDuration: 0
+        preExtrapolation: 0
+        postExtrapolation: 0
+        loops: 0
+        repetitions: 0
+        useWave: 0
+        wave:
+          upPeriod: 1
+          downPeriod: 1
+          amplitude: 1
+          upwardCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: -0.0012029491
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0
+              outWeight: 0.36078
+            - serializedVersion: 3
+              time: 0.5
+              value: 0.5
+              inSlope: 1.5725082
+              outSlope: 1.5733721
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0.326514
+              outWeight: 0.33093
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -0.0009312395
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0.358688
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          downwardCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: -0.0012029491
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0
+              outWeight: 0.36078
+            - serializedVersion: 3
+              time: 0.5
+              value: 0.5
+              inSlope: 1.5725082
+              outSlope: 1.5733721
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0.326514
+              outWeight: 0.33093
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -0.0009312395
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 3
+              inWeight: 0.358688
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          crestWait: 0
+          troughWait: 0
+          velocity: 1
+        waveOffset:
+          offsetProvider:
+            enumValue: 5
+            customValue: {fileID: 0}
+            useCustom: 0
+          uniformity: 1
+          ignoreAnimatorScaling: 0
+          zeroBasedOffset: 0
+        startTime: 0
+        duration: 5
+        useInitialModifiers: 0
+        initModifiers:
+          Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          Scale: {x: 1, y: 1, z: 1}
+          Rotations: []
+          BL_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TL_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TR_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BR_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BL_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          TL_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          TR_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          BR_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          BL_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TL_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TR_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BR_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+        modifiers:
+          Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          Scale: {x: 1, y: 1, z: 1}
+          Rotations: []
+          BL_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TL_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TR_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BR_Position:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BL_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          TL_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          TR_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          BR_Color:
+            Override: 0
+            Color:
+              serializedVersion: 2
+              rgba: 0
+          BL_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TL_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          TR_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1
+          BR_UV0:
+            vector: {x: 0, y: 0, z: 0}
+            type: 1

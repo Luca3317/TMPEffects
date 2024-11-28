@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
 using TMPEffects.Parameters;
-using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
 using static TMPEffects.Parameters.ParameterUtility;

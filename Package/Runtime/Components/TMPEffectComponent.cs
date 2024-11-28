@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using TMPro;
 using UnityEngine;
 using TMPEffects.Components.Mediator;
@@ -11,6 +13,11 @@ namespace TMPEffects.Components
     /// </summary>
     public abstract class TMPEffectComponent : MonoBehaviour
     {
+        /// <summary>
+        /// The associated <see cref="CharData"/>.
+        /// </summary>
+        public ReadOnlyCollection<CharData> CharData => Mediator.CharData;
+        
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
         /// </summary>

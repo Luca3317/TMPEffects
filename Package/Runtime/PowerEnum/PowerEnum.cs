@@ -2,15 +2,7 @@ using System;
 using TMPEffects.Parameters;
 using UnityEngine;
 
-/*
- * TODO
- * You should be able to assign MonoBehaviours and ScriptableObjects to PowerEnums in the inspector
- * (for MonoBehaviours, ScriptableObjects ofc cant take scene references)
- *
- * TODO
- * Doesnt necessarily have to work for PowerEnums in general, just OffsetType is fine
- */
-
+// Base class for OffsetTypePowerEnum
 [Serializable]
 public abstract class PowerEnum<TEnum, TCustom> where TEnum : Enum where TCustom : UnityEngine.Object
 {

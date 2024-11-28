@@ -2,22 +2,25 @@ using System.Collections.Generic;
 using TMPEffects.Components;
 using TMPEffects.Components.Writer;
 using TMPEffects.Databases;
+using TMPEffects.Parameters;
 using UnityEngine;
 
-namespace TMPEffects.TMPCommands
+namespace TMPEffects.Parameters
 {
-    // TODO What fing namespace; TMPEffects.Parameters?
     public interface ITMPParameterValidator
     {
         /// <summary>
         /// Validate the given parameters.
         /// </summary>
         /// <param name="parameters">The parameters as key-value pairs</param>
-        /// <param name="keywordDatabase">A keyword database for parsing the parameter values</param>
+        /// <param name="keywordDatabase">The keyword database used for parsing the parameter values</param>
         /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
         public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
     }
+}
 
+namespace TMPEffects.TMPCommands
+{
     /// <summary>
     /// Base interface for all TMPEffects commands.
     /// </summary>
@@ -73,9 +76,18 @@ namespace TMPEffects.TMPCommands
         // public void ExecuteCommand(IDictionary<string, string> parameters, ICommandContext context);
         public void ExecuteCommand(ICommandContext context);
 
-        // TODO docuemtn
+        /// <summary>
+        /// Get a new custom data object for this command.
+        /// </summary>
+        /// <returns>The custom data object for this command.</returns>
         public object GetNewCustomData();
         
-        public void SetParameters(object obj, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
+        /// <summary>
+        /// Set the parameters for the command.
+        /// </summary>
+        /// <param name="customData">The custom data for this command.</param>
+        /// <param name="parameters">Parameters as key-value-pairs.</param>
+        /// <param name="keywordDatabase">The keyword database used for parsing the parameter values.</param>
+        public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
     }
 }

@@ -14,46 +14,9 @@ namespace TMPEffects.Editor
     {
         public const string SettingsPath = "Project/TMPEffects";
 
-        private SerializedObject serializedObject;
-        private SerializedProperty globalKeywordDatabaseProp;
-        private SerializedProperty animationTagPrefixProp;
-        private SerializedProperty showAnimationTagPrefixProp;
-        private SerializedProperty hideAnimationTagPrefixProp;
-        private SerializedProperty commandTagPrefixProp;
-        private SerializedProperty eventTagPrefixProp;
-
         class Styles
         {
         }
-
-        public static IEnumerable<SerializedProperty> GetChildren(SerializedProperty property)
-        {
-            property = property.Copy();
-            var nextElement = property.Copy();
-            bool hasNextElement = nextElement.NextVisible(false);
-            if (!hasNextElement)
-            {
-                nextElement = null;
-            }
-
-            property.NextVisible(true);
-            while (true)
-            {
-                if ((SerializedProperty.EqualContents(property, nextElement)))
-                {
-                    yield break;
-                }
-
-                yield return property;
-
-                bool hasNext = property.NextVisible(false);
-                if (!hasNext)
-                {
-                    break;
-                }
-            }
-        }
-
 
         [SettingsProvider]
         public static SettingsProvider CreateProvider()
@@ -69,33 +32,9 @@ namespace TMPEffects.Editor
 
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
-            EnsureSerializedObjectExists();
         }
 
-        private bool EnsureSerializedObjectExists()
-        {
-            var settings = TMPEffectsSettings.Get();
-
-            if (settings == null)
-            {
-                return false;
-            }
-
-            if (serializedObject == null)
-            {
-                serializedObject = new SerializedObject(settings);
-                globalKeywordDatabaseProp = serializedObject.FindProperty("globalKeywordDatabase");
-                animationTagPrefixProp = serializedObject.FindProperty("animationTagPrefix");
-                showAnimationTagPrefixProp = serializedObject.FindProperty("showAnimationTagPrefix");
-                hideAnimationTagPrefixProp = serializedObject.FindProperty("hideAnimationTagPrefix");
-                commandTagPrefixProp = serializedObject.FindProperty("commandTagPrefix");
-                eventTagPrefixProp = serializedObject.FindProperty("eventTagPrefix");
-            }
-
-            return true;
-        }
-
-
+        // TODO Keep those for now for whne i do the global database
 #if UNITY_2022_2_OR_NEWER
         private void Reset<T>(SerializedProperty keywordsProp, Dictionary<string, T> builtin)
         {
@@ -373,67 +312,15 @@ namespace TMPEffects.Editor
 
         public override void OnGUI(string searchContext)
         {
-            if (!EnsureSerializedObjectExists()) return;
-
-            EditorGUI.indentLevel = 1;
-
-            serializedObject.UpdateIfRequiredOrScript();
-
-            EditorGUIUtility.labelWidth += 50;
-            EditorGUILayout.LabelField("Keywords", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(globalKeywordDatabaseProp);
-            if (globalKeywordDatabaseProp.objectReferenceValue != null)
+            bool optOutofWindow = EditorPrefs.GetBool(TMPEffectsBugReport.OptOutKey, true);
+            bool newOptOutofWindow = EditorGUILayout.Toggle("Opt out of bug report window", optOutofWindow);
+            if (newOptOutofWindow != optOutofWindow)
             {
-                if (GUILayout.Button("Reset Global KeywordDatabase"))
-                {
-                    var assetObject = new SerializedObject(globalKeywordDatabaseProp.objectReferenceValue);
-                    var dict = AnimationCurveUtility.NameConstructorMapping.ToDictionary(t => t.Key,
-                        t => t.Value.Invoke());
-
-#if UNITY_2022_2_OR_NEWER
-                    Reset(assetObject.FindProperty("animationCurveKeywords").FindPropertyRelative("_serializedList"),
-                        dict);
-                    Reset(assetObject.FindProperty("colorKeywords").FindPropertyRelative("_serializedList"),
-                        ColorKeywords);
-                    Reset(assetObject.FindProperty("floatKeywords").FindPropertyRelative("_serializedList"),
-                        FloatKeywords);
-                    Reset(assetObject.FindProperty("offsetTypeKeywords").FindPropertyRelative("_serializedList"),
-                        OffsetKeywords);
-                    Reset(assetObject.FindProperty("anchorKeywords").FindPropertyRelative("_serializedList"),
-                        AnchorKeywords);
-                    Reset(assetObject.FindProperty("vector3Keywords").FindPropertyRelative("_serializedList"),
-                        Vector3Keywords);
-#else
-                // TODO Test these in a version lower than 2022_2
-                ResetColors(assetObject.FindProperty("colorKeywords").FindPropertyRelative("_serializedList"));
-                ResetFloats(assetObject.FindProperty("floatKeywords").FindPropertyRelative("_serializedList"));
-                ResetOffsetTypes(assetObject.FindProperty("offsetTypeKeywords").FindPropertyRelative("_serializedList"));
-                ResetAnimationCurves(assetObject.FindProperty("animationCurveKeywords").FindPropertyRelative("_serializedList"), dict);
-                ResetVector3s(assetObject.FindProperty("vector3Keywords").FindPropertyRelative("_serializedList"));
-                ResetAnchors(assetObject.FindProperty("anchorKeywords").FindPropertyRelative("_serializedList"));
-#endif
-
-                    if (assetObject.hasModifiedProperties) assetObject.ApplyModifiedProperties();
-                }
-            }
-
-
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Tags", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(animationTagPrefixProp);
-            EditorGUILayout.PropertyField(showAnimationTagPrefixProp);
-            EditorGUILayout.PropertyField(hideAnimationTagPrefixProp);
-            EditorGUILayout.PropertyField(commandTagPrefixProp);
-            EditorGUILayout.PropertyField(eventTagPrefixProp);
-            EditorGUIUtility.labelWidth -= 50;
-
-            bool changed = serializedObject.ApplyModifiedProperties();
-            if (changed)
-            {
-                AssetDatabase.SaveAssetIfDirty(serializedObject.targetObject);
+                EditorPrefs.SetBool(TMPEffectsBugReport.OptOutKey, newOptOutofWindow);
             }
         }
-
+        
+        // TODO For global database
         public static readonly Dictionary<string, float> FloatKeywords = new Dictionary<string, float>()
         {
             { "e", (float)System.Math.E },
@@ -450,7 +337,6 @@ namespace TMPEffects.Editor
         {
         };
 
-        // TODO Storing these here until implemented reset
         private Dictionary<string, Color> ColorKeywords = new Dictionary<string, Color>()
         {
             { "black", Color.black },

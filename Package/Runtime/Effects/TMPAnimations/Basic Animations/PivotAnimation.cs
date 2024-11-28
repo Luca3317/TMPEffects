@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
-using static TMPEffects.Parameters.ParameterUtility;
+using TMPEffects.Parameters;
 using static TMPEffects.Parameters.ParameterTypes;
-using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -19,10 +16,10 @@ namespace TMPEffects.TMPAnimations.Animations
             "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         Wave wave;
 
-        [SerializeField, AutoParameter("waveoffset", "woffset", "waveoff", "woff")]
+        [SerializeField, AutoParameterBundle("")]
         [Tooltip(
             "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        OffsetTypePowerEnum waveOffsetType;
+        OffsetBundle waveOffsetType;
 
         [SerializeField, AutoParameter("pivot", "pv", "p")]
         [Tooltip("The pivot position of the rotation.\nAliases: pivot, pv, p")]
@@ -45,10 +42,12 @@ namespace TMPEffects.TMPAnimations.Animations
             // Evaluate the wave based on time and offset
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
                 d.waveOffsetType.GetOffset(cData, context));
-
+            
             // Calculate the angle based on the evaluate wave
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
             
+            // TODO I still want to have a nice way to simplify this; no switch needed
+            // TODO Anchor might be broken rn? Swing doesnt look right at all
             // Set the pivot depending on its type
             switch (d.pivot.type)
             {

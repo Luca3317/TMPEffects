@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Components;
+using TMPEffects.Tags;
+using TMPEffects.TMPCommands;
 using UnityEngine;
 using UnityEngine.Playables;
 

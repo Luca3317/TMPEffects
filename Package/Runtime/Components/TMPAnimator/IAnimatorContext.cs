@@ -7,8 +7,17 @@ namespace TMPEffects.Components.Animator
     /// To be used with <see cref="TMPAnimator"/>.<br/>
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
-    public interface IAnimatorContext
+    public interface IAnimatorContext : IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider
     {
+    }
+
+    public interface IAnimatorDataProvider
+    {
+        /// <summary>
+        /// The animating <see cref="TMPAnimator"/>.
+        /// </summary>
+        public TMPAnimator Animator { get; }
+        
         /// <summary>
         /// The current state of the CharData, with the previous animations applied.
         /// </summary>
@@ -24,17 +33,15 @@ namespace TMPEffects.Components.Animator
         /// Ignored if <see cref="ScaleAnimations"/> is false.
         /// </summary>
         public bool ScaleUniformly { get; }
-
-        /// <summary>
-        /// The animating <see cref="TMPAnimator"/>.
-        /// </summary>
-        public TMPAnimator Animator { get; }
-
         /// <summary>
         /// Whether animations use scaled time.
         /// </summary>
         public bool UseScaledTime { get; }
+        
+    }
 
+    public interface IAnimatorTimingsProvider
+    {
         /// <summary>
         /// The current delta time (=> time since last animation update).
         /// </summary>
@@ -43,7 +50,10 @@ namespace TMPEffects.Components.Animator
         /// The time that has passed since the animator began animating.
         /// </summary>
         public float PassedTime { get; }
+    }
 
+    public interface ICharacterTimingsProvider
+    {
         /// <summary>
         /// Check how long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.<br/>
         /// Generally, to be used with show and hide animations.

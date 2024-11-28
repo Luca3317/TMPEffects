@@ -7,7 +7,12 @@ namespace TMPEffects.TMPAnimations
     /// <summary>
     /// Basic interface for animation contexts.
     /// </summary>
-    public interface IAnimationContext
+    public interface IAnimationContext : IAnimationData, IAnimationFinished, IAnimationFinisher
+    {
+
+    }
+
+    public interface IAnimationData : IAnimationFinished
     {
         /// <summary>
         /// The context of the animating TMPAnimator.
@@ -23,7 +28,10 @@ namespace TMPEffects.TMPAnimations
         /// The custom data object.
         /// </summary>
         public object CustomData { get; }
-        
+    }
+
+    public interface IAnimationFinished
+    {
         /// <summary>
         /// Check if the animation is considered finished for the character at the given index.
         /// </summary>
@@ -36,6 +44,10 @@ namespace TMPEffects.TMPAnimations
         /// <param name="cData"></param>
         /// <returns></returns>
         public bool Finished(CharData cData);
+    }
+
+    public interface IAnimationFinisher
+    {
         /// <summary>
         /// Set the animation to be considered finished for the given character.
         /// </summary>
@@ -43,4 +55,6 @@ namespace TMPEffects.TMPAnimations
         /// <returns></returns>
         public void FinishAnimation(CharData cData);
     }
+    
+    
 }

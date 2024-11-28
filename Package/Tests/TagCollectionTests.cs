@@ -250,7 +250,7 @@ public class TagCollectionTests
         animationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.ANIMATION_PREFIX, animator.Database.BasicAnimationDatabase, animator.KeywordDatabase));
         showAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.SHOW_ANIMATION_PREFIX, animator.Database.ShowAnimationDatabase, animator.KeywordDatabase));
         hideAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.HIDE_ANIMATION_PREFIX, animator.Database.HideAnimationDatabase, animator.KeywordDatabase));
-        commandTagProcessor = new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database, null)); // TODO
+        commandTagProcessor = new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database, writer.KeywordDatabase));
         eventTagProcessor = new TagProcessor(new TMPEventCategory(TMPWriter.EVENT_PREFIX));
     }
 }

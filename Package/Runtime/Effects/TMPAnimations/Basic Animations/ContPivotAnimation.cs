@@ -1,11 +1,7 @@
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
-using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
-using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -28,7 +24,6 @@ namespace TMPEffects.TMPAnimations.Animations
 
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            // Calculate the angle based on the evaluate wave
             float angle = (context.AnimatorContext.PassedTime * d.speed * 360) % 360;
             
             // Set the pivot depending on its type
@@ -39,7 +34,6 @@ namespace TMPEffects.TMPAnimations.Animations
                         d.pivot.IgnoreScaling(cData, context).ToPosition(cData));
                     break;
                 case VectorType.Offset:
-                    Debug.LogWarning("Delta is " + d.pivot.ToDelta(cData) + " ( / " + d.pivot.vector+ ")");
                     cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
                         cData.InitialPosition + d.pivot.ToDelta(cData));
                     break;

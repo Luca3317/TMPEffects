@@ -108,7 +108,7 @@ public class CharDataModifiers
                 vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
             }
         }
-
+ 
         if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
             var scaled = AnimationUtility.ScaleVector(characterModifiers.PositionDelta, cData, context);
@@ -166,7 +166,6 @@ public class CharDataModifiers
 
         if (combinedFlags.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
         {
-            // TODO THis probably isnt right
             try
             {
                 for (int i = 0; i < start.Rotations.Count; i++)
@@ -187,6 +186,7 @@ public class CharDataModifiers
             }
             catch
             {
+                // TODO Replace with TMPEffects.Bugreport
                 Debug.LogError("Tried to add to many with " + end.Rotations.Count);
             }
         }

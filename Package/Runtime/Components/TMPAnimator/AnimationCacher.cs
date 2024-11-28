@@ -13,14 +13,14 @@ namespace TMPEffects.Components.Animator
     {
         private readonly ITMPEffectDatabase<ITMPAnimation> database;
         private readonly IList<CharData> charData;
-        private readonly AnimatorContext context;
+        private readonly IAnimatorContext context;
         private readonly Predicate<char> animates;
         private readonly CharDataModifiers modifiers;
         private readonly ReadOnlyAnimatorContext roContext;
         private readonly ITMPKeywordDatabase keywordDatabase;
 
         public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, CharDataModifiers modifiers,
-            AnimatorContext context, IList<CharData> charData, Predicate<char> animates,
+            ReadOnlyAnimatorContext context, IList<CharData> charData, Predicate<char> animates,
             ITMPKeywordDatabase keywordDatabase)
         {
             this.context = context;
@@ -41,8 +41,6 @@ namespace TMPEffects.Components.Animator
             SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
             AnimationContext animationContext = new AnimationContext(roContext, modifiers, segmentData, null);
 
-            // TODO this passes a writable context (but wrapped as readonly interface)
-            // Prolly shouldnt do that
             object customAnimationData = animation.GetNewCustomData();
             animationContext.CustomData = customAnimationData;
             animation.SetParameters(customAnimationData, tag.Parameters, keywordDatabase);

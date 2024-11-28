@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using UnityEngine;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Tags.Collections
 {
@@ -412,7 +413,11 @@ namespace TMPEffects.Tags.Collections
                         }
                     }
 
-                    if (!found) Debug.LogError("Failed to find new min tag; BUG");
+                    if (!found)
+                    {
+                        StackTrace stackTrace = new StackTrace();
+                        TMPEffectsBugReport.BugReportPrompt("Failed to find new min tag:\n" + stackTrace);
+                    }
 
                 }
                 else if (mm.MaxIndex == cachedIndex)
@@ -431,7 +436,11 @@ namespace TMPEffects.Tags.Collections
                         }
                     }
 
-                    if (!found) Debug.LogError("Failed to find new max tag; BUG");
+                    if (!found)
+                    {
+                        StackTrace stackTrace = new StackTrace();
+                        TMPEffectsBugReport.BugReportPrompt("Failed to find new max tag:\n" + stackTrace);
+                    }
                 }
             }
 

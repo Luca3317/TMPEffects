@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
-using TMPEffects.Extensions;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations

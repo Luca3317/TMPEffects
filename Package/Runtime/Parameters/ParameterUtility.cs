@@ -232,17 +232,6 @@ namespace TMPEffects.Parameters
 
             public float? amplitude;
         }
-
-
-        // TODO Either make usage of these consistent or delete totally
-        // Aliases for common parameters
-        public static readonly string[] WaveOffsetAliases = new string[] { "woffset", "waveoff", "woff" };
-        public static readonly string[] SpeedAliases = new string[] { "sp", "s" };
-        public static readonly string[] CurveAliases = new string[] { "crv" };
-        public static readonly string[] FrequencyAliases = new string[] { "freq", "fq" };
-        public static readonly string[] AmplitudeAliases = new string[] { "amp" };
-        public static readonly string[] PivotAliases = new string[] { "pvt" };
-        public static readonly string[] RadiusAliases = new string[] { "rad" };
     }
 
     public class GenerateParameterUtilityAttribute : Attribute

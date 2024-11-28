@@ -65,8 +65,8 @@ public class TMPMeshModifierClipEditor : ClipEditor
         var drawCurves = EditorPrefs.GetBool(TMPEffectsTimelineEditorPrefsKeys.DRAW_CURVES_EDITORPREFS_KEY);
         if (drawCurves)
         {
-            DrawBackgroundWithCurve(mClip.Step.Step.entryCurve.Curve, inRect, leftWidth, true);
-            DrawBackgroundWithCurve(mClip.Step.Step.exitCurve.Curve, outRect, rightWidth, false);
+            DrawBackgroundWithCurve(mClip.Step.Step.entryCurve.curve, inRect, leftWidth, true);
+            DrawBackgroundWithCurve(mClip.Step.Step.exitCurve.curve, outRect, rightWidth, false);
         }
         else
         {

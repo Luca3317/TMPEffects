@@ -40,7 +40,6 @@ namespace TMPEffects.SerializedCollections.Editor
         {
             if (!_arrayData.ContainsKey(property.propertyPath))
             {
-                
                 _arrayData.Add(property.propertyPath, new SerializedDictionaryInstanceDrawer(property, fieldInfo));
             }
             _arrayData[property.propertyPath].OnGUI(position, label);
@@ -50,7 +49,6 @@ namespace TMPEffects.SerializedCollections.Editor
         {
             if (!_arrayData.ContainsKey(property.propertyPath))
             {
-                
                 _arrayData.Add(property.propertyPath, new SerializedDictionaryInstanceDrawer(property, fieldInfo));
             }
             return _arrayData[property.propertyPath].GetPropertyHeight(label);

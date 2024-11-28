@@ -15,13 +15,8 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     internal class AnimatorContext : IAnimatorContext
     {
-        // TODO Is modifiers correctly set up everywhere
+        /// <inheritdoc/>
         public CharDataModifiers Modifiers { get; internal set; }
-        // TODO I dont necessarily like this being in the context;
-        // feels more like it should only be in the animator.
-        // Would require quite large rewrite of autoparameters and every place that uses
-        // context.Keyworddb (incl itmpanimation) though; so probably not worth it
-        public ITMPKeywordDatabase KeywordDatabase { get; internal set; }
         
         /// <inheritdoc/>
         public bool ScaleAnimations

@@ -126,12 +126,12 @@ namespace TMPEffects.TMPAnimations.Animations
                 cData.info.fontAsset.TryAddCharacters(d.characters);
 
             //d.vertices = new(context.segmentData.length);
-            d.waitingSince = new(context.SegmentData.length);
-            d.waitDuration = new(context.SegmentData.length);
-            d.originalCharacterCache = new(context.SegmentData.length);
-            d.currentCharacterCache = new(context.SegmentData.length);
+            d.waitingSince = new(context.SegmentData.Length);
+            d.waitDuration = new(context.SegmentData.Length);
+            d.originalCharacterCache = new(context.SegmentData.Length);
+            d.currentCharacterCache = new(context.SegmentData.Length);
 
-            for (int i = 0; i < context.SegmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.waitDuration[i] = -1;
                 d.waitingSince[i] = -1;

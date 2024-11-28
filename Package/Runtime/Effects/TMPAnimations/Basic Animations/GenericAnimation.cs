@@ -183,7 +183,6 @@ namespace TMPEffects.TMPAnimations
 
         #endregion
 
-        // The Animate method automatically called
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
             CreateStepsSorted(ref data.Steps);
@@ -216,8 +215,8 @@ namespace TMPEffects.TMPAnimations
                 if (!step.animate) continue;
 
                 // Adjust the timeValue for extrapolation setting
-                float t = AdjustTimeForExtrapolation(step, timeValue, cData, ac);
-                t -= -step.startTime;
+                float t = timeValue - step.startTime;
+                t = AdjustTimeForExtrapolation(step, t, cData, ac);
 
                 // Calculate the weight of the current clip
                 float weight = CalcWeight(step, t, step.duration, cData, ac);
@@ -233,7 +232,7 @@ namespace TMPEffects.TMPAnimations
 
             // Combine the calculated modifiers into the CharData's one
             cData.MeshModifiers.Combine(accModifier.MeshModifiers);
-            cData._CharacterModifiers.Combine(accModifier.CharacterModifiers);
+            cData.CharacterModifiers.Combine(accModifier.CharacterModifiers);
         }
 
         // Ensure steps are sorted
@@ -354,39 +353,129 @@ namespace TMPEffects.TMPAnimations
         {
             float weight = 1;
 
-            if (step.entryDuration > 0 /*&& currTime <= behaviour.Step.Step.entryDuration*/)
+            if (step.entryDuration > 0)
             {
-                if (timeValue < step.entryDuration)
-                {
-                    weight = step.entryCurve.Evaluate(
-                        timeValue / step.entryDuration,
-                        step.entryOffset.GetOffset(cData, context),
-                        step.entryOffset.GetUniformity(context));
-                }
+                weight = step.entryCurve.EvaluateIn(cData, context, timeValue, step.entryDuration);
             }
 
-            if (step.exitDuration > 0 /*&& currTime >= duration - behaviour.Step.Step.exitDuration*/)
+            if (step.exitDuration > 0)
             {
                 float preTime = duration - step.exitDuration;
-                if (preTime < timeValue)
-                {
-                    var eval = 1f - (timeValue - preTime) / step.exitDuration;
-                    var multiplier = step.exitCurve.Evaluate(eval, 
-                        step.exitOffset.GetOffset(cData, context),
-                        step.exitOffset.GetUniformity(context));
-                    weight *= multiplier;
-                }
+                var multiplier =
+                    step.exitCurve.EvaluateOut(cData, context, timeValue, step.exitDuration, preTime);
+                weight *= multiplier;
             }
 
             if (step.useWave)
             {
-                // TODO Put back, just commented for quick compilation
-                // var offset = AnimationUtility.GetOffset(cData, context, step.offsetType);
-                // weight *= step.wave.Evaluate(timeValue, offset).Value;
+                var waveOffset = step.waveOffset.GetOffset(cData, context);
+                weight *= step.wave.Evaluate(timeValue, waveOffset).Value;
             }
 
             return weight;
         }
+
+        // Backup from before moving logic into fancyanimationcurve
+        // public static float CalcWeightOLD(AnimationStep step, float timeValue, float duration,
+        //     CharData cData, IAnimatorContext context)
+        // {
+        //     float weight = 1;
+        //
+        //     // var entryTimeValue = timeValue - Mathf.Abs(step.entryCurve.GetOffset(cData, context)) /** step.entryCurve.uniformity*/ / context.Animator.TextComponent.GetParsedText().Length;
+        //     var seglen = context.Animator.TextComponent.GetParsedText().Length;
+        //
+        //
+        //     // We know biggest offset, lets call it x; it means, after x + duration seconds the last one is done
+        //     // we know how long we want everything to take (duration)
+        //     // ergo we need to get the scalar for whcih (x + duration) * scalar = duration
+        //     // x * scalar + duration * scalar = duration
+        //     // x * scalar / duration + scalar = 1
+        //     // x * scalara / duration = 1 -scalra
+        //     // x / duration = 1 / scalar - 1
+        //     // scalar = 1 / ((x / duration) + 1)
+        //
+        //     var mocked = AnimationUtility.GetMockedSegment(seglen, context.Animator.CharData);
+        //     var minmax = AnimationUtility.GetMinMaxOffset(ParameterTypes.OffsetType.Index, mocked, context);
+        //
+        //     float offset = step.entryCurve.GetOffset(cData, context);
+        //     float zeroedOffset = offset - minmax.min;
+        //     float zeroedMin = 0;
+        //     float zeroedMax = minmax.max - minmax.min;
+        //
+        //     float newOffset;
+        //     if (step.entryCurve.uniformity >= 0)
+        //     {
+        //         newOffset = zeroedOffset;
+        //     }
+        //     else
+        //     {
+        //         newOffset = zeroedMax - offset;
+        //     }
+        //
+        //     float scalar = 1f;
+        //     if (!step.entryCurve.ignoreSegmentLength)
+        //     {
+        //         scalar = (zeroedMax * Mathf.Abs(step.entryCurve.uniformity)) / step.entryDuration + 1f;
+        //         scalar = 1f / scalar;
+        //     }
+        //
+        //     var entryTimeValue = timeValue -
+        //                          newOffset * scalar * Mathf.Abs(step.entryCurve.uniformity);
+        //
+        //     if (step.entryDuration > 0)
+        //     {
+        //         weight = step.entryCurve.curve.Evaluate(entryTimeValue / step.entryDuration / scalar);
+        //     }
+        //
+        //
+        //     offset = step.exitCurve.GetOffset(cData, context);
+        //     zeroedOffset = offset - minmax.min;
+        //     zeroedMax = minmax.max - minmax.min;
+        //
+        //     if (step.exitCurve.uniformity >= 0)
+        //     {
+        //         newOffset = zeroedOffset;
+        //     }
+        //     else
+        //     {
+        //         newOffset = zeroedMax - offset;
+        //
+        //         // if (zeroedMax == 0)
+        //         // {
+        //         //     newOffset = 0;
+        //         // }
+        //         // else
+        //         // {
+        //         //     newOffset = Mathf.Lerp(zeroedMax, zeroedMin, zeroedOffset / zeroedMax);
+        //         // }
+        //     }
+        //
+        //     scalar = 1f;
+        //     if (!step.exitCurve.ignoreSegmentLength)
+        //     {
+        //         scalar = (zeroedMax * Mathf.Abs(step.exitCurve.uniformity)) / step.exitDuration + 1f;
+        //         scalar = 1f / scalar;
+        //     }
+        //
+        //     var exitTimeValue = timeValue -
+        //                         newOffset * scalar * Mathf.Abs(step.exitCurve.uniformity);
+        //
+        //     if (step.exitDuration > 0)
+        //     {
+        //         float preTime = duration - step.exitDuration;
+        //         var multiplier =
+        //             (step.exitCurve.curve.Evaluate(1f - (exitTimeValue - preTime) / step.exitDuration / scalar));
+        //         weight *= multiplier;
+        //     }
+        //
+        //     if (step.useWave)
+        //     {
+        //         var waveOffset = step.waveOffset.GetOffset(cData, context);
+        //         weight *= step.wave.Evaluate(timeValue, waveOffset, step.waveOffset.GetUniformity(context)).Value;
+        //     }
+        //
+        //     return weight;
+        // }
 
         // Lerp the step using the weight
         public static void LerpAnimationStepWeighted(AnimationStep step, float weight, CharData cData,

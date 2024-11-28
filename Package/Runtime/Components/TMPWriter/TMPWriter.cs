@@ -63,6 +63,11 @@ namespace TMPEffects.Components
         /// The database used to parse command tags.
         /// </summary>
         public TMPCommandDatabase Database => database;
+        
+        /// <summary>
+        /// The keyword database used to parse tag parameters.
+        /// </summary>
+        public ITMPKeywordDatabase KeywordDatabase => keywordDatabaseWrapper?.Database;
 
         // Tags
         /// <summary>
@@ -162,7 +167,6 @@ namespace TMPEffects.Components
         #region Fields
 
         // Settings
-
         [SerializeField] private TMPKeywordDatabase keywordDatabase;
         [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
 
@@ -459,6 +463,26 @@ namespace TMPEffects.Components
         public void SetDatabase(TMPCommandDatabase database)
         {
             this.database = database;
+            OnDatabaseChanged();
+        }
+        
+        /// <summary>
+        /// Set the scene keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
+        public void SetSceneKeywordDatabase(TMPSceneKeywordDatabase database)
+        {
+            sceneKeywordDatabase = database;
+            OnDatabaseChanged();
+        }
+
+        /// <summary>
+        /// Set the keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
+        public void SetKeywordDatabase(TMPKeywordDatabase database)
+        {
+            keywordDatabase = database;
             OnDatabaseChanged();
         }
 
@@ -889,34 +913,7 @@ namespace TMPEffects.Components
                 OnStopWriting();
                 yield break;
             }
-
-            // TODO
-            // This originally was required to raise commands/events at the very end
-            // of a text, e.g. "Lorem ipsum<?event>"
-            // Currently the preprocessor adds a space character to the end of every text
-            // (originally to fix a bug related to the TMP_Text not updating correctly for empty texts)
-            // If that changes, this will be required again!
-            //invokables = GetInvokables(Mediator.CharData.Count);
-            //foreach (var invokable in invokables)
-            //{
-            //    waitAmount = 0f;
-            //    shouldWait = false;
-            //    continueConditions = null;
-
-            //    invokable.Trigger();
-
-            //    FixTimePre(ref waitAmount);
-            //    if (shouldWait && waitAmount > 0)
-            //    {
-            //        RaiseWaitStartedEvent(waitAmount);
-            //        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-            //        RaiseWaitEndedEvent();
-            //    }
-            //    if (Mediator == null) yield break;
-            //    if (continueConditions != null) yield return HandleWaitConditions();
-            //    if (Mediator == null) yield break;
-            //}
-
+            
             RaiseFinishWriterEvent();
             OnStopWriting();
 

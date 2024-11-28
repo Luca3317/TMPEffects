@@ -8,7 +8,8 @@ namespace TMPEffects.CharacterData
     /// </summary>
     public class VertexData
     {
-        internal TMPMeshModifiers modifiers;
+        public TMPMeshModifiers Modifiers => modifiers;
+        private TMPMeshModifiers modifiers;
 
         /// <summary>
         /// The bottom left vertex. Index = 0

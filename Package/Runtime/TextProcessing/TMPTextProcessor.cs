@@ -21,21 +21,26 @@ namespace TMPEffects.TextProcessing
         public TMP_Text TextComponent { get; private set; }
 
         ///<inheritdoc/>
-        public ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>> TagProcessors => ((ITagProcessorManager)processors).TagProcessors;
+        public ReadOnlyDictionary<char, ReadOnlyCollection<TagProcessor>> TagProcessors =>
+            ((ITagProcessorManager)processors).TagProcessors;
 
         public delegate void TMPTextProcessorEventHandler(string text);
+
         /// <summary>
         /// Raised just before the PreProcess routine begins.
         /// </summary>
         public event TMPTextProcessorEventHandler BeginPreProcess;
+
         /// <summary>
         /// Raised once the PreProcess routine finished.
         /// </summary>
         public event TMPTextProcessorEventHandler FinishPreProcess;
+
         /// <summary>
         /// Raised just before the AdjustIndices routine begins.
         /// </summary>
         public event TMPTextProcessorEventHandler BeginAdjustIndices;
+
         /// <summary>
         /// Raised once the AdjustIndices routine finished.
         /// </summary>
@@ -50,11 +55,16 @@ namespace TMPEffects.TextProcessing
         }
 
         ///<inheritdoc/>
-        public void AddProcessor(char prefix, TagProcessor processor, int priority = 0) => processors.AddProcessor(prefix, processor, priority);
+        public void AddProcessor(char prefix, TagProcessor processor, int priority = 0) =>
+            processors.AddProcessor(prefix, processor, priority);
+
         ///<inheritdoc/>
-        public bool RemoveProcessor(char prefix, TagProcessor processor) => processors.RemoveProcessor(prefix, processor);
+        public bool RemoveProcessor(char prefix, TagProcessor processor) =>
+            processors.RemoveProcessor(prefix, processor);
+
         ///<inheritdoc/>
         public IEnumerator<TagProcessor> GetEnumerator() => processors.GetEnumerator();
+
         IEnumerator IEnumerable.GetEnumerator() => processors.GetEnumerator();
 
         /// <summary>
@@ -83,8 +93,8 @@ namespace TMPEffects.TextProcessing
 
             int searchIndex = 0; // The index used to search the next tag; = previousTag.EndIndex + 1
             int indexOffset = 0; // The offset applied to a tag's text index to accomodate for previous tags
-                                 // "<wave>Lorem <shake>ipsum" <wave> has offset 0, textindex 0 => 0
-                                 // <shake> has offset 6 to accomodate for "<wave>", textindex 12 => 12 - 6 = 6
+            // "<wave>Lorem <shake>ipsum" <wave> has offset 0, textindex 0 => 0
+            // <shake> has offset 6 to accomodate for "<wave>", textindex 12 => 12 - 6 = 6
 
             sb = new StringBuilder();
             ParsingUtility.TagInfo tagInfo = new ParsingUtility.TagInfo();
@@ -93,7 +103,9 @@ namespace TMPEffects.TextProcessing
             bool parse = true;
 
             // Get the stylesheet used by the TMP_Text component
-            TMP_StyleSheet sheet = TextComponent.styleSheet != null ? TextComponent.styleSheet : TMP_Settings.defaultStyleSheet;
+            TMP_StyleSheet sheet = TextComponent.styleSheet != null
+                ? TextComponent.styleSheet
+                : TMP_Settings.defaultStyleSheet;
 
             // If the text is empty, return " "; quick fix to an issue where empty text is not updated correctly
             if (string.IsNullOrEmpty(text)) return " ";
@@ -144,7 +156,8 @@ namespace TMPEffects.TextProcessing
                             if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                             {
                                 //Debug.LogWarning("Native sprite animations (e.g. <sprite anim=\"0,8,10\">) are not supported. Add a TMPAnimator to get the exact same behavior.");
-                                sb.Append(" <color=red>!NATIVE SPRITE ANIMATIONS NOT SUPPORTED; ADD TMPANIMATOR!</color> ");
+                                sb.Append(
+                                    " <color=red>!NATIVE SPRITE ANIMATIONS NOT SUPPORTED; ADD TMPANIMATOR!</color> ");
                             }
                             // If tag is handled, append normal <sprite> tag to text
                             else
@@ -160,7 +173,7 @@ namespace TMPEffects.TextProcessing
                                     {
                                         case "index":
                                         case "INDEX":
-                                        case "anim": break; 
+                                        case "anim": break;
 
                                         case "name":
                                         case "NAME":
@@ -168,14 +181,17 @@ namespace TMPEffects.TextProcessing
                                         case "TINT":
                                         case "color":
                                         case "COLOR":
-                                            sb2.Append($" {parameter.Key}=\"{parameter.Value}\""); break;
+                                            sb2.Append($" {parameter.Key}=\"{parameter.Value}\"");
+                                            break;
                                         case "":
                                             if (!string.IsNullOrWhiteSpace(parameter.Value))
-                                                sb2.Append($"{parameter.Key}=\"{parameter.Value}\""); break;
+                                                sb2.Append($"{parameter.Key}=\"{parameter.Value}\"");
+                                            break;
                                     }
 
                                     //if (string.IsNullOrWhiteSpace(parameter.Key)) continue;
                                 }
+
                                 sb2.Append(" index=" + split[0]);
                                 sb2.Append("></sprite>");
 
@@ -208,7 +224,8 @@ namespace TMPEffects.TextProcessing
                         TMP_Style style;
                         int start = 6, end = tagInfo.parameterString.Length - 1;
                         if (start >= end)
-                            if (tagInfo.parameterString[start] == '\"') start++;
+                            if (tagInfo.parameterString[start] == '\"')
+                                start++;
                         if (tagInfo.parameterString[end] == '\"') end--;
 
                         style = sheet.GetStyle(tagInfo.parameterString.Substring(start, end - start + 1));
@@ -257,13 +274,14 @@ namespace TMPEffects.TextProcessing
             // Append any text that came after the last tag
             sb.Append(text.AsSpan(searchIndex, text.Length - searchIndex));
 
-            string parsed;
             // Add a space at the end of the text;
             // Quick fix to issues with texts that are empty either after this
             // preprocess or after the native tag processing
-            if (sb.Length == 0) sb.Append(" ");
-            parsed = sb.ToString();
+            // If ever changed, keep in mind that TMPWriter might need fixes to
+            // its writer coroutine
+            sb.Append(" ");
 
+            string parsed = sb.ToString();
             FinishPreProcess?.Invoke(parsed);
 
             return parsed;
@@ -329,7 +347,75 @@ namespace TMPEffects.TextProcessing
                 {
                     kvp.Key.AdjustIndices(
                         new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(thing.Key.indices, thing.Value),
-                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(new TMPEffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex), thing.Value));
+                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(
+                            new TMPEffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex),
+                            thing.Value));
+                }
+            }
+
+            FinishAdjustIndices?.Invoke(info.textComponent.text);
+        }
+
+
+        public void AdjustIndicesBackup()
+        {
+            var info = TextComponent.textInfo;
+
+            BeginAdjustIndices?.Invoke(info.textComponent.text);
+
+            // Create a mapping from TagProcessor to their tags with mutable indices
+            Dictionary<TagProcessor, List<KeyValuePair<Indices, TMPEffectTag>>> dict = new();
+            foreach (var processor in processors)
+            {
+                dict.Add(processor, new());
+                foreach (var tag in processor.ProcessedTags)
+                {
+                    dict[processor].Add(new KeyValuePair<Indices, TMPEffectTag>(new Indices(tag.Key), tag.Value));
+                }
+            }
+
+            // Iterate over all TagProcessors
+            foreach (var kvp in dict)
+            {
+                // and their processed tags
+                foreach (var thing in kvp.Value)
+                {
+                    // Set the indices of the tag to the indices indicated by the characterinfo
+                    // TODO for long texts, maybe binary search or dynamic (one full iteration and storing indices)
+                    // (tested for 1k character texts with 100 tags, slight performance loss still)
+                    for (int i = 0; i < info.characterCount; i++)
+                    {
+                        var cinfo = info.characterInfo[i];
+
+                        if (!thing.Key.startSet && thing.Key.start <= cinfo.index)
+                        {
+                            thing.Key.start = i;
+                            thing.Key.startSet = true;
+                        }
+
+                        if (thing.Key.end != -1 && !thing.Key.endSet && thing.Key.end <= cinfo.index)
+                        {
+                            thing.Key.end = i;
+                            thing.Key.endSet = true;
+                        }
+
+                        if (thing.Key.startSet && (thing.Key.end == -1 || thing.Key.endSet)) break;
+                    }
+                }
+            }
+
+            // Set the actual indices within the TagProcessors
+            // TODO this currently uses an internal method on TagProcessor to set the indices of a tag
+            // a little ugly, might be fine to keep
+            foreach (var kvp in dict)
+            {
+                foreach (var thing in kvp.Value)
+                {
+                    kvp.Key.AdjustIndices(
+                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(thing.Key.indices, thing.Value),
+                        new KeyValuePair<TMPEffectTagIndices, TMPEffectTag>(
+                            new TMPEffectTagIndices(thing.Key.start, thing.Key.end, thing.Key.indices.OrderAtIndex),
+                            thing.Value));
                 }
             }
 

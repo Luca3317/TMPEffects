@@ -26,14 +26,4 @@ public class TMPWriterWaitMarker : TMPEffectsMarker
     {
         if (waitTime < 0) waitTime = 0;
     }
-
-    // TODO Maybe supply some default class for implementing conditional waits
-    // eg just some ConditionalClass { public bool Evaluate() { } }
-    // [SerializeField] private WaitType  waitType = WaitType.Period;
-    // [SerializeField] private UnityEvent<bool> waitAction;
-    // public enum WaitType
-    // {
-    //     Condition,
-    //     Period
-    // }
 }

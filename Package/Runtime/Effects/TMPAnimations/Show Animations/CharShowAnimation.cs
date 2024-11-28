@@ -174,8 +174,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         {
             Data d = context.CustomData as Data;
             int seed = (int)(context.AnimatorContext.PassedTime * 1000);
-            d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.length);
-            for (int i = 0; i < context.SegmentData.length; i++)
+            d.rngDict = new Dictionary<int, System.Random>(context.SegmentData.Length);
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.rngDict.Add(i, new System.Random(seed + i));
             }
@@ -184,8 +184,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         private void InitLastUpdatedDict(IAnimationContext context)
         {
             Data d = context.CustomData as Data;
-            d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.length);
-            for (int i = 0; i < context.SegmentData.length; i++)
+            d.lastUpdatedDict = new Dictionary<int, float>(context.SegmentData.Length);
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.lastUpdatedDict.Add(i, context.AnimatorContext.PassedTime);
             }
@@ -194,9 +194,9 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         private void InitDelayDict(IAnimationContext context)
         {
             Data d = context.CustomData as Data;
-            d.delayDict = new Dictionary<int, float>(context.SegmentData.length);
+            d.delayDict = new Dictionary<int, float>(context.SegmentData.Length);
 
-            for (int i = 0; i < context.SegmentData.length; i++)
+            for (int i = 0; i < context.SegmentData.Length; i++)
             {
                 d.delayDict.Add(i, 0);
             }
@@ -205,8 +205,8 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         private void InitCharactersDict(IAnimationContext context)
         {
             Data d = context.CustomData as Data;
-            d.currentCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
-            d.originalCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.length);
+            d.currentCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.Length);
+            d.originalCharacterCache = new Dictionary<int, TMP_Character>(context.SegmentData.Length);
         }
 
         private void GetNewCustomData_Hook(object obj, IAnimationContext context)

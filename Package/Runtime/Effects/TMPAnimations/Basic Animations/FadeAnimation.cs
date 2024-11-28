@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
-using TMPEffects.Extensions;
-using TMPro;
+using TMPEffects.Parameters;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
 using static TMPEffects.TMPAnimations.AnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
@@ -53,7 +47,7 @@ namespace TMPEffects.TMPAnimations.Animations
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
-                d.waveOffset.GetOffset(cData, context), d.waveOffset.GetUniformity(context));
+                d.waveOffset.GetOffset(cData, context));
 
             if (result.Item2 > 0)
             {

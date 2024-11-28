@@ -571,6 +571,19 @@ namespace TMPEffects.Editor
         {
             DrawPreview();
 
+            if (GUILayout.Button("Trigger bug report"))
+            {
+                try
+                {
+                    List<string> sss = null;
+                    Debug.LogWarning(sss.Count);
+                }
+                catch (System.Exception ex)
+                {
+                    TMPEffectsBugReport.BugReportPrompt(ex);
+                }
+            }
+
             EditorGUI.BeginDisabledGroup(Application.isPlaying);
             EditorGUILayout.PropertyField(updateFromProp);
             EditorGUI.EndDisabledGroup();
@@ -605,8 +618,6 @@ namespace TMPEffects.Editor
                 }
 
                 EditorGUI.BeginChangeCheck();
-                // TODO Will i still want to have a global database?
-                // TODO If not update the tooltip for both databases
                 cont = new GUIContent("Scene Keyword Database");
                 cont.tooltip = "A scene keyword database defining additional keywords. " +
                                "If the same keyword is present in the global keyword Database or keyword database on this animator, this database will override it.";

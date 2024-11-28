@@ -323,7 +323,7 @@ public class TMPMeshModifiers
 
         if (other.modifier.HasFlag(ModifierFlags.Colors))
         {
-            BL_Color += other.BL_Color; // TODO does thiswork
+            BL_Color += other.BL_Color;
             TL_Color += other.TL_Color;
             TR_Color += other.TR_Color;
             BR_Color += other.BR_Color;
@@ -357,7 +357,7 @@ public class TMPMeshModifiers
 
         if (rhs.modifier.HasFlag(ModifierFlags.Colors))
         {
-            lhs.BL_Color += rhs.BL_Color; // TODO does thiswork
+            lhs.BL_Color += rhs.BL_Color;
             lhs.TL_Color += rhs.TL_Color;
             lhs.TR_Color += rhs.TR_Color;
             lhs.BR_Color += rhs.BR_Color;

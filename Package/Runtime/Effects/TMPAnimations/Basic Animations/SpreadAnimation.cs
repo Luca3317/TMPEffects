@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
+using TMPEffects.Parameters;
 using UnityEngine;
 using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterUtility;
 using static TMPEffects.Parameters.ParameterTypes;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
@@ -19,10 +17,10 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
         Wave wave;
 
-        [SerializeField, AutoParameter("waveoffset", "woffset", "woff", "waveoff")]
+        [SerializeField, AutoParameterBundle("")]
         [Tooltip(
             "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        OffsetTypePowerEnum waveOffsetType;
+        OffsetBundle waveOffsetType;
 
         [SerializeField, AutoParameter("growanchor", "growanc", "ganc")]
         [Tooltip("The anchor used for growing.\nAliases: growanchor, growanc, ganc")]
@@ -33,7 +31,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         Vector3 growDirection = Vector3.up;
 
         [SerializeField, AutoParameter("shrinkanchor", "shrinkanc", "sanc")]
-        [Tooltip("The anchor used for shrinking.\nAliases: shrinkanchor, shrinkanc, sanc")] 
+        [Tooltip("The anchor used for shrinking.\nAliases: shrinkanchor, shrinkanc, sanc")]
         TypedVector3 shrinkAnchor = new TypedVector3(VectorType.Anchor, Vector3.zero);
 
         [SerializeField, AutoParameter("shrinkdirection", "shrinkdir", "sdir")]
@@ -49,16 +47,15 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
         [Tooltip(
             "The minimum percentage to unspread to, at 0 being completely hidden.\nAliases: minpercentage, minp, min")]
         float minPercentage = 0;
-        
+
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
             // Evaluate the wave based on time and offset
-            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
-                d.waveOffsetType.GetOffset(cData, context) / context.SegmentData.length);
-            
+            var result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
+                d.waveOffsetType.GetOffset(cData, context));
 
             // If the wave is moving up, grow the character
-            if (result.Item2 > 0)
+            if (result.Direction > 0)
             {
                 Grow(cData, context, d, result.Item1);
             }
