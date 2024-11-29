@@ -203,24 +203,22 @@ namespace TMPEffects.Editor
 
         private void SetKeywordDatabase()
         {
-            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-            if (preferences == null || !useDefaultKeywordDatabaseProp.boolValue)
+            if (!useDefaultKeywordDatabaseProp.boolValue)
             {
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (preferences.DefaultKeywordDatabase == null)
+            if (TMPEffectsSettings.DefaultKeywordDatabase == null)
             {
-                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
                 useDefaultKeywordDatabaseProp.boolValue = false;
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (keywordDatabaseProp.objectReferenceValue != preferences.DefaultKeywordDatabase)
+            if (keywordDatabaseProp.objectReferenceValue != TMPEffectsSettings.DefaultKeywordDatabase)
             {
-                keywordDatabaseProp.objectReferenceValue = preferences.DefaultKeywordDatabase;
+                keywordDatabaseProp.objectReferenceValue = TMPEffectsSettings.DefaultKeywordDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
                 return;
@@ -229,24 +227,23 @@ namespace TMPEffects.Editor
 
         private void SetDatabase()
         {
-            TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
-            if (preferences == null || !useDefaultDatabaseProp.boolValue)
+            // TMPEffectsPreferences preferences = TMPEffectsPreferences.Get();
+            if (!useDefaultDatabaseProp.boolValue)
             {
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (preferences.DefaultAnimationDatabase == null)
+            if (TMPEffectsSettings.DefaultAnimationDatabase == null)
             {
-                Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != preferences.DefaultAnimationDatabase)
+            if (databaseProp.objectReferenceValue != TMPEffectsSettings.DefaultAnimationDatabase)
             {
-                databaseProp.objectReferenceValue = preferences.DefaultAnimationDatabase;
+                databaseProp.objectReferenceValue = TMPEffectsSettings.DefaultAnimationDatabase;
                 serializedObject.ApplyModifiedProperties();
                 animator.OnChangedDatabase();
                 return;
@@ -292,8 +289,7 @@ namespace TMPEffects.Editor
             {
                 EditorGUI.indentLevel++;
                 if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(databaseProp, useDefaultDatabaseProp,
-                        useDefaultDatabaseLabel,
-                        GetDefaultAnimationDatabase))
+                        useDefaultDatabaseLabel, GetDefaultAnimationDatabase, "animation"))
                 {
                     animator.OnChangedDatabase();
                 }
@@ -321,22 +317,28 @@ namespace TMPEffects.Editor
 
         private Object GetDefaultAnimationDatabase()
         {
-            var prefs = TMPEffectsPreferences.Get();
-            if (prefs == null) return null;
+            var database = TMPEffectsSettings.DefaultAnimationDatabase;
+            if (database == null) return null;
 
-            if (prefs.DefaultAnimationDatabase == null)
-                Debug.LogWarning("No default animation database set in Preferences/TMPEffects");
-            return prefs.DefaultAnimationDatabase;
+            if (database == null)
+            {
+                Debug.LogWarning("No default animation database set in ProjectSettings/TMPEffects");
+            }
+
+            return database;
         }
 
         private Object GetDefaultKeywordDatabase()
         {
-            var prefs = TMPEffectsPreferences.Get();
-            if (prefs == null) return null;
+            var database = TMPEffectsSettings.DefaultKeywordDatabase;
+            if (database == null) return null;
 
-            if (prefs.DefaultKeywordDatabase == null)
-                Debug.LogWarning("No default keyword database set in Preferences/TMPEffects");
-            return prefs.DefaultKeywordDatabase;
+            if (database == null)
+            {
+                Debug.LogWarning("No default keyword database set in ProjectSettings/TMPEffects");
+            }
+
+            return database;
         }
 
         GUIContent alertDialogDefaultShow;
@@ -363,7 +365,7 @@ namespace TMPEffects.Editor
                 showListWarningDict);
 
             DrawDefault(
-                TMPAnimationType.Hide, 
+                TMPAnimationType.Hide,
                 defaultHideAnimationsProp,
                 defaultHideAnimationsList,
                 new GUIContent("Default Hide Animations",
@@ -611,8 +613,8 @@ namespace TMPEffects.Editor
                 cont.tooltip = "A keyword database defining additional keywords. " +
                                "If the same keyword is present in the global keyword Database, this database will override it.";
 
-                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp, cont,
-                    GetDefaultKeywordDatabase))
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp,
+                        cont, GetDefaultKeywordDatabase, "keyword"))
                 {
                     animator.OnChangedDatabase();
                 }
@@ -676,7 +678,7 @@ namespace TMPEffects.Editor
     {
         public static bool DrawDefaultableDatabase(SerializedProperty dbProp, SerializedProperty useDefaultProp,
             GUIContent label,
-            Func<UnityEngine.Object> getDefault)
+            Func<UnityEngine.Object> getDefault, string databaseName)
         {
             SerializedObject serializedObject = dbProp.serializedObject;
             bool changed = false;
@@ -704,6 +706,7 @@ namespace TMPEffects.Editor
                     var defaultDatabase = getDefault();
                     if (defaultDatabase == null)
                     {
+                        Debug.LogWarning($"No default {databaseName} database set in Project Settings/TMPEffects");
                         useDefaultProp.boolValue = false;
                         serializedObject.ApplyModifiedProperties();
                     }

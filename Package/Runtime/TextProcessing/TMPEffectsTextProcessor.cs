@@ -5,6 +5,8 @@ using TMPro;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
 using System.Collections;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.TextProcessing
 {
@@ -13,7 +15,7 @@ namespace TMPEffects.TextProcessing
     /// As part of a post process, also adjusts the indices of the parsed tags to
     /// accomodate for native TextMeshPro tags.
     /// </summary>
-    public class TMPTextProcessor : ITextPreprocessor, ITagProcessorManager
+    public class TMPEffectsTextProcessor : ITextPreprocessor, ITagProcessorManager
     {
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
@@ -46,7 +48,7 @@ namespace TMPEffects.TextProcessing
         /// </summary>
         public event TMPTextProcessorEventHandler FinishAdjustIndices;
 
-        public TMPTextProcessor(TMP_Text text)
+        public TMPEffectsTextProcessor(TMP_Text text)
         {
             sb = new StringBuilder();
             processors = new TagProcessorManager();
@@ -76,6 +78,10 @@ namespace TMPEffects.TextProcessing
         /// <returns>The preprocessed text.</returns>
         public string PreprocessText(string text)
         {
+            var textSpan = text.AsSpan();
+
+            sw3 ??= new Stopwatch();
+            sw3.Start();
             BeginPreProcess?.Invoke(text);
 
             // Clear style stack, which stores the currently active styles
@@ -86,6 +92,9 @@ namespace TMPEffects.TextProcessing
             {
                 processor.Reset();
             }
+
+            // If the text is empty, return " "; quick fix to an issue where empty text is not updated correctly
+            if (string.IsNullOrEmpty(text)) return " ";
 
             // Indicates the order of the parsed tags at the respective index
             // i.e. <!wait><#someevent><!playsound> => 0,1,2 respcectively
@@ -107,12 +116,11 @@ namespace TMPEffects.TextProcessing
                 ? TextComponent.styleSheet
                 : TMP_Settings.defaultStyleSheet;
 
-            // If the text is empty, return " "; quick fix to an issue where empty text is not updated correctly
-            if (string.IsNullOrEmpty(text)) return " ";
-
             // Iterate over all well-formed tags of the text
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
+                sw4 ??= new Stopwatch();
+                sw4.Start();
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
                 // add the text inbetween the tags to the StringBuilder
                 if (searchIndex != tagInfo.startIndex)
@@ -136,6 +144,7 @@ namespace TMPEffects.TextProcessing
                     }
 
                     searchIndex = tagInfo.endIndex + 1;
+                    sw4.Stop();
                     continue;
                 }
 
@@ -199,6 +208,7 @@ namespace TMPEffects.TextProcessing
                             }
 
                             searchIndex = tagInfo.endIndex + 1;
+                            sw4.Stop();
                             continue;
                         }
                     }
@@ -217,16 +227,19 @@ namespace TMPEffects.TextProcessing
                         }
 
                         searchIndex = tagInfo.startIndex;
+                        sw4.Stop();
                         continue;
                     }
                     else if (tagInfo.parameterString.Length > 6)
                     {
                         TMP_Style style;
                         int start = 6, end = tagInfo.parameterString.Length - 1;
-                        if (start >= end)
-                            if (tagInfo.parameterString[start] == '\"')
-                                start++;
-                        if (tagInfo.parameterString[end] == '\"') end--;
+
+                        if (start != end && tagInfo.parameterString[start] == '\"')
+                            start++;
+
+                        if (tagInfo.parameterString[end] == '\"')
+                            end--;
 
                         style = sheet.GetStyle(tagInfo.parameterString.Substring(start, end - start + 1));
                         if (style != null)
@@ -236,6 +249,7 @@ namespace TMPEffects.TextProcessing
                             styles.Push(style);
 
                             searchIndex = tagInfo.startIndex;
+                            sw4.Stop();
                             continue;
                         }
                     }
@@ -247,13 +261,21 @@ namespace TMPEffects.TextProcessing
                     currentOrderAtIndex = 0;
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
                     searchIndex = tagInfo.endIndex + 1;
-                    continue;
+                    sw4.Stop();
+                    continue; 
                 }
+
+                sw4.Stop();
+                sw5 ??= new Stopwatch();
+                sw6 ??= new Stopwatch();
+                sw5.Start();
 
                 // Handle the tag; if it fails, meaning this is not a valid custom tag, append the tag to the StringBuilder
                 if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                 {
+                    sw6.Start();
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
+                    sw6.Stop();
 
                     // Dont reset order, as this might be a valid native tag, meaning the previous
                     // and the next tag may still share an index; if not thats fine, order will just start
@@ -269,6 +291,8 @@ namespace TMPEffects.TextProcessing
 
                 // Adjust the search index and continue to the next tag
                 searchIndex = tagInfo.endIndex + 1;
+
+                sw5.Stop();
             }
 
             // Append any text that came after the last tag
@@ -284,8 +308,18 @@ namespace TMPEffects.TextProcessing
             string parsed = sb.ToString();
             FinishPreProcess?.Invoke(parsed);
 
+            sw3.Stop();
             return parsed;
         }
+
+        public static Stopwatch sw;
+        public static Stopwatch sw2;
+        public static Stopwatch sw3;
+        public static Stopwatch sw4;
+        public static Stopwatch sw5;
+        public static Stopwatch sw6;
+        public static Stopwatch sw7;
+        public static Stopwatch sw8;
 
         /// <summary>
         /// Adjust the indices that were cached during the preprocess stage to accomodate
@@ -293,6 +327,8 @@ namespace TMPEffects.TextProcessing
         /// </summary>
         public void AdjustIndices()
         {
+            sw2 ??= new Stopwatch();
+            sw2.Start();
             var info = TextComponent.textInfo;
 
             BeginAdjustIndices?.Invoke(info.textComponent.text);
@@ -308,11 +344,13 @@ namespace TMPEffects.TextProcessing
                 }
             }
 
+            sw ??= new Stopwatch();
+            sw.Start();
             // Iterate over all TagProcessors
-            foreach (var kvp in dict)
+            foreach (var procKVP in dict)
             {
                 // and their processed tags
-                foreach (var thing in kvp.Value)
+                foreach (var tagKVP in procKVP.Value)
                 {
                     // Set the indices of the tag to the indices indicated by the characterinfo
                     // TODO for long texts, maybe binary search or dynamic (one full iteration and storing indices)
@@ -321,22 +359,24 @@ namespace TMPEffects.TextProcessing
                     {
                         var cinfo = info.characterInfo[i];
 
-                        if (!thing.Key.startSet && thing.Key.start <= cinfo.index)
+                        if (!tagKVP.Key.startSet && tagKVP.Key.start <= cinfo.index)
                         {
-                            thing.Key.start = i;
-                            thing.Key.startSet = true;
+                            tagKVP.Key.start = i;
+                            tagKVP.Key.startSet = true;
                         }
 
-                        if (thing.Key.end != -1 && !thing.Key.endSet && thing.Key.end <= cinfo.index)
+                        if (tagKVP.Key.end != -1 && !tagKVP.Key.endSet && tagKVP.Key.end <= cinfo.index)
                         {
-                            thing.Key.end = i;
-                            thing.Key.endSet = true;
+                            tagKVP.Key.end = i;
+                            tagKVP.Key.endSet = true;
                         }
 
-                        if (thing.Key.startSet && (thing.Key.end == -1 || thing.Key.endSet)) break;
+                        if (tagKVP.Key.startSet && (tagKVP.Key.end == -1 || tagKVP.Key.endSet)) break;
                     }
                 }
             }
+
+            sw.Stop();
 
             // Set the actual indices within the TagProcessors
             // TODO this currently uses an internal method on TagProcessor to set the indices of a tag
@@ -354,6 +394,8 @@ namespace TMPEffects.TextProcessing
             }
 
             FinishAdjustIndices?.Invoke(info.textComponent.text);
+
+            sw2.Stop();
         }
 
 
@@ -429,19 +471,31 @@ namespace TMPEffects.TextProcessing
 
         private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)
         {
+            sw7 ??= new Stopwatch();
+            sw7.Start();
             ReadOnlyCollection<TagProcessor> coll;
             if (!processors.TagProcessors.TryGetValue(tagInfo.prefix, out coll))
+            {
+                sw7.Stop();
                 return false;
+            }
 
             if (coll.Count == 1)
+            {
+                sw7.Stop();
                 return coll[0].Process(tagInfo, textIndex, order);
+            }
 
             for (int i = 0; i < coll.Count; i++)
             {
                 if (coll[i].Process(tagInfo, textIndex, order))
+                {
+                    sw7.Stop();
                     return true;
+                }
             }
 
+            sw7.Stop();
             return false;
         }
 

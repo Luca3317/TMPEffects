@@ -36,9 +36,9 @@ namespace TMPEffects.Components.Mediator
         public readonly ReadOnlyCollection<CharData> CharData;
 
         /// <summary>
-        /// The <see cref="TMPTextProcessor"/> used by the associated <see cref="TMP_Text"/> component.
+        /// The <see cref="TMPEffectsTextProcessor"/> used by the associated <see cref="TMP_Text"/> component.
         /// </summary>
-        public readonly TMPTextProcessor Processor;
+        public readonly TMPEffectsTextProcessor Processor;
 
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
@@ -86,7 +86,7 @@ namespace TMPEffects.Components.Mediator
 
             charData = new List<CharData>();
             CharData = new ReadOnlyCollection<CharData>(charData);
-            Processor = new TMPTextProcessor(Text);
+            Processor = new TMPEffectsTextProcessor(Text);
 
             visibilityStates = new List<VisibilityState>();
             VisibilityStates = new ReadOnlyCollection<VisibilityState>(visibilityStates);
@@ -194,6 +194,7 @@ namespace TMPEffects.Components.Mediator
             {
                 VisibilityState previous = visibilityStates[i];
                 if (newState == previous) continue;
+                Debug.Log("Setting from "  + previous + " to " + newState);
 
                 if (!processor)
                 {

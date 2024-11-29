@@ -16,8 +16,11 @@ public class TMPUpdateAnimationsMarker : TMPEffectsMarker
         (triggerOnce ? NotificationFlags.TriggerOnce : default) |
         (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
-    [Space] [Tooltip("The delta time value to update the animations with.")]
-    [SerializeField] private float deltaTime;
+    [Space]
+    [Tooltip(
+        "The delta time value to update the animations with. Set to -1 to use Time.deltaTime, -2 to use Time.fixedDeltaTime")]
+    [SerializeField]
+    private float deltaTime;
     
     public float DeltaTime => deltaTime;
 }    

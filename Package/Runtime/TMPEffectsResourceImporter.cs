@@ -2,6 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+#if UNITY_EDITOR
+
 namespace TMPEffects.Editor
 {
     public class TMPEffectsImporterWindow : EditorWindow
@@ -77,7 +79,9 @@ namespace TMPEffects.Editor
         private void Import()
         {
             AssetDatabase.ImportPackage(
-                "Packages/com.luca3317.tmpeffects/Resources/TMPEffects Required Resources.unitypackage", true);
+                "Packages/com.luca3317.tmpeffects/Resources/TMPEffects Required Resources.unitypackage", false);
         }
     }
 }
+
+#endif

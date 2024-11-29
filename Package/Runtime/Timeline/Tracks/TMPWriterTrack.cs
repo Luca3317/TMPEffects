@@ -5,7 +5,7 @@ using TMPEffects.Components;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[TrackBindingType(typeof(TMPWriterReceiver))]
+[TrackBindingType(typeof(TMPWriterMarkReceiver))]
 // [TrackClipType(typeof(TMPWriterClip))]
 [DisplayName("TMPEffects/TMPWriter Track")]
 public class TMPWriterTrack : TrackAsset

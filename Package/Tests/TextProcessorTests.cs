@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -10,31 +11,48 @@ using TMPEffects.TextProcessing;
 using TMPEffects.EffectCategories;
 using System.Linq;
 using UnityEditor;
+using Debug = UnityEngine.Debug;
 
 public class TextProcessorTests
 {
-    const string testReferenceStr = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in lectus eget nisl imperdiet gravida. Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+    const string testReferenceStr =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in lectus eget nisl imperdiet gravida. Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
     string[] testStrs = new string[]
     {
         testStr0, testStr1, testStr2, testStr3, testStr4
     };
-    const string testStr0 = "<wave>Lorem ipsum dolor sit amet</wave>, consectetur adipiscing elit. <jump>Mauris in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
-    const string testStr1 = "<wave>Lorem ipsum <!wait=2>dolor sit amet</wave>, consectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
-    const string testStr2 = "<wave><wave>Lorem <pivot>ipsu<-shake>m <!wait=2>dolor sit amet</wave>, conse<+pivot>ctetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis<+move> erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
-    const string testStr3 = "<wave>Lorem ipsum <!wait=2>dolor sit amet</wave>, con<pivot><shake>sectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. <+move>Curabitur<!show> consequat dui <-char>vitae odio porttitor volutpat. <+char>Integer elementum venenatis neque,</!all> sit amet tempus dolor <-pivot>iaculis a.</all> Vivamus</+all></-all> non imperdiet dui. Nullam iaculis auctor posuere. </all>Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
-    const string testStr4 = "<wave>Lorem ipsum <!wait=2>dolor sit amet</>, consectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump amp=10>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</> Mo<!show>r<wave>b</wave><wave></>i</!> mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
+    const string testStr0 =
+        "<wave>Lorem ipsum dolor sit amet</wave>, consectetur adipiscing elit. <jump>Mauris in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
+    const string testStr1 =
+        "<wave>Lorem ipsum <!wait=2>dolor sit amet</wave>, consectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
+    const string testStr2 =
+        "<wave><wave>Lorem <pivot>ipsu<-shake>m <!wait=2>dolor sit amet</wave>, conse<+pivot>ctetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis<+move> erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
+    const string testStr3 =
+        "<wave>Lorem ipsum <!wait=2>dolor sit amet</wave>, con<pivot><shake>sectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</jump> Morbi mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. <+move>Curabitur<!show> consequat dui <-char>vitae odio porttitor volutpat. <+char>Integer elementum venenatis neque,</!all> sit amet tempus dolor <-pivot>iaculis a.</all> Vivamus</+all></-all> non imperdiet dui. Nullam iaculis auctor posuere. </all>Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
+
+    const string testStr4 =
+        "<wave>Lorem ipsum <!wait=2>dolor sit amet</>, consectetur <?myEvent=myValue secondKey=secondValue>adipiscing elit. <jump amp=10>Mauris<!delay=4> in lectus eget nisl imperdiet gravida.</> Mo<!show>r<wave>b</wave><wave></>i</!> mollis ipsum arcu, eleifend convallis erat rutrum eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec molestie vestibulum massa, quis pulvinar nunc facilisis vel. Aliquam consectetur metus metus, eu lacinia tortor vehicula id. Quisque placerat ac risus in egestas. Nam consequat id augue et fermentum. Curabitur consequat dui vitae odio porttitor volutpat. Integer elementum venenatis neque, sit amet tempus dolor iaculis a. Vivamus non imperdiet dui. Nullam iaculis auctor posuere. Suspendisse id dolor quis risus pharetra tincidunt. In enim nisi, auctor eu dictum sit amet, ultricies pellentesque ante. Sed scelerisque lorem id lectus sollicitudin, quis scelerisque justo ullamcorper.";
 
     TMPAnimator animator;
     TMPWriter writer;
     TMP_Text text;
 
-    TagProcessor animationTagProcessor, showAnimationTagProcessor, hideAnimationTagProcessor, commandTagProcessor, eventTagProcessor;
+    TagProcessor animationTagProcessor,
+        showAnimationTagProcessor,
+        hideAnimationTagProcessor,
+        commandTagProcessor,
+        eventTagProcessor;
 
     [UnitySetUp]
     public IEnumerator UnitySetUp()
     {
         if (Application.isPlaying) yield break;
-        
+
         TMP_PackageResourceImporter.ImportResources(true, false, false);
         yield return new EnterPlayMode();
     }
@@ -44,7 +62,7 @@ public class TextProcessorTests
     {
         yield return new ExitPlayMode();
     }
-    
+
     [OneTimeSetUp]
     public void SetUp()
     {
@@ -59,7 +77,7 @@ public class TextProcessorTests
     [UnityTest]
     public IEnumerator PreprocessTest()
     {
-        TMPTextProcessor processor = new TMPTextProcessor(text);
+        TMPEffectsTextProcessor processor = new TMPEffectsTextProcessor(text);
 
         processor.AddProcessor(TMPWriter.EVENT_PREFIX, eventTagProcessor);
         processor.AddProcessor(TMPWriter.COMMAND_PREFIX, commandTagProcessor);
@@ -78,7 +96,7 @@ public class TextProcessorTests
     [UnityTest]
     public IEnumerator ZEmptyPreprocessTest()
     {
-        TMPTextProcessor processor = new TMPTextProcessor(text);
+        TMPEffectsTextProcessor processor = new TMPEffectsTextProcessor(text);
 
         processor.AddProcessor(TMPWriter.EVENT_PREFIX, eventTagProcessor);
         processor.AddProcessor(TMPWriter.COMMAND_PREFIX, commandTagProcessor);
@@ -174,7 +192,8 @@ public class TextProcessorTests
         Assert.AreEqual(30, commandtags[0].Indices.EndIndex);
         Assert.AreEqual(0, commandtags[0].Indices.OrderAtIndex);
 
-        text.SetText("<color=red><style=h3>L<s>o<wave>r</color>em<b> ip<!show>s<style=h3>um d</b>olor sit amet.</>Pos</!show>tte</s>xt");
+        text.SetText(
+            "<color=red><style=h3>L<s>o<wave>r</color>em<b> ip<!show>s<style=h3>um d</b>olor sit amet.</>Pos</!show>tte</s>xt");
         yield return null;
         basictags = animator.BasicTags.TagsAt(2).ToList();
         Assert.AreEqual(1, animator.BasicTags.Count);
@@ -239,7 +258,8 @@ public class TextProcessorTests
         Assert.AreEqual(-1, commandtags[0].Indices.EndIndex);
         Assert.AreEqual(0, commandtags[0].Indices.OrderAtIndex);
 
-        text.SetText("<color=red><style=h3>L<s>o<wave>r</color>em<b> ip<!show>s<style=h3>um d</b>olor sit amet.Postte</s>xt");
+        text.SetText(
+            "<color=red><style=h3>L<s>o<wave>r</color>em<b> ip<!show>s<style=h3>um d</b>olor sit amet.Postte</s>xt");
         yield return null;
         basictags = animator.BasicTags.TagsAt(2).ToList();
         Assert.AreEqual(1, animator.BasicTags.Count);
@@ -261,6 +281,37 @@ public class TextProcessorTests
     [UnityTest]
     public IEnumerator IndexAdjustmentTest_IndexTag()
     {
+        for (int i = 0; i < 100; i++)
+        {
+            text.SetText(
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
+                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet.");
+            yield return null;
+        }
+        
+        Debug.LogWarning("Sub sw: " + TMPEffectsTextProcessor.sw.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw2: " + TMPEffectsTextProcessor.sw2.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw3: " + TMPEffectsTextProcessor.sw3.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub getnexttag: " + ParsingUtility.sw.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw4: " + TMPEffectsTextProcessor.sw4.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw5: " + TMPEffectsTextProcessor.sw5.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw6: " + TMPEffectsTextProcessor.sw6.Elapsed.TotalMilliseconds);
+        Debug.LogWarning("Sub sw7: " + TMPEffectsTextProcessor.sw7.Elapsed.TotalMilliseconds);
+
         text.SetText("Lorem <!delay=2>ipsum dol<!wait=1>or sit amet.");
         yield return null;
         var commandtags = writer.CommandTags.TagsAt(6).ToList();
@@ -276,7 +327,8 @@ public class TextProcessorTests
         Assert.IsTrue(commandtags[1].Indices.IsEmpty);
         Assert.AreEqual(0, commandtags[1].Indices.OrderAtIndex);
 
-        text.SetText("<color=red>Lorem <!delay=2></color>ip<s>su<b>m d<color=blue></color>ol<!wait=1>or s</s>it amet.");
+        text.SetText(
+            "<color=red>Lorem <!delay=2></color>ip<s>su<b>m d<color=blue></color>ol<!wait=1>or s</s>it amet.");
         yield return null;
         commandtags = writer.CommandTags.TagsAt(6).ToList();
         commandtags.AddRange(writer.CommandTags.TagsAt(15));
@@ -291,7 +343,8 @@ public class TextProcessorTests
         Assert.IsTrue(commandtags[1].Indices.IsEmpty);
         Assert.AreEqual(0, commandtags[1].Indices.OrderAtIndex);
 
-        text.SetText("<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet.");
+        text.SetText(
+            "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet.");
         yield return null;
         commandtags = writer.CommandTags.TagsAt(6).ToList();
         commandtags.AddRange(writer.CommandTags.TagsAt(15));
@@ -305,6 +358,7 @@ public class TextProcessorTests
         Assert.AreEqual(15, commandtags[1].Indices.EndIndex);
         Assert.IsTrue(commandtags[1].Indices.IsEmpty);
         Assert.AreEqual(0, commandtags[1].Indices.OrderAtIndex);
+
 
         yield break;
     }
@@ -374,10 +428,14 @@ public class TextProcessorTests
         if (writer == null) Debug.LogWarning("WRITER NULL");
         if (text == null) Debug.LogWarning("TEXT NULL");
 
-        animationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.ANIMATION_PREFIX, animator.Database.BasicAnimationDatabase, animator.KeywordDatabase));
-        showAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.SHOW_ANIMATION_PREFIX, animator.Database.ShowAnimationDatabase, animator.KeywordDatabase));
-        hideAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.HIDE_ANIMATION_PREFIX, animator.Database.HideAnimationDatabase, animator.KeywordDatabase));
-        commandTagProcessor = new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database, writer.KeywordDatabase)); 
+        animationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.ANIMATION_PREFIX,
+            animator.Database.BasicAnimationDatabase, animator.KeywordDatabase));
+        showAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.SHOW_ANIMATION_PREFIX,
+            animator.Database.ShowAnimationDatabase, animator.KeywordDatabase));
+        hideAnimationTagProcessor = new TagProcessor(new TMPAnimationCategory(TMPAnimator.HIDE_ANIMATION_PREFIX,
+            animator.Database.HideAnimationDatabase, animator.KeywordDatabase));
+        commandTagProcessor =
+            new TagProcessor(new TMPCommandCategory(TMPWriter.COMMAND_PREFIX, writer.Database, writer.KeywordDatabase));
         eventTagProcessor = new TagProcessor(new TMPEventCategory(TMPWriter.EVENT_PREFIX));
     }
 }

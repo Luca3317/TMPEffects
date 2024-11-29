@@ -59,6 +59,113 @@ public class WaveTests
     }
 
     [Test]
+    public void EvaluateNegativeTests()
+    {
+   Wave wave = new Wave();
+
+        var eval = wave.Evaluate(0, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(-wave.EffectiveDownPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(1, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(-wave.EffectivePeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectivePeriod * 1234, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveUpPeriod / 2f, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+        
+        eval = wave.Evaluate(wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 1234,
+            0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+        // ~277 hours. Much higher and floating point precision messes it up.
+        eval = wave.Evaluate(
+            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+
+        wave = new Wave(AnimationCurveUtility.Linear(), AnimationCurveUtility.Linear(), 2f, 3f, 10f);
+
+        eval = wave.Evaluate(0, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveUpPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(10, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectivePeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectivePeriod * 1234, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveUpPeriod / 2f, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+        // ~277 hours. Much higher and floating point precision messes it up.
+        eval = wave.Evaluate(
+            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+
+        wave = new Wave(AnimationCurveUtility.Linear(), AnimationCurveUtility.Linear(), 2f, 3f, 10f, 10f, 12f);
+
+        eval = wave.Evaluate(0, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveUpPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(10, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectivePeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectivePeriod * 1234, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveUpPeriod / 2f, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(1, eval.Direction);
+
+        eval = wave.Evaluate(wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+
+        // ~277 hours. Much higher and floating point precision messes it up.
+        eval = wave.Evaluate(
+            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000, 0);
+        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
+        Assert.AreEqual(-1, eval.Direction);
+    }
+    
+    [Test]
     public void EvaluateAsWaveTests()
     {
         Wave wave = new Wave();
@@ -82,7 +189,7 @@ public class WaveTests
         eval = wave.EvaluateAsWave(wave.EffectiveUpPeriod / 2f, 0);
         UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
         Assert.AreEqual(1, eval.Direction);
-
+        
         eval = wave.EvaluateAsWave(wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod, 0);
         UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
         Assert.AreEqual(-1, eval.Direction);
@@ -501,112 +608,6 @@ public class WaveTests
         eval = wave.EvaluateAsOneDirectionalPulse(
             wave.EffectiveDownPeriod + wave.EffectiveUpPeriod + wave.CrestWait + wave.TroughWait / 2f + (wave.EffectivePeriod + wave.CrestWait + wave.TroughWait) * 50000, 0);
         UnityEngine.Assertions.Assert.AreApproximatelyEqual(0f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-    }
-
-    [Test]
-    public void OffsetTests()
-    {
-        Wave wave = new Wave();
-
-        var eval = wave.EvaluateAsWave(0, 0);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(1, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod * 1234);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod / 2f);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 1234);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-        // ~277 hours. Much higher and floating point precision messes it up.
-        eval = wave.EvaluateAsWave( 0f,
-            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-
-        wave = new Wave(AnimationCurveUtility.Linear(), AnimationCurveUtility.Linear(), 2f, 3f, 10f);
-
-        eval = wave.EvaluateAsWave(0, 0);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(10, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod * 1234);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod / 2f);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-        // ~277 hours. Much higher and floating point precision messes it up.
-        eval = wave.EvaluateAsWave(0f,
-            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-
-        wave = new Wave(AnimationCurveUtility.Linear(), AnimationCurveUtility.Linear(), 2f, 3f, 10f, 10f, 12f);
-
-        eval = wave.EvaluateAsWave(0, 0);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(10, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectivePeriod * 1234);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(0, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveUpPeriod / 2f);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(1, eval.Direction);
-
-        eval = wave.EvaluateAsWave(0f, wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
-        Assert.AreEqual(-1, eval.Direction);
-
-        // ~277 hours. Much higher and floating point precision messes it up.
-        eval = wave.EvaluateAsWave(0f,
-            wave.EffectiveDownPeriod / 2f + wave.EffectiveUpPeriod + wave.EffectivePeriod * 500000);
-        UnityEngine.Assertions.Assert.AreApproximatelyEqual(wave.Amplitude / 2f, eval.Value);
         Assert.AreEqual(-1, eval.Direction);
     }
 }

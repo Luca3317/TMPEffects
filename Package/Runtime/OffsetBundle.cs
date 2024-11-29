@@ -47,14 +47,11 @@ namespace TMPEffects.Parameters
         
         public float GetOffset(CharData cData, IAnimationContext context)
         {
-            var segmentData = AnimationUtility.GetMockedSegment(
-                context.AnimatorContext.Animator.TextComponent.GetParsedText().Length,
-                context.AnimatorContext.Animator.CharData);
-            float offset = _provider.GetOffset(cData, segmentData, context.AnimatorContext, ignoreAnimatorScaling);
+            float offset = _provider.GetOffset(cData, context.SegmentData, context.AnimatorContext, ignoreAnimatorScaling);
 
             if (zeroBasedOffset)
             {
-                _provider.GetMinMaxOffset(out var min, out var max, segmentData, context.AnimatorContext);
+                _provider.GetMinMaxOffset(out var min, out var max, context.SegmentData, context.AnimatorContext);
                 float zeroedOffset = offset - min;
                 float zeroedMax = max - min;
                 if (uniformity >= 0)
@@ -72,6 +69,7 @@ namespace TMPEffects.Parameters
 
         public float GetOffset(CharData cData, IAnimatorContext context)
         {
+            // TODO This has to be cached, wayyyy too slow
             var segmentData = AnimationUtility.GetMockedSegment(context.Animator.TextComponent.GetParsedText().Length,
                 context.Animator.CharData);
             float offset = _provider.GetOffset(cData, segmentData, context, ignoreAnimatorScaling);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using TMPEffects.Extensions;
 using TMPEffects.TMPAnimations;
@@ -71,6 +72,8 @@ namespace TMPEffects.TextProcessing
             public TagInfo() { }
         }
 
+        public static Stopwatch sw;
+        
         /// <summary>
         /// Get the next tag in <paramref name="text"/>, starting from <paramref name="startIndex"/>.
         /// </summary>
@@ -81,12 +84,18 @@ namespace TMPEffects.TextProcessing
         /// <returns>true if a next tag was found; false otherwise.</returns>
         public static bool GetNextTag(string text, int startIndex, ref TagInfo tag, TagType type = TagType.Open | TagType.Close)
         {
+            sw ??= new Stopwatch();
+            sw.Start();
             int index = startIndex - 1;
             int len = text.Length;
 
             int tagStartIndex, tagEndIndex;
 
-            if (index >= len - 3) return false;
+            if (index >= len - 3)
+            {
+                sw.Stop();
+                return false;
+            }
 
             do
             {
@@ -96,12 +105,14 @@ namespace TMPEffects.TextProcessing
                 // If there is no open bracket found or it is at the end of the text, there is no valid tag
                 if (tagStartIndex == -1 || tagStartIndex == len - 1)
                 {
+                    sw.Stop();
                     return false;
                 }
 
                 tagEndIndex = text.IndexOf('>', tagStartIndex + 1);
                 if (tagEndIndex == -1)
                 {
+                    sw.Stop();
                     return false;
                 }
 
@@ -111,6 +122,7 @@ namespace TMPEffects.TextProcessing
 
             } while (!TryParseTag(text, tagStartIndex, tagEndIndex, ref tag, type));
 
+            sw.Stop();
             return true;
         }
 

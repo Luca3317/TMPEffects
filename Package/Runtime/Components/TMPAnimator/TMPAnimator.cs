@@ -365,6 +365,7 @@ namespace TMPEffects.Components
         /// <param name="updateFrom">Where the animations are updated from.</param>
         public void SetUpdateFrom(UpdateFrom updateFrom)
         {
+            Debug.Log("Setting to " + updateFrom);
             if (isAnimating)
             {
                 StopAnimating();

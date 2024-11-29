@@ -28,7 +28,14 @@ public class TMPAnimatorMarkReceiver : MonoBehaviour, INotificationReceiver
                 break;
 
             case TMPUpdateAnimationsMarker uam:
-                animator.UpdateAnimations(uam.DeltaTime);
+                float delta = uam.DeltaTime;
+                if (delta < 0)
+                {
+                    if (delta == -1) delta = Time.deltaTime;
+                    else if (delta == -2) delta = Time.fixedDeltaTime;
+                    else delta = 0;
+                }
+                animator.UpdateAnimations(delta);
                 break;
 
             case TMPSetUpdateFromMarker sufm:

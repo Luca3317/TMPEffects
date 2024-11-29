@@ -63,7 +63,7 @@ namespace TMPEffects.Components
         /// The database used to parse command tags.
         /// </summary>
         public TMPCommandDatabase Database => database;
-        
+
         /// <summary>
         /// The keyword database used to parse tag parameters.
         /// </summary>
@@ -276,18 +276,8 @@ namespace TMPEffects.Components
                 return;
             }
 
-            if (writing)
-            {
-                StopWriterCoroutine();
-            }
-
-            // reset
-            currentIndex = -1;
-            ResetInvokables(Mediator.CharData.Count);
+            ResetInternalState();
             Hide(0, Mediator.CharData.Count, true);
-
-            ResetData();
-
             RaiseResetWriterEvent(0);
         }
 
@@ -465,7 +455,7 @@ namespace TMPEffects.Components
             this.database = database;
             OnDatabaseChanged();
         }
-        
+
         /// <summary>
         /// Set the scene keyword database that will be used to parse tags.
         /// </summary>
@@ -550,22 +540,22 @@ namespace TMPEffects.Components
             EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
 #endif
         }
-        
+
         private void PrepareForProcessing()
         {
             // Reset database wrappers
             commandDatabase?.Dispose();
             keywordDatabaseWrapper?.Dispose();
-            
+
             commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
             keywordDatabaseWrapper = new KeywordDatabaseWrapper(sceneKeywordDatabase, keywordDatabase);
-            
+
             commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             keywordDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
-            
+
             // Reset categories
             commandCategory =
-                new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, keywordDatabaseWrapper.Database); 
+                new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, keywordDatabaseWrapper.Database);
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
@@ -583,7 +573,7 @@ namespace TMPEffects.Components
             processors.AddProcessor(eventCategory.Prefix, new TagProcessor(eventCategory));
 
             processors.RegisterTo(Mediator.Processor);
-        } 
+        }
 
         private void SubscribeToMediator()
         {
@@ -657,12 +647,12 @@ namespace TMPEffects.Components
             if (!Application.isPlaying)
             {
                 bool wasWriting = writing;
-                ResetWriter();
+                ResetInternalState();
+                Show(0, Mediator.CharData.Count, true);
                 if (wasWriting)
                 {
                     StartWriter();
                 }
-                else Show(0, Mediator.CharData.Count, true);
 
                 return;
             }
@@ -913,7 +903,7 @@ namespace TMPEffects.Components
                 OnStopWriting();
                 yield break;
             }
-            
+
             RaiseFinishWriterEvent();
             OnStopWriting();
 
@@ -932,6 +922,19 @@ namespace TMPEffects.Components
             {
                 excessWaitedTime += (prevScaled ? Time.time : Time.unscaledTime) - prevTime - time;
             }
+        }
+
+        private void ResetInternalState()
+        {
+            if (writing)
+            {
+                StopWriterCoroutine();
+            }
+
+            // reset
+            currentIndex = -1;
+            ResetInvokables(Mediator.CharData.Count);
+            ResetData();
         }
 
         private void ResetData()
@@ -1485,7 +1488,8 @@ namespace TMPEffects.Components
 
             tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
-            var commandCacher = new CommandCacher(Mediator.CharData, this, commandCategory, keywordDatabaseWrapper.Database);
+            var commandCacher =
+                new CommandCacher(Mediator.CharData, this, commandCategory, keywordDatabaseWrapper.Database);
             var eventCacher = new EventCacher(this, OnTextEvent);
 
             commands = new CachedCollection<CachedCommand>(commandCacher, tags[commandCategory]);

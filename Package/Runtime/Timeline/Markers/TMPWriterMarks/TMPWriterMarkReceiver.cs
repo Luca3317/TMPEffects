@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 [RequireComponent(typeof(TMPWriter))]
-public class TMPWriterReceiver : MonoBehaviour, INotificationReceiver
+public class TMPWriterMarkReceiver : MonoBehaviour, INotificationReceiver
 {
     private TMPWriter writer;
 
@@ -43,7 +43,7 @@ public class TMPWriterReceiver : MonoBehaviour, INotificationReceiver
                 break;
             case TMPWriterSetSkippableMarker wss:
                 writer.SetSkippable(wss.Skippable);
-                break;
+                break; 
             case TMPWriterResetWaitMarker:
                 writer.ResetWaitPeriod();
                 break;

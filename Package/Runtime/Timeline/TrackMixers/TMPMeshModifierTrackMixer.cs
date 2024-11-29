@@ -15,7 +15,9 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
     private bool needsReset = false;
     private CharDataModifiers modifiersStorage, modifiersStorage2;
     private CharDataModifiers accModifier, current;
-    
+
+    private float time;
+
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
         animator = playerData as TMPAnimator;
@@ -39,6 +41,8 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             active.Add(behaviour);
         }
 
+        time = (float)playable.GetTime();
+
         if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
         else if (needsReset)
         {
@@ -46,7 +50,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             animator.QueueCharacterReset();
         }
     }
- 
+
     private void OnAnimatedCallback(CharData cdata)
     {
         modifiersStorage ??= new CharDataModifiers();
@@ -59,7 +63,13 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             if (!active[i].IsValid()) continue;
             var behaviour = active[i].GetBehaviour();
             if (behaviour == null) continue;
-            float currTime = (float)active[i].GetTime();
+
+            float currTime;
+            if (time < behaviour.Clip.start)
+                currTime = time - (float)behaviour.Clip.start;
+            else
+                currTime = (float)active[i].GetTime();
+
             float duration = (float)behaviour.Clip.duration;
 
             float weight = GenericAnimation.CalcWeight(behaviour.Step.Step, currTime, duration, cdata,
@@ -70,9 +80,8 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             // var result = Calc(animator, behaviour.Step, cdata, weight, time);
             cdata.CharacterModifiers.Combine(current.CharacterModifiers);
             cdata.MeshModifiers.Combine(current.MeshModifiers);
-            
+
             needsReset = true;
         }
-        
     }
 }
