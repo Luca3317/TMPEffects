@@ -26,8 +26,6 @@ public class TMPEffectsSettings : ScriptableObject
 #if UNITY_EDITOR
                 if (TMPEffectsSettings.instance == null)
                 {
-                    // TODO Move the ImporterWindow into non-editor assembly
-                    // and wrap that in a preprocessor directive
                     TMPEffectsImporterWindow.ShowImporterWindow();
                 }
 #endif
@@ -38,8 +36,8 @@ public class TMPEffectsSettings : ScriptableObject
     }
     
     
-    public static TMPAnimationDatabase DefaultAnimationDatabase => Instance.defaultAnimationDatabase;
-    public static TMPCommandDatabase DefaultCommandDatabase => Instance.defaultCommandDatabase;
+    public static TMPAnimationDatabase DefaultAnimationDatabase => Instance?.defaultAnimationDatabase;
+    public static TMPCommandDatabase DefaultCommandDatabase => Instance?.defaultCommandDatabase;
     
     // TODO Remove those tooltips, for thte ones in the editor
     [SerializeField, Tooltip("The default animation database that TMPAnimator component will use.")]
@@ -47,33 +45,33 @@ public class TMPEffectsSettings : ScriptableObject
     [SerializeField, Tooltip("The default command database that TMPWriter components will use.")]
     private TMPCommandDatabase defaultCommandDatabase;
     
-    public static TMPKeywordDatabase DefaultKeywordDatabase => Instance.defaultKeywordDatabase;
+    public static TMPKeywordDatabase DefaultKeywordDatabase => Instance?.defaultKeywordDatabase;
     
     [SerializeField, Tooltip("The default keyword database that TMPEffects components will use.")]
     private TMPKeywordDatabase defaultKeywordDatabase;
 
-    public static TMPKeywordDatabase GlobalKeywordDatabase => Instance.globalKeywordDatabase;
+    public static TMPKeywordDatabase GlobalKeywordDatabase => Instance?.globalKeywordDatabase;
     
     [SerializeField, Tooltip("The keyword database that defines globally valid keywords.")]
     private TMPKeywordDatabase globalKeywordDatabase;
 
-    public static char AnimationPrefix => Instance.animationPrefix;
-    public static char ShowAnimationPrefix => Instance.showAnimationPrefix;
-    public static char HideAnimationPrefix => Instance.hideAnimationPrefix;
-    
-    // TODO Need to enforce these are valid according to rules in parsingutility
-    [SerializeField, Tooltip("The prefix for animation tags.")]
-    private char animationPrefix;
-    [SerializeField, Tooltip("The prefix for show animation tags.")]
-    private char showAnimationPrefix;
-    [SerializeField, Tooltip("The prefix for hide animation tags.")]
-    private char hideAnimationPrefix;
-    
-    public static char CommandPrefix => Instance.commandPrefix;
-    public static char EventPrefix => Instance.eventPrefix;
-    
-    [SerializeField, Tooltip("The prefix for command tags.")]
-    private char commandPrefix;
-    [SerializeField, Tooltip("The prefix for event tags.")]
-    private char eventPrefix;
+    // public static char AnimationPrefix => Instance != null ? Instance.animationPrefix : '!';
+    // public static char ShowAnimationPrefix => Instance.showAnimationPrefix;
+    // public static char HideAnimationPrefix => Instance.hideAnimationPrefix;
+    //
+    // // TODO Need to enforce these are valid according to rules in parsingutility
+    // [SerializeField, Tooltip("The prefix for animation tags.")]
+    // private char animationPrefix;
+    // [SerializeField, Tooltip("The prefix for show animation tags.")]
+    // private char showAnimationPrefix;
+    // [SerializeField, Tooltip("The prefix for hide animation tags.")]
+    // private char hideAnimationPrefix;
+    //
+    // public static char CommandPrefix => Instance.commandPrefix;
+    // public static char EventPrefix => Instance.eventPrefix;
+    //
+    // [SerializeField, Tooltip("The prefix for command tags.")]
+    // private char commandPrefix;
+    // [SerializeField, Tooltip("The prefix for event tags.")]
+    // private char eventPrefix;
 }
