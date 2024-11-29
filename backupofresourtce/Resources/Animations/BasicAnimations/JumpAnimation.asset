@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e448cd9263ab7f45b2ebab2a5e08dd6, type: 3}
+  m_Name: JumpAnimation
+  m_EditorClassIdentifier: 
+  offsetProvider:
+    offsetProvider:
+      enumValue: 5
+      customValue: {fileID: 0}
+      useCustom: 0
+    uniformity: 0.1
+    ignoreAnimatorScaling: 0
+    zeroBasedOffset: 0
+  wave:
+    upPeriod: 0.4
+    downPeriod: 0.6
+    amplitude: 20
+    upwardCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0
+        outWeight: 0.30863434
+      - serializedVersion: 3
+        time: 0.5490651
+        value: -0.06520533
+        inSlope: 1.6242188
+        outSlope: 1.6242188
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.35061345
+        outWeight: 0.2655264
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: -0.016071713
+        outSlope: -0.016071713
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.62276995
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    downwardCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0.6874897
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0
+        outWeight: 0.33336633
+      - serializedVersion: 3
+        time: 0.0909
+        value: 0
+        inSlope: -0.687694
+        outSlope: 1.3747915
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.3332673
+        outWeight: 0.3334159
+      - serializedVersion: 3
+        time: 0.2727
+        value: 0
+        inSlope: -1.3756083
+        outSlope: 2.749388
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.3332179
+        outWeight: 0.33334887
+      - serializedVersion: 3
+        time: 0.6364
+        value: 0
+        inSlope: -2.7491832
+        outSlope: 5.5016418
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.3333737
+        outWeight: 0.33326733
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.33336633
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    crestWait: 0
+    troughWait: 3
+    velocity: 1

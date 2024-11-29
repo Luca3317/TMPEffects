@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1c888a8af36584781ab02d09901fc2, type: 3}
+  m_Name: ShowAnimationDatabase
+  m_EditorClassIdentifier: 
+  showAnimations:
+    _serializedList:
+    - Key: char
+      Value: {fileID: 11400000, guid: d82e51bb982c27c47a8814341550d76a, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: 7ff686710e747034e9b6413be079b56a, type: 2}
+    - Key: spread
+      Value: {fileID: 11400000, guid: 747c7167c5d13a24dae0f420c3da1a8a, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: fa0673e18b43a904ca0a847d165d724f, type: 2}
+    - Key: move
+      Value: {fileID: 11400000, guid: 108b496c4e18ae84e8e10d75c99e52ca, type: 2}
+    - Key: grow
+      Value: {fileID: 11400000, guid: 6dd68f0151965bf4896d33309fe4bad4, type: 2}
+    - Key: fade
+      Value: {fileID: 11400000, guid: 76f36d696eb3a6d4a87af67ab4aae6a8, type: 2}

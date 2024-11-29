@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c2324e8bb51204f9baab003106ec53, type: 3}
+  m_Name: HideAnimationDatabase
+  m_EditorClassIdentifier: 
+  hideAnimations:
+    _serializedList:
+    - Key: grow
+      Value: {fileID: 11400000, guid: 24b89a3d9f2eaa84ab1f744155c108a3, type: 2}
+    - Key: shake
+      Value: {fileID: 11400000, guid: a8d1eaa017b36aa45ba73e3972d0a777, type: 2}
+    - Key: spread
+      Value: {fileID: 11400000, guid: 4dabd2eadc1eba049af839f1abfa4bef, type: 2}
+    - Key: pivot
+      Value: {fileID: 11400000, guid: 93a8d51de9ba84c498f47da11c769baf, type: 2}
+    - Key: char
+      Value: {fileID: 11400000, guid: afe5af1083ddb1f4695fef19a77421c8, type: 2}
+    - Key: fade
+      Value: {fileID: 11400000, guid: 8e33c09cfcadddb429127412e4187d31, type: 2}
+    - Key: move
+      Value: {fileID: 11400000, guid: 01ef5b43ef2248240ac83f2dbdbb2495, type: 2}

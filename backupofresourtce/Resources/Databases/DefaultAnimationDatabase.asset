@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1899aee2d84fa48a4562b19deb09c6, type: 3}
+  m_Name: DefaultAnimationDatabase
+  m_EditorClassIdentifier: 
+  basicAnimationDatabase: {fileID: 11400000, guid: 0aed3c1ce143dcc418ac83b731eb835d, type: 2}
+  showAnimationDatabase: {fileID: 11400000, guid: d9f9570f82f2fbd47b926e2b995d031a, type: 2}
+  hideAnimationDatabase: {fileID: 11400000, guid: 43435b1bd2c7f4e458a9741ea6de02f4, type: 2}
+  prevBasicAnimationDatabase: {fileID: 0}
+  prevShowAnimationDatabase: {fileID: 0}
+  prevHideAnimationDatabase: {fileID: 0}
