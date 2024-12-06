@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using GUIContent = UnityEngine.GUIContent;
 
-[CustomPropertyDrawer(typeof(ParameterTypes.TypedVector3))]
+[CustomPropertyDrawer(typeof(TMPParameterTypes.TypedVector3))]
 public class TypedVector3Drawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -17,7 +17,7 @@ public class TypedVector3Drawer : PropertyDrawer
     }
 }
 
-[CustomPropertyDrawer(typeof(ParameterTypes.TypedVector2))]
+[CustomPropertyDrawer(typeof(TMPParameterTypes.TypedVector2))]
 public class TypedVector2Drawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -47,8 +47,8 @@ internal static class TypedVectorDrawerUtility
 
         for (int i = 0; i < indent; i++) EditorGUI.indentLevel++;
 
-        property.FindPropertyRelative("type").enumValueIndex = (int)(ParameterTypes.VectorType)
+        property.FindPropertyRelative("type").enumValueIndex = (int)(TMPParameterTypes.VectorType)
             EditorGUI.EnumPopup(position, GUIContent.none,
-                (ParameterTypes.VectorType)property.FindPropertyRelative("type").enumValueIndex);
+                (TMPParameterTypes.VectorType)property.FindPropertyRelative("type").enumValueIndex);
     }
 }

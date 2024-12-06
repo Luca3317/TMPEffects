@@ -4,10 +4,14 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+internal static class TMPEffectsEditorPrefsKeys
+{
+    public const string OptOutKey =  "TMPEffects.BugReport.OptOutOfBugReport";
+    public const string RanIntoMissingReflectedPowerSlider = "TMPEffects.RanInto.MissingReflectedPowerSlider";
+}
+
 internal static class TMPEffectsBugReport
 {
-    public const string OptOutKey =  "TMPEffects.BugReport.MayOpenWindowHuh";
-    
     public static void BugReportPrompt(System.Exception exception)
     {
         BugReportPrompt(exception.ToString());
@@ -15,11 +19,9 @@ internal static class TMPEffectsBugReport
 
     public static void BugReportPrompt(string message)
     {
-        message = string.Join(" ", Enumerable.Repeat(message, 100));
-
 #if UNITY_EDITOR
         // Have to do this check before since if opted out will return true
-        if (!EditorUtility.GetDialogOptOutDecision(DialogOptOutDecisionType.ForThisMachine, OptOutKey))
+        if (!EditorUtility.GetDialogOptOutDecision(DialogOptOutDecisionType.ForThisMachine, TMPEffectsEditorPrefsKeys.OptOutKey))
         {
             if (message.Length > 500)
             {
@@ -43,7 +45,7 @@ internal static class TMPEffectsBugReport
                     "You have opted out of the bug report window.\nIf you ever want to undo this, you can do so in Project Settings/TMPEffects.",
                     "Undo now", "Ok");
                 if (!undo)
-                    EditorUtility.SetDialogOptOutDecision(DialogOptOutDecisionType.ForThisMachine, OptOutKey, true);
+                    EditorUtility.SetDialogOptOutDecision(DialogOptOutDecisionType.ForThisMachine, TMPEffectsEditorPrefsKeys.OptOutKey, true);
             }
         }
 #endif

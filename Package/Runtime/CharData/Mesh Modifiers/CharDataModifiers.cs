@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+using Debug = UnityEngine.Debug;
 
 [Serializable]
 public class CharDataModifiers
@@ -58,10 +61,10 @@ public class CharDataModifiers
 
         if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
-            vbl += AnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);
-            vtl += AnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);
-            vtr += AnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);
-            vbr += AnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);
+            vbl += TMPAnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);
+            vtl += TMPAnimationUtility.ScaleVector(meshModifiers.TL_Delta, cData, context);
+            vtr += TMPAnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);
+            vbr += TMPAnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);
         }
 
         // TODO Clamp
@@ -94,11 +97,11 @@ public class CharDataModifiers
             for (int i = 0; i < characterModifiers.Rotations.Count; i++)
             {
                 var rot = characterModifiers.Rotations[i];
-                
+
                 if (rot.eulerAngles == Vector3.zero) continue;
-                
+
                 pivot = cData.InitialPosition +
-                        AnimationUtility.ScaleVector(rot.pivot - cData.InitialPosition, cData, context);
+                        TMPAnimationUtility.ScaleVector(rot.pivot - cData.InitialPosition, cData, context);
 
                 matrix = Matrix4x4.Rotate(Quaternion.Euler(rot.eulerAngles));
 
@@ -108,10 +111,10 @@ public class CharDataModifiers
                 vbr = matrix.MultiplyPoint3x4(vbr - pivot) + pivot;
             }
         }
- 
+
         if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
         {
-            var scaled = AnimationUtility.ScaleVector(characterModifiers.PositionDelta, cData, context);
+            var scaled = TMPAnimationUtility.ScaleVector(characterModifiers.PositionDelta, cData, context);
             vbl += scaled;
             vtl += scaled;
             vtr += scaled;
@@ -142,10 +145,24 @@ public class CharDataModifiers
         LerpMeshModifiersUnclamped(cData, ctx, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
     }
 
+    public static CharDataModifiers LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t)
+    {
+        CharDataModifiers storage = new CharDataModifiers();
+        LerpUnclamped(cData, modifiers, t, storage);
+        return storage;
+    }
+
+    public static void LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t,
+        CharDataModifiers result)
+    {
+        LerpCharacterModifiersUnclamped(cData, modifiers.CharacterModifiers, t, result.CharacterModifiers);
+        LerpMeshModifiersUnclamped(cData, modifiers.MeshModifiers, t, result.MeshModifiers);
+    }
+
     public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers start,
         TMPCharacterModifiers end, float t, TMPCharacterModifiers result)
     {
-        result.ClearModifierFlags();
+        result.ClearModifiers();
 
         var combinedFlags = end.Modifier | start.Modifier;
 
@@ -186,9 +203,56 @@ public class CharDataModifiers
             }
             catch
             {
-                // TODO Replace with TMPEffects.Bugreport
-                Debug.LogError("Tried to add to many with " + end.Rotations.Count);
+                StackTrace st = new StackTrace();
+                TMPEffectsBugReport.BugReportPrompt("Tried to add to many with " + end.Rotations.Count + ": " +
+                                                    st.ToString());
             }
+        }
+    }
+
+    public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers modifiers, float t,
+        TMPCharacterModifiers result)
+    {
+        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
+        {
+            result.PositionDelta =
+                modifiers.PositionDelta * t;
+        }
+        
+        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
+        {
+            try
+            {
+                for (int i = 0; i < modifiers.Rotations.Count; i++)
+                {
+                    // Debug.Log("douing it " + i + "; there are " + modifiers.Rotations.Count + " and so far i got " + result.Rotations.Count);
+                    var rot = modifiers.Rotations[i];
+                    result.AddRotation(
+                        new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
+                            rot.pivot));
+                }
+            }
+            catch (System.Exception exception)
+            {
+                TMPEffectsBugReport.BugReportPrompt("Tried to add to many with " + modifiers.Rotations.Count + "; " + result.Rotations.Count + ":\n" + exception);
+            } 
+        }
+
+        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
+        {
+            // LossyScale is more lossy than I thought, so this is not an option
+            // For example: Matrix4x4.Scale(1, -1.5, 1).lossyScale = (-1, 1.5, 0)
+            // Vector3 endScale = modifiers.characterModifiers.ScaleDelta.lossyScale;
+
+            // For now; GetPreciseScale. Probably fuggin slow though
+            // Alternatively; store list of vector3s that is combined when needed?
+            // Could cache that result. Hm
+
+            Vector3 endScale = GetPreciseScale(modifiers.ScaleDelta);
+            Vector3 startScale = cData.InitialScale;
+            Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
+
+            result.ScaleDelta = Matrix4x4.Scale(lerpedScale);
         }
     }
 
@@ -265,68 +329,6 @@ public class CharDataModifiers
         }
     }
 
-    public static CharDataModifiers LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t)
-    {
-        CharDataModifiers storage = new CharDataModifiers();
-        LerpUnclamped(cData, modifiers, t, storage);
-        return storage;
-    }
-
-    public static void LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t,
-        CharDataModifiers result)
-    {
-        LerpCharacterModifiersUnclamped(cData, modifiers.CharacterModifiers, t, result.CharacterModifiers);
-        LerpMeshModifiersUnclamped(cData, modifiers.MeshModifiers, t, result.MeshModifiers);
-    }
-
-    public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers modifiers, float t,
-        TMPCharacterModifiers result)
-    {
-        // result.ClearModifierFlags();
-
-        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.PositionDelta))
-        {
-            result.PositionDelta =
-                modifiers.PositionDelta * t;
-        }
-
-        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Rotations))
-        {
-            try
-            {
-                for (int i = 0; i < modifiers.Rotations.Count; i++)
-                {
-                    var rot = modifiers.Rotations[i];
-                    result.AddRotation(
-                        new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
-                            rot.pivot));
-                }
-            }
-            catch
-            {
-                Debug.LogError("Tried to add to many with " + modifiers.Rotations.Count);
-            }
-        }
-
-        if (modifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
-        {
-            // TODO
-            // LossyScale is more lossy than I thought, so this is not an option
-            // For example: Matrix4x4.Scale(1, -1.5, 1).lossyScale = (-1, 1.5, 0)
-            // Vector3 endScale = modifiers.characterModifiers.ScaleDelta.lossyScale;
-
-            // For now; GetPreciseScale. Probably fuggin slow though
-            // Alternatively; store list of vector3s that is combined when needed?
-            // Could cache that result. Hm
-
-            Vector3 endScale = GetPreciseScale(modifiers.ScaleDelta);
-            Vector3 startScale = cData.InitialScale;
-            Vector3 lerpedScale = Vector3.LerpUnclamped(startScale, endScale, t);
-
-            result.ScaleDelta = Matrix4x4.Scale(lerpedScale);
-        }
-    }
-
     public static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t,
         TMPMeshModifiers result)
     {
@@ -371,6 +373,6 @@ public class CharDataModifiers
     public void Reset()
     {
         meshModifiers.ClearModifiers();
-        characterModifiers.ClearModifierFlags();
+        characterModifiers.ClearModifiers();
     }
 }

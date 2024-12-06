@@ -36,6 +36,8 @@ namespace TMPEffects.Editor
 
         protected virtual void OnDisable()
         {
+            if (previewUtility != null) previewUtility.Cleanup();
+            (target as INotifyObjectChanged).ObjectChanged -= OnChange;
             if (targetObject != null)
             {
                 try
@@ -47,8 +49,6 @@ namespace TMPEffects.Editor
                     Debug.LogError("Failed to dispose targetObject correctly");
                 }
             }
-            if (previewUtility != null) previewUtility.Cleanup();
-            (target as INotifyObjectChanged).ObjectChanged -= OnChange;
         }
 
         public override GUIContent GetPreviewTitle()

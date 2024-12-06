@@ -5,8 +5,8 @@ using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.Databases;
 using TMPEffects.ParameterUtilityGenerator.Attributes;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
+using static TMPEffects.Parameters.TMPParameterTypes;
 
 namespace TMPEffects.Parameters
 {
@@ -14,7 +14,7 @@ namespace TMPEffects.Parameters
     /// Utility class for easy parameter handling.
     /// </summary>
     [GenerateParameterUtility]
-    public static partial class ParameterUtility
+    public static partial class TMPParameterUtility
     {
         /// <summary>
         /// Check if there is a well-defined parameter of the given name or aliases.<br />
@@ -30,7 +30,7 @@ namespace TMPEffects.Parameters
         {
             value = null;
             if (parameters.ContainsKey(name)) value = name;
-            if (aliases == null)
+            if (aliases == null) 
             {
                 return value != null;
             }

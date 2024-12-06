@@ -18,7 +18,7 @@ namespace TMPEffects.Parameters
         /// <param name="segmentData">The relevant segment data.</param>
         /// <param name="animatorData">The relevant animator data.</param>
         /// <param name="ignoreAnimatorScaling">Whether to ignore the animator's scaling.</param>
-        /// <returns>A timing offset (to be used, for example, with <see cref="AnimationUtility.Wave"/>).</returns>
+        /// <returns>A timing offset (to be used, for example, with <see cref="TMPAnimationUtility.Wave"/>).</returns>
         public float GetOffset(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
             bool ignoreAnimatorScaling = false);
 
@@ -46,54 +46,54 @@ namespace TMPEffects.Parameters
                 case "sidx":
                 case "sindex":
                 case "segmentindex":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.SegmentIndex);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.SegmentIndex);
                     return true;
 
                 case "idx":
                 case "index":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.Index);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Index);
                     return true;
 
                 case "word":
                 case "wordidx":
                 case "wordindex":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.Word);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Word);
                     return true;
 
                 case "line":
                 case "lineno":
                 case "linenumber":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.Line);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Line);
                     return true;
 
                 case "base":
                 case "baseline":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.Baseline);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Baseline);
                     return true;
 
                 case "x":
                 case "xpos":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.XPos);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.XPos);
                     return true;
 
                 case "y":
                 case "ypos":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.YPos);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.YPos);
                     return true;
 
                 case "wordly":
                 case "worldypos":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.WorldYPos);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.WorldYPos);
                     return true;
 
                 case "wordlx":
                 case "worldxpos":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.WorldXPos);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.WorldXPos);
                     return true;
 
                 case "wordlz":
                 case "worldzpos":
-                    result = new OffsetTypePowerEnum(ParameterTypes.OffsetType.WorldZPos);
+                    result = new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.WorldZPos);
                     return true;
             }
 

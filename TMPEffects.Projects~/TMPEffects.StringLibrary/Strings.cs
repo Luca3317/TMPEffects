@@ -47,8 +47,8 @@ namespace TMPEffects.StringLibrary
         #region Various TMPEffects namespace paths and names
 
         public const string AnimationUtilityPath = "TMPEffects.TMPAnimations.AnimationUtility";
-        public const string ParameterUtilityPath = "TMPEffects.Parameters.ParameterUtility";
-        public const string ParameterTypesPath = "TMPEffects.Parameters.ParameterTypes";
+        public const string ParameterUtilityPath = "TMPEffects.Parameters.TMPParameterUtility";
+        public const string ParameterTypesPath = "TMPEffects.Parameters.TMPParameterTypes";
         public const string ParameterParsingPath = "TMPEffects.Parameters.ParameterParsing";
 
         public const string CharDataName = "TMPEffects.CharacterData.CharData";

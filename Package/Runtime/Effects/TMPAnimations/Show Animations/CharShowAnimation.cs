@@ -5,7 +5,7 @@ using TMPEffects.Components.Animator;
 using TMPEffects.Extensions;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
@@ -148,7 +148,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                         if (success)
                         {
                             d.currentCharacterCache[segmentIndex] = newCharacter;
-                            AnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData,
+                            TMPAnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData,
                                 context);
                         }
                         else
@@ -165,7 +165,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             {
                 TMP_Character current = d.currentCharacterCache[segmentIndex];
                 TMP_Character original = d.originalCharacterCache[segmentIndex];
-                AnimationUtility.SetToCharacter(current, original, cData, context);
+                TMPAnimationUtility.SetToCharacter(current, original, cData, context);
             }
         }
 

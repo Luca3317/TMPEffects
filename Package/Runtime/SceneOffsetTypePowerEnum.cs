@@ -7,24 +7,24 @@ namespace TMPEffects.TMPAnimations
 {
     // Offset provider wrappers, used in database etc
     [Serializable]
-    public class SceneOffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, TMPSceneOffsetProvider>,
+    public class SceneOffsetTypePowerEnum : PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>,
         IEquatable<SceneOffsetTypePowerEnum>, ITMPOffsetProvider
     {
-        public SceneOffsetTypePowerEnum() : base(ParameterTypes.OffsetType.Index)
+        public SceneOffsetTypePowerEnum() : base(TMPParameterTypes.OffsetType.Index)
         {
         }
 
-        public SceneOffsetTypePowerEnum(ParameterTypes.OffsetType offsetType) : base(offsetType)
+        public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType) : base(offsetType)
         {
         }
 
-        public SceneOffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
+        public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType,
             TMPSceneOffsetProvider customOffsetProvider)
             : base(offsetType, customOffsetProvider)
         {
         }
 
-        public SceneOffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
+        public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType,
             TMPSceneOffsetProvider customOffsetProvider, bool useCustom)
             : base(offsetType, customOffsetProvider, useCustom)
         {
@@ -34,7 +34,7 @@ namespace TMPEffects.TMPAnimations
             bool ignoreAnimatorScaling = false)
         {
             if (!useCustom)
-                return AnimationUtility.GetOffset(EnumValue, cData, segmentData, animatorData, ignoreAnimatorScaling);
+                return TMPAnimationUtility.GetOffset(EnumValue, cData, segmentData, animatorData, ignoreAnimatorScaling);
 
             if (Value == null) return 0;
 
@@ -46,7 +46,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (!useCustom)
             {
-                AnimationUtility.GetMinMaxOffset(out min, out max, EnumValue, segmentData, animatorData, ignoreAnimatorScaling);
+                TMPAnimationUtility.GetMinMaxOffset(out min, out max, EnumValue, segmentData, animatorData, ignoreAnimatorScaling);
                 return;
             }
 

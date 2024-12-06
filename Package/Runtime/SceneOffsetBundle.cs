@@ -6,84 +6,107 @@ using TMPEffects.Components.Animator;
 using TMPEffects.ParameterUtilityGenerator.Attributes;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TMPEffects.Parameters
 {
-    // TODO Update to be in sync w / offsetbundle
-    // Scene bundle for AutoParameters to easily get offsets
     [Serializable]
     [TMPParameterBundle("SceneOffsetBundle")]
     public partial class SceneOffsetBundle
     {
+        /// <summary>
+        /// The <see cref="ITMPOffsetProvider"/> used to calculate offsets.
+        /// </summary>
+        public ITMPOffsetProvider Provider => provider;
+
+        /// <summary>
+        /// The uniformity that should be applied to the offset.
+        /// </summary>
+        public float Uniformity => uniformity;
+
+        /// <summary>
+        /// Whether to ignore animator scaling (for relevant offset types).
+        /// </summary>
+        public bool IgnoreAnimatorScaling => ignoreAnimatorScaling;
+
+        /// <summary>
+        /// Whether to zero base offset, i.e. whether to shift offsets so that the minimum offset is zero.
+        /// </summary>
+        public bool ZeroBasedOffset => zeroBasedOffset;
+        
+        /// <summary>
+        /// Whether to cache offsets.
+        /// </summary>
+        public bool Cache
+        {
+            get => impl.Cache;
+            set => impl.Cache = value;
+        }
+
+        private ITMPOffsetProvider provider
+        {
+            get => _provider ?? offsetProvider;
+            set => _provider = value;
+        }
+
         [TMPParameterBundleField("offset", "off")]
         private ITMPOffsetProvider _provider;
 
-        [SerializeField] private SceneOffsetTypePowerEnum offsetProvider;
+        // HideInInspector so it doesnt show "Add from TMPOffsetProvider" in context menu of timeline
+        [SerializeField, HideInInspector] private OffsetTypePowerEnum offsetProvider = new OffsetTypePowerEnum();
 
         [TMPParameterBundleField("uniformity", "uni")] [SerializeField]
-        private float uniformity;
+        private float uniformity = 1;
 
         [SerializeField] [TMPParameterBundleField("ignoreanimatorscaling", "ignorescaling", "ignorescl", "ignscl")]
-        private bool ignoreAnimatorScaling;
-
-        [SerializeField]
-        [TMPParameterBundleField("ignoresegmentlength", "ignoreseglen", "ignorelen", "ignseglen", "ignlen")]
-        private bool ignoreSegmentLength;
+        private bool ignoreAnimatorScaling = false;
 
         [SerializeField] [TMPParameterBundleField("zerooffset", "zerooff", "zoff", "zoffset", "ignlen")]
-        private bool zeroBaseOffset = true;
+        private bool zeroBasedOffset = false;
 
+        /// <summary>
+        /// Clear the cached offsets (offsets will only be cached if <see cref="Cache"/> is true).
+        /// </summary>
+        public void ClearCache()
+        {
+            impl.ClearCache();
+        }
+
+        private OffsetBundleImpl impl;
+
+        /// <summary>
+        /// Get the offset for the given <see cref="CharData"/> in the context of the given <see cref="SegmentData"/>.<br/>
+        /// Be aware that if <see cref="Cache"/> is true, this will cache offsets internally. You may clear the cache using <see cref="ClearCache"/>.
+        /// </summary>
+        /// <param name="cData">The <see cref="CharData"/> to get the offset for.</param>
+        /// <param name="animatorData">Data about the animating <see cref="TMPAnimator"/>.</param>
+        /// <param name="segmentData">Data about the contextual segment.</param>
+        /// <returns>The offset for the given <see cref="CharData"/>.</returns>
+        public float GetOffset(CharData cData, IAnimatorDataProvider animatorData, ITMPSegmentData segmentData = null)
+            => impl.GetOffset(cData, animatorData, segmentData);
+
+        /// <summary>
+        /// Get the offset for the given <see cref="CharData"/> in the context of the given <see cref="SegmentData"/>.<br/>
+        /// Be aware that if <see cref="Cache"/> is true, this will cache offsets internally. You may clear the cache using <see cref="ClearCache"/>.
+        /// </summary>
+        /// <param name="cData">The <see cref="CharData"/> to get the offset for.</param>
+        /// <param name="context">The <see cref="IAnimationContext"/> of the animating <see cref="TMPAnimator"/>.</param>
+        /// <returns>The offset for the given <see cref="CharData"/>.</returns>
         public float GetOffset(CharData cData, IAnimationContext context)
-        {
-            float offset = _provider.GetOffset(cData, context.SegmentData, context.AnimatorContext,
-                ignoreAnimatorScaling);
-
-            if (zeroBaseOffset)
-            {
-                _provider.GetMinMaxOffset(out var min, out var max, context.SegmentData, context.AnimatorContext);
-                float zeroedOffset = offset - min;
-                float zeroedMax = max - min;
-                if (uniformity >= 0)
-                {
-                    offset = zeroedOffset;
-                }
-                else
-                {
-                    offset = zeroedMax - zeroedOffset;
-                }
-            }
-
-            return offset * uniformity;
-        }
-
-        public float GetOffset(CharData cData, IAnimatorContext context)
-        {
-            var segmentData = AnimationUtility.GetMockedSegment(context.Animator.TextComponent.GetParsedText().Length,
-                context.Animator.CharData);
-            float offset = _provider.GetOffset(cData, segmentData, context, ignoreAnimatorScaling);
-
-            if (zeroBaseOffset)
-            {
-                _provider.GetMinMaxOffset(out var min, out var max, segmentData, context);
-                float zeroedOffset = offset - min;
-                float zeroedMax = max - min;
-                if (uniformity >= 0)
-                {
-                    offset = zeroedOffset;
-                }
-                else
-                {
-                    offset = zeroedMax - zeroedOffset;
-                }
-            }
-
-            return offset * uniformity;
-        }
+            => impl.GetOffset(cData, context);
 
         private static void Create_Hook(ref SceneOffsetBundle newInstance, SceneOffsetBundle originalInstance,
             SceneOffsetBundleParameters parameters)
         {
-            newInstance._provider = parameters._provider ?? originalInstance.offsetProvider;
+            newInstance.impl = new OffsetBundleImpl();
+
+            // Create Hook always called after the parameters have been applied to newinstance
+            newInstance.impl.IgnoreAnimatorScaling = newInstance.ignoreAnimatorScaling;
+            newInstance.impl.Provider = newInstance.provider;
+            newInstance.impl.ZeroBasedOffset = newInstance.zeroBasedOffset;
+            newInstance.impl.Uniformity = newInstance.uniformity;
+            // Cache by default
+            newInstance.impl.Cache = true;
         }
     }
 }

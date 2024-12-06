@@ -7,7 +7,7 @@ using TMPEffects.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {
@@ -135,7 +135,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
                         if (success)
                         {
                             d.currentCharacterCache[segmentIndex] = newCharacter;
-                            AnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData, context);
+                            TMPAnimationUtility.SetToCharacter(newCharacter, d.originalCharacterCache[segmentIndex], cData, context);
                         }
                         else
                             Debug.LogError($"Failed to get character {character} from lookup table");
@@ -151,7 +151,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             {
                 TMP_Character current = d.currentCharacterCache[segmentIndex];
                 TMP_Character original = d.originalCharacterCache[segmentIndex];
-                AnimationUtility.SetToCharacter(current, original, cData, context);
+                TMPAnimationUtility.SetToCharacter(current, original, cData, context);
             }
         }
 

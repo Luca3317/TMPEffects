@@ -2,7 +2,7 @@ using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
 using TMPEffects.Parameters;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.Parameters.TMPParameterTypes;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -42,28 +42,11 @@ namespace TMPEffects.TMPAnimations.Animations
             // Evaluate the wave based on time and offset
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
                 d.waveOffsetType.GetOffset(cData, context));
-            
+
             // Calculate the angle based on the evaluate wave
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
-            
-            // TODO I still want to have a nice way to simplify this; no switch needed
-            // TODO Anchor might be broken rn? Swing doesnt look right at all
-            // Set the pivot depending on its type
-            switch (d.pivot.type)
-            {
-                case VectorType.Position:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        d.pivot.IgnoreScaling(cData, context).ToPosition(cData));
-                    break;
-                case VectorType.Offset:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        cData.InitialPosition + d.pivot.ToDelta(cData));
-                    break;
-                case VectorType.Anchor:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        d.pivot.ToPosition(cData));
-                    break;
-            }
+            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+                d.pivot.ToPosition(cData, context));
         }
     }
 }

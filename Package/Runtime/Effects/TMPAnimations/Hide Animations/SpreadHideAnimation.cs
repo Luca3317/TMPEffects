@@ -3,9 +3,9 @@ using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
+using static TMPEffects.Parameters.TMPParameterTypes;
 using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.HideAnimations

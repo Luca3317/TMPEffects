@@ -32,7 +32,6 @@ public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
         
         PlayableDirector director = (PlayableDirector)graph.GetResolver();
         playable.GetGraph().GetResolver().SetReferenceValue(this.director.exposedName, director);
-        // behaviour.Initialize(this.director.Resolve(graph.GetResolver()));
         
         return playable;
     }

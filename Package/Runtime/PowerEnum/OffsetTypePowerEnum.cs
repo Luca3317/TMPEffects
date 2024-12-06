@@ -10,24 +10,24 @@ using TMPEffects.Databases;
 namespace TMPEffects.TMPAnimations
 {
     [Serializable]
-    public class OffsetTypePowerEnum : PowerEnum<ParameterTypes.OffsetType, TMPOffsetProvider>,
+    public class OffsetTypePowerEnum : PowerEnum<TMPParameterTypes.OffsetType, TMPOffsetProvider>,
         IEquatable<OffsetTypePowerEnum>, ITMPOffsetProvider
     {
-        public OffsetTypePowerEnum() : base(ParameterTypes.OffsetType.Index)
+        public OffsetTypePowerEnum() : base(TMPParameterTypes.OffsetType.Index)
         {
         }
 
-        public OffsetTypePowerEnum(ParameterTypes.OffsetType offsetType) : base(offsetType)
+        public OffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType) : base(offsetType)
         {
         }
 
-        public OffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
+        public OffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType,
             TMPOffsetProvider customOffsetProvider)
             : base(offsetType, customOffsetProvider)
         {
         }
 
-        public OffsetTypePowerEnum(ParameterTypes.OffsetType offsetType,
+        public OffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType,
             TMPOffsetProvider customOffsetProvider, bool useCustom)
             : base(offsetType, customOffsetProvider, useCustom)
         {
@@ -38,7 +38,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (!useCustom)
             {
-                return AnimationUtility.GetOffset(EnumValue, cData, segmentData, animatorData, ignoreAnimatorScaling);
+                return TMPAnimationUtility.GetOffset(EnumValue, cData, segmentData, animatorData, ignoreAnimatorScaling);
             }
 
             if (Value == null) return 0;
@@ -51,7 +51,7 @@ namespace TMPEffects.TMPAnimations
         {
             if (!useCustom)
             {
-                AnimationUtility.GetMinMaxOffset(out min, out max, EnumValue, segmentData, animatorData, ignoreAnimatorScaling);
+                TMPAnimationUtility.GetMinMaxOffset(out min, out max, EnumValue, segmentData, animatorData, ignoreAnimatorScaling);
                 return;
             }
 

@@ -32,10 +32,7 @@ namespace TMPEffects.Parameters
 
         [TMPParameterBundleField("ignoresegmentlength", "ignoresegmentlen", "ignoreseglen", "ignseglen",
             "ignsegmentlength", "ignsegmentlen")]
-        public bool finishWholeSegmentInTime; // TODO Wtf to call this; what is the core of the concept
-
-        [TMPParameterBundleField("")]
-        public bool zeroBasedOffset;
+        public bool finishWholeSegmentInTime;
 
         public TMPBlendCurve()
         {
@@ -49,32 +46,19 @@ namespace TMPEffects.Parameters
             this.offsetProvider = crv.offsetProvider;
             this.ignoreAnimatorScaling = crv.ignoreAnimatorScaling;
             this.finishWholeSegmentInTime = crv.finishWholeSegmentInTime;
-            this.zeroBasedOffset = crv.zeroBasedOffset;
         }
 
-        public float EvaluateIn(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData, float timeValue, float totalDuration)
+        public float EvaluateIn(float timeValue, float totalDuration, float minOffset, float maxOffset,
+            float offset)
         {
-            float offset = provider.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);
-
-            // TODO
-            // if (zeroBasedOffsets)
-            // {
-            provider.GetMinMaxOffset(out var min, out var max, segmentData, animatorData);
-            float zeroedOffset = offset - min;
-            float zeroedMax = max - min;
-            if (uniformity >= 0)
-            {
-                offset = zeroedOffset;
-            }
-            else
-            {
-                offset = zeroedMax - zeroedOffset;
-            }
-            // }
+            offset = offset - minOffset;
+            maxOffset = maxOffset - minOffset;
+            if (uniformity < 0)
+                offset = maxOffset - offset;
 
             if (finishWholeSegmentInTime)
             {
-                float scalar = (zeroedMax * Mathf.Abs(uniformity)) / totalDuration + 1f;
+                float scalar = (maxOffset * Mathf.Abs(uniformity)) / totalDuration + 1f;
                 scalar = 1f / scalar;
 
                 timeValue -= offset * scalar * Mathf.Abs(uniformity);
@@ -85,37 +69,30 @@ namespace TMPEffects.Parameters
             timeValue -= offset * Mathf.Abs(uniformity);
             return curve.Evaluate(timeValue / totalDuration);
         }
-        
-        public float EvaluateIn(CharData cData, IAnimatorDataProvider context, float timeValue, float totalDuration)
-        {
-            var segmentData = AnimationUtility.GetMockedSegment(context.Animator.TextComponent.GetParsedText().Length,
-                context.Animator.CharData);
-            return EvaluateIn(cData, segmentData, context, timeValue, totalDuration);
-        }
 
-        public float EvaluateOut(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData, float timeValue, float totalDuration,
-            float preTime)
+        public float EvaluateIn(float timeValue, float totalDuration, CharData cData,
+            IAnimatorDataProvider animatorData, ITMPSegmentData segmentData)
         {
             float offset = provider.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);
+            float min, max;
+            provider.GetMinMaxOffset(out min, out max, segmentData, animatorData);
+            return EvaluateIn(timeValue, totalDuration, min, max, offset);
+        }
 
-            // if (zeroBasedOffsets)
-            // {
-            provider.GetMinMaxOffset(out var min, out var max, segmentData, animatorData);
-            float zeroedOffset = offset - min;
-            float zeroedMax = max - min;
-            if (uniformity >= 0)
-            {
-                offset = zeroedOffset;
-            }
-            else
-            {
-                offset = zeroedMax - zeroedOffset;
-            }
-            // }
+        public float EvaluateIn(float timeValue, float duration, CharData cData, IAnimationContext context) =>
+            EvaluateIn(timeValue, duration, cData, context.AnimatorContext, context.SegmentData);
+
+        public float EvaluateOut(float timeValue, float totalDuration, float preTime, float minOffset, float maxOffset, float offset)
+        {
+            offset = offset - minOffset;
+            maxOffset = maxOffset - minOffset;
+            if (uniformity < 0)
+                offset = maxOffset - offset;
 
             if (finishWholeSegmentInTime)
             {
-                float scalar = (zeroedMax * Mathf.Abs(uniformity)) / totalDuration + 1f;
+                float scalar =
+                    (maxOffset * Mathf.Abs(uniformity)) / totalDuration + 1f;
                 scalar = 1f / scalar;
 
                 timeValue -= offset * scalar * Mathf.Abs(uniformity);
@@ -127,12 +104,16 @@ namespace TMPEffects.Parameters
             return curve.Evaluate(1f - (timeValue - preTime) / totalDuration);
         }
         
-        public float EvaluateOut(CharData cData, IAnimatorContext context, float timeValue, float totalDuration,
-            float preTime)
+        public float EvaluateOut(float timeValue, float totalDuration, float preTime, CharData cData,
+            IAnimatorDataProvider animatorData, ITMPSegmentData segmentData)
         {
-            var segmentData = AnimationUtility.GetMockedSegment(context.Animator.TextComponent.GetParsedText().Length,
-                context.Animator.CharData);
-            return EvaluateOut(cData, segmentData, context, timeValue, totalDuration, preTime);
+            float offset = provider.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);
+            float min, max;
+            provider.GetMinMaxOffset(out min, out max, segmentData, animatorData);
+            return EvaluateOut(timeValue, totalDuration, preTime, min, max, offset);
         }
+
+        public float EvaluateOut(float timeValue, float duration, float preTime, CharData cData, IAnimationContext context) =>
+            EvaluateOut(timeValue, duration, preTime, cData, context.AnimatorContext, context.SegmentData);
     }
 }

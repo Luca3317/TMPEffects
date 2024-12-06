@@ -12,7 +12,6 @@ namespace TMPEffects.TMPCommands
     {
         public TMPWriter Writer { get; }
         
-        // TODO Just directly expose the writer here and remove Iwritercontext?
         public TMPEffectTagIndices Indices { get; }
 
         public object CustomData { get; }

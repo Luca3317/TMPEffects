@@ -1,4 +1,5 @@
 using System;
+using TMPEffects.Editor;
 using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEngine;

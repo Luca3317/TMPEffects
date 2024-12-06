@@ -18,6 +18,7 @@ namespace TMPEffects.TMPAnimations
     {
         /// <summary>
         /// The up period of the wave; how long it takes to travel up the wave.<br/>
+        /// <see cref="UpPeriod"/> does NOT contain either wait periods.<br/>
         /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
         /// take to travel up the wave, use <see cref="EffectiveUpPeriod"/>.
         /// </summary>
@@ -51,6 +52,7 @@ namespace TMPEffects.TMPAnimations
 
         /// <summary> 
         /// The down period of the wave; how long it takes to travel down the wave.<br/>
+        /// <see cref="DownPeriod"/> does NOT contain either wait periods.<br/>
         /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
         /// take to travel down the wave, use <see cref="EffectiveDownPeriod"/>.
         /// </summary>
@@ -112,6 +114,7 @@ namespace TMPEffects.TMPAnimations
         /// <summary>
         /// The period of the wave; how long it takes to travel up and down the wave.<br/>
         /// Sum of <see cref="UpPeriod"/> and <see cref="DownPeriod"/>.<br/>
+        /// <see cref="Period"/> does NOT contain either wait periods.<br/>
         /// Ignores the <see cref="Velocity"/> of the wave, if you want to know it'll actually
         /// take to travel the wave, use <see cref="EffectivePeriod"/>.
         /// </summary>
@@ -130,7 +133,8 @@ namespace TMPEffects.TMPAnimations
         }
 
         /// <summary>
-        /// The amount of time it takes to travel up the wave.
+        /// The amount of time it takes to travel up the wave.<br/>
+        /// <see cref="EffectiveUpPeriod"/> does NOT contain either wait periods.
         /// </summary>
         public float EffectiveUpPeriod
         {
@@ -138,7 +142,8 @@ namespace TMPEffects.TMPAnimations
         }
 
         /// <summary>
-        /// The amount of time it takes to travel down the wave.
+        /// The amount of time it takes to travel down the wave.<br/>
+        /// <see cref="EffectiveDownPeriod"/> does NOT contain either wait periods.
         /// </summary>
         public float EffectiveDownPeriod
         {
@@ -147,7 +152,8 @@ namespace TMPEffects.TMPAnimations
 
         /// <summary>
         /// The amount of time it takes to travel the wave.<br/>
-        /// Sum of <see cref="EffectiveUpPeriod"/> and <see cref="EffectiveDownPeriod"/>.
+        /// Sum of <see cref="EffectiveUpPeriod"/> and <see cref="EffectiveDownPeriod"/>.<br/>
+        /// <see cref="EffectivePeriod"/> does NOT contain either wait periods.
         /// </summary>
         public float EffectivePeriod
         {
@@ -255,16 +261,6 @@ namespace TMPEffects.TMPAnimations
             TroughWait = troughWait;
         }
 
-        // public NewWave(NewWave wave)
-        // {
-        //     crestWait = wave.crestWait;
-        //     troughWait = wave.troughWait;
-        //     downwardCurve = new AnimationCurve(wave.downwardCurve.keys);
-        //     upwardCurve = new AnimationCurve(wave.upwardCurve.keys);
-        //     wavelength = wave.wavelength;
-        // }
-
-
         [Tooltip(
             "The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds")]
         [SerializeField, TMPParameterBundleField("upperiod", "uppd")]
@@ -313,7 +309,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <param name="deltaTime">The delta time value.</param>
         /// <param name="offset">The offset..</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
         /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
         /// <exception cref="System.Exception"></exception>
@@ -343,7 +339,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <param name="deltaTime">The delta time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
         /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
         /// <exception cref="System.Exception"></exception>
@@ -383,7 +379,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <param name="deltaTime">The delta time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
         /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
         /// <exception cref="System.Exception"></exception>
@@ -438,7 +434,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <param name="deltaTime">The delta time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
         /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
         /// <exception cref="System.Exception"></exception>
@@ -492,7 +488,7 @@ namespace TMPEffects.TMPAnimations
         /// <param name="time">The time value.</param>
         /// <param name="deltaTime">The delta time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <param name="extrema">If the wave has a <see cref="CrestWait"/> or <see cref="TroughWait"/>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</param>
         /// <returns>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</returns>
         /// <exception cref="System.Exception"></exception>
@@ -594,7 +590,7 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="time">The time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realtimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <returns>Value: The value of the wave at the given time and offset.<br/>Direction: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
         public (float Value, int Direction) Evaluate(float time, float offset, bool realtimeWait = true)
         {
@@ -644,12 +640,12 @@ namespace TMPEffects.TMPAnimations
             if (t <= EffectiveUpPeriod)
             {
                 t = Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod);
-                return (Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, t),
+                return (Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, t),
                     1);
             }
 
             t = Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod);
-            return (Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
+            return (Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, t), -1);
         }
 
         /// <summary>
@@ -657,7 +653,7 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="time">The time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
         /// <exception cref="System.Exception"></exception>
         public (float Value, int Direction) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)
@@ -666,23 +662,23 @@ namespace TMPEffects.TMPAnimations
             float t = CalculateT(interval, time, offset, -1);
 
             // If 0, we are at start of up curve.
-            if (t <= 0) return (Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+            if (t <= 0) return (Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
 
             // If smaller than effective up period, we are travelling up the curve
             if (t <= EffectiveUpPeriod)
                 return (
-                    Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
+                    Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
                         Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
                     1);
 
             // There is no crest wait, so if we are smaller than the effective period, we are travelling down the curve
             if (t <= (EffectivePeriod))
                 return (
-                    Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
+                    Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
                         Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod) / EffectiveDownPeriod)), -1);
 
             // If larger than effective period, is trough waiting
-            return (Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
+            return (Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, 2f), -1);
         }
 
         /// <summary>
@@ -690,7 +686,7 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="time">The time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
         /// <exception cref="System.Exception"></exception>
         public (float Value, int Direction) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)
@@ -700,23 +696,23 @@ namespace TMPEffects.TMPAnimations
             float t = CalculateT(interval, time, offset, -1);
 
             // If 0, we are at start of up curve.
-            if (t <= 0) return (Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
+            if (t <= 0) return (Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 0f), 1);
 
             // If smaller than effective up period, we are travelling up the curve
             if (t <= EffectiveUpPeriod)
                 return (
-                    Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
+                    Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
                         Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
                     1);
 
             // If smaller than effective up period + wait, we are waiting
             if (t <= EffectiveUpPeriod + wait)
                 return (
-                    Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 1), 1);
+                    Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 1), 1);
 
             // Otherwise we are travelling down the curve
             return (
-                Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
+                Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
                     Mathf.Lerp(1f, 2f, (t - EffectiveUpPeriod - wait) / EffectiveDownPeriod)), -1);
         }
 
@@ -725,7 +721,7 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="time">The time value.</param>
         /// <param name="offset">The offset.</param>
-        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="AnimationUtility.WaveBase.Period"/> or <see cref="AnimationUtility.WaveBase.EffectivePeriod"/>).</param>
+        /// <param name="realTimeWait">Whether to use real time (i.e. whether to use <see cref="TMPAnimationUtility.WaveBase.Period"/> or <see cref="TMPAnimationUtility.WaveBase.EffectivePeriod"/>).</param>
         /// <returns>Item1: The value of the wave at the given time and offset.<br/>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</returns>
         /// <exception cref="System.Exception"></exception>
         public (float Value, int Direction) EvaluateAsOneDirectionalPulse(float time, float offset,
@@ -739,7 +735,7 @@ namespace TMPEffects.TMPAnimations
             if (t <= EffectiveUpPeriod)
             {
                 return (
-                    Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
+                    Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong,
                         Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod)),
                     1);
             }
@@ -747,21 +743,21 @@ namespace TMPEffects.TMPAnimations
             t -= EffectiveUpPeriod;
             if (t <= upInterval)
             {
-                return (Amplitude * AnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
+                return (Amplitude * TMPAnimationUtility.GetValue(UpwardCurve, WrapMode.PingPong, 1f), 1);
             }
 
             t -= upInterval;
             if (t <= EffectiveDownPeriod)
             {
                 return (
-                    Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
+                    Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong,
                         Mathf.Lerp(1f, 2f, t / EffectiveDownPeriod)), -1);
             }
 
             t -= EffectiveDownPeriod;
             if (t <= downInterval)
             {
-                return (Amplitude * AnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)),
+                return (Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)),
                     -1);
             }
 

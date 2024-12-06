@@ -13,13 +13,6 @@ public class TMPCharacterModifiers
         get => positionDelta;
         set
         {
-            if (value == positionDelta) return;
-            if (value == Vector3.zero)
-            {
-                ClearPositionDelta();
-                return;
-            }
-
             positionDelta = value;
             modifier |= ModifierFlags.PositionDelta;
         }
@@ -30,14 +23,6 @@ public class TMPCharacterModifiers
         get => scaleDelta;
         set
         {
-            // TODO This comparison is slowish
-            // if (value == scaleDelta) return;
-            // Maybe go back to having to explicitly clear the changes?
-            // if (value == Matrix4x4.identity)
-            // {
-            //     ClearScale();
-            //     return;
-            // }
             scaleDelta = value;
             modifier |= ModifierFlags.Scale;
         }
@@ -120,6 +105,21 @@ public class TMPCharacterModifiers
         modifier |= other.Modifier;
     }
 
+    public void CopyFrom(TMPCharacterModifiers other)
+    {
+        ClearModifiers();
+
+        positionDelta = other.positionDelta;
+        scaleDelta = other.ScaleDelta;
+
+        for (int i = 0; i < other.rotations.Count; i++)
+        {
+            rotations.Add(other.rotations[i]);
+        }
+
+        modifier = other.Modifier;
+    }
+
     [Flags]
     public enum ModifierFlags : int
     {
@@ -129,7 +129,7 @@ public class TMPCharacterModifiers
         Scale = 1 << 3
     }
 
-    public void ClearModifierFlags()
+    public void ClearModifiers()
     {
         if (modifier.HasFlag(ModifierFlags.PositionDelta))
             ClearPositionDelta();
@@ -139,7 +139,7 @@ public class TMPCharacterModifiers
             ClearScale();
     }
 
-    public void ClearModifierFlags(ModifierFlags flags)
+    public void ClearModifiers(ModifierFlags flags)
     {
         var both = modifier & flags;
 

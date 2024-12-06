@@ -15,8 +15,8 @@ internal class ExportToGenericUtilityWindow : EditorWindow
     public static void ShowWindow(ActionContext context)
     {
         ExportToGenericUtilityWindow window = CreateInstance<ExportToGenericUtilityWindow>();
-        window.titleContent = new GUIContent("Export to GenericAnimation");
-        window.minSize = new Vector2(300, 280);
+        window.titleContent = new GUIContent("Export to Asset");
+        window.minSize = new Vector2(300, 317.5f);
         window.maxSize = new Vector2(800, window.minSize.y);
         window.context = context;
         window.ShowModalUtility();
@@ -35,7 +35,7 @@ internal class ExportToGenericUtilityWindow : EditorWindow
         bool mayExport = true;
 
         GUILayout.Space(15);
-        GUILayout.Label("You are exporting to a GenericAnimation asset.", EditorStyles.boldLabel);
+        GUILayout.Label("You are exporting to an asset.", EditorStyles.boldLabel);
 
         GUILayout.Space(10);
         GUILayout.Label("Where do you want to export to?", EditorStyles.boldLabel);
@@ -77,10 +77,6 @@ internal class ExportToGenericUtilityWindow : EditorWindow
                 mayExport = false;
                 EditorGUILayout.HelpBox("Not a valid directory: " + directoryPath, MessageType.Error);
             }
-            // else if (!tempPath.StartsWith(Application.dataPath, StringComparison.OrdinalIgnoreCase))
-            // {
-            //     EditorGUILayout.HelpBox("Directory not contained in this project: " + Application.dataPath + " :" + directoryPath + "/" + assetName, MessageType.Warning);
-            // }
 
             else if (File.Exists(Path.Combine(tempPath, assetName + ".asset")))
             {
@@ -117,11 +113,30 @@ internal class ExportToGenericUtilityWindow : EditorWindow
 
         exportSelection = (ExportSelection)EditorGUILayout.EnumPopup(exportSelection);
 
+        GUILayout.Space(10);
+        GUILayout.Label("To what type do you want to export?", EditorStyles.boldLabel);
+
+        exportType = (ExportType)EditorGUILayout.EnumPopup(exportType);
+
         GUILayout.Space(25);
         EditorGUI.BeginDisabledGroup(!mayExport);
         if (GUILayout.Button("Export", customButtonStyle))
         {
-            TimelineUtility.ExportAsGeneric(context, directoryPath, assetName + ".asset", (int)exportSelection);
+            switch (exportType)
+            {
+                case ExportType.GenericAnimation:
+                    TimelineUtility.ExportAsGeneric(context, directoryPath, assetName + ".asset", (int)exportSelection);
+                    break;
+                case ExportType.GenericShowAnimation:
+                    TimelineUtility.ExportAsGenericShow(context, directoryPath, assetName + ".asset",
+                        (int)exportSelection);
+                    break;
+                case ExportType.GenericHideAnimation:
+                    TimelineUtility.ExportAsGenericHide(context, directoryPath, assetName + ".asset",
+                        (int)exportSelection);
+                    break;
+            }
+
             Close();
         }
 
@@ -129,11 +144,19 @@ internal class ExportToGenericUtilityWindow : EditorWindow
     }
 
     public ExportSelection exportSelection;
+    public ExportType exportType;
 
     public enum ExportSelection
     {
         AllTracks = 2,
         SelectedTracksOnly = 0
+    }
+
+    public enum ExportType
+    {
+        GenericAnimation = 0,
+        GenericShowAnimation = 1,
+        GenericHideAnimation = 2
     }
 }
 
@@ -149,8 +172,8 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
     public static void ShowWindow(ActionContext context)
     {
         ExportToTMPAnimationScriptUtilityWindow window = CreateInstance<ExportToTMPAnimationScriptUtilityWindow>();
-        window.titleContent = new GUIContent("Export to GenericAnimation");
-        window.minSize = new Vector2(300, 280);
+        window.titleContent = new GUIContent("Export to Script");
+        window.minSize = new Vector2(300, 317.5f);
         window.maxSize = new Vector2(800, window.minSize.y);
         window.context = context;
         window.ShowModalUtility();
@@ -169,7 +192,7 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
         bool mayExport = true;
 
         GUILayout.Space(15);
-        GUILayout.Label("You are exporting to a TMPAnimation script.", EditorStyles.boldLabel);
+        GUILayout.Label("You are exporting to a script.", EditorStyles.boldLabel);
 
         GUILayout.Space(10);
         GUILayout.Label("Where do you want to export to?", EditorStyles.boldLabel);
@@ -251,11 +274,28 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
 
         exportSelection = (ExportSelection)EditorGUILayout.EnumPopup(exportSelection);
 
+        GUILayout.Space(10);
+        GUILayout.Label("To what type do you want to export?", EditorStyles.boldLabel);
+
+        exportType = (ExportType)EditorGUILayout.EnumPopup(exportType);
+
         GUILayout.Space(25);
         EditorGUI.BeginDisabledGroup(!mayExport);
         if (GUILayout.Button("Export", customButtonStyle))
         {
-            TimelineUtility.ExportAsScript(context, directoryPath, scriptName, (int)exportSelection);
+            switch (exportType)
+            {
+                case ExportType.TMPAnimation:
+                    TimelineUtility.ExportAsScript(context, directoryPath, scriptName, (int)exportSelection);
+                    break;
+                case ExportType.TMPShowAnimation:
+                    TimelineUtility.ExportAsShowScript(context, directoryPath, scriptName, (int)exportSelection);
+                    break;
+                case ExportType.TMPHideAnimation:
+                    TimelineUtility.ExportAsHideScript(context, directoryPath, scriptName, (int)exportSelection);
+                    break;
+            }
+
             Close();
         }
 
@@ -263,6 +303,14 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
     }
 
     public ExportSelection exportSelection;
+    public ExportType exportType;
+
+    public enum ExportType
+    {
+        TMPAnimation,
+        TMPShowAnimation,
+        TMPHideAnimation
+    }
 
     public enum ExportSelection
     {

@@ -18,6 +18,20 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
     private Color32 backgroundColor;
 
     private const float TypedVectorFoldoutWidth = 20f;
+    
+    private static readonly GUIContent blColorGUI = new GUIContent("BL Color", "The color modifier to apply to the bottom left vertex.");
+    private static readonly GUIContent tlColorGUI = new GUIContent("TL Color", "The color modifier to apply to the top left vertex.");
+    private static readonly GUIContent trColorGUI = new GUIContent("TR Color", "The color modifier to apply to the top right vertex.");
+    private static readonly GUIContent brColorGUI = new GUIContent("BR Color", "The color modifier to apply to the bottom right vertex.");
+    
+    private static readonly GUIContent blPositionGUI = new GUIContent("BL Position", "The position modifier to apply to the bottom left vertex.");
+    private static readonly GUIContent tlPositionGUI = new GUIContent("TL Position", "The position modifier to apply to the top left vertex.");
+    private static readonly GUIContent trPositionGUI = new GUIContent("TR Position", "The position modifier to apply to the top right vertex.");
+    private static readonly GUIContent brPositionGUI = new GUIContent("BR Position", "The position modifier to apply to the bottom right vertex.");
+    
+    private static readonly GUIContent positionGUI = new GUIContent("Position", "The position modifier to apply.");
+    private static readonly GUIContent scaleGUI = new GUIContent("Scale", "The scale modifier to apply.");
+    private static readonly GUIContent rotationsGUI = new GUIContent("Rotations", "The rotation modifiers to apply.");
 
     private void Init(SerializedProperty property)
     {
@@ -56,15 +70,15 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
             EditorGUIUtility.singleLineHeight * 2 + EditorGUI.GetPropertyHeight(rotationsProp, true));
         EditorGUI.DrawRect(bgRect, backgroundColor);
 
-        EditorGUI.PropertyField(rect, positionProp);
+        EditorGUI.PropertyField(rect, positionProp, positionGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
 
         rect.height = EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, scaleProp, true);
+        EditorGUI.PropertyField(rect, scaleProp, scaleGUI, true);
         rect.y += EditorGUIUtility.singleLineHeight;
 
         rect.height = EditorGUI.GetPropertyHeight(rotationsProp, true);
-        EditorGUI.PropertyField(rect, rotationsProp, true);
+        EditorGUI.PropertyField(rect, rotationsProp, rotationsGUI, true);
         rect.y += rect.height;
 
         rect.height = EditorGUIUtility.singleLineHeight;
@@ -77,13 +91,13 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
         var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
         EditorGUI.DrawRect(bgRect, backgroundColor);
 
-        EditorGUI.PropertyField(rect, blPositionProp);
+        EditorGUI.PropertyField(rect, blPositionProp, blPositionGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, tlPositionProp);
+        EditorGUI.PropertyField(rect, tlPositionProp, tlPositionGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, trPositionProp);
+        EditorGUI.PropertyField(rect, trPositionProp, trPositionGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, brPositionProp);
+        EditorGUI.PropertyField(rect, brPositionProp, brPositionGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
 
         rect.y += EditorGUIUtility.singleLineHeight;
@@ -95,35 +109,18 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
         var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
         EditorGUI.DrawRect(bgRect, backgroundColor);
 
-        EditorGUI.PropertyField(rect, blColorProp);
+        EditorGUI.PropertyField(rect, blColorProp, blColorGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, tlColorProp);
+        EditorGUI.PropertyField(rect, tlColorProp, tlColorGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, trColorProp);
+        EditorGUI.PropertyField(rect, trColorProp, trColorGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(rect, brColorProp);
+        EditorGUI.PropertyField(rect, brColorProp, brColorGUI);
         rect.y += EditorGUIUtility.singleLineHeight;
 
         rect.y += EditorGUIUtility.singleLineHeight;
         return rect;
     }
-
-    // private Rect DrawVertexUVModifiers(Rect rect)
-    // {
-    //     var bgRect = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight * 4);
-    //     EditorGUI.DrawRect(bgRect, backgroundColor);
-    //
-    //     EditorGUI.PropertyField(rect, blColorProp);
-    //     rect.y += EditorGUIUtility.singleLineHeight;
-    //     EditorGUI.PropertyField(rect, tlColorProp);
-    //     rect.y += EditorGUIUtility.singleLineHeight;
-    //     EditorGUI.PropertyField(rect, trColorProp);
-    //     rect.y += EditorGUIUtility.singleLineHeight;
-    //     EditorGUI.PropertyField(rect, brColorProp);
-    //     rect.y += EditorGUIUtility.singleLineHeight;
-    //
-    //     return rect;
-    // }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {

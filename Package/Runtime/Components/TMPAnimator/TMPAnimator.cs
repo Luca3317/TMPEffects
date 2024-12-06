@@ -147,48 +147,28 @@ namespace TMPEffects.Components
 
         #region Fields
 
-        [Tooltip("The database used for processing animation tags (e.g. <wave>, <+fade>)")] [SerializeField]
-        private TMPAnimationDatabase database = null;
+        [SerializeField] private TMPAnimationDatabase database = null;
 
         [SerializeField] private AnimatorContext context = new AnimatorContext();
         [System.NonSerialized] private ReadOnlyAnimatorContext readonlyContext;
 
-        [Tooltip(
-            "Where to update the animations from. If set to Script, you will have to manually update animations from your own script")]
-        [SerializeField]
-        private UpdateFrom updateFrom = UpdateFrom.Update;
+        [SerializeField] private UpdateFrom updateFrom = UpdateFrom.Update;
 
-        [Tooltip(
-            "Whether to automatically start animating when entering playmode. Ignored if UpdateFrom is set to Script")]
-        [SerializeField]
-        private bool animateOnStart = true;
+        [SerializeField] private bool animateOnStart = true;
 
-        [Tooltip(
-            "Whether animation tags override each other by default. You can set this individually on a per-tag basis by adding the override=true/false parameter to them")]
-        [SerializeField]
-        private bool animationsOverride = false;
+        [SerializeField] private bool animationsOverride = false;
 
         [SerializeField] private List<string> defaultAnimationsStrings = new List<string>();
         [SerializeField] private List<string> defaultShowAnimationsStrings = new List<string>();
         [SerializeField] private List<string> defaultHideAnimationsStrings = new List<string>();
 
-        [Tooltip("Characters that are excluded from basic animations")] [SerializeField]
-        private string excludedCharacters = "";
+        [SerializeField] private string excludedCharacters = "";
+        [SerializeField] private string excludedCharactersShow = "";
+        [SerializeField] private string excludedCharactersHide = "";
 
-        [Tooltip("Characters that are excluded from show animations")] [SerializeField]
-        private string excludedCharactersShow = "";
-
-        [Tooltip("Characters that are excluded from hide animations")] [SerializeField]
-        private string excludedCharactersHide = "";
-
-        [Tooltip("Whether to exclude punctuation characters from basic animations")] [SerializeField]
-        private bool excludePunctuation = false;
-
-        [Tooltip("Whether to exclude punctuation characters from show animations")] [SerializeField]
-        private bool excludePunctuationShow = false;
-
-        [Tooltip("Whether to exclude punctuation characters from hide animations")] [SerializeField]
-        private bool excludePunctuationHide = false;
+        [SerializeField] private bool excludePunctuation = false;
+        [SerializeField] private bool excludePunctuationShow = false;
+        [SerializeField] private bool excludePunctuationHide = false;
 
 
         [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
@@ -619,6 +599,8 @@ namespace TMPEffects.Components
 
         private void OnDisable()
         {
+            if (Mediator == null) return;
+
             processors.UnregisterFrom(Mediator.Processor);
 
 #if UNITY_EDITOR
@@ -650,6 +632,8 @@ namespace TMPEffects.Components
             Mediator.TextChanged_Late += OnTextChanged_Late;
             Mediator.TextChanged_Early += OnTextChanged_Early;
             Mediator.VisibilityStateUpdated += OnVisibilityStateUpdated; // Handle Visibility updates
+
+            OnSubscribeToMediator();
         }
 
         private void UnsubscribeFromMediator()
@@ -662,6 +646,8 @@ namespace TMPEffects.Components
             {
                 Debug.LogError("Could not unregister as visibility processor!");
             }
+
+            OnUnsubscribeFromMediator();
 
             var textComponent = Mediator.Text;
             FreeMediator();
@@ -703,7 +689,7 @@ namespace TMPEffects.Components
             keywordDatabaseWrapper = new KeywordDatabaseWrapper(
                 sceneKeywordDatabase,
                 keywordDatabase,
-                TMPKeywordDatabase.Global);
+                TMPEffectsSettings.GlobalKeywordDatabase);
 
             // Add sprite animation
             basicDatabase.AddAnimation("sprite", new SpriteAnimation());
@@ -915,14 +901,8 @@ namespace TMPEffects.Components
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
-        Stopwatch sw = new Stopwatch();
-        private int count = 0;
-
         private void UpdateAnimations_Impl(float deltaTime)
         {
-            if (sw == null) sw = new Stopwatch();
-            sw.Start();
-
             context.passed += deltaTime;
 
             if (characterResetQueued)
@@ -940,24 +920,23 @@ namespace TMPEffects.Components
 
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-
-            sw.Stop();
-            count++;
-            if (count >= 1000)
-            {
-                // Debug.LogWarning("1000 took " + sw.Elapsed.TotalMilliseconds);
-                sw.Reset();
-                count = 0;
-            }
-            else if (count % 100 == 0)
-            {
-                // Debug.Log(count);
-            }
         }
 
         public delegate void OnCharacterAnimatedEventHandler(CharData cData);
 
-        public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
+        // public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
+
+        private List<OnCharacterAnimatedEventHandler> handlers = new List<OnCharacterAnimatedEventHandler>();
+
+        public void RegisterPostAnimationHook(OnCharacterAnimatedEventHandler handler)
+        {
+            handlers.Add(handler);
+        }
+
+        public bool UnregisterPostAnimationHook(OnCharacterAnimatedEventHandler handler)
+        {
+            return handlers.Remove(handler);
+        }
 
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true,
             bool forced = false)
@@ -968,7 +947,7 @@ namespace TMPEffects.Components
 
             context.deltaTime = deltaTime;
             context.Modifiers = state;
-            
+
             // If there are any animations to be applied
             if (defaultAnimations.Count != 0 || basic.HasAnyContaining(index) ||
                 vState != VisibilityState.Shown)
@@ -976,22 +955,28 @@ namespace TMPEffects.Components
                 state.Reset();
                 UpdateCharacterAnimation_Impl(index);
 
-                if (Mediator.VisibilityStates[index] != VisibilityState.Hidden && OnCharacterAnimated != null)
+                if (Mediator.VisibilityStates[index] != VisibilityState.Hidden && handlers.Count != 0)
                 {
-                    cData.Reset();
-                    OnCharacterAnimated.Invoke(cData);
-                    state.MeshModifiers.Combine(cData.MeshModifiers);
-                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                    for (int i = 0; i < handlers.Count; i++)
+                    {
+                        cData.Reset();
+                        handlers[i](cData);
+                        state.MeshModifiers.Combine(cData.MeshModifiers);
+                        state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                    }
                 }
             }
             // Otherwise, if there are post animation listeners
-            else if (OnCharacterAnimated != null)
+            else if (handlers.Count != 0)
             {
                 state.Reset();
-                cData.Reset();
-                OnCharacterAnimated.Invoke(cData);
-                state.MeshModifiers.Combine(cData.MeshModifiers);
-                state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                for (int i = 0; i < handlers.Count; i++)
+                {
+                    cData.Reset();
+                    handlers[i](cData);
+                    state.MeshModifiers.Combine(cData.MeshModifiers);
+                    state.CharacterModifiers.Combine(cData.CharacterModifiers);
+                }
             }
             // else, we can just return
             else return;
@@ -1667,6 +1652,7 @@ namespace TMPEffects.Components
         [SerializeField, HideInInspector] private bool useDefaultKeywordDatabase = true;
         [SerializeField, HideInInspector] private bool initDatabase = false;
         [SerializeField] private uint previewUpdatesPerSecond = 60;
+        [SerializeField] private float previewTimeScale = 1;
         [System.NonSerialized] private float lastPreviewUpdateTime = 0f;
         [System.NonSerialized] private AnimationUpdater previewUpdater;
 #pragma warning restore CS0414
@@ -1679,9 +1665,10 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
 
-            if (!preview || previewUpdater?.MaxUpdatesPerSecond != previewUpdatesPerSecond)
+            if (!preview || previewUpdater?.MaxUpdatesPerSecond != previewUpdatesPerSecond || previewUpdater?.AdditionalTimeScaling != previewTimeScale)
             {
-                previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond);
+                Debug.LogWarning("NEW");
+                previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond, previewTimeScale);
             }
 
             preview = true;
@@ -1709,6 +1696,7 @@ namespace TMPEffects.Components
             if (previewUpdater != null)
             {
                 previewUpdater.SetMaxUpdatesPerSecond(previewUpdatesPerSecond);
+                previewUpdater.AdditionalTimeScaling = previewTimeScale;
             }
         }
 
@@ -1736,7 +1724,8 @@ namespace TMPEffects.Components
             }
             else
             {
-                previewUpdater.Update(Time.time - lastPreviewUpdateTime);
+                float delta = (Time.time - lastPreviewUpdateTime);   
+                previewUpdater.Update(delta);
             }
 
             EditorApplication.QueuePlayerLoopUpdate();
@@ -1749,7 +1738,11 @@ namespace TMPEffects.Components
             if (enabled)
             {
                 enabled = false;
-                EditorApplication.delayCall += () => this.enabled = true;
+                EditorApplication.delayCall += () =>
+                {
+                    if (this != null)
+                        this.enabled = true;
+                };
                 EditorApplication.delayCall +=
                     () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }

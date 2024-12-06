@@ -2,8 +2,8 @@ using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Parameters;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
+using static TMPEffects.Parameters.TMPParameterTypes;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {

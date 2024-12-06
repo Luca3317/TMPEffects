@@ -43,7 +43,7 @@ namespace TMPEffects.TMPCommands
         public TagType TagType { get; }
 
         /// <summary>
-        /// Whether the command is executed the moment the <see cref="TMPWriter"/> begin writing.<br/>
+        /// Whether the command is executed the moment the <see cref="TMPWriter"/> begins writing.<br/>
         /// Otherwise, it is executed when the <see cref="TMPWriter"/> shows the character at the corresponding index.
         /// </summary>
         public bool ExecuteInstantly { get; }

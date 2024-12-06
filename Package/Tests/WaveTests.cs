@@ -22,12 +22,6 @@ public class WaveTests
         Assert.AreEqual(AnimationCurveUtility.EaseInOutSine(), wave.DownwardCurve);
         Assert.AreEqual(AnimationCurveUtility.EaseInOutSine(), wave.UpwardCurve);
 
-        // Potential TODO 
-        // Its weird that the periods + frequency dont consider the wait times
-        // When you first use wave you would definitely expect it to.
-        // Issue: would require rewriting the wave logic and make it a bit harder to 
-        // evaluate ignoring either / both waits.
-        // Probably; just make separate private v public period properties
         wave = new Wave(AnimationCurveUtility.EaseInBack(), AnimationCurveUtility.EaseOutBack(), 2f, 3f, 10f);
         Assert.AreEqual(10, wave.Amplitude);
         Assert.AreEqual(2, wave.UpPeriod);

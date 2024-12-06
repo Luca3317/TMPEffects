@@ -1,7 +1,7 @@
 using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.Parameters.TMPParameterTypes;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -25,23 +25,7 @@ namespace TMPEffects.TMPAnimations.Animations
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
             float angle = (context.AnimatorContext.PassedTime * d.speed * 360) % 360;
-            
-            // Set the pivot depending on its type
-            switch (d.pivot.type)
-            {
-                case VectorType.Position:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        d.pivot.IgnoreScaling(cData, context).ToPosition(cData));
-                    break;
-                case VectorType.Offset:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        cData.InitialPosition + d.pivot.ToDelta(cData));
-                    break;
-                case VectorType.Anchor:
-                    cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
-                        d.pivot.ToPosition(cData));
-                    break;
-            }
+            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles, d.pivot.ToPosition(cData, context));
         }
     }
 }

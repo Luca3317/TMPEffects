@@ -10,24 +10,6 @@ namespace TMPEffects.Databases
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
     public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
     {
-        // TODO Is this a working solution?
-        // Definitely will require reload when changing global instance
-        public static TMPKeywordDatabase Global
-        {
-            get
-            {
-                if (globalInstance == null)
-                {
-                    globalInstance = Resources.Load<TMPKeywordDatabase>("TMPEffects.GlobalKeywordDatabase");
-                }
-
-                return globalInstance;
-            }
-        }
-
-        private static TMPKeywordDatabase globalInstance = null;
-
-
         public event ObjectChangedEventHandler ObjectChanged;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
@@ -36,7 +18,6 @@ namespace TMPEffects.Databases
         [SerializedDictionary(keyName: "Keyword", valueName: "Int")] [SerializeField]
         internal SerializedDictionary<string, int> intKeywords;
 
-        // Really pointless but here for completions sake
         [SerializedDictionary(keyName: "Keyword", valueName: "Bool")] [SerializeField]
         internal SerializedDictionary<string, bool> boolKeywords;
 

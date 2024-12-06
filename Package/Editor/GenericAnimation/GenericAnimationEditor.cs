@@ -15,10 +15,22 @@ using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using AnimationUtility = TMPEffects.TMPAnimations.AnimationUtility;
 
 [CustomEditor(typeof(GenericAnimation))]
-public class GenericAnimationEditor : TMPAnimationEditorBase
+public class GenericAnimationEditor : BaseGenericAnimationEditor
+{}
+
+[CustomEditor(typeof(GenericHideAnimation))]
+public class GenericShowAnimationEditor : BaseGenericAnimationEditor
+{}
+
+[CustomEditor(typeof(GenericShowAnimation))]
+public class GenericHideAnimationEditor : BaseGenericAnimationEditor
+{}
+
+
+
+public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 {
     private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
     private static string exportPath = "Assets/Exported TMPEffects Animations";
@@ -33,10 +45,10 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
         exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
 
         _ = new ReorderableList(serializedObject,
-            serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks"), true, false, true, true);
+            serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"), true, false, true, true);
         UpdateLists();
 
-        var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var trackProp = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         for (int i = 0; i < trackProp.arraySize; i++)
         {
             var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
@@ -46,7 +58,8 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
     protected override void OnDisable()
     {
-        var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        base.OnDisable();
+        var trackProp = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         for (int i = 0; i < trackProp.arraySize; i++)
         {
             var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
@@ -63,7 +76,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     // ignoreIndex: further indices that should remain unchanged
     private void OnChangedStartOrDuration(int listIndex, int changedIndex, params int[] ignoreIndex)
     {
-        var clips = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
+        var clips = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks")
             .GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips");
         var changedProp = clips.GetArrayElementAtIndex(changedIndex);
 
@@ -124,7 +137,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
     private void DrawElementCallback(int listindex, Rect rect, int index, bool isactive, bool isfocused)
     {
-        var itemProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks")
+        var itemProp = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks")
             .GetArrayElementAtIndex(listindex).FindPropertyRelative("clips").GetArrayElementAtIndex(index);
 
         var nameProp = itemProp.FindPropertyRelative("name");
@@ -172,14 +185,14 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
     private float MainElementHeightCallback(int index)
     {
-        var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         return EditorGUI.GetPropertyHeight(clips);
     }
 
     private void MainAddCallback(ReorderableList list)
     {
-        var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var trackprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         trackprop.arraySize++;
         trackprop.GetArrayElementAtIndex(trackprop.arraySize - 1).FindPropertyRelative("clips").ClearArray();
     }
@@ -187,7 +200,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
         EditorGUI.indentLevel++;
-        var tracksprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+        var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
         EditorGUI.indentLevel--;
@@ -266,7 +279,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     {
         try
         {
-            var trackprop = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+            var trackprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
             // EditorGUILayout.PropertyField(trackprop);
             trackList = ReorderableList.GetReorderableListFromSerializedProperty(trackprop);
             trackList.onAddCallback = MainAddCallback;
@@ -308,7 +321,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
         if (GUILayout.Button("Sort Steps"))
         {
-            var trackProp = serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks");
+            var trackProp = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
             for (int i = 0; i < trackProp.arraySize; i++)
             {
                 var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
@@ -376,7 +389,7 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
                     "This will export this GenericAnimation animation as a .cs file, allowing you to make further edits.\nThe file will be saved as: \n" +
                     exportPath + "/" + exportNameUnderscored + ".cs", "Okay", "Cancel");
 
-                if (okay) GenericAnimationExporter.Export(serializedObject, exportPath, exportNameUnderscored);
+                if (okay) GenericAnimationExporter.ExportGenericAnimation(serializedObject, exportPath, exportNameUnderscored);
             }
         }
 
@@ -390,24 +403,26 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
     public override void OnPreviewSettings()
     {
         // Draw the slider / playbar
-        // TODO its finicky; jumps around if your mouse isnt almost perfectly on it
         var duration = serializedObject.FindProperty("duration");
         float useValue = animator.AnimatorContext.PassedTime %
                          duration.floatValue;
-        // EditorGUILayout.LabelField("" + animator.AnimatorContext.PassedTime.ToString("F2"), GUILayout.Width(40));
-
+        
         EditorGUILayout.LabelField(animator.AnimatorContext.PassedTime.ToString("F2"), GUILayout.MinWidth(0f),
             GUILayout.MaxWidth(40));
+        
+        // TODO PlayerBar way too finicky when controlled, values jump around
+        EditorGUI.BeginDisabledGroup(true);
         sliderControlID = GUIUtility.GetControlID(FocusType.Passive);
         useValue = EditorGUILayout.Slider(useValue, 0f, duration.floatValue, GUILayout.MinWidth(200));
-
-
+        EditorGUI.EndDisabledGroup();
+        
         if (GUIUtility.hotControl == sliderControlID + 2)
         {
             if (!wasPlaying.HasValue) wasPlaying = animate;
             animate = false;
             float fullPlays = (int)(animator.AnimatorContext.PassedTime / duration.floatValue);
-            animator.ResetTime(fullPlays + useValue);
+            // Debug.LogWarning("usevalue " + useValue);
+            animator.ResetTime(useValue);
             animator.UpdateAnimations(0f);
         }
         else if (wasPlaying.HasValue)
@@ -439,25 +454,99 @@ public class GenericAnimationEditor : TMPAnimationEditorBase
 
 public static class GenericAnimationExporter
 {
-    public static void Export(SerializedObject serializedObject, string exportPath, string name)
+    public static void ExportGenericAnimation(SerializedObject serializedObject, string exportPath, string name)
     {
         var anim = serializedObject.targetObject as GenericAnimation;
         if (anim == null)
             throw new System.InvalidOperationException(
                 "The passed in serializedObject's target object is not a GenericAnimation");
 
-        var tracks = GetTracks(serializedObject.FindProperty("Tracks").FindPropertyRelative("Tracks"));
+        var tracks = GetTracks(serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"));
         var repeats = serializedObject.FindProperty("repeat").boolValue;
         var duration = serializedObject.FindProperty("duration").floatValue;
-        GenerateScriptFromModifier(name, exportPath, repeats, duration, tracks);
+        GenerateScriptFromModifier(name, "TMPAnimation", "", exportPath, repeats, duration, tracks);
     }
 
-    public static void Export(GenericAnimation anim, string filePath)
+    public static void ExportGenericShowAnimation(SerializedObject serializedObject, string exportPath, string name)
+    {
+        var anim = serializedObject.targetObject as GenericAnimation;
+        if (anim == null)
+            throw new System.InvalidOperationException(
+                "The passed in serializedObject's target object is not a GenericAnimation");
+
+        var tracks = GetTracks(serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"));
+        var repeats = serializedObject.FindProperty("repeat").boolValue;
+        var duration = serializedObject.FindProperty("duration").floatValue;
+        var finish = @"float finishT = Mathf.Lerp(0, 1,
+            (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / data.duration);
+
+            if (finishT >= 1)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }";
+        GenerateScriptFromModifier(name, "TMPShowAnimation", finish, exportPath, repeats, duration, tracks);
+    }
+
+    public static void ExportGenericHideAnimation(SerializedObject serializedObject, string exportPath, string name)
+    {
+        var anim = serializedObject.targetObject as GenericAnimation;
+        if (anim == null)
+            throw new System.InvalidOperationException(
+                "The passed in serializedObject's target object is not a GenericAnimation");
+
+        var tracks = GetTracks(serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"));
+        var repeats = serializedObject.FindProperty("repeat").boolValue;
+        var duration = serializedObject.FindProperty("duration").floatValue;
+        var finish = @"float finishT = Mathf.Lerp(0, 1,
+            (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / data.duration);
+
+            if (finishT >= 1)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }";
+        GenerateScriptFromModifier(name, "TMPHideAnimation", finish, exportPath, repeats, duration, tracks);
+    }
+
+    public static void ExportGenericAnimation(GenericAnimation anim, string filePath)
     {
         var repeats = anim.Repeat;
         var duration = anim.Duration;
         var tracks = anim.Tracks.Tracks.Select(track => track.Clips).ToList();
-        GenerateScriptFromModifier2(filePath, repeats, duration, tracks);
+        GenerateScriptFromModifier2(filePath, "TMPAnimation", "", repeats, duration, tracks);
+    }
+    
+    public static void ExportGenericShowAnimation(GenericAnimation anim, string filePath)
+    {
+        var repeats = anim.Repeat;
+        var duration = anim.Duration;
+        var tracks = anim.Tracks.Tracks.Select(track => track.Clips).ToList();
+        var finish = @"float finishT = Mathf.Lerp(0, 1,
+            (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / data.duration);
+
+            if (finishT >= 1)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }";
+        GenerateScriptFromModifier2(filePath, "TMPShowAnimation", finish, repeats, duration, tracks);
+    }
+    
+    public static void ExportGenericHideAnimation(GenericAnimation anim, string filePath)
+    {
+        var repeats = anim.Repeat;
+        var duration = anim.Duration;
+        var tracks = anim.Tracks.Tracks.Select(track => track.Clips).ToList();
+        var finish = @"float finishT = Mathf.Lerp(0, 1,
+            (context.AnimatorContext.PassedTime - context.AnimatorContext.StateTime(cData)) / data.duration);
+
+            if (finishT >= 1)
+            {
+                context.FinishAnimation(cData);
+                return;
+            }";
+        GenerateScriptFromModifier2(filePath, "TMPHideAnimation", finish, repeats, duration, tracks);
     }
 
     static List<List<AnimationStep>> GetTracks(SerializedProperty property)
@@ -554,15 +643,16 @@ public static class GenericAnimationExporter
         return Regex.Replace(s, @"\s+", "_");
     }
 
-    static bool GenerateScriptFromModifier2(string filePath, bool repeats, float duration,
+    static bool GenerateScriptFromModifier2(string filePath, string superClassName, string finish, bool repeats, float duration,
         List<List<AnimationStep>> steps)
     {
         var name = Path.GetFileNameWithoutExtension(filePath);
         var path = Path.GetDirectoryName(filePath);
-        return GenerateScriptFromModifier(name, path, repeats, duration, steps);
+        return GenerateScriptFromModifier(name, superClassName, finish, path, repeats, duration, steps);
     }
 
-    static bool GenerateScriptFromModifier(string className, string fileNamePath, bool repeats, float duration,
+    static bool GenerateScriptFromModifier(string className, string superClassName, string finish, string fileNamePath,
+        bool repeats, float duration,
         List<List<AnimationStep>> steps)
     {
         var names = GetAnimationStepNames(steps);
@@ -583,7 +673,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
     [AutoParameters]
     [CreateAssetMenu(fileName=""new " + className + @""", menuName=""TMPEffects/Animations/Exported/" + className +
                                     @""")]
-    public partial class " + className + @" : TMPAnimation
+    public partial class " + className + @" : " + superClassName + @"
     {{
         [AutoParameter(""repeat"", ""rp""), SerializeField]
         private bool repeat = " + repeats.ToString().ToLower() + @";
@@ -597,6 +687,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {{
+            {1}            
             CreateStepsSorted(ref data.Steps);
 
             IAnimatorContext ac = context.AnimatorContext;
@@ -631,10 +722,10 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 t = AdjustTimeForExtrapolation(step, t, cData, ac);
 
                 // Calculate the weight of the current clip
-                float weight = CalcWeight(step, t, step.duration, cData, ac);
+                float weight = step.CalcWeight(t, step.duration, cData, ac, context.SegmentData);
 
                 // Lerp the animation step using the weight
-                LerpAnimationStepWeighted(step, weight, cData, ac,
+                step.LerpAnimationStepWeighted(weight, cData, ac,
                     data.modifiersStorage, data.modifiersStorage2, data.current);
 
                 // Combine the lerped modifiers with the previously calculated ones
@@ -661,7 +752,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
             List<List<AnimationStep>> CreateStepList()
             {{
-                {1}
+                {2}
             }}
         }}
         
@@ -749,67 +840,6 @@ namespace TMPEffects.TMPAnimations.GenericExports
             return timeValue;
         }}
 
-        // Calculate the weight of the step using the time value
-        public static float CalcWeight(AnimationStep step, float timeValue, float duration,
-            CharData cData, IAnimatorContext context)
-        {{
-            float weight = 1;
-
-            if (step.entryDuration > 0)
-            {{
-                weight = step.entryCurve.EvaluateIn(cData, context, timeValue, step.entryDuration);
-            }}
-
-            if (step.exitDuration > 0)
-            {{
-                float preTime = duration - step.exitDuration;
-                var multiplier =
-                    step.exitCurve.EvaluateOut(cData, context, timeValue, step.exitDuration, preTime);
-                weight *= multiplier;
-            }}
-
-            if (step.useWave)
-            {{
-                var waveOffset = step.waveOffset.GetOffset(cData, context);
-                weight *= step.wave.Evaluate(timeValue, waveOffset).Value;
-            }}
-
-            return weight;
-        }}
-
-        // Lerp the step using the weight
-        public static void LerpAnimationStepWeighted(AnimationStep step, float weight, CharData cData,
-            IAnimatorContext context,
-            CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
-        {{
-            result.Reset();
-
-            if (step.useInitialModifiers)
-            {{
-                // Reset storage
-                storage.Reset();
-                storage2.Reset();
-
-                // Set modifiers
-                step.initModifiers.ToCharDataModifiers(cData, context, storage);
-                step.modifiers.ToCharDataModifiers(cData, context, storage2);
-
-                // Lerp modifiers and store into current
-                CharDataModifiers.LerpUnclamped(cData, context, storage, storage2, weight, result);
-            }}
-            else
-            {{
-                // Reset storage
-                storage.Reset();
-
-                // Set modifier
-                step.modifiers.ToCharDataModifiers(cData, context, storage);
-
-                // Lerp modifier and store into current
-                CharDataModifiers.LerpUnclamped(cData, storage, weight, result);
-            }}
-        }}
-
         [AutoParametersStorage]
         private partial class AutoParametersData
         {{
@@ -833,9 +863,8 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 return 0;
             }}
         }}
-
     }}
-}}", GenerateStepParameters(steps, names), GenerateCreateStepListCode(steps, names));
+}}", GenerateStepParameters(steps, names), finish, GenerateCreateStepListCode(steps, names));
         return GenerateScriptFromContext(fileNamePath + "/" + className + ".cs", code);
     }
 
@@ -894,7 +923,6 @@ namespace TMPEffects.TMPAnimations.GenericExports
             entryCurve = {GetTMPBlendCurveString(step.entryCurve)},
             exitDuration = {GetFloatString(step.exitDuration)},
             exitCurve = {GetTMPBlendCurveString(step.exitCurve)},
-            loops = {step.loops.ToString().ToLower()},
             startTime = {GetFloatString(step.startTime)},
             duration = {GetFloatString(step.duration)},
             useWave = {step.useWave.ToString().ToLower()},
@@ -906,15 +934,15 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 {GetFloatString(step.wave.CrestWait)}, {GetFloatString(step.wave.TroughWait)}),
             modifiers = new EditorFriendlyCharDataModifiers()
             {{
-                {(!step.modifiers.Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.modifiers.Position)}," : "")}
+                {(!step.modifiers.Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.modifiers.Position)}," : "")}
                 {(!step.modifiers.Scale.Equals(Vector3.one) ? $"Scale = {GetVector3String(step.modifiers.Scale)}," : "")}
                 {(step.modifiers.Rotations.Count != 0 ? @$"Rotations = new List<EditorFriendlyRotation>()
                 {{{GetRotationsString(step.modifiers.Rotations)}
                 }}," : "")}
-                {(!step.modifiers.BL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.modifiers.BL_Position)}," : "")}
-                {(!step.modifiers.TL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.modifiers.TL_Position)}," : "")}
-                {(!step.modifiers.TR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.modifiers.TR_Position)}," : "")}
-                {(!step.modifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.modifiers.BR_Position)}," : "")}
+                {(!step.modifiers.BL_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.modifiers.BL_Position)}," : "")}
+                {(!step.modifiers.TL_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.modifiers.TL_Position)}," : "")}
+                {(!step.modifiers.TR_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.modifiers.TR_Position)}," : "")}
+                {(!step.modifiers.BR_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.modifiers.BR_Position)}," : "")}
                 {(step.modifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.modifiers.BL_Color)}," : "")}
                 {(step.modifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.modifiers.TL_Color)}," : "")}
                 {(step.modifiers.TR_Color.Override != 0 ? $"TR_Color = {GetColorOverrideString(step.modifiers.TR_Color)}," : "")}
@@ -922,15 +950,15 @@ namespace TMPEffects.TMPAnimations.GenericExports
             }},
             {(step.useInitialModifiers ? @$"initModifiers = new EditorFriendlyCharDataModifiers()
             {{
-                {(!step.initModifiers.Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.initModifiers.Position)}," : "")}
+                {(!step.initModifiers.Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"Position = {GetTypedVector3String(step.initModifiers.Position)}," : "")}
                 {(!step.initModifiers.Scale.Equals(Vector3.one) ? $"Scale = {GetVector3String(step.initModifiers.Scale)}," : "")}
                 {(step.initModifiers.Rotations.Count != 0 ? @$"Rotations = new List<EditorFriendlyRotation>()
                 {{{GetRotationsString(step.initModifiers.Rotations)}
                 }}," : "")}
-                {(!step.initModifiers.BL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.initModifiers.BL_Position)}," : "")}
-                {(!step.initModifiers.TL_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.initModifiers.TL_Position)}," : "")}
-                {(!step.initModifiers.TR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.initModifiers.TR_Position)}," : "")}
-                {(!step.initModifiers.BR_Position.Equals(new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.initModifiers.BR_Position)}," : "")}
+                {(!step.initModifiers.BL_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BL_Position = {GetTypedVector3String(step.initModifiers.BL_Position)}," : "")}
+                {(!step.initModifiers.TL_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TL_Position = {GetTypedVector3String(step.initModifiers.TL_Position)}," : "")}
+                {(!step.initModifiers.TR_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"TR_Position = {GetTypedVector3String(step.initModifiers.TR_Position)}," : "")}
+                {(!step.initModifiers.BR_Position.Equals(new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero)) ? $"BR_Position = {GetTypedVector3String(step.initModifiers.BR_Position)}," : "")}
                 {(step.initModifiers.BL_Color.Override != 0 ? $"BL_Color = {GetColorOverrideString(step.initModifiers.BL_Color)}," : "")}
                 {(step.initModifiers.TL_Color.Override != 0 ? $"TL_Color = {GetColorOverrideString(step.initModifiers.TL_Color)}," : "")}
                 {(step.initModifiers.TR_Color.Override != 0 ? $"TR_Color = {GetColorOverrideString(step.initModifiers.TR_Color)}," : "")}
@@ -948,7 +976,7 @@ namespace TMPEffects.TMPAnimations.GenericExports
 
         return code;
     }
-    
+
     private static string GetColorOverrideString(ColorOverride modifiersBLColor)
     {
         return
@@ -988,26 +1016,26 @@ namespace TMPEffects.TMPAnimations.GenericExports
                 uniformity = {GetFloatString(curve.uniformity)},
                 ignoreAnimatorScaling = {curve.ignoreAnimatorScaling.ToString().ToLower()},
                 finishWholeSegmentInTime = {curve.finishWholeSegmentInTime.ToString().ToLower()},
-                zeroBasedOffset = {curve.zeroBasedOffset.ToString().ToLower()}
-            }}"; 
+            }}";
         return str;
     }
-    
+
     private static string GetOffsetBundleString(OffsetBundle offsetBundle)
     {
         var str = $@"new OffsetBundle()
             {{
-                provider = {GetOffsetTypePowerEnum(offsetBundle.provider as OffsetTypePowerEnum)},
-                uniformity = {GetFloatString(offsetBundle.uniformity)},
-                ignoreAnimatorScaling = {offsetBundle.ignoreAnimatorScaling.ToString().ToLower()},
-                zeroBasedOffset = {offsetBundle.zeroBasedOffset.ToString().ToLower()}
-            }}"; 
+                provider = {GetOffsetTypePowerEnum(offsetBundle.Provider as OffsetTypePowerEnum)},
+                uniformity = {GetFloatString(offsetBundle.Uniformity)},
+                ignoreAnimatorScaling = {offsetBundle.IgnoreAnimatorScaling.ToString().ToLower()},
+                zeroBasedOffset = {offsetBundle.ZeroBasedOffset.ToString().ToLower()}
+            }}";
         return str;
     }
 
     private static string GetOffsetTypePowerEnum(OffsetTypePowerEnum offset)
     {
-        return $@"new OffsetTypePowerEnum(OffsetType.{offset.EnumValue}, null, {offset.UseCustom.ToString().ToLower()})";
+        return
+            $@"new OffsetTypePowerEnum(OffsetType.{offset.EnumValue}, null, {offset.UseCustom.ToString().ToLower()})";
     }
 
     private static string GetAnimCurveString(AnimationCurve curve)
@@ -1031,12 +1059,12 @@ namespace TMPEffects.TMPAnimations.GenericExports
         return vcalue.ToString("0.######", CultureInfo.InvariantCulture) + "f";
     }
 
-    private static string GetTypedVector3String(ParameterTypes.TypedVector3 vector)
+    private static string GetTypedVector3String(TMPParameterTypes.TypedVector3 vector)
     {
         return $"new TypedVector3({GetVectorTypeString(vector.type)}, {GetVector3String(vector.vector)})";
     }
 
-    private static string GetVectorTypeString(ParameterTypes.VectorType type)
+    private static string GetVectorTypeString(TMPParameterTypes.VectorType type)
     {
         return "VectorType." + type;
     }

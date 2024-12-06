@@ -194,7 +194,6 @@ namespace TMPEffects.Components.Mediator
             {
                 VisibilityState previous = visibilityStates[i];
                 if (newState == previous) continue;
-                Debug.Log("Setting from "  + previous + " to " + newState);
 
                 if (!processor)
                 {

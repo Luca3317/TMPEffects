@@ -8,7 +8,7 @@ namespace TMPEffects.TMPAnimations.Animations
     [AutoParameters]
     [CreateAssetMenu(fileName = "new ShakeAnimation",
         menuName = "TMPEffects/Animations/Basic Animations/Built-in/Shake")]
-    public partial class ShakeAnimation : TMPAnimation
+    public partial class ShakeAnimation : TMPAnimation 
     {
         [SerializeField, AutoParameter("uniform", "uni")]
         [Tooltip("Whether to apply the shake uniformly across the text.\nAliases: uniform, uni")]

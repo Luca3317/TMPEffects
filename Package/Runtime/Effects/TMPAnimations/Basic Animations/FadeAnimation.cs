@@ -2,7 +2,7 @@ using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Parameters;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {

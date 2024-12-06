@@ -194,7 +194,7 @@ namespace TMPEffects.CharacterData
 
         public void ClearPosition()
         {
-            characterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.PositionDelta);
+            characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.PositionDelta);
         }
 
         #endregion
@@ -218,7 +218,7 @@ namespace TMPEffects.CharacterData
 
         public void ClearRotations()
         {
-            characterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Rotations);
+            characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.Rotations);
         }
 
         #endregion
@@ -236,7 +236,7 @@ namespace TMPEffects.CharacterData
 
         public void ClearScale()
         {
-            characterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Scale);
+            characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.Scale);
         }
 
         #endregion
@@ -246,7 +246,7 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public void Reset()
         {
-            characterModifiers.ClearModifierFlags();
+            characterModifiers.ClearModifiers();
             MeshModifiers.ClearModifiers();
         }
     }

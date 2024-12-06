@@ -26,19 +26,30 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         return result;
     }
 
-    private static GenericAnimation CreateGenericFromAllClips(ActionContext context)
+    private static GenericAnimation CreateGenericAnimation(ActionContext context, List<TMPMeshModifierTrack> tracks)
     {
         var anim = ScriptableObject.CreateInstance<GenericAnimation>();
         anim.Tracks.Tracks.Clear();
 
-        var tracks = context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList();
+        float duration = anim.Duration;
+        anim.Tracks = CreateTrackList(tracks, ref duration);
+        anim.Repeat = true;
+        anim.Duration = duration;
 
+        return anim;
+    }
+
+    private static GenericAnimationUtility.TrackList CreateTrackList(List<TMPMeshModifierTrack> tracks, ref float duration)
+    {
+        GenericAnimationUtility.TrackList result = new GenericAnimationUtility.TrackList();
+        
         foreach (var track in tracks)
         {
             var clips = track.GetClips();
 
-            var animTrack = new GenericAnimation.Track();
-            anim.Tracks.Tracks.Add(animTrack);
+            var animTrack = new GenericAnimationUtility.Track();
+            // anim.Tracks.Tracks.Add(animTrack);
+            result.Tracks.Add(animTrack);
             foreach (var clip in clips)
             {
                 TMPMeshModifierClip mClip = clip.asset as TMPMeshModifierClip;
@@ -57,69 +68,54 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
                 animTrack.Clips.Add(step);
             
                 float endTime = (float)clip.end;
-                if (endTime > anim.Duration)
+                if (endTime > duration)
                 {
-                    anim.Duration = endTime;
+                    duration = endTime;
                 }
             }
         }
-
-        anim.Repeat = true;
-
-        return anim;
+        
+        return result;
     }
-
-    private static GenericAnimation CreateGenericAnimationFromSelectedClips(ActionContext context)
+    
+    private static GenericShowAnimation CreateGenericShowAnimation(ActionContext context,
+        List<TMPMeshModifierTrack> tracks)
     {
-        var anim = ScriptableObject.CreateInstance<GenericAnimation>();
+        var anim = ScriptableObject.CreateInstance<GenericShowAnimation>();
         anim.Tracks.Tracks.Clear();
-
-        var tracks = context.tracks.OfType<TMPMeshModifierTrack>().ToList();
-
-        foreach (var track in tracks)
-        {
-            var clips = track.GetClips();
-
-            var animTrack = new GenericAnimation.Track();
-            anim.Tracks.Tracks.Add(animTrack);
-            foreach (var clip in clips)
-            {
-                TMPMeshModifierClip mClip = clip.asset as TMPMeshModifierClip;
-                if (mClip == null) continue;
-            
-                var copy = UnityEngine.Object.Instantiate(mClip);
-                var step = copy.Step.Step;
-
-                // Copy over clip properties
-                step.name = clip.displayName;
-                step.duration = (float)clip.duration;
-                step.startTime = (float)clip.start;
-                step.preExtrapolation = clip.preExtrapolationMode.ConvertExtrapolation();
-                step.postExtrapolation = clip.postExtrapolationMode.ConvertExtrapolation();
-                
-                animTrack.Clips.Add(step);
-            
-                float endTime = (float)clip.end;
-                if (endTime > anim.Duration)
-                {
-                    anim.Duration = endTime;
-                }
-            }
-        }
-
+        
+        float duration = anim.Duration;
+        anim.Tracks = CreateTrackList(tracks, ref duration);
         anim.Repeat = true;
+        anim.Duration = duration;
+        return anim;
+    }
+    
+    private static GenericHideAnimation CreateGenericHideAnimation(ActionContext context,
+        List<TMPMeshModifierTrack> tracks)
+    {
+        var anim = ScriptableObject.CreateInstance<GenericHideAnimation>();
+        anim.Tracks.Tracks.Clear();
+        
+        float duration = anim.Duration;
+        anim.Tracks = CreateTrackList(tracks, ref duration);
+        anim.Repeat = true;
+        anim.Duration = duration;
 
         return anim;
     }
+    
 
     public static bool ExportAsGeneric(ActionContext context, string directoryPath, string assetName, int option)
     {
         if (option == 1) throw new SystemException();
 
+        List<TMPMeshModifierTrack> tracks;
         // Selected only
         if (option == 0)
         {
-            var anim = CreateGenericAnimationFromSelectedClips(context);
+            tracks = context.tracks.OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericAnimation(context, tracks);
             GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
             return true;
         }
@@ -127,7 +123,60 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         // All clips
         if (option == 2)
         {
-            var anim = CreateGenericFromAllClips(context);
+            tracks = context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericAnimation(context, tracks);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
+            return true;
+        }
+
+        return false;
+    }
+    
+    public static bool ExportAsGenericShow(ActionContext context, string directoryPath, string assetName, int option)
+    {
+        if (option == 1) throw new SystemException();
+
+        List<TMPMeshModifierTrack> tracks;
+        // Selected only
+        if (option == 0)
+        {
+            tracks = context.tracks.OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericShowAnimation(context, tracks);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
+            return true;
+        }
+
+        // All clips
+        if (option == 2)
+        {
+            tracks = context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericShowAnimation(context, tracks);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
+            return true;
+        }
+
+        return false;
+    }
+    
+    public static bool ExportAsGenericHide(ActionContext context, string directoryPath, string assetName, int option)
+    {
+        if (option == 1) throw new SystemException();
+
+        List<TMPMeshModifierTrack> tracks;
+        // Selected only
+        if (option == 0)
+        {
+            tracks = context.tracks.OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericHideAnimation(context, tracks);
+            GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
+            return true;
+        }
+
+        // All clips
+        if (option == 2)
+        {
+            tracks = context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList();
+            var anim = CreateGenericHideAnimation(context, tracks);
             GenerateScriptableFromContext(Path.Combine(Path.GetFullPath(directoryPath), assetName), anim);
             return true;
         }
@@ -163,7 +212,7 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
     }
     #endregion
 
-    static void GenerateScriptableFromContext(string filePath, GenericAnimation anim)
+    static void GenerateScriptableFromContext(string filePath, UnityEngine.Object anim)
     {
         EnsureDirectoryExists(filePath);
 
@@ -224,16 +273,62 @@ Which clips do you want to use for the export?", "Selected Only", "Cancel", "All
         // Selected only
         if (option == 0)
         {
-            var anim = CreateGenericAnimationFromSelectedClips(context);
-            GenericAnimationExporter.Export(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            var anim = CreateGenericAnimation(context, context.tracks.OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
             return true;
         }
 
         // All clips
         if (option == 2)
         {
-            var anim = CreateGenericFromAllClips(context);
-            GenericAnimationExporter.Export(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            var anim = CreateGenericAnimation(context, context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            return true;
+        }
+
+        return false;
+    }
+    
+    public static bool ExportAsShowScript(ActionContext context, string directoryPath, string scriptName, int option)
+    {
+        if (option == 1) throw new SystemException();
+
+        // Selected only
+        if (option == 0)
+        {
+            var anim = CreateGenericAnimation(context, context.tracks.OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericShowAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            return true;
+        }
+
+        // All clips
+        if (option == 2)
+        {
+            var anim = CreateGenericAnimation(context, context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericShowAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            return true;
+        }
+
+        return false;
+    }
+    
+    public static bool ExportAsHideScript(ActionContext context, string directoryPath, string scriptName, int option)
+    {
+        if (option == 1) throw new SystemException();
+
+        // Selected only
+        if (option == 0)
+        {
+            var anim = CreateGenericAnimation(context, context.tracks.OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericHideAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
+            return true;
+        }
+
+        // All clips
+        if (option == 2)
+        {
+            var anim = CreateGenericAnimation(context, context.timeline.GetOutputTracks().OfType<TMPMeshModifierTrack>().ToList());
+            GenericAnimationExporter.ExportGenericHideAnimation(anim, Path.Combine(Path.GetFullPath(directoryPath), scriptName));
             return true;
         }
 
@@ -263,13 +358,14 @@ Proceed?", "Ok", "Cancel");
             tracks.Add(track);
 
             var tmpAnimationClip = clip.asset as TMPAnimationClip;
-            var genericAnim = tmpAnimationClip.animation;
-            var mainParentTrack = context.timeline.CreateTrack<GroupTrack>(genericAnim.name);
+            var genericAnim = tmpAnimationClip.Animation as IGenericAnimation;
+            var name = (tmpAnimationClip.Animation as UnityEngine.Object).name;
+            var mainParentTrack = context.timeline.CreateTrack<GroupTrack>(name);
 
             int trackCounter = 0;
             foreach (var animTrack in genericAnim.Tracks.Tracks) 
             {
-                var parentTrack = context.timeline.CreateTrack<TMPMeshModifierTrack>(mainParentTrack, genericAnim.name + "_Track" + trackCounter++);
+                var parentTrack = context.timeline.CreateTrack<TMPMeshModifierTrack>(mainParentTrack, name + "_Track" + trackCounter++);
 
                 foreach (var animClip in animTrack.Clips)
                 {
@@ -294,12 +390,6 @@ Proceed?", "Ok", "Cancel");
             EditorUtility.SetDirty(context.timeline);
             TimelineEditor.Refresh(RefreshReason.ContentsAddedOrRemoved);
         }
-
-        // foreach (var track in tracks)
-        // {
-        //     context.timeline.DeleteTrack(track);
-        // }
-
         return true;
     }
     #endregion

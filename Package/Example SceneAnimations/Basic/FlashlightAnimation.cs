@@ -7,7 +7,7 @@ using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 // using static TMPEffects.ParameterUtility;
 

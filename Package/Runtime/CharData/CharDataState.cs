@@ -183,7 +183,7 @@ namespace TMPEffects.CharacterData
             }
 
             // Apply transformation
-            var scaled = AnimationUtility.ScaleVector(positionDelta, cData, context);
+            var scaled = TMPAnimationUtility.ScaleVector(positionDelta, cData, context);
             vtl += scaled;
             vtr += scaled;
             vbr += scaled;
@@ -224,10 +224,10 @@ namespace TMPEffects.CharacterData
                 Vector3 deltaBR;
                 Vector3 deltaBL;
 
-                deltaTL = AnimationUtility.ScaleVector(cData.mesh.TL_Position - cData.mesh.initial.TL_Position, cData, context);
-                deltaTR = AnimationUtility.ScaleVector(cData.mesh.TR_Position - cData.mesh.initial.TR_Position, cData, context);
-                deltaBR = AnimationUtility.ScaleVector(cData.mesh.BR_Position - cData.mesh.initial.BR_Position, cData, context);
-                deltaBL = AnimationUtility.ScaleVector(cData.mesh.BL_Position - cData.mesh.initial.BL_Position, cData, context);
+                deltaTL = TMPAnimationUtility.ScaleVector(cData.mesh.TL_Position - cData.mesh.initial.TL_Position, cData, context);
+                deltaTR = TMPAnimationUtility.ScaleVector(cData.mesh.TR_Position - cData.mesh.initial.TR_Position, cData, context);
+                deltaBR = TMPAnimationUtility.ScaleVector(cData.mesh.BR_Position - cData.mesh.initial.BR_Position, cData, context);
+                deltaBL = TMPAnimationUtility.ScaleVector(cData.mesh.BL_Position - cData.mesh.initial.BL_Position, cData, context);
 
                 TL += deltaTL;
                 TR += deltaTR;

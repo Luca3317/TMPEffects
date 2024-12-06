@@ -115,24 +115,24 @@ namespace TMPEffects.Parameters
             }
         }
 
-        public static bool StringToTypedVector3(string str, out ParameterTypes.TypedVector3 result,
+        public static bool StringToTypedVector3(string str, out TMPParameterTypes.TypedVector3 result,
             ITMPKeywordDatabase keywords = null)
         {
             if (StringToVector3(str, out Vector3 vec, keywords))
             {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Position, vec);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Position, vec);
                 return true;
             }
 
             if (StringToAnchor(str, out Vector2 vec2, keywords))
             {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Anchor, vec2);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Anchor, vec2);
                 return true;
             }
 
             if (StringToVector3Offset(str, out vec, keywords))
             {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, vec);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, vec);
                 return true;
             }
 
@@ -140,24 +140,24 @@ namespace TMPEffects.Parameters
             return false;
         }
 
-        public static bool StringToTypedVector2(string str, out ParameterTypes.TypedVector2 result,
+        public static bool StringToTypedVector2(string str, out TMPParameterTypes.TypedVector2 result,
             ITMPKeywordDatabase keywords = null)
         {
             if (StringToVector2(str, out Vector2 vec, keywords))
             {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Position, vec);
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Position, vec);
                 return true;
             }
 
             if (StringToAnchor(str, out vec, keywords))
             {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Anchor, vec);
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Anchor, vec);
                 return true;
             }
 
             if (StringToVector2Offset(str, out vec, keywords))
             {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Offset, vec);
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Offset, vec);
                 return true;
             }
 
@@ -273,10 +273,11 @@ namespace TMPEffects.Parameters
                 return false;
             }
 
-            str = str.Substring(2, str.Length - 2);
             if (keywords != null && keywords.TryGetAnchor(str, out result))
                 return true;
 
+            str = str.Substring(2, str.Length - 2);
+            
             if (StringToVector2(str, out result, keywords))
             {
                 return true;

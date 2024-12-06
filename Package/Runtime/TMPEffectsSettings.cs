@@ -1,4 +1,3 @@
-
 using TMPEffects.Databases;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Databases.CommandDatabase;
@@ -11,7 +10,7 @@ using UnityEngine;
 public class TMPEffectsSettings : ScriptableObject
 {
     private static TMPEffectsSettings instance;
-    
+
     /// <summary>
     /// Get a singleton instance of the settings class.
     /// </summary>
@@ -28,50 +27,27 @@ public class TMPEffectsSettings : ScriptableObject
                 {
                     TMPEffectsImporterWindow.ShowImporterWindow();
                 }
+#else
+                Debug.LogError("Could not load TMPEffectsSettings. You must import it and rebuild.");
 #endif
             }
 
             return TMPEffectsSettings.instance;
         }
     }
-    
-    
+
+
     public static TMPAnimationDatabase DefaultAnimationDatabase => Instance?.defaultAnimationDatabase;
     public static TMPCommandDatabase DefaultCommandDatabase => Instance?.defaultCommandDatabase;
-    
-    // TODO Remove those tooltips, for thte ones in the editor
-    [SerializeField, Tooltip("The default animation database that TMPAnimator component will use.")]
-    private TMPAnimationDatabase defaultAnimationDatabase;
-    [SerializeField, Tooltip("The default command database that TMPWriter components will use.")]
-    private TMPCommandDatabase defaultCommandDatabase;
-    
+
+    [SerializeField] private TMPAnimationDatabase defaultAnimationDatabase;
+    [SerializeField] private TMPCommandDatabase defaultCommandDatabase;
+
     public static TMPKeywordDatabase DefaultKeywordDatabase => Instance?.defaultKeywordDatabase;
-    
-    [SerializeField, Tooltip("The default keyword database that TMPEffects components will use.")]
-    private TMPKeywordDatabase defaultKeywordDatabase;
+
+    [SerializeField] private TMPKeywordDatabase defaultKeywordDatabase;
 
     public static TMPKeywordDatabase GlobalKeywordDatabase => Instance?.globalKeywordDatabase;
-    
-    [SerializeField, Tooltip("The keyword database that defines globally valid keywords.")]
-    private TMPKeywordDatabase globalKeywordDatabase;
 
-    // public static char AnimationPrefix => Instance != null ? Instance.animationPrefix : '!';
-    // public static char ShowAnimationPrefix => Instance.showAnimationPrefix;
-    // public static char HideAnimationPrefix => Instance.hideAnimationPrefix;
-    //
-    // // TODO Need to enforce these are valid according to rules in parsingutility
-    // [SerializeField, Tooltip("The prefix for animation tags.")]
-    // private char animationPrefix;
-    // [SerializeField, Tooltip("The prefix for show animation tags.")]
-    // private char showAnimationPrefix;
-    // [SerializeField, Tooltip("The prefix for hide animation tags.")]
-    // private char hideAnimationPrefix;
-    //
-    // public static char CommandPrefix => Instance.commandPrefix;
-    // public static char EventPrefix => Instance.eventPrefix;
-    //
-    // [SerializeField, Tooltip("The prefix for command tags.")]
-    // private char commandPrefix;
-    // [SerializeField, Tooltip("The prefix for event tags.")]
-    // private char eventPrefix;
+    [SerializeField] private TMPKeywordDatabase globalKeywordDatabase;
 }

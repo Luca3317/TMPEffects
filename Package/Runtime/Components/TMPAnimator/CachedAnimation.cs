@@ -1,7 +1,7 @@
 using TMPEffects.Databases;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.Components.Animator
 {

@@ -39,7 +39,6 @@ namespace TMPEffects.EffectCategories
 
             var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
 
-            // TODO HUH! WTF TO DO ABOUT THIS
             if (!database.GetEffect(tagInfo.name).ValidateParameters(param, keywordDatabase)) return false;
 
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
@@ -53,7 +52,6 @@ namespace TMPEffects.EffectCategories
             if (tag.Prefix != Prefix) return false;
             if (database == null || !database.ContainsEffect(tag.Name)) return false;
 
-            // TODO HUH! WTF TO DO ABOUT THIS
             if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters, keywordDatabase)) return false;
 
             return true;
@@ -67,7 +65,6 @@ namespace TMPEffects.EffectCategories
 
             if (tagInfo.type == ParsingUtility.TagType.Open)
             {
-                // TODO HUH! WTF TO DO ABOUT THIS
                 var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
                 if (!database.GetEffect(tagInfo.name).ValidateParameters(param, keywordDatabase)) return false;
             }

@@ -4,7 +4,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
@@ -74,7 +74,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 {
                     TMP_Character current = data.currentCharacterCache[segmentIndex];
                     TMP_Character original = data.originalCharacterCache[segmentIndex];
-                    AnimationUtility.SetToCharacter(current, original, cData, context);
+                    TMPAnimationUtility.SetToCharacter(current, original, cData, context);
                     return;
                 }
             }
@@ -85,7 +85,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 data.currentCharacterCache[segmentIndex] = data.originalCharacterCache[segmentIndex];
                 TMP_Character current = data.currentCharacterCache[segmentIndex];
                 TMP_Character original = data.originalCharacterCache[segmentIndex];
-                AnimationUtility.SetToCharacter(current, original, cData, context);
+                TMPAnimationUtility.SetToCharacter(current, original, cData, context);
             }
 
             // Set to new random character
@@ -107,7 +107,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 if (succ)
                 {
                     data.currentCharacterCache[segmentIndex] = newCharacter;
-                    AnimationUtility.SetToCharacter(newCharacter, data.originalCharacterCache[segmentIndex], cData,
+                    TMPAnimationUtility.SetToCharacter(newCharacter, data.originalCharacterCache[segmentIndex], cData,
                         context);
                 }
                 else

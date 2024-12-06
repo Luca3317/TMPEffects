@@ -12,7 +12,6 @@ public class TMPMeshModifiers
         get => bl_Delta;
         set
         {
-            if (value == bl_Delta) return;
             bl_Delta = value;
             modifier |= ModifierFlags.Deltas;
         }
@@ -23,7 +22,6 @@ public class TMPMeshModifiers
         get => tl_Delta;
         set
         {
-            if (value == tl_Delta) return;
             tl_Delta = value;
             modifier |= ModifierFlags.Deltas;
         }
@@ -34,7 +32,6 @@ public class TMPMeshModifiers
         get => tr_Delta;
         set
         {
-            if (value == tr_Delta) return;
             tr_Delta = value;
             modifier |= ModifierFlags.Deltas;
         }
@@ -45,7 +42,6 @@ public class TMPMeshModifiers
         get => br_Delta;
         set
         {
-            if (value == br_Delta) return;
             br_Delta = value;
             modifier |= ModifierFlags.Deltas;
         }
@@ -56,12 +52,6 @@ public class TMPMeshModifiers
         get { return bl_Color; }
         set
         {
-            if (value.Equals(bl_Color)) return;
-            if (value.Override == 0)
-            {
-                ClearColors();
-                return;
-            }
             bl_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -72,12 +62,6 @@ public class TMPMeshModifiers
         get { return tl_Color; }
         set
         {
-            if (value.Equals(tl_Color)) return;
-            if (value.Override == 0)
-            {
-                ClearColors();
-                return;
-            }
             tl_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -88,12 +72,6 @@ public class TMPMeshModifiers
         get { return tr_Color; }
         set
         {
-            if (value.Equals(tr_Color)) return;
-            if (value.Override == 0)
-            {
-                ClearColors();
-                return;
-            }
             tr_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -104,12 +82,6 @@ public class TMPMeshModifiers
         get { return br_Color; }
         set
         {
-            if (value.Equals(br_Color)) return;
-            if (value.Override == 0)
-            {
-                ClearColors();
-                return;
-            }
             br_Color = value;
             modifier |= ModifierFlags.Colors;
         }
@@ -120,7 +92,6 @@ public class TMPMeshModifiers
         get => bl_UV0;
         set
         {
-            if (value == bl_UV0) return;
             bl_UV0 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -131,7 +102,6 @@ public class TMPMeshModifiers
         get => tl_UV0;
         set
         {
-            if (value == tl_UV0) return;
             tl_UV0 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -142,7 +112,6 @@ public class TMPMeshModifiers
         get => tr_UV0;
         set
         {
-            if (value == tr_UV0) return;
             tr_UV0 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -153,7 +122,6 @@ public class TMPMeshModifiers
         get => br_UV0;
         set
         {
-            if (value == br_UV0) return;
             br_UV0 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -164,7 +132,6 @@ public class TMPMeshModifiers
         get => bl_UV2;
         set
         {
-            if (value == bl_UV2) return;
             bl_UV2 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -175,7 +142,6 @@ public class TMPMeshModifiers
         get => tl_UV2;
         set
         {
-            if (value == tl_UV2) return;
             tl_UV2 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -186,7 +152,6 @@ public class TMPMeshModifiers
         get => tr_UV2;
         set
         {
-            if (value == tr_UV2) return;
             tr_UV2 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -197,7 +162,6 @@ public class TMPMeshModifiers
         get => br_UV2;
         set
         {
-            if (value == br_UV2) return;
             br_UV2 = value;
             modifier |= ModifierFlags.UVs;
         }
@@ -343,6 +307,33 @@ public class TMPMeshModifiers
         }
 
         modifier |= other.modifier;
+    }
+
+    public void CopyFrom(TMPMeshModifiers other)
+    {
+        ClearModifiers();
+        
+        BL_Delta = other.BL_Delta;
+        TL_Delta = other.TL_Delta;
+        TR_Delta = other.TR_Delta;
+        BR_Delta = other.BR_Delta;
+
+        BL_Color = other.BL_Color;
+        TL_Color = other.TL_Color;
+        TR_Color = other.TR_Color;
+        BR_Color = other.BR_Color;
+
+        BL_UV0 = other.BL_UV0;
+        TL_UV0 = other.TL_UV0;
+        TR_UV0 = other.TR_UV0;
+        BR_UV0 = other.BR_UV0;
+
+        BL_UV2 = other.BL_UV2;
+        TL_UV2 = other.TL_UV2;
+        TR_UV2 = other.TR_UV2;
+        BR_UV2 = other.BR_UV2;
+
+        modifier = other.modifier;
     }
 
     public static TMPMeshModifiers operator +(TMPMeshModifiers lhs, TMPMeshModifiers rhs)

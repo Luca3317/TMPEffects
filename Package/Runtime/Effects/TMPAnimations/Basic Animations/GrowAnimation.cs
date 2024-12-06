@@ -1,7 +1,7 @@
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
 using TMPEffects.Extensions;
 using TMPEffects.Parameters;
 

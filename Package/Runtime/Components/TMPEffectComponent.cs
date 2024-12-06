@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TMPro;
@@ -13,6 +14,14 @@ namespace TMPEffects.Components
     /// </summary>
     public abstract class TMPEffectComponent : MonoBehaviour
     {
+        public delegate void OnTextChangedEventHandler(bool textContentChanged);
+        
+        /// <summary>
+        /// Raised when the associated <see cref="TMP_Text"/> component's text changes.<br/>
+        /// The bool parameter indicates whether the actual text content changed.
+        /// </summary>
+        public event OnTextChangedEventHandler OnTextChanged;
+        
         /// <summary>
         /// The associated <see cref="CharData"/>.
         /// </summary>
@@ -126,6 +135,21 @@ namespace TMPEffects.Components
             TMP_Text text = GetComponent<TMP_Text>();
             TMPMediatorManager.Subscribe(text, obj);
             mediator = TMPMediatorManager.GetMediator(text);
+        }
+
+        protected void OnSubscribeToMediator()
+        {
+            Mediator.TextChanged_Late += TextChanged;
+        }
+
+        protected void OnUnsubscribeFromMediator()
+        {
+            Mediator.TextChanged_Late -= TextChanged;
+        }
+        
+        private void TextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+        {
+            OnTextChanged?.Invoke(textContentChanged);
         }
     }
 }

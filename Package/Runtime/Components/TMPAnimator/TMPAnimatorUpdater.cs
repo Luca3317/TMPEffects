@@ -9,8 +9,12 @@ namespace TMPEffects.Components.Animator
     public class TMPAnimatorUpdater : MonoBehaviour
     {
         public uint MaxUpdatesPerSecond => maxUpdatesPerSecond;
-        [SerializeField] private uint maxUpdatesPerSecond;
-        [System.NonSerialized] AnimationUpdater animUpdater;
+        public float AdditionalTimeScaling => additionalTimeScaling;
+        
+        [SerializeField] private uint maxUpdatesPerSecond = 144;
+        [SerializeField] private float additionalTimeScaling = 1;
+        
+        [System.NonSerialized] AnimationUpdater animUpdater;    
 
         public void SetMaxUpdatesPerSecond(uint maxUpdatesPerSecond) => animUpdater.SetMaxUpdatesPerSecond(maxUpdatesPerSecond);
 
@@ -18,7 +22,7 @@ namespace TMPEffects.Components.Animator
         {
             TMPAnimator anim = GetComponent<TMPAnimator>();
             anim.SetUpdateFrom(UpdateFrom.Script);
-            animUpdater = new AnimationUpdater(anim.UpdateAnimations, maxUpdatesPerSecond);
+            animUpdater = new AnimationUpdater(anim.UpdateAnimations, maxUpdatesPerSecond, additionalTimeScaling);
         }
 
         void Update()
@@ -33,6 +37,7 @@ namespace TMPEffects.Components.Animator
             {
                 animUpdater.Reset();
                 animUpdater.SetMaxUpdatesPerSecond(maxUpdatesPerSecond);
+                animUpdater.AdditionalTimeScaling = additionalTimeScaling;
             }
         }
 #endif

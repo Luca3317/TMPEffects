@@ -4,7 +4,7 @@ using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.Extensions;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
 {

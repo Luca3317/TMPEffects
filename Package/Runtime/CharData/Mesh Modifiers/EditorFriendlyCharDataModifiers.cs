@@ -12,14 +12,14 @@ public class EditorFriendlyRotation
 {
     public Vector3 eulerAngles = Vector3.zero;
 
-    public ParameterTypes.TypedVector3 pivot =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 pivot =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
     public EditorFriendlyRotation()
     {
     }
 
-    public EditorFriendlyRotation(Vector3 eulerAngles, ParameterTypes.TypedVector3 pivot)
+    public EditorFriendlyRotation(Vector3 eulerAngles, TMPParameterTypes.TypedVector3 pivot)
     {
         this.eulerAngles = eulerAngles;
         this.pivot = pivot;
@@ -29,62 +29,64 @@ public class EditorFriendlyRotation
 [System.Serializable]
 public class EditorFriendlyCharDataModifiers
 {
-    public ParameterTypes.TypedVector3 Position =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 Position =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
     public Vector3 Scale = Vector3.one;
 
     public List<EditorFriendlyRotation> Rotations =
         new List<EditorFriendlyRotation>();
 
-    public ParameterTypes.TypedVector3 BL_Position =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 BL_Position =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 TL_Position =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 TL_Position =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 TR_Position =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 TR_Position =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 BR_Position =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 BR_Position =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
     public ColorOverride BL_Color = new ColorOverride();
     public ColorOverride TL_Color = new ColorOverride();
     public ColorOverride TR_Color = new ColorOverride();
     public ColorOverride BR_Color = new ColorOverride();
 
-    public ParameterTypes.TypedVector3 BL_UV0 =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 BL_UV0 =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 TL_UV0 =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 TL_UV0 =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 TR_UV0 =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 TR_UV0 =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    public ParameterTypes.TypedVector3 BR_UV0 =
-        new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, Vector3.zero);
+    public TMPParameterTypes.TypedVector3 BR_UV0 =
+        new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, Vector3.zero);
 
-    
-    public EditorFriendlyCharDataModifiers() {}
+
+    public EditorFriendlyCharDataModifiers()
+    {
+    }
 
     public EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers other)
     {
         Position = other.Position;
         Scale = other.Scale;
         Rotations = new List<EditorFriendlyRotation>(other.Rotations);
-        
+
         BL_Position = other.BL_Position;
         TL_Position = other.TL_Position;
         TR_Position = other.TR_Position;
         BR_Position = other.BR_Position;
-        
+
         BL_Color = other.BL_Color;
         TL_Color = other.TL_Color;
         TR_Color = other.TR_Color;
         BR_Color = other.BR_Color;
-        
+
         BL_UV0 = other.BL_UV0;
         TL_UV0 = other.TL_UV0;
         TR_UV0 = other.TR_UV0;
@@ -92,23 +94,15 @@ public class EditorFriendlyCharDataModifiers
     }
 
     private bool dirty = false;
-    
+
     public void ToCharDataModifiers(CharData cData, IAnimationContext ctx, CharDataModifiers result)
         => ToCharDataModifiers(cData, ctx.AnimatorContext, result);
-    
+
     public void ToCharDataModifiers(CharData cData, IAnimatorContext ctx, CharDataModifiers result)
     {
         // Position(Delta)
-        if (Position.type == ParameterTypes.VectorType.Position)
-        {
-            Vector3 position = Position.IgnoreScaling(cData, ctx).ToDelta(cData);
-            if (position != Vector3.zero) result.CharacterModifiers.PositionDelta = position;
-        }
-        else if (Position.vector != Vector3.zero)
-        {
-            Vector3 posDelta = Position.ToDelta(cData);
-            if (posDelta != Vector3.zero) result.CharacterModifiers.PositionDelta = posDelta;
-        }
+        Vector3 posDelta = Position.ToDelta(cData, ctx);
+        result.CharacterModifiers.PositionDelta = posDelta;
 
         // Scale
         if (Scale != Vector3.one)
@@ -125,17 +119,8 @@ public class EditorFriendlyCharDataModifiers
                 if (rot.eulerAngles != Vector3.zero)
                 {
                     Vector3 pivot = Vector3.zero;
-                    if (rot.pivot.type == ParameterTypes.VectorType.Offset)
-                    {
-                        Vector3 posDelta = rot.pivot.ToPosition(cData);
-                        pivot = posDelta;
-                    }
-                    else
-                    {
-                        Vector3 position = rot.pivot /*.IgnoreScaling(cData, ctx)*/
-                            .ToPosition(cData);
-                        pivot = position;
-                    }
+                    posDelta = rot.pivot.ToPosition(cData, ctx);
+                    pivot = posDelta;
 
                     result.CharacterModifiers.AddRotation(new Rotation(rot.eulerAngles, pivot));
                 }
@@ -149,52 +134,16 @@ public class EditorFriendlyCharDataModifiers
         result.MeshModifiers.BR_Color = BR_Color;
 
         // Vertex deltas
-        if (BL_Position.type == ParameterTypes.VectorType.Offset)
-        {
-            Vector3 posDelta = BL_Position.ToDelta(cData, cData.InitialMesh.BL_Position);
-            if (posDelta != Vector3.zero) result.MeshModifiers.BL_Delta = posDelta;
-        }
-        else
-        {
-            Vector3 position = BL_Position.IgnoreScaling(cData, ctx)
-                .ToDelta(cData, cData.InitialMesh.BL_Position);
-            result.MeshModifiers.BL_Delta = position;
-        }
+        posDelta = BL_Position.ToDelta(cData, ctx, cData.InitialMesh.BL_Position);
+        result.MeshModifiers.BL_Delta = posDelta;
 
-        if (TL_Position.type == ParameterTypes.VectorType.Position)
-        {
-            Vector3 position = TL_Position.IgnoreScaling(cData, ctx)
-                .ToDelta(cData, cData.InitialMesh.TL_Position);
-            result.MeshModifiers.TL_Delta = position;
-        }
-        else
-        {
-            Vector3 posDelta = TL_Position.ToDelta(cData, cData.InitialMesh.TL_Position);
-            if (posDelta != Vector3.zero) result.MeshModifiers.TL_Delta = posDelta;
-        }
+        posDelta = TL_Position.ToDelta(cData, ctx, cData.InitialMesh.TL_Position);
+        result.MeshModifiers.TL_Delta = posDelta;
 
-        if (TR_Position.type == ParameterTypes.VectorType.Position)
-        {
-            Vector3 position = TR_Position.IgnoreScaling(cData, ctx)
-                .ToDelta(cData, cData.InitialMesh.TR_Position);
-            result.MeshModifiers.TR_Delta = position;
-        }
-        else
-        {
-            Vector3 posDelta = TR_Position.ToDelta(cData, cData.InitialMesh.TR_Position);
-            if (posDelta != Vector3.zero) result.MeshModifiers.TR_Delta = posDelta;
-        }
+        posDelta = TR_Position.ToDelta(cData, ctx, cData.InitialMesh.TR_Position);
+        result.MeshModifiers.TR_Delta = posDelta;
 
-        if (BR_Position.type == ParameterTypes.VectorType.Position)
-        {
-            Vector3 position = BR_Position.IgnoreScaling(cData, ctx)
-                .ToDelta(cData, cData.InitialMesh.BR_Position);
-            result.MeshModifiers.BR_Delta = position;
-        }
-        else
-        {
-            Vector3 posDelta = BR_Position.ToDelta(cData, cData.InitialMesh.BR_Position);
-            result.MeshModifiers.BR_Delta = posDelta;
-        }
+        posDelta = BR_Position.ToDelta(cData, ctx, cData.InitialMesh.BR_Position);
+        result.MeshModifiers.BR_Delta = posDelta;
     }
 }

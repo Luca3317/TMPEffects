@@ -4,7 +4,7 @@ using TMPEffects.Databases;
 using TMPEffects.Parameters;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 
 namespace TMPEffects.TMPAnimations.Animations

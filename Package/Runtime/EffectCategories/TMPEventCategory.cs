@@ -16,6 +16,7 @@ namespace TMPEffects.EffectCategories
         {
             data = null;
             endIndex = tagInfo.startIndex;
+            if (tagInfo.type != ParsingUtility.TagType.Open) return false;
             if (tagInfo.prefix != Prefix) return false;
             TMPEffectTag tagData = new(tagInfo.name, tagInfo.prefix, ParsingUtility.GetTagParametersDict(tagInfo.parameterString));
             data = tagData;
@@ -26,15 +27,14 @@ namespace TMPEffects.EffectCategories
         public override bool ValidateTag(TMPEffectTag tag)
         {
             if (tag.Prefix != Prefix) return false;
-            // TODO Should endindex != startindex also return false? If so, then same for index command tags
             return true;
         }
 
         ///<inheritdoc/>
         public override bool ValidateTag(ParsingUtility.TagInfo tagInfo)
         {
+            if (tagInfo.type != ParsingUtility.TagType.Open) return false;
             if (tagInfo.prefix != Prefix) return false;
-            // TODO Should endindex != startindex also return false? If so, then same for index command tags
             return true;
         }
     }

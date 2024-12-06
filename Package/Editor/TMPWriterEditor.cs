@@ -9,6 +9,50 @@ namespace TMPEffects.Editor
     [CustomEditor(typeof(TMPWriter))]
     public class TMPWriterEditor : UnityEditor.Editor
     {
+        private static class Styles
+        {
+            public static readonly GUIContent commands = new GUIContent("Commands");
+            public static readonly GUIContent events = new GUIContent("Events");
+            public static readonly GUIContent writerSettings = new GUIContent("Writer Settings");
+
+            public static readonly GUIContent delay = new GUIContent("Delay",
+                "The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.");
+            public static readonly GUIContent whiteSpaceDelay = new GUIContent("Whitespace Delay",
+                "The delay after whitespace characters, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent lineBreakDelay = new GUIContent("Linebreak Delay",
+                "The delay after linebreaks, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent punctuationDelay = new GUIContent("Punctuation Delay",
+                "The delay after punctuation characters, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent visibleDelay = new GUIContent("Visible Delay",
+                "The delay after already visible characters, either as percentage of the general delay or in seconds.");
+
+            public static readonly GUIContent database = new GUIContent("Use default database?",
+                "The database used to process command tags (e.g. <!delay=0.05>.");
+            public static readonly GUIContent maySkip = new GUIContent("May Skip",
+                "Whether the text may be skipped by default.");
+            public static readonly GUIContent writeOnStart = new GUIContent("Write On Start",
+                "If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.");
+            public static readonly GUIContent writeOnNewText = new GUIContent("Write On New Text",
+                "If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.");
+            public static readonly GUIContent useScaledTime = new GUIContent("Use Scaled Time",
+                "Whether the writer should use scaled time to wait for delays and wait commands.");
+            public static readonly GUIContent sceneCommands = new GUIContent("Scene Commands",
+                "Commands that may reference scene objects.\nNOT raised in preview mode.");
+            
+            public static readonly GUIContent playLabel = new GUIContent("Writer preview");
+            public static readonly GUIContent eventToggleLabel = new GUIContent("Raise events");
+            public static readonly GUIContent commandToggleLabel = new GUIContent("Execute commands");
+            public static readonly GUIContent eventWarningContent = EditorGUIUtility.IconContent("alertDialog",
+                "|When previewing from edit mode, ensure all the listeners you want to be invoked are set to \"Editor and Runtime\".");
+            
+            public static readonly GUIContent keywordDatabase = new GUIContent("Keyword Database",
+                "A keyword database defining additional keywords. If the same keyword is present in the global keyword Database, this database will override it.");
+            public static readonly GUIContent sceneKeywordDatabase = new GUIContent("Keyword Database",
+                "A scene keyword database defining additional keywords. If the same keyword is present in the global keyword Database or keyword database on this writer, this database will override it.");
+            
+            
+        }
+        
         TMPWriter writer;
 
         float progress;
@@ -62,13 +106,6 @@ namespace TMPEffects.Editor
         GUIStyle playToggleStyle;
         GUIStyle progressBarControllerStyle;
         GUIStyle warningStyle;
-
-        // GUIContent
-        GUIContent playLabel;
-        GUIContent eventToggleLabel;
-        GUIContent commandToggleLabel;
-        GUIContent useDefaultDatabaseLabel;
-        GUIContent eventWarningContent;
 
         // Textures
         Texture playButtonTexture;
@@ -352,6 +389,7 @@ namespace TMPEffects.Editor
             writer.HideAll();
         }
 
+        // this totally sucks but works and looks nice so not worth a rewrite for now
         void PrepareLayout()
         {
             width = EditorGUIUtility.currentViewWidth - 30;
@@ -361,9 +399,9 @@ namespace TMPEffects.Editor
             wrapPlayer = (playButtonWidth + buttonWidth * 3) * 3f > width;
 
             // Calculate heights
-            playLabelHeight = playLabelStyle.CalcHeight(playLabel, playLabelWidth);
-            eventToggleHeight = playToggleStyle.CalcHeight(eventToggleLabel, eventToggleWidth);
-            commandToggleHeight = playToggleStyle.CalcHeight(commandToggleLabel, commandToggleWidth);
+            playLabelHeight = playLabelStyle.CalcHeight(Styles.playLabel, playLabelWidth);
+            eventToggleHeight = playToggleStyle.CalcHeight(Styles.eventToggleLabel, eventToggleWidth);
+            commandToggleHeight = playToggleStyle.CalcHeight(Styles.commandToggleLabel, commandToggleWidth);
             playButtonHeight = 30;
             buttonHeight = 20;
             progressBarThickness = 10;
@@ -430,21 +468,21 @@ namespace TMPEffects.Editor
         void DrawPlayer()
         {
             // Draw play label
-            EditorGUI.LabelField(playLabelRect, playLabel, playLabelStyle);
+            EditorGUI.LabelField(playLabelRect, Styles.playLabel, playLabelStyle);
 
             EditorGUI.BeginDisabledGroup(!PlayerEnabled());
 
             // Draw play toggles
             eventsEnabledProp.boolValue =
-                EditorGUI.ToggleLeft(eventToggleRect, eventToggleLabel, eventsEnabledProp.boolValue);
+                EditorGUI.ToggleLeft(eventToggleRect, Styles.eventToggleLabel, eventsEnabledProp.boolValue);
 
             if (eventsEnabledProp.boolValue)
             {
-                GUI.Label(eventWarningRect, eventWarningContent);
+                GUI.Label(eventWarningRect, Styles.eventWarningContent);
             }
 
             commandsEnabledProp.boolValue =
-                EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, commandsEnabledProp.boolValue);
+                EditorGUI.ToggleLeft(commandToggleRect, Styles.commandToggleLabel, commandsEnabledProp.boolValue);
 
             // Draw Buttons
             if (writer.IsWriting || (wasWriting && clicked))
@@ -506,19 +544,19 @@ namespace TMPEffects.Editor
             if (reset) ResetDatabase();
 
             databaseProp.isExpanded =
-                EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Commands"), true);
+                EditorGUILayout.Foldout(databaseProp.isExpanded, Styles.commands, true);
             if (databaseProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
 
                 if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(databaseProp, useDefaultDatabaseProp,
-                        useDefaultDatabaseLabel, GetDefaultCommandDatabase, "command"))
+                        Styles.database, GetDefaultCommandDatabase, "command"))
                 {
                     writer.OnChangedDatabase();
                 }
 
                 EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(sceneCommandsProp);
+                EditorGUILayout.PropertyField(sceneCommandsProp, Styles.sceneCommands);
                 if (EditorGUI.EndChangeCheck())
                 {
                     // SerializedObservableDictionary does not raise events when the operations involves
@@ -540,7 +578,7 @@ namespace TMPEffects.Editor
 
         void DrawEventsFoldout()
         {
-            eventFoldout = EditorGUILayout.Foldout(eventFoldout, new GUIContent("Events"), true);
+            eventFoldout = EditorGUILayout.Foldout(eventFoldout, Styles.events, true);
 
             if (eventFoldout)
             {
@@ -563,10 +601,10 @@ namespace TMPEffects.Editor
             DrawPlayer();
 
             EditorGUILayout.BeginHorizontal();
-            delayFoldout = EditorGUILayout.Foldout(delayFoldout, "Delay", true);
+            delayFoldout = EditorGUILayout.Foldout(delayFoldout, Styles.delay, true);
             var pre = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 0;
-            EditorGUILayout.PropertyField(delayProp, new GUIContent(""));
+            EditorGUILayout.PropertyField(delayProp, GUIContent.none);
             EditorGUIUtility.labelWidth = pre;
             EditorGUILayout.EndHorizontal();
             if (delayFoldout)
@@ -574,7 +612,7 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel++;
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Whitespace Delay", whitespaceDelayProp.tooltip),
+                EditorGUILayout.LabelField(Styles.whiteSpaceDelay,
                     GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
                 whitespaceDelayTypeProp.enumValueIndex =
                     (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
@@ -584,7 +622,7 @@ namespace TMPEffects.Editor
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Linebreak Delay", linebreakDelayProp.tooltip),
+                EditorGUILayout.LabelField(Styles.lineBreakDelay,
                     GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
                 linebreakDelayTypeProp.enumValueIndex =
                     (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
@@ -594,7 +632,7 @@ namespace TMPEffects.Editor
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Punctuation Delay", punctuationDelayProp.tooltip),
+                EditorGUILayout.LabelField(Styles.punctuationDelay,
                     GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
                 punctuationDelayTypeProp.enumValueIndex =
                     (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
@@ -604,7 +642,7 @@ namespace TMPEffects.Editor
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Visible Delay", visibleDelayProp.tooltip),
+                EditorGUILayout.LabelField(Styles.visibleDelay,
                     GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
                 visibleDelayTypeProp.enumValueIndex =
                     (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
@@ -621,31 +659,24 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.Space(10);
             startOnPlayProp.isExpanded =
-                EditorGUILayout.Foldout(startOnPlayProp.isExpanded, new GUIContent("Writer Settings"), true);
+                EditorGUILayout.Foldout(startOnPlayProp.isExpanded, Styles.writerSettings, true);
             if (startOnPlayProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(startOnPlayProp);
-                EditorGUILayout.PropertyField(startOnNewTextProp);
-                EditorGUILayout.PropertyField(maySkipProp);
-                EditorGUILayout.PropertyField(useScaledTimeProp);
+                EditorGUILayout.PropertyField(startOnPlayProp, Styles.writeOnStart);
+                EditorGUILayout.PropertyField(startOnNewTextProp, Styles.writeOnNewText);
+                EditorGUILayout.PropertyField(maySkipProp, Styles.maySkip);
+                EditorGUILayout.PropertyField(useScaledTimeProp, Styles.useScaledTime);
 
                 EditorGUILayout.Space(10);
-                GUIContent cont = new GUIContent("Keyword Database");
-                cont.tooltip = "A keyword database defining additional keywords. " +
-                               "If the same keyword is present in the global keyword Database, this database will override it.";
-
                 if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp,
-                        cont, GetDefaultKeywordDatabase, "keyword"))
+                        Styles.keywordDatabase, GetDefaultKeywordDatabase, "keyword"))
                 {
                     writer.OnChangedDatabase();
                 }
 
                 EditorGUI.BeginChangeCheck();
-                cont = new GUIContent("Scene Keyword Database");
-                cont.tooltip = "A scene keyword database defining additional keywords. " +
-                               "If the same keyword is present in the global keyword Database or keyword database on this animator, this database will override it.";
-                EditorGUILayout.PropertyField(sceneKeywordDatabaseProp, cont);
+                EditorGUILayout.PropertyField(sceneKeywordDatabaseProp, Styles.sceneKeywordDatabase);
                 if (EditorGUI.EndChangeCheck())
                 {
                     serializedObject.ApplyModifiedProperties();
@@ -701,7 +732,6 @@ namespace TMPEffects.Editor
         }
 
         bool styles = false;
-        bool guiContent = false;
 
         void InitStyles()
         {
@@ -722,24 +752,9 @@ namespace TMPEffects.Editor
             warningStyle = new GUIStyle("CN EntryWarnIconSmall");
         }
 
-        void InitGUIContent()
-        {
-            if (guiContent) return;
-            guiContent = true;
-
-            // Create GUIContent
-            playLabel = new GUIContent("Writer preview");
-            eventToggleLabel = new GUIContent("Raise events");
-            commandToggleLabel = new GUIContent("Execute commands");
-            useDefaultDatabaseLabel = new GUIContent("Use default database");
-            eventWarningContent = EditorGUIUtility.IconContent("alertDialog",
-                "|When previewing from edit mode, ensure all the listeners you want to be invoked are set to \"Editor and Runtime\".");
-        }
-
         public override void OnInspectorGUI()
         {
             InitStyles();
-            InitGUIContent();
 
             switch (Event.current.type)
             {

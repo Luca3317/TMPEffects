@@ -3,8 +3,8 @@ using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
+using static TMPEffects.Parameters.TMPParameterUtility;
+using static TMPEffects.Parameters.TMPParameterTypes;
 using TMPEffects.Extensions;
 
 namespace TMPEffects.TMPAnimations.HideAnimations
@@ -46,9 +46,7 @@ namespace TMPEffects.TMPAnimations.HideAnimations
 
             float t2 = d.curve.Evaluate(t);
             Vector3 angle = Vector3.LerpUnclamped(d.startAngle, d.targetAngle, t2);
-
-            // TODO This should implement the offset version; update to work for position and anchor
-            cData.AddRotation(angle, cData.InitialPosition + (Vector3)d.pivot.vector);
+            cData.AddRotation(angle, d.pivot.ToPosition(cData, context));
         }
     }
 }

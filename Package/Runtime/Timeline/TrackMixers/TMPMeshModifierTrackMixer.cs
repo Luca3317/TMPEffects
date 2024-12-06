@@ -17,6 +17,16 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
     private CharDataModifiers accModifier, current;
 
     private float time;
+    
+    private Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset)>
+        cachedOffsets = new Dictionary<AnimationStep, (AnimationStep.CachedOffset, AnimationStep.CachedOffset)>();
+
+    public override void OnBehaviourPause(Playable playable, FrameData info)
+    {
+        if (animator == null) return;
+        animator.OnTextChanged -= UpdateSegmentData;
+        mocked = null;
+    }
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
@@ -27,7 +37,9 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         active ??= new List<ScriptPlayable<TMPMeshModifierBehaviour>>();
         active.Clear();
 
-        animator.OnCharacterAnimated -= OnAnimatedCallback;
+        animator.OnTextChanged -= UpdateSegmentData;
+        animator.OnTextChanged += UpdateSegmentData;
+        animator.UnregisterPostAnimationHook(OnAnimatedCallback);
 
         int inputCount = playable.GetInputCount();
         for (int i = 0; i < inputCount; i++)
@@ -43,7 +55,11 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
         time = (float)playable.GetTime();
 
-        if (active.Count > 0) animator.OnCharacterAnimated += OnAnimatedCallback;
+        if (active.Count > 0)
+        {
+            animator.UnregisterPostAnimationHook(OnAnimatedCallback);
+            animator.RegisterPostAnimationHook(OnAnimatedCallback);
+        }
         else if (needsReset)
         {
             needsReset = false;
@@ -51,12 +67,16 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         }
     }
 
-    private void OnAnimatedCallback(CharData cdata)
+    private ITMPSegmentData mocked;
+
+    private void OnAnimatedCallback(CharData cData)
     {
         modifiersStorage ??= new CharDataModifiers();
         modifiersStorage2 ??= new CharDataModifiers();
         accModifier ??= new CharDataModifiers();
         current ??= new CharDataModifiers();
+
+        if (mocked == null) UpdateSegmentData();
 
         for (int i = 0; i < active.Count; i++)
         {
@@ -72,16 +92,54 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
             float duration = (float)behaviour.Clip.duration;
 
-            float weight = GenericAnimation.CalcWeight(behaviour.Step.Step, currTime, duration, cdata,
-                animator.AnimatorContext);
-            GenericAnimation.LerpAnimationStepWeighted(behaviour.Step.Step, weight, cdata, animator.AnimatorContext,
+
+            var step = behaviour.Step.Step;
+            if (!cachedOffsets.TryGetValue(step, out var cachedOffset))
+            {
+                step.entryCurve.provider.GetMinMaxOffset(out float inMin, out float inMax, mocked,
+                    animator.AnimatorContext);
+                step.exitCurve.provider.GetMinMaxOffset(out float outMin, out float outMax, mocked,
+                    animator.AnimatorContext);
+                cachedOffset = (
+                    new AnimationStep.CachedOffset()
+                        { minOffset = inMin, maxOffset = inMax, offset = new Dictionary<CharData, float>() },
+                    new AnimationStep.CachedOffset()
+                        { minOffset = outMin, maxOffset = outMax, offset = new Dictionary<CharData, float>() });
+
+                cachedOffsets[step] = cachedOffset;
+            }
+
+            if (!cachedOffset.inOffset.offset.TryGetValue(cData, out float inOffset))
+            {
+                inOffset = step.entryCurve.provider.GetOffset(cData, mocked, animator.AnimatorContext);
+                cachedOffset.inOffset.offset[cData] = inOffset;
+            }
+
+            if (!cachedOffset.outOffset.offset.TryGetValue(cData, out float outOffset))
+            {
+                outOffset = step.entryCurve.provider.GetOffset(cData, mocked, animator.AnimatorContext);
+                cachedOffset.outOffset.offset[cData] = outOffset;
+            }
+            
+            float weight = AnimationStep.CalcWeight(behaviour.Step.Step, currTime, duration, cData,
+                animator.AnimatorContext, mocked);
+            
+            AnimationStep.LerpAnimationStepWeighted(behaviour.Step.Step, weight, cData, animator.AnimatorContext,
                 modifiersStorage, modifiersStorage2, current);
 
-            // var result = Calc(animator, behaviour.Step, cdata, weight, time);
-            cdata.CharacterModifiers.Combine(current.CharacterModifiers);
-            cdata.MeshModifiers.Combine(current.MeshModifiers);
+            cData.CharacterModifiers.Combine(current.CharacterModifiers);
+            cData.MeshModifiers.Combine(current.MeshModifiers);
 
             needsReset = true;
         }
+    }
+
+    private void UpdateSegmentData(bool _ = false)
+    {
+        mocked = TMPAnimationUtility.GetMockedSegment(animator.TextComponent.GetParsedText().Length, animator.CharData);
+        cachedOffsets =
+            new Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset
+                )>();
+        Debug.LogWarning("Update");
     }
 }

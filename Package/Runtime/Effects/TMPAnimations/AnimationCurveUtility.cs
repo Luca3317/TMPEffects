@@ -19,6 +19,11 @@ namespace TMPEffects.Extensions
             newCurve.CopyFrom(curve);
             return newCurve;
         }
+
+        public static AnimationCurve InvertCopy(this AnimationCurve curve)
+        {
+            return Invert(curve);
+        }
         
         #region Linear
         public static AnimationCurve Linear()

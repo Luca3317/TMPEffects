@@ -3,23 +3,17 @@ using TMPEffects.CharacterData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TMPEffects.Extensions;
 using TMPEffects.Components.Animator;
 using TMPro;
 using TMPEffects.Components;
-using TMPEffects.Databases;
 using TMPEffects.Parameters;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
-using static TMPEffects.Parameters.ParameterUtility;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 namespace TMPEffects.TMPAnimations
 {
     /// <summary>
     /// Utility methods for animations.
     /// </summary>
-    public static class AnimationUtility
+    public static class TMPAnimationUtility
     {
         #region Scaling
 
@@ -32,7 +26,7 @@ namespace TMPEffects.TMPAnimations
         public static float ScaleTextMesh(TMP_Text text, float value) =>
             ScaleTextMesh(text.canvas != null, value);
 
-        public static float ScaleTextMesh(IAnimatorContext ctx, float value)
+        public static float ScaleTextMesh(IAnimatorDataProvider ctx, float value)
             => ScaleTextMesh(ctx.Animator.TextComponent.canvas != null, value);
 
         public static float ScaleTextMesh(IAnimationContext ctx, float value)
@@ -51,7 +45,7 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="vector">The vector to scale.</param>
         /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
-        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="context">The <see cref="IAnimationContext"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
         public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimationContext context) =>
             ScaleVector(vector, context.AnimatorContext.Animator.TextComponent.canvas != null,
@@ -64,9 +58,9 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="vector">The vector to scale.</param>
         /// <param name="cData">The <see cref="CharData"/> the vector will applied to.</param>
-        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="context">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The scaled vector.</returns>
-        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+        public static Vector3 ScaleVector(Vector3 vector, CharData cData, IAnimatorDataProvider context) =>
             ScaleVector(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
                 context.ScaleUniformly,
                 cData.info.pointSize, context.Animator.TextComponent.fontSize);
@@ -86,7 +80,7 @@ namespace TMPEffects.TMPAnimations
                 context.AnimatorContext.ScaleAnimations, context.AnimatorContext.ScaleUniformly,
                 cData.info.pointSize, context.AnimatorContext.Animator.TextComponent.fontSize);
 
-        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimatorContext context) =>
+        public static Vector3 IgnoreScaling(Vector3 vector, CharData cData, IAnimatorDataProvider context) =>
             IgnoreScaling(vector, context.Animator.TextComponent.canvas != null, context.ScaleAnimations,
                 context.ScaleUniformly,
                 cData.info.pointSize, context.Animator.TextComponent.fontSize);
@@ -117,9 +111,9 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="vector">The vector to scale inversely.</param>
         /// <param name="cData">The <see cref="CharData"/> the vector will be applied to.</param>
-        /// <param name="context">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="context">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The inversely scaled vector.</returns>
-        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorContext context) =>
+        public static Vector3 InverseScaleVector(Vector3 vector, CharData cData, IAnimatorDataProvider context) =>
             IgnoreScaling(vector, cData, context);
 
         #endregion
@@ -172,9 +166,9 @@ namespace TMPEffects.TMPAnimations
         /// <param name="index">Index of the vertex.</param>
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The raw version of the passed in vertex position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
+        public static Vector3 GetRawVertex(int index, Vector3 position, CharData cData, IAnimatorDataProvider ctx)
         {
             return GetRawPosition(position, cData.InitialMesh.GetPosition(index), cData, ctx);
         }
@@ -194,9 +188,9 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The raw version of the passed in character position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorContext ctx)
+        public static Vector3 GetRawPosition(Vector3 position, CharData cData, IAnimatorDataProvider ctx)
         {
             return GetRawPosition(position, cData.InitialPosition, cData, ctx);
         }
@@ -216,9 +210,9 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="position">The position to set the pivot to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The raw version of the passed in pivot position, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorContext ctx)
+        public static Vector3 GetRawPivot(Vector3 position, CharData cData, IAnimatorDataProvider ctx)
         {
             return GetRawPosition(position, cData.InitialPosition, cData, ctx);
         }
@@ -238,15 +232,15 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="delta">The delta.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
         /// <returns>The raw version of the passed in delta, i.e. the one that will ignore the <see cref="TMPEffects.Components.TMPAnimator"/>'s scaling.</returns>
-        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorContext ctx)
+        public static Vector3 GetRawDelta(Vector3 delta, CharData cData, IAnimatorDataProvider ctx)
         {
             return IgnoreScaling(delta, cData, ctx);
         }
 
         internal static Vector3 GetRawPosition(Vector3 position, Vector3 referencePosition, CharData cData,
-            IAnimatorContext ctx)
+            IAnimatorDataProvider ctx)
         {
             return IgnoreScaling(position - referencePosition, cData, ctx) + referencePosition;
         }
@@ -268,8 +262,8 @@ namespace TMPEffects.TMPAnimations
         /// <param name="index">Index of the vertex.</param>
         /// <param name="position">The position to set the vertex to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorContext ctx)
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
+        public static void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimatorDataProvider ctx)
         {
             Vector3 ogPos = cData.InitialMesh.GetPosition(index);
             cData.mesh.SetPosition(index, GetRawPosition(position, ogPos, cData, ctx));
@@ -289,8 +283,8 @@ namespace TMPEffects.TMPAnimations
         /// </summary>
         /// <param name="position">The position to set the character to.</param>
         /// <param name="cData">The <see cref="CharData"/> to act on.</param>
-        /// <param name="ctx">The <see cref="IAnimatorContext"/> of the animation.</param>
-        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorContext ctx)
+        /// <param name="ctx">The <see cref="IAnimatorDataProvider"/> of the animation.</param>
+        public static void SetPositionRaw(Vector3 position, CharData cData, IAnimatorDataProvider ctx)
         {
             Vector3 ogPos = cData.InitialPosition;
             cData.SetPosition(GetRawPosition(position, ogPos, cData, ctx));
@@ -330,7 +324,7 @@ namespace TMPEffects.TMPAnimations
 
         #endregion
         
-        internal static ITMPSegmentData GetMockedSegment(int len, IEnumerable<CharData> cData)
+        public static ITMPSegmentData GetMockedSegment(int len, IEnumerable<CharData> cData)
         {
             return new TextSegment(len, cData);
         }
@@ -380,7 +374,7 @@ namespace TMPEffects.TMPAnimations
             return offset;
         }
 
-        public static float GetOffset(CharData cData, IAnimatorContext context, ITMPOffsetProvider provider,
+        public static float GetOffset(CharData cData, IAnimatorDataProvider context, ITMPOffsetProvider provider,
             bool ignoreScaling = false, bool ignoreSegmentLenght = false)
         {
             var segmentData = GetMockedSegment(context.Animator.TextComponent.GetParsedText().Length,
@@ -396,20 +390,20 @@ namespace TMPEffects.TMPAnimations
         }
 
         public static void GetMinMaxOffset(out float min, out float max,
-            ParameterTypes.OffsetType type, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
+            TMPParameterTypes.OffsetType type, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
             bool ignoreAnimatorScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.OffsetType.SegmentIndex:
+                case TMPParameterTypes.OffsetType.SegmentIndex:
                     min = 0;
                     max = segmentData.Length - 1;
                     return;
-                case ParameterTypes.OffsetType.Index:
+                case TMPParameterTypes.OffsetType.Index:
                     min = segmentData.StartIndex;
                     max = segmentData.StartIndex + segmentData.Length - 1;
                     return;
-                case ParameterTypes.OffsetType.XPos:
+                case TMPParameterTypes.OffsetType.XPos:
                 {
                     // Expensive af (and so will other ones be)
                     // Should give some indication that you should cache
@@ -425,7 +419,7 @@ namespace TMPEffects.TMPAnimations
                     return;
                 }
 
-                case ParameterTypes.OffsetType.YPos:
+                case TMPParameterTypes.OffsetType.YPos:
                 {
                     // Expensive af (and so will other ones be)
                     // Should give some indication that you should cache
@@ -440,7 +434,7 @@ namespace TMPEffects.TMPAnimations
 
                     return;
                 }
-                case ParameterTypes.OffsetType.Line:
+                case TMPParameterTypes.OffsetType.Line:
                 {
                     min = int.MaxValue;
                     max = 0; // cant have negative line indices
@@ -453,7 +447,7 @@ namespace TMPEffects.TMPAnimations
 
                     return;
                 }
-                case ParameterTypes.OffsetType.Baseline:
+                case TMPParameterTypes.OffsetType.Baseline:
                 {
                     min = float.MaxValue;
                     max = float.MinValue;
@@ -466,7 +460,7 @@ namespace TMPEffects.TMPAnimations
 
                     return;
                 }
-                case ParameterTypes.OffsetType.Word:
+                case TMPParameterTypes.OffsetType.Word:
                 {
                     min = int.MaxValue;
                     max = int.MinValue;
@@ -480,7 +474,7 @@ namespace TMPEffects.TMPAnimations
 
                     return;
                 }
-                case ParameterTypes.OffsetType.WorldXPos:
+                case TMPParameterTypes.OffsetType.WorldXPos:
                 {
                     // Expensive af (and so will other ones be)
                     // Should give some indication that you should cache
@@ -497,7 +491,7 @@ namespace TMPEffects.TMPAnimations
                     return;
                 }
 
-                case ParameterTypes.OffsetType.WorldYPos:
+                case TMPParameterTypes.OffsetType.WorldYPos:
                 {
                     // Expensive af (and so will other ones be)
                     // Should give some indication that you should cache
@@ -514,7 +508,7 @@ namespace TMPEffects.TMPAnimations
                     return;
                 }
 
-                case ParameterTypes.OffsetType.WorldZPos:
+                case TMPParameterTypes.OffsetType.WorldZPos:
                 {
                     // Expensive af (and so will other ones be)
                     // Should give some indication that you should cache
@@ -534,7 +528,7 @@ namespace TMPEffects.TMPAnimations
                 }
             }
 
-            throw new System.NotImplementedException("NOT IMPLEMENTED");
+            throw new System.NotImplementedException("NOT IMPLEMENTED"); 
 
             float ScalePos(float pointSize, float pos)
             {
@@ -561,26 +555,26 @@ namespace TMPEffects.TMPAnimations
             }
         }
 
-        public static float GetOffset(ParameterTypes.OffsetType type, CharData cData, ITMPSegmentData segmentData,
+        public static float GetOffset(TMPParameterTypes.OffsetType type, CharData cData, ITMPSegmentData segmentData,
             IAnimatorDataProvider animatorData, bool ignoreAnimatorScaling = false)
         {
             switch (type)
             {
-                case ParameterTypes.OffsetType.SegmentIndex: return segmentData.SegmentIndexOf(cData);
-                case ParameterTypes.OffsetType.Index: return cData.info.index;
+                case TMPParameterTypes.OffsetType.SegmentIndex: return segmentData.SegmentIndexOf(cData);
+                case TMPParameterTypes.OffsetType.Index: return cData.info.index;
 
-                case ParameterTypes.OffsetType.Line: return cData.info.lineNumber;
-                case ParameterTypes.OffsetType.Baseline: return cData.info.baseLine;
-                case ParameterTypes.OffsetType.Word: return cData.info.wordNumber;
+                case TMPParameterTypes.OffsetType.Line: return cData.info.lineNumber;
+                case TMPParameterTypes.OffsetType.Baseline: return cData.info.baseLine;
+                case TMPParameterTypes.OffsetType.Word: return cData.info.wordNumber;
 
-                case ParameterTypes.OffsetType.WorldXPos:
+                case TMPParameterTypes.OffsetType.WorldXPos:
                     return ScalePos(animatorData.Animator.transform.TransformPoint(cData.InitialPosition).x);
-                case ParameterTypes.OffsetType.WorldYPos:
+                case TMPParameterTypes.OffsetType.WorldYPos:
                     return ScalePos(animatorData.Animator.transform.TransformPoint(cData.InitialPosition).y);
-                case ParameterTypes.OffsetType.WorldZPos:
+                case TMPParameterTypes.OffsetType.WorldZPos:
                     return ScalePos(animatorData.Animator.transform.TransformPoint(cData.InitialPosition).z);
-                case ParameterTypes.OffsetType.XPos: return ScalePos(cData.InitialPosition.x);
-                case ParameterTypes.OffsetType.YPos: return ScalePos(cData.InitialPosition.y);
+                case TMPParameterTypes.OffsetType.XPos: return ScalePos(cData.InitialPosition.x);
+                case TMPParameterTypes.OffsetType.YPos: return ScalePos(cData.InitialPosition.y);
             }
 
             throw new System.NotImplementedException(nameof(type));

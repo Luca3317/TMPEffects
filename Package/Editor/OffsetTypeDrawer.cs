@@ -15,9 +15,6 @@ public class OffsetTypeDrawer : PropertyDrawer
         var enumProp = property.FindPropertyRelative("enumValue");
         var customProp = property.FindPropertyRelative("customValue");
         var useCustomProp = property.FindPropertyRelative("useCustom");
-        // var ignoreScalingProp = property.FindPropertyRelative("ignoreAnimatorScaling");
-        // var considerSegmentLengthProp = property.FindPropertyRelative("considerSegmentLength");
-        // var uniformityProp = property.FindPropertyRelative("uniformity");
 
         var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
 

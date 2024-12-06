@@ -78,7 +78,7 @@ namespace TMPEffects.TMPSceneAnimations
                 }
 
                 cData.PositionDelta += 
-                    AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                    TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace TMPEffects.TMPSceneAnimations
                 if (d.dragging != cData.info.index)
                 {
                     cData.PositionDelta += 
-                        AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                        TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                     // AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
                     return; 
                 }
@@ -98,7 +98,7 @@ namespace TMPEffects.TMPSceneAnimations
                 
                 d.dynamicOffset = (Input.mousePosition - d.startPosition) / (canvas == null ? 1f : canvas.scaleFactor);
                 cData.PositionDelta += 
-                    AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                    TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                 // AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex] + d.dynamicOffset, cData, context);
                 return;
             }
@@ -115,7 +115,7 @@ namespace TMPEffects.TMPSceneAnimations
                 if (index != cData.info.index)
                 {
                     cData.PositionDelta += 
-                        AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                        TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                     // AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
                     return;
                 }
@@ -124,7 +124,7 @@ namespace TMPEffects.TMPSceneAnimations
                 d.dragging = cData.info.index;
                 d.startPosition = Input.mousePosition;
                 cData.PositionDelta += 
-                    AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                    TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                 // AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
 
                 return;
@@ -132,7 +132,7 @@ namespace TMPEffects.TMPSceneAnimations
 
             if (d.offsets[segmentIndex] != Vector3.zero)
                 cData.PositionDelta += 
-                    AnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
+                    TMPAnimationUtility.IgnoreScaling(d.offsets[segmentIndex], cData, context);
                 // AnimationUtility.AddPositionDeltaRaw(d.offsets[segmentIndex], cData, context);
         }
 

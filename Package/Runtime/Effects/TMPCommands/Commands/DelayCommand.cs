@@ -3,7 +3,7 @@ using TMPEffects.Components;
 using TMPEffects.Components.Writer;
 using TMPEffects.Databases;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPCommands.Commands
 {

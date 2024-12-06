@@ -33,7 +33,7 @@ namespace TMPEffects.Components
     /// Using command tags, you can call specific methods. There are two types of Commands:
     /// <list type="table">
     /// <item><see cref="TMPCommand"/>: These are defined by the <see cref="TMPCommandDatabase"/> object on the component. As they derive from <see cref="ScriptableObject"/>, they are stored on disk. All built-in commands of this type serve to control the TMPWriter component.</item>
-    /// <item><see cref="TMPSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
+    /// <item><see cref="TMPGenericSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
     /// </list>
     /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
@@ -68,6 +68,11 @@ namespace TMPEffects.Components
         /// The keyword database used to parse tag parameters.
         /// </summary>
         public ITMPKeywordDatabase KeywordDatabase => keywordDatabaseWrapper?.Database;
+        
+        /// <summary>
+        /// The <see cref="TMPSceneCommandWrapper"/> used by this writer.
+        /// </summary>
+        public IDictionary<string, TMPSceneCommandWrapper> SceneCommands => sceneCommands;
 
         // Tags
         /// <summary>
@@ -170,33 +175,20 @@ namespace TMPEffects.Components
         [SerializeField] private TMPKeywordDatabase keywordDatabase;
         [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
 
-        [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")] [SerializeField]
-        private TMPCommandDatabase database;
+        [SerializeField] private TMPCommandDatabase database;
 
-        //[Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
-        //[SerializeField] private float delay = 0.075f;
+        [SerializeField] private bool maySkip = true;
 
-        [Tooltip("Whether the text may be skipped by default.")] [SerializeField]
-        private bool maySkip = true;
+        [SerializeField] private bool writeOnStart = true;
 
-        [Tooltip(
-            "If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
-        [SerializeField]
-        private bool writeOnStart = true;
+        [SerializeField] private bool writeOnNewText = true;
 
-        [Tooltip(
-            "If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
-        [SerializeField]
-        private bool writeOnNewText = true;
-
-        [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")] [SerializeField]
-        private bool useScaledTime = true;
+        [SerializeField] private bool useScaledTime = true;
 
         [SerializeField] private Delays delays = new Delays();
 
-        [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
-        private SerializedDictionary<string, TMPSceneCommand> sceneCommands;
+        private SerializedDictionary<string, TMPSceneCommandWrapper> sceneCommands;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPEffectCategory> tags;
@@ -548,7 +540,8 @@ namespace TMPEffects.Components
             keywordDatabaseWrapper?.Dispose();
 
             commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
-            keywordDatabaseWrapper = new KeywordDatabaseWrapper(sceneKeywordDatabase, keywordDatabase);
+            keywordDatabaseWrapper = new KeywordDatabaseWrapper(sceneKeywordDatabase, keywordDatabase,
+                TMPEffectsSettings.GlobalKeywordDatabase);
 
             commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
             keywordDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
@@ -1275,7 +1268,11 @@ namespace TMPEffects.Components
             if (enabled)
             {
                 enabled = false;
-                EditorApplication.delayCall += () => this.enabled = true;
+                EditorApplication.delayCall += () =>
+                {
+                    if (this != null)
+                        this.enabled = true;
+                };
                 EditorApplication.delayCall +=
                     () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }
@@ -1373,14 +1370,11 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after showing a character.
             /// </summary>
-            [Tooltip(
-                "The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
             public float delay = 0.035f;
 
             /// <summary>
             /// The delay after "showing" a whitespace character.
             /// </summary>
-            [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
             public float whitespaceDelay;
 
             /// <summary>
@@ -1391,7 +1385,6 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after "showing" a linebreak character.
             /// </summary>
-            [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
             public float linebreakDelay;
 
             /// <summary>
@@ -1402,7 +1395,6 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after showing a punctuation character.
             /// </summary>
-            [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
             public float punctuationDelay;
 
             /// <summary>
@@ -1413,8 +1405,6 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after "showing" an already visible character.
             /// </summary>
-            [Tooltip(
-                "The delay after already visible characters, either as percentage of the general delay or in seconds")]
             public float visibleDelay;
 
             /// <summary>

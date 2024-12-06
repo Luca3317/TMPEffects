@@ -258,8 +258,7 @@ namespace TMPEffects.CharacterData
             set
             {
                 modifiers.BL_UV0 =
-                    new Vector3Override(
-                        value); // TODO maybe rewrite overrides so they store the fallback value? ever so slightly faster
+                    new Vector3Override(value); // TODO maybe rewrite overrides so they store the fallback value? ever so slightly faster
                 uvsDirty = true;
             }
         }
