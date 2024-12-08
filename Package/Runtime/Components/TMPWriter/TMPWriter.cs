@@ -35,7 +35,7 @@ namespace TMPEffects.Components
     /// <item><see cref="TMPCommand"/>: These are defined by the <see cref="TMPCommandDatabase"/> object on the component. As they derive from <see cref="ScriptableObject"/>, they are stored on disk. All built-in commands of this type serve to control the TMPWriter component.</item>
     /// <item><see cref="TMPGenericSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
     /// </list>
-    /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
+    /// In addition to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
     /// </remarks>
     [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")]

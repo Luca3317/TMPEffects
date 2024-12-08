@@ -383,30 +383,6 @@ namespace TMPEffects.Components
             OnDatabaseChanged();
         }
 
-        ///// <summary>
-        ///// Set the default show animation.
-        ///// </summary>
-        ///// <param name="str">The default show animation as a string, e.g. "<+fade>".</param>
-        //public void SetDefaultShowString(string str)
-        //{
-        //    defaultShowString = str;
-
-        //    if (Mediator == null) return;
-        //    SetDefault(TMPAnimationType.Show);
-        //}
-
-        ///// <summary>
-        ///// Set the default hide animation.
-        ///// </summary>
-        ///// <param name="str">The default hide animation as a string, e.g. "<-fade>".</param>
-        //public void SetDefaultHideString(string str)
-        //{
-        //    defaultHideString = str;
-
-        //    if (Mediator == null) return;
-        //    SetDefault(TMPAnimationType.Hide);
-        //}
-
         /// <summary>
         /// Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
         /// </summary>
