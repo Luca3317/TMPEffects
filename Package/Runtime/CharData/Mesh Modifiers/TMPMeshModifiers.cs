@@ -275,14 +275,48 @@ public class TMPMeshModifiers
         modifier &= ~ModifierFlags.UVs;
     }
 
+    private Vector3 BLMin, BLMax;
+    private Vector3 TLMin, TLMax;
+    private Vector3 TRMin, TRMax;
+    private Vector3 BRMin, BRMax;
+
+    private void UpdateMinMax(TMPMeshModifiers other)
+    {
+        BLMin = Vector3.Min(bl_Delta, other.bl_Delta);
+        BLMax = Vector3.Max(bl_Delta, other.bl_Delta);
+
+        TLMin = Vector3.Min(tl_Delta, other.tl_Delta);
+        TLMax = Vector3.Max(tl_Delta, other.tl_Delta);
+
+        TRMin = Vector3.Min(tr_Delta, other.tr_Delta);
+        TRMax = Vector3.Max(tr_Delta, other.tr_Delta);
+
+        BRMin = Vector3.Min(br_Delta, other.br_Delta);
+        BRMax = Vector3.Max(br_Delta, other.br_Delta);
+    }
+
     public void Combine(TMPMeshModifiers other)
     {
         if (other.modifier.HasFlag(ModifierFlags.Deltas))
         {
-            BL_Delta += other.BL_Delta;
-            TL_Delta += other.TL_Delta;
-            TR_Delta += other.TR_Delta;
-            BR_Delta += other.BR_Delta;
+            // Clamp deltas to prevent deformation of characters when multiple animations that modify vertex deltas are applied
+            UpdateMinMax(other);
+
+            bl_Delta += other.bl_Delta;
+            BL_Delta = new Vector3(Mathf.Clamp(bl_Delta.x, BLMin.x, BLMax.x), Mathf.Clamp(bl_Delta.y, BLMin.y, BLMax.y),
+                Mathf.Clamp(bl_Delta.z, BLMin.z, BLMax.z));
+
+            tl_Delta += other.tl_Delta;
+            TL_Delta = new Vector3(Mathf.Clamp(tl_Delta.x, TLMin.x, TLMax.x), Mathf.Clamp(tl_Delta.y, TLMin.y, TLMax.y),
+                Mathf.Clamp(tl_Delta.z, TLMin.z, TLMax.z));
+
+            tr_Delta += other.tr_Delta;
+            TR_Delta = new Vector3(Mathf.Clamp(tr_Delta.x, TRMin.x, TRMax.x), Mathf.Clamp(tr_Delta.y, TRMin.y, TRMax.y),
+                Mathf.Clamp(tr_Delta.z, TRMin.z, TRMax.z));
+
+            br_Delta += other.br_Delta;
+            BR_Delta = new Vector3(Mathf.Clamp(br_Delta.x, BRMin.x, BRMax.x), Mathf.Clamp(br_Delta.y, BRMin.y, BRMax.y),
+                Mathf.Clamp(br_Delta.z, BRMin.z, BRMax.z));
         }
 
         if (other.modifier.HasFlag(ModifierFlags.Colors))
@@ -312,7 +346,7 @@ public class TMPMeshModifiers
     public void CopyFrom(TMPMeshModifiers other)
     {
         ClearModifiers();
-        
+
         BL_Delta = other.BL_Delta;
         TL_Delta = other.TL_Delta;
         TR_Delta = other.TR_Delta;

@@ -28,8 +28,6 @@ public class GenericShowAnimationEditor : BaseGenericAnimationEditor
 public class GenericHideAnimationEditor : BaseGenericAnimationEditor
 {}
 
-
-
 public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 {
     private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
@@ -38,6 +36,10 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
     private GUIStyle fileBrowserButtonStyle;
 
+    private static readonly GUIContent fromGUI = new GUIContent("from:");
+    private static readonly GUIContent toGUI = new GUIContent("to:");
+    private static readonly GUIContent repeatGUI = new GUIContent("Repeat", "Whether to repeat the animation, or play it once.");
+    private static readonly GUIContent durationGUI = new GUIContent("Duration", "The duration of the animation.");
 
     protected override void OnEnable()
     {
@@ -161,9 +163,9 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
         var durationProp = itemProp.FindPropertyRelative("duration");
 
         EditorGUIUtility.labelWidth = 30;
-        float newTime = Mathf.Max(0, EditorGUI.FloatField(fromRect, new GUIContent("from:"), startTimeProp.floatValue));
+        float newTime = Mathf.Max(0, EditorGUI.FloatField(fromRect, fromGUI, startTimeProp.floatValue));
         EditorGUIUtility.labelWidth = 15;
-        float newEndTime = Mathf.Max(newTime, EditorGUI.FloatField(toRect, new GUIContent("to:"),
+        float newEndTime = Mathf.Max(newTime, EditorGUI.FloatField(toRect, toGUI,
             startTimeProp.floatValue + durationProp.floatValue));
 
         if (newEndTime < newTime) newEndTime = newTime;
@@ -313,8 +315,8 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
         EditorGUILayout.LabelField("Animation settings", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("repeat"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("repeat"), repeatGUI);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"), durationGUI);
         EditorGUI.indentLevel--;
 
         EditorGUILayout.Space();
@@ -340,59 +342,6 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
         fileBrowserButtonStyle.normal.background = EditorGUIUtility.IconContent("d_Folder Icon").image as Texture2D;
         fileBrowserButtonStyle.fixedHeight = 30;
         fileBrowserButtonStyle.fixedWidth = 35;
-
-        EditorGUILayout.LabelField("Export", EditorStyles.boldLabel);
-        EditorGUI.indentLevel++;
-
-        var textrect = GUILayoutUtility.GetLastRect();
-        textrect.y += textrect.height;
-        textrect.height = EditorGUIUtility.singleLineHeight;
-        GUILayoutUtility.GetRect(EditorGUIUtility.currentViewWidth, EditorGUIUtility.currentViewWidth,
-            EditorGUIUtility.singleLineHeight, EditorGUIUtility.singleLineHeight, fileBrowserButtonStyle);
-
-
-        var newExportPath = EditorGUI.TextField(textrect, "Export path", exportPath);
-        if (newExportPath != exportPath)
-        {
-            EditorPrefs.SetString(ExportPathKey, newExportPath);
-            exportPath = newExportPath;
-        }
-
-        textrect.x += EditorGUIUtility.labelWidth - 35;
-        textrect.width = EditorGUIUtility.singleLineHeight * 1.5f;
-        textrect.height = EditorGUIUtility.singleLineHeight * 1.5f;
-        textrect.y -= 10;
-        if (GUI.Button(textrect, "", fileBrowserButtonStyle))
-        {
-            string path = EditorUtility.OpenFolderPanel("Select folder to export to", "Assets", "");
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                EditorPrefs.SetString(ExportPathKey, path);
-                exportPath = path;
-            }
-        }
-
-        exportName = EditorGUILayout.TextField("Export name", exportName);
-        EditorGUI.indentLevel--;
-
-        if (GUILayout.Button("Export"))
-        {
-            if (string.IsNullOrWhiteSpace(exportName))
-            {
-                EditorUtility.DisplayDialog("Empty export name", "You must specify a name for the exported file",
-                    "Okay");
-            }
-            else
-            {
-                string exportNameUnderscored = Regex.Replace(exportName, @"\s+", "_");
-                bool okay = EditorUtility.DisplayDialog("Exporting Generic Animation",
-                    "This will export this GenericAnimation animation as a .cs file, allowing you to make further edits.\nThe file will be saved as: \n" +
-                    exportPath + "/" + exportNameUnderscored + ".cs", "Okay", "Cancel");
-
-                if (okay) GenericAnimationExporter.ExportGenericAnimation(serializedObject, exportPath, exportNameUnderscored);
-            }
-        }
-
 
         serializedObject.ApplyModifiedProperties();
     }

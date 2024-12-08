@@ -323,7 +323,7 @@ namespace TMPEffects.TMPAnimations
         }
 
         #endregion
-        
+
         public static ITMPSegmentData GetMockedSegment(int len, IEnumerable<CharData> cData)
         {
             return new TextSegment(len, cData);
@@ -393,6 +393,8 @@ namespace TMPEffects.TMPAnimations
             TMPParameterTypes.OffsetType type, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
             bool ignoreAnimatorScaling = false)
         {
+            bool scaleAtTheEnd = animatorData.ScaleUniformly;
+
             switch (type)
             {
                 case TMPParameterTypes.OffsetType.SegmentIndex:
@@ -405,15 +407,29 @@ namespace TMPEffects.TMPAnimations
                     return;
                 case TMPParameterTypes.OffsetType.XPos:
                 {
-                    // Expensive af (and so will other ones be)
-                    // Should give some indication that you should cache
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+
+                    if (scaleAtTheEnd)
                     {
-                        var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.x);
-                        min = Mathf.Min(min, pos);
-                        max = Mathf.Max(max, pos);
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = kvp.Value.InitialPosition.x;
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
+
+                        min = ScalePos(animatorData.Animator.TextComponent.fontSize, min);
+                        max = ScalePos(animatorData.Animator.TextComponent.fontSize, max);
+                    }
+                    else
+                    {
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.x);
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
                     }
 
                     return;
@@ -421,15 +437,29 @@ namespace TMPEffects.TMPAnimations
 
                 case TMPParameterTypes.OffsetType.YPos:
                 {
-                    // Expensive af (and so will other ones be)
-                    // Should give some indication that you should cache
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+
+                    if (scaleAtTheEnd)
                     {
-                        var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.y);
-                        min = Mathf.Min(min, pos);
-                        max = Mathf.Max(max, pos);
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = kvp.Value.InitialPosition.y;
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
+
+                        min = ScalePos(animatorData.Animator.TextComponent.fontSize, min);
+                        max = ScalePos(animatorData.Animator.TextComponent.fontSize, max);
+                    }
+                    else
+                    {
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.y);
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
                     }
 
                     return;
@@ -480,12 +510,28 @@ namespace TMPEffects.TMPAnimations
                     // Should give some indication that you should cache
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+
+                    if (scaleAtTheEnd)
                     {
-                        var pos = ScalePos(kvp.Value.pointSize,
-                            animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).x);
-                        min = Mathf.Min(min, pos);
-                        max = Mathf.Max(max, pos);
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).x;
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
+
+                        min = ScalePos(animatorData.Animator.TextComponent.fontSize, min);
+                        max = ScalePos(animatorData.Animator.TextComponent.fontSize, max);
+                    }
+                    else
+                    {
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = ScalePos(kvp.Value.pointSize,
+                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).x);
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
                     }
 
                     return;
@@ -493,16 +539,30 @@ namespace TMPEffects.TMPAnimations
 
                 case TMPParameterTypes.OffsetType.WorldYPos:
                 {
-                    // Expensive af (and so will other ones be)
-                    // Should give some indication that you should cache
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+
+                    if (scaleAtTheEnd)
                     {
-                        var pos = ScalePos(kvp.Value.pointSize,
-                            animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).y);
-                        min = Mathf.Min(min, pos);
-                        max = Mathf.Max(max, pos);
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).y;
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
+
+                        min = ScalePos(animatorData.Animator.TextComponent.fontSize, min);
+                        max = ScalePos(animatorData.Animator.TextComponent.fontSize, max);
+                    }
+                    else
+                    {
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = ScalePos(kvp.Value.pointSize,
+                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).y);
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
                     }
 
                     return;
@@ -514,21 +574,35 @@ namespace TMPEffects.TMPAnimations
                     // Should give some indication that you should cache
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+                    
+                    if (scaleAtTheEnd)
                     {
-                        // TODO Scaling should probably only be done once you have found the min max
-                        // HOWEVER That will assume all charinfos have the same pointsize (which they should? idk)
-                        var pos = ScalePos(kvp.Value.pointSize,
-                            animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).z);
-                        min = Mathf.Min(min, pos);
-                        max = Mathf.Max(max, pos);
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).z;
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
+
+                        min = ScalePos(animatorData.Animator.TextComponent.fontSize, min);
+                        max = ScalePos(animatorData.Animator.TextComponent.fontSize, max);
+                    }
+                    else
+                    {
+                        foreach (var kvp in segmentData.CharInfo)
+                        {
+                            var pos = ScalePos(kvp.Value.pointSize,
+                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).z);
+                            min = Mathf.Min(min, pos);
+                            max = Mathf.Max(max, pos);
+                        }
                     }
 
                     return;
                 }
             }
 
-            throw new System.NotImplementedException("NOT IMPLEMENTED"); 
+            throw new System.NotImplementedException("NOT IMPLEMENTED");
 
             float ScalePos(float pointSize, float pos)
             {
@@ -541,17 +615,20 @@ namespace TMPEffects.TMPAnimations
                 if (!animatorData.ScaleAnimations)
                     return pos / 10f;
 
-                if (animatorData.ScaleUniformly)
-                {
-                    if (animatorData.Animator.TextComponent.fontSize != 0)
-                        pos /= (animatorData.Animator.TextComponent.fontSize / 36f);
-                    return pos / 10f;
-                }
-                else
-                {
-                    if (pointSize != 0) pos /= (pointSize / 36f);
-                    return pos / 10f;
-                }
+                if (pointSize != 0) pos /= (pointSize / 36f);
+                return pos / 10f;
+
+                // if (animatorData.ScaleUniformly)
+                // {
+                //     if (animatorData.Animator.TextComponent.fontSize != 0)
+                //         pos /= (animatorData.Animator.TextComponent.fontSize / 36f);
+                //     return pos / 10f;
+                // }
+                // else
+                // {
+                //     if (pointSize != 0) pos /= (pointSize / 36f);
+                //     return pos / 10f;
+                // }
             }
         }
 
@@ -642,7 +719,7 @@ namespace TMPEffects.TMPAnimations
                 return t;
             }
         }
-        
+
         /// <summary>
         /// Set a character's UVs so it will look like another character.
         /// </summary>

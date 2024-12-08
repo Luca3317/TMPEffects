@@ -13,6 +13,9 @@ namespace TMPEffects.Editor
 
         protected TMPWriter writer;
 
+        private static readonly GUIContent restartGUI = new GUIContent("Restart Delay", "The delay before restarting the animation once done.");
+        private static readonly GUIContent delayGUI = new GUIContent("Delay", "The delay of the writer.");
+
         protected override void OnEnable()
         {
             base.OnEnable();

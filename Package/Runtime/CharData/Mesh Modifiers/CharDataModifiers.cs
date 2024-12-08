@@ -10,27 +10,44 @@ using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
 
+/// <summary>
+/// Modifiers applied to a TextMeshPro character.<br/>
+/// Used by <see cref="CharData"/> to store modifications.
+/// </summary> 
 [Serializable]
 public class CharDataModifiers
 {
-    public TMPMeshModifiers MeshModifiers
-    {
-        get => meshModifiers;
-        set => meshModifiers = value;
-    }
+    /// <summary>
+    /// The mesh modifiers, applied to individual vertices.
+    /// </summary>
+    public TMPMeshModifiers MeshModifiers => meshModifiers;
 
-    public TMPCharacterModifiers CharacterModifiers
-    {
-        get => characterModifiers;
-        set => characterModifiers = value;
-    }
+    /// <summary>
+    /// The character modifiers, applied uniformly to all vertices of the character.
+    /// </summary>
+    public TMPCharacterModifiers CharacterModifiers=> characterModifiers;
 
     [SerializeField] private TMPMeshModifiers meshModifiers;
     [SerializeField] private TMPCharacterModifiers characterModifiers;
 
+    /// <summary>
+    /// Stores the position of the bottom-left vertex after calling <see cref="CalculateVertexPositions"/>.
+    /// </summary>
     public Vector3 BL_Result { get; private set; }
+    
+    /// <summary>
+    /// Stores the position of the top-left vertex after calling <see cref="CalculateVertexPositions"/>.
+    /// </summary>
     public Vector3 TL_Result { get; private set; }
+    
+    /// <summary>
+    /// Stores the position of the top-right vertex after calling <see cref="CalculateVertexPositions"/>.
+    /// </summary>
     public Vector3 TR_Result { get; private set; }
+    
+    /// <summary>
+    /// Stores the position of the bottom-right vertex after calling <see cref="CalculateVertexPositions"/>.
+    /// </summary>
     public Vector3 BR_Result { get; private set; }
 
     public CharDataModifiers()
@@ -45,13 +62,23 @@ public class CharDataModifiers
         characterModifiers = new TMPCharacterModifiers(original.characterModifiers);
     }
 
+    /// <summary>
+    /// Combine this <see cref="CharDataModifiers"/> with another.<br/>
+    /// </summary>
+    /// <param name="other">The other <see cref="CharacterModifiers"/> to combine with.</param>
     public void Combine(CharDataModifiers other)
     {
         meshModifiers.Combine(other.meshModifiers);
         characterModifiers.Combine(other.characterModifiers);
     }
 
-    public void CalculateVertexPositions(CharData cData, IAnimatorContext context)
+    /// <summary>
+    /// Calculate the vertex positions, applying all modifiers to the passed in <see cref="CharData"/>.<br/>
+    /// The results are stored in <see cref="BL_Result"/>, <see cref="TL_Result"/>, <see cref="TR_Result"/>, <see cref="BR_Result"/>.
+    /// </summary>
+    /// <param name="cData">The CharData to apply the modifiers to.</param>
+    /// <param name="context"></param>
+    public void CalculateVertexPositions(CharData cData, IAnimatorDataProvider context)
     {
         // Apply vertex transformations
         Vector3 vbl = cData.InitialMesh.BL_Position;
@@ -59,6 +86,7 @@ public class CharDataModifiers
         Vector3 vtr = cData.InitialMesh.TR_Position;
         Vector3 vbr = cData.InitialMesh.BR_Position;
 
+        // Apply deltas
         if (meshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
         {
             vbl += TMPAnimationUtility.ScaleVector(meshModifiers.BL_Delta, cData, context);
@@ -66,14 +94,6 @@ public class CharDataModifiers
             vtr += TMPAnimationUtility.ScaleVector(meshModifiers.TR_Delta, cData, context);
             vbr += TMPAnimationUtility.ScaleVector(meshModifiers.BR_Delta, cData, context);
         }
-
-        // TODO Clamp
-        // For now only the vertex offsets are clamped to min/max of each individual animation, as otherwise stacked animations are likely to deform the character
-        // If i want to do that again, ill need to update those in combine.
-        // vtl = new Vector3(Mathf.Clamp(vtl.x, TLMin.x, TLMax.x), Mathf.Clamp(vtl.y, TLMin.y, TLMax.y), Mathf.Clamp(vtl.z, TLMin.z, TLMax.z));
-        // vtr = new Vector3(Mathf.Clamp(vtr.x, TRMin.x, TRMax.x), Mathf.Clamp(vtr.y, TRMin.y, TRMax.y), Mathf.Clamp(vtr.z, TRMin.z, TRMax.z));
-        // vbr = new Vector3(Mathf.Clamp(vbr.x, BRMin.x, BRMax.x), Mathf.Clamp(vbr.y, BRMin.y, BRMax.y), Mathf.Clamp(vbr.z, BRMin.z, BRMax.z));
-        // vbl = new Vector3(Mathf.Clamp(vbl.x, BLMin.x, BLMax.x), Mathf.Clamp(vbl.y, BLMin.y, BLMax.y), Mathf.Clamp(vbl.z, BLMin.z, BLMax.z));
 
         // Apply scale
         if (characterModifiers.Modifier.HasFlag(TMPCharacterModifiers.ModifierFlags.Scale))
@@ -136,7 +156,17 @@ public class CharDataModifiers
         );
     }
 
-    public static void LerpUnclamped(CharData cData, IAnimatorContext ctx, CharDataModifiers start,
+    /// <summary>
+    /// Linearly interpolate between two <see cref="CharDataModifiers"/>.
+    /// The result is stored in <see cref="result"/>, <see cref="start"/> and <see cref="end"/> are not modified.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="ctx"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="t">The </param>
+    /// <param name="result">Stores the result.</param>
+    public static void LerpUnclamped(CharData cData, IAnimatorDataProvider ctx, CharDataModifiers start,
         CharDataModifiers end, float t,
         CharDataModifiers result)
     {
@@ -145,13 +175,15 @@ public class CharDataModifiers
         LerpMeshModifiersUnclamped(cData, ctx, start.MeshModifiers, end.MeshModifiers, t, result.MeshModifiers);
     }
 
-    public static CharDataModifiers LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t)
-    {
-        CharDataModifiers storage = new CharDataModifiers();
-        LerpUnclamped(cData, modifiers, t, storage);
-        return storage;
-    }
-
+    /// <summary>
+    /// Linearly interpolate between a <see cref="CharData"/> and a <see cref="CharDataModifiers"/>.<br/>
+    /// This essentially interpolates between "no modifiers" (the <see cref="CharData"/>'s default values, and the <see cref="CharDataModifiers"/>.<br/>
+    /// The result is stored in <see cref="result"/>.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="modifiers"></param>
+    /// <param name="t"></param>
+    /// <param name="result">Stores the result.</param>
     public static void LerpUnclamped(CharData cData, CharDataModifiers modifiers, float t,
         CharDataModifiers result)
     {
@@ -159,6 +191,15 @@ public class CharDataModifiers
         LerpMeshModifiersUnclamped(cData, modifiers.MeshModifiers, t, result.MeshModifiers);
     }
 
+    /// <summary>
+    /// Linearly interpolate between two <see cref="TMPCharacterModifiers"/>.
+    /// The result is stored in <see cref="result"/>, <see cref="start"/> and <see cref="end"/> are not modified.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="t"></param>
+    /// <param name="result">Stores the result.</param>
     public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers start,
         TMPCharacterModifiers end, float t, TMPCharacterModifiers result)
     {
@@ -210,6 +251,15 @@ public class CharDataModifiers
         }
     }
 
+    /// <summary>
+    /// Linearly interpolate between a <see cref="CharData"/> and a <see cref="TMPCharacterModifiers"/>.<br/>
+    /// This essentially interpolates between "no modifiers" (the <see cref="CharData"/>'s default values, and the <see cref="TMPCharacterModifiers"/>.<br/>
+    /// The result is stored in <see cref="result"/>.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="modifiers"></param>
+    /// <param name="t"></param>
+    /// <param name="result"></param>
     public static void LerpCharacterModifiersUnclamped(CharData cData, TMPCharacterModifiers modifiers, float t,
         TMPCharacterModifiers result)
     {
@@ -256,7 +306,17 @@ public class CharDataModifiers
         }
     }
 
-    public static void LerpMeshModifiersUnclamped(CharData cData, IAnimatorContext ctx, TMPMeshModifiers start,
+    /// <summary>
+    /// Linearly interpolate between two <see cref="TMPMeshModifiers"/>.
+    /// The result is stored in <see cref="result"/>, <see cref="start"/> and <see cref="end"/> are not modified.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="ctx"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="t"></param>
+    /// <param name="result">Stores the result.</param>
+    public static void LerpMeshModifiersUnclamped(CharData cData, IAnimatorDataProvider ctx, TMPMeshModifiers start,
         TMPMeshModifiers end,
         float t,
         TMPMeshModifiers result)
@@ -329,6 +389,15 @@ public class CharDataModifiers
         }
     }
 
+    /// <summary>
+    /// Linearly interpolate between a <see cref="CharData"/> and a <see cref="TMPMeshModifiers"/>.<br/>
+    /// This essentially interpolates between "no modifiers" (the <see cref="CharData"/>'s default values, and the <see cref="TMPMeshModifiers"/>.<br/>
+    /// The result is stored in <see cref="result"/>.
+    /// </summary>
+    /// <param name="cData"></param>
+    /// <param name="modifiers"></param>
+    /// <param name="t"></param>
+    /// <param name="result">Stores the result.</param>
     public static void LerpMeshModifiersUnclamped(CharData cData, TMPMeshModifiers modifiers, float t,
         TMPMeshModifiers result)
     {
@@ -370,6 +439,9 @@ public class CharDataModifiers
         }
     }
 
+    /// <summary>
+    /// Reset the modifiers.
+    /// </summary>
     public void Reset()
     {
         meshModifiers.ClearModifiers();

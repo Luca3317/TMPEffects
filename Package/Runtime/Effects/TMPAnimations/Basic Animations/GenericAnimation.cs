@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
@@ -67,9 +68,9 @@ namespace TMPEffects.TMPAnimations
         {
             public List<List<AnimationStep>> Steps = null;
 
-            public Dictionary<AnimationStep,
-                (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset)> CachedOffsets =
-                new Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset
+            [CanBeNull] public Dictionary<AnimationStep,
+                (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)> CachedOffsets =
+                new Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset
                     )>();
         }
     }
@@ -312,9 +313,16 @@ namespace TMPEffects.TMPAnimations
 
             return -1;
         }
+        
+        public struct CachedOffset
+        {
+            public Dictionary<CharData, float> offset;
+            public float minOffset;
+            public float maxOffset;
+        }
 
         public static void Animate(CharData cData, TrackList tracks, ref List<List<AnimationStep>> dataSteps,
-            Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset)>
+            Dictionary<AnimationStep, (CachedOffset inOffset, CachedOffset outOffset)>
                 cachedOffsets,
             bool repeat, float duration, float passedTime, IAnimationContext context,
             ref CharDataModifiers modifiersStorage,
@@ -364,9 +372,9 @@ namespace TMPEffects.TMPAnimations
                     step.exitCurve.provider.GetMinMaxOffset(out float outMin, out float outMax, context.SegmentData,
                         context.AnimatorContext);
                     cachedOffset = (
-                        new AnimationStep.CachedOffset()
+                        new CachedOffset()
                             { minOffset = inMin, maxOffset = inMax, offset = new Dictionary<CharData, float>() },
-                        new AnimationStep.CachedOffset()
+                        new CachedOffset()
                             { minOffset = outMin, maxOffset = outMax, offset = new Dictionary<CharData, float>() });
 
                     cachedOffsets[step] = cachedOffset;

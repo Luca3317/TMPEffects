@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace TMPEffects.Editor
 {
-    public class TMPEffectsImporterWindow : EditorWindow
+    internal class TMPEffectsImporterWindow : EditorWindow
     {
         public static void ShowImporterWindow()
         {

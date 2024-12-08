@@ -345,7 +345,6 @@ namespace TMPEffects.Components
         /// <param name="updateFrom">Where the animations are updated from.</param>
         public void SetUpdateFrom(UpdateFrom updateFrom)
         {
-            Debug.Log("Setting to " + updateFrom);
             if (isAnimating)
             {
                 StopAnimating();
@@ -1667,7 +1666,6 @@ namespace TMPEffects.Components
 
             if (!preview || previewUpdater?.MaxUpdatesPerSecond != previewUpdatesPerSecond || previewUpdater?.AdditionalTimeScaling != previewTimeScale)
             {
-                Debug.LogWarning("NEW");
                 previewUpdater = new AnimationUpdater(UpdateAnimations_Impl, previewUpdatesPerSecond, previewTimeScale);
             }
 

@@ -18,8 +18,8 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
 
     private float time;
     
-    private Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset)>
-        cachedOffsets = new Dictionary<AnimationStep, (AnimationStep.CachedOffset, AnimationStep.CachedOffset)>();
+    private Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>
+        cachedOffsets = new Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset, GenericAnimationUtility.CachedOffset)>();
 
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
@@ -101,9 +101,9 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
                 step.exitCurve.provider.GetMinMaxOffset(out float outMin, out float outMax, mocked,
                     animator.AnimatorContext);
                 cachedOffset = (
-                    new AnimationStep.CachedOffset()
+                    new GenericAnimationUtility.CachedOffset()
                         { minOffset = inMin, maxOffset = inMax, offset = new Dictionary<CharData, float>() },
-                    new AnimationStep.CachedOffset()
+                    new GenericAnimationUtility.CachedOffset()
                         { minOffset = outMin, maxOffset = outMax, offset = new Dictionary<CharData, float>() });
 
                 cachedOffsets[step] = cachedOffset;
@@ -138,7 +138,7 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
     {
         mocked = TMPAnimationUtility.GetMockedSegment(animator.TextComponent.GetParsedText().Length, animator.CharData);
         cachedOffsets =
-            new Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset
+            new Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset
                 )>();
         Debug.LogWarning("Update");
     }

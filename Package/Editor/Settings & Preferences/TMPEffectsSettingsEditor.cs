@@ -1,15 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditorInternal;
-using System.Collections.Generic;
-using System.Linq;
-using TMPEffects.Extensions;
-using TMPEffects.Parameters;
-using TMPEffects.TMPAnimations;
-using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TMPEffects.Editor

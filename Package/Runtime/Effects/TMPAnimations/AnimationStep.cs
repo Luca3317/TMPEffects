@@ -125,17 +125,9 @@ public class AnimationStep
         return weight;
     }
 
-    // TODO Move this elsewhere, mb tmpparameterutility
-    public struct CachedOffset
-    {
-        public Dictionary<CharData, float> offset;
-        public float minOffset;
-        public float maxOffset;
-    }
-
     public static float CalcWeight(AnimationStep step, float timeValue, float duration,
-        CharData cData, IAnimatorDataProvider context, ITMPSegmentData segmentData, CachedOffset inOffset,
-        CachedOffset outOffset, float waveOffset = 0)
+        CharData cData, IAnimatorDataProvider context, ITMPSegmentData segmentData, GenericAnimationUtility.CachedOffset inOffset,
+        GenericAnimationUtility.CachedOffset outOffset, float waveOffset = 0)
     {
         float weight = 1;
 

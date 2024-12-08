@@ -68,8 +68,8 @@
         {
             public List<List<AnimationStep>> Steps = null;
             public Dictionary<AnimationStep,
-                (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset)> CachedOffsets =
-                new Dictionary<AnimationStep, (AnimationStep.CachedOffset inOffset, AnimationStep.CachedOffset outOffset
+                (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)> CachedOffsets =
+                new Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset
                     )>();
         }
     }

@@ -24,6 +24,11 @@ namespace TMPEffects.Editor
         protected float lastUpdateTime = -1f;
         protected bool animate = true;
 
+        private static readonly GUIContent titleGUI = new GUIContent("TMPAnimation Preview");
+        private static readonly GUIContent sizeGUI = new GUIContent("Size");
+
+        private static GUIStyle animationButtonStyle;
+
         protected virtual void OnEnable()
         {
             previewUtility = new PreviewRenderUtility();
@@ -53,7 +58,7 @@ namespace TMPEffects.Editor
 
         public override GUIContent GetPreviewTitle()
         {
-            return new GUIContent("TMPAnimation Preview");
+            return titleGUI;
         }
 
         public override bool RequiresConstantRepaint()
@@ -63,10 +68,15 @@ namespace TMPEffects.Editor
 
         public override void OnPreviewSettings()
         {
-            GUIStyle animationButtonStyle = new GUIStyle(GUI.skin.button);
-            animationButtonStyle.richText = true;
+            animationButtonStyle ??= new GUIStyle(GUI.skin.button)
+            {
+                richText = true
+            };
             char animationC = animate ? '\u2713' : '\u2717';
-            GUIContent animationButtonContent = new GUIContent("Toggle preview " + (animate ? "<color=#90ee90>" : "<color=#f1807e>") + animationC.ToString() + "</color>");
+            GUIContent animationButtonContent = new GUIContent("Toggle preview " +
+                                                               (animate ? "<color=#90ee90>" : "<color=#f1807e>") +
+                                                               animationC.ToString() + "</color>");
+
 
             if (GUILayout.Button(animationButtonContent, animationButtonStyle))
             {
@@ -85,9 +95,11 @@ namespace TMPEffects.Editor
         {
             if (animator.Tags.Count == 0)
             {
-                if (!animator.Tags.TryAdd(new TMPEffectTag("preview", TMPAnimator.ANIMATION_PREFIX, new Dictionary<string, string>()), new TMPEffectTagIndices(0, -1, 0)))
+                if (!animator.Tags.TryAdd(
+                        new TMPEffectTag("preview", TMPAnimator.ANIMATION_PREFIX, new Dictionary<string, string>()),
+                        new TMPEffectTagIndices(0, -1, 0)))
                 {
-                    Debug.LogError("Failed to add tag; SetAnimation not called correctly?");
+                    TMPEffectsBugReport.BugReportPrompt("Failed to add tag; SetAnimation not called correctly?");
                 }
             }
 
@@ -108,6 +120,7 @@ namespace TMPEffects.Editor
                 lastUpdateTime = Time.time;
                 return;
             }
+
             animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.time - lastUpdateTime);
             lastUpdateTime = Time.time;
         }
@@ -119,8 +132,10 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.BeginHorizontal();
 
-            targetText.fontSize = EditorGUILayout.Slider(new GUIContent("Size"), targetText.fontSize, 1, 50, GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.35f));
-            targetText.text = EditorGUILayout.TextField(targetText.text, GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.65f));
+            targetText.fontSize = EditorGUILayout.Slider(sizeGUI, targetText.fontSize, 1, 50,
+                GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.35f));
+            targetText.text = EditorGUILayout.TextField(targetText.text,
+                GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.65f));
 
             EditorGUILayout.EndHorizontal();
 
@@ -134,7 +149,8 @@ namespace TMPEffects.Editor
 
         protected void SetupPreviewScene()
         {
-            targetObject = EditorUtility.CreateGameObjectWithHideFlags("Test " + UnityEngine.Random.Range(0, 100), HideFlags.HideAndDontSave);
+            targetObject = EditorUtility.CreateGameObjectWithHideFlags("Test " + UnityEngine.Random.Range(0, 100),
+                HideFlags.HideAndDontSave);
             targetText = targetObject.AddComponent<TextMeshPro>();
             targetObject.transform.position = Vector3.zero;
 
@@ -191,11 +207,12 @@ namespace TMPEffects.Editor
                 tmpanimation.SetParameters(customData, parameters, keywordDatabase);
             }
 
-            public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+            public override bool ValidateParameters(IDictionary<string, string> parameters,
+                ITMPKeywordDatabase keywordDatabase)
                 => tmpanimation.ValidateParameters(parameters, keywordDatabase);
         }
 
-        protected ReadOnlyDictionary<string, string> dummyDict = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
+        protected ReadOnlyDictionary<string, string> dummyDict =
+            new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
     }
 }
-
