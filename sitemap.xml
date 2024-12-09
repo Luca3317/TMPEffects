@@ -2,1231 +2,1231 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.CharData.Info.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.CharData.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.CharDataState.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.ICharDataState.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.ReadOnlyCharDataState.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.ReadOnlyVertexData.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.VertexData.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.VisibilityState.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.CharacterData.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.AnimationUpdater.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.AnimatorContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.IAnimatorContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.SegmentData.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.TMPAnimationType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.TMPAnimatorUpdater.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.UpdateFrom.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Animator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Mediator.TMPMediator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.Mediator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.TMPAnimator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.TMPEffectComponent.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.TMPWriter.Delays.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.TMPWriter.DelayType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.TMPWriter.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Components.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.AnimationDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.CommandDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.ITMPEffectDatabase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.ITMPEffectDatabase-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.TMPEffectDatabase-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Databases.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.TMPAnimationCategory.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.TMPCommandCategory.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.TMPEffectCategory.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.TMPEffectCategory-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.TMPEventCategory.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.EffectCategories.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Extensions.AnimationCurveUtility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Extensions.Extensions.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Extensions.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.ObjectChanged.INotifyObjectChanged.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.ObjectChanged.ObjectChangedEventHandler.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.ObjectChanged.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterParsing.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterTypes.TypedVector2.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterTypes.TypedVector3.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterTypes.VectorType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterTypes.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterUtility.WaveParameters.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.ParameterUtility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Parameters.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.ObservableDictionary-2.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.SerializedDictionary-2.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.SerializedDictionaryAttribute.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.SerializedKeyValuePair-2.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.SerializedObservableDictionary-2.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.SerializedCollections.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.CachedCollection-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.IReadOnlyTagCollection.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.ITagCollection.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.ITagCollectionManager-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.ObservableTagCollection.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.ReadOnlyTagCollection.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.TagCollection.StartIndexOnly.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.TagCollection.TempIndices.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.TagCollection.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.Collections.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.ITagCacher-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.ITagWrapper.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.ITMPPrefixSupplier.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.ITMPTagValidator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.TMPEffectTag.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.TMPEffectTagIndices.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.TMPEffectTagTuple.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.Tags.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.ITagProcessorManager.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.ParsingUtility.TagInfo.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.ParsingUtility.TagType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.ParsingUtility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.TagProcessor.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.TagProcessorManager.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.TMPTextProcessor.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TextProcessing.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.AnimationContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.CharAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.ContPivotAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.FadeAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.FunkyAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.GrowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.PaletteAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.PivotAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.ShakeAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.WaveAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.Animations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.AnimationUtility.Wave.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.AnimationUtility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.HideAnimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.IAnimationContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ITMPAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.ShowAnimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.TMPAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.TMPAnimationParameterless.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.TMPHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.TMPShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPAnimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.DebugCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.DelayCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.ShowCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.SkippableCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.WaitCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.Commands.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.ITMPCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.TagType.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.TMPCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.TMPCommandArgs.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.TMPSceneCommand.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPCommands.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPEvents.TMPEvent.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPEvents.TMPEventArgs.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPEvents.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/api/TMPEffects.TMPSceneAnimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/index.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/animatingacharacter.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/animationcurveutility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/animationutility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/autoparameters.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/chardata.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/databases.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/effecttag.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/ianimationcontext.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/installation.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/introduction.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/parameters.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/parametertypes.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/parameterutility.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tagcollections.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_addinganimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_animationutility_wave.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_builtinbasicanimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_builtinshowhideanimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_componentoverview.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_creatinganimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_gettingstarted.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_sceneanimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpanimator_showhideanimations.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter_builtincommands.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter_componentoverview.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter_creatingcommands.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter_gettingstarted.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://luca3317.github.io/TMPEffects/manual/tmpwriter_scenecommands.html</loc>
-    <lastmod>2024-12-09T11:34:02+00:00</lastmod>
+    <lastmod>2024-12-09T11:43:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
