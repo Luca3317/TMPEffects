@@ -90,25 +90,41 @@ namespace TMPEffects.Components
         /// </summary>
         public ITagCollection EventTags => tags == null ? null : tags[eventCategory];
 
+        /// <summary>
+        /// Whether to begin writing when the TMPWriter's Start method is called (i.e. when it is first enabled).
+        /// </summary>
         public bool WriteOnStart
         {
             get => writeOnStart;
             set => writeOnStart = value;
         }
 
+        /// <summary>
+        /// Whether to begin writing when the text of the associated <see cref="TMP_Text"/> component is changed.<br/>
+        /// Be aware that the <see cref="TMP_Text"/> component raises its TextChanged event it is first loaded as well.
+        /// </summary>
         public bool WriteOnNewText
         {
             get => writeOnNewText;
             set => writeOnNewText = value;
         }
 
+        /// <summary>
+        /// Whether to use scaled (<see cref="Time.time"/>) or unscaled time (<see cref="Time.unscaledTime"/>) for the writing process.
+        /// </summary>
         public bool UseScaledTime
         {
             get => useScaledTime;
             set => useScaledTime = value;
         }
 
+        /// <summary>
+        /// The default delays used by the writer.
+        /// </summary>
         public Delays DefaultDelays => delays;
+        /// <summary>
+        /// The current delays by the writer, influenced by modifying tags etc.
+        /// </summary>
         public Delays CurrentDelays => currentDelays;
 
         // Events
@@ -402,6 +418,9 @@ namespace TMPEffects.Components
             waitAmount = seconds;
         }
 
+        /// <summary>
+        /// Reset the period the writer should pause for (set using <see cref="Wait"/> to 0. 
+        /// </summary>
         public void ResetWaitPeriod()
         {
             shouldWait = false;
@@ -420,6 +439,9 @@ namespace TMPEffects.Components
             continueConditions += condition;
         }
 
+        /// <summary>
+        /// Clear the conditions the writer should wait for (set using <see cref="WaitUntil"/>.
+        /// </summary>
         public void ResetWaitConditions()
         {
             continueConditions = null;
@@ -477,6 +499,12 @@ namespace TMPEffects.Components
         private void OnEnable()
         {
             UpdateMediator();
+
+            // if (!TextComponent.enabled)
+            // {
+            //     TextComponent.enabled = true;
+            //     TextComponent.enabled = false;
+            // }
 
             SubscribeToMediator();
 
@@ -767,6 +795,8 @@ namespace TMPEffects.Components
 
         private void StartWriterCoroutine()
         {
+            if (!TextComponent.enabled) return;
+            
             StopWriterCoroutine();
             writerCoroutine = StartCoroutine(WriterCoroutine());
         }
@@ -1338,7 +1368,7 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
-        /// Stores the various delays along with their <see cref="DelayType"/> of a TMPWriter.
+        /// Stores the various delays of a TMPWriter along with their <see cref="DelayType"/>.
         /// </summary>
         [System.Serializable]
         public class Delays

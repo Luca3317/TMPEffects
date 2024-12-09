@@ -9,7 +9,7 @@ namespace TMPEffects.EffectCategories
     /// <summary>
     /// Category for commands.
     /// </summary>
-    public class TMPCommandCategory : TMPEffectCategory<ITMPCommand>
+    internal class TMPCommandCategory : TMPEffectCategory<ITMPCommand>
     {
         private ITMPEffectDatabase<ITMPCommand> database;
         private ITMPKeywordDatabase keywordDatabase;

@@ -10,7 +10,7 @@ namespace TMPEffects.EffectCategories
     /// <summary>
     /// Category for animations.
     /// </summary>
-    public class TMPAnimationCategory : TMPEffectCategory<ITMPAnimation>
+    internal class TMPAnimationCategory : TMPEffectCategory<ITMPAnimation>
     {
         private ITMPEffectDatabase<ITMPAnimation> database;
         private ITMPKeywordDatabase keywordDatabase;

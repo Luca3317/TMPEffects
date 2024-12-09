@@ -1,12 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.Databases;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
-using UnityEngine;
-using static TMPEffects.TMPAnimations.TMPAnimationUtility;
-using static TMPEffects.Parameters.TMPParameterTypes;
 
 namespace TMPEffects.Parameters
 {
@@ -30,7 +24,7 @@ namespace TMPEffects.Parameters
         {
             value = null;
             if (parameters.ContainsKey(name)) value = name;
-            if (aliases == null) 
+            if (aliases == null)
             {
                 return value != null;
             }
@@ -60,8 +54,8 @@ namespace TMPEffects.Parameters
         {
             return TryGetDefinedParameter(out _, parameters, name, aliases);
         }
-        
-       
+
+
         /// <summary>
         /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array&lt;T&gt; (=> can not be converted to Array&lt;T&gt;).
         /// </summary>
@@ -69,42 +63,46 @@ namespace TMPEffects.Parameters
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is not of type Array&lt;T&gt;, false otherwise.</returns>
-        public static bool HasNonArrayParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        public static bool HasNonArrayParameter(IDictionary<string, string> parameters, string name,
+            params string[] aliases)
         {
             if (!ParameterDefined(parameters, name, aliases)) return false;
             return !TryGetArrayParameter(out string[] _, parameters, name, aliases);
         }
-        
+
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can no be converted to Array&lt;T&gt;).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
-        public static bool HasArrayParameter(IDictionary<string, string> parameters, string name, params string[] aliases)
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
+        public static bool HasArrayParameter(IDictionary<string, string> parameters, string name,
+            params string[] aliases)
         {
             return TryGetArrayParameter(out string[] _, parameters, name, aliases);
         }
-        
+
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can be converted to Array&lt;T&gt;).<br />
         /// </summary>
         /// <param name="value">Set to the value of the parameter if successful.</param>
         /// <param name="parameters">The parameters to check.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
-        public static bool TryGetArrayParameter(out string[] value, IDictionary<string, string> parameters, string name, params string[] aliases)
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
+        public static bool TryGetArrayParameter(out string[] value, IDictionary<string, string> parameters, string name,
+            params string[] aliases)
         {
             return TryGetArrayParameter(out value, parameters, stringParseDelegate, null, name, aliases);
         }
-        
-        private static ParseDelegate<string, string, ITMPKeywordDatabase, bool> stringParseDelegate = (string a, out string b, ITMPKeywordDatabase keywordDatabase) =>
-        {
-            b = a;
-            return true;
-        };
+
+        private static ParseDelegate<string, string, ITMPKeywordDatabase, bool> stringParseDelegate =
+            (string a, out string b, ITMPKeywordDatabase keywordDatabase) =>
+            {
+                b = a;
+                return true;
+            };
 
         /// <summary>
         /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array&lt;T&gt; (=> can not be converted to Array&lt;T&gt;).
@@ -123,6 +121,8 @@ namespace TMPEffects.Parameters
         /// Check if there is a well-defined parameter of the given name or aliases that is not of type Array&lt;T&gt; (=> can not be converted to Array&lt;T&gt;).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
+        /// <param name="func">The delegate used to parse the array items.</param>
+        /// <param name="keywords">The keyword database to use.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is not of type Array&lt;T&gt;, false otherwise.</returns>
@@ -135,12 +135,13 @@ namespace TMPEffects.Parameters
         }
 
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can no be converted to Array&lt;T&gt;).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
+        /// <param name="func">The delegate used to parse the array items.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
         public static bool HasArrayParameter<T>(IDictionary<string, string> parameters,
             ParseDelegate<string, T, ITMPKeywordDatabase, bool> func, string name, params string[] aliases)
         {
@@ -148,12 +149,14 @@ namespace TMPEffects.Parameters
         }
 
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can no be converted to Array<T>).
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can no be converted to Array&lt;T&gt;).
         /// </summary>
         /// <param name="parameters">The parameters to check.</param>
+        /// <param name="func">The delegate used to parse the array items.</param>
+        /// <param name="keywords">The keyword database to use.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
         public static bool HasArrayParameter<T>(IDictionary<string, string> parameters,
             ParseDelegate<string, T, ITMPKeywordDatabase, bool> func, ITMPKeywordDatabase keywords, string name,
             params string[] aliases)
@@ -162,13 +165,14 @@ namespace TMPEffects.Parameters
         }
 
         /// <summary>
-        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array<T> (=> can be converted to Array<T>).<br />
+        /// Check if there is a well-defined parameter of the given name or aliases that is of type Array&lt;T&gt; (=> can be converted to Array&lt;T&gt;).<br />
         /// </summary>
         /// <param name="value">Set to the value of the parameter if successful.</param>
         /// <param name="parameters">The parameters to check.</param>
+        /// <param name="func">The delegate used to parse the array items.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
-        /// <returns>true if there is a well-defined parameter that is of type Array<T>, false otherwise.</returns>
+        /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
         public static bool TryGetArrayParameter<T>(out T[] value, IDictionary<string, string> parameters,
             ParseDelegate<string, T, ITMPKeywordDatabase, bool> func, string name, params string[] aliases)
         {
@@ -180,6 +184,8 @@ namespace TMPEffects.Parameters
         /// </summary>
         /// <param name="value">Set to the value of the parameter if successful.</param>
         /// <param name="parameters">The parameters to check.</param>
+        /// <param name="func">The delegate used to parse the array items.</param>
+        /// <param name="keywords">The keyword database to use.</param>
         /// <param name="name">The name to check.</param>
         /// <param name="aliases">The aliases (alternative names) to check.</param>
         /// <returns>true if there is a well-defined parameter that is of type Array&lt;T&gt;, false otherwise.</returns>
@@ -189,7 +195,7 @@ namespace TMPEffects.Parameters
         {
             value = null;
             if (!TryGetDefinedParameter(out string parameterName, parameters, name, aliases)) return false;
-            
+
             string[] contents = parameters[parameterName].Split(";");
 
             List<T> result = new List<T>();
@@ -210,31 +216,18 @@ namespace TMPEffects.Parameters
             return true;
         }
 
-        public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
-
         /// <summary>
-        /// A parameter bundle that defines a <see cref="Wave"/>.
+        /// Delegate used in <see cref="TMPParameterUtility.HasArrayParameter"/> and related methods to parse array items.<br/>
+        /// Generally, you can use the methods defined in <see cref="ParameterParsing"/> for this.
         /// </summary>
-        public struct WaveParameters
-        {
-            public AnimationCurve upwardCurve;
-            public AnimationCurve downwardCurve;
-
-            public float? upPeriod;
-            public float? downPeriod;
-
-            public float? crestWait;
-            public float? troughWait;
-
-            public float? wavevelocity;
-            public float? wavelength;
-            public float? waveuniformity;
-
-            public float? amplitude;
-        }
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <typeparam name="W"></typeparam>
+        public delegate W ParseDelegate<T, U, V, W>(T input, out U output, V keywords);
     }
 
-    public class GenerateParameterUtilityAttribute : Attribute
+    internal class GenerateParameterUtilityAttribute : Attribute
     {
     }
 }

@@ -5,13 +5,16 @@ using System.Diagnostics;
 namespace TMPEffects.TMPAnimations
 {
     /// <summary>
-    /// Basic interface for animation contexts.
+    /// Interface for animation contexts.
     /// </summary>
     public interface IAnimationContext : IAnimationData, IAnimationFinished, IAnimationFinisher
     {
 
     }
 
+    /// <summary>
+    /// Provides general data about the animation.
+    /// </summary>
     public interface IAnimationData : IAnimationFinished
     {
         /// <summary>
@@ -30,6 +33,9 @@ namespace TMPEffects.TMPAnimations
         public object CustomData { get; }
     }
 
+    /// <summary>
+    /// Provides checks for whether an animation is done animating a specific <see cref="CharData"/>.
+    /// </summary>
     public interface IAnimationFinished
     {
         /// <summary>
@@ -46,6 +52,9 @@ namespace TMPEffects.TMPAnimations
         public bool Finished(CharData cData);
     }
 
+    /// <summary>
+    /// Provides the ability to mark an animation as done animating a specific <see cref="CharData"/>.
+    /// </summary>
     public interface IAnimationFinisher
     {
         /// <summary>

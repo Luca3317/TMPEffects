@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,18 +13,15 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.Tags;
 using TMPEffects.CharacterData;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
-using TMPEffects.TMPSceneAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
-using TMPEffects.ObjectChanged;
-using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components
 {
+    // TODO Fix the table, names dont show up
     /// <summary>
     /// Animates the character of a <see cref="TMP_Text"/> component.
     /// </summary>
@@ -543,6 +539,12 @@ namespace TMPEffects.Components
         private void OnEnable()
         {
             UpdateMediator();
+            
+            // if (!TextComponent.enabled)
+            // {
+            //     TextComponent.enabled = true;
+            //     TextComponent.enabled = false;
+            // }
 
             CreateContext();
 
@@ -897,20 +899,40 @@ namespace TMPEffects.Components
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
 
+        /// <summary>
+        /// Delegate used to register post-animation hooks (see <see cref="TMPAnimator.RegisterPostAnimationHook"/>).
+        /// </summary>
         public delegate void OnCharacterAnimatedEventHandler(CharData cData);
-
-        // public event OnCharacterAnimatedEventHandler OnCharacterAnimated;
-
         private List<OnCharacterAnimatedEventHandler> handlers = new List<OnCharacterAnimatedEventHandler>();
 
+        /// <summary>
+        /// Register a post-animation hook. The passed in method will be called whenever a character has been animated,
+        /// allowing you to make additional modifications to the character.<br/>
+        /// This is primarily useful for non-continuous animations, e.g. when you want a character to jump up whenever a sound plays.
+        /// </summary>
+        /// <param name="handler">The post-animation hook method.</param>
         public void RegisterPostAnimationHook(OnCharacterAnimatedEventHandler handler)
         {
             handlers.Add(handler);
         }
 
+        /// <summary>
+        /// Unregister a post-animation hook that was registered using <see cref="RegisterPostAnimationHook"/>.
+        /// </summary>
+        /// <param name="handler">The post-animation hook method.</param>
+        /// <returns>true if <see cref="handler"/> is successfully removed; otherwise, false. This method also returns false if <see cref="handler"/> was not registered.</returns>
         public bool UnregisterPostAnimationHook(OnCharacterAnimatedEventHandler handler)
         {
             return handlers.Remove(handler);
+        }
+        
+        /// <summary>
+        /// Queue a character reset.<br/>
+        /// All animated characters will be reset to their initial state before the next animation update.
+        /// </summary>
+        public void QueueCharacterReset()
+        {
+            characterResetQueued = true;
         }
 
         private void UpdateCharacterAnimation(CharData cData, float deltaTime, int index, bool updateVertices = true,
@@ -1083,7 +1105,7 @@ namespace TMPEffects.Components
                 }
 
                 // If the hiding animations are done, the character is now hidden
-                if (done)
+                if (done) 
                 {
                     // Undo all changes made to this character
                     // Required because afterward "state" is checked for changes
@@ -1103,7 +1125,7 @@ namespace TMPEffects.Components
 
             if (vState != VisibilityState.Shown)
             {
-                StackTrace stackTrace = new StackTrace();
+                System.Diagnostics.StackTrace stackTrace = new System.Diagnostics.StackTrace();
                 TMPEffectsBugReport.BugReportPrompt("This should be unreachable:\n" + stackTrace);
             }
 
@@ -1831,10 +1853,5 @@ namespace TMPEffects.Components
         #endregion
 
         private bool characterResetQueued = false;
-
-        public void QueueCharacterReset()
-        {
-            characterResetQueued = true;
-        }
     }
 }

@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPEffects.Components;
 using TMPEffects.CharacterData;
-using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
 using TMPEffects.TMPAnimations;
+using TMPEffects.TMPAnimations.Animations;
 using TMPro;
 using UnityEngine;
 

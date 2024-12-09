@@ -3,6 +3,9 @@ using TMPEffects.CharacterData;
 
 namespace TMPEffects.TMPAnimations
 {
+    /// <summary>
+    /// A read-only wrapper around <see cref="AnimationContext"/>.
+    /// </summary>
     public class ReadOnlyAnimationContext : IAnimationContext
     {
         /// <inheritdoc/>

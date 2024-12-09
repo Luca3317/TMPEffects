@@ -7,7 +7,7 @@ using TMPEffects.Tags;
 namespace TMPEffects.EffectCategories
 {
     ///<inheritdoc/>
-    public abstract class TMPEffectCategory<TEffect> : TMPEffectCategory, ITMPEffectDatabase<TEffect>
+    internal abstract class TMPEffectCategory<TEffect> : TMPEffectCategory, ITMPEffectDatabase<TEffect>
     {
         public TMPEffectCategory(char prefix) : base(prefix)
         { }
@@ -22,7 +22,7 @@ namespace TMPEffects.EffectCategories
     /// <summary>
     /// Base class for all effect categories.
     /// </summary>
-    public abstract class TMPEffectCategory : ITMPTagValidator, ITMPPrefixSupplier
+    internal abstract class TMPEffectCategory : ITMPTagValidator, ITMPPrefixSupplier
     {
         /// <summary>
         /// The prefix associated with this category.

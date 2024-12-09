@@ -5,20 +5,6 @@ using TMPEffects.Databases;
 using TMPEffects.Parameters;
 using UnityEngine;
 
-namespace TMPEffects.Parameters
-{
-    public interface ITMPParameterValidator
-    {
-        /// <summary>
-        /// Validate the given parameters.
-        /// </summary>
-        /// <param name="parameters">The parameters as key-value pairs</param>
-        /// <param name="keywordDatabase">The keyword database used for parsing the parameter values</param>
-        /// <returns>true if the parameters were successfully validated; false otherwise.</returns>
-        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
-    }
-}
-
 namespace TMPEffects.TMPCommands
 {
     /// <summary>

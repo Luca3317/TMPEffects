@@ -114,7 +114,8 @@ namespace TMPEffects.AutoParameters.Analyzers
                     SyntaxFactory.Parameter(SyntaxFactory.Identifier("customData"))
                         .WithType(SyntaxFactory.IdentifierName("object"))
                 )
-                .WithBody(SyntaxFactory.Block());
+                .WithBody(SyntaxFactory.Block())
+                .WithLeadingTrivia(SyntaxFactory.CarriageReturnLineFeed, SyntaxFactory.Comment("// Called after creating and populating your custom data with the default values"), SyntaxFactory.CarriageReturnLineFeed);
 
             var compilationUnit = root as CompilationUnitSyntax;
 

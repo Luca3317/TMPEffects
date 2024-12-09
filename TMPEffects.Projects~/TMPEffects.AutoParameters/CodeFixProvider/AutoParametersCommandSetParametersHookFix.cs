@@ -122,7 +122,8 @@ namespace TMPEffects.AutoParameters.Analyzers
                     SyntaxFactory.Parameter(SyntaxFactory.Identifier("keywordDatabase"))
                         .WithType(SyntaxFactory.IdentifierName(Strings.ITMPKeywordDatabase))
                 )
-                .WithBody(SyntaxFactory.Block());
+                .WithBody(SyntaxFactory.Block())
+                .WithLeadingTrivia(SyntaxFactory.CarriageReturnLineFeed, SyntaxFactory.Comment("// Called after setting all auto-parameters, allowing you to make further modifications"), SyntaxFactory.CarriageReturnLineFeed);
 
             var compilationUnit = root as CompilationUnitSyntax;
 

@@ -4,11 +4,10 @@ using UnityEditor;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using TMPEffects.Components;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.Animations;
 using TMPEffects.CharacterData;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
-using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 

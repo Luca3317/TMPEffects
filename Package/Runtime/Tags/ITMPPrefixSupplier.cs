@@ -3,7 +3,7 @@ namespace TMPEffects.Tags
     /// <summary>
     /// Interface for supplying prefix.
     /// </summary>
-    public interface ITMPPrefixSupplier
+    internal interface ITMPPrefixSupplier
     {
         /// <summary>
         /// The supplied prefix.

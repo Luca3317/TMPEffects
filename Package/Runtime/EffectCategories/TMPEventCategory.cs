@@ -6,7 +6,7 @@ namespace TMPEffects.EffectCategories
     /// <summary>
     /// Category for events.
     /// </summary>
-    public class TMPEventCategory : TMPEffectCategory
+    internal class TMPEventCategory : TMPEffectCategory
     {
         public TMPEventCategory(char prefix) : base(prefix)
         { }

@@ -7,6 +7,9 @@ using TMPEffects.TMPAnimations;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Provides timing offsets for characters (to be used with e.g. <see cref="Wave"/>).
+    /// </summary>
     [TMPParameterType("OffsetProvider", typeof(OffsetTypePowerEnum), typeof(SceneOffsetTypePowerEnum), true)]
     public partial interface ITMPOffsetProvider
     {

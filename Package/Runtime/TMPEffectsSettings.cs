@@ -1,9 +1,11 @@
 using TMPEffects.Databases;
 using TMPEffects.Databases.AnimationDatabase;
 using TMPEffects.Databases.CommandDatabase;
-using TMPEffects.Editor;
-using TMPro;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using TMPEffects.Editor;
+#endif
 
 [System.Serializable]
 [ExcludeFromPreset]

@@ -5,10 +5,21 @@ using UnityEngine;
 
 namespace TMPEffects.Components.Animator
 {
+    /// <summary>
+    /// Simple component that lets you manually update a <see cref="TMPAnimator"/>.
+    /// </summary>
     [RequireComponent(typeof(TMPAnimator))]
     public class TMPAnimatorUpdater : MonoBehaviour
     {
+        /// <summary>
+        /// The update limit per second.
+        /// </summary>
         public uint MaxUpdatesPerSecond => maxUpdatesPerSecond;
+        /// <summary>
+        /// The time scaling to use.<br/>
+        /// Used as scalar to the delta time.<br/>
+        /// Naming chosen so as not to be confused with <see cref="IAnimatorContext.UseScaledTime"/>.
+        /// </summary>
         public float AdditionalTimeScaling => additionalTimeScaling;
         
         [SerializeField] private uint maxUpdatesPerSecond = 144;
@@ -16,7 +27,17 @@ namespace TMPEffects.Components.Animator
         
         [System.NonSerialized] AnimationUpdater animUpdater;    
 
+        /// <summary>
+        /// Set the update limit per second.
+        /// </summary>
+        /// <param name="maxUpdatesPerSecond"></param>
         public void SetMaxUpdatesPerSecond(uint maxUpdatesPerSecond) => animUpdater.SetMaxUpdatesPerSecond(maxUpdatesPerSecond);
+
+        /// <summary>
+        /// Set the scalar to the deltaTime.
+        /// </summary>
+        /// <param name="timeScaling"></param>
+        public void SetAdditionalTimeScaling(float timeScaling) => animUpdater.AdditionalTimeScaling = timeScaling;
 
         private void OnEnable()
         {

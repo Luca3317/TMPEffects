@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Some types needed for specific parameters.
+    /// </summary>
     public static class TMPParameterTypes
     {
         /// <summary>
@@ -56,7 +59,14 @@ namespace TMPEffects.Parameters
         [System.Serializable]
         public struct TypedVector2
         {
+            /// <summary>
+            /// The raw vector.
+            /// </summary>
             public Vector2 vector;
+
+            /// <summary>
+            /// The type of this vector.
+            /// </summary>
             public VectorType type;
 
             public TypedVector2(VectorType type, Vector2 vector)
@@ -70,22 +80,10 @@ namespace TMPEffects.Parameters
                 return new TypedVector2() { vector = v.vector, type = v.type };
             }
 
-            public static TypedVector2 operator +(TypedVector2 a, Vector2 b)
-            {
-                a.vector += b;
-                return a;
-            }
-
-            public static TypedVector2 operator -(TypedVector2 a, Vector2 b)
-            {
-                a.vector -= b;
-                return a;
-            }
-
-            public TypedVector2 IgnoreScaling(CharData cData, IAnimationContext context)
+            private TypedVector2 IgnoreScaling(CharData cData, IAnimationContext context)
                 => IgnoreScaling(cData, context.AnimatorContext);
 
-            public TypedVector2 IgnoreScaling(CharData cData, IAnimatorDataProvider context)
+            private TypedVector2 IgnoreScaling(CharData cData, IAnimatorDataProvider context)
             {
                 return type switch
                 {
@@ -99,15 +97,41 @@ namespace TMPEffects.Parameters
                 };
             }
 
+            /// <summary>
+            /// Get the position defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The position defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector2 ToPosition(CharData cData, IAnimationContext context) =>
                 ToPosition(cData, context.AnimatorContext, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the position defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector2 ToPosition(CharData cData, IAnimationContext context, Vector2 referencePos) =>
                 ToPosition(cData, context.AnimatorContext, referencePos);
 
+            /// <summary>
+            /// Get the position defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector2 ToPosition(CharData cData, IAnimatorDataProvider animatorData) =>
                 ToPosition(cData, animatorData, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the position defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector2 ToPosition(CharData cData, IAnimatorDataProvider animatorData, Vector2 referencePos)
             {
                 TypedVector2 vec = this;
@@ -126,15 +150,40 @@ namespace TMPEffects.Parameters
                 }
             }
 
+            /// <summary>
+            /// Get the delta defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector2 ToDelta(CharData cData, IAnimationContext context) =>
                 ToDelta(cData, context.AnimatorContext, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the delta defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The delta defined by this vector and the reference position.</returns>
             public Vector2 ToDelta(CharData cData, IAnimationContext context, Vector2 referencePos) =>
                 ToDelta(cData, context.AnimatorContext, referencePos);
 
+            /// <summary>
+            /// Get the delta defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector2 ToDelta(CharData cData, IAnimatorDataProvider animatorData) =>
                 ToDelta(cData, animatorData, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the delta defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector2 ToDelta(CharData cData, IAnimatorDataProvider animatorData, Vector2 referencePos)
             {
                 switch (type)
@@ -166,7 +215,14 @@ namespace TMPEffects.Parameters
         [System.Serializable]
         public struct TypedVector3
         {
+            /// <summary>
+            /// The raw vector.
+            /// </summary>
             public Vector3 vector;
+
+            /// <summary>
+            /// The type of this vector.
+            /// </summary>
             public VectorType type;
 
             public TypedVector3(VectorType type, Vector3 vector)
@@ -185,22 +241,10 @@ namespace TMPEffects.Parameters
                 return new TypedVector3() { vector = v.vector, type = v.type };
             }
 
-            public static TypedVector3 operator +(TypedVector3 a, Vector3 b)
-            {
-                a.vector += b;
-                return a;
-            }
-
-            public static TypedVector3 operator -(TypedVector3 a, Vector3 b)
-            {
-                a.vector -= b;
-                return a;
-            }
-
-            public TypedVector3 IgnoreScaling(CharData cData, IAnimationContext context)
+            private TypedVector3 IgnoreScaling(CharData cData, IAnimationContext context)
                 => IgnoreScaling(cData, context.AnimatorContext);
 
-            public TypedVector3 IgnoreScaling(CharData cData, IAnimatorDataProvider context)
+            private TypedVector3 IgnoreScaling(CharData cData, IAnimatorDataProvider context)
             {
                 return type switch
                 {
@@ -213,15 +257,41 @@ namespace TMPEffects.Parameters
                 };
             }
 
+            /// <summary>
+            /// Get the position defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The position defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector3 ToPosition(CharData cData, IAnimationContext context) =>
                 ToPosition(cData, context.AnimatorContext, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the position defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector3 ToPosition(CharData cData, IAnimationContext context, Vector3 referencePos) =>
                 ToPosition(cData, context.AnimatorContext, referencePos);
 
+            /// <summary>
+            /// Get the position defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector3 ToPosition(CharData cData, IAnimatorDataProvider animatorData) =>
                 ToPosition(cData, animatorData, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the position defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The position defined by this vector and the reference position.</returns>
             public Vector3 ToPosition(CharData cData, IAnimatorDataProvider animatorData, Vector3 referencePos)
             {
                 TypedVector3 vec = this;
@@ -240,28 +310,53 @@ namespace TMPEffects.Parameters
                 }
             }
 
+            /// <summary>
+            /// Get the delta defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector3 ToDelta(CharData cData, IAnimationContext context) =>
                 ToDelta(cData, context.AnimatorContext, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the delta defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="context"></param>
+            /// <returns>The delta defined by this vector and the reference position.</returns>
             public Vector3 ToDelta(CharData cData, IAnimationContext context, Vector3 referencePos) =>
                 ToDelta(cData, context.AnimatorContext, referencePos);
 
+            /// <summary>
+            /// Get the delta defined by this vector, using the <see cref="cData"/>'s initial position as reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector3 ToDelta(CharData cData, IAnimatorDataProvider animatorData) =>
                 ToDelta(cData, animatorData, cData.InitialPosition);
 
+            /// <summary>
+            /// Get the delta defined by this vector and the reference position.
+            /// </summary>
+            /// <param name="cData"></param>
+            /// <param name="animatorData"></param>
+            /// <param name="referencePos"></param>
+            /// <returns>The delta defined by this vector and the <see cref="cData"/>'s initial position.</returns>
             public Vector3 ToDelta(CharData cData, IAnimatorDataProvider animatorData, Vector3 referencePos)
             {
                 switch (type)
                 {
-                    case VectorType.Position: 
+                    case VectorType.Position:
                         TypedVector3 vec2 = this;
                         return vec2.IgnoreScaling(cData, animatorData).vector - referencePos;
-                    
+
                     case VectorType.Anchor:
                         vec2 = new TypedVector3(VectorType.Position,
                             TMPAnimationUtility.AnchorToPosition(vector, cData));
                         return vec2.ToDelta(cData, animatorData, referencePos);
-                    
+
                     case VectorType.Offset:
                         return vector;
 

@@ -1,11 +1,10 @@
-{
-  "metadata": [
+"metadata": [
     {
       "src": [
         {
-          "src": "../y",
+          "src": "../../..",
           "files": [
-            "**/*.csproj"
+            "TMPEffects.csproj"
           ]
         }
       ],

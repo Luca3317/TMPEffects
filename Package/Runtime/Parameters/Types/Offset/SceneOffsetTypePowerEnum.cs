@@ -1,11 +1,10 @@
 using System;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.Parameters;
+using TMPEffects.TMPAnimations;
 
-namespace TMPEffects.TMPAnimations
+namespace TMPEffects.Parameters
 {
-    // Offset provider wrappers, used in database etc
     [Serializable]
     public class SceneOffsetTypePowerEnum : PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>,
         IEquatable<SceneOffsetTypePowerEnum>, ITMPOffsetProvider

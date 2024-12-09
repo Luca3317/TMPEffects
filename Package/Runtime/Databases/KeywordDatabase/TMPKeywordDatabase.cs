@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace TMPEffects.Databases
 {
+    /// <summary>
+    /// Provides keywords used for parsing TMPEffects tags.
+    /// </summary>
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
     public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
     {

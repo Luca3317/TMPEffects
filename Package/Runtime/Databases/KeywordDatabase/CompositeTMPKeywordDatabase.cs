@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace TMPEffects.Databases
 {
+    /// <summary>
+    /// A <see cref="ITMPKeywordDatabase"/> that allows you to combine multiple databases.<br/>
+    /// The first added databases take precedence / are checked first.
+    /// </summary>
     public sealed partial class CompositeTMPKeywordDatabase : ITMPKeywordDatabase
     {
         public IEnumerable<ITMPKeywordDatabase> Databases

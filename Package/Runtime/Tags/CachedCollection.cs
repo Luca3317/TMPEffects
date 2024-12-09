@@ -17,7 +17,7 @@ namespace TMPEffects.Tags.Collections
     /// (see implementations of both <see cref="Components.TMPAnimator"/> and <see cref="Components.TMPWriter"/> for examples).
     /// </remarks>
     /// <typeparam name="T">The type of tag wrapper / cached tags.</typeparam>
-    public class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
+    internal class CachedCollection<T> : IEnumerable<T> where T : ITagWrapper
     {
         /// <summary>
         /// Amount of cached tags contained in this collection.

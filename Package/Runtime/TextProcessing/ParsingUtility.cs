@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Globalization;
-using TMPEffects.Extensions;
-using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 namespace TMPEffects.TextProcessing
@@ -72,8 +68,6 @@ namespace TMPEffects.TextProcessing
             public TagInfo() { }
         }
 
-        public static Stopwatch sw;
-        
         /// <summary>
         /// Get the next tag in <paramref name="text"/>, starting from <paramref name="startIndex"/>.
         /// </summary>
@@ -84,8 +78,6 @@ namespace TMPEffects.TextProcessing
         /// <returns>true if a next tag was found; false otherwise.</returns>
         public static bool GetNextTag(string text, int startIndex, ref TagInfo tag, TagType type = TagType.Open | TagType.Close)
         {
-            sw ??= new Stopwatch();
-            sw.Start();
             int index = startIndex - 1;
             int len = text.Length;
 
@@ -93,7 +85,6 @@ namespace TMPEffects.TextProcessing
 
             if (index >= len - 3)
             {
-                sw.Stop();
                 return false;
             }
 
@@ -105,14 +96,12 @@ namespace TMPEffects.TextProcessing
                 // If there is no open bracket found or it is at the end of the text, there is no valid tag
                 if (tagStartIndex == -1 || tagStartIndex == len - 1)
                 {
-                    sw.Stop();
                     return false;
                 }
 
                 tagEndIndex = text.IndexOf('>', tagStartIndex + 1);
                 if (tagEndIndex == -1)
                 {
-                    sw.Stop();
                     return false;
                 }
 
@@ -122,7 +111,6 @@ namespace TMPEffects.TextProcessing
 
             } while (!TryParseTag(text, tagStartIndex, tagEndIndex, ref tag, type));
 
-            sw.Stop();
             return true;
         }
 
@@ -221,11 +209,11 @@ namespace TMPEffects.TextProcessing
         }
 
         /// <summary>
-        /// Checks if the given string is a well formed tag (of the given type, if supplied).
+        /// Checks if the given string is a well-formed tag (of the given type, if supplied).
         /// </summary>
         /// <param name="tag">The string to check.</param>
         /// <param name="type">The type of tag to check for. Leave default for either type.</param>
-        /// <returns>true if the the given string is a tag (of the given type, if supplied); otherwise false.</returns>
+        /// <returns>true if the given string is a tag (of the given type, if supplied); otherwise false.</returns>
         public static bool IsTag(string tag, TagType type = TagType.Open | TagType.Close)
         {
             int endindex = tag.LastIndexOf('>');
@@ -234,15 +222,15 @@ namespace TMPEffects.TextProcessing
         }
 
         /// <summary>
-        /// Parses a string to a <see cref="Dictionary{string, string}"/>.<br/>
-        /// Pass in either a full tag string, e.g. <example=10 arg="value">, or the same but
+        /// Parses a string to a <see cref="Dictionary{TKey, TValue}"/>.<br/>
+        /// Pass in either a full tag string, e.g. &lt;example=10 arg="value"&gt;, or the same but
         /// without the brackets (example=10 arg="value").<br/>
         /// Note that this only does some basic checks on the validity of the input string;
         /// malformed strings may lead to errors.<br/>
         /// Ideally use by passing in a <see cref="TagInfo.parameterString"/>.
         /// </summary>
         /// <param name="tag">The tag to parse the parameters of.</param>
-        /// <returns>The parsed string as <see cref="Dictionary{string, string}"/>.</returns>
+        /// <returns>The parsed string as <see cref="Dictionary{TKey, TValue}"/>.</returns>
         /// <exception cref="System.ArgumentException"></exception>
         public static Dictionary<string, string> GetTagParametersDict(string tag)
         {

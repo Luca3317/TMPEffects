@@ -7,7 +7,7 @@ namespace TMPEffects.CharacterData
     public partial class CharData
     {
         /// <summary>
-        /// Holds a selection of data of <see cref="TMP_CharacterInfo"/>, as well as some data about the initial mesh of the character.
+        /// Holds a selection of data of <see cref="TMP_CharacterInfo"/>, as well as data about the initial mesh of the character.
         /// </summary>
         public struct Info
         {
@@ -87,17 +87,23 @@ namespace TMPEffects.CharacterData
             public readonly float xAdvance;
 
             /// <summary>
-            /// The font asset used for this character.
+            /// The font asset used for this character (if it is not a sprite).
             /// </summary>
             public readonly TMP_FontAsset fontAsset;
 
             /// <summary>
-            /// The sprite asset used for this sprite.
+            /// The sprite asset used for this character (if it is a sprite).
             /// </summary>
             public readonly TMP_SpriteAsset spriteAsset;
 
+            /// <summary>
+            /// The type of element this character is (sprite or character).
+            /// </summary>
             public readonly TMP_TextElementType elementType;
 
+            /// <summary>
+            /// The origin of this character.
+            /// </summary>
             public readonly float origin;
 
             /// <summary>
@@ -183,7 +189,6 @@ namespace TMPEffects.CharacterData
                 wordLen = wInfo.characterCount;
             }
             
-            
             private static Vector3 GetCenter(in ReadOnlyVertexData data)
             {
                 Vector3 center = Vector3.zero;
@@ -195,6 +200,5 @@ namespace TMPEffects.CharacterData
                 return center / 4;
             }
         }
-        
     }
 }

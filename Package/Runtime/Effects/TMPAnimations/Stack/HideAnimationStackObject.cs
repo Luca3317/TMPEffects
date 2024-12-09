@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    /// <summary>
+    /// A stack of <see cref="TMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
     [CreateAssetMenu(fileName = "new HideAnimationStack", menuName = "TMPEffects/Animations/Hide Animations/AnimationStack", order = int.MinValue)]
     public class HideAnimationStackObject : TMPHideAnimation
     {

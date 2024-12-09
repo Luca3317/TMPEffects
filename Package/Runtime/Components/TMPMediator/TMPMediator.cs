@@ -17,21 +17,21 @@ namespace TMPEffects.Components.Mediator
     /// Handles the pre- and postprocessing of the text, as well as maintaining information
     /// about it in the form of a <see cref="CharData"/> and <see cref="VisibilityState"/> collection.
     /// </summary>
-    public class TMPMediator : IDisposable
+    public class TMPMediator : IDisposable 
     {
         /// <summary>
         /// Collection containing all the current <see cref="VisibilityState"/> states of the <see cref="CharData"/> collection.<br/>
         /// The mapping of <see cref="VisibilityState"/> to <see cref="CharData"/> is index based, i.e. the n-th <see cref="VisibilityState"/>
         /// is associated with the n-th <see cref="CharData"/>.<br/>
         /// You can rely on this never being reassigned (therefore any wrappers
-        /// you may create, e.g. Collection<VisibilityData>, can be relied on as well.
+        /// you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
         /// </summary>
         public readonly ReadOnlyCollection<VisibilityState> VisibilityStates;
 
         /// <summary>
         /// Collection containing all the current <see cref="CharData"/>.<br/>
         /// You can rely on this never being reassigned (therefore any wrappers
-        /// you may create, e.g. Collection<CharData>, can be relied on as well.
+        /// you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
         /// </summary>
         public readonly ReadOnlyCollection<CharData> CharData;
 
@@ -101,7 +101,7 @@ namespace TMPEffects.Components.Mediator
         /// </summary>
         public void ForceReprocess()
         {
-            if (Text != null) Text.ForceMeshUpdate(false, true);
+            if (Text != null) Text.ForceMeshUpdate(true, true);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace TMPEffects.Components.Mediator
         /// Apply the mesh of the <see cref="CharData"/>.
         /// </summary>
         /// <param name="cData"></param>
-        public void ApplyMesh(CharData cData)
+        internal void ApplyMesh(CharData cData)
         {
             int index = cData.info.index;
             TMP_TextInfo info = Text.textInfo;

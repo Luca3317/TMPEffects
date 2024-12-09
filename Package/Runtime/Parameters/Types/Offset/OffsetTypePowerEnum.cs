@@ -1,13 +1,9 @@
 using System;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.Parameters;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
-using UnityEngine;
-using System.Collections.Generic;
-using TMPEffects.Databases;
+using TMPEffects.TMPAnimations;
 
-namespace TMPEffects.TMPAnimations
+namespace TMPEffects.Parameters
 {
     [Serializable]
     public class OffsetTypePowerEnum : PowerEnum<TMPParameterTypes.OffsetType, TMPOffsetProvider>,

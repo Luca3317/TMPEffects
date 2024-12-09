@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 using TMPEffects.SerializedCollections;
 using TMPEffects.TMPAnimations;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.Animations;
 
 namespace TMPEffects.Components.Animator
 {

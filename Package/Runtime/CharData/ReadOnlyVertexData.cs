@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TMPEffects.CharacterData
 {
     /// <summary>
-    /// Holds data about a character's mesh.
+    /// Holds immutable data about a TextMeshPro character mesh.
     /// </summary>
     public class ReadOnlyVertexData
     {

@@ -681,45 +681,6 @@ namespace TMPEffects.TMPAnimations
             }
         }
 
-        [System.Serializable]
-        public class FancyAnimationCurve
-        {
-            public AnimationCurve Curve
-            {
-                get => curve;
-                set => curve = value;
-            }
-
-            [SerializeField] private AnimationCurve curve;
-
-            public FancyAnimationCurve()
-            {
-            }
-
-            public FancyAnimationCurve(AnimationCurve curve)
-            {
-                this.curve = curve;
-            }
-
-            public FancyAnimationCurve(FancyAnimationCurve curve)
-            {
-                this.curve = curve.curve;
-            }
-
-            public float Evaluate(float time, float offset, float uniformity)
-            {
-                float t = CalculateT(time, offset, uniformity);
-                return curve.Evaluate(time);
-            }
-
-            private float CalculateT(float time, float offset, float uniformity)
-            {
-                float t;
-                t = (time) + offset * uniformity;
-                return t;
-            }
-        }
-
         /// <summary>
         /// Set a character's UVs so it will look like another character.
         /// </summary>

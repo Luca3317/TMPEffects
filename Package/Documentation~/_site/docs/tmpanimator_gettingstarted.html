@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting started with TMPAnimator | TMPEffects </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting started with TMPAnimator | TMPEffects ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_gettingstarted.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TMPEffects">
+            TMPEffects
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="getting-started-with-tmpanimator">Getting started with TMPAnimator</h1>
+
+<p>After adding TMPEffects to your project, add a TMPAnimator component to a GameObject with a TMP_Text component (either TextMeshPro - Text
+or TextMeshPro - Text (UI)).</p>
+<h2 id="applying-your-first-animation">Applying your first animation</h2>
+<p>Write some placeholder text in the TextMeshPro's component textbox. Analogous to TextMeshPro's
+built-in rich text tags (e.g. &lt;color&gt;, &lt;s&gt;), you can add animations to your text by simply adding animation tags.
+Try adding <mark style="color: lightgray; background-color: #191a18">&lt;wave&gt;</mark> before your placeholder text, and then hitting the <mark style="color: lightgray; background-color: #191a18">Toggle Preview</mark> button in the TMPAnimator's inspector.
+In the scene and game view, you should now see that your text is being animated. It should look something like this:</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/firstanimation.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<p>⚠️ If the <mark style="color: lightgray; background-color: #191a18">&lt;wave&gt;</mark> tag is still visible in the scene / game view, the tag is not being correctly processed. Make sure to use
+the default database by toggling <mark style="color: lightgray; background-color: #191a18">Use default database</mark> in the TMPAnimator inspector's <mark style="color: lightgray; background-color: #191a18">Animations</mark> foldout.</p>
+<p>You can close the animation using <mark style="color: lightgray; background-color: #191a18">&lt;/wave&gt;</mark>. Only text between the opening and closing tag is animated.</p>
+<h2 id="modifying-the-animation">Modifying the animation</h2>
+<p>Optionally, you can pass various parameter to animation tags.
+For example, the <mark style="color: lightgray; background-color: #191a18">&lt;wave&gt;</mark> tag supports <mark style="color: lightgray; background-color: #191a18">amplitude</mark> and <mark style="color: lightgray; background-color: #191a18">uniformity</mark>, among others.
+You could modify the tag like so: <mark style="color: lightgray; background-color: #191a18">&lt;wave amplitude=10 uniformity=0.5&gt;</mark>, which should result in something like this:</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/firstanimation2.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<p>Try to play around with these two values to get something you like! Theres a lot more customization you can apply for almost all animation tags; a complete overview of all tags
+and their respective parameters can be found in <a href="tmpanimator_builtinbasicanimations.html">Built-in animations</a>.</p>
+<h2 id="stacking-animations">Stacking animations</h2>
+<p>First, close the <mark style="color: lightgray; background-color: #191a18">&lt;wave&gt;</mark> if you haven't already. After the closing tag, add another tag, <mark style="color: lightgray; background-color: #191a18">&lt;palette&gt;</mark>, as well as some text after this tag that will be animated by it. Your text should look like this now: &quot;&lt;wave&gt; *Text* &lt;/wave&gt; &lt;palette&gt; *More text* &lt;/palette&gt;&quot;, although you will notice the last closing tag is completely optional in this case.
+The animated text should look like this:</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/firstanimation3.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<p>If you now remove the closing <mark style="color: lightgray; background-color: #191a18">&lt;/wave&gt;</mark> tag, the second text will be animated by both tags (assuming the <mark style="color: lightgray; background-color: #191a18">Animations override</mark> toggle in the <mark style="color: lightgray; background-color: #191a18">Animator settings</mark> foldout is set to false, which it
+will be by default). It should look something like this:</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/firstanimation4.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<p>In this manner, you can stack a (theoretically) limitless amount of animations. Of course, there's no guarantee all combinations will mesh well together 😉</p>
+<p>If you switch the <mark style="color: lightgray; background-color: #191a18">Animations override</mark> toggle in the TMPAnimator's inspector to true, the second text will be animated as before.
+This toggle only defines the default behavior of animation tags; you can decide whether a tag should override the previous tags individually by adding the <mark style="color: lightgray; background-color: #191a18">override</mark> parameter to a tag, like so: <mark style="color: lightgray; background-color: #191a18">&lt;palette override=true&gt;</mark>. All animation tags support this parameter.</p>
+<h2 id="late-animations--second-pass">Late animations / second pass</h2>
+<p>Another parameter supported by all animation tags is <mark style="color: lightgray; background-color: #191a18">late</mark>, and is used like so: <mark style="color: lightgray; background-color: #191a18">&lt;wave late&gt;</mark>. If set, the animation will be applied in a second pass within the TMPAnimator, meaning it will be applied after all animations that do not have
+this parameter.</p>
+<p>You will not need this parameter in the large majority of cases. It is useful primarily for when you need the mesh data of the character to consider the changes made by the other animations.
+For example, the flashlight effect shown below needs the <mark style="color: lightgray; background-color: #191a18">late</mark> parameter to work correctly, as it operates on the vertex positions
+of the characters. If it was applied before the wave animation, the flashlight would use the incorrect, initial vertex positions.</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/flashlightanimation.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<p>More information about how animations work (and how to create your own) can be found in <a href="tmpanimator_creatinganimations.html">Creating Animations</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_gettingstarted.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

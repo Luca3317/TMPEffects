@@ -7,6 +7,9 @@ namespace TMPEffects.ObjectChanged
     /// </summary>
     public interface INotifyObjectChanged
     {
+        /// <summary>
+        /// Raised when the object is changed.
+        /// </summary>
         event ObjectChangedEventHandler ObjectChanged;
     }
 }

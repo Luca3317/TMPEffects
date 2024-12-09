@@ -4,10 +4,13 @@ using UnityEngine;
 namespace TMPEffects.CharacterData
 {
     /// <summary>
-    /// Holds data about a character's mesh.
+    /// Holds data about a TextMeshPro character mesh.
     /// </summary>
     public class VertexData
     {
+        /// <summary>
+        /// The modifiers of this mesh.
+        /// </summary>
         public TMPMeshModifiers Modifiers => modifiers;
         private TMPMeshModifiers modifiers;
 
@@ -33,7 +36,7 @@ namespace TMPEffects.CharacterData
 
 
         /// <summary>
-        /// The initial vertex of the character.
+        /// The initial, immutable vertex data of the character.
         /// </summary>
         public readonly ReadOnlyVertexData initial;
 

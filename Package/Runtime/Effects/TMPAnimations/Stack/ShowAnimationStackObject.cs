@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    /// <summary>
+    /// A stack of <see cref="TMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
     [CreateAssetMenu(fileName = "new ShowAnimationStack", menuName = "TMPEffects/Animations/Show Animations/AnimationStack", order = int.MinValue)]
     public class ShowAnimationStackObject : TMPShowAnimation
     {

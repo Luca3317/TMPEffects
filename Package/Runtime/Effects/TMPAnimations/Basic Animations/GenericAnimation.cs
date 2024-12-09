@@ -13,6 +13,9 @@ namespace TMPEffects.TMPAnimations
         public GenericAnimationUtility.TrackList Tracks { get; }
     }
 
+    /// <summary>
+    /// A generic <see cref="ITMPAnimation"/>, allowing you to create animations in the inspector.
+    /// </summary>
     [AutoParameters]
     [CreateAssetMenu(fileName = "new GenericAnimation",
         menuName = "TMPEffects/Animations/Basic Animations/Generic Animation")]

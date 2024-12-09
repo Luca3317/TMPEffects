@@ -9,15 +9,44 @@ using System.Threading;
 
 namespace TMPEffects.Components.Animator
 {
+    /// <summary>
+    /// Provides information about text segment.
+    /// </summary>
     public interface ITMPSegmentData
     {
+        /// <summary>
+        /// The first index of the segment within the containing text.
+        /// </summary>
         public int StartIndex { get; }
+        /// <summary>
+        /// The length of the animation segment.
+        /// </summary>
         public int Length { get; }
+        /// <summary>
+        /// The last index of the segment within the containing text.
+        /// </summary>
         public int EndIndex { get; }
         
-        public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; }
+        /// <summary>
+        /// The <see cref="CharData.Info"/> of each character in the segment.<br/>
+        /// Keyed using the index of the character in the text, NOT within the segment.
+        /// </summary>
+        public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; } // TODO Rewrite so that there is trygetinfo(int index) and
+                                                                        // ienumerable<charinfo>; then limit access using start and endindex
+                                                                        // Then; make SegmentData (not ITMPSegmentData) take idictionary<chardata>
+                                                                        // from tmpanimator when created, and use that
 
+        /// <summary>
+        /// Convert a text index to the index within the segment.
+        /// </summary>
+        /// <param name="index">The text index to convert.</param>
+        /// <returns>The segment index.</returns>
         public int IndexToSegmentIndex(int index);
+        /// <summary>
+        /// Get the segment index of the given <see cref="CharData"/>.
+        /// </summary>
+        /// <param name="cData"></param>
+        /// <returns></returns>
         public int SegmentIndexOf(CharData cData);
     }
     
@@ -29,14 +58,9 @@ namespace TMPEffects.Components.Animator
     /// </summary>
     public readonly struct SegmentData : ITMPSegmentData
     {
-        /// <summary>
-        /// The first index of the segment within the containing text.
-        /// </summary>
+
         public int StartIndex { get; }
 
-        /// <summary>
-        /// The length of the animation segment.
-        /// </summary>
         public int Length { get; }
         
         public int EndIndex { get; }
@@ -65,6 +89,7 @@ namespace TMPEffects.Components.Animator
         /// The index of the last character that is relevant to the <see cref="TMPAnimator"/> and will be animated.
         /// </summary>
         public readonly int lastAnimationIndex;
+
 
         public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; }
         
@@ -117,6 +142,8 @@ namespace TMPEffects.Components.Animator
             }
 
             effectiveLength = lastAnimationIndex - firstAnimationIndex + 1;
+            
+            // TODO Perfor
             var dict = new Dictionary<int, CharData.Info>();
             for (int i = StartIndex; i < count; i++)
             {

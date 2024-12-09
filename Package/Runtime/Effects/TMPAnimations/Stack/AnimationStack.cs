@@ -9,12 +9,17 @@ using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-
+    /// <summary>
+    /// A stack of <see cref="TMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
     [Serializable]
-    public class BasicAnimationStack : AnimationStack<TMPAnimation> { }
+    internal class BasicAnimationStack : AnimationStack<TMPAnimation> { }
 
+    /// <summary>
+    /// A stack of <see cref="TMPShowAnimation"/>, allowing you to easily combine show animations in one tag.
+    /// </summary>
     [Serializable]
-    public class ShowAnimationStack : AnimationStack<TMPShowAnimation>
+    internal class ShowAnimationStack : AnimationStack<TMPShowAnimation>
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -50,8 +55,11 @@ namespace TMPEffects.TMPAnimations.Animations
         }
     }
 
+    /// <summary>
+    /// A stack of <see cref="TMPHideAnimation"/>, allowing you to easily combine hide animations in one tag.
+    /// </summary>
     [Serializable]
-    public class HideAnimationStack : AnimationStack<TMPHideAnimation>
+    internal class HideAnimationStack : AnimationStack<TMPHideAnimation>
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -87,8 +95,12 @@ namespace TMPEffects.TMPAnimations.Animations
         }
     }
 
+    /// <summary>
+    /// A stack of <see cref="ITMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
-    public class AnimationStack<T> : ITMPAnimation where T : ITMPAnimation
+    internal class AnimationStack<T> : ITMPAnimation where T : ITMPAnimation
     {
         [SerializeField] protected List<AnimPrefixTuple> animations = new List<AnimPrefixTuple>();
         internal List<AnimPrefixTuple> Animations => animations;

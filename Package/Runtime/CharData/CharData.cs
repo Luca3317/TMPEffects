@@ -1,13 +1,14 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using TMPEffects.Parameters;
-using TMPEffects.TMPAnimations;
+using TMPEffects.Components;
 using UnityEngine;
 using TMPro;
 
 namespace TMPEffects.CharacterData
 {
+    /// <summary>
+    /// A read-only wrapper around <see cref="CharData"/>.
+    /// </summary>
     public class ReadOnlyCharData
     {
         private CharData cData;
@@ -34,12 +35,23 @@ namespace TMPEffects.CharacterData
         }
     }
 
+    /// <summary>
+    /// Represents a TextMeshPro character, allowing you to make modifications to its appearance.<br/>
+    /// Primarily used by <see cref="TMPAnimator"/> and its animations to animate a character.<br/>
+    /// When used in that manner, modifications made to it (e.g. by using <see cref="SetPosition"/>, or directly modifying the <see cref="CharacterModifiers"/>),
+    /// will be applied by the animator to the actual mesh of the character.
+    /// </summary>
     public partial class CharData
     {
+        /// <summary>
+        /// The character modifiers of this character.
+        /// </summary>
         public TMPCharacterModifiers CharacterModifiers => characterModifiers;
-        public TMPMeshModifiers MeshModifiers => mesh.Modifiers;
 
-        private TMPCharacterModifiers characterModifiers;
+        /// <summary>
+        /// The mesh modifiers of this character.
+        /// </summary>
+        public TMPMeshModifiers MeshModifiers => mesh.Modifiers;
 
         /// <summary>
         /// Whether the position has been manipulated from the character's initial position.
@@ -76,6 +88,9 @@ namespace TMPEffects.CharacterData
         /// </summary>
         public bool uvsDirty => mesh.uvsDirty;
 
+        /// <summary>
+        /// The character's position.
+        /// </summary>
         public Vector3 Position
         {
             get => characterModifiers.PositionDelta + InitialPosition;
@@ -83,7 +98,7 @@ namespace TMPEffects.CharacterData
         }
 
         /// <summary>
-        /// The character's position.
+        /// The character's position delta (offset from <see cref="InitialPosition"/>).
         /// </summary>
         public Vector3 PositionDelta
         {
@@ -101,7 +116,8 @@ namespace TMPEffects.CharacterData
         }
 
         /// <summary>
-        /// The character's rotations.
+        /// The character's rotations.<br/>
+        /// Modify using <see cref="AddRotation"/>, <see cref="RemoveRotation"/>, <see cref="ClearRotations"/>.
         /// </summary>
         public IReadOnlyList<Rotation> Rotations => characterModifiers.Rotations;
 
@@ -146,7 +162,8 @@ namespace TMPEffects.CharacterData
         /// The initial mesh of this character.
         /// </summary>
         public ReadOnlyVertexData InitialMesh => info.initialMesh;
-
+        
+        private TMPCharacterModifiers characterModifiers;
         #endregion
 
         public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex)
@@ -172,26 +189,28 @@ namespace TMPEffects.CharacterData
         /// <summary>
         /// Set the position of the character.
         /// </summary>
-        /// <param name="position">The new position of the character.</param>
+        /// <param name="position"></param>
         public void SetPosition(Vector3 position)
         {
             characterModifiers.PositionDelta = position - InitialPosition;
         }
 
-        // public void ClearPosition()
-        // {
-        //     CharacterModifiers.ClearModifierFlags(TMPCharacterModifiers.ModifierFlags.Position);
-        // }
-
         #endregion
 
         #region PositionDelta
 
+        /// <summary>
+        /// Set the position delta of the character (offset from <see cref="InitialPosition"/>).
+        /// </summary>
+        /// <param name="delta"></param>
         public void SetPositionDelta(Vector3 delta)
         {
             characterModifiers.PositionDelta = delta;
         }
 
+        /// <summary>
+        /// Reset the position of the character back to <see cref="InitialPosition"/>.
+        /// </summary>
         public void ClearPosition()
         {
             characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.PositionDelta);
@@ -201,21 +220,39 @@ namespace TMPEffects.CharacterData
 
         #region Rotations
 
+        /// <summary>
+        /// Add a rotation to the character.
+        /// </summary>
+        /// <param name="eulerAngles">The euler angles to rotate by.</param>
+        /// <param name="pivot">The pivot to rotate around.</param>
         public void AddRotation(Vector3 eulerAngles, Vector3 pivot)
         {
             characterModifiers.AddRotation(new Rotation(eulerAngles, pivot));
         }
 
+        /// <summary>
+        /// Remove a rotation from the character.
+        /// </summary>
+        /// <param name="index">The index of the rotation in <see cref="Rotations"/>.</param>
         public void RemoveRotation(int index)
         {
             characterModifiers.RemoveRotation(index);
         }
 
+        /// <summary>
+        /// Add a rotation to the character.
+        /// </summary>
+        /// <param name="index">The index in <see cref="Rotations"/> to insert into.</param>
+        /// <param name="eulerAngles">The euler angles to rotate by.</param>
+        /// <param name="pivot">The pivot to rotate around.</param>
         public void InsertRotation(int index, Vector3 eulerAngles, Vector3 pivot)
         {
             characterModifiers.InsertRotation(index, new Rotation(eulerAngles, pivot));
         }
 
+        /// <summary>
+        /// Clear all rotations of this character, effectively setting its rotation back to <see cref="InitialRotation"/>.
+        /// </summary>
         public void ClearRotations()
         {
             characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.Rotations);
@@ -234,6 +271,9 @@ namespace TMPEffects.CharacterData
             characterModifiers.ScaleDelta = Matrix4x4.Scale(scale);
         }
 
+        /// <summary>
+        /// Reset the scale of this character back to <see cref="InitialScale"/>.
+        /// </summary>
         public void ClearScale()
         {
             characterModifiers.ClearModifiers(TMPCharacterModifiers.ModifierFlags.Scale);
@@ -242,7 +282,7 @@ namespace TMPEffects.CharacterData
         #endregion
 
         /// <summary>
-        /// Reset changes made to the character's mesh, position, rotation, scale and pivot.
+        /// Reset all changes made to the character (mesh, position, rotation, scale and pivot).
         /// </summary>
         public void Reset()
         {

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using TMPEffects.Extensions;
+using TMPEffects.Parameters;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 

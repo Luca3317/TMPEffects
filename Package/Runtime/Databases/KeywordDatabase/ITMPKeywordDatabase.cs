@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace TMPEffects.Databases
 {
+    /// <summary>
+    /// Provides keywords used for parsing TMPEffects tags.
+    /// </summary>
     public partial interface ITMPKeywordDatabase
     {
         public bool TryGetFloat(string str, out float result);

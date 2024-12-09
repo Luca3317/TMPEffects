@@ -7,7 +7,7 @@ using TMPEffects.ObjectChanged;
 using System.ComponentModel;
 using TMPEffects.Databases;
 
-namespace TMPEffects.TMPSceneAnimations
+namespace TMPEffects.TMPAnimations.Animations
 {
     /// <summary>
     /// Base class for all SceneAnimations.

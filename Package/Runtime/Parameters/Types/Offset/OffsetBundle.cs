@@ -10,6 +10,9 @@ using UnityEngine.Serialization;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Calculates offsets for characters (to be used with e.g. <see cref="Wave"/>).
+    /// </summary>
     [Serializable]
     [TMPParameterBundle("OffsetBundle")]
     public partial class OffsetBundle

@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Utility class for parsing parameters.
+    /// </summary>
     public static class ParameterParsing
     {
         private static string TrimIfNeeded(string text)
@@ -18,7 +21,7 @@ namespace TMPEffects.Parameters
             if (!char.IsWhiteSpace(text[0]) && !char.IsWhiteSpace(text[^1])) return text;
             return text.Trim();
         }
-
+        
         public static bool StringToInt(string str, out int result, ITMPKeywordDatabase keywords = null)
         {
             result = 0;

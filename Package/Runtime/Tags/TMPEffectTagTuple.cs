@@ -5,7 +5,7 @@ namespace TMPEffects.Tags
     /// <summary>
     /// Readonly struct that combines an <see cref="TMPEffectTag"/> and an <see cref="TMPEffectTagIndices"/>.
     /// </summary>
-    public struct TMPEffectTagTuple : IEquatable<TMPEffectTagTuple>
+    public readonly struct TMPEffectTagTuple : IEquatable<TMPEffectTagTuple>
     {
         /// <summary>
         /// The tag.

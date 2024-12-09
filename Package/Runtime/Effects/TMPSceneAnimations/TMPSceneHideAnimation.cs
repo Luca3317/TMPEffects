@@ -1,4 +1,6 @@
-namespace TMPEffects.TMPSceneAnimations
+using TMPEffects.TMPAnimations.Animations;
+
+namespace TMPEffects.TMPAnimations.HideAnimations
 {
     /// <summary>
     /// Base class for all SceneHideAnimations.

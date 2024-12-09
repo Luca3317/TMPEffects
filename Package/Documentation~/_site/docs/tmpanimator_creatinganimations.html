@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Creating animations | TMPEffects </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Creating animations | TMPEffects ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_creatinganimations.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TMPEffects">
+            TMPEffects
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="creating-animations">Creating animations</h1>
+
+<p>This section walks you through creating your own animations, specifically basic animations, or animations that derive from <mark style="color: lightgray; background-color: #191a18">TMPAnimation</mark>.
+For what small differences there are, see <a href="#creating-show--hide-animations">Creating show / hide animation</a> and <a href="#creating-scene-animations">Creating scene animations</a>.</p>
+<h3 id="creating-the-class">Creating the class</h3>
+<p>First, create a new C# script in the Unity editor.
+Add the following using statement at the top of your class: <mark style="color: lightgray; background-color: #191a18">using TMPEffects.TMPAnimations;</mark>.<br>
+Then, make the created class derive from <mark style="color: lightgray; background-color: #191a18">TMPAnimation</mark>.
+In order to be able to create the animation object in the Unity editor and add it to your database, make sure to decorate the class with the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute.</p>
+<h3 id="methods">Methods</h3>
+<p>You will have errors due to <mark style="color: lightgray; background-color: #191a18">TMPAnimation's</mark> abstract members not being implemented.
+Auto-implement them using your IDE, or add them manually.
+When you are done, your class should look something like this:</p>
+<pre><code class="lang-csharp">using UnityEngine;
+using TMPEffects.TMPAnimations;
+
+[CreateAssetMenu(fileName=&quot;new YourFirstAnimation&quot;, menuName=&quot;Your/Path/YourFirstAnimation&quot;)]
+public class YourFirstAnimation : TMPAnimation
+{
+    public override void Animate(CharData cData, IAnimationContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool ValidateParameters(IDictionary&lt;string, string&gt; parameters)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override object GetNewCustomData()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters)
+    {
+        throw new System.NotImplementedException();
+    }
+}
+</code></pre>
+<p>Let's go over each method individually.</p>
+<p><strong><mark style="color: lightgray; background-color: #191a18">Animate(CharData cData, IAnimationContext context)</mark></strong>: The primary method of your animation.
+This method will be called each animation update, once for each animated character.
+We'll go into more detail about this method in <a href="animatingacharacter.html">the next section</a>.</p>
+<p><strong><mark style="color: lightgray; background-color: #191a18">ValidateParameters(IDictionary&lt;string, string&gt;)</mark></strong>: This method is called once during tag processing.
+It allows you to specify whether a given tag for this animation has valid parameters. <a href="parameterutility.html">ParameterUtility</a> will come in handy here.
+Return true if the parameters are valid, return false if not. If false, the tag will not be processed.</p>
+<p><strong><mark style="color: lightgray; background-color: #191a18">GetNewCustomData()</mark></strong>: Allows you to create a piece of custom data that will be passed into <mark style="color: lightgray; background-color: #191a18">Animate</mark> as
+part of the <mark style="color: lightgray; background-color: #191a18">IAnimationContext</mark>. Used for storing parameters, keeping other consistent values (for example, create an RNG once and store it here instead of creating it every
+<mark style="color: lightgray; background-color: #191a18">Animate</mark> call), and anything else you need.
+In here, you should also set the default values for the parameters defined in the inspector.</p>
+<p><strong><mark style="color: lightgray; background-color: #191a18">SetParameters(object customData, IDictionary&lt;string, string&gt;)</mark></strong>: This method is called once, right after tag processing is done.
+The passed in <mark style="color: lightgray; background-color: #191a18">customData</mark> object is the object you created and returned in <mark style="color: lightgray; background-color: #191a18">GetNewCustomData</mark>.
+It allows you to store the tag parameters in your object and access them in <mark style="color: lightgray; background-color: #191a18">Animate</mark>.</p>
+<h3 id="full-example">Full example</h3>
+<p>The code below is the full implementation of the built-in <mark style="color: lightgray; background-color: #191a18">wave</mark> animation.<br>
+If the code seems somewhat daunting don't worry; you will have to have looked at <a href="animationutility.html">AnimationUtility</a>, <a href="parameterutility.html">ParameterUtility</a>, and <a href="animatingacharacter.html">Animating a character</a>
+to fully get what's going on here 🙂</p>
+<pre><code class="lang-csharp">using System.Collections.Generic;
+using UnityEngine;
+using TMPEffects.CharacterData;
+using static TMPEffects.ParameterUtility;
+using static TMPEffects.TMPAnimations.AnimationUtility;
+using TMPEffects.Extensions;
+
+namespace TMPEffects.TMPAnimations.Animations
+{
+    [CreateAssetMenu(fileName = &quot;new WaveAnimation&quot;, menuName = &quot;TMPEffects/Animations/Wave&quot;)]
+    public class WaveAnimation : TMPAnimation
+    {
+        [Tooltip(&quot;The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.&quot;)]
+        [SerializeField] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f, 1f, 1f, 0.2f);
+        [Tooltip(&quot;The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff&quot;)]
+        [SerializeField] WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
+
+        // Animate the character
+        public override void Animate(CharData cData, IAnimationContext context)
+        {
+            // Cast your custom data object to the type
+            Data data = (Data)context.customData;
+
+            // Evaluate the wave data structure at the current time, with the characters offset (see AnimationUtility section for info on this)
+            float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+
+            // Set the new position of the character
+            cData.SetPosition(cData.info.initialPosition + Vector3.up * eval);
+        }
+
+        // Validate the tag's parameters
+        public override bool ValidateParameters(IDictionary&lt;string, string&gt; parameters)
+        {
+            // If there is no parameters, return true (wave does not have any required parameters)
+            if (parameters == null) return true;
+
+            // If there is a parameter &quot;waveoffset&quot; (or one of its aliases)
+            // but it has the wrong type, return false 
+            if (HasNonWaveOffsetParameter(parameters, &quot;waveoffset&quot;, WaveOffsetAliases)) return false;
+
+            // If the wave parameters could not be validated, return false
+            // Note: &quot;WaveParameters&quot; does not refer to anything specific to &quot;WaveAnimation&quot; here.
+            // WaveParameters is a predefined parameter bundle in ParameterUtility. See the section on it for more info.
+            if (!ValidateWaveParameters(parameters)) return false;
+
+            // else return true
+            return true;
+        }
+
+        // Create the custom data object, set the default values for the parameters, and return it
+        public override object GetNewCustomData()
+        {
+            return new Data() { wave = this.wave, waveOffsetType = this.waveOffsetType };
+        }
+
+        // Set the parameters defined in the tag
+        public override void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters)
+        {
+            // If there is no parameters, return early
+            if (parameters == null) return;
+
+            // Cast your custom data object to the type
+            Data data = (Data)customData;
+
+            // If has the waveoffset parameter set it in your custom data object
+            if (TryGetWaveOffsetParameter(out var wot, parameters, &quot;waveoffset&quot;, WaveOffsetAliases)) data.waveOffsetType = wot;
+
+            // Set the wave in your custom data object
+            // As with ValidateWaveParameters, &quot;Wave&quot; refers to the parameter bundle
+            // defined in ParameterUtility, not &quot;WaveAnimation&quot;.
+            data.wave = CreateWave(this.wave, GetWaveParameters(parameters));
+        }
+
+        // The class used to store the parameter values
+        private class Data
+        {
+            public Wave wave;
+            public WaveOffsetType waveOffsetType;
+        }
+    }
+}
+</code></pre>
+<h3 id="adding-the-animation-to-a-database">Adding the animation to a database</h3>
+<p>To actually use the animation in your text, you will have to follow these steps:</p>
+<ol>
+<li>Create an animation object: Right click in your project view and create it (it will be in the path you specified in the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute).</li>
+<li>Add that object to the database you want to use and give it a name</li>
+<li>Use that database in the TMPAnimator component</li>
+</ol>
+<p>Done! You can now use your custom animation like any of the built-in ones.</p>
+<h3 id="creating-show--hide-animations">Creating show / hide animations</h3>
+<p>Creating show and hide animations works 99% the same as creating basic animations.
+The only differences are:</p>
+<ul>
+<li><p>Instead of deriving from <mark style="color: lightgray; background-color: #191a18">TMPAnimation</mark>, you must derive from <mark style="color: lightgray; background-color: #191a18">TMPShowAnimation</mark> or <mark style="color: lightgray; background-color: #191a18">TMPHideAnimation</mark> respectively.</p>
+</li>
+<li><p>⚠️ You HAVE to call <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> at some point in the animation; This will notify the animator that this show animation is finished, and the character
+may transition from the <mark style="color: lightgray; background-color: #191a18">Showing</mark> state to the <mark style="color: lightgray; background-color: #191a18">Shown</mark> state.
+Because of this, all built-in show and hide animations have a <mark style="color: lightgray; background-color: #191a18">duration</mark> parameter, and <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData);</mark>
+is called when that duration is exceeded. See the example below for a simple way to do that.</p>
+</li>
+</ul>
+<pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
+{
+    ReadOnlyAnimatorContext ac = context.animatorContext;
+    Data d = context.customData as Data;
+
+    // Check if the difference between the time that passed since the animator started
+    // playing and the time the character entered the SHOWING state exceeds the duration
+    if (ac.PassedTime - ac.StateTime(cData) &gt;= d.duration) 
+    {
+        context.FinishAnimation(cData);
+        return;
+    }
+
+    // Actual animation logic here...
+}
+</code></pre>
+<h3 id="creating-scene-animations">Creating scene animations</h3>
+<p>Creating a scene animation, scene show animation or scene hide animation is almost the exact same as creating a basic animation, show animation or hide animation; the only difference is that
+you will have to derive from <mark style="color: lightgray; background-color: #191a18">TMPSceneAnimation</mark>, <mark style="color: lightgray; background-color: #191a18">TMPSceneShowAnimation</mark> or <mark style="color: lightgray; background-color: #191a18">TMPSceneHideAnimation</mark> respectively, and that you don't add the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute.
+Since it is not a ScriptableObject, you of course don't add it to a database either; instead, you add it as a component to a GameObject in your scene, and add that GameObject to your TMPAnimator as described here: <a href="tmpanimator_sceneanimations.html#adding-scene-animations">Adding scene animation</a>.</p>
+<p>⚠️ The <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> call is required for <mark style="color: lightgray; background-color: #191a18">TMPSceneShowAnimation</mark> and <mark style="color: lightgray; background-color: #191a18">TMPSceneHideAnimation</mark> as well.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_creatinganimations.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Wave | TMPEffects </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Wave | TMPEffects ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_animationutility_wave.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TMPEffects">
+            TMPEffects
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="wave">Wave</h1>
+
+<p>The <mark style="color: lightgray; background-color: #191a18">Wave</mark> class significantly streamlines the process of creating periodic animations.</p>
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 50%;
+}
+
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 70%;
+}
+</style>
+<h2 id="defining-a-wave">Defining a wave</h2>
+<p><mark style="color: lightgray; background-color: #191a18">Waves</mark> are defined by, and created using, eight different parameters, which are as follows:</p>
+<ul>
+<li><strong>Upward Curve</strong>: Defines the &quot;shape&quot; of the half of the curve that moves up</li>
+<li><strong>Downward Curve</strong>: Defines the &quot;shape&quot; of the half of the curve that moves down</li>
+<li><strong>Up Period</strong>: Defines the amount of time it takes to travel the upward curve</li>
+<li><strong>Down Period</strong>: Defines the amount of time it takes to travel the downward curve</li>
+<li><strong>Amplitude</strong>: Defines the maximum value the wave reaches; this is <mark style="color: lightgray; background-color: #191a18">1</mark> by default</li>
+<li><strong>Crest Wait</strong>: Defines the amount of time the wave maintains its peak</li>
+<li><strong>Trough Wait</strong>: Defines the amount of time the wave maintains its minimum</li>
+<li><strong>Uniformity</strong>: Defines how much the offset passed in when evaluating the wave is considered</li>
+</ul>
+<p>The following diagram illustrates the first five parameters. On the left you see the upward curve, on the right the downward curve.</p>
+<img src="../images/wave1.svg" alt="first wave diagram" class="center">
+<p>The second diagram illustrates crest and trough wait.<br>
+Both essentially insert a period of time during which the wave's value does not change.</p>
+<img src="../images/wave2.svg" alt="first wave diagram" class="center2">
+<p>The uniformity is hard to visualize in a diagram in this way; I find it easier to just imagine it abstractly as the uniformity the animation will show across the animated text segment.
+Below, you see the same animation with the exact same wave, except that the first animation uses uniformity = 0, the second uniformity = 0.25, the third uniformity = 1.</p>
+<video class="center" style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/uniformitydiff.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<h2 id="creating-a-wave">Creating a wave</h2>
+<p>You create a wave simply by passing in these eight values into <mark style="color: lightgray; background-color: #191a18">Waves</mark> constructor.<br>
+Since this class is designed specifically to be used with animations though, likely you will mostly be creating it using the <mark style="color: lightgray; background-color: #191a18">CreateWave</mark>
+method from the <mark style="color: lightgray; background-color: #191a18">ParameterUtility</mark> class.
+For info about how to use wave as a parameter in your animations, see <a href="parameterutility.html#waves">ParameterUtility Wave</a>.</p>
+<h2 id="evaluating-a-wave">Evaluating a wave</h2>
+<p>Once you have created a <mark style="color: lightgray; background-color: #191a18">Wave</mark>, you can evaluate it using a time value and an offset value: <mark style="color: lightgray; background-color: #191a18">(float, int) Evaluate(float time, float offset)</mark>.<br>
+As you can tell by the signature, <mark style="color: lightgray; background-color: #191a18">Evaluate</mark> returns two values.
+The float is the actual value of the curve for the given time and offset.
+The integer indicates whether the curve is currently travelling up or down; if it is negative, the curve is moving down, if it is positive, the curve is moving up.
+This value is useful for when you want to switch the behavior of your animation depending on what curve the wave is currently travelling.<br>
+For example, the built-in <mark style="color: lightgray; background-color: #191a18">fade</mark> animation can use different anchors depending on whether the character
+is fading in or out. The animation below visualizes how <mark style="color: lightgray; background-color: #191a18">fade</mark> uses both values of the <mark style="color: lightgray; background-color: #191a18">Evaluate</mark>
+method.</p>
+<video class="center" style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/fadevalues.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+<h2 id="checking-wave-extrema">Checking wave extrema</h2>
+<p>You can check if the wave passed an extrema (so either the crest or the trough) during the last update, using the <mark style="color: lightgray; background-color: #191a18">int PassedExtrema(float time, float deltaTime, float offset)</mark> method.
+Once again, you need the time value and the offset, and additionally here you need the deltaTime since you last checked.
+Essentially, the method checks whether the wave passed an extrema during the time interval of [<mark style="color: lightgray; background-color: #191a18">timeValue - deltaTime</mark>, <mark style="color: lightgray; background-color: #191a18">timeValue</mark>]. A positive return value indicates that a maximum was passed, a negative return value indicates that a minimum was passed, and 0 indicates neither was.</p>
+<p>An additional, optional parameter is <mark style="color: lightgray; background-color: #191a18"><a href="../api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.yml">PulseExtrema</a></mark>.
+If the checked wave has a crest or trough wait, this parameter defines whether an extremum is passed once the wait time begins, or once it ends. <mark style="color: lightgray; background-color: #191a18">PulseExtrema</mark> can also consider both
+to be an extrema, but of course be aware that it will then notify you of each extremum twice.</p>
+<p>If multiple extrema were passed during the specified interval, it will notify you of the latest one.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/docs/tmpanimator_animationutility_wave.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

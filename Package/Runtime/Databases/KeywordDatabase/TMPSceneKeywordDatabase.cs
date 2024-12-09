@@ -10,37 +10,41 @@ using UnityEngine;
 
 namespace TMPEffects.Databases
 {
+    /// <summary>
+    /// Provides keywords used for parsing TMPEffects tags.<br/>
+    /// Allows easy reference of scene objects, ideal for runtime-defined keywords.
+    /// </summary>
     public partial class TMPSceneKeywordDatabase : MonoBehaviour, ITMPKeywordDatabase, INotifyObjectChanged
     {
         public event ObjectChangedEventHandler ObjectChanged;
         
         [SerializedDictionary(keyName: "Keyword", valueName: "Float")] [SerializeField]
-        SerializedDictionary<string, float> floatKeywords;
+        private SerializedDictionary<string, float> floatKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Int")] [SerializeField]
-        SerializedDictionary<string, int> intKeywords;
+        private SerializedDictionary<string, int> intKeywords;
 
         // Really pointless but here for completions sake
         [SerializedDictionary(keyName: "Keyword", valueName: "Bool")] [SerializeField]
-        SerializedDictionary<string, bool> boolKeywords;
+        private SerializedDictionary<string, bool> boolKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Color")] [SerializeField]
-        SerializedDictionary<string, Color> colorKeywords;
+        private SerializedDictionary<string, Color> colorKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Vector3")] [SerializeField]
-        SerializedDictionary<string, Vector3> vector3Keywords;
+        private SerializedDictionary<string, Vector3> vector3Keywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Anchor")] [SerializeField]
-        SerializedDictionary<string, Vector2> anchorKeywords;
+        private SerializedDictionary<string, Vector2> anchorKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Curve")] [SerializeField]
-        SerializedDictionary<string, AnimationCurve> animationCurveKeywords;
+        private SerializedDictionary<string, AnimationCurve> animationCurveKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "OffsetType")] [SerializeField]
-        SerializedDictionary<string, SceneOffsetTypePowerEnum> offsetTypeKeywords;
+        private SerializedDictionary<string, SceneOffsetTypePowerEnum> offsetTypeKeywords;
 
         [SerializedDictionary(keyName: "Keyword", valueName: "Unity Object")] [SerializeField]
-        SerializedDictionary<string, UnityEngine.Object> unityObjectKeywords;
+        private SerializedDictionary<string, UnityEngine.Object> unityObjectKeywords;
 
         public bool TryGetFloat(string str, out float result)
         {

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>AutoParameters | TMPEffects </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="AutoParameters | TMPEffects ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/plugins/autoparameters.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="TMPEffects">
+            TMPEffects
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="autoparameters">AutoParameters</h1>
+
+<p>AutoParameters greatly streamlines the handling of parameters of animations and minimizes boilerplate -- you no longer will have to implement <mark style="color: lightgray; background-color: #191a18">ValidateParameters</mark>,
+<mark style="color: lightgray; background-color: #191a18">SetParameters</mark> and <mark style="color: lightgray; background-color: #191a18">GetNewCustomData</mark>.<br>
+If you haven't yet, look at <a href="../docs/tmpanimator_creatinganimations.html">Creating Animations</a> before this section.</p>
+<h4 id="installation">Installation</h4>
+<p>Assuming you <a href="../docs/installation.html">installed TMPEffects</a>, you add AutoParameters to your project by simply downloading the two .dll files and their .meta files from the
+<a href="https://github.com/Luca3317/TMPEffects.AutoParameters/releases">TMPEffects.AutoParameters</a> releases and putting them anywhere within your project's asset folder.</p>
+<h4 id="using-autoparameters">Using AutoParameters</h4>
+<p>Once you installed AutoParameters, you can decorate any partial animation class (i.e. one that implements <mark style="color: lightgray; background-color: #191a18">ITMPAnimation</mark>)
+with the <mark style="color: lightgray; background-color: #191a18">[AutoParameters]</mark> attribute. This allows you to use the other AutoParameters attributes.</p>
+<ul>
+<li><mark style="color: lightgray; background-color: #191a18">[AutoParameter]</mark>
+You can decorate any field of your class with this attribute, assuming it is of a <a href="../docs/parametertypes.html">supported type</a>.<br>
+You can define whether the parameter is required (<mark style="color: lightgray; background-color: #191a18">false</mark> by default), its name as well as any desired amount of aliases.<br>
+For every field decorated with this attribute, a field of the same name will be created in the <a href="../docs/tmpanimator_creatinganimations.html">custom data object</a>.</li>
+</ul>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class MyAnimation : TMPAnimation
+{
+    [AutoParameter(&quot;amplitude&quot;, &quot;amp&quot;), SerializeField]
+    float amp;
+
+    [AutoParameter(&quot;color&quot;, &quot;colour&quot;, &quot;col&quot;), SerializeField]
+    Color color;
+
+    [AutoParameter(true, &quot;someOtherValue&quot;), SerializeField]
+    int val;
+}
+</code></pre>
+<ul>
+<li><mark style="color: lightgray; background-color: #191a18">[AutoParameterBundle]</mark>
+Alternative to <mark style="color: lightgray; background-color: #191a18">[AutoParameter]</mark>, to be used with predefined parameter sets.<br>
+This is at the moment used only for <a href="../docs/tmpanimator_animationutility_wave.html">Waves</a>.
+You may define the prefix used for the wave.</li>
+</ul>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class MyAnimation : TMPAnimation
+{
+    [AutoParameterBundle(&quot;&quot;), SerializeField]
+    Wave wave;
+
+    [AutoParameterBundle(&quot;w2:&quot;), SerializeField]
+    Wave wave2;
+}
+</code></pre>
+<ul>
+<li><mark style="color: lightgray; background-color: #191a18">[AutoParametersStorage]</mark>
+You can decorate exactly one nested, partial type with this attribute. This type will then be used as the <a href="../docs/tmpanimator_creatinganimations.html">custom data object</a> for the animation.
+You can add any other fields in here that don't have anything to do with parameters (for example, a RNG).
+Any initialization unrelated to parameters can be done in the type's default constructor (one without arguments), or in the <mark style="color: lightgray; background-color: #191a18">GetCustomData_Hook</mark> (see below).<br>
+⚠️ If you define a constructor for this type with arguments, you will also have to define an empty constructor.</li>
+</ul>
+<p>If you don't decorate any nested type with this attribute, a type called <mark style="color: lightgray; background-color: #191a18">AutoParameterStorage_Generated</mark> will be automatically generated and
+used as data object.</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class MyAnimation : TMPAnimation
+{
+    [AutoParametersStorage]
+    private partial class Data
+    {
+        public System.Random rng;
+        public Dictionary&lt;int, float&gt; someMapping;
+
+        public Data()
+        {
+            rng = new System.Random();
+            someMapping = new Dictionary&lt;int, float&gt;();
+        }
+    }
+}
+</code></pre>
+<h4 id="hooks">Hooks</h4>
+<p>You can hook into each of the generated methods.</p>
+<ul>
+<li><p><mark style="color: lightgray; background-color: #191a18">bool ValidateParameters_Hook(IDictionary&lt;string, string&gt; parameters)</mark><br>
+Called at the very beginning of <mark style="color: lightgray; background-color: #191a18">ValidateParameters</mark>.<br>
+Rest of validation code is only executed if your method returned <mark style="color: lightgray; background-color: #191a18">true</mark>.</p>
+</li>
+<li><p><mark style="color: lightgray; background-color: #191a18">void SetParameters_Hook(object customData, IDictionary&lt;string, string&gt; parameters)</mark><br>
+Called at the very end of <mark style="color: lightgray; background-color: #191a18">SetParameters</mark>.<br>
+Is NOT called if passed in <mark style="color: lightgray; background-color: #191a18">parameters</mark> dictionary is null.</p>
+</li>
+<li><p><mark style="color: lightgray; background-color: #191a18">void GetNewCustomData_Hook(object customData)</mark><br>
+Called at the very end of <mark style="color: lightgray; background-color: #191a18">GetNewCustomData</mark>.<br>
+Receives the custom data object fully populated with all <mark style="color: lightgray; background-color: #191a18">[AutoParameter]</mark>.</p>
+</li>
+</ul>
+<h4 id="full-example">Full example</h4>
+<p>The above is all you need to know to use AutoParameters!<br>
+This plugin removes all parameter-related boilerplate from your animations and allows you to focus on writing the actual animation logic.<br>
+For example, below is the built-in wave animation, if it was written with AutoParameters:</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class MyAnimation : TMPAnimation
+{
+    [SerializeField, AutoParameterBundle(&quot;&quot;)] Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f, 1f, 1f, 0.2f);
+    [SerializeField, AutoParameter(&quot;waveoffset&quot;, &quot;waveoff&quot;, &quot;woff&quot;)] WaveOffsetType waveOffsetType = WaveOffsetType.XPos;
+
+    public override void Animate(CharData cData, IAnimationContext context)
+    {
+        Data data = (Data)context.CustomData;
+
+        // Evaluate the wave based on time and offset
+        float eval = data.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+
+        // Move the character up based on the wave evaluation
+        cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
+    }
+
+    [AutoParametersStorage]
+    private partial class Data
+    {    }
+}
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/tmp-branch/Package/Documentation~/plugins/autoparameters.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Provides timing offsets for characters (to be used with e.g. <see cref="Wave"/>).
+    /// </summary>
     public abstract class TMPOffsetProvider : ScriptableObject, ITMPOffsetProvider
     {
         public abstract float GetOffset(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,

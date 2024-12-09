@@ -2,10 +2,11 @@
 _layout: landing
 ---
 
-# This is the **HOMEPAGE**.
+# TMPEffects documentation
 
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+This is the full documentation of the [TMPEffects](https://github.com/Luca3317/TMPEffects) package for Unity.  
+Click [here](docs/introduction.md) to begin reading.  
 
-## Quick Start Notes:
 
-1. Add images to the *images* folder if the file is referencing an image.
+Click [here](api/TMPEffects.html) for the full API docs.  
+Click [here](https://github.com/Luca3317/TMPEffects) for the Git repository.

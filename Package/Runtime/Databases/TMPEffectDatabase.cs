@@ -1,26 +1,15 @@
-using System.ComponentModel;
 using TMPEffects.ObjectChanged;
 using UnityEngine;
 
 namespace TMPEffects.Databases
 {
     /// <summary>
-    /// Base class for all databases.
+    /// Base class for all effect databases.
     /// </summary>
     /// <typeparam name="T">The type of effect stored in this database.</typeparam>
     public abstract class TMPEffectDatabase<T> : ScriptableObject, ITMPEffectDatabase<T>, INotifyObjectChanged
     {
         public event ObjectChangedEventHandler ObjectChanged;
-
-        //public void ListenForChanges(ObjectChangedEventHandler handler)
-        //{
-        //    ObjectChanged -= handler;
-        //    ObjectChanged += handler;
-        //}
-        //public void StopListenForChanges(ObjectChangedEventHandler handler)
-        //{
-        //    ObjectChanged -= handler;
-        //}
 
         /// <summary>
         /// Check whether this database contains an effect associated with the given name.

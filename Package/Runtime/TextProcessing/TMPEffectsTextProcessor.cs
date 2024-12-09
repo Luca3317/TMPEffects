@@ -78,10 +78,6 @@ namespace TMPEffects.TextProcessing
         /// <returns>The preprocessed text.</returns>
         public string PreprocessText(string text)
         {
-            var textSpan = text.AsSpan();
-
-            sw3 ??= new Stopwatch();
-            sw3.Start();
             BeginPreProcess?.Invoke(text);
 
             // Clear style stack, which stores the currently active styles
@@ -119,8 +115,6 @@ namespace TMPEffects.TextProcessing
             // Iterate over all well-formed tags of the text
             while (ParsingUtility.GetNextTag(text, searchIndex, ref tagInfo))
             {
-                sw4 ??= new Stopwatch();
-                sw4.Start();
                 // If the searchIndex is not equal to the startIndex of the tag, meaning there was text between the previous tag and the current one,
                 // add the text inbetween the tags to the StringBuilder
                 if (searchIndex != tagInfo.startIndex)
@@ -144,7 +138,6 @@ namespace TMPEffects.TextProcessing
                     }
 
                     searchIndex = tagInfo.endIndex + 1;
-                    sw4.Stop();
                     continue;
                 }
 
@@ -208,7 +201,6 @@ namespace TMPEffects.TextProcessing
                             }
 
                             searchIndex = tagInfo.endIndex + 1;
-                            sw4.Stop();
                             continue;
                         }
                     }
@@ -227,7 +219,6 @@ namespace TMPEffects.TextProcessing
                         }
 
                         searchIndex = tagInfo.startIndex;
-                        sw4.Stop();
                         continue;
                     }
                     else if (tagInfo.parameterString.Length > 6)
@@ -249,7 +240,6 @@ namespace TMPEffects.TextProcessing
                             styles.Push(style);
 
                             searchIndex = tagInfo.startIndex;
-                            sw4.Stop();
                             continue;
                         }
                     }
@@ -261,21 +251,13 @@ namespace TMPEffects.TextProcessing
                     currentOrderAtIndex = 0;
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
                     searchIndex = tagInfo.endIndex + 1;
-                    sw4.Stop();
                     continue; 
                 }
-
-                sw4.Stop();
-                sw5 ??= new Stopwatch();
-                sw6 ??= new Stopwatch();
-                sw5.Start();
 
                 // Handle the tag; if it fails, meaning this is not a valid custom tag, append the tag to the StringBuilder
                 if (!HandleTag(ref tagInfo, tagInfo.startIndex + indexOffset, currentOrderAtIndex))
                 {
-                    sw6.Start();
                     sb.Append(text.AsSpan(tagInfo.startIndex, tagInfo.endIndex - tagInfo.startIndex + 1));
-                    sw6.Stop();
 
                     // Dont reset order, as this might be a valid native tag, meaning the previous
                     // and the next tag may still share an index; if not thats fine, order will just start
@@ -291,8 +273,6 @@ namespace TMPEffects.TextProcessing
 
                 // Adjust the search index and continue to the next tag
                 searchIndex = tagInfo.endIndex + 1;
-
-                sw5.Stop();
             }
 
             // Append any text that came after the last tag
@@ -308,19 +288,12 @@ namespace TMPEffects.TextProcessing
             string parsed = sb.ToString();
             FinishPreProcess?.Invoke(parsed);
 
-            sw3.Stop();
             return parsed;
         }
 
-        public static Stopwatch sw;
-        public static Stopwatch sw2;
-        public static Stopwatch sw3;
-        public static Stopwatch sw4;
-        public static Stopwatch sw5;
-        public static Stopwatch sw6;
-        public static Stopwatch sw7;
-        public static Stopwatch sw8;
-
+        /// <summary>
+        /// Adjust the indices of the tags parsed in <see cref="PreprocessText"/> to accomodate for any natively parsed TextMeshPro tags.
+        /// </summary>
         public void AdjustIndices()
         {
             var info = TextComponent.textInfo;
@@ -393,18 +366,14 @@ namespace TMPEffects.TextProcessing
 
         private bool HandleTag(ref ParsingUtility.TagInfo tagInfo, int textIndex, int order)
         {
-            sw7 ??= new Stopwatch();
-            sw7.Start();
             ReadOnlyCollection<TagProcessor> coll;
             if (!processors.TagProcessors.TryGetValue(tagInfo.prefix, out coll))
             {
-                sw7.Stop();
                 return false;
             }
 
             if (coll.Count == 1)
             {
-                sw7.Stop();
                 return coll[0].Process(tagInfo, textIndex, order);
             }
 
@@ -412,12 +381,10 @@ namespace TMPEffects.TextProcessing
             {
                 if (coll[i].Process(tagInfo, textIndex, order))
                 {
-                    sw7.Stop();
                     return true;
                 }
             }
 
-            sw7.Stop();
             return false;
         }
 

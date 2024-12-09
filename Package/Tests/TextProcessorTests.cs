@@ -281,37 +281,6 @@ public class TextProcessorTests
     [UnityTest]
     public IEnumerator IndexAdjustmentTest_IndexTag()
     {
-        for (int i = 0; i < 100; i++)
-        {
-            text.SetText(
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <wave></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<shake>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet." +
-                "<color=red>Lo<style=h3>rem <!delay=2></color>ip<s>su<b>m</style> d<color=blue><style=h3></color>ol<!wait=1>or s</s>it amet.");
-            yield return null;
-        }
-        
-        Debug.LogWarning("Sub sw: " + TMPEffectsTextProcessor.sw.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw2: " + TMPEffectsTextProcessor.sw2.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw3: " + TMPEffectsTextProcessor.sw3.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub getnexttag: " + ParsingUtility.sw.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw4: " + TMPEffectsTextProcessor.sw4.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw5: " + TMPEffectsTextProcessor.sw5.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw6: " + TMPEffectsTextProcessor.sw6.Elapsed.TotalMilliseconds);
-        Debug.LogWarning("Sub sw7: " + TMPEffectsTextProcessor.sw7.Elapsed.TotalMilliseconds);
-
         text.SetText("Lorem <!delay=2>ipsum dol<!wait=1>or sit amet.");
         yield return null;
         var commandtags = writer.CommandTags.TagsAt(6).ToList();

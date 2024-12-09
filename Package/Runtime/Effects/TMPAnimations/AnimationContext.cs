@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
+using TMPEffects.Components;
 
 namespace TMPEffects.TMPAnimations
 {
-    /// <inheritdoc/>
+    /// <summary>
+    /// Animation context used by <see cref="TMPAnimator"/>.
+    /// </summary>
     public class AnimationContext : IAnimationContext
     {
         /// <inheritdoc/>
@@ -30,15 +33,12 @@ namespace TMPEffects.TMPAnimations
         }
         /// <inheritdoc/>
         public object CustomData { get; set; }
-        /// <inheritdoc/>
-        public CharDataModifiers Modifiers { get; }
 
         private SegmentData segmentData;
 
         public AnimationContext(IAnimatorContext animatorContext, CharDataModifiers modifiers, SegmentData segmentData, object customData)
         {
             this.CustomData = customData;
-            this.Modifiers = modifiers;
             this.AnimatorContext = animatorContext;
             this.SegmentData = segmentData;
         }

@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using TMPEffects.AutoParameters.Attributes;
-using TMPEffects.Components.Writer;
 using UnityEngine;
-using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPCommands.Commands
 {

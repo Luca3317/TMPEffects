@@ -119,7 +119,8 @@ namespace TMPEffects.AutoParameters.Analyzers
                     SyntaxFactory.Parameter(SyntaxFactory.Identifier("context"))
                         .WithType(SyntaxFactory.IdentifierName("ICommandContext"))
                 )
-                .WithBody(SyntaxFactory.Block());
+                .WithBody(SyntaxFactory.Block())
+                .WithLeadingTrivia(SyntaxFactory.CarriageReturnLineFeed, SyntaxFactory.Comment("// Your command's execution logic goes here"), SyntaxFactory.CarriageReturnLineFeed);
 
             var compilationUnit = root as CompilationUnitSyntax;
 

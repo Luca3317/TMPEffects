@@ -1,5 +1,5 @@
 using UnityEditor;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.ShowAnimations;
 
 namespace TMPEffects.Editor
 {
