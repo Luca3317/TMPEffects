@@ -1,208 +1,215 @@
 ﻿<!DOCTYPE html>
-<html lang="csharp">
+<!--[if IE]><![endif]-->
+<html>
+  
   <head>
     <meta charset="utf-8">
-      <title>Interface ITMPEffectDatabase&lt;T&gt;
- | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ITMPEffectDatabase&lt;T&gt;
- | TMPEffects documentation ">
-      
-      
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      
-      <meta name="loc:inThisArticle" content="In This Article">
-      <meta name="loc:searchResultsCount" content="">
-      <meta name="loc:searchNoResults" content="">
-      <meta name="loc:tocFilter" content="Enter here to filter...">
-      <meta name="loc:nextArticle" content="">
-      <meta name="loc:prevArticle" content="">
-      <meta name="loc:themeLight" content="">
-      <meta name="loc:themeDark" content="">
-      <meta name="loc:themeAuto" content="">
-      <meta name="loc:changeTheme" content="">
-      <meta name="loc:copy" content="">
-      <meta name="loc:downloadPdf" content="">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ITMPEffectDatabase&lt;T&gt;
+   | TMPEffects documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ITMPEffectDatabase&lt;T&gt;
+   | TMPEffects documentation ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
-
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </header>
-
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
-
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
-
-        <article data-uid="TMPEffects.Databases.ITMPEffectDatabase`1">
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1">
   
   
-  <h1 id="TMPEffects_Databases_ITMPEffectDatabase_1" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1" class="text-break">
-    Interface ITMPEffectDatabase&lt;T&gt;
-    
+  <h1 id="TMPEffects_Databases_ITMPEffectDatabase_1" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1" class="text-break">Interface ITMPEffectDatabase&lt;T&gt;
   </h1>
-  
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.Databases.html">TMPEffects.Databases</a></dd></dl>
-    <dl><dt>Assembly</dt><dd>cs.temp.dll.dll</dd></dl>
-  </div>
-  
-  <div class="markdown summary"><p>Base interface for effect databases.</p>
+  <div class="markdown level0 summary"><p>Base interface for effect databases.</p>
 </div>
-  <div class="markdown conceptual"></div>
-  
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ITMPEffectDatabase&lt;out T&gt; : ITMPEffectDatabase</code></pre>
-  </div>
-  
-  
-  
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>T</code></dt>
-    <dd><p>Type of effects contained in this database.</p>
-</dd>
-  </dl>
-  
-  
-  
-  
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="TMPEffects.Databases.ITMPEffectDatabase.html#TMPEffects_Databases_ITMPEffectDatabase_ContainsEffect_System_String_">ITMPEffectDatabase.ContainsEffect(String)</a>
     </div>
-  </dd></dl>
-  
-  
-  
-  
-  
-  
-  <h2 class="section" id="methods">Methods
-  </h2>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.Databases.html">TMPEffects.Databases</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="TMPEffects_Databases_ITMPEffectDatabase_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITMPEffectDatabase&lt;out T&gt; : ITMPEffectDatabase</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of effects contained in this database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
   
   
   <a id="TMPEffects_Databases_ITMPEffectDatabase_1_GetEffect_" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect*"></a>
-  
-  <h3 id="TMPEffects_Databases_ITMPEffectDatabase_1_GetEffect_System_String_" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect(System.String)">
-    GetEffect(String)
-    
-  </h3>
-  
+  <h4 id="TMPEffects_Databases_ITMPEffectDatabase_1_GetEffect_System_String_" data-uid="TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect(System.String)">GetEffect(String)</h4>
   <div class="markdown level1 summary"><p>Get the effect associated with the given name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">T GetEffect(string name)</code></pre>
   </div>
-  
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>name</code> <span class="xref">System.String</span></dt>
-    <dd><p>The identifier of the effect.</p>
-</dd>
-  </dl>
-  
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
-    <dd><p>The effect associated with the given name.</p>
-</dd>
-  </dl>
-  
-  
-  
-  
-  
-  
-  
-  
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><span class="xref">System.Collections.Generic.KeyNotFoundException</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The identifier of the effect.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The effect associated with the given name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.KeyNotFoundException</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
-
-        <div class="contribution d-print-none">
+          </div>
           
-        </div>
-
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
-
-      </div>
-
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            TMPEffects documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

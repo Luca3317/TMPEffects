@@ -1,136 +1,104 @@
 ﻿<!DOCTYPE html>
-<html lang="csharp">
+<!--[if IE]><![endif]-->
+<html>
+  
   <head>
     <meta charset="utf-8">
-      <title>Class ReadOnlyCharDataState
- | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class ReadOnlyCharDataState
- | TMPEffects documentation ">
-      
-      
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      
-      <meta name="loc:inThisArticle" content="In This Article">
-      <meta name="loc:searchResultsCount" content="">
-      <meta name="loc:searchNoResults" content="">
-      <meta name="loc:tocFilter" content="Enter here to filter...">
-      <meta name="loc:nextArticle" content="">
-      <meta name="loc:prevArticle" content="">
-      <meta name="loc:themeLight" content="">
-      <meta name="loc:themeDark" content="">
-      <meta name="loc:themeAuto" content="">
-      <meta name="loc:changeTheme" content="">
-      <meta name="loc:copy" content="">
-      <meta name="loc:downloadPdf" content="">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ReadOnlyCharDataState
+   | TMPEffects documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ReadOnlyCharDataState
+   | TMPEffects documentation ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
-
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </header>
-
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
-          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
-
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
-
-        <article data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState">
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState">
   
   
-  <h1 id="TMPEffects_CharacterData_ReadOnlyCharDataState" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState" class="text-break">
-    Class ReadOnlyCharDataState
-    
+  <h1 id="TMPEffects_CharacterData_ReadOnlyCharDataState" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState" class="text-break">Class ReadOnlyCharDataState
   </h1>
-  
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.CharacterData.html">TMPEffects.CharacterData</a></dd></dl>
-    <dl><dt>Assembly</dt><dd>cs.temp.dll.dll</dd></dl>
-  </div>
-  
-  <div class="markdown summary"><p>Readonly version of <a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a>.<br>
+  <div class="markdown level0 summary"><p>Readonly version of <a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a>.<br>
 Used to expose the current state of the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> in <see cref="!:IAnimationContext"></see>, allowing you to take it into account in your animations
 (ideally with late animations, see <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_gettingstarted.html#late-animations--second-pass">the docs</a>).</p>
 </div>
-  <div class="markdown conceptual"></div>
-  
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ReadOnlyCharDataState : ICharDataState</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ReadOnlyCharDataState</span></div>
   </div>
-  
-  
-  
-  
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><span class="xref">System.Object</span></div>
-      <div><span class="xref">ReadOnlyCharDataState</span></div>
-    </dd>
-  </dl>
-  
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></div>
-    </dd>
-  </dl>
-  
-  
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <span class="xref">System.Object.ToString()</span>
     </div>
@@ -152,1107 +120,910 @@ Used to expose the current state of the <a class="xref" href="TMPEffects.Charact
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
-  </dd></dl>
-  
-  
-  
-  
-  
-  
-  <h2 class="section" id="constructors">Constructors
-  </h2>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.CharacterData.html">TMPEffects.CharacterData</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="TMPEffects_CharacterData_ReadOnlyCharDataState_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ReadOnlyCharDataState : ICharDataState</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState__ctor_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.#ctor*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState__ctor_TMPEffects_CharacterData_CharDataState_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.#ctor(TMPEffects.CharacterData.CharDataState)">
-    ReadOnlyCharDataState(CharDataState)
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState__ctor_TMPEffects_CharacterData_CharDataState_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.#ctor(TMPEffects.CharacterData.CharDataState)">ReadOnlyCharDataState(CharDataState)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ReadOnlyCharDataState(CharDataState state)</code></pre>
   </div>
-  
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h2 class="section" id="properties">Properties
-  </h2>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL">
-    BL
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL">BL</h4>
   <div class="markdown level1 summary"><p>The position of the bottomleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BL { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Color_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Color*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Color">
-    BL_Color
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Color">BL_Color</h4>
   <div class="markdown level1 summary"><p>The color value of the bottomleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Color32 BL_Color { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Color32</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Color32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Result_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Result*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Result">
-    BL_Result
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_Result">BL_Result</h4>
   <div class="markdown level1 summary"><p>Contains the calculated position of the bottomleft vertex after calling <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BL_Result { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV">
-    BL_UV
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV">BL_UV</h4>
   <div class="markdown level1 summary"><p>The UV value of the bottomleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 BL_UV { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV2_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV2*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV2">
-    BL_UV2
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BL_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BL_UV2">BL_UV2</h4>
   <div class="markdown level1 summary"><p>The UV2 value of the bottomleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 BL_UV2 { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMax_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMax*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMax">
-    BLMax
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMax">BLMax</h4>
   <div class="markdown level1 summary"><p>The maximum position modification of the bottomleft vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BLMax { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMin_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMin*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMin">
-    BLMin
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BLMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BLMin">BLMin</h4>
   <div class="markdown level1 summary"><p>The minimum position modification of the bottomleft vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BLMin { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR">
-    BR
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR">BR</h4>
   <div class="markdown level1 summary"><p>The position of the bottomright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BR { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Color_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Color*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Color">
-    BR_Color
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Color">BR_Color</h4>
   <div class="markdown level1 summary"><p>The color value of the bottomright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Color32 BR_Color { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Color32</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Color32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Result_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Result*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Result">
-    BR_Result
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_Result">BR_Result</h4>
   <div class="markdown level1 summary"><p>Contains the calculated position of the bottomright vertex after calling <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BR_Result { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV">
-    BR_UV
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV">BR_UV</h4>
   <div class="markdown level1 summary"><p>The UV value of the bottomright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 BR_UV { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV2_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV2*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV2">
-    BR_UV2
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BR_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BR_UV2">BR_UV2</h4>
   <div class="markdown level1 summary"><p>The UV2 value of the bottomright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 BR_UV2 { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMax_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMax*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMax">
-    BRMax
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMax">BRMax</h4>
   <div class="markdown level1 summary"><p>The maximum position modification of the bottomright vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BRMax { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMin_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMin*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMin">
-    BRMin
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_BRMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.BRMin">BRMin</h4>
   <div class="markdown level1 summary"><p>The minimum position modification of the bottomleft vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 BRMin { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_positionDelta_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.positionDelta*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_positionDelta" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.positionDelta">
-    positionDelta
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_positionDelta" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.positionDelta">positionDelta</h4>
   <div class="markdown level1 summary"><p>The accumulated position delta of all modifications.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 positionDelta { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_Rotations_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.Rotations*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_Rotations" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.Rotations">
-    Rotations
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_Rotations" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.Rotations">Rotations</h4>
   <div class="markdown level1 summary"><p>All rotations and the pivot they will be applied around.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEnumerable&lt;ValueTuple&lt;Quaternion, Vector3&gt;&gt; Rotations { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">IEnumerable</span>&lt;<span class="xref">ValueTuple</span>&lt;<span class="xref">Quaternion</span>, <span class="xref">Vector3</span>&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">ValueTuple</span>&lt;<span class="xref">Quaternion</span>, <span class="xref">Vector3</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_scaleDelta_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.scaleDelta*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_scaleDelta" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.scaleDelta">
-    scaleDelta
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_scaleDelta" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.scaleDelta">scaleDelta</h4>
   <div class="markdown level1 summary"><p>The accumulated scale delta of all modifications.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Matrix4x4 scaleDelta { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Matrix4x4</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Matrix4x4</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL">
-    TL
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL">TL</h4>
   <div class="markdown level1 summary"><p>The position of the topleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TL { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Color_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Color*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Color">
-    TL_Color
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Color">TL_Color</h4>
   <div class="markdown level1 summary"><p>The color value of the topleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Color32 TL_Color { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Color32</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Color32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Result_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Result*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Result">
-    TL_Result
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_Result">TL_Result</h4>
   <div class="markdown level1 summary"><p>Contains the calculated position of the topleft vertex after calling <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TL_Result { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV">
-    TL_UV
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV">TL_UV</h4>
   <div class="markdown level1 summary"><p>The UV value of the topleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 TL_UV { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV2_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV2*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV2">
-    TL_UV2
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TL_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TL_UV2">TL_UV2</h4>
   <div class="markdown level1 summary"><p>The UV2 value of the topleft vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 TL_UV2 { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMax_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMax*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMax">
-    TLMax
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMax">TLMax</h4>
   <div class="markdown level1 summary"><p>The maximum position modification of the topleft vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TLMax { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMin_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMin*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMin">
-    TLMin
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TLMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TLMin">TLMin</h4>
   <div class="markdown level1 summary"><p>The minimum position modification of the topleft vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TLMin { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR">
-    TR
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR">TR</h4>
   <div class="markdown level1 summary"><p>The position of the topright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TR { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Color_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Color*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Color">
-    TR_Color
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Color" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Color">TR_Color</h4>
   <div class="markdown level1 summary"><p>The color value of the topright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Color32 TR_Color { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Color32</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Color32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Result_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Result*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Result">
-    TR_Result
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_Result" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_Result">TR_Result</h4>
   <div class="markdown level1 summary"><p>Contains the calculated position of the topright vertex after calling <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TR_Result { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV">
-    TR_UV
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV">TR_UV</h4>
   <div class="markdown level1 summary"><p>The UV value of the topright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 TR_UV { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV2_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV2*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV2">
-    TR_UV2
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TR_UV2" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TR_UV2">TR_UV2</h4>
   <div class="markdown level1 summary"><p>The UV2 value of the topright vertex.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector2 TR_UV2 { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector2</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMax_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMax*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMax">
-    TRMax
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMax" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMax">TRMax</h4>
   <div class="markdown level1 summary"><p>The maximum position modification of the topright vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TRMax { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMin_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMin*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMin">
-    TRMin
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_TRMin" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.TRMin">TRMin</h4>
   <div class="markdown level1 summary"><p>The minimum position modification of the topright vertex.<br>
 This is used in calculating the scaling of all vertex position modifications in <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_CalculateVertexPositions">CalculateVertexPositions()</a>; you can most likely ignore this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vector3 TRMin { get; }</code></pre>
   </div>
-  
-  
-  
-  
-  
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-  
-  
-  
-  
-  
-  
-  
-  
-  <h2 class="section" id="methods">Methods
-  </h2>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
   
   
   <a id="TMPEffects_CharacterData_ReadOnlyCharDataState_CalculateVertexPositions_" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.CalculateVertexPositions*"></a>
-  
-  <h3 id="TMPEffects_CharacterData_ReadOnlyCharDataState_CalculateVertexPositions" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.CalculateVertexPositions">
-    CalculateVertexPositions()
-    
-  </h3>
-  
+  <h4 id="TMPEffects_CharacterData_ReadOnlyCharDataState_CalculateVertexPositions" data-uid="TMPEffects.CharacterData.ReadOnlyCharDataState.CalculateVertexPositions">CalculateVertexPositions()</h4>
   <div class="markdown level1 summary"><p>Calculate the vertex positions, applying all rotations, transformations and scale operations.<br>
 Will set <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BL_Result">BL_Result</a>, <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TL_Result">TL_Result</a>, <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_TR_Result">TR_Result</a> and <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html#TMPEffects_CharacterData_ICharDataState_BR_Result">BR_Result</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  
+  <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void CalculateVertexPositions()</code></pre>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a>
+  </div>
 </article>
-
-        <div class="contribution d-print-none">
+          </div>
           
-        </div>
-
-        <div class="next-article d-print-none border-top" id="nextArticle"></div>
-
-      </div>
-
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            TMPEffects documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>
