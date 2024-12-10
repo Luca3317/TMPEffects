@@ -33,6 +33,6 @@ public class TMPGenericSceneCommandDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return EditorGUIUtility.singleLineHeight * 4 + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("command"));
+        return (EditorGUIUtility.singleLineHeight * 4) + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("command"));
     }
 }

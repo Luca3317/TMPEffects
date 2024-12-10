@@ -37,7 +37,7 @@ namespace TMPEffects.Parameters
 
             if (Value == null) return 0;
 
-            return Value.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);;
+            return Value.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);
         }
 
         public void GetMinMaxOffset(out float min, out float max, ITMPSegmentData segmentData,
@@ -77,6 +77,5 @@ namespace TMPEffects.Parameters
         {
             return base.GetHashCode();
         }
-
     }
 }

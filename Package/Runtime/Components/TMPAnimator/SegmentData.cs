@@ -58,7 +58,6 @@ namespace TMPEffects.Components.Animator
     /// </summary>
     public readonly struct SegmentData : ITMPSegmentData
     {
-
         public int StartIndex { get; }
 
         public int Length { get; }

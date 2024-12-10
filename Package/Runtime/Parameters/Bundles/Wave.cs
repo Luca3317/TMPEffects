@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPEffects.Extensions;
 using TMPEffects.ParameterUtilityGenerator.Attributes;
 using TMPEffects.TMPAnimations;
@@ -385,7 +385,7 @@ namespace TMPEffects.Parameters
         public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true,
             PulseExtrema extrema = PulseExtrema.Early)
         {
-            float interval = (TroughWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
+            float interval = ((TroughWait) * (realtimeWait ? Velocity : 1f)) + EffectivePeriod;
             float t = CalculateT(interval, time, offset, -1);
 
             if (deltaTime >= interval)
@@ -440,7 +440,7 @@ namespace TMPEffects.Parameters
         public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true,
             PulseExtrema extrema = PulseExtrema.Early)
         {
-            float interval = (CrestWait) * (realtimeWait ? Velocity : 1f) + EffectivePeriod;
+            float interval = ((CrestWait) * (realtimeWait ? Velocity : 1f)) + EffectivePeriod;
             float t = CalculateT(interval, time, offset, -1);
 
             if (deltaTime >= interval)
@@ -657,7 +657,7 @@ namespace TMPEffects.Parameters
         /// <exception cref="System.Exception"></exception>
         public (float Value, int Direction) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)
         {
-            float interval = (TroughWait) * (realTimeWait ? Velocity : 1f) + EffectivePeriod;
+            float interval = ((TroughWait) * (realTimeWait ? Velocity : 1f)) + EffectivePeriod;
             float t = CalculateT(interval, time, offset, -1);
 
             // If 0, we are at start of up curve.
@@ -793,7 +793,7 @@ namespace TMPEffects.Parameters
 
         private float CalculateT(float period, float time, float offset, int mult)
         {
-            float t = time + offset * mult;
+            float t = time + (offset * mult);
 
             if (t < 0)
             {

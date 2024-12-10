@@ -64,7 +64,7 @@ public class TMPBlendCurveDrawer : PropertyDrawer
         var curveProp = property.FindPropertyRelative("curve");
         if (curveProp.isExpanded)
         {
-            return EditorGUIUtility.singleLineHeight * 4 + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("offsetProvider"));
+            return (EditorGUIUtility.singleLineHeight * 4) + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("offsetProvider"));
         }
         
         return EditorGUIUtility.singleLineHeight;

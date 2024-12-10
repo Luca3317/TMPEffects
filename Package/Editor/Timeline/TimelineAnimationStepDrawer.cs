@@ -49,6 +49,6 @@ public class TimelineAnimationStepDrawer : AnimationStepDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         Init(property.FindPropertyRelative("Step"));
-        return GetCommonHeight(property.FindPropertyRelative("Step")) + EditorGUIUtility.singleLineHeight  *2;
+        return GetCommonHeight(property.FindPropertyRelative("Step")) + (EditorGUIUtility.singleLineHeight  *2);
     }
 }

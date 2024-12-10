@@ -1,7 +1,6 @@
-﻿namespace TMPEffects.AutoParameters.Generator.Generator
+namespace TMPEffects.AutoParameters.Generator.Generator
 {
     public class AutoParametersGenerator_CreateCommandAutoParameters
     {
-        
     }
 }

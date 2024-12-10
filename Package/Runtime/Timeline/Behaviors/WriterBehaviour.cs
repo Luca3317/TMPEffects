@@ -11,11 +11,9 @@ public class WriterBehaviour : PlayableBehaviour
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
         writer = info.output.GetUserData() as TMPWriter;
-        
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
-        
     }
 }

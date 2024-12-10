@@ -49,8 +49,6 @@ namespace TMPEffects.Editor
                 "A keyword database defining additional keywords. If the same keyword is present in the global keyword Database, this database will override it.");
             public static readonly GUIContent sceneKeywordDatabase = new GUIContent("Keyword Database",
                 "A scene keyword database defining additional keywords. If the same keyword is present in the global keyword Database or keyword database on this writer, this database will override it.");
-            
-            
         }
         
         TMPWriter writer;
@@ -396,7 +394,7 @@ namespace TMPEffects.Editor
 
             // Calculate wrappings
             wrapHeader = width < playLabelWidth + eventToggleWidth + commandToggleWidth - 10;
-            wrapPlayer = (playButtonWidth + buttonWidth * 3) * 3f > width;
+            wrapPlayer = width < (playButtonWidth + (buttonWidth * 3)) * 3f;
 
             // Calculate heights
             playLabelHeight = playLabelStyle.CalcHeight(Styles.playLabel, playLabelWidth);
@@ -421,10 +419,10 @@ namespace TMPEffects.Editor
             if (wrapHeader)
             {
                 eventToggleRect = new Rect(headerRect.x,
-                    headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth - 20,
+                    headerRect.y + playLabelHeight + (playToggleStyle.lineHeight / 2), eventToggleWidth - 20,
                     eventToggleHeight);
                 commandToggleRect = new Rect(headerRect.x + eventToggleWidth,
-                    headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, commandToggleWidth,
+                    headerRect.y + playLabelHeight + (playToggleStyle.lineHeight / 2), commandToggleWidth,
                     commandToggleHeight);
             }
             else
@@ -437,11 +435,11 @@ namespace TMPEffects.Editor
 
             eventWarningRect = new Rect(eventToggleRect.x + eventToggleRect.width - 5, eventToggleRect.y, 20, 20);
             playButtonRect = new Rect(playerRect.x, playerRect.y, playButtonWidth, playButtonHeight);
-            resetButtonRect = new Rect(playerRect.x + playButtonWidth + buttonOffset, playerRect.y + buttonHeight / 4,
+            resetButtonRect = new Rect(playerRect.x + playButtonWidth + buttonOffset, playerRect.y + (buttonHeight / 4),
                 buttonWidth, buttonHeight);
-            stopButtonRect = new Rect(resetButtonRect.x + buttonWidth, playerRect.y + buttonHeight / 4, buttonWidth,
+            stopButtonRect = new Rect(resetButtonRect.x + buttonWidth, playerRect.y + (buttonHeight / 4), buttonWidth,
                 buttonHeight);
-            skipButtonRect = new Rect(stopButtonRect.x + buttonWidth, playerRect.y + buttonHeight / 4, buttonWidth,
+            skipButtonRect = new Rect(stopButtonRect.x + buttonWidth, playerRect.y + (buttonHeight / 4), buttonWidth,
                 buttonHeight);
 
             resetButtonRect.y += buttonHeight / 4;
@@ -455,13 +453,13 @@ namespace TMPEffects.Editor
             else
             {
                 progressBarRect = new Rect(skipButtonRect.x + skipButtonRect.width + progressBarXOffset,
-                    playerRect.y + playButtonHeight / 2 - progressBarThickness / 2,
+                    playerRect.y + (playButtonHeight / 2) - (progressBarThickness / 2),
                     width - (skipButtonRect.x - playerRect.x + skipButtonRect.width + progressBarXOffset) + 5,
                     progressBarThickness);
                 progressBarRect.y += buttonHeight / 4;
             }
 
-            progressBarControllerRect = new Rect(progressBarRect.position.x + progressBarRect.width * progress - 2,
+            progressBarControllerRect = new Rect(progressBarRect.position.x + (progressBarRect.width * progress) - 2,
                 progressBarRect.y, progressBarThickness, progressBarThickness);
         }
 

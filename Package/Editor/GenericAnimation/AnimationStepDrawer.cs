@@ -272,7 +272,7 @@ public class AnimationStepDrawer : PropertyDrawer
         Init(property);
 
         if (property.isExpanded)
-            return GetCommonHeight(property) + EditorGUIUtility.singleLineHeight * 6;
+            return GetCommonHeight(property) + (EditorGUIUtility.singleLineHeight * 6);
 
         return EditorGUIUtility.singleLineHeight;
     }

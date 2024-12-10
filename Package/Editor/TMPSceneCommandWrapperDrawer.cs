@@ -59,11 +59,11 @@ namespace TMPEffects.Editor
             if (property.FindPropertyRelative("type").enumValueIndex ==
                 (int)TMPSceneCommandWrapper.TMPSceneCommandType.Generic)
             {
-                return EditorGUIUtility.singleLineHeight * 3.5f + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("generic"));
+                return (EditorGUIUtility.singleLineHeight * 3.5f) + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("generic"));
             }
             else
             {
-                return EditorGUIUtility.singleLineHeight * 3.5f + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("custom"));
+                return (EditorGUIUtility.singleLineHeight * 3.5f) + EditorGUI.GetPropertyHeight(property.FindPropertyRelative("custom"));
             }
         }
     }

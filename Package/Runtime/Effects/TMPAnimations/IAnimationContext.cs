@@ -9,7 +9,6 @@ namespace TMPEffects.TMPAnimations
     /// </summary>
     public interface IAnimationContext : IAnimationData, IAnimationFinished, IAnimationFinisher
     {
-
     }
 
     /// <summary>
@@ -64,6 +63,4 @@ namespace TMPEffects.TMPAnimations
         /// <returns></returns>
         public void FinishAnimation(CharData cData);
     }
-    
-    
 }

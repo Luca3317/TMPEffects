@@ -61,8 +61,6 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             Vector3 pos = Vector3.LerpUnclamped(cData.InitialPosition, targetPos, t2);
 
             cData.SetPosition(pos);
-
-
         }
     }
 }

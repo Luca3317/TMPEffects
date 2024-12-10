@@ -49,7 +49,6 @@ public class ColorOverrideDrawer : PropertyDrawer
         
         flagProp.enumValueFlag = (int)(ColorOverride.OverrideMode)
             EditorGUI.EnumFlagsField(position, GUIContent.none,(ColorOverride.OverrideMode)flagProp.enumValueFlag);
-        
     }
     
     // public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

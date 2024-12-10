@@ -175,7 +175,7 @@ public class CharDataTests
 
         cData.PositionDelta = Vector3.one * 3;
         Assert.AreEqual(Vector3.one * 3, cData.PositionDelta);
-        Assert.AreEqual(cData.InitialPosition + Vector3.one * 3, cData.Position);
+        Assert.AreEqual(cData.InitialPosition + (Vector3.one * 3), cData.Position);
 
         cData.ClearPosition();
         cData.ClearRotations();

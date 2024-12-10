@@ -1,4 +1,4 @@
-﻿using TMPEffects.CharacterData;
+using TMPEffects.CharacterData;
 using TMPEffects.Databases;
 
 namespace TMPEffects.Components.Animator
@@ -47,7 +47,6 @@ namespace TMPEffects.Components.Animator
         /// Whether animations use scaled time.
         /// </summary>
         public bool UseScaledTime { get; }
-        
     }
 
     /// <summary>

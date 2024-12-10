@@ -203,6 +203,5 @@ namespace TMPEffects.TMPAnimations.HideAnimations
             public Dictionary<int, float> delayDict = null;
             public Dictionary<int, System.Random> rngDict = null;
         }
-
     }
 }

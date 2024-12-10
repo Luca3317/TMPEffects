@@ -75,7 +75,7 @@ namespace TMPEffects.Editor
                 float t = (float)i / (points.Length - 4);
 
                 float x = Mathf.Lerp(rect.xMin, rect.xMin + width, t);
-                float y = rect.yMax - curve.Evaluate(blendin ? t : 1 - t) * rect.height;
+                float y = rect.yMax - (curve.Evaluate(blendin ? t : 1 - t) * rect.height);
                 points[i + 3] = new Vector3(x, y, 0);
             }
 

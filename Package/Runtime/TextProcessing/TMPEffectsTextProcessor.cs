@@ -283,7 +283,7 @@ namespace TMPEffects.TextProcessing
             // preprocess or after the native tag processing
             // If ever changed, keep in mind that TMPWriter might need fixes to
             // its writer coroutine
-            sb.Append(" ");
+            sb.Append(' ');
 
             string parsed = sb.ToString();
             FinishPreProcess?.Invoke(parsed);

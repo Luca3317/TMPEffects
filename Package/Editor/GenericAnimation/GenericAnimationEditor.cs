@@ -154,7 +154,7 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
         float fromWidth = 75;
         float gap = 10;
-        var fromRect = new Rect(rect.x + rect.width - fromWidth * 2 - gap * 1.5f, rect.y, fromWidth,
+        var fromRect = new Rect(rect.x + rect.width - (fromWidth * 2) - (gap * 1.5f), rect.y, fromWidth,
             EditorGUIUtility.singleLineHeight);
         var toRect = new Rect(rect.x + rect.width - fromWidth - gap, rect.y, fromWidth,
             EditorGUIUtility.singleLineHeight);

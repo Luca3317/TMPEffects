@@ -50,7 +50,7 @@ internal class ExportToGenericUtilityWindow : EditorWindow
         var rect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight);
         var labelRect = new Rect(rect.x, rect.y, EditorGUIUtility.labelWidth, rect.height);
         var buttonRect = new Rect(rect.x + labelRect.width,
-            rect.y - (fileBrowserButtonStyle.fixedHeight - rect.height) / 2f, fileBrowserButtonStyle.fixedWidth,
+            rect.y - ((fileBrowserButtonStyle.fixedHeight - rect.height) / 2f), fileBrowserButtonStyle.fixedWidth,
             fileBrowserButtonStyle.fixedHeight);
         var textRect = new Rect(rect.x + labelRect.width + 40, rect.y, rect.width - labelRect.width - 40, rect.height);
         EditorGUI.LabelField(labelRect, "Directory");
@@ -77,7 +77,6 @@ internal class ExportToGenericUtilityWindow : EditorWindow
                 mayExport = false;
                 EditorGUILayout.HelpBox("Not a valid directory: " + directoryPath, MessageType.Error);
             }
-
             else if (File.Exists(Path.Combine(tempPath, assetName + ".asset")))
             {
                 mayExport = false;
@@ -85,13 +84,11 @@ internal class ExportToGenericUtilityWindow : EditorWindow
                     "A file with the specified name and extension already exists: " +
                     Path.Combine(tempPath, assetName + ".asset").ToString(), MessageType.Error);
             }
-
             else if (string.IsNullOrWhiteSpace(assetName))
             {
                 mayExport = false;
                 EditorGUILayout.HelpBox("Specify a name for the asset to export to", MessageType.Info);
             }
-
             else
                 EditorGUILayout.HelpBox(
                     "Selected location: " + Path.Combine(Path.GetFullPath(directoryPath), assetName + ".asset"),
@@ -207,7 +204,7 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
         var rect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight);
         var labelRect = new Rect(rect.x, rect.y, EditorGUIUtility.labelWidth, rect.height);
         var buttonRect = new Rect(rect.x + labelRect.width,
-            rect.y - (fileBrowserButtonStyle.fixedHeight - rect.height) / 2f, fileBrowserButtonStyle.fixedWidth,
+            rect.y - ((fileBrowserButtonStyle.fixedHeight - rect.height) / 2f), fileBrowserButtonStyle.fixedWidth,
             fileBrowserButtonStyle.fixedHeight);
         var textRect = new Rect(rect.x + labelRect.width + 40, rect.y, rect.width - labelRect.width - 40, rect.height);
         EditorGUI.LabelField(labelRect, "Directory");
@@ -238,7 +235,6 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
             // {
             //     EditorGUILayout.HelpBox("Directory not contained in this project: " + Application.dataPath + " :" + directoryPath + "/" + assetName, MessageType.Warning);
             // }
-
             else if (File.Exists(Path.Combine(tempPath, scriptName + ".cs")))
             {
                 mayExport = false;
@@ -246,13 +242,11 @@ internal class ExportToTMPAnimationScriptUtilityWindow : EditorWindow
                     "A file with the specified name and extension already exists: " +
                     Path.Combine(tempPath, scriptName + ".cs").ToString(), MessageType.Error);
             }
-
             else if (string.IsNullOrWhiteSpace(scriptName))
             {
                 mayExport = false;
                 EditorGUILayout.HelpBox("Specify a name for the script to export to", MessageType.Info);
             }
-
             else
                 EditorGUILayout.HelpBox(
                     "Selected location: " + Path.Combine(Path.GetFullPath(directoryPath), scriptName + ".cs"),

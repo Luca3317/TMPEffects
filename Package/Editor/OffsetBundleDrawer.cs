@@ -60,7 +60,7 @@ namespace TMPEffects.Editor
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             if (!property.isExpanded) return EditorGUIUtility.singleLineHeight;
-            return EditorGUIUtility.singleLineHeight * 4 +
+            return (EditorGUIUtility.singleLineHeight * 4) +
                    EditorGUI.GetPropertyHeight(property.FindPropertyRelative("offsetProvider"));
         }
     }

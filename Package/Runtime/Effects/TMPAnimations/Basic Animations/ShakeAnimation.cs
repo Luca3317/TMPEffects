@@ -85,8 +85,8 @@ namespace TMPEffects.TMPAnimations.Animations
                         : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rng.NextDouble());
                     data.lastUpdated = context.AnimatorContext.PassedTime;
 
-                    data.xOffset = ((float)data.rng.NextDouble() * 2f - 1f) * xAmp;
-                    data.yOffset = ((float)data.rng.NextDouble() * 2f - 1f) * yAmp;
+                    data.xOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * xAmp;
+                    data.yOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * yAmp;
                 }
 
                 offset = new Vector3(data.xOffset, data.yOffset, 0f);
@@ -123,8 +123,8 @@ namespace TMPEffects.TMPAnimations.Animations
                         }
                     }
 
-                    float xOffset = ((float)data.rngDict[segmentIndex].NextDouble() * 2f - 1f) * xAmp;
-                    float yOffset = ((float)data.rngDict[segmentIndex].NextDouble() * 2f - 1f) * yAmp;
+                    float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
+                    float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
                     data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
                 }
 
@@ -151,8 +151,8 @@ namespace TMPEffects.TMPAnimations.Animations
                         : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rngDict[segmentIndex].NextDouble());
                     data.lastUpdatedDict[segmentIndex] = context.AnimatorContext.PassedTime;
 
-                    float xOffset = ((float)data.rngDict[segmentIndex].NextDouble() * 2f - 1f) * xAmp;
-                    float yOffset = ((float)data.rngDict[segmentIndex].NextDouble() * 2f - 1f) * yAmp;
+                    float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
+                    float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
                     data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
                 }
 

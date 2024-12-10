@@ -35,5 +35,4 @@ public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
         
         return playable;
     }
-
 }

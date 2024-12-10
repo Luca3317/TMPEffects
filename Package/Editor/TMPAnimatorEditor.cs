@@ -511,9 +511,9 @@ namespace TMPEffects.Editor
             EditorGUI.BeginDisabledGroup(!PreviewEnabled());
 
             var rect = EditorGUILayout.GetControlRect(false,
-                EditorGUIUtility.singleLineHeight * (Application.isPlaying ? 2 : (previewProp.isExpanded ? 4.5f : 2)) +
+                (EditorGUIUtility.singleLineHeight * (Application.isPlaying ? 2 : (previewProp.isExpanded ? 4.5f : 2))) +
                 10);
-            var dividerRect = new Rect(10, rect.y + rect.height - EditorGUIUtility.singleLineHeight / 2f, rect.width,
+            var dividerRect = new Rect(10, rect.y + rect.height - (EditorGUIUtility.singleLineHeight / 2f), rect.width,
                 1);
 
             GUIStyle animationButtonStyle2 = new GUIStyle(GUI.skin.button);

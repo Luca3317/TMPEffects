@@ -67,7 +67,7 @@ public class EditorFriendlyCharDataModifiersDrawer : PropertyDrawer
     private Rect DrawCharacterModifier(Rect rect)
     {
         var bgRect = new Rect(rect.x, rect.y, rect.width,
-            EditorGUIUtility.singleLineHeight * 2 + EditorGUI.GetPropertyHeight(rotationsProp, true));
+            (EditorGUIUtility.singleLineHeight * 2) + EditorGUI.GetPropertyHeight(rotationsProp, true));
         EditorGUI.DrawRect(bgRect, backgroundColor);
 
         EditorGUI.PropertyField(rect, positionProp, positionGUI);

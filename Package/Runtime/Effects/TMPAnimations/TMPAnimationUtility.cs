@@ -704,12 +704,12 @@ namespace TMPEffects.TMPAnimations
             float widthDelta = newCharacter.glyph.metrics.width - originalCharacter.glyph.metrics.width;
 
 
-            Vector3 bl = new Vector3(cData.InitialMesh.BL_Position.x + horizontalBearingXDelta * spriteScale,
-                cData.InitialMesh.BL_Position.y + (horizontalBearingYDelta - heightDelta) * spriteScale);
+            Vector3 bl = new Vector3(cData.InitialMesh.BL_Position.x + (horizontalBearingXDelta * spriteScale),
+                cData.InitialMesh.BL_Position.y + ((horizontalBearingYDelta - heightDelta) * spriteScale));
             Vector3 tl = new Vector3(bl.x,
-                cData.InitialMesh.TL_Position.y + horizontalBearingYDelta * spriteScale);
+                cData.InitialMesh.TL_Position.y + (horizontalBearingYDelta * spriteScale));
             Vector3 tr = new Vector3(
-                cData.InitialMesh.TR_Position.x + (horizontalBearingXDelta + widthDelta) * spriteScale,
+                cData.InitialMesh.TR_Position.x + ((horizontalBearingXDelta + widthDelta) * spriteScale),
                 tl.y);
             Vector3 br = new Vector3(tr.x, bl.y);
 
@@ -725,9 +725,9 @@ namespace TMPEffects.TMPAnimations
             Vector2 uv0 = new Vector2(cData.InitialMesh.BL_UV0.x + (glyphRectDelta.x / fontAsset.atlasWidth),
                 cData.InitialMesh.BL_UV0.y + (glyphRectDelta.y / fontAsset.atlasHeight));
             Vector2 uv1 = new Vector2(uv0.x,
-                cData.InitialMesh.TL_UV0.y + (glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight);
+                cData.InitialMesh.TL_UV0.y + ((glyphRectDelta.y + glyphRectDelta.height) / fontAsset.atlasHeight));
             Vector2 uv2 = new Vector2(
-                cData.InitialMesh.TR_UV0.x + (glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth,
+                cData.InitialMesh.TR_UV0.x + ((glyphRectDelta.x + glyphRectDelta.width) / fontAsset.atlasWidth),
                 uv1.y);
             Vector2 uv3 = new Vector2(uv2.x, uv0.y);
 

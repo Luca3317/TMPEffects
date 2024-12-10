@@ -108,7 +108,7 @@ namespace TMPEffects.TMPSceneAnimations
 
                 float scaleFactor = (canvas == null ? 1f : canvas.scaleFactor);
                 Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
-                int index = TMP_TextUtilities.FindIntersectingCharacter(text, Input.mousePosition - d.offsets[segmentIndex] * scaleFactor, input, true);
+                int index = TMP_TextUtilities.FindIntersectingCharacter(text, Input.mousePosition - (d.offsets[segmentIndex] * scaleFactor), input, true);
 
                 if (index != cData.info.index)
                 {

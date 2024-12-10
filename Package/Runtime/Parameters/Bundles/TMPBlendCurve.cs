@@ -88,7 +88,7 @@ namespace TMPEffects.Parameters
 
             if (finishWholeSegmentInTime)
             {
-                float scalar = (maxOffset * Mathf.Abs(uniformity)) / totalDuration + 1f;
+                float scalar = ((maxOffset * Mathf.Abs(uniformity)) / totalDuration) + 1f;
                 scalar = 1f / scalar;
 
                 timeValue -= offset * scalar * Mathf.Abs(uniformity);
@@ -148,16 +148,16 @@ namespace TMPEffects.Parameters
             if (finishWholeSegmentInTime)
             {
                 float scalar =
-                    (maxOffset * Mathf.Abs(uniformity)) / totalDuration + 1f;
+                    ((maxOffset * Mathf.Abs(uniformity)) / totalDuration) + 1f;
                 scalar = 1f / scalar;
 
                 timeValue -= offset * scalar * Mathf.Abs(uniformity);
 
-                return curve.Evaluate(1f - (timeValue - preTime) / totalDuration / scalar);
+                return curve.Evaluate(1f - ((timeValue - preTime) / totalDuration / scalar));
             }
 
             timeValue -= offset * Mathf.Abs(uniformity);
-            return curve.Evaluate(1f - (timeValue - preTime) / totalDuration);
+            return curve.Evaluate(1f - ((timeValue - preTime) / totalDuration));
         }
         
         /// <summary>

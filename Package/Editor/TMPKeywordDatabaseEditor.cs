@@ -344,127 +344,95 @@ namespace TMPEffects.Editor
                 { "easeinsine", AnimationCurveUtility.EaseInSine() },
                 { "easeoutsine", AnimationCurveUtility.EaseOutSine() },
                 { "easeinoutsine", AnimationCurveUtility.EaseInOutSine() },
-
                 { "easeinback", AnimationCurveUtility.EaseInBack() },
                 { "easeoutback", AnimationCurveUtility.EaseOutBack() },
                 { "easeinoutback", AnimationCurveUtility.EaseInOutBack() },
-
                 { "easeinbounce", AnimationCurveUtility.EaseInBounce() },
                 { "easeoutbounce", AnimationCurveUtility.EaseOutBounce() },
                 { "easeinoutbounce", AnimationCurveUtility.EaseInOutBounce() },
-
                 { "easeincirc", AnimationCurveUtility.EaseInCirc() },
                 { "easeoutcirc", AnimationCurveUtility.EaseOutCirc() },
                 { "easeinoutcirc", AnimationCurveUtility.EaseInOutCirc() },
-
                 { "easeincubic", AnimationCurveUtility.EaseInCubic() },
                 { "easeoutcubic", AnimationCurveUtility.EaseOutCubic() },
                 { "easeinoutcubic", AnimationCurveUtility.EaseInOutCubic() },
-
                 { "easeinelastic", AnimationCurveUtility.EaseInElastic() },
                 { "easeoutelastic", AnimationCurveUtility.EaseOutElastic() },
                 { "easeinoutelastic", AnimationCurveUtility.EaseInOutElastic() },
-
                 { "easeinexpo", AnimationCurveUtility.EaseInExpo() },
                 { "easeoutexpo", AnimationCurveUtility.EaseOutExpo() },
                 { "easeinoutexpo", AnimationCurveUtility.EaseInOutExpo() },
-
                 { "easeinquad", AnimationCurveUtility.EaseInQuad() },
                 { "easeoutquad", AnimationCurveUtility.EaseOutQuad() },
                 { "easeinoutquad", AnimationCurveUtility.EaseInOutQuad() },
-
                 { "easeinquart", AnimationCurveUtility.EaseInQuart() },
                 { "easeoutquart", AnimationCurveUtility.EaseOutQuart() },
                 { "easeinoutquart", AnimationCurveUtility.EaseInOutQuart() },
-
                 { "easeinquint", AnimationCurveUtility.EaseInQuint() },
                 { "easeoutquint", AnimationCurveUtility.EaseOutQuint() },
                 { "easeinoutquint", AnimationCurveUtility.EaseInOutQuint() },
-
                 { "linear", AnimationCurveUtility.Linear() },
-
                 { "invert:easeinsine", AnimationCurveUtility.EaseInSine().InvertCopy() },
                 { "invert:easeoutsine", AnimationCurveUtility.EaseOutSine().InvertCopy() },
                 { "invert:easeinoutsine", AnimationCurveUtility.EaseInOutSine().InvertCopy() },
-
                 { "invert:easeinback", AnimationCurveUtility.EaseInBack().InvertCopy() },
                 { "invert:easeoutback", AnimationCurveUtility.EaseOutBack().InvertCopy() },
                 { "invert:easeinoutback", AnimationCurveUtility.EaseInOutBack().InvertCopy() },
-
                 { "invert:easeinbounce", AnimationCurveUtility.EaseInBounce().InvertCopy() },
                 { "invert:easeoutbounce", AnimationCurveUtility.EaseOutBounce().InvertCopy() },
                 { "invert:easeinoutbounce", AnimationCurveUtility.EaseInOutBounce().InvertCopy() },
-
                 { "invert:easeincirc", AnimationCurveUtility.EaseInCirc().InvertCopy() },
                 { "invert:easeoutcirc", AnimationCurveUtility.EaseOutCirc().InvertCopy() },
                 { "invert:easeinoutcirc", AnimationCurveUtility.EaseInOutCirc().InvertCopy() },
-
                 { "invert:easeincubic", AnimationCurveUtility.EaseInCubic().InvertCopy() },
                 { "invert:easeoutcubic", AnimationCurveUtility.EaseOutCubic().InvertCopy() },
                 { "invert:easeinoutcubic", AnimationCurveUtility.EaseInOutCubic().InvertCopy() },
-
                 { "invert:easeinelastic", AnimationCurveUtility.EaseInElastic().InvertCopy() },
                 { "invert:easeoutelastic", AnimationCurveUtility.EaseOutElastic().InvertCopy() },
                 { "invert:easeinoutelastic", AnimationCurveUtility.EaseInOutElastic().InvertCopy() },
-
                 { "invert:easeinexpo", AnimationCurveUtility.EaseInExpo().InvertCopy() },
                 { "invert:easeoutexpo", AnimationCurveUtility.EaseOutExpo().InvertCopy() },
                 { "invert:easeinoutexpo", AnimationCurveUtility.EaseInOutExpo().InvertCopy() },
-
                 { "invert:easeinquad", AnimationCurveUtility.EaseInQuad().InvertCopy() },
                 { "invert:easeoutquad", AnimationCurveUtility.EaseOutQuad().InvertCopy() },
                 { "invert:easeinoutquad", AnimationCurveUtility.EaseInOutQuad().InvertCopy() },
-
                 { "invert:easeinquart", AnimationCurveUtility.EaseInQuart().InvertCopy() },
                 { "invert:easeoutquart", AnimationCurveUtility.EaseOutQuart().InvertCopy() },
                 { "invert:easeinoutquart", AnimationCurveUtility.EaseInOutQuart().InvertCopy() },
-
                 { "invert:easeinquint", AnimationCurveUtility.EaseInQuint().InvertCopy() },
                 { "invert:easeoutquint", AnimationCurveUtility.EaseOutQuint().InvertCopy() },
                 { "invert:easeinoutquint", AnimationCurveUtility.EaseInOutQuint().InvertCopy() },
-
                 { "invert:linear", AnimationCurveUtility.Linear().InvertCopy() },
-
                 { "inv:easeinsine", AnimationCurveUtility.EaseInSine().InvertCopy() },
                 { "inv:easeoutsine", AnimationCurveUtility.EaseOutSine().InvertCopy() },
                 { "inv:easeinoutsine", AnimationCurveUtility.EaseInOutSine().InvertCopy() },
-
                 { "inv:easeinback", AnimationCurveUtility.EaseInBack().InvertCopy() },
                 { "inv:easeoutback", AnimationCurveUtility.EaseOutBack().InvertCopy() },
                 { "inv:easeinoutback", AnimationCurveUtility.EaseInOutBack().InvertCopy() },
-
                 { "inv:easeinbounce", AnimationCurveUtility.EaseInBounce().InvertCopy() },
                 { "inv:easeoutbounce", AnimationCurveUtility.EaseOutBounce().InvertCopy() },
                 { "inv:easeinoutbounce", AnimationCurveUtility.EaseInOutBounce().InvertCopy() },
-
                 { "inv:easeincirc", AnimationCurveUtility.EaseInCirc().InvertCopy() },
                 { "inv:easeoutcirc", AnimationCurveUtility.EaseOutCirc().InvertCopy() },
                 { "inv:easeinoutcirc", AnimationCurveUtility.EaseInOutCirc().InvertCopy() },
-
                 { "inv:easeincubic", AnimationCurveUtility.EaseInCubic().InvertCopy() },
                 { "inv:easeoutcubic", AnimationCurveUtility.EaseOutCubic().InvertCopy() },
                 { "inv:easeinoutcubic", AnimationCurveUtility.EaseInOutCubic().InvertCopy() },
-
                 { "inv:easeinelastic", AnimationCurveUtility.EaseInElastic().InvertCopy() },
                 { "inv:easeoutelastic", AnimationCurveUtility.EaseOutElastic().InvertCopy() },
                 { "inv:easeinoutelastic", AnimationCurveUtility.EaseInOutElastic().InvertCopy() },
-
                 { "inv:easeinexpo", AnimationCurveUtility.EaseInExpo().InvertCopy() },
                 { "inv:easeoutexpo", AnimationCurveUtility.EaseOutExpo().InvertCopy() },
                 { "inv:easeinoutexpo", AnimationCurveUtility.EaseInOutExpo().InvertCopy() },
-
                 { "inv:easeinquad", AnimationCurveUtility.EaseInQuad().InvertCopy() },
                 { "inv:easeoutquad", AnimationCurveUtility.EaseOutQuad().InvertCopy() },
                 { "inv:easeinoutquad", AnimationCurveUtility.EaseInOutQuad().InvertCopy() },
-
                 { "inv:easeinquart", AnimationCurveUtility.EaseInQuart().InvertCopy() },
                 { "inv:easeoutquart", AnimationCurveUtility.EaseOutQuart().InvertCopy() },
                 { "inv:easeinoutquart", AnimationCurveUtility.EaseInOutQuart().InvertCopy() },
-
                 { "inv:easeinquint", AnimationCurveUtility.EaseInQuint().InvertCopy() },
                 { "inv:easeoutquint", AnimationCurveUtility.EaseOutQuint().InvertCopy() },
                 { "inv:easeinoutquint", AnimationCurveUtility.EaseInOutQuint().InvertCopy() },
-
                 { "inv:linear", AnimationCurveUtility.Linear().InvertCopy() }
             };
 
@@ -497,7 +465,6 @@ namespace TMPEffects.Editor
             { "red", Color.red },
             { "white", Color.white },
             { "yellow", Color.yellow },
-
             { "maroon", new Color32(128, 0, 0, 255) },
             { "olive", new Color32(128, 128, 0, 255) },
             { "lime", new Color32(0, 255, 0, 255) },
@@ -509,7 +476,6 @@ namespace TMPEffects.Editor
             { "silver", new Color32(192, 192, 192, 255) },
             { "orange", new Color32(255, 165, 0, 255) },
             { "pink", new Color32(255, 192, 203, 255) },
-
             { "gold", new Color32(255, 215, 0, 255) },
             { "indigo", new Color32(75, 0, 130, 255) },
             { "violet", new Color32(238, 130, 238, 255) },
@@ -520,7 +486,6 @@ namespace TMPEffects.Editor
             { "lavender", new Color32(230, 230, 250, 255) },
             { "salmon", new Color32(250, 128, 114, 255) },
             { "turquoise", new Color32(64, 224, 208, 255) },
-
             { "coral", new Color32(255, 127, 80, 255) },
             { "peach", new Color32(255, 218, 185, 255) },
             { "mint", new Color32(189, 252, 201, 255) },
@@ -531,7 +496,6 @@ namespace TMPEffects.Editor
             { "honeydew", new Color32(240, 255, 240, 255) },
             { "orchid", new Color32(218, 112, 214, 255) },
             { "papayawhip", new Color32(255, 239, 213, 255) },
-
             { "darkblue", new Color32(0, 0, 139, 255) },
             { "lightblue", new Color32(173, 216, 230, 255) },
             { "darkred", new Color32(139, 0, 0, 255) },
@@ -560,21 +524,16 @@ namespace TMPEffects.Editor
             { "a:bttm", Vector2.down },
             { "a:right", Vector2.right },
             { "a:left", Vector2.left },
-
             { "a:topright", Vector2.up + Vector2.right },
             { "a:tr", Vector2.up + Vector2.right },
-
             { "a:bottomright", Vector2.down + Vector2.right },
             { "a:bttmright", Vector2.down + Vector2.right },
             { "a:br", Vector2.down + Vector2.right },
-
             { "a:topleft", Vector2.up + Vector2.left },
             { "a:tl", Vector2.up + Vector2.left },
-
             { "a:bottomleft", Vector2.down + Vector2.left },
             { "a:bttmleft", Vector2.down + Vector2.left },
             { "a:bl", Vector2.down + Vector2.left },
-
             { "a:center", Vector2.zero }
         };
 
@@ -587,13 +546,11 @@ namespace TMPEffects.Editor
             { "forward", Vector3.forward },
             { "fwd", Vector3.forward },
             { "back", Vector3.back },
-
             { "inf", Vector3.positiveInfinity },
             { "ninf", Vector3.negativeInfinity },
             { "-inf", Vector3.negativeInfinity },
             { "+inf", Vector3.negativeInfinity },
             { "zero", Vector3.zero },
-
             { "up right", Vector3.up + Vector3.right },
             { "up right forward", Vector3.up + Vector3.right + Vector3.forward },
             { "up right fwd", Vector3.up + Vector3.right + Vector3.forward },
@@ -698,7 +655,6 @@ namespace TMPEffects.Editor
             { "back down", Vector3.back + Vector3.down },
             { "back down right", Vector3.back + Vector3.down + Vector3.right },
             { "back down left", Vector3.back + Vector3.down + Vector3.left },
-
             { "upright", Vector3.up + Vector3.right },
             { "uprightforward", Vector3.up + Vector3.right + Vector3.forward },
             { "uprightfwd", Vector3.up + Vector3.right + Vector3.forward },
@@ -811,23 +767,17 @@ namespace TMPEffects.Editor
                 { "sidx", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.SegmentIndex) },
                 { "sindex", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.SegmentIndex) },
                 { "segmentindex", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.SegmentIndex) },
-
                 { "idx", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Index) },
                 { "index", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Index) },
-
                 { "word", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Word) },
                 { "wordidx", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Word) },
                 { "wordindex", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Word) },
-
                 { "line", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Line) },
                 { "linenumber", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Line) },
-
                 { "base", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Baseline) },
                 { "baseline", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.Baseline) },
-
                 { "x", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.XPos) },
                 { "xpos", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.XPos) },
-
                 { "y", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.YPos) },
                 { "ypos", new OffsetTypePowerEnum(TMPParameterTypes.OffsetType.YPos) },
             };
