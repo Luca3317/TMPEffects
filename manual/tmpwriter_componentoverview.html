@@ -114,19 +114,16 @@ Right next to it, are the buttons for resetting, stopping, and skipping the writ
 The progress bar lets you freely skip to any point of the writing process.</p>
 <p>The two toggles above the player decide whether events and commands are executed in the editor preview.
 There is a few things to consider with them:</p>
-<ul>
-<li><p>Event toggle</p>
+<p>Event toggle</p>
 <ul>
 <li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.</li>
-<li><span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</li>
+<li>&gt; [!WARNING]
+&gt; <span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</li>
 </ul>
-</li>
-<li><p>Command toggle</p>
+<p>Command toggle</p>
 <ul>
 <li><mark style="color: lightgray; background-color: #191a18">SceneCommands</mark> are never raised in preview mode.</li>
 <li>If you create any new commands, you can decide whether it should be raised in preview mode through its <mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark> property.</li>
-</ul>
-</li>
 </ul>
 <h2 id="controlling-the-writer">Controlling the writer</h2>
 <p>TMPWriter supplies multiple methods to control the writer.</p>
@@ -143,7 +140,8 @@ There is a few things to consider with them:</p>
 <li><strong>Wait(float seconds)</strong>: Wait for the given amount of time until showing the next character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">wait</mark> tag</li>
 <li><strong>SetDelay(float seconds)</strong>: Sets the delay used after each character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">delay</mark> tag</li>
 <li><strong>SetSkippable(bool skippable)</strong>: Sets whether the current text section is skippable; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">skippable</mark> tag</li>
-<li><strong>WaitUntil(Func<bool> condition)</bool></strong>: Wait until the given condition evaluates to true; <span class="emoji" shortcode="warning">⚠️</span> There is no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</li>
+<li><strong>WaitUntil(Func<bool> condition)</bool></strong>: Wait until the given condition evaluates to true; &gt; [!WARNING]
+&gt; <span class="emoji" shortcode="warning">⚠️</span> There is no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</li>
 </ul>
 <p>Default values for the delay as well as the &quot;skippability&quot; of the text can be set in the TMPWriter inspector.</p>
 <h2 id="command-databases">Command databases</h2>
