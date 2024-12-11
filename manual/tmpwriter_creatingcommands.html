@@ -149,8 +149,10 @@ that need to ensure they are being called even if skipped over, for example a co
 <p>There are a few optional properties. If you don&#39;t override them, they are set to false by default. In both cases, this is to protect you from yourself <span class="emoji" shortcode="wink">😉</span><br>Only set these to true if you are sure it is safe for your case!</p>
 <p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteRepeatable</mark></strong>: Commands where this property is true may be executed multiple times, specifically if the writer is reset / restarted at any point (i.e., when TMPWriter.ResetWriter() is called).
 This should be false for commands that need to ensure they are only ever raised once, for example a command that starts a quest or adds an item to the player&#39;s inventory.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark></strong>: Commands where this property is true are executed in the editor preview. <span class="emoji" shortcode="warning">⚠️</span> Note that you must wrap this property in a <mark style="color: lightgray; background-color: #191a18">#if UNITY_EDITOR</mark>
+<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark></strong>: Commands where this property is true are executed in the editor preview. </p>
+<div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> Note that you must wrap this property in a <mark style="color: lightgray; background-color: #191a18">#if UNITY_EDITOR</mark>
 preprocessor directive if you want to override it; otherwise your builds will fail.</p>
+</div>
 <h3 id="methods">Methods</h3>
 <p><strong><mark style="color: lightgray; background-color: #191a18">ValidateParameters(IDictionary&lt;string, string&gt; parameters)</mark></strong>: This method is called during tag processing. It allows you to specify whether a given tag for this command has valid parameters. <a href="parameterutility.html">ParameterUtility</a> will come in handy here.
 Return true if the parameters are valid, return false if not. If false, the tag will not be processed.</p>

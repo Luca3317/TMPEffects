@@ -2656,12 +2656,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "MissingNewLineBelowSectionHeader"
+      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpwriter_creatingcommands.md",
       "output": {
         ".html": {
           "relative_path": "manual/tmpwriter_creatingcommands.html",
-          "hash": "atWmcOhLtYNJVUibTsRFCi74oWD7RG35/hvmEZphAVA="
+          "hash": "pXAs9xOrI1VciIqgnRZdHRxTMVNtp964O4NusV9Kg8A="
         }
       },
       "is_incremental": false,
