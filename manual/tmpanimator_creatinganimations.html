@@ -255,10 +255,11 @@ The only differences are:</p>
 <ul>
 <li><p>Instead of deriving from <mark style="color: lightgray; background-color: #191a18">TMPAnimation</mark>, you must derive from <mark style="color: lightgray; background-color: #191a18">TMPShowAnimation</mark> or <mark style="color: lightgray; background-color: #191a18">TMPHideAnimation</mark> respectively.</p>
 </li>
-<li><p><span class="emoji" shortcode="warning">⚠️</span> You HAVE to call <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> at some point in the animation; This will notify the animator that this show animation is finished, and the character
+<li><div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> You HAVE to call <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> at some point in the animation; This will notify the animator that this show animation is finished, and the character
 may transition from the <mark style="color: lightgray; background-color: #191a18">Showing</mark> state to the <mark style="color: lightgray; background-color: #191a18">Shown</mark> state.
 Because of this, all built-in show and hide animations have a <mark style="color: lightgray; background-color: #191a18">duration</mark> parameter, and <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData);</mark>
 is called when that duration is exceeded. See the example below for a simple way to do that.</p>
+</div>
 </li>
 </ul>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
@@ -280,7 +281,8 @@ is called when that duration is exceeded. See the example below for a simple way
 <p>Creating a scene animation, scene show animation or scene hide animation is almost the exact same as creating a basic animation, show animation or hide animation; the only difference is that
 you will have to derive from <mark style="color: lightgray; background-color: #191a18">TMPSceneAnimation</mark>, <mark style="color: lightgray; background-color: #191a18">TMPSceneShowAnimation</mark> or <mark style="color: lightgray; background-color: #191a18">TMPSceneHideAnimation</mark> respectively, and that you don&#39;t add the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute.
 Since it is not a ScriptableObject, you of course don&#39;t add it to a database either; instead, you add it as a component to a GameObject in your scene, and add that GameObject to your TMPAnimator as described here: <a href="tmpanimator_sceneanimations.html#adding-scene-animations">Adding scene animation</a>.</p>
-<p><span class="emoji" shortcode="warning">⚠️</span> The <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> call is required for <mark style="color: lightgray; background-color: #191a18">TMPSceneShowAnimation</mark> and <mark style="color: lightgray; background-color: #191a18">TMPSceneHideAnimation</mark> as well.</p>
+<div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> The <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> call is required for <mark style="color: lightgray; background-color: #191a18">TMPSceneShowAnimation</mark> and <mark style="color: lightgray; background-color: #191a18">TMPSceneHideAnimation</mark> as well.</p>
+</div>
 </article>
               
                 </div>
