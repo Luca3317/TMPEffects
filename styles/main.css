@@ -1,14 +1,14 @@
 :root, body.dark-theme {
-  --color-foreground: #ccd5dc;
-  --color-navbar: #66666d;
-  --color-breadcrumb: #999;
-  --color-underline: #ddd;
-  --color-toc-hover: #fff;
+  --color-foreground: #28242c;
+  --color-navbar: #28242c;
+  --color-breadcrumb: #28242c;
+  --color-underline: #28242c;
+  --color-toc-hover: #28242c;
   --color-background: #28242c;
-  --color-background-subnav: #333337;
+  --color-background-subnav: #28242c;
   --color-background-dark: #28242c;
-  --color-background-table-alt: #212123;
-  --color-background-quote: #69696e;
+  --color-background-table-alt: #28242c;
+  --color-background-quote: #28242c;
 }
 
 body.light-theme {
