@@ -116,23 +116,16 @@ The progress bar lets you freely skip to any point of the writing process.</p>
 There is a few things to consider with them:</p>
 <p>Event toggle</p>
 <ul>
-<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.
--
-&gt; [!WARNING] <span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</li>
+<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.</li>
+<li>&gt; [!WARNING]
+&gt; <span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</li>
 </ul>
 <p>Command toggle</p>
 <ul>
 <li><mark style="color: lightgray; background-color: #191a18">SceneCommands</mark> are never raised in preview mode.</li>
 <li>If you create any new commands, you can decide whether it should be raised in preview mode through its <mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark> property.</li>
-<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.</li>
-<li>&gt; [!WARNING]
-&gt; <span class="emoji" shortcode="warning">⚠️</span> You HAVE to call <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData)</mark> at some point in the animation; This will notify the animator that this show animation is finished, and the character
-may transition from the <mark style="color: lightgray; background-color: #191a18">Showing</mark> state to the <mark style="color: lightgray; background-color: #191a18">Shown</mark> state.
-Because of this, all built-in show and hide animations have a <mark style="color: lightgray; background-color: #191a18">duration</mark> parameter, and <mark style="color: lightgray; background-color: #191a18">context.FinishAnimation(cData);</mark>
-is called when that duration is exceeded. See the example below for a simple way to do that.</li>
 </ul>
-<pre><code class="lang-csharp">pzublic lol
-</code></pre><h2 id="controlling-the-writer">Controlling the writer</h2>
+<h2 id="controlling-the-writer">Controlling the writer</h2>
 <p>TMPWriter supplies multiple methods to control the writer.</p>
 <ul>
 <li><strong>StartWriter()</strong>: Starts (or resumes) the writing process</li>
