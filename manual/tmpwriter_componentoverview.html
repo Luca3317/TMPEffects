@@ -116,9 +116,10 @@ The progress bar lets you freely skip to any point of the writing process.</p>
 There is a few things to consider with them:</p>
 <p>Event toggle</p>
 <ul>
-<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.
-&gt; [!WARNING] <span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</li>
+<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.</li>
 </ul>
+<div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> Be careful about which events you allow to be raised in preview mode. Generally I&#39;d recommend setting the event toggle to false completely.</p>
+</div>
 <p>Command toggle</p>
 <ul>
 <li><mark style="color: lightgray; background-color: #191a18">SceneCommands</mark> are never raised in preview mode.</li>
@@ -139,9 +140,10 @@ There is a few things to consider with them:</p>
 <li><strong>Wait(float seconds)</strong>: Wait for the given amount of time until showing the next character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">wait</mark> tag</li>
 <li><strong>SetDelay(float seconds)</strong>: Sets the delay used after each character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">delay</mark> tag</li>
 <li><strong>SetSkippable(bool skippable)</strong>: Sets whether the current text section is skippable; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">skippable</mark> tag</li>
-<li><strong>WaitUntil(Func<bool> condition)</bool></strong>: Wait until the given condition evaluates to true;
-&gt; [!WARNING] <span class="emoji" shortcode="warning">⚠️</span> WaitUntil has no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</li>
+<li><strong>WaitUntil(Func<bool> condition)</bool></strong>: Wait until the given condition evaluates to true;</li>
 </ul>
+<div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> WaitUntil has no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</p>
+</div>
 <p>Default values for the delay as well as the &quot;skippability&quot; of the text can be set in the TMPWriter inspector.</p>
 <h2 id="command-databases">Command databases</h2>
 <p>The TMPWriter inspector has a foldout labeled <mark style="color: lightgray; background-color: #191a18">Commands</mark>.
