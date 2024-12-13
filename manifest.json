@@ -2698,12 +2698,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Toc",
       "source_relative_path": "manual/toc.yml",
       "output": {
         ".html": {
           "relative_path": "manual/toc.html",
-          "hash": "DRz2tol6jMipZAuyHJyT0R1eV6ydiWnIVVKvxMsICrk="
+          "hash": "/GCm2U7ZCOEqFtiiJ0bs4wEHs+/fmnFHHJ7kzNuMnoM="
         }
       },
       "is_incremental": false,
