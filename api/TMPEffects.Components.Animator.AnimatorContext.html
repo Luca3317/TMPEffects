@@ -1,103 +1,136 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
-<html>
-  
+<html lang="csharp">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AnimatorContext
-   | TMPEffects documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AnimatorContext
-   | TMPEffects documentation ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      <title>Class AnimatorContext
+ | TMPEffects documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AnimatorContext
+ | TMPEffects documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In This Article">
+      <meta name="loc:searchResultsCount" content="">
+      <meta name="loc:searchNoResults" content="">
+      <meta name="loc:tocFilter" content="Enter here to filter...">
+      <meta name="loc:nextArticle" content="">
+      <meta name="loc:prevArticle" content="">
+      <meta name="loc:themeLight" content="">
+      <meta name="loc:themeDark" content="">
+      <meta name="loc:themeAuto" content="">
+      <meta name="loc:changeTheme" content="">
+      <meta name="loc:copy" content="">
+      <meta name="loc:downloadPdf" content="">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
-        
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="TMPEffects.Components.Animator.AnimatorContext">
+
+        <article data-uid="TMPEffects.Components.Animator.AnimatorContext">
   
   
-  <h1 id="TMPEffects_Components_Animator_AnimatorContext" data-uid="TMPEffects.Components.Animator.AnimatorContext" class="text-break">Class AnimatorContext
+  <h1 id="TMPEffects_Components_Animator_AnimatorContext" data-uid="TMPEffects.Components.Animator.AnimatorContext" class="text-break">
+    Class AnimatorContext
+    
   </h1>
-  <div class="markdown level0 summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.<br>
+  
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.Components.Animator.html">TMPEffects.Components.Animator</a></dd></dl>
+    <dl><dt>Assembly</dt><dd>cs.temp.dll.dll</dd></dl>
+  </div>
+  
+  <div class="markdown summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.<br>
 Contains context data of the respective <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AnimatorContext</span></div>
+  <div class="markdown conceptual"></div>
+  
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class AnimatorContext : IAnimatorContext</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+  
+  
+  
+  
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><span class="xref">System.Object</span></div>
+      <div><span class="xref">AnimatorContext</span></div>
+    </dd>
+  </dl>
+  
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></div>
+    </dd>
+  </dl>
+  
+  
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <span class="xref">System.Object.ToString()</span>
     </div>
@@ -119,587 +152,624 @@ Contains context data of the respective <a class="xref" href="TMPEffects.Compone
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.Components.Animator.html">TMPEffects.Components.Animator</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="TMPEffects_Components_Animator_AnimatorContext_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Serializable]
-public class AnimatorContext : IAnimatorContext</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
+  </dd></dl>
+  
+  
+  
+  
+  
+  
+  <h2 class="section" id="constructors">Constructors
+  </h2>
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor">AnimatorContext()</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor">
+    AnimatorContext()
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext()</code></pre>
   </div>
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator)">AnimatorContext(TMPAnimator)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator)">
+    AnimatorContext(TMPAnimator)
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext(TMPAnimator animator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td><span class="parametername">animator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animator</code> <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_Func_System_Int32_System_Single__Func_System_Int32_System_Single__" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator,System.Boolean,System.Boolean,System.Boolean,Func{System.Int32,System.Single},Func{System.Int32,System.Single})">AnimatorContext(TMPAnimator, Boolean, Boolean, Boolean, Func&lt;Int32, Single&gt;, Func&lt;Int32, Single&gt;)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_Func_System_Int32_System_Single__Func_System_Int32_System_Single__" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator,System.Boolean,System.Boolean,System.Boolean,Func{System.Int32,System.Single},Func{System.Int32,System.Single})">
+    AnimatorContext(TMPAnimator, Boolean, Boolean, Boolean, Func&lt;Int32, Single&gt;, Func&lt;Int32, Single&gt;)
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext(TMPAnimator animator, bool scaleAnimations, bool useScaledTime, bool scaleUniformly, Func&lt;int, float&gt; getVisibleTime, Func&lt;int, float&gt; getStateTime)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td><span class="parametername">animator</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">scaleAnimations</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">useScaledTime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">scaleUniformly</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</td>
-        <td><span class="parametername">getVisibleTime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</td>
-        <td><span class="parametername">getStateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animator</code> <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+    <dt><code>scaleAnimations</code> <span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+    <dt><code>useScaledTime</code> <span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+    <dt><code>scaleUniformly</code> <span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+    <dt><code>getVisibleTime</code> <span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</dt>
+    <dd></dd>
+    <dt><code>getStateTime</code> <span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2 class="section" id="fields">Fields
+  </h2>
+  
+  
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__StateTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._StateTime">
+    _StateTime
+    
   </h3>
   
-  
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__StateTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._StateTime">_StateTime</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public Func&lt;int, float&gt; _StateTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__VisibleTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._VisibleTime">_VisibleTime</h4>
+  
+  
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__VisibleTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._VisibleTime">
+    _VisibleTime
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public Func&lt;int, float&gt; _VisibleTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_deltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.deltaTime">deltaTime</h4>
+  
+  
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Func</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Single</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_deltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.deltaTime">
+    deltaTime
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public float deltaTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_passed" data-uid="TMPEffects.Components.Animator.AnimatorContext.passed">passed</h4>
+  
+  
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_passed" data-uid="TMPEffects.Components.Animator.AnimatorContext.passed">
+    passed
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public float passed</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
+  
+  
+  
+  
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2 class="section" id="properties">Properties
+  </h2>
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_Animator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator">Animator</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator">
+    Animator
+    
+  </h3>
+  
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TMPAnimator Animator { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime">DeltaTime</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime">
+    DeltaTime
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>The current delta time (=&gt; time since last animation update).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float DeltaTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_PassedTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime">PassedTime</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime">
+    PassedTime
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>The time that has passed since the animator began animating.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float PassedTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations_" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations">ScaleAnimations</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations">
+    ScaleAnimations
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Whether animations are scaled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ScaleAnimations { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly_" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly">ScaleUniformly</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly">
+    ScaleUniformly
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Whether to scale animations uniformly (based on the default font size of the animator)
 or on a per character basis.<br>
 Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations">ScaleAnimations</a> is false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ScaleUniformly { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime">UseScaledTime</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime">
+    UseScaledTime
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Whether animations use scaled time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UseScaledTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
+  
+  
+  
+  
+  
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Boolean</span></dt>
+    <dd></dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2 class="section" id="methods">Methods
+  </h2>
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(CharData)">StateTime(CharData)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(CharData)">
+    StateTime(CharData)
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Check how long the passed <see cref="!:CharData"></see> has been in its current <see cref="!:VisibilityState"></see>.<br>
 Generally, to be used with show and hide animations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float StateTime(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">CharData</span></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>How long the passed <see cref="!:CharData"></see> has been in its current <see cref="!:VisibilityState"></see>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <span class="xref">CharData</span></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+  
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd><p>How long the passed <see cref="!:CharData"></see> has been in its current <see cref="!:VisibilityState"></see>.</p>
+</dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(System.Int32)">StateTime(Int32)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(System.Int32)">
+    StateTime(Int32)
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Check how long the <see cref="!:CharData"></see> at the given index has been in its current <see cref="!:VisibilityState"></see>.<br>
 Generally, to be used with show and hide animations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float StateTime(int index)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The index of the character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>How long the <see cref="!:CharData"></see> at the given index has been in its current <see cref="!:VisibilityState"></see>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">System.Int32</span></dt>
+    <dd><p>The index of the character to check.</p>
+</dd>
+  </dl>
+  
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd><p>How long the <see cref="!:CharData"></see> at the given index has been in its current <see cref="!:VisibilityState"></see>.</p>
+</dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(CharData)">VisibleTime(CharData)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(CharData)">
+    VisibleTime(CharData)
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Check how long the passed <see cref="!:CharData"></see> has been visible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float VisibleTime(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">CharData</span></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>How long the passed <see cref="!:CharData"></see> has been visible.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <span class="xref">CharData</span></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+  
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd><p>How long the passed <see cref="!:CharData"></see> has been visible.</p>
+</dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <a id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(System.Int32)">VisibleTime(Int32)</h4>
+  
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(System.Int32)">
+    VisibleTime(Int32)
+    
+  </h3>
+  
   <div class="markdown level1 summary"><p>Check how long the <see cref="!:CharData"></see> at the given index has been visible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float VisibleTime(int index)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>How long the <see cref="!:CharData"></see> at the given index has been visible.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a>
-  </div>
+  
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">System.Int32</span></dt>
+    <dd></dd>
+  </dl>
+  
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">System.Single</span></dt>
+    <dd><p>How long the <see cref="!:CharData"></see> at the given index has been visible.</p>
+</dd>
+  </dl>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </article>
-          </div>
+
+        <div class="contribution d-print-none">
           
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            TMPEffects documentation
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>
