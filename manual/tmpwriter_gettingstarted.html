@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting started with TMPWriter | TMPEffects documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting started with TMPWriter | TMPEffects documentation ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started-with-tmpwriter">Getting started with TMPWriter</h1>
+
+<p>After adding TMPEffects to your project, add a TMPWriter component to a GameObject with a TMP_Text component (either TextMeshPro - Text or TextMeshPro - Text (UI)).</p>
+<h2 id="writing-your-first-text">Writing your first text</h2>
+<p>Write some placeholder text in the TextMeshPro&#39;s component textbox. Hit the play button in the preview section of the TMPWriter inspector, or start playing the scene.
+Your text should be being written, and it should look something like this, with each character appearing one after the other, with a short delay in between:</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/writetextnoanim.mp4" width="320" height="240" autoplay="" loop="" muted="">
+  Your browser does not support the video tag.
+</video>
+
+<div class="WARNING"><h5>Warning</h5><p><span class="emoji" shortcode="warning">⚠️</span> If your text is instantly showing all at once, or is writing too slowly, ensure the <mark style="color: lightgray; background-color: #191a18">Delay</mark> field in the inspector, which defines the delay after showing a character in seconds, is set to a sensible value. 
+The example above uses a delay of 0.075 seconds.</p>
+</div>
+<h2 id="adding-command-tags">Adding command tags</h2>
+<p>TMPWriter allows you to easily execute commands when a specific index is reached. 
+You may add them using command tags, prefixed by a &#39;!&#39;. For example, <mark style="color: lightgray; background-color: #191a18">&lt;!wait=1.5&gt;</mark> will pause the writer for 1.5 seconds before continuing.</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/writetextnoanim2.mp4" width="320" height="240" autoplay="" loop="" muted="">
+  Your browser does not support the video tag.
+</video>
+
+<p>A full overview of all built-in command tags is given in the next section.</p>
+<h2 id="adding-event-tags">Adding event tags</h2>
+<p>In addition to command tags, TMPWriter also supports event tags.
+TMPWriter exposes multiple UnityEvents, to which you may subscribe in the inspector or through code.
+One of these events is <mark style="color: lightgray; background-color: #191a18">TextEvent</mark>.
+Whenever the writer reaches the index of an event tag, <mark style="color: lightgray; background-color: #191a18">TextEvent</mark> is raised with the parsed tag as parameter.
+Unlike command tags or animation tags, you may use any name for event tags, as well as any parameters.
+Typically, you would use the tag name in the event callbacks to check whether to process the event / tag.<br>Here are a few example tags: <mark style="color: lightgray; background-color: #191a18">&lt;?myevent&gt;</mark>, <mark style="color: lightgray; background-color: #191a18">&lt;?characterspeaking=&quot;Faust&quot;&gt;</mark>, <mark style="color: lightgray; background-color: #191a18">&lt;?alert message=&quot;*Your message*&quot; priority=&quot;warning&quot;&gt;</mark></p>
+<h2 id="animating-text-appearances">Animating text appearances</h2>
+<p>The examples above look pretty boring; you can change the way the text is shown, as well as hidden, by using a TMPAnimator component along with TMPWriter.
+The example below shows you a few variations.</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/writetextanimated.mp4" width="320" height="240" autoplay="" loop="" muted="">
+  Your browser does not support the video tag.
+</video>
+
+<p>For info about how to set up the TMPAnimator, see the sections on <a href="tmpanimator.html">TMPAnimator</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpwriter_gettingstarted.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            TMPEffects documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
