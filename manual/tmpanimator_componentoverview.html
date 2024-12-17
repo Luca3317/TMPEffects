@@ -89,38 +89,38 @@
 
 <p>This section gives an overview of the actual TMPAnimator component, both for the inspector and scripting. The full API documentation can be found <a href="../api/TMPEffects.Components.TMPAnimator.html">here</a>.</p>
 <h2 id="preview">Preview</h2>
-<p>To toggle the editor preview of animations, press the <mark style="color: lightgray; background-color: #191a18">TogglePreview</mark> at the top of the TMPAnimator inspector.
-Next to it, the button labeled <mark style="color: lightgray; background-color: #191a18">Reset time</mark> resets the time tracked by the TMPAnimator component, and therefore all animations.</p>
+<p>To toggle the editor preview of animations, press the <mark class="markstyle">TogglePreview</mark> at the top of the TMPAnimator inspector.
+Next to it, the button labeled <mark class="markstyle">Reset time</mark> resets the time tracked by the TMPAnimator component, and therefore all animations.</p>
 <h2 id="updating-the-animations">Updating the animations</h2>
-<p>In the inspector or through the <mark style="color: lightgray; background-color: #191a18">SetUpdateFrom</mark> method, you can set how the animations are updated.</p>
-<p>If <mark style="color: lightgray; background-color: #191a18">UpdateFrom</mark> is set to either <mark style="color: lightgray; background-color: #191a18">Update</mark>, <mark style="color: lightgray; background-color: #191a18">LateUpdate</mark> or <mark style="color: lightgray; background-color: #191a18">FixedUpdate</mark>, the animations are automatically updated in the respective Unity callback. In order to play animations in play mode, you will have to call <mark style="color: lightgray; background-color: #191a18">StartAnimating</mark> or set the <mark style="color: lightgray; background-color: #191a18">Play On Start</mark> to true in either the inspector or some other script's <mark style="color: lightgray; background-color: #191a18">Awake</mark> function.
-You can then stop animating again by simply calling <mark style="color: lightgray; background-color: #191a18">StopAnimating</mark>.</p>
-<p>Alternatively, if you want more fine-tuned control over when and how often animations are updated, for example if you want to limit the updates per second to at most 300, you can set the TMPAnimator's <mark style="color: lightgray; background-color: #191a18">UpdateFrom</mark> to
-<mark style="color: lightgray; background-color: #191a18">Script</mark>. This causes the animations to no longer be updated automatically; instead you may call <mark style="color: lightgray; background-color: #191a18">UpdateAnimations(float deltaTime)</mark> manually whenever you like.</p>
-<p>Note that if <mark style="color: lightgray; background-color: #191a18">UpdateFrom</mark> is set to <mark style="color: lightgray; background-color: #191a18">Script</mark>, you should not call <mark style="color: lightgray; background-color: #191a18">StartAnimating</mark> or <mark style="color: lightgray; background-color: #191a18">StopAnimating</mark>, since this will have no effect besides logging a warning to Unity's console. Vice versa, if <mark style="color: lightgray; background-color: #191a18">UpdateFrom</mark> is set to be automatically updated, you should not call <mark style="color: lightgray; background-color: #191a18">UpdateAnimations(float deltaTime)</mark>; it again does nothing but log a warning.</p>
-<p>The state of <mark style="color: lightgray; background-color: #191a18">UpdateFrom</mark> has no effect on the editor preview.</p>
+<p>In the inspector or through the <mark class="markstyle">SetUpdateFrom</mark> method, you can set how the animations are updated.</p>
+<p>If <mark class="markstyle">UpdateFrom</mark> is set to either <mark class="markstyle">Update</mark>, <mark class="markstyle">LateUpdate</mark> or <mark class="markstyle">FixedUpdate</mark>, the animations are automatically updated in the respective Unity callback. In order to play animations in play mode, you will have to call <mark class="markstyle">StartAnimating</mark> or set the <mark class="markstyle">Play On Start</mark> to true in either the inspector or some other script's <mark class="markstyle">Awake</mark> function.
+You can then stop animating again by simply calling <mark class="markstyle">StopAnimating</mark>.</p>
+<p>Alternatively, if you want more fine-tuned control over when and how often animations are updated, for example if you want to limit the updates per second to at most 300, you can set the TMPAnimator's <mark class="markstyle">UpdateFrom</mark> to
+<mark class="markstyle">Script</mark>. This causes the animations to no longer be updated automatically; instead you may call <mark class="markstyle">UpdateAnimations(float deltaTime)</mark> manually whenever you like.</p>
+<p>Note that if <mark class="markstyle">UpdateFrom</mark> is set to <mark class="markstyle">Script</mark>, you should not call <mark class="markstyle">StartAnimating</mark> or <mark class="markstyle">StopAnimating</mark>, since this will have no effect besides logging a warning to Unity's console. Vice versa, if <mark class="markstyle">UpdateFrom</mark> is set to be automatically updated, you should not call <mark class="markstyle">UpdateAnimations(float deltaTime)</mark>; it again does nothing but log a warning.</p>
+<p>The state of <mark class="markstyle">UpdateFrom</mark> has no effect on the editor preview.</p>
 <h2 id="animation-databases">Animation databases</h2>
-<p>The TMPAnimator inspector has a foldout labeled <mark style="color: lightgray; background-color: #191a18">Animations</mark>.
+<p>The TMPAnimator inspector has a foldout labeled <mark class="markstyle">Animations</mark>.
 There, you may choose the animation database that is used to process animation tags from the TextMeshPro component's text.
-If you toggle <mark style="color: lightgray; background-color: #191a18">Use default database</mark> to true, the default animation database is automatically selected for you.
+If you toggle <mark class="markstyle">Use default database</mark> to true, the default animation database is automatically selected for you.
 The default database is defined in the TMPEffects preferences file.
-You can also set the database used by the TMPAnimator component through script, using the <mark style="color: lightgray; background-color: #191a18">SetDatabase(TMPAnimationDatabase db)</mark> method.</p>
-<p>Below the database, there are three other fields: <mark style="color: lightgray; background-color: #191a18">SceneAnimations</mark>, <mark style="color: lightgray; background-color: #191a18">SceneShowAnimations</mark> and <mark style="color: lightgray; background-color: #191a18">SceneHideAnimations</mark>. These are simply dictionaries that allow you to map tag names to SceneAnimations. Tags defined here are also parsed by the TMPAnimator.</p>
+You can also set the database used by the TMPAnimator component through script, using the <mark class="markstyle">SetDatabase(TMPAnimationDatabase db)</mark> method.</p>
+<p>Below the database, there are three other fields: <mark class="markstyle">SceneAnimations</mark>, <mark class="markstyle">SceneShowAnimations</mark> and <mark class="markstyle">SceneHideAnimations</mark>. These are simply dictionaries that allow you to map tag names to SceneAnimations. Tags defined here are also parsed by the TMPAnimator.</p>
 <p>For more about databases, see <a href="databases.html">Databases</a>. For more about SceneAnimations, see <a href="tmpanimator_sceneanimations.html">SceneAnimations</a>.</p>
 <h2 id="animator-settings">Animator settings</h2>
 <p>TMPAnimator has various settings that modify the way it animates its text. Each of these is settable through both the inspector and through script.</p>
 <ul>
 <li><p>Animations override:<br>
 The default override behavior for all animation tags. If true, each tag overrides any of its category (basic / show / hide) that came before it, and only that one is applied. Otherwise, animations are stacked by default. Each tag can manually
-define its override behavior by using the <mark style="color: lightgray; background-color: #191a18">override</mark> (shorthand: <mark style="color: lightgray; background-color: #191a18">or</mark>) parameter.
+define its override behavior by using the <mark class="markstyle">override</mark> (shorthand: <mark class="markstyle">or</mark>) parameter.
 <br></p>
 </li>
 <li><p>Default show / hide string:<br>
-Allows you to define a default show / hide animation that is used for the entirety of the text, if no other show / hide animation tag effects it. Set this like you would add any tag to your text, e.g. <mark style="color: lightgray; background-color: #191a18">&lt;+fade dur=0.65 anc=a:bottom&gt;&gt;</mark>, <mark style="color: lightgray; background-color: #191a18">&lt;-spread crv=easeinoutsine&gt;&gt;</mark>.
+Allows you to define a default show / hide animation that is used for the entirety of the text, if no other show / hide animation tag effects it. Set this like you would add any tag to your text, e.g. <mark class="markstyle">&lt;+fade dur=0.65 anc=a:bottom&gt;&gt;</mark>, <mark class="markstyle">&lt;-spread crv=easeinoutsine&gt;&gt;</mark>.
 <br></p>
 </li>
 <li><p>Exclusions:<br>
-For each of the animationg categories (basic / show / hide), you can define a set of characters that is excluded from all animations. For example, if you don't want numbers to be animated, you could set <mark style="color: lightgray; background-color: #191a18">Excluded Characters</mark> to &quot;1234567890&quot;. In addition to this, there is an <mark style="color: lightgray; background-color: #191a18">Exclude Punctuation</mark> toggle for each of the categories.
+For each of the animationg categories (basic / show / hide), you can define a set of characters that is excluded from all animations. For example, if you don't want numbers to be animated, you could set <mark class="markstyle">Excluded Characters</mark> to &quot;1234567890&quot;. In addition to this, there is an <mark class="markstyle">Exclude Punctuation</mark> toggle for each of the categories.
 <br></p>
 </li>
 <li><p>Scale animations:<br>
@@ -133,8 +133,8 @@ Defines whether animations should use <a href="https://docs.unity3d.com/ScriptRe
 </li>
 </ul>
 <h2 id="adding--removing-tags-through-script">Adding &amp; removing tags through script</h2>
-<p>The TMPAnimator class exposes four different <mark style="color: lightgray; background-color: #191a18"><a href="tagcollections.html">TagCollections</a></mark>: <mark style="color: lightgray; background-color: #191a18">BasicTags</mark>, which contains all parsed basic animation tags, <mark style="color: lightgray; background-color: #191a18">ShowTags</mark>, which contains all parsed show animation tags and <mark style="color: lightgray; background-color: #191a18">HideTags</mark>, which contains all parsed hide animation tags. Additionally, <mark style="color: lightgray; background-color: #191a18">Tags</mark> is the union of the other three collections.</p>
-<p>For each of the <mark style="color: lightgray; background-color: #191a18">TagCollections</mark>, you may freely add and remove tags at any point.</p>
+<p>The TMPAnimator class exposes four different <mark class="markstyle"><a href="tagcollections.html">TagCollections</a></mark>: <mark class="markstyle">BasicTags</mark>, which contains all parsed basic animation tags, <mark class="markstyle">ShowTags</mark>, which contains all parsed show animation tags and <mark class="markstyle">HideTags</mark>, which contains all parsed hide animation tags. Additionally, <mark class="markstyle">Tags</mark> is the union of the other three collections.</p>
+<p>For each of the <mark class="markstyle">TagCollections</mark>, you may freely add and remove tags at any point.</p>
 
 </article>
 

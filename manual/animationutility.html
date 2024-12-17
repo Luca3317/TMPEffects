@@ -87,49 +87,49 @@
         <article data-uid="">
 <h1 id="animationutility">AnimationUtility</h1>
 
-<p><mark style="color: lightgray; background-color: #191a18">AnimationUtility</mark> is a static utility class to be used with all animation types.
+<p><mark class="markstyle">AnimationUtility</mark> is a static utility class to be used with all animation types.
 The full API docs can be found <a href="../api/TMPEffects.TMPAnimations.AnimationUtility.html">here</a>.</p>
 <h2 id="raw-positions--deltas">Raw Positions &amp; Deltas</h2>
 <p>One of TMPAnimator's settings is a toggle that decides whether animations should be scaled or not (see <a href="tmpanimator_componentoverview.html#animator-settings">TMPAnimator Settings</a>).<br>
-In some cases, you will want to ignore this scaling in your animation though. For example, the built-in <mark style="color: lightgray; background-color: #191a18">spread</mark>
+In some cases, you will want to ignore this scaling in your animation though. For example, the built-in <mark class="markstyle">spread</mark>
 animation sets the individual vertices of the character to the center point of the character, to make it invisible at first and then over time spread out from the center point
 to the original vertex positions. If this was scaled, then the vertices would in many cases move either not enough, or too far, to make the character invisible.<br>
 These methods allow you to get and set positions and deltas that ignore the scaling of the animator:</p>
 <h4 id="getters">Getters</h4>
-<p><strong><mark style="color: lightgray; background-color: #191a18">Vector3 GetRawVertex(int index, Vector3 position, CharData cData, ref IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">Vector3 GetRawVertex(int index, Vector3 position, CharData cData, ref IAnimationContext ctx)</mark></strong> -
 Calculate the raw version of the passed in vertex position, i.e. the one that will ignore the animator's scaling.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">Vector3 GetRawPosition(Vector3 position, CharData cData, ref IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">Vector3 GetRawPosition(Vector3 position, CharData cData, ref IAnimationContext ctx)</mark></strong> -
 Calculate the raw version of the passed in character position, i.e. the one that will ignore the animator's scaling.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">Vector3 GetRawDelta(Vector3 delta, CharData cData, ref IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">Vector3 GetRawDelta(Vector3 delta, CharData cData, ref IAnimationContext ctx)</mark></strong> -
 Calculate the raw version of the passed in delta, i.e. the one that will ignore the animator's scaling.</p>
 <h4 id="setters">Setters</h4>
-<p><strong><mark style="color: lightgray; background-color: #191a18">void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">void SetVertexRaw(int index, Vector3 position, CharData cData, IAnimationContext ctx)</mark></strong> -
 Set the raw position of the vertex at the given index. This position will ignore the animator's scaling.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">void SetPositionRaw(Vector3 position, CharData cData, IAnimationContext ctx)</mark></strong> -
 Set the raw position of the character. This position will ignore the animator's scaling.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">void AddVertexDeltaRaw(int index, Vector3 delta, CharData cData, IAnimationContext ctx)</mark></strong> -
 Add a raw delta to the vertex at the given index. This delta will ignore the animator's scaling.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)</mark></strong> -
+<p><strong><mark class="markstyle">void AddPositionDeltaRaw(Vector3 delta, CharData cData, IAnimationContext ctx)</mark></strong> -
 Add a raw delta to the position of the character. This delta will ignore the animator's scaling.</p>
 <h4 id="anchortoposition">AnchorToPosition</h4>
 <p>Given a Vector2 that represents an anchor (see <a href="parametertypes.html">ParameterTypes</a>),
-you can calculate the actual position on the character using the <mark style="color: lightgray; background-color: #191a18">Vector2 AnchorToPosition(Vector2 anchor, CharData cData)</mark> method.</p>
+you can calculate the actual position on the character using the <mark class="markstyle">Vector2 AnchorToPosition(Vector2 anchor, CharData cData)</mark> method.</p>
 <h2 id="getvalue">GetValue</h2>
 <p>A simple wrapper method that allows you to evaluate an <a href="https://docs.unity3d.com/ScriptReference/AnimationCurve.html">AnimationCurve</a> in any <a href="https://docs.unity3d.com/ScriptReference/WrapMode.html">WrapMode</a>.</p>
 <h2 id="wave-utility">Wave Utility</h2>
-<p>The <mark style="color: lightgray; background-color: #191a18">AnimationUtility</mark> class contains a <mark style="color: lightgray; background-color: #191a18">Wave</mark> type;
-for more information about it as well as the <mark style="color: lightgray; background-color: #191a18">WaveOffsetType</mark> enum, see the <a href="tmpanimator_animationutility_wave.html">next section</a>.</p>
-<p>These are the utility methods for the <mark style="color: lightgray; background-color: #191a18">Wave</mark> type:</p>
+<p>The <mark class="markstyle">AnimationUtility</mark> class contains a <mark class="markstyle">Wave</mark> type;
+for more information about it as well as the <mark class="markstyle">WaveOffsetType</mark> enum, see the <a href="tmpanimator_animationutility_wave.html">next section</a>.</p>
+<p>These are the utility methods for the <mark class="markstyle">Wave</mark> type:</p>
 <h4 id="converting-functions">Converting functions</h4>
-<p>There are a few simple, general converting functions (that are not specific to the <mark style="color: lightgray; background-color: #191a18">Wave</mark> type, but to waves in general):</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">float FrequencyToPeriod(float frequency)</mark></strong> - Get the period of a wave from its frequency<br>
-<strong><mark style="color: lightgray; background-color: #191a18">float PeriodToFrequency(float period)</mark></strong> - Get the frequency of a wave from its period<br>
-<strong><mark style="color: lightgray; background-color: #191a18">float WaveLengthVelocityToFrequency(float wavelength, float wavevelocity)</mark></strong> - Get the frequency of a wave from its wavelength and velocity<br>
-<strong><mark style="color: lightgray; background-color: #191a18">float WaveLengthFrequencyToVelocity(float wavelength, float frequency)</mark></strong> - Get the velocity of a wave from its wavelength and frequency<br>
-<strong><mark style="color: lightgray; background-color: #191a18">float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)</mark></strong> - Get the wavelength of a wave from its velocity and frequency</p>
+<p>There are a few simple, general converting functions (that are not specific to the <mark class="markstyle">Wave</mark> type, but to waves in general):</p>
+<p><strong><mark class="markstyle">float FrequencyToPeriod(float frequency)</mark></strong> - Get the period of a wave from its frequency<br>
+<strong><mark class="markstyle">float PeriodToFrequency(float period)</mark></strong> - Get the frequency of a wave from its period<br>
+<strong><mark class="markstyle">float WaveLengthVelocityToFrequency(float wavelength, float wavevelocity)</mark></strong> - Get the frequency of a wave from its wavelength and velocity<br>
+<strong><mark class="markstyle">float WaveLengthFrequencyToVelocity(float wavelength, float frequency)</mark></strong> - Get the velocity of a wave from its wavelength and frequency<br>
+<strong><mark class="markstyle">float WaveVelocityFrequencyToLength(float wavevelocity, float frequency)</mark></strong> - Get the wavelength of a wave from its velocity and frequency</p>
 <h4 id="getwaveoffset">GetWaveOffset</h4>
-<p>When evaluating a <mark style="color: lightgray; background-color: #191a18">Wave</mark>, you have to pass in an offset, which is dependent on the current character you are animating as well as
-the <mark style="color: lightgray; background-color: #191a18">WaveOffsetType</mark> you are using; the <mark style="color: lightgray; background-color: #191a18">float GetWaveOffset(CharData cData, IAnimationContext ctx, WaveOffsetType type)</mark>
+<p>When evaluating a <mark class="markstyle">Wave</mark>, you have to pass in an offset, which is dependent on the current character you are animating as well as
+the <mark class="markstyle">WaveOffsetType</mark> you are using; the <mark class="markstyle">float GetWaveOffset(CharData cData, IAnimationContext ctx, WaveOffsetType type)</mark>
 calculates the correct offset for you.</p>
 
 </article>

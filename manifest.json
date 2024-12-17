@@ -1785,30 +1785,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/000111.svg.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/000111.svg.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/000111butworse.svg",
       "output": {
         "resource": {
           "relative_path": "images/000111butworse.svg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/000111butworse.svg.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/000111butworse.svg.meta"
         }
       },
       "version": ""
@@ -1825,30 +1805,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/diagram.svg.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/diagram.svg.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/scenecommandexampl.png",
       "output": {
         "resource": {
           "relative_path": "images/scenecommandexampl.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/scenecommandexampl.png.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/scenecommandexampl.png.meta"
         }
       },
       "version": ""
@@ -1865,30 +1825,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/upm.png.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/upm.png.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/upm2.png",
       "output": {
         "resource": {
           "relative_path": "images/upm2.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/upm2.png.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/upm2.png.meta"
         }
       },
       "version": ""
@@ -1905,30 +1845,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/wave1.svg.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/wave1.svg.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "images/wave2.svg",
       "output": {
         "resource": {
           "relative_path": "images/wave2.svg"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/wave2.svg.meta",
-      "output": {
-        "resource": {
-          "relative_path": "images/wave2.svg.meta"
         }
       },
       "version": ""
@@ -1965,6 +1885,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "manual/animations.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/animations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "manual/animationutility.md",
       "output": {
         ".html": {
@@ -1989,6 +1919,16 @@
       "output": {
         ".html": {
           "relative_path": "manual/chardata.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/commandsandevents.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/commandsandevents.html"
         }
       },
       "version": ""
@@ -2075,10 +2015,50 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "manual/quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/quickstart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "manual/tagcollections.md",
       "output": {
         ".html": {
           "relative_path": "manual/tagcollections.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/timeline.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/timeline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/timeline_creatinganimations.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/timeline_creatinganimations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/timeline_integration.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/timeline_integration.html"
         }
       },
       "version": ""
@@ -2281,40 +2261,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/animatetext.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatetext.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/animatingacharacter/colors.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/animatingacharacter/colors.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/colors.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/colors.mp4.meta"
         }
       },
       "version": ""
@@ -2331,30 +2281,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/jumping.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/jumping.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/animatingacharacter/moving.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/animatingacharacter/moving.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/moving.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/moving.mp4.meta"
         }
       },
       "version": ""
@@ -2371,30 +2301,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/positions.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/positions.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/animatingacharacter/rotating.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/animatingacharacter/rotating.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/rotating.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/rotating.mp4.meta"
         }
       },
       "version": ""
@@ -2411,30 +2321,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/scaling.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/scaling.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/animatingacharacter/uvs.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/animatingacharacter/uvs.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/animatingacharacter/uvs.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/animatingacharacter/uvs.mp4.meta"
         }
       },
       "version": ""
@@ -2451,30 +2341,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/fadevalues.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/fadevalues.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/firstanimation.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/firstanimation.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/firstanimation.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/firstanimation.mp4.meta"
         }
       },
       "version": ""
@@ -2491,30 +2361,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/firstanimation2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/firstanimation2.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/firstanimation3.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/firstanimation3.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/firstanimation3.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/firstanimation3.mp4.meta"
         }
       },
       "version": ""
@@ -2531,30 +2381,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/firstanimation4.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/firstanimation4.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/flashlightanimation.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/flashlightanimation.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/flashlightanimation.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/flashlightanimation.mp4.meta"
         }
       },
       "version": ""
@@ -2571,30 +2401,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/hidetext.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/hidetext.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/main.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/main.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/main.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/main.mp4.meta"
         }
       },
       "version": ""
@@ -2611,50 +2421,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/main_dark.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/main_dark.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/main_darkfix.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/main_darkfix.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/main_darkfix.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/main_darkfix.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic.meta"
         }
       },
       "version": ""
@@ -2671,30 +2441,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/char.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/char.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/fade.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/fade.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/fade.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/fade.mp4.meta"
         }
       },
       "version": ""
@@ -2711,30 +2461,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/funky-old.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/funky-old.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/funky-old2.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/funky-old2.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/funky-old2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/funky-old2.mp4.meta"
         }
       },
       "version": ""
@@ -2751,30 +2481,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/funky.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/funky.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/grow.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/grow.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/grow.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/grow.mp4.meta"
         }
       },
       "version": ""
@@ -2791,30 +2501,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/jump.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/jump.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/palette.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/palette.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/palette.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/palette.mp4.meta"
         }
       },
       "version": ""
@@ -2831,30 +2521,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/pivot.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/pivot.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/pivotc-old.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/pivotc-old.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/pivotc-old.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/pivotc-old.mp4.meta"
         }
       },
       "version": ""
@@ -2871,30 +2541,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/pivotc.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/pivotc.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/shake.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/shake.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/shake.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/shake.mp4.meta"
         }
       },
       "version": ""
@@ -2911,30 +2561,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/spread.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/spread.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/swing-old.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/swing-old.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/swing-old.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/swing-old.mp4.meta"
         }
       },
       "version": ""
@@ -2951,30 +2581,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/swing-old2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/swing-old2.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/swing.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/swing.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/swing.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/swing.mp4.meta"
         }
       },
       "version": ""
@@ -2991,30 +2601,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/wave-old.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/wave-old.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/basic/wave-old2.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/wave-old2.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/basic/wave-old2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/wave-old2.mp4.meta"
         }
       },
       "version": ""
@@ -3031,40 +2621,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/basic/wave.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/basic/wave.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/commands.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/commands.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/commands/delay.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/commands/delay.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/commands/delay.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/commands/delay.mp4.meta"
         }
       },
       "version": ""
@@ -3081,40 +2641,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/previews/commands/show.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/commands/show.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/previews/commands/skippable.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/previews/commands/skippable.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/commands/skippable.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/commands/skippable.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/previews/showhide.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/previews/showhide.meta"
         }
       },
       "version": ""
@@ -3411,30 +2941,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/showhide1.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/showhide1.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/showhidetext.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/showhidetext.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/showhidetext.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/showhidetext.mp4.meta"
         }
       },
       "version": ""
@@ -3451,30 +2961,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/showtext.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/showtext.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/uniformitydiff.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/uniformitydiff.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/uniformitydiff.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/uniformitydiff.mp4.meta"
         }
       },
       "version": ""
@@ -3491,30 +2981,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/writetext.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetext.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/writetext2.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/writetext2.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/writetext2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetext2.mp4.meta"
         }
       },
       "version": ""
@@ -3531,30 +3001,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/writetext3.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetext3.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/writetextanimated.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/writetextanimated.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/writetextanimated.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetextanimated.mp4.meta"
         }
       },
       "version": ""
@@ -3571,30 +3021,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "videos/writetextnoanim.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetextnoanim.mp4.meta"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
       "source_relative_path": "videos/writetextnoanim2.mp4",
       "output": {
         "resource": {
           "relative_path": "videos/writetextnoanim2.mp4"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "videos/writetextnoanim2.mp4.meta",
-      "output": {
-        "resource": {
-          "relative_path": "videos/writetextnoanim2.mp4.meta"
         }
       },
       "version": ""

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>AutoParameters | TMPEffects documentation </title>
+      <title>Timeline integration | TMPEffects documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="AutoParameters | TMPEffects documentation ">
+      <meta name="title" content="Timeline integration | TMPEffects documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/autoparameters.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/timeline_integration.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,15 +85,52 @@
         </div>
 
         <article data-uid="">
-<h1 id="autoparameters">AutoParameters</h1>
+<h1 id="timeline-integration">Timeline integration</h1>
 
-<p>AutoParameters is a plugin for TMPEffects that minimizes any parameter-related boilerplate for animations by automatically implementing the <mark class="markstyle">ValidateParameters</mark>,
-<mark class="markstyle">SetParameters</mark> and <mark class="markstyle">GetNewCustomData</mark> methods for you. For more information, see the <a href="../plugins/autoparameters.md">page on it</a>.</p>
+<p>TMPEffects is integrated with <a href="https://docs.unity3d.com/Packages/com.unity.timeline@1.2/manual/index.html">Unity's Timeline package</a>, providing its own timeline clips and markers.</p>
+<h2 id="clips">Clips</h2>
+<p>At the moment, TMPEffects provides two different clip types.</p>
+<h3 id="tmpanimationclip">TMPAnimationClip</h3>
+<p>The <mark class="markstyle">TMPAnimationClip</mark> plays an animation (any asset implementing <mark class="markstyle">ITMPAnimation</mark> works) while it is active.<br>
+It additionally allows you to blend the animation in and out, as well as pre/post extrapolating it. <p style="color:blue">TODO Check if this is actually true, and add gif showing how clip works</p>
+<h3 id="tmpmeshmodifier-clip">TMPMeshModifier clip</h3>
+<p>The <mark class="markstyle">TMPMeshModifierClip</mark> allows you to apply one-time mesh modifications that aren't necessarily suited to periodic animations.<br>
+For example, at some specific point in your cutscene, you might want your text to change color or jump up once.</p>
+<p>Using an <mark class="markstyle">TMPMeshModifierClip</mark> you may modify the character's positions, rotation and scale, as well as position, color and alpha of the individual vertices.
+Blending and extrapolation is supported.<br>
+You may also blend in from a different set of modifiers, using the <mark class="markstyle">Initial Modifiers</mark> option in the clip inspector, or use the <mark class="markstyle">Wave</mark> option to continuously blend the modifiers
+(more about <mark class="markstyle">Waves</mark> <a href="tmpanimator_animationutility_wave.html">here</a>).<br>
+<mark class="markstyle">TMPMeshModifierClip</mark> also supports <p style="color:blue">TODO Offset chapter linked here</p>.
+<p>By combining multiple (tracks of) <mark class="markstyle">TMPMeshModifierClips</mark>, you can create quite complex periodic animations as well, which you may then export to a standard <mark class="markstyle">TMPAnimation</mark> asset to use in your animation databases.<br>
+This process is explained in more detail in the next section, <a href="timeline_creatinganimations.html">Creating animations using Timeline</a>.</p>
+<h2 id="markers">Markers</h2>
+<p>Custom markers allow you to control a <mark class="markstyle">TMPWriter</mark> and <mark class="markstyle">TMPAnimator</mark> by calling their most common / important methods.<br>
+Be aware that you will need a <mark class="markstyle">TMPWriterMarkReceiver</mark> or <mark class="markstyle">TMPAnimatorMarkReceiver</mark> component respectively on the same GameObject in order for these markers to work.<br>
+For <mark class="markstyle">TMPWriter</mark>, the following methods have corresponding timeline markers:</p>
+<ul>
+<li>StartWriter()</li>
+<li>StopWriter()</li>
+<li>ResetWriter(int)</li>
+<li>SkipWriter(bool)</li>
+<li>RestartWriter(int)</li>
+<li>Wait(float)</li>
+<li>SetSkippable(bool)</li>
+<li>ResetWait()</li>
+</ul>
+<p>For <mark class="markstyle">TMPAnimator</mark>, the following methods have corresponding timeline markers:</p>
+<ul>
+<li>StartAnimation()</li>
+<li>StopAnimation()</li>
+<li>UpdateAnimations(float)</li>
+<li>SetUpdateFrom(UpdateFrom)</li>
+<li>ResetAnimations()</li>
+<li>ResetAnimations(float)</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/autoparameters.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/timeline_integration.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

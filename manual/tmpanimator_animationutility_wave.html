@@ -87,7 +87,7 @@
         <article data-uid="">
 <h1 id="wave">Wave</h1>
 
-<p>The <mark style="color: lightgray; background-color: #191a18">Wave</mark> class significantly streamlines the process of creating periodic animations.</p>
+<p>The <mark class="markstyle">Wave</mark> class significantly streamlines the process of creating periodic animations.</p>
 <style>
 .center {
   display: block;
@@ -108,13 +108,13 @@
 }
 </style>
 <h2 id="defining-a-wave">Defining a wave</h2>
-<p><mark style="color: lightgray; background-color: #191a18">Waves</mark> are defined by, and created using, eight different parameters, which are as follows:</p>
+<p><mark class="markstyle">Waves</mark> are defined by, and created using, eight different parameters, which are as follows:</p>
 <ul>
 <li><strong>Upward Curve</strong>: Defines the &quot;shape&quot; of the half of the curve that moves up</li>
 <li><strong>Downward Curve</strong>: Defines the &quot;shape&quot; of the half of the curve that moves down</li>
 <li><strong>Up Period</strong>: Defines the amount of time it takes to travel the upward curve</li>
 <li><strong>Down Period</strong>: Defines the amount of time it takes to travel the downward curve</li>
-<li><strong>Amplitude</strong>: Defines the maximum value the wave reaches; this is <mark style="color: lightgray; background-color: #191a18">1</mark> by default</li>
+<li><strong>Amplitude</strong>: Defines the maximum value the wave reaches; this is <mark class="markstyle">1</mark> by default</li>
 <li><strong>Crest Wait</strong>: Defines the amount of time the wave maintains its peak</li>
 <li><strong>Trough Wait</strong>: Defines the amount of time the wave maintains its minimum</li>
 <li><strong>Uniformity</strong>: Defines how much the offset passed in when evaluating the wave is considered</li>
@@ -130,28 +130,28 @@ Below, you see the same animation with the exact same wave, except that the firs
   Your browser does not support the video tag.
 </video>
 <h2 id="creating-a-wave">Creating a wave</h2>
-<p>You create a wave simply by passing in these eight values into <mark style="color: lightgray; background-color: #191a18">Waves</mark> constructor.<br>
-Since this class is designed specifically to be used with animations though, likely you will mostly be creating it using the <mark style="color: lightgray; background-color: #191a18">CreateWave</mark>
-method from the <mark style="color: lightgray; background-color: #191a18">ParameterUtility</mark> class.
+<p>You create a wave simply by passing in these eight values into <mark class="markstyle">Waves</mark> constructor.<br>
+Since this class is designed specifically to be used with animations though, likely you will mostly be creating it using the <mark class="markstyle">CreateWave</mark>
+method from the <mark class="markstyle">ParameterUtility</mark> class.
 For info about how to use wave as a parameter in your animations, see <a href="parameterutility.html#waves">ParameterUtility Wave</a>.</p>
 <h2 id="evaluating-a-wave">Evaluating a wave</h2>
-<p>Once you have created a <mark style="color: lightgray; background-color: #191a18">Wave</mark>, you can evaluate it using a time value and an offset value: <mark style="color: lightgray; background-color: #191a18">(float, int) Evaluate(float time, float offset)</mark>.<br>
-As you can tell by the signature, <mark style="color: lightgray; background-color: #191a18">Evaluate</mark> returns two values.
+<p>Once you have created a <mark class="markstyle">Wave</mark>, you can evaluate it using a time value and an offset value: <mark class="markstyle">(float, int) Evaluate(float time, float offset)</mark>.<br>
+As you can tell by the signature, <mark class="markstyle">Evaluate</mark> returns two values.
 The float is the actual value of the curve for the given time and offset.
 The integer indicates whether the curve is currently travelling up or down; if it is negative, the curve is moving down, if it is positive, the curve is moving up.
 This value is useful for when you want to switch the behavior of your animation depending on what curve the wave is currently travelling.<br>
-For example, the built-in <mark style="color: lightgray; background-color: #191a18">fade</mark> animation can use different anchors depending on whether the character
-is fading in or out. The animation below visualizes how <mark style="color: lightgray; background-color: #191a18">fade</mark> uses both values of the <mark style="color: lightgray; background-color: #191a18">Evaluate</mark>
+For example, the built-in <mark class="markstyle">fade</mark> animation can use different anchors depending on whether the character
+is fading in or out. The animation below visualizes how <mark class="markstyle">fade</mark> uses both values of the <mark class="markstyle">Evaluate</mark>
 method.</p>
 <video class="center" style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/fadevalues.mp4" width="320" height="240" autoplay loop muted>
   Your browser does not support the video tag.
 </video>
 <h2 id="checking-wave-extrema">Checking wave extrema</h2>
-<p>You can check if the wave passed an extrema (so either the crest or the trough) during the last update, using the <mark style="color: lightgray; background-color: #191a18">int PassedExtrema(float time, float deltaTime, float offset)</mark> method.
+<p>You can check if the wave passed an extrema (so either the crest or the trough) during the last update, using the <mark class="markstyle">int PassedExtrema(float time, float deltaTime, float offset)</mark> method.
 Once again, you need the time value and the offset, and additionally here you need the deltaTime since you last checked.
-Essentially, the method checks whether the wave passed an extrema during the time interval of [<mark style="color: lightgray; background-color: #191a18">timeValue - deltaTime</mark>, <mark style="color: lightgray; background-color: #191a18">timeValue</mark>]. A positive return value indicates that a maximum was passed, a negative return value indicates that a minimum was passed, and 0 indicates neither was.</p>
-<p>An additional, optional parameter is <mark style="color: lightgray; background-color: #191a18"><a href="../api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></mark>.
-If the checked wave has a crest or trough wait, this parameter defines whether an extremum is passed once the wait time begins, or once it ends. <mark style="color: lightgray; background-color: #191a18">PulseExtrema</mark> can also consider both
+Essentially, the method checks whether the wave passed an extrema during the time interval of [<mark class="markstyle">timeValue - deltaTime</mark>, <mark class="markstyle">timeValue</mark>]. A positive return value indicates that a maximum was passed, a negative return value indicates that a minimum was passed, and 0 indicates neither was.</p>
+<p>An additional, optional parameter is <mark class="markstyle"><a href="../api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></mark>.
+If the checked wave has a crest or trough wait, this parameter defines whether an extremum is passed once the wait time begins, or once it ends. <mark class="markstyle">PulseExtrema</mark> can also consider both
 to be an extrema, but of course be aware that it will then notify you of each extremum twice.</p>
 <p>If multiple extrema were passed during the specified interval, it will notify you of the latest one.</p>
 

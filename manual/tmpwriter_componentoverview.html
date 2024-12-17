@@ -89,22 +89,23 @@
 
 <p>This section gives an overview of the actual TMPWriter component, both for the inspector and scripting. The full API documentation can be found <a href="../api/TMPEffects.Components.TMPWriter.html">here</a>.</p>
 <h2 id="preview">Preview</h2>
-<p>To preview the writer in editor mode, you can hit the play button in the <mark style="color: lightgray; background-color: #191a18">Writer preview</mark> section at the top of the TMPWriter inspector.
+<p>To preview the writer in editor mode, you can hit the play button in the <mark class="markstyle">Writer preview</mark> section at the top of the TMPWriter inspector.
 Right next to it, are the buttons for resetting, stopping, and skipping the writer respectively.
 The progress bar lets you freely skip to any point of the writing process.</p>
 <p>The two toggles above the player decide whether events and commands are executed in the editor preview.
 There is a few things to consider with them:</p>
 <p>Event toggle</p>
 <ul>
-<li>You will also have to set the actual events you want to raise to <mark style="color: lightgray; background-color: #191a18">Editor and Runtime</mark>.</li>
+<li>You will also have to set the actual events you want to raise to <mark class="markstyle">Editor and Runtime</mark>.</li>
 </ul>
-<blockquote>
-<p>[!WARNING] ⚠️ Be careful about which events you allow to be raised in preview mode. Generally I'd recommend setting the event toggle to false completely.</p>
-</blockquote>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>⚠️ Be careful about which events you allow to be raised in preview mode. Generally I'd recommend setting the event toggle to false completely.</p>
+</div>
 <p>Command toggle</p>
 <ul>
-<li><mark style="color: lightgray; background-color: #191a18">SceneCommands</mark> are never raised in preview mode.</li>
-<li>If you create any new commands, you can decide whether it should be raised in preview mode through its <mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark> property.</li>
+<li><mark class="markstyle">SceneCommands</mark> are never raised in preview mode.</li>
+<li>If you create any new commands, you can decide whether it should be raised in preview mode through its <mark class="markstyle">ExecuteInPreview</mark> property.</li>
 </ul>
 <h2 id="controlling-the-writer">Controlling the writer</h2>
 <p>TMPWriter supplies multiple methods to control the writer.</p>
@@ -118,22 +119,23 @@ There is a few things to consider with them:</p>
 </ul>
 <p>There are also a few method that let you modify the writing process in a more subtle way:</p>
 <ul>
-<li><strong>Wait(float seconds)</strong>: Wait for the given amount of time until showing the next character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">wait</mark> tag</li>
-<li><strong>SetDelay(float seconds)</strong>: Sets the delay used after each character; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">delay</mark> tag</li>
-<li><strong>SetSkippable(bool skippable)</strong>: Sets whether the current text section is skippable; behavior is equivalent to the <mark style="color: lightgray; background-color: #191a18">skippable</mark> tag</li>
+<li><strong>Wait(float seconds)</strong>: Wait for the given amount of time until showing the next character; behavior is equivalent to the <mark class="markstyle">wait</mark> tag</li>
+<li><strong>SetDelay(float seconds)</strong>: Sets the delay used after each character; behavior is equivalent to the <mark class="markstyle">delay</mark> tag</li>
+<li><strong>SetSkippable(bool skippable)</strong>: Sets whether the current text section is skippable; behavior is equivalent to the <mark class="markstyle">skippable</mark> tag</li>
 <li><strong>WaitUntil(Func<bool> condition)</bool></strong>: Wait until the given condition evaluates to true;</li>
 </ul>
-<blockquote>
-<p>[!WARNING] ⚠️ WaitUntil has no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</p>
-</blockquote>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>⚠️ WaitUntil has no built-in timeout. It is up to you to ensure the condition wont be false forever / for too long</p>
+</div>
 <p>Default values for the delay as well as the &quot;skippability&quot; of the text can be set in the TMPWriter inspector.</p>
 <h2 id="command-databases">Command databases</h2>
-<p>The TMPWriter inspector has a foldout labeled <mark style="color: lightgray; background-color: #191a18">Commands</mark>.
+<p>The TMPWriter inspector has a foldout labeled <mark class="markstyle">Commands</mark>.
 There, you may choose the command database that is used to process command tags from the TextMeshPro component's text.
-If you toggle <mark style="color: lightgray; background-color: #191a18">Use default database</mark> to true, the default command database is automatically selected for you.
+If you toggle <mark class="markstyle">Use default database</mark> to true, the default command database is automatically selected for you.
 The default database is defined in the TMPEffects preferences file.
-You can also set the database used by the TMPWriter component through script, using the <mark style="color: lightgray; background-color: #191a18">SetDatabase(TMPCommandDatabase db)</mark> method.</p>
-<p>Below the database, there is another field, <mark style="color: lightgray; background-color: #191a18">SceneCommands</mark>, which is simply a dictionary that allows you to map tag names to SceneCommands. Tags defined here are also parsed by the TMPWriter.</p>
+You can also set the database used by the TMPWriter component through script, using the <mark class="markstyle">SetDatabase(TMPCommandDatabase db)</mark> method.</p>
+<p>Below the database, there is another field, <mark class="markstyle">SceneCommands</mark>, which is simply a dictionary that allows you to map tag names to SceneCommands. Tags defined here are also parsed by the TMPWriter.</p>
 <p>For more about databases, see <a href="databases.html">Databases</a>. For more about SceneCommands, see <a href="tmpwriter_scenecommands.html">SceneCommands</a>.</p>
 <h2 id="writer-events">Writer events</h2>
 <p>Besides the OnTextEvent (see <a href="tmpwriter_gettingstarted.html">Getting started</a>), there are the following events you may listen to:</p>
@@ -146,8 +148,8 @@ You can also set the database used by the TMPWriter component through script, us
 <li><strong>OnFinishWriter()</strong>: Raised whenever the writing process is finished, and the whole text is shown</li>
 </ul>
 <h2 id="adding--removing-tags-through-script">Adding &amp; removing tags through script</h2>
-<p>The TMPWriter class exposes three different <mark style="color: lightgray; background-color: #191a18"><a href="tagcollections.html">TagCollections</a></mark>: <mark style="color: lightgray; background-color: #191a18">CommandTags</mark>, which contains all parsed command tags and <mark style="color: lightgray; background-color: #191a18">EventTags</mark>, which contains all parsed event tags. Additionally, <mark style="color: lightgray; background-color: #191a18">Tags</mark> is the union of the other two collections.</p>
-<p>For each of the <mark style="color: lightgray; background-color: #191a18">TagCollections</mark>, you may freely add and remove tags at any point.</p>
+<p>The TMPWriter class exposes three different <mark class="markstyle"><a href="tagcollections.html">TagCollections</a></mark>: <mark class="markstyle">CommandTags</mark>, which contains all parsed command tags and <mark class="markstyle">EventTags</mark>, which contains all parsed event tags. Additionally, <mark class="markstyle">Tags</mark> is the union of the other two collections.</p>
+<p>For each of the <mark class="markstyle">TagCollections</mark>, you may freely add and remove tags at any point.</p>
 
 </article>
 

@@ -87,11 +87,11 @@
         <article data-uid="">
 <h1 id="ianimationcontext">IAnimationContext</h1>
 
-<p>An instance of the <mark style="color: lightgray; background-color: #191a18">IAnimationContext</mark> type serves as the context for all animations.</p>
+<p>An instance of the <mark class="markstyle">IAnimationContext</mark> type serves as the context for all animations.</p>
 <h2 id="properties">Properties</h2>
-<p><mark style="color: lightgray; background-color: #191a18">IAnimationContext</mark> exposes various properties that will be useful for your animations:</p>
+<p><mark class="markstyle">IAnimationContext</mark> exposes various properties that will be useful for your animations:</p>
 <ul>
-<li><p><strong>CustomData</strong>: The custom data object created in <mark style="color: lightgray; background-color: #191a18">GetNewCustomData</mark> (see <a href="tmpanimator_creatinganimations.html">Creating Animations</a>).</p>
+<li><p><strong>CustomData</strong>: The custom data object created in <mark class="markstyle">GetNewCustomData</mark> (see <a href="tmpanimator_creatinganimations.html">Creating Animations</a>).</p>
 </li>
 <li><p><strong>SegmentData</strong>: Contains information about the animation segment the current character belongs to.</p>
 <ul>
@@ -103,31 +103,31 @@
 <li><strong>LastAnimationIndex</strong>: The index of the last character will actually be animated (i.e. not whitespace, not excluded by TMPAnimator)</li>
 <li><strong>Max</strong>: The maximum vertex positions of text in this segment</li>
 <li><strong>Min</strong>: The minimum vertex positions of text in this segment</li>
-<li><strong>SegmentIndexOf(CharData)</strong>: Get the index within this segment for the passed in <mark style="color: lightgray; background-color: #191a18">CharData</mark>
+<li><strong>SegmentIndexOf(CharData)</strong>: Get the index within this segment for the passed in <mark class="markstyle">CharData</mark>
 <br>
 <br></li>
 </ul>
 </li>
-<li><p><strong>State</strong>: Exposes multiple readonly properties about the current state of the <mark style="color: lightgray; background-color: #191a18">CharData</mark> (with previous animations already applied).
-Generally, to be used with the <mark style="color: lightgray; background-color: #191a18">late</mark> tag parameters (see <a href="tmpanimator_gettingstarted.html">Getting started with TMPAnimator</a>).</p>
+<li><p><strong>State</strong>: Exposes multiple readonly properties about the current state of the <mark class="markstyle">CharData</mark> (with previous animations already applied).
+Generally, to be used with the <mark class="markstyle">late</mark> tag parameters (see <a href="tmpanimator_gettingstarted.html">Getting started with TMPAnimator</a>).</p>
 <ul>
-<li><strong>CalculateVertexPositions()</strong>: Calculate the current vertex positions. Results can be read from <mark style="color: lightgray; background-color: #191a18">BL_Result</mark>, <mark style="color: lightgray; background-color: #191a18">TL_Result</mark>, <mark style="color: lightgray; background-color: #191a18">TR_Result</mark>, <mark style="color: lightgray; background-color: #191a18">BR_Result</mark>.
+<li><strong>CalculateVertexPositions()</strong>: Calculate the current vertex positions. Results can be read from <mark class="markstyle">BL_Result</mark>, <mark class="markstyle">TL_Result</mark>, <mark class="markstyle">TR_Result</mark>, <mark class="markstyle">BR_Result</mark>.
 <br>
 <br></li>
 </ul>
 </li>
-<li><p><strong>Finished(int), Finished(CharData)</strong>: Check whether the given <mark style="color: lightgray; background-color: #191a18">CharData</mark> is done animating. To be used with show and hide animations (see <a href="tmpanimator_creatinganimations.html#creating-show--hide-animations">Creating show / hide animations</a>).</p>
+<li><p><strong>Finished(int), Finished(CharData)</strong>: Check whether the given <mark class="markstyle">CharData</mark> is done animating. To be used with show and hide animations (see <a href="tmpanimator_creatinganimations.html#creating-show--hide-animations">Creating show / hide animations</a>).</p>
 </li>
-<li><p><strong>FinishAnimation(CharData)</strong>: Finish the animation for the given <mark style="color: lightgray; background-color: #191a18">CharData</mark>. To be used with show and hide animations (see <a href="tmpanimator_creatinganimations.html#creating-show--hide-animations">Creating show / hide animations</a>).</p>
+<li><p><strong>FinishAnimation(CharData)</strong>: Finish the animation for the given <mark class="markstyle">CharData</mark>. To be used with show and hide animations (see <a href="tmpanimator_creatinganimations.html#creating-show--hide-animations">Creating show / hide animations</a>).</p>
 </li>
-<li><p><strong>AnimatorContext</strong>: The <mark style="color: lightgray; background-color: #191a18">IAnimatorContext</mark> exposes properties about the animator state.</p>
+<li><p><strong>AnimatorContext</strong>: The <mark class="markstyle">IAnimatorContext</mark> exposes properties about the animator state.</p>
 <ul>
 <li><strong>PassedTime</strong>: The time that has passed since the animator began animating. Generally speaking, you should use this as the time value for basic animations</li>
 <li><strong>DeltaTime</strong>: The current delta time used by the animator to update the animations.</li>
-<li><strong>UseScaledTime</strong>: Whether the animator uses scaled time (=&gt; whether <mark style="color: lightgray; background-color: #191a18">PassedTime</mark> is scaled)</li>
+<li><strong>UseScaledTime</strong>: Whether the animator uses scaled time (=&gt; whether <mark class="markstyle">PassedTime</mark> is scaled)</li>
 <li><strong>ScaleAnimations</strong>: Whether the animator scales the animation. Used by various <a href="animationutility.html#raw-positions--deltas">AnimationUtility methods</a>.</li>
-<li><strong>StateTime(CharData)</strong>: How long the given <mark style="color: lightgray; background-color: #191a18">CharData</mark> has been in its current visibility state for. Generally speaking, you should use this as the time value for show and hide animations</li>
-<li><strong>VisibleTime(CharData)</strong>: How long the given <mark style="color: lightgray; background-color: #191a18">CharData</mark> has been visible for. Can use this alternatively to <mark style="color: lightgray; background-color: #191a18">PassedTime</mark> for basic animations</li>
+<li><strong>StateTime(CharData)</strong>: How long the given <mark class="markstyle">CharData</mark> has been in its current visibility state for. Generally speaking, you should use this as the time value for show and hide animations</li>
+<li><strong>VisibleTime(CharData)</strong>: How long the given <mark class="markstyle">CharData</mark> has been visible for. Can use this alternatively to <mark class="markstyle">PassedTime</mark> for basic animations</li>
 </ul>
 </li>
 </ul>

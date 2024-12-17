@@ -95,86 +95,31 @@
 <li>int</li>
 <li>bool</li>
 <li>Color</li>
-<li>Vector2</li>
-<li>Vector3</li>
-<li><a href="">Vector2Offset</a></li>
-<li><a href="">Vector3Offset</a></li>
+<li>Vector2/3</li>
 <li><a href="">Anchor</a></li>
-<li><a href="">TypedVector2</a></li>
-<li><a href="">TypedVector3</a></li>
+<li><a href="">TypedVector2/3</a></li>
 <li><a href="https://docs.unity3d.com/ScriptReference/AnimationCurve.html">AnimationCurve</a></li>
-<li><a href="animationutility.html#wave-utility">WaveOffsetType</a></li>
+<li><a href="">OffsetProvider TODO OffsetProvider link</a></li>
 <li>Array</li>
 </ul>
 <h2 id="type-formatting">Type formatting</h2>
-<p>This is an overview of how to correctly format the different parameter types in your tags, most with at least one example.</p>
+<p>This is an overview of how to correctly format the different parameter types by example.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For any of these types, you can also define valid keywords using a <mark class="markstyle">TMPKeywordDatabase</mark>.<br>
+Most of these types have pre-defined keywords set in the global <mark class="markstyle">TMPKeywordDatabase</mark> as well; especially for AnimationCurves and OffsetProviders you will want to almost exclusively use keywords.</p>
+</div>
 <ul>
-<li>float: Must use <mark style="color: lightgray; background-color: #191a18">.</mark> as decimal, not <mark style="color: lightgray; background-color: #191a18">,</mark>
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">2.54</mark>, <mark style="color: lightgray; background-color: #191a18">3</mark></li>
-</ul>
-</li>
-<li>int: Just a plain integer number
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">12</mark></li>
-</ul>
-</li>
-<li>bool: Either <mark style="color: lightgray; background-color: #191a18">true</mark> or <mark style="color: lightgray; background-color: #191a18">false</mark></li>
-<li>Color: Colors may be defined either in HEX format, HSV format or RGB(A) format. In addition to that, there are a bunch of supported keywords
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">#DEADBEEF</mark>,<mark style="color: lightgray; background-color: #191a18">hsv(0.3,64,52)</mark>, <mark style="color: lightgray; background-color: #191a18">rgb(0,0.5,0.5)</mark>, <mark style="color: lightgray; background-color: #191a18">indigo</mark></li>
-</ul>
-</li>
-<li>Vector2: Two bracketed floats, separated by comma
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>Vector3: Three bracketed floats, separated by comma (or two; third float automatically set to zero)
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">(0.3, 22.4, 0)</mark> = <mark style="color: lightgray; background-color: #191a18">(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>Vector2Offset: Same as Vector2, but with leading <mark style="color: lightgray; background-color: #191a18">o:</mark>
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">o:(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>Vector2Offset: Same as Vector3, but with leading <mark style="color: lightgray; background-color: #191a18">o:</mark>
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">(0.3, 22.4, 0)</mark> = <mark style="color: lightgray; background-color: #191a18">o:(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>Anchor: Same as Vector2, but with leading <mark style="color: lightgray; background-color: #191a18">a:</mark>
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">a:(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>TypedVector2: Format of either Vector2, Vector2Offset or Anchor
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">(0.3, 22.4)</mark>, <mark style="color: lightgray; background-color: #191a18">o:(0.3, 22.4)</mark>, <mark style="color: lightgray; background-color: #191a18">a:(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>TypedVector3: Format of either Vector3, Vector3Offset or Anchor
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">(0.3, 22.4, 0)</mark>, <mark style="color: lightgray; background-color: #191a18">o:(0.3, 22.4, 0)</mark>, <mark style="color: lightgray; background-color: #191a18">a:(0.3, 22.4)</mark></li>
-</ul>
-</li>
-<li>AnimationCurve: Generally keywords; though you may also construct custom curves by specifying one of the predefined methods (<mark style="color: lightgray; background-color: #191a18">cubic</mark>, <mark style="color: lightgray; background-color: #191a18">quadratic</mark>, <mark style="color: lightgray; background-color: #191a18">linear</mark>) or just a raw vector sequence. See <a href="animationcurveutility.html">AnimationCurveUtility</a> for more info.
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">easinoutsine</mark>, <mark style="color: lightgray; background-color: #191a18">quadratic((0,0),(0.2,0.7),(1,1))</mark>, <mark style="color: lightgray; background-color: #191a18">(0,0),(0.2,0.7),(1,1)</mark></li>
-</ul>
-</li>
-<li>WaveOffsetType: Keywords
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">index / idx</mark>, <mark style="color: lightgray; background-color: #191a18">segmentindex / sindex / sidx</mark>, <mark style="color: lightgray; background-color: #191a18">x / xpos</mark>, <mark style="color: lightgray; background-color: #191a18">y / ypos</mark></li>
-</ul>
-</li>
-<li>Array: Multiple of the desired type, separated by a semicolon
-<ul>
-<li><mark style="color: lightgray; background-color: #191a18">0.3;4.82;1</mark>, <mark style="color: lightgray; background-color: #191a18">red;green;blue</mark>, <mark style="color: lightgray; background-color: #191a18">true;false;false</mark></li>
-</ul>
-</li>
+<li>float: <mark class="markstyle">2.54</mark>, <mark class="markstyle">3</mark></li>
+<li>int: <mark class="markstyle">12</mark></li>
+<li>bool: Either <mark class="markstyle">true</mark> or <mark class="markstyle">false</mark></li>
+<li>Color: Either in HEX format <mark class="markstyle">#DEADBEEF</mark>, HSV format <mark class="markstyle">hsv(0.3,64,52)</mark> or RGB(A) format <mark class="markstyle">rgb(0,0.5,0.5)</mark></li>
+<li>Vector2/3: <mark class="markstyle">(0.3, 22.4)</mark>, <mark class="markstyle">(0.3, 22.4, 0)</mark></li>
+<li>Anchor: Same as Vector2, but with leading &quot;a:&quot;; <mark class="markstyle">a:(0.3, 22.4)</mark></li>
+<li>TypedVector2/3: Same as Vector2/3, with either leading &quot;a:&quot;, leading &quot;o:&quot;, or no prefix; depending on the prefix, will be interpreted as Anchor, Offset or Position; <mark class="markstyle">(0.3, 22.4)</mark>, <mark class="markstyle">o:(0.3, 22.4)</mark>, <mark class="markstyle">a:(0.3, 22.4)</mark></li>
+<li>AnimationCurve: You may construct custom curves by specifying one of the predefined methods (<mark class="markstyle">cubic</mark>, <mark class="markstyle">quadratic</mark>, <mark class="markstyle">linear</mark>) or just a raw vector sequence. See <a href="animationcurveutility.html">AnimationCurveUtility</a> for more info. <mark class="markstyle">quadratic((0,0),(0.2,0.7),(1,1))</mark>, <mark class="markstyle">(0,0),(0.2,0.7),(1,1)</mark></li>
+<li>OffsetProvider: This exclusively uses keywords</li>
+<li>Array: Multiple of the desired type, separated by a semicolon; <mark class="markstyle">0.3;4.82;1</mark>, <mark class="markstyle">red;green;blue</mark>, <mark class="markstyle">true;false;false</mark></li>
 </ul>
 
 </article>

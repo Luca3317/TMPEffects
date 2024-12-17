@@ -88,16 +88,16 @@
 <h1 id="animating-a-character">Animating a character</h1>
 
 <p>This section guides you through how you animate characters in TMPEffects.</p>
-<p>As shown in <a href="tmpanimator_creatinganimations.html">Creating animations</a>, the <mark style="color: lightgray; background-color: #191a18">Animate</mark> method takes two parameters:</p>
+<p>As shown in <a href="tmpanimator_creatinganimations.html">Creating animations</a>, the <mark class="markstyle">Animate</mark> method takes two parameters:</p>
 <ul>
-<li><mark style="color: lightgray; background-color: #191a18"><a href="chardata.html">CharData</a></mark></li>
-<li><mark style="color: lightgray; background-color: #191a18"><a href="ianimationcontext.html">IAnimationContext</a></mark></li>
+<li><mark class="markstyle"><a href="chardata.html">CharData</a></mark></li>
+<li><mark class="markstyle"><a href="ianimationcontext.html">IAnimationContext</a></mark></li>
 </ul>
 <p>For general information about these types, see the respective documentation.</p>
 <h2 id="applying-transformations-to-a-character">Applying transformations to a character</h2>
 <h4 id="moving-the-character">Moving the character</h4>
-<p>To move the character, simply use the <mark style="color: lightgray; background-color: #191a18">SetPosition(Vector3 position)</mark> or  <mark style="color: lightgray; background-color: #191a18">AddPositionDelta(Vector3 delta)</mark>
-method on <mark style="color: lightgray; background-color: #191a18">CharData</mark>.<br>
+<p>To move the character, simply use the <mark class="markstyle">SetPosition(Vector3 position)</mark> or  <mark class="markstyle">AddPositionDelta(Vector3 delta)</mark>
+method on <mark class="markstyle">CharData</mark>.<br>
 Most of the time, you will want to do this using the original position of the character and an offset.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
@@ -110,8 +110,8 @@ Most of the time, you will want to do this using the original position of the ch
   Your browser does not support the video tag.
 </video>
 <h4 id="rotating-the-character">Rotating the character</h4>
-<p>To rotate the character, use <mark style="color: lightgray; background-color: #191a18">CharData's</mark> <mark style="color: lightgray; background-color: #191a18">SetRotation(Quaternion rotation)</mark> method.
-If you want to rotate around a specific pivot, you may set it using either the <mark style="color: lightgray; background-color: #191a18">SetPivot(Vector3 pivot)</mark> method or the <mark style="color: lightgray; background-color: #191a18">AddPivotDelta(Vector3 delta)</mark> method.<br>
+<p>To rotate the character, use <mark class="markstyle">CharData's</mark> <mark class="markstyle">SetRotation(Quaternion rotation)</mark> method.
+If you want to rotate around a specific pivot, you may set it using either the <mark class="markstyle">SetPivot(Vector3 pivot)</mark> method or the <mark class="markstyle">AddPivotDelta(Vector3 delta)</mark> method.<br>
 If you don't set a pivot for the rotation, it will rotate around the center of the character.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
@@ -129,7 +129,7 @@ If you don't set a pivot for the rotation, it will rotate around the center of t
   Your browser does not support the video tag.
 </video>
 <h4 id="scaling-the-character">Scaling the character</h4>
-<p>To scale the character, use the <mark style="color: lightgray; background-color: #191a18">SetScale(Vector3 scale)</mark> method.</p>
+<p>To scale the character, use the <mark class="markstyle">SetScale(Vector3 scale)</mark> method.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
     // Ping-pong the scale between (0, 0, 0) and (1, 1, 1) over time
@@ -143,7 +143,7 @@ If you don't set a pivot for the rotation, it will rotate around the center of t
 </video>
 <h2 id="modifying-a-characters-vertices">Modifying a character's vertices</h2>
 <h4 id="setting-the-vertices-positions">Setting the vertices' positions</h4>
-<p>You can set the positions of the character's vertices using the <mark style="color: lightgray; background-color: #191a18">SetPosition(int i, Vector3 value)</mark> method on the <mark style="color: lightgray; background-color: #191a18">VertexData</mark> type. The integer specifies the vertex to modify (again, see <a href="chardata.html">CharData</a>) while the vector specifies the new position.</p>
+<p>You can set the positions of the character's vertices using the <mark class="markstyle">SetPosition(int i, Vector3 value)</mark> method on the <mark class="markstyle">VertexData</mark> type. The integer specifies the vertex to modify (again, see <a href="chardata.html">CharData</a>) while the vector specifies the new position.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
     // Pingpong the magnitude of the offset between 0 and 125 over time,
@@ -159,10 +159,10 @@ If you don't set a pivot for the rotation, it will rotate around the center of t
   Your browser does not support the video tag.
 </video>
 <h4 id="setting-the-vertices-colors">Setting the vertices' colors</h4>
-<p>Using the <mark style="color: lightgray; background-color: #191a18">SetColor(int i, Color32 value, bool ignoreAlpha)</mark> method, you can set the color value of each vertex.<br>
-If you pass <mark style="color: lightgray; background-color: #191a18">true</mark> for <mark style="color: lightgray; background-color: #191a18">ignoreAlpha</mark>, only the RGB color channels are overwritten;
+<p>Using the <mark class="markstyle">SetColor(int i, Color32 value, bool ignoreAlpha)</mark> method, you can set the color value of each vertex.<br>
+If you pass <mark class="markstyle">true</mark> for <mark class="markstyle">ignoreAlpha</mark>, only the RGB color channels are overwritten;
 the alpha channel will remain unchanged.<br>
-If you want to do the opposite of this and only set the alpha channel, then you can use the <mark style="color: lightgray; background-color: #191a18">SetAlpha(int i, float alpha)</mark> method.</p>
+If you want to do the opposite of this and only set the alpha channel, then you can use the <mark class="markstyle">SetAlpha(int i, float alpha)</mark> method.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
     // Set each vertex color to red and set the alpha dependent on passed time.
@@ -179,8 +179,8 @@ If you want to do the opposite of this and only set the alpha channel, then you 
   Your browser does not support the video tag.
 </video>
 <h4 id="setting-the-vertices-uvs">Setting the vertices' UVs</h4>
-<p>Using the <mark style="color: lightgray; background-color: #191a18">SetUV0(int i, Vector2 uv)</mark> and <mark style="color: lightgray; background-color: #191a18">SetUV2(int i, Vector2 uv)</mark> methods, you can set the <mark style="color: lightgray; background-color: #191a18">UV0</mark> and <mark style="color: lightgray; background-color: #191a18">UV2</mark> values of each vertex respectively.</p>
-<p>These properties are more niche compared to the other ones, and you will likely use them much less; <mark style="color: lightgray; background-color: #191a18">char</mark> is the only built-in animation to utilize this property.</p>
+<p>Using the <mark class="markstyle">SetUV0(int i, Vector2 uv)</mark> and <mark class="markstyle">SetUV2(int i, Vector2 uv)</mark> methods, you can set the <mark class="markstyle">UV0</mark> and <mark class="markstyle">UV2</mark> values of each vertex respectively.</p>
+<p>These properties are more niche compared to the other ones, and you will likely use them much less; <mark class="markstyle">char</mark> is the only built-in animation to utilize this property.</p>
 <pre><code class="lang-csharp">public void Animate(CharData cData, IAnimationContext context)
 {
     // Pan the UV0 of the character over time
@@ -197,7 +197,7 @@ If you want to do the opposite of this and only set the alpha channel, then you 
 <h2 id="making-your-animation-fancier">Making your animation fancier</h2>
 <p>The above character transformations and vertex modifiers are all you really need to animate your character!<br>
 Combined with easing functions (see: <a href="animationcurveutility.html">AnimationCurveUtility</a>, <a href="tmpanimator_animationutility_wave.html">Waves</a>), even these really simple animations above can look quite nice already.</p>
-<p>For example, the animation code for the built-in <mark style="color: lightgray; background-color: #191a18"><a href="tmpanimator_builtinbasicanimations.html">jump</a></mark> animation is hardly more complicated than that
+<p>For example, the animation code for the built-in <mark class="markstyle"><a href="tmpanimator_builtinbasicanimations.html">jump</a></mark> animation is hardly more complicated than that
 for the <a href="animatingacharacter.html#moving-the-character">first animation on this page</a> (at least once you've looked at <a href="tmpanimator_animationutility_wave.html">Waves</a> 😉).</p>
 <pre><code class="lang-csharp">public override void Animate(CharData cData, IAnimationContext context)
 {

@@ -91,10 +91,10 @@
 effected text is in the process of being shown / hidden.</p>
 <h2 id="applying-show--hide-animations">Applying show / hide animations</h2>
 <p>Generally speaking, both show and hide animations require you to add a TMPWriter component to the same GameObject as your TMPAnimator.<br>
-(You could also write a custom script to show and hide the text in the manner required for show / hide animations to take effect, using TMPAnimator's or TMPWriter's <mark style="color: lightgray; background-color: #191a18">Show/Hide</mark> methods.)</p>
+(You could also write a custom script to show and hide the text in the manner required for show / hide animations to take effect, using TMPAnimator's or TMPWriter's <mark class="markstyle">Show/Hide</mark> methods.)</p>
 <p>Show and hide animations are applied in much the same way as basic animations are; in your TMP_Text component, simply add the supported show / hide animation tags like you would regular TextMeshPro tags.
-Show animation tags are prefixed with a '+', for example <mark style="color: lightgray; background-color: #191a18">&lt;+fade&gt;</mark>. Hide animation tags are prefixed with a '-', for example <mark style="color: lightgray; background-color: #191a18">&lt;-move&gt;</mark>.
-For both, the corresponding closing tag must also include the prefix, after the slash: <mark style="color: lightgray; background-color: #191a18">&lt;/+fade&gt;</mark>, <mark style="color: lightgray; background-color: #191a18">&lt;/-move&gt;</mark>.</p>
+Show animation tags are prefixed with a '+', for example <mark class="markstyle">&lt;+fade&gt;</mark>. Hide animation tags are prefixed with a '-', for example <mark class="markstyle">&lt;-move&gt;</mark>.
+For both, the corresponding closing tag must also include the prefix, after the slash: <mark class="markstyle">&lt;/+fade&gt;</mark>, <mark class="markstyle">&lt;/-move&gt;</mark>.</p>
 <p>So, for example, the string &quot;&lt;+fade&gt;&lt;-move&gt;My placeholder text&quot; would animate the text like this:</p>
 <video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/showhide1.mp4" width="320" height="240" autoplay loop muted>
   Your browser does not support the video tag.

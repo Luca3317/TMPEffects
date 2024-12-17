@@ -90,11 +90,11 @@
 <p>This section walks you through creating your own commands.
 First, create a new C# script in the Unity editor.</p>
 <h3 id="creating-the-class">Creating the class</h3>
-<p>Add the following using statement at the top of your class: <mark style="color: lightgray; background-color: #191a18">using TMPEffects.TMPCommands;</mark>.<br>
-Then, make the created class derive from <mark style="color: lightgray; background-color: #191a18">TMPCommand</mark>.
+<p>Add the following using statement at the top of your class: <mark class="markstyle">using TMPEffects.TMPCommands;</mark>.<br>
+Then, make the created class derive from <mark class="markstyle">TMPCommand</mark>.
 In order to be able to create the command object in the Unity editor and add it to your database, make sure to decorate the class with the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute.</p>
 <h3 id="members">Members</h3>
-<p>You will have errors due to <mark style="color: lightgray; background-color: #191a18">TMPCommand's</mark> abstract members not being implemented.
+<p>You will have errors due to <mark class="markstyle">TMPCommand's</mark> abstract members not being implemented.
 Auto-implement them using your IDE, or add them manually.
 When you are done, your class should look something like this:</p>
 <pre><code class="lang-csharp">using UnityEngine;
@@ -122,30 +122,30 @@ public class YourFirstCommand : TMPCommand
 </code></pre>
 <p>Let's go over each member individually.</p>
 <h3 id="properties">Properties</h3>
-<p><strong><mark style="color: lightgray; background-color: #191a18">TagType</mark></strong>: Defines whether the tags for this command should operate on an index, a text block, or either option. For example, the built-in <mark style="color: lightgray; background-color: #191a18">wait</mark>
-command operates on an index, and the built-in command <mark style="color: lightgray; background-color: #191a18">show</mark> operates on a text block (see <a href="tmpwriter_builtincommands.html">Built-in commands</a>).</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteInstantly</mark></strong>: Commands where this property is true are executed the moment the TMPWriter begins the writing process, instead of when their opening tag index is reached. From the built-in tags, only <mark style="color: lightgray; background-color: #191a18">show</mark> is executed instantly.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteOnSkip</mark></strong>: Commands where this property is true are executed even when their index is skipped over by the writer (i.e., when TMPWriter.SkipWriter() is called). This should be true for commands
+<p><strong><mark class="markstyle">TagType</mark></strong>: Defines whether the tags for this command should operate on an index, a text block, or either option. For example, the built-in <mark class="markstyle">wait</mark>
+command operates on an index, and the built-in command <mark class="markstyle">show</mark> operates on a text block (see <a href="tmpwriter_builtincommands.html">Built-in commands</a>).</p>
+<p><strong><mark class="markstyle">ExecuteInstantly</mark></strong>: Commands where this property is true are executed the moment the TMPWriter begins the writing process, instead of when their opening tag index is reached. From the built-in tags, only <mark class="markstyle">show</mark> is executed instantly.</p>
+<p><strong><mark class="markstyle">ExecuteOnSkip</mark></strong>: Commands where this property is true are executed even when their index is skipped over by the writer (i.e., when TMPWriter.SkipWriter() is called). This should be true for commands
 that need to ensure they are being called even if skipped over, for example a command that starts a quest or adds an item to the player's inventory.</p>
 <h3 id="optional-properties">Optional properties</h3>
 <p>There are a few optional properties. If you don't override them, they are set to false by default. In both cases, this is to protect you from yourself 😉<br>
 Only set these to true if you are sure it is safe for your case!</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteRepeatable</mark></strong>: Commands where this property is true may be executed multiple times, specifically if the writer is reset / restarted at any point (i.e., when TMPWriter.ResetWriter() is called).
+<p><strong><mark class="markstyle">ExecuteRepeatable</mark></strong>: Commands where this property is true may be executed multiple times, specifically if the writer is reset / restarted at any point (i.e., when TMPWriter.ResetWriter() is called).
 This should be false for commands that need to ensure they are only ever raised once, for example a command that starts a quest or adds an item to the player's inventory.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteInPreview</mark></strong>: Commands where this property is true are executed in the editor preview.</p>
+<p><strong><mark class="markstyle">ExecuteInPreview</mark></strong>: Commands where this property is true are executed in the editor preview.</p>
 <blockquote>
-<p>[!WARNING] ⚠️ Note that you must wrap this property in a <mark style="color: lightgray; background-color: #191a18">#if UNITY_EDITOR</mark>
+<p>[!WARNING] ⚠️ Note that you must wrap this property in a <mark class="markstyle">#if UNITY_EDITOR</mark>
 preprocessor directive if you want to override it; otherwise your builds will fail.</p>
 </blockquote>
 <h3 id="methods">Methods</h3>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ValidateParameters(IDictionary&lt;string, string&gt; parameters)</mark></strong>: This method is called during tag processing. It allows you to specify whether a given tag for this command has valid parameters. <a href="parameterutility.html">ParameterUtility</a> will come in handy here.
+<p><strong><mark class="markstyle">ValidateParameters(IDictionary&lt;string, string&gt; parameters)</mark></strong>: This method is called during tag processing. It allows you to specify whether a given tag for this command has valid parameters. <a href="parameterutility.html">ParameterUtility</a> will come in handy here.
 Return true if the parameters are valid, return false if not. If false, the tag will not be processed.</p>
-<p><strong><mark style="color: lightgray; background-color: #191a18">ExecuteCommand(TMPCommandArgs args)</mark></strong>: The meat of your command. This executes the actual command you are implementing.</p>
+<p><strong><mark class="markstyle">ExecuteCommand(TMPCommandArgs args)</mark></strong>: The meat of your command. This executes the actual command you are implementing.</p>
 <h3 id="tmpcommandargs">TMPCommandArgs</h3>
-<p>The sole argument for the <mark style="color: lightgray; background-color: #191a18">ExecuteCommand</mark> method. It's kept relatively simple:
-it provides access to the actual <mark style="color: lightgray; background-color: #191a18">EffectTag</mark>, through which you may get the tag's parameters, the <mark style="color: lightgray; background-color: #191a18">EffectTagIndices</mark>, and the executing TMPWriter.</p>
+<p>The sole argument for the <mark class="markstyle">ExecuteCommand</mark> method. It's kept relatively simple:
+it provides access to the actual <mark class="markstyle">EffectTag</mark>, through which you may get the tag's parameters, the <mark class="markstyle">EffectTagIndices</mark>, and the executing TMPWriter.</p>
 <h3 id="full-example">Full example</h3>
-<p>As complete example, the class below is the implementation of the built-in <mark style="color: lightgray; background-color: #191a18">delay</mark> command.</p>
+<p>As complete example, the class below is the implementation of the built-in <mark class="markstyle">delay</mark> command.</p>
 <pre><code class="lang-csharp">using System.Collections.Generic;
 using UnityEngine;
 
