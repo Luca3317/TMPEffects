@@ -1,126 +1,96 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class TagProcessor | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class TagProcessor | TMPEffects documentation ">
-      
-      <meta name="description" content="Handles processing of, and stores successfully processed tags.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Handles processing of, and stores successfully processed tags.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.TextProcessing.TagProcessor">
 
-        <article data-uid="TMPEffects.TextProcessing.TagProcessor">
 
 
-
-  <h1 id="TMPEffects_TextProcessing_TagProcessor" data-uid="TMPEffects.TextProcessing.TagProcessor" class="text-break">
-Class TagProcessor  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L10"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TextProcessing.html">TextProcessing</a></dd></dl>
-  
-  </div>
-
-  <div class="markdown summary"><p>Handles processing of, and stores successfully processed tags.</p>
+  <h1 id="TMPEffects_TextProcessing_TagProcessor" data-uid="TMPEffects.TextProcessing.TagProcessor" class="text-break">Class TagProcessor</h1>
+  <div class="markdown level0 summary"><p>Handles processing of, and stores successfully processed tags.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TagProcessor</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">TagProcessor</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">TagProcessor</span></div>
-    </dd>
-  </dl>
-
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -139,244 +109,260 @@ Class TagProcessor  <a class="header-action link-secondary" title="View source" 
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TextProcessing.html">TextProcessing</a></h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="TMPEffects_TextProcessing_TagProcessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class TagProcessor</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor__ctor_TMPEffects_Tags_ITMPTagValidator_.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.%23ctor(TMPEffects.Tags.ITMPTagValidator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L26">View Source</a>
+  </span>
   <a id="TMPEffects_TextProcessing_TagProcessor__ctor_" data-uid="TMPEffects.TextProcessing.TagProcessor.#ctor*"></a>
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor__ctor_TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.TextProcessing.TagProcessor.#ctor(TMPEffects.Tags.ITMPTagValidator)">
-  TagProcessor(ITMPTagValidator)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TextProcessing_TagProcessor__ctor_TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.TextProcessing.TagProcessor.#ctor(TMPEffects.Tags.ITMPTagValidator)">TagProcessor(ITMPTagValidator)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TagProcessor(ITMPTagValidator validator)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>validator</code> <a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor_ALL_KEYWORD" data-uid="TMPEffects.TextProcessing.TagProcessor.ALL_KEYWORD">
-  ALL_KEYWORD
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></td>
+        <td><span class="parametername">validator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor_ALL_KEYWORD.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.ALL_KEYWORD%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L20">View Source</a>
+  </span>
+  <h4 id="TMPEffects_TextProcessing_TagProcessor_ALL_KEYWORD" data-uid="TMPEffects.TextProcessing.TagProcessor.ALL_KEYWORD">ALL_KEYWORD</h4>
   <div class="markdown level1 summary"><p>Tags with this keyword as name will close all open tags of this tag processor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public const string ALL_KEYWORD = &quot;all&quot;</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor_MOST_RECENT_KEYWORD" data-uid="TMPEffects.TextProcessing.TagProcessor.MOST_RECENT_KEYWORD">
-  MOST_RECENT_KEYWORD
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L24"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor_MOST_RECENT_KEYWORD.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.MOST_RECENT_KEYWORD%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L24">View Source</a>
+  </span>
+  <h4 id="TMPEffects_TextProcessing_TagProcessor_MOST_RECENT_KEYWORD" data-uid="TMPEffects.TextProcessing.TagProcessor.MOST_RECENT_KEYWORD">MOST_RECENT_KEYWORD</h4>
   <div class="markdown level1 summary"><p>Tags with this keyword as name will close teh most recent open tag of this tag processor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public const string MOST_RECENT_KEYWORD = &quot;&quot;</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor_ProcessedTags" data-uid="TMPEffects.TextProcessing.TagProcessor.ProcessedTags">
-  ProcessedTags
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor_ProcessedTags.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.ProcessedTags%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L15">View Source</a>
+  </span>
+  <h4 id="TMPEffects_TextProcessing_TagProcessor_ProcessedTags" data-uid="TMPEffects.TextProcessing.TagProcessor.ProcessedTags">ProcessedTags</h4>
   <div class="markdown level1 summary"><p>All processed tags.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly ReadOnlyCollection&lt;KeyValuePair&lt;TMPEffectTagIndices, TMPEffectTag&gt;&gt; ProcessedTags</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a>, <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a>&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a>, <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor_Process_TMPEffects_TextProcessing_ParsingUtility_TagInfo_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.Process(TMPEffects.TextProcessing.ParsingUtility.TagInfo%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L40">View Source</a>
+  </span>
   <a id="TMPEffects_TextProcessing_TagProcessor_Process_" data-uid="TMPEffects.TextProcessing.TagProcessor.Process*"></a>
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor_Process_TMPEffects_TextProcessing_ParsingUtility_TagInfo_System_Int32_System_Int32_" data-uid="TMPEffects.TextProcessing.TagProcessor.Process(TMPEffects.TextProcessing.ParsingUtility.TagInfo,System.Int32,System.Int32)">
-  Process(TagInfo, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L40"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TextProcessing_TagProcessor_Process_TMPEffects_TextProcessing_ParsingUtility_TagInfo_System_Int32_System_Int32_" data-uid="TMPEffects.TextProcessing.TagProcessor.Process(TMPEffects.TextProcessing.ParsingUtility.TagInfo,System.Int32,System.Int32)">Process(TagInfo, int, int)</h4>
   <div class="markdown level1 summary"><p>Process the given tag.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Process(ParsingUtility.TagInfo tagInfo, int textIndex, int orderAtIndex)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tagInfo</code> <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></dt>
-    <dd><p>Information about the tag.</p>
-</dd>
-    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The index of the tag within its source text.</p>
-</dd>
-    <dt><code>orderAtIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The order at the index of the tag withing its source text.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if tag is successfully processed, false otherwise.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></td>
+        <td><span class="parametername">tagInfo</span></td>
+        <td><p>Information about the tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">textIndex</span></td>
+        <td><p>The index of the tag within its source text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">orderAtIndex</span></td>
+        <td><p>The order at the index of the tag withing its source text.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>true if tag is successfully processed, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor_Reset.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor.Reset%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L49">View Source</a>
+  </span>
   <a id="TMPEffects_TextProcessing_TagProcessor_Reset_" data-uid="TMPEffects.TextProcessing.TagProcessor.Reset*"></a>
-
-  <h3 id="TMPEffects_TextProcessing_TagProcessor_Reset" data-uid="TMPEffects.TextProcessing.TagProcessor.Reset">
-  Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TextProcessing_TagProcessor_Reset" data-uid="TMPEffects.TextProcessing.TagProcessor.Reset">Reset()</h4>
   <div class="markdown level1 summary"><p>Reset this TagProcessor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L10" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_TagProcessor.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.TagProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/TagProcessor.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      TMPEffects documentation
+      
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

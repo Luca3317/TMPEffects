@@ -1,131 +1,99 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class ReadOnlyAnimationContext | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ReadOnlyAnimationContext | TMPEffects documentation ">
-      
-      
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext">
 
-        <article data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext">
 
 
-
-  <h1 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext" class="text-break">
-Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L6"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TMPAnimations.html">TMPAnimations</a></dd></dl>
-  
+  <h1 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext" class="text-break">Class ReadOnlyAnimationContext</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">ReadOnlyAnimationContext</span></div>
   </div>
-
-  <div class="markdown summary"></div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ReadOnlyAnimationContext : IAnimationContext</code></pre>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">ReadOnlyAnimationContext</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -147,350 +115,396 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TMPAnimations.html">TMPAnimations</a></h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ReadOnlyAnimationContext : IAnimationContext</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_CharacterData_ICharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.%23ctor(TMPEffects.Components.Animator.IAnimatorContext%2CTMPEffects.CharacterData.ICharDataState%2CTMPEffects.Components.Animator.SegmentData%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L26">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_CharacterData_ICharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)">
-  ReadOnlyAnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L26"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_CharacterData_ICharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)">ReadOnlyAnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ReadOnlyAnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>animatorContext</code> <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></dt>
-    <dd></dd>
-    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
-    <dd></dd>
-    <dt><code>segmentData</code> <a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></dt>
-    <dd></dd>
-    <dt><code>customData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></td>
+        <td><span class="parametername">animatorContext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></td>
+        <td><span class="parametername">state</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></td>
+        <td><span class="parametername">segmentData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">customData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_TMPAnimations_IAnimationContext_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.%23ctor(TMPEffects.TMPAnimations.IAnimationContext)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L21">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)">
-  ReadOnlyAnimationContext(IAnimationContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L21"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)">ReadOnlyAnimationContext(IAnimationContext)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ReadOnlyAnimationContext(IAnimationContext context)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>context</code> <a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_AnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L13">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_AnimatorContext_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_AnimatorContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext">
-  AnimatorContext
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L13"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_AnimatorContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext">AnimatorContext</h4>
   <div class="markdown level1 summary"><p>The context of the animating TMPAnimator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IAnimatorContext AnimatorContext { get; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_CustomData.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L17">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_CustomData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_CustomData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData">
-  CustomData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L17"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_CustomData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData">CustomData</h4>
   <div class="markdown level1 summary"><p>The custom data object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public object CustomData { get; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_SegmentData.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L15">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_SegmentData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_SegmentData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData">
-  SegmentData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_SegmentData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData">SegmentData</h4>
   <div class="markdown level1 summary"><p>Data about the animation segment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public SegmentData SegmentData { get; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L19">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State">
-  State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State">State</h4>
   <div class="markdown level1 summary"><p>The current state of the CharData, with the previous animations applied.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICharDataState State { get; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L31">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)">
-  FinishAnimation(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)">FinishAnimation(CharData)</h4>
   <div class="markdown level1 summary"><p>Set the animation to be considered finished for the given character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void FinishAnimation(CharData cData)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
+        <td><span class="parametername">cData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L9">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_System_Int32_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(System.Int32)">
-  Finished(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L9"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_System_Int32_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(System.Int32)">Finished(int)</h4>
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the character at the given index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Finished(int index)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L11">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(TMPEffects.CharacterData.CharData)">
-  Finished(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(TMPEffects.CharacterData.CharData)">Finished(CharData)</h4>
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the given character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Finished(CharData cData)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
+        <td><span class="parametername">cData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a>
+  </div>
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L6" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_ReadOnlyAnimationContext.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.ReadOnlyAnimationContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      TMPEffects documentation
+      
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

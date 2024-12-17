@@ -1,140 +1,103 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class TMPEffectCategory | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class TMPEffectCategory | TMPEffects documentation ">
-      
-      <meta name="description" content="Base class for all effect categories.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="Base class for all effect categories.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.EffectCategories.TMPEffectCategory">
 
-        <article data-uid="TMPEffects.EffectCategories.TMPEffectCategory">
 
 
-
-  <h1 id="TMPEffects_EffectCategories_TMPEffectCategory" data-uid="TMPEffects.EffectCategories.TMPEffectCategory" class="text-break">
-Class TMPEffectCategory  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L25"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.EffectCategories.html">EffectCategories</a></dd></dl>
-  
-  </div>
-
-  <div class="markdown summary"><p>Base class for all effect categories.</p>
+  <h1 id="TMPEffects_EffectCategories_TMPEffectCategory" data-uid="TMPEffects.EffectCategories.TMPEffectCategory" class="text-break">Class TMPEffectCategory</h1>
+  <div class="markdown level0 summary"><p>Base class for all effect categories.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class TMPEffectCategory : ITMPTagValidator, ITMPPrefixSupplier</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">TMPEffectCategory</span></div>
+      <div class="level2"><a class="xref" href="TMPEffects.EffectCategories.TMPEffectCategory-1.html">TMPEffectCategory&lt;TEffect&gt;</a></div>
+      <div class="level2"><a class="xref" href="TMPEffects.EffectCategories.TMPEventCategory.html">TMPEventCategory</a></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">TMPEffectCategory</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></div>
-      <div><a class="xref" href="TMPEffects.Tags.ITMPPrefixSupplier.html">ITMPPrefixSupplier</a></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist derived">
-    <dt>Derived</dt>
-    <dd>
-      <div><a class="xref" href="TMPEffects.EffectCategories.TMPEffectCategory-1.html">TMPEffectCategory&lt;TEffect&gt;</a></div>
-      <div><a class="xref" href="TMPEffects.EffectCategories.TMPEventCategory.html">TMPEventCategory</a></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></div>
+    <div><a class="xref" href="TMPEffects.Tags.ITMPPrefixSupplier.html">ITMPPrefixSupplier</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -156,273 +119,338 @@ Class TMPEffectCategory  <a class="header-action link-secondary" title="View sou
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.EffectCategories.html">EffectCategories</a></h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="TMPEffects_EffectCategories_TMPEffectCategory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class TMPEffectCategory : ITMPTagValidator, ITMPPrefixSupplier</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory__ctor_System_Char_.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.%23ctor(System.Char)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L34">View Source</a>
+  </span>
   <a id="TMPEffects_EffectCategories_TMPEffectCategory__ctor_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.#ctor*"></a>
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory__ctor_System_Char_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.#ctor(System.Char)">
-  TMPEffectCategory(char)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory__ctor_System_Char_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.#ctor(System.Char)">TMPEffectCategory(char)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TMPEffectCategory(char prefix)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>prefix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory_prefix" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.prefix">
-  prefix
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td><span class="parametername">prefix</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory_prefix.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.prefix%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L32">View Source</a>
+  </span>
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory_prefix" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.prefix">prefix</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected readonly char prefix</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory_Prefix.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.Prefix%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L30">View Source</a>
+  </span>
   <a id="TMPEffects_EffectCategories_TMPEffectCategory_Prefix_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.Prefix*"></a>
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory_Prefix" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.Prefix">
-  Prefix
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L30"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory_Prefix" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.Prefix">Prefix</h4>
   <div class="markdown level1 summary"><p>The prefix associated with this category.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public char Prefix { get; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo%2CTMPEffects.Tags.TMPEffectTag%40%2CSystem.Int32%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L40">View Source</a>
+  </span>
   <a id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag*"></a>
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)">
-  ValidateOpenTag(TagInfo, out TMPEffectTag, out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L40"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateOpenTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_TMPEffects_Tags_TMPEffectTag__System_Int32__" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateOpenTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo,TMPEffects.Tags.TMPEffectTag@,System.Int32@)">ValidateOpenTag(TagInfo, out TMPEffectTag, out int)</h4>
   <div class="markdown level1 summary"><p>Validate a given <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">ParsingUtility.TagInfo</a>. MUST be of type <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagType.html#TMPEffects_TextProcessing_ParsingUtility_TagType_Open">Open</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract bool ValidateOpenTag(ParsingUtility.TagInfo tagInfo, out TMPEffectTag data, out int endIndex)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tagInfo</code> <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></dt>
-    <dd><p>Information about the tag.</p>
-</dd>
-    <dt><code>data</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></dt>
-    <dd><p>Assuming the tag is validated, this will be set to the created <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a>; otherwise it will be null.</p>
-</dd>
-    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Assuming the tag is validated, this will be set to the endIndex of the tag. TODO this arguably exceeds ITMPTagValidators responsibilities</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the tag is successfully validated; false otherwise.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></td>
+        <td><span class="parametername">tagInfo</span></td>
+        <td><p>Information about the tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>Assuming the tag is validated, this will be set to the created <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a>; otherwise it will be null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">endIndex</span></td>
+        <td><p>Assuming the tag is validated, this will be set to the endIndex of the tag. TODO this arguably exceeds ITMPTagValidators responsibilities</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>true if the tag is successfully validated; false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_Tags_TMPEffectTag_.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L43">View Source</a>
+  </span>
   <a id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag*"></a>
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_Tags_TMPEffectTag_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)">
-  ValidateTag(TMPEffectTag)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L43"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_Tags_TMPEffectTag_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.Tags.TMPEffectTag)">ValidateTag(TMPEffectTag)</h4>
   <div class="markdown level1 summary"><p>Validate a given <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract bool ValidateTag(TMPEffectTag tag)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tag</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></dt>
-    <dd><p>Information about the tag.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the tag is successfully validated; false otherwise.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>Information about the tag.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>true if the tag is successfully validated; false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L46">View Source</a>
+  </span>
   <a id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag*"></a>
-
-  <h3 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)">
-  ValidateTag(TagInfo)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L46"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_EffectCategories_TMPEffectCategory_ValidateTag_TMPEffects_TextProcessing_ParsingUtility_TagInfo_" data-uid="TMPEffects.EffectCategories.TMPEffectCategory.ValidateTag(TMPEffects.TextProcessing.ParsingUtility.TagInfo)">ValidateTag(TagInfo)</h4>
   <div class="markdown level1 summary"><p>Validate a given <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">ParsingUtility.TagInfo</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract bool ValidateTag(ParsingUtility.TagInfo tagInfo)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tagInfo</code> <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></dt>
-    <dd><p>Information about the tag.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the tag is successfully validated; false otherwise.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.html">ParsingUtility</a>.<a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html">TagInfo</a></td>
+        <td><span class="parametername">tagInfo</span></td>
+        <td><p>Information about the tag.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>true if the tag is successfully validated; false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a>
+  </div>
+  <div>
+      <a class="xref" href="TMPEffects.Tags.ITMPPrefixSupplier.html">ITMPPrefixSupplier</a>
+  </div>
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L25" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_EffectCategories_TMPEffectCategory.md&amp;value=---%0Auid%3A%20TMPEffects.EffectCategories.TMPEffectCategory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/EffectCategories/EffectCategory.cs/#L25" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      TMPEffects documentation
+      
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

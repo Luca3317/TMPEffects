@@ -1,120 +1,92 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Struct SegmentData | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Struct SegmentData | TMPEffects documentation ">
-      
-      <meta name="description" content="To be used with  and its animations. Contains data about a given animation segment.">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="To be used with  and its animations. Contains data about a given animation segment.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.Components.Animator.SegmentData">
 
-        <article data-uid="TMPEffects.Components.Animator.SegmentData">
 
 
-
-  <h1 id="TMPEffects_Components_Animator_SegmentData" data-uid="TMPEffects.Components.Animator.SegmentData" class="text-break">
-Struct SegmentData  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L14"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Animator.html">Animator</a></dd></dl>
-  
-  </div>
-
-  <div class="markdown summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and its animations.<br>
+  <h1 id="TMPEffects_Components_Animator_SegmentData" data-uid="TMPEffects.Components.Animator.SegmentData" class="text-break">Struct SegmentData</h1>
+  <div class="markdown level0 summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and its animations.<br>
 Contains data about a given animation segment.</p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct SegmentData</code></pre>
-  </div>
-
-
-
-
-
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
     </div>
@@ -133,393 +105,420 @@ Contains data about a given animation segment.</p>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_effectiveLength" data-uid="TMPEffects.Components.Animator.SegmentData.effectiveLength">
-  effectiveLength
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L28"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Animator.html">Animator</a></h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="TMPEffects_Components_Animator_SegmentData_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct SegmentData</code></pre>
+  </div>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_effectiveLength.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.effectiveLength%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L28">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_effectiveLength" data-uid="TMPEffects.Components.Animator.SegmentData.effectiveLength">effectiveLength</h4>
   <div class="markdown level1 summary"><p>The effective length of the animation segment; i.e. the length of the segment from <a class="xref" href="TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_firstAnimationIndex">firstAnimationIndex</a> to <a class="xref" href="TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_lastAnimationIndex">lastAnimationIndex</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int effectiveLength</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_firstAnimationIndex" data-uid="TMPEffects.Components.Animator.SegmentData.firstAnimationIndex">
-  firstAnimationIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L42"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_firstAnimationIndex.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.firstAnimationIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L42">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_firstAnimationIndex" data-uid="TMPEffects.Components.Animator.SegmentData.firstAnimationIndex">firstAnimationIndex</h4>
   <div class="markdown level1 summary"><p>The index of the first character that is relevant to the <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and will be animated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int firstAnimationIndex</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_firstVisibleIndex" data-uid="TMPEffects.Components.Animator.SegmentData.firstVisibleIndex">
-  firstVisibleIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L33"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_firstVisibleIndex.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.firstVisibleIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L33">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_firstVisibleIndex" data-uid="TMPEffects.Components.Animator.SegmentData.firstVisibleIndex">firstVisibleIndex</h4>
   <div class="markdown level1 summary"><p>The index of the first visible character (i.e. non-whitespace character).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int firstVisibleIndex</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_lastAnimationIndex" data-uid="TMPEffects.Components.Animator.SegmentData.lastAnimationIndex">
-  lastAnimationIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L46"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_lastAnimationIndex.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.lastAnimationIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L46">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_lastAnimationIndex" data-uid="TMPEffects.Components.Animator.SegmentData.lastAnimationIndex">lastAnimationIndex</h4>
   <div class="markdown level1 summary"><p>The index of the last character that is relevant to the <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and will be animated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int lastAnimationIndex</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_lastVisibleIndex" data-uid="TMPEffects.Components.Animator.SegmentData.lastVisibleIndex">
-  lastVisibleIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_lastVisibleIndex.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.lastVisibleIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L37">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_lastVisibleIndex" data-uid="TMPEffects.Components.Animator.SegmentData.lastVisibleIndex">lastVisibleIndex</h4>
   <div class="markdown level1 summary"><p>The index of the last visible character (i.e. non-whitespace character).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int lastVisibleIndex</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_length" data-uid="TMPEffects.Components.Animator.SegmentData.length">
-  length
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L23"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_length.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.length%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L23">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_length" data-uid="TMPEffects.Components.Animator.SegmentData.length">length</h4>
   <div class="markdown level1 summary"><p>The length of the animation segment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int length</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_max" data-uid="TMPEffects.Components.Animator.SegmentData.max">
-  max
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L48"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_max.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.max%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L48">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_max" data-uid="TMPEffects.Components.Animator.SegmentData.max">max</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly Vector3 max</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_min" data-uid="TMPEffects.Components.Animator.SegmentData.min">
-  min
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L49"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_min.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.min%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L49">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_min" data-uid="TMPEffects.Components.Animator.SegmentData.min">min</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly Vector3 min</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_startIndex" data-uid="TMPEffects.Components.Animator.SegmentData.startIndex">
-  startIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_startIndex.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.startIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L19">View Source</a>
+  </span>
+  <h4 id="TMPEffects_Components_Animator_SegmentData_startIndex" data-uid="TMPEffects.Components.Animator.SegmentData.startIndex">startIndex</h4>
   <div class="markdown level1 summary"><p>The first index of the segment within the containing text.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly int startIndex</code></pre>
   </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L51">View Source</a>
+  </span>
   <a id="TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_" data-uid="TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*"></a>
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_" data-uid="TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)">
-  IndexToSegmentIndex(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L51"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_" data-uid="TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)">IndexToSegmentIndex(int)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int IndexToSegmentIndex(int index)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L58">View Source</a>
+  </span>
   <a id="TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_" data-uid="TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*"></a>
-
-  <h3 id="TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)">
-  SegmentIndexOf(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L58"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)">SegmentIndexOf(CharData)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int SegmentIndexOf(CharData cData)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
+        <td><span class="parametername">cData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L14" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_SegmentData.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.SegmentData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/SegmentData.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      TMPEffects documentation
+      
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>

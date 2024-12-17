@@ -1,137 +1,104 @@
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
 <html>
+
   <head>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class AnimationUtility.Wave | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class AnimationUtility.Wave | TMPEffects documentation ">
-      
-      <meta name="description" content="A wave. Allows you to easily create periodic animations. You should take a look at the online documentation for this one: https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
-      
-      <meta name="docfx:rel" content="../">
-      
-      
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
-      <meta name="loc:inThisArticle" content="In this article">
-      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
-      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
-      <meta name="loc:tocFilter" content="Filter by title">
-      <meta name="loc:nextArticle" content="Next">
-      <meta name="loc:prevArticle" content="Previous">
-      <meta name="loc:themeLight" content="Light">
-      <meta name="loc:themeDark" content="Dark">
-      <meta name="loc:themeAuto" content="Auto">
-      <meta name="loc:changeTheme" content="Change theme">
-      <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
-
-      <script type="module" src="./../public/docfx.min.js"></script>
-
-      <script>
-        const theme = localStorage.getItem('theme') || 'auto'
-        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-      </script>
-
+    
+    <meta name="description" content="A wave. Allows you to easily create periodic animations. You should take a look at the online documentation for this one: https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
   </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
 
-  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
-    <header class="bg-body border-bottom">
-      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
-        <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="">
-            
-          </a>
-          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-three-dots"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navpanel">
-            <div id="navbar">
-              <form class="search" role="search" id="search">
-                <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
               </form>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
 
-    <main class="container-xxl">
-      <div class="toc-offcanvas">
-        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
           </div>
-          <div class="offcanvas-body">
-            <nav class="toc" id="toc"></nav>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
+      <div role="main" class="container body-content hide-when-search">
 
-      <div class="content">
-        <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
-            <i class="bi bi-list"></i>
-          </button>
-
-          <nav id="breadcrumb"></nav>
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
         </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave">
 
-        <article data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave">
 
 
-
-  <h1 id="TMPEffects_TMPAnimations_AnimationUtility_Wave" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave" class="text-break">
-Class AnimationUtility.Wave  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L567"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TMPAnimations.html">TMPAnimations</a></dd></dl>
-  
-  </div>
-
-  <div class="markdown summary"><p>A wave.
+  <h1 id="TMPEffects_TMPAnimations_AnimationUtility_Wave" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave" class="text-break">Class AnimationUtility.Wave</h1>
+  <div class="markdown level0 summary"><p>A wave.
 Allows you to easily create periodic animations.<b></b>
 You should take a look at the online documentation for this one:<b></b>
 <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html</a></p>
 </div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Serializable]
-public class AnimationUtility.Wave : AnimationUtility.WaveBase, ISerializationCallbackReceiver</code></pre>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html">WaveBase</a></div>
+    <div class="level2"><span class="xref">AnimationUtility.Wave</span></div>
   </div>
-
-
-
-
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html">WaveBase</a></div>
-      <div><span class="xref">AnimationUtility.Wave</span></div>
-    </dd>
-  </dl>
-
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><span class="xref">ISerializationCallbackReceiver</span></div>
-    </dd>
-  </dl>
-
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">ISerializationCallbackReceiver</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_UpPeriod">AnimationUtility.WaveBase.UpPeriod</a>
     </div>
@@ -165,897 +132,1199 @@ public class AnimationUtility.Wave : AnimationUtility.WaveBase, ISerializationCa
     <div>
       <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_wavelength">AnimationUtility.WaveBase.wavelength</a>
     </div>
-  </dd></dl>
-
-
-
-
-
-
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TMPAnimations.html">TMPAnimations</a></h6>
+  <h6><strong>Assembly</strong>: .dll</h6>
+  <h5 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class AnimationUtility.Wave : AnimationUtility.WaveBase, ISerializationCallbackReceiver</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L616">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor">
-  Wave()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L616"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor">Wave()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Wave()</code></pre>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.%23ctor(AnimationCurve%2CAnimationCurve%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L620">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor(AnimationCurve,AnimationCurve,System.Single,System.Single,System.Single,System.Single)">
-  Wave(AnimationCurve, AnimationCurve, float, float, float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L620"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor(AnimationCurve,AnimationCurve,System.Single,System.Single,System.Single,System.Single)">Wave(AnimationCurve, AnimationCurve, float, float, float, float)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float uniformity = 1)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>upwardCurve</code> <span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-    <dt><code>downwardCurve</code> <span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-    <dt><code>upPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>downPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>amplitude</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>uniformity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td><span class="parametername">upwardCurve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td><span class="parametername">downwardCurve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">upPeriod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">downPeriod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">amplitude</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">uniformity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.%23ctor(AnimationCurve%2CAnimationCurve%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L633">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor(AnimationCurve,AnimationCurve,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
-  Wave(AnimationCurve, AnimationCurve, float, float, float, float, float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L633"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave__ctor_AnimationCurve_AnimationCurve_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.#ctor(AnimationCurve,AnimationCurve,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">Wave(AnimationCurve, AnimationCurve, float, float, float, float, float, float)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Wave(AnimationCurve upwardCurve, AnimationCurve downwardCurve, float upPeriod, float downPeriod, float amplitude, float crestWait, float troughWait, float uniformity = 1)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>upwardCurve</code> <span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-    <dt><code>downwardCurve</code> <span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-    <dt><code>upPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>downPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>amplitude</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>crestWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>troughWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-    <dt><code>uniformity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td><span class="parametername">upwardCurve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td><span class="parametername">downwardCurve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">upPeriod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">downPeriod</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">amplitude</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">crestWait</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">troughWait</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">uniformity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L590">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait">
-  CrestWait
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L590"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.CrestWait">CrestWait</h4>
   <div class="markdown level1 summary"><p>How long to stay at the crest of the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float CrestWait { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_DownwardCurve.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.DownwardCurve%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L581">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_DownwardCurve_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.DownwardCurve*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_DownwardCurve" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.DownwardCurve">
-  DownwardCurve
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L581"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_DownwardCurve" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.DownwardCurve">DownwardCurve</h4>
   <div class="markdown level1 summary"><p>The downward curve of the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimationCurve DownwardCurve { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L598">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait">
-  TroughWait
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L598"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.TroughWait">TroughWait</h4>
   <div class="markdown level1 summary"><p>How long to stay at the trough of the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float TroughWait { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L610">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity">
-  Uniformity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L610"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Uniformity">Uniformity</h4>
   <div class="markdown level1 summary"><p>The uniformity of the wave.<br>
 Defines how much the offset passed in when evaluating the wave is considered.<br>
 A visual representation of this can be found in the online documentation:<br>
 <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float Uniformity { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_UpwardCurve.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.UpwardCurve%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L573">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_UpwardCurve_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.UpwardCurve*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_UpwardCurve" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.UpwardCurve">
-  UpwardCurve
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L573"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_UpwardCurve" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.UpwardCurve">UpwardCurve</h4>
   <div class="markdown level1 summary"><p>The upward curve of the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimationCurve UpwardCurve { get; set; }</code></pre>
   </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">AnimationCurve</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AnimationCurve</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_Evaluate_System_Single_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.Evaluate(System.Single%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L929">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Evaluate_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Evaluate*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Evaluate_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Evaluate(System.Single,System.Single,System.Boolean)">
-  Evaluate(float, float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L929"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_Evaluate_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.Evaluate(System.Single,System.Single,System.Boolean)">Evaluate(float, float, bool)</h4>
   <div class="markdown level1 summary"><p>Evaluate the wave.<br>
 This will automatically choose the correct way to interpret the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public (float Value, int Direction) Evaluate(float time, float offset, bool realtimeWait = true)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realtimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</dt>
-    <dd><p>Value: The value of the wave at the given time and offset.<br>Direction: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realtimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</td>
+        <td><p>Value: The value of the wave at the given time and offset.<br>Direction: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsInvertedPulse_System_Single_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse(System.Single%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1002">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsInvertedPulse_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsInvertedPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse(System.Single,System.Single,System.Boolean)">
-  EvaluateAsInvertedPulse(float, float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1002"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsInvertedPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsInvertedPulse(System.Single,System.Single,System.Boolean)">EvaluateAsInvertedPulse(float, float, bool)</h4>
   <div class="markdown level1 summary"><p>Evaluate the wave as an inverted pulse explicitly, ignoring the <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public (float, int) EvaluateAsInvertedPulse(float time, float offset, bool realTimeWait = true)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realTimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</dt>
-    <dd><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realTimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</td>
+        <td><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsOneDirectionalPulse_System_Single_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse(System.Single%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1024">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsOneDirectionalPulse_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsOneDirectionalPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse(System.Single,System.Single,System.Boolean)">
-  EvaluateAsOneDirectionalPulse(float, float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1024"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsOneDirectionalPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsOneDirectionalPulse(System.Single,System.Single,System.Boolean)">EvaluateAsOneDirectionalPulse(float, float, bool)</h4>
   <div class="markdown level1 summary"><p>Evaluate the wave as a one-directional pulse explicitly.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public (float, int) EvaluateAsOneDirectionalPulse(float time, float offset, bool realTimeWait = true)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realTimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</dt>
-    <dd><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realTimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</td>
+        <td><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsPulse_System_Single_System_Single_System_Boolean_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse(System.Single%2CSystem.Single%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L980">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsPulse_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse(System.Single,System.Single,System.Boolean)">
-  EvaluateAsPulse(float, float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L980"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsPulse_System_Single_System_Single_System_Boolean_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsPulse(System.Single,System.Single,System.Boolean)">EvaluateAsPulse(float, float, bool)</h4>
   <div class="markdown level1 summary"><p>Evaluate the wave as a pulse explicitly, ignoring the <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public (float, int) EvaluateAsPulse(float time, float offset, bool realTimeWait = true)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realTimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</dt>
-    <dd><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realTimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</td>
+        <td><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsWave_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave(System.Single%2CSystem.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L954">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsWave_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsWave_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave(System.Single,System.Single)">
-  EvaluateAsWave(float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L954"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_EvaluateAsWave_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.EvaluateAsWave(System.Single,System.Single)">EvaluateAsWave(float, float)</h4>
   <div class="markdown level1 summary"><p>Evaluate the wave as a normal wave explicitly, ignoring both <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a> and <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public (float, int) EvaluateAsWave(float time, float offset)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</dt>
-    <dd><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.value">Value</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.int32-.direction">Direction</a>)</td>
+        <td><p>Item1: The value of the wave at the given time and offset.<br>Item2: Whether youre currently travelling up the wave (=1) or down the wave (=-1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_OnAfterDeserialize.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.OnAfterDeserialize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1114">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnAfterDeserialize_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnAfterDeserialize*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnAfterDeserialize" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnAfterDeserialize">
-  OnAfterDeserialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1114"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnAfterDeserialize" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnAfterDeserialize">OnAfterDeserialize()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnAfterDeserialize()</code></pre>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_OnAfterDeserialize">AnimationUtility.WaveBase.OnAfterDeserialize()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_OnBeforeSerialize.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.OnBeforeSerialize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1103">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnBeforeSerialize_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnBeforeSerialize*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnBeforeSerialize" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnBeforeSerialize">
-  OnBeforeSerialize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L1103"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_OnBeforeSerialize" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.OnBeforeSerialize">OnBeforeSerialize()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnBeforeSerialize()</code></pre>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_OnBeforeSerialize">AnimationUtility.WaveBase.OnBeforeSerialize()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Boolean%2CTMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L654">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">
-  PassedExtrema(float, float, float, bool, PulseExtrema)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L654"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">PassedExtrema(float, float, float, bool, PulseExtrema)</h4>
   <div class="markdown level1 summary"><p>Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br>
 This will automatically choose the correct way to interpret the wave.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int PassedExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The delta time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realtimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-    <dt><code>extrema</code> <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></dt>
-    <dd><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The delta time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realtimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></td>
+        <td><span class="parametername">extrema</span></td>
+        <td><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedInvertedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Boolean%2CTMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L777">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedInvertedPulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedInvertedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">
-  PassedInvertedPulseExtrema(float, float, float, bool, PulseExtrema)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L777"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedInvertedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedInvertedPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">PassedInvertedPulseExtrema(float, float, float, bool, PulseExtrema)</h4>
   <div class="markdown level1 summary"><p>Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br>
 Explicitly interpret the wave as an inverted pulse, ignoring the <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int PassedInvertedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The delta time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realtimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-    <dt><code>extrema</code> <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></dt>
-    <dd><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The delta time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realtimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></td>
+        <td><span class="parametername">extrema</span></td>
+        <td><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedOneDirectionalPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Boolean%2CTMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L830">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedOneDirectionalPulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedOneDirectionalPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">
-  PassedOneDirectionalPulseExtrema(float, float, float, bool, PulseExtrema)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L830"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedOneDirectionalPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedOneDirectionalPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">PassedOneDirectionalPulseExtrema(float, float, float, bool, PulseExtrema)</h4>
   <div class="markdown level1 summary"><p>Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.
 Explicitly interpret the wave as a one-directional pulse.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int PassedOneDirectionalPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The delta time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realtimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-    <dt><code>extrema</code> <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></dt>
-    <dd><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The delta time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realtimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></td>
+        <td><span class="parametername">extrema</span></td>
+        <td><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Boolean%2CTMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L723">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedPulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">
-  PassedPulseExtrema(float, float, float, bool, PulseExtrema)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L723"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedPulseExtrema_System_Single_System_Single_System_Single_System_Boolean_TMPEffects_TMPAnimations_AnimationUtility_Wave_PulseExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedPulseExtrema(System.Single,System.Single,System.Single,System.Boolean,TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema)">PassedPulseExtrema(float, float, float, bool, PulseExtrema)</h4>
   <div class="markdown level1 summary"><p>Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br>
 Explicitly interpret the wave as a pulse, ignoring the <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int PassedPulseExtrema(float time, float deltaTime, float offset, bool realtimeWait = true, AnimationUtility.Wave.PulseExtrema extrema = PulseExtrema.Early)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The delta time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-    <dt><code>realtimeWait</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
-</dd>
-    <dt><code>extrema</code> <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></dt>
-    <dd><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The delta time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">realtimeWait</span></td>
+        <td><p>Whether to use real time (i.e. whether to use <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_Period">Period</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html#TMPEffects_TMPAnimations_AnimationUtility_WaveBase_EffectivePeriod">EffectivePeriod</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">Wave</a>.<a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></td>
+        <td><span class="parametername">extrema</span></td>
+        <td><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, this parameter defines whether an extremum is passed once the wait time begins, or once it ends.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedWaveExtrema_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L683">View Source</a>
+  </span>
   <a id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedWaveExtrema_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedWaveExtrema_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema(System.Single,System.Single,System.Single)">
-  PassedWaveExtrema(float, float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L683"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
+  <h4 id="TMPEffects_TMPAnimations_AnimationUtility_Wave_PassedWaveExtrema_System_Single_System_Single_System_Single_" data-uid="TMPEffects.TMPAnimations.AnimationUtility.Wave.PassedWaveExtrema(System.Single,System.Single,System.Single)">PassedWaveExtrema(float, float, float)</h4>
   <div class="markdown level1 summary"><p>Check whether an extrema was passed between (<code class="paramref">time</code> - <code class="paramref">deltaTime</code>) and <code class="paramref">time</code>.<br>
 Explicitly interpret the wave as a normal wave, ignoring both <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> and <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int PassedWaveExtrema(float time, float deltaTime, float offset)</code></pre>
   </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>time</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The time value.</p>
-</dd>
-    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The delta time value.</p>
-</dd>
-    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">time</span></td>
+        <td><p>The time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The delta time value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset. Affected by <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_Uniformity">Uniformity</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>1 if a maximum was passed, -1 if a minimum was passed, 0 if no extremum was passed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">ISerializationCallbackReceiver</span>
+  </div>
 
 </article>
+          </div>
 
-        <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L567" class="edit-link">Edit this page</a>
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationUtility_Wave.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationUtility.Wave%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationUtility.cs/#L567" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
         </div>
-
-
       </div>
 
-      <div class="affix">
-        <nav id="affix"></nav>
-      </div>
-    </main>
-
-    <div class="container-xxl search-results" id="search-results"></div>
-
-    <footer class="border-top text-secondary">
-      <div class="container-xxl">
-        <div class="flex-fill">
-          TMPEffects documentation
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      TMPEffects documentation
+      
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>
