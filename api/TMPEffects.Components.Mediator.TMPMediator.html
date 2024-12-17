@@ -1,102 +1,134 @@
 <!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class TMPMediator | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TMPMediator | TMPEffects documentation ">
-    
-    <meta name="description" content="A mediator class for TMPAnimator and TMPWriter (and potential additions, if any). Handles the pre- and postprocessing of the text, as well as maintaining information about it in the form of a  and  collection.">
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      
+      <meta name="description" content="A mediator class for TMPAnimator and TMPWriter (and potential additions, if any). Handles the pre- and postprocessing of the text, as well as maintaining information about it in the form of a  and  collection.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="TMPEffects.Components.Mediator.TMPMediator">
+
+        <article data-uid="TMPEffects.Components.Mediator.TMPMediator">
 
 
 
-  <h1 id="TMPEffects_Components_Mediator_TMPMediator" data-uid="TMPEffects.Components.Mediator.TMPMediator" class="text-break">Class TMPMediator</h1>
-  <div class="markdown level0 summary"><p>A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).<br>
+  <h1 id="TMPEffects_Components_Mediator_TMPMediator" data-uid="TMPEffects.Components.Mediator.TMPMediator" class="text-break">
+Class TMPMediator  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Mediator.html">Mediator</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).<br>
 Handles the pre- and postprocessing of the text, as well as maintaining information
 about it in the form of a <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> and <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> collection.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">TMPMediator</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TMPMediator : IDisposable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TMPMediator</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -118,283 +150,287 @@ about it in the form of a <a class="xref" href="TMPEffects.Components.Mediator.T
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Mediator.html">Mediator</a></h6>
-  <h6><strong>Assembly</strong>: .dll</h6>
-  <h5 id="TMPEffects_Components_Mediator_TMPMediator_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TMPMediator : IDisposable</code></pre>
-  </div>
-  <h3 id="fields">Fields
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_CharData.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.CharData%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L33">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_CharData" data-uid="TMPEffects.Components.Mediator.TMPMediator.CharData">CharData</h4>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_CharData" data-uid="TMPEffects.Components.Mediator.TMPMediator.CharData">
+  CharData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly ReadOnlyCollection&lt;CharData&gt; CharData</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_Processor.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.Processor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L37">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_Processor" data-uid="TMPEffects.Components.Mediator.TMPMediator.Processor">Processor</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_Processor" data-uid="TMPEffects.Components.Mediator.TMPMediator.Processor">
+  Processor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The <a class="xref" href="TMPEffects.TextProcessing.TMPTextProcessor.html">TMPTextProcessor</a> used by the associated TMP_Text component.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly TMPTextProcessor Processor</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.TextProcessing.TMPTextProcessor.html">TMPTextProcessor</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_Text.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.Text%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L41">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_Text" data-uid="TMPEffects.Components.Mediator.TMPMediator.Text">Text</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.TextProcessing.TMPTextProcessor.html">TMPTextProcessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_Text" data-uid="TMPEffects.Components.Mediator.TMPMediator.Text">
+  Text
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The associated TMP_Text component.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly TMP_Text Text</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TMP_Text</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_VisibilityStates.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.VisibilityStates%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L27">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_VisibilityStates" data-uid="TMPEffects.Components.Mediator.TMPMediator.VisibilityStates">VisibilityStates</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TMP_Text</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_VisibilityStates" data-uid="TMPEffects.Components.Mediator.TMPMediator.VisibilityStates">
+  VisibilityStates
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly ReadOnlyCollection&lt;VisibilityState&gt; VisibilityStates</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L247">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_" data-uid="TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)">ApplyMesh(CharData)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)">
+  ApplyMesh(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Apply the mesh of the <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ApplyMesh(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
-        <td><span class="parametername">cData</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_Dispose.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.Dispose%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L99">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_Dispose_" data-uid="TMPEffects.Components.Mediator.TMPMediator.Dispose*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_Dispose" data-uid="TMPEffects.Components.Mediator.TMPMediator.Dispose">Dispose()</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_Dispose" data-uid="TMPEffects.Components.Mediator.TMPMediator.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Dispose the TMPMediator instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_ForceReprocess.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.ForceReprocess%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L91">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_ForceReprocess_" data-uid="TMPEffects.Components.Mediator.TMPMediator.ForceReprocess*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_ForceReprocess" data-uid="TMPEffects.Components.Mediator.TMPMediator.ForceReprocess">ForceReprocess()</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_ForceReprocess" data-uid="TMPEffects.Components.Mediator.TMPMediator.ForceReprocess">
+  ForceReprocess()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Forces a mesh update on the associated TMP_Text component.<br>
 Will reprocess the text.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ForceReprocess()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.GetVisibilityState(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L152">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.GetVisibilityState*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Mediator.TMPMediator.GetVisibilityState(TMPEffects.CharacterData.CharData)">GetVisibilityState(CharData)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Mediator.TMPMediator.GetVisibilityState(TMPEffects.CharacterData.CharData)">
+  GetVisibilityState(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of the given <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public VisibilityState GetVisibilityState(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> to get the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></td>
-        <td><p>The associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of the given <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_TMPEffects_CharacterData_CharData__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> to get the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></dt>
+    <dd><p>The associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of the given <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="TMPEffects_Components_Mediator_TMPMediator_GetVisibilityState_TMPEffects_CharacterData_CharData__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This uses the index property of <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_info">info</a> to get the associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
 Therefore, the responsiblity is on you to ensure <code class="paramref">cData</code> is valid, i.e. belongs to this TMPMediator instance.</p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_RegisterVisibilityProcessor_System_Object_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.RegisterVisibilityProcessor(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L121">View Source</a>
-  </span>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_RegisterVisibilityProcessor_" data-uid="TMPEffects.Components.Mediator.TMPMediator.RegisterVisibilityProcessor*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_RegisterVisibilityProcessor_System_Object_" data-uid="TMPEffects.Components.Mediator.TMPMediator.RegisterVisibilityProcessor(System.Object)">RegisterVisibilityProcessor(object)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_RegisterVisibilityProcessor_System_Object_" data-uid="TMPEffects.Components.Mediator.TMPMediator.RegisterVisibilityProcessor(System.Object)">
+  RegisterVisibilityProcessor(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Register as the visibility processor of this TMPMediator.<br>
 There may be at most one visibility processor registered at any given time.<br>
 This makes you responsible of applying any actual changes to the mesh of
@@ -403,441 +439,358 @@ Subscribe to the <a class="xref" href="TMPEffects.Components.Mediator.TMPMediato
 an <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> is updated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool RegisterVisibilityProcessor(object obj)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>The object to identify the subscriber.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if registration was successful; otherwise false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_SetText_System_String_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.SetText(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L237">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to identify the subscriber.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if registration was successful; otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_SetText_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetText*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_SetText_System_String_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetText(System.String)">SetText(string)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_SetText_System_String_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetText(System.String)">
+  SetText(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set the text of the associated TMP_Text component.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetText(string text)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">text</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_System_Int32_TMPEffects_CharacterData_VisibilityState_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32%2CSystem.Int32%2CTMPEffects.CharacterData.VisibilityState)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L164">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_System_Int32_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32,System.Int32,TMPEffects.CharacterData.VisibilityState)">SetVisibilityState(int, int, VisibilityState)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_System_Int32_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32,System.Int32,TMPEffects.CharacterData.VisibilityState)">
+  SetVisibilityState(int, int, VisibilityState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> associated with the <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> at the given indices.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetVisibilityState(int startIndex, int length, VisibilityState state)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">startIndex</span></td>
-        <td><p>The first index of the to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">length</span></td>
-        <td><p>The amount of to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></td>
-        <td><span class="parametername">state</span></td>
-        <td><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_TMPEffects_CharacterData_VisibilityState_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32%2CTMPEffects.CharacterData.VisibilityState)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L228">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The first index of the to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The amount of to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32,TMPEffects.CharacterData.VisibilityState)">SetVisibilityState(int, VisibilityState)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_System_Int32_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(System.Int32,TMPEffects.CharacterData.VisibilityState)">
+  SetVisibilityState(int, VisibilityState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> associated with the <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> at the given index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetVisibilityState(int index, VisibilityState state)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The index of the to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></td>
-        <td><span class="parametername">state</span></td>
-        <td><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_TMPEffects_CharacterData_CharData_TMPEffects_CharacterData_VisibilityState_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(TMPEffects.CharacterData.CharData%2CTMPEffects.CharacterData.VisibilityState)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L219">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the to-be-updated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_TMPEffects_CharacterData_CharData_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(TMPEffects.CharacterData.CharData,TMPEffects.CharacterData.VisibilityState)">SetVisibilityState(CharData, VisibilityState)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_TMPEffects_CharacterData_CharData_TMPEffects_CharacterData_VisibilityState_" data-uid="TMPEffects.Components.Mediator.TMPMediator.SetVisibilityState(TMPEffects.CharacterData.CharData,TMPEffects.CharacterData.VisibilityState)">
+  SetVisibilityState(CharData, VisibilityState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> associated with the given <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetVisibilityState(CharData cData, VisibilityState state)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> to set the associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></td>
-        <td><span class="parametername">state</span></td>
-        <td><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_TMPEffects_CharacterData_CharData_TMPEffects_CharacterData_VisibilityState__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> to set the associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of.</p>
+</dd>
+    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> to set to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="TMPEffects_Components_Mediator_TMPMediator_SetVisibilityState_TMPEffects_CharacterData_CharData_TMPEffects_CharacterData_VisibilityState__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This uses the index property of <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_info">info</a> to get the associated <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
 Therefore, the responsiblity is on you to ensure <code class="paramref">cData</code> is valid, i.e. belongs to this TMPMediator instance.</p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_UnregisterVisibilityProcessor_System_Object_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.UnregisterVisibilityProcessor(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L134">View Source</a>
-  </span>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="TMPEffects_Components_Mediator_TMPMediator_UnregisterVisibilityProcessor_" data-uid="TMPEffects.Components.Mediator.TMPMediator.UnregisterVisibilityProcessor*"></a>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_UnregisterVisibilityProcessor_System_Object_" data-uid="TMPEffects.Components.Mediator.TMPMediator.UnregisterVisibilityProcessor(System.Object)">UnregisterVisibilityProcessor(object)</h4>
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_UnregisterVisibilityProcessor_System_Object_" data-uid="TMPEffects.Components.Mediator.TMPMediator.UnregisterVisibilityProcessor(System.Object)">
+  UnregisterVisibilityProcessor(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Unregister as the visibility processor of this TMPMediator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UnregisterVisibilityProcessor(object obj)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>The object to identify the subscriber.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if registration was successful; otherwise false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_TextChanged_Early.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.TextChanged_Early%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L52">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_TextChanged_Early" data-uid="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Early">TextChanged_Early</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to identify the subscriber.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if registration was successful; otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_TextChanged_Early" data-uid="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Early">
+  TextChanged_Early
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Raised when the associated TMP_Text component raises its TEXT_CHANGED_EVENT, before <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_TextChanged_Late">TextChanged_Late</a>.<br>
 You should use this callback for initialization, e.g. processing tags. Don't modify data that might mess with the initialization of other
 listeners, such as setting visibilities or char data. For such operations, use <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_TextChanged_Late">TextChanged_Late</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public event TMPMediator.TextChangedEarlyEventHandler TextChanged_Early</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html">TextChangedEarlyEventHandler</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_TextChanged_Late.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.TextChanged_Late%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L56">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_TextChanged_Late" data-uid="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Late">TextChanged_Late</h4>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html">TextChangedEarlyEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_TextChanged_Late" data-uid="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Late">
+  TextChanged_Late
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Raised when the associated TMP_Text component raises its TEXT_CHANGED_EVENT, after <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_TextChanged_Early">TextChanged_Early</a>.<br></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public event TMPMediator.TextChangedLateEventHandler TextChanged_Late</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html">TextChangedLateEventHandler</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator_VisibilityStateUpdated.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator.VisibilityStateUpdated%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L60">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Mediator_TMPMediator_VisibilityStateUpdated" data-uid="TMPEffects.Components.Mediator.TMPMediator.VisibilityStateUpdated">VisibilityStateUpdated</h4>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html">TextChangedLateEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Mediator_TMPMediator_VisibilityStateUpdated" data-uid="TMPEffects.Components.Mediator.TMPMediator.VisibilityStateUpdated">
+  VisibilityStateUpdated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Raised when the <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a> of one of the contained <a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_CharData">CharData</a> is updated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public event TMPMediator.VisibilityEventHandler VisibilityStateUpdated</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html">VisibilityEventHandler</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.html">TMPMediator</a>.<a class="xref" href="TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html">VisibilityEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Mediator_TMPMediator.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Mediator.TMPMediator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L18" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPMediator/TMPMediator.cs/#L18" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      TMPEffects documentation
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

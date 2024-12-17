@@ -1,101 +1,134 @@
 <!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class AnimatorContext | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AnimatorContext | TMPEffects documentation ">
-    
-    <meta name="description" content="To be used with . Contains context data of the respective .">
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      
+      <meta name="description" content="To be used with . Contains context data of the respective .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="TMPEffects.Components.Animator.AnimatorContext">
+
+        <article data-uid="TMPEffects.Components.Animator.AnimatorContext">
 
 
 
-  <h1 id="TMPEffects_Components_Animator_AnimatorContext" data-uid="TMPEffects.Components.Animator.AnimatorContext" class="text-break">Class AnimatorContext</h1>
-  <div class="markdown level0 summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.<br>
+  <h1 id="TMPEffects_Components_Animator_AnimatorContext" data-uid="TMPEffects.Components.Animator.AnimatorContext" class="text-break">
+Class AnimatorContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Animator.html">Animator</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>To be used with <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.<br>
 Contains context data of the respective <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">AnimatorContext</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class AnimatorContext : IAnimatorContext</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AnimatorContext</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -117,680 +150,625 @@ Contains context data of the respective <a class="xref" href="TMPEffects.Compone
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Components.html">Components</a>.<a class="xref" href="TMPEffects.Components.Animator.html">Animator</a></h6>
-  <h6><strong>Assembly</strong>: .dll</h6>
-  <h5 id="TMPEffects_Components_Animator_AnimatorContext_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Serializable]
-public class AnimatorContext : IAnimatorContext</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext__ctor.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L64">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor">AnimatorContext()</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor">
+  AnimatorContext()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.%23ctor(TMPEffects.Components.TMPAnimator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L65">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator)">AnimatorContext(TMPAnimator)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator)">
+  AnimatorContext(TMPAnimator)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext(TMPAnimator animator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td><span class="parametername">animator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_System_Func_System_Int32_System_Single__System_Func_System_Int32_System_Single__.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.%23ctor(TMPEffects.Components.TMPAnimator%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Func%7BSystem.Int32%2CSystem.Single%7D%2CSystem.Func%7BSystem.Int32%2CSystem.Single%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L66">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animator</code> <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext__ctor_" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_System_Func_System_Int32_System_Single__System_Func_System_Int32_System_Single__" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator,System.Boolean,System.Boolean,System.Boolean,System.Func{System.Int32,System.Single},System.Func{System.Int32,System.Single})">AnimatorContext(TMPAnimator, bool, bool, bool, Func&lt;int, float&gt;, Func&lt;int, float&gt;)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_System_Func_System_Int32_System_Single__System_Func_System_Int32_System_Single__" data-uid="TMPEffects.Components.Animator.AnimatorContext.#ctor(TMPEffects.Components.TMPAnimator,System.Boolean,System.Boolean,System.Boolean,System.Func{System.Int32,System.Single},System.Func{System.Int32,System.Single})">
+  AnimatorContext(TMPAnimator, bool, bool, bool, Func&lt;int, float&gt;, Func&lt;int, float&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AnimatorContext(TMPAnimator animator, bool scaleAnimations, bool useScaledTime, bool scaleUniformly, Func&lt;int, float&gt; getVisibleTime, Func&lt;int, float&gt; getStateTime)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td><span class="parametername">animator</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">scaleAnimations</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">useScaledTime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">scaleUniformly</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</td>
-        <td><span class="parametername">getVisibleTime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</td>
-        <td><span class="parametername">getStateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext__StateTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext._StateTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L61">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__StateTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._StateTime">_StateTime</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animator</code> <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+    <dt><code>scaleAnimations</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>useScaledTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>scaleUniformly</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>getVisibleTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>getStateTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__StateTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._StateTime">
+  _StateTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public Func&lt;int, float&gt; _StateTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext__VisibleTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext._VisibleTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L62">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext__VisibleTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._VisibleTime">_VisibleTime</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext__VisibleTime" data-uid="TMPEffects.Components.Animator.AnimatorContext._VisibleTime">
+  _VisibleTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public Func&lt;int, float&gt; _VisibleTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_deltaTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.deltaTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L59">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_deltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.deltaTime">deltaTime</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_deltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.deltaTime">
+  deltaTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public float deltaTime</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_passed.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.passed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L60">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_passed" data-uid="TMPEffects.Components.Animator.AnimatorContext.passed">passed</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_passed" data-uid="TMPEffects.Components.Animator.AnimatorContext.passed">
+  passed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[NonSerialized]
 public float passed</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_Animator.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.Animator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L32">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_Animator_" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator">Animator</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.AnimatorContext.Animator">
+  Animator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The animating <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TMPAnimator Animator { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_DeltaTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.DeltaTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L38">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime">DeltaTime</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.DeltaTime">
+  DeltaTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The current delta time (=&gt; time since last animation update).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float DeltaTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_PassedTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.PassedTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L44">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_PassedTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime">PassedTime</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.PassedTime">
+  PassedTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The time that has passed since the animator began animating.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float PassedTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L15">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations_" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations">ScaleAnimations</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleAnimations">
+  ScaleAnimations
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Whether animations are scaled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ScaleAnimations { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L21">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly_" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly">ScaleUniformly</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.AnimatorContext.ScaleUniformly">
+  ScaleUniformly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Whether to scale animations uniformly (based on the default font size of the animator)
 or on a per character basis.<br>
 Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations">ScaleAnimations</a> is false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ScaleUniformly { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_UseScaledTime.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.UseScaledTime%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L27">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime">UseScaledTime</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.AnimatorContext.UseScaledTime">
+  UseScaledTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Whether animations use scaled time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UseScaledTime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_StateTime_System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.StateTime(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L84">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(System.Int32)">StateTime(int)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(System.Int32)">
+  StateTime(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
 Generally, to be used with show and hide animations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float StateTime(int index)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The index of the character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_StateTime_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.StateTime(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L80">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(TMPEffects.CharacterData.CharData)">StateTime(CharData)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_StateTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.StateTime(TMPEffects.CharacterData.CharData)">
+  StateTime(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
 Generally, to be used with show and hide animations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float StateTime(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_VisibleTime_System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.VisibleTime(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L86">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(System.Int32)">VisibleTime(int)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(System.Int32)">
+  VisibleTime(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float VisibleTime(int index)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L82">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime*"></a>
-  <h4 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)">VisibleTime(CharData)</h4>
+
+  <h3 id="TMPEffects_Components_Animator_AnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.AnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)">
+  VisibleTime(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float VisibleTime(CharData cData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></td>
-        <td><span class="parametername">cData</span></td>
-        <td><p>The character to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_AnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.AnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L11" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/AnimatorContext.cs/#L11" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      TMPEffects documentation
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

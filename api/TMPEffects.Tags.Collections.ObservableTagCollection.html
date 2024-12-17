@@ -1,106 +1,138 @@
 <!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class ObservableTagCollection | TMPEffects documentation </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ObservableTagCollection | TMPEffects documentation ">
-    
-    <meta name="description" content="An observable .">
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+      
+      <meta name="description" content="An observable .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection">
+
+        <article data-uid="TMPEffects.Tags.Collections.ObservableTagCollection">
 
 
 
-  <h1 id="TMPEffects_Tags_Collections_ObservableTagCollection" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection" class="text-break">Class ObservableTagCollection</h1>
-  <div class="markdown level0 summary"><p>An observable <a class="xref" href="TMPEffects.Tags.Collections.ITagCollection.html">ITagCollection</a>.</p>
+  <h1 id="TMPEffects_Tags_Collections_ObservableTagCollection" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection" class="text-break">
+Class ObservableTagCollection  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Tags.html">Tags</a>.<a class="xref" href="TMPEffects.Tags.Collections.html">Collections</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>An observable <a class="xref" href="TMPEffects.Tags.Collections.ITagCollection.html">ITagCollection</a>.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html">TagCollection</a></div>
-    <div class="level2"><span class="xref">ObservableTagCollection</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ObservableTagCollection : TagCollection, ITagCollection, IReadOnlyTagCollection, IReadOnlyCollection&lt;TMPEffectTagTuple&gt;, IEnumerable&lt;TMPEffectTagTuple&gt;, IEnumerable, INotifyCollectionChanged</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="TMPEffects.Tags.Collections.ITagCollection.html">ITagCollection</a></div>
-    <div><a class="xref" href="TMPEffects.Tags.Collections.IReadOnlyTagCollection.html">IReadOnlyTagCollection</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html">TagCollection</a></div>
+      <div><span class="xref">ObservableTagCollection</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TMPEffects.Tags.Collections.ITagCollection.html">ITagCollection</a></div>
+      <div><a class="xref" href="TMPEffects.Tags.Collections.IReadOnlyTagCollection.html">IReadOnlyTagCollection</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_AdjustOrderAtIndexAt_System_Int32_TMPEffects_Tags_TMPEffectTagIndices_">TagCollection.AdjustOrderAtIndexAt(int, TMPEffectTagIndices)</a>
     </div>
@@ -164,538 +196,422 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Tags.html">Tags</a>.<a class="xref" href="TMPEffects.Tags.Collections.html">Collections</a></h6>
-  <h6><strong>Assembly</strong>: .dll</h6>
-  <h5 id="TMPEffects_Tags_Collections_ObservableTagCollection_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ObservableTagCollection : TagCollection, ITagCollection, IReadOnlyTagCollection, IReadOnlyCollection&lt;TMPEffectTagTuple&gt;, IEnumerable&lt;TMPEffectTagTuple&gt;, IEnumerable, INotifyCollectionChanged</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection__ctor_System_Collections_Generic_IList_TMPEffects_Tags_TMPEffectTagTuple__TMPEffects_Tags_ITMPTagValidator_.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.%23ctor(System.Collections.Generic.IList%7BTMPEffects.Tags.TMPEffectTagTuple%7D%2CTMPEffects.Tags.ITMPTagValidator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L12">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_System_Collections_Generic_IList_TMPEffects_Tags_TMPEffectTagTuple__TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor(System.Collections.Generic.IList{TMPEffects.Tags.TMPEffectTagTuple},TMPEffects.Tags.ITMPTagValidator)">ObservableTagCollection(IList&lt;TMPEffectTagTuple&gt;, ITMPTagValidator)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_System_Collections_Generic_IList_TMPEffects_Tags_TMPEffectTagTuple__TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor(System.Collections.Generic.IList{TMPEffects.Tags.TMPEffectTagTuple},TMPEffects.Tags.ITMPTagValidator)">
+  ObservableTagCollection(IList&lt;TMPEffectTagTuple&gt;, ITMPTagValidator)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ObservableTagCollection(IList&lt;TMPEffectTagTuple&gt; tags, ITMPTagValidator validator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</td>
-        <td><span class="parametername">tags</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></td>
-        <td><span class="parametername">validator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection__ctor_TMPEffects_Tags_ITMPTagValidator_.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.%23ctor(TMPEffects.Tags.ITMPTagValidator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L14">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>validator</code> <a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor(TMPEffects.Tags.ITMPTagValidator)">ObservableTagCollection(ITMPTagValidator)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection__ctor_TMPEffects_Tags_ITMPTagValidator_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.#ctor(TMPEffects.Tags.ITMPTagValidator)">
+  ObservableTagCollection(ITMPTagValidator)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ObservableTagCollection(ITMPTagValidator validator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></td>
-        <td><span class="parametername">validator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_Clear.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L186">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>validator</code> <a class="xref" href="TMPEffects.Tags.ITMPTagValidator.html">ITMPTagValidator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_Clear_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Clear*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_Clear" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Clear">Clear()</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_Clear" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Clear the entire collection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Clear()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_Clear">TagCollection.Clear()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_InvokeEvent_System_Collections_Specialized_NotifyCollectionChangedEventArgs_.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.InvokeEvent(System.Collections.Specialized.NotifyCollectionChangedEventArgs)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L22">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_InvokeEvent_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.InvokeEvent*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_InvokeEvent_System_Collections_Specialized_NotifyCollectionChangedEventArgs_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.InvokeEvent(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">InvokeEvent(NotifyCollectionChangedEventArgs)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_InvokeEvent_System_Collections_Specialized_NotifyCollectionChangedEventArgs_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.InvokeEvent(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+  InvokeEvent(NotifyCollectionChangedEventArgs)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void InvokeEvent(NotifyCollectionChangedEventArgs e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.notifycollectionchangedeventargs">NotifyCollectionChangedEventArgs</a></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_Remove_TMPEffects_Tags_TMPEffectTag_System_Nullable_TMPEffects_Tags_TMPEffectTagIndices__.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.Remove(TMPEffects.Tags.TMPEffectTag%2CSystem.Nullable%7BTMPEffects.Tags.TMPEffectTagIndices%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L95">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.notifycollectionchangedeventargs">NotifyCollectionChangedEventArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_Remove_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Remove*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_Remove_TMPEffects_Tags_TMPEffectTag_System_Nullable_TMPEffects_Tags_TMPEffectTagIndices__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Remove(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})">Remove(TMPEffectTag, TMPEffectTagIndices?)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_Remove_TMPEffects_Tags_TMPEffectTag_System_Nullable_TMPEffects_Tags_TMPEffectTagIndices__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.Remove(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})">
+  Remove(TMPEffectTag, TMPEffectTagIndices?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Remove the given tag, with the specified indices (if supplied).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Remove(TMPEffectTag tag, TMPEffectTagIndices? indices = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></td>
-        <td><span class="parametername">tag</span></td>
-        <td><p>The tag to remove.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a>?</td>
-        <td><span class="parametername">indices</span></td>
-        <td><p>The indices of the tag.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if the tag was removed; false otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_Remove_TMPEffects_Tags_TMPEffectTag_System_Nullable_TMPEffects_Tags_TMPEffectTagIndices__">TagCollection.Remove(TMPEffectTag, TMPEffectTagIndices?)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAllAt_System_Int32_TMPEffects_Tags_TMPEffectTagTuple___System_Int32_.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAllAt(System.Int32%2CTMPEffects.Tags.TMPEffectTagTuple%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L142">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tag</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></dt>
+    <dd><p>The tag to remove.</p>
+</dd>
+    <dt><code>indices</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a>?</dt>
+    <dd><p>The indices of the tag.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the tag was removed; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAllAt_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAllAt*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAllAt_System_Int32_TMPEffects_Tags_TMPEffectTagTuple___System_Int32_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAllAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)">RemoveAllAt(int, TMPEffectTagTuple[], int)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAllAt_System_Int32_TMPEffects_Tags_TMPEffectTagTuple___System_Int32_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAllAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)">
+  RemoveAllAt(int, TMPEffectTagTuple[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Remove all tags starting at the given <code class="paramref">startIndex</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int RemoveAllAt(int startIndex, TMPEffectTagTuple[] buffer = null, int bufferIndex = 0)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">startIndex</span></td>
-        <td><p>The start index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>[]</td>
-        <td><span class="parametername">buffer</span></td>
-        <td><p>Buffer to save the removed tags into. Leave at default if you do not want to get the tags.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">bufferIndex</span></td>
-        <td><p>The offset index of the buffer, i.e. the index at which the tags should be inserted into <code class="paramref">buffer</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The amount of removed tags.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_RemoveAllAt_System_Int32_TMPEffects_Tags_TMPEffectTagTuple___System_Int32_">TagCollection.RemoveAllAt(int, TMPEffectTagTuple[], int)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAt_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAt(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L121">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The start index.</p>
+</dd>
+    <dt><code>buffer</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTagTuple.html">TMPEffectTagTuple</a>[]</dt>
+    <dd><p>Buffer to save the removed tags into. Leave at default if you do not want to get the tags.</p>
+</dd>
+    <dt><code>bufferIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The offset index of the buffer, i.e. the index at which the tags should be inserted into <code class="paramref">buffer</code>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The amount of removed tags.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAt_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAt*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAt_System_Int32_System_Nullable_System_Int32__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAt(System.Int32,System.Nullable{System.Int32})">RemoveAt(int, int?)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_RemoveAt_System_Int32_System_Nullable_System_Int32__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.RemoveAt(System.Int32,System.Nullable{System.Int32})">
+  RemoveAt(int, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Remove the tag starting at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br>
 If <code class="paramref">order</code> is left to default, the first tag at <code class="paramref">startIndex</code> will be removed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool RemoveAt(int startIndex, int? order = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">startIndex</span></td>
-        <td><p>The start index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">order</span></td>
-        <td><p>The order at the start index.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if a tag was removed; false otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_RemoveAt_System_Int32_System_Nullable_System_Int32__">TagCollection.RemoveAt(int, int?)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_System_Int32_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag%2CSystem.Int32%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L47">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The start index.</p>
+</dd>
+    <dt><code>order</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The order at the start index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if a tag was removed; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_System_Int32_System_Int32_System_Nullable_System_Int32__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag,System.Int32,System.Int32,System.Nullable{System.Int32})">TryAdd(TMPEffectTag, int, int, int?)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_System_Int32_System_Int32_System_Nullable_System_Int32__" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag,System.Int32,System.Int32,System.Nullable{System.Int32})">
+  TryAdd(TMPEffectTag, int, int, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Attempt to add a new tag to the collection.<br>
 If <code class="paramref">orderAtIndex</code> is left to default, the order will be assigned so it is the first tag at the given <code class="paramref">startIndex</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool TryAdd(TMPEffectTag tag, int startIndex = 0, int endIndex = -1, int? orderAtIndex = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></td>
-        <td><span class="parametername">tag</span></td>
-        <td><p>The tag to add.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">startIndex</span></td>
-        <td><p>The tag's start index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">endIndex</span></td>
-        <td><p>The tag's end index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">orderAtIndex</span></td>
-        <td><p>The tag's order at index.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if the tag was successfully added; false otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_System_Int32_System_Int32_System_Nullable_System_Int32__">TagCollection.TryAdd(TMPEffectTag, int, int, int?)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_TMPEffects_Tags_TMPEffectTagIndices_.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag%2CTMPEffects.Tags.TMPEffectTagIndices)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L28">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tag</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></dt>
+    <dd><p>The tag to add.</p>
+</dd>
+    <dt><code>startIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The tag's start index.</p>
+</dd>
+    <dt><code>endIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The tag's end index.</p>
+</dd>
+    <dt><code>orderAtIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The tag's order at index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the tag was successfully added; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd*"></a>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_TMPEffects_Tags_TMPEffectTagIndices_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)">TryAdd(TMPEffectTag, TMPEffectTagIndices)</h4>
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_TMPEffects_Tags_TMPEffectTagIndices_" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.TryAdd(TMPEffects.Tags.TMPEffectTag,TMPEffects.Tags.TMPEffectTagIndices)">
+  TryAdd(TMPEffectTag, TMPEffectTagIndices)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Attempt to add a new tag to the collection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool TryAdd(TMPEffectTag tag, TMPEffectTagIndices indices)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></td>
-        <td><span class="parametername">tag</span></td>
-        <td><p>The tag to add.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a></td>
-        <td><span class="parametername">indices</span></td>
-        <td><p>The tag's indices.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>true if the tag was successfully added; false otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="TMPEffects.Tags.Collections.TagCollection.html#TMPEffects_Tags_Collections_TagCollection_TryAdd_TMPEffects_Tags_TMPEffectTag_TMPEffects_Tags_TMPEffectTagIndices_">TagCollection.TryAdd(TMPEffectTag, TMPEffectTagIndices)</a></div>
-  <h3 id="events">Events
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection_CollectionChanged.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection.CollectionChanged%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L20">View Source</a>
-  </span>
-  <h4 id="TMPEffects_Tags_Collections_ObservableTagCollection_CollectionChanged" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.CollectionChanged">CollectionChanged</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tag</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTag.html">TMPEffectTag</a></dt>
+    <dd><p>The tag to add.</p>
+</dd>
+    <dt><code>indices</code> <a class="xref" href="TMPEffects.Tags.TMPEffectTagIndices.html">TMPEffectTagIndices</a></dt>
+    <dd><p>The tag's indices.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the tag was successfully added; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="TMPEffects_Tags_Collections_ObservableTagCollection_CollectionChanged" data-uid="TMPEffects.Tags.Collections.ObservableTagCollection.CollectionChanged">
+  CollectionChanged
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Raised when the collection changed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public event NotifyCollectionChangedEventHandler CollectionChanged</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.notifycollectionchangedeventhandler">NotifyCollectionChangedEventHandler</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="TMPEffects.Tags.Collections.ITagCollection.html">ITagCollection</a>
-  </div>
-  <div>
-      <a class="xref" href="TMPEffects.Tags.Collections.IReadOnlyTagCollection.html">IReadOnlyTagCollection</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a>
-  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.specialized.notifycollectionchangedeventhandler">NotifyCollectionChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_ObservableTagCollection.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.ObservableTagCollection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L10" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs/#L10" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      TMPEffects documentation
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
