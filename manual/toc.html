@@ -1,166 +1,133 @@
-﻿
+
 <div id="sidetoggle">
   <div>
     <div class="sidefilter">
       <form class="toc-filter">
-        <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." autocomplete="off" onkeypress="if(event.keyCode==13) {return false;}">
-        <svg class="filter-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-        <svg id="toc_filter_clear" class="clear-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <span class="glyphicon glyphicon-filter filter-icon"></span>
+        <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+        <input type="text" id="toc_filter_input" placeholder="Filter by title" onkeypress="if(event.keyCode==13) {return false;}">
       </form>
     </div>
     <div class="sidetoc">
       <div class="toc" id="toc">
-          
+
           <ul class="nav level1">
                 <li>
-                      <a href="introduction.html" class="sidebar-item" name="" title="Introduction">Introduction</a>
-                  
+                    <a href="introduction.html" name="" title="Introduction">Introduction</a>
                 </li>
                 <li>
-                      <a href="installation.html" class="sidebar-item" name="" title="Installation">Installation</a>
-                  
+                    <a href="installation.html" name="" title="Installation">Installation</a>
                 </li>
                 <li>
-                      <span class="expand-stub"></span>
-                      <a href="tmpanimator.html" class="sidebar-item" name="" title="TMPAnimator">TMPAnimator</a>
-                  
-                    
+                    <span class="expand-stub"></span>
+                    <a href="tmpanimator.html" name="" title="TMPAnimator">TMPAnimator</a>
+
                     <ul class="nav level2">
                           <li>
-                                <a href="tmpanimator_gettingstarted.html" class="sidebar-item" name="" title="Getting started">Getting started</a>
-                            
+                              <a href="tmpanimator_gettingstarted.html" name="" title="Getting started">Getting started</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_builtinbasicanimations.html" class="sidebar-item" name="" title="Built-in basic animations">Built-in basic animations</a>
-                            
+                              <a href="tmpanimator_builtinbasicanimations.html" name="" title="Built-in basic animations">Built-in basic animations</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_componentoverview.html" class="sidebar-item" name="" title="Component overview">Component overview</a>
-                            
+                              <a href="tmpanimator_componentoverview.html" name="" title="Component overview">Component overview</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_showhideanimations.html" class="sidebar-item" name="" title="Show / hide animations">Show / hide animations</a>
-                            
+                              <a href="tmpanimator_showhideanimations.html" name="" title="Show / hide animations">Show / hide animations</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_builtinshowhideanimations.html" class="sidebar-item" name="" title="Built-in show / hide animations">Built-in show / hide animations</a>
-                            
+                              <a href="tmpanimator_builtinshowhideanimations.html" name="" title="Built-in show / hide animations">Built-in show / hide animations</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_sceneanimations.html" class="sidebar-item" name="" title="Scene animations">Scene animations</a>
-                            
+                              <a href="tmpanimator_sceneanimations.html" name="" title="Scene animations">Scene animations</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_creatinganimations.html" class="sidebar-item" name="" title="Creating animations">Creating animations</a>
-                            
+                              <a href="tmpanimator_creatinganimations.html" name="" title="Creating animations">Creating animations</a>
                           </li>
                           <li>
-                                <a href="animatingacharacter.html" class="sidebar-item" name="" title="Animating a character">Animating a character</a>
-                            
+                              <a href="animatingacharacter.html" name="" title="Animating a character">Animating a character</a>
                           </li>
                           <li>
-                                <a href="animationutility.html" class="sidebar-item" name="" title="AnimationUtility">AnimationUtility</a>
-                            
+                              <a href="animationutility.html" name="" title="AnimationUtility">AnimationUtility</a>
                           </li>
                           <li>
-                                <a href="tmpanimator_animationutility_wave.html" class="sidebar-item" name="" title="AnimationUtility.Wave">AnimationUtility.Wave</a>
-                            
+                              <a href="tmpanimator_animationutility_wave.html" name="" title="AnimationUtility.Wave">AnimationUtility.Wave</a>
                           </li>
                     </ul>
                 </li>
                 <li>
-                      <span class="expand-stub"></span>
-                      <a href="tmpwriter.html" class="sidebar-item" name="" title="TMPWriter">TMPWriter</a>
-                  
-                    
+                    <span class="expand-stub"></span>
+                    <a href="tmpwriter.html" name="" title="TMPWriter">TMPWriter</a>
+
                     <ul class="nav level2">
                           <li>
-                                <a href="tmpwriter_gettingstarted.html" class="sidebar-item" name="" title="Getting started">Getting started</a>
-                            
+                              <a href="tmpwriter_gettingstarted.html" name="" title="Getting started">Getting started</a>
                           </li>
                           <li>
-                                <a href="tmpwriter_builtincommands.html" class="sidebar-item" name="" title="Built-in commands">Built-in commands</a>
-                            
+                              <a href="tmpwriter_builtincommands.html" name="" title="Built-in commands">Built-in commands</a>
                           </li>
                           <li>
-                                <a href="tmpwriter_componentoverview.html" class="sidebar-item" name="" title="Component overview">Component overview</a>
-                            
+                              <a href="tmpwriter_componentoverview.html" name="" title="Component overview">Component overview</a>
                           </li>
                           <li>
-                                <a href="tmpwriter_scenecommands.html" class="sidebar-item" name="" title="Scene commands">Scene commands</a>
-                            
+                              <a href="tmpwriter_scenecommands.html" name="" title="Scene commands">Scene commands</a>
                           </li>
                           <li>
-                                <a href="tmpwriter_creatingcommands.html" class="sidebar-item" name="" title="Creating commands">Creating commands</a>
-                            
+                              <a href="tmpwriter_creatingcommands.html" name="" title="Creating commands">Creating commands</a>
                           </li>
                     </ul>
                 </li>
                 <li>
-                      <span class="expand-stub"></span>
-                      <a href="parameters.html" class="sidebar-item" name="" title="Parameters">Parameters</a>
-                  
-                    
+                    <span class="expand-stub"></span>
+                    <a href="parameters.html" name="" title="Parameters">Parameters</a>
+
                     <ul class="nav level2">
                           <li>
-                                <a href="parametertypes.html" class="sidebar-item" name="" title="Parameter types">Parameter types</a>
-                            
+                              <a href="parametertypes.html" name="" title="Parameter types">Parameter types</a>
                           </li>
                           <li>
-                                <a href="parameterutility.html" class="sidebar-item" name="" title="ParameterUtility">ParameterUtility</a>
-                            
+                              <a href="parameterutility.html" name="" title="ParameterUtility">ParameterUtility</a>
                           </li>
                           <li>
-                                <a href="autoparameters.html" class="sidebar-item" name="" title="AutoParameters">AutoParameters</a>
-                            
+                              <a href="autoparameters.html" name="" title="AutoParameters">AutoParameters</a>
                           </li>
                     </ul>
                 </li>
                 <li>
-                      <span class="expand-stub"></span>
-                      <a href="timeline/timeline.md" class="sidebar-item" name="" title="Timeline">Timeline</a>
-                  
-                    
+                    <span class="expand-stub"></span>
+                    <a href="timeline/timeline.md" name="" title="Timeline">Timeline</a>
+
                     <ul class="nav level2">
                           <li>
-                                <a href="timeline/timeline_integration.md" class="sidebar-item" name="" title="Timeline integration">Timeline integration</a>
-                            
+                              <a href="timeline/timeline_integration.md" name="" title="Timeline integration">Timeline integration</a>
                           </li>
                           <li>
-                                <a href="timeline/timeline_creatinganimations.md" class="sidebar-item" name="" title="Creating animations with timeline">Creating animations with timeline</a>
-                            
+                              <a href="timeline/timeline_creatinganimations.md" name="" title="Creating animations with timeline">Creating animations with timeline</a>
                           </li>
                     </ul>
                 </li>
                 <li>
-                      <span class="expand-stub"></span>
-                      <a>Other important classes</a>
-                  
-                    
+                    <span class="expand-stub"></span>
+                    <a>Other important classes</a>
+
                     <ul class="nav level2">
                           <li>
-                                <a href="animationcurveutility.html" class="sidebar-item" name="" title="AnimationCurveUtility">AnimationCurveUtility</a>
-                            
+                              <a href="animationcurveutility.html" name="" title="AnimationCurveUtility">AnimationCurveUtility</a>
                           </li>
                           <li>
-                                <a href="effecttag.html" class="sidebar-item" name="" title="TMPEffectTag">TMPEffectTag</a>
-                            
+                              <a href="effecttag.html" name="" title="TMPEffectTag">TMPEffectTag</a>
                           </li>
                           <li>
-                                <a href="tagcollections.html" class="sidebar-item" name="" title="TagCollections">TagCollections</a>
-                            
+                              <a href="tagcollections.html" name="" title="TagCollections">TagCollections</a>
                           </li>
                           <li>
-                                <a href="chardata.html" class="sidebar-item" name="" title="CharData">CharData</a>
-                            
+                              <a href="chardata.html" name="" title="CharData">CharData</a>
                           </li>
                           <li>
-                                <a href="ianimationcontext.html" class="sidebar-item" name="" title="IAnimationContext">IAnimationContext</a>
-                            
+                              <a href="ianimationcontext.html" name="" title="IAnimationContext">IAnimationContext</a>
                           </li>
                           <li>
-                                <a href="databases.html" class="sidebar-item" name="" title="Databases">Databases</a>
-                            
+                              <a href="databases.html" name="" title="Databases">Databases</a>
                           </li>
                     </ul>
                 </li>

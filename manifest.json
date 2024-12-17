@@ -9,7 +9,6 @@
     "baseUrl": "https://luca3317.github.io/TMPEffects/",
     "changefreq": "weekly"
   },
-  "homepages": [],
   "source_base_path": "D:/a/TMPEffects/TMPEffects/Documentation~",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -19,19 +18,16 @@
         "resource": {
           "relative_path": "index.json"
         }
-      },
-      "is_incremental": false
+      }
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.CharacterData.CharData.Info.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.CharData.Info.html",
-          "hash": "nODgTToC0mma/rIITKfJIkgOAz+WMNxXXQPoKpzcOyg="
+          "relative_path": "api/TMPEffects.CharacterData.CharData.Info.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -39,11 +35,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.CharData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.CharData.html",
-          "hash": "ltiaW5eOUR9F77fh5/zn/hrf7mjlVRzNaN7Hai5mVQE="
+          "relative_path": "api/TMPEffects.CharacterData.CharData.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -51,11 +45,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.CharDataState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.CharDataState.html",
-          "hash": "V0nfIxwMj/SrBtXW8D2BCqFD+Gg8r3KO+f9esgpPUWM="
+          "relative_path": "api/TMPEffects.CharacterData.CharDataState.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -63,11 +55,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.ICharDataState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.ICharDataState.html",
-          "hash": "xHxjTmxmKaKvyqo5xojJiSzhRrP2rXB3m3SW3AFvg4c="
+          "relative_path": "api/TMPEffects.CharacterData.ICharDataState.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -75,11 +65,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharDataState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharDataState.html",
-          "hash": "Fi+UW8Pya2Tdb7vSoqPRDYgzYpUSTMlD9ZFBSK7kYwo="
+          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharDataState.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -87,11 +75,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.ReadOnlyVertexData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyVertexData.html",
-          "hash": "W51mTp2j4Y+INhR0AViPoyxnSHm7wzlmLsEHLwlO8EY="
+          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyVertexData.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -99,11 +85,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.VertexData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.VertexData.html",
-          "hash": "w84xgfFiM2z2OOuLtjst5KSDnW7wnZQ43wuXnt48e24="
+          "relative_path": "api/TMPEffects.CharacterData.VertexData.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -111,11 +95,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.VisibilityState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.VisibilityState.html",
-          "hash": "wnmF2/hRsN4T2ycoC0FzRM2+ZUpmGnZadwYj+OYeSl8="
+          "relative_path": "api/TMPEffects.CharacterData.VisibilityState.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -123,11 +105,9 @@
       "source_relative_path": "api/TMPEffects.CharacterData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.html",
-          "hash": "iR1WuoNYnCieMgCjoOT4TJUZh94YiIaCA8vPN/l/xpM="
+          "relative_path": "api/TMPEffects.CharacterData.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -135,11 +115,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.AnimationUpdater.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.AnimationUpdater.html",
-          "hash": "gDrYdDcVO5ZO7TiarnNLr6RmpILaBta6vXuDFfN8Lko="
+          "relative_path": "api/TMPEffects.Components.Animator.AnimationUpdater.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -147,11 +125,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.AnimatorContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.AnimatorContext.html",
-          "hash": "SP6CO5MfvKS5R7QsqWuPQy4hLDmCC/3hsm5I3G2D4f0="
+          "relative_path": "api/TMPEffects.Components.Animator.AnimatorContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -159,11 +135,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.IAnimatorContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.IAnimatorContext.html",
-          "hash": "rqaVDlVsp8z1fs5J75zTQcNbo/z21fNa3EDa0DnRnug="
+          "relative_path": "api/TMPEffects.Components.Animator.IAnimatorContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -171,11 +145,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.ReadOnlyAnimatorContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html",
-          "hash": "8XpQ39cco6P5hadY6pgZyXGmcz726gFrFk2KQaH+yYE="
+          "relative_path": "api/TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -183,11 +155,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.SegmentData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.SegmentData.html",
-          "hash": "vSPaCOYbBCNqO//NtDmojeA1ISaxzPzf3V1ZbyWIZZQ="
+          "relative_path": "api/TMPEffects.Components.Animator.SegmentData.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -195,11 +165,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.TMPAnimationType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.TMPAnimationType.html",
-          "hash": "vzmoGb+ehCEWeA6bAdBZDody5BocPgnK+0oYTf0fkGQ="
+          "relative_path": "api/TMPEffects.Components.Animator.TMPAnimationType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -207,11 +175,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.TMPAnimatorUpdater.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.TMPAnimatorUpdater.html",
-          "hash": "MzVeuk+KYXyb2FyoQHIgFi2y+NcPRKCtrLKb98mKGA4="
+          "relative_path": "api/TMPEffects.Components.Animator.TMPAnimatorUpdater.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -219,11 +185,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.UpdateFrom.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.UpdateFrom.html",
-          "hash": "x1uthGDnvy7CpyhslxxyD/RZH093/qe25vRbOpD8qtc="
+          "relative_path": "api/TMPEffects.Components.Animator.UpdateFrom.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -231,11 +195,9 @@
       "source_relative_path": "api/TMPEffects.Components.Animator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.html",
-          "hash": "+nQF8+iU2VxZLL0AO979/49WViKceUosvuVyZqzEFjQ="
+          "relative_path": "api/TMPEffects.Components.Animator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -243,11 +205,9 @@
       "source_relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html",
-          "hash": "/hAOHyijai1t1s6BMWzwVTT+Ggzun/uzDHGgMtrvoI0="
+          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -255,11 +215,9 @@
       "source_relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html",
-          "hash": "7gUpDQb2Y6nAk2etmFTtxoWClkYUKboApTgYWVcfv9I="
+          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -267,11 +225,9 @@
       "source_relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html",
-          "hash": "Ng74rlCfnNdq63y/K3wTolKk+wQtvXl0qC+nHQWN7Q8="
+          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -279,11 +235,9 @@
       "source_relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.html",
-          "hash": "7w210lCXTsX00/4X89BH8/KAF6kgs3JOIcKiqB2woA4="
+          "relative_path": "api/TMPEffects.Components.Mediator.TMPMediator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -291,11 +245,9 @@
       "source_relative_path": "api/TMPEffects.Components.Mediator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.Mediator.html",
-          "hash": "i46SAPqIfJSXWGsRrtk7qGhn/zFTVhRvnBGQmkTro7U="
+          "relative_path": "api/TMPEffects.Components.Mediator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -303,11 +255,9 @@
       "source_relative_path": "api/TMPEffects.Components.TMPAnimator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.TMPAnimator.html",
-          "hash": "r/gHxeetuipqOFsW4cAcLRETVGGBe07sdxorYoxeufE="
+          "relative_path": "api/TMPEffects.Components.TMPAnimator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -315,11 +265,9 @@
       "source_relative_path": "api/TMPEffects.Components.TMPEffectComponent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.TMPEffectComponent.html",
-          "hash": "LzMva6bEVJ38+nzEuI5fN5Il1OU6WxZlg1Kv2gTf/lk="
+          "relative_path": "api/TMPEffects.Components.TMPEffectComponent.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -327,11 +275,9 @@
       "source_relative_path": "api/TMPEffects.Components.TMPWriter.DelayType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.TMPWriter.DelayType.html",
-          "hash": "tO3+Sg0CIQ/BDR8V7e9DofjAedj9KPw1c6vJ17ToASA="
+          "relative_path": "api/TMPEffects.Components.TMPWriter.DelayType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -339,11 +285,9 @@
       "source_relative_path": "api/TMPEffects.Components.TMPWriter.Delays.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.TMPWriter.Delays.html",
-          "hash": "Ba+adf2WIW00gfckJABbxNky5rfPA7xt753JERbXK10="
+          "relative_path": "api/TMPEffects.Components.TMPWriter.Delays.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -351,11 +295,9 @@
       "source_relative_path": "api/TMPEffects.Components.TMPWriter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.TMPWriter.html",
-          "hash": "Utt2uuCCiCuuixVc8L0wVGM1HybRcgQ3myONSc5vjlI="
+          "relative_path": "api/TMPEffects.Components.TMPWriter.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -363,11 +305,9 @@
       "source_relative_path": "api/TMPEffects.Components.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Components.html",
-          "hash": "DDj9UdzpX72vO45QsNSdsajWad4UKwlzkhv0pEnsbVQ="
+          "relative_path": "api/TMPEffects.Components.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -375,11 +315,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html",
-          "hash": "FqU2GRqC5KDJ9urp94m+58BPZzEVZDeMj5hymNlhqCY="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -387,11 +325,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html",
-          "hash": "0SU6oNfmhTlCVidkWfScWhEp/Z37rx1JlN5hezXG68s="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -399,11 +335,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html",
-          "hash": "q3AP/+e7T7+BZnStwveABp1olD2U0Zpj7zvOIrMYNL4="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -411,11 +345,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html",
-          "hash": "NMoCfEwSORmWlwanShuz7Wl3M9VEdbDTegIZdKNEI8I="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -423,11 +355,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase.html",
-          "hash": "6rEXPGreUmO+3yJPhq6evgwNOvDWxr68DeUJ4ZQkg9U="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -435,11 +365,9 @@
       "source_relative_path": "api/TMPEffects.Databases.AnimationDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.html",
-          "hash": "D0uUhrUOvuDG1RoYM/yhVMKNvOznoK9oU13wlWd28IQ="
+          "relative_path": "api/TMPEffects.Databases.AnimationDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -447,11 +375,9 @@
       "source_relative_path": "api/TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.html",
-          "hash": "8vivJsrUBofIBcEQfRfyVOuNbHAYsVlzntOVPbjB1Ww="
+          "relative_path": "api/TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -459,11 +385,9 @@
       "source_relative_path": "api/TMPEffects.Databases.CommandDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.CommandDatabase.html",
-          "hash": "XumZ0LatDzyXNe++0brhv01+3Ji89Fwsl85NY5uRpYo="
+          "relative_path": "api/TMPEffects.Databases.CommandDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -471,11 +395,9 @@
       "source_relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase-1.html",
-          "hash": "ma3pKcmJz9etZw/jo8hDxzmFoczldmE816awKDw/ETQ="
+          "relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -483,11 +405,9 @@
       "source_relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase.html",
-          "hash": "xL6cPnEzDGHB2MujNIodtafWZIWSH/BDhExdkxrg4Ds="
+          "relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -495,11 +415,9 @@
       "source_relative_path": "api/TMPEffects.Databases.TMPEffectDatabase-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.TMPEffectDatabase-1.html",
-          "hash": "bGzR4XauaL45+VBv+aOldP4iHNHMcEce+9gHKXTMjtI="
+          "relative_path": "api/TMPEffects.Databases.TMPEffectDatabase-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -507,11 +425,9 @@
       "source_relative_path": "api/TMPEffects.Databases.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Databases.html",
-          "hash": "5D8Kbq4+poVNHFfl/GLbUkQk4aHpqQNvod92AtHmu+Q="
+          "relative_path": "api/TMPEffects.Databases.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -519,11 +435,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.TMPAnimationCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPAnimationCategory.html",
-          "hash": "KiTFIyBJ7Y+uYsRX24WzvIgW/oxtOXbYDpTc0uBqrS4="
+          "relative_path": "api/TMPEffects.EffectCategories.TMPAnimationCategory.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -531,11 +445,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.TMPCommandCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPCommandCategory.html",
-          "hash": "t7XHo4zwb3FQfu7XhcWK3vKLMc1wrHgqWBUjUklO+Ms="
+          "relative_path": "api/TMPEffects.EffectCategories.TMPCommandCategory.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -543,11 +455,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory-1.html",
-          "hash": "JKBzs1xSDr8WNZ0BavUtR16wEpHkEXE9xeMcKZTz2mw="
+          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -555,11 +465,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory.html",
-          "hash": "HwuJtDSrvWn/iE28ugqJIilLBWpI84f+y0+Gvdhe3Hk="
+          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -567,11 +475,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.TMPEventCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEventCategory.html",
-          "hash": "mqopQ6tS95Jc99EqtCJ5E6QQPZ4XTQXJK0coSsNZ68w="
+          "relative_path": "api/TMPEffects.EffectCategories.TMPEventCategory.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -579,11 +485,9 @@
       "source_relative_path": "api/TMPEffects.EffectCategories.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.html",
-          "hash": "UeiUZTz5QvzqLLYm8n+HP9pp3KTyeKjzKmLvjYjVSEU="
+          "relative_path": "api/TMPEffects.EffectCategories.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -591,11 +495,9 @@
       "source_relative_path": "api/TMPEffects.Extensions.AnimationCurveUtility.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Extensions.AnimationCurveUtility.html",
-          "hash": "gXKREujcDV7dC7LyFYF5Ngg4CSpnwoLx18fCLzyVaVI="
+          "relative_path": "api/TMPEffects.Extensions.AnimationCurveUtility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -603,11 +505,9 @@
       "source_relative_path": "api/TMPEffects.Extensions.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Extensions.Extensions.html",
-          "hash": "WVUVaw1bAXE0TttjC3vv53K7ghaOlx4SlaSB+3PkL0k="
+          "relative_path": "api/TMPEffects.Extensions.Extensions.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -615,11 +515,9 @@
       "source_relative_path": "api/TMPEffects.Extensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Extensions.html",
-          "hash": "FHybORkBLS5I5EFnXALV+67R2KRzZIHM24NUth8BE0U="
+          "relative_path": "api/TMPEffects.Extensions.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -627,11 +525,9 @@
       "source_relative_path": "api/TMPEffects.ObjectChanged.INotifyObjectChanged.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.ObjectChanged.INotifyObjectChanged.html",
-          "hash": "xcDl1zNZZ2NYSsQ6MCI8JHMYaHob1W/AqkYpUZTxQtA="
+          "relative_path": "api/TMPEffects.ObjectChanged.INotifyObjectChanged.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -639,11 +535,9 @@
       "source_relative_path": "api/TMPEffects.ObjectChanged.ObjectChangedEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.ObjectChanged.ObjectChangedEventHandler.html",
-          "hash": "rSB13Ucx+pBNfVrBMHjzL7C8XjzOcdVa3oKeMviVgCE="
+          "relative_path": "api/TMPEffects.ObjectChanged.ObjectChangedEventHandler.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -651,11 +545,9 @@
       "source_relative_path": "api/TMPEffects.ObjectChanged.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.ObjectChanged.html",
-          "hash": "0bU19hKZcIM2mzcf9jbeRIAm1qKVsaP3u5+tfsKqW2Q="
+          "relative_path": "api/TMPEffects.ObjectChanged.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -663,11 +555,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.html",
-          "hash": "qKlrqiTpGZtI0R3BP2AagOUHjXkR/r6QImvMBmLDhgs="
+          "relative_path": "api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -675,11 +565,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterParsing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterParsing.html",
-          "hash": "TZP+YGPHUjpGEOTQxLUHzEKJQw2x6UjJ+w+9CrOqcj0="
+          "relative_path": "api/TMPEffects.Parameters.ParameterParsing.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -687,11 +575,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector2.html",
-          "hash": "j6lUXBlTkgcyW22FJaYkFxKyBYHYtojS1ROFWKzb0oo="
+          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -699,11 +585,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector3.html",
-          "hash": "8tFSfDNq+dVvL5RNIOF2vEZ+g7PA8wQ3GSv24I08Eu0="
+          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector3.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -711,11 +595,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.VectorType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.VectorType.html",
-          "hash": "IMMj6gpfTY6jRScvFutNKxg6fMa7PsV5PG3XcTc58+w="
+          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.VectorType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -723,11 +605,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html",
-          "hash": "mqSxS7RsMvflF+L+kTPF6YK1oN+DuvalmvRGvP3+Uns="
+          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -735,11 +615,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.html",
-          "hash": "eEt24yT+5RoSnt9U5Z0TzQYCkry/IRhQQYIEg+6A7dw="
+          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -747,11 +625,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html",
-          "hash": "SNCv1AQLW02YIwEpJGxqz+GQWVE5UVfQHzKvGMfyYag="
+          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -759,11 +635,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.WaveParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.WaveParameters.html",
-          "hash": "By1YzYuRm8LYraQGilqZKJZnpLom7/3UnvXsgYHkNlg="
+          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.WaveParameters.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -771,11 +645,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.html",
-          "hash": "Ywrarnot1ZenM6QtyCyn4+iE89wAflZaor6RHMQAX5g="
+          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -783,11 +655,9 @@
       "source_relative_path": "api/TMPEffects.Parameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.html",
-          "hash": "KsMNNEx+R0eQcPDR5wxn42XZz9wpvD4r8NAP4sGBvIE="
+          "relative_path": "api/TMPEffects.Parameters.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -795,11 +665,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.ObservableDictionary-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.ObservableDictionary-2.html",
-          "hash": "V7vHkpcdQfu/CU7Q6Bi8o3vNhtDNQRHuhkiTNlJ30fs="
+          "relative_path": "api/TMPEffects.SerializedCollections.ObservableDictionary-2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -807,11 +675,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionary-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionary-2.html",
-          "hash": "IYLDjxD8jVTt/MV2Q0LTVbokRIpTM1A9GErAP3v6Cxk="
+          "relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionary-2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -819,11 +685,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionaryAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionaryAttribute.html",
-          "hash": "rDGovt5rBPTGB8RPu+knJ6X04WaXJukFS/pC1VOOj2I="
+          "relative_path": "api/TMPEffects.SerializedCollections.SerializedDictionaryAttribute.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -831,11 +695,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.SerializedKeyValuePair-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.SerializedKeyValuePair-2.html",
-          "hash": "TNJtKlQRCrJmgmKXHdRSIUCjEZ+TjXddMAXeexEbDvg="
+          "relative_path": "api/TMPEffects.SerializedCollections.SerializedKeyValuePair-2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -843,11 +705,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.SerializedObservableDictionary-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.SerializedObservableDictionary-2.html",
-          "hash": "atcPjFeyYZ/yokgNp2PyFnFHGwG1Iu0oyVDz9csX+5c="
+          "relative_path": "api/TMPEffects.SerializedCollections.SerializedObservableDictionary-2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -855,11 +715,9 @@
       "source_relative_path": "api/TMPEffects.SerializedCollections.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.SerializedCollections.html",
-          "hash": "4qFY29CeKaML7C5eTL/Xlpc/20TCCgTQUlYsT4BpUPY="
+          "relative_path": "api/TMPEffects.SerializedCollections.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -867,11 +725,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationContext.html",
-          "hash": "DoeT6tPA94/TxlesdXbEK0LuXrzkLx1TYGv7rl6eqOc="
+          "relative_path": "api/TMPEffects.TMPAnimations.AnimationContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -879,11 +735,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html",
-          "hash": "1mLS415FlCbQFnvN5pnX2dvNwQhXiH8uX9K+qBXOzEU="
+          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -891,11 +745,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.html",
-          "hash": "pSMpzc+f4/d4fzjep8joqfo/AKGehjXtB+28qaGpqDs="
+          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -903,11 +755,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html",
-          "hash": "zLHYpVrs1x7HlMTJ+ihC8R7yaOYe2BWDATGFKKZ5fSE="
+          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -915,11 +765,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.html",
-          "hash": "Azrt0VTrHMmYcP8LOCTi7u4O7ot+N9SShaQEdxLWJb4="
+          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -927,11 +775,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html",
-          "hash": "66GMf/2ag9Onsp5buSnlkOeOGebQ8qnfrLpr8bTNJZg="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -939,11 +785,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html",
-          "hash": "qisrnBPNNDvEMlXJcg6CSftNIlMAjPP3atygQ3ZpHeU="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -951,11 +795,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html",
-          "hash": "GyriHEijJByO/vxscW+RHGcOtO3S9/9HbEY//AAs/Uc="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -963,11 +805,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.html",
-          "hash": "IR6mnYZJoCn+N5GasJ/rmTSTaURJ/H0uqVOrioaFGMQ="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -975,11 +815,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.html",
-          "hash": "p+GU0u80llN3xpgWPHtHe8P8WNJ/fgj1S618YV0Uqgo="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -987,11 +825,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.html",
-          "hash": "e4Hsa+F8a6Uhs8Bok5g3QDwBBetAIDwKxuBVRMcGLSY="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -999,11 +835,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.CharAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.CharAnimation.html",
-          "hash": "5tNNBaU5BwPlpnqNkLxm7mKDzz0rxpGT5MVJMoM1rpQ="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.CharAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1011,11 +845,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ContPivotAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ContPivotAnimation.html",
-          "hash": "z2aaWtRXCsFjUZnq0cL8GynXzrUb+QXYKQqxFo6N6M8="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ContPivotAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1023,11 +855,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.FadeAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.FadeAnimation.html",
-          "hash": "IrCoMFvbnNT4/N4qqa2Fsa2NhFbEgSlr1G+ZAumIpco="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.FadeAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1035,11 +865,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.FunkyAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.FunkyAnimation.html",
-          "hash": "6yhYgxpTlOzv0AcO7GHjOFZsMr9SlVYtYMUL0VgualE="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.FunkyAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1047,11 +875,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.GrowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.GrowAnimation.html",
-          "hash": "qnvS5bTrFvKv0/7Pb+RzyfTa9azau10RMKWqKLodv8g="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.GrowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1059,11 +885,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.html",
-          "hash": "wurl3D1kBDbOB4N0bCu8A+ChYOEl3Jrkz9of/rCPdPM="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1071,11 +895,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.html",
-          "hash": "SA+cAMUbcgW36I7WaxP3LUXw9pmYN76GKDvZ2w+Tnrg="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1083,11 +905,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.PaletteAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.PaletteAnimation.html",
-          "hash": "zaZvhnd3ufjhqQKiUFyoZWXDR2xgJYP788fCoYVWNSg="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.PaletteAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1095,11 +915,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.PivotAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.PivotAnimation.html",
-          "hash": "ye+9Wmayu15ZBuZ6/2EZn3UpRoZ88HTyZw6bRl5iRlI="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.PivotAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1107,11 +925,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShakeAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShakeAnimation.html",
-          "hash": "HVGu7ZYZ3Gh5rr5QyIShq8VCYfYYnwMnLgfCDhMZHl8="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShakeAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1119,11 +935,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html",
-          "hash": "tU8mQqhMVnx37p2hiaSxMeZ3opzYQyC5SD8z9oak9L4="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1131,11 +945,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html",
-          "hash": "n2Er3PCisfvEecSp8h3bNo6I+Ac4adFMDgfbbubw8WM="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1143,11 +955,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.WaveAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.WaveAnimation.html",
-          "hash": "aRLO4li5TchrVzKCpB8CkkDZGQgPxaPUe36IY4PLwvg="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.WaveAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1155,11 +965,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.html",
-          "hash": "3r6YoZwZGnYmQAfjmSb6qLGIUeleeYt6P/0PXpuhVUs="
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1167,11 +975,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.html",
-          "hash": "Fy1HnWXkpy3XW+3LfXpTyd4KdlWRrO0tJAu28rIkNJ0="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1179,11 +985,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.html",
-          "hash": "/ZQ9uMek2TUpkU8L/9Fy/XZw+U5vD0JkXD52nuRAfvg="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1191,11 +995,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.html",
-          "hash": "didv7xsXigEuQboKHLij1CmaT1VAixiJSjj/YwYBvVo="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1203,11 +1005,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html",
-          "hash": "Ugqvqi90lFqKBznhuOQZhsITx5BUx7Fseb2BR9duzL4="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1215,11 +1015,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.html",
-          "hash": "gdrPYZycj/nokKgKHM6bKNVXWs5yg4cEhR2VYnbOYkg="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1227,11 +1025,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.html",
-          "hash": "WhgmKGTS6XP9C8WkCBJXFNwaNNgaMpKw3E+rao65Gb4="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1239,11 +1035,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html",
-          "hash": "/fdK4x6xtBGbJ0stRMtljamflA/46FRiAFsYdbU8xCM="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1251,11 +1045,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.html",
-          "hash": "G7YiDaZOxFHh/U0BjJQQO66MGmVB/1L6qIgv1k+ocQQ="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1263,11 +1055,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.html",
-          "hash": "kp1SeMxSXddlknSf22CaV9ZuOOR+umSp6Hd7yyg+f/U="
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1275,11 +1065,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.IAnimationContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.IAnimationContext.html",
-          "hash": "Slqy6Th9FPwWDFszik7HPmWxRVUUv7TkJWqMQPLs6Gk="
+          "relative_path": "api/TMPEffects.TMPAnimations.IAnimationContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1287,11 +1075,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ITMPAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ITMPAnimation.html",
-          "hash": "S2EuXriKAQ64YesTnHafVTe5cycqd8LNpK+c6LbTlA4="
+          "relative_path": "api/TMPEffects.TMPAnimations.ITMPAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1299,11 +1085,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ReadOnlyAnimationContext.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html",
-          "hash": "sDdYW0nGAHcZqu1LlQyqhOGznrIjMLfbuJ5duwb0Utk="
+          "relative_path": "api/TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1311,11 +1095,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html",
-          "hash": "MGCcB4aQUuzjMoX26yAGhqYWJRs/Dvr/wNR/F4flq/Q="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1323,11 +1105,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html",
-          "hash": "FsF0T3tKiID7vcHDZhB3croJKmajLPbk/qA5V4bt48I="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1335,11 +1115,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.html",
-          "hash": "VA9wD1XC6Tt1VotpZVxmA+lNrSf7SLxRhKbfdGQXPuI="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1347,11 +1125,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation.html",
-          "hash": "Oxi2cl3Hi4upLP0tK5E/QUywqkuiI+FjoJ4QIIieHH0="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1359,11 +1135,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation.html",
-          "hash": "3GCsbtTJad34IlHJSeHF4ozOSev7Wjwix/EKObqmnWc="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1371,11 +1145,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation.html",
-          "hash": "AzGN03lDBqvviJ6UNbhnW/Nhu3oRnCVmPIb+IAnmcME="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1383,11 +1155,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.html",
-          "hash": "yBhPDVHQuC0w8F0zOZka/gsuTkJoAcQLK+4o7i4MYwg="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1395,11 +1165,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.html",
-          "hash": "rs6XJVAR7yqZTN+UeQEOfOJgAaGBQRiAWAOmTye6MKQ="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1407,11 +1175,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation.html",
-          "hash": "EYwGXBplmzSQmtzMuVcNY10EreTNfAwVU2qVPX3Akcw="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1419,11 +1185,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.html",
-          "hash": "JQPV8O4Fj/136eSYDUEVcJYERpBUIKOnXO6i1/9Dy04="
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1431,11 +1195,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.TMPAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimation.html",
-          "hash": "jo/HKXKD8rUfJiqHhMWGvEB2Xyjb57FVM6TOmH595Do="
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1443,11 +1205,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationParameterless.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationParameterless.html",
-          "hash": "iK1hqcjhoOOck4uMMpsfvPriAj3b6Zunr9LimSGha/0="
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationParameterless.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1455,11 +1215,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.TMPHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.TMPHideAnimation.html",
-          "hash": "HApGZyYidxp1Eq5uqj6WW432tkhYWasHwMNg0ySZllo="
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1467,11 +1225,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.TMPShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.TMPShowAnimation.html",
-          "hash": "mw+LQaY58obm9UB1T/BHDmQKqFqtTUaviz42FrGZDhU="
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1479,11 +1235,9 @@
       "source_relative_path": "api/TMPEffects.TMPAnimations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.html",
-          "hash": "MqAFFA+txW4dERafxKDcG2XV+BYuDgnU/FT5FeGblR8="
+          "relative_path": "api/TMPEffects.TMPAnimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1491,11 +1245,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.DebugCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.DebugCommand.html",
-          "hash": "xjcKrMCLoS1N2DRgkS9OA/lq0Ww+g5O58S1xt372TR0="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.DebugCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1503,11 +1255,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.DelayCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.DelayCommand.html",
-          "hash": "9uBZH1pygVfRJZvuO/HbS43qdHEDjCzq7gVloSuZQDw="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.DelayCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1515,11 +1265,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.ShowCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.ShowCommand.html",
-          "hash": "ZR4OOXMa/rQHJEGtWU80GNBkWfnSb25CaR+FLIFHveE="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.ShowCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1527,11 +1275,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.SkippableCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.SkippableCommand.html",
-          "hash": "Xka8Tj2c+iaiA9f/perIBWnEfP/WGB5O7qjrX4UHhsY="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.SkippableCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1539,11 +1285,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.WaitCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.WaitCommand.html",
-          "hash": "LbjLl66GOqpFZwRbRPXrGmziPYrV+0UaPl0rIVxc90o="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.WaitCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1551,11 +1295,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.Commands.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.Commands.html",
-          "hash": "mNke1HJGoLjnxt8E0e9CytNwv5l/pXzhP7Dk8Pip498="
+          "relative_path": "api/TMPEffects.TMPCommands.Commands.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1563,11 +1305,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.ITMPCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.ITMPCommand.html",
-          "hash": "MMw1DZ5ckV0t4jP2d9SJTAc7cWOO+ymqADZRXcNiB7o="
+          "relative_path": "api/TMPEffects.TMPCommands.ITMPCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1575,11 +1315,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.TMPCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.TMPCommand.html",
-          "hash": "zAQJrVFlGA9IFXNsKWEQLjvwNdEXXL8DFe2O2wn4gRU="
+          "relative_path": "api/TMPEffects.TMPCommands.TMPCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1587,11 +1325,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.TMPCommandArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.TMPCommandArgs.html",
-          "hash": "dzbP2caYNw2X9mY+9zjrwb/APlXlPhl8v7lNHW6lk1Y="
+          "relative_path": "api/TMPEffects.TMPCommands.TMPCommandArgs.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1599,11 +1335,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommand.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommand.html",
-          "hash": "JpSL9jFKCNXk5ch84NDKnhHyIEIW6eRtcIpeQF0nykk="
+          "relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommand.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1611,11 +1345,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.TagType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.TagType.html",
-          "hash": "KTzfFipg+6ww/uD30u7N2f2UQbsy5g0nCjPtlyhIFVI="
+          "relative_path": "api/TMPEffects.TMPCommands.TagType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1623,11 +1355,9 @@
       "source_relative_path": "api/TMPEffects.TMPCommands.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPCommands.html",
-          "hash": "eu7U6/sTLo4zlfCrzAWM205/FxT2SAM4c9rLhaeUV1c="
+          "relative_path": "api/TMPEffects.TMPCommands.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1635,11 +1365,9 @@
       "source_relative_path": "api/TMPEffects.TMPEvents.TMPEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPEvents.TMPEvent.html",
-          "hash": "LlqQearxjkHxCaHSTJ0xVYzciPIODTPR/zarElQ3StY="
+          "relative_path": "api/TMPEffects.TMPEvents.TMPEvent.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1647,11 +1375,9 @@
       "source_relative_path": "api/TMPEffects.TMPEvents.TMPEventArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPEvents.TMPEventArgs.html",
-          "hash": "nxvzI/6ZYcqAia5EIEkdy3huZzYR2JQJxO5GWWDbARE="
+          "relative_path": "api/TMPEffects.TMPEvents.TMPEventArgs.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1659,11 +1385,9 @@
       "source_relative_path": "api/TMPEffects.TMPEvents.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPEvents.html",
-          "hash": "oMxwm0f5VnPXpo4mblFLVbFsP9s5OOIDtg9ulY/GhRs="
+          "relative_path": "api/TMPEffects.TMPEvents.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1671,11 +1395,9 @@
       "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html",
-          "hash": "oXZNDCmtSVrLo5VPMga7AKdlL/oy/LHnh9IziHhDY84="
+          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1683,11 +1405,9 @@
       "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html",
-          "hash": "l+0x8M86cl1yZMNmTQABwjblZJkO89iGimdopDMPrKI="
+          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1695,11 +1415,9 @@
       "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html",
-          "hash": "nmT1L/ezTOJpudngvqKHJZPeUCoD2NfO9hOs/J9exdQ="
+          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1707,11 +1425,9 @@
       "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html",
-          "hash": "n89oikf0xjHt8V5R59GITqKg9Vt1Kq2WYYsR1sNZUwc="
+          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1719,11 +1435,9 @@
       "source_relative_path": "api/TMPEffects.TMPSceneAnimations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.html",
-          "hash": "iD1EeZJUHQLkhKWRVF3Hqt1ZIDsobskpuE1aUEYOXmw="
+          "relative_path": "api/TMPEffects.TMPSceneAnimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1731,11 +1445,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html",
-          "hash": "FhEJw9RjZ6W7fa3l1bnrv2qUoPwaPFSQQ5XWngT6V+M="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1743,11 +1455,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.html",
-          "hash": "DA1WzZd76y2QUV2VtHJ/6ZjqYXkSdsxqPrw5nNjGERU="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1755,11 +1465,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.html",
-          "hash": "fxXiFAxHCoSTmY/ZssNfxhXnSvN0C483vr12iFI/NNw="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1767,11 +1475,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html",
-          "hash": "75/EFgfwUApZ5B5xzCYZ46cUz0OHO64O0pe3DZf++eE="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1779,11 +1485,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html",
-          "hash": "ZGsjXLKZ9FbT6p+VXTdGKpaLteDduDvrdZIrJcc05VQ="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1791,11 +1495,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.html",
-          "hash": "1z/6n1ImQo4LwJMb+6hViOH9/daU9CC355CC/9qbDIo="
+          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1803,11 +1505,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.IReadOnlyTagCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.IReadOnlyTagCollection.html",
-          "hash": "bOuF0SuK746S54E7kwK1gImdndy9MMDFX8M+9O6xgwI="
+          "relative_path": "api/TMPEffects.Tags.Collections.IReadOnlyTagCollection.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1815,11 +1515,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.ITagCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.ITagCollection.html",
-          "hash": "XDnFJfZTNtqhww4Ft+YBdiVErrOavfiJw1oczDG4tWE="
+          "relative_path": "api/TMPEffects.Tags.Collections.ITagCollection.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1827,11 +1525,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.ITagCollectionManager-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.ITagCollectionManager-1.html",
-          "hash": "l9bP71vLAccxHse88owUNVssD3xO7AzjNVYOkISgCwg="
+          "relative_path": "api/TMPEffects.Tags.Collections.ITagCollectionManager-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1839,11 +1535,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.ObservableTagCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.ObservableTagCollection.html",
-          "hash": "E+w9QKIdETrbp4hwY9w17M0XBiBCdIVMFn8ctEqp28U="
+          "relative_path": "api/TMPEffects.Tags.Collections.ObservableTagCollection.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1851,11 +1545,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.ReadOnlyTagCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.ReadOnlyTagCollection.html",
-          "hash": "GMFIf1eKOEaJRDGsBVuKIpxH3J6AiR3ZaCJbypDVOPE="
+          "relative_path": "api/TMPEffects.Tags.Collections.ReadOnlyTagCollection.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1863,11 +1555,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.TagCollection.StartIndexOnly.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.StartIndexOnly.html",
-          "hash": "AhdHHhPy3zVejTmFE58Y5nIK1rzbOVBmJnA9BoOGNzc="
+          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.StartIndexOnly.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1875,11 +1565,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.TagCollection.TempIndices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.TempIndices.html",
-          "hash": "Lqn7GPGkcAxk5aXwmhnXtQickXD1ahanLQMDm1VSf/4="
+          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.TempIndices.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1887,11 +1575,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.TagCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.html",
-          "hash": "K+Anaxn9xyLPuGP71wiqmbgM3Yll5S1d55yFL3Re1eo="
+          "relative_path": "api/TMPEffects.Tags.Collections.TagCollection.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1899,11 +1585,9 @@
       "source_relative_path": "api/TMPEffects.Tags.Collections.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.html",
-          "hash": "bJRjtC+kOb4pvRski4jaREFPjVJ3ucxJU/7+5ftPV2g="
+          "relative_path": "api/TMPEffects.Tags.Collections.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1911,11 +1595,9 @@
       "source_relative_path": "api/TMPEffects.Tags.ITMPPrefixSupplier.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITMPPrefixSupplier.html",
-          "hash": "nG/kGlf7QUjLNKpSFY+4WeSNx7N32MMRe9QzlTBDUyk="
+          "relative_path": "api/TMPEffects.Tags.ITMPPrefixSupplier.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1923,11 +1605,9 @@
       "source_relative_path": "api/TMPEffects.Tags.ITMPTagValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITMPTagValidator.html",
-          "hash": "HugaNw81Jk9EVya6siYiZqOR/AvAosWO6Rht2Cx64Aw="
+          "relative_path": "api/TMPEffects.Tags.ITMPTagValidator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1935,11 +1615,9 @@
       "source_relative_path": "api/TMPEffects.Tags.ITagCacher-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITagCacher-1.html",
-          "hash": "5OhhwzfObFD82nja08qQu2cq2V+YECFBrBIHxMnEItw="
+          "relative_path": "api/TMPEffects.Tags.ITagCacher-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1947,11 +1625,9 @@
       "source_relative_path": "api/TMPEffects.Tags.ITagWrapper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITagWrapper.html",
-          "hash": "BDyK5cBfO/fWMl5TsVWjAD/LRfXxDrQGcxQ6LMMPPOw="
+          "relative_path": "api/TMPEffects.Tags.ITagWrapper.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1959,11 +1635,9 @@
       "source_relative_path": "api/TMPEffects.Tags.TMPEffectTag.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.TMPEffectTag.html",
-          "hash": "T5x9kdbxS8d29a8rsoFGDxpCD1iWNujjHqCITjyZcak="
+          "relative_path": "api/TMPEffects.Tags.TMPEffectTag.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1971,11 +1645,9 @@
       "source_relative_path": "api/TMPEffects.Tags.TMPEffectTagIndices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.TMPEffectTagIndices.html",
-          "hash": "ESUV5aOAi7VCIO5wa9VvBcdPrt/dUXuEoE5XudaRH08="
+          "relative_path": "api/TMPEffects.Tags.TMPEffectTagIndices.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1983,11 +1655,9 @@
       "source_relative_path": "api/TMPEffects.Tags.TMPEffectTagTuple.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.TMPEffectTagTuple.html",
-          "hash": "91RwdRHlAAFYjo/Ms5gDpfWhCRnz9lL6UKnl2rGaI0U="
+          "relative_path": "api/TMPEffects.Tags.TMPEffectTagTuple.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -1995,11 +1665,9 @@
       "source_relative_path": "api/TMPEffects.Tags.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Tags.html",
-          "hash": "OWlwUONbYggFucgfXKpCtzr8p8/Xj1stgWjhHzlmmbo="
+          "relative_path": "api/TMPEffects.Tags.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2007,11 +1675,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.ITagProcessorManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.ITagProcessorManager.html",
-          "hash": "1kJ2KXRd8E0wGZH19MYEh9FK3cyq27rr/jP4qn5mEWc="
+          "relative_path": "api/TMPEffects.TextProcessing.ITagProcessorManager.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2019,11 +1685,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagInfo.html",
-          "hash": "547AogwHuE8f9tB7UMcV5nVG3vWLkYLn5zyvt+DcXaA="
+          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagInfo.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2031,11 +1695,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagType.html",
-          "hash": "cv22H8ibiSJ/2OCqfDHsNCm0sOyyJ1obgqe+kFlH5Pg="
+          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.TagType.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2043,11 +1705,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.html",
-          "hash": "6tpP1N5Y4qcNzyp9HdIo7H+zoPXqKLFmYmtOJX/4JQc="
+          "relative_path": "api/TMPEffects.TextProcessing.ParsingUtility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2055,11 +1715,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html",
-          "hash": "zwlglwayAsVPDzZlY5vZG2RgoUyWpdOJdEJRlQNRvH4="
+          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2067,11 +1725,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.html",
-          "hash": "VnMGQpjvzTTKL1iqyQ3xrbZ5qhMGPyCQliOK65eaMTs="
+          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2079,11 +1735,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.TagProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TagProcessor.html",
-          "hash": "X7vSvn1EpCdcr9J66vkms6CXgrZDb3EpdoC+XuHyvr0="
+          "relative_path": "api/TMPEffects.TextProcessing.TagProcessor.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2091,11 +1745,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.TagProcessorManager.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TagProcessorManager.html",
-          "hash": "XOdwDqm0dkXfN+DMytZHfjE4MBqxOqq/EHGan1wvCXo="
+          "relative_path": "api/TMPEffects.TextProcessing.TagProcessorManager.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2103,11 +1755,9 @@
       "source_relative_path": "api/TMPEffects.TextProcessing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.html",
-          "hash": "WiTT/R2nU5JXjNgdn7QBlneSSTVVNjIN4iDd9YdHD2c="
+          "relative_path": "api/TMPEffects.TextProcessing.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2115,11 +1765,12 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "l/rJR90kJ8zqc1Sl2Bvit3+gn9EifR3wpfUXqc+q93o="
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2130,7 +1781,6 @@
           "relative_path": "images/000111.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2141,7 +1791,6 @@
           "relative_path": "images/000111.svg.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2152,7 +1801,6 @@
           "relative_path": "images/000111butworse.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2163,7 +1811,6 @@
           "relative_path": "images/000111butworse.svg.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2174,7 +1821,6 @@
           "relative_path": "images/diagram.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2185,7 +1831,6 @@
           "relative_path": "images/diagram.svg.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2196,7 +1841,6 @@
           "relative_path": "images/scenecommandexampl.png"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2207,7 +1851,6 @@
           "relative_path": "images/scenecommandexampl.png.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2218,7 +1861,6 @@
           "relative_path": "images/upm.png"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2229,7 +1871,6 @@
           "relative_path": "images/upm.png.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2240,7 +1881,6 @@
           "relative_path": "images/upm2.png"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2251,7 +1891,6 @@
           "relative_path": "images/upm2.png.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2262,7 +1901,6 @@
           "relative_path": "images/wave1.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2273,7 +1911,6 @@
           "relative_path": "images/wave1.svg.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2284,7 +1921,6 @@
           "relative_path": "images/wave2.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2295,7 +1931,6 @@
           "relative_path": "images/wave2.svg.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2303,11 +1938,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "mzMF5bOMJBA1eacZgr4B+4+yLZn1/NwNHg/N0aGpfNU="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2315,11 +1948,9 @@
       "source_relative_path": "manual/animatingacharacter.md",
       "output": {
         ".html": {
-          "relative_path": "manual/animatingacharacter.html",
-          "hash": "W7O7aucjkYMwrzSuFD+cXb+O8zFacfdhFx+nsgN4TE4="
+          "relative_path": "manual/animatingacharacter.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2327,11 +1958,9 @@
       "source_relative_path": "manual/animationcurveutility.md",
       "output": {
         ".html": {
-          "relative_path": "manual/animationcurveutility.html",
-          "hash": "vHIAWJJCBthQPgtHi6O2gd1ckPb8gLz2+OVF/CKFvH8="
+          "relative_path": "manual/animationcurveutility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2339,26 +1968,19 @@
       "source_relative_path": "manual/animationutility.md",
       "output": {
         ".html": {
-          "relative_path": "manual/animationutility.html",
-          "hash": "XruQnyZsvNyPB5dVf2+xXnsdk7meUq2+wmo7J4wfSOU="
+          "relative_path": "manual/animationutility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/autoparameters.md",
       "output": {
         ".html": {
-          "relative_path": "manual/autoparameters.html",
-          "hash": "NUtO46qpovv2028CZTiQsscer2gg71TCiEDtgSEg26U="
+          "relative_path": "manual/autoparameters.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2366,11 +1988,9 @@
       "source_relative_path": "manual/chardata.md",
       "output": {
         ".html": {
-          "relative_path": "manual/chardata.html",
-          "hash": "9dycVs1+5Mb+l1In1ZiQDmRLSRP3ySezGABevtWTkz4="
+          "relative_path": "manual/chardata.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2378,26 +1998,19 @@
       "source_relative_path": "manual/databases.md",
       "output": {
         ".html": {
-          "relative_path": "manual/databases.html",
-          "hash": "B2bbNDNxNRlxQz8rSYU/Nh89mDGbZDFC9KFTCKAdPD0="
+          "relative_path": "manual/databases.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/effecttag.md",
       "output": {
         ".html": {
-          "relative_path": "manual/effecttag.html",
-          "hash": "cWMxuczP9l1311eWbg5yZwk6VPY7a5IW+YXg/YqJwaQ="
+          "relative_path": "manual/effecttag.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2405,11 +2018,9 @@
       "source_relative_path": "manual/ianimationcontext.md",
       "output": {
         ".html": {
-          "relative_path": "manual/ianimationcontext.html",
-          "hash": "daNL27nWN3D+8fb4wx4yPp4Q9HXAI6fsqGSXUQeHkew="
+          "relative_path": "manual/ianimationcontext.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2417,26 +2028,19 @@
       "source_relative_path": "manual/installation.md",
       "output": {
         ".html": {
-          "relative_path": "manual/installation.html",
-          "hash": "/rmYzkFHfn/FzuBmA2me2HYmGRz2LYYLuY/hX+e7QhQ="
+          "relative_path": "manual/installation.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/introduction.md",
       "output": {
         ".html": {
-          "relative_path": "manual/introduction.html",
-          "hash": "e7pO4mam2U1RB5chnohbWnQ6EBCu4KRGM2ZgqGFIxFw="
+          "relative_path": "manual/introduction.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2444,11 +2048,9 @@
       "source_relative_path": "manual/parameters.md",
       "output": {
         ".html": {
-          "relative_path": "manual/parameters.html",
-          "hash": "yU+/F1OxIiy6qP9uxVjW5sgwtER4oYZD3LU5hBi1THM="
+          "relative_path": "manual/parameters.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2456,26 +2058,19 @@
       "source_relative_path": "manual/parametertypes.md",
       "output": {
         ".html": {
-          "relative_path": "manual/parametertypes.html",
-          "hash": "UpengzkHwOScw0KTC5vhnwkWtY8GfAfpFJUb3OCkZWA="
+          "relative_path": "manual/parametertypes.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/parameterutility.md",
       "output": {
         ".html": {
-          "relative_path": "manual/parameterutility.html",
-          "hash": "ORBZjMy+24UKW60LnW4SNZEO4RvL/pQst1QW1ICqZks="
+          "relative_path": "manual/parameterutility.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2483,26 +2078,19 @@
       "source_relative_path": "manual/tagcollections.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tagcollections.html",
-          "hash": "wPyl0MwNYvO/zLSPsPBO6sW35QaBR7CK7FBH0KJ2Igw="
+          "relative_path": "manual/tagcollections.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpanimator.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator.html",
-          "hash": "3tbTUlJoZfVmWvQ6MIjh+C7cre8pjYiA61MM+UNk+No="
+          "relative_path": "manual/tmpanimator.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2510,11 +2098,9 @@
       "source_relative_path": "manual/tmpanimator_addinganimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_addinganimations.html",
-          "hash": "LxPD4/4bVo5cdRXPTBjR+BsmLverm/Yllo0ONLCDsKM="
+          "relative_path": "manual/tmpanimator_addinganimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2522,26 +2108,19 @@
       "source_relative_path": "manual/tmpanimator_animationutility_wave.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_animationutility_wave.html",
-          "hash": "xdebNUo7JaxN0GOUYkegWwUzCbluLevG/qm+DlaJo8s="
+          "relative_path": "manual/tmpanimator_animationutility_wave.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpanimator_builtinbasicanimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_builtinbasicanimations.html",
-          "hash": "bbKm4RGZ3pduyypqGClE9e9TTej6BuPs29xOH00OHlE="
+          "relative_path": "manual/tmpanimator_builtinbasicanimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2549,11 +2128,9 @@
       "source_relative_path": "manual/tmpanimator_builtinshowhideanimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_builtinshowhideanimations.html",
-          "hash": "R2vkfVF5WfLtc9WLbxagGG8Adm3FgSR+TPxyQ1/ZY6M="
+          "relative_path": "manual/tmpanimator_builtinshowhideanimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2561,11 +2138,9 @@
       "source_relative_path": "manual/tmpanimator_componentoverview.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_componentoverview.html",
-          "hash": "iY+Pvq0Z0cLZztrmtKkCIOL1wapWBaMlU5Ce9Jj23v8="
+          "relative_path": "manual/tmpanimator_componentoverview.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2573,11 +2148,9 @@
       "source_relative_path": "manual/tmpanimator_creatinganimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_creatinganimations.html",
-          "hash": "xaIn2fN6W8PLrtbKHeGKqGzjvQwoR5cFgd1h3QZKgig="
+          "relative_path": "manual/tmpanimator_creatinganimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2585,11 +2158,9 @@
       "source_relative_path": "manual/tmpanimator_gettingstarted.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_gettingstarted.html",
-          "hash": "k0YtgFyo2i5y6OWk/BjjwiSCZw2/A+4150MaecuvoWM="
+          "relative_path": "manual/tmpanimator_gettingstarted.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2597,11 +2168,9 @@
       "source_relative_path": "manual/tmpanimator_sceneanimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_sceneanimations.html",
-          "hash": "JmHx/br2w4MqScEDRSZXKtXOAdhRyf5bYRVnsdJfWw8="
+          "relative_path": "manual/tmpanimator_sceneanimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2609,26 +2178,19 @@
       "source_relative_path": "manual/tmpanimator_showhideanimations.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_showhideanimations.html",
-          "hash": "r2oHGZUiKHUl2Ehox5tG0iCZ3dMMeRVUxkPmckcIXbc="
+          "relative_path": "manual/tmpanimator_showhideanimations.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpwriter.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter.html",
-          "hash": "PEzojwuaDjtDN8Cko4vuxsc9BKTDOt0ssZ/i0mdtWNI="
+          "relative_path": "manual/tmpwriter.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2636,41 +2198,29 @@
       "source_relative_path": "manual/tmpwriter_builtincommands.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter_builtincommands.html",
-          "hash": "h8D/oG32QTsVsNTc+q+mmGFpW6RykV1lHxDrSKZYdRw="
+          "relative_path": "manual/tmpwriter_builtincommands.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "MissingNewLineBelowSectionHeader"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpwriter_componentoverview.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter_componentoverview.html",
-          "hash": "qALGOKEQj/NhKag8tBIQxcan7ZvgVLLKp9YjIMtw1SQ="
+          "relative_path": "manual/tmpwriter_componentoverview.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "MissingNewLineBelowSectionHeader"
-      ],
       "type": "Conceptual",
       "source_relative_path": "manual/tmpwriter_creatingcommands.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter_creatingcommands.html",
-          "hash": "pXAs9xOrI1VciIqgnRZdHRxTMVNtp964O4NusV9Kg8A="
+          "relative_path": "manual/tmpwriter_creatingcommands.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2678,11 +2228,9 @@
       "source_relative_path": "manual/tmpwriter_gettingstarted.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter_gettingstarted.html",
-          "hash": "fbdUu/YP0+Uxq43DTb+y86MfYVtEwmdI/LsLpER1pRk="
+          "relative_path": "manual/tmpwriter_gettingstarted.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2690,26 +2238,22 @@
       "source_relative_path": "manual/tmpwriter_scenecommands.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpwriter_scenecommands.html",
-          "hash": "YsUFPBC40K3+mjpkcHNy6FSD4FPqqzGDNkEd4ovaKa0="
+          "relative_path": "manual/tmpwriter_scenecommands.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "manual/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "manual/toc.html",
-          "hash": "qMGDbb4TqGmIouLbp2sjleYu2jEmUI/cpoeO6NHRkDg="
+          "relative_path": "manual/toc.html"
+        },
+        ".json": {
+          "relative_path": "manual/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2717,11 +2261,12 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "LGc7Eok9V5H1Ddkgiux6d1EYRC7PDjOYJ9xyXN8HBNY="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2732,7 +2277,6 @@
           "relative_path": "videos/animatetext.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2743,7 +2287,6 @@
           "relative_path": "videos/animatetext.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2754,7 +2297,6 @@
           "relative_path": "videos/animatingacharacter.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2765,7 +2307,6 @@
           "relative_path": "videos/animatingacharacter/colors.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2776,7 +2317,6 @@
           "relative_path": "videos/animatingacharacter/colors.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2787,7 +2327,6 @@
           "relative_path": "videos/animatingacharacter/jumping.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2798,7 +2337,6 @@
           "relative_path": "videos/animatingacharacter/jumping.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2809,7 +2347,6 @@
           "relative_path": "videos/animatingacharacter/moving.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2820,7 +2357,6 @@
           "relative_path": "videos/animatingacharacter/moving.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2831,7 +2367,6 @@
           "relative_path": "videos/animatingacharacter/positions.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2842,7 +2377,6 @@
           "relative_path": "videos/animatingacharacter/positions.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2853,7 +2387,6 @@
           "relative_path": "videos/animatingacharacter/rotating.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2864,7 +2397,6 @@
           "relative_path": "videos/animatingacharacter/rotating.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2875,7 +2407,6 @@
           "relative_path": "videos/animatingacharacter/scaling.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2886,7 +2417,6 @@
           "relative_path": "videos/animatingacharacter/scaling.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2897,7 +2427,6 @@
           "relative_path": "videos/animatingacharacter/uvs.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2908,7 +2437,6 @@
           "relative_path": "videos/animatingacharacter/uvs.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2919,7 +2447,6 @@
           "relative_path": "videos/fadevalues.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2930,7 +2457,6 @@
           "relative_path": "videos/fadevalues.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2941,7 +2467,6 @@
           "relative_path": "videos/firstanimation.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2952,7 +2477,6 @@
           "relative_path": "videos/firstanimation.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2963,7 +2487,6 @@
           "relative_path": "videos/firstanimation2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2974,7 +2497,6 @@
           "relative_path": "videos/firstanimation2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2985,7 +2507,6 @@
           "relative_path": "videos/firstanimation3.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -2996,7 +2517,6 @@
           "relative_path": "videos/firstanimation3.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3007,7 +2527,6 @@
           "relative_path": "videos/firstanimation4.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3018,7 +2537,6 @@
           "relative_path": "videos/firstanimation4.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3029,7 +2547,6 @@
           "relative_path": "videos/flashlightanimation.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3040,7 +2557,6 @@
           "relative_path": "videos/flashlightanimation.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3051,7 +2567,6 @@
           "relative_path": "videos/hidetext.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3062,7 +2577,6 @@
           "relative_path": "videos/hidetext.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3073,7 +2587,6 @@
           "relative_path": "videos/main.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3084,7 +2597,6 @@
           "relative_path": "videos/main.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3095,7 +2607,6 @@
           "relative_path": "videos/main_dark.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3106,7 +2617,6 @@
           "relative_path": "videos/main_dark.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3117,7 +2627,6 @@
           "relative_path": "videos/main_darkfix.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3128,7 +2637,6 @@
           "relative_path": "videos/main_darkfix.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3139,7 +2647,6 @@
           "relative_path": "videos/previews.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3150,7 +2657,6 @@
           "relative_path": "videos/previews/basic.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3161,7 +2667,6 @@
           "relative_path": "videos/previews/basic/char.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3172,7 +2677,6 @@
           "relative_path": "videos/previews/basic/char.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3183,7 +2687,6 @@
           "relative_path": "videos/previews/basic/fade.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3194,7 +2697,6 @@
           "relative_path": "videos/previews/basic/fade.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3205,7 +2707,6 @@
           "relative_path": "videos/previews/basic/funky-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3216,7 +2717,6 @@
           "relative_path": "videos/previews/basic/funky-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3227,7 +2727,6 @@
           "relative_path": "videos/previews/basic/funky-old2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3238,7 +2737,6 @@
           "relative_path": "videos/previews/basic/funky-old2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3249,7 +2747,6 @@
           "relative_path": "videos/previews/basic/funky.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3260,7 +2757,6 @@
           "relative_path": "videos/previews/basic/funky.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3271,7 +2767,6 @@
           "relative_path": "videos/previews/basic/grow.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3282,7 +2777,6 @@
           "relative_path": "videos/previews/basic/grow.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3293,7 +2787,6 @@
           "relative_path": "videos/previews/basic/jump.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3304,7 +2797,6 @@
           "relative_path": "videos/previews/basic/jump.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3315,7 +2807,6 @@
           "relative_path": "videos/previews/basic/palette.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3326,7 +2817,6 @@
           "relative_path": "videos/previews/basic/palette.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3337,7 +2827,6 @@
           "relative_path": "videos/previews/basic/pivot.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3348,7 +2837,6 @@
           "relative_path": "videos/previews/basic/pivot.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3359,7 +2847,6 @@
           "relative_path": "videos/previews/basic/pivotc-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3370,7 +2857,6 @@
           "relative_path": "videos/previews/basic/pivotc-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3381,7 +2867,6 @@
           "relative_path": "videos/previews/basic/pivotc.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3392,7 +2877,6 @@
           "relative_path": "videos/previews/basic/pivotc.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3403,7 +2887,6 @@
           "relative_path": "videos/previews/basic/shake.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3414,7 +2897,6 @@
           "relative_path": "videos/previews/basic/shake.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3425,7 +2907,6 @@
           "relative_path": "videos/previews/basic/spread.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3436,7 +2917,6 @@
           "relative_path": "videos/previews/basic/spread.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3447,7 +2927,6 @@
           "relative_path": "videos/previews/basic/swing-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3458,7 +2937,6 @@
           "relative_path": "videos/previews/basic/swing-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3469,7 +2947,6 @@
           "relative_path": "videos/previews/basic/swing-old2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3480,7 +2957,6 @@
           "relative_path": "videos/previews/basic/swing-old2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3491,7 +2967,6 @@
           "relative_path": "videos/previews/basic/swing.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3502,7 +2977,6 @@
           "relative_path": "videos/previews/basic/swing.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3513,7 +2987,6 @@
           "relative_path": "videos/previews/basic/wave-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3524,7 +2997,6 @@
           "relative_path": "videos/previews/basic/wave-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3535,7 +3007,6 @@
           "relative_path": "videos/previews/basic/wave-old2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3546,7 +3017,6 @@
           "relative_path": "videos/previews/basic/wave-old2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3557,7 +3027,6 @@
           "relative_path": "videos/previews/basic/wave.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3568,7 +3037,6 @@
           "relative_path": "videos/previews/basic/wave.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3579,7 +3047,6 @@
           "relative_path": "videos/previews/commands.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3590,7 +3057,6 @@
           "relative_path": "videos/previews/commands/delay.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3601,7 +3067,6 @@
           "relative_path": "videos/previews/commands/delay.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3612,7 +3077,6 @@
           "relative_path": "videos/previews/commands/show.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3623,7 +3087,6 @@
           "relative_path": "videos/previews/commands/show.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3634,7 +3097,6 @@
           "relative_path": "videos/previews/commands/skippable.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3645,7 +3107,6 @@
           "relative_path": "videos/previews/commands/skippable.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3656,7 +3117,6 @@
           "relative_path": "videos/previews/showhide.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3667,7 +3127,6 @@
           "relative_path": "videos/previews/showhide/char-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3678,7 +3137,6 @@
           "relative_path": "videos/previews/showhide/char-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3689,7 +3147,6 @@
           "relative_path": "videos/previews/showhide/char.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3700,7 +3157,6 @@
           "relative_path": "videos/previews/showhide/char.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3711,7 +3167,6 @@
           "relative_path": "videos/previews/showhide/fade-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3722,7 +3177,6 @@
           "relative_path": "videos/previews/showhide/fade-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3733,7 +3187,6 @@
           "relative_path": "videos/previews/showhide/fade.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3744,7 +3197,6 @@
           "relative_path": "videos/previews/showhide/fade.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3755,7 +3207,6 @@
           "relative_path": "videos/previews/showhide/grow-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3766,7 +3217,6 @@
           "relative_path": "videos/previews/showhide/grow-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3777,7 +3227,6 @@
           "relative_path": "videos/previews/showhide/grow.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3788,7 +3237,6 @@
           "relative_path": "videos/previews/showhide/grow.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3799,7 +3247,6 @@
           "relative_path": "videos/previews/showhide/move-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3810,7 +3257,6 @@
           "relative_path": "videos/previews/showhide/move-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3821,7 +3267,6 @@
           "relative_path": "videos/previews/showhide/move.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3832,7 +3277,6 @@
           "relative_path": "videos/previews/showhide/move.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3843,7 +3287,6 @@
           "relative_path": "videos/previews/showhide/pivot-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3854,7 +3297,6 @@
           "relative_path": "videos/previews/showhide/pivot-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3865,7 +3307,6 @@
           "relative_path": "videos/previews/showhide/pivot.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3876,7 +3317,6 @@
           "relative_path": "videos/previews/showhide/pivot.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3887,7 +3327,6 @@
           "relative_path": "videos/previews/showhide/shake-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3898,7 +3337,6 @@
           "relative_path": "videos/previews/showhide/shake-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3909,7 +3347,6 @@
           "relative_path": "videos/previews/showhide/shake.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3920,7 +3357,6 @@
           "relative_path": "videos/previews/showhide/shake.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3931,7 +3367,6 @@
           "relative_path": "videos/previews/showhide/spread-old.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3942,7 +3377,6 @@
           "relative_path": "videos/previews/showhide/spread-old.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3953,7 +3387,6 @@
           "relative_path": "videos/previews/showhide/spread.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3964,7 +3397,6 @@
           "relative_path": "videos/previews/showhide/spread.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3975,7 +3407,6 @@
           "relative_path": "videos/showhide1.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3986,7 +3417,6 @@
           "relative_path": "videos/showhide1.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3997,7 +3427,6 @@
           "relative_path": "videos/showhidetext.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4008,7 +3437,6 @@
           "relative_path": "videos/showhidetext.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4019,7 +3447,6 @@
           "relative_path": "videos/showtext.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4030,7 +3457,6 @@
           "relative_path": "videos/showtext.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4041,7 +3467,6 @@
           "relative_path": "videos/uniformitydiff.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4052,7 +3477,6 @@
           "relative_path": "videos/uniformitydiff.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4063,7 +3487,6 @@
           "relative_path": "videos/writetext.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4074,7 +3497,6 @@
           "relative_path": "videos/writetext.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4085,7 +3507,6 @@
           "relative_path": "videos/writetext2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4096,7 +3517,6 @@
           "relative_path": "videos/writetext2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4107,7 +3527,6 @@
           "relative_path": "videos/writetext3.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4118,7 +3537,6 @@
           "relative_path": "videos/writetext3.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4129,7 +3547,6 @@
           "relative_path": "videos/writetextanimated.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4140,7 +3557,6 @@
           "relative_path": "videos/writetextanimated.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4151,7 +3567,6 @@
           "relative_path": "videos/writetextnoanim.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4162,7 +3577,6 @@
           "relative_path": "videos/writetextnoanim.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4173,7 +3587,6 @@
           "relative_path": "videos/writetextnoanim2.mp4"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -4184,61 +3597,9 @@
           "relative_path": "videos/writetextnoanim2.mp4.meta"
         }
       },
-      "is_incremental": false,
       "version": ""
     }
   ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 31,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 174,
-          "skipped_file_count": 0
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
-    }
-  ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
