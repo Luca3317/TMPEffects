@@ -2237,6 +2237,16 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "styles.css",
+      "output": {
+        "resource": {
+          "relative_path": "styles.css"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
