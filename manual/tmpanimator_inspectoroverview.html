@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>TMPAnimator overview | TMPEffects documentation </title>
+      <title>TMPAnimator inspector overview | TMPEffects documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="TMPAnimator overview | TMPEffects documentation ">
+      <meta name="title" content="TMPAnimator inspector overview | TMPEffects documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_componentoverview.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_inspectoroverview.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,60 +87,60 @@
         <article data-uid="">
 
 <link rel="stylesheet" type="text/css" href="../styles.css">
-<h1 id="tmpanimator-overview">TMPAnimator overview</h1>
-<p>This section gives an overview of the actual TMPAnimator component, both for the inspector and scripting. The full API documentation can be found <a href="../api/TMPEffects.Components.TMPAnimator.html">here</a>.</p>
+<h1 id="tmpanimator-inspector-overview">TMPAnimator inspector overview</h1>
+<p>This section gives an overview of <mark class="markstyle">TMPAnimator's</mark> inspector.</p>
 <h2 id="preview">Preview</h2>
 <p>To toggle the editor preview of animations, press the <mark class="markstyle">TogglePreview</mark> at the top of the TMPAnimator inspector.
 Next to it, the button labeled <mark class="markstyle">Reset time</mark> resets the time tracked by the TMPAnimator component, and therefore all animations.</p>
-<h2 id="updating-the-animations">Updating the animations</h2>
-<p>In the inspector or through the <mark class="markstyle">SetUpdateFrom</mark> method, you can set how the animations are updated.</p>
-<p>If <mark class="markstyle">UpdateFrom</mark> is set to either <mark class="markstyle">Update</mark>, <mark class="markstyle">LateUpdate</mark> or <mark class="markstyle">FixedUpdate</mark>, the animations are automatically updated in the respective Unity callback. In order to play animations in play mode, you will have to call <mark class="markstyle">StartAnimating</mark> or set the <mark class="markstyle">Play On Start</mark> to true in either the inspector or some other script's <mark class="markstyle">Awake</mark> function.
-You can then stop animating again by simply calling <mark class="markstyle">StopAnimating</mark>.</p>
-<p>Alternatively, if you want more fine-tuned control over when and how often animations are updated, for example if you want to limit the updates per second to at most 300, you can set the TMPAnimator's <mark class="markstyle">UpdateFrom</mark> to
-<mark class="markstyle">Script</mark>. This causes the animations to no longer be updated automatically; instead you may call <mark class="markstyle">UpdateAnimations(float deltaTime)</mark> manually whenever you like.</p>
-<p>Note that if <mark class="markstyle">UpdateFrom</mark> is set to <mark class="markstyle">Script</mark>, you should not call <mark class="markstyle">StartAnimating</mark> or <mark class="markstyle">StopAnimating</mark>, since this will have no effect besides logging a warning to Unity's console. Vice versa, if <mark class="markstyle">UpdateFrom</mark> is set to be automatically updated, you should not call <mark class="markstyle">UpdateAnimations(float deltaTime)</mark>; it again does nothing but log a warning.</p>
-<p>The state of <mark class="markstyle">UpdateFrom</mark> has no effect on the editor preview.</p>
+<p>If you expand the preview label's foldout, you can set how often the preview is updated and scale the time values used by the preview.</p>
+<img src="../images/animatorpreview.png" alt="TMPAnimator preview">
+<br>
+<br>
 <h2 id="animation-databases">Animation databases</h2>
-<p>The TMPAnimator inspector has a foldout labeled <mark class="markstyle">Animations</mark>.
-There, you may choose the animation database that is used to process animation tags from the TextMeshPro component's text.
+<p>Under the <mark class="markstyle">Animations</mark> foldout, you may choose the animation database that is used to process animation tags from the TextMeshPro component's text.
 If you toggle <mark class="markstyle">Use default database</mark> to true, the default animation database is automatically selected for you.
-The default database is defined in the TMPEffects preferences file.
+The default database is defined in the TMPEffects settings.
 You can also set the database used by the TMPAnimator component through script, using the <mark class="markstyle">SetDatabase(TMPAnimationDatabase db)</mark> method.</p>
-<p>Below the database, there are three other fields: <mark class="markstyle">SceneAnimations</mark>, <mark class="markstyle">SceneShowAnimations</mark> and <mark class="markstyle">SceneHideAnimations</mark>. These are simply dictionaries that allow you to map tag names to SceneAnimations. Tags defined here are also parsed by the TMPAnimator.</p>
+<p>Below the database, there are three other fields: <mark class="markstyle">SceneAnimations</mark>, <mark class="markstyle">SceneShowAnimations</mark> and <mark class="markstyle">SceneHideAnimations</mark>.
+These are simply dictionaries that allow you to map tag names to SceneAnimations. Tags defined here are also parsed by the TMPAnimator.</p>
 <p>For more about databases, see <a href="databases.html">Databases</a>. For more about SceneAnimations, see <a href="tmpanimator_sceneanimations.html">SceneAnimations</a>.</p>
 <h2 id="animator-settings">Animator settings</h2>
-<p>TMPAnimator has various settings that modify the way it animates its text. Each of these is settable through both the inspector and through script.</p>
+<p>TMPAnimator has various settings.</p>
 <ul>
 <li><p>Animations override:<br>
 The default override behavior for all animation tags. If true, each tag overrides any of its category (basic / show / hide) that came before it, and only that one is applied. Otherwise, animations are stacked by default. Each tag can manually
-define its override behavior by using the <mark class="markstyle">override</mark> (shorthand: <mark class="markstyle">or</mark>) parameter.
-<br></p>
+define its override behavior by using the <mark class="markstyle">override</mark> (shorthand: <mark class="markstyle">or</mark>) parameter, e.g. <mark class="markstyle">&lt;wave amp=10 or=false&gt;.</mark></p>
 </li>
-<li><p>Default show / hide string:<br>
-Allows you to define a default show / hide animation that is used for the entirety of the text, if no other show / hide animation tag effects it. Set this like you would add any tag to your text, e.g. <mark class="markstyle">&lt;+fade dur=0.65 anc=a:bottom&gt;&gt;</mark>, <mark class="markstyle">&lt;-spread crv=easeinoutsine&gt;&gt;</mark>.
-<br></p>
+<li><p>Default animations:<br>
+Allows you to define default animations that are applied to the entirety of the text. Set this like you would add any tag to your text, e.g. <mark class="markstyle">&lt;+fade dur=0.65 anc=a:bottom&gt;</mark>, <mark class="markstyle">&lt;-spread crv=easeinoutsine&gt;</mark>.</p>
 </li>
 <li><p>Exclusions:<br>
-For each of the animationg categories (basic / show / hide), you can define a set of characters that is excluded from all animations. For example, if you don't want numbers to be animated, you could set <mark class="markstyle">Excluded Characters</mark> to &quot;1234567890&quot;. In addition to this, there is an <mark class="markstyle">Exclude Punctuation</mark> toggle for each of the categories.
-<br></p>
+For each of the animation categories (basic / show / hide), you can define a set of characters that is excluded from all animations. For example, if you don't want numbers to be animated, you could set <mark class="markstyle">Excluded Characters</mark> to &quot;1234567890&quot;. In addition to this, there is an <mark class="markstyle">Exclude Punctuation</mark> toggle for each of the categories.</p>
 </li>
-<li><p>Scale animations:<br>
-Defines whether animations should be scaled to the font size property of the TMP_Text component. If true, animations will look identical regardless of font size.
-<br></p>
-</li>
-<li><p>Use scaled time:<br>
-Defines whether animations should use <a href="https://docs.unity3d.com/ScriptReference/Time-timeScale.html">scaled time</a> or not.
-<br></p>
+<li><p>Keyword databases:<br>
+You may set the keyword databases used to parse tag parameters. Like with the animation database, there is a toggle to automatically use the database defined in TMPEffects' settings.<br>
+Additionally you may set a <mark class="markstyle">SceneKeywordDatabase</mark>, which is a keyword database that is a component instead of an asset.</p>
 </li>
 </ul>
-<h2 id="adding--removing-tags-through-script">Adding &amp; removing tags through script</h2>
-<p>The TMPAnimator class exposes four different <mark class="markstyle"><a href="tagcollections.html">TagCollections</a></mark>: <mark class="markstyle">BasicTags</mark>, which contains all parsed basic animation tags, <mark class="markstyle">ShowTags</mark>, which contains all parsed show animation tags and <mark class="markstyle">HideTags</mark>, which contains all parsed hide animation tags. Additionally, <mark class="markstyle">Tags</mark> is the union of the other three collections.</p>
-<p>For each of the <mark class="markstyle">TagCollections</mark>, you may freely add and remove tags at any point.</p>
+<h2 id="animation-settings">Animation settings</h2>
+<p>These are settings that specifically change animations.</p>
+<ul>
+<li><p>Scale animations:<br>
+Defines whether animations should be scaled based on the size of characters. If true, animations will look identical regardless of size.</p>
+</li>
+<li><p>Scale uniformly:<br>
+Whether animations should use the TMP_Text component's font size to scale animations or the size of the individual characters.
+This is only relevant if you override the font size of some characters using TextMeshPro's <mark class="markstyle">&lt;size&gt;</mark> tag.</p>
+</li>
+<li><p>Use scaled time:<br>
+Defines whether animations should use <a href="https://docs.unity3d.com/ScriptReference/Time-timeScale.html">scaled time</a> or not.</p>
+</li>
+</ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_componentoverview.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_inspectoroverview.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

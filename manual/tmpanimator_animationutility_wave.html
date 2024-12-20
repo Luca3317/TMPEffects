@@ -89,6 +89,7 @@
 <link rel="stylesheet" type="text/css" href="../styles.css">
 <h1 id="wave">Wave</h1>
 <p>The <mark class="markstyle">Wave</mark> class significantly streamlines the process of creating periodic animations.</p>
+<p>Be aware it is a valid <a href="autoparameters.html#bundles">AutoParameterBundle</a>.</p>
 <style>
 .center {
   display: block;
@@ -118,28 +119,25 @@
 <li><strong>Amplitude</strong>: Defines the maximum value the wave reaches; this is <mark class="markstyle">1</mark> by default</li>
 <li><strong>Crest Wait</strong>: Defines the amount of time the wave maintains its peak</li>
 <li><strong>Trough Wait</strong>: Defines the amount of time the wave maintains its minimum</li>
-<li><strong>Uniformity</strong>: Defines how much the offset passed in when evaluating the wave is considered</li>
 </ul>
 <p>The following diagram illustrates the first five parameters. On the left you see the upward curve, on the right the downward curve.</p>
 <img src="../images/wave1.svg" alt="first wave diagram" class="center">
 <p>The second diagram illustrates crest and trough wait.<br>
 Both essentially insert a period of time during which the wave's value does not change.</p>
 <img src="../images/wave2.svg" alt="first wave diagram" class="center2">
-<p>The uniformity is hard to visualize in a diagram in this way; I find it easier to just imagine it abstractly as the uniformity the animation will show across the animated text segment.
-Below, you see the same animation with the exact same wave, except that the first animation uses uniformity = 0, the second uniformity = 0.25, the third uniformity = 1.</p>
+<h2 id="wave-offsets">Wave offsets</h2>
+<p>In addition to the time value, <mark class="markstyle">Wave's</mark> evaluation methods (see below) accept an offset parameter. This allows you to easily apply the wave
+non-uniformly across an animated segment of text. In almost all cases, you will want to get this offset using an <a href="offsetproviders.html">OffsetProvider</a>.</p>
+<p>To visualise, below you see the same animation with the exact same wave, all using the same index-based offset but different uniformities (the uniformity is essentially a simple scalar of the offset).
+The first animation uses uniformity = 0, the second uniformity = 0.25, the third uniformity = 1.</p>
 <video class="center" style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/uniformitydiff.mp4" width="320" height="240" autoplay loop muted>
   Your browser does not support the video tag.
 </video>
-<h2 id="creating-a-wave">Creating a wave</h2>
-<p>You create a wave simply by passing in these eight values into <mark class="markstyle">Waves</mark> constructor.<br>
-Since this class is designed specifically to be used with animations though, likely you will mostly be creating it using the <mark class="markstyle">CreateWave</mark>
-method from the <mark class="markstyle">ParameterUtility</mark> class.
-For info about how to use wave as a parameter in your animations, see <a href="parameterutility.html#waves">ParameterUtility Wave</a>.</p>
 <h2 id="evaluating-a-wave">Evaluating a wave</h2>
-<p>Once you have created a <mark class="markstyle">Wave</mark>, you can evaluate it using a time value and an offset value: <mark class="markstyle">(float, int) Evaluate(float time, float offset)</mark>.<br>
+<p>You can evaluate <mark class="markstyle">Waves</mark> using a time value and an offset value: <mark class="markstyle">(float value, int direction) Evaluate(float time, float offset)</mark>.<br>
 As you can tell by the signature, <mark class="markstyle">Evaluate</mark> returns two values.
-The float is the actual value of the curve for the given time and offset.
-The integer indicates whether the curve is currently travelling up or down; if it is negative, the curve is moving down, if it is positive, the curve is moving up.
+<mark class="markstyle">value</mark> is the actual evaluated value of the curve for the given time and offset.
+<mark class="markstyle">direction</mark>indicates whether the curve is currently travelling up or down; if it is negative, the curve is moving down, if it is positive, the curve is moving up.
 This value is useful for when you want to switch the behavior of your animation depending on what curve the wave is currently travelling.<br>
 For example, the built-in <mark class="markstyle">fade</mark> animation can use different anchors depending on whether the character
 is fading in or out. The animation below visualizes how <mark class="markstyle">fade</mark> uses both values of the <mark class="markstyle">Evaluate</mark>

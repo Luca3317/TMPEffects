@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>AnimationCurveUtility | TMPEffects documentation </title>
+      <title>Generic Animation | TMPEffects documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="AnimationCurveUtility | TMPEffects documentation ">
+      <meta name="title" content="Generic Animation | TMPEffects documentation ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/animationcurveutility.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/genericanimations.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -87,46 +87,34 @@
         <article data-uid="">
 
 <link rel="stylesheet" type="text/css" href="../styles.css">
-<h1 id="animationcurveutility">AnimationCurveUtility</h1>
-<p><mark class="markstyle">AnimationCurveUtility</mark> is a static utility class that allows easy creation of various <a href="https://docs.unity3d.com/ScriptReference/AnimationCurve.html">AnimationCurves</a>.
-The full API docs can be found <a href="../api/TMPEffects.Extensions.AnimationCurveUtility.html">here</a>.</p>
 <style>
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  width: 40%;
-}
+    .my-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap:3em;
+    }
 </style>
-<h2 id="predefined-curves">Predefined curves</h2>
-<p>All of the easing functions presented at this link are implemented: <a href="https://easings.net/">https://easings.net/</a><br>
-You can create the corresponding AnimationCurve like this: <mark class="markstyle">AnimationCurveUtility.EaseInOutSine()</mark>.<br>
-You can also get the Bézier points (don't worry about what this means if you don't know 😄) that define the AnimationCurve, so you can manipulate them to easily
-create slightly modified versions of the existing curves using the Bézier constructors.</p>
-<h2 id="bezier-constructors">Bezier constructors</h2>
-<p>You can create AnimationCurves using Bézier points.<br>
-Simply call <mark class="markstyle">Bezier(params Vector2[] points)</mark> with your points Bézier points.<br>
-The method will automatically infer whether you are creating a linear, quadratic or cubic Bézier curve based on the amount of points.<br>
-If the amount of points does not clearly indicate one specific type, higher degree Bézier curves are preferred.<br>
-There are also the <mark class="markstyle">LinearBezier</mark>, <mark class="markstyle">QuadraticBezier</mark>, and <mark class="markstyle">CubicBezier</mark> methods, if you want to make sure the correct degree Bézier curve is created.</p>
-<div class="CAUTION">
-<h5>Caution</h5>
-<p>When creating your own AnimationCurves like this, always keep in the back of your mind that Unity's AnimationCurves use time as input; this means the Bézier curve must at all times advance on the X axis, or you will get an invalid AnimationCurve.<br>
-For example, imagine the quadratic curve defined by the points (0,0), (0,1), (1,1):</p>
+<h1 id="generic-animation">Generic Animation</h1>
+<p><mark class="markstyle">GenericAnimations</mark> allow you to create animations in the inspector.</p>
+<div class="my-grid">
+<div>
+The way they work is analogous to Unity's timeline; you can define multiple lists, where each list is equivalent to a timeline track,
+and populate each list with animation steps, that are equivalent to a timeline clip (in this case, specifically the [TMPMeshModifierClip](timeline_integration.md) provided by the timeline integration of TMPEffects).
+Each animation step allows you to define a duration during which the step is active (again, analogous to timeline clips), mesh modifiers to be applied, blend curves and extrapolation, and some other smaller features.  
+<p style="color:blue">TODO Add image of inspector</p>
 </div>
-<img src="../images/000111.svg" alt="Quadratic Bezier curve" class="center">
-<p>This will yield an invalid curve! Consider the very beginning of this curve. At the very beginning, the curve moves perfectly straight up; that is not possible in AnimationCurves.<br>
-Something even more extreme, like the curve moving &quot;back&quot; / to the left, is of course not possible either:</p>
-<img src="../images/000111butworse.svg" alt="Quadratic Bezier curve" class="center">
-<hr>
-<p>Huge props to qwe321qwe321qwe321 on <a href="https://github.com/qwe321qwe321qwe321/Unity-EasingAnimationCurve">GitHub</a> for his <mark class="markstyle">BezierToAnimationCurve</mark> implementation, as well as the optimized curve points!</p>
+<div>
+<img src="../images/placeholder.png" alt="GenericAnimation example">
+</div>
+</div>
+<p>Due to their logic being so similiar to timeline, <mark class="markstyle">GenericAnimations</mark> are compatible with it; you can export animations you created on the timeline to a <mark class="markstyle">GenericAnimation</mark>,
+and you can import a <mark class="markstyle">GenericAnimation</mark> into the timeline, unpacking it to equivalent tracks and clips.</p>
+<p>There are separate types of <mark class="markstyle">GenericAnimation</mark> for show and hide animations (<mark class="markstyle">GenericShowAnimation</mark> and <mark class="markstyle">GenericHideAnimation</mark> respectively), which otherwise function the exact same way.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/animationcurveutility.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/genericanimations.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

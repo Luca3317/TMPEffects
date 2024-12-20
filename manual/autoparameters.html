@@ -88,8 +88,139 @@
 
 <link rel="stylesheet" type="text/css" href="../styles.css">
 <h1 id="autoparameters">AutoParameters</h1>
-<p>AutoParameters is a plugin for TMPEffects that minimizes any parameter-related boilerplate for animations by automatically implementing the <mark class="markstyle">ValidateParameters</mark>,
-<mark class="markstyle">SetParameters</mark> and <mark class="markstyle">GetNewCustomData</mark> methods for you. For more information, see the <a href="../plugins/autoparameters.md">page on it</a>.</p>
+<p><mark class="markstyle">AutoParameters</mark> is a set of attributes that minimizes any parameter-related boilerplate for animations and commands by automatically handling anything related to parameters,
+specifically implementing the <mark class="markstyle">ValidateParameters</mark>, <mark class="markstyle">SetParameters</mark> and <mark class="markstyle">GetNewCustomData</mark> methods for you.</p>
+<p>In the vast majoritiy of cases, you should be using <mark class="markstyle">AutoParameters</mark>. Only when you need some special parameter handling will you be required to write custom code for it, and even then in many cases the <a href="#hooks">Hooks</a> should suffice.</p>
+<h2 id="creating-a-class-with-autoparameters">Creating a class with AutoParameters</h2>
+<p>To create an animation or command using AutoParameters, create a class and make sure it derives from <mark class="markstyle">ITMPAnimation</mark> or <mark class="markstyle">ITMPCommand</mark>, or any of its sub types.
+Your IDE should complain that the class is not partial and doesn't implement the <mark class="markstyle">Animate</mark> method (or <mark class="markstyle">ExecuteCommand</mark> method if youre making a command);
+go ahead and make it partial and implement the method. You can do this either manually or using the pre-defined code fixes. Once you did your class should look somewhat like this:</p>
+<pre><code class="lang-csharp">using TMPEffects.AutoParameters.Attributes;
+using TMPEffects.CharacterData;
+using TMPEffects.TMPAnimations;
+
+[AutoParameters]
+public partial class YourClass : TMPAnimation
+{
+    // if youre making a command, this will of course say ExecuteCommand
+    private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
+    {
+    }
+}
+</code></pre>
+<h2 id="adding-valid-parameters">Adding valid parameters</h2>
+<p>To any field on your class that fulfills certain requirements, you can add the <mark class="markstyle">AutoParameter</mark> attribute.
+This will automatically generate code in each of the parameter handling methods respectively, and allows you to use it in your animation / command code.
+Each field decorated with this attribute must:</p>
+<ul>
+<li>Be serializable (public or decorated with <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/SerializeField.html">SerializeField</a>).</li>
+<li>Be a valid <mark class="markstyle">AutoParameters</mark> type. This means it must either be a built-in parameter type (see <a href="parametertypes.html">Parameter Types</a>) or a type decorated with the <mark class="markstyle"><a href="creatingparameters.md">TMPParameterType</a></mark> attribute.</li>
+</ul>
+<p>Let's add a <mark class="markstyle">float</mark> and a <mark class="markstyle">string</mark> parameter to our class:</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class SomeClass : TMPAnimation
+{
+    [AutoParameter(required: true, name: &quot;myFloat&quot;, aliases: &quot;myF&quot;, &quot;mf&quot;), SerializeField]
+    private float myFloat = &quot;12&quot;;
+
+    [AutoParameter(&quot;myString&quot;, &quot;myStr&quot;), SerializeField]
+    private string myString = &quot;default string&quot;;
+
+    private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
+    {
+    }
+}
+</code></pre>
+<p>Thats it! You can now use them through the generated AutoParametersData passed in to your Animate/ExecuteCommand method.</p>
+<pre><code class="lang-csharp">    private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
+    {
+        Debug.Log(&quot;myFloat: &quot; + data.myFloat + &quot;; myString: &quot; + data.myString);
+    }
+</code></pre>
+<p>Here's some example outputs for various tags (assuming we named our animation &quot;myanim&quot; in the database):</p>
+<ul>
+<li><mark class="markstyle">&lt;myanim&gt;</mark>: &quot;myFloat: 12; myString: default string&quot;</li>
+<li><mark class="markstyle">&lt;myanim myFloat=23 myStr=anotherstring&gt;</mark>: &quot;myFloat: 23; myString: anotherstring&quot;</li>
+<li><mark class="markstyle">&lt;myanim mf=-54.34&gt;</mark>: &quot;myFloat: -54.34; myString: default string&quot;</li>
+</ul>
+<h2 id="adding-valid-parameters-using-bundles">Adding valid parameters using bundles</h2>
+<p>Any class decorated with the <mark class="markstyle">TMPParameterBundle</mark> attribute is a parameter bundle.
+These classes then, when used as fields and decorated with the <mark class="markstyle">AutoParametersBundle</mark> attribute, define multiple parameters at once.
+For example, <a href="tmpanimator_animationutility_wave.html">Wave</a> is a built-in parameter bundle.
+Using it like so:</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class SomeClass : TMPAnimation
+{
+    [AutoParameterBundle(prefix: &quot;&quot;), SerializeField]
+    private Wave wave;
+
+    [AutoParameterBundle(&quot;w2:&quot;), SerializeField]
+    private Wave wave;
+
+    // ...
+}
+</code></pre>
+<p>allows you to use any parameter defined by <a href="tmpanimator_animationutility_wave.html">Wave</a> to modify the wave.</p>
+<ul>
+<li><mark class="markstyle">&lt;myanim amp=10 upperiod=10&gt;</mark>: Sets the amplitude and up period of wave to ten.</li>
+<li><mark class="markstyle">&lt;myanim amp=10 w2:upperiod=10&gt;</mark>: Sets the amplitude of wave and upperiod of wave2 to ten.</li>
+<li><mark class="markstyle">&lt;myanim amp=10 w2:amp=10&gt;</mark>: Set the amplitude of both to ten.</li>
+</ul>
+<h2 id="hooks">Hooks</h2>
+<p>You can hook into each of the generated methods to still allow you some custom parameter handling even when using <mark class="markstyle">AutoParameters</mark>.
+Each of the hooks has its own code fix, so you don't need to memorize the hook method signatures. Just in case the code fixes don't work for you for some reason, here is them written out:</p>
+<details>
+  <summary>Hooks</summary>
+  
+  <ul>
+    <li>bool ValidateParameters_Hook(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)</string,></li>
+    <li>void SetParameters_Hook(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)</string,></li>
+    <li>void GetNewCustomData_Hook(object customData)</li>
+  </ul>
+</details>
+<h2 id="autoparametersstorage">AutoParametersStorage</h2>
+<p>The <mark class="markstyle">AutoParametersStorage</mark> attribute marks a type as type used to store parsed tag parameters of the class.
+It must, like the <mark class="markstyle">AutoParameter</mark> attribute, be contained in a class decorated with <mark class="markstyle">AutoParameters</mark>, and must also be partial.
+For example:</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class SomeClass : TMPAnimation
+{
+    [AutoParametersStorage]
+    private partial class MyStorage
+    {
+    }
+}
+</code></pre>
+<p>If you do declare a type like so, <mark class="markstyle">AutoParameters</mark> will no longer generate the default storage type <mark class="markstyle">AutoParametersData</mark>.
+You will therefore have to change your <mark class="markstyle">Animate / ExecuteCommand</mark> method like so:</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class SomeClass : TMPAnimation
+{
+    private partial void Animate(CharData cData, MyStorage data, IAnimationContext context)
+    {
+    }
+
+    [AutoParametersStorage]
+    private partial class MyStorage
+    {
+    }
+}
+</code></pre>
+<p>The advantage of declaring your own <mark class="markstyle">AutoParametersStorage</mark> is being able to store non-parameter related per-animation data, such as a random number generator,
+or anything else you need really.</p>
+<pre><code class="lang-csharp">[AutoParameters]
+public partial class SomeClass : TMPAnimation
+{
+    // ...
+    
+    [AutoParametersStorage]
+    private partial class MyStorage
+    {
+        public System.Random rand = new System.Random();
+        public Dictionary&lt;CharData, int&gt; someDict = new Dictionary&lt;CharData, int&gt;();
+    }
+}
+</code></pre>
 
 </article>
 

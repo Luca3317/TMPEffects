@@ -127,16 +127,6 @@ will be by default). It should look something like this:</p>
 <p>In this manner, you can stack a (theoretically) limitless amount of animations. Of course, there's no guarantee all combinations will mesh well together 😉</p>
 <p>If you switch the <mark class="markstyle">Animations override</mark> toggle in the TMPAnimator's inspector to true, the second text will be animated as before.
 This toggle only defines the default behavior of animation tags; you can decide whether a tag should override the previous tags individually by adding the <mark class="markstyle">override</mark> parameter to a tag, like so: <mark class="markstyle">&lt;palette override=true&gt;</mark>. All animation tags support this parameter.</p>
-<h2 id="late-animations--second-pass">Late animations / second pass</h2>
-<p>Another parameter supported by all animation tags is <mark class="markstyle">late</mark>, and is used like so: <mark class="markstyle">&lt;wave late&gt;</mark>. If set, the animation will be applied in a second pass within the TMPAnimator, meaning it will be applied after all animations that do not have
-this parameter.</p>
-<p>You will not need this parameter in the large majority of cases. It is useful primarily for when you need the mesh data of the character to consider the changes made by the other animations.
-For example, the flashlight effect shown below needs the <mark class="markstyle">late</mark> parameter to work correctly, as it operates on the vertex positions
-of the characters. If it was applied before the wave animation, the flashlight would use the incorrect, initial vertex positions.</p>
-<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/flashlightanimation.mp4" width="320" height="240" autoplay loop muted>
-  Your browser does not support the video tag.
-</video>
-<p>More information about how animations work (and how to create your own) can be found in <a href="tmpanimator_creatinganimations.html">Creating Animations</a>.</p>
 
 </article>
 

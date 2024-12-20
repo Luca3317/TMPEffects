@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>TMPAnimator API | TMPEffects documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="TMPAnimator API | TMPEffects documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_importantapi.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<link rel="stylesheet" type="text/css" href="../styles.css">
+<h1 id="tmpanimator-api">TMPAnimator API</h1>
+<p>This section gives an overview of <mark class="markstyle">TMPAnimator's</mark> most important API.<br>
+The full API documentation can be found <a href="../api/TMPEffects.Components.TMPAnimator.html">here</a>.</p>
+<h2 id="settings">Settings</h2>
+<p>Everything in the <a href="tmpanimator_inspectoroverview.html">previous section</a> can be set through script as well, with the exception of preview related things.</p>
+<h2 id="controlling-the-animator">Controlling the animator</h2>
+<p>The animator can be updated automatically (by setting <a href="../api/TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateFrom">UpdateFrom</a> to <mark class="markstyle">Update</mark>, <mark class="markstyle">LateUpdate</mark> or <mark class="markstyle">FixedUpdate</mark>).<br>
+In this case, you can control the animator using the methods <mark class="markstyle">StartAnimating</mark> and <mark class="markstyle">StopAnimating</mark>.<br>
+Otherwise, if <mark class="markstyle">UpdateFrom</mark> is set to <mark class="markstyle">Script</mark>, you have to update the animator manually from one of your scripts, using <mark class="markstyle">UpdateAnimations(float deltaTime)</mark>.</p>
+<h2 id="adding--removing-tags-through-script">Adding &amp; removing tags through script</h2>
+<p>The <mark class="markstyle">TMPAnimator</mark> class exposes four different <mark class="markstyle"><a href="tagcollections.html">TagCollections</a></mark>: <mark class="markstyle">BasicTags</mark>, which contains all parsed basic animation tags, <mark class="markstyle">ShowTags</mark>, which contains all parsed show animation tags and <mark class="markstyle">HideTags</mark>, which contains all parsed hide animation tags. Additionally, <mark class="markstyle">Tags</mark> is the union of the other three collections.</p>
+<p>For each of the <mark class="markstyle">TagCollections</mark>, you may freely add and remove tags at any point.</p>
+<h2 id="post-animation-event">Post-animation event</h2>
+<p>You can register methods as a post-animation delegate using <mark class="markstyle">RegisterPostAnimationHook</mark>. If you do so, your delegate will be called everytime a character's animations has been updated, allowing you to make further changes to the <a href="chardata.html">CharData</a>.
+This is primarily useful when you want to make one-off changes, where a periodic animation doesn't really &quot;fit&quot;.</p>
+<h2 id="built-in-tag-parameters">Built-in tag parameters</h2>
+<p>Any tag parsed by the <mark class="markstyle">TMPAnimator</mark> automatically supports the <mark class="markstyle">override</mark> (shorthand: <mark class="markstyle">or</mark>) parameter, allowing you to set for each tag whether it should override previous tags.
+If you don't set this, it will override based on whether or not the <mark class="markstyle">Override animations</mark> toggle is set on the <mark class="markstyle">TMPAnimator</mark>.</p>
+<p>Another parameter supported by all animation tags is <mark class="markstyle">late</mark>.
+If set, the animation will be applied in a second pass within the TMPAnimator, meaning it will be applied after all animations that do not have this parameter.</p>
+<p>You will not need this parameter in the large majority of cases. It is useful primarily for when you need the mesh data of the character to consider the changes made by the other animations.
+For example, the flashlight effect shown below needs the <mark class="markstyle">late</mark> parameter to work correctly, as it operates on the vertex positions
+of the characters. If it was applied before the wave animation, the flashlight would use the incorrect, initial vertex positions.</p>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/flashlightanimation.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_importantapi.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

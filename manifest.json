@@ -1795,10 +1795,30 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/animatorpreview.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/animatorpreview.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/diagram.svg",
       "output": {
         "resource": {
           "relative_path": "images/diagram.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/placeholder.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/placeholder.png"
         }
       },
       "version": ""
@@ -1849,6 +1869,16 @@
       "output": {
         "resource": {
           "relative_path": "images/wave2.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/writerpreview.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/writerpreview.png"
         }
       },
       "version": ""
@@ -1935,6 +1965,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "manual/creatinganimations.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/creatinganimations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/creatinganimations_script.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/creatinganimations_script.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "manual/databases.md",
       "output": {
         ".html": {
@@ -1949,6 +1999,16 @@
       "output": {
         ".html": {
           "relative_path": "manual/effecttag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/genericanimations.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/genericanimations.html"
         }
       },
       "version": ""
@@ -1979,6 +2039,16 @@
       "output": {
         ".html": {
           "relative_path": "manual/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/offsetproviders.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/offsetproviders.html"
         }
       },
       "version": ""
@@ -2115,10 +2185,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/tmpanimator_componentoverview.md",
+      "source_relative_path": "manual/tmpanimator_controllingtheanimator.md",
       "output": {
         ".html": {
-          "relative_path": "manual/tmpanimator_componentoverview.html"
+          "relative_path": "manual/tmpanimator_controllingtheanimator.html"
         }
       },
       "version": ""
@@ -2139,6 +2209,26 @@
       "output": {
         ".html": {
           "relative_path": "manual/tmpanimator_gettingstarted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/tmpanimator_importantapi.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/tmpanimator_importantapi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/tmpanimator_inspectoroverview.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/tmpanimator_inspectoroverview.html"
         }
       },
       "version": ""
@@ -2185,16 +2275,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "manual/tmpwriter_componentoverview.md",
-      "output": {
-        ".html": {
-          "relative_path": "manual/tmpwriter_componentoverview.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "manual/tmpwriter_creatingcommands.md",
       "output": {
         ".html": {
@@ -2209,6 +2289,26 @@
       "output": {
         ".html": {
           "relative_path": "manual/tmpwriter_gettingstarted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/tmpwriter_importantapi.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/tmpwriter_importantapi.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/tmpwriter_inspectoroverview.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/tmpwriter_inspectoroverview.html"
         }
       },
       "version": ""
