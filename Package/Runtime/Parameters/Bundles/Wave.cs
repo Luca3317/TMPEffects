@@ -261,16 +261,16 @@ namespace TMPEffects.Parameters
         }
 
         [Tooltip(
-            "The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds")]
+            "The time it takes for the wave to travel from trough to crest, or from its lowest to its highest point, in seconds.")]
         [SerializeField, TMPParameterBundleField("upperiod", "uppd")]
         private float upPeriod;
 
         [Tooltip(
-            "The time it takes for the wave to travel from crest to trough, or from its highest to its lowest point, in seconds")]
+            "The time it takes for the wave to travel from crest to trough, or from its highest to its lowest point, in seconds.")]
         [SerializeField, TMPParameterBundleField("downperiod", "downpd", "dnpd")]
         private float downPeriod;
 
-        [Tooltip("The amplitude of the wave")] [SerializeField, TMPParameterBundleField("amplitude", "amp")]
+        [Tooltip("The amplitude of the wave.")] [SerializeField, TMPParameterBundleField("amplitude", "amp")]
         private float amplitude;
 
         [Tooltip(
@@ -635,7 +635,7 @@ namespace TMPEffects.Parameters
         public (float Value, int Direction) EvaluateAsWave(float time, float offset)
         {
             float t = CalculateT(EffectivePeriod, time, offset, -1);
-            
+
             if (t <= EffectiveUpPeriod)
             {
                 t = Mathf.Lerp(0f, 1f, t / EffectiveUpPeriod);
@@ -756,7 +756,8 @@ namespace TMPEffects.Parameters
             t -= EffectiveDownPeriod;
             if (t <= downInterval)
             {
-                return (Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)),
+                return (
+                    Amplitude * TMPAnimationUtility.GetValue(DownwardCurve, WrapMode.PingPong, Mathf.Lerp(1f, 2f, 1f)),
                     -1);
             }
 

@@ -18,15 +18,18 @@ using UnityEngine;
 
 [CustomEditor(typeof(GenericAnimation))]
 public class GenericAnimationEditor : BaseGenericAnimationEditor
-{}
+{
+}
 
 [CustomEditor(typeof(GenericHideAnimation))]
 public class GenericShowAnimationEditor : BaseGenericAnimationEditor
-{}
+{
+}
 
 [CustomEditor(typeof(GenericShowAnimation))]
 public class GenericHideAnimationEditor : BaseGenericAnimationEditor
-{}
+{
+}
 
 public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 {
@@ -38,7 +41,10 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
     private static readonly GUIContent fromGUI = new GUIContent("from:");
     private static readonly GUIContent toGUI = new GUIContent("to:");
-    private static readonly GUIContent repeatGUI = new GUIContent("Repeat", "Whether to repeat the animation, or play it once.");
+
+    private static readonly GUIContent repeatGUI =
+        new GUIContent("Repeat", "Whether to repeat the animation, or play it once.");
+
     private static readonly GUIContent durationGUI = new GUIContent("Duration", "The duration of the animation.");
 
     protected override void OnEnable()
@@ -47,14 +53,16 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
         exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
 
         _ = new ReorderableList(serializedObject,
-            serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"), true, false, true, true);
+            serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"), true, false, true,
+            true);
         UpdateLists();
 
         var trackProp = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         for (int i = 0; i < trackProp.arraySize; i++)
         {
             var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
-            QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
+            if (clips.arraySize > 0)
+                QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
         }
     }
 
@@ -65,7 +73,8 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
         for (int i = 0; i < trackProp.arraySize; i++)
         {
             var clips = trackProp.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
-            QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
+            if (clips.arraySize > 0)
+                QuickSort(clips, 0, clips.arraySize - 1, new SortClipComparer());
         }
     }
 
@@ -240,6 +249,7 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
     public static void QuickSort(SerializedProperty prop, int left, int right, IComparer<SerializedProperty> comparer)
     {
         int i = left, j = right;
+        Debug.Log("Gonna try with " + left);
         var pivot = prop.GetArrayElementAtIndex(left);
 
         while (i <= j)
@@ -355,16 +365,16 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
         var duration = serializedObject.FindProperty("duration");
         float useValue = animator.AnimatorContext.PassedTime %
                          duration.floatValue;
-        
+
         EditorGUILayout.LabelField(animator.AnimatorContext.PassedTime.ToString("F2"), GUILayout.MinWidth(0f),
             GUILayout.MaxWidth(40));
-        
+
         // TODO PlayerBar way too finicky when controlled, values jump around
         EditorGUI.BeginDisabledGroup(true);
         sliderControlID = GUIUtility.GetControlID(FocusType.Passive);
         useValue = EditorGUILayout.Slider(useValue, 0f, duration.floatValue, GUILayout.MinWidth(200));
         EditorGUI.EndDisabledGroup();
-        
+
         if (GUIUtility.hotControl == sliderControlID + 2)
         {
             if (!wasPlaying.HasValue) wasPlaying = animate;
@@ -465,7 +475,7 @@ public static class GenericAnimationExporter
         var tracks = anim.Tracks.Tracks.Select(track => track.Clips).ToList();
         GenerateScriptFromModifier2(filePath, "TMPAnimation", "", repeats, duration, tracks);
     }
-    
+
     public static void ExportGenericShowAnimation(GenericAnimation anim, string filePath)
     {
         var repeats = anim.Repeat;
@@ -481,7 +491,7 @@ public static class GenericAnimationExporter
             }";
         GenerateScriptFromModifier2(filePath, "TMPShowAnimation", finish, repeats, duration, tracks);
     }
-    
+
     public static void ExportGenericHideAnimation(GenericAnimation anim, string filePath)
     {
         var repeats = anim.Repeat;
@@ -592,7 +602,8 @@ public static class GenericAnimationExporter
         return Regex.Replace(s, @"\s+", "_");
     }
 
-    static bool GenerateScriptFromModifier2(string filePath, string superClassName, string finish, bool repeats, float duration,
+    static bool GenerateScriptFromModifier2(string filePath, string superClassName, string finish, bool repeats,
+        float duration,
         List<List<AnimationStep>> steps)
     {
         var name = Path.GetFileNameWithoutExtension(filePath);

@@ -337,6 +337,7 @@ public class CharDataModifiers
         {
             if (start.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
+                if (cData.info.index == 2) Debug.Log("option 0; end: " + end.Modifier + " start: " + start.Modifier);
                 result.BL_Color = ColorOverride.LerpUnclamped(start.BL_Color, end.BL_Color, t);
                 result.TL_Color = ColorOverride.LerpUnclamped(start.TL_Color, end.TL_Color, t);
                 result.TR_Color = ColorOverride.LerpUnclamped(start.TR_Color, end.TR_Color, t);
@@ -344,6 +345,7 @@ public class CharDataModifiers
             }
             else if (cData.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
+                if (cData.info.index == 2) Debug.Log("option 1");
                 result.BL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.BL_Color, end.BL_Color, t);
                 result.TL_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TL_Color, end.TL_Color, t);
                 result.TR_Color = ColorOverride.LerpUnclamped(cData.MeshModifiers.TR_Color, end.TR_Color, t);
@@ -351,6 +353,7 @@ public class CharDataModifiers
             }
             else if (ctx.Modifiers.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))
             {
+                if (cData.info.index == 2) Debug.Log("option 2");
                 result.BL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.BL_Color, end.BL_Color, t);
                 result.TL_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TL_Color, end.TL_Color, t);
                 result.TR_Color = ColorOverride.LerpUnclamped(ctx.Modifiers.MeshModifiers.TR_Color, end.TR_Color, t);
@@ -358,6 +361,7 @@ public class CharDataModifiers
             }
             else
             {
+                if (cData.info.index == 2) Debug.Log("option 3");
                 result.BL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.BL_Color, end.BL_Color, t);
                 result.TL_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TL_Color, end.TL_Color, t);
                 result.TR_Color = ColorOverride.LerpUnclamped(cData.InitialMesh.TR_Color, end.TR_Color, t);

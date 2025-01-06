@@ -121,6 +121,8 @@ public class AnimationStep
             var waveOffset = step.waveOffset.GetOffset(cData, context, segmentData);
             weight *= step.wave.Evaluate(timeValue, waveOffset).Value;
         }
+        
+        if (cData.info.index == 0) Debug.Log("Calculated " + weight + " weight for timevalue "  + timeValue );
 
         return weight;
     }
@@ -186,9 +188,18 @@ public class AnimationStep
             // Set modifiers
             step.initModifiers.ToCharDataModifiers(cData, context, storage);
             step.modifiers.ToCharDataModifiers(cData, context, storage2);
-
+            
+            if (cData.info.index == 2)
+                Debug.Log("Color:" + step.initModifiers.BL_Color + " startmod: " + storage.MeshModifiers.Modifier);
+            if (cData.info.index == 2)
+                Debug.Log("Color mod:" + step.modifiers.BL_Color + " endmod: " + storage2.MeshModifiers.Modifier);
+            
             // Lerp modifiers and store into current
             CharDataModifiers.LerpUnclamped(cData, context, storage, storage2, weight, result);
+            
+            
+            if (cData.info.index == 2)
+                Debug.Log("Color result:" + result.MeshModifiers.BL_Color);
         }
         else
         {

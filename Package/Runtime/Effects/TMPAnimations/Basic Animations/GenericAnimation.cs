@@ -363,8 +363,6 @@ namespace TMPEffects.TMPAnimations
 
                 // Adjust the timeValue for extrapolation setting
                 float t = timeValue - step.startTime;
-                // if (cData.info.index == 0)
-                // Debug.LogWarning("T: " + t + " => " + GenericAnimationUtility.AdjustTimeForExtrapolation(step, t));
                 t = GenericAnimationUtility.AdjustTimeForExtrapolation(step, t);
 
                 // Get (and cache) the min / max / current offset
@@ -399,6 +397,9 @@ namespace TMPEffects.TMPAnimations
                 float weight = AnimationStep.CalcWeight(step, t, step.duration, cData, ac, context.SegmentData,
                     cachedOffset.inOffset, cachedOffset.outOffset);
 
+
+                if (cData.info.index == 0) Debug.Log("Calculated " + weight + " weight for timevalue "  + timeValue + " / " + t);
+                
                 // Lerp the animation step using the weight
                 AnimationStep.LerpAnimationStepWeighted(step, weight, cData, ac,
                     modifiersStorage, modifiersStorage2, current);

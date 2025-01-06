@@ -22,6 +22,9 @@ public class TMPAnimationClip : TMPEffectsClip, ITimelineClipAsset
     [HideInInspector] public TMPBlendCurve exitCurve;
     public float exitDuration;
 
+    public object Data => data;
+    private object data;
+    
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
         var playable = ScriptPlayable<TMPAnimationBehaviour>.Create(graph);
@@ -32,6 +35,11 @@ public class TMPAnimationClip : TMPEffectsClip, ITimelineClipAsset
         behaviour.exitCurve = exitCurve;
         behaviour.entryDuration = entryDuration;
         behaviour.exitDuration = exitDuration;
+
+        if (Animation != null)
+        {
+            data = Animation.GetNewCustomData();
+        }
         
         return playable;
     }

@@ -85,13 +85,12 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
             if (behaviour == null) continue;
 
             float currTime;
-            if (time < behaviour.Clip.start)
-                currTime = time - (float)behaviour.Clip.start;
-            else
+            // if (time < behaviour.Clip.start)
+            //     currTime = time - (float)behaviour.Clip.start;
+            // else
                 currTime = (float)active[i].GetTime();
 
             float duration = (float)behaviour.Clip.duration;
-
 
             var step = behaviour.Step.Step;
             if (!cachedOffsets.TryGetValue(step, out var cachedOffset))
@@ -140,6 +139,5 @@ public class TMPMeshModifierTrackMixer : PlayableBehaviour
         cachedOffsets =
             new Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset
                 )>();
-        Debug.LogWarning("Update");
     }
 }

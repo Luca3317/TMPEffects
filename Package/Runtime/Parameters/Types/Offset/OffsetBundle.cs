@@ -75,7 +75,7 @@ namespace TMPEffects.Parameters
             impl.ClearCache();
         }
 
-        private OffsetBundleImpl impl;
+        private OffsetBundleImpl impl = new OffsetBundleImpl();
 
         /// <summary>
         /// Get the offset for the given <see cref="CharData"/> in the context of the given <see cref="SegmentData"/>.<br/>

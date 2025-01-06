@@ -93,7 +93,9 @@ public class TMPAnimatorTrackMixer : PlayableBehaviour
 
             if (mocked == null)
             {
-                mocked = new MockedAnimationContext(animator.AnimatorContext, behaviour.animation.GetNewCustomData());
+                var data = (behaviour.Clip.asset as TMPAnimationClip).Data;
+                mocked = new MockedAnimationContext(animator.AnimatorContext, data);
+                (behaviour.Clip.asset as TMPAnimationClip).Animation.SetParameters(data, new Dictionary<string, string>(), null);
             }
 
             // Animate

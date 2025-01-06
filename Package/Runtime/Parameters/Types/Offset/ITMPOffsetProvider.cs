@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.Parameters;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
 using TMPEffects.TMPAnimations;
 
 namespace TMPEffects.Parameters

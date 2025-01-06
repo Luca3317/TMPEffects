@@ -100,9 +100,13 @@ public class EditorFriendlyCharDataModifiers
 
     public void ToCharDataModifiers(CharData cData, IAnimatorContext ctx, CharDataModifiers result)
     {
-        // Position(Delta)
         Vector3 posDelta = Position.ToDelta(cData, ctx);
-        result.CharacterModifiers.PositionDelta = posDelta;
+
+        // Position(Delta)
+        if (posDelta != Vector3.zero)
+        {
+            result.CharacterModifiers.PositionDelta = posDelta;
+        }
 
         // Scale
         if (Scale != Vector3.one)
@@ -128,22 +132,25 @@ public class EditorFriendlyCharDataModifiers
         }
 
         // Vertex colors
-        result.MeshModifiers.BL_Color = BL_Color;
-        result.MeshModifiers.TL_Color = TL_Color;
-        result.MeshModifiers.TR_Color = TR_Color;
-        result.MeshModifiers.BR_Color = BR_Color;
+        if ((BL_Color.Override | TL_Color.Override | TR_Color.Override | BR_Color.Override) != 0)
+        {
+            result.MeshModifiers.BL_Color = BL_Color;
+            result.MeshModifiers.TL_Color = TL_Color;
+            result.MeshModifiers.TR_Color = TR_Color;
+            result.MeshModifiers.BR_Color = BR_Color;
+        }
 
         // Vertex deltas
         posDelta = BL_Position.ToDelta(cData, ctx, cData.InitialMesh.BL_Position);
-        result.MeshModifiers.BL_Delta = posDelta;
+        if (posDelta != Vector3.zero) result.MeshModifiers.BL_Delta = posDelta;
 
         posDelta = TL_Position.ToDelta(cData, ctx, cData.InitialMesh.TL_Position);
-        result.MeshModifiers.TL_Delta = posDelta;
+        if (posDelta != Vector3.zero) result.MeshModifiers.TL_Delta = posDelta;
 
         posDelta = TR_Position.ToDelta(cData, ctx, cData.InitialMesh.TR_Position);
-        result.MeshModifiers.TR_Delta = posDelta;
+        if (posDelta != Vector3.zero) result.MeshModifiers.TR_Delta = posDelta;
 
         posDelta = BR_Position.ToDelta(cData, ctx, cData.InitialMesh.BR_Position);
-        result.MeshModifiers.BR_Delta = posDelta;
+        if (posDelta != Vector3.zero) result.MeshModifiers.BR_Delta = posDelta;
     }
 }

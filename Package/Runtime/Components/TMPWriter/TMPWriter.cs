@@ -1211,11 +1211,13 @@ namespace TMPEffects.Components
 
         private void OnStopWriting()
         {
+            Debug.Log("STOP WRITING");
             writing = false;
         }
 
         private void OnStartWriting()
         {
+            Debug.Log("START WRITING");
             writing = true;
         }
 

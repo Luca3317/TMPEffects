@@ -187,11 +187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\TMPEffects.ParameterUtilityGenerator.Attributes.csproj",
+      "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\TMPEffects.ParameterUtilityGenerator.Attributes.csproj",
       "projectName": "TMPEffects.ParameterUtilityGenerator.Attributes",
-      "projectPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\TMPEffects.ParameterUtilityGenerator.Attributes.csproj",
+      "projectPath": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\TMPEffects.ParameterUtilityGenerator.Attributes.csproj",
       "packagesPath": "C:\\Users\\lweis\\.nuget\\packages\\",
-      "outputPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\obj\\",
+      "outputPath": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator.Attributes\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\lweis\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

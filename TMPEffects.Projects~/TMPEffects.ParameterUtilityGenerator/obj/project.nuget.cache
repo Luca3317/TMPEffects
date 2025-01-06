@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ssBWr30z5fM=",
+  "dgSpecHash": "0N6nj27+Zz4=",
   "success": true,
-  "projectFilePath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
+  "projectFilePath": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lweis\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\lweis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
