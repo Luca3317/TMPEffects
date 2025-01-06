@@ -1,15 +1,14 @@
 using System;
 
-namespace TMPEffects.Parameters
+namespace TMPEffects.Parameters.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, AllowMultiple = false, Inherited = false)]
-    public class TMPPsarameterTypeAttribute : Attribute
+    public class TMPParameterTypeAttribute : Attribute
     {
         private bool generateKeywordDatabase;
         private string displayName;
         private Type sceneType;
         private Type diskType;
-        private Type sharedBaseType;
 
         public TMPParameterTypeAttribute(string displayName)
         {

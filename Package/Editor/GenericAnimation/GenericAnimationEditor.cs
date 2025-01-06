@@ -33,9 +33,8 @@ public class GenericHideAnimationEditor : BaseGenericAnimationEditor
 
 public class BaseGenericAnimationEditor : TMPAnimationEditorBase
 {
-    private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
-    private static string exportPath = "Assets/Exported TMPEffects Animations";
-    private static string exportName = "";
+    // private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
+    // private static string exportPath = "Assets/Exported TMPEffects Animations";
 
     private GUIStyle fileBrowserButtonStyle;
 
@@ -50,7 +49,7 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
     protected override void OnEnable()
     {
         base.OnEnable();
-        exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
+        // exportPath = EditorPrefs.GetString(ExportPathKey, exportPath);
 
         _ = new ReorderableList(serializedObject,
             serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks"), true, false, true,
@@ -249,7 +248,6 @@ public class BaseGenericAnimationEditor : TMPAnimationEditorBase
     public static void QuickSort(SerializedProperty prop, int left, int right, IComparer<SerializedProperty> comparer)
     {
         int i = left, j = right;
-        Debug.Log("Gonna try with " + left);
         var pivot = prop.GetArrayElementAtIndex(left);
 
         while (i <= j)

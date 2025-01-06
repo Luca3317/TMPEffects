@@ -1,6 +1,6 @@
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.TMPAnimations;
+using TMPEffects.Parameters.Attributes;
 
 namespace TMPEffects.Parameters
 {
@@ -18,7 +18,7 @@ namespace TMPEffects.Parameters
         /// <param name="segmentData">The relevant segment data.</param>
         /// <param name="animatorData">The relevant animator data.</param>
         /// <param name="ignoreAnimatorScaling">Whether to ignore the animator's scaling.</param>
-        /// <returns>A timing offset (to be used, for example, with <see cref="TMPAnimationUtility.Wave"/>).</returns>
+        /// <returns>A timing offset (to be used, for example, with <see cref="Wave"/>).</returns>
         public float GetOffset(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
             bool ignoreAnimatorScaling = false);
 

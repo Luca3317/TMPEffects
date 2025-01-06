@@ -28,13 +28,24 @@ namespace TMPEffects.Components.Animator
         public int EndIndex { get; }
         
         /// <summary>
-        /// The <see cref="CharData.Info"/> of each character in the segment.<br/>
-        /// Keyed using the index of the character in the text, NOT within the segment.
+        /// The <see cref="CharData.Info"/> of each character in the segment.
         /// </summary>
-        public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; } // TODO Rewrite so that there is trygetinfo(int index) and
-                                                                        // ienumerable<charinfo>; then limit access using start and endindex
-                                                                        // Then; make SegmentData (not ITMPSegmentData) take idictionary<chardata>
-                                                                        // from tmpanimator when created, and use that
+        public IEnumerable<CharData.Info> CharInfo { get; }
+        /// <summary>
+        /// Get a specific <see cref="CharData.Info"/> from a segment index.
+        /// </summary>
+        /// <param name="segmentIndex"></param>
+        /// <returns>The <see cref="CharData.Info"/> associated with the segment index.</returns>
+        public CharData.Info GetCharInfo(int segmentIndex);
+        
+        // /// <summary>
+        // /// The <see cref="CharData.Info"/> of each character in the segment.<br/>
+        // /// Keyed using the index of the character in the text, NOT within the segment.
+        // /// </summary>
+        // public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; } // TODO Rewrite so that there is trygetinfo(int index) and
+        //                                                                 // ienumerable<charinfo>; then limit access using start and endindex
+        //                                                                 // Then; make SegmentData (not ITMPSegmentData) take idictionary<chardata>
+        //                                                                 // from tmpanimator when created, and use that
 
         /// <summary>
         /// Convert a text index to the index within the segment.
@@ -90,7 +101,24 @@ namespace TMPEffects.Components.Animator
         public readonly int lastAnimationIndex;
 
 
-        public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; }
+        public IEnumerable<CharData.Info> CharInfo
+        {
+            get
+            {
+                for (int i = StartIndex; i < EndIndex; i++)
+                {
+                    yield return charDatas[i].info;
+                }
+            }   
+        }
+
+        public CharData.Info GetCharInfo(int segmentIndex)
+        {
+            if (segmentIndex > Length) throw new ArgumentOutOfRangeException(nameof(segmentIndex));
+            return charDatas[segmentIndex + StartIndex].info;
+        }
+
+        private readonly IList<CharData> charDatas;
         
         public int IndexToSegmentIndex(int index)
         {
@@ -141,15 +169,8 @@ namespace TMPEffects.Components.Animator
             }
 
             effectiveLength = lastAnimationIndex - firstAnimationIndex + 1;
-            
-            // TODO Perfor
-            var dict = new Dictionary<int, CharData.Info>();
-            for (int i = StartIndex; i < count; i++)
-            {
-                var cd = cData[i];
-                dict.Add(cd.info.index, cd.info);
-            }
-            CharInfo = new ReadOnlyDictionary<int, CharData.Info>(dict);
+
+            charDatas = cData;
         }
     }
 }

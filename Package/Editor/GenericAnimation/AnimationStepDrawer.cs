@@ -6,8 +6,6 @@ using UnityEngine.Playables;
 [CustomPropertyDrawer(typeof(AnimationStep), false)]
 public class AnimationStepDrawer : PropertyDrawer
 {
-    private bool entry = false;
-
     private SerializedProperty entryCurve;
     private SerializedProperty exitCurve;
     private SerializedProperty entryDuration;
@@ -30,7 +28,7 @@ public class AnimationStepDrawer : PropertyDrawer
     private static readonly GUIContent modsGUI = new GUIContent("Modifiers");
     private static readonly GUIContent extraplationGUI = new GUIContent("Extrapolation");
     
-    private Color backgroundColor;
+    private Color backgroundColor; 
 
     protected void Init(SerializedProperty property)
     {

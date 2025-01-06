@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMPEffects.AutoParameters.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMPEffects.ParameterUtilityGenerator", "TMPEffects.ParameterUtilityGenerator\TMPEffects.ParameterUtilityGenerator.csproj", "{507272EA-E388-4392-AD9C-D7C256B63A9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMPEffects.ParameterUtilityGenerator.Attributes", "TMPEffects.ParameterUtilityGenerator.Attributes\TMPEffects.ParameterUtilityGenerator.Attributes.csproj", "{106F8B49-B0BA-4390-9836-3158E719F92F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{507272EA-E388-4392-AD9C-D7C256B63A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{507272EA-E388-4392-AD9C-D7C256B63A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{507272EA-E388-4392-AD9C-D7C256B63A9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{106F8B49-B0BA-4390-9836-3158E719F92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{106F8B49-B0BA-4390-9836-3158E719F92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{106F8B49-B0BA-4390-9836-3158E719F92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{106F8B49-B0BA-4390-9836-3158E719F92F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

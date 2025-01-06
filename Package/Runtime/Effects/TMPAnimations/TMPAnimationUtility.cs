@@ -324,7 +324,7 @@ namespace TMPEffects.TMPAnimations
 
         #endregion
 
-        public static ITMPSegmentData GetMockedSegment(int len, IEnumerable<CharData> cData)
+        public static ITMPSegmentData GetMockedSegment(int len, IList<CharData> cData)
         {
             return new TextSegment(len, cData);
         }
@@ -337,7 +337,24 @@ namespace TMPEffects.TMPAnimations
 
             public int EndIndex => StartIndex + Length;
 
-            public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; }
+            public IEnumerable<CharData.Info> CharInfo
+            {
+                get
+                {
+                    for (int i = StartIndex; i < EndIndex; i++)
+                    {
+                        yield return charDatas[i].info;
+                    }
+                }   
+            }
+
+            public CharData.Info GetCharInfo(int segmentIndex)
+            {
+                if (segmentIndex > Length) throw new ArgumentOutOfRangeException(nameof(segmentIndex));
+                return charDatas[segmentIndex + StartIndex].info;
+            }
+            
+            private readonly IList<CharData> charDatas;
 
             public int IndexToSegmentIndex(int index)
             {
@@ -349,17 +366,10 @@ namespace TMPEffects.TMPAnimations
                 return cData.info.index;
             }
 
-            public TextSegment(int len, IEnumerable<CharData> cData)
+            public TextSegment(int len, IList<CharData> cData)
             {
                 Length = len;
-                var dict = new Dictionary<int, CharData.Info>();
-
-                foreach (var cd in cData)
-                {
-                    dict[cd.info.index] = cd.info;
-                }
-
-                CharInfo = new ReadOnlyDictionary<int, CharData.Info>(dict);
+                charDatas = cData;
             }
         }
 
@@ -412,9 +422,9 @@ namespace TMPEffects.TMPAnimations
 
                     if (scaleAtTheEnd)
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = kvp.Value.InitialPosition.x;
+                            var pos = info.InitialPosition.x;
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -424,9 +434,9 @@ namespace TMPEffects.TMPAnimations
                     }
                     else
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.x);
+                            var pos = ScalePos(info.pointSize, info.InitialPosition.x);
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -442,9 +452,9 @@ namespace TMPEffects.TMPAnimations
 
                     if (scaleAtTheEnd)
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = kvp.Value.InitialPosition.y;
+                            var pos = info.InitialPosition.y;
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -454,9 +464,9 @@ namespace TMPEffects.TMPAnimations
                     }
                     else
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = ScalePos(kvp.Value.pointSize, kvp.Value.InitialPosition.y);
+                            var pos = ScalePos(info.pointSize, info.InitialPosition.y);
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -468,9 +478,9 @@ namespace TMPEffects.TMPAnimations
                 {
                     min = int.MaxValue;
                     max = 0; // cant have negative line indices
-                    foreach (var kvp in segmentData.CharInfo)
+                    foreach (var info in segmentData.CharInfo)
                     {
-                        int line = kvp.Value.lineNumber;
+                        int line = info.lineNumber;
                         min = Math.Min(min, line);
                         max = Math.Max(max, line);
                     }
@@ -481,9 +491,9 @@ namespace TMPEffects.TMPAnimations
                 {
                     min = float.MaxValue;
                     max = float.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+                    foreach (var info in segmentData.CharInfo)
                     {
-                        float line = kvp.Value.baseLine;
+                        float line = info.baseLine;
                         min = Math.Min(min, line);
                         max = Math.Max(max, line);
                     }
@@ -494,9 +504,9 @@ namespace TMPEffects.TMPAnimations
                 {
                     min = int.MaxValue;
                     max = int.MinValue;
-                    foreach (var kvp in segmentData.CharInfo)
+                    foreach (var info in segmentData.CharInfo)
                     {
-                        int wordIndex = kvp.Value.wordNumber;
+                        int wordIndex = info.wordNumber;
                         // if (wordIndex == -1) continue;
                         min = Math.Min(min, wordIndex);
                         max = Math.Max(max, wordIndex);
@@ -513,9 +523,9 @@ namespace TMPEffects.TMPAnimations
 
                     if (scaleAtTheEnd)
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).x;
+                            var pos = animatorData.Animator.transform.TransformPoint(info.InitialPosition).x;
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -525,10 +535,10 @@ namespace TMPEffects.TMPAnimations
                     }
                     else
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = ScalePos(kvp.Value.pointSize,
-                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).x);
+                            var pos = ScalePos(info.pointSize,
+                                animatorData.Animator.transform.TransformPoint(info.InitialPosition).x);
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -544,9 +554,9 @@ namespace TMPEffects.TMPAnimations
 
                     if (scaleAtTheEnd)
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).y;
+                            var pos = animatorData.Animator.transform.TransformPoint(info.InitialPosition).y;
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -556,10 +566,10 @@ namespace TMPEffects.TMPAnimations
                     }
                     else
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = ScalePos(kvp.Value.pointSize,
-                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).y);
+                            var pos = ScalePos(info.pointSize,
+                                animatorData.Animator.transform.TransformPoint(info.InitialPosition).y);
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -577,9 +587,9 @@ namespace TMPEffects.TMPAnimations
                     
                     if (scaleAtTheEnd)
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).z;
+                            var pos = animatorData.Animator.transform.TransformPoint(info.InitialPosition).z;
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }
@@ -589,10 +599,10 @@ namespace TMPEffects.TMPAnimations
                     }
                     else
                     {
-                        foreach (var kvp in segmentData.CharInfo)
+                        foreach (var info in segmentData.CharInfo)
                         {
-                            var pos = ScalePos(kvp.Value.pointSize,
-                                animatorData.Animator.transform.TransformPoint(kvp.Value.InitialPosition).z);
+                            var pos = ScalePos(info.pointSize,
+                                animatorData.Animator.transform.TransformPoint(info.InitialPosition).z);
                             min = Mathf.Min(min, pos);
                             max = Mathf.Max(max, pos);
                         }

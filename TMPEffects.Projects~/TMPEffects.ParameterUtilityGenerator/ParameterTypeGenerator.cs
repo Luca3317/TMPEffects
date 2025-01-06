@@ -41,7 +41,7 @@ namespace TMPEffects.ParameterUtilityGenerator
             ParameterTypeAttributeSyntaxReceiver receiver =
                 context.SyntaxReceiver as ParameterTypeAttributeSyntaxReceiver;
             if (receiver == null) return;
-
+            
             foreach (var attribute in receiver.AttributeSyntaxes)
             {
                 SemanticModel model = context.Compilation.GetSemanticModel(attribute.SyntaxTree);
@@ -93,14 +93,30 @@ namespace TMPEffects.ParameterUtilityGenerator
                 return;
             }
 
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "Starting creation"));
+#endif
+            
             var typeSymbol = model.GetDeclaredSymbol(typeDecl);
 
             // Create all necessary static functions on the type
             CreateHasNonTryGet(typeDecl, typeSymbol, ptd, context);
+            
+#if DEBUG
+            context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                "Created HasNonTryGet"));
+#endif
 
             // Create the keyword database stuff, if specified
             if (ptd.GenerateKeywordDatabase)
+            {
                 CreateKeywordDatabases(typeDecl, typeSymbol, ptd, context);
+#if DEBUG
+                context.ReportDiagnostic(Diagnostic.Create(Rule___, attrSyntax.GetLocation(),
+                    "Created Keyword database stuff"));
+#endif
+            }
         }
 
         private void CreateKeywordDatabases(TypeDeclarationSyntax typeDecl, INamedTypeSymbol typeSymbol,

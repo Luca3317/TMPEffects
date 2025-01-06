@@ -755,7 +755,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnWaitStarted?.Invoke(this, waitAmount);
+                OnWaitStartedPreview?.Invoke(this, waitAmount);
                 return;
             }
 #endif
@@ -768,7 +768,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnWaitEnded?.Invoke(this);
+                OnWaitEndedPreview?.Invoke(this);
                 return;
             }
 #endif
@@ -1211,13 +1211,11 @@ namespace TMPEffects.Components
 
         private void OnStopWriting()
         {
-            Debug.Log("STOP WRITING");
             writing = false;
         }
 
         private void OnStartWriting()
         {
-            Debug.Log("START WRITING");
             writing = true;
         }
 
@@ -1242,6 +1240,8 @@ namespace TMPEffects.Components
         internal delegate void CharDataHandler(TMPWriter writer, CharData cData);
 
         internal delegate void IntHandler(TMPWriter writer, int index);
+        
+        internal delegate void FloatHandler(TMPWriter writer, float duration);
 
         internal delegate void VoidHandler(TMPWriter writer);
 
@@ -1253,7 +1253,7 @@ namespace TMPEffects.Components
         internal event VoidHandler OnFinishWriterPreview;
         internal event VoidHandler OnStartWriterPreview;
         internal event VoidHandler OnStopWriterPreview;
-        internal event VoidHandler OnWaitStartedPreview;
+        internal event FloatHandler OnWaitStartedPreview;
         internal event VoidHandler OnWaitEndedPreview;
         internal event ResetHandler OnResetComponent;
 

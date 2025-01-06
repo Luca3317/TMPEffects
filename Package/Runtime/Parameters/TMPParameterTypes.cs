@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 

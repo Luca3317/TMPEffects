@@ -361,8 +361,9 @@ namespace TMPEffects.Editor
             hideCoroutine = writer.StartCoroutine(HideAfterFinish());
         }
 
-        private void CancelHideAfterFinish(TMPWriter writer, CharData cdata) => CancelHideAfterFinish(writer);
-        private void CancelHideAfterFinish(TMPWriter writer, int index) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, float _) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, CharData _) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, int _) => CancelHideAfterFinish(writer);
 
         private void CancelHideAfterFinish(TMPWriter writer)
         {

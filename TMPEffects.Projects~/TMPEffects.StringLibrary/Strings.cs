@@ -106,17 +106,17 @@ namespace TMPEffects.StringLibrary
         #endregion
 
         public const string GenerateParametersAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.GenerateParameterTypeAttribute";       
+            "TMPEffects.Parameters.Attributes.GenerateParameterTypeAttribute";       
         public const string TMPParameterTypeAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterTypeAttribute";  
+            "TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute";  
         public const string TMPParameterTypeAttribute =
             "TMPParameterTypeAttribute";  
         public const string TMPParameterBundleAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterBundleAttribute";
+            "TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute";
         public const string TMPParameterBundleAttribute =
             "TMPParameterBundleAttribute";
         public const string TMPParameterBundleFieldAttributeName =
-            "TMPEffects.ParameterUtilityGenerator.Attributes.TMPParameterBundleFieldAttribute";
+            "TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute";
         public const string TMPParameterBundleFieldAttribute =
             "TMPParameterBundleFieldAttribute";
 

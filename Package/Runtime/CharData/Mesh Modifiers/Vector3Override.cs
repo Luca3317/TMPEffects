@@ -56,4 +56,15 @@ public struct Vector3Override
         if (!_override) return false;
         return _overrideValue == other._overrideValue;
     }
+
+    public override bool Equals(object obj)
+    {
+        if (obj is Vector3Override @override) return Equals(@override);
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Override, OverrideValue);
+    }
 }

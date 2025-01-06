@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components;
 using TMPEffects.Components.Animator;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
+using TMPEffects.Parameters.Attributes;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TMPEffects.Parameters
 {
@@ -102,12 +101,14 @@ namespace TMPEffects.Parameters
             OffsetBundleParameters parameters)
         {
             newInstance.impl = new OffsetBundleImpl();
+            newInstance.offsetProvider = originalInstance.offsetProvider;
 
             // Create Hook always called after the parameters have been applied to newinstance
             newInstance.impl.IgnoreAnimatorScaling = newInstance.ignoreAnimatorScaling;
             newInstance.impl.Provider = newInstance.provider;
             newInstance.impl.ZeroBasedOffset = newInstance.zeroBasedOffset;
             newInstance.impl.Uniformity = newInstance.uniformity;
+            
             // Cache by default
             newInstance.impl.Cache = true;
         }
@@ -195,7 +196,7 @@ namespace TMPEffects.Parameters
             }
 
             offset = Provider.GetOffset(cData, segmentData, animatorData, IgnoreAnimatorScaling);
-
+            
             if (ZeroBasedOffset)
             {
                 float min, max;
@@ -225,7 +226,7 @@ namespace TMPEffects.Parameters
             offset *= Uniformity;
             if (Cache)
                 offsetCache.CacheOffset(cData, offset);
-
+            
             return offset;
         }
 
@@ -268,32 +269,7 @@ namespace TMPEffects.Parameters
             max = 0f;
             return false;
         }
-
-        // public float GetOffset(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData,
-        //     bool ignoreAnimatorScaling = false)
-        // {
-        //     if (offset.TryGetValue(cData, out float cOffset)) return cOffset;
-        //     cOffset = _provider.GetOffset(cData, segmentData, animatorData, ignoreAnimatorScaling);
-        //     offset[cData] = cOffset;
-        //     return cOffset;
-        // }
-        //
-        // public void GetMinMaxOffset(out float min, out float max, ITMPSegmentData segmentData,
-        //     IAnimatorDataProvider animatorData,
-        //     bool ignoreAnimatorScaling = false)
-        // {
-        //     if (maxOffset.HasValue && minOffset.HasValue)
-        //     {
-        //         min = minOffset.Value;
-        //         max = maxOffset.Value;
-        //         return;
-        //     }
-        //
-        //     _provider.GetMinMaxOffset(out min, out max, segmentData, animatorData, ignoreAnimatorScaling);
-        //     minOffset = min;
-        //     maxOffset = max;
-        //     return;
-        // }
+        
 
         public void ClearCache()
         {

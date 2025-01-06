@@ -1,6 +1,6 @@
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
-using TMPEffects.ParameterUtilityGenerator.Attributes;
+using TMPEffects.Parameters.Attributes;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 

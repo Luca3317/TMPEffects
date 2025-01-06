@@ -54,7 +54,6 @@
 
             if (t >= 1)
             {
-                Debug.Log("Return cause done");
                 context.FinishAnimation(cData);
                 return;
             }
