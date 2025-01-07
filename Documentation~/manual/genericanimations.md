@@ -16,10 +16,9 @@
 The way they work is analogous to Unity's timeline; you can define multiple lists, where each list is equivalent to a timeline track,
 and populate each list with animation steps, that are equivalent to a timeline clip (in this case, specifically the [TMPMeshModifierClip](timeline_integration.md) provided by the timeline integration of TMPEffects).
 Each animation step allows you to define a duration during which the step is active (again, analogous to timeline clips), mesh modifiers to be applied, blend curves and extrapolation, and some other smaller features.  
-<p style="color:blue">TODO Add image of inspector</p>
 </div>
 <div>
-<img src="../images/placeholder.png" alt="GenericAnimation example">
+<img src="../images/genericanimation.png" alt="GenericAnimation example">
 </div>
 </div>
 

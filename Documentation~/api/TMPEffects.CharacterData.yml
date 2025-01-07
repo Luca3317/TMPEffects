@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  id: TMPEffects.CharacterData
+  children:
+  - TMPEffects.CharacterData.CharData
+  - TMPEffects.CharacterData.CharData.Info
+  - TMPEffects.CharacterData.CharDataState
+  - TMPEffects.CharacterData.ICharDataState
+  - TMPEffects.CharacterData.ReadOnlyCharDataState
+  - TMPEffects.CharacterData.ReadOnlyVertexData
+  - TMPEffects.CharacterData.VertexData
+  - TMPEffects.CharacterData.VisibilityState
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  type: Namespace
+references:
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  spec.vb:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+- uid: TMPEffects.CharacterData.CharDataState
+  commentId: T:TMPEffects.CharacterData.CharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharDataState.html
+  name: CharDataState
+  nameWithType: CharDataState
+  fullName: TMPEffects.CharacterData.CharDataState
+- uid: TMPEffects.CharacterData.ICharDataState
+  commentId: T:TMPEffects.CharacterData.ICharDataState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ICharDataState.html
+  name: ICharDataState
+  nameWithType: ICharDataState
+  fullName: TMPEffects.CharacterData.ICharDataState
+- uid: TMPEffects.CharacterData.ReadOnlyCharDataState
+  commentId: T:TMPEffects.CharacterData.ReadOnlyCharDataState
+  href: TMPEffects.CharacterData.ReadOnlyCharDataState.html
+  name: ReadOnlyCharDataState
+  nameWithType: ReadOnlyCharDataState
+  fullName: TMPEffects.CharacterData.ReadOnlyCharDataState
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.VertexData
+  commentId: T:TMPEffects.CharacterData.VertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VertexData.html
+  name: VertexData
+  nameWithType: VertexData
+  fullName: TMPEffects.CharacterData.VertexData
+- uid: TMPEffects.CharacterData.VisibilityState
+  commentId: T:TMPEffects.CharacterData.VisibilityState
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VisibilityState.html
+  name: VisibilityState
+  nameWithType: VisibilityState
+  fullName: TMPEffects.CharacterData.VisibilityState
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html

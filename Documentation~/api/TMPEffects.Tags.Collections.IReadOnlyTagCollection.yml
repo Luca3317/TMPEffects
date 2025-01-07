@@ -1,0 +1,696 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  commentId: T:TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  id: IReadOnlyTagCollection
+  parent: TMPEffects.Tags.Collections
+  children:
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf(TMPEffects.Tags.TMPEffectTag)
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt(System.Int32,System.Nullable{System.Int32})
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32)
+  - TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IReadOnlyTagCollection
+  nameWithType: IReadOnlyTagCollection
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IReadOnlyTagCollection
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 7
+  namespace: TMPEffects.Tags.Collections
+  summary: A readonly collection of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public interface IReadOnlyTagCollection : IReadOnlyCollection<TMPEffectTagTuple>, IEnumerable<TMPEffectTagTuple>, IEnumerable'
+    content.vb: Public Interface IReadOnlyTagCollection Inherits IReadOnlyCollection(Of TMPEffectTagTuple), IEnumerable(Of TMPEffectTagTuple), IEnumerable
+  inheritedMembers:
+  - System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}.Count
+  - System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}.GetEnumerator
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+  commentId: P:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+  id: TagCount
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: TagCount
+  nameWithType: IReadOnlyTagCollection.TagCount
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TagCount
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 12
+  namespace: TMPEffects.Tags.Collections
+  summary: The amount of <xref href="TMPEffects.Tags.TMPEffectTagTuple" data-throw-if-not-resolved="false"></xref> in this collection.
+  example: []
+  syntax:
+    content: int TagCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property TagCount As Integer
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount*
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})
+  commentId: M:TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})
+  id: Contains(TMPEffects.Tags.TMPEffectTag,System.Nullable{TMPEffects.Tags.TMPEffectTagIndices})
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: Contains(TMPEffectTag, TMPEffectTagIndices?)
+  nameWithType: IReadOnlyTagCollection.Contains(TMPEffectTag, TMPEffectTagIndices?)
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains(TMPEffects.Tags.TMPEffectTag, TMPEffects.Tags.TMPEffectTagIndices?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Contains
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 20
+  namespace: TMPEffects.Tags.Collections
+  summary: Whether this collection contains the given tag with the given indices (if supplied).
+  example: []
+  syntax:
+    content: bool Contains(TMPEffectTag tag, TMPEffectTagIndices? indices = null)
+    parameters:
+    - id: tag
+      type: TMPEffects.Tags.TMPEffectTag
+      description: The tag to check.
+    - id: indices
+      type: System.Nullable{TMPEffects.Tags.TMPEffectTagIndices}
+      description: The tag indices. If you don't care about the tag's indices, leave as default.
+    return:
+      type: System.Boolean
+      description: true if this collection contains the given tag with the given indices (if supplied); otherwise false.
+    content.vb: Function Contains(tag As TMPEffectTag, indices As TMPEffectTagIndices? = Nothing) As Boolean
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains*
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf(TMPEffects.Tags.TMPEffectTag)
+  commentId: M:TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf(TMPEffects.Tags.TMPEffectTag)
+  id: IndicesOf(TMPEffects.Tags.TMPEffectTag)
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: IndicesOf(TMPEffectTag)
+  nameWithType: IReadOnlyTagCollection.IndicesOf(TMPEffectTag)
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf(TMPEffects.Tags.TMPEffectTag)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IndicesOf
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 27
+  namespace: TMPEffects.Tags.Collections
+  summary: Get the associated indices of the given tag.
+  example: []
+  syntax:
+    content: TMPEffectTagIndices? IndicesOf(TMPEffectTag tag)
+    parameters:
+    - id: tag
+      type: TMPEffects.Tags.TMPEffectTag
+      description: The tag to get the indices of.
+    return:
+      type: System.Nullable{TMPEffects.Tags.TMPEffectTagIndices}
+      description: The indices of the given tag, if the tag is contained in the collection; otherwise null.
+    content.vb: Function IndicesOf(tag As TMPEffectTag) As TMPEffectTagIndices?
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf*
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)
+  commentId: M:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)
+  id: TagsAt(System.Int32,TMPEffects.Tags.TMPEffectTagTuple[],System.Int32)
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: TagsAt(int, TMPEffectTagTuple[], int)
+  nameWithType: IReadOnlyTagCollection.TagsAt(int, TMPEffectTagTuple[], int)
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(int, TMPEffects.Tags.TMPEffectTagTuple[], int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TagsAt
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 36
+  namespace: TMPEffects.Tags.Collections
+  summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
+  example: []
+  syntax:
+    content: int TagsAt(int startIndex, TMPEffectTagTuple[] buffer, int bufferIndex = 0)
+    parameters:
+    - id: startIndex
+      type: System.Int32
+      description: The start index.
+    - id: buffer
+      type: TMPEffects.Tags.TMPEffectTagTuple[]
+      description: The buffer the tags will be stored in.
+    - id: bufferIndex
+      type: System.Int32
+      description: The offset index of the buffer, i.e. the index at which the tags should be inserted into <code class="paramref">buffer</code>.
+    return:
+      type: System.Int32
+      description: The amount of tags starting at the given <code class="paramref">startIndex</code>.
+    content.vb: Function TagsAt(startIndex As Integer, buffer As TMPEffectTagTuple(), bufferIndex As Integer = 0) As Integer
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt*
+  nameWithType.vb: IReadOnlyTagCollection.TagsAt(Integer, TMPEffectTagTuple(), Integer)
+  fullName.vb: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(Integer, TMPEffects.Tags.TMPEffectTagTuple(), Integer)
+  name.vb: TagsAt(Integer, TMPEffectTagTuple(), Integer)
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32)
+  commentId: M:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(System.Int32)
+  id: TagsAt(System.Int32)
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: TagsAt(int)
+  nameWithType: IReadOnlyTagCollection.TagsAt(int)
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TagsAt
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 42
+  namespace: TMPEffects.Tags.Collections
+  summary: Get the tags starting at the given <code class="paramref">startIndex</code>.
+  example: []
+  syntax:
+    content: IEnumerable<TMPEffectTagTuple> TagsAt(int startIndex)
+    parameters:
+    - id: startIndex
+      type: System.Int32
+      description: The start index.
+    return:
+      type: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}
+      description: All tags starting at the given <code class="paramref">startIndex</code>.
+    content.vb: Function TagsAt(startIndex As Integer) As IEnumerable(Of TMPEffectTagTuple)
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt*
+  nameWithType.vb: IReadOnlyTagCollection.TagsAt(Integer)
+  fullName.vb: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt(Integer)
+  name.vb: TagsAt(Integer)
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt(System.Int32,System.Nullable{System.Int32})
+  commentId: M:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt(System.Int32,System.Nullable{System.Int32})
+  id: TagAt(System.Int32,System.Nullable{System.Int32})
+  parent: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+  langs:
+  - csharp
+  - vb
+  name: TagAt(int, int?)
+  nameWithType: IReadOnlyTagCollection.TagAt(int, int?)
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt(int, int?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TagAt
+    path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
+    startLine: 50
+  namespace: TMPEffects.Tags.Collections
+  summary: >-
+    Get the tag at the given <code class="paramref">startIndex</code> with the correct <code class="paramref">order</code>.<br />
+
+    If <code class="paramref">order</code> is left to default, the first tag at <code class="paramref">startIndex</code> will be returned.
+  example: []
+  syntax:
+    content: TMPEffectTag TagAt(int startIndex, int? order = null)
+    parameters:
+    - id: startIndex
+      type: System.Int32
+      description: The start index.
+    - id: order
+      type: System.Nullable{System.Int32}
+      description: The order at the start index.
+    return:
+      type: TMPEffects.Tags.TMPEffectTag
+      description: The tag at the given indices, if it exists; otherwise null.
+    content.vb: Function TagAt(startIndex As Integer, order As Integer? = Nothing) As TMPEffectTag
+  overload: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt*
+  nameWithType.vb: IReadOnlyTagCollection.TagAt(Integer, Integer?)
+  fullName.vb: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt(Integer, Integer?)
+  name.vb: TagAt(Integer, Integer?)
+references:
+- uid: TMPEffects.Tags.TMPEffectTagTuple
+  commentId: T:TMPEffects.Tags.TMPEffectTagTuple
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagTuple.html
+  name: TMPEffectTagTuple
+  nameWithType: TMPEffectTagTuple
+  fullName: TMPEffects.Tags.TMPEffectTagTuple
+- uid: TMPEffects.Tags.Collections
+  commentId: N:TMPEffects.Tags.Collections
+  href: TMPEffects.html
+  name: TMPEffects.Tags.Collections
+  nameWithType: TMPEffects.Tags.Collections
+  fullName: TMPEffects.Tags.Collections
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+- uid: System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}.Count
+  parent: System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}
+  definition: System.Collections.Generic.IReadOnlyCollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<TMPEffectTagTuple>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<TMPEffects.Tags.TMPEffectTagTuple>.Count
+  nameWithType.vb: IReadOnlyCollection(Of TMPEffectTagTuple).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of TMPEffects.Tags.TMPEffectTagTuple).Count
+- uid: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<TMPEffectTagTuple>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<TMPEffects.Tags.TMPEffectTagTuple>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of TMPEffectTagTuple).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TMPEffects.Tags.TMPEffectTagTuple).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: TMPEffects.Tags
+  commentId: N:TMPEffects.Tags
+  href: TMPEffects.html
+  name: TMPEffects.Tags
+  nameWithType: TMPEffects.Tags
+  fullName: TMPEffects.Tags
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+- uid: System.Collections.Generic.IReadOnlyCollection`1.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<T>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>.Count
+  nameWithType.vb: IReadOnlyCollection(Of T).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T).Count
+- uid: System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{TMPEffects.Tags.TMPEffectTagTuple}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<TMPEffectTagTuple>
+  nameWithType: IReadOnlyCollection<TMPEffectTagTuple>
+  fullName: System.Collections.Generic.IReadOnlyCollection<TMPEffects.Tags.TMPEffectTagTuple>
+  nameWithType.vb: IReadOnlyCollection(Of TMPEffectTagTuple)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of TMPEffects.Tags.TMPEffectTagTuple)
+  name.vb: IReadOnlyCollection(Of TMPEffectTagTuple)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}
+  commentId: T:System.Collections.Generic.IEnumerable{TMPEffects.Tags.TMPEffectTagTuple}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TMPEffectTagTuple>
+  nameWithType: IEnumerable<TMPEffectTagTuple>
+  fullName: System.Collections.Generic.IEnumerable<TMPEffects.Tags.TMPEffectTagTuple>
+  nameWithType.vb: IEnumerable(Of TMPEffectTagTuple)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TMPEffects.Tags.TMPEffectTagTuple)
+  name.vb: IEnumerable(Of TMPEffectTagTuple)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount*
+  commentId: Overload:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+  href: TMPEffects.Tags.Collections.IReadOnlyTagCollection.html#TMPEffects_Tags_Collections_IReadOnlyTagCollection_TagCount
+  name: TagCount
+  nameWithType: IReadOnlyTagCollection.TagCount
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains*
+  commentId: Overload:TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains
+  href: TMPEffects.Tags.Collections.IReadOnlyTagCollection.html#TMPEffects_Tags_Collections_IReadOnlyTagCollection_Contains_TMPEffects_Tags_TMPEffectTag_System_Nullable_TMPEffects_Tags_TMPEffectTagIndices__
+  name: Contains
+  nameWithType: IReadOnlyTagCollection.Contains
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.Contains
+- uid: TMPEffects.Tags.TMPEffectTag
+  commentId: T:TMPEffects.Tags.TMPEffectTag
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTag.html
+  name: TMPEffectTag
+  nameWithType: TMPEffectTag
+  fullName: TMPEffects.Tags.TMPEffectTag
+- uid: System.Nullable{TMPEffects.Tags.TMPEffectTagIndices}
+  commentId: T:System.Nullable{TMPEffects.Tags.TMPEffectTagIndices}
+  parent: System
+  definition: System.Nullable`1
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices?
+  nameWithType: TMPEffectTagIndices?
+  fullName: TMPEffects.Tags.TMPEffectTagIndices?
+  spec.csharp:
+  - uid: TMPEffects.Tags.TMPEffectTagIndices
+    name: TMPEffectTagIndices
+    href: TMPEffects.Tags.TMPEffectTagIndices.html
+  - name: '?'
+  spec.vb:
+  - uid: TMPEffects.Tags.TMPEffectTagIndices
+    name: TMPEffectTagIndices
+    href: TMPEffects.Tags.TMPEffectTagIndices.html
+  - name: '?'
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf*
+  commentId: Overload:TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf
+  href: TMPEffects.Tags.Collections.IReadOnlyTagCollection.html#TMPEffects_Tags_Collections_IReadOnlyTagCollection_IndicesOf_TMPEffects_Tags_TMPEffectTag_
+  name: IndicesOf
+  nameWithType: IReadOnlyTagCollection.IndicesOf
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.IndicesOf
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt*
+  commentId: Overload:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt
+  href: TMPEffects.Tags.Collections.IReadOnlyTagCollection.html#TMPEffects_Tags_Collections_IReadOnlyTagCollection_TagsAt_System_Int32_TMPEffects_Tags_TMPEffectTagTuple___System_Int32_
+  name: TagsAt
+  nameWithType: IReadOnlyTagCollection.TagsAt
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagsAt
+- uid: TMPEffects.Tags.TMPEffectTagTuple[]
+  isExternal: true
+  href: TMPEffects.Tags.TMPEffectTagTuple.html
+  name: TMPEffectTagTuple[]
+  nameWithType: TMPEffectTagTuple[]
+  fullName: TMPEffects.Tags.TMPEffectTagTuple[]
+  nameWithType.vb: TMPEffectTagTuple()
+  fullName.vb: TMPEffects.Tags.TMPEffectTagTuple()
+  name.vb: TMPEffectTagTuple()
+  spec.csharp:
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    href: TMPEffects.Tags.TMPEffectTagTuple.html
+  - name: (
+  - name: )
+- uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt*
+  commentId: Overload:TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt
+  href: TMPEffects.Tags.Collections.IReadOnlyTagCollection.html#TMPEffects_Tags_Collections_IReadOnlyTagCollection_TagAt_System_Int32_System_Nullable_System_Int32__
+  name: TagAt
+  nameWithType: IReadOnlyTagCollection.TagAt
+  fullName: TMPEffects.Tags.Collections.IReadOnlyTagCollection.TagAt
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'

@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPEvents.TMPEvent
+  commentId: T:TMPEffects.TMPEvents.TMPEvent
+  id: TMPEvent
+  parent: TMPEffects.TMPEvents
+  children:
+  - TMPEffects.TMPEvents.TMPEvent.#ctor
+  langs:
+  - csharp
+  - vb
+  name: TMPEvent
+  nameWithType: TMPEvent
+  fullName: TMPEffects.TMPEvents.TMPEvent
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPEvents/TMPEvent.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPEvent
+    path: ../Package/Runtime/Effects/TMPEvents/TMPEvent.cs
+    startLine: 8
+  namespace: TMPEffects.TMPEvents
+  summary: Class used by <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> to raise event tags.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class TMPEvent : UnityEvent<TMPEventArgs>
+    content.vb: >-
+      <Serializable>
+
+      Public Class TMPEvent Inherits UnityEvent(Of TMPEventArgs)
+  inheritance:
+  - System.Object
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.TMPEvents.TMPEvent.#ctor
+  commentId: M:TMPEffects.TMPEvents.TMPEvent.#ctor
+  id: '#ctor'
+  parent: TMPEffects.TMPEvents.TMPEvent
+  langs:
+  - csharp
+  - vb
+  name: TMPEvent()
+  nameWithType: TMPEvent.TMPEvent()
+  fullName: TMPEffects.TMPEvents.TMPEvent.TMPEvent()
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPEvents/TMPEvent.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/Effects/TMPEvents/TMPEvent.cs
+    startLine: 11
+  namespace: TMPEffects.TMPEvents
+  syntax:
+    content: public TMPEvent()
+    content.vb: Public Sub New()
+  overload: TMPEffects.TMPEvents.TMPEvent.#ctor*
+  nameWithType.vb: TMPEvent.New()
+  fullName.vb: TMPEffects.TMPEvents.TMPEvent.New()
+  name.vb: New()
+references:
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
+- uid: TMPEffects.TMPEvents
+  commentId: N:TMPEffects.TMPEvents
+  href: TMPEffects.html
+  name: TMPEffects.TMPEvents
+  nameWithType: TMPEffects.TMPEvents
+  fullName: TMPEffects.TMPEvents
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPEvents.TMPEvent.#ctor*
+  commentId: Overload:TMPEffects.TMPEvents.TMPEvent.#ctor
+  href: TMPEffects.TMPEvents.TMPEvent.html#TMPEffects_TMPEvents_TMPEvent__ctor
+  name: TMPEvent
+  nameWithType: TMPEvent.TMPEvent
+  fullName: TMPEffects.TMPEvents.TMPEvent.TMPEvent
+  nameWithType.vb: TMPEvent.New
+  fullName.vb: TMPEffects.TMPEvents.TMPEvent.New
+  name.vb: New

@@ -1,0 +1,1723 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  id: CharData
+  parent: TMPEffects.CharacterData
+  children:
+  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32)
+  - TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,System.Nullable{TMP_WordInfo})
+  - TMPEffects.CharacterData.CharData.AddPivotDelta(Vector3)
+  - TMPEffects.CharacterData.CharData.AddPositionDelta(Vector3)
+  - TMPEffects.CharacterData.CharData.AddVertexDelta(System.Int32,Vector3)
+  - TMPEffects.CharacterData.CharData.InitialPosition
+  - TMPEffects.CharacterData.CharData.InitialRotation
+  - TMPEffects.CharacterData.CharData.InitialScale
+  - TMPEffects.CharacterData.CharData.Position
+  - TMPEffects.CharacterData.CharData.Reset
+  - TMPEffects.CharacterData.CharData.ResetColors
+  - TMPEffects.CharacterData.CharData.ResetPivot
+  - TMPEffects.CharacterData.CharData.ResetPosition
+  - TMPEffects.CharacterData.CharData.ResetRotation
+  - TMPEffects.CharacterData.CharData.ResetScale
+  - TMPEffects.CharacterData.CharData.ResetUVs
+  - TMPEffects.CharacterData.CharData.ResetVertices
+  - TMPEffects.CharacterData.CharData.Rotation
+  - TMPEffects.CharacterData.CharData.RotationPivot
+  - TMPEffects.CharacterData.CharData.Scale
+  - TMPEffects.CharacterData.CharData.SetPivot(Vector3)
+  - TMPEffects.CharacterData.CharData.SetPosition(Vector3)
+  - TMPEffects.CharacterData.CharData.SetRotation(Quaternion)
+  - TMPEffects.CharacterData.CharData.SetScale(Vector3)
+  - TMPEffects.CharacterData.CharData.SetVertex(System.Int32,Vector3)
+  - TMPEffects.CharacterData.CharData.alphasDirty
+  - TMPEffects.CharacterData.CharData.colorsDirty
+  - TMPEffects.CharacterData.CharData.defaultRotation
+  - TMPEffects.CharacterData.CharData.defaultScale
+  - TMPEffects.CharacterData.CharData.info
+  - TMPEffects.CharacterData.CharData.initialMesh
+  - TMPEffects.CharacterData.CharData.mesh
+  - TMPEffects.CharacterData.CharData.positionDirty
+  - TMPEffects.CharacterData.CharData.rotationDirty
+  - TMPEffects.CharacterData.CharData.scaleDirty
+  - TMPEffects.CharacterData.CharData.uvsDirty
+  - TMPEffects.CharacterData.CharData.verticesDirty
+  langs:
+  - csharp
+  - vb
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CharData
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 6
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Holds information about a character.<br />
+
+    In addition to holding a selection of data supplied by the respective
+
+    TMP_CharacterInfo, accessible through the <xref href="TMPEffects.CharacterData.CharData.info" data-throw-if-not-resolved="false"></xref> field,
+
+    also holds <xref href="TMPEffects" data-throw-if-not-resolved="false"></xref> specific data and methods to manipulate said data.
+  example: []
+  syntax:
+    content: public class CharData
+    content.vb: Public Class CharData
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.CharacterData.CharData.positionDirty
+  commentId: P:TMPEffects.CharacterData.CharData.positionDirty
+  id: positionDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: positionDirty
+  nameWithType: CharData.positionDirty
+  fullName: TMPEffects.CharacterData.CharData.positionDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: positionDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 16
+  namespace: TMPEffects.CharacterData
+  summary: Whether the position has been manipulated from the character's initial position.
+  example: []
+  syntax:
+    content: public bool positionDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property positionDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.positionDirty*
+- uid: TMPEffects.CharacterData.CharData.rotationDirty
+  commentId: P:TMPEffects.CharacterData.CharData.rotationDirty
+  id: rotationDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: rotationDirty
+  nameWithType: CharData.rotationDirty
+  fullName: TMPEffects.CharacterData.CharData.rotationDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: rotationDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 20
+  namespace: TMPEffects.CharacterData
+  summary: Whether the rotation has been manipulated from the character's initial rotation.
+  example: []
+  syntax:
+    content: public bool rotationDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property rotationDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.rotationDirty*
+- uid: TMPEffects.CharacterData.CharData.scaleDirty
+  commentId: P:TMPEffects.CharacterData.CharData.scaleDirty
+  id: scaleDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: scaleDirty
+  nameWithType: CharData.scaleDirty
+  fullName: TMPEffects.CharacterData.CharData.scaleDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: scaleDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 24
+  namespace: TMPEffects.CharacterData
+  summary: Whether the scale has been manipulated from the character's initial scale.
+  example: []
+  syntax:
+    content: public bool scaleDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property scaleDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.scaleDirty*
+- uid: TMPEffects.CharacterData.CharData.verticesDirty
+  commentId: P:TMPEffects.CharacterData.CharData.verticesDirty
+  id: verticesDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: verticesDirty
+  nameWithType: CharData.verticesDirty
+  fullName: TMPEffects.CharacterData.CharData.verticesDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: verticesDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 28
+  namespace: TMPEffects.CharacterData
+  summary: Whether the vertices have been manipulated.
+  example: []
+  syntax:
+    content: public bool verticesDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property verticesDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.verticesDirty*
+- uid: TMPEffects.CharacterData.CharData.colorsDirty
+  commentId: P:TMPEffects.CharacterData.CharData.colorsDirty
+  id: colorsDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: colorsDirty
+  nameWithType: CharData.colorsDirty
+  fullName: TMPEffects.CharacterData.CharData.colorsDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: colorsDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 32
+  namespace: TMPEffects.CharacterData
+  summary: Whether the vertex colors have been manipulated.
+  example: []
+  syntax:
+    content: public bool colorsDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property colorsDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.colorsDirty*
+- uid: TMPEffects.CharacterData.CharData.alphasDirty
+  commentId: P:TMPEffects.CharacterData.CharData.alphasDirty
+  id: alphasDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: alphasDirty
+  nameWithType: CharData.alphasDirty
+  fullName: TMPEffects.CharacterData.CharData.alphasDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: alphasDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 36
+  namespace: TMPEffects.CharacterData
+  summary: Whether the vertex alphas have been manipulated.
+  example: []
+  syntax:
+    content: public bool alphasDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property alphasDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.alphasDirty*
+- uid: TMPEffects.CharacterData.CharData.uvsDirty
+  commentId: P:TMPEffects.CharacterData.CharData.uvsDirty
+  id: uvsDirty
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: uvsDirty
+  nameWithType: CharData.uvsDirty
+  fullName: TMPEffects.CharacterData.CharData.uvsDirty
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: uvsDirty
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 40
+  namespace: TMPEffects.CharacterData
+  summary: Whether the UVs have been manipulated.
+  example: []
+  syntax:
+    content: public bool uvsDirty { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property uvsDirty As Boolean
+  overload: TMPEffects.CharacterData.CharData.uvsDirty*
+- uid: TMPEffects.CharacterData.CharData.Position
+  commentId: P:TMPEffects.CharacterData.CharData.Position
+  id: Position
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: CharData.Position
+  fullName: TMPEffects.CharacterData.CharData.Position
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Position
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 45
+  namespace: TMPEffects.CharacterData
+  summary: The character's position.
+  example: []
+  syntax:
+    content: public Vector3 Position { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property Position As Vector3
+  overload: TMPEffects.CharacterData.CharData.Position*
+- uid: TMPEffects.CharacterData.CharData.Scale
+  commentId: P:TMPEffects.CharacterData.CharData.Scale
+  id: Scale
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: CharData.Scale
+  fullName: TMPEffects.CharacterData.CharData.Scale
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Scale
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 49
+  namespace: TMPEffects.CharacterData
+  summary: The character's scale.
+  example: []
+  syntax:
+    content: public Vector3 Scale { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property Scale As Vector3
+  overload: TMPEffects.CharacterData.CharData.Scale*
+- uid: TMPEffects.CharacterData.CharData.Rotation
+  commentId: P:TMPEffects.CharacterData.CharData.Rotation
+  id: Rotation
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: CharData.Rotation
+  fullName: TMPEffects.CharacterData.CharData.Rotation
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Rotation
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 53
+  namespace: TMPEffects.CharacterData
+  summary: The character's rotation.
+  example: []
+  syntax:
+    content: public Quaternion Rotation { get; }
+    parameters: []
+    return:
+      type: Global.Quaternion
+    content.vb: Public ReadOnly Property Rotation As Quaternion
+  overload: TMPEffects.CharacterData.CharData.Rotation*
+- uid: TMPEffects.CharacterData.CharData.RotationPivot
+  commentId: P:TMPEffects.CharacterData.CharData.RotationPivot
+  id: RotationPivot
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: RotationPivot
+  nameWithType: CharData.RotationPivot
+  fullName: TMPEffects.CharacterData.CharData.RotationPivot
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: RotationPivot
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 57
+  namespace: TMPEffects.CharacterData
+  summary: The character's rotation pivot.
+  example: []
+  syntax:
+    content: public Vector3 RotationPivot { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property RotationPivot As Vector3
+  overload: TMPEffects.CharacterData.CharData.RotationPivot*
+- uid: TMPEffects.CharacterData.CharData.defaultScale
+  commentId: F:TMPEffects.CharacterData.CharData.defaultScale
+  id: defaultScale
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: defaultScale
+  nameWithType: CharData.defaultScale
+  fullName: TMPEffects.CharacterData.CharData.defaultScale
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: defaultScale
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 63
+  namespace: TMPEffects.CharacterData
+  summary: The default scale of any CharData.
+  example: []
+  syntax:
+    content: public static readonly Vector3 defaultScale
+    return:
+      type: Global.Vector3
+    content.vb: Public Shared ReadOnly defaultScale As Vector3
+- uid: TMPEffects.CharacterData.CharData.defaultRotation
+  commentId: F:TMPEffects.CharacterData.CharData.defaultRotation
+  id: defaultRotation
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: defaultRotation
+  nameWithType: CharData.defaultRotation
+  fullName: TMPEffects.CharacterData.CharData.defaultRotation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: defaultRotation
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 67
+  namespace: TMPEffects.CharacterData
+  summary: The default rotation of any CharData.
+  example: []
+  syntax:
+    content: public static readonly Quaternion defaultRotation
+    return:
+      type: Global.Quaternion
+    content.vb: Public Shared ReadOnly defaultRotation As Quaternion
+- uid: TMPEffects.CharacterData.CharData.info
+  commentId: F:TMPEffects.CharacterData.CharData.info
+  id: info
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: info
+  nameWithType: CharData.info
+  fullName: TMPEffects.CharacterData.CharData.info
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: info
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 72
+  namespace: TMPEffects.CharacterData
+  summary: Holds a selection of TMP_CharacterInfo data.
+  example: []
+  syntax:
+    content: public readonly CharData.Info info
+    return:
+      type: TMPEffects.CharacterData.CharData.Info
+    content.vb: Public ReadOnly info As CharData.Info
+- uid: TMPEffects.CharacterData.CharData.mesh
+  commentId: F:TMPEffects.CharacterData.CharData.mesh
+  id: mesh
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: mesh
+  nameWithType: CharData.mesh
+  fullName: TMPEffects.CharacterData.CharData.mesh
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: mesh
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 76
+  namespace: TMPEffects.CharacterData
+  summary: The mesh of the character.
+  example: []
+  syntax:
+    content: public readonly VertexData mesh
+    return:
+      type: TMPEffects.CharacterData.VertexData
+    content.vb: Public ReadOnly mesh As VertexData
+- uid: TMPEffects.CharacterData.CharData.initialMesh
+  commentId: P:TMPEffects.CharacterData.CharData.initialMesh
+  id: initialMesh
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: initialMesh
+  nameWithType: CharData.initialMesh
+  fullName: TMPEffects.CharacterData.CharData.initialMesh
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: initialMesh
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 81
+  namespace: TMPEffects.CharacterData
+  summary: The initial mesh of this character.
+  example: []
+  syntax:
+    content: public ReadOnlyVertexData initialMesh { get; }
+    parameters: []
+    return:
+      type: TMPEffects.CharacterData.ReadOnlyVertexData
+    content.vb: Public ReadOnly Property initialMesh As ReadOnlyVertexData
+  overload: TMPEffects.CharacterData.CharData.initialMesh*
+- uid: TMPEffects.CharacterData.CharData.InitialPosition
+  commentId: F:TMPEffects.CharacterData.CharData.InitialPosition
+  id: InitialPosition
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: InitialPosition
+  nameWithType: CharData.InitialPosition
+  fullName: TMPEffects.CharacterData.CharData.InitialPosition
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: InitialPosition
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 85
+  namespace: TMPEffects.CharacterData
+  summary: The initial position of this character.
+  example: []
+  syntax:
+    content: public readonly Vector3 InitialPosition
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly InitialPosition As Vector3
+- uid: TMPEffects.CharacterData.CharData.InitialRotation
+  commentId: F:TMPEffects.CharacterData.CharData.InitialRotation
+  id: InitialRotation
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: InitialRotation
+  nameWithType: CharData.InitialRotation
+  fullName: TMPEffects.CharacterData.CharData.InitialRotation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: InitialRotation
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 89
+  namespace: TMPEffects.CharacterData
+  summary: The initial rotation of this character.
+  example: []
+  syntax:
+    content: public readonly Quaternion InitialRotation
+    return:
+      type: Global.Quaternion
+    content.vb: Public ReadOnly InitialRotation As Quaternion
+- uid: TMPEffects.CharacterData.CharData.InitialScale
+  commentId: F:TMPEffects.CharacterData.CharData.InitialScale
+  id: InitialScale
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: InitialScale
+  nameWithType: CharData.InitialScale
+  fullName: TMPEffects.CharacterData.CharData.InitialScale
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: InitialScale
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 93
+  namespace: TMPEffects.CharacterData
+  summary: The initial scale of this character.
+  example: []
+  syntax:
+    content: public readonly Vector3 InitialScale
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly InitialScale As Vector3
+- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32)
+  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32)
+  id: '#ctor(System.Int32,TMP_CharacterInfo,System.Int32)'
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: CharData(int, TMP_CharacterInfo, int)
+  nameWithType: CharData.CharData(int, TMP_CharacterInfo, int)
+  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMP_CharacterInfo, int)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 101
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: cInfo
+      type: Global.TMP_CharacterInfo
+    - id: wordIndex
+      type: System.Int32
+    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wordIndex As Integer)
+  overload: TMPEffects.CharacterData.CharData.#ctor*
+  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo, Integer)
+  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMP_CharacterInfo, Integer)
+  name.vb: New(Integer, TMP_CharacterInfo, Integer)
+- uid: TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,System.Nullable{TMP_WordInfo})
+  commentId: M:TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,System.Nullable{TMP_WordInfo})
+  id: '#ctor(System.Int32,TMP_CharacterInfo,System.Int32,System.Nullable{TMP_WordInfo})'
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
+  nameWithType: CharData.CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
+  fullName: TMPEffects.CharacterData.CharData.CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 116
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo? wInfo = null)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: cInfo
+      type: Global.TMP_CharacterInfo
+    - id: wordIndex
+      type: System.Int32
+    - id: wInfo
+      type: System.Nullable{TMP_WordInfo}
+    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wordIndex As Integer, wInfo As TMP_WordInfo? = Nothing)
+  overload: TMPEffects.CharacterData.CharData.#ctor*
+  nameWithType.vb: CharData.New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo?)
+  fullName.vb: TMPEffects.CharacterData.CharData.New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo?)
+  name.vb: New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo?)
+- uid: TMPEffects.CharacterData.CharData.SetVertex(System.Int32,Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.SetVertex(System.Int32,Vector3)
+  id: SetVertex(System.Int32,Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: SetVertex(int, Vector3)
+  nameWithType: CharData.SetVertex(int, Vector3)
+  fullName: TMPEffects.CharacterData.CharData.SetVertex(int, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetVertex
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 138
+  namespace: TMPEffects.CharacterData
+  summary: Set the position of the vertex at the given index.
+  example: []
+  syntax:
+    content: public void SetVertex(int index, Vector3 position)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the vertex.
+    - id: position
+      type: Global.Vector3
+      description: The new position of the vertex.
+    content.vb: Public Sub SetVertex(index As Integer, position As Vector3)
+  overload: TMPEffects.CharacterData.CharData.SetVertex*
+  nameWithType.vb: CharData.SetVertex(Integer, Vector3)
+  fullName.vb: TMPEffects.CharacterData.CharData.SetVertex(Integer, Vector3)
+  name.vb: SetVertex(Integer, Vector3)
+- uid: TMPEffects.CharacterData.CharData.AddVertexDelta(System.Int32,Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.AddVertexDelta(System.Int32,Vector3)
+  id: AddVertexDelta(System.Int32,Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: AddVertexDelta(int, Vector3)
+  nameWithType: CharData.AddVertexDelta(int, Vector3)
+  fullName: TMPEffects.CharacterData.CharData.AddVertexDelta(int, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AddVertexDelta
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 148
+  namespace: TMPEffects.CharacterData
+  summary: Add a positon delta to the vertex at the given index.
+  example: []
+  syntax:
+    content: public void AddVertexDelta(int index, Vector3 delta)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the vertex.
+    - id: delta
+      type: Global.Vector3
+      description: The delta to add to the position of the vertex.
+    content.vb: Public Sub AddVertexDelta(index As Integer, delta As Vector3)
+  overload: TMPEffects.CharacterData.CharData.AddVertexDelta*
+  nameWithType.vb: CharData.AddVertexDelta(Integer, Vector3)
+  fullName.vb: TMPEffects.CharacterData.CharData.AddVertexDelta(Integer, Vector3)
+  name.vb: AddVertexDelta(Integer, Vector3)
+- uid: TMPEffects.CharacterData.CharData.SetPosition(Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.SetPosition(Vector3)
+  id: SetPosition(Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: SetPosition(Vector3)
+  nameWithType: CharData.SetPosition(Vector3)
+  fullName: TMPEffects.CharacterData.CharData.SetPosition(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetPosition
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 157
+  namespace: TMPEffects.CharacterData
+  summary: Set the position of the character.
+  example: []
+  syntax:
+    content: public void SetPosition(Vector3 position)
+    parameters:
+    - id: position
+      type: Global.Vector3
+      description: The new position of the character.
+    content.vb: Public Sub SetPosition(position As Vector3)
+  overload: TMPEffects.CharacterData.CharData.SetPosition*
+- uid: TMPEffects.CharacterData.CharData.AddPositionDelta(Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.AddPositionDelta(Vector3)
+  id: AddPositionDelta(Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: AddPositionDelta(Vector3)
+  nameWithType: CharData.AddPositionDelta(Vector3)
+  fullName: TMPEffects.CharacterData.CharData.AddPositionDelta(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AddPositionDelta
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 166
+  namespace: TMPEffects.CharacterData
+  summary: Add a delta to the position of the character.
+  example: []
+  syntax:
+    content: public void AddPositionDelta(Vector3 delta)
+    parameters:
+    - id: delta
+      type: Global.Vector3
+      description: The delta to add to the position of the character.
+    content.vb: Public Sub AddPositionDelta(delta As Vector3)
+  overload: TMPEffects.CharacterData.CharData.AddPositionDelta*
+- uid: TMPEffects.CharacterData.CharData.SetPivot(Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.SetPivot(Vector3)
+  id: SetPivot(Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: SetPivot(Vector3)
+  nameWithType: CharData.SetPivot(Vector3)
+  fullName: TMPEffects.CharacterData.CharData.SetPivot(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetPivot
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 176
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Set the pivot of this character.<br />
+
+    Note that the pivot is independent of the character's position, scale and rotation.
+  example: []
+  syntax:
+    content: public void SetPivot(Vector3 pivot)
+    parameters:
+    - id: pivot
+      type: Global.Vector3
+      description: The new position of the pivot.
+    content.vb: Public Sub SetPivot(pivot As Vector3)
+  overload: TMPEffects.CharacterData.CharData.SetPivot*
+- uid: TMPEffects.CharacterData.CharData.AddPivotDelta(Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.AddPivotDelta(Vector3)
+  id: AddPivotDelta(Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: AddPivotDelta(Vector3)
+  nameWithType: CharData.AddPivotDelta(Vector3)
+  fullName: TMPEffects.CharacterData.CharData.AddPivotDelta(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AddPivotDelta
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 185
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Add a delta to the pivot of the character.<br />
+
+    Note that the pivot is independent of the character's position, rotation and scale.
+  example: []
+  syntax:
+    content: public void AddPivotDelta(Vector3 delta)
+    parameters:
+    - id: delta
+      type: Global.Vector3
+      description: The delta to add to the position of the pivot.
+    content.vb: Public Sub AddPivotDelta(delta As Vector3)
+  overload: TMPEffects.CharacterData.CharData.AddPivotDelta*
+- uid: TMPEffects.CharacterData.CharData.SetRotation(Quaternion)
+  commentId: M:TMPEffects.CharacterData.CharData.SetRotation(Quaternion)
+  id: SetRotation(Quaternion)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: SetRotation(Quaternion)
+  nameWithType: CharData.SetRotation(Quaternion)
+  fullName: TMPEffects.CharacterData.CharData.SetRotation(Quaternion)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetRotation
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 194
+  namespace: TMPEffects.CharacterData
+  summary: Set the rotation of this character.
+  example: []
+  syntax:
+    content: public void SetRotation(Quaternion rotation)
+    parameters:
+    - id: rotation
+      type: Global.Quaternion
+      description: The new rotation of this character.
+    content.vb: Public Sub SetRotation(rotation As Quaternion)
+  overload: TMPEffects.CharacterData.CharData.SetRotation*
+- uid: TMPEffects.CharacterData.CharData.SetScale(Vector3)
+  commentId: M:TMPEffects.CharacterData.CharData.SetScale(Vector3)
+  id: SetScale(Vector3)
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: SetScale(Vector3)
+  nameWithType: CharData.SetScale(Vector3)
+  fullName: TMPEffects.CharacterData.CharData.SetScale(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetScale
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 204
+  namespace: TMPEffects.CharacterData
+  summary: Set the scale of this character.
+  example: []
+  syntax:
+    content: public void SetScale(Vector3 scale)
+    parameters:
+    - id: scale
+      type: Global.Vector3
+      description: The new scale of this character.
+    content.vb: Public Sub SetScale(scale As Vector3)
+  overload: TMPEffects.CharacterData.CharData.SetScale*
+- uid: TMPEffects.CharacterData.CharData.Reset
+  commentId: M:TMPEffects.CharacterData.CharData.Reset
+  id: Reset
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: CharData.Reset()
+  fullName: TMPEffects.CharacterData.CharData.Reset()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Reset
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 212
+  namespace: TMPEffects.CharacterData
+  summary: Reset changes made to the character's mesh, position, rotation, scale and pivot.
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: TMPEffects.CharacterData.CharData.Reset*
+- uid: TMPEffects.CharacterData.CharData.ResetScale
+  commentId: M:TMPEffects.CharacterData.CharData.ResetScale
+  id: ResetScale
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetScale()
+  nameWithType: CharData.ResetScale()
+  fullName: TMPEffects.CharacterData.CharData.ResetScale()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetScale
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 224
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's scale.
+  example: []
+  syntax:
+    content: public void ResetScale()
+    content.vb: Public Sub ResetScale()
+  overload: TMPEffects.CharacterData.CharData.ResetScale*
+- uid: TMPEffects.CharacterData.CharData.ResetPosition
+  commentId: M:TMPEffects.CharacterData.CharData.ResetPosition
+  id: ResetPosition
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetPosition()
+  nameWithType: CharData.ResetPosition()
+  fullName: TMPEffects.CharacterData.CharData.ResetPosition()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetPosition
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 228
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's position.
+  example: []
+  syntax:
+    content: public void ResetPosition()
+    content.vb: Public Sub ResetPosition()
+  overload: TMPEffects.CharacterData.CharData.ResetPosition*
+- uid: TMPEffects.CharacterData.CharData.ResetRotation
+  commentId: M:TMPEffects.CharacterData.CharData.ResetRotation
+  id: ResetRotation
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetRotation()
+  nameWithType: CharData.ResetRotation()
+  fullName: TMPEffects.CharacterData.CharData.ResetRotation()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetRotation
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 232
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's rotation.
+  example: []
+  syntax:
+    content: public void ResetRotation()
+    content.vb: Public Sub ResetRotation()
+  overload: TMPEffects.CharacterData.CharData.ResetRotation*
+- uid: TMPEffects.CharacterData.CharData.ResetPivot
+  commentId: M:TMPEffects.CharacterData.CharData.ResetPivot
+  id: ResetPivot
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetPivot()
+  nameWithType: CharData.ResetPivot()
+  fullName: TMPEffects.CharacterData.CharData.ResetPivot()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetPivot
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 236
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's pivot.
+  example: []
+  syntax:
+    content: public void ResetPivot()
+    content.vb: Public Sub ResetPivot()
+  overload: TMPEffects.CharacterData.CharData.ResetPivot*
+- uid: TMPEffects.CharacterData.CharData.ResetVertices
+  commentId: M:TMPEffects.CharacterData.CharData.ResetVertices
+  id: ResetVertices
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetVertices()
+  nameWithType: CharData.ResetVertices()
+  fullName: TMPEffects.CharacterData.CharData.ResetVertices()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetVertices
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 240
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's vertices.
+  example: []
+  syntax:
+    content: public void ResetVertices()
+    content.vb: Public Sub ResetVertices()
+  overload: TMPEffects.CharacterData.CharData.ResetVertices*
+- uid: TMPEffects.CharacterData.CharData.ResetUVs
+  commentId: M:TMPEffects.CharacterData.CharData.ResetUVs
+  id: ResetUVs
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetUVs()
+  nameWithType: CharData.ResetUVs()
+  fullName: TMPEffects.CharacterData.CharData.ResetUVs()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetUVs
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 244
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's UVs.
+  example: []
+  syntax:
+    content: public void ResetUVs()
+    content.vb: Public Sub ResetUVs()
+  overload: TMPEffects.CharacterData.CharData.ResetUVs*
+- uid: TMPEffects.CharacterData.CharData.ResetColors
+  commentId: M:TMPEffects.CharacterData.CharData.ResetColors
+  id: ResetColors
+  parent: TMPEffects.CharacterData.CharData
+  langs:
+  - csharp
+  - vb
+  name: ResetColors()
+  nameWithType: CharData.ResetColors()
+  fullName: TMPEffects.CharacterData.CharData.ResetColors()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/CharData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetColors
+    path: ../Package/Runtime/CharData/CharData.cs
+    startLine: 248
+  namespace: TMPEffects.CharacterData
+  summary: Reset the character's vertex colors.
+  example: []
+  syntax:
+    content: public void ResetColors()
+    content.vb: Public Sub ResetColors()
+  overload: TMPEffects.CharacterData.CharData.ResetColors*
+references:
+- uid: TMPEffects.CharacterData.CharData.info
+  commentId: F:TMPEffects.CharacterData.CharData.info
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_info
+  name: info
+  nameWithType: CharData.info
+  fullName: TMPEffects.CharacterData.CharData.info
+- uid: TMPEffects
+  commentId: N:TMPEffects
+  href: TMPEffects.html
+  name: TMPEffects
+  nameWithType: TMPEffects
+  fullName: TMPEffects
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.CharacterData.CharData.positionDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.positionDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_positionDirty
+  name: positionDirty
+  nameWithType: CharData.positionDirty
+  fullName: TMPEffects.CharacterData.CharData.positionDirty
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.CharacterData.CharData.rotationDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.rotationDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_rotationDirty
+  name: rotationDirty
+  nameWithType: CharData.rotationDirty
+  fullName: TMPEffects.CharacterData.CharData.rotationDirty
+- uid: TMPEffects.CharacterData.CharData.scaleDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.scaleDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_scaleDirty
+  name: scaleDirty
+  nameWithType: CharData.scaleDirty
+  fullName: TMPEffects.CharacterData.CharData.scaleDirty
+- uid: TMPEffects.CharacterData.CharData.verticesDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.verticesDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_verticesDirty
+  name: verticesDirty
+  nameWithType: CharData.verticesDirty
+  fullName: TMPEffects.CharacterData.CharData.verticesDirty
+- uid: TMPEffects.CharacterData.CharData.colorsDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.colorsDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_colorsDirty
+  name: colorsDirty
+  nameWithType: CharData.colorsDirty
+  fullName: TMPEffects.CharacterData.CharData.colorsDirty
+- uid: TMPEffects.CharacterData.CharData.alphasDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.alphasDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_alphasDirty
+  name: alphasDirty
+  nameWithType: CharData.alphasDirty
+  fullName: TMPEffects.CharacterData.CharData.alphasDirty
+- uid: TMPEffects.CharacterData.CharData.uvsDirty*
+  commentId: Overload:TMPEffects.CharacterData.CharData.uvsDirty
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_uvsDirty
+  name: uvsDirty
+  nameWithType: CharData.uvsDirty
+  fullName: TMPEffects.CharacterData.CharData.uvsDirty
+- uid: TMPEffects.CharacterData.CharData.Position*
+  commentId: Overload:TMPEffects.CharacterData.CharData.Position
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Position
+  name: Position
+  nameWithType: CharData.Position
+  fullName: TMPEffects.CharacterData.CharData.Position
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: TMPEffects.CharacterData.CharData.Scale*
+  commentId: Overload:TMPEffects.CharacterData.CharData.Scale
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Scale
+  name: Scale
+  nameWithType: CharData.Scale
+  fullName: TMPEffects.CharacterData.CharData.Scale
+- uid: TMPEffects.CharacterData.CharData.Rotation*
+  commentId: Overload:TMPEffects.CharacterData.CharData.Rotation
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Rotation
+  name: Rotation
+  nameWithType: CharData.Rotation
+  fullName: TMPEffects.CharacterData.CharData.Rotation
+- uid: Global.Quaternion
+  isExternal: true
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: Quaternion
+- uid: TMPEffects.CharacterData.CharData.RotationPivot*
+  commentId: Overload:TMPEffects.CharacterData.CharData.RotationPivot
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_RotationPivot
+  name: RotationPivot
+  nameWithType: CharData.RotationPivot
+  fullName: TMPEffects.CharacterData.CharData.RotationPivot
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  spec.vb:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+- uid: TMPEffects.CharacterData.VertexData
+  commentId: T:TMPEffects.CharacterData.VertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.VertexData.html
+  name: VertexData
+  nameWithType: VertexData
+  fullName: TMPEffects.CharacterData.VertexData
+- uid: TMPEffects.CharacterData.CharData.initialMesh*
+  commentId: Overload:TMPEffects.CharacterData.CharData.initialMesh
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_initialMesh
+  name: initialMesh
+  nameWithType: CharData.initialMesh
+  fullName: TMPEffects.CharacterData.CharData.initialMesh
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.CharData.#ctor*
+  commentId: Overload:TMPEffects.CharacterData.CharData.#ctor
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData__ctor_System_Int32_TMP_CharacterInfo_System_Int32_
+  name: CharData
+  nameWithType: CharData.CharData
+  fullName: TMPEffects.CharacterData.CharData.CharData
+  nameWithType.vb: CharData.New
+  fullName.vb: TMPEffects.CharacterData.CharData.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Global.TMP_CharacterInfo
+  isExternal: true
+  name: TMP_CharacterInfo
+  nameWithType: TMP_CharacterInfo
+  fullName: TMP_CharacterInfo
+- uid: System.Nullable{TMP_WordInfo}
+  commentId: T:System.Nullable{TMP_WordInfo}
+  parent: System
+  definition: System.Nullable`1
+  name: TMP_WordInfo?
+  nameWithType: TMP_WordInfo?
+  fullName: TMP_WordInfo?
+  spec.csharp:
+  - uid: Global.TMP_WordInfo
+    name: TMP_WordInfo
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: Global.TMP_WordInfo
+    name: TMP_WordInfo
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.CharacterData.CharData.SetVertex*
+  commentId: Overload:TMPEffects.CharacterData.CharData.SetVertex
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetVertex_System_Int32_Vector3_
+  name: SetVertex
+  nameWithType: CharData.SetVertex
+  fullName: TMPEffects.CharacterData.CharData.SetVertex
+- uid: TMPEffects.CharacterData.CharData.AddVertexDelta*
+  commentId: Overload:TMPEffects.CharacterData.CharData.AddVertexDelta
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_AddVertexDelta_System_Int32_Vector3_
+  name: AddVertexDelta
+  nameWithType: CharData.AddVertexDelta
+  fullName: TMPEffects.CharacterData.CharData.AddVertexDelta
+- uid: TMPEffects.CharacterData.CharData.SetPosition*
+  commentId: Overload:TMPEffects.CharacterData.CharData.SetPosition
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetPosition_Vector3_
+  name: SetPosition
+  nameWithType: CharData.SetPosition
+  fullName: TMPEffects.CharacterData.CharData.SetPosition
+- uid: TMPEffects.CharacterData.CharData.AddPositionDelta*
+  commentId: Overload:TMPEffects.CharacterData.CharData.AddPositionDelta
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_AddPositionDelta_Vector3_
+  name: AddPositionDelta
+  nameWithType: CharData.AddPositionDelta
+  fullName: TMPEffects.CharacterData.CharData.AddPositionDelta
+- uid: TMPEffects.CharacterData.CharData.SetPivot*
+  commentId: Overload:TMPEffects.CharacterData.CharData.SetPivot
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetPivot_Vector3_
+  name: SetPivot
+  nameWithType: CharData.SetPivot
+  fullName: TMPEffects.CharacterData.CharData.SetPivot
+- uid: TMPEffects.CharacterData.CharData.AddPivotDelta*
+  commentId: Overload:TMPEffects.CharacterData.CharData.AddPivotDelta
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_AddPivotDelta_Vector3_
+  name: AddPivotDelta
+  nameWithType: CharData.AddPivotDelta
+  fullName: TMPEffects.CharacterData.CharData.AddPivotDelta
+- uid: TMPEffects.CharacterData.CharData.SetRotation*
+  commentId: Overload:TMPEffects.CharacterData.CharData.SetRotation
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetRotation_Quaternion_
+  name: SetRotation
+  nameWithType: CharData.SetRotation
+  fullName: TMPEffects.CharacterData.CharData.SetRotation
+- uid: TMPEffects.CharacterData.CharData.SetScale*
+  commentId: Overload:TMPEffects.CharacterData.CharData.SetScale
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetScale_Vector3_
+  name: SetScale
+  nameWithType: CharData.SetScale
+  fullName: TMPEffects.CharacterData.CharData.SetScale
+- uid: TMPEffects.CharacterData.CharData.Reset*
+  commentId: Overload:TMPEffects.CharacterData.CharData.Reset
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Reset
+  name: Reset
+  nameWithType: CharData.Reset
+  fullName: TMPEffects.CharacterData.CharData.Reset
+- uid: TMPEffects.CharacterData.CharData.ResetScale*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetScale
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetScale
+  name: ResetScale
+  nameWithType: CharData.ResetScale
+  fullName: TMPEffects.CharacterData.CharData.ResetScale
+- uid: TMPEffects.CharacterData.CharData.ResetPosition*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetPosition
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetPosition
+  name: ResetPosition
+  nameWithType: CharData.ResetPosition
+  fullName: TMPEffects.CharacterData.CharData.ResetPosition
+- uid: TMPEffects.CharacterData.CharData.ResetRotation*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetRotation
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetRotation
+  name: ResetRotation
+  nameWithType: CharData.ResetRotation
+  fullName: TMPEffects.CharacterData.CharData.ResetRotation
+- uid: TMPEffects.CharacterData.CharData.ResetPivot*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetPivot
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetPivot
+  name: ResetPivot
+  nameWithType: CharData.ResetPivot
+  fullName: TMPEffects.CharacterData.CharData.ResetPivot
+- uid: TMPEffects.CharacterData.CharData.ResetVertices*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetVertices
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetVertices
+  name: ResetVertices
+  nameWithType: CharData.ResetVertices
+  fullName: TMPEffects.CharacterData.CharData.ResetVertices
+- uid: TMPEffects.CharacterData.CharData.ResetUVs*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetUVs
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetUVs
+  name: ResetUVs
+  nameWithType: CharData.ResetUVs
+  fullName: TMPEffects.CharacterData.CharData.ResetUVs
+- uid: TMPEffects.CharacterData.CharData.ResetColors*
+  commentId: Overload:TMPEffects.CharacterData.CharData.ResetColors
+  href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ResetColors
+  name: ResetColors
+  nameWithType: CharData.ResetColors
+  fullName: TMPEffects.CharacterData.CharData.ResetColors

@@ -1,0 +1,695 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.Animator.SegmentData
+  commentId: T:TMPEffects.Components.Animator.SegmentData
+  id: SegmentData
+  parent: TMPEffects.Components.Animator
+  children:
+  - TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
+  - TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  - TMPEffects.Components.Animator.SegmentData.effectiveLength
+  - TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  - TMPEffects.Components.Animator.SegmentData.firstVisibleIndex
+  - TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  - TMPEffects.Components.Animator.SegmentData.lastVisibleIndex
+  - TMPEffects.Components.Animator.SegmentData.length
+  - TMPEffects.Components.Animator.SegmentData.max
+  - TMPEffects.Components.Animator.SegmentData.min
+  - TMPEffects.Components.Animator.SegmentData.startIndex
+  langs:
+  - csharp
+  - vb
+  name: SegmentData
+  nameWithType: SegmentData
+  fullName: TMPEffects.Components.Animator.SegmentData
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SegmentData
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 13
+  namespace: TMPEffects.Components.Animator
+  summary: >-
+    To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and its animations.<br />
+
+    Contains data about a given animation segment.
+  example: []
+  syntax:
+    content: public struct SegmentData
+    content.vb: Public Structure SegmentData
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TMPEffects.Components.Animator.SegmentData.startIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.startIndex
+  id: startIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: startIndex
+  nameWithType: SegmentData.startIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.startIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: startIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 18
+  namespace: TMPEffects.Components.Animator
+  summary: The first index of the segment within the containing text.
+  example: []
+  syntax:
+    content: public readonly int startIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly startIndex As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.length
+  commentId: F:TMPEffects.Components.Animator.SegmentData.length
+  id: length
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: length
+  nameWithType: SegmentData.length
+  fullName: TMPEffects.Components.Animator.SegmentData.length
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: length
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 22
+  namespace: TMPEffects.Components.Animator
+  summary: The length of the animation segment.
+  example: []
+  syntax:
+    content: public readonly int length
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly length As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.effectiveLength
+  commentId: F:TMPEffects.Components.Animator.SegmentData.effectiveLength
+  id: effectiveLength
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: effectiveLength
+  nameWithType: SegmentData.effectiveLength
+  fullName: TMPEffects.Components.Animator.SegmentData.effectiveLength
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: effectiveLength
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 27
+  namespace: TMPEffects.Components.Animator
+  summary: The effective length of the animation segment; i.e. the length of the segment from <xref href="TMPEffects.Components.Animator.SegmentData.firstAnimationIndex" data-throw-if-not-resolved="false"></xref> to <xref href="TMPEffects.Components.Animator.SegmentData.lastAnimationIndex" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public readonly int effectiveLength
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly effectiveLength As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.firstVisibleIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.firstVisibleIndex
+  id: firstVisibleIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: firstVisibleIndex
+  nameWithType: SegmentData.firstVisibleIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.firstVisibleIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: firstVisibleIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 32
+  namespace: TMPEffects.Components.Animator
+  summary: The index of the first visible character (i.e. non-whitespace character).
+  example: []
+  syntax:
+    content: public readonly int firstVisibleIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly firstVisibleIndex As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.lastVisibleIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.lastVisibleIndex
+  id: lastVisibleIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: lastVisibleIndex
+  nameWithType: SegmentData.lastVisibleIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.lastVisibleIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: lastVisibleIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 36
+  namespace: TMPEffects.Components.Animator
+  summary: The index of the last visible character (i.e. non-whitespace character).
+  example: []
+  syntax:
+    content: public readonly int lastVisibleIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly lastVisibleIndex As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  id: firstAnimationIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: firstAnimationIndex
+  nameWithType: SegmentData.firstAnimationIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: firstAnimationIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 41
+  namespace: TMPEffects.Components.Animator
+  summary: The index of the first character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
+  example: []
+  syntax:
+    content: public readonly int firstAnimationIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly firstAnimationIndex As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  id: lastAnimationIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: lastAnimationIndex
+  nameWithType: SegmentData.lastAnimationIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: lastAnimationIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 45
+  namespace: TMPEffects.Components.Animator
+  summary: The index of the last character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
+  example: []
+  syntax:
+    content: public readonly int lastAnimationIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly lastAnimationIndex As Integer
+- uid: TMPEffects.Components.Animator.SegmentData.max
+  commentId: F:TMPEffects.Components.Animator.SegmentData.max
+  id: max
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: max
+  nameWithType: SegmentData.max
+  fullName: TMPEffects.Components.Animator.SegmentData.max
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: max
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 47
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public readonly Vector3 max
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly max As Vector3
+- uid: TMPEffects.Components.Animator.SegmentData.min
+  commentId: F:TMPEffects.Components.Animator.SegmentData.min
+  id: min
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: min
+  nameWithType: SegmentData.min
+  fullName: TMPEffects.Components.Animator.SegmentData.min
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: min
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 48
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public readonly Vector3 min
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly min As Vector3
+- uid: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
+  id: IndexToSegmentIndex(System.Int32)
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: IndexToSegmentIndex(int)
+  nameWithType: SegmentData.IndexToSegmentIndex(int)
+  fullName: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IndexToSegmentIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 50
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public int IndexToSegmentIndex(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function IndexToSegmentIndex(index As Integer) As Integer
+  overload: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*
+  nameWithType.vb: SegmentData.IndexToSegmentIndex(Integer)
+  fullName.vb: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(Integer)
+  name.vb: IndexToSegmentIndex(Integer)
+- uid: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  id: SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: SegmentIndexOf(CharData)
+  nameWithType: SegmentData.SegmentIndexOf(CharData)
+  fullName: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SegmentIndexOf
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 57
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public int SegmentIndexOf(CharData cData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    return:
+      type: System.Int32
+    content.vb: Public Function SegmentIndexOf(cData As CharData) As Integer
+  overload: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*
+references:
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_firstAnimationIndex
+  name: firstAnimationIndex
+  nameWithType: SegmentData.firstAnimationIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
+- uid: TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  commentId: F:TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_lastAnimationIndex
+  name: lastAnimationIndex
+  nameWithType: SegmentData.lastAnimationIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_
+  name: IndexToSegmentIndex
+  nameWithType: SegmentData.IndexToSegmentIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
+- uid: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
+  name: SegmentIndexOf
+  nameWithType: SegmentData.SegmentIndexOf
+  fullName: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html

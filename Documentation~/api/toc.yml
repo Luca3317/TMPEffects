@@ -1,0 +1,548 @@
+### YamlMime:TableOfContent
+items:
+- uid: TMPEffects.CharacterData
+  name: TMPEffects.CharacterData
+  type: Namespace
+  items:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    type: Class
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: CharData.Info
+    type: Struct
+  - uid: TMPEffects.CharacterData.CharDataState
+    name: CharDataState
+    type: Class
+  - uid: TMPEffects.CharacterData.ICharDataState
+    name: ICharDataState
+    type: Interface
+  - uid: TMPEffects.CharacterData.ReadOnlyCharDataState
+    name: ReadOnlyCharDataState
+    type: Class
+  - uid: TMPEffects.CharacterData.ReadOnlyVertexData
+    name: ReadOnlyVertexData
+    type: Class
+  - uid: TMPEffects.CharacterData.VertexData
+    name: VertexData
+    type: Class
+  - uid: TMPEffects.CharacterData.VisibilityState
+    name: VisibilityState
+    type: Enum
+- uid: TMPEffects.Components
+  name: TMPEffects.Components
+  type: Namespace
+  items:
+  - uid: TMPEffects.Components.TMPAnimator
+    name: TMPAnimator
+    type: Class
+  - uid: TMPEffects.Components.TMPEffectComponent
+    name: TMPEffectComponent
+    type: Class
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    type: Class
+  - uid: TMPEffects.Components.TMPWriter.DelayType
+    name: TMPWriter.DelayType
+    type: Enum
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: TMPWriter.Delays
+    type: Class
+- uid: TMPEffects.Components.Animator
+  name: TMPEffects.Components.Animator
+  type: Namespace
+  items:
+  - uid: TMPEffects.Components.Animator.AnimationUpdater
+    name: AnimationUpdater
+    type: Class
+  - uid: TMPEffects.Components.Animator.AnimatorContext
+    name: AnimatorContext
+    type: Class
+  - uid: TMPEffects.Components.Animator.IAnimatorContext
+    name: IAnimatorContext
+    type: Interface
+  - uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+    name: ReadOnlyAnimatorContext
+    type: Class
+  - uid: TMPEffects.Components.Animator.SegmentData
+    name: SegmentData
+    type: Struct
+  - uid: TMPEffects.Components.Animator.TMPAnimationType
+    name: TMPAnimationType
+    type: Enum
+  - uid: TMPEffects.Components.Animator.TMPAnimatorUpdater
+    name: TMPAnimatorUpdater
+    type: Class
+  - uid: TMPEffects.Components.Animator.UpdateFrom
+    name: UpdateFrom
+    type: Enum
+- uid: TMPEffects.Components.Mediator
+  name: TMPEffects.Components.Mediator
+  type: Namespace
+  items:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    type: Class
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+    name: TMPMediator.TextChangedEarlyEventHandler
+    type: Delegate
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+    name: TMPMediator.TextChangedLateEventHandler
+    type: Delegate
+  - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+    name: TMPMediator.VisibilityEventHandler
+    type: Delegate
+- uid: TMPEffects.Databases
+  name: TMPEffects.Databases
+  type: Namespace
+  items:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase
+    name: ITMPEffectDatabase
+    type: Interface
+  - uid: TMPEffects.Databases.ITMPEffectDatabase`1
+    name: ITMPEffectDatabase<T>
+    type: Interface
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1
+    name: TMPEffectDatabase<T>
+    type: Class
+- uid: TMPEffects.Databases.AnimationDatabase
+  name: TMPEffects.Databases.AnimationDatabase
+  type: Namespace
+  items:
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+    name: TMPAnimationDatabase
+    type: Class
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+    name: TMPAnimationDatabaseBase<T>
+    type: Class
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+    name: TMPBasicAnimationDatabase
+    type: Class
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+    name: TMPHideAnimationDatabase
+    type: Class
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+    name: TMPShowAnimationDatabase
+    type: Class
+- uid: TMPEffects.Databases.CommandDatabase
+  name: TMPEffects.Databases.CommandDatabase
+  type: Namespace
+  items:
+  - uid: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+    name: TMPCommandDatabase
+    type: Class
+- uid: TMPEffects.EffectCategories
+  name: TMPEffects.EffectCategories
+  type: Namespace
+  items:
+  - uid: TMPEffects.EffectCategories.TMPAnimationCategory
+    name: TMPAnimationCategory
+    type: Class
+  - uid: TMPEffects.EffectCategories.TMPCommandCategory
+    name: TMPCommandCategory
+    type: Class
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory
+    name: TMPEffectCategory
+    type: Class
+  - uid: TMPEffects.EffectCategories.TMPEffectCategory`1
+    name: TMPEffectCategory<TEffect>
+    type: Class
+  - uid: TMPEffects.EffectCategories.TMPEventCategory
+    name: TMPEventCategory
+    type: Class
+- uid: TMPEffects.Extensions
+  name: TMPEffects.Extensions
+  type: Namespace
+  items:
+  - uid: TMPEffects.Extensions.AnimationCurveUtility
+    name: AnimationCurveUtility
+    type: Class
+  - uid: TMPEffects.Extensions.Extensions
+    name: Extensions
+    type: Class
+- uid: TMPEffects.ObjectChanged
+  name: TMPEffects.ObjectChanged
+  type: Namespace
+  items:
+  - uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+    name: INotifyObjectChanged
+    type: Interface
+  - uid: TMPEffects.ObjectChanged.ObjectChangedEventHandler
+    name: ObjectChangedEventHandler
+    type: Delegate
+- uid: TMPEffects.Parameters
+  name: TMPEffects.Parameters
+  type: Namespace
+  items:
+  - uid: TMPEffects.Parameters.GenerateParameterUtilityAttribute
+    name: GenerateParameterUtilityAttribute
+    type: Class
+  - uid: TMPEffects.Parameters.ParameterParsing
+    name: ParameterParsing
+    type: Class
+  - uid: TMPEffects.Parameters.ParameterTypes
+    name: ParameterTypes
+    type: Class
+  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+    name: ParameterTypes.TypedVector2
+    type: Struct
+  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
+    name: ParameterTypes.TypedVector3
+    type: Struct
+  - uid: TMPEffects.Parameters.ParameterTypes.VectorType
+    name: ParameterTypes.VectorType
+    type: Enum
+  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
+    name: ParameterTypes.WaveOffsetType
+    type: Enum
+  - uid: TMPEffects.Parameters.ParameterUtility
+    name: ParameterUtility
+    type: Class
+  - uid: TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
+    name: ParameterUtility.ParseDelegate<T, U, V, W>
+    type: Delegate
+  - uid: TMPEffects.Parameters.ParameterUtility.WaveParameters
+    name: ParameterUtility.WaveParameters
+    type: Struct
+- uid: TMPEffects.SerializedCollections
+  name: TMPEffects.SerializedCollections
+  type: Namespace
+  items:
+  - uid: TMPEffects.SerializedCollections.ObservableDictionary`2
+    name: ObservableDictionary<TKey, TValue>
+    type: Class
+  - uid: TMPEffects.SerializedCollections.SerializedDictionaryAttribute
+    name: SerializedDictionaryAttribute
+    type: Class
+  - uid: TMPEffects.SerializedCollections.SerializedDictionary`2
+    name: SerializedDictionary<TKey, TValue>
+    type: Class
+  - uid: TMPEffects.SerializedCollections.SerializedKeyValuePair`2
+    name: SerializedKeyValuePair<TKey, TValue>
+    type: Struct
+  - uid: TMPEffects.SerializedCollections.SerializedObservableDictionary`2
+    name: SerializedObservableDictionary<TKey, TValue>
+    type: Class
+- uid: TMPEffects.TMPAnimations
+  name: TMPEffects.TMPAnimations
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPAnimations.AnimationContext
+    name: AnimationContext
+    type: Class
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    type: Class
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: AnimationUtility.Wave
+    type: Class
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+    name: AnimationUtility.Wave.PulseExtrema
+    type: Enum
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+    name: AnimationUtility.WaveBase
+    type: Class
+  - uid: TMPEffects.TMPAnimations.IAnimationContext
+    name: IAnimationContext
+    type: Interface
+  - uid: TMPEffects.TMPAnimations.ITMPAnimation
+    name: ITMPAnimation
+    type: Interface
+  - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+    name: ReadOnlyAnimationContext
+    type: Class
+  - uid: TMPEffects.TMPAnimations.TMPAnimation
+    name: TMPAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.TMPAnimationParameterless
+    name: TMPAnimationParameterless
+    type: Class
+  - uid: TMPEffects.TMPAnimations.TMPHideAnimation
+    name: TMPHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.TMPShowAnimation
+    name: TMPShowAnimation
+    type: Class
+- uid: TMPEffects.TMPAnimations.Animations
+  name: TMPEffects.TMPAnimations.Animations
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPAnimations.Animations.AnimationStackObject
+    name: AnimationStackObject
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
+    name: AnimationStack<T>
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
+    name: AnimationStack<T>.AnimContext
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+    name: AnimationStack<T>.AnimPrefixTuple
+    type: Struct
+  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
+    name: AnimationStack<T>.Data
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.BasicAnimationStack
+    name: BasicAnimationStack
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.CharAnimation
+    name: CharAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.ContPivotAnimation
+    name: ContPivotAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.FadeAnimation
+    name: FadeAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.FunkyAnimation
+    name: FunkyAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.GrowAnimation
+    name: GrowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.HideAnimationStack
+    name: HideAnimationStack
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.HideAnimationStackObject
+    name: HideAnimationStackObject
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.PaletteAnimation
+    name: PaletteAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.PivotAnimation
+    name: PivotAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.ShakeAnimation
+    name: ShakeAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.ShowAnimationStack
+    name: ShowAnimationStack
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject
+    name: ShowAnimationStackObject
+    type: Class
+  - uid: TMPEffects.TMPAnimations.Animations.WaveAnimation
+    name: WaveAnimation
+    type: Class
+- uid: TMPEffects.TMPAnimations.HideAnimations
+  name: TMPEffects.TMPAnimations.HideAnimations
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
+    name: CharHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
+    name: DummyHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+    name: FadeHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
+    name: GrowHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
+    name: MoveInHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation
+    name: PivotHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
+    name: ShakeHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
+    name: SpreadHideAnimation
+    type: Class
+- uid: TMPEffects.TMPAnimations.ShowAnimations
+  name: TMPEffects.TMPAnimations.ShowAnimations
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+    name: CharShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
+    name: DummyShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+    name: FadeShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
+    name: GrowShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation
+    name: MoveInShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation
+    name: PivotShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
+    name: ShakeShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
+    name: SpreadAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation
+    name: SpreadShowAnimation
+    type: Class
+- uid: TMPEffects.TMPCommands
+  name: TMPEffects.TMPCommands
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPCommands.ITMPCommand
+    name: ITMPCommand
+    type: Interface
+  - uid: TMPEffects.TMPCommands.TMPCommand
+    name: TMPCommand
+    type: Class
+  - uid: TMPEffects.TMPCommands.TMPCommandArgs
+    name: TMPCommandArgs
+    type: Class
+  - uid: TMPEffects.TMPCommands.TMPSceneCommand
+    name: TMPSceneCommand
+    type: Struct
+  - uid: TMPEffects.TMPCommands.TagType
+    name: TagType
+    type: Enum
+- uid: TMPEffects.TMPCommands.Commands
+  name: TMPEffects.TMPCommands.Commands
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPCommands.Commands.DebugCommand
+    name: DebugCommand
+    type: Class
+  - uid: TMPEffects.TMPCommands.Commands.DelayCommand
+    name: DelayCommand
+    type: Class
+  - uid: TMPEffects.TMPCommands.Commands.ShowCommand
+    name: ShowCommand
+    type: Class
+  - uid: TMPEffects.TMPCommands.Commands.SkippableCommand
+    name: SkippableCommand
+    type: Class
+  - uid: TMPEffects.TMPCommands.Commands.WaitCommand
+    name: WaitCommand
+    type: Class
+- uid: TMPEffects.TMPEvents
+  name: TMPEffects.TMPEvents
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPEvents.TMPEvent
+    name: TMPEvent
+    type: Class
+  - uid: TMPEffects.TMPEvents.TMPEventArgs
+    name: TMPEventArgs
+    type: Class
+- uid: TMPEffects.TMPSceneAnimations
+  name: TMPEffects.TMPSceneAnimations
+  type: Namespace
+  items:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+    name: TMPSceneAnimation
+    type: Class
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+    name: TMPSceneAnimationBase
+    type: Class
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+    name: TMPSceneHideAnimation
+    type: Class
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+    name: TMPSceneShowAnimation
+    type: Class
+- uid: TMPEffects.Tags
+  name: TMPEffects.Tags
+  type: Namespace
+  items:
+  - uid: TMPEffects.Tags.ITMPPrefixSupplier
+    name: ITMPPrefixSupplier
+    type: Interface
+  - uid: TMPEffects.Tags.ITMPTagValidator
+    name: ITMPTagValidator
+    type: Interface
+  - uid: TMPEffects.Tags.ITagCacher`1
+    name: ITagCacher<T>
+    type: Interface
+  - uid: TMPEffects.Tags.ITagWrapper
+    name: ITagWrapper
+    type: Interface
+  - uid: TMPEffects.Tags.TMPEffectTag
+    name: TMPEffectTag
+    type: Class
+  - uid: TMPEffects.Tags.TMPEffectTagIndices
+    name: TMPEffectTagIndices
+    type: Struct
+  - uid: TMPEffects.Tags.TMPEffectTagTuple
+    name: TMPEffectTagTuple
+    type: Struct
+- uid: TMPEffects.Tags.Collections
+  name: TMPEffects.Tags.Collections
+  type: Namespace
+  items:
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1
+    name: CachedCollection<T>
+    type: Class
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.MinMax
+    name: CachedCollection<T>.MinMax
+    type: Class
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructContainingEnumerable
+    name: CachedCollection<T>.StructContainingEnumerable
+    type: Struct
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructContainingEnumerator
+    name: CachedCollection<T>.StructContainingEnumerator
+    type: Struct
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable
+    name: CachedCollection<T>.StructReversedContainingEnumerable
+    type: Struct
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+    name: CachedCollection<T>.StructReversedContainingEnumerator
+    type: Struct
+  - uid: TMPEffects.Tags.Collections.IReadOnlyTagCollection
+    name: IReadOnlyTagCollection
+    type: Interface
+  - uid: TMPEffects.Tags.Collections.ITagCollection
+    name: ITagCollection
+    type: Interface
+  - uid: TMPEffects.Tags.Collections.ITagCollectionManager`1
+    name: ITagCollectionManager<TKey>
+    type: Interface
+  - uid: TMPEffects.Tags.Collections.ObservableTagCollection
+    name: ObservableTagCollection
+    type: Class
+  - uid: TMPEffects.Tags.Collections.ReadOnlyTagCollection
+    name: ReadOnlyTagCollection
+    type: Class
+  - uid: TMPEffects.Tags.Collections.TagCollection
+    name: TagCollection
+    type: Class
+  - uid: TMPEffects.Tags.Collections.TagCollection.StartIndexOnly
+    name: TagCollection.StartIndexOnly
+    type: Struct
+  - uid: TMPEffects.Tags.Collections.TagCollection.TempIndices
+    name: TagCollection.TempIndices
+    type: Struct
+- uid: TMPEffects.TextProcessing
+  name: TMPEffects.TextProcessing
+  type: Namespace
+  items:
+  - uid: TMPEffects.TextProcessing.ITagProcessorManager
+    name: ITagProcessorManager
+    type: Interface
+  - uid: TMPEffects.TextProcessing.ParsingUtility
+    name: ParsingUtility
+    type: Class
+  - uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo
+    name: ParsingUtility.TagInfo
+    type: Class
+  - uid: TMPEffects.TextProcessing.ParsingUtility.TagType
+    name: ParsingUtility.TagType
+    type: Enum
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor
+    name: TMPTextProcessor
+    type: Class
+  - uid: TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler
+    name: TMPTextProcessor.TMPTextProcessorEventHandler
+    type: Delegate
+  - uid: TMPEffects.TextProcessing.TagProcessor
+    name: TagProcessor
+    type: Class
+  - uid: TMPEffects.TextProcessing.TagProcessorManager
+    name: TagProcessorManager
+    type: Class
+memberLayout: SamePage

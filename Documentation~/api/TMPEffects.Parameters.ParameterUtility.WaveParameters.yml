@@ -1,0 +1,636 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  commentId: T:TMPEffects.Parameters.ParameterUtility.WaveParameters
+  id: ParameterUtility.WaveParameters
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.amplitude
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.crestWait
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.downPeriod
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.downwardCurve
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.troughWait
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.upPeriod
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.upwardCurve
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.wavelength
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.waveuniformity
+  - TMPEffects.Parameters.ParameterUtility.WaveParameters.wavevelocity
+  langs:
+  - csharp
+  - vb
+  name: ParameterUtility.WaveParameters
+  nameWithType: ParameterUtility.WaveParameters
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: WaveParameters
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 144
+  namespace: TMPEffects.Parameters
+  summary: A parameter bundle that defines a <xref href="TMPEffects.TMPAnimations.AnimationUtility.Wave" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public struct ParameterUtility.WaveParameters
+    content.vb: Public Structure ParameterUtility.WaveParameters
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.upwardCurve
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.upwardCurve
+  id: upwardCurve
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: upwardCurve
+  nameWithType: ParameterUtility.WaveParameters.upwardCurve
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.upwardCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: upwardCurve
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 146
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public AnimationCurve upwardCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public upwardCurve As AnimationCurve
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.downwardCurve
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.downwardCurve
+  id: downwardCurve
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: downwardCurve
+  nameWithType: ParameterUtility.WaveParameters.downwardCurve
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.downwardCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: downwardCurve
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 147
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public AnimationCurve downwardCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public downwardCurve As AnimationCurve
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.upPeriod
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.upPeriod
+  id: upPeriod
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: upPeriod
+  nameWithType: ParameterUtility.WaveParameters.upPeriod
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.upPeriod
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: upPeriod
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 149
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? upPeriod
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public upPeriod As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.downPeriod
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.downPeriod
+  id: downPeriod
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: downPeriod
+  nameWithType: ParameterUtility.WaveParameters.downPeriod
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.downPeriod
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: downPeriod
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 150
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? downPeriod
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public downPeriod As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.crestWait
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.crestWait
+  id: crestWait
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: crestWait
+  nameWithType: ParameterUtility.WaveParameters.crestWait
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.crestWait
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: crestWait
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 152
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? crestWait
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public crestWait As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.troughWait
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.troughWait
+  id: troughWait
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: troughWait
+  nameWithType: ParameterUtility.WaveParameters.troughWait
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.troughWait
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: troughWait
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 153
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? troughWait
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public troughWait As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.wavevelocity
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.wavevelocity
+  id: wavevelocity
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: wavevelocity
+  nameWithType: ParameterUtility.WaveParameters.wavevelocity
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.wavevelocity
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wavevelocity
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 155
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? wavevelocity
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public wavevelocity As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.wavelength
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.wavelength
+  id: wavelength
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: wavelength
+  nameWithType: ParameterUtility.WaveParameters.wavelength
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.wavelength
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wavelength
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 156
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? wavelength
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public wavelength As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.waveuniformity
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.waveuniformity
+  id: waveuniformity
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: waveuniformity
+  nameWithType: ParameterUtility.WaveParameters.waveuniformity
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.waveuniformity
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: waveuniformity
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 157
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? waveuniformity
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public waveuniformity As Single?
+- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters.amplitude
+  commentId: F:TMPEffects.Parameters.ParameterUtility.WaveParameters.amplitude
+  id: amplitude
+  parent: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  langs:
+  - csharp
+  - vb
+  name: amplitude
+  nameWithType: ParameterUtility.WaveParameters.amplitude
+  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters.amplitude
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: amplitude
+    path: ../Package/Runtime/Parameters/ParameterUtility.cs
+    startLine: 159
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public float? amplitude
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public amplitude As Single?
+references:
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.Wave
+  nameWithType: AnimationUtility.Wave
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.AnimationCurve
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: AnimationCurve
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

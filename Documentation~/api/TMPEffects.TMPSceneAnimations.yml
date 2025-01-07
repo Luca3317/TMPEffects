@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPSceneAnimations
+  commentId: N:TMPEffects.TMPSceneAnimations
+  id: TMPEffects.TMPSceneAnimations
+  children:
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  - TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  - TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.TMPSceneAnimations
+  nameWithType: TMPEffects.TMPSceneAnimations
+  fullName: TMPEffects.TMPSceneAnimations
+  type: Namespace
+references:
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html
+  name: TMPSceneAnimation
+  nameWithType: TMPSceneAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  parent: TMPEffects.TMPSceneAnimations
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html
+  name: TMPSceneAnimationBase
+  nameWithType: TMPSceneAnimationBase
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  href: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html
+  name: TMPSceneHideAnimation
+  nameWithType: TMPSceneHideAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+  href: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html
+  name: TMPSceneShowAnimation
+  nameWithType: TMPSceneShowAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+- uid: TMPEffects.TMPSceneAnimations
+  commentId: N:TMPEffects.TMPSceneAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPSceneAnimations
+  nameWithType: TMPEffects.TMPSceneAnimations
+  fullName: TMPEffects.TMPSceneAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPSceneAnimations
+    name: TMPSceneAnimations
+    href: TMPEffects.TMPSceneAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPSceneAnimations
+    name: TMPSceneAnimations
+    href: TMPEffects.TMPSceneAnimations.html

@@ -1,0 +1,955 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
+  id: CharData.Info
+  parent: TMPEffects.CharacterData
+  children:
+  - TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
+  - TMPEffects.CharacterData.CharData.Info.ascender
+  - TMPEffects.CharacterData.CharData.Info.baseLine
+  - TMPEffects.CharacterData.CharData.Info.character
+  - TMPEffects.CharacterData.CharData.Info.color
+  - TMPEffects.CharacterData.CharData.Info.descender
+  - TMPEffects.CharacterData.CharData.Info.elementType
+  - TMPEffects.CharacterData.CharData.Info.fontAsset
+  - TMPEffects.CharacterData.CharData.Info.index
+  - TMPEffects.CharacterData.CharData.Info.isVisible
+  - TMPEffects.CharacterData.CharData.Info.lineNumber
+  - TMPEffects.CharacterData.CharData.Info.origin
+  - TMPEffects.CharacterData.CharData.Info.pageNumber
+  - TMPEffects.CharacterData.CharData.Info.pointSize
+  - TMPEffects.CharacterData.CharData.Info.referenceScale
+  - TMPEffects.CharacterData.CharData.Info.spriteAsset
+  - TMPEffects.CharacterData.CharData.Info.wordFirstIndex
+  - TMPEffects.CharacterData.CharData.Info.wordLastIndex
+  - TMPEffects.CharacterData.CharData.Info.wordLen
+  - TMPEffects.CharacterData.CharData.Info.wordNumber
+  - TMPEffects.CharacterData.CharData.Info.xAdvance
+  langs:
+  - csharp
+  - vb
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Info
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 11
+  namespace: TMPEffects.CharacterData
+  summary: Holds a selection of data of TMP_CharacterInfo, as well as some data about the initial mesh of the character.
+  example: []
+  syntax:
+    content: public struct CharData.Info
+    content.vb: Public Structure CharData.Info
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: TMPEffects.CharacterData.CharData.Info.index
+  commentId: F:TMPEffects.CharacterData.CharData.Info.index
+  id: index
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: index
+  nameWithType: CharData.Info.index
+  fullName: TMPEffects.CharacterData.CharData.Info.index
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: index
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 16
+  namespace: TMPEffects.CharacterData
+  summary: The index of the character within the source text.
+  example: []
+  syntax:
+    content: public readonly int index
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly index As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.wordFirstIndex
+  commentId: F:TMPEffects.CharacterData.CharData.Info.wordFirstIndex
+  id: wordFirstIndex
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: wordFirstIndex
+  nameWithType: CharData.Info.wordFirstIndex
+  fullName: TMPEffects.CharacterData.CharData.Info.wordFirstIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wordFirstIndex
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 21
+  namespace: TMPEffects.CharacterData
+  summary: The first index of the word this character belongs to.
+  example: []
+  syntax:
+    content: public readonly int wordFirstIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly wordFirstIndex As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.wordLastIndex
+  commentId: F:TMPEffects.CharacterData.CharData.Info.wordLastIndex
+  id: wordLastIndex
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: wordLastIndex
+  nameWithType: CharData.Info.wordLastIndex
+  fullName: TMPEffects.CharacterData.CharData.Info.wordLastIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wordLastIndex
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 25
+  namespace: TMPEffects.CharacterData
+  summary: The last index of the word this character belongs to.
+  example: []
+  syntax:
+    content: public readonly int wordLastIndex
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly wordLastIndex As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.wordLen
+  commentId: F:TMPEffects.CharacterData.CharData.Info.wordLen
+  id: wordLen
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: wordLen
+  nameWithType: CharData.Info.wordLen
+  fullName: TMPEffects.CharacterData.CharData.Info.wordLen
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wordLen
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 29
+  namespace: TMPEffects.CharacterData
+  summary: The length of the word this character belongs to.
+  example: []
+  syntax:
+    content: public readonly int wordLen
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly wordLen As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.color
+  commentId: F:TMPEffects.CharacterData.CharData.Info.color
+  id: color
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: color
+  nameWithType: CharData.Info.color
+  fullName: TMPEffects.CharacterData.CharData.Info.color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: color
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 33
+  namespace: TMPEffects.CharacterData
+  summary: The color of this character.
+  example: []
+  syntax:
+    content: public readonly Color32 color
+    return:
+      type: Global.Color32
+    content.vb: Public ReadOnly color As Color32
+- uid: TMPEffects.CharacterData.CharData.Info.pointSize
+  commentId: F:TMPEffects.CharacterData.CharData.Info.pointSize
+  id: pointSize
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: pointSize
+  nameWithType: CharData.Info.pointSize
+  fullName: TMPEffects.CharacterData.CharData.Info.pointSize
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: pointSize
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 38
+  namespace: TMPEffects.CharacterData
+  summary: The point size.
+  example: []
+  syntax:
+    content: public readonly float pointSize
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly pointSize As Single
+- uid: TMPEffects.CharacterData.CharData.Info.character
+  commentId: F:TMPEffects.CharacterData.CharData.Info.character
+  id: character
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: character
+  nameWithType: CharData.Info.character
+  fullName: TMPEffects.CharacterData.CharData.Info.character
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: character
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 43
+  namespace: TMPEffects.CharacterData
+  summary: The actual character.
+  example: []
+  syntax:
+    content: public readonly char character
+    return:
+      type: System.Char
+    content.vb: Public ReadOnly character As Char
+- uid: TMPEffects.CharacterData.CharData.Info.isVisible
+  commentId: F:TMPEffects.CharacterData.CharData.Info.isVisible
+  id: isVisible
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: isVisible
+  nameWithType: CharData.Info.isVisible
+  fullName: TMPEffects.CharacterData.CharData.Info.isVisible
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: isVisible
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 48
+  namespace: TMPEffects.CharacterData
+  summary: Whether the character is inherently visible; i.e. is no whitespace.
+  example: []
+  syntax:
+    content: public readonly bool isVisible
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly isVisible As Boolean
+- uid: TMPEffects.CharacterData.CharData.Info.lineNumber
+  commentId: F:TMPEffects.CharacterData.CharData.Info.lineNumber
+  id: lineNumber
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: lineNumber
+  nameWithType: CharData.Info.lineNumber
+  fullName: TMPEffects.CharacterData.CharData.Info.lineNumber
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: lineNumber
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 53
+  namespace: TMPEffects.CharacterData
+  summary: The line number of the line this character belongs to.
+  example: []
+  syntax:
+    content: public readonly int lineNumber
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly lineNumber As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.pageNumber
+  commentId: F:TMPEffects.CharacterData.CharData.Info.pageNumber
+  id: pageNumber
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: pageNumber
+  nameWithType: CharData.Info.pageNumber
+  fullName: TMPEffects.CharacterData.CharData.Info.pageNumber
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: pageNumber
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 57
+  namespace: TMPEffects.CharacterData
+  summary: The page number of the page this character belongs to.
+  example: []
+  syntax:
+    content: public readonly int pageNumber
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly pageNumber As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.wordNumber
+  commentId: F:TMPEffects.CharacterData.CharData.Info.wordNumber
+  id: wordNumber
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: wordNumber
+  nameWithType: CharData.Info.wordNumber
+  fullName: TMPEffects.CharacterData.CharData.Info.wordNumber
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: wordNumber
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 61
+  namespace: TMPEffects.CharacterData
+  summary: The inde
+  example: []
+  syntax:
+    content: public readonly int wordNumber
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly wordNumber As Integer
+- uid: TMPEffects.CharacterData.CharData.Info.baseLine
+  commentId: F:TMPEffects.CharacterData.CharData.Info.baseLine
+  id: baseLine
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: baseLine
+  nameWithType: CharData.Info.baseLine
+  fullName: TMPEffects.CharacterData.CharData.Info.baseLine
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: baseLine
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 66
+  namespace: TMPEffects.CharacterData
+  summary: The baseline of the character.
+  example: []
+  syntax:
+    content: public readonly float baseLine
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly baseLine As Single
+- uid: TMPEffects.CharacterData.CharData.Info.ascender
+  commentId: F:TMPEffects.CharacterData.CharData.Info.ascender
+  id: ascender
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: ascender
+  nameWithType: CharData.Info.ascender
+  fullName: TMPEffects.CharacterData.CharData.Info.ascender
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ascender
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 70
+  namespace: TMPEffects.CharacterData
+  summary: The ascender of the character.
+  example: []
+  syntax:
+    content: public readonly float ascender
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly ascender As Single
+- uid: TMPEffects.CharacterData.CharData.Info.descender
+  commentId: F:TMPEffects.CharacterData.CharData.Info.descender
+  id: descender
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: descender
+  nameWithType: CharData.Info.descender
+  fullName: TMPEffects.CharacterData.CharData.Info.descender
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: descender
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 74
+  namespace: TMPEffects.CharacterData
+  summary: The descender of the character.
+  example: []
+  syntax:
+    content: public readonly float descender
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly descender As Single
+- uid: TMPEffects.CharacterData.CharData.Info.xAdvance
+  commentId: F:TMPEffects.CharacterData.CharData.Info.xAdvance
+  id: xAdvance
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: xAdvance
+  nameWithType: CharData.Info.xAdvance
+  fullName: TMPEffects.CharacterData.CharData.Info.xAdvance
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: xAdvance
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 78
+  namespace: TMPEffects.CharacterData
+  summary: The xAdvance factor of the character.
+  example: []
+  syntax:
+    content: public readonly float xAdvance
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly xAdvance As Single
+- uid: TMPEffects.CharacterData.CharData.Info.fontAsset
+  commentId: F:TMPEffects.CharacterData.CharData.Info.fontAsset
+  id: fontAsset
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: fontAsset
+  nameWithType: CharData.Info.fontAsset
+  fullName: TMPEffects.CharacterData.CharData.Info.fontAsset
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: fontAsset
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 83
+  namespace: TMPEffects.CharacterData
+  summary: The font asset used for this character.
+  example: []
+  syntax:
+    content: public readonly TMP_FontAsset fontAsset
+    return:
+      type: Global.TMP_FontAsset
+    content.vb: Public ReadOnly fontAsset As TMP_FontAsset
+- uid: TMPEffects.CharacterData.CharData.Info.spriteAsset
+  commentId: F:TMPEffects.CharacterData.CharData.Info.spriteAsset
+  id: spriteAsset
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: spriteAsset
+  nameWithType: CharData.Info.spriteAsset
+  fullName: TMPEffects.CharacterData.CharData.Info.spriteAsset
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: spriteAsset
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 87
+  namespace: TMPEffects.CharacterData
+  summary: The sprite asset used for this sprite.
+  example: []
+  syntax:
+    content: public readonly TMP_SpriteAsset spriteAsset
+    return:
+      type: Global.TMP_SpriteAsset
+    content.vb: Public ReadOnly spriteAsset As TMP_SpriteAsset
+- uid: TMPEffects.CharacterData.CharData.Info.elementType
+  commentId: F:TMPEffects.CharacterData.CharData.Info.elementType
+  id: elementType
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: elementType
+  nameWithType: CharData.Info.elementType
+  fullName: TMPEffects.CharacterData.CharData.Info.elementType
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: elementType
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 89
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public readonly TMP_TextElementType elementType
+    return:
+      type: Global.TMP_TextElementType
+    content.vb: Public ReadOnly elementType As TMP_TextElementType
+- uid: TMPEffects.CharacterData.CharData.Info.origin
+  commentId: F:TMPEffects.CharacterData.CharData.Info.origin
+  id: origin
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: origin
+  nameWithType: CharData.Info.origin
+  fullName: TMPEffects.CharacterData.CharData.Info.origin
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: origin
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 91
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public readonly float origin
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly origin As Single
+- uid: TMPEffects.CharacterData.CharData.Info.referenceScale
+  commentId: F:TMPEffects.CharacterData.CharData.Info.referenceScale
+  id: referenceScale
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: referenceScale
+  nameWithType: CharData.Info.referenceScale
+  fullName: TMPEffects.CharacterData.CharData.Info.referenceScale
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: referenceScale
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 96
+  namespace: TMPEffects.CharacterData
+  summary: The reference scale of this character.
+  example: []
+  syntax:
+    content: public readonly float referenceScale
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly referenceScale As Single
+- uid: TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
+  commentId: M:TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
+  id: '#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)'
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: Info(int, TMP_CharacterInfo, int, TMP_WordInfo)
+  nameWithType: CharData.Info.Info(int, TMP_CharacterInfo, int, TMP_WordInfo)
+  fullName: TMPEffects.CharacterData.CharData.Info.Info(int, TMP_CharacterInfo, int, TMP_WordInfo)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 142
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public Info(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo wInfo)
+    parameters:
+    - id: index
+      type: System.Int32
+    - id: cInfo
+      type: Global.TMP_CharacterInfo
+    - id: wordIndex
+      type: System.Int32
+    - id: wInfo
+      type: Global.TMP_WordInfo
+    content.vb: Public Sub New(index As Integer, cInfo As TMP_CharacterInfo, wordIndex As Integer, wInfo As TMP_WordInfo)
+  overload: TMPEffects.CharacterData.CharData.Info.#ctor*
+  nameWithType.vb: CharData.Info.New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo)
+  fullName.vb: TMPEffects.CharacterData.CharData.Info.New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo)
+  name.vb: New(Integer, TMP_CharacterInfo, Integer, TMP_WordInfo)
+references:
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Global.Color32
+  isExternal: true
+  name: Color32
+  nameWithType: Color32
+  fullName: Color32
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Global.TMP_FontAsset
+  commentId: '!:Global.TMP_FontAsset'
+  isExternal: true
+  name: TMP_FontAsset
+  nameWithType: TMP_FontAsset
+  fullName: TMP_FontAsset
+- uid: Global.TMP_SpriteAsset
+  commentId: '!:Global.TMP_SpriteAsset'
+  isExternal: true
+  name: TMP_SpriteAsset
+  nameWithType: TMP_SpriteAsset
+  fullName: TMP_SpriteAsset
+- uid: Global.TMP_TextElementType
+  commentId: '!:Global.TMP_TextElementType'
+  isExternal: true
+  name: TMP_TextElementType
+  nameWithType: TMP_TextElementType
+  fullName: TMP_TextElementType
+- uid: TMPEffects.CharacterData.CharData.Info.#ctor*
+  commentId: Overload:TMPEffects.CharacterData.CharData.Info.#ctor
+  href: TMPEffects.CharacterData.CharData.Info.html#TMPEffects_CharacterData_CharData_Info__ctor_System_Int32_TMP_CharacterInfo_System_Int32_TMP_WordInfo_
+  name: Info
+  nameWithType: CharData.Info.Info
+  fullName: TMPEffects.CharacterData.CharData.Info.Info
+  nameWithType.vb: CharData.Info.New
+  fullName.vb: TMPEffects.CharacterData.CharData.Info.New
+  name.vb: New
+- uid: Global.TMP_CharacterInfo
+  isExternal: true
+  name: TMP_CharacterInfo
+  nameWithType: TMP_CharacterInfo
+  fullName: TMP_CharacterInfo
+- uid: Global.TMP_WordInfo
+  commentId: '!:Global.TMP_WordInfo'
+  isExternal: true
+  name: TMP_WordInfo
+  nameWithType: TMP_WordInfo
+  fullName: TMP_WordInfo

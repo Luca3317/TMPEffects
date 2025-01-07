@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Databases.AnimationDatabase
+  commentId: N:TMPEffects.Databases.AnimationDatabase
+  id: TMPEffects.Databases.AnimationDatabase
+  children:
+  - TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  - TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+  - TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  - TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  - TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Databases.AnimationDatabase
+  nameWithType: TMPEffects.Databases.AnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase
+  type: Namespace
+references:
+- uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html
+  name: TMPAnimationDatabase
+  nameWithType: TMPAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+  href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html
+  name: TMPAnimationDatabaseBase<T>
+  nameWithType: TMPAnimationDatabaseBase<T>
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase<T>
+  nameWithType.vb: TMPAnimationDatabaseBase(Of T)
+  fullName.vb: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase(Of T)
+  name.vb: TMPAnimationDatabaseBase(Of T)
+  spec.csharp:
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+    name: TMPAnimationDatabaseBase
+    href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+    name: TMPAnimationDatabaseBase
+    href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase.html
+  name: TMPBasicAnimationDatabase
+  nameWithType: TMPBasicAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase.html
+  name: TMPHideAnimationDatabase
+  nameWithType: TMPHideAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase.html
+  name: TMPShowAnimationDatabase
+  nameWithType: TMPShowAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase
+  commentId: N:TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.AnimationDatabase
+  nameWithType: TMPEffects.Databases.AnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html

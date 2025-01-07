@@ -2,7 +2,7 @@
 
 # Installation
 
-TMPEffects is available on the [OpenUPM registry](https://openupm.com/).
+TMPEffects is available on the [OpenUPM registry](https://openupm.com/packages/com.luca3317.tmpeffects/).
 
 Alternatively, you can install TMPEffects through the Unity Package Manager, using the git url:  
 ```console
@@ -25,4 +25,3 @@ These are the asset files for the built-in animations, commands and databases, a
 the next domain reload.
 
 After that, you should be good to go :smiley:  
-Optionally, there are a few basic samples you can import.

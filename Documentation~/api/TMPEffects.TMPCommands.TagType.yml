@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPCommands.TagType
+  commentId: T:TMPEffects.TMPCommands.TagType
+  id: TagType
+  parent: TMPEffects.TMPCommands
+  children:
+  - TMPEffects.TMPCommands.TagType.Block
+  - TMPEffects.TMPCommands.TagType.Either
+  - TMPEffects.TMPCommands.TagType.Index
+  langs:
+  - csharp
+  - vb
+  name: TagType
+  nameWithType: TagType
+  fullName: TMPEffects.TMPCommands.TagType
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TagType.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TagType
+    path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
+    startLine: 12
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: public enum TagType
+    content.vb: Public Enum TagType
+- uid: TMPEffects.TMPCommands.TagType.Index
+  commentId: F:TMPEffects.TMPCommands.TagType.Index
+  id: Index
+  parent: TMPEffects.TMPCommands.TagType
+  langs:
+  - csharp
+  - vb
+  name: Index
+  nameWithType: TagType.Index
+  fullName: TMPEffects.TMPCommands.TagType.Index
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TagType.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Index
+    path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
+    startLine: 14
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: Index = 0
+    return:
+      type: TMPEffects.TMPCommands.TagType
+- uid: TMPEffects.TMPCommands.TagType.Block
+  commentId: F:TMPEffects.TMPCommands.TagType.Block
+  id: Block
+  parent: TMPEffects.TMPCommands.TagType
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: TagType.Block
+  fullName: TMPEffects.TMPCommands.TagType.Block
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TagType.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Block
+    path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
+    startLine: 15
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: Block = 1
+    return:
+      type: TMPEffects.TMPCommands.TagType
+- uid: TMPEffects.TMPCommands.TagType.Either
+  commentId: F:TMPEffects.TMPCommands.TagType.Either
+  id: Either
+  parent: TMPEffects.TMPCommands.TagType
+  langs:
+  - csharp
+  - vb
+  name: Either
+  nameWithType: TagType.Either
+  fullName: TMPEffects.TMPCommands.TagType.Either
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TagType.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Either
+    path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
+    startLine: 16
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: Either = 2
+    return:
+      type: TMPEffects.TMPCommands.TagType
+references:
+- uid: TMPEffects.TMPCommands
+  commentId: N:TMPEffects.TMPCommands
+  href: TMPEffects.html
+  name: TMPEffects.TMPCommands
+  nameWithType: TMPEffects.TMPCommands
+  fullName: TMPEffects.TMPCommands
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+- uid: TMPEffects.TMPCommands.TagType
+  commentId: T:TMPEffects.TMPCommands.TagType
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TagType.html
+  name: TagType
+  nameWithType: TagType
+  fullName: TMPEffects.TMPCommands.TagType

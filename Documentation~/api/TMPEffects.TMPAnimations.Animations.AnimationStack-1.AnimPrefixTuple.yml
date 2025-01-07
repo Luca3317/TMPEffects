@@ -1,0 +1,413 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+  commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+  id: AnimationStack`1.AnimPrefixTuple
+  parent: TMPEffects.TMPAnimations.Animations
+  children:
+  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor(`0,System.String)
+  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.animation
+  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.prefix
+  langs:
+  - csharp
+  - vb
+  name: AnimationStack<T>.AnimPrefixTuple
+  nameWithType: AnimationStack<T>.AnimPrefixTuple
+  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AnimPrefixTuple
+    path: ../Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+    startLine: 209
+  namespace: TMPEffects.TMPAnimations.Animations
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct AnimationStack<T>.AnimPrefixTuple
+    content.vb: >-
+      <Serializable>
+
+      Public Structure AnimationStack(Of T).AnimPrefixTuple
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple
+  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple
+  name.vb: AnimationStack(Of T).AnimPrefixTuple
+- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.animation
+  commentId: F:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.animation
+  id: animation
+  parent: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+  langs:
+  - csharp
+  - vb
+  name: animation
+  nameWithType: AnimationStack<T>.AnimPrefixTuple.animation
+  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple.animation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: animation
+    path: ../Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+    startLine: 212
+  namespace: TMPEffects.TMPAnimations.Animations
+  syntax:
+    content: public T animation
+    return:
+      type: '{T}'
+    content.vb: Public animation As T
+  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple.animation
+  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple.animation
+- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.prefix
+  commentId: F:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.prefix
+  id: prefix
+  parent: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+  langs:
+  - csharp
+  - vb
+  name: prefix
+  nameWithType: AnimationStack<T>.AnimPrefixTuple.prefix
+  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple.prefix
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: prefix
+    path: ../Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+    startLine: 213
+  namespace: TMPEffects.TMPAnimations.Animations
+  syntax:
+    content: public string prefix
+    return:
+      type: System.String
+    content.vb: Public prefix As String
+  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple.prefix
+  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple.prefix
+- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor(`0,System.String)
+  commentId: M:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor(`0,System.String)
+  id: '#ctor(`0,System.String)'
+  parent: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
+  langs:
+  - csharp
+  - vb
+  name: AnimPrefixTuple(T, string)
+  nameWithType: AnimationStack<T>.AnimPrefixTuple.AnimPrefixTuple(T, string)
+  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple.AnimPrefixTuple(T, string)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/Effects/TMPAnimations/Stack/AnimationStack.cs
+    startLine: 215
+  namespace: TMPEffects.TMPAnimations.Animations
+  syntax:
+    content: public AnimPrefixTuple(T animation, string prefix)
+    parameters:
+    - id: animation
+      type: '{T}'
+    - id: prefix
+      type: System.String
+    content.vb: Public Sub New(animation As T, prefix As String)
+  overload: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor*
+  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple.New(T, String)
+  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple.New(T, String)
+  name.vb: New(T, String)
+references:
+- uid: TMPEffects.TMPAnimations.Animations
+  commentId: N:TMPEffects.TMPAnimations.Animations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations.Animations
+  nameWithType: TMPEffects.TMPAnimations.Animations
+  fullName: TMPEffects.TMPAnimations.Animations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.Animations
+    name: Animations
+    href: TMPEffects.TMPAnimations.Animations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.Animations
+    name: Animations
+    href: TMPEffects.TMPAnimations.Animations.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor*
+  commentId: Overload:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple.#ctor
+  href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html#TMPEffects_TMPAnimations_Animations_AnimationStack_1_AnimPrefixTuple__ctor__0_System_String_
+  name: AnimPrefixTuple
+  nameWithType: AnimationStack<T>.AnimPrefixTuple.AnimPrefixTuple
+  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple.AnimPrefixTuple
+  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple.New
+  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple.New
+  name.vb: New

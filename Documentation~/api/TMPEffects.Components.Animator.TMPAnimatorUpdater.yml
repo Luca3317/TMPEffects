@@ -1,0 +1,159 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.Animator.TMPAnimatorUpdater
+  commentId: T:TMPEffects.Components.Animator.TMPAnimatorUpdater
+  id: TMPAnimatorUpdater
+  parent: TMPEffects.Components.Animator
+  children:
+  - TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+  - TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(System.UInt32)
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimatorUpdater
+  nameWithType: TMPAnimatorUpdater
+  fullName: TMPEffects.Components.Animator.TMPAnimatorUpdater
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPAnimatorUpdater
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+    startLine: 7
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: 'public class TMPAnimatorUpdater : MonoBehaviour'
+    content.vb: Public Class TMPAnimatorUpdater Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+- uid: TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+  commentId: P:TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+  id: MaxUpdatesPerSecond
+  parent: TMPEffects.Components.Animator.TMPAnimatorUpdater
+  langs:
+  - csharp
+  - vb
+  name: MaxUpdatesPerSecond
+  nameWithType: TMPAnimatorUpdater.MaxUpdatesPerSecond
+  fullName: TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: MaxUpdatesPerSecond
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+    startLine: 10
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public uint MaxUpdatesPerSecond { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property MaxUpdatesPerSecond As UInteger
+  overload: TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond*
+- uid: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(System.UInt32)
+  commentId: M:TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(System.UInt32)
+  id: SetMaxUpdatesPerSecond(System.UInt32)
+  parent: TMPEffects.Components.Animator.TMPAnimatorUpdater
+  langs:
+  - csharp
+  - vb
+  name: SetMaxUpdatesPerSecond(uint)
+  nameWithType: TMPAnimatorUpdater.SetMaxUpdatesPerSecond(uint)
+  fullName: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(uint)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetMaxUpdatesPerSecond
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs
+    startLine: 14
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public void SetMaxUpdatesPerSecond(uint maxUpdatesPerSecond)
+    parameters:
+    - id: maxUpdatesPerSecond
+      type: System.UInt32
+    content.vb: Public Sub SetMaxUpdatesPerSecond(maxUpdatesPerSecond As UInteger)
+  overload: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond*
+  nameWithType.vb: TMPAnimatorUpdater.SetMaxUpdatesPerSecond(UInteger)
+  fullName.vb: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(UInteger)
+  name.vb: SetMaxUpdatesPerSecond(UInteger)
+references:
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond*
+  commentId: Overload:TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+  href: TMPEffects.Components.Animator.TMPAnimatorUpdater.html#TMPEffects_Components_Animator_TMPAnimatorUpdater_MaxUpdatesPerSecond
+  name: MaxUpdatesPerSecond
+  nameWithType: TMPAnimatorUpdater.MaxUpdatesPerSecond
+  fullName: TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond*
+  commentId: Overload:TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond
+  href: TMPEffects.Components.Animator.TMPAnimatorUpdater.html#TMPEffects_Components_Animator_TMPAnimatorUpdater_SetMaxUpdatesPerSecond_System_UInt32_
+  name: SetMaxUpdatesPerSecond
+  nameWithType: TMPAnimatorUpdater.SetMaxUpdatesPerSecond
+  fullName: TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond

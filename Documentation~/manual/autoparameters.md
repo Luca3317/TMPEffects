@@ -105,6 +105,7 @@ Each of the hooks has its own code fix, so you don't need to memorize the hook m
   </ul>
 
 </details>
+<br/>
 
 ## AutoParametersStorage
 The <mark class="markstyle">AutoParametersStorage</mark> attribute marks a type as type used to store parsed tag parameters of the class.

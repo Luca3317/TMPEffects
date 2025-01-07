@@ -4,12 +4,12 @@
 This section walks you through creating your own commands.
 First, create a new C# script in the Unity editor.
 
-### Creating the class
+## Creating the class
 Add the following using statement at the top of your class: <mark class="markstyle">using TMPEffects.TMPCommands;</mark>.  
 Then, make the created class derive from <mark class="markstyle">TMPCommand</mark>.
 In order to be able to create the command object in the Unity editor and add it to your database, make sure to decorate the class with the [CreateAssetMenu](https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html) attribute.
 
-### Members
+## Members
 You will have errors due to <mark class="markstyle">TMPCommand's</mark> abstract members not being implemented.
 Auto-implement them using your IDE, or add them manually.
 When you are done, your class should look something like this:
@@ -41,7 +41,7 @@ public class YourFirstCommand : TMPCommand
 
 Let's go over each member individually.
 
-### Properties
+## Properties
 **<mark class="markstyle">TagType</mark>**: Defines whether the tags for this command should operate on an index, a text block, or either option. For example, the built-in <mark class="markstyle">wait</mark>
 command operates on an index, and the built-in command <mark class="markstyle">show</mark> operates on a text block (see [Built-in commands](tmpwriter_builtincommands.md)).
 
@@ -50,7 +50,7 @@ command operates on an index, and the built-in command <mark class="markstyle">s
 **<mark class="markstyle">ExecuteOnSkip</mark>**: Commands where this property is true are executed even when their index is skipped over by the writer (i.e., when TMPWriter.SkipWriter() is called). This should be true for commands
 that need to ensure they are being called even if skipped over, for example a command that starts a quest or adds an item to the player's inventory.
 
-### Optional properties
+## Optional properties
 There are a few optional properties. If you don't override them, they are set to false by default. In both cases, this is to protect you from yourself :wink:  
 Only set these to true if you are sure it is safe for your case!
 
@@ -62,13 +62,13 @@ This should be false for commands that need to ensure they are only ever raised 
 > Note that you must wrap this property in a <mark class="markstyle">#if UNITY_EDITOR</mark>
 > preprocessor directive if you want to override it; otherwise your builds will fail.
 
-### Methods
+## Methods
 **<mark class="markstyle">ValidateParameters(IDictionary&lt;string, string&gt; parameters)</mark>**: This method is called during tag processing. It allows you to specify whether a given tag for this command has valid parameters. [ParameterUtility](parameterutility.md) will come in handy here.
 Return true if the parameters are valid, return false if not. If false, the tag will not be processed.
 
 **<mark class="markstyle">ExecuteCommand(TMPCommandArgs args)</mark>**: The meat of your command. This executes the actual command you are implementing.
 
-### TMPCommandArgs
+## TMPCommandArgs
 The sole argument for the <mark class="markstyle">ExecuteCommand</mark> method. It's kept relatively simple:
 it provides access to the actual <mark class="markstyle">EffectTag</mark>, through which you may get the tag's parameters, the <mark class="markstyle">EffectTagIndices</mark>, and the executing TMPWriter.
 
@@ -118,7 +118,7 @@ namespace TMPEffects.TMPCommands.Commands
 }
 ```
 
-### Adding the command to a database
+## Adding the command to a database
 To actually use the command in your text, you will have to follow these steps:
 
 1. Create a command object: Right click in your project view and create it (it will be in the path you specified in the [CreateAssetMenu](https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html) attribute).
@@ -127,5 +127,5 @@ To actually use the command in your text, you will have to follow these steps:
 
 Done! You can now use your custom command like any of the built-in ones.
 
-### Creating scene commands
+## Creating scene commands
 See [Scene commands](tmpwriter_scenecommands.md) on how to add scene commands.

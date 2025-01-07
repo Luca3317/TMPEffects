@@ -11,10 +11,9 @@ This is the full list of currently supported parameter types:
 - bool
 - Color
 - Vector2/3
-- [Anchor]()
-- [TypedVector2/3]()
+- [TypedVector2/3](../api/TMPEffects.Parameters.ParameterTypes.TypedVector3.yml)
 - [AnimationCurve](https://docs.unity3d.com/ScriptReference/AnimationCurve.html)
-- [OffsetProvider TODO OffsetProvider link]()
+- [OffsetProvider](offsetproviders.md)
 - Array
 
 ## Type formatting

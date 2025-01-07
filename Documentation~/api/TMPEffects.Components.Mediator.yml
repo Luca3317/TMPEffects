@@ -1,0 +1,124 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.Mediator
+  commentId: N:TMPEffects.Components.Mediator
+  id: TMPEffects.Components.Mediator
+  children:
+  - TMPEffects.Components.Mediator.TMPMediator
+  - TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+  - TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+  - TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Components.Mediator
+  nameWithType: TMPEffects.Components.Mediator
+  fullName: TMPEffects.Components.Mediator
+  type: Namespace
+references:
+- uid: TMPEffects.Components.Mediator.TMPMediator
+  commentId: T:TMPEffects.Components.Mediator.TMPMediator
+  parent: TMPEffects.Components.Mediator
+  href: TMPEffects.Components.Mediator.TMPMediator.html
+  name: TMPMediator
+  nameWithType: TMPMediator
+  fullName: TMPEffects.Components.Mediator.TMPMediator
+- uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+  commentId: T:TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+  parent: TMPEffects.Components.Mediator
+  href: TMPEffects.Components.Mediator.TMPMediator.html
+  name: TMPMediator.VisibilityEventHandler
+  nameWithType: TMPMediator.VisibilityEventHandler
+  fullName: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+    name: VisibilityEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler
+    name: VisibilityEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.VisibilityEventHandler.html
+- uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+  commentId: T:TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+  parent: TMPEffects.Components.Mediator
+  href: TMPEffects.Components.Mediator.TMPMediator.html
+  name: TMPMediator.TextChangedEarlyEventHandler
+  nameWithType: TMPMediator.TextChangedEarlyEventHandler
+  fullName: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+    name: TextChangedEarlyEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler
+    name: TextChangedEarlyEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.TextChangedEarlyEventHandler.html
+- uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+  commentId: T:TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+  parent: TMPEffects.Components.Mediator
+  href: TMPEffects.Components.Mediator.TMPMediator.html
+  name: TMPMediator.TextChangedLateEventHandler
+  nameWithType: TMPMediator.TextChangedLateEventHandler
+  fullName: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+    name: TextChangedLateEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.Mediator.TMPMediator
+    name: TMPMediator
+    href: TMPEffects.Components.Mediator.TMPMediator.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler
+    name: TextChangedLateEventHandler
+    href: TMPEffects.Components.Mediator.TMPMediator.TextChangedLateEventHandler.html
+- uid: TMPEffects.Components.Mediator
+  commentId: N:TMPEffects.Components.Mediator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Mediator
+  nameWithType: TMPEffects.Components.Mediator
+  fullName: TMPEffects.Components.Mediator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator
+    name: Mediator
+    href: TMPEffects.Components.Mediator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Mediator
+    name: Mediator
+    href: TMPEffects.Components.Mediator.html

@@ -1,0 +1,1974 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  id: TMPAnimator
+  parent: TMPEffects.Components
+  children:
+  - TMPEffects.Components.TMPAnimator.ANIMATION_PREFIX
+  - TMPEffects.Components.TMPAnimator.AnimateOnStart
+  - TMPEffects.Components.TMPAnimator.AnimationsOverride
+  - TMPEffects.Components.TMPAnimator.BasicTags
+  - TMPEffects.Components.TMPAnimator.Database
+  - TMPEffects.Components.TMPAnimator.HIDE_ANIMATION_PREFIX
+  - TMPEffects.Components.TMPAnimator.HideTags
+  - TMPEffects.Components.TMPAnimator.IsAnimating
+  - TMPEffects.Components.TMPAnimator.IsExcluded(System.Char,TMPEffects.Components.Animator.TMPAnimationType)
+  - TMPEffects.Components.TMPAnimator.IsExcludedBasic(System.Char)
+  - TMPEffects.Components.TMPAnimator.IsExcludedHide(System.Char)
+  - TMPEffects.Components.TMPAnimator.IsExcludedShow(System.Char)
+  - TMPEffects.Components.TMPAnimator.ResetAnimations
+  - TMPEffects.Components.TMPAnimator.ResetTime
+  - TMPEffects.Components.TMPAnimator.SHOW_ANIMATION_PREFIX
+  - TMPEffects.Components.TMPAnimator.SceneAnimations
+  - TMPEffects.Components.TMPAnimator.SceneHideAnimations
+  - TMPEffects.Components.TMPAnimator.SceneShowAnimations
+  - TMPEffects.Components.TMPAnimator.SetDatabase(TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase)
+  - TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters(System.String,System.Nullable{System.Boolean})
+  - TMPEffects.Components.TMPAnimator.SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType,System.String,System.Nullable{System.Boolean})
+  - TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters(System.String,System.Nullable{System.Boolean})
+  - TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters(System.String,System.Nullable{System.Boolean})
+  - TMPEffects.Components.TMPAnimator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)
+  - TMPEffects.Components.TMPAnimator.ShowTags
+  - TMPEffects.Components.TMPAnimator.StartAnimating
+  - TMPEffects.Components.TMPAnimator.StopAnimating
+  - TMPEffects.Components.TMPAnimator.Tags
+  - TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+  - TMPEffects.Components.TMPAnimator.UpdateFrom
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPAnimator
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 40
+  namespace: TMPEffects.Components
+  summary: Animates the character of a TMP_Text component.
+  remarks: >-
+    One of the two main components of TMPEffects, along with <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref>.<br />
+
+    TMPAnimator allows you to apply animations to the characters of a TMP_Text component.<br />
+
+    There are three types of animations:
+
+    <table><tbody><tr></tr><tr></tr><tr></tr></tbody></table><br />
+
+    You may control when the animations are updated by setting <xref href="TMPEffects.Components.TMPAnimator.UpdateFrom" data-throw-if-not-resolved="false"></xref> to <xref href="TMPEffects.Components.Animator.UpdateFrom.Script" data-throw-if-not-resolved="false"></xref> and calling <xref href="TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)" data-throw-if-not-resolved="false"></xref>.<br />
+  example: []
+  syntax:
+    content: 'public class TMPAnimator : TMPEffectComponent'
+    content.vb: Public Class TMPAnimator Inherits TMPEffectComponent
+  inheritance:
+  - System.Object
+  - TMPEffects.Components.TMPEffectComponent
+  inheritedMembers:
+  - TMPEffects.Components.TMPEffectComponent.TextComponent
+  - TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  - TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.Mediator
+  - TMPEffects.Components.TMPEffectComponent.FreeMediator
+  - TMPEffects.Components.TMPEffectComponent.UpdateMediator
+- uid: TMPEffects.Components.TMPAnimator.IsAnimating
+  commentId: P:TMPEffects.Components.TMPAnimator.IsAnimating
+  id: IsAnimating
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: IsAnimating
+  nameWithType: TMPAnimator.IsAnimating
+  fullName: TMPEffects.Components.TMPAnimator.IsAnimating
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsAnimating
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 51
+  namespace: TMPEffects.Components
+  summary: >-
+    Whether the text is currently being animated.<br />
+
+    If <xref href="TMPEffects.Components.TMPAnimator.UpdateFrom" data-throw-if-not-resolved="false"></xref> is set to <xref href="TMPEffects.Components.Animator.UpdateFrom.Script" data-throw-if-not-resolved="false"></xref>, this will always evaluate to true.
+  example: []
+  syntax:
+    content: public bool IsAnimating { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsAnimating As Boolean
+  overload: TMPEffects.Components.TMPAnimator.IsAnimating*
+- uid: TMPEffects.Components.TMPAnimator.Database
+  commentId: P:TMPEffects.Components.TMPAnimator.Database
+  id: Database
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: Database
+  nameWithType: TMPAnimator.Database
+  fullName: TMPEffects.Components.TMPAnimator.Database
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Database
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 57
+  namespace: TMPEffects.Components
+  summary: The database used to parse animation tags.
+  example: []
+  syntax:
+    content: public TMPAnimationDatabase Database { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+    content.vb: Public ReadOnly Property Database As TMPAnimationDatabase
+  overload: TMPEffects.Components.TMPAnimator.Database*
+- uid: TMPEffects.Components.TMPAnimator.SceneAnimations
+  commentId: P:TMPEffects.Components.TMPAnimator.SceneAnimations
+  id: SceneAnimations
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SceneAnimations
+  nameWithType: TMPAnimator.SceneAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneAnimations
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SceneAnimations
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 59
+  namespace: TMPEffects.Components
+  syntax:
+    content: public IDictionary<string, TMPSceneAnimation> SceneAnimations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneAnimation}
+    content.vb: Public ReadOnly Property SceneAnimations As IDictionary(Of String, TMPSceneAnimation)
+  overload: TMPEffects.Components.TMPAnimator.SceneAnimations*
+- uid: TMPEffects.Components.TMPAnimator.SceneShowAnimations
+  commentId: P:TMPEffects.Components.TMPAnimator.SceneShowAnimations
+  id: SceneShowAnimations
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SceneShowAnimations
+  nameWithType: TMPAnimator.SceneShowAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneShowAnimations
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SceneShowAnimations
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 60
+  namespace: TMPEffects.Components
+  syntax:
+    content: public IDictionary<string, TMPSceneShowAnimation> SceneShowAnimations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation}
+    content.vb: Public ReadOnly Property SceneShowAnimations As IDictionary(Of String, TMPSceneShowAnimation)
+  overload: TMPEffects.Components.TMPAnimator.SceneShowAnimations*
+- uid: TMPEffects.Components.TMPAnimator.SceneHideAnimations
+  commentId: P:TMPEffects.Components.TMPAnimator.SceneHideAnimations
+  id: SceneHideAnimations
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SceneHideAnimations
+  nameWithType: TMPAnimator.SceneHideAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneHideAnimations
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SceneHideAnimations
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 61
+  namespace: TMPEffects.Components
+  syntax:
+    content: public IDictionary<string, TMPSceneHideAnimation> SceneHideAnimations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation}
+    content.vb: Public ReadOnly Property SceneHideAnimations As IDictionary(Of String, TMPSceneHideAnimation)
+  overload: TMPEffects.Components.TMPAnimator.SceneHideAnimations*
+- uid: TMPEffects.Components.TMPAnimator.UpdateFrom
+  commentId: P:TMPEffects.Components.TMPAnimator.UpdateFrom
+  id: UpdateFrom
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: UpdateFrom
+  nameWithType: TMPAnimator.UpdateFrom
+  fullName: TMPEffects.Components.TMPAnimator.UpdateFrom
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: UpdateFrom
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 66
+  namespace: TMPEffects.Components
+  summary: Where the animations are currently being updated from.
+  example: []
+  syntax:
+    content: public UpdateFrom UpdateFrom { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.Animator.UpdateFrom
+    content.vb: Public ReadOnly Property UpdateFrom As UpdateFrom
+  overload: TMPEffects.Components.TMPAnimator.UpdateFrom*
+- uid: TMPEffects.Components.TMPAnimator.Tags
+  commentId: P:TMPEffects.Components.TMPAnimator.Tags
+  id: Tags
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: Tags
+  nameWithType: TMPAnimator.Tags
+  fullName: TMPEffects.Components.TMPAnimator.Tags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Tags
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 71
+  namespace: TMPEffects.Components
+  summary: All tags parsed by the TMPAnimator.
+  example: []
+  syntax:
+    content: public ITagCollection Tags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property Tags As ITagCollection
+  overload: TMPEffects.Components.TMPAnimator.Tags*
+- uid: TMPEffects.Components.TMPAnimator.BasicTags
+  commentId: P:TMPEffects.Components.TMPAnimator.BasicTags
+  id: BasicTags
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: BasicTags
+  nameWithType: TMPAnimator.BasicTags
+  fullName: TMPEffects.Components.TMPAnimator.BasicTags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BasicTags
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 75
+  namespace: TMPEffects.Components
+  summary: All basic animation tags parsed by the TMPAnimator.
+  example: []
+  syntax:
+    content: public ITagCollection BasicTags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property BasicTags As ITagCollection
+  overload: TMPEffects.Components.TMPAnimator.BasicTags*
+- uid: TMPEffects.Components.TMPAnimator.ShowTags
+  commentId: P:TMPEffects.Components.TMPAnimator.ShowTags
+  id: ShowTags
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: ShowTags
+  nameWithType: TMPAnimator.ShowTags
+  fullName: TMPEffects.Components.TMPAnimator.ShowTags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ShowTags
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 79
+  namespace: TMPEffects.Components
+  summary: All show animation tags parsed by the TMPAnimator.
+  example: []
+  syntax:
+    content: public ITagCollection ShowTags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property ShowTags As ITagCollection
+  overload: TMPEffects.Components.TMPAnimator.ShowTags*
+- uid: TMPEffects.Components.TMPAnimator.HideTags
+  commentId: P:TMPEffects.Components.TMPAnimator.HideTags
+  id: HideTags
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: HideTags
+  nameWithType: TMPAnimator.HideTags
+  fullName: TMPEffects.Components.TMPAnimator.HideTags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: HideTags
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 83
+  namespace: TMPEffects.Components
+  summary: All hide animation tags parsed by the TMPAnimator.
+  example: []
+  syntax:
+    content: public ITagCollection HideTags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property HideTags As ITagCollection
+  overload: TMPEffects.Components.TMPAnimator.HideTags*
+- uid: TMPEffects.Components.TMPAnimator.AnimateOnStart
+  commentId: P:TMPEffects.Components.TMPAnimator.AnimateOnStart
+  id: AnimateOnStart
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: AnimateOnStart
+  nameWithType: TMPAnimator.AnimateOnStart
+  fullName: TMPEffects.Components.TMPAnimator.AnimateOnStart
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AnimateOnStart
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 88
+  namespace: TMPEffects.Components
+  summary: Whether the TMPAnimator should automatically begin animating on <xref href="TMPEffects.Components.TMPAnimator.Start" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool AnimateOnStart { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AnimateOnStart As Boolean
+  overload: TMPEffects.Components.TMPAnimator.AnimateOnStart*
+- uid: TMPEffects.Components.TMPAnimator.AnimationsOverride
+  commentId: P:TMPEffects.Components.TMPAnimator.AnimationsOverride
+  id: AnimationsOverride
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: AnimationsOverride
+  nameWithType: TMPAnimator.AnimationsOverride
+  fullName: TMPEffects.Components.TMPAnimator.AnimationsOverride
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AnimationsOverride
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 92
+  namespace: TMPEffects.Components
+  summary: Whether animations will override each other by default.
+  example: []
+  syntax:
+    content: public bool AnimationsOverride { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AnimationsOverride As Boolean
+  overload: TMPEffects.Components.TMPAnimator.AnimationsOverride*
+- uid: TMPEffects.Components.TMPAnimator.ANIMATION_PREFIX
+  commentId: F:TMPEffects.Components.TMPAnimator.ANIMATION_PREFIX
+  id: ANIMATION_PREFIX
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: ANIMATION_PREFIX
+  nameWithType: TMPAnimator.ANIMATION_PREFIX
+  fullName: TMPEffects.Components.TMPAnimator.ANIMATION_PREFIX
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ANIMATION_PREFIX
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 97
+  namespace: TMPEffects.Components
+  summary: The prefix used for basic animation tags.
+  example: []
+  syntax:
+    content: public const char ANIMATION_PREFIX = '\0'
+    return:
+      type: System.Char
+    content.vb: Public Const ANIMATION_PREFIX As Char = vbNullChar
+- uid: TMPEffects.Components.TMPAnimator.SHOW_ANIMATION_PREFIX
+  commentId: F:TMPEffects.Components.TMPAnimator.SHOW_ANIMATION_PREFIX
+  id: SHOW_ANIMATION_PREFIX
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SHOW_ANIMATION_PREFIX
+  nameWithType: TMPAnimator.SHOW_ANIMATION_PREFIX
+  fullName: TMPEffects.Components.TMPAnimator.SHOW_ANIMATION_PREFIX
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SHOW_ANIMATION_PREFIX
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 101
+  namespace: TMPEffects.Components
+  summary: The prefix used for show animation tags.
+  example: []
+  syntax:
+    content: public const char SHOW_ANIMATION_PREFIX = '+'
+    return:
+      type: System.Char
+    content.vb: Public Const SHOW_ANIMATION_PREFIX As Char = "+"c
+- uid: TMPEffects.Components.TMPAnimator.HIDE_ANIMATION_PREFIX
+  commentId: F:TMPEffects.Components.TMPAnimator.HIDE_ANIMATION_PREFIX
+  id: HIDE_ANIMATION_PREFIX
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: HIDE_ANIMATION_PREFIX
+  nameWithType: TMPAnimator.HIDE_ANIMATION_PREFIX
+  fullName: TMPEffects.Components.TMPAnimator.HIDE_ANIMATION_PREFIX
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: HIDE_ANIMATION_PREFIX
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 105
+  namespace: TMPEffects.Components
+  summary: The prefix used for hide animation tags.
+  example: []
+  syntax:
+    content: public const char HIDE_ANIMATION_PREFIX = '-'
+    return:
+      type: System.Char
+    content.vb: Public Const HIDE_ANIMATION_PREFIX As Char = "-"c
+- uid: TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+  commentId: M:TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+  id: UpdateAnimations(System.Single)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: UpdateAnimations(float)
+  nameWithType: TMPAnimator.UpdateAnimations(float)
+  fullName: TMPEffects.Components.TMPAnimator.UpdateAnimations(float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: UpdateAnimations
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 192
+  namespace: TMPEffects.Components
+  summary: >-
+    Update the current animations.<br />
+
+    You should only call this if <xref href="TMPEffects.Components.TMPAnimator.UpdateFrom" data-throw-if-not-resolved="false"></xref> is set to <xref href="TMPEffects.Components.Animator.UpdateFrom.Script" data-throw-if-not-resolved="false"></xref>,
+
+    otherwise this will output a warning and return.
+  example: []
+  syntax:
+    content: public void UpdateAnimations(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+    content.vb: Public Sub UpdateAnimations(deltaTime As Single)
+  overload: TMPEffects.Components.TMPAnimator.UpdateAnimations*
+  nameWithType.vb: TMPAnimator.UpdateAnimations(Single)
+  fullName.vb: TMPEffects.Components.TMPAnimator.UpdateAnimations(Single)
+  name.vb: UpdateAnimations(Single)
+- uid: TMPEffects.Components.TMPAnimator.StartAnimating
+  commentId: M:TMPEffects.Components.TMPAnimator.StartAnimating
+  id: StartAnimating
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: StartAnimating()
+  nameWithType: TMPAnimator.StartAnimating()
+  fullName: TMPEffects.Components.TMPAnimator.StartAnimating()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: StartAnimating
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 212
+  namespace: TMPEffects.Components
+  summary: >-
+    Start animating.<br />
+
+    You should only call this if <xref href="TMPEffects.Components.TMPAnimator.UpdateFrom" data-throw-if-not-resolved="false"></xref> is NOT set to <xref href="TMPEffects.Components.Animator.UpdateFrom.Script" data-throw-if-not-resolved="false"></xref>,
+
+    otherwise this will output a warning and return.
+  example: []
+  syntax:
+    content: public void StartAnimating()
+    content.vb: Public Sub StartAnimating()
+  overload: TMPEffects.Components.TMPAnimator.StartAnimating*
+- uid: TMPEffects.Components.TMPAnimator.StopAnimating
+  commentId: M:TMPEffects.Components.TMPAnimator.StopAnimating
+  id: StopAnimating
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: StopAnimating()
+  nameWithType: TMPAnimator.StopAnimating()
+  fullName: TMPEffects.Components.TMPAnimator.StopAnimating()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: StopAnimating
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 239
+  namespace: TMPEffects.Components
+  summary: >-
+    Stop animating.<br />
+
+    You should only call this if <xref href="TMPEffects.Components.TMPAnimator.UpdateFrom" data-throw-if-not-resolved="false"></xref> is NOT set to <xref href="TMPEffects.Components.Animator.UpdateFrom.Script" data-throw-if-not-resolved="false"></xref>,
+
+    otherwise this will output a warning and return.
+  example: []
+  syntax:
+    content: public void StopAnimating()
+    content.vb: Public Sub StopAnimating()
+  overload: TMPEffects.Components.TMPAnimator.StopAnimating*
+- uid: TMPEffects.Components.TMPAnimator.ResetAnimations
+  commentId: M:TMPEffects.Components.TMPAnimator.ResetAnimations
+  id: ResetAnimations
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: ResetAnimations()
+  nameWithType: TMPAnimator.ResetAnimations()
+  fullName: TMPEffects.Components.TMPAnimator.ResetAnimations()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetAnimations
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 281
+  namespace: TMPEffects.Components
+  summary: Reset all visible characters to their initial, unanimated state.
+  example: []
+  syntax:
+    content: public void ResetAnimations()
+    content.vb: Public Sub ResetAnimations()
+  overload: TMPEffects.Components.TMPAnimator.ResetAnimations*
+- uid: TMPEffects.Components.TMPAnimator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)
+  commentId: M:TMPEffects.Components.TMPAnimator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)
+  id: SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetUpdateFrom(UpdateFrom)
+  nameWithType: TMPAnimator.SetUpdateFrom(UpdateFrom)
+  fullName: TMPEffects.Components.TMPAnimator.SetUpdateFrom(TMPEffects.Components.Animator.UpdateFrom)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetUpdateFrom
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 289
+  namespace: TMPEffects.Components
+  summary: Set where the animations should be updated from.
+  example: []
+  syntax:
+    content: public void SetUpdateFrom(UpdateFrom updateFrom)
+    parameters:
+    - id: updateFrom
+      type: TMPEffects.Components.Animator.UpdateFrom
+      description: Where the animations are updated from.
+    content.vb: Public Sub SetUpdateFrom(updateFrom As UpdateFrom)
+  overload: TMPEffects.Components.TMPAnimator.SetUpdateFrom*
+- uid: TMPEffects.Components.TMPAnimator.SetDatabase(TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase)
+  commentId: M:TMPEffects.Components.TMPAnimator.SetDatabase(TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase)
+  id: SetDatabase(TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetDatabase(TMPAnimationDatabase)
+  nameWithType: TMPAnimator.SetDatabase(TMPAnimationDatabase)
+  fullName: TMPEffects.Components.TMPAnimator.SetDatabase(TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetDatabase
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 303
+  namespace: TMPEffects.Components
+  summary: Set the database that will be used to parse animation tags.
+  example: []
+  syntax:
+    content: public void SetDatabase(TMPAnimationDatabase database)
+    parameters:
+    - id: database
+      type: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+      description: The database that will be used to parse animation tags.
+    content.vb: Public Sub SetDatabase(database As TMPAnimationDatabase)
+  overload: TMPEffects.Components.TMPAnimator.SetDatabase*
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType,System.String,System.Nullable{System.Boolean})
+  commentId: M:TMPEffects.Components.TMPAnimator.SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType,System.String,System.Nullable{System.Boolean})
+  id: SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType,System.String,System.Nullable{System.Boolean})
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetExcludedCharacters(TMPAnimationType, string, bool?)
+  nameWithType: TMPAnimator.SetExcludedCharacters(TMPAnimationType, string, bool?)
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType, string, bool?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetExcludedCharacters
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 339
+  namespace: TMPEffects.Components
+  summary: Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
+  example: []
+  syntax:
+    content: public void SetExcludedCharacters(TMPAnimationType type, string str, bool? excludePunctuation = null)
+    parameters:
+    - id: type
+      type: TMPEffects.Components.Animator.TMPAnimationType
+    - id: str
+      type: System.String
+      description: The excluded characters, as string. The string will be evaluated character-wise.
+    - id: excludePunctuation
+      type: System.Nullable{System.Boolean}
+      description: Whether punctuation is excluded.
+    content.vb: Public Sub SetExcludedCharacters(type As TMPAnimationType, str As String, excludePunctuation As Boolean? = Nothing)
+  overload: TMPEffects.Components.TMPAnimator.SetExcludedCharacters*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: If an invalid <xref href="TMPEffects.Components.Animator.TMPAnimationType" data-throw-if-not-resolved="false"></xref> is passed in.
+  nameWithType.vb: TMPAnimator.SetExcludedCharacters(TMPAnimationType, String, Boolean?)
+  fullName.vb: TMPEffects.Components.TMPAnimator.SetExcludedCharacters(TMPEffects.Components.Animator.TMPAnimationType, String, Boolean?)
+  name.vb: SetExcludedCharacters(TMPAnimationType, String, Boolean?)
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters(System.String,System.Nullable{System.Boolean})
+  commentId: M:TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters(System.String,System.Nullable{System.Boolean})
+  id: SetExcludedBasicCharacters(System.String,System.Nullable{System.Boolean})
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetExcludedBasicCharacters(string, bool?)
+  nameWithType: TMPAnimator.SetExcludedBasicCharacters(string, bool?)
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters(string, bool?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetExcludedBasicCharacters
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 356
+  namespace: TMPEffects.Components
+  summary: Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
+  example: []
+  syntax:
+    content: public void SetExcludedBasicCharacters(string str, bool? excludePunctuation = null)
+    parameters:
+    - id: str
+      type: System.String
+      description: The excluded characters, as string. The string will be evaluated character-wise.
+    - id: excludePunctuation
+      type: System.Nullable{System.Boolean}
+      description: Whether punctuation is excluded.
+    content.vb: Public Sub SetExcludedBasicCharacters(str As String, excludePunctuation As Boolean? = Nothing)
+  overload: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters*
+  nameWithType.vb: TMPAnimator.SetExcludedBasicCharacters(String, Boolean?)
+  fullName.vb: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters(String, Boolean?)
+  name.vb: SetExcludedBasicCharacters(String, Boolean?)
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters(System.String,System.Nullable{System.Boolean})
+  commentId: M:TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters(System.String,System.Nullable{System.Boolean})
+  id: SetExcludedShowCharacters(System.String,System.Nullable{System.Boolean})
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetExcludedShowCharacters(string, bool?)
+  nameWithType: TMPAnimator.SetExcludedShowCharacters(string, bool?)
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters(string, bool?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetExcludedShowCharacters
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 376
+  namespace: TMPEffects.Components
+  summary: Set the excluded character for show animations, meaning characters that will not be animated by show animations.
+  example: []
+  syntax:
+    content: public void SetExcludedShowCharacters(string str, bool? excludePunctuation = null)
+    parameters:
+    - id: str
+      type: System.String
+      description: The excluded characters, as string. The string will be evaluated character-wise.
+    - id: excludePunctuation
+      type: System.Nullable{System.Boolean}
+      description: Whether punctuation is excluded.
+    content.vb: Public Sub SetExcludedShowCharacters(str As String, excludePunctuation As Boolean? = Nothing)
+  overload: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters*
+  nameWithType.vb: TMPAnimator.SetExcludedShowCharacters(String, Boolean?)
+  fullName.vb: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters(String, Boolean?)
+  name.vb: SetExcludedShowCharacters(String, Boolean?)
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters(System.String,System.Nullable{System.Boolean})
+  commentId: M:TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters(System.String,System.Nullable{System.Boolean})
+  id: SetExcludedHideCharacters(System.String,System.Nullable{System.Boolean})
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: SetExcludedHideCharacters(string, bool?)
+  nameWithType: TMPAnimator.SetExcludedHideCharacters(string, bool?)
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters(string, bool?)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetExcludedHideCharacters
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 396
+  namespace: TMPEffects.Components
+  summary: Set the excluded character for hide animations, meaning characters that will not be animated by hide animations.
+  example: []
+  syntax:
+    content: public void SetExcludedHideCharacters(string str, bool? excludePunctuation = null)
+    parameters:
+    - id: str
+      type: System.String
+      description: The excluded characters, as string. The string will be evaluated character-wise.
+    - id: excludePunctuation
+      type: System.Nullable{System.Boolean}
+      description: Whether punctuation is excluded.
+    content.vb: Public Sub SetExcludedHideCharacters(str As String, excludePunctuation As Boolean? = Nothing)
+  overload: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters*
+  nameWithType.vb: TMPAnimator.SetExcludedHideCharacters(String, Boolean?)
+  fullName.vb: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters(String, Boolean?)
+  name.vb: SetExcludedHideCharacters(String, Boolean?)
+- uid: TMPEffects.Components.TMPAnimator.IsExcluded(System.Char,TMPEffects.Components.Animator.TMPAnimationType)
+  commentId: M:TMPEffects.Components.TMPAnimator.IsExcluded(System.Char,TMPEffects.Components.Animator.TMPAnimationType)
+  id: IsExcluded(System.Char,TMPEffects.Components.Animator.TMPAnimationType)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: IsExcluded(char, TMPAnimationType)
+  nameWithType: TMPAnimator.IsExcluded(char, TMPAnimationType)
+  fullName: TMPEffects.Components.TMPAnimator.IsExcluded(char, TMPEffects.Components.Animator.TMPAnimationType)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsExcluded
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 419
+  namespace: TMPEffects.Components
+  summary: Whether the character is excluded from animations of the given type.
+  example: []
+  syntax:
+    content: public bool IsExcluded(char c, TMPAnimationType type)
+    parameters:
+    - id: c
+      type: System.Char
+      description: The character to check.
+    - id: type
+      type: TMPEffects.Components.Animator.TMPAnimationType
+      description: The type of animation to check against.
+    return:
+      type: System.Boolean
+      description: Whether the character is excluded from animations of the given type.
+    content.vb: Public Function IsExcluded(c As Char, type As TMPAnimationType) As Boolean
+  overload: TMPEffects.Components.TMPAnimator.IsExcluded*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: If an invalid <xref href="TMPEffects.Components.Animator.TMPAnimationType" data-throw-if-not-resolved="false"></xref> is passed in.
+  nameWithType.vb: TMPAnimator.IsExcluded(Char, TMPAnimationType)
+  fullName.vb: TMPEffects.Components.TMPAnimator.IsExcluded(Char, TMPEffects.Components.Animator.TMPAnimationType)
+  name.vb: IsExcluded(Char, TMPAnimationType)
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedBasic(System.Char)
+  commentId: M:TMPEffects.Components.TMPAnimator.IsExcludedBasic(System.Char)
+  id: IsExcludedBasic(System.Char)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: IsExcludedBasic(char)
+  nameWithType: TMPAnimator.IsExcludedBasic(char)
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedBasic(char)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsExcludedBasic
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 434
+  namespace: TMPEffects.Components
+  summary: Check whether the given character is excluded from basic animations.
+  example: []
+  syntax:
+    content: public bool IsExcludedBasic(char c)
+    parameters:
+    - id: c
+      type: System.Char
+      description: The character to check.
+    return:
+      type: System.Boolean
+      description: Whether the character is excluded from basic animations.
+    content.vb: Public Function IsExcludedBasic(c As Char) As Boolean
+  overload: TMPEffects.Components.TMPAnimator.IsExcludedBasic*
+  nameWithType.vb: TMPAnimator.IsExcludedBasic(Char)
+  fullName.vb: TMPEffects.Components.TMPAnimator.IsExcludedBasic(Char)
+  name.vb: IsExcludedBasic(Char)
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedShow(System.Char)
+  commentId: M:TMPEffects.Components.TMPAnimator.IsExcludedShow(System.Char)
+  id: IsExcludedShow(System.Char)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: IsExcludedShow(char)
+  nameWithType: TMPAnimator.IsExcludedShow(char)
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedShow(char)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsExcludedShow
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 440
+  namespace: TMPEffects.Components
+  summary: Check whether the given character is excluded from show animations.
+  example: []
+  syntax:
+    content: public bool IsExcludedShow(char c)
+    parameters:
+    - id: c
+      type: System.Char
+      description: The character to check.
+    return:
+      type: System.Boolean
+      description: Whether the character is excluded from show animations.
+    content.vb: Public Function IsExcludedShow(c As Char) As Boolean
+  overload: TMPEffects.Components.TMPAnimator.IsExcludedShow*
+  nameWithType.vb: TMPAnimator.IsExcludedShow(Char)
+  fullName.vb: TMPEffects.Components.TMPAnimator.IsExcludedShow(Char)
+  name.vb: IsExcludedShow(Char)
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedHide(System.Char)
+  commentId: M:TMPEffects.Components.TMPAnimator.IsExcludedHide(System.Char)
+  id: IsExcludedHide(System.Char)
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: IsExcludedHide(char)
+  nameWithType: TMPAnimator.IsExcludedHide(char)
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedHide(char)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsExcludedHide
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 446
+  namespace: TMPEffects.Components
+  summary: Check whether the given character is excluded from hide animations.
+  example: []
+  syntax:
+    content: public bool IsExcludedHide(char c)
+    parameters:
+    - id: c
+      type: System.Char
+      description: The character to check.
+    return:
+      type: System.Boolean
+      description: Whether the character is excluded from hide animations.
+    content.vb: Public Function IsExcludedHide(c As Char) As Boolean
+  overload: TMPEffects.Components.TMPAnimator.IsExcludedHide*
+  nameWithType.vb: TMPAnimator.IsExcludedHide(Char)
+  fullName.vb: TMPEffects.Components.TMPAnimator.IsExcludedHide(Char)
+  name.vb: IsExcludedHide(Char)
+- uid: TMPEffects.Components.TMPAnimator.ResetTime
+  commentId: M:TMPEffects.Components.TMPAnimator.ResetTime
+  id: ResetTime
+  parent: TMPEffects.Components.TMPAnimator
+  langs:
+  - csharp
+  - vb
+  name: ResetTime()
+  nameWithType: TMPAnimator.ResetTime()
+  fullName: TMPEffects.Components.TMPAnimator.ResetTime()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetTime
+    path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
+    startLine: 451
+  namespace: TMPEffects.Components
+  summary: Reset the time of the animator.
+  example: []
+  syntax:
+    content: public void ResetTime()
+    content.vb: Public Sub ResetTime()
+  overload: TMPEffects.Components.TMPAnimator.ResetTime*
+references:
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
+- uid: TMPEffects.Components.TMPAnimator.UpdateFrom
+  commentId: P:TMPEffects.Components.TMPAnimator.UpdateFrom
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateFrom
+  name: UpdateFrom
+  nameWithType: TMPAnimator.UpdateFrom
+  fullName: TMPEffects.Components.TMPAnimator.UpdateFrom
+- uid: TMPEffects.Components.Animator.UpdateFrom.Script
+  commentId: F:TMPEffects.Components.Animator.UpdateFrom.Script
+  href: TMPEffects.Components.Animator.UpdateFrom.html#TMPEffects_Components_Animator_UpdateFrom_Script
+  name: Script
+  nameWithType: UpdateFrom.Script
+  fullName: TMPEffects.Components.Animator.UpdateFrom.Script
+- uid: TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+  commentId: M:TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+  isExternal: true
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateAnimations_System_Single_
+  name: UpdateAnimations(float)
+  nameWithType: TMPAnimator.UpdateAnimations(float)
+  fullName: TMPEffects.Components.TMPAnimator.UpdateAnimations(float)
+  nameWithType.vb: TMPAnimator.UpdateAnimations(Single)
+  fullName.vb: TMPEffects.Components.TMPAnimator.UpdateAnimations(Single)
+  name.vb: UpdateAnimations(Single)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+    name: UpdateAnimations
+    href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateAnimations_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPAnimator.UpdateAnimations(System.Single)
+    name: UpdateAnimations
+    href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateAnimations_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Components.TMPEffectComponent
+  commentId: T:TMPEffects.Components.TMPEffectComponent
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent
+  nameWithType: TMPEffectComponent
+  fullName: TMPEffects.Components.TMPEffectComponent
+- uid: TMPEffects.Components.TMPEffectComponent.TextComponent
+  commentId: P:TMPEffects.Components.TMPEffectComponent.TextComponent
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_TextComponent
+  name: TextComponent
+  nameWithType: TMPEffectComponent.TextComponent
+  fullName: TMPEffects.Components.TMPEffectComponent.TextComponent
+- uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  name: SetText(string)
+  nameWithType: TMPEffectComponent.SetText(string)
+  fullName: TMPEffects.Components.TMPEffectComponent.SetText(string)
+  nameWithType.vb: TMPEffectComponent.SetText(String)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.SetText(String)
+  name.vb: SetText(String)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+    name: SetText
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+    name: SetText
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  name: Show(int, int, bool)
+  nameWithType: TMPEffectComponent.Show(int, int, bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.Show(int, int, bool)
+  nameWithType.vb: TMPEffectComponent.Show(Integer, Integer, Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.Show(Integer, Integer, Boolean)
+  name.vb: Show(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+    name: Show
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+    name: Show
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  name: Hide(int, int, bool)
+  nameWithType: TMPEffectComponent.Hide(int, int, bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.Hide(int, int, bool)
+  nameWithType.vb: TMPEffectComponent.Hide(Integer, Integer, Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.Hide(Integer, Integer, Boolean)
+  name.vb: Hide(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+    name: Hide
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+    name: Hide
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  name: ShowAll(bool)
+  nameWithType: TMPEffectComponent.ShowAll(bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.ShowAll(bool)
+  nameWithType.vb: TMPEffectComponent.ShowAll(Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.ShowAll(Boolean)
+  name.vb: ShowAll(Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+    name: ShowAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+    name: ShowAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  name: HideAll(bool)
+  nameWithType: TMPEffectComponent.HideAll(bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.HideAll(bool)
+  nameWithType.vb: TMPEffectComponent.HideAll(Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.HideAll(Boolean)
+  name.vb: HideAll(Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+    name: HideAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+    name: HideAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Mediator
+  commentId: P:TMPEffects.Components.TMPEffectComponent.Mediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Mediator
+  name: Mediator
+  nameWithType: TMPEffectComponent.Mediator
+  fullName: TMPEffects.Components.TMPEffectComponent.Mediator
+- uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.FreeMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  name: FreeMediator()
+  nameWithType: TMPEffectComponent.FreeMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.FreeMediator()
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+    name: FreeMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+    name: FreeMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  - name: (
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.UpdateMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  name: UpdateMediator()
+  nameWithType: TMPEffectComponent.UpdateMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.UpdateMediator()
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+    name: UpdateMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+    name: UpdateMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Components.TMPAnimator.IsAnimating*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.IsAnimating
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_IsAnimating
+  name: IsAnimating
+  nameWithType: TMPAnimator.IsAnimating
+  fullName: TMPEffects.Components.TMPAnimator.IsAnimating
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Components.TMPAnimator.Database*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.Database
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_Database
+  name: Database
+  nameWithType: TMPAnimator.Database
+  fullName: TMPEffects.Components.TMPAnimator.Database
+- uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html
+  name: TMPAnimationDatabase
+  nameWithType: TMPAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase
+  commentId: N:TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.AnimationDatabase
+  nameWithType: TMPEffects.Databases.AnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+- uid: TMPEffects.Components.TMPAnimator.SceneAnimations*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SceneAnimations
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SceneAnimations
+  name: SceneAnimations
+  nameWithType: TMPAnimator.SceneAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneAnimations
+- uid: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneAnimation}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneAnimation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, TMPSceneAnimation>
+  nameWithType: IDictionary<string, TMPSceneAnimation>
+  fullName: System.Collections.Generic.IDictionary<string, TMPEffects.TMPSceneAnimations.TMPSceneAnimation>
+  nameWithType.vb: IDictionary(Of String, TMPSceneAnimation)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, TMPEffects.TMPSceneAnimations.TMPSceneAnimation)
+  name.vb: IDictionary(Of String, TMPSceneAnimation)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+    name: TMPSceneAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimation
+    name: TMPSceneAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Components.TMPAnimator.SceneShowAnimations*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SceneShowAnimations
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SceneShowAnimations
+  name: SceneShowAnimations
+  nameWithType: TMPAnimator.SceneShowAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneShowAnimations
+- uid: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, TMPSceneShowAnimation>
+  nameWithType: IDictionary<string, TMPSceneShowAnimation>
+  fullName: System.Collections.Generic.IDictionary<string, TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation>
+  nameWithType.vb: IDictionary(Of String, TMPSceneShowAnimation)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation)
+  name.vb: IDictionary(Of String, TMPSceneShowAnimation)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+    name: TMPSceneShowAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation
+    name: TMPSceneShowAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html
+  - name: )
+- uid: TMPEffects.Components.TMPAnimator.SceneHideAnimations*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SceneHideAnimations
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SceneHideAnimations
+  name: SceneHideAnimations
+  nameWithType: TMPAnimator.SceneHideAnimations
+  fullName: TMPEffects.Components.TMPAnimator.SceneHideAnimations
+- uid: System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, TMPSceneHideAnimation>
+  nameWithType: IDictionary<string, TMPSceneHideAnimation>
+  fullName: System.Collections.Generic.IDictionary<string, TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation>
+  nameWithType.vb: IDictionary(Of String, TMPSceneHideAnimation)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation)
+  name.vb: IDictionary(Of String, TMPSceneHideAnimation)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+    name: TMPSceneHideAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+    name: TMPSceneHideAnimation
+    href: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html
+  - name: )
+- uid: TMPEffects.Components.TMPAnimator.UpdateFrom*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.UpdateFrom
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateFrom
+  name: UpdateFrom
+  nameWithType: TMPAnimator.UpdateFrom
+  fullName: TMPEffects.Components.TMPAnimator.UpdateFrom
+- uid: TMPEffects.Components.Animator.UpdateFrom
+  commentId: T:TMPEffects.Components.Animator.UpdateFrom
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.UpdateFrom.html
+  name: UpdateFrom
+  nameWithType: UpdateFrom
+  fullName: TMPEffects.Components.Animator.UpdateFrom
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.Components.TMPAnimator.Tags*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.Tags
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_Tags
+  name: Tags
+  nameWithType: TMPAnimator.Tags
+  fullName: TMPEffects.Components.TMPAnimator.Tags
+- uid: TMPEffects.Tags.Collections.ITagCollection
+  commentId: T:TMPEffects.Tags.Collections.ITagCollection
+  parent: TMPEffects.Tags.Collections
+  href: TMPEffects.Tags.Collections.ITagCollection.html
+  name: ITagCollection
+  nameWithType: ITagCollection
+  fullName: TMPEffects.Tags.Collections.ITagCollection
+- uid: TMPEffects.Tags.Collections
+  commentId: N:TMPEffects.Tags.Collections
+  href: TMPEffects.html
+  name: TMPEffects.Tags.Collections
+  nameWithType: TMPEffects.Tags.Collections
+  fullName: TMPEffects.Tags.Collections
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+- uid: TMPEffects.Components.TMPAnimator.BasicTags*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.BasicTags
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_BasicTags
+  name: BasicTags
+  nameWithType: TMPAnimator.BasicTags
+  fullName: TMPEffects.Components.TMPAnimator.BasicTags
+- uid: TMPEffects.Components.TMPAnimator.ShowTags*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.ShowTags
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_ShowTags
+  name: ShowTags
+  nameWithType: TMPAnimator.ShowTags
+  fullName: TMPEffects.Components.TMPAnimator.ShowTags
+- uid: TMPEffects.Components.TMPAnimator.HideTags*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.HideTags
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_HideTags
+  name: HideTags
+  nameWithType: TMPAnimator.HideTags
+  fullName: TMPEffects.Components.TMPAnimator.HideTags
+- uid: TMPEffects.Components.TMPAnimator.Start
+  commentId: M:TMPEffects.Components.TMPAnimator.Start
+  name: Start()
+  nameWithType: TMPAnimator.Start()
+  fullName: TMPEffects.Components.TMPAnimator.Start()
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPAnimator.Start
+    name: Start
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPAnimator.Start
+    name: Start
+  - name: (
+  - name: )
+- uid: TMPEffects.Components.TMPAnimator.AnimateOnStart*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.AnimateOnStart
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_AnimateOnStart
+  name: AnimateOnStart
+  nameWithType: TMPAnimator.AnimateOnStart
+  fullName: TMPEffects.Components.TMPAnimator.AnimateOnStart
+- uid: TMPEffects.Components.TMPAnimator.AnimationsOverride*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.AnimationsOverride
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_AnimationsOverride
+  name: AnimationsOverride
+  nameWithType: TMPAnimator.AnimationsOverride
+  fullName: TMPEffects.Components.TMPAnimator.AnimationsOverride
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: TMPEffects.Components.TMPAnimator.UpdateAnimations*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.UpdateAnimations
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_UpdateAnimations_System_Single_
+  name: UpdateAnimations
+  nameWithType: TMPAnimator.UpdateAnimations
+  fullName: TMPEffects.Components.TMPAnimator.UpdateAnimations
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.Components.TMPAnimator.StartAnimating*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.StartAnimating
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_StartAnimating
+  name: StartAnimating
+  nameWithType: TMPAnimator.StartAnimating
+  fullName: TMPEffects.Components.TMPAnimator.StartAnimating
+- uid: TMPEffects.Components.TMPAnimator.StopAnimating*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.StopAnimating
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_StopAnimating
+  name: StopAnimating
+  nameWithType: TMPAnimator.StopAnimating
+  fullName: TMPEffects.Components.TMPAnimator.StopAnimating
+- uid: TMPEffects.Components.TMPAnimator.ResetAnimations*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.ResetAnimations
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_ResetAnimations
+  name: ResetAnimations
+  nameWithType: TMPAnimator.ResetAnimations
+  fullName: TMPEffects.Components.TMPAnimator.ResetAnimations
+- uid: TMPEffects.Components.TMPAnimator.SetUpdateFrom*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetUpdateFrom
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetUpdateFrom_TMPEffects_Components_Animator_UpdateFrom_
+  name: SetUpdateFrom
+  nameWithType: TMPAnimator.SetUpdateFrom
+  fullName: TMPEffects.Components.TMPAnimator.SetUpdateFrom
+- uid: TMPEffects.Components.TMPAnimator.SetDatabase*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetDatabase
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetDatabase_TMPEffects_Databases_AnimationDatabase_TMPAnimationDatabase_
+  name: SetDatabase
+  nameWithType: TMPAnimator.SetDatabase
+  fullName: TMPEffects.Components.TMPAnimator.SetDatabase
+- uid: TMPEffects.Components.Animator.TMPAnimationType
+  commentId: T:TMPEffects.Components.Animator.TMPAnimationType
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.TMPAnimationType.html
+  name: TMPAnimationType
+  nameWithType: TMPAnimationType
+  fullName: TMPEffects.Components.Animator.TMPAnimationType
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedCharacters*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetExcludedCharacters
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetExcludedCharacters_TMPEffects_Components_Animator_TMPAnimationType_System_String_System_Nullable_System_Boolean__
+  name: SetExcludedCharacters
+  nameWithType: TMPAnimator.SetExcludedCharacters
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedCharacters
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetExcludedBasicCharacters_System_String_System_Nullable_System_Boolean__
+  name: SetExcludedBasicCharacters
+  nameWithType: TMPAnimator.SetExcludedBasicCharacters
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedBasicCharacters
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetExcludedShowCharacters_System_String_System_Nullable_System_Boolean__
+  name: SetExcludedShowCharacters
+  nameWithType: TMPAnimator.SetExcludedShowCharacters
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedShowCharacters
+- uid: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_SetExcludedHideCharacters_System_String_System_Nullable_System_Boolean__
+  name: SetExcludedHideCharacters
+  nameWithType: TMPAnimator.SetExcludedHideCharacters
+  fullName: TMPEffects.Components.TMPAnimator.SetExcludedHideCharacters
+- uid: TMPEffects.Components.TMPAnimator.IsExcluded*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.IsExcluded
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_IsExcluded_System_Char_TMPEffects_Components_Animator_TMPAnimationType_
+  name: IsExcluded
+  nameWithType: TMPAnimator.IsExcluded
+  fullName: TMPEffects.Components.TMPAnimator.IsExcluded
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedBasic*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.IsExcludedBasic
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_IsExcludedBasic_System_Char_
+  name: IsExcludedBasic
+  nameWithType: TMPAnimator.IsExcludedBasic
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedBasic
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedShow*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.IsExcludedShow
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_IsExcludedShow_System_Char_
+  name: IsExcludedShow
+  nameWithType: TMPAnimator.IsExcludedShow
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedShow
+- uid: TMPEffects.Components.TMPAnimator.IsExcludedHide*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.IsExcludedHide
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_IsExcludedHide_System_Char_
+  name: IsExcludedHide
+  nameWithType: TMPAnimator.IsExcludedHide
+  fullName: TMPEffects.Components.TMPAnimator.IsExcludedHide
+- uid: TMPEffects.Components.TMPAnimator.ResetTime*
+  commentId: Overload:TMPEffects.Components.TMPAnimator.ResetTime
+  href: TMPEffects.Components.TMPAnimator.html#TMPEffects_Components_TMPAnimator_ResetTime
+  name: ResetTime
+  nameWithType: TMPAnimator.ResetTime
+  fullName: TMPEffects.Components.TMPAnimator.ResetTime

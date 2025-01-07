@@ -1,12 +1,11 @@
 - name: Introduction
   href: introduction.md
 - name: Quickstart
-  href: quickstart.md
   items:
-  - name: Installation
-    href: installation.md
   - name: Getting started
     href: gettingstarted.md
+  - name: Installation
+    href: installation.md
 - name: Components
 - name: TMPAnimator
   href: tmpanimator.md
@@ -41,14 +40,14 @@
       items:
         - name: Creating animations via script
           items:
-            - name: In-depth class overview
+            - name: Creating the class
               href: tmpanimator_creatinganimations.md
             - name: Animating a character
               href: animatingacharacter.md
         - name: Via Inspector (GenericAnimation)
           href: genericanimations.md
         - name: Via Timeline
-          href: timeline_creatinganimations.md
+          href: viatimeline.md
 
     - name: Animation Utility
       items:
@@ -85,6 +84,11 @@
       href: parameterutility.md
     - name: AutoParameters
       href: autoparameters.md
+      items:
+        - name: Creating AutoParameter types
+          href: creatingautoparametertypes.md
+        - name: Creating AutoParameter bundles
+          href: creatingautoparameterbundles.md
 
 - name: External packages
 - name: Timeline
@@ -94,10 +98,8 @@
       href: timeline_integration.md
     - name: Creating animations with timeline
       href: timeline_creatinganimations.md
-- name: YarnSpinner
-  items:
-    - name: Test1
-      href: timeline_creatinganimations.md
+- name: Yarn Spinner
+  href: yarnspinner.md
 
 - name: Miscellaneous
 - name: Other important classes

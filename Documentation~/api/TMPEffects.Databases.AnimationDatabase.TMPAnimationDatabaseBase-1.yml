@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase`1
+  id: TMPAnimationDatabaseBase`1
+  parent: TMPEffects.Databases.AnimationDatabase
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimationDatabaseBase<T>
+  nameWithType: TMPAnimationDatabaseBase<T>
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase<T>
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabaseBase.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPAnimationDatabaseBase
+    path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabaseBase.cs
+    startLine: 7
+  namespace: TMPEffects.Databases.AnimationDatabase
+  summary: Base class for databases storing <xref href="TMPEffects.TMPAnimations.ITMPAnimation" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public abstract class TMPAnimationDatabaseBase<T> : TMPEffectDatabase<T>, ITMPEffectDatabase<T>, ITMPEffectDatabase, INotifyObjectChanged where T : ITMPAnimation'
+    typeParameters:
+    - id: T
+    content.vb: Public MustInherit Class TMPAnimationDatabaseBase(Of T As ITMPAnimation) Inherits TMPEffectDatabase(Of T) Implements ITMPEffectDatabase(Of T), ITMPEffectDatabase, INotifyObjectChanged
+  inheritance:
+  - System.Object
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}
+  derivedClasses:
+  - TMPEffects.Databases.AnimationDatabase.TMPBasicAnimationDatabase
+  - TMPEffects.Databases.AnimationDatabase.TMPHideAnimationDatabase
+  - TMPEffects.Databases.AnimationDatabase.TMPShowAnimationDatabase
+  implements:
+  - TMPEffects.Databases.ITMPEffectDatabase{{T}}
+  - TMPEffects.Databases.ITMPEffectDatabase
+  - TMPEffects.ObjectChanged.INotifyObjectChanged
+  inheritedMembers:
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.ObjectChanged
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.ContainsEffect(System.String)
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.GetEffect(System.String)
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.OnValidate
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.OnDestroy
+  - TMPEffects.Databases.TMPEffectDatabase{{T}}.RaiseDatabaseChanged
+  nameWithType.vb: TMPAnimationDatabaseBase(Of T)
+  fullName.vb: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabaseBase(Of T)
+  name.vb: TMPAnimationDatabaseBase(Of T)
+references:
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.Databases.AnimationDatabase
+  commentId: N:TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.AnimationDatabase
+  nameWithType: TMPEffects.Databases.AnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  commentId: T:TMPEffects.Databases.TMPEffectDatabase{`0}
+  parent: TMPEffects.Databases
+  definition: TMPEffects.Databases.TMPEffectDatabase`1
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  name: TMPEffectDatabase<T>
+  nameWithType: TMPEffectDatabase<T>
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>
+  nameWithType.vb: TMPEffectDatabase(Of T)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T)
+  name.vb: TMPEffectDatabase(Of T)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1
+    name: TMPEffectDatabase
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1
+    name: TMPEffectDatabase
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Databases.ITMPEffectDatabase{{T}}
+  commentId: T:TMPEffects.Databases.ITMPEffectDatabase{`0}
+  parent: TMPEffects.Databases
+  definition: TMPEffects.Databases.ITMPEffectDatabase`1
+  href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  name: ITMPEffectDatabase<T>
+  nameWithType: ITMPEffectDatabase<T>
+  fullName: TMPEffects.Databases.ITMPEffectDatabase<T>
+  nameWithType.vb: ITMPEffectDatabase(Of T)
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase(Of T)
+  name.vb: ITMPEffectDatabase(Of T)
+  spec.csharp:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase`1
+    name: ITMPEffectDatabase
+    href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase`1
+    name: ITMPEffectDatabase
+    href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Databases.ITMPEffectDatabase
+  commentId: T:TMPEffects.Databases.ITMPEffectDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPEffectDatabase.html
+  name: ITMPEffectDatabase
+  nameWithType: ITMPEffectDatabase
+  fullName: TMPEffects.Databases.ITMPEffectDatabase
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.ObjectChanged
+  commentId: E:TMPEffects.Databases.TMPEffectDatabase{`0}.ObjectChanged
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.ObjectChanged
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ObjectChanged
+  name: ObjectChanged
+  nameWithType: TMPEffectDatabase<T>.ObjectChanged
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ObjectChanged
+  nameWithType.vb: TMPEffectDatabase(Of T).ObjectChanged
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ObjectChanged
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.ContainsEffect(System.String)
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase{`0}.ContainsEffect(System.String)
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  name: ContainsEffect(string)
+  nameWithType: TMPEffectDatabase<T>.ContainsEffect(string)
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ContainsEffect(string)
+  nameWithType.vb: TMPEffectDatabase(Of T).ContainsEffect(String)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ContainsEffect(String)
+  name.vb: ContainsEffect(String)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.GetEffect(System.String)
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase{`0}.GetEffect(System.String)
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  name: GetEffect(string)
+  nameWithType: TMPEffectDatabase<T>.GetEffect(string)
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.GetEffect(string)
+  nameWithType.vb: TMPEffectDatabase(Of T).GetEffect(String)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).GetEffect(String)
+  name.vb: GetEffect(String)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.GetEffect(System.String)
+    name: GetEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.GetEffect(System.String)
+    name: GetEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.OnValidate
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase{`0}.OnValidate
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  name: OnValidate()
+  nameWithType: TMPEffectDatabase<T>.OnValidate()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.OnValidate()
+  nameWithType.vb: TMPEffectDatabase(Of T).OnValidate()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).OnValidate()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.OnValidate
+    name: OnValidate
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.OnValidate
+    name: OnValidate
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  - name: (
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.OnDestroy
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase{`0}.OnDestroy
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  name: OnDestroy()
+  nameWithType: TMPEffectDatabase<T>.OnDestroy()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.OnDestroy()
+  nameWithType.vb: TMPEffectDatabase(Of T).OnDestroy()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).OnDestroy()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  - name: (
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase{{T}}.RaiseDatabaseChanged
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase{`0}.RaiseDatabaseChanged
+  parent: TMPEffects.Databases.TMPEffectDatabase{{T}}
+  definition: TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  name: RaiseDatabaseChanged()
+  nameWithType: TMPEffectDatabase<T>.RaiseDatabaseChanged()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.RaiseDatabaseChanged()
+  nameWithType.vb: TMPEffectDatabase(Of T).RaiseDatabaseChanged()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).RaiseDatabaseChanged()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.RaiseDatabaseChanged
+    name: RaiseDatabaseChanged
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase{`0}.RaiseDatabaseChanged
+    name: RaiseDatabaseChanged
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Databases.TMPEffectDatabase`1
+  commentId: T:TMPEffects.Databases.TMPEffectDatabase`1
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  name: TMPEffectDatabase<T>
+  nameWithType: TMPEffectDatabase<T>
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>
+  nameWithType.vb: TMPEffectDatabase(Of T)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T)
+  name.vb: TMPEffectDatabase(Of T)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1
+    name: TMPEffectDatabase
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1
+    name: TMPEffectDatabase
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: TMPEffects.Databases.ITMPEffectDatabase`1
+  commentId: T:TMPEffects.Databases.ITMPEffectDatabase`1
+  href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  name: ITMPEffectDatabase<T>
+  nameWithType: ITMPEffectDatabase<T>
+  fullName: TMPEffects.Databases.ITMPEffectDatabase<T>
+  nameWithType.vb: ITMPEffectDatabase(Of T)
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase(Of T)
+  name.vb: ITMPEffectDatabase(Of T)
+  spec.csharp:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase`1
+    name: ITMPEffectDatabase
+    href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase`1
+    name: ITMPEffectDatabase
+    href: TMPEffects.Databases.ITMPEffectDatabase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  href: TMPEffects.html
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.ObjectChanged
+  commentId: E:TMPEffects.Databases.TMPEffectDatabase`1.ObjectChanged
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ObjectChanged
+  name: ObjectChanged
+  nameWithType: TMPEffectDatabase<T>.ObjectChanged
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ObjectChanged
+  nameWithType.vb: TMPEffectDatabase(Of T).ObjectChanged
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ObjectChanged
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
+  isExternal: true
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  name: ContainsEffect(string)
+  nameWithType: TMPEffectDatabase<T>.ContainsEffect(string)
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.ContainsEffect(string)
+  nameWithType.vb: TMPEffectDatabase(Of T).ContainsEffect(String)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).ContainsEffect(String)
+  name.vb: ContainsEffect(String)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
+  isExternal: true
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  name: GetEffect(string)
+  nameWithType: TMPEffectDatabase<T>.GetEffect(string)
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.GetEffect(string)
+  nameWithType.vb: TMPEffectDatabase(Of T).GetEffect(String)
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).GetEffect(String)
+  name.vb: GetEffect(String)
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
+    name: GetEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.GetEffect(System.String)
+    name: GetEffect
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_GetEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  name: OnValidate()
+  nameWithType: TMPEffectDatabase<T>.OnValidate()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.OnValidate()
+  nameWithType.vb: TMPEffectDatabase(Of T).OnValidate()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).OnValidate()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
+    name: OnValidate
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.OnValidate
+    name: OnValidate
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnValidate
+  - name: (
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  name: OnDestroy()
+  nameWithType: TMPEffectDatabase<T>.OnDestroy()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.OnDestroy()
+  nameWithType.vb: TMPEffectDatabase(Of T).OnDestroy()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).OnDestroy()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_OnDestroy
+  - name: (
+  - name: )
+- uid: TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
+  commentId: M:TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
+  href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  name: RaiseDatabaseChanged()
+  nameWithType: TMPEffectDatabase<T>.RaiseDatabaseChanged()
+  fullName: TMPEffects.Databases.TMPEffectDatabase<T>.RaiseDatabaseChanged()
+  nameWithType.vb: TMPEffectDatabase(Of T).RaiseDatabaseChanged()
+  fullName.vb: TMPEffects.Databases.TMPEffectDatabase(Of T).RaiseDatabaseChanged()
+  spec.csharp:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
+    name: RaiseDatabaseChanged
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.TMPEffectDatabase`1.RaiseDatabaseChanged
+    name: RaiseDatabaseChanged
+    href: TMPEffects.Databases.TMPEffectDatabase-1.html#TMPEffects_Databases_TMPEffectDatabase_1_RaiseDatabaseChanged
+  - name: (
+  - name: )

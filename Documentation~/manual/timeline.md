@@ -3,5 +3,5 @@
 # Timeline
 This section covers general timeline integration, and how you can create your own animations using timeline.
 
-This is only relevant if you have installed Unity's [official timeline package](https://docs.unity3d.com/Packages/com.unity.timeline@1.2/manual/index.html). 
+This is only relevant if you have installed Unity's [official timeline package](https://docs.unity3d.com/Packages/com.unity.timeline@1.2/manual/index.html) (which is not required). 
 If you haven't, you can ignore this section.

@@ -1,0 +1,1993 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  id: TMPWriter
+  parent: TMPEffects.Components
+  children:
+  - TMPEffects.Components.TMPWriter.COMMAND_PREFIX
+  - TMPEffects.Components.TMPWriter.CommandTags
+  - TMPEffects.Components.TMPWriter.CurrentDelays
+  - TMPEffects.Components.TMPWriter.CurrentIndex
+  - TMPEffects.Components.TMPWriter.Database
+  - TMPEffects.Components.TMPWriter.DefaultDelays
+  - TMPEffects.Components.TMPWriter.EVENT_PREFIX
+  - TMPEffects.Components.TMPWriter.EventTags
+  - TMPEffects.Components.TMPWriter.IsWriting
+  - TMPEffects.Components.TMPWriter.MaySkip
+  - TMPEffects.Components.TMPWriter.OnCharacterShown
+  - TMPEffects.Components.TMPWriter.OnFinishWriter
+  - TMPEffects.Components.TMPWriter.OnResetWriter
+  - TMPEffects.Components.TMPWriter.OnSkipWriter
+  - TMPEffects.Components.TMPWriter.OnStartWriter
+  - TMPEffects.Components.TMPWriter.OnStopWriter
+  - TMPEffects.Components.TMPWriter.OnTextEvent
+  - TMPEffects.Components.TMPWriter.OnWaitEnded
+  - TMPEffects.Components.TMPWriter.OnWaitStarted
+  - TMPEffects.Components.TMPWriter.ResetWaitConditions
+  - TMPEffects.Components.TMPWriter.ResetWaitPeriod
+  - TMPEffects.Components.TMPWriter.ResetWriter
+  - TMPEffects.Components.TMPWriter.ResetWriter(System.Int32)
+  - TMPEffects.Components.TMPWriter.RestartWriter
+  - TMPEffects.Components.TMPWriter.SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
+  - TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
+  - TMPEffects.Components.TMPWriter.SkipWriter(System.Boolean)
+  - TMPEffects.Components.TMPWriter.StartWriter
+  - TMPEffects.Components.TMPWriter.StopWriter
+  - TMPEffects.Components.TMPWriter.Tags
+  - TMPEffects.Components.TMPWriter.UseScaledTime
+  - TMPEffects.Components.TMPWriter.Wait(System.Single)
+  - TMPEffects.Components.TMPWriter.WaitUntil(System.Func{System.Boolean})
+  - TMPEffects.Components.TMPWriter.WriteOnNewText
+  - TMPEffects.Components.TMPWriter.WriteOnStart
+  langs:
+  - csharp
+  - vb
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 37
+  namespace: TMPEffects.Components
+  summary: >-
+    Shows / hides the characters of a TMP_Text component over time,<br />
+
+    and allows you to raise events and commands at specific indices.
+  remarks: >-
+    One of the two main components of TMPEffects, along with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
+
+    Using command tags, you can call specific methods. There are two types of Commands:
+
+    <table><tbody><tr></tr><tr></tr></tbody></table>
+
+    In additon to command tags, TMPWriter also processes event tags:<br /><br /><xref href="TMPEffects.TMPEvents.TMPEvent" data-throw-if-not-resolved="false"></xref>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
+  example: []
+  syntax:
+    content: 'public class TMPWriter : TMPEffectComponent'
+    content.vb: Public Class TMPWriter Inherits TMPEffectComponent
+  inheritance:
+  - System.Object
+  - TMPEffects.Components.TMPEffectComponent
+  inheritedMembers:
+  - TMPEffects.Components.TMPEffectComponent.TextComponent
+  - TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  - TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  - TMPEffects.Components.TMPEffectComponent.Mediator
+  - TMPEffects.Components.TMPEffectComponent.FreeMediator
+  - TMPEffects.Components.TMPEffectComponent.UpdateMediator
+- uid: TMPEffects.Components.TMPWriter.IsWriting
+  commentId: P:TMPEffects.Components.TMPWriter.IsWriting
+  id: IsWriting
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: IsWriting
+  nameWithType: TMPWriter.IsWriting
+  fullName: TMPEffects.Components.TMPWriter.IsWriting
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: IsWriting
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 45
+  namespace: TMPEffects.Components
+  summary: Whether the TMPWriter is currently writing text.
+  example: []
+  syntax:
+    content: public bool IsWriting { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsWriting As Boolean
+  overload: TMPEffects.Components.TMPWriter.IsWriting*
+- uid: TMPEffects.Components.TMPWriter.MaySkip
+  commentId: P:TMPEffects.Components.TMPWriter.MaySkip
+  id: MaySkip
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: MaySkip
+  nameWithType: TMPWriter.MaySkip
+  fullName: TMPEffects.Components.TMPWriter.MaySkip
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: MaySkip
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 49
+  namespace: TMPEffects.Components
+  summary: Whether the TMPWriter may skip the current section of text.
+  example: []
+  syntax:
+    content: public bool MaySkip { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property MaySkip As Boolean
+  overload: TMPEffects.Components.TMPWriter.MaySkip*
+- uid: TMPEffects.Components.TMPWriter.CurrentIndex
+  commentId: P:TMPEffects.Components.TMPWriter.CurrentIndex
+  id: CurrentIndex
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: CurrentIndex
+  nameWithType: TMPWriter.CurrentIndex
+  fullName: TMPEffects.Components.TMPWriter.CurrentIndex
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CurrentIndex
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 53
+  namespace: TMPEffects.Components
+  summary: The text index of the TMPWriter's current character.
+  example: []
+  syntax:
+    content: public int CurrentIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property CurrentIndex As Integer
+  overload: TMPEffects.Components.TMPWriter.CurrentIndex*
+- uid: TMPEffects.Components.TMPWriter.Database
+  commentId: P:TMPEffects.Components.TMPWriter.Database
+  id: Database
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: Database
+  nameWithType: TMPWriter.Database
+  fullName: TMPEffects.Components.TMPWriter.Database
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Database
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 59
+  namespace: TMPEffects.Components
+  summary: The database used to parse command tags.
+  example: []
+  syntax:
+    content: public TMPCommandDatabase Database { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+    content.vb: Public ReadOnly Property Database As TMPCommandDatabase
+  overload: TMPEffects.Components.TMPWriter.Database*
+- uid: TMPEffects.Components.TMPWriter.Tags
+  commentId: P:TMPEffects.Components.TMPWriter.Tags
+  id: Tags
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: Tags
+  nameWithType: TMPWriter.Tags
+  fullName: TMPEffects.Components.TMPWriter.Tags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Tags
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 65
+  namespace: TMPEffects.Components
+  summary: All tags parsed by the TMPWriter.
+  example: []
+  syntax:
+    content: public ITagCollection Tags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property Tags As ITagCollection
+  overload: TMPEffects.Components.TMPWriter.Tags*
+- uid: TMPEffects.Components.TMPWriter.CommandTags
+  commentId: P:TMPEffects.Components.TMPWriter.CommandTags
+  id: CommandTags
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: CommandTags
+  nameWithType: TMPWriter.CommandTags
+  fullName: TMPEffects.Components.TMPWriter.CommandTags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CommandTags
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 69
+  namespace: TMPEffects.Components
+  summary: All command tags parsed by the TMPWriter.
+  example: []
+  syntax:
+    content: public ITagCollection CommandTags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property CommandTags As ITagCollection
+  overload: TMPEffects.Components.TMPWriter.CommandTags*
+- uid: TMPEffects.Components.TMPWriter.EventTags
+  commentId: P:TMPEffects.Components.TMPWriter.EventTags
+  id: EventTags
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: EventTags
+  nameWithType: TMPWriter.EventTags
+  fullName: TMPEffects.Components.TMPWriter.EventTags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EventTags
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 73
+  namespace: TMPEffects.Components
+  summary: All event tags parsed by the TMPWriter.
+  example: []
+  syntax:
+    content: public ITagCollection EventTags { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.Collections.ITagCollection
+    content.vb: Public ReadOnly Property EventTags As ITagCollection
+  overload: TMPEffects.Components.TMPWriter.EventTags*
+- uid: TMPEffects.Components.TMPWriter.WriteOnStart
+  commentId: P:TMPEffects.Components.TMPWriter.WriteOnStart
+  id: WriteOnStart
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteOnStart
+  nameWithType: TMPWriter.WriteOnStart
+  fullName: TMPEffects.Components.TMPWriter.WriteOnStart
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: WriteOnStart
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 75
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool WriteOnStart { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WriteOnStart As Boolean
+  overload: TMPEffects.Components.TMPWriter.WriteOnStart*
+- uid: TMPEffects.Components.TMPWriter.WriteOnNewText
+  commentId: P:TMPEffects.Components.TMPWriter.WriteOnNewText
+  id: WriteOnNewText
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: WriteOnNewText
+  nameWithType: TMPWriter.WriteOnNewText
+  fullName: TMPEffects.Components.TMPWriter.WriteOnNewText
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: WriteOnNewText
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 81
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool WriteOnNewText { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WriteOnNewText As Boolean
+  overload: TMPEffects.Components.TMPWriter.WriteOnNewText*
+- uid: TMPEffects.Components.TMPWriter.UseScaledTime
+  commentId: P:TMPEffects.Components.TMPWriter.UseScaledTime
+  id: UseScaledTime
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: UseScaledTime
+  nameWithType: TMPWriter.UseScaledTime
+  fullName: TMPEffects.Components.TMPWriter.UseScaledTime
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: UseScaledTime
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 87
+  namespace: TMPEffects.Components
+  syntax:
+    content: public bool UseScaledTime { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseScaledTime As Boolean
+  overload: TMPEffects.Components.TMPWriter.UseScaledTime*
+- uid: TMPEffects.Components.TMPWriter.DefaultDelays
+  commentId: P:TMPEffects.Components.TMPWriter.DefaultDelays
+  id: DefaultDelays
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: DefaultDelays
+  nameWithType: TMPWriter.DefaultDelays
+  fullName: TMPEffects.Components.TMPWriter.DefaultDelays
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: DefaultDelays
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 93
+  namespace: TMPEffects.Components
+  syntax:
+    content: public TMPWriter.Delays DefaultDelays { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPWriter.Delays
+    content.vb: Public ReadOnly Property DefaultDelays As TMPWriter.Delays
+  overload: TMPEffects.Components.TMPWriter.DefaultDelays*
+- uid: TMPEffects.Components.TMPWriter.CurrentDelays
+  commentId: P:TMPEffects.Components.TMPWriter.CurrentDelays
+  id: CurrentDelays
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: CurrentDelays
+  nameWithType: TMPWriter.CurrentDelays
+  fullName: TMPEffects.Components.TMPWriter.CurrentDelays
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CurrentDelays
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 94
+  namespace: TMPEffects.Components
+  syntax:
+    content: public TMPWriter.Delays CurrentDelays { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPWriter.Delays
+    content.vb: Public ReadOnly Property CurrentDelays As TMPWriter.Delays
+  overload: TMPEffects.Components.TMPWriter.CurrentDelays*
+- uid: TMPEffects.Components.TMPWriter.OnTextEvent
+  commentId: F:TMPEffects.Components.TMPWriter.OnTextEvent
+  id: OnTextEvent
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnTextEvent
+  nameWithType: TMPWriter.OnTextEvent
+  fullName: TMPEffects.Components.TMPWriter.OnTextEvent
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnTextEvent
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 100
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter reaches an event tag.
+  example: []
+  syntax:
+    content: public TMPEvent OnTextEvent
+    return:
+      type: TMPEffects.TMPEvents.TMPEvent
+    content.vb: Public OnTextEvent As TMPEvent
+- uid: TMPEffects.Components.TMPWriter.OnCharacterShown
+  commentId: F:TMPEffects.Components.TMPWriter.OnCharacterShown
+  id: OnCharacterShown
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnCharacterShown
+  nameWithType: TMPWriter.OnCharacterShown
+  fullName: TMPEffects.Components.TMPWriter.OnCharacterShown
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnCharacterShown
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 104
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter shows a new character.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter, CharData> OnCharacterShown
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
+    content.vb: Public OnCharacterShown As UnityEvent(Of TMPWriter, CharData)
+- uid: TMPEffects.Components.TMPWriter.OnStartWriter
+  commentId: F:TMPEffects.Components.TMPWriter.OnStartWriter
+  id: OnStartWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnStartWriter
+  nameWithType: TMPWriter.OnStartWriter
+  fullName: TMPEffects.Components.TMPWriter.OnStartWriter
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnStartWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 108
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter starts / resumes writing.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter> OnStartWriter
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter}
+    content.vb: Public OnStartWriter As UnityEvent(Of TMPWriter)
+- uid: TMPEffects.Components.TMPWriter.OnStopWriter
+  commentId: F:TMPEffects.Components.TMPWriter.OnStopWriter
+  id: OnStopWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnStopWriter
+  nameWithType: TMPWriter.OnStopWriter
+  fullName: TMPEffects.Components.TMPWriter.OnStopWriter
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnStopWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 112
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter stops writing.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter> OnStopWriter
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter}
+    content.vb: Public OnStopWriter As UnityEvent(Of TMPWriter)
+- uid: TMPEffects.Components.TMPWriter.OnWaitStarted
+  commentId: F:TMPEffects.Components.TMPWriter.OnWaitStarted
+  id: OnWaitStarted
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnWaitStarted
+  nameWithType: TMPWriter.OnWaitStarted
+  fullName: TMPEffects.Components.TMPWriter.OnWaitStarted
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnWaitStarted
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 117
+  namespace: TMPEffects.Components
+  summary: >-
+    Raised when the TMPWriter starts waiting.
+
+    The float parameter indicates the amount of time the TMPWriter will wait, in seconds.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter, float> OnWaitStarted
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Single}
+    content.vb: Public OnWaitStarted As UnityEvent(Of TMPWriter, Single)
+- uid: TMPEffects.Components.TMPWriter.OnWaitEnded
+  commentId: F:TMPEffects.Components.TMPWriter.OnWaitEnded
+  id: OnWaitEnded
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnWaitEnded
+  nameWithType: TMPWriter.OnWaitEnded
+  fullName: TMPEffects.Components.TMPWriter.OnWaitEnded
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnWaitEnded
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 121
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter ends waiting.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter> OnWaitEnded
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter}
+    content.vb: Public OnWaitEnded As UnityEvent(Of TMPWriter)
+- uid: TMPEffects.Components.TMPWriter.OnFinishWriter
+  commentId: F:TMPEffects.Components.TMPWriter.OnFinishWriter
+  id: OnFinishWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnFinishWriter
+  nameWithType: TMPWriter.OnFinishWriter
+  fullName: TMPEffects.Components.TMPWriter.OnFinishWriter
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnFinishWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 125
+  namespace: TMPEffects.Components
+  summary: Raised when the TMPWriter is done writing the current text.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter> OnFinishWriter
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter}
+    content.vb: Public OnFinishWriter As UnityEvent(Of TMPWriter)
+- uid: TMPEffects.Components.TMPWriter.OnSkipWriter
+  commentId: F:TMPEffects.Components.TMPWriter.OnSkipWriter
+  id: OnSkipWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnSkipWriter
+  nameWithType: TMPWriter.OnSkipWriter
+  fullName: TMPEffects.Components.TMPWriter.OnSkipWriter
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnSkipWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 129
+  namespace: TMPEffects.Components
+  summary: Raised when the current (section of) text is skipped.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter, int> OnSkipWriter
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Int32}
+    content.vb: Public OnSkipWriter As UnityEvent(Of TMPWriter, Integer)
+- uid: TMPEffects.Components.TMPWriter.OnResetWriter
+  commentId: F:TMPEffects.Components.TMPWriter.OnResetWriter
+  id: OnResetWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: OnResetWriter
+  nameWithType: TMPWriter.OnResetWriter
+  fullName: TMPEffects.Components.TMPWriter.OnResetWriter
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: OnResetWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 134
+  namespace: TMPEffects.Components
+  summary: >-
+    Raised when the TMPWriter is reset.<br />
+
+    The integer parameter indicates the text index the TMPWriter was reset to.
+  example: []
+  syntax:
+    content: public UnityEvent<TMPWriter, int> OnResetWriter
+    return:
+      type: Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Int32}
+    content.vb: Public OnResetWriter As UnityEvent(Of TMPWriter, Integer)
+- uid: TMPEffects.Components.TMPWriter.COMMAND_PREFIX
+  commentId: F:TMPEffects.Components.TMPWriter.COMMAND_PREFIX
+  id: COMMAND_PREFIX
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: COMMAND_PREFIX
+  nameWithType: TMPWriter.COMMAND_PREFIX
+  fullName: TMPEffects.Components.TMPWriter.COMMAND_PREFIX
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: COMMAND_PREFIX
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 139
+  namespace: TMPEffects.Components
+  summary: The prefix used for command tags.
+  example: []
+  syntax:
+    content: public const char COMMAND_PREFIX = '!'
+    return:
+      type: System.Char
+    content.vb: Public Const COMMAND_PREFIX As Char = "!"c
+- uid: TMPEffects.Components.TMPWriter.EVENT_PREFIX
+  commentId: F:TMPEffects.Components.TMPWriter.EVENT_PREFIX
+  id: EVENT_PREFIX
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: EVENT_PREFIX
+  nameWithType: TMPWriter.EVENT_PREFIX
+  fullName: TMPEffects.Components.TMPWriter.EVENT_PREFIX
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EVENT_PREFIX
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 143
+  namespace: TMPEffects.Components
+  summary: The prefix used for event tags.
+  example: []
+  syntax:
+    content: public const char EVENT_PREFIX = '?'
+    return:
+      type: System.Char
+    content.vb: Public Const EVENT_PREFIX As Char = "?"c
+- uid: TMPEffects.Components.TMPWriter.StartWriter
+  commentId: M:TMPEffects.Components.TMPWriter.StartWriter
+  id: StartWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: StartWriter()
+  nameWithType: TMPWriter.StartWriter()
+  fullName: TMPEffects.Components.TMPWriter.StartWriter()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: StartWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 198
+  namespace: TMPEffects.Components
+  summary: Start (or resume) writing.
+  example: []
+  syntax:
+    content: public void StartWriter()
+    content.vb: Public Sub StartWriter()
+  overload: TMPEffects.Components.TMPWriter.StartWriter*
+- uid: TMPEffects.Components.TMPWriter.StopWriter
+  commentId: M:TMPEffects.Components.TMPWriter.StopWriter
+  id: StopWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: StopWriter()
+  nameWithType: TMPWriter.StopWriter()
+  fullName: TMPEffects.Components.TMPWriter.StopWriter()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: StopWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 217
+  namespace: TMPEffects.Components
+  summary: >-
+    Stop writing.<br />
+
+    Note that this does not reset the shown text.
+  example: []
+  syntax:
+    content: public void StopWriter()
+    content.vb: Public Sub StopWriter()
+  overload: TMPEffects.Components.TMPWriter.StopWriter*
+- uid: TMPEffects.Components.TMPWriter.ResetWriter
+  commentId: M:TMPEffects.Components.TMPWriter.ResetWriter
+  id: ResetWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: ResetWriter()
+  nameWithType: TMPWriter.ResetWriter()
+  fullName: TMPEffects.Components.TMPWriter.ResetWriter()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 237
+  namespace: TMPEffects.Components
+  summary: >-
+    Reset the writer to the initial state for the current text.<br />
+
+    This also stops the writing process.
+  example: []
+  syntax:
+    content: public void ResetWriter()
+    content.vb: Public Sub ResetWriter()
+  overload: TMPEffects.Components.TMPWriter.ResetWriter*
+- uid: TMPEffects.Components.TMPWriter.ResetWriter(System.Int32)
+  commentId: M:TMPEffects.Components.TMPWriter.ResetWriter(System.Int32)
+  id: ResetWriter(System.Int32)
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: ResetWriter(int)
+  nameWithType: TMPWriter.ResetWriter(int)
+  fullName: TMPEffects.Components.TMPWriter.ResetWriter(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 266
+  namespace: TMPEffects.Components
+  summary: >-
+    Reset the writer to the given index of the current text.<br />
+
+    Does not allow you to skip text; the passed index must be smaller than
+
+    the current index.
+  example: []
+  syntax:
+    content: public void ResetWriter(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index to reset the writer to.
+    content.vb: Public Sub ResetWriter(index As Integer)
+  overload: TMPEffects.Components.TMPWriter.ResetWriter*
+  nameWithType.vb: TMPWriter.ResetWriter(Integer)
+  fullName.vb: TMPEffects.Components.TMPWriter.ResetWriter(Integer)
+  name.vb: ResetWriter(Integer)
+- uid: TMPEffects.Components.TMPWriter.SkipWriter(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPWriter.SkipWriter(System.Boolean)
+  id: SkipWriter(System.Boolean)
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: SkipWriter(bool)
+  nameWithType: TMPWriter.SkipWriter(bool)
+  fullName: TMPEffects.Components.TMPWriter.SkipWriter(bool)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SkipWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 307
+  namespace: TMPEffects.Components
+  summary: >-
+    Skip the current section of the text.<br />
+
+    If the current section may not be skipped, this will do nothing.<br />
+
+    Otherwise, the writing process is skipped to either the end of the current text, or the next unskippable section of the current text.
+  example: []
+  syntax:
+    content: public void SkipWriter(bool skipShowAnimation = true)
+    parameters:
+    - id: skipShowAnimation
+      type: System.Boolean
+    content.vb: Public Sub SkipWriter(skipShowAnimation As Boolean = True)
+  overload: TMPEffects.Components.TMPWriter.SkipWriter*
+  nameWithType.vb: TMPWriter.SkipWriter(Boolean)
+  fullName.vb: TMPEffects.Components.TMPWriter.SkipWriter(Boolean)
+  name.vb: SkipWriter(Boolean)
+- uid: TMPEffects.Components.TMPWriter.RestartWriter
+  commentId: M:TMPEffects.Components.TMPWriter.RestartWriter
+  id: RestartWriter
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: RestartWriter()
+  nameWithType: TMPWriter.RestartWriter()
+  fullName: TMPEffects.Components.TMPWriter.RestartWriter()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: RestartWriter
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 348
+  namespace: TMPEffects.Components
+  summary: >-
+    Restart the writer.<br />
+
+    This will reset the writer and start the writing process.
+  example: []
+  syntax:
+    content: public void RestartWriter()
+    content.vb: Public Sub RestartWriter()
+  overload: TMPEffects.Components.TMPWriter.RestartWriter*
+- uid: TMPEffects.Components.TMPWriter.Wait(System.Single)
+  commentId: M:TMPEffects.Components.TMPWriter.Wait(System.Single)
+  id: Wait(System.Single)
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: Wait(float)
+  nameWithType: TMPWriter.Wait(float)
+  fullName: TMPEffects.Components.TMPWriter.Wait(float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Wait
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 367
+  namespace: TMPEffects.Components
+  summary: Pause the writer for the given amount of seconds.
+  example: []
+  syntax:
+    content: public void Wait(float seconds)
+    parameters:
+    - id: seconds
+      type: System.Single
+      description: The amount of time to wait.
+    content.vb: Public Sub Wait(seconds As Single)
+  overload: TMPEffects.Components.TMPWriter.Wait*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Throws if <code class="paramref">seconds</code> is less than zero.
+  nameWithType.vb: TMPWriter.Wait(Single)
+  fullName.vb: TMPEffects.Components.TMPWriter.Wait(Single)
+  name.vb: Wait(Single)
+- uid: TMPEffects.Components.TMPWriter.ResetWaitPeriod
+  commentId: M:TMPEffects.Components.TMPWriter.ResetWaitPeriod
+  id: ResetWaitPeriod
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: ResetWaitPeriod()
+  nameWithType: TMPWriter.ResetWaitPeriod()
+  fullName: TMPEffects.Components.TMPWriter.ResetWaitPeriod()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetWaitPeriod
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 384
+  namespace: TMPEffects.Components
+  syntax:
+    content: public void ResetWaitPeriod()
+    content.vb: Public Sub ResetWaitPeriod()
+  overload: TMPEffects.Components.TMPWriter.ResetWaitPeriod*
+- uid: TMPEffects.Components.TMPWriter.WaitUntil(System.Func{System.Boolean})
+  commentId: M:TMPEffects.Components.TMPWriter.WaitUntil(System.Func{System.Boolean})
+  id: WaitUntil(System.Func{System.Boolean})
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: WaitUntil(Func<bool>)
+  nameWithType: TMPWriter.WaitUntil(Func<bool>)
+  fullName: TMPEffects.Components.TMPWriter.WaitUntil(System.Func<bool>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: WaitUntil
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 394
+  namespace: TMPEffects.Components
+  summary: Pause the writer until the given condition evaluates to true.
+  example: []
+  syntax:
+    content: public void WaitUntil(Func<bool> condition)
+    parameters:
+    - id: condition
+      type: System.Func{System.Boolean}
+      description: The condition to wait for.
+    content.vb: Public Sub WaitUntil(condition As Func(Of Boolean))
+  overload: TMPEffects.Components.TMPWriter.WaitUntil*
+  nameWithType.vb: TMPWriter.WaitUntil(Func(Of Boolean))
+  fullName.vb: TMPEffects.Components.TMPWriter.WaitUntil(System.Func(Of Boolean))
+  name.vb: WaitUntil(Func(Of Boolean))
+- uid: TMPEffects.Components.TMPWriter.ResetWaitConditions
+  commentId: M:TMPEffects.Components.TMPWriter.ResetWaitConditions
+  id: ResetWaitConditions
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: ResetWaitConditions()
+  nameWithType: TMPWriter.ResetWaitConditions()
+  fullName: TMPEffects.Components.TMPWriter.ResetWaitConditions()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ResetWaitConditions
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 402
+  namespace: TMPEffects.Components
+  syntax:
+    content: public void ResetWaitConditions()
+    content.vb: Public Sub ResetWaitConditions()
+  overload: TMPEffects.Components.TMPWriter.ResetWaitConditions*
+- uid: TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPWriter.SetSkippable(System.Boolean)
+  id: SetSkippable(System.Boolean)
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: SetSkippable(bool)
+  nameWithType: TMPWriter.SetSkippable(bool)
+  fullName: TMPEffects.Components.TMPWriter.SetSkippable(bool)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetSkippable
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 411
+  namespace: TMPEffects.Components
+  summary: Set whether the current text may be skipped.
+  example: []
+  syntax:
+    content: public void SetSkippable(bool skippable)
+    parameters:
+    - id: skippable
+      type: System.Boolean
+      description: Whether the current text may be skipped.
+    content.vb: Public Sub SetSkippable(skippable As Boolean)
+  overload: TMPEffects.Components.TMPWriter.SetSkippable*
+  nameWithType.vb: TMPWriter.SetSkippable(Boolean)
+  fullName.vb: TMPEffects.Components.TMPWriter.SetSkippable(Boolean)
+  name.vb: SetSkippable(Boolean)
+- uid: TMPEffects.Components.TMPWriter.SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
+  commentId: M:TMPEffects.Components.TMPWriter.SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
+  id: SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
+  parent: TMPEffects.Components.TMPWriter
+  langs:
+  - csharp
+  - vb
+  name: SetDatabase(TMPCommandDatabase)
+  nameWithType: TMPWriter.SetDatabase(TMPCommandDatabase)
+  fullName: TMPEffects.Components.TMPWriter.SetDatabase(TMPEffects.Databases.CommandDatabase.TMPCommandDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetDatabase
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 422
+  namespace: TMPEffects.Components
+  summary: Set the database that will be used to parse command tags.
+  example: []
+  syntax:
+    content: public void SetDatabase(TMPCommandDatabase database)
+    parameters:
+    - id: database
+      type: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+      description: The database that will be used to parse command tags.
+    content.vb: Public Sub SetDatabase(database As TMPCommandDatabase)
+  overload: TMPEffects.Components.TMPWriter.SetDatabase*
+references:
+- uid: TMPEffects.Components.TMPAnimator
+  commentId: T:TMPEffects.Components.TMPAnimator
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator
+  nameWithType: TMPAnimator
+  fullName: TMPEffects.Components.TMPAnimator
+- uid: TMPEffects.TMPEvents.TMPEvent
+  commentId: T:TMPEffects.TMPEvents.TMPEvent
+  parent: TMPEffects.TMPEvents
+  href: TMPEffects.TMPEvents.TMPEvent.html
+  name: TMPEvent
+  nameWithType: TMPEvent
+  fullName: TMPEffects.TMPEvents.TMPEvent
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Components.TMPEffectComponent
+  commentId: T:TMPEffects.Components.TMPEffectComponent
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent
+  nameWithType: TMPEffectComponent
+  fullName: TMPEffects.Components.TMPEffectComponent
+- uid: TMPEffects.Components.TMPEffectComponent.TextComponent
+  commentId: P:TMPEffects.Components.TMPEffectComponent.TextComponent
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_TextComponent
+  name: TextComponent
+  nameWithType: TMPEffectComponent.TextComponent
+  fullName: TMPEffects.Components.TMPEffectComponent.TextComponent
+- uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  name: SetText(string)
+  nameWithType: TMPEffectComponent.SetText(string)
+  fullName: TMPEffects.Components.TMPEffectComponent.SetText(string)
+  nameWithType.vb: TMPEffectComponent.SetText(String)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.SetText(String)
+  name.vb: SetText(String)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+    name: SetText
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.SetText(System.String)
+    name: SetText
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_SetText_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  name: Show(int, int, bool)
+  nameWithType: TMPEffectComponent.Show(int, int, bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.Show(int, int, bool)
+  nameWithType.vb: TMPEffectComponent.Show(Integer, Integer, Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.Show(Integer, Integer, Boolean)
+  name.vb: Show(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+    name: Show
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
+    name: Show
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Show_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  name: Hide(int, int, bool)
+  nameWithType: TMPEffectComponent.Hide(int, int, bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.Hide(int, int, bool)
+  nameWithType.vb: TMPEffectComponent.Hide(Integer, Integer, Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.Hide(Integer, Integer, Boolean)
+  name.vb: Hide(Integer, Integer, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+    name: Hide
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
+    name: Hide
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Hide_System_Int32_System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  name: ShowAll(bool)
+  nameWithType: TMPEffectComponent.ShowAll(bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.ShowAll(bool)
+  nameWithType.vb: TMPEffectComponent.ShowAll(Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.ShowAll(Boolean)
+  name.vb: ShowAll(Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+    name: ShowAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
+    name: ShowAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_ShowAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  commentId: M:TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+  parent: TMPEffects.Components.TMPEffectComponent
+  isExternal: true
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  name: HideAll(bool)
+  nameWithType: TMPEffectComponent.HideAll(bool)
+  fullName: TMPEffects.Components.TMPEffectComponent.HideAll(bool)
+  nameWithType.vb: TMPEffectComponent.HideAll(Boolean)
+  fullName.vb: TMPEffects.Components.TMPEffectComponent.HideAll(Boolean)
+  name.vb: HideAll(Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+    name: HideAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
+    name: HideAll
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_HideAll_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.Mediator
+  commentId: P:TMPEffects.Components.TMPEffectComponent.Mediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_Mediator
+  name: Mediator
+  nameWithType: TMPEffectComponent.Mediator
+  fullName: TMPEffects.Components.TMPEffectComponent.Mediator
+- uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.FreeMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  name: FreeMediator()
+  nameWithType: TMPEffectComponent.FreeMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.FreeMediator()
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+    name: FreeMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.FreeMediator
+    name: FreeMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_FreeMediator
+  - name: (
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.UpdateMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  name: UpdateMediator()
+  nameWithType: TMPEffectComponent.UpdateMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.UpdateMediator()
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+    name: UpdateMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+    name: UpdateMediator
+    href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_UpdateMediator
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPEvents
+  commentId: N:TMPEffects.TMPEvents
+  href: TMPEffects.html
+  name: TMPEffects.TMPEvents
+  nameWithType: TMPEffects.TMPEvents
+  fullName: TMPEffects.TMPEvents
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Components.TMPWriter.IsWriting*
+  commentId: Overload:TMPEffects.Components.TMPWriter.IsWriting
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_IsWriting
+  name: IsWriting
+  nameWithType: TMPWriter.IsWriting
+  fullName: TMPEffects.Components.TMPWriter.IsWriting
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Components.TMPWriter.MaySkip*
+  commentId: Overload:TMPEffects.Components.TMPWriter.MaySkip
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_MaySkip
+  name: MaySkip
+  nameWithType: TMPWriter.MaySkip
+  fullName: TMPEffects.Components.TMPWriter.MaySkip
+- uid: TMPEffects.Components.TMPWriter.CurrentIndex*
+  commentId: Overload:TMPEffects.Components.TMPWriter.CurrentIndex
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_CurrentIndex
+  name: CurrentIndex
+  nameWithType: TMPWriter.CurrentIndex
+  fullName: TMPEffects.Components.TMPWriter.CurrentIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.Components.TMPWriter.Database*
+  commentId: Overload:TMPEffects.Components.TMPWriter.Database
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_Database
+  name: Database
+  nameWithType: TMPWriter.Database
+  fullName: TMPEffects.Components.TMPWriter.Database
+- uid: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+  commentId: T:TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+  parent: TMPEffects.Databases.CommandDatabase
+  href: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.html
+  name: TMPCommandDatabase
+  nameWithType: TMPCommandDatabase
+  fullName: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+- uid: TMPEffects.Databases.CommandDatabase
+  commentId: N:TMPEffects.Databases.CommandDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.CommandDatabase
+  nameWithType: TMPEffects.Databases.CommandDatabase
+  fullName: TMPEffects.Databases.CommandDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.CommandDatabase
+    name: CommandDatabase
+    href: TMPEffects.Databases.CommandDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.CommandDatabase
+    name: CommandDatabase
+    href: TMPEffects.Databases.CommandDatabase.html
+- uid: TMPEffects.Components.TMPWriter.Tags*
+  commentId: Overload:TMPEffects.Components.TMPWriter.Tags
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_Tags
+  name: Tags
+  nameWithType: TMPWriter.Tags
+  fullName: TMPEffects.Components.TMPWriter.Tags
+- uid: TMPEffects.Tags.Collections.ITagCollection
+  commentId: T:TMPEffects.Tags.Collections.ITagCollection
+  parent: TMPEffects.Tags.Collections
+  href: TMPEffects.Tags.Collections.ITagCollection.html
+  name: ITagCollection
+  nameWithType: ITagCollection
+  fullName: TMPEffects.Tags.Collections.ITagCollection
+- uid: TMPEffects.Tags.Collections
+  commentId: N:TMPEffects.Tags.Collections
+  href: TMPEffects.html
+  name: TMPEffects.Tags.Collections
+  nameWithType: TMPEffects.Tags.Collections
+  fullName: TMPEffects.Tags.Collections
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+- uid: TMPEffects.Components.TMPWriter.CommandTags*
+  commentId: Overload:TMPEffects.Components.TMPWriter.CommandTags
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_CommandTags
+  name: CommandTags
+  nameWithType: TMPWriter.CommandTags
+  fullName: TMPEffects.Components.TMPWriter.CommandTags
+- uid: TMPEffects.Components.TMPWriter.EventTags*
+  commentId: Overload:TMPEffects.Components.TMPWriter.EventTags
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_EventTags
+  name: EventTags
+  nameWithType: TMPWriter.EventTags
+  fullName: TMPEffects.Components.TMPWriter.EventTags
+- uid: TMPEffects.Components.TMPWriter.WriteOnStart*
+  commentId: Overload:TMPEffects.Components.TMPWriter.WriteOnStart
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_WriteOnStart
+  name: WriteOnStart
+  nameWithType: TMPWriter.WriteOnStart
+  fullName: TMPEffects.Components.TMPWriter.WriteOnStart
+- uid: TMPEffects.Components.TMPWriter.WriteOnNewText*
+  commentId: Overload:TMPEffects.Components.TMPWriter.WriteOnNewText
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_WriteOnNewText
+  name: WriteOnNewText
+  nameWithType: TMPWriter.WriteOnNewText
+  fullName: TMPEffects.Components.TMPWriter.WriteOnNewText
+- uid: TMPEffects.Components.TMPWriter.UseScaledTime*
+  commentId: Overload:TMPEffects.Components.TMPWriter.UseScaledTime
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_UseScaledTime
+  name: UseScaledTime
+  nameWithType: TMPWriter.UseScaledTime
+  fullName: TMPEffects.Components.TMPWriter.UseScaledTime
+- uid: TMPEffects.Components.TMPWriter.DefaultDelays*
+  commentId: Overload:TMPEffects.Components.TMPWriter.DefaultDelays
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_DefaultDelays
+  name: DefaultDelays
+  nameWithType: TMPWriter.DefaultDelays
+  fullName: TMPEffects.Components.TMPWriter.DefaultDelays
+- uid: TMPEffects.Components.TMPWriter.Delays
+  commentId: T:TMPEffects.Components.TMPWriter.Delays
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter.Delays
+  nameWithType: TMPWriter.Delays
+  fullName: TMPEffects.Components.TMPWriter.Delays
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.Delays
+    name: Delays
+    href: TMPEffects.Components.TMPWriter.Delays.html
+- uid: TMPEffects.Components.TMPWriter.CurrentDelays*
+  commentId: Overload:TMPEffects.Components.TMPWriter.CurrentDelays
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_CurrentDelays
+  name: CurrentDelays
+  nameWithType: TMPWriter.CurrentDelays
+  fullName: TMPEffects.Components.TMPWriter.CurrentDelays
+- uid: Global.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}
+  commentId: '!:Global.UnityEvent{TMPEffects.Components.TMPWriter,TMPEffects.CharacterData.CharData}'
+  definition: Global.UnityEvent`2
+  href: TMPEffects.Components.TMPWriter.html
+  name: UnityEvent<TMPWriter, CharData>
+  nameWithType: UnityEvent<TMPWriter, CharData>
+  fullName: UnityEvent<TMPEffects.Components.TMPWriter, TMPEffects.CharacterData.CharData>
+  nameWithType.vb: UnityEvent(Of TMPWriter, CharData)
+  fullName.vb: UnityEvent(Of TMPEffects.Components.TMPWriter, TMPEffects.CharacterData.CharData)
+  name.vb: UnityEvent(Of TMPWriter, CharData)
+  spec.csharp:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: Global.UnityEvent`2
+  isExternal: true
+  name: UnityEvent<, >
+  nameWithType: UnityEvent<, >
+  fullName: UnityEvent<, >
+  nameWithType.vb: UnityEvent(Of , )
+  fullName.vb: UnityEvent(Of , )
+  name.vb: UnityEvent(Of , )
+  spec.csharp:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: ','
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.UnityEvent{TMPEffects.Components.TMPWriter}
+  commentId: '!:Global.UnityEvent{TMPEffects.Components.TMPWriter}'
+  definition: Global.UnityEvent`1
+  href: TMPEffects.Components.TMPWriter.html
+  name: UnityEvent<TMPWriter>
+  nameWithType: UnityEvent<TMPWriter>
+  fullName: UnityEvent<TMPEffects.Components.TMPWriter>
+  nameWithType.vb: UnityEvent(Of TMPWriter)
+  fullName.vb: UnityEvent(Of TMPEffects.Components.TMPWriter)
+  name.vb: UnityEvent(Of TMPWriter)
+  spec.csharp:
+  - uid: Global.UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: )
+- uid: Global.UnityEvent`1
+  isExternal: true
+  name: UnityEvent<>
+  nameWithType: UnityEvent<>
+  fullName: UnityEvent<>
+  nameWithType.vb: UnityEvent(Of )
+  fullName.vb: UnityEvent(Of )
+  name.vb: UnityEvent(Of )
+  spec.csharp:
+  - uid: Global.UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - name: ''
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`1
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: ''
+  - name: )
+- uid: Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Single}
+  commentId: '!:Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Single}'
+  definition: Global.UnityEvent`2
+  href: TMPEffects.Components.TMPWriter.html
+  name: UnityEvent<TMPWriter, float>
+  nameWithType: UnityEvent<TMPWriter, float>
+  fullName: UnityEvent<TMPEffects.Components.TMPWriter, float>
+  nameWithType.vb: UnityEvent(Of TMPWriter, Single)
+  fullName.vb: UnityEvent(Of TMPEffects.Components.TMPWriter, Single)
+  name.vb: UnityEvent(Of TMPWriter, Single)
+  spec.csharp:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Int32}
+  commentId: '!:Global.UnityEvent{TMPEffects.Components.TMPWriter,System.Int32}'
+  definition: Global.UnityEvent`2
+  href: TMPEffects.Components.TMPWriter.html
+  name: UnityEvent<TMPWriter, int>
+  nameWithType: UnityEvent<TMPWriter, int>
+  fullName: UnityEvent<TMPEffects.Components.TMPWriter, int>
+  nameWithType.vb: UnityEvent(Of TMPWriter, Integer)
+  fullName.vb: UnityEvent(Of TMPEffects.Components.TMPWriter, Integer)
+  name.vb: UnityEvent(Of TMPWriter, Integer)
+  spec.csharp:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: <
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: Global.UnityEvent`2
+    name: UnityEvent
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: TMPEffects.Components.TMPWriter.StartWriter*
+  commentId: Overload:TMPEffects.Components.TMPWriter.StartWriter
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_StartWriter
+  name: StartWriter
+  nameWithType: TMPWriter.StartWriter
+  fullName: TMPEffects.Components.TMPWriter.StartWriter
+- uid: TMPEffects.Components.TMPWriter.StopWriter*
+  commentId: Overload:TMPEffects.Components.TMPWriter.StopWriter
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_StopWriter
+  name: StopWriter
+  nameWithType: TMPWriter.StopWriter
+  fullName: TMPEffects.Components.TMPWriter.StopWriter
+- uid: TMPEffects.Components.TMPWriter.ResetWriter*
+  commentId: Overload:TMPEffects.Components.TMPWriter.ResetWriter
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_ResetWriter
+  name: ResetWriter
+  nameWithType: TMPWriter.ResetWriter
+  fullName: TMPEffects.Components.TMPWriter.ResetWriter
+- uid: TMPEffects.Components.TMPWriter.SkipWriter*
+  commentId: Overload:TMPEffects.Components.TMPWriter.SkipWriter
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SkipWriter_System_Boolean_
+  name: SkipWriter
+  nameWithType: TMPWriter.SkipWriter
+  fullName: TMPEffects.Components.TMPWriter.SkipWriter
+- uid: TMPEffects.Components.TMPWriter.RestartWriter*
+  commentId: Overload:TMPEffects.Components.TMPWriter.RestartWriter
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_RestartWriter
+  name: RestartWriter
+  nameWithType: TMPWriter.RestartWriter
+  fullName: TMPEffects.Components.TMPWriter.RestartWriter
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: TMPEffects.Components.TMPWriter.Wait*
+  commentId: Overload:TMPEffects.Components.TMPWriter.Wait
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_Wait_System_Single_
+  name: Wait
+  nameWithType: TMPWriter.Wait
+  fullName: TMPEffects.Components.TMPWriter.Wait
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.Components.TMPWriter.ResetWaitPeriod*
+  commentId: Overload:TMPEffects.Components.TMPWriter.ResetWaitPeriod
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_ResetWaitPeriod
+  name: ResetWaitPeriod
+  nameWithType: TMPWriter.ResetWaitPeriod
+  fullName: TMPEffects.Components.TMPWriter.ResetWaitPeriod
+- uid: TMPEffects.Components.TMPWriter.WaitUntil*
+  commentId: Overload:TMPEffects.Components.TMPWriter.WaitUntil
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_WaitUntil_System_Func_System_Boolean__
+  name: WaitUntil
+  nameWithType: TMPWriter.WaitUntil
+  fullName: TMPEffects.Components.TMPWriter.WaitUntil
+- uid: System.Func{System.Boolean}
+  commentId: T:System.Func{System.Boolean}
+  parent: System
+  definition: System.Func`1
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<bool>
+  nameWithType: Func<bool>
+  fullName: System.Func<bool>
+  nameWithType.vb: Func(Of Boolean)
+  fullName.vb: System.Func(Of Boolean)
+  name.vb: Func(Of Boolean)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Func`1
+  commentId: T:System.Func`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-1
+  name: Func<TResult>
+  nameWithType: Func<TResult>
+  fullName: System.Func<TResult>
+  nameWithType.vb: Func(Of TResult)
+  fullName.vb: System.Func(Of TResult)
+  name.vb: Func(Of TResult)
+  spec.csharp:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: TMPEffects.Components.TMPWriter.ResetWaitConditions*
+  commentId: Overload:TMPEffects.Components.TMPWriter.ResetWaitConditions
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_ResetWaitConditions
+  name: ResetWaitConditions
+  nameWithType: TMPWriter.ResetWaitConditions
+  fullName: TMPEffects.Components.TMPWriter.ResetWaitConditions
+- uid: TMPEffects.Components.TMPWriter.SetSkippable*
+  commentId: Overload:TMPEffects.Components.TMPWriter.SetSkippable
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetSkippable_System_Boolean_
+  name: SetSkippable
+  nameWithType: TMPWriter.SetSkippable
+  fullName: TMPEffects.Components.TMPWriter.SetSkippable
+- uid: TMPEffects.Components.TMPWriter.SetDatabase*
+  commentId: Overload:TMPEffects.Components.TMPWriter.SetDatabase
+  href: TMPEffects.Components.TMPWriter.html#TMPEffects_Components_TMPWriter_SetDatabase_TMPEffects_Databases_CommandDatabase_TMPCommandDatabase_
+  name: SetDatabase
+  nameWithType: TMPWriter.SetDatabase
+  fullName: TMPEffects.Components.TMPWriter.SetDatabase

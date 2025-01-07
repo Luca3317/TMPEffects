@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  id: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.AnimationContext
+  - TMPEffects.TMPAnimations.AnimationUtility
+  - TMPEffects.TMPAnimations.AnimationUtility.Wave
+  - TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+  - TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+  - TMPEffects.TMPAnimations.IAnimationContext
+  - TMPEffects.TMPAnimations.ITMPAnimation
+  - TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  - TMPEffects.TMPAnimations.TMPAnimation
+  - TMPEffects.TMPAnimations.TMPAnimationParameterless
+  - TMPEffects.TMPAnimations.TMPHideAnimation
+  - TMPEffects.TMPAnimations.TMPShowAnimation
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  type: Namespace
+references:
+- uid: TMPEffects.TMPAnimations.AnimationContext
+  commentId: T:TMPEffects.TMPAnimations.AnimationContext
+  href: TMPEffects.TMPAnimations.AnimationContext.html
+  name: AnimationContext
+  nameWithType: AnimationContext
+  fullName: TMPEffects.TMPAnimations.AnimationContext
+- uid: TMPEffects.TMPAnimations.AnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility
+  nameWithType: AnimationUtility
+  fullName: TMPEffects.TMPAnimations.AnimationUtility
+- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.WaveBase
+  nameWithType: AnimationUtility.WaveBase
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+    name: WaveBase
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+    name: WaveBase
+    href: TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.Wave
+  nameWithType: AnimationUtility.Wave
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationUtility.html
+  name: AnimationUtility.Wave.PulseExtrema
+  nameWithType: AnimationUtility.Wave.PulseExtrema
+  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+    name: PulseExtrema
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationUtility
+    name: AnimationUtility
+    href: TMPEffects.TMPAnimations.AnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
+    name: Wave
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
+    name: PulseExtrema
+    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html
+  name: ReadOnlyAnimationContext
+  nameWithType: ReadOnlyAnimationContext
+  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
+- uid: TMPEffects.TMPAnimations.TMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimation.html
+  name: TMPAnimation
+  nameWithType: TMPAnimation
+  fullName: TMPEffects.TMPAnimations.TMPAnimation
+- uid: TMPEffects.TMPAnimations.TMPAnimationParameterless
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationParameterless
+  href: TMPEffects.TMPAnimations.TMPAnimationParameterless.html
+  name: TMPAnimationParameterless
+  nameWithType: TMPAnimationParameterless
+  fullName: TMPEffects.TMPAnimations.TMPAnimationParameterless
+- uid: TMPEffects.TMPAnimations.TMPHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.TMPHideAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPHideAnimation.html
+  name: TMPHideAnimation
+  nameWithType: TMPHideAnimation
+  fullName: TMPEffects.TMPAnimations.TMPHideAnimation
+- uid: TMPEffects.TMPAnimations.TMPShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.TMPShowAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPShowAnimation.html
+  name: TMPShowAnimation
+  nameWithType: TMPShowAnimation
+  fullName: TMPEffects.TMPAnimations.TMPShowAnimation
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html

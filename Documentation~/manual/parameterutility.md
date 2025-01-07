@@ -62,21 +62,3 @@ Otherwise, it will throw an exception.
 <mark class="markstyle">bool TryGetDefinedParameter(out string value, IDictionary&lt;string, string&gt;, string name, params string[] aliases)</mark>:
 Wraps <mark class="markstyle">GetDefinedParameter</mark> in a try-catch statement.
 If successful, the parameter value will be stored in the <mark class="markstyle">out string value</mark> parameter.
-
-### Waves
-If your animation uses [Waves](tmpanimator_animationutility_wave.md), you can use the pre-defined wave parameters set by using <mark class="markstyle">ValidateWaveParameters(IDictionary&lt;string, string&gt; parameters, string prefix = "")</mark>
-and <mark class="markstyle">GetWaveParameters(IDictionary&lt;string, string&gt; parameters, string prefix = "")</mark> in <mark class="markstyle">ValidateParameters</mark> and <mark class="markstyle">SetParameters</mark> respectively. The passed in <mark class="markstyle">prefix</mark> lets you use multiple waves with differently prefixed parameter names.
-
-If you have a default wave, you can combine it with the set parameters like this:
-```
-[SerializeField] Wave wave;
-
-public void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters)
-{
-    Data d = customData as Data; // Cast custom data to whatever type it is
-    d.Wave = CreateWave(wave, GetWaveParameters(parameters));
-}
-```
-This will create a new wave from the set parameters and the values defined in the default wave as fallback values for the non-set parameters.
-
-For the full list of parameters that are part of the wave parameters set, see the [API documentation](../api/TMPEffects.ParameterUtility.yml).

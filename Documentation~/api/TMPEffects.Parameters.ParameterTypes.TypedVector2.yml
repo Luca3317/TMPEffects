@@ -1,0 +1,407 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  commentId: T:TMPEffects.Parameters.ParameterTypes.TypedVector2
+  id: ParameterTypes.TypedVector2
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor(TMPEffects.Parameters.ParameterTypes.VectorType,Vector2)
+  - TMPEffects.Parameters.ParameterTypes.TypedVector2.type
+  - TMPEffects.Parameters.ParameterTypes.TypedVector2.vector
+  langs:
+  - csharp
+  - vb
+  name: ParameterTypes.TypedVector2
+  nameWithType: ParameterTypes.TypedVector2
+  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterTypes.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TypedVector2
+    path: ../Package/Runtime/Parameters/ParameterTypes.cs
+    startLine: 49
+  namespace: TMPEffects.Parameters
+  summary: A Vector2 with a <xref href="TMPEffects.Parameters.ParameterTypes.VectorType" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct ParameterTypes.TypedVector2
+    content.vb: >-
+      <Serializable>
+
+      Public Structure ParameterTypes.TypedVector2
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2.vector
+  commentId: F:TMPEffects.Parameters.ParameterTypes.TypedVector2.vector
+  id: vector
+  parent: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  langs:
+  - csharp
+  - vb
+  name: vector
+  nameWithType: ParameterTypes.TypedVector2.vector
+  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2.vector
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterTypes.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: vector
+    path: ../Package/Runtime/Parameters/ParameterTypes.cs
+    startLine: 52
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public Vector2 vector
+    return:
+      type: Global.Vector2
+    content.vb: Public vector As Vector2
+- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2.type
+  commentId: F:TMPEffects.Parameters.ParameterTypes.TypedVector2.type
+  id: type
+  parent: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  langs:
+  - csharp
+  - vb
+  name: type
+  nameWithType: ParameterTypes.TypedVector2.type
+  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2.type
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterTypes.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: type
+    path: ../Package/Runtime/Parameters/ParameterTypes.cs
+    startLine: 53
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public ParameterTypes.VectorType type
+    return:
+      type: TMPEffects.Parameters.ParameterTypes.VectorType
+    content.vb: Public type As ParameterTypes.VectorType
+- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor(TMPEffects.Parameters.ParameterTypes.VectorType,Vector2)
+  commentId: M:TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor(TMPEffects.Parameters.ParameterTypes.VectorType,Vector2)
+  id: '#ctor(TMPEffects.Parameters.ParameterTypes.VectorType,Vector2)'
+  parent: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  langs:
+  - csharp
+  - vb
+  name: TypedVector2(VectorType, Vector2)
+  nameWithType: ParameterTypes.TypedVector2.TypedVector2(ParameterTypes.VectorType, Vector2)
+  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2.TypedVector2(TMPEffects.Parameters.ParameterTypes.VectorType, Vector2)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterTypes.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/Parameters/ParameterTypes.cs
+    startLine: 55
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public TypedVector2(ParameterTypes.VectorType type, Vector2 vector)
+    parameters:
+    - id: type
+      type: TMPEffects.Parameters.ParameterTypes.VectorType
+    - id: vector
+      type: Global.Vector2
+    content.vb: Public Sub New(type As ParameterTypes.VectorType, vector As Vector2)
+  overload: TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor*
+  nameWithType.vb: ParameterTypes.TypedVector2.New(ParameterTypes.VectorType, Vector2)
+  fullName.vb: TMPEffects.Parameters.ParameterTypes.TypedVector2.New(TMPEffects.Parameters.ParameterTypes.VectorType, Vector2)
+  name.vb: New(VectorType, Vector2)
+references:
+- uid: TMPEffects.Parameters.ParameterTypes.VectorType
+  commentId: T:TMPEffects.Parameters.ParameterTypes.VectorType
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ParameterTypes.html
+  name: ParameterTypes.VectorType
+  nameWithType: ParameterTypes.VectorType
+  fullName: TMPEffects.Parameters.ParameterTypes.VectorType
+  spec.csharp:
+  - uid: TMPEffects.Parameters.ParameterTypes
+    name: ParameterTypes
+    href: TMPEffects.Parameters.ParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.ParameterTypes.VectorType
+    name: VectorType
+    href: TMPEffects.Parameters.ParameterTypes.VectorType.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.ParameterTypes
+    name: ParameterTypes
+    href: TMPEffects.Parameters.ParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.ParameterTypes.VectorType
+    name: VectorType
+    href: TMPEffects.Parameters.ParameterTypes.VectorType.html
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor*
+  commentId: Overload:TMPEffects.Parameters.ParameterTypes.TypedVector2.#ctor
+  href: TMPEffects.Parameters.ParameterTypes.TypedVector2.html#TMPEffects_Parameters_ParameterTypes_TypedVector2__ctor_TMPEffects_Parameters_ParameterTypes_VectorType_Vector2_
+  name: TypedVector2
+  nameWithType: ParameterTypes.TypedVector2.TypedVector2
+  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2.TypedVector2
+  nameWithType.vb: ParameterTypes.TypedVector2.New
+  fullName.vb: TMPEffects.Parameters.ParameterTypes.TypedVector2.New
+  name.vb: New

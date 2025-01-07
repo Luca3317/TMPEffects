@@ -1,0 +1,729 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.CharAnimation
+  id: CharAnimation
+  parent: TMPEffects.TMPAnimations.Animations
+  children:
+  - TMPEffects.TMPAnimations.Animations.CharAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData
+  - TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  - TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  langs:
+  - csharp
+  - vb
+  name: CharAnimation
+  nameWithType: CharAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CharAnimation
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+    startLine: 8
+  namespace: TMPEffects.TMPAnimations.Animations
+  syntax:
+    content: 'public class CharAnimation : TMPAnimation, ITMPAnimation, INotifyObjectChanged'
+    content.vb: Public Class CharAnimation Inherits TMPAnimation Implements ITMPAnimation, INotifyObjectChanged
+  inheritance:
+  - System.Object
+  - TMPEffects.TMPAnimations.TMPAnimation
+  implements:
+  - TMPEffects.TMPAnimations.ITMPAnimation
+  - TMPEffects.ObjectChanged.INotifyObjectChanged
+  inheritedMembers:
+  - TMPEffects.TMPAnimations.TMPAnimation.ObjectChanged
+  - TMPEffects.TMPAnimations.TMPAnimation.OnValidate
+  - TMPEffects.TMPAnimations.TMPAnimation.OnDestroy
+  - TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.Animations.CharAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.Animations.CharAnimation
+  langs:
+  - csharp
+  - vb
+  name: Animate(CharData, IAnimationContext)
+  nameWithType: CharAnimation.Animate(CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Animate
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+    startLine: 22
+  namespace: TMPEffects.TMPAnimations.Animations
+  summary: Animate the given character.
+  example: []
+  syntax:
+    content: public override void Animate(CharData cData, IAnimationContext context)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: Data about the character.
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: Data about the animator.
+    content.vb: Public Overrides Sub Animate(cData As CharData, context As IAnimationContext)
+  overridden: TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  overload: TMPEffects.TMPAnimations.Animations.CharAnimation.Animate*
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  id: SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPAnimations.Animations.CharAnimation
+  langs:
+  - csharp
+  - vb
+  name: SetParameters(object, IDictionary<string, string>)
+  nameWithType: CharAnimation.SetParameters(object, IDictionary<string, string>)
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: SetParameters
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+    startLine: 124
+  namespace: TMPEffects.TMPAnimations.Animations
+  summary: Set the parameters for the animation.
+  example: []
+  syntax:
+    content: public override void SetParameters(object customData, IDictionary<string, string> parameters)
+    parameters:
+    - id: customData
+      type: System.Object
+      description: The custom data for this animation.
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: Parameters as key-value-pairs.
+    content.vb: Public Overrides Sub SetParameters(customData As Object, parameters As IDictionary(Of String, String))
+  overridden: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  overload: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters*
+  nameWithType.vb: CharAnimation.SetParameters(Object, IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: SetParameters(Object, IDictionary(Of String, String))
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPAnimations.Animations.CharAnimation
+  langs:
+  - csharp
+  - vb
+  name: ValidateParameters(IDictionary<string, string>)
+  nameWithType: CharAnimation.ValidateParameters(IDictionary<string, string>)
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ValidateParameters
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+    startLine: 135
+  namespace: TMPEffects.TMPAnimations.Animations
+  summary: >-
+    Validate the parameters.<br />
+
+    Used to validate tags.
+  example: []
+  syntax:
+    content: public override bool ValidateParameters(IDictionary<string, string> parameters)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: ''
+    return:
+      type: System.Boolean
+      description: true if the parameters were successfully validated; false otherwise.
+    content.vb: Public Overrides Function ValidateParameters(parameters As IDictionary(Of String, String)) As Boolean
+  overridden: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  overload: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters*
+  nameWithType.vb: CharAnimation.ValidateParameters(IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: ValidateParameters(IDictionary(Of String, String))
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData
+  commentId: M:TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData
+  id: GetNewCustomData
+  parent: TMPEffects.TMPAnimations.Animations.CharAnimation
+  langs:
+  - csharp
+  - vb
+  name: GetNewCustomData()
+  nameWithType: CharAnimation.GetNewCustomData()
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetNewCustomData
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/CharAnimation.cs
+    startLine: 146
+  namespace: TMPEffects.TMPAnimations.Animations
+  summary: Create and get a new custom data object for this animation.
+  example: []
+  syntax:
+    content: public override object GetNewCustomData()
+    return:
+      type: System.Object
+      description: The custom data object for this animation.
+    content.vb: Public Overrides Function GetNewCustomData() As Object
+  overridden: TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData
+  overload: TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData*
+references:
+- uid: TMPEffects.TMPAnimations.Animations
+  commentId: N:TMPEffects.TMPAnimations.Animations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations.Animations
+  nameWithType: TMPEffects.TMPAnimations.Animations
+  fullName: TMPEffects.TMPAnimations.Animations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.Animations
+    name: Animations
+    href: TMPEffects.TMPAnimations.Animations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.Animations
+    name: Animations
+    href: TMPEffects.TMPAnimations.Animations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.TMPAnimations.TMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimation.html
+  name: TMPAnimation
+  nameWithType: TMPAnimation
+  fullName: TMPEffects.TMPAnimations.TMPAnimation
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
+- uid: TMPEffects.TMPAnimations.TMPAnimation.ObjectChanged
+  commentId: E:TMPEffects.TMPAnimations.TMPAnimation.ObjectChanged
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_ObjectChanged
+  name: ObjectChanged
+  nameWithType: TMPAnimation.ObjectChanged
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.ObjectChanged
+- uid: TMPEffects.TMPAnimations.TMPAnimation.OnValidate
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.OnValidate
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnValidate
+  name: OnValidate()
+  nameWithType: TMPAnimation.OnValidate()
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.OnValidate()
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.OnValidate
+    name: OnValidate
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnValidate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.OnValidate
+    name: OnValidate
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnValidate
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPAnimations.TMPAnimation.OnDestroy
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.OnDestroy
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnDestroy
+  name: OnDestroy()
+  nameWithType: TMPAnimation.OnDestroy()
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.OnDestroy()
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_OnDestroy
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_RaiseObjectChanged
+  name: RaiseObjectChanged()
+  nameWithType: TMPAnimation.RaiseObjectChanged()
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged()
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged
+    name: RaiseObjectChanged
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_RaiseObjectChanged
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.RaiseObjectChanged
+    name: RaiseObjectChanged
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_RaiseObjectChanged
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  href: TMPEffects.html
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+- uid: TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: Animate(CharData, IAnimationContext)
+  nameWithType: TMPAnimation.Animate(CharData, IAnimationContext)
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+    name: Animate
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.IAnimationContext
+    name: IAnimationContext
+    href: TMPEffects.TMPAnimations.IAnimationContext.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+    name: Animate
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.IAnimationContext
+    name: IAnimationContext
+    href: TMPEffects.TMPAnimations.IAnimationContext.html
+  - name: )
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.Animate*
+  commentId: Overload:TMPEffects.TMPAnimations.Animations.CharAnimation.Animate
+  href: TMPEffects.TMPAnimations.Animations.CharAnimation.html#TMPEffects_TMPAnimations_Animations_CharAnimation_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: Animate
+  nameWithType: CharAnimation.Animate
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.Animate
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  isExternal: true
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: SetParameters(object, IDictionary<string, string>)
+  nameWithType: TMPAnimation.SetParameters(object, IDictionary<string, string>)
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>)
+  nameWithType.vb: TMPAnimation.SetParameters(Object, IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: SetParameters(Object, IDictionary(Of String, String))
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+    name: SetParameters
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+    name: SetParameters
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters*
+  commentId: Overload:TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters
+  href: TMPEffects.TMPAnimations.Animations.CharAnimation.html#TMPEffects_TMPAnimations_Animations_CharAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: SetParameters
+  nameWithType: CharAnimation.SetParameters
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.SetParameters
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string>
+  nameWithType: IDictionary<string, string>
+  fullName: System.Collections.Generic.IDictionary<string, string>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  isExternal: true
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: ValidateParameters(IDictionary<string, string>)
+  nameWithType: TMPAnimation.ValidateParameters(IDictionary<string, string>)
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
+  nameWithType.vb: TMPAnimation.ValidateParameters(IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: ValidateParameters(IDictionary(Of String, String))
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+    name: ValidateParameters
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+    name: ValidateParameters
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters*
+  commentId: Overload:TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters
+  href: TMPEffects.TMPAnimations.Animations.CharAnimation.html#TMPEffects_TMPAnimations_Animations_CharAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: ValidateParameters
+  nameWithType: CharAnimation.ValidateParameters
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.ValidateParameters
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData
+  parent: TMPEffects.TMPAnimations.TMPAnimation
+  href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_GetNewCustomData
+  name: GetNewCustomData()
+  nameWithType: TMPAnimation.GetNewCustomData()
+  fullName: TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData()
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_GetNewCustomData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimation.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPAnimations.TMPAnimation.html#TMPEffects_TMPAnimations_TMPAnimation_GetNewCustomData
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData*
+  commentId: Overload:TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData
+  href: TMPEffects.TMPAnimations.Animations.CharAnimation.html#TMPEffects_TMPAnimations_Animations_CharAnimation_GetNewCustomData
+  name: GetNewCustomData
+  nameWithType: CharAnimation.GetNewCustomData
+  fullName: TMPEffects.TMPAnimations.Animations.CharAnimation.GetNewCustomData

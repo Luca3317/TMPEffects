@@ -1,0 +1,3100 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Extensions.AnimationCurveUtility
+  commentId: T:TMPEffects.Extensions.AnimationCurveUtility
+  id: AnimationCurveUtility
+  parent: TMPEffects.Extensions
+  children:
+  - TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable{Vector2})
+  - TMPEffects.Extensions.AnimationCurveUtility.Bezier(Vector2[])
+  - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable{Vector2})
+  - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2,Vector2,Vector2,Vector2)
+  - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2[])
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInBack
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInBackPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInBouncePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInCircPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInCubicPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInElasticPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInExpoPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBackPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBouncePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCircPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubicPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElasticPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpoPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuadPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuartPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuintPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSinePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuadPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuartPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInQuintPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInSine
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseInSinePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutBackPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutBouncePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutCircPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubicPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutElasticPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpoPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuadPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuartPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuintPoints
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine
+  - TMPEffects.Extensions.AnimationCurveUtility.EaseOutSinePoints
+  - TMPEffects.Extensions.AnimationCurveUtility.GetInverse(AnimationCurve)
+  - TMPEffects.Extensions.AnimationCurveUtility.Invert(AnimationCurve)
+  - TMPEffects.Extensions.AnimationCurveUtility.Linear
+  - TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable{Vector2})
+  - TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2,Vector2)
+  - TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2[])
+  - TMPEffects.Extensions.AnimationCurveUtility.NameBezierConstructorMapping
+  - TMPEffects.Extensions.AnimationCurveUtility.NameConstructorMapping
+  - TMPEffects.Extensions.AnimationCurveUtility.NamePointsMapping
+  - TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(System.Collections.Generic.IEnumerable{Vector2})
+  - TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2,Vector2,Vector2)
+  - TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2[])
+  langs:
+  - csharp
+  - vb
+  name: AnimationCurveUtility
+  nameWithType: AnimationCurveUtility
+  fullName: TMPEffects.Extensions.AnimationCurveUtility
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: AnimationCurveUtility
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 13
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static class AnimationCurveUtility
+    content.vb: Public Module AnimationCurveUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Linear
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Linear
+  id: Linear
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: Linear()
+  nameWithType: AnimationCurveUtility.Linear()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Linear()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Linear
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 16
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve Linear()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function Linear() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.Linear*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInSinePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInSinePoints
+  id: EaseInSinePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInSinePoints
+  nameWithType: AnimationCurveUtility.EaseInSinePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInSinePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInSinePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 48
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInSinePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInSinePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSinePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutSinePoints
+  id: EaseOutSinePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutSinePoints
+  nameWithType: AnimationCurveUtility.EaseOutSinePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSinePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutSinePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 49
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutSinePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutSinePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSinePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSinePoints
+  id: EaseInOutSinePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutSinePoints
+  nameWithType: AnimationCurveUtility.EaseInOutSinePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSinePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutSinePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 50
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutSinePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutSinePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInSine
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInSine
+  id: EaseInSine
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInSine()
+  nameWithType: AnimationCurveUtility.EaseInSine()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInSine()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInSine
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 52
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInSine()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInSine() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInSine*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine
+  id: EaseOutSine
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutSine()
+  nameWithType: AnimationCurveUtility.EaseOutSine()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutSine
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 53
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutSine()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutSine() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine
+  id: EaseInOutSine
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutSine()
+  nameWithType: AnimationCurveUtility.EaseInOutSine()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutSine
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 54
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutSine()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutSine() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuadPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuadPoints
+  id: EaseInQuadPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuadPoints
+  nameWithType: AnimationCurveUtility.EaseInQuadPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuadPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuadPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 83
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInQuadPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInQuadPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuadPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuadPoints
+  id: EaseOutQuadPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuadPoints
+  nameWithType: AnimationCurveUtility.EaseOutQuadPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuadPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuadPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 84
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuadPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutQuadPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuadPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuadPoints
+  id: EaseInOutQuadPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuadPoints
+  nameWithType: AnimationCurveUtility.EaseInOutQuadPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuadPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuadPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 85
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuadPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutQuadPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad
+  id: EaseInQuad
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuad()
+  nameWithType: AnimationCurveUtility.EaseInQuad()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuad
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 87
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInQuad()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInQuad() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad
+  id: EaseOutQuad
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuad()
+  nameWithType: AnimationCurveUtility.EaseOutQuad()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuad
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 88
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutQuad()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutQuad() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad
+  id: EaseInOutQuad
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuad()
+  nameWithType: AnimationCurveUtility.EaseInOutQuad()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuad
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 89
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutQuad()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutQuad() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubicPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInCubicPoints
+  id: EaseInCubicPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInCubicPoints
+  nameWithType: AnimationCurveUtility.EaseInCubicPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubicPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInCubicPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 118
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInCubicPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInCubicPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubicPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubicPoints
+  id: EaseOutCubicPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutCubicPoints
+  nameWithType: AnimationCurveUtility.EaseOutCubicPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubicPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutCubicPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 119
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutCubicPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutCubicPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubicPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubicPoints
+  id: EaseInOutCubicPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutCubicPoints
+  nameWithType: AnimationCurveUtility.EaseInOutCubicPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubicPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutCubicPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 120
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutCubicPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutCubicPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic
+  id: EaseInCubic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInCubic()
+  nameWithType: AnimationCurveUtility.EaseInCubic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInCubic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 122
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInCubic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInCubic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic
+  id: EaseOutCubic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutCubic()
+  nameWithType: AnimationCurveUtility.EaseOutCubic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutCubic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 123
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutCubic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutCubic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic
+  id: EaseInOutCubic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutCubic()
+  nameWithType: AnimationCurveUtility.EaseInOutCubic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutCubic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 124
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutCubic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutCubic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuartPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuartPoints
+  id: EaseInQuartPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuartPoints
+  nameWithType: AnimationCurveUtility.EaseInQuartPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuartPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuartPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 153
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInQuartPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInQuartPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuartPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuartPoints
+  id: EaseOutQuartPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuartPoints
+  nameWithType: AnimationCurveUtility.EaseOutQuartPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuartPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuartPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 154
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuartPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutQuartPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuartPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuartPoints
+  id: EaseInOutQuartPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuartPoints
+  nameWithType: AnimationCurveUtility.EaseInOutQuartPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuartPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuartPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 155
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuartPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutQuartPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart
+  id: EaseInQuart
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuart()
+  nameWithType: AnimationCurveUtility.EaseInQuart()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuart
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 157
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInQuart()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInQuart() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart
+  id: EaseOutQuart
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuart()
+  nameWithType: AnimationCurveUtility.EaseOutQuart()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuart
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 158
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutQuart()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutQuart() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart
+  id: EaseInOutQuart
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuart()
+  nameWithType: AnimationCurveUtility.EaseInOutQuart()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuart
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 159
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutQuart()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutQuart() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuintPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuintPoints
+  id: EaseInQuintPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuintPoints
+  nameWithType: AnimationCurveUtility.EaseInQuintPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuintPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuintPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 188
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInQuintPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInQuintPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuintPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuintPoints
+  id: EaseOutQuintPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuintPoints
+  nameWithType: AnimationCurveUtility.EaseOutQuintPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuintPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuintPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 189
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuintPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutQuintPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuintPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuintPoints
+  id: EaseInOutQuintPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuintPoints
+  nameWithType: AnimationCurveUtility.EaseInOutQuintPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuintPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuintPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 190
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuintPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutQuintPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint
+  id: EaseInQuint
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInQuint()
+  nameWithType: AnimationCurveUtility.EaseInQuint()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInQuint
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 192
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInQuint()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInQuint() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint
+  id: EaseOutQuint
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutQuint()
+  nameWithType: AnimationCurveUtility.EaseOutQuint()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutQuint
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 193
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutQuint()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutQuint() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint
+  id: EaseInOutQuint
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutQuint()
+  nameWithType: AnimationCurveUtility.EaseInOutQuint()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutQuint
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 194
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutQuint()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutQuint() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpoPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInExpoPoints
+  id: EaseInExpoPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInExpoPoints
+  nameWithType: AnimationCurveUtility.EaseInExpoPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpoPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInExpoPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 223
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInExpoPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInExpoPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpoPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpoPoints
+  id: EaseOutExpoPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutExpoPoints
+  nameWithType: AnimationCurveUtility.EaseOutExpoPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpoPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutExpoPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 224
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutExpoPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutExpoPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpoPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpoPoints
+  id: EaseInOutExpoPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutExpoPoints
+  nameWithType: AnimationCurveUtility.EaseInOutExpoPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpoPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutExpoPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 225
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutExpoPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutExpoPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo
+  id: EaseInExpo
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInExpo()
+  nameWithType: AnimationCurveUtility.EaseInExpo()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInExpo
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 227
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInExpo()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInExpo() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo
+  id: EaseOutExpo
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutExpo()
+  nameWithType: AnimationCurveUtility.EaseOutExpo()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutExpo
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 228
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutExpo()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutExpo() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo
+  id: EaseInOutExpo
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutExpo()
+  nameWithType: AnimationCurveUtility.EaseInOutExpo()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutExpo
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 229
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutExpo()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutExpo() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCircPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInCircPoints
+  id: EaseInCircPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInCircPoints
+  nameWithType: AnimationCurveUtility.EaseInCircPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCircPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInCircPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 258
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInCircPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInCircPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCircPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCircPoints
+  id: EaseOutCircPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutCircPoints
+  nameWithType: AnimationCurveUtility.EaseOutCircPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCircPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutCircPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 259
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutCircPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutCircPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCircPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCircPoints
+  id: EaseInOutCircPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutCircPoints
+  nameWithType: AnimationCurveUtility.EaseInOutCircPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCircPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutCircPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 260
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutCircPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutCircPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc
+  id: EaseInCirc
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInCirc()
+  nameWithType: AnimationCurveUtility.EaseInCirc()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInCirc
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 262
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInCirc()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInCirc() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc
+  id: EaseOutCirc
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutCirc()
+  nameWithType: AnimationCurveUtility.EaseOutCirc()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutCirc
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 263
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutCirc()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutCirc() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc
+  id: EaseInOutCirc
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutCirc()
+  nameWithType: AnimationCurveUtility.EaseInOutCirc()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutCirc
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 264
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutCirc()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutCirc() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBackPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInBackPoints
+  id: EaseInBackPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInBackPoints
+  nameWithType: AnimationCurveUtility.EaseInBackPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBackPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInBackPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 293
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInBackPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInBackPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBackPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBackPoints
+  id: EaseOutBackPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutBackPoints
+  nameWithType: AnimationCurveUtility.EaseOutBackPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBackPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutBackPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 294
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutBackPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutBackPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBackPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBackPoints
+  id: EaseInOutBackPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutBackPoints
+  nameWithType: AnimationCurveUtility.EaseInOutBackPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBackPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutBackPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 295
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutBackPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutBackPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBack
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInBack
+  id: EaseInBack
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInBack()
+  nameWithType: AnimationCurveUtility.EaseInBack()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBack()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInBack
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 297
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInBack()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInBack() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInBack*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack
+  id: EaseOutBack
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutBack()
+  nameWithType: AnimationCurveUtility.EaseOutBack()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutBack
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 298
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutBack()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutBack() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack
+  id: EaseInOutBack
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutBack()
+  nameWithType: AnimationCurveUtility.EaseInOutBack()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutBack
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 299
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutBack()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutBack() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInElasticPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInElasticPoints
+  id: EaseInElasticPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInElasticPoints
+  nameWithType: AnimationCurveUtility.EaseInElasticPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInElasticPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInElasticPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 377
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInElasticPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInElasticPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElasticPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutElasticPoints
+  id: EaseOutElasticPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutElasticPoints
+  nameWithType: AnimationCurveUtility.EaseOutElasticPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElasticPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutElasticPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 378
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutElasticPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutElasticPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElasticPoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElasticPoints
+  id: EaseInOutElasticPoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutElasticPoints
+  nameWithType: AnimationCurveUtility.EaseInOutElasticPoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElasticPoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutElasticPoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 379
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutElasticPoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutElasticPoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic
+  id: EaseInElastic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInElastic()
+  nameWithType: AnimationCurveUtility.EaseInElastic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInElastic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 381
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInElastic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInElastic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic
+  id: EaseOutElastic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutElastic()
+  nameWithType: AnimationCurveUtility.EaseOutElastic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutElastic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 382
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutElastic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutElastic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic
+  id: EaseInOutElastic
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutElastic()
+  nameWithType: AnimationCurveUtility.EaseInOutElastic()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutElastic
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 383
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutElastic()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutElastic() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBouncePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInBouncePoints
+  id: EaseInBouncePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInBouncePoints
+  nameWithType: AnimationCurveUtility.EaseInBouncePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBouncePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInBouncePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 461
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInBouncePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInBouncePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBouncePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBouncePoints
+  id: EaseOutBouncePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutBouncePoints
+  nameWithType: AnimationCurveUtility.EaseOutBouncePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBouncePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutBouncePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 462
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseOutBouncePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseOutBouncePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBouncePoints
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBouncePoints
+  id: EaseInOutBouncePoints
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutBouncePoints
+  nameWithType: AnimationCurveUtility.EaseInOutBouncePoints
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBouncePoints
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutBouncePoints
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 463
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyCollection<Vector2> EaseInOutBouncePoints
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+    content.vb: Public Shared ReadOnly EaseInOutBouncePoints As ReadOnlyCollection(Of Vector2)
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce
+  id: EaseInBounce
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInBounce()
+  nameWithType: AnimationCurveUtility.EaseInBounce()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInBounce
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 465
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInBounce()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInBounce() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce
+  id: EaseOutBounce
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseOutBounce()
+  nameWithType: AnimationCurveUtility.EaseOutBounce()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseOutBounce
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 466
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseOutBounce()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseOutBounce() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce
+  id: EaseInOutBounce
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: EaseInOutBounce()
+  nameWithType: AnimationCurveUtility.EaseInOutBounce()
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: EaseInOutBounce
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 467
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve EaseInOutBounce()
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function EaseInOutBounce() As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Bezier(Vector2[])
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Bezier(Vector2[])
+  id: Bezier(Vector2[])
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: Bezier(params Vector2[])
+  nameWithType: AnimationCurveUtility.Bezier(params Vector2[])
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Bezier(params Vector2[])
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Bezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 471
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve Bezier(params Vector2[] points)
+    parameters:
+    - id: points
+      type: Global.Vector2[]
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function Bezier(ParamArray points As Vector2()) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.Bezier*
+  nameWithType.vb: AnimationCurveUtility.Bezier(ParamArray Vector2())
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.Bezier(ParamArray Vector2())
+  name.vb: Bezier(ParamArray Vector2())
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable{Vector2})
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable{Vector2})
+  id: Bezier(System.Collections.Generic.IEnumerable{Vector2})
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: Bezier(IEnumerable<Vector2>)
+  nameWithType: AnimationCurveUtility.Bezier(IEnumerable<Vector2>)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable<Vector2>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Bezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 479
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve Bezier(IEnumerable<Vector2> points)
+    parameters:
+    - id: points
+      type: System.Collections.Generic.IEnumerable{Vector2}
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function Bezier(points As IEnumerable(Of Vector2)) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.Bezier*
+  nameWithType.vb: AnimationCurveUtility.Bezier(IEnumerable(Of Vector2))
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable(Of Vector2))
+  name.vb: Bezier(IEnumerable(Of Vector2))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2,Vector2)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2,Vector2)
+  id: LinearBezier(Vector2,Vector2)
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: LinearBezier(Vector2, Vector2)
+  nameWithType: AnimationCurveUtility.LinearBezier(Vector2, Vector2)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2, Vector2)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: LinearBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 487
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve LinearBezier(Vector2 start, Vector2 end)
+    parameters:
+    - id: start
+      type: Global.Vector2
+    - id: end
+      type: Global.Vector2
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function LinearBezier(start As Vector2, [end] As Vector2) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2[])
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2[])
+  id: LinearBezier(Vector2[])
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: LinearBezier(params Vector2[])
+  nameWithType: AnimationCurveUtility.LinearBezier(params Vector2[])
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(params Vector2[])
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: LinearBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 495
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve LinearBezier(params Vector2[] points)
+    parameters:
+    - id: points
+      type: Global.Vector2[]
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function LinearBezier(ParamArray points As Vector2()) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier*
+  nameWithType.vb: AnimationCurveUtility.LinearBezier(ParamArray Vector2())
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(ParamArray Vector2())
+  name.vb: LinearBezier(ParamArray Vector2())
+- uid: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable{Vector2})
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable{Vector2})
+  id: LinearBezier(System.Collections.Generic.IEnumerable{Vector2})
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: LinearBezier(IEnumerable<Vector2>)
+  nameWithType: AnimationCurveUtility.LinearBezier(IEnumerable<Vector2>)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable<Vector2>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: LinearBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 510
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve LinearBezier(IEnumerable<Vector2> points)
+    parameters:
+    - id: points
+      type: System.Collections.Generic.IEnumerable{Vector2}
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function LinearBezier(points As IEnumerable(Of Vector2)) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier*
+  nameWithType.vb: AnimationCurveUtility.LinearBezier(IEnumerable(Of Vector2))
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable(Of Vector2))
+  name.vb: LinearBezier(IEnumerable(Of Vector2))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2,Vector2,Vector2)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2,Vector2,Vector2)
+  id: QuadraticBezier(Vector2,Vector2,Vector2)
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: QuadraticBezier(Vector2, Vector2, Vector2)
+  nameWithType: AnimationCurveUtility.QuadraticBezier(Vector2, Vector2, Vector2)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2, Vector2, Vector2)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: QuadraticBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 516
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve QuadraticBezier(Vector2 startPoint, Vector2 controlPoint, Vector2 endPoint)
+    parameters:
+    - id: startPoint
+      type: Global.Vector2
+    - id: controlPoint
+      type: Global.Vector2
+    - id: endPoint
+      type: Global.Vector2
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function QuadraticBezier(startPoint As Vector2, controlPoint As Vector2, endPoint As Vector2) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2[])
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(Vector2[])
+  id: QuadraticBezier(Vector2[])
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: QuadraticBezier(params Vector2[])
+  nameWithType: AnimationCurveUtility.QuadraticBezier(params Vector2[])
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(params Vector2[])
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: QuadraticBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 523
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve QuadraticBezier(params Vector2[] points)
+    parameters:
+    - id: points
+      type: Global.Vector2[]
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function QuadraticBezier(ParamArray points As Vector2()) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier*
+  nameWithType.vb: AnimationCurveUtility.QuadraticBezier(ParamArray Vector2())
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(ParamArray Vector2())
+  name.vb: QuadraticBezier(ParamArray Vector2())
+- uid: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(System.Collections.Generic.IEnumerable{Vector2})
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(System.Collections.Generic.IEnumerable{Vector2})
+  id: QuadraticBezier(System.Collections.Generic.IEnumerable{Vector2})
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: QuadraticBezier(IEnumerable<Vector2>)
+  nameWithType: AnimationCurveUtility.QuadraticBezier(IEnumerable<Vector2>)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(System.Collections.Generic.IEnumerable<Vector2>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: QuadraticBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 554
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve QuadraticBezier(IEnumerable<Vector2> points)
+    parameters:
+    - id: points
+      type: System.Collections.Generic.IEnumerable{Vector2}
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function QuadraticBezier(points As IEnumerable(Of Vector2)) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier*
+  nameWithType.vb: AnimationCurveUtility.QuadraticBezier(IEnumerable(Of Vector2))
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier(System.Collections.Generic.IEnumerable(Of Vector2))
+  name.vb: QuadraticBezier(IEnumerable(Of Vector2))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2,Vector2,Vector2,Vector2)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2,Vector2,Vector2,Vector2)
+  id: CubicBezier(Vector2,Vector2,Vector2,Vector2)
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: CubicBezier(Vector2, Vector2, Vector2, Vector2)
+  nameWithType: AnimationCurveUtility.CubicBezier(Vector2, Vector2, Vector2, Vector2)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2, Vector2, Vector2, Vector2)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CubicBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 560
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve CubicBezier(Vector2 startPoint, Vector2 controlPoint0, Vector2 controlPoint1, Vector2 endPoint)
+    parameters:
+    - id: startPoint
+      type: Global.Vector2
+    - id: controlPoint0
+      type: Global.Vector2
+    - id: controlPoint1
+      type: Global.Vector2
+    - id: endPoint
+      type: Global.Vector2
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function CubicBezier(startPoint As Vector2, controlPoint0 As Vector2, controlPoint1 As Vector2, endPoint As Vector2) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2[])
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2[])
+  id: CubicBezier(Vector2[])
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: CubicBezier(params Vector2[])
+  nameWithType: AnimationCurveUtility.CubicBezier(params Vector2[])
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(params Vector2[])
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CubicBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 567
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve CubicBezier(params Vector2[] points)
+    parameters:
+    - id: points
+      type: Global.Vector2[]
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function CubicBezier(ParamArray points As Vector2()) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier*
+  nameWithType.vb: AnimationCurveUtility.CubicBezier(ParamArray Vector2())
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(ParamArray Vector2())
+  name.vb: CubicBezier(ParamArray Vector2())
+- uid: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable{Vector2})
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable{Vector2})
+  id: CubicBezier(System.Collections.Generic.IEnumerable{Vector2})
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: CubicBezier(IEnumerable<Vector2>)
+  nameWithType: AnimationCurveUtility.CubicBezier(IEnumerable<Vector2>)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable<Vector2>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: CubicBezier
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 578
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve CubicBezier(IEnumerable<Vector2> points)
+    parameters:
+    - id: points
+      type: System.Collections.Generic.IEnumerable{Vector2}
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function CubicBezier(points As IEnumerable(Of Vector2)) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier*
+  nameWithType.vb: AnimationCurveUtility.CubicBezier(IEnumerable(Of Vector2))
+  fullName.vb: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable(Of Vector2))
+  name.vb: CubicBezier(IEnumerable(Of Vector2))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.GetInverse(AnimationCurve)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.GetInverse(AnimationCurve)
+  id: GetInverse(AnimationCurve)
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: GetInverse(AnimationCurve)
+  nameWithType: AnimationCurveUtility.GetInverse(AnimationCurve)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.GetInverse(AnimationCurve)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetInverse
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 644
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve GetInverse(AnimationCurve originalCurve)
+    parameters:
+    - id: originalCurve
+      type: Global.AnimationCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function GetInverse(originalCurve As AnimationCurve) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.GetInverse*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Invert(AnimationCurve)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Invert(AnimationCurve)
+  id: Invert(AnimationCurve)
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: Invert(AnimationCurve)
+  nameWithType: AnimationCurveUtility.Invert(AnimationCurve)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Invert(AnimationCurve)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Invert
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 665
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve Invert(AnimationCurve curve)
+    parameters:
+    - id: curve
+      type: Global.AnimationCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function Invert(curve As AnimationCurve) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.Invert*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.NamePointsMapping
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.NamePointsMapping
+  id: NamePointsMapping
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: NamePointsMapping
+  nameWithType: AnimationCurveUtility.NamePointsMapping
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.NamePointsMapping
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: NamePointsMapping
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 693
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>> NamePointsMapping
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Collections.ObjectModel.ReadOnlyCollection{Vector2}}
+    content.vb: Public Shared ReadOnly NamePointsMapping As ReadOnlyDictionary(Of String, ReadOnlyCollection(Of Vector2))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.NameConstructorMapping
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.NameConstructorMapping
+  id: NameConstructorMapping
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: NameConstructorMapping
+  nameWithType: AnimationCurveUtility.NameConstructorMapping
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.NameConstructorMapping
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: NameConstructorMapping
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 766
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, Func<AnimationCurve>> NameConstructorMapping
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{AnimationCurve}}
+    content.vb: Public Shared ReadOnly NameConstructorMapping As ReadOnlyDictionary(Of String, Func(Of AnimationCurve))
+- uid: TMPEffects.Extensions.AnimationCurveUtility.NameBezierConstructorMapping
+  commentId: F:TMPEffects.Extensions.AnimationCurveUtility.NameBezierConstructorMapping
+  id: NameBezierConstructorMapping
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: NameBezierConstructorMapping
+  nameWithType: AnimationCurveUtility.NameBezierConstructorMapping
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.NameBezierConstructorMapping
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: NameBezierConstructorMapping
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 841
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static readonly ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>> NameBezierConstructorMapping
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{System.Collections.Generic.IEnumerable{Vector2},AnimationCurve}}
+    content.vb: Public Shared ReadOnly NameBezierConstructorMapping As ReadOnlyDictionary(Of String, Func(Of IEnumerable(Of Vector2), AnimationCurve))
+references:
+- uid: TMPEffects.Extensions
+  commentId: N:TMPEffects.Extensions
+  href: TMPEffects.html
+  name: TMPEffects.Extensions
+  nameWithType: TMPEffects.Extensions
+  fullName: TMPEffects.Extensions
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Extensions
+    name: Extensions
+    href: TMPEffects.Extensions.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Extensions
+    name: Extensions
+    href: TMPEffects.Extensions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Linear*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.Linear
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_Linear
+  name: Linear
+  nameWithType: AnimationCurveUtility.Linear
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Linear
+- uid: Global.AnimationCurve
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: AnimationCurve
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<Vector2>
+  nameWithType: ReadOnlyCollection<Vector2>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<Vector2>
+  nameWithType.vb: ReadOnlyCollection(Of Vector2)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of Vector2)
+  name.vb: ReadOnlyCollection(Of Vector2)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInSine*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInSine
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInSine
+  name: EaseInSine
+  nameWithType: AnimationCurveUtility.EaseInSine
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInSine
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutSine
+  name: EaseOutSine
+  nameWithType: AnimationCurveUtility.EaseOutSine
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutSine
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutSine
+  name: EaseInOutSine
+  nameWithType: AnimationCurveUtility.EaseInOutSine
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutSine
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInQuad
+  name: EaseInQuad
+  nameWithType: AnimationCurveUtility.EaseInQuad
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuad
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutQuad
+  name: EaseOutQuad
+  nameWithType: AnimationCurveUtility.EaseOutQuad
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuad
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutQuad
+  name: EaseInOutQuad
+  nameWithType: AnimationCurveUtility.EaseInOutQuad
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuad
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInCubic
+  name: EaseInCubic
+  nameWithType: AnimationCurveUtility.EaseInCubic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCubic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutCubic
+  name: EaseOutCubic
+  nameWithType: AnimationCurveUtility.EaseOutCubic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCubic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutCubic
+  name: EaseInOutCubic
+  nameWithType: AnimationCurveUtility.EaseInOutCubic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCubic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInQuart
+  name: EaseInQuart
+  nameWithType: AnimationCurveUtility.EaseInQuart
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuart
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutQuart
+  name: EaseOutQuart
+  nameWithType: AnimationCurveUtility.EaseOutQuart
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuart
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutQuart
+  name: EaseInOutQuart
+  nameWithType: AnimationCurveUtility.EaseInOutQuart
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuart
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInQuint
+  name: EaseInQuint
+  nameWithType: AnimationCurveUtility.EaseInQuint
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInQuint
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutQuint
+  name: EaseOutQuint
+  nameWithType: AnimationCurveUtility.EaseOutQuint
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutQuint
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutQuint
+  name: EaseInOutQuint
+  nameWithType: AnimationCurveUtility.EaseInOutQuint
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutQuint
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInExpo
+  name: EaseInExpo
+  nameWithType: AnimationCurveUtility.EaseInExpo
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInExpo
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutExpo
+  name: EaseOutExpo
+  nameWithType: AnimationCurveUtility.EaseOutExpo
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutExpo
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutExpo
+  name: EaseInOutExpo
+  nameWithType: AnimationCurveUtility.EaseInOutExpo
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutExpo
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInCirc
+  name: EaseInCirc
+  nameWithType: AnimationCurveUtility.EaseInCirc
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInCirc
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutCirc
+  name: EaseOutCirc
+  nameWithType: AnimationCurveUtility.EaseOutCirc
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutCirc
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutCirc
+  name: EaseInOutCirc
+  nameWithType: AnimationCurveUtility.EaseInOutCirc
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutCirc
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBack*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInBack
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInBack
+  name: EaseInBack
+  nameWithType: AnimationCurveUtility.EaseInBack
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBack
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutBack
+  name: EaseOutBack
+  nameWithType: AnimationCurveUtility.EaseOutBack
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBack
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutBack
+  name: EaseInOutBack
+  nameWithType: AnimationCurveUtility.EaseInOutBack
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBack
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInElastic
+  name: EaseInElastic
+  nameWithType: AnimationCurveUtility.EaseInElastic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInElastic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutElastic
+  name: EaseOutElastic
+  nameWithType: AnimationCurveUtility.EaseOutElastic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutElastic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutElastic
+  name: EaseInOutElastic
+  nameWithType: AnimationCurveUtility.EaseInOutElastic
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutElastic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInBounce
+  name: EaseInBounce
+  nameWithType: AnimationCurveUtility.EaseInBounce
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInBounce
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseOutBounce
+  name: EaseOutBounce
+  nameWithType: AnimationCurveUtility.EaseOutBounce
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseOutBounce
+- uid: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_EaseInOutBounce
+  name: EaseInOutBounce
+  nameWithType: AnimationCurveUtility.EaseInOutBounce
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.EaseInOutBounce
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Bezier*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.Bezier
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_Bezier_Vector2___
+  name: Bezier
+  nameWithType: AnimationCurveUtility.Bezier
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Bezier
+- uid: Global.Vector2[]
+  isExternal: true
+  name: Vector2[]
+  nameWithType: Vector2[]
+  fullName: Vector2[]
+  nameWithType.vb: Vector2()
+  fullName.vb: Vector2()
+  name.vb: Vector2()
+  spec.csharp:
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vector2}
+  commentId: T:System.Collections.Generic.IEnumerable{Vector2}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Vector2>
+  nameWithType: IEnumerable<Vector2>
+  fullName: System.Collections.Generic.IEnumerable<Vector2>
+  nameWithType.vb: IEnumerable(Of Vector2)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vector2)
+  name.vb: IEnumerable(Of Vector2)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.LinearBezier
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_LinearBezier_Vector2_Vector2_
+  name: LinearBezier
+  nameWithType: AnimationCurveUtility.LinearBezier
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.LinearBezier
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_QuadraticBezier_Vector2_Vector2_Vector2_
+  name: QuadraticBezier
+  nameWithType: AnimationCurveUtility.QuadraticBezier
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.QuadraticBezier
+- uid: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.CubicBezier
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_CubicBezier_Vector2_Vector2_Vector2_Vector2_
+  name: CubicBezier
+  nameWithType: AnimationCurveUtility.CubicBezier
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.CubicBezier
+- uid: TMPEffects.Extensions.AnimationCurveUtility.GetInverse*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.GetInverse
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_GetInverse_AnimationCurve_
+  name: GetInverse
+  nameWithType: AnimationCurveUtility.GetInverse
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.GetInverse
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Invert*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.Invert
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_Invert_AnimationCurve_
+  name: Invert
+  nameWithType: AnimationCurveUtility.Invert
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Invert
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Collections.ObjectModel.ReadOnlyCollection{Vector2}}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Collections.ObjectModel.ReadOnlyCollection{Vector2}}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>>
+  nameWithType: ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, System.Collections.ObjectModel.ReadOnlyCollection<Vector2>>
+  nameWithType.vb: ReadOnlyDictionary(Of String, ReadOnlyCollection(Of Vector2))
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, System.Collections.ObjectModel.ReadOnlyCollection(Of Vector2))
+  name.vb: ReadOnlyDictionary(Of String, ReadOnlyCollection(Of Vector2))
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<TKey, TValue>
+  nameWithType: ReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: ReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of TKey, TValue)
+  name.vb: ReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{AnimationCurve}}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{AnimationCurve}}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, Func<AnimationCurve>>
+  nameWithType: ReadOnlyDictionary<string, Func<AnimationCurve>>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, System.Func<AnimationCurve>>
+  nameWithType.vb: ReadOnlyDictionary(Of String, Func(Of AnimationCurve))
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, System.Func(Of AnimationCurve))
+  name.vb: ReadOnlyDictionary(Of String, Func(Of AnimationCurve))
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: Global.AnimationCurve
+    name: AnimationCurve
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.AnimationCurve
+    name: AnimationCurve
+    isExternal: true
+  - name: )
+  - name: )
+- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{System.Collections.Generic.IEnumerable{Vector2},AnimationCurve}}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,System.Func{System.Collections.Generic.IEnumerable{Vector2},AnimationCurve}}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  name: ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>
+  nameWithType: ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>>
+  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, System.Func<System.Collections.Generic.IEnumerable<Vector2>, AnimationCurve>>
+  nameWithType.vb: ReadOnlyDictionary(Of String, Func(Of IEnumerable(Of Vector2), AnimationCurve))
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, System.Func(Of System.Collections.Generic.IEnumerable(Of Vector2), AnimationCurve))
+  name.vb: ReadOnlyDictionary(Of String, Func(Of IEnumerable(Of Vector2), AnimationCurve))
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Global.AnimationCurve
+    name: AnimationCurve
+    isExternal: true
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
+    name: ReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.Vector2
+    name: Vector2
+    isExternal: true
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Global.AnimationCurve
+    name: AnimationCurve
+    isExternal: true
+  - name: )
+  - name: )

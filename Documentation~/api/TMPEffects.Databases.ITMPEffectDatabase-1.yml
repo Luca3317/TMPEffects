@@ -1,0 +1,181 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Databases.ITMPEffectDatabase`1
+  commentId: T:TMPEffects.Databases.ITMPEffectDatabase`1
+  id: ITMPEffectDatabase`1
+  parent: TMPEffects.Databases
+  children:
+  - TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ITMPEffectDatabase<T>
+  nameWithType: ITMPEffectDatabase<T>
+  fullName: TMPEffects.Databases.ITMPEffectDatabase<T>
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Databases/ITMPEffectDatabase.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ITMPEffectDatabase
+    path: ../Package/Runtime/Databases/ITMPEffectDatabase.cs
+    startLine: 21
+  namespace: TMPEffects.Databases
+  summary: Base interface for effect databases.
+  example: []
+  syntax:
+    content: 'public interface ITMPEffectDatabase<out T> : ITMPEffectDatabase'
+    typeParameters:
+    - id: T
+      description: Type of effects contained in this database.
+    content.vb: Public Interface ITMPEffectDatabase(Of Out T) Inherits ITMPEffectDatabase
+  inheritedMembers:
+  - TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
+  nameWithType.vb: ITMPEffectDatabase(Of T)
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase(Of T)
+  name.vb: ITMPEffectDatabase(Of T)
+- uid: TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect(System.String)
+  commentId: M:TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect(System.String)
+  id: GetEffect(System.String)
+  parent: TMPEffects.Databases.ITMPEffectDatabase`1
+  langs:
+  - csharp
+  - vb
+  name: GetEffect(string)
+  nameWithType: ITMPEffectDatabase<T>.GetEffect(string)
+  fullName: TMPEffects.Databases.ITMPEffectDatabase<T>.GetEffect(string)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/ITMPEffectDatabase.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetEffect
+    path: ../Package/Runtime/Databases/ITMPEffectDatabase.cs
+    startLine: 29
+  namespace: TMPEffects.Databases
+  summary: Get the effect associated with the given name.
+  example: []
+  syntax:
+    content: T GetEffect(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The identifier of the effect.
+    return:
+      type: '{T}'
+      description: The effect associated with the given name.
+    content.vb: Function GetEffect(name As String) As T
+  overload: TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect*
+  exceptions:
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: ''
+  nameWithType.vb: ITMPEffectDatabase(Of T).GetEffect(String)
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase(Of T).GetEffect(String)
+  name.vb: GetEffect(String)
+references:
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
+  commentId: M:TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
+  parent: TMPEffects.Databases.ITMPEffectDatabase
+  isExternal: true
+  href: TMPEffects.Databases.ITMPEffectDatabase.html#TMPEffects_Databases_ITMPEffectDatabase_ContainsEffect_System_String_
+  name: ContainsEffect(string)
+  nameWithType: ITMPEffectDatabase.ContainsEffect(string)
+  fullName: TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(string)
+  nameWithType.vb: ITMPEffectDatabase.ContainsEffect(String)
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(String)
+  name.vb: ContainsEffect(String)
+  spec.csharp:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.ITMPEffectDatabase.html#TMPEffects_Databases_ITMPEffectDatabase_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Databases.ITMPEffectDatabase.ContainsEffect(System.String)
+    name: ContainsEffect
+    href: TMPEffects.Databases.ITMPEffectDatabase.html#TMPEffects_Databases_ITMPEffectDatabase_ContainsEffect_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.ITMPEffectDatabase
+  commentId: T:TMPEffects.Databases.ITMPEffectDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPEffectDatabase.html
+  name: ITMPEffectDatabase
+  nameWithType: ITMPEffectDatabase
+  fullName: TMPEffects.Databases.ITMPEffectDatabase
+- uid: System.Collections.Generic.KeyNotFoundException
+  commentId: T:System.Collections.Generic.KeyNotFoundException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect*
+  commentId: Overload:TMPEffects.Databases.ITMPEffectDatabase`1.GetEffect
+  href: TMPEffects.Databases.ITMPEffectDatabase-1.html#TMPEffects_Databases_ITMPEffectDatabase_1_GetEffect_System_String_
+  name: GetEffect
+  nameWithType: ITMPEffectDatabase<T>.GetEffect
+  fullName: TMPEffects.Databases.ITMPEffectDatabase<T>.GetEffect
+  nameWithType.vb: ITMPEffectDatabase(Of T).GetEffect
+  fullName.vb: TMPEffects.Databases.ITMPEffectDatabase(Of T).GetEffect
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

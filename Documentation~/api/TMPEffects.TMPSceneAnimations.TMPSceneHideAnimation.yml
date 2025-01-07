@@ -1,0 +1,393 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  id: TMPSceneHideAnimation
+  parent: TMPEffects.TMPSceneAnimations
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPSceneHideAnimation
+  nameWithType: TMPSceneHideAnimation
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPSceneAnimations/TMPSceneHideAnimation.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TMPSceneHideAnimation
+    path: ../Package/Runtime/Effects/TMPSceneAnimations/TMPSceneHideAnimation.cs
+    startLine: 5
+  namespace: TMPEffects.TMPSceneAnimations
+  summary: Base class for all SceneHideAnimations.
+  example: []
+  syntax:
+    content: 'public abstract class TMPSceneHideAnimation : TMPSceneAnimationBase, ITMPAnimation, INotifyObjectChanged'
+    content.vb: Public MustInherit Class TMPSceneHideAnimation Inherits TMPSceneAnimationBase Implements ITMPAnimation, INotifyObjectChanged
+  inheritance:
+  - System.Object
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  implements:
+  - TMPEffects.TMPAnimations.ITMPAnimation
+  - TMPEffects.ObjectChanged.INotifyObjectChanged
+  inheritedMembers:
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ObjectChanged
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy
+  - TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged
+references:
+- uid: TMPEffects.TMPSceneAnimations
+  commentId: N:TMPEffects.TMPSceneAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPSceneAnimations
+  nameWithType: TMPEffects.TMPSceneAnimations
+  fullName: TMPEffects.TMPSceneAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPSceneAnimations
+    name: TMPSceneAnimations
+    href: TMPEffects.TMPSceneAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPSceneAnimations
+    name: TMPSceneAnimations
+    href: TMPEffects.TMPSceneAnimations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  commentId: T:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  parent: TMPEffects.TMPSceneAnimations
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html
+  name: TMPSceneAnimationBase
+  nameWithType: TMPSceneAnimationBase
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.ObjectChanged.INotifyObjectChanged
+  commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
+  parent: TMPEffects.ObjectChanged
+  href: TMPEffects.ObjectChanged.INotifyObjectChanged.html
+  name: INotifyObjectChanged
+  nameWithType: INotifyObjectChanged
+  fullName: TMPEffects.ObjectChanged.INotifyObjectChanged
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: Animate(CharData, IAnimationContext)
+  nameWithType: TMPSceneAnimationBase.Animate(CharData, IAnimationContext)
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+    name: Animate
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.IAnimationContext
+    name: IAnimationContext
+    href: TMPEffects.TMPAnimations.IAnimationContext.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+    name: Animate
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.IAnimationContext
+    name: IAnimationContext
+    href: TMPEffects.TMPAnimations.IAnimationContext.html
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_GetNewCustomData
+  name: GetNewCustomData()
+  nameWithType: TMPSceneAnimationBase.GetNewCustomData()
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData()
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_GetNewCustomData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_GetNewCustomData
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  isExternal: true
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: SetParameters(object, IDictionary<string, string>)
+  nameWithType: TMPSceneAnimationBase.SetParameters(object, IDictionary<string, string>)
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(object, System.Collections.Generic.IDictionary<string, string>)
+  nameWithType.vb: TMPSceneAnimationBase.SetParameters(Object, IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: SetParameters(Object, IDictionary(Of String, String))
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+    name: SetParameters
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+    name: SetParameters
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  isExternal: true
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  name: ValidateParameters(IDictionary<string, string>)
+  nameWithType: TMPSceneAnimationBase.ValidateParameters(IDictionary<string, string>)
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
+  nameWithType.vb: TMPSceneAnimationBase.ValidateParameters(IDictionary(Of String, String))
+  fullName.vb: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
+  name.vb: ValidateParameters(IDictionary(Of String, String))
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+    name: ValidateParameters
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+    name: ValidateParameters
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ObjectChanged
+  commentId: E:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ObjectChanged
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_ObjectChanged
+  name: ObjectChanged
+  nameWithType: TMPSceneAnimationBase.ObjectChanged
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.ObjectChanged
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnValidate
+  name: OnValidate()
+  nameWithType: TMPSceneAnimationBase.OnValidate()
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate()
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate
+    name: OnValidate
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnValidate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnValidate
+    name: OnValidate
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnValidate
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnDestroy
+  name: OnDestroy()
+  nameWithType: TMPSceneAnimationBase.OnDestroy()
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy()
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnDestroy
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.OnDestroy
+    name: OnDestroy
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_OnDestroy
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged
+  commentId: M:TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged
+  parent: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase
+  href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_RaiseObjectChanged
+  name: RaiseObjectChanged()
+  nameWithType: TMPSceneAnimationBase.RaiseObjectChanged()
+  fullName: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged()
+  spec.csharp:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged
+    name: RaiseObjectChanged
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_RaiseObjectChanged
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.RaiseObjectChanged
+    name: RaiseObjectChanged
+    href: TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html#TMPEffects_TMPSceneAnimations_TMPSceneAnimationBase_RaiseObjectChanged
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.ObjectChanged
+  commentId: N:TMPEffects.ObjectChanged
+  href: TMPEffects.html
+  name: TMPEffects.ObjectChanged
+  nameWithType: TMPEffects.ObjectChanged
+  fullName: TMPEffects.ObjectChanged
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.ObjectChanged
+    name: ObjectChanged
+    href: TMPEffects.ObjectChanged.html

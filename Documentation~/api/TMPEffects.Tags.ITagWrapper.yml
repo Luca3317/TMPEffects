@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Tags.ITagWrapper
+  commentId: T:TMPEffects.Tags.ITagWrapper
+  id: ITagWrapper
+  parent: TMPEffects.Tags
+  children:
+  - TMPEffects.Tags.ITagWrapper.Indices
+  - TMPEffects.Tags.ITagWrapper.Tag
+  langs:
+  - csharp
+  - vb
+  name: ITagWrapper
+  nameWithType: ITagWrapper
+  fullName: TMPEffects.Tags.ITagWrapper
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Tags/ITagWrapper.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ITagWrapper
+    path: ../Package/Runtime/Tags/ITagWrapper.cs
+    startLine: 9
+  namespace: TMPEffects.Tags
+  summary: Interface that wraps an <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref> as well as an <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public interface ITagWrapper
+    content.vb: Public Interface ITagWrapper
+- uid: TMPEffects.Tags.ITagWrapper.Tag
+  commentId: P:TMPEffects.Tags.ITagWrapper.Tag
+  id: Tag
+  parent: TMPEffects.Tags.ITagWrapper
+  langs:
+  - csharp
+  - vb
+  name: Tag
+  nameWithType: ITagWrapper.Tag
+  fullName: TMPEffects.Tags.ITagWrapper.Tag
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Tags/ITagWrapper.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Tag
+    path: ../Package/Runtime/Tags/ITagWrapper.cs
+    startLine: 14
+  namespace: TMPEffects.Tags
+  summary: The wrapped tag.
+  example: []
+  syntax:
+    content: TMPEffectTag Tag { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.TMPEffectTag
+    content.vb: ReadOnly Property Tag As TMPEffectTag
+  overload: TMPEffects.Tags.ITagWrapper.Tag*
+- uid: TMPEffects.Tags.ITagWrapper.Indices
+  commentId: P:TMPEffects.Tags.ITagWrapper.Indices
+  id: Indices
+  parent: TMPEffects.Tags.ITagWrapper
+  langs:
+  - csharp
+  - vb
+  name: Indices
+  nameWithType: ITagWrapper.Indices
+  fullName: TMPEffects.Tags.ITagWrapper.Indices
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Tags/ITagWrapper.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Indices
+    path: ../Package/Runtime/Tags/ITagWrapper.cs
+    startLine: 18
+  namespace: TMPEffects.Tags
+  summary: The wrapped tag indices.
+  example: []
+  syntax:
+    content: TMPEffectTagIndices Indices { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.TMPEffectTagIndices
+    content.vb: ReadOnly Property Indices As TMPEffectTagIndices
+  overload: TMPEffects.Tags.ITagWrapper.Indices*
+references:
+- uid: TMPEffects.Tags.TMPEffectTag
+  commentId: T:TMPEffects.Tags.TMPEffectTag
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTag.html
+  name: TMPEffectTag
+  nameWithType: TMPEffectTag
+  fullName: TMPEffects.Tags.TMPEffectTag
+- uid: TMPEffects.Tags.TMPEffectTagIndices
+  commentId: T:TMPEffects.Tags.TMPEffectTagIndices
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices
+  nameWithType: TMPEffectTagIndices
+  fullName: TMPEffects.Tags.TMPEffectTagIndices
+- uid: TMPEffects.Tags
+  commentId: N:TMPEffects.Tags
+  href: TMPEffects.html
+  name: TMPEffects.Tags
+  nameWithType: TMPEffects.Tags
+  fullName: TMPEffects.Tags
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+- uid: TMPEffects.Tags.ITagWrapper.Tag*
+  commentId: Overload:TMPEffects.Tags.ITagWrapper.Tag
+  href: TMPEffects.Tags.ITagWrapper.html#TMPEffects_Tags_ITagWrapper_Tag
+  name: Tag
+  nameWithType: ITagWrapper.Tag
+  fullName: TMPEffects.Tags.ITagWrapper.Tag
+- uid: TMPEffects.Tags.ITagWrapper.Indices*
+  commentId: Overload:TMPEffects.Tags.ITagWrapper.Indices
+  href: TMPEffects.Tags.ITagWrapper.html#TMPEffects_Tags_ITagWrapper_Indices
+  name: Indices
+  nameWithType: ITagWrapper.Indices
+  fullName: TMPEffects.Tags.ITagWrapper.Indices

@@ -138,7 +138,7 @@ public override void Animate(CharData cData, IAnimationContext context)
 {
     Data data = (Data)context.customData;
 
-    float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Item1;
+    float eval = data.wave.Evaluate(context.animatorContext.PassedTime, GetWaveOffset(cData, context, data.waveOffsetType)).Value;
     cData.SetPosition(cData.InitialPosition + Vector3.up * eval);
 }
 ```

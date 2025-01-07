@@ -1,15 +1,21 @@
 <link rel="stylesheet" type="text/css" href="../styles.css">
 
 # Offset Providers
-Offset providers provide offsets (duh) for a given characters (specifically, for a [CharData](chardata.md)).
+Offset providers provide offsets (duh) for a given character (specifically, for a [CharData](chardata.md)).
 These supplied offsets are primarily used to make animation appear non-uniform for each character.  
 OffsetProviders implement the <mark class="markstyle">ITMPOffsetProvider</mark> interface.
 
-If it were to not use any offfsets, the e.g. <mark class="markstyle">&lt;wave&gt;</mark> animation would move all characters at the same time.  
-<p style="color:blue">TODO Add gif of that</p>
+If it were to not use any offsets, the e.g. <mark class="markstyle">&lt;wave&gt;</mark> animation would move all characters at the same time.  
+<br/>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/waveuniform.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>  
 
 This is the same animation using an offset based on the index of the character.
-<p style="color:blue">TODO Add gif of that</p>
+<br/>
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/wavenonuniform.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>  
 
 
 ## OffsetBundle

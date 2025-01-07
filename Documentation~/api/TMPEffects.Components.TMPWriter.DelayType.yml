@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Components.TMPWriter.DelayType
+  commentId: T:TMPEffects.Components.TMPWriter.DelayType
+  id: TMPWriter.DelayType
+  parent: TMPEffects.Components
+  children:
+  - TMPEffects.Components.TMPWriter.DelayType.Percentage
+  - TMPEffects.Components.TMPWriter.DelayType.Raw
+  langs:
+  - csharp
+  - vb
+  name: TMPWriter.DelayType
+  nameWithType: TMPWriter.DelayType
+  fullName: TMPEffects.Components.TMPWriter.DelayType
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: DelayType
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1256
+  namespace: TMPEffects.Components
+  summary: >-
+    The type of delay.<br />
+
+    Either a percentage of the normal delay (<xref href="TMPEffects.Components.TMPWriter.Delays.delay" data-throw-if-not-resolved="false"></xref>) or a raw value in seconds.
+  example: []
+  syntax:
+    content: public enum TMPWriter.DelayType
+    content.vb: Public Enum TMPWriter.DelayType
+- uid: TMPEffects.Components.TMPWriter.DelayType.Percentage
+  commentId: F:TMPEffects.Components.TMPWriter.DelayType.Percentage
+  id: Percentage
+  parent: TMPEffects.Components.TMPWriter.DelayType
+  langs:
+  - csharp
+  - vb
+  name: Percentage
+  nameWithType: TMPWriter.DelayType.Percentage
+  fullName: TMPEffects.Components.TMPWriter.DelayType.Percentage
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Percentage
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1258
+  namespace: TMPEffects.Components
+  syntax:
+    content: Percentage = 0
+    return:
+      type: TMPEffects.Components.TMPWriter.DelayType
+- uid: TMPEffects.Components.TMPWriter.DelayType.Raw
+  commentId: F:TMPEffects.Components.TMPWriter.DelayType.Raw
+  id: Raw
+  parent: TMPEffects.Components.TMPWriter.DelayType
+  langs:
+  - csharp
+  - vb
+  name: Raw
+  nameWithType: TMPWriter.DelayType.Raw
+  fullName: TMPEffects.Components.TMPWriter.DelayType.Raw
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: Raw
+    path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
+    startLine: 1259
+  namespace: TMPEffects.Components
+  syntax:
+    content: Raw = 1
+    return:
+      type: TMPEffects.Components.TMPWriter.DelayType
+references:
+- uid: TMPEffects.Components.TMPWriter.Delays.delay
+  commentId: F:TMPEffects.Components.TMPWriter.Delays.delay
+  href: TMPEffects.Components.TMPWriter.Delays.html#TMPEffects_Components_TMPWriter_Delays_delay
+  name: delay
+  nameWithType: TMPWriter.Delays.delay
+  fullName: TMPEffects.Components.TMPWriter.Delays.delay
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: TMPEffects.Components.TMPWriter.DelayType
+  commentId: T:TMPEffects.Components.TMPWriter.DelayType
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter.DelayType
+  nameWithType: TMPWriter.DelayType
+  fullName: TMPEffects.Components.TMPWriter.DelayType
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.DelayType
+    name: DelayType
+    href: TMPEffects.Components.TMPWriter.DelayType.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPWriter
+    name: TMPWriter
+    href: TMPEffects.Components.TMPWriter.html
+  - name: .
+  - uid: TMPEffects.Components.TMPWriter.DelayType
+    name: DelayType
+    href: TMPEffects.Components.TMPWriter.DelayType.html

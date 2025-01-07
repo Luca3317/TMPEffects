@@ -1,0 +1,1484 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  id: ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  children:
+  - TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_CharacterInfo)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_Vertex,TMP_Vertex,TMP_Vertex,TMP_Vertex)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+  - TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+  - TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha(System.Int32)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.GetColor(System.Int32)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition(System.Int32)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0(System.Int32)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2(System.Int32)
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+  - TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+  - TMPEffects.CharacterData.ReadOnlyVertexData.initial
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: ReadOnlyVertexData
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 8
+  namespace: TMPEffects.CharacterData
+  summary: Holds data about a character's mesh.
+  example: []
+  syntax:
+    content: public class ReadOnlyVertexData
+    content.vb: Public Class ReadOnlyVertexData
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.initial
+  commentId: F:TMPEffects.CharacterData.ReadOnlyVertexData.initial
+  id: initial
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: initial
+  nameWithType: ReadOnlyVertexData.initial
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.initial
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: initial
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 31
+  namespace: TMPEffects.CharacterData
+  summary: The initial vertex of the character.
+  example: []
+  syntax:
+    content: public readonly ReadOnlyVertexData initial
+    return:
+      type: TMPEffects.CharacterData.ReadOnlyVertexData
+    content.vb: Public ReadOnly initial As ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+  id: BL_Color
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BL_Color
+  nameWithType: ReadOnlyVertexData.BL_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BL_Color
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 38
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get or set the color of the bottom left vertex.<br />
+
+    Note that this will mark both colors and alphas as dirty.<br />
+
+    Use SetColor(int, Color32, bool) if you want to only set color.
+  example: []
+  syntax:
+    content: public Color32 BL_Color { get; }
+    parameters: []
+    return:
+      type: Global.Color32
+    content.vb: Public ReadOnly Property BL_Color As Color32
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+  id: TL_Color
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TL_Color
+  nameWithType: ReadOnlyVertexData.TL_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TL_Color
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 47
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get or set the color of the top left vertex.<br />
+
+    Note that this will mark both colors and alphas as dirty.<br />
+
+    Use SetColor(int, Color32, bool) if you want to only set color.
+  example: []
+  syntax:
+    content: public Color32 TL_Color { get; }
+    parameters: []
+    return:
+      type: Global.Color32
+    content.vb: Public ReadOnly Property TL_Color As Color32
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+  id: TR_Color
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TR_Color
+  nameWithType: ReadOnlyVertexData.TR_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TR_Color
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 56
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get or set the color of the top right vertex.<br />
+
+    Note that this will mark both colors and alphas as dirty.<br />
+
+    Use SetColor(int, Color32, bool) if you want to only set color.
+  example: []
+  syntax:
+    content: public Color32 TR_Color { get; }
+    parameters: []
+    return:
+      type: Global.Color32
+    content.vb: Public ReadOnly Property TR_Color As Color32
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+  id: BR_Color
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BR_Color
+  nameWithType: ReadOnlyVertexData.BR_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BR_Color
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 65
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get or set the color of the bottom right vertex.<br />
+
+    Note that this will mark both colors and alphas as dirty.<br />
+
+    Use SetColor(int, Color32, bool) if you want to only set color.
+  example: []
+  syntax:
+    content: public Color32 BR_Color { get; }
+    parameters: []
+    return:
+      type: Global.Color32
+    content.vb: Public ReadOnly Property BR_Color As Color32
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+  id: BL_Alpha
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BL_Alpha
+  nameWithType: ReadOnlyVertexData.BL_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BL_Alpha
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 73
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the alpha of the bottom left vertex.
+  example: []
+  syntax:
+    content: public byte BL_Alpha { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property BL_Alpha As Byte
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+  id: TL_Alpha
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TL_Alpha
+  nameWithType: ReadOnlyVertexData.TL_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TL_Alpha
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 80
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the alpha of the top left vertex.
+  example: []
+  syntax:
+    content: public byte TL_Alpha { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property TL_Alpha As Byte
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+  id: TR_Alpha
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TR_Alpha
+  nameWithType: ReadOnlyVertexData.TR_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TR_Alpha
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 87
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the alpha of the top right vertex.
+  example: []
+  syntax:
+    content: public byte TR_Alpha { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property TR_Alpha As Byte
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+  id: BR_Alpha
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BR_Alpha
+  nameWithType: ReadOnlyVertexData.BR_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BR_Alpha
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 94
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the alpha of the bottom right vertex.
+  example: []
+  syntax:
+    content: public byte BR_Alpha { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property BR_Alpha As Byte
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+  id: BL_Position
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BL_Position
+  nameWithType: ReadOnlyVertexData.BL_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BL_Position
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 102
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the position of the bottom left vertex.
+  example: []
+  syntax:
+    content: public Vector3 BL_Position { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BL_Position As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+  id: TL_Position
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TL_Position
+  nameWithType: ReadOnlyVertexData.TL_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TL_Position
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 109
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the position of the top left vertex.
+  example: []
+  syntax:
+    content: public Vector3 TL_Position { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TL_Position As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+  id: TR_Position
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TR_Position
+  nameWithType: ReadOnlyVertexData.TR_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TR_Position
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 116
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the position of the top right vertex.
+  example: []
+  syntax:
+    content: public Vector3 TR_Position { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TR_Position As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+  id: BR_Position
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BR_Position
+  nameWithType: ReadOnlyVertexData.BR_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BR_Position
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 123
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the position of the bottom right vertex.
+  example: []
+  syntax:
+    content: public Vector3 BR_Position { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BR_Position As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+  id: BL_UV0
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BL_UV0
+  nameWithType: ReadOnlyVertexData.BL_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BL_UV0
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 131
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV0 of the bottom left vertex.
+  example: []
+  syntax:
+    content: public Vector3 BL_UV0 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BL_UV0 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+  id: TL_UV0
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TL_UV0
+  nameWithType: ReadOnlyVertexData.TL_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TL_UV0
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 138
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV0 of the bottom right vertex.
+  example: []
+  syntax:
+    content: public Vector3 TL_UV0 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TL_UV0 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+  id: TR_UV0
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TR_UV0
+  nameWithType: ReadOnlyVertexData.TR_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TR_UV0
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 145
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV0 of the top right vertex.
+  example: []
+  syntax:
+    content: public Vector3 TR_UV0 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TR_UV0 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+  id: BR_UV0
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BR_UV0
+  nameWithType: ReadOnlyVertexData.BR_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BR_UV0
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 152
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV0 of the bottom right vertex.
+  example: []
+  syntax:
+    content: public Vector3 BR_UV0 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BR_UV0 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+  id: BL_UV2
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BL_UV2
+  nameWithType: ReadOnlyVertexData.BL_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BL_UV2
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 160
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV2 of the bottom left vertex.
+  example: []
+  syntax:
+    content: public Vector3 BL_UV2 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BL_UV2 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+  id: TL_UV2
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TL_UV2
+  nameWithType: ReadOnlyVertexData.TL_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TL_UV2
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 167
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV2 of the bottom right vertex.
+  example: []
+  syntax:
+    content: public Vector3 TL_UV2 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TL_UV2 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+  id: TR_UV2
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: TR_UV2
+  nameWithType: ReadOnlyVertexData.TR_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: TR_UV2
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 174
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV2 of the top right vertex.
+  example: []
+  syntax:
+    content: public Vector3 TR_UV2 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property TR_UV2 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+  commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+  id: BR_UV2
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: BR_UV2
+  nameWithType: ReadOnlyVertexData.BR_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: BR_UV2
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 181
+  namespace: TMPEffects.CharacterData
+  summary: Get or set the UV2 of the bottom right vertex.
+  example: []
+  syntax:
+    content: public Vector3 BR_UV2 { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property BR_UV2 As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2*
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_Vertex,TMP_Vertex,TMP_Vertex,TMP_Vertex)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_Vertex,TMP_Vertex,TMP_Vertex,TMP_Vertex)
+  id: '#ctor(TMP_Vertex,TMP_Vertex,TMP_Vertex,TMP_Vertex)'
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlyVertexData(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+  nameWithType: ReadOnlyVertexData.ReadOnlyVertexData(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.ReadOnlyVertexData(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 186
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public ReadOnlyVertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
+    parameters:
+    - id: bl
+      type: Global.TMP_Vertex
+    - id: tl
+      type: Global.TMP_Vertex
+    - id: tr
+      type: Global.TMP_Vertex
+    - id: br
+      type: Global.TMP_Vertex
+    content.vb: Public Sub New(bl As TMP_Vertex, tl As TMP_Vertex, tr As TMP_Vertex, br As TMP_Vertex)
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.#ctor*
+  nameWithType.vb: ReadOnlyVertexData.New(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.New(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+  name.vb: New(TMP_Vertex, TMP_Vertex, TMP_Vertex, TMP_Vertex)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_CharacterInfo)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.#ctor(TMP_CharacterInfo)
+  id: '#ctor(TMP_CharacterInfo)'
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: ReadOnlyVertexData(TMP_CharacterInfo)
+  nameWithType: ReadOnlyVertexData.ReadOnlyVertexData(TMP_CharacterInfo)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.ReadOnlyVertexData(TMP_CharacterInfo)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 194
+  namespace: TMPEffects.CharacterData
+  syntax:
+    content: public ReadOnlyVertexData(TMP_CharacterInfo info)
+    parameters:
+    - id: info
+      type: Global.TMP_CharacterInfo
+    content.vb: Public Sub New(info As TMP_CharacterInfo)
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.#ctor*
+  nameWithType.vb: ReadOnlyVertexData.New(TMP_CharacterInfo)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.New(TMP_CharacterInfo)
+  name.vb: New(TMP_CharacterInfo)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition(System.Int32)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition(System.Int32)
+  id: GetPosition(System.Int32)
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: GetPosition(int)
+  nameWithType: ReadOnlyVertexData.GetPosition(int)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetPosition
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 212
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get the position of the vertex associated with the index.<br />
+
+    0 =&gt; bottom left<br />
+
+    1 =&gt; top left<br />
+
+    2 =&gt; top right<br />
+
+    3 =&gt; bottom right<br />
+  example: []
+  syntax:
+    content: public Vector3 GetPosition(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: The index.
+    return:
+      type: Global.Vector3
+      description: The position of the vertex associated with the index.
+    content.vb: Public Function GetPosition(i As Integer) As Vector3
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+  nameWithType.vb: ReadOnlyVertexData.GetPosition(Integer)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition(Integer)
+  name.vb: GetPosition(Integer)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor(System.Int32)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.GetColor(System.Int32)
+  id: GetColor(System.Int32)
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: GetColor(int)
+  nameWithType: ReadOnlyVertexData.GetColor(int)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetColor
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 234
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get the color of the vertex associated with the index.<br />
+
+    0 =&gt; bottom left<br />
+
+    1 =&gt; top left<br />
+
+    2 =&gt; top right<br />
+
+    3 =&gt; bottom right<br />
+  example: []
+  syntax:
+    content: public Color32 GetColor(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: The index.
+    return:
+      type: Global.Color32
+      description: The color of the vertex associated with the index.
+    content.vb: Public Function GetColor(i As Integer) As Color32
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+  nameWithType.vb: ReadOnlyVertexData.GetColor(Integer)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor(Integer)
+  name.vb: GetColor(Integer)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha(System.Int32)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha(System.Int32)
+  id: GetAlpha(System.Int32)
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: GetAlpha(int)
+  nameWithType: ReadOnlyVertexData.GetAlpha(int)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetAlpha
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 256
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get the alpha of the vertex associated with the index.<br />
+
+    0 =&gt; bottom left<br />
+
+    1 =&gt; top left<br />
+
+    2 =&gt; top right<br />
+
+    3 =&gt; bottom right<br />
+  example: []
+  syntax:
+    content: public byte GetAlpha(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: The index.
+    return:
+      type: System.Byte
+      description: The alpha of the vertex associated with the index.
+    content.vb: Public Function GetAlpha(i As Integer) As Byte
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+  nameWithType.vb: ReadOnlyVertexData.GetAlpha(Integer)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha(Integer)
+  name.vb: GetAlpha(Integer)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0(System.Int32)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0(System.Int32)
+  id: GetUV0(System.Int32)
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: GetUV0(int)
+  nameWithType: ReadOnlyVertexData.GetUV0(int)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetUV0
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 278
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get the UV0 of the vertex associated with the index.<br />
+
+    0 =&gt; bottom left<br />
+
+    1 =&gt; top left<br />
+
+    2 =&gt; top right<br />
+
+    3 =&gt; bottom right<br />
+  example: []
+  syntax:
+    content: public Vector2 GetUV0(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: The index.
+    return:
+      type: Global.Vector2
+      description: The UV0 of the vertex associated with the index.
+    content.vb: Public Function GetUV0(i As Integer) As Vector2
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+  nameWithType.vb: ReadOnlyVertexData.GetUV0(Integer)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0(Integer)
+  name.vb: GetUV0(Integer)
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2(System.Int32)
+  commentId: M:TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2(System.Int32)
+  id: GetUV2(System.Int32)
+  parent: TMPEffects.CharacterData.ReadOnlyVertexData
+  langs:
+  - csharp
+  - vb
+  name: GetUV2(int)
+  nameWithType: ReadOnlyVertexData.GetUV2(int)
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2(int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetUV2
+    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
+    startLine: 301
+  namespace: TMPEffects.CharacterData
+  summary: >-
+    Get the UV2 of the vertex associated with the index.<br />
+
+    0 =&gt; bottom left<br />
+
+    1 =&gt; top left<br />
+
+    2 =&gt; top right<br />
+
+    3 =&gt; bottom right<br />
+  example: []
+  syntax:
+    content: public Vector2 GetUV2(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: The index.
+    return:
+      type: Global.Vector2
+      description: The UV2 of the vertex associated with the index.
+    content.vb: Public Function GetUV2(i As Integer) As Vector2
+  overload: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: ''
+  nameWithType.vb: ReadOnlyVertexData.GetUV2(Integer)
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2(Integer)
+  name.vb: GetUV2(Integer)
+references:
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_Color
+  name: BL_Color
+  nameWithType: ReadOnlyVertexData.BL_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
+- uid: Global.Color32
+  isExternal: true
+  name: Color32
+  nameWithType: Color32
+  fullName: Color32
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TL_Color
+  name: TL_Color
+  nameWithType: ReadOnlyVertexData.TL_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Color
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TR_Color
+  name: TR_Color
+  nameWithType: ReadOnlyVertexData.TR_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Color
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BR_Color
+  name: BR_Color
+  nameWithType: ReadOnlyVertexData.BR_Color
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Color
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_Alpha
+  name: BL_Alpha
+  nameWithType: ReadOnlyVertexData.BL_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Alpha
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TL_Alpha
+  name: TL_Alpha
+  nameWithType: ReadOnlyVertexData.TL_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Alpha
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TR_Alpha
+  name: TR_Alpha
+  nameWithType: ReadOnlyVertexData.TR_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Alpha
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BR_Alpha
+  name: BR_Alpha
+  nameWithType: ReadOnlyVertexData.BR_Alpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Alpha
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_Position
+  name: BL_Position
+  nameWithType: ReadOnlyVertexData.BL_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Position
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TL_Position
+  name: TL_Position
+  nameWithType: ReadOnlyVertexData.TL_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_Position
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TR_Position
+  name: TR_Position
+  nameWithType: ReadOnlyVertexData.TR_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BR_Position
+  name: BR_Position
+  nameWithType: ReadOnlyVertexData.BR_Position
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_Position
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_UV0
+  name: BL_UV0
+  nameWithType: ReadOnlyVertexData.BL_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV0
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TL_UV0
+  name: TL_UV0
+  nameWithType: ReadOnlyVertexData.TL_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV0
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TR_UV0
+  name: TR_UV0
+  nameWithType: ReadOnlyVertexData.TR_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BR_UV0
+  name: BR_UV0
+  nameWithType: ReadOnlyVertexData.BR_UV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV0
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_UV2
+  name: BL_UV2
+  nameWithType: ReadOnlyVertexData.BL_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BL_UV2
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TL_UV2
+  name: TL_UV2
+  nameWithType: ReadOnlyVertexData.TL_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TL_UV2
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_TR_UV2
+  name: TR_UV2
+  nameWithType: ReadOnlyVertexData.TR_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BR_UV2
+  name: BR_UV2
+  nameWithType: ReadOnlyVertexData.BR_UV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.BR_UV2
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.#ctor*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.#ctor
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData__ctor_TMP_Vertex_TMP_Vertex_TMP_Vertex_TMP_Vertex_
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData.ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.ReadOnlyVertexData
+  nameWithType.vb: ReadOnlyVertexData.New
+  fullName.vb: TMPEffects.CharacterData.ReadOnlyVertexData.New
+  name.vb: New
+- uid: Global.TMP_Vertex
+  isExternal: true
+  name: TMP_Vertex
+  nameWithType: TMP_Vertex
+  fullName: TMP_Vertex
+- uid: Global.TMP_CharacterInfo
+  isExternal: true
+  name: TMP_CharacterInfo
+  nameWithType: TMP_CharacterInfo
+  fullName: TMP_CharacterInfo
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_GetPosition_System_Int32_
+  name: GetPosition
+  nameWithType: ReadOnlyVertexData.GetPosition
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetPosition
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.GetColor
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_GetColor_System_Int32_
+  name: GetColor
+  nameWithType: ReadOnlyVertexData.GetColor
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetColor
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_GetAlpha_System_Int32_
+  name: GetAlpha
+  nameWithType: ReadOnlyVertexData.GetAlpha
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetAlpha
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_GetUV0_System_Int32_
+  name: GetUV0
+  nameWithType: ReadOnlyVertexData.GetUV0
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV0
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2*
+  commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_GetUV2_System_Int32_
+  name: GetUV2
+  nameWithType: ReadOnlyVertexData.GetUV2
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.GetUV2

@@ -1,0 +1,538 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable
+  commentId: T:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable
+  id: CachedCollection`1.StructReversedContainingEnumerable
+  parent: TMPEffects.Tags.Collections
+  children:
+  - TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)
+  - TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator
+  langs:
+  - csharp
+  - vb
+  name: CachedCollection<T>.StructReversedContainingEnumerable
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerable
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerable
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Tags/CachedCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: StructReversedContainingEnumerable
+    path: ../Package/Runtime/Tags/CachedCollection.cs
+    startLine: 210
+  namespace: TMPEffects.Tags.Collections
+  summary: Helper struct for <xref href="TMPEffects.Tags.Collections.CachedCollection%601.GetContainingReversed_NonAlloc(System.Int32)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public struct CachedCollection<T>.StructReversedContainingEnumerable
+    content.vb: Public Structure CachedCollection(Of T).StructReversedContainingEnumerable
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerable
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerable
+  name.vb: CachedCollection(Of T).StructReversedContainingEnumerable
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)
+  commentId: M:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)'
+  parent: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable
+  langs:
+  - csharp
+  - vb
+  name: StructReversedContainingEnumerable(List<T>, int, int, int)
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerable.StructReversedContainingEnumerable(List<T>, int, int, int)
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerable.StructReversedContainingEnumerable(System.Collections.Generic.List<T>, int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Tags/CachedCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: .ctor
+    path: ../Package/Runtime/Tags/CachedCollection.cs
+    startLine: 217
+  namespace: TMPEffects.Tags.Collections
+  syntax:
+    content: public StructReversedContainingEnumerable(List<T> pool, int containedIndex, int maxIndex, int minIndex)
+    parameters:
+    - id: pool
+      type: System.Collections.Generic.List{{T}}
+    - id: containedIndex
+      type: System.Int32
+    - id: maxIndex
+      type: System.Int32
+    - id: minIndex
+      type: System.Int32
+    content.vb: Public Sub New(pool As List(Of T), containedIndex As Integer, maxIndex As Integer, minIndex As Integer)
+  overload: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor*
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerable.New(List(Of T), Integer, Integer, Integer)
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerable.New(System.Collections.Generic.List(Of T), Integer, Integer, Integer)
+  name.vb: New(List(Of T), Integer, Integer, Integer)
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator
+  commentId: M:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator
+  id: GetEnumerator
+  parent: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerable.GetEnumerator()
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerable.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Tags/CachedCollection.cs
+      branch: docs-rework
+      repo: https://github.com/Luca3317/TMPEffects
+    id: GetEnumerator
+    path: ../Package/Runtime/Tags/CachedCollection.cs
+    startLine: 225
+  namespace: TMPEffects.Tags.Collections
+  syntax:
+    content: public CachedCollection<T>.StructReversedContainingEnumerator GetEnumerator()
+    return:
+      type: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+    content.vb: Public Function GetEnumerator() As CachedCollection(Of T).StructReversedContainingEnumerator
+  overload: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator*
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerable.GetEnumerator()
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerable.GetEnumerator()
+references:
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc(System.Int32)
+  commentId: M:TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc(System.Int32)
+  isExternal: true
+  href: TMPEffects.Tags.Collections.CachedCollection-1.html#TMPEffects_Tags_Collections_CachedCollection_1_GetContainingReversed_NonAlloc_System_Int32_
+  name: GetContainingReversed_NonAlloc(int)
+  nameWithType: CachedCollection<T>.GetContainingReversed_NonAlloc(int)
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.GetContainingReversed_NonAlloc(int)
+  nameWithType.vb: CachedCollection(Of T).GetContainingReversed_NonAlloc(Integer)
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).GetContainingReversed_NonAlloc(Integer)
+  name.vb: GetContainingReversed_NonAlloc(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc(System.Int32)
+    name: GetContainingReversed_NonAlloc
+    href: TMPEffects.Tags.Collections.CachedCollection-1.html#TMPEffects_Tags_Collections_CachedCollection_1_GetContainingReversed_NonAlloc_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc(System.Int32)
+    name: GetContainingReversed_NonAlloc
+    href: TMPEffects.Tags.Collections.CachedCollection-1.html#TMPEffects_Tags_Collections_CachedCollection_1_GetContainingReversed_NonAlloc_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.Tags.Collections
+  commentId: N:TMPEffects.Tags.Collections
+  href: TMPEffects.html
+  name: TMPEffects.Tags.Collections
+  nameWithType: TMPEffects.Tags.Collections
+  fullName: TMPEffects.Tags.Collections
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  - name: .
+  - uid: TMPEffects.Tags.Collections
+    name: Collections
+    href: TMPEffects.Tags.Collections.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor*
+  commentId: Overload:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.#ctor
+  href: TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html#TMPEffects_Tags_Collections_CachedCollection_1_StructReversedContainingEnumerable__ctor_System_Collections_Generic_List__0__System_Int32_System_Int32_System_Int32_
+  name: StructReversedContainingEnumerable
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerable.StructReversedContainingEnumerable
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerable.StructReversedContainingEnumerable
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerable.New
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerable.New
+  name.vb: New
+- uid: System.Collections.Generic.List{{T}}
+  commentId: T:System.Collections.Generic.List{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator*
+  commentId: Overload:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerable.GetEnumerator
+  href: TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html#TMPEffects_Tags_Collections_CachedCollection_1_StructReversedContainingEnumerable_GetEnumerator
+  name: GetEnumerator
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerable.GetEnumerator
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerable.GetEnumerator
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerable.GetEnumerator
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerable.GetEnumerator
+- uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+  commentId: T:TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+  parent: TMPEffects.Tags.Collections
+  href: TMPEffects.Tags.Collections.CachedCollection-1.html
+  name: CachedCollection<T>.StructReversedContainingEnumerator
+  nameWithType: CachedCollection<T>.StructReversedContainingEnumerator
+  fullName: TMPEffects.Tags.Collections.CachedCollection<T>.StructReversedContainingEnumerator
+  nameWithType.vb: CachedCollection(Of T).StructReversedContainingEnumerator
+  fullName.vb: TMPEffects.Tags.Collections.CachedCollection(Of T).StructReversedContainingEnumerator
+  name.vb: CachedCollection(Of T).StructReversedContainingEnumerator
+  spec.csharp:
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1
+    name: CachedCollection
+    href: TMPEffects.Tags.Collections.CachedCollection-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: .
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+    name: StructReversedContainingEnumerator
+    href: TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html
+  spec.vb:
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1
+    name: CachedCollection
+    href: TMPEffects.Tags.Collections.CachedCollection-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: .
+  - uid: TMPEffects.Tags.Collections.CachedCollection`1.StructReversedContainingEnumerator
+    name: StructReversedContainingEnumerator
+    href: TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html

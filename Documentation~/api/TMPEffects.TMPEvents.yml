@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPEvents
+  commentId: N:TMPEffects.TMPEvents
+  id: TMPEffects.TMPEvents
+  children:
+  - TMPEffects.TMPEvents.TMPEvent
+  - TMPEffects.TMPEvents.TMPEventArgs
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.TMPEvents
+  nameWithType: TMPEffects.TMPEvents
+  fullName: TMPEffects.TMPEvents
+  type: Namespace
+references:
+- uid: TMPEffects.TMPEvents.TMPEvent
+  commentId: T:TMPEffects.TMPEvents.TMPEvent
+  parent: TMPEffects.TMPEvents
+  href: TMPEffects.TMPEvents.TMPEvent.html
+  name: TMPEvent
+  nameWithType: TMPEvent
+  fullName: TMPEffects.TMPEvents.TMPEvent
+- uid: TMPEffects.TMPEvents.TMPEventArgs
+  commentId: T:TMPEffects.TMPEvents.TMPEventArgs
+  href: TMPEffects.TMPEvents.TMPEventArgs.html
+  name: TMPEventArgs
+  nameWithType: TMPEventArgs
+  fullName: TMPEffects.TMPEvents.TMPEventArgs
+- uid: TMPEffects.TMPEvents
+  commentId: N:TMPEffects.TMPEvents
+  href: TMPEffects.html
+  name: TMPEffects.TMPEvents
+  nameWithType: TMPEffects.TMPEvents
+  fullName: TMPEffects.TMPEvents
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPEvents
+    name: TMPEvents
+    href: TMPEffects.TMPEvents.html
