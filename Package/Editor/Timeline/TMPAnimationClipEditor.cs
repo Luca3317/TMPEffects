@@ -37,14 +37,5 @@ namespace TMPEffects.Editor
             TMPEffectsClipEditorUtility.DrawBackground(clip, region, modClip.entryDuration, modClip.exitDuration,
                 modClip.entryCurve, modClip.exitCurve);
         }
-
-        public override ClipDrawOptions GetClipOptions(TimelineClip clip)
-        {
-            return new ClipDrawOptions()
-            {
-                tooltip = "My tooltip :)",
-                hideScaleIndicator = true
-            };
-        }
     }
 }
