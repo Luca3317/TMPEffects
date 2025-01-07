@@ -103,9 +103,14 @@ namespace TMPEffects.SerializedCollections.Editor
                 return false;
 
 #if UNITY_2022_3_OR_NEWER
+            // method signature keeps changing in different versions, so:
             if (getDrawerMethod.GetParameters().Length == 2)
             {
                 return getDrawerMethod.Invoke(type, new object[] { type, isPropertyManagedReferenceType }) != null;
+            }
+            else if (getDrawerMethod.GetParameters().Length == 3)
+            {
+                return getDrawerMethod.Invoke(type, new object[] { type, new Type[0], isPropertyManagedReferenceType }) != null;
             }
             else
             {
