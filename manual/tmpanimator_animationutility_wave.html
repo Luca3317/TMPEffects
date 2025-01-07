@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/tmpanimator_animationutility_wave.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_animationutility_wave.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -149,7 +149,7 @@ method.</p>
 <p>You can check if the wave passed an extrema (so either the crest or the trough) during the last update, using the <mark class="markstyle">int PassedExtrema(float time, float deltaTime, float offset)</mark> method.
 Once again, you need the time value and the offset, and additionally here you need the deltaTime since you last checked.
 Essentially, the method checks whether the wave passed an extrema during the time interval of [<mark class="markstyle">timeValue - deltaTime</mark>, <mark class="markstyle">timeValue</mark>]. A positive return value indicates that a maximum was passed, a negative return value indicates that a minimum was passed, and 0 indicates neither was.</p>
-<p>An additional, optional parameter is <mark class="markstyle"><a href="../api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.yml">PulseExtrema</a></mark>.
+<p>An additional, optional parameter is <mark class="markstyle"><a href="../api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">PulseExtrema</a></mark>.
 If the checked wave has a crest or trough wait, this parameter defines whether an extremum is passed once the wait time begins, or once it ends. <mark class="markstyle">PulseExtrema</mark> can also consider both
 to be an extrema, but of course be aware that it will then notify you of each extremum twice.</p>
 <p>If multiple extrema were passed during the specified interval, it will notify you of the latest one.</p>
@@ -157,7 +157,7 @@ to be an extrema, but of course be aware that it will then notify you of each ex
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/tmpanimator_animationutility_wave.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpanimator_animationutility_wave.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

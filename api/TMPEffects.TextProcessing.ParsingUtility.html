@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_TextProcessing_ParsingUtility.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.ParsingUtility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TextProcessing_ParsingUtility.md&amp;value=---%0Auid%3A%20TMPEffects.TextProcessing.ParsingUtility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TextProcessing_ParsingUtility" data-uid="TMPEffects.TextProcessing.ParsingUtility" class="text-break">
-Class ParsingUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class ParsingUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_GetNextTag_System_String_System_Int32_TMPEffects_TextProcessing_ParsingUtility_TagInfo__TMPEffects_TextProcessing_ParsingUtility_TagType_" data-uid="TMPEffects.TextProcessing.ParsingUtility.GetNextTag(System.String,System.Int32,TMPEffects.TextProcessing.ParsingUtility.TagInfo@,TMPEffects.TextProcessing.ParsingUtility.TagType)">
   GetNextTag(string, int, ref TagInfo, TagType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the next tag in <code class="paramref">text</code>, starting from <code class="paramref">startIndex</code>.</p>
@@ -205,16 +205,10 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_GetTagParametersDict_System_String_" data-uid="TMPEffects.TextProcessing.ParsingUtility.GetTagParametersDict(System.String)">
   GetTagParametersDict(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Parses a string to a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>.<br>
-Pass in either a full tag string, e.g. &lt;example=10 arg=&quot;value&quot;&gt;, or the same but
-without the brackets (example=10 arg=&quot;value&quot;).<br>
-Note that this only does some basic checks on the validity of the input string;
-malformed strings may lead to errors.<br>
-Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html#TMPEffects_TextProcessing_ParsingUtility_TagInfo_parameterString">parameterString</a>.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -224,29 +218,22 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The tag to parse the parameters of.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The parsed string as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h4 class="section">Exceptions</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
 
 
 
@@ -254,7 +241,7 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_IsTag_System_String_System_Int32_System_Int32_TMPEffects_TextProcessing_ParsingUtility_TagType_" data-uid="TMPEffects.TextProcessing.ParsingUtility.IsTag(System.String,System.Int32,System.Int32,TMPEffects.TextProcessing.ParsingUtility.TagType)">
   IsTag(string, int, int, TagType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L172"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the given string contains a substring starting at <code class="paramref">startIndex</code>, going up to <code class="paramref">maxIndex</code>, that is a well formed tag.</p>
@@ -301,10 +288,10 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_IsTag_System_String_TMPEffects_TextProcessing_ParsingUtility_TagType_" data-uid="TMPEffects.TextProcessing.ParsingUtility.IsTag(System.String,TMPEffects.TextProcessing.ParsingUtility.TagType)">
   IsTag(string, TagType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L217"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks if the given string is a well-formed tag (of the given type, if supplied).</p>
+  <div class="markdown level1 summary"><p>Checks if the given string is a well formed tag (of the given type, if supplied).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -325,7 +312,7 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the given string is a tag (of the given type, if supplied); otherwise false.</p>
+    <dd><p>true if the the given string is a tag (of the given type, if supplied); otherwise false.</p>
 </dd>
   </dl>
 
@@ -343,7 +330,7 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_TryParseTag_System_String_System_Int32_System_Int32_TMPEffects_TextProcessing_ParsingUtility_TagInfo__TMPEffects_TextProcessing_ParsingUtility_TagType_" data-uid="TMPEffects.TextProcessing.ParsingUtility.TryParseTag(System.String,System.Int32,System.Int32,TMPEffects.TextProcessing.ParsingUtility.TagInfo@,TMPEffects.TextProcessing.ParsingUtility.TagType)">
   TryParseTag(string, int, int, ref TagInfo, TagType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L126"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Attempt to parse a tag from the substring of <code class="paramref">text</code> given by <code class="paramref">startIndex</code> and <code class="paramref">endIndex</code>.</p>
@@ -394,7 +381,7 @@ Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.Pars
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/TextProcessing/ParsingUtility.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 

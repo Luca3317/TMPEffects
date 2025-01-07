@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/tmpwriter_creatingcommands.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpwriter_creatingcommands.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -90,11 +90,11 @@
 <h1 id="creating-commands">Creating commands</h1>
 <p>This section walks you through creating your own commands.
 First, create a new C# script in the Unity editor.</p>
-<h3 id="creating-the-class">Creating the class</h3>
+<h2 id="creating-the-class">Creating the class</h2>
 <p>Add the following using statement at the top of your class: <mark class="markstyle">using TMPEffects.TMPCommands;</mark>.<br>
 Then, make the created class derive from <mark class="markstyle">TMPCommand</mark>.
 In order to be able to create the command object in the Unity editor and add it to your database, make sure to decorate the class with the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute.</p>
-<h3 id="members">Members</h3>
+<h2 id="members">Members</h2>
 <p>You will have errors due to <mark class="markstyle">TMPCommand's</mark> abstract members not being implemented.
 Auto-implement them using your IDE, or add them manually.
 When you are done, your class should look something like this:</p>
@@ -122,13 +122,13 @@ public class YourFirstCommand : TMPCommand
 }
 </code></pre>
 <p>Let's go over each member individually.</p>
-<h3 id="properties">Properties</h3>
+<h2 id="properties">Properties</h2>
 <p><strong><mark class="markstyle">TagType</mark></strong>: Defines whether the tags for this command should operate on an index, a text block, or either option. For example, the built-in <mark class="markstyle">wait</mark>
 command operates on an index, and the built-in command <mark class="markstyle">show</mark> operates on a text block (see <a href="tmpwriter_builtincommands.html">Built-in commands</a>).</p>
 <p><strong><mark class="markstyle">ExecuteInstantly</mark></strong>: Commands where this property is true are executed the moment the TMPWriter begins the writing process, instead of when their opening tag index is reached. From the built-in tags, only <mark class="markstyle">show</mark> is executed instantly.</p>
 <p><strong><mark class="markstyle">ExecuteOnSkip</mark></strong>: Commands where this property is true are executed even when their index is skipped over by the writer (i.e., when TMPWriter.SkipWriter() is called). This should be true for commands
 that need to ensure they are being called even if skipped over, for example a command that starts a quest or adds an item to the player's inventory.</p>
-<h3 id="optional-properties">Optional properties</h3>
+<h2 id="optional-properties">Optional properties</h2>
 <p>There are a few optional properties. If you don't override them, they are set to false by default. In both cases, this is to protect you from yourself 😉<br>
 Only set these to true if you are sure it is safe for your case!</p>
 <p><strong><mark class="markstyle">ExecuteRepeatable</mark></strong>: Commands where this property is true may be executed multiple times, specifically if the writer is reset / restarted at any point (i.e., when TMPWriter.ResetWriter() is called).
@@ -139,11 +139,11 @@ This should be false for commands that need to ensure they are only ever raised 
 <p>Note that you must wrap this property in a <mark class="markstyle">#if UNITY_EDITOR</mark>
 preprocessor directive if you want to override it; otherwise your builds will fail.</p>
 </div>
-<h3 id="methods">Methods</h3>
+<h2 id="methods">Methods</h2>
 <p><strong><mark class="markstyle">ValidateParameters(IDictionary&lt;string, string&gt; parameters)</mark></strong>: This method is called during tag processing. It allows you to specify whether a given tag for this command has valid parameters. <a href="parameterutility.html">ParameterUtility</a> will come in handy here.
 Return true if the parameters are valid, return false if not. If false, the tag will not be processed.</p>
 <p><strong><mark class="markstyle">ExecuteCommand(TMPCommandArgs args)</mark></strong>: The meat of your command. This executes the actual command you are implementing.</p>
-<h3 id="tmpcommandargs">TMPCommandArgs</h3>
+<h2 id="tmpcommandargs">TMPCommandArgs</h2>
 <p>The sole argument for the <mark class="markstyle">ExecuteCommand</mark> method. It's kept relatively simple:
 it provides access to the actual <mark class="markstyle">EffectTag</mark>, through which you may get the tag's parameters, the <mark class="markstyle">EffectTagIndices</mark>, and the executing TMPWriter.</p>
 <h3 id="full-example">Full example</h3>
@@ -189,7 +189,7 @@ namespace TMPEffects.TMPCommands.Commands
     }
 }
 </code></pre>
-<h3 id="adding-the-command-to-a-database">Adding the command to a database</h3>
+<h2 id="adding-the-command-to-a-database">Adding the command to a database</h2>
 <p>To actually use the command in your text, you will have to follow these steps:</p>
 <ol>
 <li>Create a command object: Right click in your project view and create it (it will be in the path you specified in the <a href="https://docs.unity3d.com/ScriptReference/CreateAssetMenuAttribute.html">CreateAssetMenu</a> attribute).</li>
@@ -197,13 +197,13 @@ namespace TMPEffects.TMPCommands.Commands
 <li>Use that database in the TMPWriter component</li>
 </ol>
 <p>Done! You can now use your custom command like any of the built-in ones.</p>
-<h3 id="creating-scene-commands">Creating scene commands</h3>
+<h2 id="creating-scene-commands">Creating scene commands</h2>
 <p>See <a href="tmpwriter_scenecommands.html">Scene commands</a> on how to add scene commands.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/tmpwriter_creatingcommands.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/tmpwriter_creatingcommands.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

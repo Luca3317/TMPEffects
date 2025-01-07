@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Components_Animator_IAnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.IAnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_IAnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.IAnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_Components_Animator_IAnimatorContext" data-uid="TMPEffects.Components.Animator.IAnimatorContext" class="text-break">
-Interface IAnimatorContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L10"><i class="bi bi-code-slash"></i></a>
+Interface IAnimatorContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -103,7 +103,7 @@ Contains context data of the respective <a class="xref" href="TMPEffects.Compone
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IAnimatorContext : IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAnimatorContext</code></pre>
   </div>
 
 
@@ -112,43 +112,365 @@ Contains context data of the respective <a class="xref" href="TMPEffects.Compone
 
 
 
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_Animator">IAnimatorDataProvider.Animator</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_Modifiers">IAnimatorDataProvider.Modifiers</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleAnimations">IAnimatorDataProvider.ScaleAnimations</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleUniformly">IAnimatorDataProvider.ScaleUniformly</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_UseScaledTime">IAnimatorDataProvider.UseScaledTime</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_TMPEffects_CharacterData_CharData_">ICharacterTimingsProvider.StateTime(CharData)</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_TMPEffects_CharacterData_CharData_">ICharacterTimingsProvider.VisibleTime(CharData)</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_System_Int32_">ICharacterTimingsProvider.StateTime(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_System_Int32_">ICharacterTimingsProvider.VisibleTime(int)</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorTimingsProvider.html#TMPEffects_Components_Animator_IAnimatorTimingsProvider_DeltaTime">IAnimatorTimingsProvider.DeltaTime</a>
-    </div>
-    <div>
-      <a class="xref" href="TMPEffects.Components.Animator.IAnimatorTimingsProvider.html#TMPEffects_Components_Animator_IAnimatorTimingsProvider_PassedTime">IAnimatorTimingsProvider.PassedTime</a>
-    </div>
-  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_Animator_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.Animator*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.IAnimatorContext.Animator">
+  Animator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The animating <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TMPAnimator Animator { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_DeltaTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.DeltaTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.IAnimatorContext.DeltaTime">
+  DeltaTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The current delta time (=&gt; time since last animation update).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float DeltaTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_PassedTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.PassedTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.IAnimatorContext.PassedTime">
+  PassedTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The time that has passed since the animator began animating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float PassedTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations">
+  ScaleAnimations
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether animations are scaled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ScaleAnimations { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_ScaleUniformly_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly">
+  ScaleUniformly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether to scale animations uniformly (based on the default font size of the animator)
+or on a per character basis.<br>
+Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations">ScaleAnimations</a> is false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ScaleUniformly { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_UseScaledTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime">
+  UseScaledTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether animations use scaled time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool UseScaledTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.StateTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)">
+  StateTime(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
+Generally, to be used with show and hide animations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float StateTime(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_StateTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.StateTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)">
+  StateTime(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
+Generally, to be used with show and hide animations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float StateTime(CharData cData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.VisibleTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)">
+  VisibleTime(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float VisibleTime(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.VisibleTime*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)">
+  VisibleTime(CharData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float VisibleTime(CharData cData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd><p>The character to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>How long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
+</dd>
+  </dl>
+
+
+
+
+
 
 
 
@@ -159,7 +481,7 @@ Contains context data of the respective <a class="xref" href="TMPEffects.Compone
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L10" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

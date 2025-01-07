@@ -96,30 +96,33 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.AnimationContext.html">AnimationContext</a></dt>
-      <dd><p>Animation context used by <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
+      <dd><p>Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimation.html">GenericAnimation</a></dt>
-      <dd><p>A generic <a class="xref" href="TMPEffects.TMPAnimations.ITMPAnimation.html">ITMPAnimation</a>, allowing you to create animations in the inspector.</p>
+      <dt><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.html">AnimationUtility</a></dt>
+      <dd><p>Utility methods for animations.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimationUtility.html">GenericAnimationUtility</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">AnimationUtility.Wave</a></dt>
+      <dd><p>A wave.
+Allows you to easily create periodic animations.<b></b>
+You should take a look at the online documentation for this one:<b></b>
+<a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html</a></p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimationUtility.Track.html">GenericAnimationUtility.Track</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html">GenericAnimationUtility.TrackList</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html">AnimationUtility.WaveBase</a></dt>
+      <dd><p>Base class for <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">AnimationUtility.Wave</a>.<br>
+Allows you to easily create periodic animations.<b></b>
+You should take a look at the online documentation for this one:<b></b>
+<a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html</a></p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html">ReadOnlyAnimationContext</a></dt>
-      <dd><p>A read-only wrapper around <a class="xref" href="TMPEffects.TMPAnimations.AnimationContext.html">AnimationContext</a>.</p>
-</dd>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.TMPAnimation.html">TMPAnimation</a></dt>
@@ -132,11 +135,6 @@ Classes
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.TMPAnimationUtility.html">TMPAnimationUtility</a></dt>
-      <dd><p>Utility methods for animations.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.TMPHideAnimation.html">TMPHideAnimation</a></dt>
       <dd><p>Base class for all hide animations.</p>
 </dd>
@@ -146,43 +144,13 @@ Classes
       <dd><p>Base class for all show animations.</p>
 </dd>
     </dl>
-    <h3 id="structs">
-Structs
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html">GenericAnimationUtility.CachedOffset</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html">GenericAnimationUtility.StepComparer</a></dt>
-      <dd></dd>
-    </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></dt>
-      <dd><p>Interface for animation contexts.</p>
+      <dd><p>Basic interface for animation contexts.</p>
 </dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.IAnimationData.html">IAnimationData</a></dt>
-      <dd><p>Provides general data about the animation.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinished.html">IAnimationFinished</a></dt>
-      <dd><p>Provides checks for whether an animation is done animating a specific <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a>.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinisher.html">IAnimationFinisher</a></dt>
-      <dd><p>Provides the ability to mark an animation as done animating a specific <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a>.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.IGenericAnimation.html">IGenericAnimation</a></dt>
-      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.TMPAnimations.ITMPAnimation.html">ITMPAnimation</a></dt>
@@ -193,8 +161,9 @@ Interfaces
 Enums
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html">TMPAnimationUtility.TMPWrapMode</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html">AnimationUtility.Wave.PulseExtrema</a></dt>
+      <dd><p>If the wave has a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html#TMPEffects_TMPAnimations_AnimationUtility_Wave_TroughWait">TroughWait</a>, PulseExtrema defines whether an extremum is passed once the wait time begins, or once it ends.</p>
+</dd>
     </dl>
 
 

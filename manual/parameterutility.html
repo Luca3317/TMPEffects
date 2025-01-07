@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/parameterutility.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/parameterutility.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -133,25 +133,11 @@ Otherwise, it will throw an exception.</p>
 <p><mark class="markstyle">bool TryGetDefinedParameter(out string value, IDictionary&lt;string, string&gt;, string name, params string[] aliases)</mark>:
 Wraps <mark class="markstyle">GetDefinedParameter</mark> in a try-catch statement.
 If successful, the parameter value will be stored in the <mark class="markstyle">out string value</mark> parameter.</p>
-<h3 id="waves">Waves</h3>
-<p>If your animation uses <a href="tmpanimator_animationutility_wave.html">Waves</a>, you can use the pre-defined wave parameters set by using <mark class="markstyle">ValidateWaveParameters(IDictionary&lt;string, string&gt; parameters, string prefix = &quot;&quot;)</mark>
-and <mark class="markstyle">GetWaveParameters(IDictionary&lt;string, string&gt; parameters, string prefix = &quot;&quot;)</mark> in <mark class="markstyle">ValidateParameters</mark> and <mark class="markstyle">SetParameters</mark> respectively. The passed in <mark class="markstyle">prefix</mark> lets you use multiple waves with differently prefixed parameter names.</p>
-<p>If you have a default wave, you can combine it with the set parameters like this:</p>
-<pre><code>[SerializeField] Wave wave;
-
-public void SetParameters(object customData, IDictionary&amp;lt;string, string&amp;gt; parameters)
-{
-    Data d = customData as Data; // Cast custom data to whatever type it is
-    d.Wave = CreateWave(wave, GetWaveParameters(parameters));
-}
-</code></pre>
-<p>This will create a new wave from the set parameters and the values defined in the default wave as fallback values for the non-set parameters.</p>
-<p>For the full list of parameters that are part of the wave parameters set, see the <a href="../api/TMPEffects.ParameterUtility.yml">API documentation</a>.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Documentation~/manual/parameterutility.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Documentation~/manual/parameterutility.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

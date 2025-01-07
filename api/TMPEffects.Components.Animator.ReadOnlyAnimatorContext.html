@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Components_Animator_ReadOnlyAnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.ReadOnlyAnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Components_Animator_ReadOnlyAnimatorContext.md&amp;value=---%0Auid%3A%20TMPEffects.Components.Animator.ReadOnlyAnimatorContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext" class="text-break">
-Class ReadOnlyAnimatorContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class ReadOnlyAnimatorContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -104,7 +104,7 @@ Contains readonly context data of the respective <a class="xref" href="TMPEffect
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider</code></pre>
+public class ReadOnlyAnimatorContext : IAnimatorContext</code></pre>
   </div>
 
 
@@ -122,9 +122,6 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></div>
-      <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html">IAnimatorDataProvider</a></div>
-      <div><a class="xref" href="TMPEffects.Components.Animator.ICharacterTimingsProvider.html">ICharacterTimingsProvider</a></div>
-      <div><a class="xref" href="TMPEffects.Components.Animator.IAnimatorTimingsProvider.html">IAnimatorTimingsProvider</a></div>
     </dd>
   </dl>
 
@@ -168,7 +165,7 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext)">
   ReadOnlyAnimatorContext(IAnimatorContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -199,7 +196,7 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext__ctor_TMPEffects_Components_TMPAnimator_System_Boolean_System_Boolean_System_Boolean_System_Func_System_Int32_System_Single__System_Func_System_Int32_System_Single__" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.#ctor(TMPEffects.Components.TMPAnimator,System.Boolean,System.Boolean,System.Boolean,System.Func{System.Int32,System.Single},System.Func{System.Int32,System.Single})">
   ReadOnlyAnimatorContext(TMPAnimator, bool, bool, bool, Func&lt;int, float&gt;, Func&lt;int, float&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -244,7 +241,7 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_Animator" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Animator">
   Animator
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The animating <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
@@ -276,7 +273,7 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_DeltaTime" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.DeltaTime">
   DeltaTime
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The current delta time (=&gt; time since last animation update).</p>
@@ -304,48 +301,11 @@ public class ReadOnlyAnimatorContext : IAnimatorContext, IAnimatorDataProvider, 
 
 
 
-  <a id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_Modifiers_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Modifiers*"></a>
-
-  <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_Modifiers" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Modifiers">
-  Modifiers
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L15"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The current state of the CharData, with the previous animations applied.<br><p><br>
-A typical exemplary use case would be if you want an animation to enforce a character to be at a specific position,
-regardless of previously applied animations, you can reset the position of these Modifiers to undo previous changes.<br>
-Another example would be if your animation requires the actual position of the character, that takes into account transformations
-made by previously applied animations, you can do so using <a href="Modifiers.CalculateVertexPositions">Modifiers.CalculateVertexPositions</a>.</p>
-
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CharDataModifiers Modifiers { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Global.CharDataModifiers.html">CharDataModifiers</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_PassedTime_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime*"></a>
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_PassedTime" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.PassedTime">
   PassedTime
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The time that has passed since the animator began animating.</p>
@@ -377,7 +337,7 @@ made by previously applied animations, you can do so using <a href="Modifiers.Ca
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_ScaleAnimations" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations">
   ScaleAnimations
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether animations are scaled.</p>
@@ -409,12 +369,12 @@ made by previously applied animations, you can do so using <a href="Modifiers.Ca
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_ScaleUniformly" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleUniformly">
   ScaleUniformly
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether to scale animations uniformly (based on the default font size of the animator)
 or on a per character basis.<br>
-Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleAnimations">ScaleAnimations</a> is false.</p>
+Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations">ScaleAnimations</a> is false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -443,7 +403,7 @@ Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataPro
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_UseScaledTime" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.UseScaledTime">
   UseScaledTime
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether animations use scaled time.</p>
@@ -479,7 +439,7 @@ Ignored if <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataPro
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_StateTime_System_Int32_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(System.Int32)">
   StateTime(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
@@ -519,7 +479,7 @@ Generally, to be used with show and hide animations.</p>
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)">
   StateTime(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been in its current <a class="xref" href="TMPEffects.CharacterData.VisibilityState.html">VisibilityState</a>.<br>
@@ -559,7 +519,7 @@ Generally, to be used with show and hide animations.</p>
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_VisibleTime_System_Int32_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(System.Int32)">
   VisibleTime(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check how long the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> at the given index has been visible.</p>
@@ -597,7 +557,7 @@ Generally, to be used with show and hide animations.</p>
 
   <h3 id="TMPEffects_Components_Animator_ReadOnlyAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.Components.Animator.ReadOnlyAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)">
   VisibleTime(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check how long the passed <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> has been visible.</p>
@@ -636,7 +596,7 @@ Generally, to be used with show and hide animations.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

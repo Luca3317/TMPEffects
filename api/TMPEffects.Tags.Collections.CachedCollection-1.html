@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CachedCollection&lt;T&gt; | TMPEffects documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CachedCollection&lt;T&gt; | TMPEffects documentation ">
+      
+      <meta name="description" content="Manages a collection of  that represent a cached tag. Will keep itself synchronized with the given .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Tags_Collections_CachedCollection_1.md&amp;value=---%0Auid%3A%20TMPEffects.Tags.Collections.CachedCollection%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TMPEffects.Tags.Collections.CachedCollection`1">
+
+
+
+  <h1 id="TMPEffects_Tags_Collections_CachedCollection_1" data-uid="TMPEffects.Tags.Collections.CachedCollection`1" class="text-break">
+Class CachedCollection&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Tags.html">Tags</a>.<a class="xref" href="TMPEffects.Tags.Collections.html">Collections</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>Manages a collection of <a class="xref" href="TMPEffects.Tags.ITagWrapper.html">ITagWrapper</a> that represent a cached tag.<br>
+Will keep itself synchronized with the given <a class="xref" href="TMPEffects.Tags.Collections.ObservableTagCollection.html">ObservableTagCollection</a>.<br></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CachedCollection&lt;T&gt; : IEnumerable&lt;T&gt;, IEnumerable where T : ITagWrapper</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of tag wrapper / cached tags.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">CachedCollection&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="TMPEffects_Tags_Collections_CachedCollection_1_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Designed for fast &quot;Get tags that contain index&quot; operations.<br>
+Ideally use along with <span class="xref">TMPEffects.Tags.Collections.TagCollectionManager&lt;TKey&gt;</span> to get the <a class="xref" href="TMPEffects.Tags.Collections.ObservableTagCollection.html">ObservableTagCollection</a>
+(see implementations of both <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> for examples).</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1__ctor_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.#ctor*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1__ctor_TMPEffects_Tags_ITagCacher__0__TMPEffects_Tags_Collections_ObservableTagCollection_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.#ctor(TMPEffects.Tags.ITagCacher{`0},TMPEffects.Tags.Collections.ObservableTagCollection)">
+  CachedCollection(ITagCacher&lt;T&gt;, ObservableTagCollection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CachedCollection(ITagCacher&lt;T&gt; cacher, ObservableTagCollection tagCollection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacher</code> <a class="xref" href="TMPEffects.Tags.ITagCacher-1.html">ITagCacher</a>&lt;T&gt;</dt>
+    <dd></dd>
+    <dt><code>tagCollection</code> <a class="xref" href="TMPEffects.Tags.Collections.ObservableTagCollection.html">ObservableTagCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_Count_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.Count*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_Count" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Amount of cached tags contained in this collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_Item_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.Item*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_Item_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.Item(System.Int32)">
+  this[int]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the cached tag of type T at the given collection index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T this[int index] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The collection index.</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The cached tag of type T at the given collection index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_GetAt_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetAt*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_GetAt_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetAt(System.Int32)">
+  GetAt(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enumerates all cached tags that start at the given text index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; GetAt(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd><p>All cached tags that start at the given text index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_GetContaining_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContaining*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_GetContaining_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContaining(System.Int32)">
+  GetContaining(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enumerates all cached tags that contain the given text index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T&gt; GetContaining(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd><p>All cached tags that contain the given text index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_GetContainingReversed_NonAlloc_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_GetContainingReversed_NonAlloc_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContainingReversed_NonAlloc(System.Int32)">
+  GetContainingReversed_NonAlloc(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enumerates all cached tags that contain the given text index in reversed order, without allocating any memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CachedCollection&lt;T&gt;.StructReversedContainingEnumerable GetContainingReversed_NonAlloc(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.html">CachedCollection</a>&lt;T&gt;.<a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html">StructReversedContainingEnumerable</a></dt>
+    <dd><p>All cached tags that contain the given text index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_GetContaining_NonAlloc_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContaining_NonAlloc*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_GetContaining_NonAlloc_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetContaining_NonAlloc(System.Int32)">
+  GetContaining_NonAlloc(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enumerates all cached tags that contain the given text index, without allocating any memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CachedCollection&lt;T&gt;.StructContainingEnumerable GetContaining_NonAlloc(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.html">CachedCollection</a>&lt;T&gt;.<a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.html">StructContainingEnumerable</a></dt>
+    <dd><p>All cached tags that contain the given text index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_GetEnumerator_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetEnumerator*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_GetEnumerator" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L517"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T&gt; GetEnumerator()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;T&gt;</dt>
+    <dd><p>An enumerator that can be used to iterate through the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_HasAny_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAny*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_HasAny" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAny">
+  HasAny()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether this collection has any cached tags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasAny()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if there is at least one cached tag; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_HasAnyAt_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAnyAt*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_HasAnyAt_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAnyAt(System.Int32)">
+  HasAnyAt(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether this collection has any cached tags that start at the given text index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasAnyAt(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if there is at least one cached tag that starts at the given text index; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_HasAnyContaining_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAnyContaining*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_HasAnyContaining_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.HasAnyContaining(System.Int32)">
+  HasAnyContaining(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether this collection has any cached tags that contain the given text index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasAnyContaining(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if there is at least one cached tag that contains the given text index; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Tags_Collections_CachedCollection_1_MinMaxAt_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.MinMaxAt*"></a>
+
+  <h3 id="TMPEffects_Tags_Collections_CachedCollection_1_MinMaxAt_System_Int32_" data-uid="TMPEffects.Tags.Collections.CachedCollection`1.MinMaxAt(System.Int32)">
+  MinMaxAt(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the <a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html">CachedCollection&lt;T&gt;.MinMax</a> for a text index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CachedCollection&lt;T&gt;.MinMax MinMaxAt(int textIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>textIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The text index.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.html">CachedCollection</a>&lt;T&gt;.<a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html">MinMax</a></dt>
+    <dd><p>The <a class="xref" href="TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html">CachedCollection&lt;T&gt;.MinMax</a> for the text index, if one exists; otherwise null.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Tags/CachedCollection.cs/#L19" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
