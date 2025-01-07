@@ -92,6 +92,7 @@ namespace TMPEffects.Editor
 
         public override void DrawPreview(Rect previewArea)
         {
+            Debug.Log(previewArea + " : " + Event.current.type);
             if (animator.Tags.Count == 0)
             {
                 if (!animator.Tags.TryAdd(
@@ -104,28 +105,39 @@ namespace TMPEffects.Editor
 
             UpdateAnimation();
 
-            previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
-            previewUtility.Render();
-            var texture = previewUtility.EndPreview();
-            GUI.DrawTexture(previewArea, texture);
+            if (Event.current.type == EventType.Repaint)
+            {
+                previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
+                previewUtility.Render();
+
+                var texture = previewUtility.EndPreview();
+                GUI.DrawTexture(previewArea, texture);
+            }
+            else if (Event.current.type == EventType.Layout)
+            {
+                // No clue how else to handle this
+                // Need to render during layout to correctly update preview scene (afaict)
+                // TODO Maybe look into this further at some point; this works fine for now though
+                previewArea.width = 1;
+                previewArea.height = 1;
+                previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
+                previewUtility.Render();
+                previewUtility.EndPreview();
+            }
 
             DrawPreviewBar();
-        }
-
-        public override void ReloadPreviewInstances()
-        {
         }
 
         protected virtual void UpdateAnimation()
         {
             if (!animate)
             {
-                lastUpdateTime = Time.time;
+                lastUpdateTime = Time.realtimeSinceStartup;
                 return;
             }
-            
-            animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.time - lastUpdateTime);
-            lastUpdateTime = Time.time;
+
+            animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.realtimeSinceStartup - lastUpdateTime);
+            lastUpdateTime = Time.realtimeSinceStartup;
         }
 
         protected virtual void DrawPreviewBar()
