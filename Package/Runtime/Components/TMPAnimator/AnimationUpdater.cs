@@ -7,22 +7,38 @@ using UnityEngine;
 namespace TMPEffects.Components.Animator
 {
     [Serializable]
-    public class AnimationUpdater
+    internal class AnimationUpdater
     {
-        public uint MaxUpdatesPerSecond => maxUpdatesPerSecond;
+        public uint MaxUpdatesPerSecond
+        {
+            get => maxUpdatesPerSecond;
+        }
 
-        uint maxUpdatesPerSecond;
+        public float AdditionalTimeScaling
+        {
+            get => additionalTimeScaling;
+            set
+            {
+                additionalTimeScaling = value;
+            }
+        }
+        
+        [SerializeField]
+        private uint maxUpdatesPerSecond = 60;
 
-        float delta;
-        float updateTiming;
-        float over;
+        [SerializeField] private float additionalTimeScaling = 1;
+        
+        private float delta;
+        private float updateTiming;
+        private float over;
 
-        Action<float> updateAction;
+        private Action<float> updateAction;
 
-        public AnimationUpdater(Action<float> updateAction, uint maxUpdatesPerSecond)
+        public AnimationUpdater(Action<float> updateAction, uint maxUpdatesPerSecond, float timeScale)
         {
             this.updateAction = updateAction;
             this.maxUpdatesPerSecond = maxUpdatesPerSecond;
+            this.additionalTimeScaling = timeScale;
             updateTiming = 1f / maxUpdatesPerSecond;
             delta = 0;
             over = 0;
@@ -43,7 +59,7 @@ namespace TMPEffects.Components.Animator
             if (delta + over >= updateTiming)
             {
                 over = (delta + over) % updateTiming;
-                updateAction.Invoke(delta);
+                updateAction.Invoke(delta * additionalTimeScaling);
                 delta = 0;
                 return true;
             }

@@ -112,8 +112,8 @@ namespace TMPEffects.TextProcessing
         /// <summary>
         /// Register all <see cref="TagProcessor"/> to the given <paramref name="textProcessor"/>.
         /// </summary>
-        /// <param name="textProcessor">The <see cref="TMPTextProcessor"/> to register to.</param>
-        public void RegisterTo(TMPTextProcessor textProcessor)
+        /// <param name="textProcessor">The <see cref="TMPEffectsTextProcessor"/> to register to.</param>
+        public void RegisterTo(TMPEffectsTextProcessor textProcessor)
         {
             foreach (var kvp in tagProcessors)
             {
@@ -127,8 +127,8 @@ namespace TMPEffects.TextProcessing
         /// <summary>
         /// Unregister all <see cref="TagProcessor"/> from the given <paramref name="textProcessor"/>.
         /// </summary>
-        /// <param name="textProcessor">The <see cref="TMPTextProcessor"/> to unregister from.</param>
-        public void UnregisterFrom(TMPTextProcessor textProcessor)
+        /// <param name="textProcessor">The <see cref="TMPEffectsTextProcessor"/> to unregister from.</param>
+        public void UnregisterFrom(TMPEffectsTextProcessor textProcessor)
         {
             foreach (var kvp in tagProcessors)
             {

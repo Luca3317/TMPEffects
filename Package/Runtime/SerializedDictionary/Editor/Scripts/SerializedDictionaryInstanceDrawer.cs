@@ -69,8 +69,10 @@ namespace TMPEffects.SerializedCollections.Editor
             _dictionaryAttribute = _fieldInfo.GetCustomAttribute<SerializedDictionaryAttribute>();
 
             _propertyData = SCEditorUtility.GetPropertyData(ListProperty);
-            _propertyData.GetElementData(SCEditorUtility.KeyFlag).Settings.DisplayName = _dictionaryAttribute?.KeyName ?? "Key";
-            _propertyData.GetElementData(SCEditorUtility.ValueFlag).Settings.DisplayName = _dictionaryAttribute?.ValueName ?? "Value";
+            _propertyData.GetElementData(SCEditorUtility.KeyFlag).Settings.DisplayName =
+                _dictionaryAttribute?.KeyName ?? "Key";
+            _propertyData.GetElementData(SCEditorUtility.ValueFlag).Settings.DisplayName =
+                _dictionaryAttribute?.ValueName ?? "Value";
             SavePropertyData();
 
             _pagingElement = new PagingElement();
@@ -81,7 +83,8 @@ namespace TMPEffects.SerializedCollections.Editor
             _unexpandedList = MakeUnexpandedList();
             _searchField = new SearchField();
 
-            var listField = _fieldInfo.FieldType.GetField(SerializedDictionaryDrawer.SerializedListName, BindingFlags.Instance | BindingFlags.NonPublic);
+            var listField = _fieldInfo.FieldType.GetField(SerializedDictionaryDrawer.SerializedListName,
+                BindingFlags.Instance | BindingFlags.NonPublic);
             var entryType = listField.FieldType.GetGenericArguments()[0];
             _keyFieldInfo = entryType.GetField(SerializedDictionaryDrawer.KeyName);
 
@@ -121,7 +124,8 @@ namespace TMPEffects.SerializedCollections.Editor
                 ReorderableList.DoList(position);
             else
             {
-                using (new GUI.ClipScope(new Rect(0, position.y, position.width + position.x, SerializedDictionaryDrawer.TopHeaderClipHeight)))
+                using (new GUI.ClipScope(new Rect(0, position.y, position.width + position.x,
+                           SerializedDictionaryDrawer.TopHeaderClipHeight)))
                 {
                     _unexpandedList.DoList(position.WithY(0));
                 }
@@ -141,14 +145,18 @@ namespace TMPEffects.SerializedCollections.Editor
 
         private SerializedProperty GetElementProperty(SerializedProperty property, bool fieldFlag)
         {
-            return property.FindPropertyRelative(fieldFlag == SerializedDictionaryDrawer.KeyFlag ? SerializedDictionaryDrawer.KeyName : SerializedDictionaryDrawer.ValueName);
+            return property.FindPropertyRelative(fieldFlag == SerializedDictionaryDrawer.KeyFlag
+                ? SerializedDictionaryDrawer.KeyName
+                : SerializedDictionaryDrawer.ValueName);
         }
 
-        internal static float CalculateHeightOfElement(SerializedProperty property, bool drawKeyAsList, bool drawValueAsList)
+        internal static float CalculateHeightOfElement(SerializedProperty property, bool drawKeyAsList,
+            bool drawValueAsList)
         {
             SerializedProperty keyProperty = property.FindPropertyRelative(SerializedDictionaryDrawer.KeyName);
             SerializedProperty valueProperty = property.FindPropertyRelative(SerializedDictionaryDrawer.ValueName);
-            return Mathf.Max(SCEditorUtility.CalculateHeight(keyProperty, drawKeyAsList), SCEditorUtility.CalculateHeight(valueProperty, drawValueAsList));
+            return Mathf.Max(SCEditorUtility.CalculateHeight(keyProperty, drawKeyAsList),
+                SCEditorUtility.CalculateHeight(valueProperty, drawValueAsList));
         }
 
         private void UpdateAfterInput()
@@ -167,7 +175,8 @@ namespace TMPEffects.SerializedCollections.Editor
             {
                 var genericArgs = _fieldInfo.FieldType.GetGenericArguments();
                 var firstProperty = ListProperty.GetArrayElementAtIndex(0);
-                var keySettings = CreateDisplaySettings(GetElementProperty(firstProperty, fieldFlag), genericArgs[fieldFlag == SCEditorUtility.KeyFlag ? 0 : 1]);
+                var keySettings = CreateDisplaySettings(GetElementProperty(firstProperty, fieldFlag),
+                    genericArgs[fieldFlag == SCEditorUtility.KeyFlag ? 0 : 1]);
                 var settings = _propertyData.GetElementData(fieldFlag).Settings;
                 settings.DisplayType = keySettings.displayType;
                 settings.HasListDrawerToggle = keySettings.canToggleListDrawer;
@@ -203,14 +212,16 @@ namespace TMPEffects.SerializedCollections.Editor
                 _singleEditingData.Invalidate();
             else if (!ListProperty.serializedObject.isEditingMultipleObjects && !_singleEditingData.IsValid)
             {
-                var dictionary = SCEditorUtility.GetPropertyValue(ListProperty, ListProperty.serializedObject.targetObject);
+                var dictionary =
+                    SCEditorUtility.GetPropertyValue(ListProperty, ListProperty.serializedObject.targetObject);
                 _singleEditingData.LookupTable = GetLookupTable(dictionary);
             }
         }
 
         private IKeyable GetLookupTable(object dictionary)
         {
-            var propInfo = dictionary.GetType().GetProperty(SerializedDictionaryDrawer.LookupTableName, BindingFlags.Instance | BindingFlags.NonPublic);
+            var propInfo = dictionary.GetType().GetProperty(SerializedDictionaryDrawer.LookupTableName,
+                BindingFlags.Instance | BindingFlags.NonPublic);
             return (IKeyable)propInfo.GetValue(dictionary);
         }
 
@@ -227,7 +238,8 @@ namespace TMPEffects.SerializedCollections.Editor
             for (int i = startIndex; i < endIndex; i++)
                 _pagedIndices.Add(i);
 
-            string shortDetailsString = (_activeState.ListSize + " " + (_pagedIndices.Count == 1 ? "Element" : "Elements"));
+            string shortDetailsString =
+                (_activeState.ListSize + " " + (_pagedIndices.Count == 1 ? "Element" : "Elements"));
             string detailsString = _pagingElement.PageCount > 1
                 ? $"{_pagedIndices[0] + 1}..{_pagedIndices.Last() + 1} / {_activeState.ListSize} Elements"
                 : shortDetailsString;
@@ -258,7 +270,10 @@ namespace TMPEffects.SerializedCollections.Editor
         private void ToggleSearchBar(bool flag)
         {
             _showSearchBar = flag;
-            ReorderableList.headerHeight = SerializedDictionaryDrawer.TopHeaderClipHeight + SerializedDictionaryDrawer.KeyValueHeaderHeight + (_showSearchBar ? SerializedDictionaryDrawer.SearchHeaderHeight : 0);
+            ReorderableList.headerHeight = SerializedDictionaryDrawer.TopHeaderClipHeight +
+                                           SerializedDictionaryDrawer.KeyValueHeaderHeight + (_showSearchBar
+                                               ? SerializedDictionaryDrawer.SearchHeaderHeight
+                                               : 0);
             if (!_showSearchBar)
             {
                 if (_searchField.HasFocus())
@@ -272,10 +287,18 @@ namespace TMPEffects.SerializedCollections.Editor
             EditorGUI.LabelField(rect, EditorGUIUtility.TrTextContent(_activeState.NoElementsText));
         }
 
-        private (DisplayType displayType, bool canToggleListDrawer) CreateDisplaySettings(SerializedProperty property, Type type)
+        private (DisplayType displayType, bool canToggleListDrawer) CreateDisplaySettings(SerializedProperty property,
+            Type type)
         {
-            bool hasCustomEditor = SCEditorUtility.HasDrawerForType(type, property.propertyType == SerializedPropertyType.ManagedReference);
-            bool isGenericWithChildren = property.propertyType == SerializedPropertyType.Generic && property.hasVisibleChildren;
+            if (property == null)
+            {
+                return (DisplayType.Property, false);
+            }
+
+            bool hasCustomEditor = SCEditorUtility.HasDrawerForType(type,
+                property.propertyType == SerializedPropertyType.ManagedReference);
+            bool isGenericWithChildren =
+                property.propertyType == SerializedPropertyType.Generic && property.hasVisibleChildren;
             bool isArray = property.isArray && property.propertyType != SerializedPropertyType.String;
             bool canToggleListDrawer = isArray || (isGenericWithChildren && hasCustomEditor);
             DisplayType displayType = DisplayType.PropertyNoLabel;
@@ -320,6 +343,7 @@ namespace TMPEffects.SerializedCollections.Editor
                 adjustedTopRect = adjustedTopRect.AppendDown(SerializedDictionaryDrawer.SearchHeaderHeight);
                 DoSearch(adjustedTopRect);
             }
+
             DoKeyValueRect(adjustedTopRect.AppendDown(SerializedDictionaryDrawer.KeyValueHeaderHeight));
 
             UpdateAfterInput();
@@ -346,12 +370,14 @@ namespace TMPEffects.SerializedCollections.Editor
             if (!_singleEditingData.IsValid)
             {
                 lastTopRect = lastTopRect.AppendLeft(lastTopRect.height + 5);
-                var guicontent = EditorGUIUtility.TrIconContent(EditorGUIUtility.Load("d_console.infoicon") as Texture, "Conflict checking, duplicate key removal and populators not supported in multi object editing mode.");
+                var guicontent = EditorGUIUtility.TrIconContent(EditorGUIUtility.Load("d_console.infoicon") as Texture,
+                    "Conflict checking, duplicate key removal and populators not supported in multi object editing mode.");
                 GUI.Label(lastTopRect, guicontent);
             }
 
             EditorGUI.BeginProperty(rect, _label, ListProperty);
-            ListProperty.isExpanded = EditorGUI.Foldout(rect.WithXAndWidth(rect.x - 5, lastTopRect.x - rect.x), ListProperty.isExpanded, _label, true);
+            ListProperty.isExpanded = EditorGUI.Foldout(rect.WithXAndWidth(rect.x - 5, lastTopRect.x - rect.x),
+                ListProperty.isExpanded, _label, true);
             EditorGUI.EndProperty();
         }
 
@@ -361,20 +387,27 @@ namespace TMPEffects.SerializedCollections.Editor
             if (GUI.Button(rect, EditorGUIUtility.IconContent("pane options@2x"), EditorStyles.iconButton))
             {
                 var gm = new GenericMenu();
-                SCEditorUtility.AddGenericMenuItem(gm, false, ListProperty.minArraySize > 0, new GUIContent("Clear"), () => QueueAction(ClearList));
-                SCEditorUtility.AddGenericMenuItem(gm, false, true, new GUIContent("Remove Conflicts"), () => QueueAction(RemoveConflicts));
-                SCEditorUtility.AddGenericMenuItem(gm, false, _keyGeneratorsWithWindow.Count > 0, new GUIContent("Bulk Edit..."), () => OpenKeysGeneratorSelectorWindow(screenRect));
+                SCEditorUtility.AddGenericMenuItem(gm, false, ListProperty.minArraySize > 0, new GUIContent("Clear"),
+                    () => QueueAction(ClearList));
+                SCEditorUtility.AddGenericMenuItem(gm, false, true, new GUIContent("Remove Conflicts"),
+                    () => QueueAction(RemoveConflicts));
+                SCEditorUtility.AddGenericMenuItem(gm, false, _keyGeneratorsWithWindow.Count > 0,
+                    new GUIContent("Bulk Edit..."), () => OpenKeysGeneratorSelectorWindow(screenRect));
                 if (_keyGeneratorsWithoutWindow.Count > 0)
                 {
                     gm.AddSeparator(string.Empty);
                     foreach (var generatorData in _keyGeneratorsWithoutWindow)
                     {
-                        SCEditorUtility.AddGenericMenuItem(gm, false, true, new GUIContent(generatorData.Name), OnPopulatorDataSelected, generatorData);
+                        SCEditorUtility.AddGenericMenuItem(gm, false, true, new GUIContent(generatorData.Name),
+                            OnPopulatorDataSelected, generatorData);
                     }
                 }
+
                 gm.AddSeparator(string.Empty);
-                SCEditorUtility.AddGenericMenuItem(gm, _propertyData.AlwaysShowSearch, true, new GUIContent("Always Show Search"), ToggleAlwaysShowSearchPropertyData);
-                gm.AddItem(new GUIContent("Preferences..."), false, () => SettingsService.OpenUserPreferences(EditorUserSettingsProvider.PreferencesPath));
+                SCEditorUtility.AddGenericMenuItem(gm, _propertyData.AlwaysShowSearch, true,
+                    new GUIContent("Always Show Search"), ToggleAlwaysShowSearchPropertyData);
+                gm.AddItem(new GUIContent("Preferences..."), false,
+                    () => SettingsService.OpenUserPreferences(EditorUserSettingsProvider.PreferencesPath));
                 gm.DropDown(rect);
             }
         }
@@ -409,8 +442,12 @@ namespace TMPEffects.SerializedCollections.Editor
 
             if (Event.current.type == EventType.Repaint && _propertyData != null)
             {
-                _keyValueStyle.Draw(leftRect, EditorGUIUtility.TrTextContent(_propertyData.GetElementData(SerializedDictionaryDrawer.KeyFlag).Settings.DisplayName), false, false, false, false);
-                _keyValueStyle.Draw(rightRect, EditorGUIUtility.TrTextContent(_propertyData.GetElementData(SerializedDictionaryDrawer.ValueFlag).Settings.DisplayName), false, false, false, false);
+                _keyValueStyle.Draw(leftRect,
+                    EditorGUIUtility.TrTextContent(_propertyData.GetElementData(SerializedDictionaryDrawer.KeyFlag)
+                        .Settings.DisplayName), false, false, false, false);
+                _keyValueStyle.Draw(rightRect,
+                    EditorGUIUtility.TrTextContent(_propertyData.GetElementData(SerializedDictionaryDrawer.ValueFlag)
+                        .Settings.DisplayName), false, false, false, false);
             }
 
             if (ListProperty.minArraySize > 0)
@@ -487,7 +524,8 @@ namespace TMPEffects.SerializedCollections.Editor
 
         private static void RemoveElements(IKeyable lookupTable, IEnumerable<object> elements)
         {
-            var indicesToRemove = elements.SelectMany(x => lookupTable.GetOccurences(x)).OrderByDescending(index => index);
+            var indicesToRemove =
+                elements.SelectMany(x => lookupTable.GetOccurences(x)).OrderByDescending(index => index);
             foreach (var index in indicesToRemove)
             {
                 lookupTable.RemoveAt(index);
@@ -540,7 +578,8 @@ namespace TMPEffects.SerializedCollections.Editor
                 rightRectToggle.x += rightRectToggle.width - 18;
                 rightRectToggle.width = 18;
                 EditorGUI.BeginChangeCheck();
-                bool newValue = GUI.Toggle(rightRectToggle, displayData.IsListToggleActive, SerializedDictionaryDrawer.DisplayTypeToggleContent, EditorStyles.toolbarButton);
+                bool newValue = GUI.Toggle(rightRectToggle, displayData.IsListToggleActive,
+                    SerializedDictionaryDrawer.DisplayTypeToggleContent, EditorStyles.toolbarButton);
                 if (EditorGUI.EndChangeCheck())
                 {
                     displayData.IsListToggleActive = newValue;
@@ -553,7 +592,15 @@ namespace TMPEffects.SerializedCollections.Editor
         {
             int actualIndex = _pagedIndices[index];
             var element = _activeState.GetPropertyAtIndex(actualIndex);
-            return CalculateHeightOfElement(element, _propertyData.GetElementData(SerializedDictionaryDrawer.KeyFlag).EffectiveDisplayType == DisplayType.List ? true : false, _propertyData.GetElementData(SerializedDictionaryDrawer.ValueFlag).EffectiveDisplayType == DisplayType.List ? true : false);
+            return CalculateHeightOfElement(element,
+                _propertyData.GetElementData(SerializedDictionaryDrawer.KeyFlag).EffectiveDisplayType ==
+                DisplayType.List
+                    ? true
+                    : false,
+                _propertyData.GetElementData(SerializedDictionaryDrawer.ValueFlag).EffectiveDisplayType ==
+                DisplayType.List
+                    ? true
+                    : false);
         }
 
         private void OnDrawElement(Rect rect, int index, bool isActive, bool isFocused)
@@ -566,8 +613,10 @@ namespace TMPEffects.SerializedCollections.Editor
             int actualIndex = _pagedIndices[index];
 
             SerializedProperty kvp = _activeState.GetPropertyAtIndex(actualIndex);
-            Rect keyRect = rect.WithSize(EditorGUIUtility.labelWidth - lineLeftSpace, EditorGUIUtility.singleLineHeight);
-            Rect lineRect = keyRect.WithXAndWidth(keyRect.x + keyRect.width + lineLeftSpace, lineWidth).WithHeight(rect.height);
+            Rect keyRect = rect.WithSize(EditorGUIUtility.labelWidth - lineLeftSpace,
+                EditorGUIUtility.singleLineHeight);
+            Rect lineRect = keyRect.WithXAndWidth(keyRect.x + keyRect.width + lineLeftSpace, lineWidth)
+                .WithHeight(rect.height);
             Rect valueRect = keyRect.AppendRight(rect.width - keyRect.width - totalSpace, totalSpace);
 
             var keyProperty = kvp.FindPropertyRelative(SerializedDictionaryDrawer.KeyName);
@@ -582,6 +631,7 @@ namespace TMPEffects.SerializedCollections.Editor
                 {
                     GUI.color = occurences[0] == actualIndex ? Color.yellow : Color.red;
                 }
+
                 if (!SerializedCollectionsUtility.IsValidKey(keyObject))
                 {
                     GUI.color = Color.red;
@@ -595,10 +645,23 @@ namespace TMPEffects.SerializedCollections.Editor
             GUI.color = prevColor;
 
             var valueDisplayData = _propertyData.GetElementData(SerializedDictionaryDrawer.ValueFlag);
-            DrawGroupedElement(valueRect, lineRightSpace, valueProperty, valueDisplayData.EffectiveDisplayType);
+
+            // safeguard against non-serializable types
+            if (valueProperty == null)
+            {
+                var rec = new Rect(valueRect.x, valueRect.y, valueRect.width, rect.height);
+                EditorGUI.HelpBox(rec,
+                    "THIS TYPE IS NOT SERIALIZABLE -- Add the System.Serializable attribute to your custom parameter type",
+                    MessageType.Error);
+            }
+            else
+            {
+                DrawGroupedElement(valueRect, lineRightSpace, valueProperty, valueDisplayData.EffectiveDisplayType);
+            }
         }
 
-        private void DrawGroupedElement(Rect rect, int spaceForProperty, SerializedProperty property, DisplayType displayType)
+        private void DrawGroupedElement(Rect rect, int spaceForProperty, SerializedProperty property,
+            DisplayType displayType)
         {
             using (new LabelWidth(rect.width * 0.4f))
             {
@@ -625,7 +688,9 @@ namespace TMPEffects.SerializedCollections.Editor
             GUI.EndClip();
         }
 
-        internal static void DrawElement(Rect rect, SerializedProperty property, DisplayType displayType, Action<SerializedProperty> BeforeDrawingCallback = null, Action<SerializedProperty> AfterDrawingCallback = null)
+        internal static void DrawElement(Rect rect, SerializedProperty property, DisplayType displayType,
+            Action<SerializedProperty> BeforeDrawingCallback = null,
+            Action<SerializedProperty> AfterDrawingCallback = null)
         {
             switch (displayType)
             {
@@ -648,6 +713,7 @@ namespace TMPEffects.SerializedCollections.Editor
                         EditorGUI.PropertyField(childRect, prop, true);
                         AfterDrawingCallback?.Invoke(prop);
                     }
+
                     break;
                 default:
                     break;
@@ -656,7 +722,9 @@ namespace TMPEffects.SerializedCollections.Editor
 
         private void OnAdd(ReorderableList list)
         {
-            int targetIndex = list.selectedIndices.Count > 0 && list.selectedIndices[0] >= 0 ? list.selectedIndices[0] : 0;
+            int targetIndex = list.selectedIndices.Count > 0 && list.selectedIndices[0] >= 0
+                ? list.selectedIndices[0]
+                : 0;
             int actualTargetIndex = targetIndex < _pagedIndices.Count ? _pagedIndices[targetIndex] : 0;
             _activeState.InserElementAt(actualTargetIndex);
         }

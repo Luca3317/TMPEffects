@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using UnityEngine;
 using TMPEffects.Tags;
 using TMPEffects.CharacterData;
@@ -8,19 +10,70 @@ using System.Threading;
 namespace TMPEffects.Components.Animator
 {
     /// <summary>
-    /// To be used with <see cref="TMPAnimator"/> and its animations.<br/>
-    /// Contains data about a given animation segment.
+    /// Provides information about text segment.
     /// </summary>
-    public struct SegmentData
+    public interface ITMPSegmentData
     {
         /// <summary>
         /// The first index of the segment within the containing text.
         /// </summary>
-        public readonly int startIndex;
+        public int StartIndex { get; }
         /// <summary>
         /// The length of the animation segment.
         /// </summary>
-        public readonly int length;
+        public int Length { get; }
+        /// <summary>
+        /// The last index of the segment within the containing text.
+        /// </summary>
+        public int EndIndex { get; }
+        
+        /// <summary>
+        /// The <see cref="CharData.Info"/> of each character in the segment.
+        /// </summary>
+        public IEnumerable<CharData.Info> CharInfo { get; }
+        /// <summary>
+        /// Get a specific <see cref="CharData.Info"/> from a segment index.
+        /// </summary>
+        /// <param name="segmentIndex"></param>
+        /// <returns>The <see cref="CharData.Info"/> associated with the segment index.</returns>
+        public CharData.Info GetCharInfo(int segmentIndex);
+        
+        // /// <summary>
+        // /// The <see cref="CharData.Info"/> of each character in the segment.<br/>
+        // /// Keyed using the index of the character in the text, NOT within the segment.
+        // /// </summary>
+        // public IReadOnlyDictionary<int, CharData.Info> CharInfo { get; } // TODO Rewrite so that there is trygetinfo(int index) and
+        //                                                                 // ienumerable<charinfo>; then limit access using start and endindex
+        //                                                                 // Then; make SegmentData (not ITMPSegmentData) take idictionary<chardata>
+        //                                                                 // from tmpanimator when created, and use that
+
+        /// <summary>
+        /// Convert a text index to the index within the segment.
+        /// </summary>
+        /// <param name="index">The text index to convert.</param>
+        /// <returns>The segment index.</returns>
+        public int IndexToSegmentIndex(int index);
+        /// <summary>
+        /// Get the segment index of the given <see cref="CharData"/>.
+        /// </summary>
+        /// <param name="cData"></param>
+        /// <returns></returns>
+        public int SegmentIndexOf(CharData cData);
+    }
+    
+    /// <summary>
+    /// To be used with <see cref="TMPAnimator"/> and its animations.<br/>
+    /// Contains data about a given animation segment.<br/>
+    /// Only does some basic info parsing. For more specialised information, e.g. word-count,
+    /// you can manually derive the info from <see cref="CharInfo"/>.
+    /// </summary>
+    public readonly struct SegmentData : ITMPSegmentData
+    {
+        public int StartIndex { get; }
+
+        public int Length { get; }
+        
+        public int EndIndex { get; }
 
         /// <summary>
         /// The effective length of the animation segment; i.e. the length of the segment from <see cref="firstAnimationIndex"/> to <see cref="lastAnimationIndex"/>.
@@ -31,6 +84,7 @@ namespace TMPEffects.Components.Animator
         /// The index of the first visible character (i.e. non-whitespace character).
         /// </summary>
         public readonly int firstVisibleIndex;
+
         /// <summary>
         /// The index of the last visible character (i.e. non-whitespace character).
         /// </summary>
@@ -40,18 +94,36 @@ namespace TMPEffects.Components.Animator
         /// The index of the first character that is relevant to the <see cref="TMPAnimator"/> and will be animated.
         /// </summary>
         public readonly int firstAnimationIndex;
+
         /// <summary>
         /// The index of the last character that is relevant to the <see cref="TMPAnimator"/> and will be animated.
         /// </summary>
         public readonly int lastAnimationIndex;
 
-        public readonly Vector3 max;
-        public readonly Vector3 min;
 
+        public IEnumerable<CharData.Info> CharInfo
+        {
+            get
+            {
+                for (int i = StartIndex; i < EndIndex; i++)
+                {
+                    yield return charDatas[i].info;
+                }
+            }   
+        }
+
+        public CharData.Info GetCharInfo(int segmentIndex)
+        {
+            if (segmentIndex > Length) throw new ArgumentOutOfRangeException(nameof(segmentIndex));
+            return charDatas[segmentIndex + StartIndex].info;
+        }
+
+        private readonly IList<CharData> charDatas;
+        
         public int IndexToSegmentIndex(int index)
         {
-            index -= startIndex;
-            if (index < 0 || index >= length) return -1;
+            index -= StartIndex;
+            if (index < 0 || index >= Length) return -1;
             else return index;
         }
 
@@ -60,42 +132,21 @@ namespace TMPEffects.Components.Animator
             return IndexToSegmentIndex(cData.info.index);
         }
 
-        internal SegmentData(TMPEffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
+        public SegmentData(TMPEffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
         {
-            startIndex = indices.StartIndex;
-            length = indices.Length;
+            StartIndex = indices.StartIndex;
+            Length = indices.Length;
+            EndIndex = indices.EndIndex;
             firstVisibleIndex = -1;
             lastVisibleIndex = -1;
             firstAnimationIndex = -1;
             lastAnimationIndex = -1;
 
-            max = Vector3.negativeInfinity;
-            min = Vector3.positiveInfinity;
-            //Vector3 leftTop, bottomRight;
-
             // Clamp needed for when text ends with tags; will cause (startIndex + length)
             // to be equal to cData.Count + 1
-            int count = Mathf.Min(cData.Count, startIndex + length);
-            //for (int i = startIndex; i < count; i++)
-            //{
-            //    if (!cData[i].info.isVisible) continue;
+            int count = Mathf.Min(cData.Count, StartIndex + Length);
 
-            //    //leftTop = cData[i].initialMesh.TL_Position;
-            //    //bottomRight = cData[i].initialMesh.BR_Position;
-            //    //max = new Vector3(Mathf.Max(max.x, leftTop.x, bottomRight.x), Mathf.Max(max.y, leftTop.y, bottomRight.y), Mathf.Max(max.z, leftTop.z, bottomRight.z));
-            //    //min = new Vector3(Mathf.Min(min.x, leftTop.x, bottomRight.x), Mathf.Min(min.y, leftTop.y, bottomRight.y), Mathf.Min(min.z, leftTop.z, bottomRight.z));
-
-            //    if (firstVisibleIndex == -1) firstVisibleIndex = i;
-            //    lastVisibleIndex = i;
-
-            //    if (animates(cData[i].info.character))
-            //    {
-            //        if (firstAnimationIndex == -1) firstAnimationIndex = i;
-            //        lastAnimationIndex = i;
-            //    }
-            //}
-
-            for (int i = startIndex; i < count; i++)
+            for (int i = StartIndex; i < count; i++)
             {
                 if (!cData[i].info.isVisible) continue;
                 if (firstVisibleIndex == -1) firstVisibleIndex = i;
@@ -106,7 +157,7 @@ namespace TMPEffects.Components.Animator
                 }
             }
 
-            for (int i = count - 1; i >= startIndex; i--)
+            for (int i = count - 1; i >= StartIndex; i--)
             {
                 if (!cData[i].info.isVisible) continue;
                 if (lastVisibleIndex == -1) lastVisibleIndex = i;
@@ -118,6 +169,8 @@ namespace TMPEffects.Components.Animator
             }
 
             effectiveLength = lastAnimationIndex - firstAnimationIndex + 1;
+
+            charDatas = cData;
         }
     }
 }

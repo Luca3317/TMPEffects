@@ -1,48 +1,47 @@
 using System.Collections.Generic;
-using System.ComponentModel;
+using TMPEffects.Databases;
+using TMPEffects.ObjectChanged;
 using TMPEffects.TMPCommands;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace TMPEffects.TMPCommands
 {
     /// <summary>
-    /// Struct defining scene commands.
+    /// Base class to derive from to create scene commands.
     /// </summary>
-    [System.Serializable]
-    public struct TMPSceneCommand : ITMPCommand
+    public abstract class TMPSceneCommand : MonoBehaviour, ITMPCommand, INotifyObjectChanged
     {
-        /// <inheritdoc/>
-        public TagType TagType => commandType;
-        /// <inheritdoc/>
-        public bool ExecuteInstantly => executeInstantly;
-        /// <inheritdoc/>
-        public bool ExecuteOnSkip => executeOnSkip;
-        /// <inheritdoc/>
-        public bool ExecuteRepeatable => executeRepeatable;
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
 
+        public abstract TagType TagType { get; }
+        public abstract bool ExecuteInstantly { get; }
+        public abstract bool ExecuteOnSkip { get; }
+        public abstract bool ExecuteRepeatable { get; }
 #if UNITY_EDITOR
-        /// <inheritdoc/>
-        public bool ExecuteInPreview => false;
+        public virtual bool ExecuteInPreview => false;
 #endif
-        [Tooltip("Whether tags of this command operate on a range (and therefore need to be closed) or on an index.")]
-        [SerializeField] private TagType commandType;
-        [Tooltip("Whether the command is executed instantly when the writer begins writing the text, regardless of its position within it.")]
-        [SerializeField] private bool executeInstantly;
-        [Tooltip("Whether the command should be executed when the tag's position is skipped by the writer. Check for essential commands, e.g. triggering a quest.")]
-        [SerializeField] private bool executeOnSkip;
-        [Tooltip("Whether the command should be allowed to be executed multiple times. Relevant for when the writer is reset while writing.")]
-        [SerializeField] private bool executeRepeatable;
-        [Tooltip("The methods to trigger.")]
-        [SerializeField] private UnityEvent<TMPCommandArgs> command;
+        public abstract void ExecuteCommand(ICommandContext context);
+        public abstract object GetNewCustomData();
 
-        /// <inheritdoc/>
-        public void ExecuteCommand(TMPCommandArgs args) => command?.Invoke(args);
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
 
-        /// <inheritdoc/>
-        public bool ValidateParameters(IDictionary<string, string> parameters)
+        public event ObjectChangedEventHandler ObjectChanged;
+
+        protected virtual void OnValidate()
         {
-            return true;
+            RaiseObjectChanged();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            RaiseObjectChanged();
+        }
+
+        protected void RaiseObjectChanged()
+        {
+            ObjectChanged?.Invoke(this);
         }
     }
 }

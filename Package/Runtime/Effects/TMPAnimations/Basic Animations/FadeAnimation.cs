@@ -1,42 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
-using TMPEffects.Extensions;
-using TMPro;
+using TMPEffects.Parameters;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
-using static TMPEffects.TMPAnimations.AnimationUtility;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new FadeAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Fade")]
-    public class FadeAnimation : TMPAnimation
+    public partial class FadeAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave;
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffsetType;
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        Wave wave;
 
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetBundle waveOffset;
+
+        [SerializeField, AutoParameter("maxopacity", "maxop", "max")]
         [Tooltip("The maximum opacity that is reached.\nAliases: maxopacity, maxop, max")]
-        [SerializeField] float maxOpacity = 255;
+        [Range(0, 255)] float maxOpacity = 255;
+
+        [SerializeField, AutoParameter("fadeinanchor", "fianchor", "fianc", "fia")]
         [Tooltip("The anchor used for fading in.\nAliases: fadeinanchor, fianchor, fianc, fia")]
-        [SerializeField] Vector3 fadeInAnchor = Vector3.zero;
+        Vector3 fadeInAnchor = Vector3.zero;
+
+        [SerializeField, AutoParameter("fadeindirection", "fidirection", "fidir", "fid")]
         [Tooltip("The direction to fade in in.\nAliases: fadeindirection, fidirection, fidir, fid")]
-        [SerializeField] Vector3 fadeInDirection = Vector3.up;
+        Vector3 fadeInDirection = Vector3.up;
 
+        [SerializeField, AutoParameter("minopacity", "minop", "min")]
         [Tooltip("The minimum opacity that is reached.\nAliases: minopacity, minop, min")]
-        [SerializeField] float minOpacity = 0;
+        [Range(0, 255)] float minOpacity = 0;
+
+        [SerializeField, AutoParameter("fadeoutanchor", "foanchor", "foanc", "foa")]
         [Tooltip("The anchor used for fading out.\nAliases: fadeoutanchor, foanchor, foanc, foa")]
-        [SerializeField] Vector3 fadeOutAnchor = Vector3Int.zero;
+        Vector3 fadeOutAnchor = Vector3Int.zero;
+
+        [SerializeField, AutoParameter("fadeoutdirection", "fodirection", "fodir", "fod")]
         [Tooltip("The direction to fade out in.\nAliases: fadeoutdirection, fodirection, fodir, fod")]
-        [SerializeField] Vector3 fadeOutDirection = Vector3.up;
+        Vector3 fadeOutDirection = Vector3.up;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
-            (float, int) result = d.Wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
+            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
+                d.waveOffset.GetOffset(cData, context));
 
             if (result.Item2 > 0)
             {
@@ -49,7 +60,7 @@ namespace TMPEffects.TMPAnimations.Animations
         }
 
 
-        private void FadeIn(CharData cData, IAnimationContext context, Data d, float t)
+        private void FadeIn(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             Vector2 anchor = d.fadeInAnchor;
             FixAnchor(ref anchor);
@@ -95,7 +106,7 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        private void FadeOut(CharData cData, IAnimationContext context, Data d, float t)
+        private void FadeOut(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             Vector2 anchor = d.fadeOutAnchor;
             FixAnchor(ref anchor);
@@ -147,6 +158,7 @@ namespace TMPEffects.TMPAnimations.Animations
                 if (v.x > 0) v.x = 1;
                 else v.x = -1;
             }
+
             if (v.y != 0)
             {
                 if (v.y > 0) v.y = 1;
@@ -154,76 +166,9 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
+        [AutoParametersStorage]
+        private partial class AutoParametersData
         {
-            if (parameters == null) return;
-
-            Data d = (Data)customData;
-            if (TryGetFloatParameter(out var f, parameters, "maxopacity", maxOpAliases)) d.maxOpacity = f;
-            if (TryGetTypedVector2Parameter(out var tv2, parameters, "fadeinanchor", fadeInAnchorAliases)) d.fadeInAnchor = tv2.vector;
-            if (TryGetVector2Parameter(out var v2, parameters, "fadeindirection", "fadeindir", "fidir")) d.fadeInDirection = v2;
-
-            if (TryGetFloatParameter(out f, parameters, "minopacity", minOpAliases)) d.minOpacity = f;
-            if (TryGetTypedVector2Parameter(out tv2, parameters, "fadeoutanchor", fadeOutAnchorAliases)) d.fadeOutAnchor = tv2.vector;
-            if (TryGetVector2Parameter(out v2, parameters, "fadeoutdirection", "fadeoutdir", "fodir")) d.fadeOutDirection = v2;
-
-            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-
-            d.Wave = CreateWave(wave, GetWaveParameters(parameters));
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "maxopacity", maxOpAliases)) return false;
-            if (HasNonTypedVector2Parameter(parameters, "fadeinanchor", fadeInAnchorAliases) || HasVector2OffsetParameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeindirection", "fadeindir", "fidir", "fid")) return false;
-
-            if (HasNonFloatParameter(parameters, "minopacity", minOpAliases)) return false;
-            if (HasNonTypedVector2Parameter(parameters, "fadeoutanchor", fadeOutAnchorAliases) || HasVector2OffsetParameter(parameters, "fadeoutanchor", fadeOutAnchorAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "fadeoutdirection", "fadeoutdir", "fodir", "fod")) return false;
-
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-
-            return ValidateWaveParameters(parameters);
-        }
-
-        public override object GetNewCustomData()
-        {
-            return new Data()
-            {
-                Wave = null,
-
-                maxOpacity = this.maxOpacity,
-                fadeInAnchor = this.fadeInAnchor,
-                fadeInDirection = this.fadeInDirection,
-
-                minOpacity = this.minOpacity,
-                fadeOutAnchor = this.fadeOutAnchor,
-                fadeOutDirection = this.fadeOutDirection,
-            };
-        }
-
-        private readonly string[] maxOpAliases = new string[] { "max", "maxop" };
-        private readonly string[] fadeInAnchorAliases = new string[] { "fianchor", "fianc", "fia" };
-
-        private readonly string[] minOpAliases = new string[] { "min", "minop" };
-        private readonly string[] fadeOutAnchorAliases = new string[] { "foanchor", "foanc", "foa" };
-
-        private class Data
-        {
-            public Wave Wave;
-            public WaveOffsetType waveOffset;
-
-            public float maxOpacity;
-            public Vector3 fadeInAnchor;
-            public Vector3 fadeInDirection;
-
-            public float minOpacity;
-            public Vector3 fadeOutAnchor;
-            public Vector3 fadeOutDirection;
-
             public readonly float sqrt2 = Mathf.Sqrt(8);
             public readonly float[] dists = new float[4];
         }

@@ -3,10 +3,13 @@ using System.ComponentModel;
 namespace TMPEffects.ObjectChanged
 {
     /// <summary>
-    /// Notigy clients when the object changed.
+    /// Notify clients when the object changed.
     /// </summary>
     public interface INotifyObjectChanged
     {
+        /// <summary>
+        /// Raised when the object is changed.
+        /// </summary>
         event ObjectChangedEventHandler ObjectChanged;
     }
 }

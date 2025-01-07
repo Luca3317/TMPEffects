@@ -68,7 +68,6 @@ namespace TMPEffects.TextProcessing
             int endIndex;
             if (!validator.ValidateOpenTag(tagInfo, out tag, out endIndex)) return false;
 
-            // TODO I dont like this; potentially rework (split) ITMPTagValidator and its integration into TagProcessor
             // Fix the end index
             endIndex = endIndex == -1 ? -1 : endIndex - tagInfo.startIndex + textIndex;
 

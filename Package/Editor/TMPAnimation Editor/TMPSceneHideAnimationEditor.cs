@@ -1,9 +1,9 @@
 using UnityEditor;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.HideAnimations;
 
 namespace TMPEffects.Editor
 {
     [CustomEditor(typeof(TMPSceneHideAnimation), true)]
-    public class TMPSceneHideAnimationEditor : TMPHideAnimationEditor
+    internal class TMPSceneHideAnimationEditor : TMPHideAnimationEditor
     { }
 }

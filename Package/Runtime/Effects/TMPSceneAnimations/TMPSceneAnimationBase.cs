@@ -5,8 +5,9 @@ using TMPEffects.TMPAnimations;
 using TMPEffects.CharacterData;
 using TMPEffects.ObjectChanged;
 using System.ComponentModel;
+using TMPEffects.Databases;
 
-namespace TMPEffects.TMPSceneAnimations
+namespace TMPEffects.TMPAnimations.Animations
 {
     /// <summary>
     /// Base class for all SceneAnimations.
@@ -16,11 +17,14 @@ namespace TMPEffects.TMPSceneAnimations
         public abstract void Animate(CharData cData, IAnimationContext context);
         public abstract object GetNewCustomData();
 
-        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters);
-        
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
+
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
+
         public event ObjectChangedEventHandler ObjectChanged;
-        
+
         protected virtual void OnValidate()
         {
             RaiseObjectChanged();

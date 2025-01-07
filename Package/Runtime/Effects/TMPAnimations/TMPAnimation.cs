@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.TMPAnimations
@@ -13,12 +15,14 @@ namespace TMPEffects.TMPAnimations
         ///<inheritdoc/>
         public abstract void Animate(CharData cData, IAnimationContext context);
         ///<inheritdoc/>
-        public abstract bool ValidateParameters(IDictionary<string, string> parameters);
-        ///<inheritdoc/>
+        public abstract bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase);
+
+        /// <inheritdoc/>
         public abstract object GetNewCustomData();
 
         ///<inheritdoc/>
-        public abstract void SetParameters(object customData, IDictionary<string, string> parameters);
+        public abstract void SetParameters(object customData, IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase);
 
 
         public event ObjectChangedEventHandler ObjectChanged;
@@ -45,8 +49,9 @@ namespace TMPEffects.TMPAnimations
     public abstract class TMPAnimationParameterless : TMPAnimation
     {
         ///<inheritdoc/>
-        public override void SetParameters(object customData, IDictionary<string, string> parameters) { }
+        public override void SetParameters(object customData, IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase) { }
         ///<inheritdoc/>
-        public override bool ValidateParameters(IDictionary<string, string> parameters) => true;
+        public override bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase) => true;
     }
 }

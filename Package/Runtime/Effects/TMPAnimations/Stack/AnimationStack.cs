@@ -4,16 +4,22 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using UnityEngine;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-
+    /// <summary>
+    /// A stack of <see cref="TMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
     [Serializable]
-    public class BasicAnimationStack : AnimationStack<TMPAnimation> { }
+    internal class BasicAnimationStack : AnimationStack<TMPAnimation> { }
 
+    /// <summary>
+    /// A stack of <see cref="TMPShowAnimation"/>, allowing you to easily combine show animations in one tag.
+    /// </summary>
     [Serializable]
-    public class ShowAnimationStack : AnimationStack<TMPShowAnimation>
+    internal class ShowAnimationStack : AnimationStack<TMPShowAnimation>
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -49,8 +55,11 @@ namespace TMPEffects.TMPAnimations.Animations
         }
     }
 
+    /// <summary>
+    /// A stack of <see cref="TMPHideAnimation"/>, allowing you to easily combine hide animations in one tag.
+    /// </summary>
     [Serializable]
-    public class HideAnimationStack : AnimationStack<TMPHideAnimation>
+    internal class HideAnimationStack : AnimationStack<TMPHideAnimation>
     {
         public override void Animate(CharData cData, IAnimationContext context)
         {
@@ -86,8 +95,12 @@ namespace TMPEffects.TMPAnimations.Animations
         }
     }
 
+    /// <summary>
+    /// A stack of <see cref="ITMPAnimation"/>, allowing you to easily combine animations in one tag.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
-    public class AnimationStack<T> : ITMPAnimation where T : ITMPAnimation
+    internal class AnimationStack<T> : ITMPAnimation where T : ITMPAnimation
     {
         [SerializeField] protected List<AnimPrefixTuple> animations = new List<AnimPrefixTuple>();
         internal List<AnimPrefixTuple> Animations => animations;
@@ -132,7 +145,7 @@ namespace TMPEffects.TMPAnimations.Animations
             return data;
         }
 
-        public void SetParameters(object customData, IDictionary<string, string> parameters)
+        public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             Data data = customData as Data;
 
@@ -144,11 +157,11 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams);
+                anim.animation.SetParameters(data.ObjectCache[anim.animation], animParams, keywordDatabase);
             }
         }
 
-        public bool ValidateParameters(IDictionary<string, string> parameters)
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             foreach (var anim in animations)
             {
@@ -158,7 +171,7 @@ namespace TMPEffects.TMPAnimations.Animations
                     .Where(x => x.Key.StartsWith(anim.prefix))
                     .Select(x => new KeyValuePair<string, string>(x.Key.Substring(anim.prefix.Length), x.Value))));
 
-                if (!anim.animation.ValidateParameters(animParams)) return false;
+                if (!anim.animation.ValidateParameters(animParams, keywordDatabase)) return false;
             }
 
             return true;
@@ -172,8 +185,6 @@ namespace TMPEffects.TMPAnimations.Animations
 
             public object CustomData => customData;
 
-            public ICharDataState State => context.State;
-
             public AnimContext(IAnimationContext context, object customData)
             {
                 this.context = context;
@@ -185,7 +196,6 @@ namespace TMPEffects.TMPAnimations.Animations
                 finishedDict[cData.info.index] = true;
             }
 
-            // TODO might remove this method from IAnimatorContext
             public bool Finished(int index)
             {
                 return finishedDict[index];

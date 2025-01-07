@@ -1,3 +1,4 @@
+using TMPEffects.Components.Writer;
 using TMPEffects.Databases;
 using TMPEffects.TextProcessing;
 using TMPEffects.TMPCommands;
@@ -8,13 +9,15 @@ namespace TMPEffects.EffectCategories
     /// <summary>
     /// Category for commands.
     /// </summary>
-    public class TMPCommandCategory : TMPEffectCategory<ITMPCommand>
+    internal class TMPCommandCategory : TMPEffectCategory<ITMPCommand>
     {
         private ITMPEffectDatabase<ITMPCommand> database;
+        private ITMPKeywordDatabase keywordDatabase;
 
-        public TMPCommandCategory(char prefix, ITMPEffectDatabase<ITMPCommand> database) : base(prefix)
+        public TMPCommandCategory(char prefix, ITMPEffectDatabase<ITMPCommand> database, ITMPKeywordDatabase keywordDatabase) : base(prefix)
         {
             this.database = database;
+            this.keywordDatabase = keywordDatabase;
         }
 
         ///<inheritdoc/>
@@ -34,7 +37,7 @@ namespace TMPEffects.EffectCategories
 
             var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
             var command = database.GetEffect(tagInfo.name);
-            if (!command.ValidateParameters(param)) return false;
+            if (!command.ValidateParameters(param, keywordDatabase)) return false;
 
             TMPEffectTag tag = new TMPEffectTag(tagInfo.name, tagInfo.prefix, param);
             data = tag;
@@ -48,7 +51,7 @@ namespace TMPEffects.EffectCategories
         {
             if (tag.Prefix != Prefix) return false;
             if (database == null || !database.ContainsEffect(tag.Name)) return false;
-            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters)) return false;
+            if (!database.GetEffect(tag.Name).ValidateParameters(tag.Parameters, keywordDatabase)) return false;
             return true;
         }
 
@@ -61,7 +64,7 @@ namespace TMPEffects.EffectCategories
             if (tagInfo.type == ParsingUtility.TagType.Open)
             {
                 var param = ParsingUtility.GetTagParametersDict(tagInfo.parameterString);
-                if (!database.GetEffect(tagInfo.name).ValidateParameters(param)) return false;
+                if (!database.GetEffect(tagInfo.name).ValidateParameters(param, keywordDatabase)) return false;
             }
 
             return true;

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <OutputPath>../../Package</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <Target Name="RemoveExtraFilesAfterBuild" AfterTargets="Build">
+        <ItemGroup>
+            <FilesToDelete Include="$(OutputPath)$(AssemblyName).deps.json;$(OutputPath)$(AssemblyName).runtimeconfig.json;$(OutputPath)$(AssemblyName).pdb" />
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)" />
+    </Target>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.8.0" />
+    </ItemGroup>
+
+</Project>

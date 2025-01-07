@@ -37,6 +37,9 @@ namespace TMPEffects.SerializedCollections.Editor
 
         public static float CalculateHeight(SerializedProperty property, bool drawAsList)
         {
+            // Safeguard against non-serializable entries
+            if (property == null) return EditorGUIUtility.singleLineHeight * 3;
+            
             if (drawAsList)
             {
                 float height = 0;
@@ -100,9 +103,14 @@ namespace TMPEffects.SerializedCollections.Editor
                 return false;
 
 #if UNITY_2022_3_OR_NEWER
+            // method signature keeps changing in different versions, so:
             if (getDrawerMethod.GetParameters().Length == 2)
             {
                 return getDrawerMethod.Invoke(type, new object[] { type, isPropertyManagedReferenceType }) != null;
+            }
+            else if (getDrawerMethod.GetParameters().Length == 3)
+            {
+                return getDrawerMethod.Invoke(type, new object[] { type, new Type[0], isPropertyManagedReferenceType }) != null;
             }
             else
             {

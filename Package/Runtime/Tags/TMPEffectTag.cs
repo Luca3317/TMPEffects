@@ -7,7 +7,7 @@ namespace TMPEffects.Tags
 {    
     /// <summary>
     /// A <see cref="TMPEffects"/> tag.<br/>
-    /// Contains any data "inherent" to the given tag.
+    /// Holds the core attributes of a tag, index information is represented by <see cref="TMPEffectTagIndices"/>,
     /// </summary>
     public sealed class TMPEffectTag : IEquatable<TMPEffectTag>
     {

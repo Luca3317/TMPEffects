@@ -7,11 +7,6 @@ using TMPEffects.Components;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using TMPEffects.TextProcessing;
-using TMPEffects.EffectCategories;
-using System.Linq;
-using TMPEffects.Tags;
-using System.Collections.Generic;
-using System.Data.Common;
 using UnityEditor;
 using System;
 

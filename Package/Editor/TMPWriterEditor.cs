@@ -9,6 +9,48 @@ namespace TMPEffects.Editor
     [CustomEditor(typeof(TMPWriter))]
     public class TMPWriterEditor : UnityEditor.Editor
     {
+        private static class Styles
+        {
+            public static readonly GUIContent commands = new GUIContent("Commands");
+            public static readonly GUIContent events = new GUIContent("Events");
+            public static readonly GUIContent writerSettings = new GUIContent("Writer Settings");
+
+            public static readonly GUIContent delay = new GUIContent("Delay",
+                "The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.");
+            public static readonly GUIContent whiteSpaceDelay = new GUIContent("Whitespace Delay",
+                "The delay after whitespace characters, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent lineBreakDelay = new GUIContent("Linebreak Delay",
+                "The delay after linebreaks, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent punctuationDelay = new GUIContent("Punctuation Delay",
+                "The delay after punctuation characters, either as percentage of the general delay or in seconds.");
+            public static readonly GUIContent visibleDelay = new GUIContent("Visible Delay",
+                "The delay after already visible characters, either as percentage of the general delay or in seconds.");
+
+            public static readonly GUIContent database = new GUIContent("Use default database?",
+                "The database used to process command tags (e.g. <!delay=0.05>.");
+            public static readonly GUIContent maySkip = new GUIContent("May Skip",
+                "Whether the text may be skipped by default.");
+            public static readonly GUIContent writeOnStart = new GUIContent("Write On Start",
+                "If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.");
+            public static readonly GUIContent writeOnNewText = new GUIContent("Write On New Text",
+                "If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.");
+            public static readonly GUIContent useScaledTime = new GUIContent("Use Scaled Time",
+                "Whether the writer should use scaled time to wait for delays and wait commands.");
+            public static readonly GUIContent sceneCommands = new GUIContent("Scene Commands",
+                "Commands that may reference scene objects.\nNOT raised in preview mode.");
+            
+            public static readonly GUIContent playLabel = new GUIContent("Writer preview");
+            public static readonly GUIContent eventToggleLabel = new GUIContent("Raise events");
+            public static readonly GUIContent commandToggleLabel = new GUIContent("Execute commands");
+            public static readonly GUIContent eventWarningContent = EditorGUIUtility.IconContent("alertDialog",
+                "|When previewing from edit mode, ensure all the listeners you want to be invoked are set to \"Editor and Runtime\".");
+            
+            public static readonly GUIContent keywordDatabase = new GUIContent("Keyword Database",
+                "A keyword database defining additional keywords. If the same keyword is present in the global keyword Database, this database will override it.");
+            public static readonly GUIContent sceneKeywordDatabase = new GUIContent("Keyword Database",
+                "A scene keyword database defining additional keywords. If the same keyword is present in the global keyword Database or keyword database on this writer, this database will override it.");
+        }
+        
         TMPWriter writer;
 
         float progress;
@@ -45,7 +87,10 @@ namespace TMPEffects.Editor
         SerializedProperty useScaledTimeProp;
         SerializedProperty sceneCommandsProp;
         SerializedProperty useDefaultDatabaseProp;
+        SerializedProperty useDefaultKeywordDatabaseProp;
         SerializedProperty initDatabaseProp;
+        SerializedProperty keywordDatabaseProp;
+        SerializedProperty sceneKeywordDatabaseProp;
 
         // Styles
         GUIStyle buttonStyle;
@@ -59,13 +104,6 @@ namespace TMPEffects.Editor
         GUIStyle playToggleStyle;
         GUIStyle progressBarControllerStyle;
         GUIStyle warningStyle;
-
-        // GUIContent
-        GUIContent playLabel;
-        GUIContent eventToggleLabel;
-        GUIContent commandToggleLabel;
-        GUIContent useDefaultDatabaseLabel;
-        GUIContent eventWarningContent;
 
         // Textures
         Texture playButtonTexture;
@@ -153,7 +191,10 @@ namespace TMPEffects.Editor
             useScaledTimeProp = serializedObject.FindProperty("useScaledTime");
             sceneCommandsProp = serializedObject.FindProperty("sceneCommands");
             useDefaultDatabaseProp = serializedObject.FindProperty("useDefaultDatabase");
+            useDefaultKeywordDatabaseProp = serializedObject.FindProperty("useDefaultKeywordDatabase");
             initDatabaseProp = serializedObject.FindProperty("initDatabase");
+            keywordDatabaseProp = serializedObject.FindProperty("keywordDatabase");
+            sceneKeywordDatabaseProp = serializedObject.FindProperty("sceneKeywordDatabase");
 
             // Load Textures
             playButtonTexture = (Texture)Resources.Load("PlayerIcons/playButton");
@@ -237,11 +278,13 @@ namespace TMPEffects.Editor
             initDatabaseProp.boolValue = true;
 
             SetDatabase();
+            SetKeywordDatabase();
 
             serializedObject.ApplyModifiedProperties();
         }
 
         bool reset = false;
+
         private void ResetDatabase()
         {
             if (!reset) return;
@@ -252,24 +295,46 @@ namespace TMPEffects.Editor
 
         private void SetDatabase()
         {
-            TMPEffectsSettings settings = TMPEffectsSettings.Get();
-            if (settings == null || !useDefaultDatabaseProp.boolValue)
+            if (!useDefaultDatabaseProp.boolValue)
             {
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (settings.DefaultCommandDatabase == null)
+            if (TMPEffectsSettings.DefaultCommandDatabase == null)
             {
-                Debug.LogWarning("No default command database set in Preferences/TMPEffects");
                 useDefaultDatabaseProp.boolValue = false;
                 serializedObject.ApplyModifiedProperties();
                 return;
             }
 
-            if (databaseProp.objectReferenceValue != settings.DefaultCommandDatabase)
+            if (databaseProp.objectReferenceValue != TMPEffectsSettings.DefaultCommandDatabase)
             {
-                databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
+                databaseProp.objectReferenceValue = TMPEffectsSettings.DefaultCommandDatabase;
+                serializedObject.ApplyModifiedProperties();
+                writer.OnChangedDatabase();
+                return;
+            }
+        }
+
+        private void SetKeywordDatabase()
+        {
+            if (!useDefaultKeywordDatabaseProp.boolValue)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (TMPEffectsSettings.DefaultKeywordDatabase == null)
+            {
+                useDefaultKeywordDatabaseProp.boolValue = false;
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            if (keywordDatabaseProp.objectReferenceValue != TMPEffectsSettings.DefaultKeywordDatabase)
+            {
+                keywordDatabaseProp.objectReferenceValue = TMPEffectsSettings.DefaultKeywordDatabase;
                 serializedObject.ApplyModifiedProperties();
                 writer.OnChangedDatabase();
                 return;
@@ -296,8 +361,10 @@ namespace TMPEffects.Editor
             hideCoroutine = writer.StartCoroutine(HideAfterFinish());
         }
 
-        private void CancelHideAfterFinish(TMPWriter writer, CharData cdata) => CancelHideAfterFinish(writer);
-        private void CancelHideAfterFinish(TMPWriter writer, int index) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, float _) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, CharData _) => CancelHideAfterFinish(writer);
+        private void CancelHideAfterFinish(TMPWriter writer, int _) => CancelHideAfterFinish(writer);
+
         private void CancelHideAfterFinish(TMPWriter writer)
         {
             if (hideCoroutine != null)
@@ -321,23 +388,27 @@ namespace TMPEffects.Editor
             writer.HideAll();
         }
 
+        // this totally sucks but works and looks nice so not worth a rewrite for now
         void PrepareLayout()
         {
             width = EditorGUIUtility.currentViewWidth - 30;
 
             // Calculate wrappings
             wrapHeader = width < playLabelWidth + eventToggleWidth + commandToggleWidth - 10;
-            wrapPlayer = (playButtonWidth + buttonWidth * 3) * 3f > width;
+            wrapPlayer = width < (playButtonWidth + (buttonWidth * 3)) * 3f;
 
             // Calculate heights
-            playLabelHeight = playLabelStyle.CalcHeight(playLabel, playLabelWidth);
-            eventToggleHeight = playToggleStyle.CalcHeight(eventToggleLabel, eventToggleWidth);
-            commandToggleHeight = playToggleStyle.CalcHeight(commandToggleLabel, commandToggleWidth);
+            playLabelHeight = playLabelStyle.CalcHeight(Styles.playLabel, playLabelWidth);
+            eventToggleHeight = playToggleStyle.CalcHeight(Styles.eventToggleLabel, eventToggleWidth);
+            commandToggleHeight = playToggleStyle.CalcHeight(Styles.commandToggleLabel, commandToggleWidth);
             playButtonHeight = 30;
             buttonHeight = 20;
             progressBarThickness = 10;
-            headerHeight = (wrapHeader ? playLabelHeight + playToggleStyle.lineHeight + Mathf.Max(eventToggleHeight, commandToggleHeight) : Mathf.Max(playLabelHeight, eventToggleHeight, commandToggleHeight));
-            playerHeight = (wrapPlayer ? playButtonHeight + progressBarThickness + progressBarYOffset : playButtonHeight);
+            headerHeight = (wrapHeader
+                ? playLabelHeight + playToggleStyle.lineHeight + Mathf.Max(eventToggleHeight, commandToggleHeight)
+                : Mathf.Max(playLabelHeight, eventToggleHeight, commandToggleHeight));
+            playerHeight =
+                (wrapPlayer ? playButtonHeight + progressBarThickness + progressBarYOffset : playButtonHeight);
             dividerHeight = 15;
 
             // Prepare rects
@@ -348,51 +419,69 @@ namespace TMPEffects.Editor
             playLabelRect = new Rect(headerRect.position, new Vector2(playLabelWidth, playLabelHeight));
             if (wrapHeader)
             {
-                eventToggleRect = new Rect(headerRect.x, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, eventToggleWidth - 20, eventToggleHeight);
-                commandToggleRect = new Rect(headerRect.x + eventToggleWidth, headerRect.y + playLabelHeight + playToggleStyle.lineHeight / 2, commandToggleWidth, commandToggleHeight);
+                eventToggleRect = new Rect(headerRect.x,
+                    headerRect.y + playLabelHeight + (playToggleStyle.lineHeight / 2), eventToggleWidth - 20,
+                    eventToggleHeight);
+                commandToggleRect = new Rect(headerRect.x + eventToggleWidth,
+                    headerRect.y + playLabelHeight + (playToggleStyle.lineHeight / 2), commandToggleWidth,
+                    commandToggleHeight);
             }
             else
             {
-                eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth - 20, headerHeight);
-                commandToggleRect = new Rect(headerRect.x + playLabelWidth + eventToggleWidth, headerRect.y, commandToggleWidth, headerHeight);
+                eventToggleRect = new Rect(headerRect.x + playLabelWidth, headerRect.y, eventToggleWidth - 20,
+                    headerHeight);
+                commandToggleRect = new Rect(headerRect.x + playLabelWidth + eventToggleWidth, headerRect.y,
+                    commandToggleWidth, headerHeight);
             }
+
             eventWarningRect = new Rect(eventToggleRect.x + eventToggleRect.width - 5, eventToggleRect.y, 20, 20);
             playButtonRect = new Rect(playerRect.x, playerRect.y, playButtonWidth, playButtonHeight);
-            resetButtonRect = new Rect(playerRect.x + playButtonWidth + buttonOffset, playerRect.y + buttonHeight / 4, buttonWidth, buttonHeight);
-            stopButtonRect = new Rect(resetButtonRect.x + buttonWidth, playerRect.y + buttonHeight / 4, buttonWidth, buttonHeight);
-            skipButtonRect = new Rect(stopButtonRect.x + buttonWidth, playerRect.y + buttonHeight / 4, buttonWidth, buttonHeight);
+            resetButtonRect = new Rect(playerRect.x + playButtonWidth + buttonOffset, playerRect.y + (buttonHeight / 4),
+                buttonWidth, buttonHeight);
+            stopButtonRect = new Rect(resetButtonRect.x + buttonWidth, playerRect.y + (buttonHeight / 4), buttonWidth,
+                buttonHeight);
+            skipButtonRect = new Rect(stopButtonRect.x + buttonWidth, playerRect.y + (buttonHeight / 4), buttonWidth,
+                buttonHeight);
 
             resetButtonRect.y += buttonHeight / 4;
             stopButtonRect.y += buttonHeight / 4;
             skipButtonRect.y += buttonHeight / 4;
             if (wrapPlayer)
             {
-                progressBarRect = new Rect(playerRect.x + 5, playerRect.y + playButtonHeight + progressBarYOffset, width - progressBarXOffset + 10, progressBarThickness);
+                progressBarRect = new Rect(playerRect.x + 5, playerRect.y + playButtonHeight + progressBarYOffset,
+                    width - progressBarXOffset + 10, progressBarThickness);
             }
             else
             {
-                progressBarRect = new Rect(skipButtonRect.x + skipButtonRect.width + progressBarXOffset, playerRect.y + playButtonHeight / 2 - progressBarThickness / 2, width - (skipButtonRect.x - playerRect.x + skipButtonRect.width + progressBarXOffset) + 5, progressBarThickness);
+                progressBarRect = new Rect(skipButtonRect.x + skipButtonRect.width + progressBarXOffset,
+                    playerRect.y + (playButtonHeight / 2) - (progressBarThickness / 2),
+                    width - (skipButtonRect.x - playerRect.x + skipButtonRect.width + progressBarXOffset) + 5,
+                    progressBarThickness);
                 progressBarRect.y += buttonHeight / 4;
             }
-            progressBarControllerRect = new Rect(progressBarRect.position.x + progressBarRect.width * progress - 2, progressBarRect.y, progressBarThickness, progressBarThickness);
+
+            progressBarControllerRect = new Rect(progressBarRect.position.x + (progressBarRect.width * progress) - 2,
+                progressBarRect.y, progressBarThickness, progressBarThickness);
         }
 
         void DrawPlayer()
         {
             // Draw play label
-            EditorGUI.LabelField(playLabelRect, playLabel, playLabelStyle);
+            EditorGUI.LabelField(playLabelRect, Styles.playLabel, playLabelStyle);
 
             EditorGUI.BeginDisabledGroup(!PlayerEnabled());
 
             // Draw play toggles
-            eventsEnabledProp.boolValue = EditorGUI.ToggleLeft(eventToggleRect, eventToggleLabel, eventsEnabledProp.boolValue);
+            eventsEnabledProp.boolValue =
+                EditorGUI.ToggleLeft(eventToggleRect, Styles.eventToggleLabel, eventsEnabledProp.boolValue);
 
             if (eventsEnabledProp.boolValue)
             {
-                GUI.Label(eventWarningRect, eventWarningContent);
+                GUI.Label(eventWarningRect, Styles.eventWarningContent);
             }
 
-            commandsEnabledProp.boolValue = EditorGUI.ToggleLeft(commandToggleRect, commandToggleLabel, commandsEnabledProp.boolValue);
+            commandsEnabledProp.boolValue =
+                EditorGUI.ToggleLeft(commandToggleRect, Styles.commandToggleLabel, commandsEnabledProp.boolValue);
 
             // Draw Buttons
             if (writer.IsWriting || (wasWriting && clicked))
@@ -429,92 +518,66 @@ namespace TMPEffects.Editor
             EditorGUI.EndDisabledGroup();
         }
 
-
-        void DrawDatabase()
+        UnityEngine.Object GetDefaultCommandDatabase()
         {
-            GUILayout.BeginHorizontal();
+            var database = TMPEffectsSettings.DefaultCommandDatabase;
+            if (database == null) return null;
 
-            bool prevUseDefaultDatabase = useDefaultDatabaseProp.boolValue;
-            useDefaultDatabaseProp.boolValue = EditorGUILayout.Toggle(useDefaultDatabaseLabel, useDefaultDatabaseProp.boolValue);
+            if (database == null)
+                Debug.LogWarning("No default command database set in Project Settings/TMPEffects");
+            return database;
+        }
 
-            if (prevUseDefaultDatabase != useDefaultDatabaseProp.boolValue)
-            {
-                if (useDefaultDatabaseProp.boolValue)
-                {
-                    TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                    if (settings == null)
-                    {
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else if (settings.DefaultCommandDatabase == null)
-                    {
-                        Debug.LogWarning("No default command database set in Preferences/TMPEffects");
-                        useDefaultDatabaseProp.boolValue = false;
-                        serializedObject.ApplyModifiedProperties();
-                    }
-                    else
-                    {
-                        databaseProp.objectReferenceValue = settings.DefaultCommandDatabase;
-                        serializedObject.ApplyModifiedProperties();
-                        writer.OnChangedDatabase();
-                    }
-                }
-            }
-            else
-            {
-                TMPEffectsSettings settings = TMPEffectsSettings.Get();
-                if (settings != null && settings.DefaultCommandDatabase != databaseProp.objectReferenceValue)
-                {
-                    useDefaultDatabaseProp.boolValue = false;
-                    serializedObject.ApplyModifiedProperties();
-                }
-            }
+        UnityEngine.Object GetDefaultKeywordDatabase()
+        {
+            var database = TMPEffectsSettings.DefaultKeywordDatabase;
+            if (database == null) return null;
 
-            EditorGUI.BeginChangeCheck();
-            EditorGUI.BeginDisabledGroup(useDefaultDatabaseProp.boolValue);
-            EditorGUILayout.PropertyField(databaseProp, GUIContent.none);
-            EditorGUI.EndDisabledGroup();
-            if (EditorGUI.EndChangeCheck())
-            {
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                writer.OnChangedDatabase();
-            }
-            GUILayout.EndHorizontal();
-
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(sceneCommandsProp);
-            if (EditorGUI.EndChangeCheck())
-            {
-                // SerializedObservableDictionary does not raise events when the operations involves
-                // (de)serializing the actual object (as opposed to the contained objects).
-                // Could be solved by using a custom interface, instead of INotifyPropertyChanged
-                // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
-                // instead of instantly performing it.
-                // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
-                // in Update of TMPAnimator.
-                if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
-                writer.OnChangedDatabase();
-            }
+            if (database == null)
+                Debug.LogWarning("No default keyword database set in Project Settings/TMPEffects");
+            return database;
         }
 
         void DrawCommandsFoldout()
         {
             if (reset) ResetDatabase();
 
-            databaseProp.isExpanded = EditorGUILayout.Foldout(databaseProp.isExpanded, new GUIContent("Commands"), true);
+            databaseProp.isExpanded =
+                EditorGUILayout.Foldout(databaseProp.isExpanded, Styles.commands, true);
             if (databaseProp.isExpanded)
             {
                 EditorGUI.indentLevel++;
-                DrawDatabase();
+
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(databaseProp, useDefaultDatabaseProp,
+                        Styles.database, GetDefaultCommandDatabase, "command"))
+                {
+                    writer.OnChangedDatabase();
+                }
+
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(sceneCommandsProp, Styles.sceneCommands);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    // SerializedObservableDictionary does not raise events when the operations involves
+                    // (de)serializing the actual object (as opposed to the contained objects).
+                    // Could be solved by using a custom interface, instead of INotifyPropertyChanged
+                    // that passes a bool "delay". If bool is set, schedule the mesh reprocess (inside of TMPAnimator)
+                    // instead of instantly performing it.
+                    // Alternatively, simpler approach is to always schedule reprocesses, and then execute them
+                    // in Update of TMPAnimator.
+                    if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();
+                    writer.OnChangedDatabase();
+                }
+
                 EditorGUI.indentLevel--;
             }
         }
 
         static bool eventFoldout = false;
+
         void DrawEventsFoldout()
         {
-            eventFoldout = EditorGUILayout.Foldout(eventFoldout, new GUIContent("Events"));
+            eventFoldout = EditorGUILayout.Foldout(eventFoldout, Styles.events, true);
 
             if (eventFoldout)
             {
@@ -531,15 +594,16 @@ namespace TMPEffects.Editor
         }
 
         private bool delayFoldout;
+
         void RepaintInspector()
         {
             DrawPlayer();
 
             EditorGUILayout.BeginHorizontal();
-            delayFoldout = EditorGUILayout.Foldout(delayFoldout, "Delay");
+            delayFoldout = EditorGUILayout.Foldout(delayFoldout, Styles.delay, true);
             var pre = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 0;
-            EditorGUILayout.PropertyField(delayProp, new GUIContent(""));
+            EditorGUILayout.PropertyField(delayProp, GUIContent.none);
             EditorGUIUtility.labelWidth = pre;
             EditorGUILayout.EndHorizontal();
             if (delayFoldout)
@@ -547,39 +611,79 @@ namespace TMPEffects.Editor
                 EditorGUI.indentLevel++;
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Whitespace Delay", whitespaceDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
-                whitespaceDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)whitespaceDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
-                whitespaceDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, whitespaceDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField(Styles.whiteSpaceDelay,
+                    GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                whitespaceDelayTypeProp.enumValueIndex =
+                    (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
+                        (TMPWriter.DelayType)whitespaceDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                whitespaceDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none,
+                    whitespaceDelayProp.floatValue, GUILayout.ExpandWidth(true));
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Linebreak Delay", linebreakDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
-                linebreakDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)linebreakDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
-                linebreakDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, linebreakDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField(Styles.lineBreakDelay,
+                    GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                linebreakDelayTypeProp.enumValueIndex =
+                    (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
+                        (TMPWriter.DelayType)linebreakDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                linebreakDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none,
+                    linebreakDelayProp.floatValue, GUILayout.ExpandWidth(true));
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Punctuation Delay", punctuationDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
-                punctuationDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)punctuationDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
-                punctuationDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, punctuationDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField(Styles.punctuationDelay,
+                    GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                punctuationDelayTypeProp.enumValueIndex =
+                    (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
+                        (TMPWriter.DelayType)punctuationDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                punctuationDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none,
+                    punctuationDelayProp.floatValue, GUILayout.ExpandWidth(true));
                 GUILayout.EndHorizontal();
 
                 GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(new GUIContent("Visible Delay", visibleDelayProp.tooltip), GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
-                visibleDelayTypeProp.enumValueIndex = (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup((TMPWriter.DelayType)visibleDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
-                visibleDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, visibleDelayProp.floatValue, GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField(Styles.visibleDelay,
+                    GUILayout.ExpandWidth(false), GUILayout.MaxWidth(120));
+                visibleDelayTypeProp.enumValueIndex =
+                    (int)(TMPWriter.DelayType)EditorGUILayout.EnumPopup(
+                        (TMPWriter.DelayType)visibleDelayTypeProp.enumValueIndex, GUILayout.MaxWidth(100));
+                visibleDelayProp.floatValue = EditorGUILayout.FloatField(GUIContent.none, visibleDelayProp.floatValue,
+                    GUILayout.ExpandWidth(true));
                 GUILayout.EndHorizontal();
 
                 EditorGUI.indentLevel--;
             }
 
-            EditorGUILayout.PropertyField(startOnPlayProp);
-            EditorGUILayout.PropertyField(startOnNewTextProp);
-            EditorGUILayout.PropertyField(maySkipProp);
-            EditorGUILayout.PropertyField(useScaledTimeProp);
-
             EditorGUILayout.Space(10);
             DrawCommandsFoldout();
+
+            EditorGUILayout.Space(10);
+            startOnPlayProp.isExpanded =
+                EditorGUILayout.Foldout(startOnPlayProp.isExpanded, Styles.writerSettings, true);
+            if (startOnPlayProp.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(startOnPlayProp, Styles.writeOnStart);
+                EditorGUILayout.PropertyField(startOnNewTextProp, Styles.writeOnNewText);
+                EditorGUILayout.PropertyField(maySkipProp, Styles.maySkip);
+                EditorGUILayout.PropertyField(useScaledTimeProp, Styles.useScaledTime);
+
+                EditorGUILayout.Space(10);
+                if (TMPEffectsDrawerUtility.DrawDefaultableDatabase(keywordDatabaseProp, useDefaultKeywordDatabaseProp,
+                        Styles.keywordDatabase, GetDefaultKeywordDatabase, "keyword"))
+                {
+                    writer.OnChangedDatabase();
+                }
+
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(sceneKeywordDatabaseProp, Styles.sceneKeywordDatabase);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    serializedObject.ApplyModifiedProperties();
+                    writer.OnChangedDatabase();
+                }
+
+                EditorGUI.indentLevel--;
+            }
 
             EditorGUILayout.Space(10);
             DrawEventsFoldout();
@@ -627,7 +731,7 @@ namespace TMPEffects.Editor
         }
 
         bool styles = false;
-        bool guiContent = false;
+
         void InitStyles()
         {
             if (styles) return;
@@ -647,30 +751,24 @@ namespace TMPEffects.Editor
             warningStyle = new GUIStyle("CN EntryWarnIconSmall");
         }
 
-        void InitGUIContent()
-        {
-            if (guiContent) return;
-            guiContent = true;
-
-            // Create GUIContent
-            playLabel = new GUIContent("Writer preview");
-            eventToggleLabel = new GUIContent("Raise events");
-            commandToggleLabel = new GUIContent("Execute commands");
-            useDefaultDatabaseLabel = new GUIContent("Use default database");
-            eventWarningContent = EditorGUIUtility.IconContent("alertDialog", "|When previewing from edit mode, ensure all the listeners you want to be invoked are set to \"Editor and Runtime\".");
-        }
-
         public override void OnInspectorGUI()
         {
             InitStyles();
-            InitGUIContent();
 
             switch (Event.current.type)
             {
-                case EventType.Layout: PrepareLayout(); break;
-                case EventType.MouseDown: if (writer.enabled) HandleMouseDown(); break;
-                case EventType.MouseUp: if (writer.enabled) HandleMouseUp(); break;
-                case EventType.MouseDrag: if (writer.enabled) HandleMouseDrag(); break;
+                case EventType.Layout:
+                    PrepareLayout();
+                    break;
+                case EventType.MouseDown:
+                    if (writer.enabled) HandleMouseDown();
+                    break;
+                case EventType.MouseUp:
+                    if (writer.enabled) HandleMouseUp();
+                    break;
+                case EventType.MouseDrag:
+                    if (writer.enabled) HandleMouseDrag();
+                    break;
             }
 
             // Reserve space
@@ -721,6 +819,7 @@ namespace TMPEffects.Editor
                 writer.ResetWriter();
                 progress = 0;
             }
+
             writer.StartWriter();
             EditorApplication.QueuePlayerLoopUpdate();
         }
@@ -735,6 +834,7 @@ namespace TMPEffects.Editor
             {
                 writer.Show(0, writer.TextComponent.textInfo.characterCount, true);
             }
+
             EditorApplication.QueuePlayerLoopUpdate();
         }
 
@@ -754,4 +854,3 @@ namespace TMPEffects.Editor
         }
     }
 }
-

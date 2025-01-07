@@ -1,9 +1,9 @@
 using UnityEditor;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.ShowAnimations;
 
 namespace TMPEffects.Editor
 {
     [CustomEditor(typeof(TMPSceneShowAnimation), true)]
-    public class TMPSceneShowAnimationEditor : TMPShowAnimationEditor
+    internal class TMPSceneShowAnimationEditor : TMPShowAnimationEditor
     { }
 }

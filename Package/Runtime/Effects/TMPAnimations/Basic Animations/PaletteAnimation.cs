@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Parameters;
 using UnityEngine;
-using static TMPEffects.TMPAnimations.AnimationUtility;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.Parameters.ParameterTypes;
-using TMPEffects.TextProcessing;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
 
 namespace TMPEffects.TMPAnimations.Animations
 {
-    [CreateAssetMenu(fileName = "new PaletteAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
-    public class PaletteAnimation : TMPAnimation
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new PaletteAnimation",
+        menuName = "TMPEffects/Animations/Basic Animations/Built-in/Palette")]
+    public partial class PaletteAnimation : TMPAnimation
     {
-        [Tooltip("The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
-        [SerializeField] Wave wave;
-        [Tooltip("The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
-        [SerializeField] WaveOffsetType waveOffset;
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        Wave wave;
 
-        [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
-        [SerializeField] Color[] colors;
+        [SerializeField, AutoParameterBundle("")]
+        [Tooltip(
+            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        OffsetBundle waveOffset;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        Color[] colors;
+
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
-            Data d = context.CustomData as Data;
-
             // Evaluate the wave based on time and offset
-            (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime, GetWaveOffset(cData, context, d.waveOffset));
+            (float, int) result =
+                d.wave.Evaluate(context.AnimatorContext.PassedTime, d.waveOffset.GetOffset(cData, context));
 
             // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
@@ -107,49 +109,5 @@ namespace TMPEffects.TMPAnimations.Animations
                 cData.mesh.SetColor(i, color, true);
             }
         }
-
-        public override object GetNewCustomData()
-        {
-            return new Data()
-            {
-                colors = this.colors,
-                wave = this.wave,
-                waveOffset = this.waveOffset,
-            };
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return;
-
-            Data d = (Data)customData;
-            if (TryGetWaveOffsetParameter(out var offset, parameters, "waveoffset", WaveOffsetAliases)) d.waveOffset = offset;
-            if (TryGetArrayParameter<Color>(out var array, parameters, ParameterParsing.StringToColor, "colors", "clrs")) d.colors = array;
-
-            if (d.colors == null || d.colors.Length == 0)
-            {
-                d.colors = new Color[1] { Color.black };
-            }
-
-            d.wave = CreateWave(wave, GetWaveParameters(parameters));
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonWaveOffsetParameter(parameters, "waveoffset", WaveOffsetAliases)) return false;
-            if (HasNonArrayParameter<Color>(parameters, ParameterParsing.StringToColor, "colors", "clrs")) return false;
-
-            return ValidateWaveParameters(parameters);
-        }
-
-        private class Data
-        {
-            public Wave wave;
-            public WaveOffsetType waveOffset;
-            public Color[] colors;
-        }
     }
 }
-

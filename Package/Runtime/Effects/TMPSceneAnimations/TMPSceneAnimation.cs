@@ -1,4 +1,4 @@
-namespace TMPEffects.TMPSceneAnimations
+namespace TMPEffects.TMPAnimations.Animations
 {
     /// <summary>
     /// Base class for all BasicSceneAnimations.

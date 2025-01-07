@@ -13,12 +13,16 @@ namespace TMPEffects.Components.Writer
         private ITMPEffectDatabase<ITMPCommand> database;
         private TMPWriter writer;
         private IList<CharData> charData;
+        private ITMPKeywordDatabase keywordDatabase;
 
-        public CommandCacher(IList<CharData> charData, TMPWriter writer, ITMPEffectDatabase<ITMPCommand> database)
+        public CommandCacher(IList<CharData> charData, TMPWriter writer, ITMPEffectDatabase<ITMPCommand> database,
+            ITMPKeywordDatabase keywordDatabase)
         {
             this.charData = charData;
             this.writer = writer;
             this.database = database;
+            // Passed in to allow for parsing eventual default arguments (like AnimationCacher)
+            this.keywordDatabase = keywordDatabase; 
         }
 
         public CachedCommand CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
@@ -37,8 +41,14 @@ namespace TMPEffects.Components.Writer
             }
 
             TMPEffectTagIndices fixedIndices = new TMPEffectTagIndices(indices.StartIndex, endIndex, indices.OrderAtIndex);
-            TMPCommandArgs args = new TMPCommandArgs(tag, fixedIndices, writer);
-            CachedCommand cc = new CachedCommand(args, command);
+
+            CommandContext cContext = new CommandContext(writer, fixedIndices);
+            
+            object customCommandData = command.GetNewCustomData();
+            cContext.CustomData = customCommandData;
+            command.SetParameters(customCommandData, tag.Parameters, keywordDatabase);
+            
+            CachedCommand cc = new CachedCommand(tag, fixedIndices, cContext, command);
             return cc;
         }
     }

@@ -8,7 +8,7 @@ namespace TMPEffects.Tags
     /// The indices can be regarded as a half-open interval of [<see cref="StartIndex"/>, <see cref="EndIndex"/>).<br/>
     /// For example, an instance with <see cref="StartIndex"/> == 5 and <see cref="EndIndex"/> == 10 "contains" the indices 5, 6, 7, 8 and 9.
     /// </summary>
-    public struct TMPEffectTagIndices : IComparable<TMPEffectTagIndices>, IEquatable<TMPEffectTagIndices>
+    public readonly struct TMPEffectTagIndices : IComparable<TMPEffectTagIndices>, IEquatable<TMPEffectTagIndices>
     {
         /// <summary>
         /// The (inclusive) start index of the tag.
@@ -21,8 +21,7 @@ namespace TMPEffects.Tags
         /// <summary>
         /// The order at the start index.<br/>
         /// If there are multiple tags with the same start index, this will define their order:<br/>
-        /// tags with lower order come first, tags with higher index come later.<br/>
-        /// Note that the order may have gaps (e.g. there are three tags at a given index, with order -5, 4 and 10 respectively).
+        /// tags with lower order come first, tags with higher index come later.
         /// </summary>
         public int OrderAtIndex => orderAtIndex;
 
@@ -60,9 +59,9 @@ namespace TMPEffects.Tags
             }
         }
 
-        private int startIndex;
-        private int endIndex;
-        private int orderAtIndex;
+        private readonly int startIndex;
+        private readonly int endIndex;
+        private readonly int orderAtIndex;
 
         public TMPEffectTagIndices(int startIndex, int endIndex, int orderAtIndex)
         {

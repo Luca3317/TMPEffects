@@ -1,4 +1,5 @@
-﻿using TMPEffects.CharacterData;
+using TMPEffects.CharacterData;
+using TMPEffects.Databases;
 
 namespace TMPEffects.Components.Animator
 {
@@ -6,8 +7,32 @@ namespace TMPEffects.Components.Animator
     /// To be used with <see cref="TMPAnimator"/>.<br/>
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
-    public interface IAnimatorContext
+    public interface IAnimatorContext : IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider
     {
+    }
+
+    /// <summary>
+    /// Provides data about a <see cref="TMPAnimator"/>.
+    /// </summary>
+    public interface IAnimatorDataProvider
+    {
+        /// <summary>
+        /// The animating <see cref="TMPAnimator"/>.
+        /// </summary>
+        public TMPAnimator Animator { get; }
+        
+        /// <summary>
+        /// The current state of the CharData, with the previous animations applied.<br/>
+        /// <p>
+        /// <br/>
+        /// A typical exemplary use case would be if you want an animation to enforce a character to be at a specific position,
+        /// regardless of previously applied animations, you can reset the position of these Modifiers to undo previous changes.<br/>
+        /// Another example would be if your animation requires the actual position of the character, that takes into account transformations
+        /// made by previously applied animations, you can do so using <see href="Modifiers.CalculateVertexPositions"/>.
+        /// </p>
+        /// </summary>
+        public CharDataModifiers Modifiers { get; }
+
         /// <summary>
         /// Whether animations are scaled.
         /// </summary>
@@ -18,17 +43,17 @@ namespace TMPEffects.Components.Animator
         /// Ignored if <see cref="ScaleAnimations"/> is false.
         /// </summary>
         public bool ScaleUniformly { get; }
-
-        /// <summary>
-        /// The animating <see cref="TMPAnimator"/>.
-        /// </summary>
-        public TMPAnimator Animator { get; }
-
         /// <summary>
         /// Whether animations use scaled time.
         /// </summary>
         public bool UseScaledTime { get; }
+    }
 
+    /// <summary>
+    /// Provides timings of <see cref="TMPAnimator"/>.
+    /// </summary>
+    public interface IAnimatorTimingsProvider
+    {
         /// <summary>
         /// The current delta time (=> time since last animation update).
         /// </summary>
@@ -37,7 +62,13 @@ namespace TMPEffects.Components.Animator
         /// The time that has passed since the animator began animating.
         /// </summary>
         public float PassedTime { get; }
+    }
 
+    /// <summary>
+    /// Provides visibility timings of <see cref="CharData"/>.
+    /// </summary>
+    public interface ICharacterTimingsProvider
+    {
         /// <summary>
         /// Check how long the passed <see cref="CharData"/> has been in its current <see cref="VisibilityState"/>.<br/>
         /// Generally, to be used with show and hide animations.
