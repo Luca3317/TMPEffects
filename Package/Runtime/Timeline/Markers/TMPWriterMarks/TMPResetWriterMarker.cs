@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CustomStyle("TMPResetWriterMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/Reset writer")]
 public class TMPResetWriterMarker : TMPEffectsMarker
 {

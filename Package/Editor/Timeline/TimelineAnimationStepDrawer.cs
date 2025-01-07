@@ -9,9 +9,6 @@ using UnityEngine.Timeline;
 [CustomPropertyDrawer(typeof(TimelineAnimationStep), false)]
 public class TimelineAnimationStepDrawer : AnimationStepDrawer
 {
-    private bool entry = false;
-    
-
     private SerializedProperty entryCurve;
     private SerializedProperty exitCurve;
     private SerializedProperty entryDuration;

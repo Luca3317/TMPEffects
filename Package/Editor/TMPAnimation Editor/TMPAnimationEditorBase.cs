@@ -13,7 +13,7 @@ using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Editor
 {
-    public class TMPAnimationEditorBase : UnityEditor.Editor
+    internal class TMPAnimationEditorBase : UnityEditor.Editor
     {
         protected PreviewRenderUtility previewUtility;
         protected GameObject targetObject;
@@ -112,6 +112,10 @@ namespace TMPEffects.Editor
             DrawPreviewBar();
         }
 
+        public override void ReloadPreviewInstances()
+        {
+        }
+
         protected virtual void UpdateAnimation()
         {
             if (!animate)
@@ -119,7 +123,7 @@ namespace TMPEffects.Editor
                 lastUpdateTime = Time.time;
                 return;
             }
-
+            
             animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.time - lastUpdateTime);
             lastUpdateTime = Time.time;
         }

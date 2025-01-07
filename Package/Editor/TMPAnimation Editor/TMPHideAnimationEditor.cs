@@ -4,7 +4,7 @@ using TMPEffects.TMPAnimations;
 namespace TMPEffects.Editor
 {
     [CustomEditor(typeof(TMPHideAnimation), true)]
-    public class TMPHideAnimationEditor : TMPAnimationEditorBase
+    internal class TMPHideAnimationEditor : TMPAnimationEditorBase
     {
         protected float restartDelay = 2f;
         protected float timeDone;

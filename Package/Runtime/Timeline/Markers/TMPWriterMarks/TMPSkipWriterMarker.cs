@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CustomStyle("TMPSkipWriterMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/Skip writer")]
 public class TMPSkipWriterMarker : TMPEffectsMarker
 {

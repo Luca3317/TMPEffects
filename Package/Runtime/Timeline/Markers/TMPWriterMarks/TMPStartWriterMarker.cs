@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CustomStyle("TMPStartWriterMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/Start writer")]
 public class TMPStartWriterMarker : TMPEffectsMarker
 {

@@ -163,7 +163,7 @@ namespace TMPEffects.CharacterData
                 initialMesh = initMesh;
                 InitialPosition = GetCenter(initialMesh);
 
-#if TMPRO_3_2_0_PRE_10_OR_NEWER
+#if TMPRO_3_2_0_PRE_10_OR_NEWER || UNITY_2023_2_OR_NEWER
             if (cInfo.elementType == TMP_TextElementType.Sprite)
             {
                 TMP_SpriteCharacter sprite = (TMP_SpriteCharacter)cInfo.textElement;

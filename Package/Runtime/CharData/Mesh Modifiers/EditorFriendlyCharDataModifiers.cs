@@ -93,8 +93,6 @@ public class EditorFriendlyCharDataModifiers
         BR_UV0 = other.BR_UV0;
     }
 
-    private bool dirty = false;
-
     public void ToCharDataModifiers(CharData cData, IAnimationContext ctx, CharDataModifiers result)
         => ToCharDataModifiers(cData, ctx.AnimatorContext, result);
 

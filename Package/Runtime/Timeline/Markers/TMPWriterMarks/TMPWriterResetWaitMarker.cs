@@ -6,7 +6,6 @@ using UnityEngine.Timeline;
 
 
 [CustomStyle("TMPWriterWaitMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/ResetWait")]
 public class TMPWriterResetWaitMarker : TMPEffectsMarker
 {

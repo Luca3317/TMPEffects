@@ -39,7 +39,7 @@ namespace TMPEffects.Editor
                 EditorPrefs.SetBool(TMPEffectsTimelineEditorPrefsKeys.DRAW_CURVES_EDITORPREFS_KEY, set);
 
             animation.objectReferenceValue =
-                EditorGUILayout.ObjectField("Animation Asset", animation.objectReferenceValue, typeof(ITMPAnimation));
+                EditorGUILayout.ObjectField("Animation Asset", animation.objectReferenceValue, typeof(ITMPAnimation), true);
 
             entryCurve.isExpanded = EditorGUILayout.Foldout(entryCurve.isExpanded, "Entry");
             if (entryCurve.isExpanded)

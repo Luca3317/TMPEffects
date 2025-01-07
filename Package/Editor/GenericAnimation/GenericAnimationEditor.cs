@@ -17,21 +17,21 @@ using UnityEditorInternal;
 using UnityEngine;
 
 [CustomEditor(typeof(GenericAnimation))]
-public class GenericAnimationEditor : BaseGenericAnimationEditor
+internal class GenericAnimationEditor : BaseGenericAnimationEditor
 {
 }
 
 [CustomEditor(typeof(GenericHideAnimation))]
-public class GenericShowAnimationEditor : BaseGenericAnimationEditor
+internal class GenericShowAnimationEditor : BaseGenericAnimationEditor
 {
 }
 
 [CustomEditor(typeof(GenericShowAnimation))]
-public class GenericHideAnimationEditor : BaseGenericAnimationEditor
+internal class GenericHideAnimationEditor : BaseGenericAnimationEditor
 {
 }
 
-public class BaseGenericAnimationEditor : TMPAnimationEditorBase
+internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
 {
     // private const string ExportPathKey = "TMPEffects.EditorPrefKeys.GenericAnimationExportPath";
     // private static string exportPath = "Assets/Exported TMPEffects Animations";

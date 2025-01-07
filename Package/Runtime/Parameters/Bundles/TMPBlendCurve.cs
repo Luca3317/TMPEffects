@@ -40,7 +40,7 @@ namespace TMPEffects.Parameters
         /// The uniformity that should be applied to the offset.
         /// </summary>
         [TMPParameterBundleField("uniformity", "uni")]
-        public float uniformity = 1;
+        public float uniformity = 0;
 
         /// <summary>
         /// Whether to ignore animator scaling (for relevant offset types).

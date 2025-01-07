@@ -6,7 +6,7 @@ using TMPEffects.Components;
 namespace TMPEffects.Editor
 {
     [CustomEditor(typeof(TMPShowAnimation), true)]
-    public class TMPShowAnimationEditor : TMPAnimationEditorBase
+    internal class TMPShowAnimationEditor : TMPAnimationEditorBase
     {
         protected float restartDelay = 2f;
         protected float timeDone = -1f;

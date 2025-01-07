@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CustomStyle("TMPStopWriterMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/Stop writer")]
 public class TMPStopWriterMarker : TMPEffectsMarker
 {

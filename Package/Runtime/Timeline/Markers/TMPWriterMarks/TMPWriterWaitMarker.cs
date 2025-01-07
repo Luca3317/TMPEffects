@@ -7,7 +7,6 @@ using UnityEngine.Events;
 using UnityEngine.Timeline;
 
 [CustomStyle("TMPWriterWaitMarkerStyle")]
-[TrackBindingType(typeof(TMPWriterTrack))]
 [DisplayName("TMPEffects Marker/TMPWriter/Wait")]
 public class TMPWriterWaitMarker : TMPEffectsMarker
 {
