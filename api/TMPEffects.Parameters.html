@@ -95,59 +95,114 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.GenerateParameterUtilityAttribute.html">GenerateParameterUtilityAttribute</a></dt>
+      <dt><a class="xref" href="TMPEffects.Parameters.OffsetBundle.html">OffsetBundle</a></dt>
+      <dd><p>Calculates offsets for characters (to be used with e.g. <a class="xref" href="TMPEffects.Parameters.Wave.html">Wave</a>).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.OffsetTypePowerEnum.html">OffsetTypePowerEnum</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.Parameters.ParameterParsing.html">ParameterParsing</a></dt>
+      <dd><p>Utility class for parsing parameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.SceneOffsetBundle.html">SceneOffsetBundle</a></dt>
+      <dd><p>Calculates offsets for characters (to be used with e.g. <a class="xref" href="TMPEffects.Parameters.Wave.html">Wave</a>).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.SceneOffsetTypePowerEnum.html">SceneOffsetTypePowerEnum</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterTypes.html">ParameterTypes</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPBlendCurve.html">TMPBlendCurve</a></dt>
+      <dd><p>Blend curve with built-in offsets.<br>
+This uses a different, internal way to calculate offsets (different from e.g. <a class="xref" href="TMPEffects.Parameters.OffsetBundle.html">OffsetBundle</a>)
+because it was created to be used for TMPMeshModifier clips in the timeline, which requires the offset to be
+adjustable in certain ways, in some cases.</p>
+</dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterUtility.html">ParameterUtility</a></dt>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPOffsetProvider.html">TMPOffsetProvider</a></dt>
+      <dd><p>Provides timing offsets for characters (to be used with e.g. <a class="xref" href="TMPEffects.Parameters.Wave.html">Wave</a>).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.html">TMPParameterTypes</a></dt>
+      <dd><p>Some types needed for specific parameters.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterUtility.html">TMPParameterUtility</a></dt>
       <dd><p>Utility class for easy parameter handling.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPSceneOffsetProvider.html">TMPSceneOffsetProvider</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.Wave.html">Wave</a></dt>
+      <dd><p>Allows you to easily create periodic animations.<b></b>
+The class is explained in detail <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">here</a>.
+TODO Update link once docs updated</p>
 </dd>
     </dl>
     <h3 id="structs">
 Structs
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterTypes.TypedVector2.html">ParameterTypes.TypedVector2</a></dt>
-      <dd><p>A Vector2 with a <a class="xref" href="TMPEffects.Parameters.ParameterTypes.VectorType.html">ParameterTypes.VectorType</a>.</p>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html">TMPParameterTypes.TypedVector2</a></dt>
+      <dd><p>A Vector2 with a <a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.VectorType.html">TMPParameterTypes.VectorType</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterTypes.TypedVector3.html">ParameterTypes.TypedVector3</a></dt>
-      <dd><p>A Vector3 with a <a class="xref" href="TMPEffects.Parameters.ParameterTypes.VectorType.html">ParameterTypes.VectorType</a>.</p>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html">TMPParameterTypes.TypedVector3</a></dt>
+      <dd><p>A Vector3 with a <a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.VectorType.html">TMPParameterTypes.VectorType</a>.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.ITMPOffsetProvider.html">ITMPOffsetProvider</a></dt>
+      <dd><p>Provides timing offsets for characters (to be used with e.g. <a class="xref" href="TMPEffects.Parameters.Wave.html">Wave</a>).</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterUtility.WaveParameters.html">ParameterUtility.WaveParameters</a></dt>
-      <dd><p>A parameter bundle that defines a <a class="xref" href="TMPEffects.TMPAnimations.AnimationUtility.Wave.html">AnimationUtility.Wave</a>.</p>
+      <dt><a class="xref" href="TMPEffects.Parameters.ITMPParameterValidator.html">ITMPParameterValidator</a></dt>
+      <dd><p>Validates tag parameters.</p>
 </dd>
     </dl>
     <h3 id="enums">
 Enums
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterTypes.VectorType.html">ParameterTypes.VectorType</a></dt>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.OffsetType.html">TMPParameterTypes.OffsetType</a></dt>
+      <dd><p>Different built-in offset types, to be used with GetOffset(CharData, IAnimationContext, OffsetType).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.VectorType.html">TMPParameterTypes.VectorType</a></dt>
       <dd><p>The different types of vectors.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html">ParameterTypes.WaveOffsetType</a></dt>
-      <dd><p>Different built-in offset types, to be used with GetWaveOffset(CharData, IAnimationContext, WaveOffsetType).</p>
+      <dt><a class="xref" href="TMPEffects.Parameters.Wave.PulseExtrema.html">Wave.PulseExtrema</a></dt>
+      <dd><p>If the wave has a <a class="xref" href="TMPEffects.Parameters.Wave.html#TMPEffects_Parameters_Wave_CrestWait">CrestWait</a> or <a class="xref" href="TMPEffects.Parameters.Wave.html#TMPEffects_Parameters_Wave_TroughWait">TroughWait</a>, PulseExtrema defines whether an extremum is passed once the wait time begins, or once it ends.</p>
 </dd>
     </dl>
     <h3 id="delegates">
 Delegates
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html">ParameterUtility.ParseDelegate&lt;T, U, V, W&gt;</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="TMPEffects.Parameters.TMPParameterUtility.ParseDelegate-4.html">TMPParameterUtility.ParseDelegate&lt;T, U, V, W&gt;</a></dt>
+      <dd><p>Delegate used in <a class="xref" href="TMPEffects.Parameters.TMPParameterUtility.html#TMPEffects_Parameters_TMPParameterUtility_HasArrayParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___">HasArrayParameter(IDictionary&lt;string, string&gt;, string, params string[])</a> and related methods to parse array items.<br>
+Generally, you can use the methods defined in <a class="xref" href="TMPEffects.Parameters.ParameterParsing.html">ParameterParsing</a> for this.</p>
+</dd>
     </dl>
 
 

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Struct TMPSceneCommand | TMPEffects documentation </title>
+      <title>Class TMPSceneCommand | TMPEffects documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Struct TMPSceneCommand | TMPEffects documentation ">
+      <meta name="title" content="Class TMPSceneCommand | TMPEffects documentation ">
       
-      <meta name="description" content="Struct defining scene commands.">
+      <meta name="description" content="Base class to derive from to create scene commands.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPCommands_TMPSceneCommand.md&amp;value=---%0Auid%3A%20TMPEffects.TMPCommands.TMPSceneCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_TMPCommands_TMPSceneCommand.md&amp;value=---%0Auid%3A%20TMPEffects.TMPCommands.TMPSceneCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TMPCommands_TMPSceneCommand" data-uid="TMPEffects.TMPCommands.TMPSceneCommand" class="text-break">
-Struct TMPSceneCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class TMPSceneCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,49 +97,35 @@ Struct TMPSceneCommand  <a class="header-action link-secondary" title="View sour
   
   </div>
 
-  <div class="markdown summary"><p>Struct defining scene commands.</p>
+  <div class="markdown summary"><p>Base class to derive from to create scene commands.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Serializable]
-public struct TMPSceneCommand : ITMPCommand</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class TMPSceneCommand : MonoBehaviour, ITMPCommand, ITMPParameterValidator, INotifyObjectChanged</code></pre>
   </div>
 
 
 
 
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TMPSceneCommand</span></div>
+    </dd>
+  </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a></div>
+      <div><a class="xref" href="TMPEffects.Parameters.ITMPParameterValidator.html">ITMPParameterValidator</a></div>
+      <div><a class="xref" href="TMPEffects.ObjectChanged.INotifyObjectChanged.html">INotifyObjectChanged</a></div>
     </dd>
   </dl>
 
 
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
-    </div>
-  </dd></dl>
 
 
 
@@ -154,16 +140,16 @@ public struct TMPSceneCommand : ITMPCommand</code></pre>
 
   <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteInstantly" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteInstantly">
   ExecuteInstantly
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command is executed the moment the TMPWriter begin writing.<br>
-Otherwise, it is executed when the TMPWriter shows the character at the corresponding index.</p>
+  <div class="markdown level1 summary"><p>Whether the command is executed the moment the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> begins writing.<br>
+Otherwise, it is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ExecuteInstantly { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool ExecuteInstantly { get; }</code></pre>
   </div>
 
 
@@ -187,15 +173,15 @@ Otherwise, it is executed when the TMPWriter shows the character at the correspo
 
   <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteOnSkip" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteOnSkip">
   ExecuteOnSkip
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command should be executed by the TMPWriter if its text position is skipped over.</p>
+  <div class="markdown level1 summary"><p>Whether the command should be executed by the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> if its text position is skipped over.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ExecuteOnSkip { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool ExecuteOnSkip { get; }</code></pre>
   </div>
 
 
@@ -219,16 +205,16 @@ Otherwise, it is executed when the TMPWriter shows the character at the correspo
 
   <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteRepeatable" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteRepeatable">
   ExecuteRepeatable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command may be executed multiple times if, for example, the TMPWriter is reset to an earlier text position after the command has been executed.<br>
+  <div class="markdown level1 summary"><p>Whether the command may be executed multiple times if, for example, the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> is reset to an earlier text position after the command has been executed.<br>
 An example for a command that should not be repeatable is one that triggers a quest, or adds an item to the player's inventory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ExecuteRepeatable { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool ExecuteRepeatable { get; }</code></pre>
   </div>
 
 
@@ -252,14 +238,15 @@ An example for a command that should not be repeatable is one that triggers a qu
 
   <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_TagType" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.TagType">
   TagType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The type of command this is.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagType TagType { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract TagType TagType { get; }</code></pre>
   </div>
 
 
@@ -275,6 +262,17 @@ An example for a command that should not be repeatable is one that triggers a qu
 
 
 
+  <h4 class="section" id="TMPEffects_TMPCommands_TMPSceneCommand_TagType_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+Index: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index. It does not need to be closed.<br> Example: This is &lt;!delay=0.01&gt; my text
+</p>
+<p>
+Block: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+</p>
+<p>
+Either: Both applications are valid.
+</p>
+</div>
 
 
 
@@ -285,9 +283,9 @@ An example for a command that should not be repeatable is one that triggers a qu
 
   <a id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteCommand_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteCommand*"></a>
 
-  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteCommand_TMPEffects_TMPCommands_TMPCommandArgs_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)">
-  ExecuteCommand(TMPCommandArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)">
+  ExecuteCommand(ICommandContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Execute the command.</p>
@@ -295,13 +293,162 @@ An example for a command that should not be repeatable is one that triggers a qu
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ExecuteCommand(TMPCommandArgs args)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void ExecuteCommand(ICommandContext context)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>args</code> <a class="xref" href="TMPEffects.TMPCommands.TMPCommandArgs.html">TMPCommandArgs</a></dt>
-    <dd><p>The arguments for the command.</p>
+    <dt><code>context</code> <a class="xref" href="TMPEffects.TMPCommands.ICommandContext.html">ICommandContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommand_GetNewCustomData_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.GetNewCustomData*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_GetNewCustomData" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.GetNewCustomData">
+  GetNewCustomData()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a new custom data object for this command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract object GetNewCustomData()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The custom data object for this command.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommand_OnDestroy_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.OnDestroy*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_OnDestroy" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.OnDestroy">
+  OnDestroy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnDestroy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommand_OnValidate_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.OnValidate*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_OnValidate" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.OnValidate">
+  OnValidate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnValidate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommand_RaiseObjectChanged_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.RaiseObjectChanged*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_RaiseObjectChanged" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.RaiseObjectChanged">
+  RaiseObjectChanged()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RaiseObjectChanged()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommand_SetParameters_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.SetParameters*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  SetParameters(object, IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the parameters for the command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The custom data for this command.</p>
+</dd>
+    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Parameters as key-value-pairs.</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values.</p>
 </dd>
   </dl>
 
@@ -318,24 +465,26 @@ An example for a command that should not be repeatable is one that triggers a qu
 
   <a id="TMPEffects_TMPCommands_TMPSceneCommand_ValidateParameters_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ValidateParameters*"></a>
 
-  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})">
-  ValidateParameters(IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  ValidateParameters(IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Validate the parameters.<br>
-Used to validate tags.</p>
+  <div class="markdown level1 summary"><p>Validate the given parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ValidateParameters(IDictionary&lt;string, string&gt; parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool ValidateParameters(IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The parameters to validate.</p>
+    <dd><p>The parameters as key-value pairs</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values</p>
 </dd>
   </dl>
 
@@ -356,11 +505,46 @@ Used to validate tags.</p>
 
 
 
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommand_ObjectChanged" data-uid="TMPEffects.TMPCommands.TMPSceneCommand.ObjectChanged">
+  ObjectChanged
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Raised when the object is changed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event ObjectChangedEventHandler ObjectChanged</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.ObjectChanged.ObjectChangedEventHandler.html">ObjectChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommand.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

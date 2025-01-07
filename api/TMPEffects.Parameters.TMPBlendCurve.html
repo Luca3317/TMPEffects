@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TMPBlendCurve | TMPEffects documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TMPBlendCurve | TMPEffects documentation ">
+      
+      <meta name="description" content="Blend curve with built-in offsets. This uses a different, internal way to calculate offsets (different from e.g. ) because it was created to be used for TMPMeshModifier clips in the timeline, which requires the offset to be adjustable in certain ways, in some cases.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Parameters_TMPBlendCurve.md&amp;value=---%0Auid%3A%20TMPEffects.Parameters.TMPBlendCurve%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TMPEffects.Parameters.TMPBlendCurve">
+
+
+
+  <h1 id="TMPEffects_Parameters_TMPBlendCurve" data-uid="TMPEffects.Parameters.TMPBlendCurve" class="text-break">
+Class TMPBlendCurve  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.Parameters.html">Parameters</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>Blend curve with built-in offsets.<br>
+This uses a different, internal way to calculate offsets (different from e.g. <a class="xref" href="TMPEffects.Parameters.OffsetBundle.html">OffsetBundle</a>)
+because it was created to be used for TMPMeshModifier clips in the timeline, which requires the offset to be
+adjustable in certain ways, in some cases.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+[TMPParameterBundle(&quot;BlendCurve&quot;)]
+public class TMPBlendCurve</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TMPBlendCurve</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve__ctor_" data-uid="TMPEffects.Parameters.TMPBlendCurve.#ctor*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve__ctor" data-uid="TMPEffects.Parameters.TMPBlendCurve.#ctor">
+  TMPBlendCurve()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPBlendCurve()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve__ctor_" data-uid="TMPEffects.Parameters.TMPBlendCurve.#ctor*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve__ctor_TMPEffects_Parameters_TMPBlendCurve_" data-uid="TMPEffects.Parameters.TMPBlendCurve.#ctor(TMPEffects.Parameters.TMPBlendCurve)">
+  TMPBlendCurve(TMPBlendCurve)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPBlendCurve(TMPBlendCurve crv)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>crv</code> <a class="xref" href="TMPEffects.Parameters.TMPBlendCurve.html">TMPBlendCurve</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_curve" data-uid="TMPEffects.Parameters.TMPBlendCurve.curve">
+  curve
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The curve used for evaluation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TMPParameterBundleField(&quot;curve&quot;, new string[] { &quot;crv&quot; })]
+public AnimationCurve curve</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_finishWholeSegmentInTime" data-uid="TMPEffects.Parameters.TMPBlendCurve.finishWholeSegmentInTime">
+  finishWholeSegmentInTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether to finish blending the entire segment in the specified duration, or the first character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TMPParameterBundleField(&quot;ignoresegmentlength&quot;, new string[] { &quot;ignoresegmentlen&quot;, &quot;ignoreseglen&quot;, &quot;ignseglen&quot;, &quot;ignsegmentlength&quot;, &quot;ignsegmentlen&quot; })]
+public bool finishWholeSegmentInTime</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_ignoreAnimatorScaling" data-uid="TMPEffects.Parameters.TMPBlendCurve.ignoreAnimatorScaling">
+  ignoreAnimatorScaling
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether to ignore animator scaling (for relevant offset types).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TMPParameterBundleField(&quot;ignorescaling&quot;, new string[] { &quot;ignorescl&quot;, &quot;ignscl&quot;, &quot;ignscaling&quot; })]
+public bool ignoreAnimatorScaling</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_uniformity" data-uid="TMPEffects.Parameters.TMPBlendCurve.uniformity">
+  uniformity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The uniformity that should be applied to the offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TMPParameterBundleField(&quot;uniformity&quot;, new string[] { &quot;uni&quot; })]
+public float uniformity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_provider_" data-uid="TMPEffects.Parameters.TMPBlendCurve.provider*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_provider" data-uid="TMPEffects.Parameters.TMPBlendCurve.provider">
+  provider
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="TMPEffects.Parameters.ITMPOffsetProvider.html">ITMPOffsetProvider</a> used to calculate offsets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITMPOffsetProvider provider { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.Parameters.ITMPOffsetProvider.html">ITMPOffsetProvider</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn(System.Single,System.Single,System.Single,System.Single,System.Single)">
+  EvaluateIn(float, float, float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;in&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateIn(float timeValue, float totalDuration, float minOffset, float maxOffset, float offset)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>totalDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>minOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>maxOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_System_Single_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorDataProvider_TMPEffects_Components_Animator_ITMPSegmentData_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)">
+  EvaluateIn(float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;in&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateIn(float timeValue, float totalDuration, CharData cData, IAnimatorDataProvider animatorData, ITMPSegmentData segmentData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>totalDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd></dd>
+    <dt><code>animatorData</code> <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html">IAnimatorDataProvider</a></dt>
+    <dd></dd>
+    <dt><code>segmentData</code> <a class="xref" href="TMPEffects.Components.Animator.ITMPSegmentData.html">ITMPSegmentData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateIn_System_Single_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateIn(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)">
+  EvaluateIn(float, float, CharData, IAnimationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;in&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateIn(float timeValue, float duration, CharData cData, IAnimationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd></dd>
+    <dt><code>context</code> <a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+  EvaluateOut(float, float, float, float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;out&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateOut(float timeValue, float totalDuration, float preTime, float minOffset, float maxOffset, float offset)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>totalDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>preTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>minOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>maxOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_System_Single_System_Single_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorDataProvider_TMPEffects_Components_Animator_ITMPSegmentData_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut(System.Single,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)">
+  EvaluateOut(float, float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;out&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateOut(float timeValue, float totalDuration, float preTime, CharData cData, IAnimatorDataProvider animatorData, ITMPSegmentData segmentData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>totalDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>preTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd></dd>
+    <dt><code>animatorData</code> <a class="xref" href="TMPEffects.Components.Animator.IAnimatorDataProvider.html">IAnimatorDataProvider</a></dt>
+    <dd></dd>
+    <dt><code>segmentData</code> <a class="xref" href="TMPEffects.Components.Animator.ITMPSegmentData.html">ITMPSegmentData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut*"></a>
+
+  <h3 id="TMPEffects_Parameters_TMPBlendCurve_EvaluateOut_System_Single_System_Single_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.Parameters.TMPBlendCurve.EvaluateOut(System.Single,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)">
+  EvaluateOut(float, float, float, CharData, IAnimationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Evaluate as an &quot;out&quot; blending curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EvaluateOut(float timeValue, float duration, float preTime, CharData cData, IAnimationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>duration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>preTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>cData</code> <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
+    <dd></dd>
+    <dt><code>context</code> <a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/Bundles/TMPBlendCurve.cs/#L15" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

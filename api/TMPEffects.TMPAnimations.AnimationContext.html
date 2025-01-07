@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AnimationContext | TMPEffects documentation ">
       
-      <meta name="description" content="Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.">
+      <meta name="description" content="Animation context used by .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationContext.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_TMPAnimations_AnimationContext.md&amp;value=---%0Auid%3A%20TMPEffects.TMPAnimations.AnimationContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TMPAnimations_AnimationContext" data-uid="TMPEffects.TMPAnimations.AnimationContext" class="text-break">
-Class AnimationContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class AnimationContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,12 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
   
   </div>
 
-  <div class="markdown summary"><p>Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>
+  <div class="markdown summary"><p>Animation context used by <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AnimationContext : IAnimationContext</code></pre>
+    <pre><code class="lang-csharp hljs">public class AnimationContext : IAnimationContext, IAnimationData, IAnimationFinished, IAnimationFinisher</code></pre>
   </div>
 
 
@@ -120,6 +120,9 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationData.html">IAnimationData</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinished.html">IAnimationFinished</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinisher.html">IAnimationFinisher</a></div>
     </dd>
   </dl>
 
@@ -161,23 +164,23 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_TMPAnimations_AnimationContext__ctor_" data-uid="TMPEffects.TMPAnimations.AnimationContext.#ctor*"></a>
 
-  <h3 id="TMPEffects_TMPAnimations_AnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_CharacterData_ICharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.AnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)">
-  AnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPAnimations_AnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_CharDataModifiers_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.AnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)">
+  AnimationContext(IAnimatorContext, CharDataModifiers, SegmentData, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)</code></pre>
+    <pre><code class="lang-csharp hljs">public AnimationContext(IAnimatorContext animatorContext, CharDataModifiers modifiers, SegmentData segmentData, object customData)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>animatorContext</code> <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></dt>
     <dd></dd>
-    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
+    <dt><code>modifiers</code> <a class="xref" href="Global.CharDataModifiers.html">CharDataModifiers</a></dt>
     <dd></dd>
     <dt><code>segmentData</code> <a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></dt>
     <dd></dd>
@@ -203,7 +206,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_finishedDict" data-uid="TMPEffects.TMPAnimations.AnimationContext.finishedDict">
   finishedDict
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -238,7 +241,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_AnimatorContext" data-uid="TMPEffects.TMPAnimations.AnimationContext.AnimatorContext">
   AnimatorContext
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The context of the animating TMPAnimator.</p>
@@ -270,7 +273,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_CustomData" data-uid="TMPEffects.TMPAnimations.AnimationContext.CustomData">
   CustomData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The custom data object.</p>
@@ -278,7 +281,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public object CustomData { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public object CustomData { get; set; }</code></pre>
   </div>
 
 
@@ -302,7 +305,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_SegmentData" data-uid="TMPEffects.TMPAnimations.AnimationContext.SegmentData">
   SegmentData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Data about the animation segment.</p>
@@ -330,38 +333,6 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
 
 
-  <a id="TMPEffects_TMPAnimations_AnimationContext_State_" data-uid="TMPEffects.TMPAnimations.AnimationContext.State*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_AnimationContext_State" data-uid="TMPEffects.TMPAnimations.AnimationContext.State">
-  State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L34"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The current state of the CharData, with the previous animations applied.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ICharDataState State { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -370,7 +341,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.AnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)">
   FinishAnimation(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the animation to be considered finished for the given character.</p>
@@ -402,7 +373,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_Finished_System_Int32_" data-uid="TMPEffects.TMPAnimations.AnimationContext.Finished(System.Int32)">
   Finished(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the character at the given index.</p>
@@ -439,7 +410,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_Finished_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.AnimationContext.Finished(TMPEffects.CharacterData.CharData)">
   Finished(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the given character.</p>
@@ -476,7 +447,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_ResetFinishAnimation" data-uid="TMPEffects.TMPAnimations.AnimationContext.ResetFinishAnimation">
   ResetFinishAnimation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -502,7 +473,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_ResetFinishAnimation_System_Int32_" data-uid="TMPEffects.TMPAnimations.AnimationContext.ResetFinishAnimation(System.Int32)">
   ResetFinishAnimation(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -533,7 +504,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_AnimationContext_ResetFinishAnimation_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.AnimationContext.ResetFinishAnimation(TMPEffects.CharacterData.CharData)">
   ResetFinishAnimation(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -564,7 +535,7 @@ Class AnimationContext  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/AnimationContext.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

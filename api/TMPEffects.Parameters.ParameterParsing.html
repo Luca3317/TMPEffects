@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ParameterParsing | TMPEffects documentation ">
       
-      
+      <meta name="description" content="Utility class for parsing parameters.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs-rework/apiSpec/new?filename=TMPEffects_Parameters_ParameterParsing.md&amp;value=---%0Auid%3A%20TMPEffects.Parameters.ParameterParsing%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Parameters_ParameterParsing.md&amp;value=---%0Auid%3A%20TMPEffects.Parameters.ParameterParsing%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_Parameters_ParameterParsing" data-uid="TMPEffects.Parameters.ParameterParsing" class="text-break">
-Class ParameterParsing  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class ParameterParsing  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
   
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Utility class for parsing parameters.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -148,56 +149,22 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
 
 
-  <h2 class="section" id="fields">Fields
-</h2>
-
-
-
-  <h3 id="TMPEffects_Parameters_ParameterParsing_ColorKeyWords" data-uid="TMPEffects.Parameters.ParameterParsing.ColorKeyWords">
-  ColorKeyWords
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L534"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly ReadOnlyDictionary&lt;string, Color&gt; ColorKeyWords</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2">ReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Color</span>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
   <h2 class="section" id="methods">Methods
 </h2>
 
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToAnchor_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnchor*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToAnchor_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2},System.Collections.Generic.IDictionary{System.String,Vector2})">
-  StringToAnchor(string, out Vector2, IDictionary&lt;string, Vector2&gt;, IDictionary&lt;string, Vector2&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToAnchor_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToAnchor(string, out Vector2, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L265"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToAnchor(string str, out Vector2 result, IDictionary&lt;string, Vector2&gt; anchorKeywords = null, IDictionary&lt;string, Vector2&gt; vectorKeywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToAnchor(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -206,9 +173,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Vector2</span></dt>
     <dd></dd>
-    <dt><code>anchorKeywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector2</span>&gt;</dt>
-    <dd></dd>
-    <dt><code>vectorKeywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector2</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -230,16 +195,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToAnimCurve_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnimCurve*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToAnimCurve_System_String_AnimationCurve__System_Collections_Generic_IDictionary_System_String_AnimationCurve__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,System.Collections.Generic.IDictionary{System.String,AnimationCurve})">
-  StringToAnimCurve(string, out AnimationCurve, IDictionary&lt;string, AnimationCurve&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToAnimCurve_System_String_AnimationCurve__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToAnimCurve(string, out AnimationCurve, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L306"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToAnimCurve(string str, out AnimationCurve result, IDictionary&lt;string, AnimationCurve&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToAnimCurve(string str, out AnimationCurve result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -248,7 +213,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">AnimationCurve</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">AnimationCurve</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -270,16 +235,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToBool_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToBool*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToBool_System_String_System_Boolean__System_Collections_Generic_IDictionary_System_String_System_Boolean__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.Boolean})">
-  StringToBool(string, out bool, IDictionary&lt;string, bool&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToBool_System_String_System_Boolean__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToBool(string, out bool, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToBool(string str, out bool result, IDictionary&lt;string, bool&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToBool(string str, out bool result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -288,7 +253,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -310,16 +275,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToColor_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToColor*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToColor_System_String_Color__System_Collections_Generic_IDictionary_System_String_Color__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,System.Collections.Generic.IDictionary{System.String,Color})">
-  StringToColor(string, out Color, IDictionary&lt;string, Color&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L367"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToColor_System_String_Color__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToColor(string, out Color, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L360"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToColor(string str, out Color result, IDictionary&lt;string, Color&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToColor(string str, out Color result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -328,7 +293,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Color</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Color</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -350,16 +315,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToFloat_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToFloat*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToFloat_System_String_System_Single__System_Collections_Generic_IDictionary_System_String_System_Single__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,System.Collections.Generic.IDictionary{System.String,System.Single})">
-  StringToFloat(string, out float, IDictionary&lt;string, float&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToFloat_System_String_System_Single__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToFloat(string, out float, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToFloat(string str, out float result, IDictionary&lt;string, float&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToFloat(string str, out float result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -368,7 +333,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -390,16 +355,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToInt_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToInt*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToInt_System_String_System_Int32__System_Collections_Generic_IDictionary_System_String_System_Int32__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,System.Collections.Generic.IDictionary{System.String,System.Int32})">
-  StringToInt(string, out int, IDictionary&lt;string, int&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToInt_System_String_System_Int32__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToInt(string, out int, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToInt(string str, out int result, IDictionary&lt;string, int&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToInt(string str, out int result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -408,7 +373,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -430,25 +395,25 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector2_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector2*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector2_System_String_TMPEffects_Parameters_ParameterTypes_TypedVector2__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String})">
-  StringToTypedVector2(string, out TypedVector2, IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector2_System_String_TMPEffects_Parameters_TMPParameterTypes_TypedVector2__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector2@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToTypedVector2(string, out TypedVector2, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToTypedVector2(string str, out ParameterTypes.TypedVector2 result, IDictionary&lt;string, string&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToTypedVector2(string str, out TMPParameterTypes.TypedVector2 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>result</code> <a class="xref" href="TMPEffects.Parameters.ParameterTypes.html">ParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.ParameterTypes.TypedVector2.html">TypedVector2</a></dt>
+    <dt><code>result</code> <a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.html">TMPParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html">TypedVector2</a></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -470,25 +435,65 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector3_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector3*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector3_System_String_TMPEffects_Parameters_ParameterTypes_TypedVector3__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String})">
-  StringToTypedVector3(string, out TypedVector3, IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToTypedVector3_System_String_TMPEffects_Parameters_TMPParameterTypes_TypedVector3__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector3@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToTypedVector3(string, out TypedVector3, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToTypedVector3(string str, out ParameterTypes.TypedVector3 result, IDictionary&lt;string, string&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToTypedVector3(string str, out TMPParameterTypes.TypedVector3 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>result</code> <a class="xref" href="TMPEffects.Parameters.ParameterTypes.html">ParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.ParameterTypes.TypedVector3.html">TypedVector3</a></dt>
+    <dt><code>result</code> <a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.html">TMPParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html">TypedVector3</a></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_Parameters_ParameterParsing_StringToUnityObject_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToUnityObject*"></a>
+
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToUnityObject_System_String_UnityEngine_Object__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToUnityObject(System.String,UnityEngine.Object@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToUnityObject(string, out Object, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L334"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool StringToUnityObject(string str, out UnityEngine.Object result, ITMPKeywordDatabase keywords = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>result</code> <span class="xref">Object</span></dt>
+    <dd></dd>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -510,16 +515,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToVector2_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector2_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})">
-  StringToVector2(string, out Vector2, IDictionary&lt;string, Vector2&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector2_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToVector2(string, out Vector2, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToVector2(string str, out Vector2 result, IDictionary&lt;string, Vector2&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToVector2(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -528,7 +533,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Vector2</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector2</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -550,16 +555,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToVector2Offset_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2Offset*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector2Offset_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})">
-  StringToVector2Offset(string, out Vector2, IDictionary&lt;string, Vector2&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector2Offset_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToVector2Offset(string, out Vector2, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L226"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToVector2Offset(string str, out Vector2 result, IDictionary&lt;string, Vector2&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToVector2Offset(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -568,7 +573,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Vector2</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector2</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -590,16 +595,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToVector3_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector3_System_String_Vector3__System_Collections_Generic_IDictionary_System_String_Vector3__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})">
-  StringToVector3(string, out Vector3, IDictionary&lt;string, Vector3&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector3_System_String_Vector3__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToVector3(string, out Vector3, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L171"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToVector3(string str, out Vector3 result, IDictionary&lt;string, Vector3&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToVector3(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -608,7 +613,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Vector3</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector3</span>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -630,16 +635,16 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_Parameters_ParameterParsing_StringToVector3Offset_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3Offset*"></a>
 
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector3Offset_System_String_Vector3__System_Collections_Generic_IDictionary_System_String_Vector3__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})">
-  StringToVector3Offset(string, out Vector3, IDictionary&lt;string, Vector3&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToVector3Offset_System_String_Vector3__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)">
+  StringToVector3Offset(string, out Vector3, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L248"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToVector3Offset(string str, out Vector3 result, IDictionary&lt;string, Vector3&gt; keywords = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool StringToVector3Offset(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -648,47 +653,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
     <dd></dd>
     <dt><code>result</code> <span class="xref">Vector3</span></dt>
     <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">Vector3</span>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_Parameters_ParameterParsing_StringToWaveOffset_" data-uid="TMPEffects.Parameters.ParameterParsing.StringToWaveOffset*"></a>
-
-  <h3 id="TMPEffects_Parameters_ParameterParsing_StringToWaveOffset_System_String_TMPEffects_Parameters_ParameterTypes_WaveOffsetType__System_Collections_Generic_IDictionary_System_String_TMPEffects_Parameters_ParameterTypes_WaveOffsetType__" data-uid="TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType})">
-  StringToWaveOffset(string, out WaveOffsetType, IDictionary&lt;string, WaveOffsetType&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L311"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool StringToWaveOffset(string str, out ParameterTypes.WaveOffsetType result, IDictionary&lt;string, ParameterTypes.WaveOffsetType&gt; keywords = null)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>result</code> <a class="xref" href="TMPEffects.Parameters.ParameterTypes.html">ParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html">WaveOffsetType</a></dt>
-    <dd></dd>
-    <dt><code>keywords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="TMPEffects.Parameters.ParameterTypes.html">ParameterTypes</a>.<a class="xref" href="TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html">WaveOffsetType</a>&gt;</dt>
+    <dt><code>keywords</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
     <dd></dd>
   </dl>
 
@@ -712,7 +677,7 @@ Class ParameterParsing  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs-rework/Package/Runtime/Parameters/ParameterParsing.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Parameters/ParameterParsing.cs/#L16" class="edit-link">Edit this page</a>
         </div>
 
 
