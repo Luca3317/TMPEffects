@@ -22,6 +22,476 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Global.AnimationStep.ExtrapolationMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.AnimationStep.ExtrapolationMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.AnimationStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.AnimationStep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.CharDataModifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.CharDataModifiers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.ColorOverride.OverrideMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.ColorOverride.OverrideMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.ColorOverride.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.ColorOverride.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.EditorFriendlyCharDataModifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.EditorFriendlyCharDataModifiers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.EditorFriendlyRotation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.EditorFriendlyRotation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GenericHideAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GenericHideAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GenericShowAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GenericShowAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.PowerEnum-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.PowerEnum-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.Rotation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.Rotation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPAnimationBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPAnimationBehaviour.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPAnimationClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPAnimationClip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPAnimatorMarkReceiver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPAnimatorMarkReceiver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPAnimatorTrack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPAnimatorTrack.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPAnimatorTrackMixer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPAnimatorTrackMixer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPCharacterModifiers.ModifierFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPCharacterModifiers.ModifierFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPCharacterModifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPCharacterModifiers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPEffectsClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPEffectsClip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPEffectsMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPEffectsMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPEffectsSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPEffectsSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPEffectsTrack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPEffectsTrack.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifierBehaviour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifierBehaviour.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifierClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifierClip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifierTrack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifierTrack.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifierTrackMixer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifierTrackMixer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifiers.ModifierFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifiers.ModifierFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPMeshModifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPMeshModifiers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPResetAnimationsMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPResetAnimationsMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPResetTimeMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPResetTimeMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPResetWriterMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPResetWriterMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPRestartWriterMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPRestartWriterMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPSetUpdateFromMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPSetUpdateFromMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPSkipWriterMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPSkipWriterMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPStartAnimatingMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPStartAnimatingMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPStartWriterMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPStartWriterMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPStopAnimatingMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPStopAnimatingMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPStopWriterMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPStopWriterMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPUpdateAnimationsMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPUpdateAnimationsMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPWriterMarkReceiver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPWriterMarkReceiver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPWriterResetWaitMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPWriterResetWaitMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPWriterSetSkippableMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPWriterSetSkippableMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TMPWriterWaitMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TMPWriterWaitMarker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.TimelineAnimationStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.TimelineAnimationStep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.ValueOverride-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.ValueOverride-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.Vector3Override.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.Vector3Override.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.CharacterData.CharData.Info.yml",
       "output": {
         ".html": {
@@ -42,30 +512,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.CharacterData.CharDataState.yml",
+      "source_relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.CharDataState.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.CharacterData.ICharDataState.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.ICharDataState.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharDataState.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharDataState.html"
+          "relative_path": "api/TMPEffects.CharacterData.ReadOnlyCharData.html"
         }
       },
       "version": ""
@@ -112,30 +562,50 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Components.Animator.AnimationUpdater.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.AnimationUpdater.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Components.Animator.AnimatorContext.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Components.Animator.AnimatorContext.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Components.Animator.IAnimatorContext.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Components.Animator.IAnimatorContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.Animator.IAnimatorDataProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.Animator.IAnimatorDataProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.Animator.IAnimatorTimingsProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.Animator.IAnimatorTimingsProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.Animator.ICharacterTimingsProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.Animator.ICharacterTimingsProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.Animator.ITMPSegmentData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.Animator.ITMPSegmentData.html"
         }
       },
       "version": ""
@@ -252,10 +722,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Components.TMPAnimator.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Components.TMPAnimator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.html"
         }
       },
       "version": ""
@@ -392,6 +882,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.CompositeTMPKeywordDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.CompositeTMPKeywordDatabase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Databases.ITMPEffectDatabase-1.yml",
       "output": {
         ".html": {
@@ -412,6 +912,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.ITMPKeywordDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.ITMPKeywordDatabase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Databases.TMPEffectDatabase-1.yml",
       "output": {
         ".html": {
@@ -422,70 +932,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.TMPKeywordDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.TMPKeywordDatabase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Databases.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Databases.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.TMPAnimationCategory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPAnimationCategory.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.TMPCommandCategory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPCommandCategory.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory-1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEffectCategory.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.TMPEventCategory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.TMPEventCategory.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.EffectCategories.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.EffectCategories.html"
         }
       },
       "version": ""
@@ -552,10 +1022,80 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.GenerateParameterUtilityAttribute.html"
+          "relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.Attributes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.ITMPOffsetProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.ITMPOffsetProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.ITMPParameterValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.ITMPParameterValidator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.OffsetBundle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.OffsetBundle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.OffsetTypePowerEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.OffsetTypePowerEnum.html"
         }
       },
       "version": ""
@@ -572,80 +1112,140 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector2.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.SceneOffsetBundle.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector2.html"
+          "relative_path": "api/TMPEffects.Parameters.SceneOffsetBundle.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector3.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.SceneOffsetTypePowerEnum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.TypedVector3.html"
+          "relative_path": "api/TMPEffects.Parameters.SceneOffsetTypePowerEnum.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.VectorType.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPBlendCurve.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.VectorType.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPBlendCurve.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPOffsetProvider.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPOffsetProvider.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterTypes.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.OffsetType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterTypes.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.OffsetType.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.TypedVector2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.WaveParameters.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.TypedVector3.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.WaveParameters.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Parameters.ParameterUtility.yml",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.VectorType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.Parameters.ParameterUtility.html"
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.VectorType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterTypes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterUtility.ParseDelegate-4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterUtility.ParseDelegate-4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPParameterUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.TMPParameterUtility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.TMPSceneOffsetProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.TMPSceneOffsetProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.Wave.PulseExtrema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.Wave.PulseExtrema.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Parameters.Wave.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Parameters.Wave.html"
         }
       },
       "version": ""
@@ -732,100 +1332,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.Wave.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.AnimationUtility.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStack-1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.Animations.AnimationStackObject.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.BasicAnimationStack.html"
         }
       },
       "version": ""
@@ -882,16 +1392,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStack.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.yml",
       "output": {
         ".html": {
@@ -932,20 +1432,30 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.yml",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html"
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.yml",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.TMPSceneAnimation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html"
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.TMPSceneAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase.html"
         }
       },
       "version": ""
@@ -966,6 +1476,66 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.Animations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.Track.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.Track.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.GenericAnimationUtility.html"
         }
       },
       "version": ""
@@ -1052,6 +1622,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.HideAnimations.yml",
       "output": {
         ".html": {
@@ -1066,6 +1646,46 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.IAnimationContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.IAnimationData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.IAnimationData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.IAnimationFinished.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.IAnimationFinished.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.IAnimationFinisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.IAnimationFinisher.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.IGenericAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.IGenericAnimation.html"
         }
       },
       "version": ""
@@ -1096,6 +1716,26 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation.html"
         }
       },
       "version": ""
@@ -1182,6 +1822,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.ShowAnimations.yml",
       "output": {
         ".html": {
@@ -1212,6 +1862,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.TMPAnimationUtility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.TMPHideAnimation.yml",
       "output": {
         ".html": {
@@ -1236,6 +1906,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.CommandContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.CommandContext.html"
         }
       },
       "version": ""
@@ -1302,10 +1982,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.ICommandContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.ICommandContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPCommands.ITMPCommand.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPCommands.ITMPCommand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.ReadOnlyCommandContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.ReadOnlyCommandContext.html"
         }
       },
       "version": ""
@@ -1332,10 +2032,40 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.TMPGenericSceneCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.TMPGenericSceneCommand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommand.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommandWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPCommands.TMPSceneCommandWrapper.html"
         }
       },
       "version": ""
@@ -1392,116 +2122,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimation.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneAnimationBase.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneHideAnimation.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.TMPSceneShowAnimation.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TMPSceneAnimations.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.TMPSceneAnimations.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.MinMax.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerable.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructContainingEnumerator.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerable.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.StructReversedContainingEnumerator.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.CachedCollection-1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Tags.Collections.IReadOnlyTagCollection.yml",
       "output": {
         ".html": {
@@ -1516,16 +2136,6 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Tags.Collections.ITagCollection.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.Collections.ITagCollectionManager-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.Collections.ITagCollectionManager-1.html"
         }
       },
       "version": ""
@@ -1592,40 +2202,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.ITMPPrefixSupplier.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITMPPrefixSupplier.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Tags.ITMPTagValidator.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Tags.ITMPTagValidator.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.ITagCacher-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITagCacher-1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.Tags.ITagWrapper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/TMPEffects.Tags.ITagWrapper.html"
         }
       },
       "version": ""
@@ -1712,20 +2292,20 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.yml",
+      "source_relative_path": "api/TMPEffects.TextProcessing.TMPEffectsTextProcessor.TMPTextProcessorEventHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.TMPTextProcessorEventHandler.html"
+          "relative_path": "api/TMPEffects.TextProcessing.TMPEffectsTextProcessor.TMPTextProcessorEventHandler.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.yml",
+      "source_relative_path": "api/TMPEffects.TextProcessing.TMPEffectsTextProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/TMPEffects.TextProcessing.TMPTextProcessor.html"
+          "relative_path": "api/TMPEffects.TextProcessing.TMPEffectsTextProcessor.html"
         }
       },
       "version": ""

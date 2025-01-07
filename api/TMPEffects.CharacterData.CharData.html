@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CharData | TMPEffects documentation ">
       
-      <meta name="description" content="Holds information about a character. In addition to holding a selection of data supplied by the respective TMP_CharacterInfo, accessible through the  field, also holds  specific data and methods to manipulate said data.">
+      <meta name="description" content="Represents a TextMeshPro character, allowing you to make modifications to its appearance. Primarily used by  and its animations to animate a character. When used in that manner, modifications made to it (e.g. by using , or directly modifying the ), will be applied by the animator to the actual mesh of the character.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,10 +97,10 @@ Class CharData  <a class="header-action link-secondary" title="View source" href
   
   </div>
 
-  <div class="markdown summary"><p>Holds information about a character.<br>
-In addition to holding a selection of data supplied by the respective
-TMP_CharacterInfo, accessible through the <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_info">info</a> field,
-also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data and methods to manipulate said data.</p>
+  <div class="markdown summary"><p>Represents a TextMeshPro character, allowing you to make modifications to its appearance.<br>
+Primarily used by <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and its animations to animate a character.<br>
+When used in that manner, modifications made to it (e.g. by using <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetPosition_Vector3_">SetPosition(Vector3)</a>, or directly modifying the <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_CharacterModifiers">CharacterModifiers</a>),
+will be applied by the animator to the actual mesh of the character.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -160,7 +160,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData__ctor_System_Int32_TMP_CharacterInfo_System_Int32_" data-uid="TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32)">
   CharData(int, TMP_CharacterInfo, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -195,7 +195,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData__ctor_System_Int32_TMP_CharacterInfo_System_Int32_System_Nullable_TMP_WordInfo__" data-uid="TMPEffects.CharacterData.CharData.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,System.Nullable{TMP_WordInfo})">
   CharData(int, TMP_CharacterInfo, int, TMP_WordInfo?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L177"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -233,102 +233,9 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
 
 
-  <h3 id="TMPEffects_CharacterData_CharData_InitialPosition" data-uid="TMPEffects.CharacterData.CharData.InitialPosition">
-  InitialPosition
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L86"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The initial position of this character.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly Vector3 InitialPosition</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_CharacterData_CharData_InitialRotation" data-uid="TMPEffects.CharacterData.CharData.InitialRotation">
-  InitialRotation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L90"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The initial rotation of this character.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly Quaternion InitialRotation</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Quaternion</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="TMPEffects_CharacterData_CharData_InitialScale" data-uid="TMPEffects.CharacterData.CharData.InitialScale">
-  InitialScale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L94"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The initial scale of this character.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly Vector3 InitialScale</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Vector3</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="TMPEffects_CharacterData_CharData_defaultRotation" data-uid="TMPEffects.CharacterData.CharData.defaultRotation">
   defaultRotation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L134"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The default rotation of any CharData.</p>
@@ -359,7 +266,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_defaultScale" data-uid="TMPEffects.CharacterData.CharData.defaultScale">
   defaultScale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The default scale of any CharData.</p>
@@ -390,7 +297,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_info" data-uid="TMPEffects.CharacterData.CharData.info">
   info
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Holds a selection of TMP_CharacterInfo data.</p>
@@ -421,7 +328,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_mesh" data-uid="TMPEffects.CharacterData.CharData.mesh">
   mesh
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L144"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The mesh of the character.</p>
@@ -453,19 +360,83 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 </h2>
 
 
-  <a id="TMPEffects_CharacterData_CharData_Position_" data-uid="TMPEffects.CharacterData.CharData.Position*"></a>
+  <a id="TMPEffects_CharacterData_CharData_CharacterModifiers_" data-uid="TMPEffects.CharacterData.CharData.CharacterModifiers*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_Position" data-uid="TMPEffects.CharacterData.CharData.Position">
-  Position
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_CharacterModifiers" data-uid="TMPEffects.CharacterData.CharData.CharacterModifiers">
+  CharacterModifiers
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The character's position.</p>
+  <div class="markdown level1 summary"><p>The character modifiers of this character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector3 Position { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TMPCharacterModifiers CharacterModifiers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Global.TMPCharacterModifiers.html">TMPCharacterModifiers</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_InitialMesh_" data-uid="TMPEffects.CharacterData.CharData.InitialMesh*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_InitialMesh" data-uid="TMPEffects.CharacterData.CharData.InitialMesh">
+  InitialMesh
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The initial mesh of this character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlyVertexData InitialMesh { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.CharacterData.ReadOnlyVertexData.html">ReadOnlyVertexData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_InitialPosition_" data-uid="TMPEffects.CharacterData.CharData.InitialPosition*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_InitialPosition" data-uid="TMPEffects.CharacterData.CharData.InitialPosition">
+  InitialPosition
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The initial position of this character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 InitialPosition { get; }</code></pre>
   </div>
 
 
@@ -485,19 +456,19 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_Rotation_" data-uid="TMPEffects.CharacterData.CharData.Rotation*"></a>
+  <a id="TMPEffects_CharacterData_CharData_InitialRotation_" data-uid="TMPEffects.CharacterData.CharData.InitialRotation*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_Rotation" data-uid="TMPEffects.CharacterData.CharData.Rotation">
-  Rotation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_InitialRotation" data-uid="TMPEffects.CharacterData.CharData.InitialRotation">
+  InitialRotation
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L154"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The character's rotation.</p>
+  <div class="markdown level1 summary"><p>The initial rotation of this character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Quaternion Rotation { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Quaternion InitialRotation { get; }</code></pre>
   </div>
 
 
@@ -517,19 +488,19 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_RotationPivot_" data-uid="TMPEffects.CharacterData.CharData.RotationPivot*"></a>
+  <a id="TMPEffects_CharacterData_CharData_InitialScale_" data-uid="TMPEffects.CharacterData.CharData.InitialScale*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_RotationPivot" data-uid="TMPEffects.CharacterData.CharData.RotationPivot">
-  RotationPivot
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_InitialScale" data-uid="TMPEffects.CharacterData.CharData.InitialScale">
+  InitialScale
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L159"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The character's rotation pivot.</p>
+  <div class="markdown level1 summary"><p>The initial scale of this character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector3 RotationPivot { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector3 InitialScale { get; }</code></pre>
   </div>
 
 
@@ -549,11 +520,140 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
 
 
+  <a id="TMPEffects_CharacterData_CharData_MeshModifiers_" data-uid="TMPEffects.CharacterData.CharData.MeshModifiers*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_MeshModifiers" data-uid="TMPEffects.CharacterData.CharData.MeshModifiers">
+  MeshModifiers
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The mesh modifiers of this character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPMeshModifiers MeshModifiers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Global.TMPMeshModifiers.html">TMPMeshModifiers</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_Position_" data-uid="TMPEffects.CharacterData.CharData.Position*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_Position" data-uid="TMPEffects.CharacterData.CharData.Position">
+  Position
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The character's position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Position { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector3</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_PositionDelta_" data-uid="TMPEffects.CharacterData.CharData.PositionDelta*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_PositionDelta" data-uid="TMPEffects.CharacterData.CharData.PositionDelta">
+  PositionDelta
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The character's position delta (offset from <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_InitialPosition">InitialPosition</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 PositionDelta { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vector3</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_Rotations_" data-uid="TMPEffects.CharacterData.CharData.Rotations*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_Rotations" data-uid="TMPEffects.CharacterData.CharData.Rotations">
+  Rotations
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The character's rotations.<br>
+Modify using <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_AddRotation_Vector3_Vector3_">AddRotation(Vector3, Vector3)</a>, <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_RemoveRotation_System_Int32_">RemoveRotation(int)</a>, <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_ClearRotations">ClearRotations()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;Rotation&gt; Rotations { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Rotation.html">Rotation</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_CharacterData_CharData_Scale_" data-uid="TMPEffects.CharacterData.CharData.Scale*"></a>
 
   <h3 id="TMPEffects_CharacterData_CharData_Scale" data-uid="TMPEffects.CharacterData.CharData.Scale">
   Scale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The character's scale.</p>
@@ -561,7 +661,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector3 Scale { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector3 Scale { get; set; }</code></pre>
   </div>
 
 
@@ -585,7 +685,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_alphasDirty" data-uid="TMPEffects.CharacterData.CharData.alphasDirty">
   alphasDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the vertex alphas have been manipulated.</p>
@@ -617,7 +717,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_colorsDirty" data-uid="TMPEffects.CharacterData.CharData.colorsDirty">
   colorsDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the vertex colors have been manipulated.</p>
@@ -645,43 +745,11 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_initialMesh_" data-uid="TMPEffects.CharacterData.CharData.initialMesh*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_initialMesh" data-uid="TMPEffects.CharacterData.CharData.initialMesh">
-  initialMesh
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L82"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The initial mesh of this character.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ReadOnlyVertexData initialMesh { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.CharacterData.ReadOnlyVertexData.html">ReadOnlyVertexData</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="TMPEffects_CharacterData_CharData_positionDirty_" data-uid="TMPEffects.CharacterData.CharData.positionDirty*"></a>
 
   <h3 id="TMPEffects_CharacterData_CharData_positionDirty" data-uid="TMPEffects.CharacterData.CharData.positionDirty">
   positionDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the position has been manipulated from the character's initial position.</p>
@@ -713,7 +781,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_rotationDirty" data-uid="TMPEffects.CharacterData.CharData.rotationDirty">
   rotationDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the rotation has been manipulated from the character's initial rotation.</p>
@@ -745,7 +813,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_scaleDirty" data-uid="TMPEffects.CharacterData.CharData.scaleDirty">
   scaleDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the scale has been manipulated from the character's initial scale.</p>
@@ -777,7 +845,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_uvsDirty" data-uid="TMPEffects.CharacterData.CharData.uvsDirty">
   uvsDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the UVs have been manipulated.</p>
@@ -809,7 +877,7 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 
   <h3 id="TMPEffects_CharacterData_CharData_verticesDirty" data-uid="TMPEffects.CharacterData.CharData.verticesDirty">
   verticesDirty
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether the vertices have been manipulated.</p>
@@ -841,26 +909,28 @@ also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data a
 </h2>
 
 
-  <a id="TMPEffects_CharacterData_CharData_AddPivotDelta_" data-uid="TMPEffects.CharacterData.CharData.AddPivotDelta*"></a>
+  <a id="TMPEffects_CharacterData_CharData_AddRotation_" data-uid="TMPEffects.CharacterData.CharData.AddRotation*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_AddPivotDelta_Vector3_" data-uid="TMPEffects.CharacterData.CharData.AddPivotDelta(Vector3)">
-  AddPivotDelta(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_AddRotation_Vector3_Vector3_" data-uid="TMPEffects.CharacterData.CharData.AddRotation(Vector3,Vector3)">
+  AddRotation(Vector3, Vector3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L228"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Add a delta to the pivot of the character.<br>
-Note that the pivot is independent of the character's position, rotation and scale.</p>
+  <div class="markdown level1 summary"><p>Add a rotation to the character.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddPivotDelta(Vector3 delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddRotation(Vector3 eulerAngles, Vector3 pivot)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>delta</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The delta to add to the position of the pivot.</p>
+    <dt><code>eulerAngles</code> <span class="xref">Vector3</span></dt>
+    <dd><p>The euler angles to rotate by.</p>
+</dd>
+    <dt><code>pivot</code> <span class="xref">Vector3</span></dt>
+    <dd><p>The pivot to rotate around.</p>
 </dd>
   </dl>
 
@@ -875,27 +945,21 @@ Note that the pivot is independent of the character's position, rotation and sca
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_AddPositionDelta_" data-uid="TMPEffects.CharacterData.CharData.AddPositionDelta*"></a>
+  <a id="TMPEffects_CharacterData_CharData_ClearPosition_" data-uid="TMPEffects.CharacterData.CharData.ClearPosition*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_AddPositionDelta_Vector3_" data-uid="TMPEffects.CharacterData.CharData.AddPositionDelta(Vector3)">
-  AddPositionDelta(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_ClearPosition" data-uid="TMPEffects.CharacterData.CharData.ClearPosition">
+  ClearPosition()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L214"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Add a delta to the position of the character.</p>
+  <div class="markdown level1 summary"><p>Reset the position of the character back to <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_InitialPosition">InitialPosition</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddPositionDelta(Vector3 delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ClearPosition()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>delta</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The delta to add to the position of the character.</p>
-</dd>
-  </dl>
 
 
 
@@ -908,28 +972,118 @@ Note that the pivot is independent of the character's position, rotation and sca
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_AddVertexDelta_" data-uid="TMPEffects.CharacterData.CharData.AddVertexDelta*"></a>
+  <a id="TMPEffects_CharacterData_CharData_ClearRotations_" data-uid="TMPEffects.CharacterData.CharData.ClearRotations*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_AddVertexDelta_System_Int32_Vector3_" data-uid="TMPEffects.CharacterData.CharData.AddVertexDelta(System.Int32,Vector3)">
-  AddVertexDelta(int, Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_ClearRotations" data-uid="TMPEffects.CharacterData.CharData.ClearRotations">
+  ClearRotations()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L256"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Add a positon delta to the vertex at the given index.</p>
+  <div class="markdown level1 summary"><p>Clear all rotations of this character, effectively setting its rotation back to <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_InitialRotation">InitialRotation</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddVertexDelta(int index, Vector3 delta)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ClearRotations()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_ClearScale_" data-uid="TMPEffects.CharacterData.CharData.ClearScale*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_ClearScale" data-uid="TMPEffects.CharacterData.CharData.ClearScale">
+  ClearScale()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reset the scale of this character back to <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_InitialScale">InitialScale</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearScale()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_InsertRotation_" data-uid="TMPEffects.CharacterData.CharData.InsertRotation*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_InsertRotation_System_Int32_Vector3_Vector3_" data-uid="TMPEffects.CharacterData.CharData.InsertRotation(System.Int32,Vector3,Vector3)">
+  InsertRotation(int, Vector3, Vector3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add a rotation to the character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertRotation(int index, Vector3 eulerAngles, Vector3 pivot)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The index of the vertex.</p>
+    <dd><p>The index in <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Rotations">Rotations</a> to insert into.</p>
 </dd>
-    <dt><code>delta</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The delta to add to the position of the vertex.</p>
+    <dt><code>eulerAngles</code> <span class="xref">Vector3</span></dt>
+    <dd><p>The euler angles to rotate by.</p>
+</dd>
+    <dt><code>pivot</code> <span class="xref">Vector3</span></dt>
+    <dd><p>The pivot to rotate around.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_CharacterData_CharData_RemoveRotation_" data-uid="TMPEffects.CharacterData.CharData.RemoveRotation*"></a>
+
+  <h3 id="TMPEffects_CharacterData_CharData_RemoveRotation_System_Int32_" data-uid="TMPEffects.CharacterData.CharData.RemoveRotation(System.Int32)">
+  RemoveRotation(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove a rotation from the character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveRotation(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the rotation in <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_Rotations">Rotations</a>.</p>
 </dd>
   </dl>
 
@@ -948,10 +1102,10 @@ Note that the pivot is independent of the character's position, rotation and sca
 
   <h3 id="TMPEffects_CharacterData_CharData_Reset" data-uid="TMPEffects.CharacterData.CharData.Reset">
   Reset()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L287"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Reset changes made to the character's mesh, position, rotation, scale and pivot.</p>
+  <div class="markdown level1 summary"><p>Reset all changes made to the character (mesh, position, rotation, scale and pivot).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -971,234 +1125,11 @@ Note that the pivot is independent of the character's position, rotation and sca
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_ResetColors_" data-uid="TMPEffects.CharacterData.CharData.ResetColors*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetColors" data-uid="TMPEffects.CharacterData.CharData.ResetColors">
-  ResetColors()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L249"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's vertex colors.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetColors()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetPivot_" data-uid="TMPEffects.CharacterData.CharData.ResetPivot*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetPivot" data-uid="TMPEffects.CharacterData.CharData.ResetPivot">
-  ResetPivot()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L237"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's pivot.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetPivot()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetPosition_" data-uid="TMPEffects.CharacterData.CharData.ResetPosition*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetPosition" data-uid="TMPEffects.CharacterData.CharData.ResetPosition">
-  ResetPosition()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L229"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's position.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetPosition()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetRotation_" data-uid="TMPEffects.CharacterData.CharData.ResetRotation*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetRotation" data-uid="TMPEffects.CharacterData.CharData.ResetRotation">
-  ResetRotation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L233"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's rotation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetRotation()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetScale_" data-uid="TMPEffects.CharacterData.CharData.ResetScale*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetScale" data-uid="TMPEffects.CharacterData.CharData.ResetScale">
-  ResetScale()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L225"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's scale.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetScale()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetUVs_" data-uid="TMPEffects.CharacterData.CharData.ResetUVs*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetUVs" data-uid="TMPEffects.CharacterData.CharData.ResetUVs">
-  ResetUVs()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L245"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's UVs.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetUVs()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_ResetVertices_" data-uid="TMPEffects.CharacterData.CharData.ResetVertices*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_ResetVertices" data-uid="TMPEffects.CharacterData.CharData.ResetVertices">
-  ResetVertices()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L241"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Reset the character's vertices.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetVertices()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_SetPivot_" data-uid="TMPEffects.CharacterData.CharData.SetPivot*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_SetPivot_Vector3_" data-uid="TMPEffects.CharacterData.CharData.SetPivot(Vector3)">
-  SetPivot(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L177"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Set the pivot of this character.<br>
-Note that the pivot is independent of the character's position, scale and rotation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetPivot(Vector3 pivot)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>pivot</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The new position of the pivot.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="TMPEffects_CharacterData_CharData_SetPosition_" data-uid="TMPEffects.CharacterData.CharData.SetPosition*"></a>
 
   <h3 id="TMPEffects_CharacterData_CharData_SetPosition_Vector3_" data-uid="TMPEffects.CharacterData.CharData.SetPosition(Vector3)">
   SetPosition(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the position of the character.</p>
@@ -1212,8 +1143,7 @@ Note that the pivot is independent of the character's position, scale and rotati
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>position</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The new position of the character.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1227,26 +1157,25 @@ Note that the pivot is independent of the character's position, scale and rotati
 
 
 
-  <a id="TMPEffects_CharacterData_CharData_SetRotation_" data-uid="TMPEffects.CharacterData.CharData.SetRotation*"></a>
+  <a id="TMPEffects_CharacterData_CharData_SetPositionDelta_" data-uid="TMPEffects.CharacterData.CharData.SetPositionDelta*"></a>
 
-  <h3 id="TMPEffects_CharacterData_CharData_SetRotation_Quaternion_" data-uid="TMPEffects.CharacterData.CharData.SetRotation(Quaternion)">
-  SetRotation(Quaternion)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_CharacterData_CharData_SetPositionDelta_Vector3_" data-uid="TMPEffects.CharacterData.CharData.SetPositionDelta(Vector3)">
+  SetPositionDelta(Vector3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Set the rotation of this character.</p>
+  <div class="markdown level1 summary"><p>Set the position delta of the character (offset from <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_InitialPosition">InitialPosition</a>).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetRotation(Quaternion rotation)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetPositionDelta(Vector3 delta)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>rotation</code> <span class="xref">Quaternion</span></dt>
-    <dd><p>The new rotation of this character.</p>
-</dd>
+    <dt><code>delta</code> <span class="xref">Vector3</span></dt>
+    <dd></dd>
   </dl>
 
 
@@ -1264,7 +1193,7 @@ Note that the pivot is independent of the character's position, scale and rotati
 
   <h3 id="TMPEffects_CharacterData_CharData_SetScale_Vector3_" data-uid="TMPEffects.CharacterData.CharData.SetScale(Vector3)">
   SetScale(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L269"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the scale of this character.</p>
@@ -1279,42 +1208,6 @@ Note that the pivot is independent of the character's position, scale and rotati
   <dl class="parameters">
     <dt><code>scale</code> <span class="xref">Vector3</span></dt>
     <dd><p>The new scale of this character.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_CharacterData_CharData_SetVertex_" data-uid="TMPEffects.CharacterData.CharData.SetVertex*"></a>
-
-  <h3 id="TMPEffects_CharacterData_CharData_SetVertex_System_Int32_Vector3_" data-uid="TMPEffects.CharacterData.CharData.SetVertex(System.Int32,Vector3)">
-  SetVertex(int, Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/CharData/CharData.cs/#L139"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Set the position of the vertex at the given index.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetVertex(int index, Vector3 position)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The index of the vertex.</p>
-</dd>
-    <dt><code>position</code> <span class="xref">Vector3</span></dt>
-    <dd><p>The new position of the vertex.</p>
 </dd>
   </dl>
 

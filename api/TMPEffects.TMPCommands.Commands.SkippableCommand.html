@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TMPCommands_Commands_SkippableCommand" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand" class="text-break">
-Class SkippableCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L7"><i class="bi bi-code-slash"></i></a>
+Class SkippableCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -101,7 +101,7 @@ Class SkippableCommand  <a class="header-action link-secondary" title="View sour
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SkippableCommand : TMPCommand, ITMPCommand, INotifyObjectChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public class SkippableCommand : TMPCommand, ITMPCommand, ITMPParameterValidator, INotifyObjectChanged</code></pre>
   </div>
 
 
@@ -120,6 +120,7 @@ Class SkippableCommand  <a class="header-action link-secondary" title="View sour
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a></div>
+      <div><a class="xref" href="TMPEffects.Parameters.ITMPParameterValidator.html">ITMPParameterValidator</a></div>
       <div><a class="xref" href="TMPEffects.ObjectChanged.INotifyObjectChanged.html">INotifyObjectChanged</a></div>
     </dd>
   </dl>
@@ -128,6 +129,18 @@ Class SkippableCommand  <a class="header-action link-secondary" title="View sour
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="TMPEffects.TMPCommands.TMPCommand.html#TMPEffects_TMPCommands_TMPCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_">TMPCommand.ExecuteCommand(ICommandContext)</a>
+    </div>
+    <div>
+      <a class="xref" href="TMPEffects.TMPCommands.TMPCommand.html#TMPEffects_TMPCommands_TMPCommand_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_">TMPCommand.ValidateParameters(IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)</a>
+    </div>
+    <div>
+      <a class="xref" href="TMPEffects.TMPCommands.TMPCommand.html#TMPEffects_TMPCommands_TMPCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_">TMPCommand.SetParameters(object, IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)</a>
+    </div>
+    <div>
+      <a class="xref" href="TMPEffects.TMPCommands.TMPCommand.html#TMPEffects_TMPCommands_TMPCommand_GetNewCustomData">TMPCommand.GetNewCustomData()</a>
+    </div>
     <div>
       <a class="xref" href="TMPEffects.TMPCommands.TMPCommand.html#TMPEffects_TMPCommands_TMPCommand_ObjectChanged">TMPCommand.ObjectChanged</a>
     </div>
@@ -155,11 +168,11 @@ Class SkippableCommand  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_ExecuteInstantly" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ExecuteInstantly">
   ExecuteInstantly
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command is executed the moment the TMPWriter begin writing.<br>
-Otherwise, it is executed when the TMPWriter shows the character at the corresponding index.</p>
+  <div class="markdown level1 summary"><p>Whether the command is executed the moment the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> begins writing.<br>
+Otherwise, it is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -188,10 +201,10 @@ Otherwise, it is executed when the TMPWriter shows the character at the correspo
 
   <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_ExecuteOnSkip" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ExecuteOnSkip">
   ExecuteOnSkip
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command should be executed by the TMPWriter if its text position is skipped over.</p>
+  <div class="markdown level1 summary"><p>Whether the command should be executed by the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> if its text position is skipped over.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -220,10 +233,10 @@ Otherwise, it is executed when the TMPWriter shows the character at the correspo
 
   <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_ExecuteRepeatable" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ExecuteRepeatable">
   ExecuteRepeatable
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether the command may be executed multiple times if, for example, the TMPWriter is reset to an earlier text position after the command has been executed.<br>
+  <div class="markdown level1 summary"><p>Whether the command may be executed multiple times if, for example, the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> is reset to an earlier text position after the command has been executed.<br>
 An example for a command that should not be repeatable is one that triggers a quest, or adds an item to the player's inventory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -253,10 +266,11 @@ An example for a command that should not be repeatable is one that triggers a qu
 
   <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_TagType" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.TagType">
   TagType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The type of command this is.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -276,83 +290,17 @@ An example for a command that should not be repeatable is one that triggers a qu
 
 
 
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="TMPEffects_TMPCommands_Commands_SkippableCommand_ExecuteCommand_" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ExecuteCommand*"></a>
-
-  <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_ExecuteCommand_TMPEffects_TMPCommands_TMPCommandArgs_" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)">
-  ExecuteCommand(TMPCommandArgs)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L22"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Execute the command.</p>
+  <h4 class="section" id="TMPEffects_TMPCommands_Commands_SkippableCommand_TagType_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+Index: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index. It does not need to be closed.<br> Example: This is &lt;!delay=0.01&gt; my text
+</p>
+<p>
+Block: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+</p>
+<p>
+Either: Both applications are valid.
+</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void ExecuteCommand(TMPCommandArgs args)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>args</code> <a class="xref" href="TMPEffects.TMPCommands.TMPCommandArgs.html">TMPCommandArgs</a></dt>
-    <dd><p>The arguments for the command.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="TMPEffects_TMPCommands_Commands_SkippableCommand_ValidateParameters_" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ValidateParameters*"></a>
-
-  <h3 id="TMPEffects_TMPCommands_Commands_SkippableCommand_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.TMPCommands.Commands.SkippableCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})">
-  ValidateParameters(IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L29"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Validate the parameters.<br>
-Used to validate tags.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool ValidateParameters(IDictionary&lt;string, string&gt; parameters)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>The parameters to validate.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the parameters were successfully validated; false otherwise.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
 
 
 
@@ -361,7 +309,7 @@ Used to validate tags.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L7" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/Commands/SkippableCommand.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

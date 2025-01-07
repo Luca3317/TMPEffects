@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ReadOnlyAnimationContext | TMPEffects documentation ">
       
-      
+      <meta name="description" content="A read-only wrapper around .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext" class="text-break">
-Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,11 +97,12 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
   
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A read-only wrapper around <a class="xref" href="TMPEffects.TMPAnimations.AnimationContext.html">AnimationContext</a>.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ReadOnlyAnimationContext : IAnimationContext</code></pre>
+    <pre><code class="lang-csharp hljs">public class ReadOnlyAnimationContext : IAnimationContext, IAnimationData, IAnimationFinished, IAnimationFinisher</code></pre>
   </div>
 
 
@@ -119,6 +120,9 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationData.html">IAnimationData</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinished.html">IAnimationFinished</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.IAnimationFinisher.html">IAnimationFinisher</a></div>
     </dd>
   </dl>
 
@@ -160,23 +164,23 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor*"></a>
 
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_CharacterData_ICharDataState_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)">
-  ReadOnlyAnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_Components_Animator_IAnimatorContext_CharDataModifiers_TMPEffects_Components_Animator_SegmentData_System_Object_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)">
+  ReadOnlyAnimationContext(IAnimatorContext, CharDataModifiers, SegmentData, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ReadOnlyAnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)</code></pre>
+    <pre><code class="lang-csharp hljs">public ReadOnlyAnimationContext(IAnimatorContext animatorContext, CharDataModifiers state, SegmentData segmentData, object customData)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>animatorContext</code> <a class="xref" href="TMPEffects.Components.Animator.IAnimatorContext.html">IAnimatorContext</a></dt>
     <dd></dd>
-    <dt><code>state</code> <a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
+    <dt><code>state</code> <a class="xref" href="Global.CharDataModifiers.html">CharDataModifiers</a></dt>
     <dd></dd>
     <dt><code>segmentData</code> <a class="xref" href="TMPEffects.Components.Animator.SegmentData.html">SegmentData</a></dt>
     <dd></dd>
@@ -199,7 +203,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)">
   ReadOnlyAnimationContext(IAnimationContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -234,7 +238,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_AnimatorContext" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext">
   AnimatorContext
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The context of the animating TMPAnimator.</p>
@@ -266,7 +270,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_CustomData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData">
   CustomData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The custom data object.</p>
@@ -298,7 +302,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_SegmentData" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData">
   SegmentData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Data about the animation segment.</p>
@@ -326,38 +330,6 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
 
 
-  <a id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State*"></a>
-
-  <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State">
-  State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L19"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The current state of the CharData, with the previous animations applied.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ICharDataState State { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -366,7 +338,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)">
   FinishAnimation(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the animation to be considered finished for the given character.</p>
@@ -398,7 +370,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_System_Int32_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(System.Int32)">
   Finished(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the character at the given index.</p>
@@ -435,7 +407,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 
   <h3 id="TMPEffects_TMPAnimations_ReadOnlyAnimationContext_Finished_TMPEffects_CharacterData_CharData_" data-uid="TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(TMPEffects.CharacterData.CharData)">
   Finished(CharData)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Check if the animation is considered finished for the given character.</p>
@@ -472,7 +444,7 @@ Class ReadOnlyAnimationContext  <a class="header-action link-secondary" title="V
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

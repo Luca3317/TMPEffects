@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TextProcessing_ParsingUtility" data-uid="TMPEffects.TextProcessing.ParsingUtility" class="text-break">
-Class ParsingUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class ParsingUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -157,7 +157,7 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
 
   <h3 id="TMPEffects_TextProcessing_ParsingUtility_GetNextTag_System_String_System_Int32_TMPEffects_TextProcessing_ParsingUtility_TagInfo__TMPEffects_TextProcessing_ParsingUtility_TagType_" data-uid="TMPEffects.TextProcessing.ParsingUtility.GetNextTag(System.String,System.Int32,TMPEffects.TextProcessing.ParsingUtility.TagInfo@,TMPEffects.TextProcessing.ParsingUtility.TagType)">
   GetNextTag(string, int, ref TagInfo, TagType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the next tag in <code class="paramref">text</code>, starting from <code class="paramref">startIndex</code>.</p>
@@ -208,7 +208,13 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
   <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L235"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Parses a string to a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>.<br>
+Pass in either a full tag string, e.g. &lt;example=10 arg=&quot;value&quot;&gt;, or the same but
+without the brackets (example=10 arg=&quot;value&quot;).<br>
+Note that this only does some basic checks on the validity of the input string;
+malformed strings may lead to errors.<br>
+Ideally use by passing in a <a class="xref" href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.html#TMPEffects_TextProcessing_ParsingUtility_TagInfo_parameterString">parameterString</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -218,13 +224,15 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>The tag to parse the parameters of.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>The parsed string as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>.</p>
+</dd>
   </dl>
 
 
@@ -234,6 +242,11 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
 
 
 
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -291,7 +304,7 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
   <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L217"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Checks if the given string is a well formed tag (of the given type, if supplied).</p>
+  <div class="markdown level1 summary"><p>Checks if the given string is a well-formed tag (of the given type, if supplied).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -312,7 +325,7 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>true if the the given string is a tag (of the given type, if supplied); otherwise false.</p>
+    <dd><p>true if the given string is a tag (of the given type, if supplied); otherwise false.</p>
 </dd>
   </dl>
 
@@ -381,7 +394,7 @@ Class ParsingUtility  <a class="header-action link-secondary" title="View source
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/TextProcessing/ParsingUtility.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

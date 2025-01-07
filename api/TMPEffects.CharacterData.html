@@ -96,33 +96,25 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a></dt>
-      <dd><p>Holds information about a character.<br>
-In addition to holding a selection of data supplied by the respective
-TMP_CharacterInfo, accessible through the <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_info">info</a> field,
-also holds <a class="xref" href="TMPEffects.html">TMPEffects</a> specific data and methods to manipulate said data.</p>
+      <dd><p>Represents a TextMeshPro character, allowing you to make modifications to its appearance.<br>
+Primarily used by <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> and its animations to animate a character.<br>
+When used in that manner, modifications made to it (e.g. by using <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_SetPosition_Vector3_">SetPosition(Vector3)</a>, or directly modifying the <a class="xref" href="TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_CharacterModifiers">CharacterModifiers</a>),
+will be applied by the animator to the actual mesh of the character.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a></dt>
-      <dd><p>Utility class that stores a <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> and modifications to it, allowing you to make multiple modifications iteratively and to apply at once.<br>
-Used in <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a> to apply animations.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.CharacterData.ReadOnlyCharDataState.html">ReadOnlyCharDataState</a></dt>
-      <dd><p>Readonly version of <a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a>.<br>
-Used to expose the current state of the <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> in <a class="xref" href="TMPEffects.TMPAnimations.IAnimationContext.html">IAnimationContext</a>, allowing you to take it into account in your animations
-(ideally with late animations, see <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_gettingstarted.html#late-animations--second-pass">the docs</a>).</p>
+      <dt><a class="xref" href="TMPEffects.CharacterData.ReadOnlyCharData.html">ReadOnlyCharData</a></dt>
+      <dd><p>A read-only wrapper around <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a>.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.CharacterData.ReadOnlyVertexData.html">ReadOnlyVertexData</a></dt>
-      <dd><p>Holds data about a character's mesh.</p>
+      <dd><p>Holds immutable data about a TextMeshPro character mesh.</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.CharacterData.VertexData.html">VertexData</a></dt>
-      <dd><p>Holds data about a character's mesh.</p>
+      <dd><p>Holds data about a TextMeshPro character mesh.</p>
 </dd>
     </dl>
     <h3 id="structs">
@@ -130,16 +122,7 @@ Structs
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="TMPEffects.CharacterData.CharData.Info.html">CharData.Info</a></dt>
-      <dd><p>Holds a selection of data of TMP_CharacterInfo, as well as some data about the initial mesh of the character.</p>
-</dd>
-    </dl>
-    <h3 id="interfaces">
-Interfaces
-</h3>
-    <dl class="jumplist">
-      <dt><a class="xref" href="TMPEffects.CharacterData.ICharDataState.html">ICharDataState</a></dt>
-      <dd><p>Exposes vertex state of a <a class="xref" href="TMPEffects.CharacterData.CharData.html">CharData</a> to allow iterative modifications.<br>
-Used in <a class="xref" href="TMPEffects.CharacterData.CharDataState.html">CharDataState</a> and <a class="xref" href="TMPEffects.CharacterData.ReadOnlyCharDataState.html">ReadOnlyCharDataState</a>.</p>
+      <dd><p>Holds a selection of data of TMP_CharacterInfo, as well as data about the initial mesh of the character.</p>
 </dd>
     </dl>
     <h3 id="enums">

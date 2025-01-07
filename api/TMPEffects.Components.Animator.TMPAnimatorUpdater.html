@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TMPAnimatorUpdater | TMPEffects documentation ">
       
-      
+      <meta name="description" content="Simple component that lets you manually update a .">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_Components_Animator_TMPAnimatorUpdater" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater" class="text-break">
-Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View so
   
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Simple component that lets you manually update a <a class="xref" href="TMPEffects.Components.TMPAnimator.html">TMPAnimator</a>.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -127,14 +128,49 @@ Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View so
 </h2>
 
 
+  <a id="TMPEffects_Components_Animator_TMPAnimatorUpdater_AdditionalTimeScaling_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.AdditionalTimeScaling*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_TMPAnimatorUpdater_AdditionalTimeScaling" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.AdditionalTimeScaling">
+  AdditionalTimeScaling
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The time scaling to use.<br>
+Used as scalar to the delta time.<br>
+Naming chosen so as not to be confused with IAnimatorContext.UseScaledTime.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float AdditionalTimeScaling { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_TMPAnimatorUpdater_MaxUpdatesPerSecond_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond*"></a>
 
   <h3 id="TMPEffects_Components_Animator_TMPAnimatorUpdater_MaxUpdatesPerSecond" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.MaxUpdatesPerSecond">
   MaxUpdatesPerSecond
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The update limit per second.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -162,14 +198,47 @@ Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View so
 </h2>
 
 
+  <a id="TMPEffects_Components_Animator_TMPAnimatorUpdater_SetAdditionalTimeScaling_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.SetAdditionalTimeScaling*"></a>
+
+  <h3 id="TMPEffects_Components_Animator_TMPAnimatorUpdater_SetAdditionalTimeScaling_System_Single_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.SetAdditionalTimeScaling(System.Single)">
+  SetAdditionalTimeScaling(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the scalar to the deltaTime.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAdditionalTimeScaling(float timeScaling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timeScaling</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="TMPEffects_Components_Animator_TMPAnimatorUpdater_SetMaxUpdatesPerSecond_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond*"></a>
 
   <h3 id="TMPEffects_Components_Animator_TMPAnimatorUpdater_SetMaxUpdatesPerSecond_System_UInt32_" data-uid="TMPEffects.Components.Animator.TMPAnimatorUpdater.SetMaxUpdatesPerSecond(System.UInt32)">
   SetMaxUpdatesPerSecond(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set the update limit per second.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -197,7 +266,7 @@ Class TMPAnimatorUpdater  <a class="header-action link-secondary" title="View so
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Components/TMPAnimator/TMPAnimatorUpdater.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 

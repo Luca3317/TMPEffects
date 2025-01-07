@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct TMPSceneCommandWrapper | TMPEffects documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct TMPSceneCommandWrapper | TMPEffects documentation ">
+      
+      <meta name="description" content="Struct wrapping either  or .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_TMPCommands_TMPSceneCommandWrapper.md&amp;value=---%0Auid%3A%20TMPEffects.TMPCommands.TMPSceneCommandWrapper%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper">
+
+
+
+  <h1 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper" class="text-break">
+Struct TMPSceneCommandWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="TMPEffects.html">TMPEffects</a>.<a class="xref" href="TMPEffects.TMPCommands.html">TMPCommands</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"><p>Struct wrapping either <a class="xref" href="TMPEffects.TMPCommands.TMPGenericSceneCommand.html">TMPGenericSceneCommand</a> or <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommand.html">TMPSceneCommand</a>.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public struct TMPSceneCommandWrapper : ITMPCommand, ITMPParameterValidator</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a></div>
+      <div><a class="xref" href="TMPEffects.Parameters.ITMPParameterValidator.html">ITMPParameterValidator</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Custom_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Custom" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom">
+  Custom
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The wrapped custom command.<br>
+The <a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a> implementation of the wrapper delegates to this
+if <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type">Type</a> is set to <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_TMPSceneCommandType_Generic">Generic</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPSceneCommand Custom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommand.html">TMPSceneCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteInstantly_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteInstantly" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly">
+  ExecuteInstantly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the command is executed the moment the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> begins writing.<br>
+Otherwise, it is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExecuteInstantly { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteOnSkip_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteOnSkip" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip">
+  ExecuteOnSkip
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the command should be executed by the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> if its text position is skipped over.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExecuteOnSkip { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteRepeatable_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteRepeatable" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable">
+  ExecuteRepeatable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the command may be executed multiple times if, for example, the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> is reset to an earlier text position after the command has been executed.<br>
+An example for a command that should not be repeatable is one that triggers a quest, or adds an item to the player's inventory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ExecuteRepeatable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Generic_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Generic" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic">
+  Generic
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The wrapped generic command.<br>
+The <a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a> implementation of the wrapper delegates to this
+if <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type">Type</a> is set to <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_TMPSceneCommandType_Custom">Custom</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPGenericSceneCommand Generic { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.TMPCommands.TMPGenericSceneCommand.html">TMPGenericSceneCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_TagType_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_TagType" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType">
+  TagType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type of command this is.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagType TagType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.TMPCommands.TagType.html">TagType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_TagType_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+Index: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the corresponding index. It does not need to be closed.<br> Example: This is &lt;!delay=0.01&gt; my text
+</p>
+<p>
+Block: This type of command is executed when the <a class="xref" href="TMPEffects.Components.TMPWriter.html">TMPWriter</a> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+</p>
+<p>
+Either: Both applications are valid.
+</p>
+</div>
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type">
+  Type
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type of this wrapper.<br>
+The <a class="xref" href="TMPEffects.TMPCommands.ITMPCommand.html">ITMPCommand</a> implementation delegates to <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Generic">Generic</a> or <a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Custom">Custom</a>
+depending on the value of this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TMPSceneCommandWrapper.TMPSceneCommandType Type { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.html">TMPSceneCommandWrapper</a>.<a class="xref" href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html">TMPSceneCommandType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteCommand_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)">
+  ExecuteCommand(ICommandContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Execute the command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExecuteCommand(ICommandContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="TMPEffects.TMPCommands.ICommandContext.html">ICommandContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_GetNewCustomData_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_GetNewCustomData" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData">
+  GetNewCustomData()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a new custom data object for this command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object GetNewCustomData()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The custom data object for this command.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_SetParameters_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  SetParameters(object, IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the parameters for the command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The custom data for this command.</p>
+</dd>
+    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Parameters as key-value-pairs.</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ValidateParameters_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters*"></a>
+
+  <h3 id="TMPEffects_TMPCommands_TMPSceneCommandWrapper_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  ValidateParameters(IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate the given parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ValidateParameters(IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The parameters as key-value pairs</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the parameters were successfully validated; false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          TMPEffects documentation
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

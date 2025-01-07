@@ -89,7 +89,7 @@
 
 
   <h1 id="TMPEffects_TMPAnimations_TMPHideAnimation" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation" class="text-break">
-Class TMPHideAnimation  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class TMPHideAnimation  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -102,7 +102,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class TMPHideAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class TMPHideAnimation : ScriptableObject, ITMPAnimation, ITMPParameterValidator, INotifyObjectChanged</code></pre>
   </div>
 
 
@@ -120,6 +120,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.TMPAnimations.ITMPAnimation.html">ITMPAnimation</a></div>
+      <div><a class="xref" href="TMPEffects.Parameters.ITMPParameterValidator.html">ITMPParameterValidator</a></div>
       <div><a class="xref" href="TMPEffects.ObjectChanged.INotifyObjectChanged.html">INotifyObjectChanged</a></div>
     </dd>
   </dl>
@@ -127,6 +128,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
+      <div><a class="xref" href="Global.GenericHideAnimation.html">GenericHideAnimation</a></div>
       <div><a class="xref" href="TMPEffects.TMPAnimations.Animations.HideAnimationStackObject.html">HideAnimationStackObject</a></div>
       <div><a class="xref" href="TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation.html">CharHideAnimation</a></div>
       <div><a class="xref" href="TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation.html">DummyHideAnimation</a></div>
@@ -136,6 +138,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
       <div><a class="xref" href="TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation.html">PivotHideAnimation</a></div>
       <div><a class="xref" href="TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation.html">ShakeHideAnimation</a></div>
       <div><a class="xref" href="TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation.html">SpreadHideAnimation</a></div>
+      <div><a class="xref" href="TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation.html">CurveHideAnimation</a></div>
     </dd>
   </dl>
 
@@ -153,7 +156,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)">
   Animate(CharData, IAnimationContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Animate the given character.</p>
@@ -188,10 +191,10 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_GetNewCustomData" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.GetNewCustomData">
   GetNewCustomData()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Create and get a new custom data object for this animation.</p>
+  <div class="markdown level1 summary"><p>Get a new custom data object for this animation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -221,7 +224,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_OnDestroy" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.OnDestroy">
   OnDestroy()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -247,7 +250,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_OnValidate" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.OnValidate">
   OnValidate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L29"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -273,7 +276,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_RaiseObjectChanged" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.RaiseObjectChanged">
   RaiseObjectChanged()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -297,9 +300,9 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_TMPAnimations_TMPHideAnimation_SetParameters_" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.SetParameters*"></a>
 
-  <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
-  SetParameters(object, IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  SetParameters(object, IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Set the parameters for the animation.</p>
@@ -307,7 +310,7 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void SetParameters(object customData, IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -317,6 +320,9 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 </dd>
     <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd><p>Parameters as key-value-pairs.</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values.</p>
 </dd>
   </dl>
 
@@ -333,24 +339,27 @@ Class TMPHideAnimation  <a class="header-action link-secondary" title="View sour
 
   <a id="TMPEffects_TMPAnimations_TMPHideAnimation_ValidateParameters_" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.ValidateParameters*"></a>
 
-  <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})">
-  ValidateParameters(IDictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)">
+  ValidateParameters(IDictionary&lt;string, string&gt;, ITMPKeywordDatabase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Validate the parameters.<br>
-Used to validate tags.</p>
+  <div class="markdown level1 summary"><p>Validate the given parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract bool ValidateParameters(IDictionary&lt;string, string&gt; parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool ValidateParameters(IDictionary&lt;string, string&gt; parameters, ITMPKeywordDatabase keywordDatabase)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd></dd>
+    <dd><p>The parameters as key-value pairs</p>
+</dd>
+    <dt><code>keywordDatabase</code> <a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></dt>
+    <dd><p>The keyword database used for parsing the parameter values</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -377,10 +386,11 @@ Used to validate tags.</p>
 
   <h3 id="TMPEffects_TMPAnimations_TMPHideAnimation_ObjectChanged" data-uid="TMPEffects.TMPAnimations.TMPHideAnimation.ObjectChanged">
   ObjectChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Raised when the object is changed.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -408,7 +418,7 @@ Used to validate tags.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Effects/TMPAnimations/TMPHideAnimation.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
