@@ -117,14 +117,5 @@ namespace TMPEffects.Editor
             TMPEffectsClipEditorUtility.DrawBackground(clip, region, step.entryDuration, step.exitDuration,
                 step.entryCurve, step.exitCurve);
         }
-
-        public override ClipDrawOptions GetClipOptions(TimelineClip clip)
-        {
-            return new ClipDrawOptions()
-            {
-                tooltip = "My tooltip :)",
-                hideScaleIndicator = true
-            };
-        }
     }
 }
