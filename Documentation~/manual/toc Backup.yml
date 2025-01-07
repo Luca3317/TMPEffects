@@ -1,0 +1,108 @@
+- name: Introduction
+  href: introduction.md
+- name: Quickstart
+  href: quickstart.md
+  items:
+  - name: Installation
+    href: installation.md
+  - name: Getting started
+    href: gettingstarted.md
+- name: Components
+- name: TMPAnimator
+  href: tmpanimator.md
+  items:
+    - name: Getting started
+      href: tmpanimator_gettingstarted.md
+    - name: Component overview
+      href: tmpanimator_componentoverview.md
+- name: TMPWriter
+  href: tmpwriter.md
+  items:
+    - name: Getting started
+      href: tmpwriter_gettingstarted.md
+    - name: Component overview
+      href: tmpwriter_componentoverview.md
+- name: Effects
+- name: Animations
+  href: animations.md
+  items:
+    - name: Built-in animations
+      items:
+        - name: Basic animations
+          href: tmpanimator_builtinbasicanimations.md
+        - name: Show / hide animations
+          href: tmpanimator_builtinshowhideanimations.md
+    - name: Creating your own animations
+      items:
+        - name: Animating a character
+          href: animatingacharacter.md
+        - name: Via Script
+          href: tmpanimator_creatinganimations.md
+        - name: Via Timeline
+          href: tmpanimator_creatinganimations.md
+        - name: Via Inspector
+          href: tmpanimator_creatinganimations.md
+        - name: Animation Utility
+          items:
+            - name: AnimationUtility
+              href: animationutility.md
+            - name: AnimationUtility.Wave
+              href: tmpanimator_animationutility_wave.md
+
+    - name: Show / hide animations
+      href: tmpanimator_showhideanimations.md
+    - name: Built-in show / hide animations
+      href: tmpanimator_builtinshowhideanimations.md
+    - name: Scene animations
+      href: tmpanimator_sceneanimations.md
+    - name: Creating animations
+      href: tmpanimator_creatinganimations.md
+    - name: Animating a character
+      href: animatingacharacter.md
+    - name: AnimationUtility
+      href: animationutility.md
+    - name: AnimationUtility.Wave
+      href: tmpanimator_animationutility_wave.md
+- name: Commands & Events
+  href: commandsandevents.md
+  items:
+    - name: Built-in commands
+      href: tmpwriter_builtincommands.md
+    - name: Scene commands
+      href: tmpwriter_scenecommands.md
+    - name: Creating commands
+      href: tmpwriter_creatingcommands.md
+- name: Parameters
+  href: parameters.md
+  items:
+    - name: Parameter types
+      href: parametertypes.md
+    - name: ParameterUtility
+      href: parameterutility.md
+    - name: AutoParameters
+      href: autoparameters.md
+- name: Timeline
+  href: timeline.md
+  items:
+    - name: Timeline integration
+      href: timeline_integration.md
+    - name: Creating animations with timeline
+      href: timeline_creatinganimations.md
+- name: Other important classes
+  items:
+    - name: AnimationCurveUtility
+      href: animationcurveutility.md
+    - name: TMPEffectTag
+      href: effecttag.md
+    - name: TagCollections
+      href: tagcollections.md
+    - name: CharData
+      href: chardata.md 
+    - name: IAnimationContext
+      href: ianimationcontext.md 
+    - name: Databases
+      href: databases.md
+    - name: TODO Sort these
+      items:
+        - name: Gen Anims
+          href: genericanimations.md

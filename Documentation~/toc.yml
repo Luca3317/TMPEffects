@@ -1,0 +1,6 @@
+- name: Manual
+  href: manual/
+- name: Scripting API
+  href: api/
+- name: GitHub
+  href: https://github.com/Luca3317/TMPEffects

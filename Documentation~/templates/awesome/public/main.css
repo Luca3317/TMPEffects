@@ -1,0 +1,46 @@
+/* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
+
+/* Checkout https://getbootstrap.com/docs/5.3/customize/color/ for more customization options */
+body {
+  --bs-link-color-rgb: 0, 164, 239 !important;
+  --bs-link-hover-color-rgb: 0, 164, 239 !important;
+}
+
+code {
+border-radius: .75rem;
+/* border-radius: 8px; */
+/* border: solid 0.5px darkgray; */
+}
+
+/* .alert-warning {
+  background: #332701 !important;
+} */
+
+.alert-warning {
+  border-radius: .375rem;
+}
+
+.alert-info {
+  border-radius: .375rem;
+}
+
+.alert-danger {
+  border-radius: .375rem;
+}
+
+
+[data-bs-theme=dark] .hljs {
+  /* background: #242424 !important; */
+  background: #1e1e1e !important;
+}
+
+table {
+  border-radius: .375rem;
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+/* .table {
+  --bs-table-border-color: blue;
+} */

@@ -1,0 +1,74 @@
+{
+    "metadata": [
+        {
+            "src": [
+                {
+                    "src": "../Package/Runtime",
+                    "files": [
+                        "**/*.cs"
+                    ]
+                }
+            ],
+            "globalNamespaceId": "Global",
+            "filter": "filterConfig.yml",
+            "dest": "api",
+            "allowCompilationErrors": true
+        }
+    ],
+    "build": {
+        "template": [
+            "default",
+            "modern"
+        ],
+        "globalMetadata": {
+            "_appTitle": "TMPEffects documentation",
+            "_appFooter": "TMPEffects documentation",
+            "_enableSearch": true
+        },
+        "content": [
+            {
+                "files": [
+                    "toc.yml",
+                    "index.md"
+                ]
+            },
+            {
+                "src": "api",
+                "files": [
+                    "*.yml"
+                ],
+                "dest": "api"
+            },
+            {
+                "src": "manual",
+                "files": [
+                    "toc.yml",
+                    "*.md"
+                ],
+                "dest": "manual"
+            }
+        ],
+        "resource": [
+            {
+                "files": [
+                    "videos/**/*",
+                    "images/**/*",
+                    "styles.css"
+                ]
+            }
+        ],
+        "sitemap": {
+            "baseUrl": "https://luca3317.github.io/TMPEffects",
+            "changefreq": "weekly",
+            "fileOptions": {
+                "api/*": {
+                    "changefreq": "daily"
+                }
+            }
+        },
+        "xref": [
+            "https://normanderwan.github.io/UnityXrefMaps/2022.3/xrefmap.yml"
+        ],
+        "dest": "../_site"
+    }
+}

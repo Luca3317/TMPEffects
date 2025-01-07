@@ -1,0 +1,114 @@
+- name: Introduction
+  href: introduction.md
+- name: Quickstart
+  href: quickstart.md
+  items:
+  - name: Installation
+    href: installation.md
+  - name: Getting started
+    href: gettingstarted.md
+- name: Components
+- name: TMPAnimator
+  href: tmpanimator.md
+  items:
+    - name: Getting started
+      href: tmpanimator_gettingstarted.md
+    - name: Inspector overview
+      href: tmpanimator_inspectoroverview.md
+    - name: Important API
+      href: tmpanimator_importantapi.md
+- name: TMPWriter
+  href: tmpwriter.md
+  items:
+    - name: Getting started
+      href: tmpwriter_gettingstarted.md
+    - name: Inspector overview
+      href: tmpwriter_inspectoroverview.md
+    - name: Important API
+      href: tmpwriter_importantapi.md
+- name: Effects
+- name: Animations
+  href: animations.md
+  items:
+    - name: Built-in animations
+      items:
+        - name: Basic animations
+          href: tmpanimator_builtinbasicanimations.md
+        - name: Show / hide animations
+          href: tmpanimator_builtinshowhideanimations.md
+    - name: Creating your own animations
+      href: creatinganimations.md
+      items:
+        - name: Creating animations via script
+          items:
+            - name: In-depth class overview
+              href: tmpanimator_creatinganimations.md
+            - name: Animating a character
+              href: animatingacharacter.md
+        - name: Via Inspector (GenericAnimation)
+          href: genericanimations.md
+        - name: Via Timeline
+          href: timeline_creatinganimations.md
+
+    - name: Animation Utility
+      items:
+      - name: AnimationUtility
+        href: animationutility.md
+      - name: AnimationCurveUtility
+        href: animationcurveutility.md
+      - name: Wave
+        href: tmpanimator_animationutility_wave.md
+      - name: Offset Providers
+        href: offsetproviders.md
+    - name: Misc
+      items:
+        - name: Scene Animations
+          href: tmpanimator_sceneanimations.md
+
+- name: Commands
+  href: commandsandevents.md
+  items:
+    - name: Built-in commands
+      href: tmpwriter_builtincommands.md
+    - name: Creating your own commands
+      href: tmpwriter_creatingcommands.md
+    - name: Misc
+      items:
+        - name: Scene commands
+          href: tmpwriter_scenecommands.md
+- name: Effect parameters
+  href: parameters.md
+  items:
+    - name: Parameter types
+      href: parametertypes.md
+    - name: ParameterUtility
+      href: parameterutility.md
+    - name: AutoParameters
+      href: autoparameters.md
+
+- name: External packages
+- name: Timeline
+  href: timeline.md
+  items:
+    - name: Timeline integration
+      href: timeline_integration.md
+    - name: Creating animations with timeline
+      href: timeline_creatinganimations.md
+- name: YarnSpinner
+  items:
+    - name: Test1
+      href: timeline_creatinganimations.md
+
+- name: Miscellaneous
+- name: Other important classes
+  items:
+    - name: TMPEffectTag
+      href: effecttag.md
+    - name: TagCollections
+      href: tagcollections.md
+    - name: CharData
+      href: chardata.md 
+    - name: IAnimationContext
+      href: ianimationcontext.md 
+    - name: Databases
+      href: databases.md
