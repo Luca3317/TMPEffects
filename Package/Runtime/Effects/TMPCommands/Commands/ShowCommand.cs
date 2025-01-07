@@ -1,14 +1,11 @@
-using System.Collections.Generic;
-using System.Globalization;
+using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
-using TMPEffects.Tags;
-using TMPEffects.Components;
-using TMPEffects.TextProcessing;
 
 namespace TMPEffects.TMPCommands.Commands
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new ShowCommand", menuName = "TMPEffects/Commands/Built-in/Show")]
-    public class ShowCommand : TMPCommand
+    public partial class ShowCommand : TMPCommand
     {
         public override TagType TagType => TagType.Block;
         public override bool ExecuteInstantly => true;
@@ -17,15 +14,10 @@ namespace TMPEffects.TMPCommands.Commands
 #if UNITY_EDITOR 
         public override bool ExecuteInPreview => true;
 #endif
-
-        public override void ExecuteCommand(TMPCommandArgs args)
+        
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            args.writer.Show(args.indices.StartIndex, args.indices.Length, true);
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            return true;
+            context.Writer.Show(context.Indices.StartIndex, context.Indices.Length, true);
         }
     }
 }

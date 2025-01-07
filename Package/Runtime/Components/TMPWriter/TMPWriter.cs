@@ -17,7 +17,10 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.TMPEvents;
 using TMPEffects.Databases.CommandDatabase;
 using TMPEffects.CharacterData;
+using TMPEffects.Components.Animator;
+using TMPEffects.Databases;
 using TMPEffects.Tags;
+using UnityEngine.Playables;
 
 namespace TMPEffects.Components
 {
@@ -30,9 +33,9 @@ namespace TMPEffects.Components
     /// Using command tags, you can call specific methods. There are two types of Commands:
     /// <list type="table">
     /// <item><see cref="TMPCommand"/>: These are defined by the <see cref="TMPCommandDatabase"/> object on the component. As they derive from <see cref="ScriptableObject"/>, they are stored on disk. All built-in commands of this type serve to control the TMPWriter component.</item>
-    /// <item><see cref="TMPSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
+    /// <item><see cref="TMPGenericSceneCommand"/>: These are defined as a property on the TMPWriter component. You can use them to reference specific methods on objects in the scene.</item>
     /// </list>
-    /// In additon to command tags, TMPWriter also processes event tags:<br/><br/>
+    /// In addition to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
     /// </remarks>
     [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")]
@@ -44,10 +47,12 @@ namespace TMPEffects.Components
         /// Whether the TMPWriter is currently writing text.
         /// </summary>
         public bool IsWriting => writing;
+
         /// <summary>
         /// Whether the TMPWriter may skip the current section of text.
         /// </summary>
         public bool MaySkip => currentMaySkip;
+
         /// <summary>
         /// The text index of the TMPWriter's current character.
         /// </summary>
@@ -59,39 +64,67 @@ namespace TMPEffects.Components
         /// </summary>
         public TMPCommandDatabase Database => database;
 
+        /// <summary>
+        /// The keyword database used to parse tag parameters.
+        /// </summary>
+        public ITMPKeywordDatabase KeywordDatabase => keywordDatabaseWrapper?.Database;
+        
+        /// <summary>
+        /// The <see cref="TMPSceneCommandWrapper"/> used by this writer.
+        /// </summary>
+        public IDictionary<string, TMPSceneCommandWrapper> SceneCommands => sceneCommands;
+
         // Tags
         /// <summary>
         /// All tags parsed by the TMPWriter.
         /// </summary>
         public ITagCollection Tags => tags;
+
         /// <summary>
         /// All command tags parsed by the TMPWriter.
         /// </summary>
         public ITagCollection CommandTags => tags == null ? null : tags[commandCategory];
+
         /// <summary>
         /// All event tags parsed by the TMPWriter.
         /// </summary>
         public ITagCollection EventTags => tags == null ? null : tags[eventCategory];
 
+        /// <summary>
+        /// Whether to begin writing when the TMPWriter's Start method is called (i.e. when it is first enabled).
+        /// </summary>
         public bool WriteOnStart
         {
             get => writeOnStart;
             set => writeOnStart = value;
         }
 
+        /// <summary>
+        /// Whether to begin writing when the text of the associated <see cref="TMP_Text"/> component is changed.<br/>
+        /// Be aware that the <see cref="TMP_Text"/> component raises its TextChanged event it is first loaded as well.
+        /// </summary>
         public bool WriteOnNewText
         {
             get => writeOnNewText;
             set => writeOnNewText = value;
         }
 
+        /// <summary>
+        /// Whether to use scaled (<see cref="Time.time"/>) or unscaled time (<see cref="Time.unscaledTime"/>) for the writing process.
+        /// </summary>
         public bool UseScaledTime
         {
             get => useScaledTime;
             set => useScaledTime = value;
         }
 
+        /// <summary>
+        /// The default delays used by the writer.
+        /// </summary>
         public Delays DefaultDelays => delays;
+        /// <summary>
+        /// The current delays by the writer, influenced by modifying tags etc.
+        /// </summary>
         public Delays CurrentDelays => currentDelays;
 
         // Events
@@ -99,35 +132,43 @@ namespace TMPEffects.Components
         /// Raised when the TMPWriter reaches an event tag.
         /// </summary>
         public TMPEvent OnTextEvent;
+
         /// <summary>
         /// Raised when the TMPWriter shows a new character.
         /// </summary>
         public UnityEvent<TMPWriter, CharData> OnCharacterShown;
+
         /// <summary>
         /// Raised when the TMPWriter starts / resumes writing.
         /// </summary>
         public UnityEvent<TMPWriter> OnStartWriter;
+
         /// <summary>
         /// Raised when the TMPWriter stops writing.
         /// </summary>
         public UnityEvent<TMPWriter> OnStopWriter;
+
         /// <summary>
         /// Raised when the TMPWriter starts waiting.
         /// The float parameter indicates the amount of time the TMPWriter will wait, in seconds.
         /// </summary>
         public UnityEvent<TMPWriter, float> OnWaitStarted;
+
         /// <summary>
         /// Raised when the TMPWriter ends waiting.
         /// </summary>
         public UnityEvent<TMPWriter> OnWaitEnded;
+
         /// <summary>
         /// Raised when the TMPWriter is done writing the current text.
         /// </summary>
         public UnityEvent<TMPWriter> OnFinishWriter;
+
         /// <summary>
         /// Raised when the current (section of) text is skipped.
         /// </summary>
         public UnityEvent<TMPWriter, int> OnSkipWriter;
+
         /// <summary>
         /// Raised when the TMPWriter is reset.<br/>
         /// The integer parameter indicates the text index the TMPWriter was reset to.
@@ -138,34 +179,32 @@ namespace TMPEffects.Components
         /// The prefix used for command tags.
         /// </summary>
         public const char COMMAND_PREFIX = '!';
+
         /// <summary>
         /// The prefix used for event tags.
         /// </summary>
         public const char EVENT_PREFIX = '?';
 
         #region Fields
+
         // Settings
-        [Tooltip("The database used to process command tags (e.g. <!delay=0.05>")]
-        [SerializeField] TMPCommandDatabase database;
+        [SerializeField] private TMPKeywordDatabase keywordDatabase;
+        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
 
-        //[Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
-        //[SerializeField] private float delay = 0.075f;
+        [SerializeField] private TMPCommandDatabase database;
 
-        [Tooltip("Whether the text may be skipped by default.")]
         [SerializeField] private bool maySkip = true;
 
-        [Tooltip("If checked, the writer will begin writing when it is first enabled. If not checked, you will have to manually start the writer from your own code.")]
         [SerializeField] private bool writeOnStart = true;
-        [Tooltip("If checked, the writer will automatically begin writing when the text on the associated TMP_Text component is modified. If not checked, you will have to manually start the writer from your own code.")]
+
         [SerializeField] private bool writeOnNewText = true;
-        [Tooltip("Whether the writer should use scaled time to wait for delays and wait commands.")]
+
         [SerializeField] private bool useScaledTime = true;
 
         [SerializeField] private Delays delays = new Delays();
 
-        [Tooltip("Commands that may reference scene objects.\nNOT raised in preview mode.")]
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Command")]
-        private SerializedDictionary<string, TMPSceneCommand> sceneCommands;
+        private SerializedDictionary<string, TMPSceneCommandWrapper> sceneCommands;
 
         [System.NonSerialized] private TagProcessorManager processors;
         [System.NonSerialized] private TagCollectionManager<TMPEffectCategory> tags;
@@ -173,6 +212,7 @@ namespace TMPEffects.Components
         [System.NonSerialized] private TMPCommandCategory commandCategory;
         [System.NonSerialized] private TMPEventCategory eventCategory;
 
+        [System.NonSerialized] private KeywordDatabaseWrapper keywordDatabaseWrapper;
         [System.NonSerialized] private CommandDatabase commandDatabase;
 
         [System.NonSerialized] private CachedCollection<CachedCommand> commands;
@@ -188,17 +228,19 @@ namespace TMPEffects.Components
 
         [System.NonSerialized] private bool writing = false;
         [System.NonSerialized] private int currentIndex = -1;
+
         #endregion
 
         #region Public methods
 
         #region Writer Controlling
+
         /// <summary>
         /// Start (or resume) writing.
         /// </summary>
         public void StartWriter()
         {
-            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            if (Mediator == null /*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
             {
                 Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
                 return;
@@ -217,7 +259,7 @@ namespace TMPEffects.Components
         /// </summary>
         public void StopWriter()
         {
-            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            if (Mediator == null /*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
             {
                 Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
                 return;
@@ -228,7 +270,6 @@ namespace TMPEffects.Components
                 StopWriterCoroutine();
                 RaiseStopWriterEvent();
             }
-
         }
 
         /// <summary>
@@ -237,24 +278,14 @@ namespace TMPEffects.Components
         /// </summary>
         public void ResetWriter()
         {
-            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            if (Mediator == null /*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
             {
                 Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
                 return;
             }
 
-            if (writing)
-            {
-                StopWriterCoroutine();
-            }
-
-            // reset
-            currentIndex = -1;
-            ResetInvokables(Mediator.CharData.Count);
+            ResetInternalState();
             Hide(0, Mediator.CharData.Count, true);
-
-            ResetData();
-
             RaiseResetWriterEvent(0);
         }
 
@@ -266,7 +297,7 @@ namespace TMPEffects.Components
         /// <param name="index">The index to reset the writer to.</param>
         public void ResetWriter(int index)
         {
-            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            if (Mediator == null /*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
             {
                 Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
                 return;
@@ -274,7 +305,8 @@ namespace TMPEffects.Components
 
             if (index >= currentIndex)
             {
-                Debug.LogWarning($"Can't reset the TMPWriter on {gameObject.name} to index {index}; current index is only {currentIndex}");
+                Debug.LogWarning(
+                    $"Can't reset the TMPWriter on {gameObject.name} to index {index}; current index is only {currentIndex}");
                 return;
             }
 
@@ -307,7 +339,7 @@ namespace TMPEffects.Components
         /// </summary>
         public void SkipWriter(bool skipShowAnimation = true)
         {
-            if (Mediator == null/*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
+            if (Mediator == null /*!isActiveAndEnabled || !gameObject.activeInHierarchy*/)
             {
                 Debug.LogWarning($"The TMPWriter component on {gameObject.name} is not enabled");
                 return;
@@ -320,7 +352,9 @@ namespace TMPEffects.Components
             }
 
             int skipTo;
-            CachedCommand cc = commands.FirstOrDefault(x => x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null && x.Tag.Parameters[""] == "false");
+            CachedCommand cc = commands.FirstOrDefault(x =>
+                x.Indices.StartIndex >= currentIndex && x.Tag.Name == "skippable" && x.Tag.Parameters != null &&
+                x.Tag.Parameters[""] == "false");
 
             if (cc == default) skipTo = Mediator.CharData.Count;
             else skipTo = cc.Indices.StartIndex;
@@ -357,9 +391,11 @@ namespace TMPEffects.Components
             ResetWriter();
             StartWriter();
         }
+
         #endregion
 
         #region Writer Commands
+
         /// <summary>
         /// Pause the writer for the given amount of seconds.
         /// </summary>
@@ -382,6 +418,9 @@ namespace TMPEffects.Components
             waitAmount = seconds;
         }
 
+        /// <summary>
+        /// Reset the period the writer should pause for (set using <see cref="Wait"/> to 0. 
+        /// </summary>
         public void ResetWaitPeriod()
         {
             shouldWait = false;
@@ -400,6 +439,9 @@ namespace TMPEffects.Components
             continueConditions += condition;
         }
 
+        /// <summary>
+        /// Clear the conditions the writer should wait for (set using <see cref="WaitUntil"/>.
+        /// </summary>
         public void ResetWaitConditions()
         {
             continueConditions = null;
@@ -413,9 +455,11 @@ namespace TMPEffects.Components
         {
             currentMaySkip = skippable;
         }
+
         #endregion
 
         #region Setters
+
         /// <summary>
         /// Set the database that will be used to parse command tags.
         /// </summary>
@@ -425,15 +469,42 @@ namespace TMPEffects.Components
             this.database = database;
             OnDatabaseChanged();
         }
-        #endregion
 
+        /// <summary>
+        /// Set the scene keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
+        public void SetSceneKeywordDatabase(TMPSceneKeywordDatabase database)
+        {
+            sceneKeywordDatabase = database;
+            OnDatabaseChanged();
+        }
+
+        /// <summary>
+        /// Set the keyword database that will be used to parse tags.
+        /// </summary>
+        /// <param name="database">The database that will be used to parse tags.</param>
+        public void SetKeywordDatabase(TMPKeywordDatabase database)
+        {
+            keywordDatabase = database;
+            OnDatabaseChanged();
+        }
+
+        #endregion
 
         #endregion
 
         #region Initialization
+
         private void OnEnable()
         {
             UpdateMediator();
+
+            // if (!TextComponent.enabled)
+            // {
+            //     TextComponent.enabled = true;
+            //     TextComponent.enabled = false;
+            // }
 
             SubscribeToMediator();
 
@@ -468,12 +539,10 @@ namespace TMPEffects.Components
             processors.UnregisterFrom(Mediator.Processor);
 
             commandDatabase?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
 
             UnsubscribeFromMediator();
 
-            //#if UNITY_EDITOR
-            //            if (!Application.isPlaying)
-            //            {
 #if UNITY_EDITOR
             EditorApplication.update -= EditorUpdate;
 #endif
@@ -481,8 +550,6 @@ namespace TMPEffects.Components
             currentIndex = -1;
             Show(0, Mediator.CharData.Count, true);
             writing = false;
-            //            }
-            //#endif
 
             var textComponent = Mediator.Text;
             FreeMediator();
@@ -498,11 +565,18 @@ namespace TMPEffects.Components
         {
             // Reset database wrappers
             commandDatabase?.Dispose();
+            keywordDatabaseWrapper?.Dispose();
+
             commandDatabase = new CommandDatabase(database == null ? null : database, sceneCommands);
+            keywordDatabaseWrapper = new KeywordDatabaseWrapper(sceneKeywordDatabase, keywordDatabase,
+                TMPEffectsSettings.GlobalKeywordDatabase);
+
             commandDatabase.ObjectChanged += ReprocessOnDatabaseChange;
+            keywordDatabaseWrapper.ObjectChanged += ReprocessOnDatabaseChange;
 
             // Reset categories
-            commandCategory = new TMPCommandCategory(COMMAND_PREFIX, commandDatabase);
+            commandCategory =
+                new TMPCommandCategory(COMMAND_PREFIX, commandDatabase, keywordDatabaseWrapper.Database);
             eventCategory = new TMPEventCategory(EVENT_PREFIX);
 
             // Reset tagcollection & cachedcollection
@@ -545,10 +619,13 @@ namespace TMPEffects.Components
             PrepareForProcessing();
             Mediator.ForceReprocess();
         }
+
         #endregion
 
         #region Event Callbacks and Wrappers
+
         [System.NonSerialized] private bool tagsChanged = false;
+
         private void OnTextChanged_Early(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData)
         {
             tagsChanged = tags == null;
@@ -557,12 +634,16 @@ namespace TMPEffects.Components
                 tagsChanged = true;
 
                 var oldTags = tags.ContainsKey(commandCategory) ? CommandTags : Enumerable.Empty<TMPEffectTagTuple>();
-                var newTags = processors.TagProcessors[commandCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
+                var newTags = processors.TagProcessors[commandCategory.Prefix]
+                    .SelectMany(processed => processed.ProcessedTags)
+                    .Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                 if (oldTags.SequenceEqual(newTags))
                 {
                     oldTags = tags.ContainsKey(eventCategory) ? EventTags : Enumerable.Empty<TMPEffectTagTuple>();
-                    newTags = processors.TagProcessors[eventCategory.Prefix].SelectMany(processed => processed.ProcessedTags).Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
+                    newTags = processors.TagProcessors[eventCategory.Prefix]
+                        .SelectMany(processed => processed.ProcessedTags)
+                        .Select(tag => new TMPEffectTagTuple(tag.Value, tag.Key));
 
                     if (oldTags.SequenceEqual(newTags))
                     {
@@ -574,7 +655,8 @@ namespace TMPEffects.Components
             PostProcessTags();
         }
 
-        private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
+        private void OnTextChanged_Late(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData,
+            ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
             if (!textContentChanged && !tagsChanged)
             {
@@ -586,12 +668,13 @@ namespace TMPEffects.Components
             if (!Application.isPlaying)
             {
                 bool wasWriting = writing;
-                ResetWriter();
+                ResetInternalState();
+                Show(0, Mediator.CharData.Count, true);
                 if (wasWriting)
                 {
                     StartWriter();
                 }
-                else Show(0, Mediator.CharData.Count, true);
+
                 return;
             }
 #endif
@@ -672,7 +755,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnWaitStarted?.Invoke(this, waitAmount);
+                OnWaitStartedPreview?.Invoke(this, waitAmount);
                 return;
             }
 #endif
@@ -685,7 +768,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                OnWaitEnded?.Invoke(this);
+                OnWaitEndedPreview?.Invoke(this);
                 return;
             }
 #endif
@@ -705,11 +788,15 @@ namespace TMPEffects.Components
 
             OnSkipWriter?.Invoke(this, index);
         }
+
         #endregion
 
         #region Writer Coroutine
+
         private void StartWriterCoroutine()
         {
+            if (!TextComponent.enabled) return;
+            
             StopWriterCoroutine();
             writerCoroutine = StartCoroutine(WriterCoroutine());
         }
@@ -762,9 +849,12 @@ namespace TMPEffects.Components
                 if (shouldWait && waitAmount > 0)
                 {
                     RaiseWaitStartedEvent(waitAmount);
-                    yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                    yield return useScaledTime
+                        ? new WaitForSeconds(waitAmount)
+                        : new WaitForSecondsRealtime(waitAmount);
                     RaiseWaitEndedEvent();
                 }
+
                 FixTimePost(waitAmount);
 
                 if (Mediator == null) yield break;
@@ -776,7 +866,9 @@ namespace TMPEffects.Components
 
             // Iterate over all characters / indices in the text
             CharData cData;
-            for (int i = Mathf.Max(currentIndex, 0); i < Mediator?.CharData.Count; i++) // .? and other null checks because coroutines are not instantly cancelled (so disable writer => NRE)
+            for (int i = Mathf.Max(currentIndex, 0);
+                 i < Mediator?.CharData.Count;
+                 i++) // .? and other null checks because coroutines are not instantly cancelled (so disable writer => NRE)
             {
                 currentIndex = i;
                 cData = Mediator.CharData[i];
@@ -791,18 +883,19 @@ namespace TMPEffects.Components
 
                     invokable.Trigger();
 
-                    // Wait for the given amount of time, and accomodate for excess wait time (frame-timing)
-                    FixTimePre(ref waitAmount);
+                    prevTime = useScaledTime ? Time.time : Time.unscaledTime;
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
-                    FixTimePost(waitAmount);
-                    if (Mediator == null) yield break;
 
-                    // Wait until all wait conditions are true
+                    FixTimePost(waitAmount);
+
+                    if (Mediator == null) yield break;
                     if (continueConditions != null) yield return HandleWaitConditions();
                     if (Mediator == null) yield break;
                 }
@@ -815,6 +908,7 @@ namespace TMPEffects.Components
                     yield return useScaledTime ? new WaitForSeconds(delay) : new WaitForSecondsRealtime(delay);
                     if (Mediator == null) yield break;
                 }
+
                 FixTimePost(delay);
 
                 // Show the current character, if it is not already shown
@@ -832,33 +926,6 @@ namespace TMPEffects.Components
                 OnStopWriting();
                 yield break;
             }
-
-            // TODO
-            // This originally was required to raise commands/events at the very end
-            // of a text, e.g. "Lorem ipsum<?event>"
-            // Currently the preprocessor adds a space character to the end of every text
-            // (originally to fix a bug related to the TMP_Text not updating correctly for empty texts)
-            // If that changes, this will be required again!
-            //invokables = GetInvokables(Mediator.CharData.Count);
-            //foreach (var invokable in invokables)
-            //{
-            //    waitAmount = 0f;
-            //    shouldWait = false;
-            //    continueConditions = null;
-
-            //    invokable.Trigger();
-
-            //    FixTimePre(ref waitAmount);
-            //    if (shouldWait && waitAmount > 0)
-            //    {
-            //        RaiseWaitStartedEvent(waitAmount);
-            //        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
-            //        RaiseWaitEndedEvent();
-            //    }
-            //    if (Mediator == null) yield break;
-            //    if (continueConditions != null) yield return HandleWaitConditions();
-            //    if (Mediator == null) yield break;
-            //}
 
             RaiseFinishWriterEvent();
             OnStopWriting();
@@ -878,6 +945,19 @@ namespace TMPEffects.Components
             {
                 excessWaitedTime += (prevScaled ? Time.time : Time.unscaledTime) - prevTime - time;
             }
+        }
+
+        private void ResetInternalState()
+        {
+            if (writing)
+            {
+                StopWriterCoroutine();
+            }
+
+            // reset
+            currentIndex = -1;
+            ResetInvokables(Mediator.CharData.Count);
+            ResetData();
         }
 
         private void ResetData()
@@ -939,7 +1019,9 @@ namespace TMPEffects.Components
             }
 
             // If character is punctuation, and not directly followed by another punctuation (to multiple extended delays for e.g. "..." or "?!?"
-            if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 || !char.IsPunctuation(Mediator.CharData[index + 1].info.character)))
+            if (char.IsPunctuation(cData.info.character) && (index == Mediator.CharData.Count - 1 ||
+                                                             !char.IsPunctuation(Mediator.CharData[index + 1].info
+                                                                 .character)))
             {
                 return Mathf.Max(currentDelays.CalculatedPunctuationDelay, 0);
             }
@@ -965,7 +1047,6 @@ namespace TMPEffects.Components
                 }
 
                 if (!allMet) yield return null;
-
             } while (!allMet && continueConditions != null);
 
             continueConditions = null;
@@ -989,10 +1070,14 @@ namespace TMPEffects.Components
                         if (eventsEnabled)
                         {
                             invokables = invokables.Concat(events);
-                            invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
+                            invokables = invokables.OrderBy(x => x.Indices.StartIndex)
+                                .ThenBy(x => x.Indices.OrderAtIndex);
                         }
                     }
-                    else { invokables = events; }
+                    else
+                    {
+                        invokables = events;
+                    }
 
                     invokables = invokables.Where(x => x.Indices.StartIndex >= index && x.ExecuteOnSkip);
                 }
@@ -1004,7 +1089,6 @@ namespace TMPEffects.Components
                         invokables = invokables.Where(x => x.ExecuteInstantly);
                     }
                     else invokables = new List<ICachedInvokable>();
-
                 }
                 else
                 {
@@ -1014,7 +1098,8 @@ namespace TMPEffects.Components
                         if (eventsEnabled)
                         {
                             invokables = invokables.Concat(events.GetAt(index));
-                            invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
+                            invokables = invokables.OrderBy(x => x.Indices.StartIndex)
+                                .ThenBy(x => x.Indices.OrderAtIndex);
                         }
                     }
                     else invokables = events.GetAt(index);
@@ -1032,6 +1117,7 @@ namespace TMPEffects.Components
                     invokables = invokables.Concat(events);
                     invokables = invokables.OrderBy(x => x.Indices.StartIndex).ThenBy(x => x.Indices.OrderAtIndex);
                 }
+
                 invokables = invokables.Where(x => x.Indices.StartIndex >= index && x.ExecuteOnSkip);
             }
             else if (index < 0)
@@ -1078,9 +1164,12 @@ namespace TMPEffects.Components
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
+
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1105,9 +1194,12 @@ namespace TMPEffects.Components
                     if (shouldWait && waitAmount > 0)
                     {
                         RaiseWaitStartedEvent(waitAmount);
-                        yield return useScaledTime ? new WaitForSeconds(waitAmount) : new WaitForSecondsRealtime(waitAmount);
+                        yield return useScaledTime
+                            ? new WaitForSeconds(waitAmount)
+                            : new WaitForSecondsRealtime(waitAmount);
                         RaiseWaitEndedEvent();
                     }
+
                     if (continueConditions != null) yield return HandleWaitConditions();
                 }
 
@@ -1126,31 +1218,42 @@ namespace TMPEffects.Components
         {
             writing = true;
         }
+
         #endregion
 
         #region Editor
+
 #if UNITY_EDITOR
 #pragma warning disable CS0414
         //[System.NonSerialized] bool reprocessFlag = false;
         [SerializeField, HideInInspector] bool useDefaultDatabase = true;
+        [SerializeField, HideInInspector] bool useDefaultKeywordDatabase = true;
         [SerializeField, HideInInspector] bool initDatabase = false;
-        [Tooltip("Raise text events in preview mode?")]
-        [SerializeField, HideInInspector] bool eventsEnabled = false;
-        [Tooltip("Raise commands in preview mode?")]
-        [SerializeField, HideInInspector] bool commandsEnabled = true;
+
+        [Tooltip("Raise text events in preview mode?")] [SerializeField, HideInInspector]
+        bool eventsEnabled = false;
+
+        [Tooltip("Raise commands in preview mode?")] [SerializeField, HideInInspector]
+        bool commandsEnabled = true;
 #pragma warning restore CS0414
 
         internal delegate void CharDataHandler(TMPWriter writer, CharData cData);
+
         internal delegate void IntHandler(TMPWriter writer, int index);
+        
+        internal delegate void FloatHandler(TMPWriter writer, float duration);
+
         internal delegate void VoidHandler(TMPWriter writer);
+
         internal delegate void ResetHandler();
+
         internal event CharDataHandler OnCharacterShownPreview;
         internal event IntHandler OnResetWriterPreview;
         internal event IntHandler OnSkipWriterPreview;
         internal event VoidHandler OnFinishWriterPreview;
         internal event VoidHandler OnStartWriterPreview;
         internal event VoidHandler OnStopWriterPreview;
-        internal event VoidHandler OnWaitStartedPreview;
+        internal event FloatHandler OnWaitStartedPreview;
         internal event VoidHandler OnWaitEndedPreview;
         internal event ResetHandler OnResetComponent;
 
@@ -1197,8 +1300,13 @@ namespace TMPEffects.Components
             if (enabled)
             {
                 enabled = false;
-                EditorApplication.delayCall += () => this.enabled = true;
-                EditorApplication.delayCall += () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
+                EditorApplication.delayCall += () =>
+                {
+                    if (this != null)
+                        this.enabled = true;
+                };
+                EditorApplication.delayCall +=
+                    () => EditorApplication.delayCall += EditorApplication.QueuePlayerLoopUpdate;
             }
 
             OnResetComponent?.Invoke();
@@ -1248,6 +1356,7 @@ namespace TMPEffects.Components
             RaiseResetWriterEvent(index);
         }
 #endif
+
         #endregion
 
         /// <summary>
@@ -1261,7 +1370,7 @@ namespace TMPEffects.Components
         }
 
         /// <summary>
-        /// Stores the various delays along with their <see cref="DelayType"/> of a TMPWriter.
+        /// Stores the various delays of a TMPWriter along with their <see cref="DelayType"/>.
         /// </summary>
         [System.Serializable]
         public class Delays
@@ -1269,31 +1378,37 @@ namespace TMPEffects.Components
             /// <summary>
             /// The calculated delay after "showing" a whitespace character, using <see cref="whitespaceDelay"/> and <see cref="whitespaceDelayType"/>.
             /// </summary>
-            public float CalculatedWhiteSpaceDelay => whitespaceDelayType == DelayType.Raw ? whitespaceDelay : delay * whitespaceDelay;
+            public float CalculatedWhiteSpaceDelay =>
+                whitespaceDelayType == DelayType.Raw ? whitespaceDelay : delay * whitespaceDelay;
+
             /// <summary>
             /// The calculated delay after showing a punctuation character, using <see cref="punctuationDelay"/> and <see cref="punctuationDelayType"/>.
             /// </summary>
-            public float CalculatedPunctuationDelay => punctuationDelayType == DelayType.Raw ? punctuationDelay : delay * punctuationDelay;
+            public float CalculatedPunctuationDelay =>
+                punctuationDelayType == DelayType.Raw ? punctuationDelay : delay * punctuationDelay;
+
             /// <summary>
             /// The calculated delay after "showing" an already visible character, using <see cref="visibleDelay"/> and <see cref="visibleDelayType"/>.
             /// </summary>
-            public float CalculatedVisibleDelay => visibleDelayType == DelayType.Raw ? visibleDelay : delay * visibleDelay;
+            public float CalculatedVisibleDelay =>
+                visibleDelayType == DelayType.Raw ? visibleDelay : delay * visibleDelay;
+
             /// <summary>
             /// The calculated delay after "showing" a linebreak character, using <see cref="linebreakDelay"/> and <see cref="linebreakDelayType"/>.
             /// </summary>
-            public float CalculatedLinebreakDelay => linebreakDelayType == DelayType.Raw ? linebreakDelay : delay * linebreakDelay;
+            public float CalculatedLinebreakDelay =>
+                linebreakDelayType == DelayType.Raw ? linebreakDelay : delay * linebreakDelay;
 
             /// <summary>
             /// The delay after showing a character.
             /// </summary>
-            [Tooltip("The delay between new characters shown by the writer, i.e. the inverse of the speed of the writer.")]
             public float delay = 0.035f;
 
-           /// <summary>
-           /// The delay after "showing" a whitespace character.
-           /// </summary>
-            [Tooltip("The delay after whitespace characters, either as percentage of the general delay or in seconds")]
+            /// <summary>
+            /// The delay after "showing" a whitespace character.
+            /// </summary>
             public float whitespaceDelay;
+
             /// <summary>
             /// The <see cref="DelayType"/> of <see cref="whitespaceDelay"/>.
             /// </summary>
@@ -1302,8 +1417,8 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after "showing" a linebreak character.
             /// </summary>
-            [Tooltip("The delay after linebreaks, either as percentage of the general delay or in seconds")]
             public float linebreakDelay;
+
             /// <summary>
             /// The <see cref="DelayType"/> of <see cref="linebreakDelay"/>.
             /// </summary>
@@ -1312,8 +1427,8 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after showing a punctuation character.
             /// </summary>
-            [Tooltip("The delay after punctuation characters, either as percentage of the general delay or in seconds")]
             public float punctuationDelay;
+
             /// <summary>
             /// The <see cref="DelayType"/> of <see cref="punctuationDelay"/>.
             /// </summary>
@@ -1322,8 +1437,8 @@ namespace TMPEffects.Components
             /// <summary>
             /// The delay after "showing" an already visible character.
             /// </summary>
-            [Tooltip("The delay after already visible characters, either as percentage of the general delay or in seconds")]
             public float visibleDelay;
+
             /// <summary>
             /// The <see cref="DelayType"/> of <see cref="visibleDelay"/>.
             /// </summary>
@@ -1386,12 +1501,17 @@ namespace TMPEffects.Components
 
         private void PostProcessTags()
         {
-            var kvpCommands = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(commandCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
-            var kvpEvents = new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(eventCategory, processors.TagProcessors[eventCategory.Prefix][0].ProcessedTags);
+            var kvpCommands =
+                new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(
+                    commandCategory, processors.TagProcessors[commandCategory.Prefix][0].ProcessedTags);
+            var kvpEvents =
+                new KeyValuePair<TMPEffectCategory, IEnumerable<KeyValuePair<TMPEffectTagIndices, TMPEffectTag>>>(
+                    eventCategory, processors.TagProcessors[eventCategory.Prefix][0].ProcessedTags);
 
             tags = new TagCollectionManager<TMPEffectCategory>(kvpCommands, kvpEvents);
 
-            var commandCacher = new CommandCacher(Mediator.CharData, this, commandCategory);
+            var commandCacher =
+                new CommandCacher(Mediator.CharData, this, commandCategory, keywordDatabaseWrapper.Database);
             var eventCacher = new EventCacher(this, OnTextEvent);
 
             commands = new CachedCollection<CachedCommand>(commandCacher, tags[commandCategory]);

@@ -13,6 +13,18 @@ namespace TMPEffects.Extensions
 {
     public static class AnimationCurveUtility
     {
+        public static AnimationCurve Copy(this AnimationCurve curve)
+        {
+            AnimationCurve newCurve = new AnimationCurve();
+            newCurve.CopyFrom(curve);
+            return newCurve;
+        }
+
+        public static AnimationCurve InvertCopy(this AnimationCurve curve)
+        {
+            return Invert(curve);
+        }
+        
         #region Linear
         public static AnimationCurve Linear()
         {
@@ -483,8 +495,6 @@ namespace TMPEffects.Extensions
             return Bezier(array);
         }
 
-        // TODO Maybe implement some way to ensure no two keyframe (or its tangents) have the same x value
-        // Or: explicitly document this as a limitation of animation curves
         public static AnimationCurve LinearBezier(Vector2 start, Vector2 end)
         {
             Keyframe kf0 = new Keyframe(start.x, start.y, 0f, 0f, 0f, 0f);

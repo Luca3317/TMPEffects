@@ -3,61 +3,88 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
+using TMPEffects.Databases;
 using TMPEffects.Extensions;
 using UnityEngine;
 
 namespace TMPEffects.Parameters
 {
+    /// <summary>
+    /// Utility class for parsing parameters.
+    /// </summary>
     public static class ParameterParsing
     {
-        #region Parsing
-
-        public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
+        private static string TrimIfNeeded(string text)
+        {
+            if (text.Length == 0) return text;
+            if (!char.IsWhiteSpace(text[0]) && !char.IsWhiteSpace(text[^1])) return text;
+            return text.Trim();
+        }
+        
+        public static bool StringToInt(string str, out int result, ITMPKeywordDatabase keywords = null)
         {
             result = 0;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
             if (string.IsNullOrWhiteSpace(str)) return false;
 
-            if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
+            if (keywords != null && keywords.TryGetInt(str, out result))
                 return true;
 
-            if (keywords != null && keywords.TryGetValue(str, out result))
+            if (int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result))
                 return true;
 
             return true;
         }
 
-        public static bool StringToFloat(string str, out float result, IDictionary<string, float> keywords = null)
+        public static bool StringToFloat(string str, out float result, ITMPKeywordDatabase keywords = null)
         {
             result = 0;
-            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            if (keywords != null && keywords.TryGetFloat(str, out result))
+                return true;
 
             if (float.TryParse(str, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
                 return true;
 
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
             return false;
         }
 
-        public static bool StringToBool(string str, out bool result, IDictionary<string, bool> keywords = null)
+        public static bool StringToBool(string str, out bool result, ITMPKeywordDatabase keywords = null)
         {
             result = false;
-            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            if (keywords != null && keywords.TryGetBool(str, out result))
+                return true;
 
             if (bool.TryParse(str, out result))
                 return true;
 
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
             return false;
         }
 
 
-        public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
+        public static bool StringToVector2(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
         {
             result = new Vector2(0, 0);
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            if (keywords != null && keywords.TryGetVector3(str, out Vector3 result3))
+            {
+                result = result3;
+                return true;
+            }
 
             Vector2? v;
             if ((v = TryParse()) != null)
@@ -65,9 +92,6 @@ namespace TMPEffects.Parameters
                 result = v.Value;
                 return true;
             }
-
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
 
             return false;
 
@@ -85,57 +109,33 @@ namespace TMPEffects.Parameters
                 if (commaIndex < 2) return null;
 
                 float x, y;
-                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x)) return null;
+                if (!StringToFloat(str.Substring(1, commaIndex - 1), out x, keywords)) return null;
 
-                if (!StringToFloat(str.Substring(commaIndex + 1, str.Length - (commaIndex + 2)), out y)) return null;
+                if (!StringToFloat(str.Substring(commaIndex + 1, str.Length - (commaIndex + 2)), out y, keywords))
+                    return null;
 
                 return new Vector2(x, y);
             }
         }
 
-        public static bool StringToTypedVector3(string str, out ParameterTypes.TypedVector3 result,
-            IDictionary<string, string> keywords = null)
+        public static bool StringToTypedVector3(string str, out TMPParameterTypes.TypedVector3 result,
+            ITMPKeywordDatabase keywords = null)
         {
-            if (StringToVector3(str, out Vector3 vec))
+            if (StringToVector3(str, out Vector3 vec, keywords))
             {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Position, vec);
-                return true;
-            }
-            
-            if (StringToAnchor(str, out Vector2 vec2))
-            {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Anchor, vec2);
-                return true;
-            }
-            
-            if (StringToVector3Offset(str, out vec))
-            {
-                result = new ParameterTypes.TypedVector3(ParameterTypes.VectorType.Offset, vec);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Position, vec);
                 return true;
             }
 
-            result = default;
-            return false;
-        }
-        
-        public static bool StringToTypedVector2(string str, out ParameterTypes.TypedVector2 result,
-            IDictionary<string, string> keywords = null)
-        {
-            if (StringToVector2(str, out Vector2 vec))
+            if (StringToAnchor(str, out Vector2 vec2, keywords))
             {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Position, vec);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Anchor, vec2);
                 return true;
             }
-            
-            if (StringToAnchor(str, out vec))
+
+            if (StringToVector3Offset(str, out vec, keywords))
             {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Anchor, vec);
-                return true;
-            }
-            
-            if (StringToVector2Offset(str, out vec))
-            {
-                result = new ParameterTypes.TypedVector2(ParameterTypes.VectorType.Offset, vec);
+                result = new TMPParameterTypes.TypedVector3(TMPParameterTypes.VectorType.Offset, vec);
                 return true;
             }
 
@@ -143,9 +143,40 @@ namespace TMPEffects.Parameters
             return false;
         }
 
-        public static bool StringToVector3(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+        public static bool StringToTypedVector2(string str, out TMPParameterTypes.TypedVector2 result,
+            ITMPKeywordDatabase keywords = null)
+        {
+            if (StringToVector2(str, out Vector2 vec, keywords))
+            {
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Position, vec);
+                return true;
+            }
+
+            if (StringToAnchor(str, out vec, keywords))
+            {
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Anchor, vec);
+                return true;
+            }
+
+            if (StringToVector2Offset(str, out vec, keywords))
+            {
+                result = new TMPParameterTypes.TypedVector2(TMPParameterTypes.VectorType.Offset, vec);
+                return true;
+            }
+
+            result = default;
+            return false;
+        }
+
+        public static bool StringToVector3(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)
         {
             result = new Vector3(0, 0, 0);
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            if (keywords != null && keywords.TryGetVector3(str, out result))
+                return true;
 
             Vector3? v;
             if ((v = TryParse()) != null)
@@ -153,9 +184,6 @@ namespace TMPEffects.Parameters
                 result = v.Value;
                 return true;
             }
-
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
 
             return false;
 
@@ -181,34 +209,34 @@ namespace TMPEffects.Parameters
                 float x, y, z = 0f;
                 if (split.Length == 2)
                 {
-                    if (!StringToFloat(split[0], out x)) return null;
-                    if (!StringToFloat(split[1], out y)) return null;
+                    if (!StringToFloat(split[0], out x, keywords)) return null;
+                    if (!StringToFloat(split[1], out y, keywords)) return null;
                 }
                 else
                 {
-                    if (!StringToFloat(split[0], out x)) return null;
-                    if (!StringToFloat(split[1], out y)) return null;
-                    if (!StringToFloat(split[2], out z)) return null;
+                    if (!StringToFloat(split[0], out x, keywords)) return null;
+                    if (!StringToFloat(split[1], out y, keywords)) return null;
+                    if (!StringToFloat(split[2], out z, keywords)) return null;
                 }
 
                 return new Vector3(x, y, z);
             }
         }
 
-        public static bool StringToVector2Offset(string str, out Vector2 result,
-            IDictionary<string, Vector2> keywords = null)
+        public static bool StringToVector2Offset(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
         {
-            str = str.Trim();
+            result = Vector2.zero;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            // check for "o:" prefix
             if (str.Length < 3 || str[0] != 'o' || str[1] != ':')
             {
-                result = Vector2.zero;
                 return false;
             }
 
             str = str.Substring(2, str.Length - 2);
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
             if (StringToVector2(str, out result, keywords))
             {
                 return true;
@@ -217,43 +245,43 @@ namespace TMPEffects.Parameters
             return false;
         }
 
-        public static bool StringToVector3Offset(string str, out Vector3 result,
-            IDictionary<string, Vector3> keywords = null)
+        public static bool StringToVector3Offset(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)
         {
-            str = str.Trim();
+            result = Vector3.zero;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
             if (str.Length < 3 || str[0] != 'o' || str[1] != ':')
-            {
-                result = Vector3.zero;
                 return false;
-            }
 
             str = str.Substring(2, str.Length - 2);
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
             if (StringToVector3(str, out result, keywords))
-            {
                 return true;
-            }
 
             return false;
         }
 
-        public static bool StringToAnchor(string str, out Vector2 result,
-            IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector2> vectorKeywords = null)
+        public static bool StringToAnchor(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
         {
-            str = str.Trim();
+            result = default;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            // check for "a:" prefix
             if (str.Length < 3 || str[0] != 'a' || str[1] != ':')
             {
                 result = Vector3.zero;
                 return false;
             }
 
-            if (anchorKeywords != null && anchorKeywords.TryGetValue(str, out result))
+            if (keywords != null && keywords.TryGetAnchor(str, out result))
                 return true;
 
             str = str.Substring(2, str.Length - 2);
-            if (StringToVector2(str, out result, vectorKeywords))
+            
+            if (StringToVector2(str, out result, keywords))
             {
                 return true;
             }
@@ -275,121 +303,93 @@ namespace TMPEffects.Parameters
          *  //recognizable by: no '(' ')' or ','
          *  keywords: easein, easeout, etc
          */
-        public static bool StringToAnimCurve(string str, out AnimationCurve result,
-            IDictionary<string, AnimationCurve> keywords = null)
+        public static bool StringToAnimCurve(string str, out AnimationCurve result, ITMPKeywordDatabase keywords = null)
         {
             result = null;
-            str = str.Trim();
 
+            str = TrimIfNeeded(str);
             if (str.Length == 0) return false;
+
+            if (keywords != null && keywords.TryGetAnimCurve(str, out result))
+            {
+                result = new AnimationCurve(result.keys);
+                return true;
+            }
 
             // If vector
             if (str[0] == '(')
             {
-                return VectorSequenceToAnimationCurve(str, ref result);
+                return VectorSequenceToAnimationCurve(str, ref result, keywords);
             }
 
             // If method
             if (str.Contains('('))
             {
-                return MethodToAnimationCurve(str, ref result);
-            }
-
-            // else, keyword; first passed in ones, then built in ones
-            if (keywords != null && keywords.TryGetValue(str, out result))
-                return true;
-
-            if (AnimationCurveUtility.NameConstructorMapping.TryGetValue(str, out Func<AnimationCurve> ctor))
-            {
-                result = ctor();
-                return true;
+                return MethodToAnimationCurve(str, ref result, keywords);
             }
 
             return false;
         }
 
-        public static bool StringToWaveOffset(string str, out ParameterTypes.WaveOffsetType result,
-            IDictionary<string, ParameterTypes.WaveOffsetType> keywords = null)
+        public static bool StringToUnityObject(string str, out UnityEngine.Object result,
+            ITMPKeywordDatabase keywords = null)
+        {
+            result = null;
+
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
+
+            return keywords != null && keywords.TryGetUnityObject(str, out result);
+        }
+
+
+        // public static bool StringToOffsetProvider(string str, out ITMPOffsetProvider result,
+        //     ITMPKeywordDatabase keywords = null)
+        // {
+        //     result = default;
+        //     
+        //     str = TrimIfNeeded(str);
+        //     if (str.Length == 0) return false;
+        //
+        //     if (keywords != null && keywords.TryGetOffsetType(str, out result))
+        //         return true;
+        //     
+        //     return GlobalKeywordDatabase.TryGetOffsetType(str, out result);
+        // }
+
+        public static bool StringToColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
-            str = str.Trim();
 
-            switch (str)
-            {
-                case "sidx":
-                case "sindex":
-                case "segmentindex":
-                    result = ParameterTypes.WaveOffsetType.SegmentIndex;
-                    return true;
+            str = TrimIfNeeded(str);
+            if (str.Length == 0) return false;
 
-                case "idx":
-                case "index":
-                    result = ParameterTypes.WaveOffsetType.Index;
-                    return true;
-
-                case "word":
-                case "wordidx":
-                case "wordindex":
-                    result = ParameterTypes.WaveOffsetType.Word;
-                    return true;
-
-                case "line":
-                case "lineno":
-                case "linenumber":
-                    result = ParameterTypes.WaveOffsetType.Line;
-                    return true;
-
-                case "base":
-                case "baseline":
-                    result = ParameterTypes.WaveOffsetType.Baseline;
-                    return true;
-
-                case "x":
-                case "xpos":
-                    result = ParameterTypes.WaveOffsetType.XPos;
-                    return true;
-
-                case "y":
-                case "ypos":
-                    result = ParameterTypes.WaveOffsetType.YPos;
-                    return true;
-            }
-
-            if (keywords != null && keywords.ContainsKey(str))
-            {
-                result = keywords[str];
+            if (keywords != null && keywords.TryGetColor(str, out result))
                 return true;
-            }
+
+            if (StringToHexColor(str, out result, keywords)) return true;
+            if (StringToHSVColor(str, out result, keywords)) return true;
+            if (StringToRGBColor(str, out result, keywords)) return true;
+            if (StringToRGBAColor(str, out result, keywords)) return true;
 
             return false;
         }
 
-        public static bool StringToColor(string str, out Color result, IDictionary<string, Color> keywords = null)
+        internal static bool StringToHexInt(string str, out int result, ITMPKeywordDatabase keywords = null)
         {
-            str = str.Trim();
-
-            if (ColorKeyWords.TryGetValue(str, out Color color))
+            try
             {
-                result = color;
+                result = Convert.ToInt32(str, 16);
                 return true;
             }
-
-            if (StringToHexColor(str, out result)) return true;
-            if (StringToHSVColor(str, out result)) return true;
-            if (StringToRGBColor(str, out result)) return true;
-            if (StringToRGBAColor(str, out result)) return true;
-
-            if (keywords != null && keywords.TryGetValue(str, out color))
+            catch
             {
-                result = color;
-                return true;
+                result = default;
+                return keywords != null && keywords.TryGetInt(str, out result);
             }
-
-            return false;
         }
 
-
-        internal static bool StringToHexColor(string str, out Color result)
+        internal static bool StringToHexColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
 
@@ -397,210 +397,137 @@ namespace TMPEffects.Parameters
 
             if (str[0] != '#') return false;
 
-            try
-            {
-                string red = str.Substring(1, 2);
-                int redInt = Convert.ToInt32(red, 16);
-                string green = str.Substring(3, 2);
-                int greenInt = Convert.ToInt32(green, 16);
-                string blue = str.Substring(5, 2);
-                int blueInt = Convert.ToInt32(blue, 16);
-
-                if (str.Length == 9)
-                {
-                    string alpha = str.Substring(7, 2);
-                    int alphaInt = Convert.ToInt32(alpha, 16);
-                    result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f, alphaInt / 255f);
-                }
-
-                result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f);
-                return true;
-            }
-            catch
-            {
+            string red = str.Substring(1, 2);
+            if (!StringToHexInt(red, out int redInt, keywords))
                 return false;
+
+            string green = str.Substring(3, 2);
+            if (!StringToHexInt(green, out int greenInt, keywords))
+                return false;
+
+            string blue = str.Substring(5, 2);
+            if (!StringToHexInt(blue, out int blueInt, keywords))
+                return false;
+
+            if (str.Length == 9)
+            {
+                string alpha = str.Substring(7, 2);
+                if (!StringToHexInt(alpha, out int alphaInt, keywords))
+                    return false;
+
+                result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f, alphaInt / 255f);
             }
+            else
+                result = new Color(redInt / 255f, greenInt / 255f, blueInt / 255f);
+
+            return true;
         }
 
-        internal static bool StringToHSVColor(string str, out Color result)
+        internal static bool StringToHSVColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
 
             if (str.Length < 10) return false;
 
-            if (str.Substring(0, 3) == "hsv")
+            if (str.Substring(0, 3) != "hsv")
+                return false;
+
+            if (str[3] != '(') return false;
+            if (str[str.Length - 1] != ')') return false;
+
+            var values = str.Substring(4, str.Length - 5).Split(',');
+            if (values.Length != 3 && values.Length != 4) return false;
+
+            float[] floats = new float[3];
+            for (int i = 0; i < 3; i++)
             {
-                if (str[3] != '(') return false;
-                if (str[str.Length - 1] != ')') return false;
-
-                var values = str.Substring(4, str.Length - 5).Split(',');
-                if (values.Length != 3 && values.Length != 4) return false;
-
-                float[] floats = new float[3];
-                for (int i = 0; i < 3; i++)
+                if (!StringToFloat(values[i], out float res, keywords))
                 {
-                    if (!StringToFloat(values[i], out float res, null))
-                    {
-                        return false;
-                    }
-
-                    floats[i] = res;
+                    return false;
                 }
 
-                if (values.Length == 4)
-                {
-                    if (!StringToBool(values[3], out bool res, null))
-                    {
-                        return false;
-                    }
-
-                    result = Color.HSVToRGB(floats[0], floats[1], floats[2], res);
-                    return true;
-                }
-                else
-                {
-                    result = Color.HSVToRGB(floats[0], floats[1], floats[2]);
-                    return true;
-                }
+                floats[i] = res;
             }
 
-            return false;
+            if (values.Length == 4)
+            {
+                if (!StringToBool(values[3], out bool res, keywords))
+                {
+                    return false;
+                }
+
+                result = Color.HSVToRGB(floats[0], floats[1], floats[2], res);
+            }
+            else
+            {
+                result = Color.HSVToRGB(floats[0], floats[1], floats[2]);
+            }
+
+            return true;
         }
 
-        internal static bool StringToRGBColor(string str, out Color result)
+        internal static bool StringToRGBColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
 
             if (str.Length < 10) return false;
 
-            if (str.Substring(0, 3) == "rgb")
+            if (str.Substring(0, 3) != "rgb")
+                return false;
+
+            if (str[3] != '(') return false;
+            if (str[str.Length - 1] != ')') return false;
+
+            var values = str.Substring(4, str.Length - 5).Split(',');
+            if (values.Length != 3) return false;
+
+            float[] floats = new float[3];
+            for (int i = 0; i < 3; i++)
             {
-                if (str[3] != '(') return false;
-                if (str[str.Length - 1] != ')') return false;
-
-                var values = str.Substring(4, str.Length - 5).Split(',');
-                if (values.Length != 3) return false;
-
-                float[] floats = new float[3];
-                for (int i = 0; i < 3; i++)
+                if (!StringToFloat(values[i], out float res, keywords))
                 {
-                    if (!StringToFloat(values[i], out float res, null))
-                    {
-                        return false;
-                    }
-
-                    floats[i] = res;
+                    return false;
                 }
 
-                result = new Color(floats[0], floats[1], floats[2]);
-                return true;
+                floats[i] = res;
             }
 
-            return false;
+            result = new Color(floats[0], floats[1], floats[2]);
+            return true;
         }
 
-        internal static bool StringToRGBAColor(string str, out Color result, IDictionary<string, Color> keywords = null)
+        internal static bool StringToRGBAColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
         {
             result = default;
 
             if (str.Length < 11) return false;
 
-            if (str.Substring(0, 4) == "rgba")
+            if (str.Substring(0, 4) != "rgba")
+                return false;
+
+            if (str[4] != '(') return false;
+            if (str[str.Length - 1] != ')') return false;
+
+            var values = str.Substring(5, str.Length - 6).Split(',');
+            if (values.Length != 4) return false;
+
+            float[] floats = new float[4];
+            for (int i = 0; i < 4; i++)
             {
-                if (str[4] != '(') return false;
-                if (str[str.Length - 1] != ')') return false;
-
-                var values = str.Substring(5, str.Length - 6).Split(',');
-                if (values.Length != 4) return false;
-
-                float[] floats = new float[4];
-                for (int i = 0; i < 4; i++)
+                if (!StringToFloat(values[i], out float res, keywords))
                 {
-                    if (!StringToFloat(values[i], out float res, null))
-                    {
-                        return false;
-                    }
-
-                    floats[i] = res;
+                    return false;
                 }
 
-                result = new Color(floats[0], floats[1], floats[2], floats[3]);
-                return true;
+                floats[i] = res;
             }
 
-            return false;
+            result = new Color(floats[0], floats[1], floats[2], floats[3]);
+            return true;
         }
 
-        public static readonly ReadOnlyDictionary<string, Color> ColorKeyWords = new ReadOnlyDictionary<string, Color>(
-            new Dictionary<string, Color>()
-            {
-                { "black", Color.black },
-                { "blue", Color.blue },
-                { "clear", Color.clear },
-                { "green", Color.green },
-                { "cyan", Color.cyan },
-                { "gray", Color.gray },
-                { "grey", Color.grey },
-                { "magenta", Color.magenta },
-                { "red", Color.red },
-                { "white", Color.white },
-                { "yellow", Color.yellow },
-
-                { "maroon", new Color32(128, 0, 0, 255) },
-                { "olive", new Color32(128, 128, 0, 255) },
-                { "lime", new Color32(0, 255, 0, 255) },
-                { "aqua", new Color32(0, 255, 255, 255) },
-                { "teal", new Color32(0, 128, 128, 255) },
-                { "navy", new Color32(0, 0, 128, 255) },
-                { "fuchsia", new Color32(255, 0, 255, 255) },
-                { "purple", new Color32(128, 0, 128, 255) },
-                { "silver", new Color32(192, 192, 192, 255) },
-                { "orange", new Color32(255, 165, 0, 255) },
-                { "pink", new Color32(255, 192, 203, 255) },
-
-                { "gold", new Color32(255, 215, 0, 255) },
-                { "indigo", new Color32(75, 0, 130, 255) },
-                { "violet", new Color32(238, 130, 238, 255) },
-                { "brown", new Color32(165, 42, 42, 255) },
-                { "beige", new Color32(245, 245, 220, 255) },
-                { "ivory", new Color32(255, 255, 240, 255) },
-                { "khaki", new Color32(240, 230, 140, 255) },
-                { "lavender", new Color32(230, 230, 250, 255) },
-                { "salmon", new Color32(250, 128, 114, 255) },
-                { "turquoise", new Color32(64, 224, 208, 255) },
-
-                { "coral", new Color32(255, 127, 80, 255) },
-                { "peach", new Color32(255, 218, 185, 255) },
-                { "mint", new Color32(189, 252, 201, 255) },
-                { "skyblue", new Color32(135, 206, 235, 255) },
-                { "plum", new Color32(221, 160, 221, 255) },
-                { "chocolate", new Color32(210, 105, 30, 255) },
-                { "tomato", new Color32(255, 99, 71, 255) },
-                { "honeydew", new Color32(240, 255, 240, 255) },
-                { "orchid", new Color32(218, 112, 214, 255) },
-                { "papayawhip", new Color32(255, 239, 213, 255) },
-
-                { "darkblue", new Color32(0, 0, 139, 255) },
-                { "lightblue", new Color32(173, 216, 230, 255) },
-                { "darkred", new Color32(139, 0, 0, 255) },
-                { "lightred", new Color32(255, 102, 102, 255) },
-                { "darkgreen", new Color32(0, 100, 0, 255) },
-                { "lightgreen", new Color32(144, 238, 144, 255) },
-                { "darkyellow", new Color32(204, 204, 0, 255) },
-                { "lightyellow", new Color32(255, 255, 224, 255) },
-                { "darkorange", new Color32(255, 140, 0, 255) },
-                { "lightorange", new Color32(255, 165, 0, 255) },
-                { "darkviolet", new Color32(148, 0, 211, 255) },
-                { "lightviolet", new Color32(238, 130, 238, 255) },
-                { "darkbrown", new Color32(101, 67, 33, 255) },
-                { "lightbrown", new Color32(181, 101, 29, 255) },
-                { "darkpurple", new Color32(128, 0, 128, 255) },
-                { "lightpurple", new Color32(147, 112, 219, 255) },
-                { "darkmagenta", new Color32(139, 0, 139, 255) },
-                { "lightmagenta", new Color32(255, 0, 255, 255) },
-            });
-
-        internal static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result)
+        internal static bool VectorSequenceToAnimationCurve(string str, ref AnimationCurve result,
+            ITMPKeywordDatabase keywords = null)
         {
             List<Vector2> vectors = new List<Vector2>();
             int currentStartIndex = str.IndexOf('(', 0);
@@ -608,13 +535,11 @@ namespace TMPEffects.Parameters
 
             if (currentStartIndex == -1 || currentEndIndex == -1) return false;
 
-            var span = str.AsSpan();
-
             while (currentEndIndex < str.Length && currentEndIndex != -1)
             {
-                var slice = span.Slice(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
+                var s = str.Substring(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
 
-                if (!SpanToVector2(slice, out Vector2 vectorResult))
+                if (!StringToVector2(s, out Vector2 vectorResult, keywords))
                 {
                     return false;
                 }
@@ -628,7 +553,8 @@ namespace TMPEffects.Parameters
             return true;
         }
 
-        internal static bool MethodToAnimationCurve(string str, ref AnimationCurve result)
+        internal static bool MethodToAnimationCurve(string str, ref AnimationCurve result,
+            ITMPKeywordDatabase keywords = null)
         {
             if (str.Length < 4) return false;
 
@@ -642,15 +568,14 @@ namespace TMPEffects.Parameters
                 AnimationCurveUtility.NameBezierConstructorMapping[str.Substring(0, currentStartIndex)];
 
             currentStartIndex++;
-            var span = str.AsSpan();
-            if (span[span.Length - 1] != ')' || span[span.Length - 2] != ')')
+            if (str[str.Length - 1] != ')' || str[str.Length - 2] != ')')
                 return false;
 
             while (currentEndIndex < str.Length && currentEndIndex != -1)
             {
-                var slice = span.Slice(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
+                var s = str.Substring(currentStartIndex, currentEndIndex + 1 - currentStartIndex);
 
-                if (!SpanToVector2(slice, out Vector2 vectorResult))
+                if (!StringToVector2(s, out Vector2 vectorResult, keywords))
                 {
                     return false;
                 }
@@ -663,39 +588,5 @@ namespace TMPEffects.Parameters
             result = constructor(vectors);
             return true;
         }
-
-        internal static bool SpanToVector2(ReadOnlySpan<char> span, out Vector2 result)
-        {
-            result = new Vector2(0, 0);
-            span = span.Trim();
-            if (span.Length <= 3) return false;
-
-            if (span[0] != '(') return false;
-
-            if (span[span.Length - 1] != ')') return false;
-
-            int commaIndex = span.IndexOf(',');
-
-            if (commaIndex < 2) return false;
-
-            float x, y;
-            if (!SpanToFloat(span.Slice(1, commaIndex - 1), out x)) return false;
-
-            if (!SpanToFloat(span.Slice(commaIndex + 1, span.Length - (commaIndex + 2)), out y)) return false;
-
-            result.x = x;
-            result.y = y;
-            return true;
-        }
-
-        internal static bool SpanToFloat(ReadOnlySpan<char> span, out float result)
-        {
-            if (!float.TryParse(span, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
-                return false;
-
-            return true;
-        }
-
-        #endregion
     }
 }

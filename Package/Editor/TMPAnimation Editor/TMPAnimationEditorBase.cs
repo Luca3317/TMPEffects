@@ -4,15 +4,16 @@ using UnityEditor;
 using TMPEffects.TMPAnimations;
 using TMPro;
 using TMPEffects.Components;
-using TMPEffects.TMPSceneAnimations;
+using TMPEffects.TMPAnimations.Animations;
 using TMPEffects.CharacterData;
 using TMPEffects.Tags;
 using System.Collections.ObjectModel;
+using TMPEffects.Databases;
 using TMPEffects.ObjectChanged;
 
 namespace TMPEffects.Editor
 {
-    public class TMPAnimationEditorBase : UnityEditor.Editor
+    internal class TMPAnimationEditorBase : UnityEditor.Editor
     {
         protected PreviewRenderUtility previewUtility;
         protected GameObject targetObject;
@@ -21,6 +22,11 @@ namespace TMPEffects.Editor
         protected WrapperAnimation anim;
         protected float lastUpdateTime = -1f;
         protected bool animate = true;
+
+        private static readonly GUIContent titleGUI = new GUIContent("TMPAnimation Preview");
+        private static readonly GUIContent sizeGUI = new GUIContent("Size");
+
+        private static GUIStyle animationButtonStyle;
 
         protected virtual void OnEnable()
         {
@@ -34,6 +40,8 @@ namespace TMPEffects.Editor
 
         protected virtual void OnDisable()
         {
+            if (previewUtility != null) previewUtility.Cleanup();
+            (target as INotifyObjectChanged).ObjectChanged -= OnChange;
             if (targetObject != null)
             {
                 try
@@ -45,13 +53,11 @@ namespace TMPEffects.Editor
                     Debug.LogError("Failed to dispose targetObject correctly");
                 }
             }
-            if (previewUtility != null) previewUtility.Cleanup();
-            (target as INotifyObjectChanged).ObjectChanged -= OnChange;
         }
 
         public override GUIContent GetPreviewTitle()
         {
-            return new GUIContent("TMPAnimation Preview");
+            return titleGUI;
         }
 
         public override bool RequiresConstantRepaint()
@@ -61,36 +67,63 @@ namespace TMPEffects.Editor
 
         public override void OnPreviewSettings()
         {
-            GUIStyle animationButtonStyle = new GUIStyle(GUI.skin.button);
-            animationButtonStyle.richText = true;
+            animationButtonStyle ??= new GUIStyle(GUI.skin.button)
+            {
+                richText = true
+            };
             char animationC = animate ? '\u2713' : '\u2717';
-            GUIContent animationButtonContent = new GUIContent("Toggle preview " + (animate ? "<color=#90ee90>" : "<color=#f1807e>") + animationC.ToString() + "</color>");
+            GUIContent animationButtonContent = new GUIContent("Toggle preview " +
+                                                               (animate ? "<color=#90ee90>" : "<color=#f1807e>") +
+                                                               animationC.ToString() + "</color>");
+
 
             if (GUILayout.Button(animationButtonContent, animationButtonStyle))
             {
                 animate = !animate;
                 if (!animate) animator.ResetAnimations();
             }
+
             if (GUILayout.Button("Restart"))
+            {
+                animator.ResetTime();
                 OnChange(anim);
+            }
         }
 
         public override void DrawPreview(Rect previewArea)
         {
+            Debug.Log(previewArea + " : " + Event.current.type);
             if (animator.Tags.Count == 0)
             {
-                if (!animator.Tags.TryAdd(new TMPEffectTag("preview", TMPAnimator.ANIMATION_PREFIX, new Dictionary<string, string>()), new TMPEffectTagIndices(0, -1, 0)))
+                if (!animator.Tags.TryAdd(
+                        new TMPEffectTag("preview", TMPAnimator.ANIMATION_PREFIX, new Dictionary<string, string>()),
+                        new TMPEffectTagIndices(0, -1, 0)))
                 {
-                    Debug.LogError("Failed to add tag; SetAnimation not called correctly?");
+                    TMPEffectsBugReport.BugReportPrompt("Failed to add tag; SetAnimation not called correctly?");
                 }
             }
 
             UpdateAnimation();
 
-            previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
-            previewUtility.Render();
-            var texture = previewUtility.EndPreview();
-            GUI.DrawTexture(previewArea, texture);
+            if (Event.current.type == EventType.Repaint)
+            {
+                previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
+                previewUtility.Render();
+
+                var texture = previewUtility.EndPreview();
+                GUI.DrawTexture(previewArea, texture);
+            }
+            else if (Event.current.type == EventType.Layout)
+            {
+                // No clue how else to handle this
+                // Need to render during layout to correctly update preview scene (afaict)
+                // TODO Maybe look into this further at some point; this works fine for now though
+                previewArea.width = 1;
+                previewArea.height = 1;
+                previewUtility.BeginPreview(previewArea, previewBackground: GUIStyle.none);
+                previewUtility.Render();
+                previewUtility.EndPreview();
+            }
 
             DrawPreviewBar();
         }
@@ -99,11 +132,12 @@ namespace TMPEffects.Editor
         {
             if (!animate)
             {
-                lastUpdateTime = Time.time;
+                lastUpdateTime = Time.realtimeSinceStartup;
                 return;
             }
-            animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.time - lastUpdateTime);
-            lastUpdateTime = Time.time;
+
+            animator.UpdateAnimations(lastUpdateTime == -1f ? 0f : Time.realtimeSinceStartup - lastUpdateTime);
+            lastUpdateTime = Time.realtimeSinceStartup;
         }
 
         protected virtual void DrawPreviewBar()
@@ -113,8 +147,10 @@ namespace TMPEffects.Editor
 
             EditorGUILayout.BeginHorizontal();
 
-            targetText.fontSize = EditorGUILayout.Slider(new GUIContent("Size"), targetText.fontSize, 1, 50, GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.35f));
-            targetText.text = EditorGUILayout.TextField(targetText.text, GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.65f));
+            targetText.fontSize = EditorGUILayout.Slider(sizeGUI, targetText.fontSize, 1, 50,
+                GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.35f));
+            targetText.text = EditorGUILayout.TextField(targetText.text,
+                GUILayout.Width(EditorGUIUtility.currentViewWidth * 0.65f));
 
             EditorGUILayout.EndHorizontal();
 
@@ -128,7 +164,8 @@ namespace TMPEffects.Editor
 
         protected void SetupPreviewScene()
         {
-            targetObject = EditorUtility.CreateGameObjectWithHideFlags("Test " + UnityEngine.Random.Range(0, 100), HideFlags.HideAndDontSave);
+            targetObject = EditorUtility.CreateGameObjectWithHideFlags("Test " + UnityEngine.Random.Range(0, 100),
+                HideFlags.HideAndDontSave);
             targetText = targetObject.AddComponent<TextMeshPro>();
             targetObject.transform.position = Vector3.zero;
 
@@ -162,7 +199,7 @@ namespace TMPEffects.Editor
         public override bool HasPreviewGUI()
         {
             ITMPAnimation t = target as ITMPAnimation;
-            return t != null && t.ValidateParameters(dummyDict);
+            return t != null && t.ValidateParameters(dummyDict, animator.KeywordDatabase);
         }
 
         protected class WrapperAnimation : TMPSceneAnimation
@@ -179,14 +216,18 @@ namespace TMPEffects.Editor
 
             public override object GetNewCustomData() => tmpanimation.GetNewCustomData();
 
-            public override void SetParameters(object customData, IDictionary<string, string> parameters)
-                 => tmpanimation.SetParameters(customData, parameters);
+            public override void SetParameters(object customData, IDictionary<string, string> parameters,
+                ITMPKeywordDatabase keywordDatabase)
+            {
+                tmpanimation.SetParameters(customData, parameters, keywordDatabase);
+            }
 
-            public override bool ValidateParameters(IDictionary<string, string> parameters)
-                => tmpanimation.ValidateParameters(parameters);
+            public override bool ValidateParameters(IDictionary<string, string> parameters,
+                ITMPKeywordDatabase keywordDatabase)
+                => tmpanimation.ValidateParameters(parameters, keywordDatabase);
         }
 
-        protected ReadOnlyDictionary<string, string> dummyDict = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
+        protected ReadOnlyDictionary<string, string> dummyDict =
+            new ReadOnlyDictionary<string, string>(new Dictionary<string, string>() { { "", "" } });
     }
 }
-

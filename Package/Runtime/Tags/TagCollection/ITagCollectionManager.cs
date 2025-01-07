@@ -9,7 +9,7 @@ namespace TMPEffects.Tags.Collections
     /// Interface for a manager of <see cref="ITagCollection"/>.
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
-    public interface ITagCollectionManager<TKey>
+    internal interface ITagCollectionManager<TKey>
     {
         /// <summary>
         /// Get the <see cref="ITagCollection"/> associated with the given key.

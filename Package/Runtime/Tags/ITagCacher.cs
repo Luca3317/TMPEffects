@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.Databases;
 using UnityEngine;
 
 namespace TMPEffects.Tags
@@ -8,7 +9,7 @@ namespace TMPEffects.Tags
     /// Generic interface for caching tags.
     /// </summary>
     /// <typeparam name="T">Type that will be used to represent a cached tag.</typeparam>
-    public interface ITagCacher<T> where T : ITagWrapper
+    internal interface ITagCacher<T> where T : ITagWrapper
     {
         /// <summary>
         /// Cache the given tag and its associated indices.

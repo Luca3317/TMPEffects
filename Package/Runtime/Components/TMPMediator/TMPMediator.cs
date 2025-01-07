@@ -7,6 +7,8 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components.Mediator
 {
@@ -15,34 +17,41 @@ namespace TMPEffects.Components.Mediator
     /// Handles the pre- and postprocessing of the text, as well as maintaining information
     /// about it in the form of a <see cref="CharData"/> and <see cref="VisibilityState"/> collection.
     /// </summary>
-    public class TMPMediator : IDisposable
+    public class TMPMediator : IDisposable 
     {
         /// <summary>
         /// Collection containing all the current <see cref="VisibilityState"/> states of the <see cref="CharData"/> collection.<br/>
         /// The mapping of <see cref="VisibilityState"/> to <see cref="CharData"/> is index based, i.e. the n-th <see cref="VisibilityState"/>
         /// is associated with the n-th <see cref="CharData"/>.<br/>
         /// You can rely on this never being reassigned (therefore any wrappers
-        /// you may create, e.g. Collection<VisibilityData>, can be relied on as well.
+        /// you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
         /// </summary>
         public readonly ReadOnlyCollection<VisibilityState> VisibilityStates;
+
         /// <summary>
         /// Collection containing all the current <see cref="CharData"/>.<br/>
         /// You can rely on this never being reassigned (therefore any wrappers
-        /// you may create, e.g. Collection<CharData>, can be relied on as well.
+        /// you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
         /// </summary>
         public readonly ReadOnlyCollection<CharData> CharData;
+
         /// <summary>
-        /// The <see cref="TMPTextProcessor"/> used by the associated <see cref="TMP_Text"/> component.
+        /// The <see cref="TMPEffectsTextProcessor"/> used by the associated <see cref="TMP_Text"/> component.
         /// </summary>
-        public readonly TMPTextProcessor Processor;
+        public readonly TMPEffectsTextProcessor Processor;
+
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
         /// </summary>
         public readonly TMP_Text Text;
 
         public delegate void VisibilityEventHandler(int index, VisibilityState previous);
-        public delegate void TextChangedEarlyEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData);
-        public delegate void TextChangedLateEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
+
+        public delegate void TextChangedEarlyEventHandler(bool textContentChanged,
+            ReadOnlyCollection<CharData> oldCharData);
+
+        public delegate void TextChangedLateEventHandler(bool textContentChanged,
+            ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities);
 
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, before <see cref="TextChanged_Late"/>.<br/>
@@ -50,10 +59,12 @@ namespace TMPEffects.Components.Mediator
         /// listeners, such as setting visibilities or char data. For such operations, use <see cref="TextChanged_Late"/>.
         /// </summary>
         public event TextChangedEarlyEventHandler TextChanged_Early;
+
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component raises its TEXT_CHANGED_EVENT, after <see cref="TextChanged_Early"/>.<br/>
         /// </summary>
         public event TextChangedLateEventHandler TextChanged_Late;
+
         /// <summary>
         /// Raised when the <see cref="VisibilityState"/> of one of the contained <see cref="CharData"/> is updated. 
         /// </summary>
@@ -75,7 +86,7 @@ namespace TMPEffects.Components.Mediator
 
             charData = new List<CharData>();
             CharData = new ReadOnlyCollection<CharData>(charData);
-            Processor = new TMPTextProcessor(Text);
+            Processor = new TMPEffectsTextProcessor(Text);
 
             visibilityStates = new List<VisibilityState>();
             VisibilityStates = new ReadOnlyCollection<VisibilityState>(visibilityStates);
@@ -90,7 +101,7 @@ namespace TMPEffects.Components.Mediator
         /// </summary>
         public void ForceReprocess()
         {
-            if (Text != null) Text.ForceMeshUpdate(false, true);
+            if (Text != null) Text.ForceMeshUpdate(true, true);
         }
 
         /// <summary>
@@ -100,7 +111,8 @@ namespace TMPEffects.Components.Mediator
         {
             if (disposed)
             {
-                Debug.LogError("Tried to dispose TMPMediator multiple times; Bug");
+                StackTrace stackTrace = new StackTrace();
+                TMPEffectsBugReport.BugReportPrompt("Tried to dispose TMPMediator multiple times:\n" + stackTrace);
                 return;
             }
 
@@ -165,7 +177,9 @@ namespace TMPEffects.Components.Mediator
         {
             if (startIndex < 0 || length < 0 || startIndex + length > Text.textInfo.characterCount)
             {
-                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " + length + "; Length of string: " + Text.textInfo.characterCount);
+                throw new System.ArgumentOutOfRangeException("Invalid input: Start = " + startIndex + "; Length = " +
+                                                             length + "; Length of string: " +
+                                                             Text.textInfo.characterCount);
             }
 
             VisibilityState newState = state;
@@ -244,7 +258,7 @@ namespace TMPEffects.Components.Mediator
         /// Apply the mesh of the <see cref="CharData"/>.
         /// </summary>
         /// <param name="cData"></param>
-        public void ApplyMesh(CharData cData)
+        internal void ApplyMesh(CharData cData)
         {
             int index = cData.info.index;
             TMP_TextInfo info = Text.textInfo;
@@ -254,7 +268,7 @@ namespace TMPEffects.Components.Mediator
             Color32[] colors = info.meshInfo[mIndex].colors32;
             Vector3[] verts = info.meshInfo[mIndex].vertices;
 
-#if UNITY_2023_2_OR_NEWER
+#if TMPRO_3_2_0_PRE_10_OR_NEWER || UNITY_2023_2_OR_NEWER
             Vector4[] uvs0 = info.meshInfo[mIndex].uvs0;
 #else
             Vector2[] uvs0 = info.meshInfo[mIndex].uvs0;
@@ -267,7 +281,7 @@ namespace TMPEffects.Components.Mediator
                 verts[vIndex + j] = CharData[index].mesh.GetPosition(j);
                 colors[vIndex + j] = CharData[index].mesh.GetColor(j);
 
-#if UNITY_2023_2_OR_NEWER
+#if TMPRO_3_2_0_PRE_10_OR_NEWER || UNITY_2023_2_OR_NEWER
                 Vector4 current = uvs0[vIndex + j];
                 Vector2 charUV0 = CharData[index].mesh.GetUV0(j);
                 current.x = charUV0.x;
@@ -289,7 +303,6 @@ namespace TMPEffects.Components.Mediator
 
         private void OnTextChanged(UnityEngine.Object obj)
         {
-
             if (Text == null) return;
 
             if ((obj as TMP_Text) == Text)
@@ -376,6 +389,7 @@ namespace TMPEffects.Components.Mediator
             charData.Clear();
 
             int wordIndex;
+            int lastWordIndex = -1;
             TMP_TextInfo info = Text.textInfo;
             CharData data;
             TMP_WordInfo? wordInfo;
@@ -387,18 +401,28 @@ namespace TMPEffects.Components.Mediator
 
                 if (cInfo.isVisible)
                 {
-                    for (int j = 0; j < info.wordCount; j++)
+                    for (int j = lastWordIndex != -1 ? lastWordIndex : 0; j < info.wordCount; j++)
                     {
                         wordInfo = info.wordInfo[j];
                         if (wordInfo.Value.firstCharacterIndex <= i && wordInfo.Value.lastCharacterIndex >= i)
                         {
                             wordIndex = j;
+                            lastWordIndex = wordIndex;
                             break;
                         }
                     }
                 }
 
-                data = wordInfo == null ? new CharData(i, cInfo, wordIndex) : new CharData(i, cInfo, wordIndex, wordInfo.Value);
+                if (wordIndex == -1)
+                {
+                    if (lastWordIndex != -1)
+                        wordIndex = lastWordIndex;
+                    else wordIndex = 0;
+                }
+
+                data = wordInfo == null
+                    ? new CharData(i, cInfo, wordIndex)
+                    : new CharData(i, cInfo, wordIndex, wordInfo.Value);
                 charData.Add(data);
             }
 
@@ -413,7 +437,6 @@ namespace TMPEffects.Components.Mediator
             {
                 visibilityStates.Add(VisibilityState.Shown);
             }
-
         }
 
         private void Hide(int index)
@@ -425,7 +448,7 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, Vector3.zero);// cData.initialPosition);
+                cData.mesh.SetPosition(j, Vector3.zero);
             }
 
             // Apply the new vertices to the vertex array
@@ -441,12 +464,11 @@ namespace TMPEffects.Components.Mediator
             // Set the current mesh's vertices all to the initial mesh values
             for (int j = 0; j < 4; j++)
             {
-                cData.SetVertex(j, cData.mesh.initial.GetPosition(j));
+                cData.mesh.SetPosition(j, cData.mesh.initial.GetPosition(j));
             }
 
             // Apply the new vertices to the vertex array
             ApplyMesh(cData);
         }
-
     }
 }

@@ -1,6 +1,10 @@
 using TMPEffects.CharacterData;
 using UnityEngine;
 using System;
+using TMPEffects.Databases;
+using TMPEffects.ObjectChanged;
+using TMPEffects.Parameters;
+using Object = UnityEngine.Object;
 
 namespace TMPEffects.Components.Animator
 {
@@ -9,42 +13,45 @@ namespace TMPEffects.Components.Animator
     /// Contains context data of the respective <see cref="TMPAnimator"/>.
     /// </summary>
     [System.Serializable]
-    public class AnimatorContext : IAnimatorContext
+    internal class AnimatorContext : IAnimatorContext
     {
+        /// <inheritdoc/>
+        public CharDataModifiers Modifiers { get; internal set; }
+        
         /// <inheritdoc/>
         public bool ScaleAnimations
         {
             get => scaleAnimations;
-            set => scaleAnimations = value;
+            internal set => scaleAnimations = value;
         }
         /// <inheritdoc/>
         public bool ScaleUniformly
         {
             get => scaleUniformly;
-            set => scaleUniformly = value;
+            internal set => scaleUniformly = value;
         }
         /// <inheritdoc/>
         public bool UseScaledTime
         {
             get => useScaledTime;
-            set => useScaledTime = value;
+            internal set => useScaledTime = value;
         }
         public TMPAnimator Animator
         {
             get => tmpAnimator;
-            set => tmpAnimator = value;
+            internal set => tmpAnimator = value;
         }
         /// <inheritdoc/>
         public float DeltaTime
         {
             get => deltaTime;
-            set => deltaTime = value;
+            internal set => deltaTime = value;
         }
         /// <inheritdoc/>
         public float PassedTime
         {
             get => passed;
-            set => passed = value;
+            internal set => passed = value;
         }
 
         [Tooltip("Whether to scale the animations. If true, they will look the same no matter how large or small the individual characters")]

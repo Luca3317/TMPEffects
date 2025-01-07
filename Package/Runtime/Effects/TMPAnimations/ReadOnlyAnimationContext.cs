@@ -3,6 +3,9 @@ using TMPEffects.CharacterData;
 
 namespace TMPEffects.TMPAnimations
 {
+    /// <summary>
+    /// A read-only wrapper around <see cref="AnimationContext"/>.
+    /// </summary>
     public class ReadOnlyAnimationContext : IAnimationContext
     {
         /// <inheritdoc/>
@@ -15,15 +18,13 @@ namespace TMPEffects.TMPAnimations
         public SegmentData SegmentData => context.SegmentData;
         /// <inheritdoc/>
         public object CustomData => context.CustomData;
-        /// <inheritdoc/>
-        public ICharDataState State => context.State;
 
         public ReadOnlyAnimationContext(IAnimationContext context)
         {
             this.context = context;
         }
 
-        public ReadOnlyAnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData) 
+        public ReadOnlyAnimationContext(IAnimatorContext animatorContext, CharDataModifiers state, SegmentData segmentData, object customData) 
             : this(new AnimationContext(animatorContext, state, segmentData, customData))
         { }
 

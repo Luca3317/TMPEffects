@@ -4,18 +4,15 @@ using TMPEffects.TMPAnimations;
 namespace TMPEffects.Editor
 {
     [CustomEditor(typeof(TMPHideAnimation), true)]
-    public class TMPHideAnimationEditor : TMPAnimationEditorBase
+    internal class TMPHideAnimationEditor : TMPAnimationEditorBase
     {
         protected float restartDelay = 2f;
         protected float timeDone;
         protected float startTime = -1f;
         protected float hideTime = -1f;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-        }
-
+        private static readonly GUIContent restartGUI = new GUIContent("Restart Delay", "The delay before restarting the animation once done.");
+        
         protected override void OnChange(object anim)
         {
             base.OnChange(anim);
@@ -34,7 +31,7 @@ namespace TMPEffects.Editor
             var prev = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 80;
             EditorGUILayout.BeginHorizontal();
-            restartDelay = EditorGUILayout.Slider(new GUIContent("Restart delay"), restartDelay, 0, 10, GUILayout.Width(EditorGUIUtility.currentViewWidth / 2f));
+            restartDelay = EditorGUILayout.Slider(restartGUI, restartDelay, 0, 10, GUILayout.Width(EditorGUIUtility.currentViewWidth / 2f));
             EditorGUILayout.EndHorizontal();
             EditorGUIUtility.labelWidth = prev;
 

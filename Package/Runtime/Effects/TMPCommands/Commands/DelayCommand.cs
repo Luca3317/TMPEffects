@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using TMPEffects.Components;
+using TMPEffects.Components.Writer;
+using TMPEffects.Databases;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPCommands.Commands
 {
@@ -17,88 +19,68 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
+        public override void ExecuteCommand(ICommandContext context)
         {
-            if (!TryGetFloatParameter(out float delay, args.tag.Parameters, ""))
+            var writer = context.Writer;
+            Data data = (Data)context.CustomData;
+
+            if (string.IsNullOrWhiteSpace(data.methodIdentifier))
             {
-                if (args.tag.Parameters[""] == "" || args.tag.Parameters[""] == "default")
-                    delay = -1;
+                if (data.delay == -1)
+                    writer.CurrentDelays.SetDelay(writer.DefaultDelays.delay);
                 else
-                {
-                    // Since validate parameters ensures the parameter is in one of the three valid states,
-                    // this state should be impossible to reach
-                    throw new System.InvalidOperationException();
-                }
+                    writer.CurrentDelays.SetDelay(data.delay);
+
+                return;
             }
 
-            if (TryGetDefinedParameter(out string str, args.tag.Parameters, "for"))
+
+            switch (data.methodIdentifier)
             {
-                TMPWriter.DelayType type;
-                if (!TryGetDefinedParameter(out string typestr, args.tag.Parameters, "type"))
-                {
-                    type = TMPWriter.DelayType.Raw;
-                }
-                else
-                {
-                    switch (args.tag.Parameters[typestr])
-                    {
-                        case "raw": type = TMPWriter.DelayType.Raw; break;
-                        case "percentage":
-                        case "pct":
-                        case "%": type = TMPWriter.DelayType.Percentage; break;
+                case "whitespace":
+                case "ws":
+                    if (data.delay == -1)
+                        writer.CurrentDelays.SetWhitespaceDelay(writer.DefaultDelays.whitespaceDelay,
+                            writer.DefaultDelays.whitespaceDelayType);
+                    else
+                        writer.CurrentDelays.SetWhitespaceDelay(data.delay, data.delayType);
+                    return;
 
-                        default: type = TMPWriter.DelayType.Raw; break;
-                    }
-                }
+                case "linebreak":
+                case "linebr":
+                case "br":
+                    if (data.delay == -1)
+                        writer.CurrentDelays.SetLinebreakDelay(writer.DefaultDelays.linebreakDelay,
+                            writer.DefaultDelays.linebreakDelayType);
+                    else
+                        writer.CurrentDelays.SetLinebreakDelay(data.delay, data.delayType);
+                    return;
 
-                switch (args.tag.Parameters[str])
-                {
-                    case "whitespace":
-                    case "ws":
-                        if (delay == -1)
-                            args.writer.CurrentDelays.SetWhitespaceDelay(args.writer.DefaultDelays.whitespaceDelay, args.writer.DefaultDelays.whitespaceDelayType);
-                        else
-                            args.writer.CurrentDelays.SetWhitespaceDelay(delay, type);
-                        return;
+                case "punctuation":
+                case "punct":
+                    if (data.delay == -1)
+                        writer.CurrentDelays.SetPunctuationDelay(writer.DefaultDelays.punctuationDelay,
+                            writer.DefaultDelays.punctuationDelayType);
+                    else
+                        writer.CurrentDelays.SetPunctuationDelay(data.delay, data.delayType);
+                    return;
 
-                    case "linebreak":
-                    case "linebr":
-                    case "br":
-                        if (delay == -1)
-                            args.writer.CurrentDelays.SetLinebreakDelay(args.writer.DefaultDelays.linebreakDelay, args.writer.DefaultDelays.linebreakDelayType);
-                        else
-                            args.writer.CurrentDelays.SetLinebreakDelay(delay, type);
-                        return;
+                case "visible":
+                case "vis":
+                    if (data.delay == -1)
+                        writer.CurrentDelays.SetVisibleDelay(writer.DefaultDelays.visibleDelay,
+                            writer.DefaultDelays.visibleDelayType);
+                    else
+                        writer.CurrentDelays.SetVisibleDelay(data.delay, data.delayType);
+                    return;
 
-                    case "punctuation":
-                    case "punct":
-                        if (delay == -1)
-                            args.writer.CurrentDelays.SetPunctuationDelay(args.writer.DefaultDelays.punctuationDelay, args.writer.DefaultDelays.punctuationDelayType);
-                        else
-                            args.writer.CurrentDelays.SetPunctuationDelay(delay, type);
-                        return;
-
-                    case "visible":
-                    case "vis":
-                        if (delay == -1)
-                            args.writer.CurrentDelays.SetVisibleDelay(args.writer.DefaultDelays.visibleDelay, args.writer.DefaultDelays.visibleDelayType);
-                        else
-                            args.writer.CurrentDelays.SetVisibleDelay(delay, type);
-                        return;
-
-                    default: throw new System.InvalidOperationException();
-                }
-            }
-            else
-            {
-                if (delay == -1)
-                    args.writer.CurrentDelays.SetDelay(args.writer.DefaultDelays.delay);
-                else
-                    args.writer.CurrentDelays.SetDelay(delay);
+                default: throw new System.InvalidOperationException();
             }
         }
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+
+        public override bool ValidateParameters(IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase)
         {
             if (parameters == null) return false;
             if (!parameters.ContainsKey(""))
@@ -106,6 +88,7 @@ namespace TMPEffects.TMPCommands.Commands
                 return false;
             }
 
+            // If defines a "for", validate its value
             if (TryGetDefinedParameter(out string str, parameters, "for"))
             {
                 switch (parameters[str])
@@ -123,6 +106,7 @@ namespace TMPEffects.TMPCommands.Commands
                     default: return false;
                 }
 
+                // If defines a "type", validate its value
                 if (TryGetDefinedParameter(out str, parameters, "type"))
                 {
                     switch (parameters[str])
@@ -137,8 +121,72 @@ namespace TMPEffects.TMPCommands.Commands
                 }
             }
 
-            return HasFloatParameter(parameters, "") || parameters[""] == "" || parameters[""] == "default";
+            // Check whether value is float
+            return HasFloatParameter(parameters, keywordDatabase, "") || parameters[""] == "" ||
+                   parameters[""] == "default";
+        }
+
+        public override object GetNewCustomData()
+        {
+            return new Data();
+        }
+
+        public override void SetParameters(object obj, IDictionary<string, string> parameters,
+            ITMPKeywordDatabase keywordDatabase)
+        {
+            Data data = (Data)obj;
+            float delay = -1;
+            TMPWriter.DelayType type = TMPWriter.DelayType.Raw;
+
+            if (!TryGetFloatParameter(out delay, parameters, keywordDatabase, ""))
+            {
+                if (parameters[""] == "" || parameters[""] == "default")
+                    delay = -1;
+                else
+                {
+                    // Since validate parameters ensures the parameter is in one of the three valid states,
+                    // this state should be impossible to reach
+                    throw new System.InvalidOperationException();
+                }
+            }
+
+            if (TryGetDefinedParameter(out string str, parameters, "for"))
+            {
+                if (!TryGetDefinedParameter(out string typestr, parameters, "type"))
+                {
+                    type = TMPWriter.DelayType.Raw;
+                }
+                else
+                {
+                    switch (parameters[typestr])
+                    {
+                        case "raw":
+                            type = TMPWriter.DelayType.Raw;
+                            break;
+                        case "percentage":
+                        case "pct":
+                        case "%":
+                            type = TMPWriter.DelayType.Percentage;
+                            break;
+
+                        default:
+                            type = TMPWriter.DelayType.Raw;
+                            break;
+                    }
+                }
+
+                data.methodIdentifier = parameters[str];
+            }
+
+            data.delay = delay;
+            data.delayType = type;
+        }
+
+        private class Data
+        {
+            public float delay;
+            public TMPWriter.DelayType delayType;
+            public string methodIdentifier = null;
         }
     }
 }
-

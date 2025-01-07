@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using UnityEngine;
-using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPCommands.Commands
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new WaitCommand", menuName = "TMPEffects/Commands/Built-in/Wait")]
-    public class WaitCommand : TMPCommand
+    public partial class WaitCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
@@ -16,19 +16,11 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
-        {
-            ParameterParsing.StringToFloat(args.tag.Parameters[""], out var value);
-            args.writer.Wait(value);
-        }
+        [AutoParameter(true, "")] private float waitTime;
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            if (parameters == null) return false;
-            if (!parameters.ContainsKey(""))
-                return false;
-
-            return ParameterParsing.StringToFloat(parameters[""], out _);
+            context.Writer.Wait(data.waitTime);
         }
     }
 }

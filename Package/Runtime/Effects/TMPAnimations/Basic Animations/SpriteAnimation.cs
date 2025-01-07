@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using TMPEffects.CharacterData;
+using TMPEffects.Databases;
 using TMPEffects.Parameters;
-using TMPEffects.TextProcessing;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 
 namespace TMPEffects.TMPAnimations.Animations
@@ -195,7 +195,7 @@ namespace TMPEffects.TMPAnimations.Animations
             return new Data() { datas = new Dictionary<int, Data2>(), start = 0, end = 0, framerate = 0, evaluation = "loop", iterations = -1 };
         }
 
-        public void SetParameters(object customData, IDictionary<string, string> parameters)
+        public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             Data d = customData as Data;
 
@@ -226,7 +226,7 @@ namespace TMPEffects.TMPAnimations.Animations
             }
         }
 
-        public bool ValidateParameters(IDictionary<string, string> parameters)
+        public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
         {
             if (parameters == null) return false;
 

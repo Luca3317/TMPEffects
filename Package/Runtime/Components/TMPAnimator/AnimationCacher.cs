@@ -13,38 +13,46 @@ namespace TMPEffects.Components.Animator
     {
         private readonly ITMPEffectDatabase<ITMPAnimation> database;
         private readonly IList<CharData> charData;
-        private readonly AnimatorContext context;
+        private readonly IAnimatorContext context;
         private readonly Predicate<char> animates;
-        private readonly ReadOnlyCharDataState state;
+        private readonly CharDataModifiers modifiers;
         private readonly ReadOnlyAnimatorContext roContext;
+        private readonly ITMPKeywordDatabase keywordDatabase;
 
-        public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, ReadOnlyCharDataState state, AnimatorContext context, IList<CharData> charData, Predicate<char> animates)
+        public AnimationCacher(ITMPEffectDatabase<ITMPAnimation> database, CharDataModifiers modifiers,
+            ReadOnlyAnimatorContext context, IList<CharData> charData, Predicate<char> animates,
+            ITMPKeywordDatabase keywordDatabase)
         {
             this.context = context;
             this.database = database;
             this.charData = charData;
             this.animates = animates;
-            this.state = state;
+            this.modifiers = modifiers;
             roContext = new ReadOnlyAnimatorContext(context);
+            this.keywordDatabase = keywordDatabase;
         }
 
         public CachedAnimation CacheTag(TMPEffectTag tag, TMPEffectTagIndices indices)
         {
             ITMPAnimation animation = database.GetEffect(tag.Name);
-            TMPEffectTagIndices closedIndices = new TMPEffectTagIndices(indices.StartIndex, indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
-            object customAnimationData = animation.GetNewCustomData();
-            animation.SetParameters(customAnimationData, tag.Parameters);
+            TMPEffectTagIndices closedIndices = new TMPEffectTagIndices(indices.StartIndex,
+                indices.IsOpen ? charData.Count : indices.EndIndex, indices.OrderAtIndex);
 
             SegmentData segmentData = new SegmentData(closedIndices, charData, animates);
-            AnimationContext animationContext = new AnimationContext(roContext, state, segmentData, customAnimationData);
+            AnimationContext animationContext = new AnimationContext(roContext, modifiers, segmentData, null);
+
+            object customAnimationData = animation.GetNewCustomData();
+            animationContext.CustomData = customAnimationData;
+            animation.SetParameters(customAnimationData, tag.Parameters, keywordDatabase);
+
             CachedAnimation ca = new CachedAnimation(
-                tag, 
+                tag,
                 closedIndices,
-                animation, 
-                animationContext
+                animation,
+                animationContext,
+                new ExtendedAnimationTagData(tag, keywordDatabase)
             );
             return ca;
         }
     }
 }
-

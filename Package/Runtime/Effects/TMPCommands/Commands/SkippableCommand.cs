@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
+using TMPEffects.Components.Writer;
 using UnityEngine;
 using TMPEffects.Parameters;
 
 namespace TMPEffects.TMPCommands.Commands
 {
-    [CreateAssetMenu(fileName ="new SkippableCommand", menuName = "TMPEffects/Commands/Built-in/Skippable")]
-    public class SkippableCommand : TMPCommand
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new SkippableCommand", menuName = "TMPEffects/Commands/Built-in/Skippable")]
+    public partial class SkippableCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;
 
@@ -19,17 +22,11 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
-        {
-            bool val;
-            ParameterParsing.StringToBool(args.tag.Parameters[""], out val);
-            args.writer.SetSkippable(val);
-        }
+        [AutoParameter(true, "")] private bool skippable = false;
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            if (parameters == null) return false;
-            return ParameterParsing.StringToBool(parameters[""], out _);
+            context.Writer.SetSkippable(data.skippable);
         }
     }
 }

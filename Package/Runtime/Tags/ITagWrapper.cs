@@ -7,7 +7,7 @@ namespace TMPEffects.Tags
     /// <summary>
     /// Interface that wraps an <see cref="TMPEffectTag"/> as well as an <see cref="TMPEffectTagIndices"/> instance.
     /// </summary>
-    public interface ITagWrapper
+    internal interface ITagWrapper
     {
         /// <summary>
         /// The wrapped tag.

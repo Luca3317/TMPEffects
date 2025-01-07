@@ -1,32 +1,42 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
 using TMPEffects.Extensions;
 using UnityEngine;
-using static TMPEffects.Parameters.ParameterUtility;
-using static TMPEffects.TMPAnimations.AnimationUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
+using static TMPEffects.TMPAnimations.TMPAnimationUtility;
 
 namespace TMPEffects.TMPAnimations.ShowAnimations
 {
-    [CreateAssetMenu(fileName = "new FadeShowAnimation", menuName = "TMPEffects/Animations/Show Animations/Built-in/Fade")]
-    public class FadeShowAnimation : TMPShowAnimation
+    [AutoParameters]
+    [CreateAssetMenu(fileName = "new FadeShowAnimation",
+        menuName = "TMPEffects/Animations/Show Animations/Built-in/Fade")]
+    public partial class FadeShowAnimation : TMPShowAnimation
     {
+        [SerializeField, AutoParameter("duration", "dur", "d")]
         [Tooltip("How long the animation will take to fully show the character.\nAliases: duration, dur, d")]
-        [SerializeField] float duration = 1;
-        [Tooltip("The curve used for fading in.\nAliases: curve, crv, c")]
-        [SerializeField] AnimationCurve curve = AnimationCurveUtility.EaseInSine();
+        float duration = 1;
 
+        [SerializeField, AutoParameter("curve", "crv", "c")]
+        [Tooltip("The curve used for fading in.\nAliases: curve, crv, c")] 
+        AnimationCurve curve = AnimationCurveUtility.EaseInSine();
+
+        [SerializeField, AutoParameter("startopacity", "startop", "start")]
         [Tooltip("The opacity that is faded in from.\nAliases: startopacity, startop, start")]
-        [SerializeField] float startOpacity = 0;
-        [Tooltip("The anchor that is faded in from.\nAliases: anchor, anc, a")]
-        [SerializeField] Vector3 anchor = Vector3.zero;
-        [Tooltip("The direction used for fading in.\nAliases: direction, dir")]
-        [SerializeField] Vector3 direction = Vector3.up;
+        float startOpacity = 0;
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        [SerializeField, AutoParameter("anchor", "anc", "a")]
+        [Tooltip("The anchor that is faded in from.\nAliases: anchor, anc, a")]
+        Vector3 anchor = Vector3.zero;
+
+        [SerializeField, AutoParameter("direction", "dir")]
+        [Tooltip("The direction used for fading in.\nAliases: direction, dir")] 
+        Vector3 direction = Vector3.up;
+
+        private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
         {
             IAnimatorContext ac = context.AnimatorContext;
-            Data d = context.CustomData as Data;
 
             float t = d.duration > 0 ? Mathf.Clamp01((ac.PassedTime - ac.StateTime(cData)) / d.duration) : 1f;
             float t2 = d.curve.Evaluate(t);
@@ -36,7 +46,7 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
             FadeIn(cData, context, d, t2);
         }
 
-        private void FadeIn(CharData cData, IAnimationContext context, Data d, float t)
+        private void FadeIn(CharData cData, IAnimationContext context, AutoParametersData d, float t)
         {
             Vector2 anchor = d.anchor;
             FixAnchor(ref anchor);
@@ -89,75 +99,12 @@ namespace TMPEffects.TMPAnimations.ShowAnimations
                 if (v.x > 0) v.x = 1;
                 else v.x = -1;
             }
+
             if (v.y != 0)
             {
                 if (v.y > 0) v.y = 1;
                 else v.y = -1;
             }
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return;
-
-            Data d = (Data)customData;
-            if (TryGetAnimCurveParameter(out var c, parameters, "curve", curveAliases)) d.curve = c;
-            if (TryGetFloatParameter(out float f, parameters, "duration", durationAliases)) d.duration = f;
-            if (TryGetFloatParameter(out f, parameters, "startopacity", startOpacityAliases)) d.startOpacity = f;
-            if (TryGetTypedVector2Parameter(out var tv3, parameters, "anchor", anchorAliases)) d.anchor = tv3.vector;
-            if (TryGetVector2Parameter(out var v3, parameters, "direction", "dir")) d.direction = v3;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "startopacity", startOpacityAliases)) return false;
-            if (HasNonFloatParameter(parameters, "duration", durationAliases)) return false;
-            if (HasNonAnimCurveParameter(parameters, "curve", curveAliases)) return false;
-            if (HasNonTypedVector2Parameter(parameters, "anchor", anchorAliases) || HasVector2OffsetParameter(parameters, "anchor", anchorAliases)) return false;
-            if (HasNonVector2Parameter(parameters, "direction", "dir")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData()
-        {
-            return new Data()
-            {
-                startOpacity = this.startOpacity,
-                curve = this.curve,
-                anchor = anchor,
-                duration = this.duration,
-                direction = this.direction,
-
-                waitingSince = -1,
-                cycleTime = -1,
-                lastT = 0
-            };
-        }
-
-        private readonly string[] startOpacityAliases = new string[] { "start", "startop" };
-        private readonly string[] anchorAliases = new string[] { "anc", "a" };
-        private readonly string[] durationAliases = new string[] { "dur", "d" };
-        private readonly string[] curveAliases = new string[] { "crv", "c" };
-
-        private class Data
-        {
-            public float startOpacity;
-            public AnimationCurve curve;
-            public float duration;
-            public Vector2 anchor;
-            public Vector2 direction;
-            public float afterFadeInWaitDuration;
-
-            public int lastT;
-            public float waitingSince;
-            public bool fadeIn;
-
-            public float cycleTime;
-
-            public readonly float sqrt2 = Mathf.Sqrt(8);
-            public readonly float[] dists = new float[4];
         }
     }
 }

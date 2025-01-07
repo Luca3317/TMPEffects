@@ -15,15 +15,15 @@ namespace TMPEffects.Components.Writer
     internal class CommandDatabase : ITMPEffectDatabase<ITMPCommand>, INotifyObjectChanged, IDisposable
     {
         public TMPCommandDatabase Database => database;
-        public IDictionary<string, TMPSceneCommand> SceneCommands => sceneCommands;
+        public IDictionary<string, TMPSceneCommandWrapper> SceneCommands => sceneCommands;
         private TMPCommandDatabase database;
-        private IDictionary<string, TMPSceneCommand> sceneCommands;
+        private IDictionary<string, TMPSceneCommandWrapper> sceneCommands;
 
         public event ObjectChangedEventHandler ObjectChanged;
 
         private bool disposed = false;
 
-        public CommandDatabase(TMPCommandDatabase database, IDictionary<string, TMPSceneCommand> sceneCommands)
+        public CommandDatabase(TMPCommandDatabase database, IDictionary<string, TMPSceneCommandWrapper> sceneCommands)
         {
             this.database = database;
             this.sceneCommands = sceneCommands;

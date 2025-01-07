@@ -1,5 +1,6 @@
 ﻿using System;
 using TMPEffects.CharacterData;
+using TMPEffects.Databases;
 
 namespace TMPEffects.Components.Animator
 {
@@ -10,6 +11,9 @@ namespace TMPEffects.Components.Animator
     [System.Serializable]
     public class ReadOnlyAnimatorContext : IAnimatorContext
     {
+        /// <inheritdoc/>
+        public CharDataModifiers Modifiers => context.Modifiers;
+
         /// <inheritdoc/>
         public bool ScaleAnimations => context.ScaleAnimations;
         /// <inheritdoc/>

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TMPEffects.CharacterData
 {
     /// <summary>
-    /// Holds data about a character's mesh.
+    /// Holds immutable data about a TextMeshPro character mesh.
     /// </summary>
     public class ReadOnlyVertexData
     {
@@ -24,12 +24,6 @@ namespace TMPEffects.CharacterData
         /// The bottom right vertex. Index = 3
         /// </summary>
         private TMP_Vertex vertex_BR;
-
-
-        /// <summary>
-        /// The initial vertex of the character.
-        /// </summary>
-        public readonly ReadOnlyVertexData initial;
 
         /// <summary>
         /// Get or set the color of the bottom left vertex.<br/>

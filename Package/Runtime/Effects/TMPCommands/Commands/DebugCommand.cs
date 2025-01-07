@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using TMPEffects.AutoParameters.Attributes;
+using TMPEffects.Components.Writer;
 using UnityEngine;
+using TMPEffects.Databases;
 
 namespace TMPEffects.TMPCommands.Commands
 {
+    [AutoParameters]
     [CreateAssetMenu(fileName = "new DebugCommand", menuName = "TMPEffects/Commands/Built-in/Debug")]
-    public class DebugCommand : TMPCommand
+    public partial class DebugCommand : TMPCommand
     {
         public override TagType TagType => TagType.Index;
         public override bool ExecuteInstantly => false;
@@ -14,33 +18,31 @@ namespace TMPEffects.TMPCommands.Commands
         public override bool ExecuteInPreview => true;
 #endif
 
-        public override void ExecuteCommand(TMPCommandArgs args)
-        {
-            if (args.tag.Parameters != null)
-            {
-                if (args.tag.Parameters.ContainsKey("type"))
-                {
-                    switch (args.tag.Parameters["type"])
-                    {
-                        case "w":
-                        case "warning": Debug.LogWarning(args.tag.Parameters[""]); break;
-                        case "e":
-                        case "error": Debug.LogError(args.tag.Parameters[""]); break;
-                        case "l":
-                        case "log":
-                        default: Debug.Log(args.tag.Parameters[""]); break;
-                    }
-                }
-                else
-                {
-                    Debug.Log(args.tag.Parameters[""]);
-                }
-            }
-        }
+        [AutoParameter("type")] private string type;
+        [AutoParameter(true, "")] private string message;
 
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
+        private partial void ExecuteCommand(AutoParametersData data, ICommandContext context)
         {
-            return true;
+            if (data.type == "")
+            {
+                Debug.Log(data.message);
+                return;
+            }
+
+            switch (data.type)
+            {
+                case "w":
+                case "warning":
+                    Debug.LogWarning(message);
+                    break;
+                case "e":
+                case "error":
+                    Debug.LogError(message);
+                    break;
+                default:
+                    Debug.Log(message);
+                    break;
+            }
         }
     }
 }
