@@ -4,10 +4,16 @@ items:
   commentId: N:TMPEffects.TMPCommands
   id: TMPEffects.TMPCommands
   children:
+  - TMPEffects.TMPCommands.CommandContext
+  - TMPEffects.TMPCommands.ICommandContext
   - TMPEffects.TMPCommands.ITMPCommand
+  - TMPEffects.TMPCommands.ReadOnlyCommandContext
   - TMPEffects.TMPCommands.TMPCommand
   - TMPEffects.TMPCommands.TMPCommandArgs
+  - TMPEffects.TMPCommands.TMPGenericSceneCommand
   - TMPEffects.TMPCommands.TMPSceneCommand
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
   - TMPEffects.TMPCommands.TagType
   langs:
   - csharp
@@ -17,6 +23,25 @@ items:
   fullName: TMPEffects.TMPCommands
   type: Namespace
 references:
+- uid: TMPEffects.TMPCommands.CommandContext
+  commentId: T:TMPEffects.TMPCommands.CommandContext
+  href: TMPEffects.TMPCommands.CommandContext.html
+  name: CommandContext
+  nameWithType: CommandContext
+  fullName: TMPEffects.TMPCommands.CommandContext
+- uid: TMPEffects.TMPCommands.ICommandContext
+  commentId: T:TMPEffects.TMPCommands.ICommandContext
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.ICommandContext.html
+  name: ICommandContext
+  nameWithType: ICommandContext
+  fullName: TMPEffects.TMPCommands.ICommandContext
+- uid: TMPEffects.TMPCommands.ReadOnlyCommandContext
+  commentId: T:TMPEffects.TMPCommands.ReadOnlyCommandContext
+  href: TMPEffects.TMPCommands.ReadOnlyCommandContext.html
+  name: ReadOnlyCommandContext
+  nameWithType: ReadOnlyCommandContext
+  fullName: TMPEffects.TMPCommands.ReadOnlyCommandContext
 - uid: TMPEffects.TMPCommands.ITMPCommand
   commentId: T:TMPEffects.TMPCommands.ITMPCommand
   parent: TMPEffects.TMPCommands
@@ -40,17 +65,53 @@ references:
   fullName: TMPEffects.TMPCommands.TMPCommand
 - uid: TMPEffects.TMPCommands.TMPCommandArgs
   commentId: T:TMPEffects.TMPCommands.TMPCommandArgs
-  parent: TMPEffects.TMPCommands
   href: TMPEffects.TMPCommands.TMPCommandArgs.html
   name: TMPCommandArgs
   nameWithType: TMPCommandArgs
   fullName: TMPEffects.TMPCommands.TMPCommandArgs
+- uid: TMPEffects.TMPCommands.TMPGenericSceneCommand
+  commentId: T:TMPEffects.TMPCommands.TMPGenericSceneCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPGenericSceneCommand.html
+  name: TMPGenericSceneCommand
+  nameWithType: TMPGenericSceneCommand
+  fullName: TMPEffects.TMPCommands.TMPGenericSceneCommand
 - uid: TMPEffects.TMPCommands.TMPSceneCommand
   commentId: T:TMPEffects.TMPCommands.TMPSceneCommand
+  parent: TMPEffects.TMPCommands
   href: TMPEffects.TMPCommands.TMPSceneCommand.html
   name: TMPSceneCommand
   nameWithType: TMPSceneCommand
   fullName: TMPEffects.TMPCommands.TMPSceneCommand
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  name: TMPSceneCommandWrapper
+  nameWithType: TMPSceneCommandWrapper
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  name: TMPSceneCommandWrapper.TMPSceneCommandType
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html
 - uid: TMPEffects.TMPCommands
   commentId: N:TMPEffects.TMPCommands
   href: TMPEffects.html

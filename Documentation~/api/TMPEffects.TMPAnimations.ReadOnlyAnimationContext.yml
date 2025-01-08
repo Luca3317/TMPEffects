@@ -5,7 +5,7 @@ items:
   id: ReadOnlyAnimationContext
   parent: TMPEffects.TMPAnimations
   children:
-  - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)
+  - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData
@@ -13,7 +13,6 @@ items:
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(System.Int32)
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(TMPEffects.CharacterData.CharData)
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData
-  - TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
   langs:
   - csharp
   - vb
@@ -24,19 +23,24 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyAnimationContext
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 5
+    startLine: 8
   namespace: TMPEffects.TMPAnimations
+  summary: A read-only wrapper around <xref href="TMPEffects.TMPAnimations.AnimationContext" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
-    content: 'public class ReadOnlyAnimationContext : IAnimationContext'
-    content.vb: Public Class ReadOnlyAnimationContext Implements IAnimationContext
+    content: 'public class ReadOnlyAnimationContext : IAnimationContext, IAnimationData, IAnimationFinished, IAnimationFinisher'
+    content.vb: Public Class ReadOnlyAnimationContext Implements IAnimationContext, IAnimationData, IAnimationFinished, IAnimationFinisher
   inheritance:
   - System.Object
   implements:
   - TMPEffects.TMPAnimations.IAnimationContext
+  - TMPEffects.TMPAnimations.IAnimationData
+  - TMPEffects.TMPAnimations.IAnimationFinished
+  - TMPEffects.TMPAnimations.IAnimationFinisher
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -59,11 +63,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 8
+    startLine: 11
   namespace: TMPEffects.TMPAnimations
   summary: Check if the animation is considered finished for the character at the given index.
   example: []
@@ -79,7 +83,7 @@ items:
     content.vb: Public Function Finished(index As Integer) As Boolean
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.Finished(System.Int32)
+  - TMPEffects.TMPAnimations.IAnimationFinished.Finished(System.Int32)
   nameWithType.vb: ReadOnlyAnimationContext.Finished(Integer)
   fullName.vb: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished(Integer)
   name.vb: Finished(Integer)
@@ -97,11 +101,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Finished
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 10
+    startLine: 13
   namespace: TMPEffects.TMPAnimations
   summary: Check if the animation is considered finished for the given character.
   example: []
@@ -117,7 +121,7 @@ items:
     content.vb: Public Function Finished(cData As CharData) As Boolean
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
+  - TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext
   commentId: P:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext
   id: AnimatorContext
@@ -132,11 +136,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimatorContext
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 12
+    startLine: 15
   namespace: TMPEffects.TMPAnimations
   summary: The context of the animating TMPAnimator.
   example: []
@@ -148,7 +152,7 @@ items:
     content.vb: Public ReadOnly Property AnimatorContext As IAnimatorContext
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.AnimatorContext
+  - TMPEffects.TMPAnimations.IAnimationData.AnimatorContext
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData
   commentId: P:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData
   id: SegmentData
@@ -163,11 +167,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentData
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 14
+    startLine: 17
   namespace: TMPEffects.TMPAnimations
   summary: Data about the animation segment.
   example: []
@@ -179,7 +183,7 @@ items:
     content.vb: Public ReadOnly Property SegmentData As SegmentData
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.SegmentData
+  - TMPEffects.TMPAnimations.IAnimationData.SegmentData
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData
   commentId: P:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData
   id: CustomData
@@ -194,11 +198,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CustomData
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 16
+    startLine: 19
   namespace: TMPEffects.TMPAnimations
   summary: The custom data object.
   example: []
@@ -210,38 +214,7 @@ items:
     content.vb: Public ReadOnly Property CustomData As Object
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.CustomData
-- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
-  commentId: P:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
-  id: State
-  parent: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
-  langs:
-  - csharp
-  - vb
-  name: State
-  nameWithType: ReadOnlyAnimationContext.State
-  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: State
-    path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 18
-  namespace: TMPEffects.TMPAnimations
-  summary: The current state of the CharData, with the previous animations applied.
-  example: []
-  syntax:
-    content: public ICharDataState State { get; }
-    parameters: []
-    return:
-      type: TMPEffects.CharacterData.ICharDataState
-    content.vb: Public ReadOnly Property State As ICharDataState
-  overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State*
-  implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.State
+  - TMPEffects.TMPAnimations.IAnimationData.CustomData
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)
   commentId: M:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.TMPAnimations.IAnimationContext)
   id: '#ctor(TMPEffects.TMPAnimations.IAnimationContext)'
@@ -256,11 +229,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 20
+    startLine: 21
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public ReadOnlyAnimationContext(IAnimationContext context)
@@ -272,42 +245,42 @@ items:
   nameWithType.vb: ReadOnlyAnimationContext.New(IAnimationContext)
   fullName.vb: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.New(TMPEffects.TMPAnimations.IAnimationContext)
   name.vb: New(IAnimationContext)
-- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)
-  commentId: M:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)
-  id: '#ctor(TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.CharacterData.ICharDataState,TMPEffects.Components.Animator.SegmentData,System.Object)'
+- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)
+  commentId: M:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)
+  id: '#ctor(TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers,TMPEffects.Components.Animator.SegmentData,System.Object)'
   parent: TMPEffects.TMPAnimations.ReadOnlyAnimationContext
   langs:
   - csharp
   - vb
-  name: ReadOnlyAnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)
-  nameWithType: ReadOnlyAnimationContext.ReadOnlyAnimationContext(IAnimatorContext, ICharDataState, SegmentData, object)
-  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.ReadOnlyAnimationContext(TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.CharacterData.ICharDataState, TMPEffects.Components.Animator.SegmentData, object)
+  name: ReadOnlyAnimationContext(IAnimatorContext, CharDataModifiers, SegmentData, object)
+  nameWithType: ReadOnlyAnimationContext.ReadOnlyAnimationContext(IAnimatorContext, CharDataModifiers, SegmentData, object)
+  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.ReadOnlyAnimationContext(TMPEffects.Components.Animator.IAnimatorContext, CharDataModifiers, TMPEffects.Components.Animator.SegmentData, object)
   type: Constructor
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 25
+    startLine: 26
   namespace: TMPEffects.TMPAnimations
   syntax:
-    content: public ReadOnlyAnimationContext(IAnimatorContext animatorContext, ICharDataState state, SegmentData segmentData, object customData)
+    content: public ReadOnlyAnimationContext(IAnimatorContext animatorContext, CharDataModifiers state, SegmentData segmentData, object customData)
     parameters:
     - id: animatorContext
       type: TMPEffects.Components.Animator.IAnimatorContext
     - id: state
-      type: TMPEffects.CharacterData.ICharDataState
+      type: Global.CharDataModifiers
     - id: segmentData
       type: TMPEffects.Components.Animator.SegmentData
     - id: customData
       type: System.Object
-    content.vb: Public Sub New(animatorContext As IAnimatorContext, state As ICharDataState, segmentData As SegmentData, customData As Object)
+    content.vb: Public Sub New(animatorContext As IAnimatorContext, state As CharDataModifiers, segmentData As SegmentData, customData As Object)
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor*
-  nameWithType.vb: ReadOnlyAnimationContext.New(IAnimatorContext, ICharDataState, SegmentData, Object)
-  fullName.vb: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.New(TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.CharacterData.ICharDataState, TMPEffects.Components.Animator.SegmentData, Object)
-  name.vb: New(IAnimatorContext, ICharDataState, SegmentData, Object)
+  nameWithType.vb: ReadOnlyAnimationContext.New(IAnimatorContext, CharDataModifiers, SegmentData, Object)
+  fullName.vb: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.New(TMPEffects.Components.Animator.IAnimatorContext, CharDataModifiers, TMPEffects.Components.Animator.SegmentData, Object)
+  name.vb: New(IAnimatorContext, CharDataModifiers, SegmentData, Object)
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
   commentId: M:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
   id: FinishAnimation(TMPEffects.CharacterData.CharData)
@@ -322,11 +295,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FinishAnimation
     path: ../Package/Runtime/Effects/TMPAnimations/ReadOnlyAnimationContext.cs
-    startLine: 30
+    startLine: 31
   namespace: TMPEffects.TMPAnimations
   summary: Set the animation to be considered finished for the given character.
   example: []
@@ -339,8 +312,14 @@ items:
     content.vb: Public Sub FinishAnimation(cData As CharData)
   overload: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation*
   implements:
-  - TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
+  - TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
 references:
+- uid: TMPEffects.TMPAnimations.AnimationContext
+  commentId: T:TMPEffects.TMPAnimations.AnimationContext
+  href: TMPEffects.TMPAnimations.AnimationContext.html
+  name: AnimationContext
+  nameWithType: AnimationContext
+  fullName: TMPEffects.TMPAnimations.AnimationContext
 - uid: TMPEffects.TMPAnimations
   commentId: N:TMPEffects.TMPAnimations
   href: TMPEffects.html
@@ -381,6 +360,27 @@ references:
   name: IAnimationContext
   nameWithType: IAnimationContext
   fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.TMPAnimations.IAnimationData
+  commentId: T:TMPEffects.TMPAnimations.IAnimationData
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationData.html
+  name: IAnimationData
+  nameWithType: IAnimationData
+  fullName: TMPEffects.TMPAnimations.IAnimationData
+- uid: TMPEffects.TMPAnimations.IAnimationFinished
+  commentId: T:TMPEffects.TMPAnimations.IAnimationFinished
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationFinished.html
+  name: IAnimationFinished
+  nameWithType: IAnimationFinished
+  fullName: TMPEffects.TMPAnimations.IAnimationFinished
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher
+  commentId: T:TMPEffects.TMPAnimations.IAnimationFinisher
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationFinisher.html
+  name: IAnimationFinisher
+  nameWithType: IAnimationFinisher
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -613,21 +613,21 @@ references:
   name: Finished
   nameWithType: ReadOnlyAnimationContext.Finished
   fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.Finished
-- uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(System.Int32)
-  commentId: M:TMPEffects.TMPAnimations.IAnimationContext.Finished(System.Int32)
-  parent: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(System.Int32)
+  commentId: M:TMPEffects.TMPAnimations.IAnimationFinished.Finished(System.Int32)
+  parent: TMPEffects.TMPAnimations.IAnimationFinished
   isExternal: true
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_System_Int32_
+  href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_System_Int32_
   name: Finished(int)
-  nameWithType: IAnimationContext.Finished(int)
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.Finished(int)
-  nameWithType.vb: IAnimationContext.Finished(Integer)
-  fullName.vb: TMPEffects.TMPAnimations.IAnimationContext.Finished(Integer)
+  nameWithType: IAnimationFinished.Finished(int)
+  fullName: TMPEffects.TMPAnimations.IAnimationFinished.Finished(int)
+  nameWithType.vb: IAnimationFinished.Finished(Integer)
+  fullName.vb: TMPEffects.TMPAnimations.IAnimationFinished.Finished(Integer)
   name.vb: Finished(Integer)
   spec.csharp:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(System.Int32)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(System.Int32)
     name: Finished
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_System_Int32_
+    href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_System_Int32_
   - name: (
   - uid: System.Int32
     name: int
@@ -635,9 +635,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
   spec.vb:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(System.Int32)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(System.Int32)
     name: Finished
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_System_Int32_
+    href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_System_Int32_
   - name: (
   - uid: System.Int32
     name: Integer
@@ -666,26 +666,26 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
-  commentId: M:TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_TMPEffects_CharacterData_CharData_
+- uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.TMPAnimations.IAnimationFinished
+  href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_TMPEffects_CharacterData_CharData_
   name: Finished(CharData)
-  nameWithType: IAnimationContext.Finished(CharData)
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
+  nameWithType: IAnimationFinished.Finished(CharData)
+  fullName: TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
   spec.csharp:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
     name: Finished
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_TMPEffects_CharacterData_CharData_
+    href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_TMPEffects_CharacterData_CharData_
   - name: (
   - uid: TMPEffects.CharacterData.CharData
     name: CharData
     href: TMPEffects.CharacterData.CharData.html
   - name: )
   spec.vb:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.Finished(TMPEffects.CharacterData.CharData)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinished.Finished(TMPEffects.CharacterData.CharData)
     name: Finished
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_Finished_TMPEffects_CharacterData_CharData_
+    href: TMPEffects.TMPAnimations.IAnimationFinished.html#TMPEffects_TMPAnimations_IAnimationFinished_Finished_TMPEffects_CharacterData_CharData_
   - name: (
   - uid: TMPEffects.CharacterData.CharData
     name: CharData
@@ -726,13 +726,13 @@ references:
   name: AnimatorContext
   nameWithType: ReadOnlyAnimationContext.AnimatorContext
   fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.AnimatorContext
-- uid: TMPEffects.TMPAnimations.IAnimationContext.AnimatorContext
-  commentId: P:TMPEffects.TMPAnimations.IAnimationContext.AnimatorContext
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_AnimatorContext
+- uid: TMPEffects.TMPAnimations.IAnimationData.AnimatorContext
+  commentId: P:TMPEffects.TMPAnimations.IAnimationData.AnimatorContext
+  parent: TMPEffects.TMPAnimations.IAnimationData
+  href: TMPEffects.TMPAnimations.IAnimationData.html#TMPEffects_TMPAnimations_IAnimationData_AnimatorContext
   name: AnimatorContext
-  nameWithType: IAnimationContext.AnimatorContext
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.AnimatorContext
+  nameWithType: IAnimationData.AnimatorContext
+  fullName: TMPEffects.TMPAnimations.IAnimationData.AnimatorContext
 - uid: TMPEffects.Components.Animator.IAnimatorContext
   commentId: T:TMPEffects.Components.Animator.IAnimatorContext
   parent: TMPEffects.Components.Animator
@@ -776,13 +776,13 @@ references:
   name: SegmentData
   nameWithType: ReadOnlyAnimationContext.SegmentData
   fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.SegmentData
-- uid: TMPEffects.TMPAnimations.IAnimationContext.SegmentData
-  commentId: P:TMPEffects.TMPAnimations.IAnimationContext.SegmentData
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_SegmentData
+- uid: TMPEffects.TMPAnimations.IAnimationData.SegmentData
+  commentId: P:TMPEffects.TMPAnimations.IAnimationData.SegmentData
+  parent: TMPEffects.TMPAnimations.IAnimationData
+  href: TMPEffects.TMPAnimations.IAnimationData.html#TMPEffects_TMPAnimations_IAnimationData_SegmentData
   name: SegmentData
-  nameWithType: IAnimationContext.SegmentData
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.SegmentData
+  nameWithType: IAnimationData.SegmentData
+  fullName: TMPEffects.TMPAnimations.IAnimationData.SegmentData
 - uid: TMPEffects.Components.Animator.SegmentData
   commentId: T:TMPEffects.Components.Animator.SegmentData
   parent: TMPEffects.Components.Animator
@@ -796,33 +796,13 @@ references:
   name: CustomData
   nameWithType: ReadOnlyAnimationContext.CustomData
   fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.CustomData
-- uid: TMPEffects.TMPAnimations.IAnimationContext.CustomData
-  commentId: P:TMPEffects.TMPAnimations.IAnimationContext.CustomData
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_CustomData
+- uid: TMPEffects.TMPAnimations.IAnimationData.CustomData
+  commentId: P:TMPEffects.TMPAnimations.IAnimationData.CustomData
+  parent: TMPEffects.TMPAnimations.IAnimationData
+  href: TMPEffects.TMPAnimations.IAnimationData.html#TMPEffects_TMPAnimations_IAnimationData_CustomData
   name: CustomData
-  nameWithType: IAnimationContext.CustomData
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.CustomData
-- uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State*
-  commentId: Overload:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
-  href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html#TMPEffects_TMPAnimations_ReadOnlyAnimationContext_State
-  name: State
-  nameWithType: ReadOnlyAnimationContext.State
-  fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.State
-- uid: TMPEffects.TMPAnimations.IAnimationContext.State
-  commentId: P:TMPEffects.TMPAnimations.IAnimationContext.State
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_State
-  name: State
-  nameWithType: IAnimationContext.State
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.State
-- uid: TMPEffects.CharacterData.ICharDataState
-  commentId: T:TMPEffects.CharacterData.ICharDataState
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.ICharDataState.html
-  name: ICharDataState
-  nameWithType: ICharDataState
-  fullName: TMPEffects.CharacterData.ICharDataState
+  nameWithType: IAnimationData.CustomData
+  fullName: TMPEffects.TMPAnimations.IAnimationData.CustomData
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor*
   commentId: Overload:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.#ctor
   href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html#TMPEffects_TMPAnimations_ReadOnlyAnimationContext__ctor_TMPEffects_TMPAnimations_IAnimationContext_
@@ -832,32 +812,38 @@ references:
   nameWithType.vb: ReadOnlyAnimationContext.New
   fullName.vb: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.New
   name.vb: New
+- uid: Global.CharDataModifiers
+  commentId: T:Global.CharDataModifiers
+  href: CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: CharDataModifiers
 - uid: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation*
   commentId: Overload:TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation
   href: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.html#TMPEffects_TMPAnimations_ReadOnlyAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_
   name: FinishAnimation
   nameWithType: ReadOnlyAnimationContext.FinishAnimation
   fullName: TMPEffects.TMPAnimations.ReadOnlyAnimationContext.FinishAnimation
-- uid: TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
-  commentId: M:TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
-  parent: TMPEffects.TMPAnimations.IAnimationContext
-  href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.TMPAnimations.IAnimationFinisher
+  href: TMPEffects.TMPAnimations.IAnimationFinisher.html#TMPEffects_TMPAnimations_IAnimationFinisher_FinishAnimation_TMPEffects_CharacterData_CharData_
   name: FinishAnimation(CharData)
-  nameWithType: IAnimationContext.FinishAnimation(CharData)
-  fullName: TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
+  nameWithType: IAnimationFinisher.FinishAnimation(CharData)
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
   spec.csharp:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
     name: FinishAnimation
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_
+    href: TMPEffects.TMPAnimations.IAnimationFinisher.html#TMPEffects_TMPAnimations_IAnimationFinisher_FinishAnimation_TMPEffects_CharacterData_CharData_
   - name: (
   - uid: TMPEffects.CharacterData.CharData
     name: CharData
     href: TMPEffects.CharacterData.CharData.html
   - name: )
   spec.vb:
-  - uid: TMPEffects.TMPAnimations.IAnimationContext.FinishAnimation(TMPEffects.CharacterData.CharData)
+  - uid: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
     name: FinishAnimation
-    href: TMPEffects.TMPAnimations.IAnimationContext.html#TMPEffects_TMPAnimations_IAnimationContext_FinishAnimation_TMPEffects_CharacterData_CharData_
+    href: TMPEffects.TMPAnimations.IAnimationFinisher.html#TMPEffects_TMPAnimations_IAnimationFinisher_FinishAnimation_TMPEffects_CharacterData_CharData_
   - name: (
   - uid: TMPEffects.CharacterData.CharData
     name: CharData

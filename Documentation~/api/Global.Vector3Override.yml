@@ -1,0 +1,803 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.Vector3Override
+  commentId: T:Global.Vector3Override
+  id: Vector3Override
+  parent: Global
+  children:
+  - Global.Vector3Override.#ctor(System.Nullable{Vector3})
+  - Global.Vector3Override.Default
+  - Global.Vector3Override.Equals(System.Object)
+  - Global.Vector3Override.Equals(Vector3Override)
+  - Global.Vector3Override.GetDefault
+  - Global.Vector3Override.GetHashCode
+  - Global.Vector3Override.GetValue(Vector3)
+  - Global.Vector3Override.Override
+  - Global.Vector3Override.OverrideValue
+  - Global.Vector3Override.op_Addition(Vector3Override,Vector3Override)
+  - Global.Vector3Override.op_Equality(Vector3Override,Vector3Override)
+  - Global.Vector3Override.op_Inequality(Vector3Override,Vector3Override)
+  langs:
+  - csharp
+  - vb
+  name: Vector3Override
+  nameWithType: Vector3Override
+  fullName: Vector3Override
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Vector3Override
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 3
+  namespace: Global
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct Vector3Override
+    content.vb: >-
+      <Serializable>
+
+      Public Structure Vector3Override
+  inheritedMembers:
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Global.Vector3Override.OverrideValue
+  commentId: P:Global.Vector3Override.OverrideValue
+  id: OverrideValue
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: OverrideValue
+  nameWithType: Vector3Override.OverrideValue
+  fullName: Vector3Override.OverrideValue
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OverrideValue
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 6
+  namespace: Global
+  syntax:
+    content: public Vector3 OverrideValue { get; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly Property OverrideValue As Vector3
+  overload: Global.Vector3Override.OverrideValue*
+- uid: Global.Vector3Override.Override
+  commentId: P:Global.Vector3Override.Override
+  id: Override
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: Override
+  nameWithType: Vector3Override.Override
+  fullName: Vector3Override.Override
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Override
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 7
+  namespace: Global
+  syntax:
+    content: public bool Override { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Override As Boolean
+  overload: Global.Vector3Override.Override*
+- uid: Global.Vector3Override.Default
+  commentId: F:Global.Vector3Override.Default
+  id: Default
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: Vector3Override.Default
+  fullName: Vector3Override.Default
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Default
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 12
+  namespace: Global
+  syntax:
+    content: public static Vector3Override Default
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Shared [Default] As Vector3Override
+- uid: Global.Vector3Override.GetDefault
+  commentId: P:Global.Vector3Override.GetDefault
+  id: GetDefault
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: GetDefault
+  nameWithType: Vector3Override.GetDefault
+  fullName: Vector3Override.GetDefault
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetDefault
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 13
+  namespace: Global
+  syntax:
+    content: public static Vector3Override GetDefault { get; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Shared ReadOnly Property GetDefault As Vector3Override
+  overload: Global.Vector3Override.GetDefault*
+- uid: Global.Vector3Override.#ctor(System.Nullable{Vector3})
+  commentId: M:Global.Vector3Override.#ctor(System.Nullable{Vector3})
+  id: '#ctor(System.Nullable{Vector3})'
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: Vector3Override(Vector3?)
+  nameWithType: Vector3Override.Vector3Override(Vector3?)
+  fullName: Vector3Override.Vector3Override(Vector3?)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 15
+  namespace: Global
+  syntax:
+    content: public Vector3Override(Vector3? overrideValue = null)
+    parameters:
+    - id: overrideValue
+      type: System.Nullable{Vector3}
+    content.vb: Public Sub New(overrideValue As Vector3? = Nothing)
+  overload: Global.Vector3Override.#ctor*
+  nameWithType.vb: Vector3Override.New(Vector3?)
+  fullName.vb: Vector3Override.New(Vector3?)
+  name.vb: New(Vector3?)
+- uid: Global.Vector3Override.GetValue(Vector3)
+  commentId: M:Global.Vector3Override.GetValue(Vector3)
+  id: GetValue(Vector3)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: GetValue(Vector3)
+  nameWithType: Vector3Override.GetValue(Vector3)
+  fullName: Vector3Override.GetValue(Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetValue
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 29
+  namespace: Global
+  syntax:
+    content: public Vector3 GetValue(Vector3 fallback)
+    parameters:
+    - id: fallback
+      type: Global.Vector3
+    return:
+      type: Global.Vector3
+    content.vb: Public Function GetValue(fallback As Vector3) As Vector3
+  overload: Global.Vector3Override.GetValue*
+- uid: Global.Vector3Override.op_Equality(Vector3Override,Vector3Override)
+  commentId: M:Global.Vector3Override.op_Equality(Vector3Override,Vector3Override)
+  id: op_Equality(Vector3Override,Vector3Override)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: operator ==(Vector3Override, Vector3Override)
+  nameWithType: Vector3Override.operator ==(Vector3Override, Vector3Override)
+  fullName: Vector3Override.operator ==(Vector3Override, Vector3Override)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Equality
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 35
+  namespace: Global
+  syntax:
+    content: public static bool operator ==(Vector3Override a, Vector3Override b)
+    parameters:
+    - id: a
+      type: Global.Vector3Override
+    - id: b
+      type: Global.Vector3Override
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator =(a As Vector3Override, b As Vector3Override) As Boolean
+  overload: Global.Vector3Override.op_Equality*
+  nameWithType.vb: Vector3Override.=(Vector3Override, Vector3Override)
+  fullName.vb: Vector3Override.=(Vector3Override, Vector3Override)
+  name.vb: =(Vector3Override, Vector3Override)
+- uid: Global.Vector3Override.op_Inequality(Vector3Override,Vector3Override)
+  commentId: M:Global.Vector3Override.op_Inequality(Vector3Override,Vector3Override)
+  id: op_Inequality(Vector3Override,Vector3Override)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: operator !=(Vector3Override, Vector3Override)
+  nameWithType: Vector3Override.operator !=(Vector3Override, Vector3Override)
+  fullName: Vector3Override.operator !=(Vector3Override, Vector3Override)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Inequality
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 40
+  namespace: Global
+  syntax:
+    content: public static bool operator !=(Vector3Override a, Vector3Override b)
+    parameters:
+    - id: a
+      type: Global.Vector3Override
+    - id: b
+      type: Global.Vector3Override
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Operator <>(a As Vector3Override, b As Vector3Override) As Boolean
+  overload: Global.Vector3Override.op_Inequality*
+  nameWithType.vb: Vector3Override.<>(Vector3Override, Vector3Override)
+  fullName.vb: Vector3Override.<>(Vector3Override, Vector3Override)
+  name.vb: <>(Vector3Override, Vector3Override)
+- uid: Global.Vector3Override.op_Addition(Vector3Override,Vector3Override)
+  commentId: M:Global.Vector3Override.op_Addition(Vector3Override,Vector3Override)
+  id: op_Addition(Vector3Override,Vector3Override)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: operator +(Vector3Override, Vector3Override)
+  nameWithType: Vector3Override.operator +(Vector3Override, Vector3Override)
+  fullName: Vector3Override.operator +(Vector3Override, Vector3Override)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Addition
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 45
+  namespace: Global
+  syntax:
+    content: public static Vector3Override operator +(Vector3Override a, Vector3Override b)
+    parameters:
+    - id: a
+      type: Global.Vector3Override
+    - id: b
+      type: Global.Vector3Override
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Shared Operator +(a As Vector3Override, b As Vector3Override) As Vector3Override
+  overload: Global.Vector3Override.op_Addition*
+  nameWithType.vb: Vector3Override.+(Vector3Override, Vector3Override)
+  fullName.vb: Vector3Override.+(Vector3Override, Vector3Override)
+  name.vb: +(Vector3Override, Vector3Override)
+- uid: Global.Vector3Override.Equals(Vector3Override)
+  commentId: M:Global.Vector3Override.Equals(Vector3Override)
+  id: Equals(Vector3Override)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: Equals(Vector3Override)
+  nameWithType: Vector3Override.Equals(Vector3Override)
+  fullName: Vector3Override.Equals(Vector3Override)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 52
+  namespace: Global
+  syntax:
+    content: public bool Equals(Vector3Override other)
+    parameters:
+    - id: other
+      type: Global.Vector3Override
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As Vector3Override) As Boolean
+  overload: Global.Vector3Override.Equals*
+- uid: Global.Vector3Override.Equals(System.Object)
+  commentId: M:Global.Vector3Override.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: Vector3Override.Equals(object)
+  fullName: Vector3Override.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 59
+  namespace: Global
+  summary: Indicates whether this instance and a specified object are equal.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Global.Vector3Override.Equals*
+  nameWithType.vb: Vector3Override.Equals(Object)
+  fullName.vb: Vector3Override.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Global.Vector3Override.GetHashCode
+  commentId: M:Global.Vector3Override.GetHashCode
+  id: GetHashCode
+  parent: Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Vector3Override.GetHashCode()
+  fullName: Vector3Override.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetHashCode
+    path: ../Package/Runtime/CharData/Mesh Modifiers/Vector3Override.cs
+    startLine: 65
+  namespace: Global
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer that is the hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Global.Vector3Override.GetHashCode*
+references:
+- uid: Global
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.Vector3Override.OverrideValue*
+  commentId: Overload:Global.Vector3Override.OverrideValue
+  href: Global.Vector3Override.html#Vector3Override_OverrideValue
+  name: OverrideValue
+  nameWithType: Vector3Override.OverrideValue
+  fullName: Vector3Override.OverrideValue
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: Global.Vector3Override.Override*
+  commentId: Overload:Global.Vector3Override.Override
+  href: Global.Vector3Override.html#Vector3Override_Override
+  name: Override
+  nameWithType: Vector3Override.Override
+  fullName: Vector3Override.Override
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Global.Vector3Override
+  commentId: T:Global.Vector3Override
+  href: Vector3Override.html
+  name: Vector3Override
+  nameWithType: Vector3Override
+  fullName: Vector3Override
+- uid: Global.Vector3Override.GetDefault*
+  commentId: Overload:Global.Vector3Override.GetDefault
+  href: Global.Vector3Override.html#Vector3Override_GetDefault
+  name: GetDefault
+  nameWithType: Vector3Override.GetDefault
+  fullName: Vector3Override.GetDefault
+- uid: Global.Vector3Override.#ctor*
+  commentId: Overload:Global.Vector3Override.#ctor
+  href: Global.Vector3Override.html#Vector3Override__ctor_System_Nullable_Vector3__
+  name: Vector3Override
+  nameWithType: Vector3Override.Vector3Override
+  fullName: Vector3Override.Vector3Override
+  nameWithType.vb: Vector3Override.New
+  fullName.vb: Vector3Override.New
+  name.vb: New
+- uid: System.Nullable{Vector3}
+  commentId: T:System.Nullable{Vector3}
+  parent: System
+  definition: System.Nullable`1
+  name: Vector3?
+  nameWithType: Vector3?
+  fullName: Vector3?
+  spec.csharp:
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '?'
+  spec.vb:
+  - uid: Global.Vector3
+    name: Vector3
+    isExternal: true
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Global.Vector3Override.GetValue*
+  commentId: Overload:Global.Vector3Override.GetValue
+  href: Global.Vector3Override.html#Vector3Override_GetValue_Vector3_
+  name: GetValue
+  nameWithType: Vector3Override.GetValue
+  fullName: Vector3Override.GetValue
+- uid: Global.Vector3Override.op_Equality*
+  commentId: Overload:Global.Vector3Override.op_Equality
+  href: Global.Vector3Override.html#Vector3Override_op_Equality_Vector3Override_Vector3Override_
+  name: operator ==
+  nameWithType: Vector3Override.operator ==
+  fullName: Vector3Override.operator ==
+  nameWithType.vb: Vector3Override.=
+  fullName.vb: Vector3Override.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Global.Vector3Override.op_Equality*
+    name: ==
+    href: Global.Vector3Override.html#Vector3Override_op_Equality_Vector3Override_Vector3Override_
+- uid: Global.Vector3Override.op_Inequality*
+  commentId: Overload:Global.Vector3Override.op_Inequality
+  href: Global.Vector3Override.html#Vector3Override_op_Inequality_Vector3Override_Vector3Override_
+  name: operator !=
+  nameWithType: Vector3Override.operator !=
+  fullName: Vector3Override.operator !=
+  nameWithType.vb: Vector3Override.<>
+  fullName.vb: Vector3Override.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Global.Vector3Override.op_Inequality*
+    name: '!='
+    href: Global.Vector3Override.html#Vector3Override_op_Inequality_Vector3Override_Vector3Override_
+- uid: Global.Vector3Override.op_Addition*
+  commentId: Overload:Global.Vector3Override.op_Addition
+  href: Global.Vector3Override.html#Vector3Override_op_Addition_Vector3Override_Vector3Override_
+  name: operator +
+  nameWithType: Vector3Override.operator +
+  fullName: Vector3Override.operator +
+  nameWithType.vb: Vector3Override.+
+  fullName.vb: Vector3Override.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Global.Vector3Override.op_Addition*
+    name: +
+    href: Global.Vector3Override.html#Vector3Override_op_Addition_Vector3Override_Vector3Override_
+- uid: Global.Vector3Override.Equals*
+  commentId: Overload:Global.Vector3Override.Equals
+  href: Global.Vector3Override.html#Vector3Override_Equals_Vector3Override_
+  name: Equals
+  nameWithType: Vector3Override.Equals
+  fullName: Vector3Override.Equals
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Global.Vector3Override.GetHashCode*
+  commentId: Overload:Global.Vector3Override.GetHashCode
+  href: Global.Vector3Override.html#Vector3Override_GetHashCode
+  name: GetHashCode
+  nameWithType: Vector3Override.GetHashCode
+  fullName: Vector3Override.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

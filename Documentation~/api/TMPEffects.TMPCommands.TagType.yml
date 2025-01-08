@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TagType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 12
@@ -41,8 +41,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TagType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Index
     path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 14
@@ -65,8 +65,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TagType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Block
     path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 15
@@ -89,8 +89,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TagType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Either
     path: ../Package/Runtime/Effects/TMPCommands/TagType.cs
     startLine: 16

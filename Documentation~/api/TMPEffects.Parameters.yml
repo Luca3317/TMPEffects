@@ -4,16 +4,25 @@ items:
   commentId: N:TMPEffects.Parameters
   id: TMPEffects.Parameters
   children:
-  - TMPEffects.Parameters.GenerateParameterUtilityAttribute
+  - TMPEffects.Parameters.ITMPOffsetProvider
+  - TMPEffects.Parameters.ITMPParameterValidator
+  - TMPEffects.Parameters.OffsetBundle
+  - TMPEffects.Parameters.OffsetTypePowerEnum
   - TMPEffects.Parameters.ParameterParsing
-  - TMPEffects.Parameters.ParameterTypes
-  - TMPEffects.Parameters.ParameterTypes.TypedVector2
-  - TMPEffects.Parameters.ParameterTypes.TypedVector3
-  - TMPEffects.Parameters.ParameterTypes.VectorType
-  - TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-  - TMPEffects.Parameters.ParameterUtility
-  - TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
-  - TMPEffects.Parameters.ParameterUtility.WaveParameters
+  - TMPEffects.Parameters.SceneOffsetBundle
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  - TMPEffects.Parameters.TMPBlendCurve
+  - TMPEffects.Parameters.TMPOffsetProvider
+  - TMPEffects.Parameters.TMPParameterTypes
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  - TMPEffects.Parameters.TMPParameterTypes.VectorType
+  - TMPEffects.Parameters.TMPParameterUtility
+  - TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
+  - TMPEffects.Parameters.TMPSceneOffsetProvider
+  - TMPEffects.Parameters.Wave
+  - TMPEffects.Parameters.Wave.PulseExtrema
   langs:
   - csharp
   - vb
@@ -22,133 +31,140 @@ items:
   fullName: TMPEffects.Parameters
   type: Namespace
 references:
+- uid: TMPEffects.Parameters.ITMPParameterValidator
+  commentId: T:TMPEffects.Parameters.ITMPParameterValidator
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPParameterValidator.html
+  name: ITMPParameterValidator
+  nameWithType: ITMPParameterValidator
+  fullName: TMPEffects.Parameters.ITMPParameterValidator
 - uid: TMPEffects.Parameters.ParameterParsing
   commentId: T:TMPEffects.Parameters.ParameterParsing
   href: TMPEffects.Parameters.ParameterParsing.html
   name: ParameterParsing
   nameWithType: ParameterParsing
   fullName: TMPEffects.Parameters.ParameterParsing
-- uid: TMPEffects.Parameters.ParameterTypes
-  commentId: T:TMPEffects.Parameters.ParameterTypes
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes
-  nameWithType: ParameterTypes
-  fullName: TMPEffects.Parameters.ParameterTypes
-- uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-  commentId: T:TMPEffects.Parameters.ParameterTypes.WaveOffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes
+  nameWithType: TMPParameterTypes
+  fullName: TMPEffects.Parameters.TMPParameterTypes
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.OffsetType
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.WaveOffsetType
-  nameWithType: ParameterTypes.WaveOffsetType
-  fullName: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.OffsetType
+  nameWithType: TMPParameterTypes.OffsetType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
-- uid: TMPEffects.Parameters.ParameterTypes.VectorType
-  commentId: T:TMPEffects.Parameters.ParameterTypes.VectorType
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.VectorType
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.VectorType
-  nameWithType: ParameterTypes.VectorType
-  fullName: TMPEffects.Parameters.ParameterTypes.VectorType
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.VectorType
+  nameWithType: TMPParameterTypes.VectorType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.VectorType
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.VectorType
+  - uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
     name: VectorType
-    href: TMPEffects.Parameters.ParameterTypes.VectorType.html
+    href: TMPEffects.Parameters.TMPParameterTypes.VectorType.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.VectorType
+  - uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
     name: VectorType
-    href: TMPEffects.Parameters.ParameterTypes.VectorType.html
-- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
-  commentId: T:TMPEffects.Parameters.ParameterTypes.TypedVector2
+    href: TMPEffects.Parameters.TMPParameterTypes.VectorType.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector2
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.TypedVector2
-  nameWithType: ParameterTypes.TypedVector2
-  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector2
+  nameWithType: TMPParameterTypes.TypedVector2
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
     name: TypedVector2
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector2.html
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
     name: TypedVector2
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector2.html
-- uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
-  commentId: T:TMPEffects.Parameters.ParameterTypes.TypedVector3
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector3
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.TypedVector3
-  nameWithType: ParameterTypes.TypedVector3
-  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
     name: TypedVector3
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector3.html
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
     name: TypedVector3
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector3.html
-- uid: TMPEffects.Parameters.ParameterUtility
-  commentId: T:TMPEffects.Parameters.ParameterUtility
-  href: TMPEffects.Parameters.ParameterUtility.html
-  name: ParameterUtility
-  nameWithType: ParameterUtility
-  fullName: TMPEffects.Parameters.ParameterUtility
-- uid: TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
-  commentId: T:TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
-  href: TMPEffects.Parameters.ParameterUtility.html
-  name: ParameterUtility.ParseDelegate<T, U, V, W>
-  nameWithType: ParameterUtility.ParseDelegate<T, U, V, W>
-  fullName: TMPEffects.Parameters.ParameterUtility.ParseDelegate<T, U, V, W>
-  nameWithType.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
-  fullName.vb: TMPEffects.Parameters.ParameterUtility.ParseDelegate(Of T, U, V, W)
-  name.vb: ParameterUtility.ParseDelegate(Of T, U, V, W)
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
+- uid: TMPEffects.Parameters.TMPParameterUtility
+  commentId: T:TMPEffects.Parameters.TMPParameterUtility
+  href: TMPEffects.Parameters.TMPParameterUtility.html
+  name: TMPParameterUtility
+  nameWithType: TMPParameterUtility
+  fullName: TMPEffects.Parameters.TMPParameterUtility
+- uid: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
+  commentId: T:TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
+  href: TMPEffects.Parameters.TMPParameterUtility.html
+  name: TMPParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType: TMPParameterUtility.ParseDelegate<T, U, V, W>
+  fullName: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType.vb: TMPParameterUtility.ParseDelegate(Of T, U, V, W)
+  fullName.vb: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate(Of T, U, V, W)
+  name.vb: TMPParameterUtility.ParseDelegate(Of T, U, V, W)
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.Parameters.ParameterUtility.html
+  - uid: TMPEffects.Parameters.TMPParameterUtility
+    name: TMPParameterUtility
+    href: TMPEffects.Parameters.TMPParameterUtility.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
+  - uid: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
     name: ParseDelegate
-    href: TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html
+    href: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate-4.html
   - name: <
   - name: T
   - name: ','
@@ -162,13 +178,13 @@ references:
   - name: W
   - name: '>'
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.Parameters.ParameterUtility.html
+  - uid: TMPEffects.Parameters.TMPParameterUtility
+    name: TMPParameterUtility
+    href: TMPEffects.Parameters.TMPParameterUtility.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterUtility.ParseDelegate`4
+  - uid: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
     name: ParseDelegate
-    href: TMPEffects.Parameters.ParameterUtility.ParseDelegate-4.html
+    href: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate-4.html
   - name: (
   - name: Of
   - name: " "
@@ -183,35 +199,91 @@ references:
   - name: " "
   - name: W
   - name: )
-- uid: TMPEffects.Parameters.ParameterUtility.WaveParameters
-  commentId: T:TMPEffects.Parameters.ParameterUtility.WaveParameters
+- uid: TMPEffects.Parameters.TMPBlendCurve
+  commentId: T:TMPEffects.Parameters.TMPBlendCurve
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterUtility.html
-  name: ParameterUtility.WaveParameters
-  nameWithType: ParameterUtility.WaveParameters
-  fullName: TMPEffects.Parameters.ParameterUtility.WaveParameters
+  href: TMPEffects.Parameters.TMPBlendCurve.html
+  name: TMPBlendCurve
+  nameWithType: TMPBlendCurve
+  fullName: TMPEffects.Parameters.TMPBlendCurve
+- uid: TMPEffects.Parameters.Wave
+  commentId: T:TMPEffects.Parameters.Wave
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.Wave.html
+  name: Wave
+  nameWithType: Wave
+  fullName: TMPEffects.Parameters.Wave
+- uid: TMPEffects.Parameters.Wave.PulseExtrema
+  commentId: T:TMPEffects.Parameters.Wave.PulseExtrema
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.Wave.html
+  name: Wave.PulseExtrema
+  nameWithType: Wave.PulseExtrema
+  fullName: TMPEffects.Parameters.Wave.PulseExtrema
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.Parameters.ParameterUtility.html
+  - uid: TMPEffects.Parameters.Wave
+    name: Wave
+    href: TMPEffects.Parameters.Wave.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterUtility.WaveParameters
-    name: WaveParameters
-    href: TMPEffects.Parameters.ParameterUtility.WaveParameters.html
+  - uid: TMPEffects.Parameters.Wave.PulseExtrema
+    name: PulseExtrema
+    href: TMPEffects.Parameters.Wave.PulseExtrema.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterUtility
-    name: ParameterUtility
-    href: TMPEffects.Parameters.ParameterUtility.html
+  - uid: TMPEffects.Parameters.Wave
+    name: Wave
+    href: TMPEffects.Parameters.Wave.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterUtility.WaveParameters
-    name: WaveParameters
-    href: TMPEffects.Parameters.ParameterUtility.WaveParameters.html
-- uid: TMPEffects.Parameters.GenerateParameterUtilityAttribute
-  commentId: T:TMPEffects.Parameters.GenerateParameterUtilityAttribute
-  href: TMPEffects.Parameters.GenerateParameterUtilityAttribute.html
-  name: GenerateParameterUtilityAttribute
-  nameWithType: GenerateParameterUtilityAttribute
-  fullName: TMPEffects.Parameters.GenerateParameterUtilityAttribute
+  - uid: TMPEffects.Parameters.Wave.PulseExtrema
+    name: PulseExtrema
+    href: TMPEffects.Parameters.Wave.PulseExtrema.html
+- uid: TMPEffects.Parameters.ITMPOffsetProvider
+  commentId: T:TMPEffects.Parameters.ITMPOffsetProvider
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPOffsetProvider.html
+  name: ITMPOffsetProvider
+  nameWithType: ITMPOffsetProvider
+  fullName: TMPEffects.Parameters.ITMPOffsetProvider
+- uid: TMPEffects.Parameters.OffsetBundle
+  commentId: T:TMPEffects.Parameters.OffsetBundle
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.OffsetBundle.html
+  name: OffsetBundle
+  nameWithType: OffsetBundle
+  fullName: TMPEffects.Parameters.OffsetBundle
+- uid: TMPEffects.Parameters.OffsetTypePowerEnum
+  commentId: T:TMPEffects.Parameters.OffsetTypePowerEnum
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.OffsetTypePowerEnum.html
+  name: OffsetTypePowerEnum
+  nameWithType: OffsetTypePowerEnum
+  fullName: TMPEffects.Parameters.OffsetTypePowerEnum
+- uid: TMPEffects.Parameters.SceneOffsetBundle
+  commentId: T:TMPEffects.Parameters.SceneOffsetBundle
+  href: TMPEffects.Parameters.SceneOffsetBundle.html
+  name: SceneOffsetBundle
+  nameWithType: SceneOffsetBundle
+  fullName: TMPEffects.Parameters.SceneOffsetBundle
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  commentId: T:TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  name: SceneOffsetTypePowerEnum
+  nameWithType: SceneOffsetTypePowerEnum
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+- uid: TMPEffects.Parameters.TMPOffsetProvider
+  commentId: T:TMPEffects.Parameters.TMPOffsetProvider
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPOffsetProvider.html
+  name: TMPOffsetProvider
+  nameWithType: TMPOffsetProvider
+  fullName: TMPEffects.Parameters.TMPOffsetProvider
+- uid: TMPEffects.Parameters.TMPSceneOffsetProvider
+  commentId: T:TMPEffects.Parameters.TMPSceneOffsetProvider
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPSceneOffsetProvider.html
+  name: TMPSceneOffsetProvider
+  nameWithType: TMPSceneOffsetProvider
+  fullName: TMPEffects.Parameters.TMPSceneOffsetProvider
 - uid: TMPEffects.Parameters
   commentId: N:TMPEffects.Parameters
   href: TMPEffects.html

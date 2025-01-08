@@ -1,0 +1,243 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPEffectsMarker
+  commentId: T:Global.TMPEffectsMarker
+  id: TMPEffectsMarker
+  parent: Global
+  children:
+  - Global.TMPEffectsMarker.flags
+  - Global.TMPEffectsMarker.id
+  - Global.TMPEffectsMarker.retroactive
+  - Global.TMPEffectsMarker.triggerInEditMode
+  - Global.TMPEffectsMarker.triggerOnce
+  langs:
+  - csharp
+  - vb
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffectsMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPEffectsMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 4
+  namespace: Global
+  syntax:
+    content: 'public abstract class TMPEffectsMarker : Marker, INotification, INotificationOptionProvider'
+    content.vb: Public MustInherit Class TMPEffectsMarker Inherits Marker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Global.TMPResetAnimationsMarker
+  - Global.TMPResetTimeMarker
+  - Global.TMPResetWriterMarker
+  - Global.TMPRestartWriterMarker
+  - Global.TMPSetUpdateFromMarker
+  - Global.TMPSkipWriterMarker
+  - Global.TMPStartAnimatingMarker
+  - Global.TMPStartWriterMarker
+  - Global.TMPStopAnimatingMarker
+  - Global.TMPStopWriterMarker
+  - Global.TMPUpdateAnimationsMarker
+  - Global.TMPWriterResetWaitMarker
+  - Global.TMPWriterSetSkippableMarker
+  - Global.TMPWriterWaitMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+- uid: Global.TMPEffectsMarker.retroactive
+  commentId: F:Global.TMPEffectsMarker.retroactive
+  id: retroactive
+  parent: Global.TMPEffectsMarker
+  langs:
+  - csharp
+  - vb
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffectsMarker.retroactive
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: retroactive
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 7
+  namespace: Global
+  syntax:
+    content: protected bool retroactive
+    return:
+      type: System.Boolean
+    content.vb: Protected retroactive As Boolean
+- uid: Global.TMPEffectsMarker.triggerOnce
+  commentId: F:Global.TMPEffectsMarker.triggerOnce
+  id: triggerOnce
+  parent: Global.TMPEffectsMarker
+  langs:
+  - csharp
+  - vb
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffectsMarker.triggerOnce
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: triggerOnce
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 8
+  namespace: Global
+  syntax:
+    content: protected bool triggerOnce
+    return:
+      type: System.Boolean
+    content.vb: Protected triggerOnce As Boolean
+- uid: Global.TMPEffectsMarker.triggerInEditMode
+  commentId: F:Global.TMPEffectsMarker.triggerInEditMode
+  id: triggerInEditMode
+  parent: Global.TMPEffectsMarker
+  langs:
+  - csharp
+  - vb
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffectsMarker.triggerInEditMode
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: triggerInEditMode
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 9
+  namespace: Global
+  syntax:
+    content: protected bool triggerInEditMode
+    return:
+      type: System.Boolean
+    content.vb: Protected triggerInEditMode As Boolean
+- uid: Global.TMPEffectsMarker.id
+  commentId: P:Global.TMPEffectsMarker.id
+  id: id
+  parent: Global.TMPEffectsMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffectsMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 11
+  namespace: Global
+  syntax:
+    content: public abstract PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public MustOverride ReadOnly Property id As PropertyName
+  overload: Global.TMPEffectsMarker.id*
+- uid: Global.TMPEffectsMarker.flags
+  commentId: P:Global.TMPEffectsMarker.flags
+  id: flags
+  parent: Global.TMPEffectsMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffectsMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPEffectsMark.cs
+    startLine: 12
+  namespace: Global
+  syntax:
+    content: public abstract NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public MustOverride ReadOnly Property flags As NotificationFlags
+  overload: Global.TMPEffectsMarker.flags*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Global.TMPEffectsMarker.id*
+  commentId: Overload:Global.TMPEffectsMarker.id
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffectsMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: Global.TMPEffectsMarker.flags*
+  commentId: Overload:Global.TMPEffectsMarker.flags
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffectsMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags

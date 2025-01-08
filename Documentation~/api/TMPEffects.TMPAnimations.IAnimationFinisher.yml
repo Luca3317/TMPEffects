@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher
+  commentId: T:TMPEffects.TMPAnimations.IAnimationFinisher
+  id: IAnimationFinisher
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  langs:
+  - csharp
+  - vb
+  name: IAnimationFinisher
+  nameWithType: IAnimationFinisher
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: IAnimationFinisher
+    path: ../Package/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    startLine: 56
+  namespace: TMPEffects.TMPAnimations
+  summary: Provides the ability to mark an animation as done animating a specific <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public interface IAnimationFinisher
+    content.vb: Public Interface IAnimationFinisher
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  id: FinishAnimation(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.TMPAnimations.IAnimationFinisher
+  langs:
+  - csharp
+  - vb
+  name: FinishAnimation(CharData)
+  nameWithType: IAnimationFinisher.FinishAnimation(CharData)
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation(TMPEffects.CharacterData.CharData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: FinishAnimation
+    path: ../Package/Runtime/Effects/TMPAnimations/IAnimationContext.cs
+    startLine: 63
+  namespace: TMPEffects.TMPAnimations
+  summary: Set the animation to be considered finished for the given character.
+  example: []
+  syntax:
+    content: void FinishAnimation(CharData cData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    content.vb: Sub FinishAnimation(cData As CharData)
+  overload: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation*
+references:
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation*
+  commentId: Overload:TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation
+  href: TMPEffects.TMPAnimations.IAnimationFinisher.html#TMPEffects_TMPAnimations_IAnimationFinisher_FinishAnimation_TMPEffects_CharacterData_CharData_
+  name: FinishAnimation
+  nameWithType: IAnimationFinisher.FinishAnimation
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher.FinishAnimation

@@ -1,0 +1,262 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.ITMPParameterValidator
+  commentId: T:TMPEffects.Parameters.ITMPParameterValidator
+  id: ITMPParameterValidator
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  langs:
+  - csharp
+  - vb
+  name: ITMPParameterValidator
+  nameWithType: ITMPParameterValidator
+  fullName: TMPEffects.Parameters.ITMPParameterValidator
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ITMPParameterValidator.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ITMPParameterValidator
+    path: ../Package/Runtime/Parameters/ITMPParameterValidator.cs
+    startLine: 8
+  namespace: TMPEffects.Parameters
+  summary: Validates tag parameters.
+  example: []
+  syntax:
+    content: public interface ITMPParameterValidator
+    content.vb: Public Interface ITMPParameterValidator
+- uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.Parameters.ITMPParameterValidator
+  langs:
+  - csharp
+  - vb
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPParameterValidator.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ITMPParameterValidator.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ValidateParameters
+    path: ../Package/Runtime/Parameters/ITMPParameterValidator.cs
+    startLine: 16
+  namespace: TMPEffects.Parameters
+  summary: Validate the given parameters.
+  example: []
+  syntax:
+    content: bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters as key-value pairs
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values
+    return:
+      type: System.Boolean
+      description: true if the parameters were successfully validated; false otherwise.
+    content.vb: Function ValidateParameters(parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase) As Boolean
+  overload: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters*
+  nameWithType.vb: ITMPParameterValidator.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+references:
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters*
+  commentId: Overload:TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters
+  href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: ValidateParameters
+  nameWithType: ITMPParameterValidator.ValidateParameters
+  fullName: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string>
+  nameWithType: IDictionary<string, string>
+  fullName: System.Collections.Generic.IDictionary<string, string>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,0 +1,1074 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.EditorFriendlyCharDataModifiers
+  commentId: T:Global.EditorFriendlyCharDataModifiers
+  id: EditorFriendlyCharDataModifiers
+  parent: Global
+  children:
+  - Global.EditorFriendlyCharDataModifiers.#ctor
+  - Global.EditorFriendlyCharDataModifiers.#ctor(EditorFriendlyCharDataModifiers)
+  - Global.EditorFriendlyCharDataModifiers.BL_Color
+  - Global.EditorFriendlyCharDataModifiers.BL_Position
+  - Global.EditorFriendlyCharDataModifiers.BL_UV0
+  - Global.EditorFriendlyCharDataModifiers.BR_Color
+  - Global.EditorFriendlyCharDataModifiers.BR_Position
+  - Global.EditorFriendlyCharDataModifiers.BR_UV0
+  - Global.EditorFriendlyCharDataModifiers.Position
+  - Global.EditorFriendlyCharDataModifiers.Rotations
+  - Global.EditorFriendlyCharDataModifiers.Scale
+  - Global.EditorFriendlyCharDataModifiers.TL_Color
+  - Global.EditorFriendlyCharDataModifiers.TL_Position
+  - Global.EditorFriendlyCharDataModifiers.TL_UV0
+  - Global.EditorFriendlyCharDataModifiers.TR_Color
+  - Global.EditorFriendlyCharDataModifiers.TR_Position
+  - Global.EditorFriendlyCharDataModifiers.TR_UV0
+  - Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers)
+  - Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers)
+  langs:
+  - csharp
+  - vb
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers
+  fullName: EditorFriendlyCharDataModifiers
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: EditorFriendlyCharDataModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 28
+  namespace: Global
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class EditorFriendlyCharDataModifiers
+    content.vb: >-
+      <Serializable>
+
+      Public Class EditorFriendlyCharDataModifiers
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Global.EditorFriendlyCharDataModifiers.Position
+  commentId: F:Global.EditorFriendlyCharDataModifiers.Position
+  id: Position
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: EditorFriendlyCharDataModifiers.Position
+  fullName: EditorFriendlyCharDataModifiers.Position
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Position
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 31
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 Position
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public Position As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.Scale
+  commentId: F:Global.EditorFriendlyCharDataModifiers.Scale
+  id: Scale
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: EditorFriendlyCharDataModifiers.Scale
+  fullName: EditorFriendlyCharDataModifiers.Scale
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Scale
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 34
+  namespace: Global
+  syntax:
+    content: public Vector3 Scale
+    return:
+      type: Global.Vector3
+    content.vb: Public Scale As Vector3
+- uid: Global.EditorFriendlyCharDataModifiers.Rotations
+  commentId: F:Global.EditorFriendlyCharDataModifiers.Rotations
+  id: Rotations
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: Rotations
+  nameWithType: EditorFriendlyCharDataModifiers.Rotations
+  fullName: EditorFriendlyCharDataModifiers.Rotations
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Rotations
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 36
+  namespace: Global
+  syntax:
+    content: public List<EditorFriendlyRotation> Rotations
+    return:
+      type: System.Collections.Generic.List{EditorFriendlyRotation}
+    content.vb: Public Rotations As List(Of EditorFriendlyRotation)
+- uid: Global.EditorFriendlyCharDataModifiers.BL_Position
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BL_Position
+  id: BL_Position
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_Position
+  nameWithType: EditorFriendlyCharDataModifiers.BL_Position
+  fullName: EditorFriendlyCharDataModifiers.BL_Position
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_Position
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 39
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 BL_Position
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public BL_Position As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.TL_Position
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TL_Position
+  id: TL_Position
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_Position
+  nameWithType: EditorFriendlyCharDataModifiers.TL_Position
+  fullName: EditorFriendlyCharDataModifiers.TL_Position
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_Position
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 42
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 TL_Position
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public TL_Position As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.TR_Position
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TR_Position
+  id: TR_Position
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_Position
+  nameWithType: EditorFriendlyCharDataModifiers.TR_Position
+  fullName: EditorFriendlyCharDataModifiers.TR_Position
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_Position
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 45
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 TR_Position
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public TR_Position As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.BR_Position
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BR_Position
+  id: BR_Position
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_Position
+  nameWithType: EditorFriendlyCharDataModifiers.BR_Position
+  fullName: EditorFriendlyCharDataModifiers.BR_Position
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_Position
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 48
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 BR_Position
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public BR_Position As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.BL_Color
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BL_Color
+  id: BL_Color
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_Color
+  nameWithType: EditorFriendlyCharDataModifiers.BL_Color
+  fullName: EditorFriendlyCharDataModifiers.BL_Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 51
+  namespace: Global
+  syntax:
+    content: public ColorOverride BL_Color
+    return:
+      type: Global.ColorOverride
+    content.vb: Public BL_Color As ColorOverride
+- uid: Global.EditorFriendlyCharDataModifiers.TL_Color
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TL_Color
+  id: TL_Color
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_Color
+  nameWithType: EditorFriendlyCharDataModifiers.TL_Color
+  fullName: EditorFriendlyCharDataModifiers.TL_Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 52
+  namespace: Global
+  syntax:
+    content: public ColorOverride TL_Color
+    return:
+      type: Global.ColorOverride
+    content.vb: Public TL_Color As ColorOverride
+- uid: Global.EditorFriendlyCharDataModifiers.TR_Color
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TR_Color
+  id: TR_Color
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_Color
+  nameWithType: EditorFriendlyCharDataModifiers.TR_Color
+  fullName: EditorFriendlyCharDataModifiers.TR_Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 53
+  namespace: Global
+  syntax:
+    content: public ColorOverride TR_Color
+    return:
+      type: Global.ColorOverride
+    content.vb: Public TR_Color As ColorOverride
+- uid: Global.EditorFriendlyCharDataModifiers.BR_Color
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BR_Color
+  id: BR_Color
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_Color
+  nameWithType: EditorFriendlyCharDataModifiers.BR_Color
+  fullName: EditorFriendlyCharDataModifiers.BR_Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 54
+  namespace: Global
+  syntax:
+    content: public ColorOverride BR_Color
+    return:
+      type: Global.ColorOverride
+    content.vb: Public BR_Color As ColorOverride
+- uid: Global.EditorFriendlyCharDataModifiers.BL_UV0
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BL_UV0
+  id: BL_UV0
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_UV0
+  nameWithType: EditorFriendlyCharDataModifiers.BL_UV0
+  fullName: EditorFriendlyCharDataModifiers.BL_UV0
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 56
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 BL_UV0
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public BL_UV0 As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.TL_UV0
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TL_UV0
+  id: TL_UV0
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_UV0
+  nameWithType: EditorFriendlyCharDataModifiers.TL_UV0
+  fullName: EditorFriendlyCharDataModifiers.TL_UV0
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 59
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 TL_UV0
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public TL_UV0 As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.TR_UV0
+  commentId: F:Global.EditorFriendlyCharDataModifiers.TR_UV0
+  id: TR_UV0
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_UV0
+  nameWithType: EditorFriendlyCharDataModifiers.TR_UV0
+  fullName: EditorFriendlyCharDataModifiers.TR_UV0
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 62
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 TR_UV0
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public TR_UV0 As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.BR_UV0
+  commentId: F:Global.EditorFriendlyCharDataModifiers.BR_UV0
+  id: BR_UV0
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_UV0
+  nameWithType: EditorFriendlyCharDataModifiers.BR_UV0
+  fullName: EditorFriendlyCharDataModifiers.BR_UV0
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 65
+  namespace: Global
+  syntax:
+    content: public TMPParameterTypes.TypedVector3 BR_UV0
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public BR_UV0 As TMPParameterTypes.TypedVector3
+- uid: Global.EditorFriendlyCharDataModifiers.#ctor
+  commentId: M:Global.EditorFriendlyCharDataModifiers.#ctor
+  id: '#ctor'
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: EditorFriendlyCharDataModifiers()
+  nameWithType: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers()
+  fullName: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers()
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 69
+  namespace: Global
+  syntax:
+    content: public EditorFriendlyCharDataModifiers()
+    content.vb: Public Sub New()
+  overload: Global.EditorFriendlyCharDataModifiers.#ctor*
+  nameWithType.vb: EditorFriendlyCharDataModifiers.New()
+  fullName.vb: EditorFriendlyCharDataModifiers.New()
+  name.vb: New()
+- uid: Global.EditorFriendlyCharDataModifiers.#ctor(EditorFriendlyCharDataModifiers)
+  commentId: M:Global.EditorFriendlyCharDataModifiers.#ctor(EditorFriendlyCharDataModifiers)
+  id: '#ctor(EditorFriendlyCharDataModifiers)'
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers)
+  nameWithType: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers)
+  fullName: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 73
+  namespace: Global
+  syntax:
+    content: public EditorFriendlyCharDataModifiers(EditorFriendlyCharDataModifiers other)
+    parameters:
+    - id: other
+      type: Global.EditorFriendlyCharDataModifiers
+    content.vb: Public Sub New(other As EditorFriendlyCharDataModifiers)
+  overload: Global.EditorFriendlyCharDataModifiers.#ctor*
+  nameWithType.vb: EditorFriendlyCharDataModifiers.New(EditorFriendlyCharDataModifiers)
+  fullName.vb: EditorFriendlyCharDataModifiers.New(EditorFriendlyCharDataModifiers)
+  name.vb: New(EditorFriendlyCharDataModifiers)
+- uid: Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers)
+  commentId: M:Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers)
+  id: ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers)
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: ToCharDataModifiers(CharData, IAnimationContext, CharDataModifiers)
+  nameWithType: EditorFriendlyCharDataModifiers.ToCharDataModifiers(CharData, IAnimationContext, CharDataModifiers)
+  fullName: EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext, CharDataModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToCharDataModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 95
+  namespace: Global
+  syntax:
+    content: public void ToCharDataModifiers(CharData cData, IAnimationContext ctx, CharDataModifiers result)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    - id: result
+      type: Global.CharDataModifiers
+    content.vb: Public Sub ToCharDataModifiers(cData As CharData, ctx As IAnimationContext, result As CharDataModifiers)
+  overload: Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers*
+- uid: Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers)
+  commentId: M:Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers)
+  id: ToCharDataModifiers(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,CharDataModifiers)
+  parent: Global.EditorFriendlyCharDataModifiers
+  langs:
+  - csharp
+  - vb
+  name: ToCharDataModifiers(CharData, IAnimatorContext, CharDataModifiers)
+  nameWithType: EditorFriendlyCharDataModifiers.ToCharDataModifiers(CharData, IAnimatorContext, CharDataModifiers)
+  fullName: EditorFriendlyCharDataModifiers.ToCharDataModifiers(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext, CharDataModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToCharDataModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/EditorFriendlyCharDataModifiers.cs
+    startLine: 98
+  namespace: Global
+  syntax:
+    content: public void ToCharDataModifiers(CharData cData, IAnimatorContext ctx, CharDataModifiers result)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: ctx
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    - id: result
+      type: Global.CharDataModifiers
+    content.vb: Public Sub ToCharDataModifiers(cData As CharData, ctx As IAnimatorContext, result As CharDataModifiers)
+  overload: Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: System.Collections.Generic.List{EditorFriendlyRotation}
+  commentId: T:System.Collections.Generic.List{EditorFriendlyRotation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<EditorFriendlyRotation>
+  nameWithType: List<EditorFriendlyRotation>
+  fullName: System.Collections.Generic.List<EditorFriendlyRotation>
+  nameWithType.vb: List(Of EditorFriendlyRotation)
+  fullName.vb: System.Collections.Generic.List(Of EditorFriendlyRotation)
+  name.vb: List(Of EditorFriendlyRotation)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Global.EditorFriendlyRotation
+    name: EditorFriendlyRotation
+    href: EditorFriendlyRotation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.EditorFriendlyRotation
+    name: EditorFriendlyRotation
+    href: EditorFriendlyRotation.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Global.ColorOverride
+  commentId: T:Global.ColorOverride
+  href: ColorOverride.html
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: ColorOverride
+- uid: Global.EditorFriendlyCharDataModifiers.#ctor*
+  commentId: Overload:Global.EditorFriendlyCharDataModifiers.#ctor
+  href: Global.EditorFriendlyCharDataModifiers.html#EditorFriendlyCharDataModifiers__ctor
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers
+  fullName: EditorFriendlyCharDataModifiers.EditorFriendlyCharDataModifiers
+  nameWithType.vb: EditorFriendlyCharDataModifiers.New
+  fullName.vb: EditorFriendlyCharDataModifiers.New
+  name.vb: New
+- uid: Global.EditorFriendlyCharDataModifiers
+  commentId: T:Global.EditorFriendlyCharDataModifiers
+  href: EditorFriendlyCharDataModifiers.html
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers
+  fullName: EditorFriendlyCharDataModifiers
+- uid: Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers*
+  commentId: Overload:Global.EditorFriendlyCharDataModifiers.ToCharDataModifiers
+  href: Global.EditorFriendlyCharDataModifiers.html#EditorFriendlyCharDataModifiers_ToCharDataModifiers_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_CharDataModifiers_
+  name: ToCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers.ToCharDataModifiers
+  fullName: EditorFriendlyCharDataModifiers.ToCharDataModifiers
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: Global.CharDataModifiers
+  commentId: T:Global.CharDataModifiers
+  href: CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: CharDataModifiers
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.Components.Animator.IAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorContext.html
+  name: IAnimatorContext
+  nameWithType: IAnimatorContext
+  fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html

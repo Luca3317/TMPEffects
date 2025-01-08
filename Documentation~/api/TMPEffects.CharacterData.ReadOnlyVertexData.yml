@@ -32,7 +32,6 @@ items:
   - TMPEffects.CharacterData.ReadOnlyVertexData.TR_Position
   - TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV0
   - TMPEffects.CharacterData.ReadOnlyVertexData.TR_UV2
-  - TMPEffects.CharacterData.ReadOnlyVertexData.initial
   langs:
   - csharp
   - vb
@@ -43,13 +42,13 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyVertexData
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
     startLine: 8
   namespace: TMPEffects.CharacterData
-  summary: Holds data about a character's mesh.
+  summary: Holds immutable data about a TextMeshPro character mesh.
   example: []
   syntax:
     content: public class ReadOnlyVertexData
@@ -64,33 +63,6 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: TMPEffects.CharacterData.ReadOnlyVertexData.initial
-  commentId: F:TMPEffects.CharacterData.ReadOnlyVertexData.initial
-  id: initial
-  parent: TMPEffects.CharacterData.ReadOnlyVertexData
-  langs:
-  - csharp
-  - vb
-  name: initial
-  nameWithType: ReadOnlyVertexData.initial
-  fullName: TMPEffects.CharacterData.ReadOnlyVertexData.initial
-  type: Field
-  source:
-    remote:
-      path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: initial
-    path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 31
-  namespace: TMPEffects.CharacterData
-  summary: The initial vertex of the character.
-  example: []
-  syntax:
-    content: public readonly ReadOnlyVertexData initial
-    return:
-      type: TMPEffects.CharacterData.ReadOnlyVertexData
-    content.vb: Public ReadOnly initial As ReadOnlyVertexData
 - uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
   commentId: P:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
   id: BL_Color
@@ -105,11 +77,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Color
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 38
+    startLine: 32
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the bottom left vertex.<br />
@@ -139,11 +111,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Color
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 47
+    startLine: 41
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the top left vertex.<br />
@@ -173,11 +145,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Color
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 56
+    startLine: 50
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the top right vertex.<br />
@@ -207,11 +179,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Color
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 65
+    startLine: 59
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the bottom right vertex.<br />
@@ -241,11 +213,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Alpha
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 73
+    startLine: 67
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the bottom left vertex.
   example: []
@@ -270,11 +242,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Alpha
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 80
+    startLine: 74
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the top left vertex.
   example: []
@@ -299,11 +271,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Alpha
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 87
+    startLine: 81
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the top right vertex.
   example: []
@@ -328,11 +300,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Alpha
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 94
+    startLine: 88
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the bottom right vertex.
   example: []
@@ -357,11 +329,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Position
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 102
+    startLine: 96
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the bottom left vertex.
   example: []
@@ -386,11 +358,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Position
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 109
+    startLine: 103
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the top left vertex.
   example: []
@@ -415,11 +387,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Position
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 116
+    startLine: 110
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the top right vertex.
   example: []
@@ -444,11 +416,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Position
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 123
+    startLine: 117
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the bottom right vertex.
   example: []
@@ -473,11 +445,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV0
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 131
+    startLine: 125
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom left vertex.
   example: []
@@ -502,11 +474,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV0
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 138
+    startLine: 132
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom right vertex.
   example: []
@@ -531,11 +503,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV0
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 145
+    startLine: 139
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the top right vertex.
   example: []
@@ -560,11 +532,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV0
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 152
+    startLine: 146
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom right vertex.
   example: []
@@ -589,11 +561,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV2
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 160
+    startLine: 154
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom left vertex.
   example: []
@@ -618,11 +590,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV2
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 167
+    startLine: 161
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom right vertex.
   example: []
@@ -647,11 +619,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV2
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 174
+    startLine: 168
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the top right vertex.
   example: []
@@ -676,11 +648,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV2
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 181
+    startLine: 175
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom right vertex.
   example: []
@@ -705,11 +677,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 186
+    startLine: 180
   namespace: TMPEffects.CharacterData
   syntax:
     content: public ReadOnlyVertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
@@ -741,11 +713,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 194
+    startLine: 188
   namespace: TMPEffects.CharacterData
   syntax:
     content: public ReadOnlyVertexData(TMP_CharacterInfo info)
@@ -771,11 +743,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetPosition
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 212
+    startLine: 206
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the position of the vertex associated with the index.<br />
@@ -820,11 +792,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetColor
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 234
+    startLine: 228
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the color of the vertex associated with the index.<br />
@@ -869,11 +841,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetAlpha
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 256
+    startLine: 250
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the alpha of the vertex associated with the index.<br />
@@ -918,11 +890,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetUV0
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 278
+    startLine: 272
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the UV0 of the vertex associated with the index.<br />
@@ -967,11 +939,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/ReadOnlyVertexData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetUV2
     path: ../Package/Runtime/CharData/ReadOnlyVertexData.cs
-    startLine: 301
+    startLine: 295
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the UV2 of the vertex associated with the index.<br />
@@ -1262,13 +1234,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: TMPEffects.CharacterData.ReadOnlyVertexData
-  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
-  name: ReadOnlyVertexData
-  nameWithType: ReadOnlyVertexData
-  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
 - uid: TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color*
   commentId: Overload:TMPEffects.CharacterData.ReadOnlyVertexData.BL_Color
   href: TMPEffects.CharacterData.ReadOnlyVertexData.html#TMPEffects_CharacterData_ReadOnlyVertexData_BL_Color

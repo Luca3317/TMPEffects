@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StartIndexOnly
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 337
@@ -50,8 +50,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: startIndex
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 339
@@ -75,8 +75,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 341
@@ -105,8 +105,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CompareTo
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 346

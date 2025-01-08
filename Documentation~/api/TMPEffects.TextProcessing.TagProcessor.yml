@@ -21,8 +21,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessor
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 9
@@ -55,8 +55,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ProcessedTags
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 14
@@ -82,8 +82,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ALL_KEYWORD
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 19
@@ -109,8 +109,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: MOST_RECENT_KEYWORD
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 23
@@ -136,8 +136,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 25
@@ -166,8 +166,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Process
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 39
@@ -208,8 +208,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessor.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Package/Runtime/TextProcessing/TagProcessor.cs
     startLine: 48

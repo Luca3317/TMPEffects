@@ -15,11 +15,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChangedLateEventHandler
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 44
+    startLine: 52
   namespace: TMPEffects.Components.Mediator
   syntax:
     content: public delegate void TMPMediator.TextChangedLateEventHandler(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)

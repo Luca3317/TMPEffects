@@ -5,6 +5,8 @@ items:
   id: TMPEffects.TMPAnimations.ShowAnimations
   children:
   - TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
@@ -13,6 +15,7 @@ items:
   - TMPEffects.TMPAnimations.ShowAnimations.ShakeShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation
   langs:
   - csharp
   - vb
@@ -27,12 +30,24 @@ references:
   name: SpreadAnimation
   nameWithType: SpreadAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.SpreadAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation.html
+  name: CurveHideAnimation
+  nameWithType: CurveHideAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.CurveHideAnimation
 - uid: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
   href: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation.html
   name: CharShowAnimation
   nameWithType: CharShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation.html
+  name: CurveShowAnimation
+  nameWithType: CurveShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
 - uid: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   href: TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation.html
@@ -75,3 +90,9 @@ references:
   name: SpreadShowAnimation
   nameWithType: SpreadShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation.html
+  name: TMPSceneShowAnimation
+  nameWithType: TMPSceneShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation

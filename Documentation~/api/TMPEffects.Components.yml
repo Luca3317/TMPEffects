@@ -5,7 +5,9 @@ items:
   id: TMPEffects.Components
   children:
   - TMPEffects.Components.TMPAnimator
+  - TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
   - TMPEffects.Components.TMPEffectComponent
+  - TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
   - TMPEffects.Components.TMPWriter
   - TMPEffects.Components.TMPWriter.DelayType
   - TMPEffects.Components.TMPWriter.Delays
@@ -24,6 +26,29 @@ references:
   name: TMPEffectComponent
   nameWithType: TMPEffectComponent
   fullName: TMPEffects.Components.TMPEffectComponent
+- uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  commentId: T:TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent.OnTextChangedEventHandler
+  nameWithType: TMPEffectComponent.OnTextChangedEventHandler
+  fullName: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent
+    name: TMPEffectComponent
+    href: TMPEffects.Components.TMPEffectComponent.html
+  - name: .
+  - uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+    name: OnTextChangedEventHandler
+    href: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent
+    name: TMPEffectComponent
+    href: TMPEffects.Components.TMPEffectComponent.html
+  - name: .
+  - uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+    name: OnTextChangedEventHandler
+    href: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.html
 - uid: TMPEffects.Components.TMPAnimator
   commentId: T:TMPEffects.Components.TMPAnimator
   parent: TMPEffects.Components
@@ -31,6 +56,29 @@ references:
   name: TMPAnimator
   nameWithType: TMPAnimator
   fullName: TMPEffects.Components.TMPAnimator
+- uid: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
+  commentId: T:TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPAnimator.html
+  name: TMPAnimator.OnCharacterAnimatedEventHandler
+  nameWithType: TMPAnimator.OnCharacterAnimatedEventHandler
+  fullName: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPAnimator
+    name: TMPAnimator
+    href: TMPEffects.Components.TMPAnimator.html
+  - name: .
+  - uid: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
+    name: OnCharacterAnimatedEventHandler
+    href: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPAnimator
+    name: TMPAnimator
+    href: TMPEffects.Components.TMPAnimator.html
+  - name: .
+  - uid: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler
+    name: OnCharacterAnimatedEventHandler
+    href: TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler.html
 - uid: TMPEffects.Components.TMPWriter
   commentId: T:TMPEffects.Components.TMPWriter
   parent: TMPEffects.Components

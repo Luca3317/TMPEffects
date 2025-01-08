@@ -1,0 +1,1282 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  id: TMPSceneCommandWrapper
+  parent: TMPEffects.TMPCommands
+  children:
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  langs:
+  - csharp
+  - vb
+  name: TMPSceneCommandWrapper
+  nameWithType: TMPSceneCommandWrapper
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPSceneCommandWrapper
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 11
+  namespace: TMPEffects.TMPCommands
+  summary: Struct wrapping either <xref href="TMPEffects.TMPCommands.TMPGenericSceneCommand" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPCommands.TMPSceneCommand" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct TMPSceneCommandWrapper : ITMPCommand, ITMPParameterValidator
+    content.vb: >-
+      <Serializable>
+
+      Public Structure TMPSceneCommandWrapper Implements ITMPCommand, ITMPParameterValidator
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand
+  - TMPEffects.Parameters.ITMPParameterValidator
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  id: Type
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: TMPSceneCommandWrapper.Type
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Type
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 19
+  namespace: TMPEffects.TMPCommands
+  summary: >-
+    The type of this wrapper.<br />
+
+    The <xref href="TMPEffects.TMPCommands.ITMPCommand" data-throw-if-not-resolved="false"></xref> implementation delegates to <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic" data-throw-if-not-resolved="false"></xref> or <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom" data-throw-if-not-resolved="false"></xref>
+
+    depending on the value of this.
+  example: []
+  syntax:
+    content: public TMPSceneCommandWrapper.TMPSceneCommandType Type { get; set; }
+    parameters: []
+    return:
+      type: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    content.vb: Public Property Type As TMPSceneCommandWrapper.TMPSceneCommandType
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type*
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  id: Generic
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: Generic
+  nameWithType: TMPSceneCommandWrapper.Generic
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Generic
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 30
+  namespace: TMPEffects.TMPCommands
+  summary: >-
+    The wrapped generic command.<br />
+
+    The <xref href="TMPEffects.TMPCommands.ITMPCommand" data-throw-if-not-resolved="false"></xref> implementation of the wrapper delegates to this
+
+    if <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type" data-throw-if-not-resolved="false"></xref> is set to <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public TMPGenericSceneCommand Generic { get; set; }
+    parameters: []
+    return:
+      type: TMPEffects.TMPCommands.TMPGenericSceneCommand
+    content.vb: Public Property Generic As TMPGenericSceneCommand
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic*
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  id: Custom
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: TMPSceneCommandWrapper.Custom
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Custom
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 41
+  namespace: TMPEffects.TMPCommands
+  summary: >-
+    The wrapped custom command.<br />
+
+    The <xref href="TMPEffects.TMPCommands.ITMPCommand" data-throw-if-not-resolved="false"></xref> implementation of the wrapper delegates to this
+
+    if <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type" data-throw-if-not-resolved="false"></xref> is set to <xref href="TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public TMPSceneCommand Custom { get; set; }
+    parameters: []
+    return:
+      type: TMPEffects.TMPCommands.TMPSceneCommand
+    content.vb: Public Property Custom As TMPSceneCommand
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom*
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+  id: TagType
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: TagType
+  nameWithType: TMPSceneCommandWrapper.TagType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TagType
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 60
+  namespace: TMPEffects.TMPCommands
+  summary: The type of command this is.
+  remarks: >-
+    <p>
+
+    Index: This type of command is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the corresponding index. It does not need to be closed.<br /> Example: This is &lt;!delay=0.01&gt; my text
+
+    </p>
+
+    <p>
+
+    Block: This type of command is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br /> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+
+    </p>
+
+    <p>
+
+    Either: Both applications are valid.
+
+    </p>
+  example: []
+  syntax:
+    content: public TagType TagType { get; }
+    parameters: []
+    return:
+      type: TMPEffects.TMPCommands.TagType
+    content.vb: Public ReadOnly Property TagType As TagType
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.TagType
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+  id: ExecuteInstantly
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: ExecuteInstantly
+  nameWithType: TMPSceneCommandWrapper.ExecuteInstantly
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ExecuteInstantly
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 62
+  namespace: TMPEffects.TMPCommands
+  summary: >-
+    Whether the command is executed the moment the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> begins writing.<br />
+
+    Otherwise, it is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the corresponding index.
+  example: []
+  syntax:
+    content: public bool ExecuteInstantly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ExecuteInstantly As Boolean
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+  id: ExecuteOnSkip
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: ExecuteOnSkip
+  nameWithType: TMPSceneCommandWrapper.ExecuteOnSkip
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ExecuteOnSkip
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 64
+  namespace: TMPEffects.TMPCommands
+  summary: Whether the command should be executed by the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> if its text position is skipped over.
+  example: []
+  syntax:
+    content: public bool ExecuteOnSkip { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ExecuteOnSkip As Boolean
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.ExecuteOnSkip
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+  id: ExecuteRepeatable
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: ExecuteRepeatable
+  nameWithType: TMPSceneCommandWrapper.ExecuteRepeatable
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ExecuteRepeatable
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 66
+  namespace: TMPEffects.TMPCommands
+  summary: >-
+    Whether the command may be executed multiple times if, for example, the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> is reset to an earlier text position after the command has been executed.<br />
+
+    An example for a command that should not be repeatable is one that triggers a quest, or adds an item to the player's inventory.
+  example: []
+  syntax:
+    content: public bool ExecuteRepeatable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ExecuteRepeatable As Boolean
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: TMPSceneCommandWrapper.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ValidateParameters
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 72
+  namespace: TMPEffects.TMPCommands
+  summary: Validate the given parameters.
+  example: []
+  syntax:
+    content: public bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+    parameters:
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: The parameters as key-value pairs
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values
+    return:
+      type: System.Boolean
+      description: true if the parameters were successfully validated; false otherwise.
+    content.vb: Public Function ValidateParameters(parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase) As Boolean
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters*
+  implements:
+  - TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: TMPSceneCommandWrapper.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  commentId: M:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  id: ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: ExecuteCommand(ICommandContext)
+  nameWithType: TMPSceneCommandWrapper.ExecuteCommand(ICommandContext)
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ExecuteCommand
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 77
+  namespace: TMPEffects.TMPCommands
+  summary: Execute the command.
+  example: []
+  syntax:
+    content: public void ExecuteCommand(ICommandContext context)
+    parameters:
+    - id: context
+      type: TMPEffects.TMPCommands.ICommandContext
+      description: ''
+    content.vb: Public Sub ExecuteCommand(context As ICommandContext)
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData
+  commentId: M:TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData
+  id: GetNewCustomData
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: GetNewCustomData()
+  nameWithType: TMPSceneCommandWrapper.GetNewCustomData()
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetNewCustomData
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 82
+  namespace: TMPEffects.TMPCommands
+  summary: Get a new custom data object for this command.
+  example: []
+  syntax:
+    content: public object GetNewCustomData()
+    return:
+      type: System.Object
+      description: The custom data object for this command.
+    content.vb: Public Function GetNewCustomData() As Object
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+  langs:
+  - csharp
+  - vb
+  name: SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: TMPSceneCommandWrapper.SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(object, System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: SetParameters
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 87
+  namespace: TMPEffects.TMPCommands
+  summary: Set the parameters for the command.
+  example: []
+  syntax:
+    content: public void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
+    parameters:
+    - id: customData
+      type: System.Object
+      description: The custom data for this command.
+    - id: parameters
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: Parameters as key-value-pairs.
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values.
+    content.vb: Public Sub SetParameters(customData As Object, parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase)
+  overload: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters*
+  implements:
+  - TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: TMPSceneCommandWrapper.SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+references:
+- uid: TMPEffects.TMPCommands.TMPGenericSceneCommand
+  commentId: T:TMPEffects.TMPCommands.TMPGenericSceneCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPGenericSceneCommand.html
+  name: TMPGenericSceneCommand
+  nameWithType: TMPGenericSceneCommand
+  fullName: TMPEffects.TMPCommands.TMPGenericSceneCommand
+- uid: TMPEffects.TMPCommands.TMPSceneCommand
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPSceneCommand.html
+  name: TMPSceneCommand
+  nameWithType: TMPSceneCommand
+  fullName: TMPEffects.TMPCommands.TMPSceneCommand
+- uid: TMPEffects.TMPCommands
+  commentId: N:TMPEffects.TMPCommands
+  href: TMPEffects.html
+  name: TMPEffects.TMPCommands
+  nameWithType: TMPEffects.TMPCommands
+  fullName: TMPEffects.TMPCommands
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+- uid: TMPEffects.TMPCommands.ITMPCommand
+  commentId: T:TMPEffects.TMPCommands.ITMPCommand
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.ITMPCommand.html
+  name: ITMPCommand
+  nameWithType: ITMPCommand
+  fullName: TMPEffects.TMPCommands.ITMPCommand
+- uid: TMPEffects.Parameters.ITMPParameterValidator
+  commentId: T:TMPEffects.Parameters.ITMPParameterValidator
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPParameterValidator.html
+  name: ITMPParameterValidator
+  nameWithType: ITMPParameterValidator
+  fullName: TMPEffects.Parameters.ITMPParameterValidator
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Generic
+  name: Generic
+  nameWithType: TMPSceneCommandWrapper.Generic
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Custom
+  name: Custom
+  nameWithType: TMPSceneCommandWrapper.Custom
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type
+  name: Type
+  nameWithType: TMPSceneCommandWrapper.Type
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  name: TMPSceneCommandWrapper.TMPSceneCommandType
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  commentId: P:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Type
+  name: Type
+  nameWithType: TMPSceneCommandWrapper.Type
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Type
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  commentId: F:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_TMPSceneCommandType_Custom
+  name: Custom
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Generic
+  name: Generic
+  nameWithType: TMPSceneCommandWrapper.Generic
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Generic
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  commentId: F:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_TMPSceneCommandType_Generic
+  name: Generic
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_Custom
+  name: Custom
+  nameWithType: TMPSceneCommandWrapper.Custom
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.Custom
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_TagType
+  name: TagType
+  nameWithType: TMPSceneCommandWrapper.TagType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TagType
+- uid: TMPEffects.TMPCommands.ITMPCommand.TagType
+  commentId: P:TMPEffects.TMPCommands.ITMPCommand.TagType
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_TagType
+  name: TagType
+  nameWithType: ITMPCommand.TagType
+  fullName: TMPEffects.TMPCommands.ITMPCommand.TagType
+- uid: TMPEffects.TMPCommands.TagType
+  commentId: T:TMPEffects.TMPCommands.TagType
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TagType.html
+  name: TagType
+  nameWithType: TagType
+  fullName: TMPEffects.TMPCommands.TagType
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteInstantly
+  name: ExecuteInstantly
+  nameWithType: TMPSceneCommandWrapper.ExecuteInstantly
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteInstantly
+- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
+  commentId: P:TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteInstantly
+  name: ExecuteInstantly
+  nameWithType: ITMPCommand.ExecuteInstantly
+  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteOnSkip
+  name: ExecuteOnSkip
+  nameWithType: TMPSceneCommandWrapper.ExecuteOnSkip
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteOnSkip
+- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteOnSkip
+  commentId: P:TMPEffects.TMPCommands.ITMPCommand.ExecuteOnSkip
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteOnSkip
+  name: ExecuteOnSkip
+  nameWithType: ITMPCommand.ExecuteOnSkip
+  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteOnSkip
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteRepeatable
+  name: ExecuteRepeatable
+  nameWithType: TMPSceneCommandWrapper.ExecuteRepeatable
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteRepeatable
+- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
+  commentId: P:TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteRepeatable
+  name: ExecuteRepeatable
+  nameWithType: ITMPCommand.ExecuteRepeatable
+  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: ValidateParameters
+  nameWithType: TMPSceneCommandWrapper.ValidateParameters
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ValidateParameters
+- uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.Parameters.ITMPParameterValidator
+  isExternal: true
+  href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPParameterValidator.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: ITMPParameterValidator.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  spec.csharp:
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: ValidateParameters
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: ValidateParameters
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string>
+  nameWithType: IDictionary<string, string>
+  fullName: System.Collections.Generic.IDictionary<string, string>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_
+  name: ExecuteCommand
+  nameWithType: TMPSceneCommandWrapper.ExecuteCommand
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.ExecuteCommand
+- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_
+  name: ExecuteCommand(ICommandContext)
+  nameWithType: ITMPCommand.ExecuteCommand(ICommandContext)
+  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+    name: ExecuteCommand
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_
+  - name: (
+  - uid: TMPEffects.TMPCommands.ICommandContext
+    name: ICommandContext
+    href: TMPEffects.TMPCommands.ICommandContext.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+    name: ExecuteCommand
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_
+  - name: (
+  - uid: TMPEffects.TMPCommands.ICommandContext
+    name: ICommandContext
+    href: TMPEffects.TMPCommands.ICommandContext.html
+  - name: )
+- uid: TMPEffects.TMPCommands.ICommandContext
+  commentId: T:TMPEffects.TMPCommands.ICommandContext
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.ICommandContext.html
+  name: ICommandContext
+  nameWithType: ICommandContext
+  fullName: TMPEffects.TMPCommands.ICommandContext
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_GetNewCustomData
+  name: GetNewCustomData
+  nameWithType: TMPSceneCommandWrapper.GetNewCustomData
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.GetNewCustomData
+- uid: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_GetNewCustomData
+  name: GetNewCustomData()
+  nameWithType: ITMPCommand.GetNewCustomData()
+  fullName: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData()
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_GetNewCustomData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+    name: GetNewCustomData
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_GetNewCustomData
+  - name: (
+  - name: )
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters*
+  commentId: Overload:TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html#TMPEffects_TMPCommands_TMPSceneCommandWrapper_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: SetParameters
+  nameWithType: TMPSceneCommandWrapper.SetParameters
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.SetParameters
+- uid: TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  isExternal: true
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPCommand.SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPCommands.ITMPCommand.SetParameters(object, System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: ITMPCommand.SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPCommands.ITMPCommand.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: SetParameters
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: SetParameters
+    href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )

@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  id: TMPSceneCommandWrapper.TMPSceneCommandType
+  parent: TMPEffects.TMPCommands
+  children:
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  - TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  langs:
+  - csharp
+  - vb
+  name: TMPSceneCommandWrapper.TMPSceneCommandType
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPSceneCommandType
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 53
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: >-
+      [Serializable]
+
+      public enum TMPSceneCommandWrapper.TMPSceneCommandType
+    content.vb: >-
+      <Serializable>
+
+      Public Enum TMPSceneCommandWrapper.TMPSceneCommandType
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  commentId: F:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  id: Custom
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Custom
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Custom
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 56
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: Custom = 0
+    return:
+      type: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  commentId: F:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  id: Generic
+  parent: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  langs:
+  - csharp
+  - vb
+  name: Generic
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.Generic
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Generic
+    path: ../Package/Runtime/Effects/TMPCommands/TMPSceneCommandWrapper.cs
+    startLine: 57
+  namespace: TMPEffects.TMPCommands
+  syntax:
+    content: Generic = 1
+    return:
+      type: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+references:
+- uid: TMPEffects.TMPCommands
+  commentId: N:TMPEffects.TMPCommands
+  href: TMPEffects.html
+  name: TMPEffects.TMPCommands
+  nameWithType: TMPEffects.TMPCommands
+  fullName: TMPEffects.TMPCommands
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+- uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  commentId: T:TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  parent: TMPEffects.TMPCommands
+  href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  name: TMPSceneCommandWrapper.TMPSceneCommandType
+  nameWithType: TMPSceneCommandWrapper.TMPSceneCommandType
+  fullName: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+  spec.csharp:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html
+  spec.vb:
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper
+    name: TMPSceneCommandWrapper
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.html
+  - name: .
+  - uid: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType
+    name: TMPSceneCommandType
+    href: TMPEffects.TMPCommands.TMPSceneCommandWrapper.TMPSceneCommandType.html

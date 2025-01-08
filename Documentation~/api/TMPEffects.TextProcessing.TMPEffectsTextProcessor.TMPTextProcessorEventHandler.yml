@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TextProcessing.TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  commentId: T:TMPEffects.TextProcessing.TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  id: TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  parent: TMPEffects.TextProcessing
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  nameWithType: TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  fullName: TMPEffects.TextProcessing.TMPEffectsTextProcessor.TMPTextProcessorEventHandler
+  type: Delegate
+  source:
+    remote:
+      path: Package/Runtime/TextProcessing/TMPEffectsTextProcessor.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPTextProcessorEventHandler
+    path: ../Package/Runtime/TextProcessing/TMPEffectsTextProcessor.cs
+    startLine: 28
+  namespace: TMPEffects.TextProcessing
+  syntax:
+    content: public delegate void TMPEffectsTextProcessor.TMPTextProcessorEventHandler(string text)
+    parameters:
+    - id: text
+      type: System.String
+    content.vb: Public Delegate Sub TMPEffectsTextProcessor.TMPTextProcessorEventHandler(text As String)
+references:
+- uid: TMPEffects.TextProcessing
+  commentId: N:TMPEffects.TextProcessing
+  href: TMPEffects.html
+  name: TMPEffects.TextProcessing
+  nameWithType: TMPEffects.TextProcessing
+  fullName: TMPEffects.TextProcessing
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TextProcessing
+    name: TextProcessing
+    href: TMPEffects.TextProcessing.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TextProcessing
+    name: TextProcessing
+    href: TMPEffects.TextProcessing.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

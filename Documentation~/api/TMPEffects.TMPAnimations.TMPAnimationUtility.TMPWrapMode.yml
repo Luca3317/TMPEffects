@@ -1,0 +1,216 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  id: TMPAnimationUtility.TMPWrapMode
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Clamp
+  - TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Loop
+  - TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.PingPong
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimationUtility.TMPWrapMode
+  nameWithType: TMPAnimationUtility.TMPWrapMode
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPWrapMode
+    path: ../Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+    startLine: 816
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: >-
+      [Serializable]
+
+      public enum TMPAnimationUtility.TMPWrapMode
+    content.vb: >-
+      <Serializable>
+
+      Public Enum TMPAnimationUtility.TMPWrapMode
+  extensionMethods:
+  - TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Clamp
+  commentId: F:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Clamp
+  id: Clamp
+  parent: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  langs:
+  - csharp
+  - vb
+  name: Clamp
+  nameWithType: TMPAnimationUtility.TMPWrapMode.Clamp
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Clamp
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Clamp
+    path: ../Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+    startLine: 819
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Clamp = 0
+    return:
+      type: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Loop
+  commentId: F:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Loop
+  id: Loop
+  parent: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  langs:
+  - csharp
+  - vb
+  name: Loop
+  nameWithType: TMPAnimationUtility.TMPWrapMode.Loop
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.Loop
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Loop
+    path: ../Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+    startLine: 820
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: Loop = 1
+    return:
+      type: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.PingPong
+  commentId: F:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.PingPong
+  id: PingPong
+  parent: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  langs:
+  - csharp
+  - vb
+  name: PingPong
+  nameWithType: TMPAnimationUtility.TMPWrapMode.PingPong
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.PingPong
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: PingPong
+    path: ../Package/Runtime/Effects/TMPAnimations/TMPAnimationUtility.cs
+    startLine: 821
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: PingPong = 2
+    return:
+      type: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+references:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  parent: TMPEffects.TMPAnimations.TMPAnimationUtility
+  definition: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  name: ToWrapMode(TMPWrapMode)
+  nameWithType: TMPAnimationUtility.ToWrapMode(TMPAnimationUtility.TMPWrapMode)
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+    name: ToWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  - name: (
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+    name: ToWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  - name: (
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  - name: )
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  name: ToWrapMode(TMPWrapMode)
+  nameWithType: TMPAnimationUtility.ToWrapMode(TMPAnimationUtility.TMPWrapMode)
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+    name: ToWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  - name: (
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ToWrapMode(TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode)
+    name: ToWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ToWrapMode_TMPEffects_TMPAnimations_TMPAnimationUtility_TMPWrapMode_
+  - name: (
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  - name: )
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationUtility
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  name: TMPAnimationUtility
+  nameWithType: TMPAnimationUtility
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  name: TMPAnimationUtility.TMPWrapMode
+  nameWithType: TMPAnimationUtility.TMPWrapMode
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+    name: TMPAnimationUtility
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+    name: TMPAnimationUtility
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html

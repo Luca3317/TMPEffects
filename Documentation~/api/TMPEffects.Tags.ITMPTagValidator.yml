@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/ITMPTagValidator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPTagValidator
     path: ../Package/Runtime/Tags/ITMPTagValidator.cs
     startLine: 7
@@ -43,8 +43,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/ITMPTagValidator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateOpenTag
     path: ../Package/Runtime/Tags/ITMPTagValidator.cs
     startLine: 17
@@ -62,7 +62,7 @@ items:
       description: Assuming the tag is validated, this will be set to the created <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref>; otherwise it will be null.
     - id: endIndex
       type: System.Int32
-      description: Assuming the tag is validated, this will be set to the endIndex of the tag. TODO this arguably exceeds ITMPTagValidators responsibilities
+      description: Assuming the tag is validated, this will be set to the endIndex of the tag.
     return:
       type: System.Boolean
       description: true if the tag is successfully validated; false otherwise.
@@ -89,8 +89,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/ITMPTagValidator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
     path: ../Package/Runtime/Tags/ITMPTagValidator.cs
     startLine: 23
@@ -122,8 +122,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/ITMPTagValidator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateTag
     path: ../Package/Runtime/Tags/ITMPTagValidator.cs
     startLine: 29

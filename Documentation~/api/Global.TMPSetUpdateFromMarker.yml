@@ -1,0 +1,260 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPSetUpdateFromMarker
+  commentId: T:Global.TMPSetUpdateFromMarker
+  id: TMPSetUpdateFromMarker
+  parent: Global
+  children:
+  - Global.TMPSetUpdateFromMarker.UpdateFrom
+  - Global.TMPSetUpdateFromMarker.flags
+  - Global.TMPSetUpdateFromMarker.id
+  langs:
+  - csharp
+  - vb
+  name: TMPSetUpdateFromMarker
+  nameWithType: TMPSetUpdateFromMarker
+  fullName: TMPSetUpdateFromMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPSetUpdateFromMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+    startLine: 7
+  namespace: Global
+  syntax:
+    content: 'public class TMPSetUpdateFromMarker : TMPEffectsMarker, INotification, INotificationOptionProvider'
+    content.vb: Public Class TMPSetUpdateFromMarker Inherits TMPEffectsMarker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  - Global.TMPEffectsMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+  inheritedMembers:
+  - Global.TMPEffectsMarker.retroactive
+  - Global.TMPEffectsMarker.triggerOnce
+  - Global.TMPEffectsMarker.triggerInEditMode
+- uid: Global.TMPSetUpdateFromMarker.id
+  commentId: P:Global.TMPSetUpdateFromMarker.id
+  id: id
+  parent: Global.TMPSetUpdateFromMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPSetUpdateFromMarker.id
+  fullName: TMPSetUpdateFromMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+    startLine: 12
+  namespace: Global
+  example: []
+  syntax:
+    content: public override PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public Overrides ReadOnly Property id As PropertyName
+  overridden: Global.TMPEffectsMarker.id
+  overload: Global.TMPSetUpdateFromMarker.id*
+- uid: Global.TMPSetUpdateFromMarker.flags
+  commentId: P:Global.TMPSetUpdateFromMarker.flags
+  id: flags
+  parent: Global.TMPSetUpdateFromMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPSetUpdateFromMarker.flags
+  fullName: TMPSetUpdateFromMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+    startLine: 14
+  namespace: Global
+  example: []
+  syntax:
+    content: public override NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public Overrides ReadOnly Property flags As NotificationFlags
+  overridden: Global.TMPEffectsMarker.flags
+  overload: Global.TMPSetUpdateFromMarker.flags*
+- uid: Global.TMPSetUpdateFromMarker.UpdateFrom
+  commentId: P:Global.TMPSetUpdateFromMarker.UpdateFrom
+  id: UpdateFrom
+  parent: Global.TMPSetUpdateFromMarker
+  langs:
+  - csharp
+  - vb
+  name: UpdateFrom
+  nameWithType: TMPSetUpdateFromMarker.UpdateFrom
+  fullName: TMPSetUpdateFromMarker.UpdateFrom
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: UpdateFrom
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPSetUpdateFromMarker.cs
+    startLine: 22
+  namespace: Global
+  syntax:
+    content: public UpdateFrom UpdateFrom { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.Animator.UpdateFrom
+    content.vb: Public ReadOnly Property UpdateFrom As UpdateFrom
+  overload: Global.TMPSetUpdateFromMarker.UpdateFrom*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.TMPEffectsMarker
+  commentId: T:Global.TMPEffectsMarker
+  href: TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffectsMarker
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: Global.TMPEffectsMarker.retroactive
+  commentId: F:Global.TMPEffectsMarker.retroactive
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_retroactive
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffectsMarker.retroactive
+- uid: Global.TMPEffectsMarker.triggerOnce
+  commentId: F:Global.TMPEffectsMarker.triggerOnce
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerOnce
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffectsMarker.triggerOnce
+- uid: Global.TMPEffectsMarker.triggerInEditMode
+  commentId: F:Global.TMPEffectsMarker.triggerInEditMode
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerInEditMode
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffectsMarker.triggerInEditMode
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPEffectsMarker.id
+  commentId: P:Global.TMPEffectsMarker.id
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffectsMarker.id
+- uid: Global.TMPSetUpdateFromMarker.id*
+  commentId: Overload:Global.TMPSetUpdateFromMarker.id
+  href: Global.TMPSetUpdateFromMarker.html#TMPSetUpdateFromMarker_id
+  name: id
+  nameWithType: TMPSetUpdateFromMarker.id
+  fullName: TMPSetUpdateFromMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: Global.TMPEffectsMarker.flags
+  commentId: P:Global.TMPEffectsMarker.flags
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffectsMarker.flags
+- uid: Global.TMPSetUpdateFromMarker.flags*
+  commentId: Overload:Global.TMPSetUpdateFromMarker.flags
+  href: Global.TMPSetUpdateFromMarker.html#TMPSetUpdateFromMarker_flags
+  name: flags
+  nameWithType: TMPSetUpdateFromMarker.flags
+  fullName: TMPSetUpdateFromMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags
+- uid: Global.TMPSetUpdateFromMarker.UpdateFrom*
+  commentId: Overload:Global.TMPSetUpdateFromMarker.UpdateFrom
+  href: Global.TMPSetUpdateFromMarker.html#TMPSetUpdateFromMarker_UpdateFrom
+  name: UpdateFrom
+  nameWithType: TMPSetUpdateFromMarker.UpdateFrom
+  fullName: TMPSetUpdateFromMarker.UpdateFrom
+- uid: TMPEffects.Components.Animator.UpdateFrom
+  commentId: T:TMPEffects.Components.Animator.UpdateFrom
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.UpdateFrom.html
+  name: UpdateFrom
+  nameWithType: UpdateFrom
+  fullName: TMPEffects.Components.Animator.UpdateFrom
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html

@@ -20,8 +20,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTag
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 11
@@ -29,7 +29,7 @@ items:
   summary: >-
     A <xref href="TMPEffects" data-throw-if-not-resolved="false"></xref> tag.<br />
 
-    Contains any data "inherent" to the given tag.
+    Holds the core attributes of a tag, index information is represented by <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref>,
   example: []
   syntax:
     content: 'public sealed class TMPEffectTag : IEquatable<TMPEffectTag>'
@@ -59,8 +59,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Name
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 16
@@ -88,8 +88,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Prefix
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 20
@@ -117,8 +117,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Parameters
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 24
@@ -146,8 +146,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 30
@@ -180,8 +180,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTag.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
     path: ../Package/Runtime/Tags/TMPEffectTag.cs
     startLine: 40
@@ -208,6 +208,13 @@ references:
   name: TMPEffects
   nameWithType: TMPEffects
   fullName: TMPEffects
+- uid: TMPEffects.Tags.TMPEffectTagIndices
+  commentId: T:TMPEffects.Tags.TMPEffectTagIndices
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices
+  nameWithType: TMPEffectTagIndices
+  fullName: TMPEffects.Tags.TMPEffectTagIndices
 - uid: TMPEffects.Tags
   commentId: N:TMPEffects.Tags
   href: TMPEffects.html

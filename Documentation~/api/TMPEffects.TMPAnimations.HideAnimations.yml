@@ -12,6 +12,7 @@ items:
   - TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.ShakeHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
+  - TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation
   langs:
   - csharp
   - vb
@@ -68,3 +69,9 @@ references:
   name: SpreadHideAnimation
   nameWithType: SpreadHideAnimation
   fullName: TMPEffects.TMPAnimations.HideAnimations.SpreadHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation.html
+  name: TMPSceneHideAnimation
+  nameWithType: TMPSceneHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation

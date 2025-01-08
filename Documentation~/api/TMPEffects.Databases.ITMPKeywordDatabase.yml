@@ -1,0 +1,455 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  id: ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  children:
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor(System.String,Vector2@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve(System.String,AnimationCurve@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool(System.String,System.Boolean@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor(System.String,Color@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat(System.String,System.Single@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt(System.String,System.Int32@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)
+  - TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3(System.String,Vector3@)
+  langs:
+  - csharp
+  - vb
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ITMPKeywordDatabase
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 9
+  namespace: TMPEffects.Databases
+  summary: Provides keywords used for parsing TMPEffects tags.
+  example: []
+  syntax:
+    content: public interface ITMPKeywordDatabase
+    content.vb: Public Interface ITMPKeywordDatabase
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat(System.String,System.Single@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat(System.String,System.Single@)
+  id: TryGetFloat(System.String,System.Single@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetFloat(string, out float)
+  nameWithType: ITMPKeywordDatabase.TryGetFloat(string, out float)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat(string, out float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetFloat
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 11
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetFloat(string str, out float result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: System.Single
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetFloat(str As String, result As Single) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetFloat(String, Single)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat(String, Single)
+  name.vb: TryGetFloat(String, Single)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt(System.String,System.Int32@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt(System.String,System.Int32@)
+  id: TryGetInt(System.String,System.Int32@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetInt(string, out int)
+  nameWithType: ITMPKeywordDatabase.TryGetInt(string, out int)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt(string, out int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetInt
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 12
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetInt(string str, out int result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetInt(str As String, result As Integer) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetInt(String, Integer)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt(String, Integer)
+  name.vb: TryGetInt(String, Integer)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool(System.String,System.Boolean@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool(System.String,System.Boolean@)
+  id: TryGetBool(System.String,System.Boolean@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetBool(string, out bool)
+  nameWithType: ITMPKeywordDatabase.TryGetBool(string, out bool)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool(string, out bool)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetBool
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 13
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetBool(string str, out bool result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetBool(str As String, result As Boolean) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetBool(String, Boolean)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool(String, Boolean)
+  name.vb: TryGetBool(String, Boolean)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor(System.String,Color@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor(System.String,Color@)
+  id: TryGetColor(System.String,Color@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetColor(string, out Color)
+  nameWithType: ITMPKeywordDatabase.TryGetColor(string, out Color)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor(string, out Color)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetColor
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 14
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetColor(string str, out Color result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: Global.Color
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetColor(str As String, result As Color) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetColor(String, Color)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor(String, Color)
+  name.vb: TryGetColor(String, Color)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3(System.String,Vector3@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3(System.String,Vector3@)
+  id: TryGetVector3(System.String,Vector3@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetVector3(string, out Vector3)
+  nameWithType: ITMPKeywordDatabase.TryGetVector3(string, out Vector3)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3(string, out Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetVector3
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 15
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetVector3(string str, out Vector3 result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: Global.Vector3
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetVector3(str As String, result As Vector3) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetVector3(String, Vector3)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3(String, Vector3)
+  name.vb: TryGetVector3(String, Vector3)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor(System.String,Vector2@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor(System.String,Vector2@)
+  id: TryGetAnchor(System.String,Vector2@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetAnchor(string, out Vector2)
+  nameWithType: ITMPKeywordDatabase.TryGetAnchor(string, out Vector2)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor(string, out Vector2)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetAnchor
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 16
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetAnchor(string str, out Vector2 result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: Global.Vector2
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetAnchor(str As String, result As Vector2) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetAnchor(String, Vector2)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor(String, Vector2)
+  name.vb: TryGetAnchor(String, Vector2)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve(System.String,AnimationCurve@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve(System.String,AnimationCurve@)
+  id: TryGetAnimCurve(System.String,AnimationCurve@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetAnimCurve(string, out AnimationCurve)
+  nameWithType: ITMPKeywordDatabase.TryGetAnimCurve(string, out AnimationCurve)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve(string, out AnimationCurve)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetAnimCurve
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 17
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetAnimCurve(string str, out AnimationCurve result)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: Global.AnimationCurve
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetAnimCurve(str As String, result As AnimationCurve) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetAnimCurve(String, AnimationCurve)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve(String, AnimationCurve)
+  name.vb: TryGetAnimCurve(String, AnimationCurve)
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)
+  commentId: M:TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)
+  id: TryGetUnityObject(System.String,UnityEngine.Object@)
+  parent: TMPEffects.Databases.ITMPKeywordDatabase
+  langs:
+  - csharp
+  - vb
+  name: TryGetUnityObject(string, out Object)
+  nameWithType: ITMPKeywordDatabase.TryGetUnityObject(string, out UnityEngine.Object)
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject(string, out UnityEngine.Object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TryGetUnityObject
+    path: ../Package/Runtime/Databases/KeywordDatabase/ITMPKeywordDatabase.cs
+    startLine: 18
+  namespace: TMPEffects.Databases
+  syntax:
+    content: bool TryGetUnityObject(string str, out UnityEngine.Object obj)
+    parameters:
+    - id: str
+      type: System.String
+    - id: obj
+      type: Global.UnityEngine.Object
+    return:
+      type: System.Boolean
+    content.vb: Function TryGetUnityObject(str As String, obj As UnityEngine.Object) As Boolean
+  overload: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject*
+  nameWithType.vb: ITMPKeywordDatabase.TryGetUnityObject(String, UnityEngine.Object)
+  fullName.vb: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject(String, UnityEngine.Object)
+  name.vb: TryGetUnityObject(String, Object)
+references:
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetFloat_System_String_System_Single__
+  name: TryGetFloat
+  nameWithType: ITMPKeywordDatabase.TryGetFloat
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetFloat
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetInt_System_String_System_Int32__
+  name: TryGetInt
+  nameWithType: ITMPKeywordDatabase.TryGetInt
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetInt
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetBool_System_String_System_Boolean__
+  name: TryGetBool
+  nameWithType: ITMPKeywordDatabase.TryGetBool
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetBool
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetColor_System_String_Color__
+  name: TryGetColor
+  nameWithType: ITMPKeywordDatabase.TryGetColor
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetColor
+- uid: Global.Color
+  isExternal: true
+  name: Color
+  nameWithType: Color
+  fullName: Color
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetVector3_System_String_Vector3__
+  name: TryGetVector3
+  nameWithType: ITMPKeywordDatabase.TryGetVector3
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetVector3
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetAnchor_System_String_Vector2__
+  name: TryGetAnchor
+  nameWithType: ITMPKeywordDatabase.TryGetAnchor
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnchor
+- uid: Global.Vector2
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Vector2
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetAnimCurve_System_String_AnimationCurve__
+  name: TryGetAnimCurve
+  nameWithType: ITMPKeywordDatabase.TryGetAnimCurve
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetAnimCurve
+- uid: Global.AnimationCurve
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: AnimationCurve
+- uid: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject*
+  commentId: Overload:TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html#TMPEffects_Databases_ITMPKeywordDatabase_TryGetUnityObject_System_String_UnityEngine_Object__
+  name: TryGetUnityObject
+  nameWithType: ITMPKeywordDatabase.TryGetUnityObject
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase.TryGetUnityObject
+- uid: Global.UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: UnityEngine.Object
+  fullName: UnityEngine.Object

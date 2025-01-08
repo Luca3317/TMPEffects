@@ -5,10 +5,14 @@ items:
   id: TMPEffectComponent
   parent: TMPEffects.Components
   children:
+  - TMPEffects.Components.TMPEffectComponent.CharData
   - TMPEffects.Components.TMPEffectComponent.FreeMediator
   - TMPEffects.Components.TMPEffectComponent.Hide(System.Int32,System.Int32,System.Boolean)
   - TMPEffects.Components.TMPEffectComponent.HideAll(System.Boolean)
   - TMPEffects.Components.TMPEffectComponent.Mediator
+  - TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator
+  - TMPEffects.Components.TMPEffectComponent.OnTextChanged
+  - TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator
   - TMPEffects.Components.TMPEffectComponent.SetText(System.String)
   - TMPEffects.Components.TMPEffectComponent.Show(System.Int32,System.Int32,System.Boolean)
   - TMPEffects.Components.TMPEffectComponent.ShowAll(System.Boolean)
@@ -24,11 +28,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectComponent
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 11
+    startLine: 14
   namespace: TMPEffects.Components
   summary: Base class for TMPAnimator and TMPWriter.
   example: []
@@ -40,6 +44,65 @@ items:
   derivedClasses:
   - TMPEffects.Components.TMPAnimator
   - TMPEffects.Components.TMPWriter
+- uid: TMPEffects.Components.TMPEffectComponent.OnTextChanged
+  commentId: E:TMPEffects.Components.TMPEffectComponent.OnTextChanged
+  id: OnTextChanged
+  parent: TMPEffects.Components.TMPEffectComponent
+  langs:
+  - csharp
+  - vb
+  name: OnTextChanged
+  nameWithType: TMPEffectComponent.OnTextChanged
+  fullName: TMPEffects.Components.TMPEffectComponent.OnTextChanged
+  type: Event
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPEffectComponent.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnTextChanged
+    path: ../Package/Runtime/Components/TMPEffectComponent.cs
+    startLine: 22
+  namespace: TMPEffects.Components
+  summary: >-
+    Raised when the associated TMP_Text component's text changes.<br />
+
+    The bool parameter indicates whether the actual text content changed.
+  example: []
+  syntax:
+    content: public event TMPEffectComponent.OnTextChangedEventHandler OnTextChanged
+    return:
+      type: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+    content.vb: Public Event OnTextChanged As TMPEffectComponent.OnTextChangedEventHandler
+- uid: TMPEffects.Components.TMPEffectComponent.CharData
+  commentId: P:TMPEffects.Components.TMPEffectComponent.CharData
+  id: CharData
+  parent: TMPEffects.Components.TMPEffectComponent
+  langs:
+  - csharp
+  - vb
+  name: CharData
+  nameWithType: TMPEffectComponent.CharData
+  fullName: TMPEffects.Components.TMPEffectComponent.CharData
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPEffectComponent.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CharData
+    path: ../Package/Runtime/Components/TMPEffectComponent.cs
+    startLine: 27
+  namespace: TMPEffects.Components
+  summary: The associated <xref href="TMPEffects.Components.TMPEffectComponent.CharData" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ReadOnlyCollection<CharData> CharData { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.CharacterData.CharData}
+    content.vb: Public ReadOnly Property CharData As ReadOnlyCollection(Of CharData)
+  overload: TMPEffects.Components.TMPEffectComponent.CharData*
 - uid: TMPEffects.Components.TMPEffectComponent.TextComponent
   commentId: P:TMPEffects.Components.TMPEffectComponent.TextComponent
   id: TextComponent
@@ -54,11 +117,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextComponent
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 16
+    startLine: 32
   namespace: TMPEffects.Components
   summary: The associated TMP_Text component.
   example: []
@@ -83,11 +146,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 22
+    startLine: 38
   namespace: TMPEffects.Components
   summary: Set the text of the associated TMP_Text component.
   example: []
@@ -116,11 +179,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Show
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 35
+    startLine: 51
   namespace: TMPEffects.Components
   summary: Show a subset of the text's characters.
   example: []
@@ -159,11 +222,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hide
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 53
+    startLine: 69
   namespace: TMPEffects.Components
   summary: Hide a subset of the text's characters.
   example: []
@@ -202,11 +265,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowAll
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 69
+    startLine: 85
   namespace: TMPEffects.Components
   summary: Show all of the text's character.
   example: []
@@ -239,11 +302,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HideAll
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 85
+    startLine: 101
   namespace: TMPEffects.Components
   summary: Hide all of the text's character.
   example: []
@@ -275,11 +338,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Mediator
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 100
+    startLine: 116
   namespace: TMPEffects.Components
   syntax:
     content: protected TMPMediator Mediator { get; }
@@ -302,11 +365,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FreeMediator
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 109
+    startLine: 125
   namespace: TMPEffects.Components
   syntax:
     content: protected void FreeMediator()
@@ -326,16 +389,64 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPEffectComponent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateMediator
     path: ../Package/Runtime/Components/TMPEffectComponent.cs
-    startLine: 116
+    startLine: 132
   namespace: TMPEffects.Components
   syntax:
     content: protected void UpdateMediator()
     content.vb: Protected Sub UpdateMediator()
   overload: TMPEffects.Components.TMPEffectComponent.UpdateMediator*
+- uid: TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator
+  id: OnSubscribeToMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  langs:
+  - csharp
+  - vb
+  name: OnSubscribeToMediator()
+  nameWithType: TMPEffectComponent.OnSubscribeToMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPEffectComponent.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnSubscribeToMediator
+    path: ../Package/Runtime/Components/TMPEffectComponent.cs
+    startLine: 139
+  namespace: TMPEffects.Components
+  syntax:
+    content: protected void OnSubscribeToMediator()
+    content.vb: Protected Sub OnSubscribeToMediator()
+  overload: TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator*
+- uid: TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator
+  commentId: M:TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator
+  id: OnUnsubscribeFromMediator
+  parent: TMPEffects.Components.TMPEffectComponent
+  langs:
+  - csharp
+  - vb
+  name: OnUnsubscribeFromMediator()
+  nameWithType: TMPEffectComponent.OnUnsubscribeFromMediator()
+  fullName: TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPEffectComponent.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnUnsubscribeFromMediator
+    path: ../Package/Runtime/Components/TMPEffectComponent.cs
+    startLine: 144
+  namespace: TMPEffects.Components
+  syntax:
+    content: protected void OnUnsubscribeFromMediator()
+    content.vb: Protected Sub OnUnsubscribeFromMediator()
+  overload: TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator*
 references:
 - uid: TMPEffects.Components
   commentId: N:TMPEffects.Components
@@ -377,6 +488,147 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  commentId: T:TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent.OnTextChangedEventHandler
+  nameWithType: TMPEffectComponent.OnTextChangedEventHandler
+  fullName: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+  spec.csharp:
+  - uid: TMPEffects.Components.TMPEffectComponent
+    name: TMPEffectComponent
+    href: TMPEffects.Components.TMPEffectComponent.html
+  - name: .
+  - uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+    name: OnTextChangedEventHandler
+    href: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.html
+  spec.vb:
+  - uid: TMPEffects.Components.TMPEffectComponent
+    name: TMPEffectComponent
+    href: TMPEffects.Components.TMPEffectComponent.html
+  - name: .
+  - uid: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler
+    name: OnTextChangedEventHandler
+    href: TMPEffects.Components.TMPEffectComponent.OnTextChangedEventHandler.html
+- uid: TMPEffects.Components.TMPEffectComponent.CharData
+  commentId: P:TMPEffects.Components.TMPEffectComponent.CharData
+  parent: TMPEffects.Components.TMPEffectComponent
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_CharData
+  name: CharData
+  nameWithType: TMPEffectComponent.CharData
+  fullName: TMPEffects.Components.TMPEffectComponent.CharData
+- uid: TMPEffects.Components.TMPEffectComponent.CharData*
+  commentId: Overload:TMPEffects.Components.TMPEffectComponent.CharData
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_CharData
+  name: CharData
+  nameWithType: TMPEffectComponent.CharData
+  fullName: TMPEffects.Components.TMPEffectComponent.CharData
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.CharacterData.CharData}
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{TMPEffects.CharacterData.CharData}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<CharData>
+  nameWithType: ReadOnlyCollection<CharData>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<TMPEffects.CharacterData.CharData>
+  nameWithType.vb: ReadOnlyCollection(Of CharData)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of TMPEffects.CharacterData.CharData)
+  name.vb: ReadOnlyCollection(Of CharData)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.Components.TMPEffectComponent
+  commentId: T:TMPEffects.Components.TMPEffectComponent
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPEffectComponent.html
+  name: TMPEffectComponent
+  nameWithType: TMPEffectComponent
+  fullName: TMPEffects.Components.TMPEffectComponent
+- uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+  commentId: T:System.Collections.ObjectModel.ReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  name: ReadOnlyCollection<T>
+  nameWithType: ReadOnlyCollection<T>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
+  nameWithType.vb: ReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ReadOnlyCollection(Of T)
+  name.vb: ReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
 - uid: TMPEffects.Components.TMPEffectComponent.TextComponent*
   commentId: Overload:TMPEffects.Components.TMPEffectComponent.TextComponent
   href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_TextComponent
@@ -513,3 +765,15 @@ references:
   name: UpdateMediator
   nameWithType: TMPEffectComponent.UpdateMediator
   fullName: TMPEffects.Components.TMPEffectComponent.UpdateMediator
+- uid: TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator*
+  commentId: Overload:TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_OnSubscribeToMediator
+  name: OnSubscribeToMediator
+  nameWithType: TMPEffectComponent.OnSubscribeToMediator
+  fullName: TMPEffects.Components.TMPEffectComponent.OnSubscribeToMediator
+- uid: TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator*
+  commentId: Overload:TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator
+  href: TMPEffects.Components.TMPEffectComponent.html#TMPEffects_Components_TMPEffectComponent_OnUnsubscribeFromMediator
+  name: OnUnsubscribeFromMediator
+  nameWithType: TMPEffectComponent.OnUnsubscribeFromMediator
+  fullName: TMPEffects.Components.TMPEffectComponent.OnUnsubscribeFromMediator

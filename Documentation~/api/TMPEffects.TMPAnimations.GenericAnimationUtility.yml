@@ -1,0 +1,923 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility
+  id: GenericAnimationUtility
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+  langs:
+  - csharp
+  - vb
+  name: GenericAnimationUtility
+  nameWithType: GenericAnimationUtility
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GenericAnimationUtility
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 80
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static class GenericAnimationUtility
+    content.vb: Public Module GenericAnimationUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
+  id: EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: EnsureNonOverlappingTimings_Editor(TrackList)
+  nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(GenericAnimationUtility.TrackList)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: EnsureNonOverlappingTimings_Editor
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 82
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void EnsureNonOverlappingTimings_Editor(GenericAnimationUtility.TrackList trackList)
+    parameters:
+    - id: trackList
+      type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    content.vb: Public Shared Sub EnsureNonOverlappingTimings_Editor(trackList As GenericAnimationUtility.TrackList)
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor*
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+  id: EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: EnsureNonOverlappingTimings(List<List<AnimationStep>>)
+  nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings(List<List<AnimationStep>>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: EnsureNonOverlappingTimings
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 127
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void EnsureNonOverlappingTimings(List<List<AnimationStep>> steps)
+    parameters:
+    - id: steps
+      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+    content.vb: Public Shared Sub EnsureNonOverlappingTimings(steps As List(Of List(Of AnimationStep)))
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings*
+  nameWithType.vb: GenericAnimationUtility.EnsureNonOverlappingTimings(List(Of List(Of AnimationStep)))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)))
+  name.vb: EnsureNonOverlappingTimings(List(Of List(Of AnimationStep)))
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
+  id: CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: CreateStepsSorted(TrackList, ref List<List<AnimationStep>>)
+  nameWithType: GenericAnimationUtility.CreateStepsSorted(GenericAnimationUtility.TrackList, ref List<List<AnimationStep>>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CreateStepsSorted
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 214
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void CreateStepsSorted(GenericAnimationUtility.TrackList tracks, ref List<List<AnimationStep>> steps)
+    parameters:
+    - id: tracks
+      type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    - id: steps
+      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+    content.vb: Public Shared Sub CreateStepsSorted(tracks As GenericAnimationUtility.TrackList, steps As List(Of List(Of AnimationStep)))
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted*
+  nameWithType.vb: GenericAnimationUtility.CreateStepsSorted(GenericAnimationUtility.TrackList, List(Of List(Of AnimationStep)))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)))
+  name.vb: CreateStepsSorted(TrackList, List(Of List(Of AnimationStep)))
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
+  id: AdjustTimeForExtrapolation(AnimationStep,System.Single)
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: AdjustTimeForExtrapolation(AnimationStep, float)
+  nameWithType: GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, float)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: AdjustTimeForExtrapolation
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 229
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float AdjustTimeForExtrapolation(AnimationStep step, float timeValue)
+    parameters:
+    - id: step
+      type: Global.AnimationStep
+    - id: timeValue
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function AdjustTimeForExtrapolation([step] As AnimationStep, timeValue As Single) As Single
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation*
+  nameWithType.vb: GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, Single)
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, Single)
+  name.vb: AdjustTimeForExtrapolation(AnimationStep, Single)
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+  id: FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: FindCurrentlyActive(float, List<AnimationStep>)
+  nameWithType: GenericAnimationUtility.FindCurrentlyActive(float, List<AnimationStep>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(float, System.Collections.Generic.List<AnimationStep>)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: FindCurrentlyActive
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 275
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static int FindCurrentlyActive(float timeValue, List<AnimationStep> steps)
+    parameters:
+    - id: timeValue
+      type: System.Single
+    - id: steps
+      type: System.Collections.Generic.List{AnimationStep}
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function FindCurrentlyActive(timeValue As Single, steps As List(Of AnimationStep)) As Integer
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive*
+  nameWithType.vb: GenericAnimationUtility.FindCurrentlyActive(Single, List(Of AnimationStep))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(Single, System.Collections.Generic.List(Of AnimationStep))
+  name.vb: FindCurrentlyActive(Single, List(Of AnimationStep))
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
+  id: Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
+  parent: TMPEffects.TMPAnimations.GenericAnimationUtility
+  langs:
+  - csharp
+  - vb
+  name: Animate(CharData, TrackList, ref List<List<AnimationStep>>, Dictionary<AnimationStep, (CachedOffset inOffset, CachedOffset outOffset)>, bool, float, float, IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
+  nameWithType: GenericAnimationUtility.Animate(CharData, GenericAnimationUtility.TrackList, ref List<List<AnimationStep>>, Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>, bool, float, float, IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>, System.Collections.Generic.Dictionary<AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>, bool, float, float, TMPEffects.TMPAnimations.IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Animate
+    path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
+    startLine: 326
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static void Animate(CharData cData, GenericAnimationUtility.TrackList tracks, ref List<List<AnimationStep>> dataSteps, Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)> cachedOffsets, bool repeat, float duration, float passedTime, IAnimationContext context, ref CharDataModifiers modifiersStorage, ref CharDataModifiers modifiersStorage2, ref CharDataModifiers accModifier, ref CharDataModifiers current)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: tracks
+      type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    - id: dataSteps
+      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+    - id: cachedOffsets
+      type: System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+    - id: repeat
+      type: System.Boolean
+    - id: duration
+      type: System.Single
+    - id: passedTime
+      type: System.Single
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+    - id: modifiersStorage
+      type: Global.CharDataModifiers
+    - id: modifiersStorage2
+      type: Global.CharDataModifiers
+    - id: accModifier
+      type: Global.CharDataModifiers
+    - id: current
+      type: Global.CharDataModifiers
+    content.vb: Public Shared Sub Animate(cData As CharData, tracks As GenericAnimationUtility.TrackList, dataSteps As List(Of List(Of AnimationStep)), cachedOffsets As Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset)), repeat As Boolean, duration As Single, passedTime As Single, context As IAnimationContext, modifiersStorage As CharDataModifiers, modifiersStorage2 As CharDataModifiers, accModifier As CharDataModifiers, current As CharDataModifiers)
+  overload: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate*
+  nameWithType.vb: GenericAnimationUtility.Animate(CharData, GenericAnimationUtility.TrackList, List(Of List(Of AnimationStep)), Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset)), Boolean, Single, Single, IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)), System.Collections.Generic.Dictionary(Of AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset)), Boolean, Single, Single, TMPEffects.TMPAnimations.IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  name.vb: Animate(CharData, TrackList, List(Of List(Of AnimationStep)), Dictionary(Of AnimationStep, (inOffset As CachedOffset, outOffset As CachedOffset)), Boolean, Single, Single, IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+references:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_EnsureNonOverlappingTimings_Editor_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_
+  name: EnsureNonOverlappingTimings_Editor
+  nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings_Editor
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.TrackList
+  nameWithType: GenericAnimationUtility.TrackList
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    name: TrackList
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    name: TrackList
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_EnsureNonOverlappingTimings_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep___
+  name: EnsureNonOverlappingTimings
+  nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings
+- uid: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<List<AnimationStep>>
+  nameWithType: List<List<AnimationStep>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>
+  nameWithType.vb: List(Of List(Of AnimationStep))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep))
+  name.vb: List(Of List(Of AnimationStep))
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_CreateStepsSorted_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep____
+  name: CreateStepsSorted
+  nameWithType: GenericAnimationUtility.CreateStepsSorted
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_AdjustTimeForExtrapolation_AnimationStep_System_Single_
+  name: AdjustTimeForExtrapolation
+  nameWithType: GenericAnimationUtility.AdjustTimeForExtrapolation
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation
+- uid: Global.AnimationStep
+  commentId: T:Global.AnimationStep
+  href: AnimationStep.html
+  name: AnimationStep
+  nameWithType: AnimationStep
+  fullName: AnimationStep
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_FindCurrentlyActive_System_Single_System_Collections_Generic_List_AnimationStep__
+  name: FindCurrentlyActive
+  nameWithType: GenericAnimationUtility.FindCurrentlyActive
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive
+- uid: System.Collections.Generic.List{AnimationStep}
+  commentId: T:System.Collections.Generic.List{AnimationStep}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<AnimationStep>
+  nameWithType: List<AnimationStep>
+  fullName: System.Collections.Generic.List<AnimationStep>
+  nameWithType.vb: List(Of AnimationStep)
+  fullName.vb: System.Collections.Generic.List(Of AnimationStep)
+  name.vb: List(Of AnimationStep)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate*
+  commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.Animate
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep____System_Collections_Generic_Dictionary_AnimationStep_System_ValueTuple_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset___System_Boolean_System_Single_System_Single_TMPEffects_TMPAnimations_IAnimationContext_CharDataModifiers__CharDataModifiers__CharDataModifiers__CharDataModifiers__
+  name: Animate
+  nameWithType: GenericAnimationUtility.Animate
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+  commentId: T:System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>
+  nameWithType: Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>
+  fullName: System.Collections.Generic.Dictionary<AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>
+  nameWithType.vb: Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset))
+  fullName.vb: System.Collections.Generic.Dictionary(Of AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset))
+  name.vb: Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: ','
+  - name: " "
+  - name: (
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  - name: " "
+  - uid: System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}.inOffset
+    name: inOffset
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-tmpeffects.tmpanimations.genericanimationutility.cachedoffset,tmpeffects.tmpanimations.genericanimationutility.cachedoffset-.inoffset
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  - name: " "
+  - uid: System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}.outOffset
+    name: outOffset
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-tmpeffects.tmpanimations.genericanimationutility.cachedoffset,tmpeffects.tmpanimations.genericanimationutility.cachedoffset-.outoffset
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: ','
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}.inOffset
+    name: inOffset
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-tmpeffects.tmpanimations.genericanimationutility.cachedoffset,tmpeffects.tmpanimations.genericanimationutility.cachedoffset-.inoffset
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}.outOffset
+    name: outOffset
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-tmpeffects.tmpanimations.genericanimationutility.cachedoffset,tmpeffects.tmpanimations.genericanimationutility.cachedoffset-.outoffset
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  - name: )
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: Global.CharDataModifiers
+  commentId: T:Global.CharDataModifiers
+  href: CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: CharDataModifiers
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

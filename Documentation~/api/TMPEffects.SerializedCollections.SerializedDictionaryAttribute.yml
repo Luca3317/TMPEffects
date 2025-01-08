@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SerializedDictionaryAttribute
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
     startLine: 8
@@ -99,8 +99,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: KeyName
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
     startLine: 11
@@ -124,8 +124,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValueName
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
     startLine: 12
@@ -149,8 +149,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionaryAttribute.cs
     startLine: 14

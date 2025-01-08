@@ -16,13 +16,13 @@ items:
   source:
     remote:
       path: Package/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: INotifyObjectChanged
     path: ../Package/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
     startLine: 7
   namespace: TMPEffects.ObjectChanged
-  summary: Notigy clients when the object changed.
+  summary: Notify clients when the object changed.
   example: []
   syntax:
     content: public interface INotifyObjectChanged
@@ -41,12 +41,14 @@ items:
   source:
     remote:
       path: Package/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
     path: ../Package/Runtime/ObjectChangedEvent/INotifyObjectChanged.cs
-    startLine: 9
+    startLine: 12
   namespace: TMPEffects.ObjectChanged
+  summary: Raised when the object is changed.
+  example: []
   syntax:
     content: event ObjectChangedEventHandler ObjectChanged
     return:

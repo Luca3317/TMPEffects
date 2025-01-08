@@ -19,8 +19,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/VisibilityState.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityState
     path: ../Package/Runtime/CharData/VisibilityState.cs
     startLine: 10
@@ -47,8 +47,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/VisibilityState.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Shown
     path: ../Package/Runtime/CharData/VisibilityState.cs
     startLine: 15
@@ -73,8 +73,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/VisibilityState.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hidden
     path: ../Package/Runtime/CharData/VisibilityState.cs
     startLine: 19
@@ -99,8 +99,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/VisibilityState.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Showing
     path: ../Package/Runtime/CharData/VisibilityState.cs
     startLine: 23
@@ -125,8 +125,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/VisibilityState.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hiding
     path: ../Package/Runtime/CharData/VisibilityState.cs
     startLine: 27

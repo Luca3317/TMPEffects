@@ -1,0 +1,1237 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  commentId: T:TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  id: SceneOffsetTypePowerEnum
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider,System.Boolean)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(System.Object)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  - TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: SceneOffsetTypePowerEnum
+  nameWithType: SceneOffsetTypePowerEnum
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: SceneOffsetTypePowerEnum
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 7
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class SceneOffsetTypePowerEnum : PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>, IEquatable<SceneOffsetTypePowerEnum>, ITMPOffsetProvider
+    content.vb: >-
+      <Serializable>
+
+      Public Class SceneOffsetTypePowerEnum Inherits PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider) Implements IEquatable(Of SceneOffsetTypePowerEnum), ITMPOffsetProvider
+  inheritance:
+  - System.Object
+  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  implements:
+  - System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}
+  - TMPEffects.Parameters.ITMPOffsetProvider
+  inheritedMembers:
+  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor
+  id: '#ctor'
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: SceneOffsetTypePowerEnum()
+  nameWithType: SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum()
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum()
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 11
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public SceneOffsetTypePowerEnum()
+    content.vb: Public Sub New()
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
+  nameWithType.vb: SceneOffsetTypePowerEnum.New()
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.New()
+  name.vb: New()
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType)
+  id: '#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType)'
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: SceneOffsetTypePowerEnum(OffsetType)
+  nameWithType: SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPEffects.Parameters.TMPParameterTypes.OffsetType)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 15
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType)
+    parameters:
+    - id: offsetType
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    content.vb: Public Sub New(offsetType As TMPParameterTypes.OffsetType)
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
+  nameWithType.vb: SceneOffsetTypePowerEnum.New(TMPParameterTypes.OffsetType)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.New(TMPEffects.Parameters.TMPParameterTypes.OffsetType)
+  name.vb: New(OffsetType)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider)
+  id: '#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider)'
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: SceneOffsetTypePowerEnum(OffsetType, TMPSceneOffsetProvider)
+  nameWithType: SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 19
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType, TMPSceneOffsetProvider customOffsetProvider)
+    parameters:
+    - id: offsetType
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    - id: customOffsetProvider
+      type: TMPEffects.Parameters.TMPSceneOffsetProvider
+    content.vb: Public Sub New(offsetType As TMPParameterTypes.OffsetType, customOffsetProvider As TMPSceneOffsetProvider)
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
+  nameWithType.vb: SceneOffsetTypePowerEnum.New(TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.New(TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider)
+  name.vb: New(OffsetType, TMPSceneOffsetProvider)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider,System.Boolean)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider,System.Boolean)
+  id: '#ctor(TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider,System.Boolean)'
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: SceneOffsetTypePowerEnum(OffsetType, TMPSceneOffsetProvider, bool)
+  nameWithType: SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType, TMPSceneOffsetProvider, bool)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum(TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider, bool)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 25
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public SceneOffsetTypePowerEnum(TMPParameterTypes.OffsetType offsetType, TMPSceneOffsetProvider customOffsetProvider, bool useCustom)
+    parameters:
+    - id: offsetType
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    - id: customOffsetProvider
+      type: TMPEffects.Parameters.TMPSceneOffsetProvider
+    - id: useCustom
+      type: System.Boolean
+    content.vb: Public Sub New(offsetType As TMPParameterTypes.OffsetType, customOffsetProvider As TMPSceneOffsetProvider, useCustom As Boolean)
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
+  nameWithType.vb: SceneOffsetTypePowerEnum.New(TMPParameterTypes.OffsetType, TMPSceneOffsetProvider, Boolean)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.New(TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider, Boolean)
+  name.vb: New(OffsetType, TMPSceneOffsetProvider, Boolean)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  id: GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, bool)
+  nameWithType: SceneOffsetTypePowerEnum.GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, bool)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, bool)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetOffset
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 31
+  namespace: TMPEffects.Parameters
+  summary: Get a timing offset for the given character.
+  example: []
+  syntax:
+    content: public float GetOffset(CharData cData, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData, bool ignoreAnimatorScaling = false)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: The character to get an offset for.
+    - id: segmentData
+      type: TMPEffects.Components.Animator.ITMPSegmentData
+      description: The relevant segment data.
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: The relevant animator data.
+    - id: ignoreAnimatorScaling
+      type: System.Boolean
+      description: Whether to ignore the animator's scaling.
+    return:
+      type: System.Single
+      description: A timing offset (to be used, for example, with <xref href="TMPEffects.Parameters.Wave" data-throw-if-not-resolved="false"></xref>).
+    content.vb: Public Function GetOffset(cData As CharData, segmentData As ITMPSegmentData, animatorData As IAnimatorDataProvider, ignoreAnimatorScaling As Boolean = False) As Single
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset*
+  implements:
+  - TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  nameWithType.vb: SceneOffsetTypePowerEnum.GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, Boolean)
+  name.vb: GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  id: GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: GetMinMaxOffset(out float, out float, ITMPSegmentData, IAnimatorDataProvider, bool)
+  nameWithType: SceneOffsetTypePowerEnum.GetMinMaxOffset(out float, out float, ITMPSegmentData, IAnimatorDataProvider, bool)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset(out float, out float, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, bool)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetMinMaxOffset
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 42
+  namespace: TMPEffects.Parameters
+  summary: Get the minimum / maximum offset for the given segment.
+  example: []
+  syntax:
+    content: public void GetMinMaxOffset(out float min, out float max, ITMPSegmentData segmentData, IAnimatorDataProvider animatorData, bool ignoreAnimatorScaling = false)
+    parameters:
+    - id: min
+      type: System.Single
+      description: The output parameter that will contain the minimum offset.
+    - id: max
+      type: System.Single
+      description: The output parameter that will contain the maximum offset.
+    - id: segmentData
+      type: TMPEffects.Components.Animator.ITMPSegmentData
+      description: The relevant segment data.
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: The relevant animator data.
+    - id: ignoreAnimatorScaling
+      type: System.Boolean
+      description: Whether to ignore the animator's scaling.
+    content.vb: Public Sub GetMinMaxOffset(min As Single, max As Single, segmentData As ITMPSegmentData, animatorData As IAnimatorDataProvider, ignoreAnimatorScaling As Boolean = False)
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset*
+  implements:
+  - TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  nameWithType.vb: SceneOffsetTypePowerEnum.GetMinMaxOffset(Single, Single, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset(Single, Single, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, Boolean)
+  name.vb: GetMinMaxOffset(Single, Single, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  id: Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: Equals(SceneOffsetTypePowerEnum)
+  nameWithType: SceneOffsetTypePowerEnum.Equals(SceneOffsetTypePowerEnum)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 61
+  namespace: TMPEffects.Parameters
+  summary: Indicates whether the current object is equal to another object of the same type.
+  example: []
+  syntax:
+    content: public bool Equals(SceneOffsetTypePowerEnum other)
+    parameters:
+    - id: other
+      type: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+      description: An object to compare with this object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Equals(other As SceneOffsetTypePowerEnum) As Boolean
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals*
+  implements:
+  - System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(System.Object)
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: SceneOffsetTypePowerEnum.Equals(object)
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 69
+  namespace: TMPEffects.Parameters
+  summary: Determines whether the specified object is equal to the current object.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current object.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals*
+  nameWithType.vb: SceneOffsetTypePowerEnum.Equals(Object)
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals(Object)
+  name.vb: Equals(Object)
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode
+  commentId: M:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode
+  id: GetHashCode
+  parent: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: SceneOffsetTypePowerEnum.GetHashCode()
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetHashCode
+    path: ../Package/Runtime/Parameters/Types/Offset/SceneOffsetTypePowerEnum.cs
+    startLine: 75
+  namespace: TMPEffects.Parameters
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.Object.GetHashCode
+  overload: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode*
+references:
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  commentId: T:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: Global.PowerEnum`2
+  href: PowerEnum-2.html
+  name: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>
+  nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>
+  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>
+  nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
+  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider)
+  name.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
+  spec.csharp:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: <
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Parameters.TMPSceneOffsetProvider
+    name: TMPSceneOffsetProvider
+    href: TMPEffects.Parameters.TMPSceneOffsetProvider.html
+  - name: '>'
+  spec.vb:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Parameters.TMPSceneOffsetProvider
+    name: TMPSceneOffsetProvider
+    href: TMPEffects.Parameters.TMPSceneOffsetProvider.html
+  - name: )
+- uid: System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}
+  commentId: T:System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SceneOffsetTypePowerEnum>
+  nameWithType: IEquatable<SceneOffsetTypePowerEnum>
+  fullName: System.IEquatable<TMPEffects.Parameters.SceneOffsetTypePowerEnum>
+  nameWithType.vb: IEquatable(Of SceneOffsetTypePowerEnum)
+  fullName.vb: System.IEquatable(Of TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  name.vb: IEquatable(Of SceneOffsetTypePowerEnum)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+    name: SceneOffsetTypePowerEnum
+    href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+    name: SceneOffsetTypePowerEnum
+    href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  - name: )
+- uid: TMPEffects.Parameters.ITMPOffsetProvider
+  commentId: T:TMPEffects.Parameters.ITMPOffsetProvider
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPOffsetProvider.html
+  name: ITMPOffsetProvider
+  nameWithType: ITMPOffsetProvider
+  fullName: TMPEffects.Parameters.ITMPOffsetProvider
+- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: Global.PowerEnum`2.Value
+  href: Global.PowerEnum-2.html#PowerEnum_2_Value
+  name: Value
+  nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.Value
+  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.Value
+  nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).Value
+  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).Value
+- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: Global.PowerEnum`2.EnumValue
+  href: Global.PowerEnum-2.html#PowerEnum_2_EnumValue
+  name: EnumValue
+  nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.EnumValue
+  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.EnumValue
+  nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).EnumValue
+  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).EnumValue
+- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: Global.PowerEnum`2.UseCustom
+  href: Global.PowerEnum-2.html#PowerEnum_2_UseCustom
+  name: UseCustom
+  nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.UseCustom
+  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.UseCustom
+  nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).UseCustom
+  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).UseCustom
+- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  commentId: F:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: Global.PowerEnum`2.useCustom
+  href: Global.PowerEnum-2.html#PowerEnum_2_useCustom
+  name: useCustom
+  nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.useCustom
+  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.useCustom
+  nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).useCustom
+  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).useCustom
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.PowerEnum`2
+  commentId: T:Global.PowerEnum`2
+  href: PowerEnum-2.html
+  name: PowerEnum<TEnum, TCustom>
+  nameWithType: PowerEnum<TEnum, TCustom>
+  fullName: PowerEnum<TEnum, TCustom>
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom)
+  fullName.vb: PowerEnum(Of TEnum, TCustom)
+  name.vb: PowerEnum(Of TEnum, TCustom)
+  spec.csharp:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: <
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: '>'
+  spec.vb:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Global.PowerEnum`2.Value
+  commentId: P:Global.PowerEnum`2.Value
+  href: Global.PowerEnum-2.html#PowerEnum_2_Value
+  name: Value
+  nameWithType: PowerEnum<TEnum, TCustom>.Value
+  fullName: PowerEnum<TEnum, TCustom>.Value
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom).Value
+  fullName.vb: PowerEnum(Of TEnum, TCustom).Value
+- uid: Global.PowerEnum`2.EnumValue
+  commentId: P:Global.PowerEnum`2.EnumValue
+  href: Global.PowerEnum-2.html#PowerEnum_2_EnumValue
+  name: EnumValue
+  nameWithType: PowerEnum<TEnum, TCustom>.EnumValue
+  fullName: PowerEnum<TEnum, TCustom>.EnumValue
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom).EnumValue
+  fullName.vb: PowerEnum(Of TEnum, TCustom).EnumValue
+- uid: Global.PowerEnum`2.UseCustom
+  commentId: P:Global.PowerEnum`2.UseCustom
+  href: Global.PowerEnum-2.html#PowerEnum_2_UseCustom
+  name: UseCustom
+  nameWithType: PowerEnum<TEnum, TCustom>.UseCustom
+  fullName: PowerEnum<TEnum, TCustom>.UseCustom
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom).UseCustom
+  fullName.vb: PowerEnum(Of TEnum, TCustom).UseCustom
+- uid: Global.PowerEnum`2.useCustom
+  commentId: F:Global.PowerEnum`2.useCustom
+  href: Global.PowerEnum-2.html#PowerEnum_2_useCustom
+  name: useCustom
+  nameWithType: PowerEnum<TEnum, TCustom>.useCustom
+  fullName: PowerEnum<TEnum, TCustom>.useCustom
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom).useCustom
+  fullName.vb: PowerEnum(Of TEnum, TCustom).useCustom
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
+  commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum__ctor
+  name: SceneOffsetTypePowerEnum
+  nameWithType: SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.SceneOffsetTypePowerEnum
+  nameWithType.vb: SceneOffsetTypePowerEnum.New
+  fullName.vb: TMPEffects.Parameters.SceneOffsetTypePowerEnum.New
+  name.vb: New
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.OffsetType
+  nameWithType: TMPParameterTypes.OffsetType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+- uid: TMPEffects.Parameters.TMPSceneOffsetProvider
+  commentId: T:TMPEffects.Parameters.TMPSceneOffsetProvider
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPSceneOffsetProvider.html
+  name: TMPSceneOffsetProvider
+  nameWithType: TMPSceneOffsetProvider
+  fullName: TMPEffects.Parameters.TMPSceneOffsetProvider
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Parameters.Wave
+  commentId: T:TMPEffects.Parameters.Wave
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.Wave.html
+  name: Wave
+  nameWithType: Wave
+  fullName: TMPEffects.Parameters.Wave
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset*
+  commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum_GetOffset_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  name: GetOffset
+  nameWithType: SceneOffsetTypePowerEnum.GetOffset
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetOffset
+- uid: TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  commentId: M:TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  parent: TMPEffects.Parameters.ITMPOffsetProvider
+  isExternal: true
+  href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetOffset_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  name: GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, bool)
+  nameWithType: ITMPOffsetProvider.GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, bool)
+  fullName: TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, bool)
+  nameWithType.vb: ITMPOffsetProvider.GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  fullName.vb: TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, Boolean)
+  name.vb: GetOffset(CharData, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+    name: GetOffset
+    href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetOffset_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData
+    name: ITMPSegmentData
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+    name: IAnimatorDataProvider
+    href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Parameters.ITMPOffsetProvider.GetOffset(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+    name: GetOffset
+    href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetOffset_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData
+    name: ITMPSegmentData
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+    name: IAnimatorDataProvider
+    href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.Components.Animator.ITMPSegmentData
+  commentId: T:TMPEffects.Components.Animator.ITMPSegmentData
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  name: ITMPSegmentData
+  nameWithType: ITMPSegmentData
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorDataProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  name: IAnimatorDataProvider
+  nameWithType: IAnimatorDataProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset*
+  commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum_GetMinMaxOffset_System_Single__System_Single__TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  name: GetMinMaxOffset
+  nameWithType: SceneOffsetTypePowerEnum.GetMinMaxOffset
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetMinMaxOffset
+- uid: TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  commentId: M:TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+  parent: TMPEffects.Parameters.ITMPOffsetProvider
+  isExternal: true
+  href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetMinMaxOffset_System_Single__System_Single__TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  name: GetMinMaxOffset(out float, out float, ITMPSegmentData, IAnimatorDataProvider, bool)
+  nameWithType: ITMPOffsetProvider.GetMinMaxOffset(out float, out float, ITMPSegmentData, IAnimatorDataProvider, bool)
+  fullName: TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(out float, out float, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, bool)
+  nameWithType.vb: ITMPOffsetProvider.GetMinMaxOffset(Single, Single, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  fullName.vb: TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(Single, Single, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.Components.Animator.IAnimatorDataProvider, Boolean)
+  name.vb: GetMinMaxOffset(Single, Single, ITMPSegmentData, IAnimatorDataProvider, Boolean)
+  spec.csharp:
+  - uid: TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+    name: GetMinMaxOffset
+    href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetMinMaxOffset_System_Single__System_Single__TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData
+    name: ITMPSegmentData
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+    name: IAnimatorDataProvider
+    href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Parameters.ITMPOffsetProvider.GetMinMaxOffset(System.Single@,System.Single@,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.Components.Animator.IAnimatorDataProvider,System.Boolean)
+    name: GetMinMaxOffset
+    href: TMPEffects.Parameters.ITMPOffsetProvider.html#TMPEffects_Parameters_ITMPOffsetProvider_GetMinMaxOffset_System_Single__System_Single__TMPEffects_Components_Animator_ITMPSegmentData_TMPEffects_Components_Animator_IAnimatorDataProvider_System_Boolean_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData
+    name: ITMPSegmentData
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+    name: IAnimatorDataProvider
+    href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals*
+  commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum_Equals_TMPEffects_Parameters_SceneOffsetTypePowerEnum_
+  name: Equals
+  nameWithType: SceneOffsetTypePowerEnum.Equals
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.Equals
+- uid: System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  commentId: M:System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  parent: System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(SceneOffsetTypePowerEnum)
+  nameWithType: IEquatable<SceneOffsetTypePowerEnum>.Equals(SceneOffsetTypePowerEnum)
+  fullName: System.IEquatable<TMPEffects.Parameters.SceneOffsetTypePowerEnum>.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  nameWithType.vb: IEquatable(Of SceneOffsetTypePowerEnum).Equals(SceneOffsetTypePowerEnum)
+  fullName.vb: System.IEquatable(Of TMPEffects.Parameters.SceneOffsetTypePowerEnum).Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+  spec.csharp:
+  - uid: System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+    name: SceneOffsetTypePowerEnum
+    href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}.Equals(TMPEffects.Parameters.SceneOffsetTypePowerEnum)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+    name: SceneOffsetTypePowerEnum
+    href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  - name: )
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  commentId: T:TMPEffects.Parameters.SceneOffsetTypePowerEnum
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html
+  name: SceneOffsetTypePowerEnum
+  nameWithType: SceneOffsetTypePowerEnum
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode*
+  commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode
+  href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum_GetHashCode
+  name: GetHashCode
+  nameWithType: SceneOffsetTypePowerEnum.GetHashCode
+  fullName: TMPEffects.Parameters.SceneOffsetTypePowerEnum.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

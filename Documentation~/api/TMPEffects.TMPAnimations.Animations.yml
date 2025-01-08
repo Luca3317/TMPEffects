@@ -5,23 +5,18 @@ items:
   id: TMPEffects.TMPAnimations.Animations
   children:
   - TMPEffects.TMPAnimations.Animations.AnimationStackObject
-  - TMPEffects.TMPAnimations.Animations.AnimationStack`1
-  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
-  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
-  - TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
-  - TMPEffects.TMPAnimations.Animations.BasicAnimationStack
   - TMPEffects.TMPAnimations.Animations.CharAnimation
   - TMPEffects.TMPAnimations.Animations.ContPivotAnimation
   - TMPEffects.TMPAnimations.Animations.FadeAnimation
   - TMPEffects.TMPAnimations.Animations.FunkyAnimation
   - TMPEffects.TMPAnimations.Animations.GrowAnimation
-  - TMPEffects.TMPAnimations.Animations.HideAnimationStack
   - TMPEffects.TMPAnimations.Animations.HideAnimationStackObject
   - TMPEffects.TMPAnimations.Animations.PaletteAnimation
   - TMPEffects.TMPAnimations.Animations.PivotAnimation
   - TMPEffects.TMPAnimations.Animations.ShakeAnimation
-  - TMPEffects.TMPAnimations.Animations.ShowAnimationStack
   - TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject
+  - TMPEffects.TMPAnimations.Animations.TMPSceneAnimation
+  - TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase
   - TMPEffects.TMPAnimations.Animations.WaveAnimation
   langs:
   - csharp
@@ -85,149 +80,6 @@ references:
   name: WaveAnimation
   nameWithType: WaveAnimation
   fullName: TMPEffects.TMPAnimations.Animations.WaveAnimation
-- uid: TMPEffects.TMPAnimations.Animations.BasicAnimationStack
-  commentId: T:TMPEffects.TMPAnimations.Animations.BasicAnimationStack
-  href: TMPEffects.TMPAnimations.Animations.BasicAnimationStack.html
-  name: BasicAnimationStack
-  nameWithType: BasicAnimationStack
-  fullName: TMPEffects.TMPAnimations.Animations.BasicAnimationStack
-- uid: TMPEffects.TMPAnimations.Animations.ShowAnimationStack
-  commentId: T:TMPEffects.TMPAnimations.Animations.ShowAnimationStack
-  href: TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html
-  name: ShowAnimationStack
-  nameWithType: ShowAnimationStack
-  fullName: TMPEffects.TMPAnimations.Animations.ShowAnimationStack
-- uid: TMPEffects.TMPAnimations.Animations.HideAnimationStack
-  commentId: T:TMPEffects.TMPAnimations.Animations.HideAnimationStack
-  href: TMPEffects.TMPAnimations.Animations.HideAnimationStack.html
-  name: HideAnimationStack
-  nameWithType: HideAnimationStack
-  fullName: TMPEffects.TMPAnimations.Animations.HideAnimationStack
-- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-  commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStack`1
-  href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  name: AnimationStack<T>
-  nameWithType: AnimationStack<T>
-  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>
-  nameWithType.vb: AnimationStack(Of T)
-  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T)
-  name.vb: AnimationStack(Of T)
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
-  commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
-  href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  name: AnimationStack<T>.AnimContext
-  nameWithType: AnimationStack<T>.AnimContext
-  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimContext
-  nameWithType.vb: AnimationStack(Of T).AnimContext
-  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimContext
-  name.vb: AnimationStack(Of T).AnimContext
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
-    name: AnimContext
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimContext
-    name: AnimContext
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimContext.html
-- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
-  commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
-  href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  name: AnimationStack<T>.AnimPrefixTuple
-  nameWithType: AnimationStack<T>.AnimPrefixTuple
-  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.AnimPrefixTuple
-  nameWithType.vb: AnimationStack(Of T).AnimPrefixTuple
-  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).AnimPrefixTuple
-  name.vb: AnimationStack(Of T).AnimPrefixTuple
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
-    name: AnimPrefixTuple
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.AnimPrefixTuple
-    name: AnimPrefixTuple
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.AnimPrefixTuple.html
-- uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
-  commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
-  parent: TMPEffects.TMPAnimations.Animations
-  href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  name: AnimationStack<T>.Data
-  nameWithType: AnimationStack<T>.Data
-  fullName: TMPEffects.TMPAnimations.Animations.AnimationStack<T>.Data
-  nameWithType.vb: AnimationStack(Of T).Data
-  fullName.vb: TMPEffects.TMPAnimations.Animations.AnimationStack(Of T).Data
-  name.vb: AnimationStack(Of T).Data
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
-    name: Data
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1
-    name: AnimationStack
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-  - name: .
-  - uid: TMPEffects.TMPAnimations.Animations.AnimationStack`1.Data
-    name: Data
-    href: TMPEffects.TMPAnimations.Animations.AnimationStack-1.Data.html
 - uid: TMPEffects.TMPAnimations.Animations.AnimationStackObject
   commentId: T:TMPEffects.TMPAnimations.Animations.AnimationStackObject
   href: TMPEffects.TMPAnimations.Animations.AnimationStackObject.html
@@ -246,6 +98,19 @@ references:
   name: ShowAnimationStackObject
   nameWithType: ShowAnimationStackObject
   fullName: TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject
+- uid: TMPEffects.TMPAnimations.Animations.TMPSceneAnimation
+  commentId: T:TMPEffects.TMPAnimations.Animations.TMPSceneAnimation
+  href: TMPEffects.TMPAnimations.Animations.TMPSceneAnimation.html
+  name: TMPSceneAnimation
+  nameWithType: TMPSceneAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.TMPSceneAnimation
+- uid: TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase
+  commentId: T:TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase
+  parent: TMPEffects.TMPAnimations.Animations
+  href: TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase.html
+  name: TMPSceneAnimationBase
+  nameWithType: TMPSceneAnimationBase
+  fullName: TMPEffects.TMPAnimations.Animations.TMPSceneAnimationBase
 - uid: TMPEffects.TMPAnimations.Animations
   commentId: N:TMPEffects.TMPAnimations.Animations
   href: TMPEffects.html

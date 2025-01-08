@@ -9,10 +9,10 @@ items:
   - TMPEffects.TextProcessing.TagProcessorManager.AddProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor,System.Int32)
   - TMPEffects.TextProcessing.TagProcessorManager.Clear
   - TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
-  - TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  - TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   - TMPEffects.TextProcessing.TagProcessorManager.RemoveProcessor(System.Char,TMPEffects.TextProcessing.TagProcessor)
   - TMPEffects.TextProcessing.TagProcessorManager.TagProcessors
-  - TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  - TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   langs:
   - csharp
   - vb
@@ -23,8 +23,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessorManager
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 43
@@ -62,8 +62,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessors
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 46
@@ -93,8 +93,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 50
@@ -120,8 +120,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddProcessor
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 58
@@ -172,8 +172,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveProcessor
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 83
@@ -213,8 +213,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 105
@@ -225,22 +225,22 @@ items:
     content: public void Clear()
     content.vb: Public Sub Clear()
   overload: TMPEffects.TextProcessing.TagProcessorManager.Clear*
-- uid: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
-  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
-  id: RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+- uid: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
+  id: RegisterTo(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   parent: TMPEffects.TextProcessing.TagProcessorManager
   langs:
   - csharp
   - vb
-  name: RegisterTo(TMPTextProcessor)
-  nameWithType: TagProcessorManager.RegisterTo(TMPTextProcessor)
-  fullName: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPTextProcessor)
+  name: RegisterTo(TMPEffectsTextProcessor)
+  nameWithType: TagProcessorManager.RegisterTo(TMPEffectsTextProcessor)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   type: Method
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RegisterTo
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 115
@@ -248,29 +248,29 @@ items:
   summary: Register all <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> to the given <code class="paramref">textProcessor</code>.
   example: []
   syntax:
-    content: public void RegisterTo(TMPTextProcessor textProcessor)
+    content: public void RegisterTo(TMPEffectsTextProcessor textProcessor)
     parameters:
     - id: textProcessor
-      type: TMPEffects.TextProcessing.TMPTextProcessor
-      description: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> to register to.
-    content.vb: Public Sub RegisterTo(textProcessor As TMPTextProcessor)
+      type: TMPEffects.TextProcessing.TMPEffectsTextProcessor
+      description: The <xref href="TMPEffects.TextProcessing.TMPEffectsTextProcessor" data-throw-if-not-resolved="false"></xref> to register to.
+    content.vb: Public Sub RegisterTo(textProcessor As TMPEffectsTextProcessor)
   overload: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo*
-- uid: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
-  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
-  id: UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+- uid: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
+  commentId: M:TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
+  id: UnregisterFrom(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   parent: TMPEffects.TextProcessing.TagProcessorManager
   langs:
   - csharp
   - vb
-  name: UnregisterFrom(TMPTextProcessor)
-  nameWithType: TagProcessorManager.UnregisterFrom(TMPTextProcessor)
-  fullName: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPTextProcessor)
+  name: UnregisterFrom(TMPEffectsTextProcessor)
+  nameWithType: TagProcessorManager.UnregisterFrom(TMPEffectsTextProcessor)
+  fullName: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom(TMPEffects.TextProcessing.TMPEffectsTextProcessor)
   type: Method
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UnregisterFrom
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 130
@@ -278,12 +278,12 @@ items:
   summary: Unregister all <xref href="TMPEffects.TextProcessing.TagProcessor" data-throw-if-not-resolved="false"></xref> from the given <code class="paramref">textProcessor</code>.
   example: []
   syntax:
-    content: public void UnregisterFrom(TMPTextProcessor textProcessor)
+    content: public void UnregisterFrom(TMPEffectsTextProcessor textProcessor)
     parameters:
     - id: textProcessor
-      type: TMPEffects.TextProcessing.TMPTextProcessor
-      description: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> to unregister from.
-    content.vb: Public Sub UnregisterFrom(textProcessor As TMPTextProcessor)
+      type: TMPEffects.TextProcessing.TMPEffectsTextProcessor
+      description: The <xref href="TMPEffects.TextProcessing.TMPEffectsTextProcessor" data-throw-if-not-resolved="false"></xref> to unregister from.
+    content.vb: Public Sub UnregisterFrom(textProcessor As TMPEffectsTextProcessor)
   overload: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom*
 - uid: TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
   commentId: M:TMPEffects.TextProcessing.TagProcessorManager.GetEnumerator
@@ -299,8 +299,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 145
@@ -1020,22 +1020,22 @@ references:
   name: Clear
   nameWithType: TagProcessorManager.Clear
   fullName: TMPEffects.TextProcessing.TagProcessorManager.Clear
-- uid: TMPEffects.TextProcessing.TMPTextProcessor
-  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor
+- uid: TMPEffects.TextProcessing.TMPEffectsTextProcessor
+  commentId: T:TMPEffects.TextProcessing.TMPEffectsTextProcessor
   parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  name: TMPTextProcessor
-  nameWithType: TMPTextProcessor
-  fullName: TMPEffects.TextProcessing.TMPTextProcessor
+  href: TMPEffects.TextProcessing.TMPEffectsTextProcessor.html
+  name: TMPEffectsTextProcessor
+  nameWithType: TMPEffectsTextProcessor
+  fullName: TMPEffects.TextProcessing.TMPEffectsTextProcessor
 - uid: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo*
   commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.RegisterTo
-  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_RegisterTo_TMPEffects_TextProcessing_TMPTextProcessor_
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_RegisterTo_TMPEffects_TextProcessing_TMPEffectsTextProcessor_
   name: RegisterTo
   nameWithType: TagProcessorManager.RegisterTo
   fullName: TMPEffects.TextProcessing.TagProcessorManager.RegisterTo
 - uid: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom*
   commentId: Overload:TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom
-  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_UnregisterFrom_TMPEffects_TextProcessing_TMPTextProcessor_
+  href: TMPEffects.TextProcessing.TagProcessorManager.html#TMPEffects_TextProcessing_TagProcessorManager_UnregisterFrom_TMPEffects_TextProcessing_TMPEffectsTextProcessor_
   name: UnregisterFrom
   nameWithType: TagProcessorManager.UnregisterFrom
   fullName: TMPEffects.TextProcessing.TagProcessorManager.UnregisterFrom

@@ -21,8 +21,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IReadOnlyTagCollection
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 7
@@ -49,8 +49,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCount
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 12
@@ -78,8 +78,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 20
@@ -114,8 +114,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndicesOf
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 27
@@ -147,8 +147,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 36
@@ -189,8 +189,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 42
@@ -225,8 +225,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagAt
     path: ../Package/Runtime/Tags/TagCollection/IReadOnlyTagCollection.cs
     startLine: 50

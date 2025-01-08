@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPCommands.ICommandContext
+  commentId: T:TMPEffects.TMPCommands.ICommandContext
+  id: ICommandContext
+  parent: TMPEffects.TMPCommands
+  children:
+  - TMPEffects.TMPCommands.ICommandContext.CustomData
+  - TMPEffects.TMPCommands.ICommandContext.Indices
+  - TMPEffects.TMPCommands.ICommandContext.Writer
+  langs:
+  - csharp
+  - vb
+  name: ICommandContext
+  nameWithType: ICommandContext
+  fullName: TMPEffects.TMPCommands.ICommandContext
+  type: Interface
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/ICommandContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ICommandContext
+    path: ../Package/Runtime/Components/TMPWriter/ICommandContext.cs
+    startLine: 8
+  namespace: TMPEffects.TMPCommands
+  summary: Interface for command contexts.
+  example: []
+  syntax:
+    content: public interface ICommandContext
+    content.vb: Public Interface ICommandContext
+- uid: TMPEffects.TMPCommands.ICommandContext.Writer
+  commentId: P:TMPEffects.TMPCommands.ICommandContext.Writer
+  id: Writer
+  parent: TMPEffects.TMPCommands.ICommandContext
+  langs:
+  - csharp
+  - vb
+  name: Writer
+  nameWithType: ICommandContext.Writer
+  fullName: TMPEffects.TMPCommands.ICommandContext.Writer
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/ICommandContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Writer
+    path: ../Package/Runtime/Components/TMPWriter/ICommandContext.cs
+    startLine: 13
+  namespace: TMPEffects.TMPCommands
+  summary: The <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> that raised this command.
+  example: []
+  syntax:
+    content: TMPWriter Writer { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Components.TMPWriter
+    content.vb: ReadOnly Property Writer As TMPWriter
+  overload: TMPEffects.TMPCommands.ICommandContext.Writer*
+- uid: TMPEffects.TMPCommands.ICommandContext.Indices
+  commentId: P:TMPEffects.TMPCommands.ICommandContext.Indices
+  id: Indices
+  parent: TMPEffects.TMPCommands.ICommandContext
+  langs:
+  - csharp
+  - vb
+  name: Indices
+  nameWithType: ICommandContext.Indices
+  fullName: TMPEffects.TMPCommands.ICommandContext.Indices
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/ICommandContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Indices
+    path: ../Package/Runtime/Components/TMPWriter/ICommandContext.cs
+    startLine: 18
+  namespace: TMPEffects.TMPCommands
+  summary: The indices of the tag that triggered this command.
+  example: []
+  syntax:
+    content: TMPEffectTagIndices Indices { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Tags.TMPEffectTagIndices
+    content.vb: ReadOnly Property Indices As TMPEffectTagIndices
+  overload: TMPEffects.TMPCommands.ICommandContext.Indices*
+- uid: TMPEffects.TMPCommands.ICommandContext.CustomData
+  commentId: P:TMPEffects.TMPCommands.ICommandContext.CustomData
+  id: CustomData
+  parent: TMPEffects.TMPCommands.ICommandContext
+  langs:
+  - csharp
+  - vb
+  name: CustomData
+  nameWithType: ICommandContext.CustomData
+  fullName: TMPEffects.TMPCommands.ICommandContext.CustomData
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPWriter/ICommandContext.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CustomData
+    path: ../Package/Runtime/Components/TMPWriter/ICommandContext.cs
+    startLine: 23
+  namespace: TMPEffects.TMPCommands
+  summary: The custom data object.
+  example: []
+  syntax:
+    content: object CustomData { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: ReadOnly Property CustomData As Object
+  overload: TMPEffects.TMPCommands.ICommandContext.CustomData*
+references:
+- uid: TMPEffects.TMPCommands
+  commentId: N:TMPEffects.TMPCommands
+  href: TMPEffects.html
+  name: TMPEffects.TMPCommands
+  nameWithType: TMPEffects.TMPCommands
+  fullName: TMPEffects.TMPCommands
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPCommands
+    name: TMPCommands
+    href: TMPEffects.TMPCommands.html
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
+- uid: TMPEffects.TMPCommands.ICommandContext.Writer*
+  commentId: Overload:TMPEffects.TMPCommands.ICommandContext.Writer
+  href: TMPEffects.TMPCommands.ICommandContext.html#TMPEffects_TMPCommands_ICommandContext_Writer
+  name: Writer
+  nameWithType: ICommandContext.Writer
+  fullName: TMPEffects.TMPCommands.ICommandContext.Writer
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+- uid: TMPEffects.TMPCommands.ICommandContext.Indices*
+  commentId: Overload:TMPEffects.TMPCommands.ICommandContext.Indices
+  href: TMPEffects.TMPCommands.ICommandContext.html#TMPEffects_TMPCommands_ICommandContext_Indices
+  name: Indices
+  nameWithType: ICommandContext.Indices
+  fullName: TMPEffects.TMPCommands.ICommandContext.Indices
+- uid: TMPEffects.Tags.TMPEffectTagIndices
+  commentId: T:TMPEffects.Tags.TMPEffectTagIndices
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices
+  nameWithType: TMPEffectTagIndices
+  fullName: TMPEffects.Tags.TMPEffectTagIndices
+- uid: TMPEffects.Tags
+  commentId: N:TMPEffects.Tags
+  href: TMPEffects.html
+  name: TMPEffects.Tags
+  nameWithType: TMPEffects.Tags
+  fullName: TMPEffects.Tags
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+- uid: TMPEffects.TMPCommands.ICommandContext.CustomData*
+  commentId: Overload:TMPEffects.TMPCommands.ICommandContext.CustomData
+  href: TMPEffects.TMPCommands.ICommandContext.html#TMPEffects_TMPCommands_ICommandContext_CustomData
+  name: CustomData
+  nameWithType: ICommandContext.CustomData
+  fullName: TMPEffects.TMPCommands.ICommandContext.CustomData
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

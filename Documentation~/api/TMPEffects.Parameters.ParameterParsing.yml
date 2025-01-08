@@ -5,20 +5,19 @@ items:
   id: ParameterParsing
   parent: TMPEffects.Parameters
   children:
-  - TMPEffects.Parameters.ParameterParsing.ColorKeyWords
-  - TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2},System.Collections.Generic.IDictionary{System.String,Vector2})
-  - TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,System.Collections.Generic.IDictionary{System.String,AnimationCurve})
-  - TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.Boolean})
-  - TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,System.Collections.Generic.IDictionary{System.String,Color})
-  - TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,System.Collections.Generic.IDictionary{System.String,System.Single})
-  - TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,System.Collections.Generic.IDictionary{System.String,System.Int32})
-  - TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String})
-  - TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String})
-  - TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  - TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  - TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  - TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  - TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType})
+  - TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToUnityObject(System.String,UnityEngine.Object@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
   langs:
   - csharp
   - vb
@@ -29,12 +28,14 @@ items:
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParameterParsing
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 10
+    startLine: 15
   namespace: TMPEffects.Parameters
+  summary: Utility class for parsing parameters.
+  example: []
   syntax:
     content: public static class ParameterParsing
     content.vb: Public Module ParameterParsing
@@ -48,501 +49,474 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,System.Collections.Generic.IDictionary{System.String,System.Int32})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,System.Collections.Generic.IDictionary{System.String,System.Int32})
-  id: StringToInt(System.String,System.Int32@,System.Collections.Generic.IDictionary{System.String,System.Int32})
+- uid: TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToInt(System.String,System.Int32@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToInt(System.String,System.Int32@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToInt(string, out int, IDictionary<string, int>)
-  nameWithType: ParameterParsing.StringToInt(string, out int, IDictionary<string, int>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToInt(string, out int, System.Collections.Generic.IDictionary<string, int>)
+  name: StringToInt(string, out int, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToInt(string, out int, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToInt(string, out int, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToInt
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 14
+    startLine: 24
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToInt(string str, out int result, IDictionary<string, int> keywords = null)
+    content: public static bool StringToInt(string str, out int result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: System.Int32
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,System.Int32}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToInt(str As String, result As Integer, keywords As IDictionary(Of String, Integer) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToInt(str As String, result As Integer, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToInt*
-  nameWithType.vb: ParameterParsing.StringToInt(String, Integer, IDictionary(Of String, Integer))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToInt(String, Integer, System.Collections.Generic.IDictionary(Of String, Integer))
-  name.vb: StringToInt(String, Integer, IDictionary(Of String, Integer))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,System.Collections.Generic.IDictionary{System.String,System.Single})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,System.Collections.Generic.IDictionary{System.String,System.Single})
-  id: StringToFloat(System.String,System.Single@,System.Collections.Generic.IDictionary{System.String,System.Single})
+  nameWithType.vb: ParameterParsing.StringToInt(String, Integer, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToInt(String, Integer, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToInt(String, Integer, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToFloat(System.String,System.Single@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToFloat(System.String,System.Single@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToFloat(string, out float, IDictionary<string, float>)
-  nameWithType: ParameterParsing.StringToFloat(string, out float, IDictionary<string, float>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToFloat(string, out float, System.Collections.Generic.IDictionary<string, float>)
+  name: StringToFloat(string, out float, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToFloat(string, out float, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToFloat(string, out float, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToFloat
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 28
+    startLine: 42
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToFloat(string str, out float result, IDictionary<string, float> keywords = null)
+    content: public static bool StringToFloat(string str, out float result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: System.Single
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,System.Single}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToFloat(str As String, result As Single, keywords As IDictionary(Of String, Single) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToFloat(str As String, result As Single, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToFloat*
-  nameWithType.vb: ParameterParsing.StringToFloat(String, Single, IDictionary(Of String, Single))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToFloat(String, Single, System.Collections.Generic.IDictionary(Of String, Single))
-  name.vb: StringToFloat(String, Single, IDictionary(Of String, Single))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.Boolean})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.Boolean})
-  id: StringToBool(System.String,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.Boolean})
+  nameWithType.vb: ParameterParsing.StringToFloat(String, Single, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToFloat(String, Single, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToFloat(String, Single, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToBool(System.String,System.Boolean@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToBool(System.String,System.Boolean@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToBool(string, out bool, IDictionary<string, bool>)
-  nameWithType: ParameterParsing.StringToBool(string, out bool, IDictionary<string, bool>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToBool(string, out bool, System.Collections.Generic.IDictionary<string, bool>)
+  name: StringToBool(string, out bool, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToBool(string, out bool, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToBool(string, out bool, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToBool
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 42
+    startLine: 58
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToBool(string str, out bool result, IDictionary<string, bool> keywords = null)
+    content: public static bool StringToBool(string str, out bool result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: System.Boolean
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,System.Boolean}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToBool(str As String, result As Boolean, keywords As IDictionary(Of String, Boolean) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToBool(str As String, result As Boolean, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToBool*
-  nameWithType.vb: ParameterParsing.StringToBool(String, Boolean, IDictionary(Of String, Boolean))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToBool(String, Boolean, System.Collections.Generic.IDictionary(Of String, Boolean))
-  name.vb: StringToBool(String, Boolean, IDictionary(Of String, Boolean))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  id: StringToVector2(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
+  nameWithType.vb: ParameterParsing.StringToBool(String, Boolean, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToBool(String, Boolean, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToBool(String, Boolean, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector2(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToVector2(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToVector2(string, out Vector2, IDictionary<string, Vector2>)
-  nameWithType: ParameterParsing.StringToVector2(string, out Vector2, IDictionary<string, Vector2>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2(string, out Vector2, System.Collections.Generic.IDictionary<string, Vector2>)
+  name: StringToVector2(string, out Vector2, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToVector2(string, out Vector2, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2(string, out Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 57
+    startLine: 75
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToVector2(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
+    content: public static bool StringToVector2(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Vector2
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector2}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToVector2(str As String, result As Vector2, keywords As IDictionary(Of String, Vector2) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToVector2(str As String, result As Vector2, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToVector2*
-  nameWithType.vb: ParameterParsing.StringToVector2(String, Vector2, IDictionary(Of String, Vector2))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector2(String, Vector2, System.Collections.Generic.IDictionary(Of String, Vector2))
-  name.vb: StringToVector2(String, Vector2, IDictionary(Of String, Vector2))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String})
-  id: StringToTypedVector3(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector3@,System.Collections.Generic.IDictionary{System.String,System.String})
+  nameWithType.vb: ParameterParsing.StringToVector2(String, Vector2, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector2(String, Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToVector2(String, Vector2, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToTypedVector3(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector3@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToTypedVector3(string, out TypedVector3, IDictionary<string, string>)
-  nameWithType: ParameterParsing.StringToTypedVector3(string, out ParameterTypes.TypedVector3, IDictionary<string, string>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(string, out TMPEffects.Parameters.ParameterTypes.TypedVector3, System.Collections.Generic.IDictionary<string, string>)
+  name: StringToTypedVector3(string, out TypedVector3, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToTypedVector3(string, out TMPParameterTypes.TypedVector3, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(string, out TMPEffects.Parameters.TMPParameterTypes.TypedVector3, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToTypedVector3
-    path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 95
-  namespace: TMPEffects.Parameters
-  syntax:
-    content: public static bool StringToTypedVector3(string str, out ParameterTypes.TypedVector3 result, IDictionary<string, string> keywords = null)
-    parameters:
-    - id: str
-      type: System.String
-    - id: result
-      type: TMPEffects.Parameters.ParameterTypes.TypedVector3
-    - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,System.String}
-    return:
-      type: System.Boolean
-    content.vb: Public Shared Function StringToTypedVector3(str As String, result As ParameterTypes.TypedVector3, keywords As IDictionary(Of String, String) = Nothing) As Boolean
-  overload: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3*
-  nameWithType.vb: ParameterParsing.StringToTypedVector3(String, ParameterTypes.TypedVector3, IDictionary(Of String, String))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(String, TMPEffects.Parameters.ParameterTypes.TypedVector3, System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: StringToTypedVector3(String, TypedVector3, IDictionary(Of String, String))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String})
-  id: StringToTypedVector2(System.String,TMPEffects.Parameters.ParameterTypes.TypedVector2@,System.Collections.Generic.IDictionary{System.String,System.String})
-  parent: TMPEffects.Parameters.ParameterParsing
-  langs:
-  - csharp
-  - vb
-  name: StringToTypedVector2(string, out TypedVector2, IDictionary<string, string>)
-  nameWithType: ParameterParsing.StringToTypedVector2(string, out ParameterTypes.TypedVector2, IDictionary<string, string>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(string, out TMPEffects.Parameters.ParameterTypes.TypedVector2, System.Collections.Generic.IDictionary<string, string>)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: StringToTypedVector2
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
     startLine: 120
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToTypedVector2(string str, out ParameterTypes.TypedVector2 result, IDictionary<string, string> keywords = null)
+    content: public static bool StringToTypedVector3(string str, out TMPParameterTypes.TypedVector3 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
-      type: TMPEffects.Parameters.ParameterTypes.TypedVector2
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToTypedVector2(str As String, result As ParameterTypes.TypedVector2, keywords As IDictionary(Of String, String) = Nothing) As Boolean
-  overload: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2*
-  nameWithType.vb: ParameterParsing.StringToTypedVector2(String, ParameterTypes.TypedVector2, IDictionary(Of String, String))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(String, TMPEffects.Parameters.ParameterTypes.TypedVector2, System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: StringToTypedVector2(String, TypedVector2, IDictionary(Of String, String))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  id: StringToVector3(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
+    content.vb: Public Shared Function StringToTypedVector3(str As String, result As TMPParameterTypes.TypedVector3, keywords As ITMPKeywordDatabase = Nothing) As Boolean
+  overload: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3*
+  nameWithType.vb: ParameterParsing.StringToTypedVector3(String, TMPParameterTypes.TypedVector3, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3(String, TMPEffects.Parameters.TMPParameterTypes.TypedVector3, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToTypedVector3(String, TypedVector3, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToTypedVector2(System.String,TMPEffects.Parameters.TMPParameterTypes.TypedVector2@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToVector3(string, out Vector3, IDictionary<string, Vector3>)
-  nameWithType: ParameterParsing.StringToVector3(string, out Vector3, IDictionary<string, Vector3>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3(string, out Vector3, System.Collections.Generic.IDictionary<string, Vector3>)
+  name: StringToTypedVector2(string, out TypedVector2, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToTypedVector2(string, out TMPParameterTypes.TypedVector2, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(string, out TMPEffects.Parameters.TMPParameterTypes.TypedVector2, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: StringToVector3
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: StringToTypedVector2
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
     startLine: 145
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToVector3(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+    content: public static bool StringToTypedVector2(string str, out TMPParameterTypes.TypedVector2 result, ITMPKeywordDatabase keywords = null)
+    parameters:
+    - id: str
+      type: System.String
+    - id: result
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+    - id: keywords
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function StringToTypedVector2(str As String, result As TMPParameterTypes.TypedVector2, keywords As ITMPKeywordDatabase = Nothing) As Boolean
+  overload: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2*
+  nameWithType.vb: ParameterParsing.StringToTypedVector2(String, TMPParameterTypes.TypedVector2, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2(String, TMPEffects.Parameters.TMPParameterTypes.TypedVector2, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToTypedVector2(String, TypedVector2, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector3(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToVector3(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.Parameters.ParameterParsing
+  langs:
+  - csharp
+  - vb
+  name: StringToVector3(string, out Vector3, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToVector3(string, out Vector3, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3(string, out Vector3, TMPEffects.Databases.ITMPKeywordDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/ParameterParsing.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: StringToVector3
+    path: ../Package/Runtime/Parameters/ParameterParsing.cs
+    startLine: 170
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public static bool StringToVector3(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Vector3
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector3}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToVector3(str As String, result As Vector3, keywords As IDictionary(Of String, Vector3) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToVector3(str As String, result As Vector3, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToVector3*
-  nameWithType.vb: ParameterParsing.StringToVector3(String, Vector3, IDictionary(Of String, Vector3))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector3(String, Vector3, System.Collections.Generic.IDictionary(Of String, Vector3))
-  name.vb: StringToVector3(String, Vector3, IDictionary(Of String, Vector3))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
-  id: StringToVector2Offset(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2})
+  nameWithType.vb: ParameterParsing.StringToVector3(String, Vector3, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector3(String, Vector3, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToVector3(String, Vector3, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToVector2Offset(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToVector2Offset(string, out Vector2, IDictionary<string, Vector2>)
-  nameWithType: ParameterParsing.StringToVector2Offset(string, out Vector2, IDictionary<string, Vector2>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(string, out Vector2, System.Collections.Generic.IDictionary<string, Vector2>)
+  name: StringToVector2Offset(string, out Vector2, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToVector2Offset(string, out Vector2, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(string, out Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector2Offset
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 197
+    startLine: 225
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToVector2Offset(string str, out Vector2 result, IDictionary<string, Vector2> keywords = null)
+    content: public static bool StringToVector2Offset(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Vector2
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector2}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToVector2Offset(str As String, result As Vector2, keywords As IDictionary(Of String, Vector2) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToVector2Offset(str As String, result As Vector2, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset*
-  nameWithType.vb: ParameterParsing.StringToVector2Offset(String, Vector2, IDictionary(Of String, Vector2))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(String, Vector2, System.Collections.Generic.IDictionary(Of String, Vector2))
-  name.vb: StringToVector2Offset(String, Vector2, IDictionary(Of String, Vector2))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
-  id: StringToVector3Offset(System.String,Vector3@,System.Collections.Generic.IDictionary{System.String,Vector3})
+  nameWithType.vb: ParameterParsing.StringToVector2Offset(String, Vector2, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset(String, Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToVector2Offset(String, Vector2, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToVector3Offset(System.String,Vector3@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToVector3Offset(string, out Vector3, IDictionary<string, Vector3>)
-  nameWithType: ParameterParsing.StringToVector3Offset(string, out Vector3, IDictionary<string, Vector3>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(string, out Vector3, System.Collections.Generic.IDictionary<string, Vector3>)
+  name: StringToVector3Offset(string, out Vector3, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToVector3Offset(string, out Vector3, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(string, out Vector3, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToVector3Offset
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 219
+    startLine: 247
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToVector3Offset(string str, out Vector3 result, IDictionary<string, Vector3> keywords = null)
+    content: public static bool StringToVector3Offset(string str, out Vector3 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Vector3
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector3}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToVector3Offset(str As String, result As Vector3, keywords As IDictionary(Of String, Vector3) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToVector3Offset(str As String, result As Vector3, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset*
-  nameWithType.vb: ParameterParsing.StringToVector3Offset(String, Vector3, IDictionary(Of String, Vector3))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(String, Vector3, System.Collections.Generic.IDictionary(Of String, Vector3))
-  name.vb: StringToVector3Offset(String, Vector3, IDictionary(Of String, Vector3))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2},System.Collections.Generic.IDictionary{System.String,Vector2})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2},System.Collections.Generic.IDictionary{System.String,Vector2})
-  id: StringToAnchor(System.String,Vector2@,System.Collections.Generic.IDictionary{System.String,Vector2},System.Collections.Generic.IDictionary{System.String,Vector2})
+  nameWithType.vb: ParameterParsing.StringToVector3Offset(String, Vector3, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset(String, Vector3, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToVector3Offset(String, Vector3, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToAnchor(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToAnchor(System.String,Vector2@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToAnchor(string, out Vector2, IDictionary<string, Vector2>, IDictionary<string, Vector2>)
-  nameWithType: ParameterParsing.StringToAnchor(string, out Vector2, IDictionary<string, Vector2>, IDictionary<string, Vector2>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToAnchor(string, out Vector2, System.Collections.Generic.IDictionary<string, Vector2>, System.Collections.Generic.IDictionary<string, Vector2>)
+  name: StringToAnchor(string, out Vector2, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToAnchor(string, out Vector2, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToAnchor(string, out Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnchor
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 241
+    startLine: 264
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToAnchor(string str, out Vector2 result, IDictionary<string, Vector2> anchorKeywords = null, IDictionary<string, Vector2> vectorKeywords = null)
+    content: public static bool StringToAnchor(string str, out Vector2 result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Vector2
-    - id: anchorKeywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector2}
-    - id: vectorKeywords
-      type: System.Collections.Generic.IDictionary{System.String,Vector2}
+    - id: keywords
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToAnchor(str As String, result As Vector2, anchorKeywords As IDictionary(Of String, Vector2) = Nothing, vectorKeywords As IDictionary(Of String, Vector2) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToAnchor(str As String, result As Vector2, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToAnchor*
-  nameWithType.vb: ParameterParsing.StringToAnchor(String, Vector2, IDictionary(Of String, Vector2), IDictionary(Of String, Vector2))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToAnchor(String, Vector2, System.Collections.Generic.IDictionary(Of String, Vector2), System.Collections.Generic.IDictionary(Of String, Vector2))
-  name.vb: StringToAnchor(String, Vector2, IDictionary(Of String, Vector2), IDictionary(Of String, Vector2))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,System.Collections.Generic.IDictionary{System.String,AnimationCurve})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,System.Collections.Generic.IDictionary{System.String,AnimationCurve})
-  id: StringToAnimCurve(System.String,AnimationCurve@,System.Collections.Generic.IDictionary{System.String,AnimationCurve})
+  nameWithType.vb: ParameterParsing.StringToAnchor(String, Vector2, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToAnchor(String, Vector2, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToAnchor(String, Vector2, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(System.String,AnimationCurve@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToAnimCurve(System.String,AnimationCurve@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToAnimCurve(string, out AnimationCurve, IDictionary<string, AnimationCurve>)
-  nameWithType: ParameterParsing.StringToAnimCurve(string, out AnimationCurve, IDictionary<string, AnimationCurve>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(string, out AnimationCurve, System.Collections.Generic.IDictionary<string, AnimationCurve>)
+  name: StringToAnimCurve(string, out AnimationCurve, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToAnimCurve(string, out AnimationCurve, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(string, out AnimationCurve, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToAnimCurve
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 277
+    startLine: 305
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToAnimCurve(string str, out AnimationCurve result, IDictionary<string, AnimationCurve> keywords = null)
+    content: public static bool StringToAnimCurve(string str, out AnimationCurve result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.AnimationCurve
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,AnimationCurve}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToAnimCurve(str As String, result As AnimationCurve, keywords As IDictionary(Of String, AnimationCurve) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToAnimCurve(str As String, result As AnimationCurve, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve*
-  nameWithType.vb: ParameterParsing.StringToAnimCurve(String, AnimationCurve, IDictionary(Of String, AnimationCurve))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(String, AnimationCurve, System.Collections.Generic.IDictionary(Of String, AnimationCurve))
-  name.vb: StringToAnimCurve(String, AnimationCurve, IDictionary(Of String, AnimationCurve))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType})
-  id: StringToWaveOffset(System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType@,System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType})
+  nameWithType.vb: ParameterParsing.StringToAnimCurve(String, AnimationCurve, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve(String, AnimationCurve, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToAnimCurve(String, AnimationCurve, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToUnityObject(System.String,UnityEngine.Object@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToUnityObject(System.String,UnityEngine.Object@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToUnityObject(System.String,UnityEngine.Object@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToWaveOffset(string, out WaveOffsetType, IDictionary<string, WaveOffsetType>)
-  nameWithType: ParameterParsing.StringToWaveOffset(string, out ParameterTypes.WaveOffsetType, IDictionary<string, ParameterTypes.WaveOffsetType>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(string, out TMPEffects.Parameters.ParameterTypes.WaveOffsetType, System.Collections.Generic.IDictionary<string, TMPEffects.Parameters.ParameterTypes.WaveOffsetType>)
+  name: StringToUnityObject(string, out Object, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToUnityObject(string, out UnityEngine.Object, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToUnityObject(string, out UnityEngine.Object, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: StringToWaveOffset
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: StringToUnityObject
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 310
+    startLine: 333
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToWaveOffset(string str, out ParameterTypes.WaveOffsetType result, IDictionary<string, ParameterTypes.WaveOffsetType> keywords = null)
+    content: public static bool StringToUnityObject(string str, out UnityEngine.Object result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
-      type: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
+      type: Global.UnityEngine.Object
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToWaveOffset(str As String, result As ParameterTypes.WaveOffsetType, keywords As IDictionary(Of String, ParameterTypes.WaveOffsetType) = Nothing) As Boolean
-  overload: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset*
-  nameWithType.vb: ParameterParsing.StringToWaveOffset(String, ParameterTypes.WaveOffsetType, IDictionary(Of String, ParameterTypes.WaveOffsetType))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset(String, TMPEffects.Parameters.ParameterTypes.WaveOffsetType, System.Collections.Generic.IDictionary(Of String, TMPEffects.Parameters.ParameterTypes.WaveOffsetType))
-  name.vb: StringToWaveOffset(String, WaveOffsetType, IDictionary(Of String, WaveOffsetType))
-- uid: TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,System.Collections.Generic.IDictionary{System.String,Color})
-  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,System.Collections.Generic.IDictionary{System.String,Color})
-  id: StringToColor(System.String,Color@,System.Collections.Generic.IDictionary{System.String,Color})
+    content.vb: Public Shared Function StringToUnityObject(str As String, result As UnityEngine.Object, keywords As ITMPKeywordDatabase = Nothing) As Boolean
+  overload: TMPEffects.Parameters.ParameterParsing.StringToUnityObject*
+  nameWithType.vb: ParameterParsing.StringToUnityObject(String, UnityEngine.Object, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToUnityObject(String, UnityEngine.Object, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToUnityObject(String, Object, ITMPKeywordDatabase)
+- uid: TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ParameterParsing.StringToColor(System.String,Color@,TMPEffects.Databases.ITMPKeywordDatabase)
+  id: StringToColor(System.String,Color@,TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.Parameters.ParameterParsing
   langs:
   - csharp
   - vb
-  name: StringToColor(string, out Color, IDictionary<string, Color>)
-  nameWithType: ParameterParsing.StringToColor(string, out Color, IDictionary<string, Color>)
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToColor(string, out Color, System.Collections.Generic.IDictionary<string, Color>)
+  name: StringToColor(string, out Color, ITMPKeywordDatabase)
+  nameWithType: ParameterParsing.StringToColor(string, out Color, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToColor(string, out Color, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: StringToColor
     path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 366
+    startLine: 359
   namespace: TMPEffects.Parameters
   syntax:
-    content: public static bool StringToColor(string str, out Color result, IDictionary<string, Color> keywords = null)
+    content: public static bool StringToColor(string str, out Color result, ITMPKeywordDatabase keywords = null)
     parameters:
     - id: str
       type: System.String
     - id: result
       type: Global.Color
     - id: keywords
-      type: System.Collections.Generic.IDictionary{System.String,Color}
+      type: TMPEffects.Databases.ITMPKeywordDatabase
     return:
       type: System.Boolean
-    content.vb: Public Shared Function StringToColor(str As String, result As Color, keywords As IDictionary(Of String, Color) = Nothing) As Boolean
+    content.vb: Public Shared Function StringToColor(str As String, result As Color, keywords As ITMPKeywordDatabase = Nothing) As Boolean
   overload: TMPEffects.Parameters.ParameterParsing.StringToColor*
-  nameWithType.vb: ParameterParsing.StringToColor(String, Color, IDictionary(Of String, Color))
-  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToColor(String, Color, System.Collections.Generic.IDictionary(Of String, Color))
-  name.vb: StringToColor(String, Color, IDictionary(Of String, Color))
-- uid: TMPEffects.Parameters.ParameterParsing.ColorKeyWords
-  commentId: F:TMPEffects.Parameters.ParameterParsing.ColorKeyWords
-  id: ColorKeyWords
-  parent: TMPEffects.Parameters.ParameterParsing
-  langs:
-  - csharp
-  - vb
-  name: ColorKeyWords
-  nameWithType: ParameterParsing.ColorKeyWords
-  fullName: TMPEffects.Parameters.ParameterParsing.ColorKeyWords
-  type: Field
-  source:
-    remote:
-      path: Package/Runtime/Parameters/ParameterParsing.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: ColorKeyWords
-    path: ../Package/Runtime/Parameters/ParameterParsing.cs
-    startLine: 533
-  namespace: TMPEffects.Parameters
-  syntax:
-    content: public static readonly ReadOnlyDictionary<string, Color> ColorKeyWords
-    return:
-      type: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,Color}
-    content.vb: Public Shared ReadOnly ColorKeyWords As ReadOnlyDictionary(Of String, Color)
+  nameWithType.vb: ParameterParsing.StringToColor(String, Color, ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ParameterParsing.StringToColor(String, Color, TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: StringToColor(String, Color, ITMPKeywordDatabase)
 references:
 - uid: TMPEffects.Parameters
   commentId: N:TMPEffects.Parameters
@@ -805,7 +779,7 @@ references:
   fullName: System
 - uid: TMPEffects.Parameters.ParameterParsing.StringToInt*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToInt
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToInt_System_String_System_Int32__System_Collections_Generic_IDictionary_System_String_System_Int32__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToInt_System_String_System_Int32__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToInt
   nameWithType: ParameterParsing.StringToInt
   fullName: TMPEffects.Parameters.ParameterParsing.StringToInt
@@ -831,53 +805,13 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: System.Collections.Generic.IDictionary{System.String,System.Int32}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,System.Int32}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, int>
-  nameWithType: IDictionary<string, int>
-  fullName: System.Collections.Generic.IDictionary<string, int>
-  nameWithType.vb: IDictionary(Of String, Integer)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Integer)
-  name.vb: IDictionary(Of String, Integer)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -889,80 +823,31 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: System.Collections.Generic.IDictionary`2
-  commentId: T:System.Collections.Generic.IDictionary`2
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<TKey, TValue>
-  nameWithType: IDictionary<TKey, TValue>
-  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
-  nameWithType.vb: IDictionary(Of TKey, TValue)
-  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
-  name.vb: IDictionary(Of TKey, TValue)
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
   spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: '>'
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
   spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
   - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
 - uid: TMPEffects.Parameters.ParameterParsing.StringToFloat*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToFloat
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToFloat_System_String_System_Single__System_Collections_Generic_IDictionary_System_String_System_Single__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToFloat_System_String_System_Single__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToFloat
   nameWithType: ParameterParsing.StringToFloat
   fullName: TMPEffects.Parameters.ParameterParsing.StringToFloat
@@ -977,109 +862,15 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
-- uid: System.Collections.Generic.IDictionary{System.String,System.Single}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,System.Single}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, float>
-  nameWithType: IDictionary<string, float>
-  fullName: System.Collections.Generic.IDictionary<string, float>
-  nameWithType.vb: IDictionary(Of String, Single)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Single)
-  name.vb: IDictionary(Of String, Single)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Single
-    name: float
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Single
-    name: Single
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: )
 - uid: TMPEffects.Parameters.ParameterParsing.StringToBool*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToBool
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToBool_System_String_System_Boolean__System_Collections_Generic_IDictionary_System_String_System_Boolean__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToBool_System_String_System_Boolean__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToBool
   nameWithType: ParameterParsing.StringToBool
   fullName: TMPEffects.Parameters.ParameterParsing.StringToBool
-- uid: System.Collections.Generic.IDictionary{System.String,System.Boolean}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,System.Boolean}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, bool>
-  nameWithType: IDictionary<string, bool>
-  fullName: System.Collections.Generic.IDictionary<string, bool>
-  nameWithType.vb: IDictionary(Of String, Boolean)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Boolean)
-  name.vb: IDictionary(Of String, Boolean)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
 - uid: TMPEffects.Parameters.ParameterParsing.StringToVector2*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToVector2
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector2_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector2_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToVector2
   nameWithType: ParameterParsing.StringToVector2
   fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2
@@ -1088,159 +879,67 @@ references:
   name: Vector2
   nameWithType: Vector2
   fullName: Vector2
-- uid: System.Collections.Generic.IDictionary{System.String,Vector2}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,Vector2}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, Vector2>
-  nameWithType: IDictionary<string, Vector2>
-  fullName: System.Collections.Generic.IDictionary<string, Vector2>
-  nameWithType.vb: IDictionary(Of String, Vector2)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Vector2)
-  name.vb: IDictionary(Of String, Vector2)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Vector2
-    name: Vector2
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Vector2
-    name: Vector2
-    isExternal: true
-  - name: )
 - uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToTypedVector3
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToTypedVector3_System_String_TMPEffects_Parameters_ParameterTypes_TypedVector3__System_Collections_Generic_IDictionary_System_String_System_String__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToTypedVector3_System_String_TMPEffects_Parameters_TMPParameterTypes_TypedVector3__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToTypedVector3
   nameWithType: ParameterParsing.StringToTypedVector3
   fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector3
-- uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
-  commentId: T:TMPEffects.Parameters.ParameterTypes.TypedVector3
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector3
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.TypedVector3
-  nameWithType: ParameterTypes.TypedVector3
-  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
     name: TypedVector3
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector3.html
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector3
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
     name: TypedVector3
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector3.html
-- uid: System.Collections.Generic.IDictionary{System.String,System.String}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, string>
-  nameWithType: IDictionary<string, string>
-  fullName: System.Collections.Generic.IDictionary<string, string>
-  nameWithType.vb: IDictionary(Of String, String)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
-  name.vb: IDictionary(Of String, String)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
 - uid: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToTypedVector2
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToTypedVector2_System_String_TMPEffects_Parameters_ParameterTypes_TypedVector2__System_Collections_Generic_IDictionary_System_String_System_String__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToTypedVector2_System_String_TMPEffects_Parameters_TMPParameterTypes_TypedVector2__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToTypedVector2
   nameWithType: ParameterParsing.StringToTypedVector2
   fullName: TMPEffects.Parameters.ParameterParsing.StringToTypedVector2
-- uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
-  commentId: T:TMPEffects.Parameters.ParameterTypes.TypedVector2
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector2
   parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.TypedVector2
-  nameWithType: ParameterTypes.TypedVector2
-  fullName: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector2
+  nameWithType: TMPParameterTypes.TypedVector2
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
   spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
     name: TypedVector2
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector2.html
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
   spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
   - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.TypedVector2
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
     name: TypedVector2
-    href: TMPEffects.Parameters.ParameterTypes.TypedVector2.html
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
 - uid: TMPEffects.Parameters.ParameterParsing.StringToVector3*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToVector3
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector3_System_String_Vector3__System_Collections_Generic_IDictionary_System_String_Vector3__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector3_System_String_Vector3__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToVector3
   nameWithType: ParameterParsing.StringToVector3
   fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3
@@ -1249,72 +948,27 @@ references:
   name: Vector3
   nameWithType: Vector3
   fullName: Vector3
-- uid: System.Collections.Generic.IDictionary{System.String,Vector3}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,Vector3}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, Vector3>
-  nameWithType: IDictionary<string, Vector3>
-  fullName: System.Collections.Generic.IDictionary<string, Vector3>
-  nameWithType.vb: IDictionary(Of String, Vector3)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Vector3)
-  name.vb: IDictionary(Of String, Vector3)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Vector3
-    name: Vector3
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Vector3
-    name: Vector3
-    isExternal: true
-  - name: )
 - uid: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToVector2Offset
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector2Offset_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector2Offset_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToVector2Offset
   nameWithType: ParameterParsing.StringToVector2Offset
   fullName: TMPEffects.Parameters.ParameterParsing.StringToVector2Offset
 - uid: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToVector3Offset
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector3Offset_System_String_Vector3__System_Collections_Generic_IDictionary_System_String_Vector3__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToVector3Offset_System_String_Vector3__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToVector3Offset
   nameWithType: ParameterParsing.StringToVector3Offset
   fullName: TMPEffects.Parameters.ParameterParsing.StringToVector3Offset
 - uid: TMPEffects.Parameters.ParameterParsing.StringToAnchor*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToAnchor
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToAnchor_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__System_Collections_Generic_IDictionary_System_String_Vector2__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToAnchor_System_String_Vector2__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToAnchor
   nameWithType: ParameterParsing.StringToAnchor
   fullName: TMPEffects.Parameters.ParameterParsing.StringToAnchor
 - uid: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToAnimCurve
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToAnimCurve_System_String_AnimationCurve__System_Collections_Generic_IDictionary_System_String_AnimationCurve__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToAnimCurve_System_String_AnimationCurve__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToAnimCurve
   nameWithType: ParameterParsing.StringToAnimCurve
   fullName: TMPEffects.Parameters.ParameterParsing.StringToAnimCurve
@@ -1323,303 +977,25 @@ references:
   name: AnimationCurve
   nameWithType: AnimationCurve
   fullName: AnimationCurve
-- uid: System.Collections.Generic.IDictionary{System.String,AnimationCurve}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,AnimationCurve}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, AnimationCurve>
-  nameWithType: IDictionary<string, AnimationCurve>
-  fullName: System.Collections.Generic.IDictionary<string, AnimationCurve>
-  nameWithType.vb: IDictionary(Of String, AnimationCurve)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, AnimationCurve)
-  name.vb: IDictionary(Of String, AnimationCurve)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.AnimationCurve
-    name: AnimationCurve
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.AnimationCurve
-    name: AnimationCurve
-    isExternal: true
-  - name: )
-- uid: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset*
-  commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToWaveOffset
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToWaveOffset_System_String_TMPEffects_Parameters_ParameterTypes_WaveOffsetType__System_Collections_Generic_IDictionary_System_String_TMPEffects_Parameters_ParameterTypes_WaveOffsetType__
-  name: StringToWaveOffset
-  nameWithType: ParameterParsing.StringToWaveOffset
-  fullName: TMPEffects.Parameters.ParameterParsing.StringToWaveOffset
-- uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-  commentId: T:TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-  parent: TMPEffects.Parameters
-  href: TMPEffects.Parameters.ParameterTypes.html
-  name: ParameterTypes.WaveOffsetType
-  nameWithType: ParameterTypes.WaveOffsetType
-  fullName: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-  spec.csharp:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
-  - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
-  spec.vb:
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
-  - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
-- uid: System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,TMPEffects.Parameters.ParameterTypes.WaveOffsetType}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, ParameterTypes.WaveOffsetType>
-  nameWithType: IDictionary<string, ParameterTypes.WaveOffsetType>
-  fullName: System.Collections.Generic.IDictionary<string, TMPEffects.Parameters.ParameterTypes.WaveOffsetType>
-  nameWithType.vb: IDictionary(Of String, ParameterTypes.WaveOffsetType)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, TMPEffects.Parameters.ParameterTypes.WaveOffsetType)
-  name.vb: IDictionary(Of String, ParameterTypes.WaveOffsetType)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
-  - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: TMPEffects.Parameters.ParameterTypes
-    name: ParameterTypes
-    href: TMPEffects.Parameters.ParameterTypes.html
-  - name: .
-  - uid: TMPEffects.Parameters.ParameterTypes.WaveOffsetType
-    name: WaveOffsetType
-    href: TMPEffects.Parameters.ParameterTypes.WaveOffsetType.html
-  - name: )
+- uid: TMPEffects.Parameters.ParameterParsing.StringToUnityObject*
+  commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToUnityObject
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToUnityObject_System_String_UnityEngine_Object__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: StringToUnityObject
+  nameWithType: ParameterParsing.StringToUnityObject
+  fullName: TMPEffects.Parameters.ParameterParsing.StringToUnityObject
+- uid: Global.UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: UnityEngine.Object
+  fullName: UnityEngine.Object
 - uid: TMPEffects.Parameters.ParameterParsing.StringToColor*
   commentId: Overload:TMPEffects.Parameters.ParameterParsing.StringToColor
-  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToColor_System_String_Color__System_Collections_Generic_IDictionary_System_String_Color__
+  href: TMPEffects.Parameters.ParameterParsing.html#TMPEffects_Parameters_ParameterParsing_StringToColor_System_String_Color__TMPEffects_Databases_ITMPKeywordDatabase_
   name: StringToColor
   nameWithType: ParameterParsing.StringToColor
   fullName: TMPEffects.Parameters.ParameterParsing.StringToColor
 - uid: Global.Color
-  commentId: '!:Global.Color'
   isExternal: true
   name: Color
   nameWithType: Color
   fullName: Color
-- uid: System.Collections.Generic.IDictionary{System.String,Color}
-  commentId: T:System.Collections.Generic.IDictionary{System.String,Color}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.IDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  name: IDictionary<string, Color>
-  nameWithType: IDictionary<string, Color>
-  fullName: System.Collections.Generic.IDictionary<string, Color>
-  nameWithType.vb: IDictionary(Of String, Color)
-  fullName.vb: System.Collections.Generic.IDictionary(Of String, Color)
-  name.vb: IDictionary(Of String, Color)
-  spec.csharp:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Color
-    name: Color
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.IDictionary`2
-    name: IDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Color
-    name: Color
-    isExternal: true
-  - name: )
-- uid: System.Collections.ObjectModel.ReadOnlyDictionary{System.String,Color}
-  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary{System.String,Color}
-  parent: System.Collections.ObjectModel
-  definition: System.Collections.ObjectModel.ReadOnlyDictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  name: ReadOnlyDictionary<string, Color>
-  nameWithType: ReadOnlyDictionary<string, Color>
-  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<string, Color>
-  nameWithType.vb: ReadOnlyDictionary(Of String, Color)
-  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of String, Color)
-  name.vb: ReadOnlyDictionary(Of String, Color)
-  spec.csharp:
-  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
-    name: ReadOnlyDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Color
-    name: Color
-    isExternal: true
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
-    name: ReadOnlyDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Global.Color
-    name: Color
-    isExternal: true
-  - name: )
-- uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
-  commentId: T:System.Collections.ObjectModel.ReadOnlyDictionary`2
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  name: ReadOnlyDictionary<TKey, TValue>
-  nameWithType: ReadOnlyDictionary<TKey, TValue>
-  fullName: System.Collections.ObjectModel.ReadOnlyDictionary<TKey, TValue>
-  nameWithType.vb: ReadOnlyDictionary(Of TKey, TValue)
-  fullName.vb: System.Collections.ObjectModel.ReadOnlyDictionary(Of TKey, TValue)
-  name.vb: ReadOnlyDictionary(Of TKey, TValue)
-  spec.csharp:
-  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
-    name: ReadOnlyDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  - name: <
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.ObjectModel.ReadOnlyDictionary`2
-    name: ReadOnlyDictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.readonlydictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: )
-- uid: System.Collections.ObjectModel
-  commentId: N:System.Collections.ObjectModel
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.ObjectModel
-  nameWithType: System.Collections.ObjectModel
-  fullName: System.Collections.ObjectModel
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.ObjectModel
-    name: ObjectModel
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.ObjectModel
-    name: ObjectModel
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel

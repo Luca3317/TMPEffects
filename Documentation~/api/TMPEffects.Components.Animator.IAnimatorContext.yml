@@ -4,17 +4,7 @@ items:
   commentId: T:TMPEffects.Components.Animator.IAnimatorContext
   id: IAnimatorContext
   parent: TMPEffects.Components.Animator
-  children:
-  - TMPEffects.Components.Animator.IAnimatorContext.Animator
-  - TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-  - TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-  - TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  - TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-  - TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
-  - TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
-  - TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-  - TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
-  - TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
+  children: []
   langs:
   - csharp
   - vb
@@ -25,11 +15,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimatorContext
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 8
+    startLine: 9
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
@@ -37,330 +27,20 @@ items:
     Contains context data of the respective <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public interface IAnimatorContext
-    content.vb: Public Interface IAnimatorContext
-- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  id: ScaleAnimations
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: ScaleAnimations
-  nameWithType: IAnimatorContext.ScaleAnimations
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: ScaleAnimations
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 13
-  namespace: TMPEffects.Components.Animator
-  summary: Whether animations are scaled.
-  example: []
-  syntax:
-    content: bool ScaleAnimations { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property ScaleAnimations As Boolean
-  overload: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-  id: ScaleUniformly
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: ScaleUniformly
-  nameWithType: IAnimatorContext.ScaleUniformly
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: ScaleUniformly
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 19
-  namespace: TMPEffects.Components.Animator
-  summary: >-
-    Whether to scale animations uniformly (based on the default font size of the animator)
-
-    or on a per character basis.<br />
-
-    Ignored if <xref href="TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations" data-throw-if-not-resolved="false"></xref> is false.
-  example: []
-  syntax:
-    content: bool ScaleUniformly { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property ScaleUniformly As Boolean
-  overload: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.Animator
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.Animator
-  id: Animator
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: Animator
-  nameWithType: IAnimatorContext.Animator
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.Animator
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: Animator
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 24
-  namespace: TMPEffects.Components.Animator
-  summary: The animating <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: TMPAnimator Animator { get; }
-    parameters: []
-    return:
-      type: TMPEffects.Components.TMPAnimator
-    content.vb: ReadOnly Property Animator As TMPAnimator
-  overload: TMPEffects.Components.Animator.IAnimatorContext.Animator*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-  id: UseScaledTime
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: UseScaledTime
-  nameWithType: IAnimatorContext.UseScaledTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: UseScaledTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 29
-  namespace: TMPEffects.Components.Animator
-  summary: Whether animations use scaled time.
-  example: []
-  syntax:
-    content: bool UseScaledTime { get; }
-    parameters: []
-    return:
-      type: System.Boolean
-    content.vb: ReadOnly Property UseScaledTime As Boolean
-  overload: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-  id: DeltaTime
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: DeltaTime
-  nameWithType: IAnimatorContext.DeltaTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: DeltaTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 34
-  namespace: TMPEffects.Components.Animator
-  summary: The current delta time (=&gt; time since last animation update).
-  example: []
-  syntax:
-    content: float DeltaTime { get; }
-    parameters: []
-    return:
-      type: System.Single
-    content.vb: ReadOnly Property DeltaTime As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-  id: PassedTime
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: PassedTime
-  nameWithType: IAnimatorContext.PassedTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-  type: Property
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: PassedTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 38
-  namespace: TMPEffects.Components.Animator
-  summary: The time that has passed since the animator began animating.
-  example: []
-  syntax:
-    content: float PassedTime { get; }
-    parameters: []
-    return:
-      type: System.Single
-    content.vb: ReadOnly Property PassedTime As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.PassedTime*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
-  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
-  id: StateTime(TMPEffects.CharacterData.CharData)
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: StateTime(CharData)
-  nameWithType: IAnimatorContext.StateTime(CharData)
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.StateTime(TMPEffects.CharacterData.CharData)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: StateTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 46
-  namespace: TMPEffects.Components.Animator
-  summary: >-
-    Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
-
-    Generally, to be used with show and hide animations.
-  example: []
-  syntax:
-    content: float StateTime(CharData cData)
-    parameters:
-    - id: cData
-      type: TMPEffects.CharacterData.CharData
-      description: The character to check.
-    return:
-      type: System.Single
-      description: How long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Function StateTime(cData As CharData) As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.StateTime*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
-  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
-  id: VisibleTime(TMPEffects.CharacterData.CharData)
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: VisibleTime(CharData)
-  nameWithType: IAnimatorContext.VisibleTime(CharData)
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(TMPEffects.CharacterData.CharData)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: VisibleTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 52
-  namespace: TMPEffects.Components.Animator
-  summary: Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
-  example: []
-  syntax:
-    content: float VisibleTime(CharData cData)
-    parameters:
-    - id: cData
-      type: TMPEffects.CharacterData.CharData
-      description: The character to check.
-    return:
-      type: System.Single
-      description: How long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
-    content.vb: Function VisibleTime(cData As CharData) As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime*
-- uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
-  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.StateTime(System.Int32)
-  id: StateTime(System.Int32)
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: StateTime(int)
-  nameWithType: IAnimatorContext.StateTime(int)
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.StateTime(int)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: StateTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 60
-  namespace: TMPEffects.Components.Animator
-  summary: >-
-    Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
-
-    Generally, to be used with show and hide animations.
-  example: []
-  syntax:
-    content: float StateTime(int index)
-    parameters:
-    - id: index
-      type: System.Int32
-      description: The index of the character to check.
-    return:
-      type: System.Single
-      description: How long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Function StateTime(index As Integer) As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.StateTime*
-  nameWithType.vb: IAnimatorContext.StateTime(Integer)
-  fullName.vb: TMPEffects.Components.Animator.IAnimatorContext.StateTime(Integer)
-  name.vb: StateTime(Integer)
-- uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
-  commentId: M:TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(System.Int32)
-  id: VisibleTime(System.Int32)
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  langs:
-  - csharp
-  - vb
-  name: VisibleTime(int)
-  nameWithType: IAnimatorContext.VisibleTime(int)
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(int)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: VisibleTime
-    path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 66
-  namespace: TMPEffects.Components.Animator
-  summary: Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
-  example: []
-  syntax:
-    content: float VisibleTime(int index)
-    parameters:
-    - id: index
-      type: System.Int32
-    return:
-      type: System.Single
-      description: How long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
-    content.vb: Function VisibleTime(index As Integer) As Single
-  overload: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime*
-  nameWithType.vb: IAnimatorContext.VisibleTime(Integer)
-  fullName.vb: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime(Integer)
-  name.vb: VisibleTime(Integer)
+    content: 'public interface IAnimatorContext : IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider'
+    content.vb: Public Interface IAnimatorContext Inherits IAnimatorDataProvider, ICharacterTimingsProvider, IAnimatorTimingsProvider
+  inheritedMembers:
+  - TMPEffects.Components.Animator.IAnimatorDataProvider.Animator
+  - TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
+  - TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
+  - TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleUniformly
+  - TMPEffects.Components.Animator.IAnimatorDataProvider.UseScaledTime
+  - TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+  - TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+  - TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(System.Int32)
+  - TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(System.Int32)
+  - TMPEffects.Components.Animator.IAnimatorTimingsProvider.DeltaTime
+  - TMPEffects.Components.Animator.IAnimatorTimingsProvider.PassedTime
 references:
 - uid: TMPEffects.Components.TMPAnimator
   commentId: T:TMPEffects.Components.TMPAnimator
@@ -399,6 +79,167 @@ references:
   - uid: TMPEffects.Components.Animator
     name: Animator
     href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider.Animator
+  commentId: P:TMPEffects.Components.Animator.IAnimatorDataProvider.Animator
+  parent: TMPEffects.Components.Animator.IAnimatorDataProvider
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_Animator
+  name: Animator
+  nameWithType: IAnimatorDataProvider.Animator
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.Animator
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
+  commentId: P:TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
+  parent: TMPEffects.Components.Animator.IAnimatorDataProvider
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_Modifiers
+  name: Modifiers
+  nameWithType: IAnimatorDataProvider.Modifiers
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
+  commentId: P:TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
+  parent: TMPEffects.Components.Animator.IAnimatorDataProvider
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleAnimations
+  name: ScaleAnimations
+  nameWithType: IAnimatorDataProvider.ScaleAnimations
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleUniformly
+  commentId: P:TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleUniformly
+  parent: TMPEffects.Components.Animator.IAnimatorDataProvider
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleUniformly
+  name: ScaleUniformly
+  nameWithType: IAnimatorDataProvider.ScaleUniformly
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleUniformly
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider.UseScaledTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorDataProvider.UseScaledTime
+  parent: TMPEffects.Components.Animator.IAnimatorDataProvider
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_UseScaledTime
+  name: UseScaledTime
+  nameWithType: IAnimatorDataProvider.UseScaledTime
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.UseScaledTime
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_TMPEffects_CharacterData_CharData_
+  name: StateTime(CharData)
+  nameWithType: ICharacterTimingsProvider.StateTime(CharData)
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+    name: StateTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(TMPEffects.CharacterData.CharData)
+    name: StateTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_TMPEffects_CharacterData_CharData_
+  name: VisibleTime(CharData)
+  nameWithType: ICharacterTimingsProvider.VisibleTime(CharData)
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(TMPEffects.CharacterData.CharData)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(System.Int32)
+  parent: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  isExternal: true
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_System_Int32_
+  name: StateTime(int)
+  nameWithType: ICharacterTimingsProvider.StateTime(int)
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(int)
+  nameWithType.vb: ICharacterTimingsProvider.StateTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(Integer)
+  name.vb: StateTime(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(System.Int32)
+    name: StateTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.StateTime(System.Int32)
+    name: StateTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_StateTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(System.Int32)
+  parent: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  isExternal: true
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_System_Int32_
+  name: VisibleTime(int)
+  nameWithType: ICharacterTimingsProvider.VisibleTime(int)
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(int)
+  nameWithType.vb: ICharacterTimingsProvider.VisibleTime(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(Integer)
+  name.vb: VisibleTime(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(System.Int32)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ICharacterTimingsProvider.VisibleTime(System.Int32)
+    name: VisibleTime
+    href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html#TMPEffects_Components_Animator_ICharacterTimingsProvider_VisibleTime_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.Components.Animator.IAnimatorTimingsProvider.DeltaTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorTimingsProvider.DeltaTime
+  parent: TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  href: TMPEffects.Components.Animator.IAnimatorTimingsProvider.html#TMPEffects_Components_Animator_IAnimatorTimingsProvider_DeltaTime
+  name: DeltaTime
+  nameWithType: IAnimatorTimingsProvider.DeltaTime
+  fullName: TMPEffects.Components.Animator.IAnimatorTimingsProvider.DeltaTime
+- uid: TMPEffects.Components.Animator.IAnimatorTimingsProvider.PassedTime
+  commentId: P:TMPEffects.Components.Animator.IAnimatorTimingsProvider.PassedTime
+  parent: TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  href: TMPEffects.Components.Animator.IAnimatorTimingsProvider.html#TMPEffects_Components_Animator_IAnimatorTimingsProvider_PassedTime
+  name: PassedTime
+  nameWithType: IAnimatorTimingsProvider.PassedTime
+  fullName: TMPEffects.Components.Animator.IAnimatorTimingsProvider.PassedTime
 - uid: TMPEffects.Components
   commentId: N:TMPEffects.Components
   href: TMPEffects.html
@@ -421,141 +262,24 @@ references:
   - uid: TMPEffects.Components
     name: Components
     href: TMPEffects.Components.html
-- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations
-  name: ScaleAnimations
-  nameWithType: IAnimatorContext.ScaleAnimations
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
-- uid: System
-  commentId: N:System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System
-  nameWithType: System
-  fullName: System
-- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  commentId: P:TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-  parent: TMPEffects.Components.Animator.IAnimatorContext
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleAnimations
-  name: ScaleAnimations
-  nameWithType: IAnimatorContext.ScaleAnimations
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleAnimations
-- uid: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_ScaleUniformly
-  name: ScaleUniformly
-  nameWithType: IAnimatorContext.ScaleUniformly
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.ScaleUniformly
-- uid: TMPEffects.Components.Animator.IAnimatorContext
-  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorDataProvider
   parent: TMPEffects.Components.Animator
-  href: TMPEffects.Components.Animator.IAnimatorContext.html
-  name: IAnimatorContext
-  nameWithType: IAnimatorContext
-  fullName: TMPEffects.Components.Animator.IAnimatorContext
-- uid: TMPEffects.Components.Animator.IAnimatorContext.Animator*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.Animator
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_Animator
-  name: Animator
-  nameWithType: IAnimatorContext.Animator
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.Animator
-- uid: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_UseScaledTime
-  name: UseScaledTime
-  nameWithType: IAnimatorContext.UseScaledTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.UseScaledTime
-- uid: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_DeltaTime
-  name: DeltaTime
-  nameWithType: IAnimatorContext.DeltaTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.DeltaTime
-- uid: System.Single
-  commentId: T:System.Single
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.single
-  name: float
-  nameWithType: float
-  fullName: float
-  nameWithType.vb: Single
-  fullName.vb: Single
-  name.vb: Single
-- uid: TMPEffects.Components.Animator.IAnimatorContext.PassedTime*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_PassedTime
-  name: PassedTime
-  nameWithType: IAnimatorContext.PassedTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.PassedTime
-- uid: TMPEffects.CharacterData.CharData
-  commentId: T:TMPEffects.CharacterData.CharData
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.CharData.html
-  name: CharData
-  nameWithType: CharData
-  fullName: TMPEffects.CharacterData.CharData
-- uid: TMPEffects.CharacterData.VisibilityState
-  commentId: T:TMPEffects.CharacterData.VisibilityState
-  parent: TMPEffects.CharacterData
-  href: TMPEffects.CharacterData.VisibilityState.html
-  name: VisibilityState
-  nameWithType: VisibilityState
-  fullName: TMPEffects.CharacterData.VisibilityState
-- uid: TMPEffects.Components.Animator.IAnimatorContext.StateTime*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.StateTime
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_StateTime_TMPEffects_CharacterData_CharData_
-  name: StateTime
-  nameWithType: IAnimatorContext.StateTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.StateTime
-- uid: TMPEffects.CharacterData
-  commentId: N:TMPEffects.CharacterData
-  href: TMPEffects.html
-  name: TMPEffects.CharacterData
-  nameWithType: TMPEffects.CharacterData
-  fullName: TMPEffects.CharacterData
-  spec.csharp:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.CharacterData
-    name: CharacterData
-    href: TMPEffects.CharacterData.html
-  spec.vb:
-  - uid: TMPEffects
-    name: TMPEffects
-    href: TMPEffects.html
-  - name: .
-  - uid: TMPEffects.CharacterData
-    name: CharacterData
-    href: TMPEffects.CharacterData.html
-- uid: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime*
-  commentId: Overload:TMPEffects.Components.Animator.IAnimatorContext.VisibleTime
-  href: TMPEffects.Components.Animator.IAnimatorContext.html#TMPEffects_Components_Animator_IAnimatorContext_VisibleTime_TMPEffects_CharacterData_CharData_
-  name: VisibleTime
-  nameWithType: IAnimatorContext.VisibleTime
-  fullName: TMPEffects.Components.Animator.IAnimatorContext.VisibleTime
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  name: IAnimatorDataProvider
+  nameWithType: IAnimatorDataProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  commentId: T:TMPEffects.Components.Animator.ICharacterTimingsProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html
+  name: ICharacterTimingsProvider
+  nameWithType: ICharacterTimingsProvider
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider
+- uid: TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorTimingsProvider.html
+  name: IAnimatorTimingsProvider
+  nameWithType: IAnimatorTimingsProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorTimingsProvider

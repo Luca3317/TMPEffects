@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPAnimatorMarkReceiver
+  commentId: T:Global.TMPAnimatorMarkReceiver
+  id: TMPAnimatorMarkReceiver
+  parent: Global
+  children:
+  - Global.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimatorMarkReceiver
+  nameWithType: TMPAnimatorMarkReceiver
+  fullName: TMPAnimatorMarkReceiver
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPAnimatorMarkReceiver
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+    startLine: 6
+  namespace: Global
+  syntax:
+    content: 'public class TMPAnimatorMarkReceiver : MonoBehaviour, INotificationReceiver'
+    content.vb: Public Class TMPAnimatorMarkReceiver Inherits MonoBehaviour Implements INotificationReceiver
+  inheritance:
+  - System.Object
+  implements:
+  - Global.INotificationReceiver
+- uid: Global.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  commentId: M:Global.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  id: OnNotify(Playable,INotification,System.Object)
+  parent: Global.TMPAnimatorMarkReceiver
+  langs:
+  - csharp
+  - vb
+  name: OnNotify(Playable, INotification, object)
+  nameWithType: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, object)
+  fullName: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnNotify
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+    startLine: 11
+  namespace: Global
+  syntax:
+    content: public void OnNotify(Playable origin, INotification notification, object context)
+    parameters:
+    - id: origin
+      type: Global.Playable
+    - id: notification
+      type: Global.INotification
+    - id: context
+      type: System.Object
+    content.vb: Public Sub OnNotify(origin As Playable, notification As INotification, context As Object)
+  overload: Global.TMPAnimatorMarkReceiver.OnNotify*
+  nameWithType.vb: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, Object)
+  fullName.vb: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, Object)
+  name.vb: OnNotify(Playable, INotification, Object)
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.INotificationReceiver
+  isExternal: true
+  name: INotificationReceiver
+  nameWithType: INotificationReceiver
+  fullName: INotificationReceiver
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPAnimatorMarkReceiver.OnNotify*
+  commentId: Overload:Global.TMPAnimatorMarkReceiver.OnNotify
+  href: Global.TMPAnimatorMarkReceiver.html#TMPAnimatorMarkReceiver_OnNotify_Playable_INotification_System_Object_
+  name: OnNotify
+  nameWithType: TMPAnimatorMarkReceiver.OnNotify
+  fullName: TMPAnimatorMarkReceiver.OnNotify
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification

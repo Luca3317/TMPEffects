@@ -21,8 +21,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagCollection
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 9
@@ -55,8 +55,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 17
@@ -91,8 +91,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 27
@@ -139,8 +139,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 36
@@ -181,8 +181,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 44
@@ -223,8 +223,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 52
@@ -259,8 +259,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ITagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
     path: ../Package/Runtime/Tags/TagCollection/ITagCollection.cs
     startLine: 57

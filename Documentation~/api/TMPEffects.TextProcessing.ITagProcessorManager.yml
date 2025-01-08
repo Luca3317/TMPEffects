@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITagProcessorManager
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 10
@@ -45,8 +45,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagProcessors
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 15
@@ -74,8 +74,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AddProcessor
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 30
@@ -124,8 +124,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/TagProcessorManager.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveProcessor
     path: ../Package/Runtime/TextProcessing/TagProcessorManager.cs
     startLine: 37

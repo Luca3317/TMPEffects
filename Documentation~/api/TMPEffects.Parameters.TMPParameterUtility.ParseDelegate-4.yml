@@ -1,0 +1,212 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
+  commentId: T:TMPEffects.Parameters.TMPParameterUtility.ParseDelegate`4
+  id: TMPParameterUtility.ParseDelegate`4
+  parent: TMPEffects.Parameters
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPParameterUtility.ParseDelegate<T, U, V, W>
+  nameWithType: TMPParameterUtility.ParseDelegate<T, U, V, W>
+  fullName: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate<T, U, V, W>
+  type: Delegate
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ParseDelegate
+    path: ../Package/Runtime/Parameters/TMPParameterUtility.cs
+    startLine: 226
+  namespace: TMPEffects.Parameters
+  summary: >-
+    Delegate used in <xref href="TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary%7bSystem.String%2cSystem.String%7d%2cSystem.String%2cSystem.String%5b%5d)" data-throw-if-not-resolved="false"></xref> and related methods to parse array items.<br />
+
+    Generally, you can use the methods defined in <xref href="TMPEffects.Parameters.ParameterParsing" data-throw-if-not-resolved="false"></xref> for this.
+  example: []
+  syntax:
+    content: public delegate W TMPParameterUtility.ParseDelegate<T, U, V, W>(T input, out U output, V keywords)
+    parameters:
+    - id: input
+      type: '{T}'
+    - id: output
+      type: '{U}'
+    - id: keywords
+      type: '{V}'
+    typeParameters:
+    - id: T
+      description: ''
+    - id: U
+      description: ''
+    - id: V
+      description: ''
+    - id: W
+      description: ''
+    return:
+      type: '{W}'
+    content.vb: Public Delegate Function TMPParameterUtility.ParseDelegate(Of T, U, V, W)(input As T, output As U, keywords As V) As W
+  nameWithType.vb: TMPParameterUtility.ParseDelegate(Of T, U, V, W)
+  fullName.vb: TMPEffects.Parameters.TMPParameterUtility.ParseDelegate(Of T, U, V, W)
+  name.vb: TMPParameterUtility.ParseDelegate(Of T, U, V, W)
+references:
+- uid: TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  commentId: M:TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+  isExternal: true
+  href: TMPEffects.Parameters.TMPParameterUtility.html#TMPEffects_Parameters_TMPParameterUtility_HasArrayParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  name: HasArrayParameter(IDictionary<string, string>, string, params string[])
+  nameWithType: TMPParameterUtility.HasArrayParameter(IDictionary<string, string>, string, params string[])
+  fullName: TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary<string, string>, string, params string[])
+  nameWithType.vb: TMPParameterUtility.HasArrayParameter(IDictionary(Of String, String), String, ParamArray String())
+  fullName.vb: TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary(Of String, String), String, ParamArray String())
+  name.vb: HasArrayParameter(IDictionary(Of String, String), String, ParamArray String())
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+    name: HasArrayParameter
+    href: TMPEffects.Parameters.TMPParameterUtility.html#TMPEffects_Parameters_TMPParameterUtility_HasArrayParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterUtility.HasArrayParameter(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String[])
+    name: HasArrayParameter
+    href: TMPEffects.Parameters.TMPParameterUtility.html#TMPEffects_Parameters_TMPParameterUtility_HasArrayParameter_System_Collections_Generic_IDictionary_System_String_System_String__System_String_System_String___
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: TMPEffects.Parameters.ParameterParsing
+  commentId: T:TMPEffects.Parameters.ParameterParsing
+  href: TMPEffects.Parameters.ParameterParsing.html
+  name: ParameterParsing
+  nameWithType: ParameterParsing
+  fullName: TMPEffects.Parameters.ParameterParsing
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: '{U}'
+  commentId: '!:U'
+  definition: U
+  name: U
+  nameWithType: U
+  fullName: U
+- uid: '{V}'
+  commentId: '!:V'
+  definition: V
+  name: V
+  nameWithType: V
+  fullName: V
+- uid: '{W}'
+  commentId: '!:W'
+  definition: W
+  name: W
+  nameWithType: W
+  fullName: W
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: U
+  commentId: '!:U'
+  name: U
+  nameWithType: U
+  fullName: U
+- uid: V
+  commentId: '!:V'
+  name: V
+  nameWithType: V
+  fullName: V
+- uid: W
+  commentId: '!:W'
+  name: W
+  nameWithType: W
+  fullName: W

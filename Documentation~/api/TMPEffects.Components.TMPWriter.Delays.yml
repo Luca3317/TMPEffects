@@ -33,13 +33,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Delays
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1265
+    startLine: 1374
   namespace: TMPEffects.Components
-  summary: Stores the various delays along with their <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref> of a TMPWriter.
+  summary: Stores the various delays of a TMPWriter along with their <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: >-
@@ -78,11 +78,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculatedWhiteSpaceDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1271
+    startLine: 1380
   namespace: TMPEffects.Components
   summary: The calculated delay after "showing" a whitespace character, using <xref href="TMPEffects.Components.TMPWriter.Delays.whitespaceDelay" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.Components.TMPWriter.Delays.whitespaceDelayType" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -107,11 +107,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculatedPunctuationDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1275
+    startLine: 1386
   namespace: TMPEffects.Components
   summary: The calculated delay after showing a punctuation character, using <xref href="TMPEffects.Components.TMPWriter.Delays.punctuationDelay" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.Components.TMPWriter.Delays.punctuationDelayType" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -136,11 +136,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculatedVisibleDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1279
+    startLine: 1392
   namespace: TMPEffects.Components
   summary: The calculated delay after "showing" an already visible character, using <xref href="TMPEffects.Components.TMPWriter.Delays.visibleDelay" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.Components.TMPWriter.Delays.visibleDelayType" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -165,11 +165,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CalculatedLinebreakDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1283
+    startLine: 1398
   namespace: TMPEffects.Components
   summary: The calculated delay after "showing" a linebreak character, using <xref href="TMPEffects.Components.TMPWriter.Delays.linebreakDelay" data-throw-if-not-resolved="false"></xref> and <xref href="TMPEffects.Components.TMPWriter.Delays.linebreakDelayType" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -194,11 +194,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: delay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1289
+    startLine: 1404
   namespace: TMPEffects.Components
   summary: The delay after showing a character.
   example: []
@@ -221,11 +221,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: whitespaceDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1295
+    startLine: 1409
   namespace: TMPEffects.Components
   summary: The delay after "showing" a whitespace character.
   example: []
@@ -248,11 +248,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: whitespaceDelayType
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1299
+    startLine: 1414
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref> of <xref href="TMPEffects.Components.TMPWriter.Delays.whitespaceDelay" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -275,11 +275,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: linebreakDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1305
+    startLine: 1419
   namespace: TMPEffects.Components
   summary: The delay after "showing" a linebreak character.
   example: []
@@ -302,11 +302,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: linebreakDelayType
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1309
+    startLine: 1424
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref> of <xref href="TMPEffects.Components.TMPWriter.Delays.linebreakDelay" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -329,11 +329,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: punctuationDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1315
+    startLine: 1429
   namespace: TMPEffects.Components
   summary: The delay after showing a punctuation character.
   example: []
@@ -356,11 +356,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: punctuationDelayType
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1319
+    startLine: 1434
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref> of <xref href="TMPEffects.Components.TMPWriter.Delays.punctuationDelay" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -383,11 +383,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: visibleDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1325
+    startLine: 1439
   namespace: TMPEffects.Components
   summary: The delay after "showing" an already visible character.
   example: []
@@ -410,11 +410,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: visibleDelayType
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1329
+    startLine: 1444
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.Components.TMPWriter.DelayType" data-throw-if-not-resolved="false"></xref> of <xref href="TMPEffects.Components.TMPWriter.Delays.visibleDelay" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -437,11 +437,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1335
+    startLine: 1450
   namespace: TMPEffects.Components
   summary: Set the delay of the writer.
   example: []
@@ -470,11 +470,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetWhitespaceDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1344
+    startLine: 1459
   namespace: TMPEffects.Components
   summary: Set the whitespace delay of the writer.
   example: []
@@ -505,11 +505,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetLinebreakDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1354
+    startLine: 1469
   namespace: TMPEffects.Components
   summary: Set the linebreak delay of the writer.
   example: []
@@ -540,11 +540,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibleDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1364
+    startLine: 1479
   namespace: TMPEffects.Components
   summary: Set the visible delay of the writer.
   example: []
@@ -575,11 +575,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPunctuationDelay
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1374
+    startLine: 1489
   namespace: TMPEffects.Components
   summary: Set the punctuation delay of the writer.
   example: []

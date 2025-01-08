@@ -35,8 +35,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObservableDictionary
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 70
@@ -93,8 +93,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: mayRaise
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 73
@@ -120,8 +120,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: this[]
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 76
@@ -168,8 +168,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Keys
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 86
@@ -202,8 +202,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Values
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 88
@@ -236,8 +236,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Count
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 90
@@ -270,8 +270,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsReadOnly
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 92
@@ -304,12 +304,13 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 94
   namespace: TMPEffects.SerializedCollections
+  summary: Raised when the object is changed.
   example: []
   syntax:
     content: public event ObjectChangedEventHandler ObjectChanged
@@ -334,8 +335,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Add
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 96
@@ -381,8 +382,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Add
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 106
@@ -420,8 +421,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 114
@@ -454,8 +455,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 126
@@ -492,8 +493,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsKey
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 131
@@ -533,8 +534,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CopyTo
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 136
@@ -581,8 +582,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 141
@@ -614,8 +615,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 146
@@ -658,8 +659,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 162
@@ -700,8 +701,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryGetValue
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 178
@@ -745,8 +746,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Dispose
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 188
@@ -775,8 +776,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaisePropertyChanged
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 193
@@ -801,8 +802,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaisePropertyChanged
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedDictionary.cs
     startLine: 198

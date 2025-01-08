@@ -15,8 +15,8 @@ items:
   source:
     remote:
       path: Package/Runtime/ObjectChangedEvent/ObjectChangedEventHandler.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChangedEventHandler
     path: ../Package/Runtime/ObjectChangedEvent/ObjectChangedEventHandler.cs
     startLine: 6

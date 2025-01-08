@@ -1,0 +1,1010 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  id: TMPParameterTypes.TypedVector3
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor(TMPEffects.Parameters.TMPParameterTypes.VectorType,Vector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals(TMPEffects.Parameters.TMPParameterTypes.TypedVector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)~TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.type
+  - TMPEffects.Parameters.TMPParameterTypes.TypedVector3.vector
+  langs:
+  - csharp
+  - vb
+  name: TMPParameterTypes.TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TypedVector3
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 211
+  namespace: TMPEffects.Parameters
+  summary: A Vector3 with a <xref href="TMPEffects.Parameters.TMPParameterTypes.VectorType" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct TMPParameterTypes.TypedVector3
+    content.vb: >-
+      <Serializable>
+
+      Public Structure TMPParameterTypes.TypedVector3
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.vector
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.vector
+  id: vector
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: vector
+  nameWithType: TMPParameterTypes.TypedVector3.vector
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.vector
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: vector
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 217
+  namespace: TMPEffects.Parameters
+  summary: The raw vector.
+  example: []
+  syntax:
+    content: public Vector3 vector
+    return:
+      type: Global.Vector3
+    content.vb: Public vector As Vector3
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.type
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.type
+  id: type
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: type
+  nameWithType: TMPParameterTypes.TypedVector3.type
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.type
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: type
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 222
+  namespace: TMPEffects.Parameters
+  summary: The type of this vector.
+  example: []
+  syntax:
+    content: public TMPParameterTypes.VectorType type
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.VectorType
+    content.vb: Public type As TMPParameterTypes.VectorType
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor(TMPEffects.Parameters.TMPParameterTypes.VectorType,Vector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor(TMPEffects.Parameters.TMPParameterTypes.VectorType,Vector3)
+  id: '#ctor(TMPEffects.Parameters.TMPParameterTypes.VectorType,Vector3)'
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: TypedVector3(VectorType, Vector3)
+  nameWithType: TMPParameterTypes.TypedVector3.TypedVector3(TMPParameterTypes.VectorType, Vector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.TypedVector3(TMPEffects.Parameters.TMPParameterTypes.VectorType, Vector3)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 224
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public TypedVector3(TMPParameterTypes.VectorType type, Vector3 vector)
+    parameters:
+    - id: type
+      type: TMPEffects.Parameters.TMPParameterTypes.VectorType
+    - id: vector
+      type: Global.Vector3
+    content.vb: Public Sub New(type As TMPParameterTypes.VectorType, vector As Vector3)
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor*
+  nameWithType.vb: TMPParameterTypes.TypedVector3.New(TMPParameterTypes.VectorType, Vector3)
+  fullName.vb: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.New(TMPEffects.Parameters.TMPParameterTypes.VectorType, Vector3)
+  name.vb: New(VectorType, Vector3)
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals(TMPEffects.Parameters.TMPParameterTypes.TypedVector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals(TMPEffects.Parameters.TMPParameterTypes.TypedVector3)
+  id: Equals(TMPEffects.Parameters.TMPParameterTypes.TypedVector3)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: Equals(TypedVector3)
+  nameWithType: TMPParameterTypes.TypedVector3.Equals(TMPParameterTypes.TypedVector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals(TMPEffects.Parameters.TMPParameterTypes.TypedVector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 230
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public bool Equals(TMPParameterTypes.TypedVector3 other)
+    parameters:
+    - id: other
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(other As TMPParameterTypes.TypedVector3) As Boolean
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)~TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)~TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  id: op_Implicit(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)~TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: implicit operator TypedVector3(TypedVector2)
+  nameWithType: TMPParameterTypes.TypedVector3.implicit operator TMPParameterTypes.TypedVector3(TMPParameterTypes.TypedVector2)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.implicit operator TMPEffects.Parameters.TMPParameterTypes.TypedVector3(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Implicit
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 235
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: public static implicit operator TMPParameterTypes.TypedVector3(TMPParameterTypes.TypedVector2 v)
+    parameters:
+    - id: v
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    content.vb: Public Shared Widening Operator CType(v As TMPParameterTypes.TypedVector2) As TMPParameterTypes.TypedVector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit*
+  nameWithType.vb: TMPParameterTypes.TypedVector3.CType(TMPParameterTypes.TypedVector2)
+  fullName.vb: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.CType(TMPEffects.Parameters.TMPParameterTypes.TypedVector2)
+  name.vb: CType(TypedVector2)
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToPosition(CharData, IAnimationContext)
+  nameWithType: TMPParameterTypes.TypedVector3.ToPosition(CharData, IAnimationContext)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToPosition
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 262
+  namespace: TMPEffects.Parameters
+  summary: Get the position defined by this vector, using the cData's initial position as reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToPosition(CharData cData, IAnimationContext context)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The position defined by this vector and the cData's initial position.
+    content.vb: Public Function ToPosition(cData As CharData, context As IAnimationContext) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  id: ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToPosition(CharData, IAnimationContext, Vector3)
+  nameWithType: TMPParameterTypes.TypedVector3.ToPosition(CharData, IAnimationContext, Vector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToPosition
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 272
+  namespace: TMPEffects.Parameters
+  summary: Get the position defined by this vector and the reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToPosition(CharData cData, IAnimationContext context, Vector3 referencePos)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: ''
+    - id: referencePos
+      type: Global.Vector3
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The position defined by this vector and the reference position.
+    content.vb: Public Function ToPosition(cData As CharData, context As IAnimationContext, referencePos As Vector3) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  id: ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToPosition(CharData, IAnimatorDataProvider)
+  nameWithType: TMPParameterTypes.TypedVector3.ToPosition(CharData, IAnimatorDataProvider)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToPosition
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 281
+  namespace: TMPEffects.Parameters
+  summary: Get the position defined by this vector, using the cData's initial position as reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToPosition(CharData cData, IAnimatorDataProvider animatorData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The position defined by this vector and the reference position.
+    content.vb: Public Function ToPosition(cData As CharData, animatorData As IAnimatorDataProvider) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  id: ToPosition(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToPosition(CharData, IAnimatorDataProvider, Vector3)
+  nameWithType: TMPParameterTypes.TypedVector3.ToPosition(CharData, IAnimatorDataProvider, Vector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToPosition
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 291
+  namespace: TMPEffects.Parameters
+  summary: Get the position defined by this vector and the reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToPosition(CharData cData, IAnimatorDataProvider animatorData, Vector3 referencePos)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    - id: referencePos
+      type: Global.Vector3
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The position defined by this vector and the reference position.
+    content.vb: Public Function ToPosition(cData As CharData, animatorData As IAnimatorDataProvider, referencePos As Vector3) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  id: ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToDelta(CharData, IAnimationContext)
+  nameWithType: TMPParameterTypes.TypedVector3.ToDelta(CharData, IAnimationContext)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToDelta
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 315
+  namespace: TMPEffects.Parameters
+  summary: Get the delta defined by this vector, using the cData's initial position as reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToDelta(CharData cData, IAnimationContext context)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The delta defined by this vector and the cData's initial position.
+    content.vb: Public Function ToDelta(cData As CharData, context As IAnimationContext) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  id: ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext,Vector3)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToDelta(CharData, IAnimationContext, Vector3)
+  nameWithType: TMPParameterTypes.TypedVector3.ToDelta(CharData, IAnimationContext, Vector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.IAnimationContext, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToDelta
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 324
+  namespace: TMPEffects.Parameters
+  summary: Get the delta defined by this vector and the reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToDelta(CharData cData, IAnimationContext context, Vector3 referencePos)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.TMPAnimations.IAnimationContext
+      description: ''
+    - id: referencePos
+      type: Global.Vector3
+    return:
+      type: Global.Vector3
+      description: The delta defined by this vector and the reference position.
+    content.vb: Public Function ToDelta(cData As CharData, context As IAnimationContext, referencePos As Vector3) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  id: ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToDelta(CharData, IAnimatorDataProvider)
+  nameWithType: TMPParameterTypes.TypedVector3.ToDelta(CharData, IAnimatorDataProvider)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToDelta
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 333
+  namespace: TMPEffects.Parameters
+  summary: Get the delta defined by this vector, using the cData's initial position as reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToDelta(CharData cData, IAnimatorDataProvider animatorData)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The delta defined by this vector and the cData's initial position.
+    content.vb: Public Function ToDelta(cData As CharData, animatorData As IAnimatorDataProvider) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  id: ToDelta(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,Vector3)
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToDelta(CharData, IAnimatorDataProvider, Vector3)
+  nameWithType: TMPParameterTypes.TypedVector3.ToDelta(CharData, IAnimatorDataProvider, Vector3)
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, Vector3)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToDelta
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 343
+  namespace: TMPEffects.Parameters
+  summary: Get the delta defined by this vector and the reference position.
+  example: []
+  syntax:
+    content: public Vector3 ToDelta(CharData cData, IAnimatorDataProvider animatorData, Vector3 referencePos)
+    parameters:
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: animatorData
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    - id: referencePos
+      type: Global.Vector3
+      description: ''
+    return:
+      type: Global.Vector3
+      description: The delta defined by this vector and the cData's initial position.
+    content.vb: Public Function ToDelta(cData As CharData, animatorData As IAnimatorDataProvider, referencePos As Vector3) As Vector3
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta*
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString
+  commentId: M:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString
+  id: ToString
+  parent: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: TMPParameterTypes.TypedVector3.ToString()
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToString
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 363
+  namespace: TMPEffects.Parameters
+  summary: Returns the fully qualified type name of this instance.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The fully qualified type name.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString*
+references:
+- uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.VectorType
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.VectorType
+  nameWithType: TMPParameterTypes.VectorType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.VectorType
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
+    name: VectorType
+    href: TMPEffects.Parameters.TMPParameterTypes.VectorType.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.VectorType
+    name: VectorType
+    href: TMPEffects.Parameters.TMPParameterTypes.VectorType.html
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.#ctor
+  href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html#TMPEffects_Parameters_TMPParameterTypes_TypedVector3__ctor_TMPEffects_Parameters_TMPParameterTypes_VectorType_Vector3_
+  name: TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.TypedVector3
+  nameWithType.vb: TMPParameterTypes.TypedVector3.New
+  fullName.vb: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.New
+  name.vb: New
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals
+  href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html#TMPEffects_Parameters_TMPParameterTypes_TypedVector3_Equals_TMPEffects_Parameters_TMPParameterTypes_TypedVector3_
+  name: Equals
+  nameWithType: TMPParameterTypes.TypedVector3.Equals
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.Equals
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector3
+  nameWithType: TMPParameterTypes.TypedVector3
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3
+    name: TypedVector3
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.op_Implicit
+  name: implicit operator
+  nameWithType: TMPParameterTypes.TypedVector3.implicit operator
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.implicit operator
+  nameWithType.vb: TMPParameterTypes.TypedVector3.CType
+  fullName.vb: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.TypedVector2
+  nameWithType: TMPParameterTypes.TypedVector2
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+    name: TypedVector2
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector2
+    name: TypedVector2
+    href: TMPEffects.Parameters.TMPParameterTypes.TypedVector2.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition
+  href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html#TMPEffects_Parameters_TMPParameterTypes_TypedVector3_ToPosition_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: ToPosition
+  nameWithType: TMPParameterTypes.TypedVector3.ToPosition
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToPosition
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.TMPAnimations.IAnimationContext
+  commentId: T:TMPEffects.TMPAnimations.IAnimationContext
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationContext.html
+  name: IAnimationContext
+  nameWithType: IAnimationContext
+  fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorDataProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  name: IAnimatorDataProvider
+  nameWithType: IAnimatorDataProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta
+  href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html#TMPEffects_Parameters_TMPParameterTypes_TypedVector3_ToDelta_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_IAnimationContext_
+  name: ToDelta
+  nameWithType: TMPParameterTypes.TypedVector3.ToDelta
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToDelta
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString*
+  commentId: Overload:TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString
+  href: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.html#TMPEffects_Parameters_TMPParameterTypes_TypedVector3_ToString
+  name: ToString
+  nameWithType: TMPParameterTypes.TypedVector3.ToString
+  fullName: TMPEffects.Parameters.TMPParameterTypes.TypedVector3.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

@@ -5,12 +5,13 @@ items:
   id: ITMPCommand
   parent: TMPEffects.TMPCommands
   children:
-  - TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)
+  - TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
   - TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
   - TMPEffects.TMPCommands.ITMPCommand.ExecuteOnSkip
   - TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
+  - TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  - TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
   - TMPEffects.TMPCommands.ITMPCommand.TagType
-  - TMPEffects.TMPCommands.ITMPCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
   langs:
   - csharp
   - vb
@@ -21,17 +22,19 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPCommand
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 7
+    startLine: 12
   namespace: TMPEffects.TMPCommands
   summary: Base interface for all TMPEffects commands.
   example: []
   syntax:
-    content: public interface ITMPCommand
-    content.vb: Public Interface ITMPCommand
+    content: 'public interface ITMPCommand : ITMPParameterValidator'
+    content.vb: Public Interface ITMPCommand Inherits ITMPParameterValidator
+  inheritedMembers:
+  - TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
 - uid: TMPEffects.TMPCommands.ITMPCommand.TagType
   commentId: P:TMPEffects.TMPCommands.ITMPCommand.TagType
   id: TagType
@@ -46,12 +49,32 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 19
+    startLine: 28
   namespace: TMPEffects.TMPCommands
+  summary: The type of command this is.
+  remarks: >-
+    <p>
+
+    Index: This type of command is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the corresponding index. It does not need to be closed.<br /> Example: This is &lt;!delay=0.01&gt; my text
+
+    </p>
+
+    <p>
+
+    Block: This type of command is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the first corresponding index. It needs to be closed, and will operate on the enclosed text.<br /> Example: This &lt;!show&gt;is my&lt;/!show&gt; text
+
+    </p>
+
+    <p>
+
+    Either: Both applications are valid.
+
+    </p>
+  example: []
   syntax:
     content: TagType TagType { get; }
     parameters: []
@@ -73,16 +96,16 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteInstantly
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 25
+    startLine: 34
   namespace: TMPEffects.TMPCommands
   summary: >-
-    Whether the command is executed the moment the TMPWriter begin writing.<br />
+    Whether the command is executed the moment the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> begins writing.<br />
 
-    Otherwise, it is executed when the TMPWriter shows the character at the corresponding index.
+    Otherwise, it is executed when the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> shows the character at the corresponding index.
   example: []
   syntax:
     content: bool ExecuteInstantly { get; }
@@ -105,13 +128,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteOnSkip
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 29
+    startLine: 38
   namespace: TMPEffects.TMPCommands
-  summary: Whether the command should be executed by the TMPWriter if its text position is skipped over.
+  summary: Whether the command should be executed by the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> if its text position is skipped over.
   example: []
   syntax:
     content: bool ExecuteOnSkip { get; }
@@ -134,14 +157,14 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteRepeatable
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 34
+    startLine: 43
   namespace: TMPEffects.TMPCommands
   summary: >-
-    Whether the command may be executed multiple times if, for example, the TMPWriter is reset to an earlier text position after the command has been executed.<br />
+    Whether the command may be executed multiple times if, for example, the <xref href="TMPEffects.Components.TMPWriter" data-throw-if-not-resolved="false"></xref> is reset to an earlier text position after the command has been executed.<br />
 
     An example for a command that should not be repeatable is one that triggers a quest, or adds an item to the player's inventory.
   example: []
@@ -152,75 +175,104 @@ items:
       type: System.Boolean
     content.vb: ReadOnly Property ExecuteRepeatable As Boolean
   overload: TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable*
-- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)
-  commentId: M:TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)
-  id: ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)
+- uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
+  id: ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
   parent: TMPEffects.TMPCommands.ITMPCommand
   langs:
   - csharp
   - vb
-  name: ExecuteCommand(TMPCommandArgs)
-  nameWithType: ITMPCommand.ExecuteCommand(TMPCommandArgs)
-  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.TMPCommandArgs)
+  name: ExecuteCommand(ICommandContext)
+  nameWithType: ITMPCommand.ExecuteCommand(ICommandContext)
+  fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand(TMPEffects.TMPCommands.ICommandContext)
   type: Method
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ExecuteCommand
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 49
+    startLine: 62
   namespace: TMPEffects.TMPCommands
   summary: Execute the command.
   example: []
   syntax:
-    content: void ExecuteCommand(TMPCommandArgs args)
+    content: void ExecuteCommand(ICommandContext context)
     parameters:
-    - id: args
-      type: TMPEffects.TMPCommands.TMPCommandArgs
-      description: The arguments for the command.
-    content.vb: Sub ExecuteCommand(args As TMPCommandArgs)
+    - id: context
+      type: TMPEffects.TMPCommands.ICommandContext
+      description: ''
+    content.vb: Sub ExecuteCommand(context As ICommandContext)
   overload: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand*
-- uid: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.TMPCommands.ITMPCommand.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  id: GetNewCustomData
   parent: TMPEffects.TMPCommands.ITMPCommand
   langs:
   - csharp
   - vb
-  name: ValidateParameters(IDictionary<string, string>)
-  nameWithType: ITMPCommand.ValidateParameters(IDictionary<string, string>)
-  fullName: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
+  name: GetNewCustomData()
+  nameWithType: ITMPCommand.GetNewCustomData()
+  fullName: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData()
   type: Method
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: ValidateParameters
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetNewCustomData
     path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
-    startLine: 57
+    startLine: 68
   namespace: TMPEffects.TMPCommands
-  summary: >-
-    Validate the parameters.<br />
-
-    Used to validate tags.
+  summary: Get a new custom data object for this command.
   example: []
   syntax:
-    content: bool ValidateParameters(IDictionary<string, string> parameters)
+    content: object GetNewCustomData()
+    return:
+      type: System.Object
+      description: The custom data object for this command.
+    content.vb: Function GetNewCustomData() As Object
+  overload: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData*
+- uid: TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPCommands.ITMPCommand.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.TMPCommands.ITMPCommand
+  langs:
+  - csharp
+  - vb
+  name: SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPCommand.SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPCommands.ITMPCommand.SetParameters(object, System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: SetParameters
+    path: ../Package/Runtime/Effects/TMPCommands/ITMPCommand.cs
+    startLine: 76
+  namespace: TMPEffects.TMPCommands
+  summary: Set the parameters for the command.
+  example: []
+  syntax:
+    content: void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
     parameters:
+    - id: customData
+      type: System.Object
+      description: The custom data for this command.
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: The parameters to validate.
-    return:
-      type: System.Boolean
-      description: true if the parameters were successfully validated; false otherwise.
-    content.vb: Function ValidateParameters(parameters As IDictionary(Of String, String)) As Boolean
-  overload: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters*
-  nameWithType.vb: ITMPCommand.ValidateParameters(IDictionary(Of String, String))
-  fullName.vb: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: ValidateParameters(IDictionary(Of String, String))
+      description: Parameters as key-value-pairs.
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values.
+    content.vb: Sub SetParameters(customData As Object, parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase)
+  overload: TMPEffects.TMPCommands.ITMPCommand.SetParameters*
+  nameWithType.vb: ITMPCommand.SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPCommands.ITMPCommand.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
 references:
 - uid: TMPEffects.TMPCommands
   commentId: N:TMPEffects.TMPCommands
@@ -244,6 +296,109 @@ references:
   - uid: TMPEffects.TMPCommands
     name: TMPCommands
     href: TMPEffects.TMPCommands.html
+- uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.Parameters.ITMPParameterValidator
+  isExternal: true
+  href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPParameterValidator.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: ITMPParameterValidator.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  spec.csharp:
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: ValidateParameters
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+    name: ValidateParameters
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  - name: )
+- uid: TMPEffects.Parameters.ITMPParameterValidator
+  commentId: T:TMPEffects.Parameters.ITMPParameterValidator
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPParameterValidator.html
+  name: ITMPParameterValidator
+  nameWithType: ITMPParameterValidator
+  fullName: TMPEffects.Parameters.ITMPParameterValidator
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: TMPEffects.Components.TMPWriter
+  commentId: T:TMPEffects.Components.TMPWriter
+  parent: TMPEffects.Components
+  href: TMPEffects.Components.TMPWriter.html
+  name: TMPWriter
+  nameWithType: TMPWriter
+  fullName: TMPEffects.Components.TMPWriter
 - uid: TMPEffects.TMPCommands.ITMPCommand.TagType*
   commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.TagType
   href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_TagType
@@ -257,6 +412,28 @@ references:
   name: TagType
   nameWithType: TagType
   fullName: TMPEffects.TMPCommands.TagType
+- uid: TMPEffects.Components
+  commentId: N:TMPEffects.Components
+  href: TMPEffects.html
+  name: TMPEffects.Components
+  nameWithType: TMPEffects.Components
+  fullName: TMPEffects.Components
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
 - uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly*
   commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.ExecuteInstantly
   href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteInstantly
@@ -295,23 +472,40 @@ references:
   fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteRepeatable
 - uid: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand*
   commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand
-  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteCommand_TMPEffects_TMPCommands_TMPCommandArgs_
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ExecuteCommand_TMPEffects_TMPCommands_ICommandContext_
   name: ExecuteCommand
   nameWithType: ITMPCommand.ExecuteCommand
   fullName: TMPEffects.TMPCommands.ITMPCommand.ExecuteCommand
-- uid: TMPEffects.TMPCommands.TMPCommandArgs
-  commentId: T:TMPEffects.TMPCommands.TMPCommandArgs
+- uid: TMPEffects.TMPCommands.ICommandContext
+  commentId: T:TMPEffects.TMPCommands.ICommandContext
   parent: TMPEffects.TMPCommands
-  href: TMPEffects.TMPCommands.TMPCommandArgs.html
-  name: TMPCommandArgs
-  nameWithType: TMPCommandArgs
-  fullName: TMPEffects.TMPCommands.TMPCommandArgs
-- uid: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters*
-  commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.ValidateParameters
-  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
-  name: ValidateParameters
-  nameWithType: ITMPCommand.ValidateParameters
-  fullName: TMPEffects.TMPCommands.ITMPCommand.ValidateParameters
+  href: TMPEffects.TMPCommands.ICommandContext.html
+  name: ICommandContext
+  nameWithType: ICommandContext
+  fullName: TMPEffects.TMPCommands.ICommandContext
+- uid: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData*
+  commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_GetNewCustomData
+  name: GetNewCustomData
+  nameWithType: ITMPCommand.GetNewCustomData
+  fullName: TMPEffects.TMPCommands.ITMPCommand.GetNewCustomData
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.TMPCommands.ITMPCommand.SetParameters*
+  commentId: Overload:TMPEffects.TMPCommands.ITMPCommand.SetParameters
+  href: TMPEffects.TMPCommands.ITMPCommand.html#TMPEffects_TMPCommands_ITMPCommand_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: SetParameters
+  nameWithType: ITMPCommand.SetParameters
+  fullName: TMPEffects.TMPCommands.ITMPCommand.SetParameters
 - uid: System.Collections.Generic.IDictionary{System.String,System.String}
   commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
   parent: System.Collections.Generic
@@ -359,6 +553,13 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
 - uid: System.Collections.Generic.IDictionary`2
   commentId: T:System.Collections.Generic.IDictionary`2
   isExternal: true
@@ -430,3 +631,25 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html

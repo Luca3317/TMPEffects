@@ -17,11 +17,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagType
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 19
+    startLine: 16
   namespace: TMPEffects.TextProcessing
   summary: >-
     Tag type enum.<br />
@@ -55,11 +55,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Open
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 22
+    startLine: 19
   namespace: TMPEffects.TextProcessing
   syntax:
     content: Open = 1
@@ -79,11 +79,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Close
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 23
+    startLine: 20
   namespace: TMPEffects.TextProcessing
   syntax:
     content: Close = 2

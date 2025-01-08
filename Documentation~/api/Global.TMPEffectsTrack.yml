@@ -1,0 +1,50 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPEffectsTrack
+  commentId: T:Global.TMPEffectsTrack
+  id: TMPEffectsTrack
+  parent: Global
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPEffectsTrack
+  nameWithType: TMPEffectsTrack
+  fullName: TMPEffectsTrack
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TMPEffectsTrack.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPEffectsTrack
+    path: ../Package/Runtime/Timeline/TMPEffectsTrack.cs
+    startLine: 2
+  namespace: Global
+  syntax:
+    content: 'public abstract class TMPEffectsTrack : TrackAsset'
+    content.vb: Public MustInherit Class TMPEffectsTrack Inherits TrackAsset
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Global.TMPMeshModifierTrack
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

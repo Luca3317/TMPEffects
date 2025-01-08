@@ -23,11 +23,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagInfo
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 29
+    startLine: 26
   namespace: TMPEffects.TextProcessing
   summary: Utility class that holds data about a parsed tag.
   example: []
@@ -58,11 +58,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: type
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 34
+    startLine: 31
   namespace: TMPEffects.TextProcessing
   summary: Type of the tag (open, close).
   example: []
@@ -85,11 +85,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: prefix
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 39
+    startLine: 36
   namespace: TMPEffects.TextProcessing
   summary: Prefix of the tag.
   example: []
@@ -112,11 +112,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: name
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 43
+    startLine: 40
   namespace: TMPEffects.TextProcessing
   summary: Name of the tag.
   example: []
@@ -139,11 +139,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: parameterString
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 48
+    startLine: 45
   namespace: TMPEffects.TextProcessing
   summary: The parameters of the tag, unparsed.
   example: []
@@ -166,11 +166,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: startIndex
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 53
+    startLine: 50
   namespace: TMPEffects.TextProcessing
   summary: Start index of the tag in the source text.
   example: []
@@ -193,11 +193,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: endIndex
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 57
+    startLine: 54
   namespace: TMPEffects.TextProcessing
   summary: End index of the tag in the source text.
   example: []
@@ -220,11 +220,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 59
+    startLine: 56
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TagInfo(int startIndex, int endIndex, ParsingUtility.TagType type, char prefix, string name, string parameterString)
@@ -260,11 +260,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 70
+    startLine: 67
   namespace: TMPEffects.TextProcessing
   syntax:
     content: public TagInfo()

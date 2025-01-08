@@ -19,8 +19,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateFrom
     path: ../Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 6
@@ -57,8 +57,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Update
     path: ../Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 12
@@ -83,8 +83,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: LateUpdate
     path: ../Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 16
@@ -109,8 +109,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FixedUpdate
     path: ../Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 20
@@ -135,8 +135,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Script
     path: ../Package/Runtime/Components/TMPAnimator/UpdateFrom.cs
     startLine: 24

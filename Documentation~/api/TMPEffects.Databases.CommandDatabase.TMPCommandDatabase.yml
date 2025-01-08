@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPCommandDatabase
     path: ../Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 10
@@ -54,8 +54,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 21
@@ -91,8 +91,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Package/Runtime/Databases/CommandDatabase/TMPCommandDatabase.cs
     startLine: 33

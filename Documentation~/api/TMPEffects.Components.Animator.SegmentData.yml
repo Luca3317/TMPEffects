@@ -5,17 +5,19 @@ items:
   id: SegmentData
   parent: TMPEffects.Components.Animator
   children:
+  - TMPEffects.Components.Animator.SegmentData.#ctor(TMPEffects.Tags.TMPEffectTagIndices,System.Collections.Generic.IList{TMPEffects.CharacterData.CharData},System.Predicate{System.Char})
+  - TMPEffects.Components.Animator.SegmentData.CharInfo
+  - TMPEffects.Components.Animator.SegmentData.EndIndex
+  - TMPEffects.Components.Animator.SegmentData.GetCharInfo(System.Int32)
   - TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
+  - TMPEffects.Components.Animator.SegmentData.Length
   - TMPEffects.Components.Animator.SegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  - TMPEffects.Components.Animator.SegmentData.StartIndex
   - TMPEffects.Components.Animator.SegmentData.effectiveLength
   - TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
   - TMPEffects.Components.Animator.SegmentData.firstVisibleIndex
   - TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
   - TMPEffects.Components.Animator.SegmentData.lastVisibleIndex
-  - TMPEffects.Components.Animator.SegmentData.length
-  - TMPEffects.Components.Animator.SegmentData.max
-  - TMPEffects.Components.Animator.SegmentData.min
-  - TMPEffects.Components.Animator.SegmentData.startIndex
   langs:
   - csharp
   - vb
@@ -26,20 +28,26 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentData
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 13
+    startLine: 69
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and its animations.<br />
 
-    Contains data about a given animation segment.
+    Contains data about a given animation segment.<br />
+
+    Only does some basic info parsing. For more specialised information, e.g. word-count,
+
+    you can manually derive the info from <xref href="TMPEffects.Components.Animator.SegmentData.CharInfo" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public struct SegmentData
-    content.vb: Public Structure SegmentData
+    content: 'public readonly struct SegmentData : ITMPSegmentData'
+    content.vb: Public Structure SegmentData Implements ITMPSegmentData
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData
   inheritedMembers:
   - System.ValueType.Equals(System.Object)
   - System.ValueType.GetHashCode
@@ -47,60 +55,99 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
-- uid: TMPEffects.Components.Animator.SegmentData.startIndex
-  commentId: F:TMPEffects.Components.Animator.SegmentData.startIndex
-  id: startIndex
+- uid: TMPEffects.Components.Animator.SegmentData.StartIndex
+  commentId: P:TMPEffects.Components.Animator.SegmentData.StartIndex
+  id: StartIndex
   parent: TMPEffects.Components.Animator.SegmentData
   langs:
   - csharp
   - vb
-  name: startIndex
-  nameWithType: SegmentData.startIndex
-  fullName: TMPEffects.Components.Animator.SegmentData.startIndex
-  type: Field
+  name: StartIndex
+  nameWithType: SegmentData.StartIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.StartIndex
+  type: Property
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: startIndex
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: StartIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 18
+    startLine: 71
   namespace: TMPEffects.Components.Animator
   summary: The first index of the segment within the containing text.
   example: []
   syntax:
-    content: public readonly int startIndex
+    content: public int StartIndex { get; }
+    parameters: []
     return:
       type: System.Int32
-    content.vb: Public ReadOnly startIndex As Integer
-- uid: TMPEffects.Components.Animator.SegmentData.length
-  commentId: F:TMPEffects.Components.Animator.SegmentData.length
-  id: length
+    content.vb: Public ReadOnly Property StartIndex As Integer
+  overload: TMPEffects.Components.Animator.SegmentData.StartIndex*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.StartIndex
+- uid: TMPEffects.Components.Animator.SegmentData.Length
+  commentId: P:TMPEffects.Components.Animator.SegmentData.Length
+  id: Length
   parent: TMPEffects.Components.Animator.SegmentData
   langs:
   - csharp
   - vb
-  name: length
-  nameWithType: SegmentData.length
-  fullName: TMPEffects.Components.Animator.SegmentData.length
-  type: Field
+  name: Length
+  nameWithType: SegmentData.Length
+  fullName: TMPEffects.Components.Animator.SegmentData.Length
+  type: Property
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: length
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Length
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 22
+    startLine: 73
   namespace: TMPEffects.Components.Animator
   summary: The length of the animation segment.
   example: []
   syntax:
-    content: public readonly int length
+    content: public int Length { get; }
+    parameters: []
     return:
       type: System.Int32
-    content.vb: Public ReadOnly length As Integer
+    content.vb: Public ReadOnly Property Length As Integer
+  overload: TMPEffects.Components.Animator.SegmentData.Length*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.Length
+- uid: TMPEffects.Components.Animator.SegmentData.EndIndex
+  commentId: P:TMPEffects.Components.Animator.SegmentData.EndIndex
+  id: EndIndex
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: EndIndex
+  nameWithType: SegmentData.EndIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.EndIndex
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: EndIndex
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 75
+  namespace: TMPEffects.Components.Animator
+  summary: The last index of the segment within the containing text.
+  example: []
+  syntax:
+    content: public int EndIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property EndIndex As Integer
+  overload: TMPEffects.Components.Animator.SegmentData.EndIndex*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.EndIndex
 - uid: TMPEffects.Components.Animator.SegmentData.effectiveLength
   commentId: F:TMPEffects.Components.Animator.SegmentData.effectiveLength
   id: effectiveLength
@@ -115,11 +162,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: effectiveLength
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 27
+    startLine: 80
   namespace: TMPEffects.Components.Animator
   summary: The effective length of the animation segment; i.e. the length of the segment from <xref href="TMPEffects.Components.Animator.SegmentData.firstAnimationIndex" data-throw-if-not-resolved="false"></xref> to <xref href="TMPEffects.Components.Animator.SegmentData.lastAnimationIndex" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -142,11 +189,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: firstVisibleIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 32
+    startLine: 85
   namespace: TMPEffects.Components.Animator
   summary: The index of the first visible character (i.e. non-whitespace character).
   example: []
@@ -169,11 +216,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lastVisibleIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 36
+    startLine: 90
   namespace: TMPEffects.Components.Animator
   summary: The index of the last visible character (i.e. non-whitespace character).
   example: []
@@ -196,11 +243,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: firstAnimationIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 41
+    startLine: 95
   namespace: TMPEffects.Components.Animator
   summary: The index of the first character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
   example: []
@@ -223,11 +270,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lastAnimationIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 45
+    startLine: 100
   namespace: TMPEffects.Components.Animator
   summary: The index of the last character that is relevant to the <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref> and will be animated.
   example: []
@@ -236,56 +283,75 @@ items:
     return:
       type: System.Int32
     content.vb: Public ReadOnly lastAnimationIndex As Integer
-- uid: TMPEffects.Components.Animator.SegmentData.max
-  commentId: F:TMPEffects.Components.Animator.SegmentData.max
-  id: max
+- uid: TMPEffects.Components.Animator.SegmentData.CharInfo
+  commentId: P:TMPEffects.Components.Animator.SegmentData.CharInfo
+  id: CharInfo
   parent: TMPEffects.Components.Animator.SegmentData
   langs:
   - csharp
   - vb
-  name: max
-  nameWithType: SegmentData.max
-  fullName: TMPEffects.Components.Animator.SegmentData.max
-  type: Field
+  name: CharInfo
+  nameWithType: SegmentData.CharInfo
+  fullName: TMPEffects.Components.Animator.SegmentData.CharInfo
+  type: Property
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: max
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CharInfo
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 47
+    startLine: 103
   namespace: TMPEffects.Components.Animator
+  summary: The <xref href="TMPEffects.CharacterData.CharData.Info" data-throw-if-not-resolved="false"></xref> of each character in the segment.
+  example: []
   syntax:
-    content: public readonly Vector3 max
+    content: public IEnumerable<CharData.Info> CharInfo { get; }
+    parameters: []
     return:
-      type: Global.Vector3
-    content.vb: Public ReadOnly max As Vector3
-- uid: TMPEffects.Components.Animator.SegmentData.min
-  commentId: F:TMPEffects.Components.Animator.SegmentData.min
-  id: min
+      type: System.Collections.Generic.IEnumerable{TMPEffects.CharacterData.CharData.Info}
+    content.vb: Public ReadOnly Property CharInfo As IEnumerable(Of CharData.Info)
+  overload: TMPEffects.Components.Animator.SegmentData.CharInfo*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.CharInfo
+- uid: TMPEffects.Components.Animator.SegmentData.GetCharInfo(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.SegmentData.GetCharInfo(System.Int32)
+  id: GetCharInfo(System.Int32)
   parent: TMPEffects.Components.Animator.SegmentData
   langs:
   - csharp
   - vb
-  name: min
-  nameWithType: SegmentData.min
-  fullName: TMPEffects.Components.Animator.SegmentData.min
-  type: Field
+  name: GetCharInfo(int)
+  nameWithType: SegmentData.GetCharInfo(int)
+  fullName: TMPEffects.Components.Animator.SegmentData.GetCharInfo(int)
+  type: Method
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: min
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetCharInfo
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 48
+    startLine: 114
   namespace: TMPEffects.Components.Animator
+  summary: Get a specific <xref href="TMPEffects.CharacterData.CharData.Info" data-throw-if-not-resolved="false"></xref> from a segment index.
+  example: []
   syntax:
-    content: public readonly Vector3 min
+    content: public CharData.Info GetCharInfo(int segmentIndex)
+    parameters:
+    - id: segmentIndex
+      type: System.Int32
+      description: ''
     return:
-      type: Global.Vector3
-    content.vb: Public ReadOnly min As Vector3
+      type: TMPEffects.CharacterData.CharData.Info
+      description: The <xref href="TMPEffects.CharacterData.CharData.Info" data-throw-if-not-resolved="false"></xref> associated with the segment index.
+    content.vb: Public Function GetCharInfo(segmentIndex As Integer) As CharData.Info
+  overload: TMPEffects.Components.Animator.SegmentData.GetCharInfo*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(System.Int32)
+  nameWithType.vb: SegmentData.GetCharInfo(Integer)
+  fullName.vb: TMPEffects.Components.Animator.SegmentData.GetCharInfo(Integer)
+  name.vb: GetCharInfo(Integer)
 - uid: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
   commentId: M:TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(System.Int32)
   id: IndexToSegmentIndex(System.Int32)
@@ -300,21 +366,27 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndexToSegmentIndex
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 50
+    startLine: 122
   namespace: TMPEffects.Components.Animator
+  summary: Convert a text index to the index within the segment.
+  example: []
   syntax:
     content: public int IndexToSegmentIndex(int index)
     parameters:
     - id: index
       type: System.Int32
+      description: The text index to convert.
     return:
       type: System.Int32
+      description: The segment index.
     content.vb: Public Function IndexToSegmentIndex(index As Integer) As Integer
   overload: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(System.Int32)
   nameWithType.vb: SegmentData.IndexToSegmentIndex(Integer)
   fullName.vb: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex(Integer)
   name.vb: IndexToSegmentIndex(Integer)
@@ -332,21 +404,61 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SegmentIndexOf
     path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
-    startLine: 57
+    startLine: 129
   namespace: TMPEffects.Components.Animator
+  summary: Get the segment index of the given <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public int SegmentIndexOf(CharData cData)
     parameters:
     - id: cData
       type: TMPEffects.CharacterData.CharData
+      description: ''
     return:
       type: System.Int32
+      description: ''
     content.vb: Public Function SegmentIndexOf(cData As CharData) As Integer
   overload: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*
+  implements:
+  - TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+- uid: TMPEffects.Components.Animator.SegmentData.#ctor(TMPEffects.Tags.TMPEffectTagIndices,System.Collections.Generic.IList{TMPEffects.CharacterData.CharData},System.Predicate{System.Char})
+  commentId: M:TMPEffects.Components.Animator.SegmentData.#ctor(TMPEffects.Tags.TMPEffectTagIndices,System.Collections.Generic.IList{TMPEffects.CharacterData.CharData},System.Predicate{System.Char})
+  id: '#ctor(TMPEffects.Tags.TMPEffectTagIndices,System.Collections.Generic.IList{TMPEffects.CharacterData.CharData},System.Predicate{System.Char})'
+  parent: TMPEffects.Components.Animator.SegmentData
+  langs:
+  - csharp
+  - vb
+  name: SegmentData(TMPEffectTagIndices, IList<CharData>, Predicate<char>)
+  nameWithType: SegmentData.SegmentData(TMPEffectTagIndices, IList<CharData>, Predicate<char>)
+  fullName: TMPEffects.Components.Animator.SegmentData.SegmentData(TMPEffects.Tags.TMPEffectTagIndices, System.Collections.Generic.IList<TMPEffects.CharacterData.CharData>, System.Predicate<char>)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Components/TMPAnimator/SegmentData.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Components/TMPAnimator/SegmentData.cs
+    startLine: 134
+  namespace: TMPEffects.Components.Animator
+  syntax:
+    content: public SegmentData(TMPEffectTagIndices indices, IList<CharData> cData, Predicate<char> animates)
+    parameters:
+    - id: indices
+      type: TMPEffects.Tags.TMPEffectTagIndices
+    - id: cData
+      type: System.Collections.Generic.IList{TMPEffects.CharacterData.CharData}
+    - id: animates
+      type: System.Predicate{System.Char}
+    content.vb: Public Sub New(indices As TMPEffectTagIndices, cData As IList(Of CharData), animates As Predicate(Of Char))
+  overload: TMPEffects.Components.Animator.SegmentData.#ctor*
+  nameWithType.vb: SegmentData.New(TMPEffectTagIndices, IList(Of CharData), Predicate(Of Char))
+  fullName.vb: TMPEffects.Components.Animator.SegmentData.New(TMPEffects.Tags.TMPEffectTagIndices, System.Collections.Generic.IList(Of TMPEffects.CharacterData.CharData), System.Predicate(Of Char))
+  name.vb: New(TMPEffectTagIndices, IList(Of CharData), Predicate(Of Char))
 references:
 - uid: TMPEffects.Components.TMPAnimator
   commentId: T:TMPEffects.Components.TMPAnimator
@@ -355,6 +467,12 @@ references:
   name: TMPAnimator
   nameWithType: TMPAnimator
   fullName: TMPEffects.Components.TMPAnimator
+- uid: TMPEffects.Components.Animator.SegmentData.CharInfo
+  commentId: P:TMPEffects.Components.Animator.SegmentData.CharInfo
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_CharInfo
+  name: CharInfo
+  nameWithType: SegmentData.CharInfo
+  fullName: TMPEffects.Components.Animator.SegmentData.CharInfo
 - uid: TMPEffects.Components.Animator
   commentId: N:TMPEffects.Components.Animator
   href: TMPEffects.html
@@ -385,6 +503,13 @@ references:
   - uid: TMPEffects.Components.Animator
     name: Animator
     href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.Components.Animator.ITMPSegmentData
+  commentId: T:TMPEffects.Components.Animator.ITMPSegmentData
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  name: ITMPSegmentData
+  nameWithType: ITMPSegmentData
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData
 - uid: System.ValueType.Equals(System.Object)
   commentId: M:System.ValueType.Equals(System.Object)
   parent: System.ValueType
@@ -624,6 +749,19 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: TMPEffects.Components.Animator.SegmentData.StartIndex*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.StartIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_StartIndex
+  name: StartIndex
+  nameWithType: SegmentData.StartIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.StartIndex
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.StartIndex
+  commentId: P:TMPEffects.Components.Animator.ITMPSegmentData.StartIndex
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_StartIndex
+  name: StartIndex
+  nameWithType: ITMPSegmentData.StartIndex
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.StartIndex
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -635,6 +773,32 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: TMPEffects.Components.Animator.SegmentData.Length*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.Length
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_Length
+  name: Length
+  nameWithType: SegmentData.Length
+  fullName: TMPEffects.Components.Animator.SegmentData.Length
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.Length
+  commentId: P:TMPEffects.Components.Animator.ITMPSegmentData.Length
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_Length
+  name: Length
+  nameWithType: ITMPSegmentData.Length
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.Length
+- uid: TMPEffects.Components.Animator.SegmentData.EndIndex*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.EndIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_EndIndex
+  name: EndIndex
+  nameWithType: SegmentData.EndIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.EndIndex
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.EndIndex
+  commentId: P:TMPEffects.Components.Animator.ITMPSegmentData.EndIndex
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_EndIndex
+  name: EndIndex
+  nameWithType: ITMPSegmentData.EndIndex
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.EndIndex
 - uid: TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
   commentId: F:TMPEffects.Components.Animator.SegmentData.firstAnimationIndex
   href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_firstAnimationIndex
@@ -647,30 +811,83 @@ references:
   name: lastAnimationIndex
   nameWithType: SegmentData.lastAnimationIndex
   fullName: TMPEffects.Components.Animator.SegmentData.lastAnimationIndex
-- uid: Global.Vector3
-  isExternal: true
-  name: Vector3
-  nameWithType: Vector3
-  fullName: Vector3
-- uid: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*
-  commentId: Overload:TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
-  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_
-  name: IndexToSegmentIndex
-  nameWithType: SegmentData.IndexToSegmentIndex
-  fullName: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
-- uid: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*
-  commentId: Overload:TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
-  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
-  name: SegmentIndexOf
-  nameWithType: SegmentData.SegmentIndexOf
-  fullName: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
-- uid: TMPEffects.CharacterData.CharData
-  commentId: T:TMPEffects.CharacterData.CharData
+- uid: TMPEffects.CharacterData.CharData.Info
+  commentId: T:TMPEffects.CharacterData.CharData.Info
   parent: TMPEffects.CharacterData
   href: TMPEffects.CharacterData.CharData.html
-  name: CharData
-  nameWithType: CharData
-  fullName: TMPEffects.CharacterData.CharData
+  name: CharData.Info
+  nameWithType: CharData.Info
+  fullName: TMPEffects.CharacterData.CharData.Info
+  spec.csharp:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  spec.vb:
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+- uid: TMPEffects.Components.Animator.SegmentData.CharInfo*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.CharInfo
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_CharInfo
+  name: CharInfo
+  nameWithType: SegmentData.CharInfo
+  fullName: TMPEffects.Components.Animator.SegmentData.CharInfo
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.CharInfo
+  commentId: P:TMPEffects.Components.Animator.ITMPSegmentData.CharInfo
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_CharInfo
+  name: CharInfo
+  nameWithType: ITMPSegmentData.CharInfo
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.CharInfo
+- uid: System.Collections.Generic.IEnumerable{TMPEffects.CharacterData.CharData.Info}
+  commentId: T:System.Collections.Generic.IEnumerable{TMPEffects.CharacterData.CharData.Info}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<CharData.Info>
+  nameWithType: IEnumerable<CharData.Info>
+  fullName: System.Collections.Generic.IEnumerable<TMPEffects.CharacterData.CharData.Info>
+  nameWithType.vb: IEnumerable(Of CharData.Info)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TMPEffects.CharacterData.CharData.Info)
+  name.vb: IEnumerable(Of CharData.Info)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: .
+  - uid: TMPEffects.CharacterData.CharData.Info
+    name: Info
+    href: TMPEffects.CharacterData.CharData.Info.html
+  - name: )
 - uid: TMPEffects.CharacterData
   commentId: N:TMPEffects.CharacterData
   href: TMPEffects.html
@@ -693,3 +910,342 @@ references:
   - uid: TMPEffects.CharacterData
     name: CharacterData
     href: TMPEffects.CharacterData.html
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Components.Animator.SegmentData.GetCharInfo*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.GetCharInfo
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_GetCharInfo_System_Int32_
+  name: GetCharInfo
+  nameWithType: SegmentData.GetCharInfo
+  fullName: TMPEffects.Components.Animator.SegmentData.GetCharInfo
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(System.Int32)
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  isExternal: true
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_GetCharInfo_System_Int32_
+  name: GetCharInfo(int)
+  nameWithType: ITMPSegmentData.GetCharInfo(int)
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(int)
+  nameWithType.vb: ITMPSegmentData.GetCharInfo(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(Integer)
+  name.vb: GetCharInfo(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(System.Int32)
+    name: GetCharInfo
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_GetCharInfo_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.GetCharInfo(System.Int32)
+    name: GetCharInfo
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_GetCharInfo_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_IndexToSegmentIndex_System_Int32_
+  name: IndexToSegmentIndex
+  nameWithType: SegmentData.IndexToSegmentIndex
+  fullName: TMPEffects.Components.Animator.SegmentData.IndexToSegmentIndex
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(System.Int32)
+  commentId: M:TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(System.Int32)
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  isExternal: true
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_IndexToSegmentIndex_System_Int32_
+  name: IndexToSegmentIndex(int)
+  nameWithType: ITMPSegmentData.IndexToSegmentIndex(int)
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(int)
+  nameWithType.vb: ITMPSegmentData.IndexToSegmentIndex(Integer)
+  fullName.vb: TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(Integer)
+  name.vb: IndexToSegmentIndex(Integer)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(System.Int32)
+    name: IndexToSegmentIndex
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_IndexToSegmentIndex_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.IndexToSegmentIndex(System.Int32)
+    name: IndexToSegmentIndex
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_IndexToSegmentIndex_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
+  name: SegmentIndexOf
+  nameWithType: SegmentData.SegmentIndexOf
+  fullName: TMPEffects.Components.Animator.SegmentData.SegmentIndexOf
+- uid: TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  commentId: M:TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  parent: TMPEffects.Components.Animator.ITMPSegmentData
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
+  name: SegmentIndexOf(CharData)
+  nameWithType: ITMPSegmentData.SegmentIndexOf(CharData)
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+  spec.csharp:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+    name: SegmentIndexOf
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+  spec.vb:
+  - uid: TMPEffects.Components.Animator.ITMPSegmentData.SegmentIndexOf(TMPEffects.CharacterData.CharData)
+    name: SegmentIndexOf
+    href: TMPEffects.Components.Animator.ITMPSegmentData.html#TMPEffects_Components_Animator_ITMPSegmentData_SegmentIndexOf_TMPEffects_CharacterData_CharData_
+  - name: (
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: TMPEffects.Components.Animator.SegmentData.#ctor*
+  commentId: Overload:TMPEffects.Components.Animator.SegmentData.#ctor
+  href: TMPEffects.Components.Animator.SegmentData.html#TMPEffects_Components_Animator_SegmentData__ctor_TMPEffects_Tags_TMPEffectTagIndices_System_Collections_Generic_IList_TMPEffects_CharacterData_CharData__System_Predicate_System_Char__
+  name: SegmentData
+  nameWithType: SegmentData.SegmentData
+  fullName: TMPEffects.Components.Animator.SegmentData.SegmentData
+  nameWithType.vb: SegmentData.New
+  fullName.vb: TMPEffects.Components.Animator.SegmentData.New
+  name.vb: New
+- uid: TMPEffects.Tags.TMPEffectTagIndices
+  commentId: T:TMPEffects.Tags.TMPEffectTagIndices
+  parent: TMPEffects.Tags
+  href: TMPEffects.Tags.TMPEffectTagIndices.html
+  name: TMPEffectTagIndices
+  nameWithType: TMPEffectTagIndices
+  fullName: TMPEffects.Tags.TMPEffectTagIndices
+- uid: System.Collections.Generic.IList{TMPEffects.CharacterData.CharData}
+  commentId: T:System.Collections.Generic.IList{TMPEffects.CharacterData.CharData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<CharData>
+  nameWithType: IList<CharData>
+  fullName: System.Collections.Generic.IList<TMPEffects.CharacterData.CharData>
+  nameWithType.vb: IList(Of CharData)
+  fullName.vb: System.Collections.Generic.IList(Of TMPEffects.CharacterData.CharData)
+  name.vb: IList(Of CharData)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: TMPEffects.CharacterData.CharData
+    name: CharData
+    href: TMPEffects.CharacterData.CharData.html
+  - name: )
+- uid: System.Predicate{System.Char}
+  commentId: T:System.Predicate{System.Char}
+  parent: System
+  definition: System.Predicate`1
+  href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  name: Predicate<char>
+  nameWithType: Predicate<char>
+  fullName: System.Predicate<char>
+  nameWithType.vb: Predicate(Of Char)
+  fullName.vb: System.Predicate(Of Char)
+  name.vb: Predicate(Of Char)
+  spec.csharp:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '>'
+  spec.vb:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: TMPEffects.Tags
+  commentId: N:TMPEffects.Tags
+  href: TMPEffects.html
+  name: TMPEffects.Tags
+  nameWithType: TMPEffects.Tags
+  fullName: TMPEffects.Tags
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Tags
+    name: Tags
+    href: TMPEffects.Tags.html
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Predicate`1
+  commentId: T:System.Predicate`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  name: Predicate<T>
+  nameWithType: Predicate<T>
+  fullName: System.Predicate<T>
+  nameWithType.vb: Predicate(Of T)
+  fullName.vb: System.Predicate(Of T)
+  name.vb: Predicate(Of T)
+  spec.csharp:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Predicate`1
+    name: Predicate
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.predicate-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

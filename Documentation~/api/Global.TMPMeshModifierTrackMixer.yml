@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPMeshModifierTrackMixer
+  commentId: T:Global.TMPMeshModifierTrackMixer
+  id: TMPMeshModifierTrackMixer
+  parent: Global
+  children:
+  - Global.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  - Global.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifierTrackMixer
+  nameWithType: TMPMeshModifierTrackMixer
+  fullName: TMPMeshModifierTrackMixer
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPMeshModifierTrackMixer
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 9
+  namespace: Global
+  syntax:
+    content: 'public class TMPMeshModifierTrackMixer : PlayableBehaviour'
+    content.vb: Public Class TMPMeshModifierTrackMixer Inherits PlayableBehaviour
+  inheritance:
+  - System.Object
+- uid: Global.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  commentId: M:Global.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  id: OnBehaviourPause(Playable,FrameData)
+  parent: Global.TMPMeshModifierTrackMixer
+  langs:
+  - csharp
+  - vb
+  name: OnBehaviourPause(Playable, FrameData)
+  nameWithType: TMPMeshModifierTrackMixer.OnBehaviourPause(Playable, FrameData)
+  fullName: TMPMeshModifierTrackMixer.OnBehaviourPause(Playable, FrameData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnBehaviourPause
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 23
+  namespace: Global
+  example: []
+  syntax:
+    content: public override void OnBehaviourPause(Playable playable, FrameData info)
+    parameters:
+    - id: playable
+      type: Global.Playable
+    - id: info
+      type: Global.FrameData
+    content.vb: Public Overrides Sub OnBehaviourPause(playable As Playable, info As FrameData)
+  overload: Global.TMPMeshModifierTrackMixer.OnBehaviourPause*
+- uid: Global.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  commentId: M:Global.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  id: ProcessFrame(Playable,FrameData,System.Object)
+  parent: Global.TMPMeshModifierTrackMixer
+  langs:
+  - csharp
+  - vb
+  name: ProcessFrame(Playable, FrameData, object)
+  nameWithType: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, object)
+  fullName: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ProcessFrame
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 30
+  namespace: Global
+  example: []
+  syntax:
+    content: public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+    parameters:
+    - id: playable
+      type: Global.Playable
+    - id: info
+      type: Global.FrameData
+    - id: playerData
+      type: System.Object
+    content.vb: Public Overrides Sub ProcessFrame(playable As Playable, info As FrameData, playerData As Object)
+  overload: Global.TMPMeshModifierTrackMixer.ProcessFrame*
+  nameWithType.vb: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, Object)
+  fullName.vb: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, Object)
+  name.vb: ProcessFrame(Playable, FrameData, Object)
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPMeshModifierTrackMixer.OnBehaviourPause*
+  commentId: Overload:Global.TMPMeshModifierTrackMixer.OnBehaviourPause
+  href: Global.TMPMeshModifierTrackMixer.html#TMPMeshModifierTrackMixer_OnBehaviourPause_Playable_FrameData_
+  name: OnBehaviourPause
+  nameWithType: TMPMeshModifierTrackMixer.OnBehaviourPause
+  fullName: TMPMeshModifierTrackMixer.OnBehaviourPause
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable
+- uid: Global.FrameData
+  isExternal: true
+  name: FrameData
+  nameWithType: FrameData
+  fullName: FrameData
+- uid: Global.TMPMeshModifierTrackMixer.ProcessFrame*
+  commentId: Overload:Global.TMPMeshModifierTrackMixer.ProcessFrame
+  href: Global.TMPMeshModifierTrackMixer.html#TMPMeshModifierTrackMixer_ProcessFrame_Playable_FrameData_System_Object_
+  name: ProcessFrame
+  nameWithType: TMPMeshModifierTrackMixer.ProcessFrame
+  fullName: TMPMeshModifierTrackMixer.ProcessFrame

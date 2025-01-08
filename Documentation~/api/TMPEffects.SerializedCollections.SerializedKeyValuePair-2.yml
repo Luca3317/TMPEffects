@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SerializedKeyValuePair
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
     startLine: 6
@@ -64,8 +64,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Key
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
     startLine: 9
@@ -91,8 +91,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Value
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
     startLine: 10
@@ -118,8 +118,8 @@ items:
   source:
     remote:
       path: Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/SerializedDictionary/Runtime/Scripts/SerializedKeyValuePair.cs
     startLine: 12

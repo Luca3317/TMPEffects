@@ -1,0 +1,121 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPMeshModifierBehaviour
+  commentId: T:Global.TMPMeshModifierBehaviour
+  id: TMPMeshModifierBehaviour
+  parent: Global
+  children:
+  - Global.TMPMeshModifierBehaviour.Clip
+  - Global.TMPMeshModifierBehaviour.Step
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifierBehaviour
+  nameWithType: TMPMeshModifierBehaviour
+  fullName: TMPMeshModifierBehaviour
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPMeshModifierBehaviour
+    path: ../Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+    startLine: 9
+  namespace: Global
+  syntax:
+    content: 'public class TMPMeshModifierBehaviour : PlayableBehaviour'
+    content.vb: Public Class TMPMeshModifierBehaviour Inherits PlayableBehaviour
+  inheritance:
+  - System.Object
+- uid: Global.TMPMeshModifierBehaviour.Step
+  commentId: F:Global.TMPMeshModifierBehaviour.Step
+  id: Step
+  parent: Global.TMPMeshModifierBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Step
+  nameWithType: TMPMeshModifierBehaviour.Step
+  fullName: TMPMeshModifierBehaviour.Step
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Step
+    path: ../Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+    startLine: 11
+  namespace: Global
+  syntax:
+    content: public TimelineAnimationStep Step
+    return:
+      type: Global.TimelineAnimationStep
+    content.vb: Public [Step] As TimelineAnimationStep
+- uid: Global.TMPMeshModifierBehaviour.Clip
+  commentId: F:Global.TMPMeshModifierBehaviour.Clip
+  id: Clip
+  parent: Global.TMPMeshModifierBehaviour
+  langs:
+  - csharp
+  - vb
+  name: Clip
+  nameWithType: TMPMeshModifierBehaviour.Clip
+  fullName: TMPMeshModifierBehaviour.Clip
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Clip
+    path: ../Package/Runtime/Timeline/Behaviors/TMPMeshModifierBehaviour.cs
+    startLine: 12
+  namespace: Global
+  syntax:
+    content: >-
+      [NonSerialized]
+
+      public TimelineClip Clip
+    return:
+      type: Global.TimelineClip
+    content.vb: >-
+      <NonSerialized>
+
+      Public Clip As TimelineClip
+  attributes:
+  - type: System.NonSerializedAttribute
+    ctor: System.NonSerializedAttribute.#ctor
+    arguments: []
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TimelineAnimationStep
+  commentId: T:Global.TimelineAnimationStep
+  href: TimelineAnimationStep.html
+  name: TimelineAnimationStep
+  nameWithType: TimelineAnimationStep
+  fullName: TimelineAnimationStep
+- uid: Global.TimelineClip
+  isExternal: true
+  name: TimelineClip
+  nameWithType: TimelineClip
+  fullName: TimelineClip

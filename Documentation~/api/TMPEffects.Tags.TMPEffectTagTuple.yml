@@ -19,8 +19,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTagTuple.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectTagTuple
     path: ../Package/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 7
@@ -28,7 +28,7 @@ items:
   summary: Readonly struct that combines an <xref href="TMPEffects.Tags.TMPEffectTag" data-throw-if-not-resolved="false"></xref> and an <xref href="TMPEffects.Tags.TMPEffectTagIndices" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: 'public struct TMPEffectTagTuple : IEquatable<TMPEffectTagTuple>'
+    content: 'public readonly struct TMPEffectTagTuple : IEquatable<TMPEffectTagTuple>'
     content.vb: Public Structure TMPEffectTagTuple Implements IEquatable(Of TMPEffectTagTuple)
   implements:
   - System.IEquatable{TMPEffects.Tags.TMPEffectTagTuple}
@@ -53,8 +53,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTagTuple.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Tag
     path: ../Package/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 12
@@ -80,8 +80,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTagTuple.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Indices
     path: ../Package/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 16
@@ -107,8 +107,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTagTuple.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 18
@@ -139,8 +139,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TMPEffectTagTuple.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Equals
     path: ../Package/Runtime/Tags/TMPEffectTagTuple.cs
     startLine: 24

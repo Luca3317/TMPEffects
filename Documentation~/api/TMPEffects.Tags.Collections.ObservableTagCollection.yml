@@ -25,8 +25,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObservableTagCollection
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 9
@@ -82,8 +82,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 11
@@ -114,8 +114,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 13
@@ -144,8 +144,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CollectionChanged
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 19
@@ -173,8 +173,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: InvokeEvent
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 21
@@ -200,8 +200,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 27
@@ -237,8 +237,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 46
@@ -286,8 +286,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 94
@@ -323,8 +323,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 120
@@ -366,8 +366,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 141
@@ -409,8 +409,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
     path: ../Package/Runtime/Tags/TagCollection/ObservableTagCollection.cs
     startLine: 185

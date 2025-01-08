@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPEvents/TMPEvent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEvent
     path: ../Package/Runtime/Effects/TMPEvents/TMPEvent.cs
     startLine: 8
@@ -53,8 +53,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPEvents/TMPEvent.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Effects/TMPEvents/TMPEvent.cs
     startLine: 11

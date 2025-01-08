@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.ColorOverride.OverrideMode
+  commentId: T:Global.ColorOverride.OverrideMode
+  id: ColorOverride.OverrideMode
+  parent: Global
+  children:
+  - Global.ColorOverride.OverrideMode.Alpha
+  - Global.ColorOverride.OverrideMode.Color
+  - Global.ColorOverride.OverrideMode.None
+  langs:
+  - csharp
+  - vb
+  name: ColorOverride.OverrideMode
+  nameWithType: ColorOverride.OverrideMode
+  fullName: ColorOverride.OverrideMode
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OverrideMode
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 47
+  namespace: Global
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum ColorOverride.OverrideMode : byte
+    content.vb: >-
+      <Flags>
+
+      Public Enum ColorOverride.OverrideMode As Byte
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Global.ColorOverride.OverrideMode.None
+  commentId: F:Global.ColorOverride.OverrideMode.None
+  id: None
+  parent: Global.ColorOverride.OverrideMode
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ColorOverride.OverrideMode.None
+  fullName: ColorOverride.OverrideMode.None
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: None
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 50
+  namespace: Global
+  syntax:
+    content: None = 0
+    return:
+      type: Global.ColorOverride.OverrideMode
+- uid: Global.ColorOverride.OverrideMode.Color
+  commentId: F:Global.ColorOverride.OverrideMode.Color
+  id: Color
+  parent: Global.ColorOverride.OverrideMode
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: ColorOverride.OverrideMode.Color
+  fullName: ColorOverride.OverrideMode.Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 51
+  namespace: Global
+  syntax:
+    content: Color = 1
+    return:
+      type: Global.ColorOverride.OverrideMode
+- uid: Global.ColorOverride.OverrideMode.Alpha
+  commentId: F:Global.ColorOverride.OverrideMode.Alpha
+  id: Alpha
+  parent: Global.ColorOverride.OverrideMode
+  langs:
+  - csharp
+  - vb
+  name: Alpha
+  nameWithType: ColorOverride.OverrideMode.Alpha
+  fullName: ColorOverride.OverrideMode.Alpha
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Alpha
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 52
+  namespace: Global
+  syntax:
+    content: Alpha = 2
+    return:
+      type: Global.ColorOverride.OverrideMode
+references:
+- uid: Global
+- uid: Global.ColorOverride.OverrideMode
+  commentId: T:Global.ColorOverride.OverrideMode
+  href: ColorOverride.html
+  name: ColorOverride.OverrideMode
+  nameWithType: ColorOverride.OverrideMode
+  fullName: ColorOverride.OverrideMode
+  spec.csharp:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html
+  spec.vb:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html

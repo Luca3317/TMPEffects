@@ -23,8 +23,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimationDatabase
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 11
@@ -59,8 +59,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BasicAnimationDatabase
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 17
@@ -88,8 +88,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowAnimationDatabase
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 21
@@ -117,8 +117,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: HideAnimationDatabase
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 25
@@ -146,8 +146,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 37
@@ -185,8 +185,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 57
@@ -222,8 +222,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 73
@@ -268,8 +268,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
     startLine: 95
@@ -312,11 +312,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPAnimationDatabase.cs
-    startLine: 110
+    startLine: 107
   namespace: TMPEffects.Databases.AnimationDatabase
   example: []
   syntax:

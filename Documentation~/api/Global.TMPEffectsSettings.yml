@@ -1,0 +1,339 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPEffectsSettings
+  commentId: T:Global.TMPEffectsSettings
+  id: TMPEffectsSettings
+  parent: Global
+  children:
+  - Global.TMPEffectsSettings.DefaultAnimationDatabase
+  - Global.TMPEffectsSettings.DefaultCommandDatabase
+  - Global.TMPEffectsSettings.DefaultKeywordDatabase
+  - Global.TMPEffectsSettings.GlobalKeywordDatabase
+  - Global.TMPEffectsSettings.Instance
+  langs:
+  - csharp
+  - vb
+  name: TMPEffectsSettings
+  nameWithType: TMPEffectsSettings
+  fullName: TMPEffectsSettings
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPEffectsSettings
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 9
+  namespace: Global
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class TMPEffectsSettings : ScriptableObject
+    content.vb: >-
+      <Serializable>
+
+      Public Class TMPEffectsSettings Inherits ScriptableObject
+  inheritance:
+  - System.Object
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Global.TMPEffectsSettings.Instance
+  commentId: P:Global.TMPEffectsSettings.Instance
+  id: Instance
+  parent: Global.TMPEffectsSettings
+  langs:
+  - csharp
+  - vb
+  name: Instance
+  nameWithType: TMPEffectsSettings.Instance
+  fullName: TMPEffectsSettings.Instance
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Instance
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 19
+  namespace: Global
+  summary: Get a singleton instance of the settings class.
+  example: []
+  syntax:
+    content: public static TMPEffectsSettings Instance { get; }
+    parameters: []
+    return:
+      type: Global.TMPEffectsSettings
+    content.vb: Public Shared ReadOnly Property Instance As TMPEffectsSettings
+  overload: Global.TMPEffectsSettings.Instance*
+- uid: Global.TMPEffectsSettings.DefaultAnimationDatabase
+  commentId: P:Global.TMPEffectsSettings.DefaultAnimationDatabase
+  id: DefaultAnimationDatabase
+  parent: Global.TMPEffectsSettings
+  langs:
+  - csharp
+  - vb
+  name: DefaultAnimationDatabase
+  nameWithType: TMPEffectsSettings.DefaultAnimationDatabase
+  fullName: TMPEffectsSettings.DefaultAnimationDatabase
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: DefaultAnimationDatabase
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 42
+  namespace: Global
+  syntax:
+    content: public static TMPAnimationDatabase DefaultAnimationDatabase { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+    content.vb: Public Shared ReadOnly Property DefaultAnimationDatabase As TMPAnimationDatabase
+  overload: Global.TMPEffectsSettings.DefaultAnimationDatabase*
+- uid: Global.TMPEffectsSettings.DefaultCommandDatabase
+  commentId: P:Global.TMPEffectsSettings.DefaultCommandDatabase
+  id: DefaultCommandDatabase
+  parent: Global.TMPEffectsSettings
+  langs:
+  - csharp
+  - vb
+  name: DefaultCommandDatabase
+  nameWithType: TMPEffectsSettings.DefaultCommandDatabase
+  fullName: TMPEffectsSettings.DefaultCommandDatabase
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: DefaultCommandDatabase
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 43
+  namespace: Global
+  syntax:
+    content: public static TMPCommandDatabase DefaultCommandDatabase { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+    content.vb: Public Shared ReadOnly Property DefaultCommandDatabase As TMPCommandDatabase
+  overload: Global.TMPEffectsSettings.DefaultCommandDatabase*
+- uid: Global.TMPEffectsSettings.DefaultKeywordDatabase
+  commentId: P:Global.TMPEffectsSettings.DefaultKeywordDatabase
+  id: DefaultKeywordDatabase
+  parent: Global.TMPEffectsSettings
+  langs:
+  - csharp
+  - vb
+  name: DefaultKeywordDatabase
+  nameWithType: TMPEffectsSettings.DefaultKeywordDatabase
+  fullName: TMPEffectsSettings.DefaultKeywordDatabase
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: DefaultKeywordDatabase
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 48
+  namespace: Global
+  syntax:
+    content: public static TMPKeywordDatabase DefaultKeywordDatabase { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.TMPKeywordDatabase
+    content.vb: Public Shared ReadOnly Property DefaultKeywordDatabase As TMPKeywordDatabase
+  overload: Global.TMPEffectsSettings.DefaultKeywordDatabase*
+- uid: Global.TMPEffectsSettings.GlobalKeywordDatabase
+  commentId: P:Global.TMPEffectsSettings.GlobalKeywordDatabase
+  id: GlobalKeywordDatabase
+  parent: Global.TMPEffectsSettings
+  langs:
+  - csharp
+  - vb
+  name: GlobalKeywordDatabase
+  nameWithType: TMPEffectsSettings.GlobalKeywordDatabase
+  fullName: TMPEffectsSettings.GlobalKeywordDatabase
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/TMPEffectsSettings.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GlobalKeywordDatabase
+    path: ../Package/Runtime/TMPEffectsSettings.cs
+    startLine: 52
+  namespace: Global
+  syntax:
+    content: public static TMPKeywordDatabase GlobalKeywordDatabase { get; }
+    parameters: []
+    return:
+      type: TMPEffects.Databases.TMPKeywordDatabase
+    content.vb: Public Shared ReadOnly Property GlobalKeywordDatabase As TMPKeywordDatabase
+  overload: Global.TMPEffectsSettings.GlobalKeywordDatabase*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPEffectsSettings.Instance*
+  commentId: Overload:Global.TMPEffectsSettings.Instance
+  href: Global.TMPEffectsSettings.html#TMPEffectsSettings_Instance
+  name: Instance
+  nameWithType: TMPEffectsSettings.Instance
+  fullName: TMPEffectsSettings.Instance
+- uid: Global.TMPEffectsSettings
+  commentId: T:Global.TMPEffectsSettings
+  href: TMPEffectsSettings.html
+  name: TMPEffectsSettings
+  nameWithType: TMPEffectsSettings
+  fullName: TMPEffectsSettings
+- uid: Global.TMPEffectsSettings.DefaultAnimationDatabase*
+  commentId: Overload:Global.TMPEffectsSettings.DefaultAnimationDatabase
+  href: Global.TMPEffectsSettings.html#TMPEffectsSettings_DefaultAnimationDatabase
+  name: DefaultAnimationDatabase
+  nameWithType: TMPEffectsSettings.DefaultAnimationDatabase
+  fullName: TMPEffectsSettings.DefaultAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  commentId: T:TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+  parent: TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase.html
+  name: TMPAnimationDatabase
+  nameWithType: TMPAnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase.TMPAnimationDatabase
+- uid: TMPEffects.Databases.AnimationDatabase
+  commentId: N:TMPEffects.Databases.AnimationDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.AnimationDatabase
+  nameWithType: TMPEffects.Databases.AnimationDatabase
+  fullName: TMPEffects.Databases.AnimationDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.AnimationDatabase
+    name: AnimationDatabase
+    href: TMPEffects.Databases.AnimationDatabase.html
+- uid: Global.TMPEffectsSettings.DefaultCommandDatabase*
+  commentId: Overload:Global.TMPEffectsSettings.DefaultCommandDatabase
+  href: Global.TMPEffectsSettings.html#TMPEffectsSettings_DefaultCommandDatabase
+  name: DefaultCommandDatabase
+  nameWithType: TMPEffectsSettings.DefaultCommandDatabase
+  fullName: TMPEffectsSettings.DefaultCommandDatabase
+- uid: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+  commentId: T:TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+  parent: TMPEffects.Databases.CommandDatabase
+  href: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase.html
+  name: TMPCommandDatabase
+  nameWithType: TMPCommandDatabase
+  fullName: TMPEffects.Databases.CommandDatabase.TMPCommandDatabase
+- uid: TMPEffects.Databases.CommandDatabase
+  commentId: N:TMPEffects.Databases.CommandDatabase
+  href: TMPEffects.html
+  name: TMPEffects.Databases.CommandDatabase
+  nameWithType: TMPEffects.Databases.CommandDatabase
+  fullName: TMPEffects.Databases.CommandDatabase
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.CommandDatabase
+    name: CommandDatabase
+    href: TMPEffects.Databases.CommandDatabase.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  - name: .
+  - uid: TMPEffects.Databases.CommandDatabase
+    name: CommandDatabase
+    href: TMPEffects.Databases.CommandDatabase.html
+- uid: Global.TMPEffectsSettings.DefaultKeywordDatabase*
+  commentId: Overload:Global.TMPEffectsSettings.DefaultKeywordDatabase
+  href: Global.TMPEffectsSettings.html#TMPEffectsSettings_DefaultKeywordDatabase
+  name: DefaultKeywordDatabase
+  nameWithType: TMPEffectsSettings.DefaultKeywordDatabase
+  fullName: TMPEffectsSettings.DefaultKeywordDatabase
+- uid: TMPEffects.Databases.TMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.TMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.TMPKeywordDatabase.html
+  name: TMPKeywordDatabase
+  nameWithType: TMPKeywordDatabase
+  fullName: TMPEffects.Databases.TMPKeywordDatabase
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+- uid: Global.TMPEffectsSettings.GlobalKeywordDatabase*
+  commentId: Overload:Global.TMPEffectsSettings.GlobalKeywordDatabase
+  href: Global.TMPEffectsSettings.html#TMPEffectsSettings_GlobalKeywordDatabase
+  name: GlobalKeywordDatabase
+  nameWithType: TMPEffectsSettings.GlobalKeywordDatabase
+  fullName: TMPEffectsSettings.GlobalKeywordDatabase

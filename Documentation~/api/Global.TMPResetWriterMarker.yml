@@ -1,0 +1,234 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPResetWriterMarker
+  commentId: T:Global.TMPResetWriterMarker
+  id: TMPResetWriterMarker
+  parent: Global
+  children:
+  - Global.TMPResetWriterMarker.TextIndex
+  - Global.TMPResetWriterMarker.flags
+  - Global.TMPResetWriterMarker.id
+  langs:
+  - csharp
+  - vb
+  name: TMPResetWriterMarker
+  nameWithType: TMPResetWriterMarker
+  fullName: TMPResetWriterMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPResetWriterMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+    startLine: 7
+  namespace: Global
+  syntax:
+    content: 'public class TMPResetWriterMarker : TMPEffectsMarker, INotification, INotificationOptionProvider'
+    content.vb: Public Class TMPResetWriterMarker Inherits TMPEffectsMarker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  - Global.TMPEffectsMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+  inheritedMembers:
+  - Global.TMPEffectsMarker.retroactive
+  - Global.TMPEffectsMarker.triggerOnce
+  - Global.TMPEffectsMarker.triggerInEditMode
+- uid: Global.TMPResetWriterMarker.id
+  commentId: P:Global.TMPResetWriterMarker.id
+  id: id
+  parent: Global.TMPResetWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPResetWriterMarker.id
+  fullName: TMPResetWriterMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+    startLine: 11
+  namespace: Global
+  example: []
+  syntax:
+    content: public override PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public Overrides ReadOnly Property id As PropertyName
+  overridden: Global.TMPEffectsMarker.id
+  overload: Global.TMPResetWriterMarker.id*
+- uid: Global.TMPResetWriterMarker.flags
+  commentId: P:Global.TMPResetWriterMarker.flags
+  id: flags
+  parent: Global.TMPResetWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPResetWriterMarker.flags
+  fullName: TMPResetWriterMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+    startLine: 13
+  namespace: Global
+  example: []
+  syntax:
+    content: public override NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public Overrides ReadOnly Property flags As NotificationFlags
+  overridden: Global.TMPEffectsMarker.flags
+  overload: Global.TMPResetWriterMarker.flags*
+- uid: Global.TMPResetWriterMarker.TextIndex
+  commentId: P:Global.TMPResetWriterMarker.TextIndex
+  id: TextIndex
+  parent: Global.TMPResetWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: TextIndex
+  nameWithType: TMPResetWriterMarker.TextIndex
+  fullName: TMPResetWriterMarker.TextIndex
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TextIndex
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPResetWriterMarker.cs
+    startLine: 21
+  namespace: Global
+  syntax:
+    content: public int TextIndex { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TextIndex As Integer
+  overload: Global.TMPResetWriterMarker.TextIndex*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.TMPEffectsMarker
+  commentId: T:Global.TMPEffectsMarker
+  href: TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffectsMarker
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: Global.TMPEffectsMarker.retroactive
+  commentId: F:Global.TMPEffectsMarker.retroactive
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_retroactive
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffectsMarker.retroactive
+- uid: Global.TMPEffectsMarker.triggerOnce
+  commentId: F:Global.TMPEffectsMarker.triggerOnce
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerOnce
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffectsMarker.triggerOnce
+- uid: Global.TMPEffectsMarker.triggerInEditMode
+  commentId: F:Global.TMPEffectsMarker.triggerInEditMode
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerInEditMode
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffectsMarker.triggerInEditMode
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPEffectsMarker.id
+  commentId: P:Global.TMPEffectsMarker.id
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffectsMarker.id
+- uid: Global.TMPResetWriterMarker.id*
+  commentId: Overload:Global.TMPResetWriterMarker.id
+  href: Global.TMPResetWriterMarker.html#TMPResetWriterMarker_id
+  name: id
+  nameWithType: TMPResetWriterMarker.id
+  fullName: TMPResetWriterMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: Global.TMPEffectsMarker.flags
+  commentId: P:Global.TMPEffectsMarker.flags
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffectsMarker.flags
+- uid: Global.TMPResetWriterMarker.flags*
+  commentId: Overload:Global.TMPResetWriterMarker.flags
+  href: Global.TMPResetWriterMarker.html#TMPResetWriterMarker_flags
+  name: flags
+  nameWithType: TMPResetWriterMarker.flags
+  fullName: TMPResetWriterMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags
+- uid: Global.TMPResetWriterMarker.TextIndex*
+  commentId: Overload:Global.TMPResetWriterMarker.TextIndex
+  href: Global.TMPResetWriterMarker.html#TMPResetWriterMarker_TextIndex
+  name: TextIndex
+  nameWithType: TMPResetWriterMarker.TextIndex
+  fullName: TMPResetWriterMarker.TextIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

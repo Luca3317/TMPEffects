@@ -1,0 +1,443 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global
+  id: Global
+  children:
+  - Global.AnimationStep
+  - Global.AnimationStep.ExtrapolationMode
+  - Global.CharDataModifiers
+  - Global.ColorOverride
+  - Global.ColorOverride.OverrideMode
+  - Global.EditorFriendlyCharDataModifiers
+  - Global.EditorFriendlyRotation
+  - Global.GenericHideAnimation
+  - Global.GenericShowAnimation
+  - Global.PowerEnum`2
+  - Global.Rotation
+  - Global.TMPAnimationBehaviour
+  - Global.TMPAnimationClip
+  - Global.TMPAnimatorMarkReceiver
+  - Global.TMPAnimatorTrack
+  - Global.TMPAnimatorTrackMixer
+  - Global.TMPCharacterModifiers
+  - Global.TMPCharacterModifiers.ModifierFlags
+  - Global.TMPEffectsClip
+  - Global.TMPEffectsMarker
+  - Global.TMPEffectsSettings
+  - Global.TMPEffectsTrack
+  - Global.TMPMeshModifierBehaviour
+  - Global.TMPMeshModifierClip
+  - Global.TMPMeshModifierTrack
+  - Global.TMPMeshModifierTrackMixer
+  - Global.TMPMeshModifiers
+  - Global.TMPMeshModifiers.ModifierFlags
+  - Global.TMPResetAnimationsMarker
+  - Global.TMPResetTimeMarker
+  - Global.TMPResetWriterMarker
+  - Global.TMPRestartWriterMarker
+  - Global.TMPSetUpdateFromMarker
+  - Global.TMPSkipWriterMarker
+  - Global.TMPStartAnimatingMarker
+  - Global.TMPStartWriterMarker
+  - Global.TMPStopAnimatingMarker
+  - Global.TMPStopWriterMarker
+  - Global.TMPUpdateAnimationsMarker
+  - Global.TMPWriterMarkReceiver
+  - Global.TMPWriterResetWaitMarker
+  - Global.TMPWriterSetSkippableMarker
+  - Global.TMPWriterWaitMarker
+  - Global.TimelineAnimationStep
+  - Global.ValueOverride`1
+  - Global.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: ''
+  nameWithType: ''
+  fullName: ''
+  type: Namespace
+references:
+- uid: Global.TMPEffectsSettings
+  commentId: T:Global.TMPEffectsSettings
+  href: TMPEffectsSettings.html
+  name: TMPEffectsSettings
+  nameWithType: TMPEffectsSettings
+  fullName: TMPEffectsSettings
+- uid: Global.CharDataModifiers
+  commentId: T:Global.CharDataModifiers
+  href: CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: CharDataModifiers
+- uid: Global.ValueOverride`1
+  commentId: T:Global.ValueOverride`1
+  href: ValueOverride-1.html
+  name: ValueOverride<T>
+  nameWithType: ValueOverride<T>
+  fullName: ValueOverride<T>
+  nameWithType.vb: ValueOverride(Of T)
+  fullName.vb: ValueOverride(Of T)
+  name.vb: ValueOverride(Of T)
+  spec.csharp:
+  - uid: Global.ValueOverride`1
+    name: ValueOverride
+    href: ValueOverride-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Global.ValueOverride`1
+    name: ValueOverride
+    href: ValueOverride-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Global.ColorOverride
+  commentId: T:Global.ColorOverride
+  href: ColorOverride.html
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: ColorOverride
+- uid: Global.ColorOverride.OverrideMode
+  commentId: T:Global.ColorOverride.OverrideMode
+  href: ColorOverride.html
+  name: ColorOverride.OverrideMode
+  nameWithType: ColorOverride.OverrideMode
+  fullName: ColorOverride.OverrideMode
+  spec.csharp:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html
+  spec.vb:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html
+- uid: Global.EditorFriendlyRotation
+  commentId: T:Global.EditorFriendlyRotation
+  href: EditorFriendlyRotation.html
+  name: EditorFriendlyRotation
+  nameWithType: EditorFriendlyRotation
+  fullName: EditorFriendlyRotation
+- uid: Global.EditorFriendlyCharDataModifiers
+  commentId: T:Global.EditorFriendlyCharDataModifiers
+  href: EditorFriendlyCharDataModifiers.html
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers
+  fullName: EditorFriendlyCharDataModifiers
+- uid: Global.Rotation
+  commentId: T:Global.Rotation
+  href: Rotation.html
+  name: Rotation
+  nameWithType: Rotation
+  fullName: Rotation
+- uid: Global.TMPCharacterModifiers
+  commentId: T:Global.TMPCharacterModifiers
+  href: TMPCharacterModifiers.html
+  name: TMPCharacterModifiers
+  nameWithType: TMPCharacterModifiers
+  fullName: TMPCharacterModifiers
+- uid: Global.TMPCharacterModifiers.ModifierFlags
+  commentId: T:Global.TMPCharacterModifiers.ModifierFlags
+  href: TMPCharacterModifiers.html
+  name: TMPCharacterModifiers.ModifierFlags
+  nameWithType: TMPCharacterModifiers.ModifierFlags
+  fullName: TMPCharacterModifiers.ModifierFlags
+  spec.csharp:
+  - uid: Global.TMPCharacterModifiers
+    name: TMPCharacterModifiers
+    href: TMPCharacterModifiers.html
+  - name: .
+  - uid: Global.TMPCharacterModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPCharacterModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: Global.TMPCharacterModifiers
+    name: TMPCharacterModifiers
+    href: TMPCharacterModifiers.html
+  - name: .
+  - uid: Global.TMPCharacterModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPCharacterModifiers.ModifierFlags.html
+- uid: Global.TMPMeshModifiers
+  commentId: T:Global.TMPMeshModifiers
+  href: TMPMeshModifiers.html
+  name: TMPMeshModifiers
+  nameWithType: TMPMeshModifiers
+  fullName: TMPMeshModifiers
+- uid: Global.TMPMeshModifiers.ModifierFlags
+  commentId: T:Global.TMPMeshModifiers.ModifierFlags
+  href: TMPMeshModifiers.html
+  name: TMPMeshModifiers.ModifierFlags
+  nameWithType: TMPMeshModifiers.ModifierFlags
+  fullName: TMPMeshModifiers.ModifierFlags
+  spec.csharp:
+  - uid: Global.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPMeshModifiers.html
+  - name: .
+  - uid: Global.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPMeshModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: Global.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPMeshModifiers.html
+  - name: .
+  - uid: Global.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPMeshModifiers.ModifierFlags.html
+- uid: Global.Vector3Override
+  commentId: T:Global.Vector3Override
+  href: Vector3Override.html
+  name: Vector3Override
+  nameWithType: Vector3Override
+  fullName: Vector3Override
+- uid: Global.AnimationStep
+  commentId: T:Global.AnimationStep
+  href: AnimationStep.html
+  name: AnimationStep
+  nameWithType: AnimationStep
+  fullName: AnimationStep
+- uid: Global.AnimationStep.ExtrapolationMode
+  commentId: T:Global.AnimationStep.ExtrapolationMode
+  href: AnimationStep.html
+  name: AnimationStep.ExtrapolationMode
+  nameWithType: AnimationStep.ExtrapolationMode
+  fullName: AnimationStep.ExtrapolationMode
+  spec.csharp:
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: .
+  - uid: Global.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: AnimationStep.ExtrapolationMode.html
+  spec.vb:
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: .
+  - uid: Global.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: AnimationStep.ExtrapolationMode.html
+- uid: Global.GenericHideAnimation
+  commentId: T:Global.GenericHideAnimation
+  href: GenericHideAnimation.html
+  name: GenericHideAnimation
+  nameWithType: GenericHideAnimation
+  fullName: GenericHideAnimation
+- uid: Global.GenericShowAnimation
+  commentId: T:Global.GenericShowAnimation
+  href: GenericShowAnimation.html
+  name: GenericShowAnimation
+  nameWithType: GenericShowAnimation
+  fullName: GenericShowAnimation
+- uid: Global.PowerEnum`2
+  commentId: T:Global.PowerEnum`2
+  href: PowerEnum-2.html
+  name: PowerEnum<TEnum, TCustom>
+  nameWithType: PowerEnum<TEnum, TCustom>
+  fullName: PowerEnum<TEnum, TCustom>
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom)
+  fullName.vb: PowerEnum(Of TEnum, TCustom)
+  name.vb: PowerEnum(Of TEnum, TCustom)
+  spec.csharp:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: <
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: '>'
+  spec.vb:
+  - uid: Global.PowerEnum`2
+    name: PowerEnum
+    href: PowerEnum-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: )
+- uid: Global.TimelineAnimationStep
+  commentId: T:Global.TimelineAnimationStep
+  href: TimelineAnimationStep.html
+  name: TimelineAnimationStep
+  nameWithType: TimelineAnimationStep
+  fullName: TimelineAnimationStep
+- uid: Global.TMPEffectsClip
+  commentId: T:Global.TMPEffectsClip
+  href: TMPEffectsClip.html
+  name: TMPEffectsClip
+  nameWithType: TMPEffectsClip
+  fullName: TMPEffectsClip
+- uid: Global.TMPEffectsTrack
+  commentId: T:Global.TMPEffectsTrack
+  href: TMPEffectsTrack.html
+  name: TMPEffectsTrack
+  nameWithType: TMPEffectsTrack
+  fullName: TMPEffectsTrack
+- uid: Global.TMPAnimationBehaviour
+  commentId: T:Global.TMPAnimationBehaviour
+  href: TMPAnimationBehaviour.html
+  name: TMPAnimationBehaviour
+  nameWithType: TMPAnimationBehaviour
+  fullName: TMPAnimationBehaviour
+- uid: Global.TMPMeshModifierBehaviour
+  commentId: T:Global.TMPMeshModifierBehaviour
+  href: TMPMeshModifierBehaviour.html
+  name: TMPMeshModifierBehaviour
+  nameWithType: TMPMeshModifierBehaviour
+  fullName: TMPMeshModifierBehaviour
+- uid: Global.TMPAnimationClip
+  commentId: T:Global.TMPAnimationClip
+  href: TMPAnimationClip.html
+  name: TMPAnimationClip
+  nameWithType: TMPAnimationClip
+  fullName: TMPAnimationClip
+- uid: Global.TMPMeshModifierClip
+  commentId: T:Global.TMPMeshModifierClip
+  href: TMPMeshModifierClip.html
+  name: TMPMeshModifierClip
+  nameWithType: TMPMeshModifierClip
+  fullName: TMPMeshModifierClip
+- uid: Global.TMPEffectsMarker
+  commentId: T:Global.TMPEffectsMarker
+  href: TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffectsMarker
+- uid: Global.TMPAnimatorMarkReceiver
+  commentId: T:Global.TMPAnimatorMarkReceiver
+  href: TMPAnimatorMarkReceiver.html
+  name: TMPAnimatorMarkReceiver
+  nameWithType: TMPAnimatorMarkReceiver
+  fullName: TMPAnimatorMarkReceiver
+- uid: Global.TMPResetAnimationsMarker
+  commentId: T:Global.TMPResetAnimationsMarker
+  href: TMPResetAnimationsMarker.html
+  name: TMPResetAnimationsMarker
+  nameWithType: TMPResetAnimationsMarker
+  fullName: TMPResetAnimationsMarker
+- uid: Global.TMPResetTimeMarker
+  commentId: T:Global.TMPResetTimeMarker
+  href: TMPResetTimeMarker.html
+  name: TMPResetTimeMarker
+  nameWithType: TMPResetTimeMarker
+  fullName: TMPResetTimeMarker
+- uid: Global.TMPSetUpdateFromMarker
+  commentId: T:Global.TMPSetUpdateFromMarker
+  href: TMPSetUpdateFromMarker.html
+  name: TMPSetUpdateFromMarker
+  nameWithType: TMPSetUpdateFromMarker
+  fullName: TMPSetUpdateFromMarker
+- uid: Global.TMPStartAnimatingMarker
+  commentId: T:Global.TMPStartAnimatingMarker
+  href: TMPStartAnimatingMarker.html
+  name: TMPStartAnimatingMarker
+  nameWithType: TMPStartAnimatingMarker
+  fullName: TMPStartAnimatingMarker
+- uid: Global.TMPStopAnimatingMarker
+  commentId: T:Global.TMPStopAnimatingMarker
+  href: TMPStopAnimatingMarker.html
+  name: TMPStopAnimatingMarker
+  nameWithType: TMPStopAnimatingMarker
+  fullName: TMPStopAnimatingMarker
+- uid: Global.TMPUpdateAnimationsMarker
+  commentId: T:Global.TMPUpdateAnimationsMarker
+  href: TMPUpdateAnimationsMarker.html
+  name: TMPUpdateAnimationsMarker
+  nameWithType: TMPUpdateAnimationsMarker
+  fullName: TMPUpdateAnimationsMarker
+- uid: Global.TMPResetWriterMarker
+  commentId: T:Global.TMPResetWriterMarker
+  href: TMPResetWriterMarker.html
+  name: TMPResetWriterMarker
+  nameWithType: TMPResetWriterMarker
+  fullName: TMPResetWriterMarker
+- uid: Global.TMPRestartWriterMarker
+  commentId: T:Global.TMPRestartWriterMarker
+  href: TMPRestartWriterMarker.html
+  name: TMPRestartWriterMarker
+  nameWithType: TMPRestartWriterMarker
+  fullName: TMPRestartWriterMarker
+- uid: Global.TMPSkipWriterMarker
+  commentId: T:Global.TMPSkipWriterMarker
+  href: TMPSkipWriterMarker.html
+  name: TMPSkipWriterMarker
+  nameWithType: TMPSkipWriterMarker
+  fullName: TMPSkipWriterMarker
+- uid: Global.TMPStartWriterMarker
+  commentId: T:Global.TMPStartWriterMarker
+  href: TMPStartWriterMarker.html
+  name: TMPStartWriterMarker
+  nameWithType: TMPStartWriterMarker
+  fullName: TMPStartWriterMarker
+- uid: Global.TMPStopWriterMarker
+  commentId: T:Global.TMPStopWriterMarker
+  href: TMPStopWriterMarker.html
+  name: TMPStopWriterMarker
+  nameWithType: TMPStopWriterMarker
+  fullName: TMPStopWriterMarker
+- uid: Global.TMPWriterMarkReceiver
+  commentId: T:Global.TMPWriterMarkReceiver
+  href: TMPWriterMarkReceiver.html
+  name: TMPWriterMarkReceiver
+  nameWithType: TMPWriterMarkReceiver
+  fullName: TMPWriterMarkReceiver
+- uid: Global.TMPWriterResetWaitMarker
+  commentId: T:Global.TMPWriterResetWaitMarker
+  href: TMPWriterResetWaitMarker.html
+  name: TMPWriterResetWaitMarker
+  nameWithType: TMPWriterResetWaitMarker
+  fullName: TMPWriterResetWaitMarker
+- uid: Global.TMPWriterSetSkippableMarker
+  commentId: T:Global.TMPWriterSetSkippableMarker
+  href: TMPWriterSetSkippableMarker.html
+  name: TMPWriterSetSkippableMarker
+  nameWithType: TMPWriterSetSkippableMarker
+  fullName: TMPWriterSetSkippableMarker
+- uid: Global.TMPWriterWaitMarker
+  commentId: T:Global.TMPWriterWaitMarker
+  href: TMPWriterWaitMarker.html
+  name: TMPWriterWaitMarker
+  nameWithType: TMPWriterWaitMarker
+  fullName: TMPWriterWaitMarker
+- uid: Global.TMPAnimatorTrackMixer
+  commentId: T:Global.TMPAnimatorTrackMixer
+  href: TMPAnimatorTrackMixer.html
+  name: TMPAnimatorTrackMixer
+  nameWithType: TMPAnimatorTrackMixer
+  fullName: TMPAnimatorTrackMixer
+- uid: Global.TMPMeshModifierTrackMixer
+  commentId: T:Global.TMPMeshModifierTrackMixer
+  href: TMPMeshModifierTrackMixer.html
+  name: TMPMeshModifierTrackMixer
+  nameWithType: TMPMeshModifierTrackMixer
+  fullName: TMPMeshModifierTrackMixer
+- uid: Global.TMPAnimatorTrack
+  commentId: T:Global.TMPAnimatorTrack
+  href: TMPAnimatorTrack.html
+  name: TMPAnimatorTrack
+  nameWithType: TMPAnimatorTrack
+  fullName: TMPAnimatorTrack
+- uid: Global.TMPMeshModifierTrack
+  commentId: T:Global.TMPMeshModifierTrack
+  href: TMPMeshModifierTrack.html
+  name: TMPMeshModifierTrack
+  nameWithType: TMPMeshModifierTrack
+  fullName: TMPMeshModifierTrack

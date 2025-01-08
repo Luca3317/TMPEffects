@@ -18,8 +18,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimationType
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 8
@@ -46,8 +46,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Basic
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 14
@@ -75,8 +75,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Show
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 18
@@ -101,8 +101,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Hide
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimationType.cs
     startLine: 22

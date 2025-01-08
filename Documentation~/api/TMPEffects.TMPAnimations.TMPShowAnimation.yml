@@ -11,8 +11,8 @@ items:
   - TMPEffects.TMPAnimations.TMPShowAnimation.OnDestroy
   - TMPEffects.TMPAnimations.TMPShowAnimation.OnValidate
   - TMPEffects.TMPAnimations.TMPShowAnimation.RaiseObjectChanged
-  - TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
-  - TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  - TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  - TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
   langs:
   - csharp
   - vb
@@ -23,22 +23,24 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPShowAnimation
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 11
+    startLine: 12
   namespace: TMPEffects.TMPAnimations
   summary: Base class for all show animations.
   example: []
   syntax:
-    content: 'public abstract class TMPShowAnimation : ScriptableObject, ITMPAnimation, INotifyObjectChanged'
-    content.vb: Public MustInherit Class TMPShowAnimation Inherits ScriptableObject Implements ITMPAnimation, INotifyObjectChanged
+    content: 'public abstract class TMPShowAnimation : ScriptableObject, ITMPAnimation, ITMPParameterValidator, INotifyObjectChanged'
+    content.vb: Public MustInherit Class TMPShowAnimation Inherits ScriptableObject Implements ITMPAnimation, ITMPParameterValidator, INotifyObjectChanged
   inheritance:
   - System.Object
   derivedClasses:
+  - Global.GenericShowAnimation
   - TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject
   - TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
@@ -48,6 +50,7 @@ items:
   - TMPEffects.TMPAnimations.ShowAnimations.SpreadShowAnimation
   implements:
   - TMPEffects.TMPAnimations.ITMPAnimation
+  - TMPEffects.Parameters.ITMPParameterValidator
   - TMPEffects.ObjectChanged.INotifyObjectChanged
 - uid: TMPEffects.TMPAnimations.TMPShowAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
   commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
@@ -63,11 +66,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 14
+    startLine: 15
   namespace: TMPEffects.TMPAnimations
   summary: Animate the given character.
   example: []
@@ -84,30 +87,30 @@ items:
   overload: TMPEffects.TMPAnimations.TMPShowAnimation.Animate*
   implements:
   - TMPEffects.TMPAnimations.ITMPAnimation.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.IAnimationContext)
-- uid: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
-  id: SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.TMPAnimations.TMPShowAnimation
   langs:
   - csharp
   - vb
-  name: SetParameters(object, IDictionary<string, string>)
-  nameWithType: TMPShowAnimation.SetParameters(object, IDictionary<string, string>)
-  fullName: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>)
+  name: SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: TMPShowAnimation.SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 16
+    startLine: 17
   namespace: TMPEffects.TMPAnimations
   summary: Set the parameters for the animation.
   example: []
   syntax:
-    content: public abstract void SetParameters(object customData, IDictionary<string, string> parameters)
+    content: public abstract void SetParameters(object customData, IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
     parameters:
     - id: customData
       type: System.Object
@@ -115,54 +118,57 @@ items:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
       description: Parameters as key-value-pairs.
-    content.vb: Public MustOverride Sub SetParameters(customData As Object, parameters As IDictionary(Of String, String))
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values.
+    content.vb: Public MustOverride Sub SetParameters(customData As Object, parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase)
   overload: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters*
   implements:
-  - TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
-  nameWithType.vb: TMPShowAnimation.SetParameters(Object, IDictionary(Of String, String))
-  fullName.vb: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: SetParameters(Object, IDictionary(Of String, String))
-- uid: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  - TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: TMPShowAnimation.SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+- uid: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  id: ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.TMPAnimations.TMPShowAnimation
   langs:
   - csharp
   - vb
-  name: ValidateParameters(IDictionary<string, string>)
-  nameWithType: TMPShowAnimation.ValidateParameters(IDictionary<string, string>)
-  fullName: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: TMPShowAnimation.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
   type: Method
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 18
+    startLine: 20
   namespace: TMPEffects.TMPAnimations
-  summary: >-
-    Validate the parameters.<br />
-
-    Used to validate tags.
+  summary: Validate the given parameters.
   example: []
   syntax:
-    content: public abstract bool ValidateParameters(IDictionary<string, string> parameters)
+    content: public abstract bool ValidateParameters(IDictionary<string, string> parameters, ITMPKeywordDatabase keywordDatabase)
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: ''
+      description: The parameters as key-value pairs
+    - id: keywordDatabase
+      type: TMPEffects.Databases.ITMPKeywordDatabase
+      description: The keyword database used for parsing the parameter values
     return:
       type: System.Boolean
       description: true if the parameters were successfully validated; false otherwise.
-    content.vb: Public MustOverride Function ValidateParameters(parameters As IDictionary(Of String, String)) As Boolean
+    content.vb: Public MustOverride Function ValidateParameters(parameters As IDictionary(Of String, String), keywordDatabase As ITMPKeywordDatabase) As Boolean
   overload: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters*
   implements:
-  - TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  nameWithType.vb: TMPShowAnimation.ValidateParameters(IDictionary(Of String, String))
-  fullName.vb: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: ValidateParameters(IDictionary(Of String, String))
+  - TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: TMPShowAnimation.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
 - uid: TMPEffects.TMPAnimations.TMPShowAnimation.GetNewCustomData
   commentId: M:TMPEffects.TMPAnimations.TMPShowAnimation.GetNewCustomData
   id: GetNewCustomData
@@ -177,13 +183,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 20
+    startLine: 23
   namespace: TMPEffects.TMPAnimations
-  summary: Create and get a new custom data object for this animation.
+  summary: Get a new custom data object for this animation.
   example: []
   syntax:
     content: public abstract object GetNewCustomData()
@@ -208,12 +214,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 22
+    startLine: 25
   namespace: TMPEffects.TMPAnimations
+  summary: Raised when the object is changed.
   example: []
   syntax:
     content: public event ObjectChangedEventHandler ObjectChanged
@@ -236,11 +243,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 24
+    startLine: 27
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected virtual void OnValidate()
@@ -260,11 +267,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnDestroy
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 29
+    startLine: 32
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected virtual void OnDestroy()
@@ -284,11 +291,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaiseObjectChanged
     path: ../Package/Runtime/Effects/TMPAnimations/TMPShowAnimation.cs
-    startLine: 34
+    startLine: 37
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: protected void RaiseObjectChanged()
@@ -335,6 +342,13 @@ references:
   name: ITMPAnimation
   nameWithType: ITMPAnimation
   fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.Parameters.ITMPParameterValidator
+  commentId: T:TMPEffects.Parameters.ITMPParameterValidator
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.ITMPParameterValidator.html
+  name: ITMPParameterValidator
+  nameWithType: ITMPParameterValidator
+  fullName: TMPEffects.Parameters.ITMPParameterValidator
 - uid: TMPEffects.ObjectChanged.INotifyObjectChanged
   commentId: T:TMPEffects.ObjectChanged.INotifyObjectChanged
   parent: TMPEffects.ObjectChanged
@@ -349,6 +363,28 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
 - uid: TMPEffects.ObjectChanged
   commentId: N:TMPEffects.ObjectChanged
   href: TMPEffects.html
@@ -450,25 +486,25 @@ references:
     href: TMPEffects.CharacterData.html
 - uid: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters*
   commentId: Overload:TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters
-  href: TMPEffects.TMPAnimations.TMPShowAnimation.html#TMPEffects_TMPAnimations_TMPShowAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+  href: TMPEffects.TMPAnimations.TMPShowAnimation.html#TMPEffects_TMPAnimations_TMPShowAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   name: SetParameters
   nameWithType: TMPShowAnimation.SetParameters
   fullName: TMPEffects.TMPAnimations.TMPShowAnimation.SetParameters
-- uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
   parent: TMPEffects.TMPAnimations.ITMPAnimation
   isExternal: true
-  href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
-  name: SetParameters(object, IDictionary<string, string>)
-  nameWithType: ITMPAnimation.SetParameters(object, IDictionary<string, string>)
-  fullName: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>)
-  nameWithType.vb: ITMPAnimation.SetParameters(Object, IDictionary(Of String, String))
-  fullName.vb: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: SetParameters(Object, IDictionary(Of String, String))
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPAnimation.SetParameters(object, IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(object, System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: ITMPAnimation.SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(Object, System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: SetParameters(Object, IDictionary(Of String, String), ITMPKeywordDatabase)
   spec.csharp:
-  - uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  - uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
     name: SetParameters
-    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   - name: (
   - uid: System.Object
     name: object
@@ -492,11 +528,16 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: '>'
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
   - name: )
   spec.vb:
-  - uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String})
+  - uid: TMPEffects.TMPAnimations.ITMPAnimation.SetParameters(System.Object,System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
     name: SetParameters
-    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__
+    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_SetParameters_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   - name: (
   - uid: System.Object
     name: Object
@@ -522,6 +563,11 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
   - name: )
 - uid: System.Collections.Generic.IDictionary{System.String,System.String}
   commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
@@ -570,6 +616,13 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
 - uid: System.Collections.Generic.IDictionary`2
   commentId: T:System.Collections.Generic.IDictionary`2
   isExternal: true
@@ -641,27 +694,49 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: TMPEffects.Databases
+  commentId: N:TMPEffects.Databases
+  href: TMPEffects.html
+  name: TMPEffects.Databases
+  nameWithType: TMPEffects.Databases
+  fullName: TMPEffects.Databases
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Databases
+    name: Databases
+    href: TMPEffects.Databases.html
 - uid: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters*
   commentId: Overload:TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters
-  href: TMPEffects.TMPAnimations.TMPShowAnimation.html#TMPEffects_TMPAnimations_TMPShowAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+  href: TMPEffects.TMPAnimations.TMPShowAnimation.html#TMPEffects_TMPAnimations_TMPShowAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   name: ValidateParameters
   nameWithType: TMPShowAnimation.ValidateParameters
   fullName: TMPEffects.TMPAnimations.TMPShowAnimation.ValidateParameters
-- uid: TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  commentId: M:TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
-  parent: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  commentId: M:TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
+  parent: TMPEffects.Parameters.ITMPParameterValidator
   isExternal: true
-  href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
-  name: ValidateParameters(IDictionary<string, string>)
-  nameWithType: ITMPAnimation.ValidateParameters(IDictionary<string, string>)
-  fullName: TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary<string, string>)
-  nameWithType.vb: ITMPAnimation.ValidateParameters(IDictionary(Of String, String))
-  fullName.vb: TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String))
-  name.vb: ValidateParameters(IDictionary(Of String, String))
+  href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
+  name: ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  nameWithType: ITMPParameterValidator.ValidateParameters(IDictionary<string, string>, ITMPKeywordDatabase)
+  fullName: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary<string, string>, TMPEffects.Databases.ITMPKeywordDatabase)
+  nameWithType.vb: ITMPParameterValidator.ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
+  fullName.vb: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary(Of String, String), TMPEffects.Databases.ITMPKeywordDatabase)
+  name.vb: ValidateParameters(IDictionary(Of String, String), ITMPKeywordDatabase)
   spec.csharp:
-  - uid: TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
     name: ValidateParameters
-    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   - name: (
   - uid: System.Collections.Generic.IDictionary`2
     name: IDictionary
@@ -679,11 +754,16 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: '>'
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
   - name: )
   spec.vb:
-  - uid: TMPEffects.TMPAnimations.ITMPAnimation.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String})
+  - uid: TMPEffects.Parameters.ITMPParameterValidator.ValidateParameters(System.Collections.Generic.IDictionary{System.String,System.String},TMPEffects.Databases.ITMPKeywordDatabase)
     name: ValidateParameters
-    href: TMPEffects.TMPAnimations.ITMPAnimation.html#TMPEffects_TMPAnimations_ITMPAnimation_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__
+    href: TMPEffects.Parameters.ITMPParameterValidator.html#TMPEffects_Parameters_ITMPParameterValidator_ValidateParameters_System_Collections_Generic_IDictionary_System_String_System_String__TMPEffects_Databases_ITMPKeywordDatabase_
   - name: (
   - uid: System.Collections.Generic.IDictionary`2
     name: IDictionary
@@ -703,6 +783,11 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+  - name: ','
+  - name: " "
+  - uid: TMPEffects.Databases.ITMPKeywordDatabase
+    name: ITMPKeywordDatabase
+    href: TMPEffects.Databases.ITMPKeywordDatabase.html
   - name: )
 - uid: System.Boolean
   commentId: T:System.Boolean

@@ -1,0 +1,1153 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPMeshModifiers
+  commentId: T:Global.TMPMeshModifiers
+  id: TMPMeshModifiers
+  parent: Global
+  children:
+  - Global.TMPMeshModifiers.#ctor
+  - Global.TMPMeshModifiers.#ctor(TMPMeshModifiers)
+  - Global.TMPMeshModifiers.BL_Color
+  - Global.TMPMeshModifiers.BL_Delta
+  - Global.TMPMeshModifiers.BL_UV0
+  - Global.TMPMeshModifiers.BL_UV2
+  - Global.TMPMeshModifiers.BR_Color
+  - Global.TMPMeshModifiers.BR_Delta
+  - Global.TMPMeshModifiers.BR_UV0
+  - Global.TMPMeshModifiers.BR_UV2
+  - Global.TMPMeshModifiers.ClearModifiers
+  - Global.TMPMeshModifiers.ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  - Global.TMPMeshModifiers.Combine(TMPMeshModifiers)
+  - Global.TMPMeshModifiers.CopyFrom(TMPMeshModifiers)
+  - Global.TMPMeshModifiers.Modifier
+  - Global.TMPMeshModifiers.TL_Color
+  - Global.TMPMeshModifiers.TL_Delta
+  - Global.TMPMeshModifiers.TL_UV0
+  - Global.TMPMeshModifiers.TL_UV2
+  - Global.TMPMeshModifiers.TR_Color
+  - Global.TMPMeshModifiers.TR_Delta
+  - Global.TMPMeshModifiers.TR_UV0
+  - Global.TMPMeshModifiers.TR_UV2
+  - Global.TMPMeshModifiers.op_Addition(TMPMeshModifiers,TMPMeshModifiers)
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifiers
+  nameWithType: TMPMeshModifiers
+  fullName: TMPMeshModifiers
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPMeshModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 6
+  namespace: Global
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class TMPMeshModifiers
+    content.vb: >-
+      <Serializable>
+
+      Public Class TMPMeshModifiers
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Global.TMPMeshModifiers.BL_Delta
+  commentId: P:Global.TMPMeshModifiers.BL_Delta
+  id: BL_Delta
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_Delta
+  nameWithType: TMPMeshModifiers.BL_Delta
+  fullName: TMPMeshModifiers.BL_Delta
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_Delta
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 9
+  namespace: Global
+  syntax:
+    content: public Vector3 BL_Delta { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public Property BL_Delta As Vector3
+  overload: Global.TMPMeshModifiers.BL_Delta*
+- uid: Global.TMPMeshModifiers.TL_Delta
+  commentId: P:Global.TMPMeshModifiers.TL_Delta
+  id: TL_Delta
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_Delta
+  nameWithType: TMPMeshModifiers.TL_Delta
+  fullName: TMPMeshModifiers.TL_Delta
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_Delta
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 19
+  namespace: Global
+  syntax:
+    content: public Vector3 TL_Delta { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public Property TL_Delta As Vector3
+  overload: Global.TMPMeshModifiers.TL_Delta*
+- uid: Global.TMPMeshModifiers.TR_Delta
+  commentId: P:Global.TMPMeshModifiers.TR_Delta
+  id: TR_Delta
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_Delta
+  nameWithType: TMPMeshModifiers.TR_Delta
+  fullName: TMPMeshModifiers.TR_Delta
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_Delta
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 29
+  namespace: Global
+  syntax:
+    content: public Vector3 TR_Delta { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public Property TR_Delta As Vector3
+  overload: Global.TMPMeshModifiers.TR_Delta*
+- uid: Global.TMPMeshModifiers.BR_Delta
+  commentId: P:Global.TMPMeshModifiers.BR_Delta
+  id: BR_Delta
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_Delta
+  nameWithType: TMPMeshModifiers.BR_Delta
+  fullName: TMPMeshModifiers.BR_Delta
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_Delta
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 39
+  namespace: Global
+  syntax:
+    content: public Vector3 BR_Delta { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3
+    content.vb: Public Property BR_Delta As Vector3
+  overload: Global.TMPMeshModifiers.BR_Delta*
+- uid: Global.TMPMeshModifiers.BL_Color
+  commentId: P:Global.TMPMeshModifiers.BL_Color
+  id: BL_Color
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_Color
+  nameWithType: TMPMeshModifiers.BL_Color
+  fullName: TMPMeshModifiers.BL_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 49
+  namespace: Global
+  syntax:
+    content: public ColorOverride BL_Color { get; set; }
+    parameters: []
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Property BL_Color As ColorOverride
+  overload: Global.TMPMeshModifiers.BL_Color*
+- uid: Global.TMPMeshModifiers.TL_Color
+  commentId: P:Global.TMPMeshModifiers.TL_Color
+  id: TL_Color
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_Color
+  nameWithType: TMPMeshModifiers.TL_Color
+  fullName: TMPMeshModifiers.TL_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 59
+  namespace: Global
+  syntax:
+    content: public ColorOverride TL_Color { get; set; }
+    parameters: []
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Property TL_Color As ColorOverride
+  overload: Global.TMPMeshModifiers.TL_Color*
+- uid: Global.TMPMeshModifiers.TR_Color
+  commentId: P:Global.TMPMeshModifiers.TR_Color
+  id: TR_Color
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_Color
+  nameWithType: TMPMeshModifiers.TR_Color
+  fullName: TMPMeshModifiers.TR_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 69
+  namespace: Global
+  syntax:
+    content: public ColorOverride TR_Color { get; set; }
+    parameters: []
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Property TR_Color As ColorOverride
+  overload: Global.TMPMeshModifiers.TR_Color*
+- uid: Global.TMPMeshModifiers.BR_Color
+  commentId: P:Global.TMPMeshModifiers.BR_Color
+  id: BR_Color
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_Color
+  nameWithType: TMPMeshModifiers.BR_Color
+  fullName: TMPMeshModifiers.BR_Color
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 79
+  namespace: Global
+  syntax:
+    content: public ColorOverride BR_Color { get; set; }
+    parameters: []
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Property BR_Color As ColorOverride
+  overload: Global.TMPMeshModifiers.BR_Color*
+- uid: Global.TMPMeshModifiers.BL_UV0
+  commentId: P:Global.TMPMeshModifiers.BL_UV0
+  id: BL_UV0
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_UV0
+  nameWithType: TMPMeshModifiers.BL_UV0
+  fullName: TMPMeshModifiers.BL_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 89
+  namespace: Global
+  syntax:
+    content: public Vector3Override BL_UV0 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property BL_UV0 As Vector3Override
+  overload: Global.TMPMeshModifiers.BL_UV0*
+- uid: Global.TMPMeshModifiers.TL_UV0
+  commentId: P:Global.TMPMeshModifiers.TL_UV0
+  id: TL_UV0
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_UV0
+  nameWithType: TMPMeshModifiers.TL_UV0
+  fullName: TMPMeshModifiers.TL_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 99
+  namespace: Global
+  syntax:
+    content: public Vector3Override TL_UV0 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property TL_UV0 As Vector3Override
+  overload: Global.TMPMeshModifiers.TL_UV0*
+- uid: Global.TMPMeshModifiers.TR_UV0
+  commentId: P:Global.TMPMeshModifiers.TR_UV0
+  id: TR_UV0
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_UV0
+  nameWithType: TMPMeshModifiers.TR_UV0
+  fullName: TMPMeshModifiers.TR_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 109
+  namespace: Global
+  syntax:
+    content: public Vector3Override TR_UV0 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property TR_UV0 As Vector3Override
+  overload: Global.TMPMeshModifiers.TR_UV0*
+- uid: Global.TMPMeshModifiers.BR_UV0
+  commentId: P:Global.TMPMeshModifiers.BR_UV0
+  id: BR_UV0
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_UV0
+  nameWithType: TMPMeshModifiers.BR_UV0
+  fullName: TMPMeshModifiers.BR_UV0
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_UV0
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 119
+  namespace: Global
+  syntax:
+    content: public Vector3Override BR_UV0 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property BR_UV0 As Vector3Override
+  overload: Global.TMPMeshModifiers.BR_UV0*
+- uid: Global.TMPMeshModifiers.BL_UV2
+  commentId: P:Global.TMPMeshModifiers.BL_UV2
+  id: BL_UV2
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BL_UV2
+  nameWithType: TMPMeshModifiers.BL_UV2
+  fullName: TMPMeshModifiers.BL_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BL_UV2
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 129
+  namespace: Global
+  syntax:
+    content: public Vector3Override BL_UV2 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property BL_UV2 As Vector3Override
+  overload: Global.TMPMeshModifiers.BL_UV2*
+- uid: Global.TMPMeshModifiers.TL_UV2
+  commentId: P:Global.TMPMeshModifiers.TL_UV2
+  id: TL_UV2
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TL_UV2
+  nameWithType: TMPMeshModifiers.TL_UV2
+  fullName: TMPMeshModifiers.TL_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TL_UV2
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 139
+  namespace: Global
+  syntax:
+    content: public Vector3Override TL_UV2 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property TL_UV2 As Vector3Override
+  overload: Global.TMPMeshModifiers.TL_UV2*
+- uid: Global.TMPMeshModifiers.TR_UV2
+  commentId: P:Global.TMPMeshModifiers.TR_UV2
+  id: TR_UV2
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TR_UV2
+  nameWithType: TMPMeshModifiers.TR_UV2
+  fullName: TMPMeshModifiers.TR_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TR_UV2
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 149
+  namespace: Global
+  syntax:
+    content: public Vector3Override TR_UV2 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property TR_UV2 As Vector3Override
+  overload: Global.TMPMeshModifiers.TR_UV2*
+- uid: Global.TMPMeshModifiers.BR_UV2
+  commentId: P:Global.TMPMeshModifiers.BR_UV2
+  id: BR_UV2
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: BR_UV2
+  nameWithType: TMPMeshModifiers.BR_UV2
+  fullName: TMPMeshModifiers.BR_UV2
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: BR_UV2
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 159
+  namespace: Global
+  syntax:
+    content: public Vector3Override BR_UV2 { get; set; }
+    parameters: []
+    return:
+      type: Global.Vector3Override
+    content.vb: Public Property BR_UV2 As Vector3Override
+  overload: Global.TMPMeshModifiers.BR_UV2*
+- uid: Global.TMPMeshModifiers.Modifier
+  commentId: P:Global.TMPMeshModifiers.Modifier
+  id: Modifier
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: Modifier
+  nameWithType: TMPMeshModifiers.Modifier
+  fullName: TMPMeshModifiers.Modifier
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Modifier
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 189
+  namespace: Global
+  syntax:
+    content: public TMPMeshModifiers.ModifierFlags Modifier { get; }
+    parameters: []
+    return:
+      type: Global.TMPMeshModifiers.ModifierFlags
+    content.vb: Public ReadOnly Property Modifier As TMPMeshModifiers.ModifierFlags
+  overload: Global.TMPMeshModifiers.Modifier*
+- uid: Global.TMPMeshModifiers.#ctor
+  commentId: M:Global.TMPMeshModifiers.#ctor
+  id: '#ctor'
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifiers()
+  nameWithType: TMPMeshModifiers.TMPMeshModifiers()
+  fullName: TMPMeshModifiers.TMPMeshModifiers()
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 192
+  namespace: Global
+  syntax:
+    content: public TMPMeshModifiers()
+    content.vb: Public Sub New()
+  overload: Global.TMPMeshModifiers.#ctor*
+  nameWithType.vb: TMPMeshModifiers.New()
+  fullName.vb: TMPMeshModifiers.New()
+  name.vb: New()
+- uid: Global.TMPMeshModifiers.#ctor(TMPMeshModifiers)
+  commentId: M:Global.TMPMeshModifiers.#ctor(TMPMeshModifiers)
+  id: '#ctor(TMPMeshModifiers)'
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifiers(TMPMeshModifiers)
+  nameWithType: TMPMeshModifiers.TMPMeshModifiers(TMPMeshModifiers)
+  fullName: TMPMeshModifiers.TMPMeshModifiers(TMPMeshModifiers)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 196
+  namespace: Global
+  syntax:
+    content: public TMPMeshModifiers(TMPMeshModifiers original)
+    parameters:
+    - id: original
+      type: Global.TMPMeshModifiers
+    content.vb: Public Sub New(original As TMPMeshModifiers)
+  overload: Global.TMPMeshModifiers.#ctor*
+  nameWithType.vb: TMPMeshModifiers.New(TMPMeshModifiers)
+  fullName.vb: TMPMeshModifiers.New(TMPMeshModifiers)
+  name.vb: New(TMPMeshModifiers)
+- uid: Global.TMPMeshModifiers.ClearModifiers
+  commentId: M:Global.TMPMeshModifiers.ClearModifiers
+  id: ClearModifiers
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: ClearModifiers()
+  nameWithType: TMPMeshModifiers.ClearModifiers()
+  fullName: TMPMeshModifiers.ClearModifiers()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ClearModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 221
+  namespace: Global
+  syntax:
+    content: public void ClearModifiers()
+    content.vb: Public Sub ClearModifiers()
+  overload: Global.TMPMeshModifiers.ClearModifiers*
+- uid: Global.TMPMeshModifiers.ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  commentId: M:Global.TMPMeshModifiers.ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  id: ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: ClearModifiers(ModifierFlags)
+  nameWithType: TMPMeshModifiers.ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  fullName: TMPMeshModifiers.ClearModifiers(TMPMeshModifiers.ModifierFlags)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ClearModifiers
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 231
+  namespace: Global
+  syntax:
+    content: public void ClearModifiers(TMPMeshModifiers.ModifierFlags flags)
+    parameters:
+    - id: flags
+      type: Global.TMPMeshModifiers.ModifierFlags
+    content.vb: Public Sub ClearModifiers(flags As TMPMeshModifiers.ModifierFlags)
+  overload: Global.TMPMeshModifiers.ClearModifiers*
+- uid: Global.TMPMeshModifiers.Combine(TMPMeshModifiers)
+  commentId: M:Global.TMPMeshModifiers.Combine(TMPMeshModifiers)
+  id: Combine(TMPMeshModifiers)
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: Combine(TMPMeshModifiers)
+  nameWithType: TMPMeshModifiers.Combine(TMPMeshModifiers)
+  fullName: TMPMeshModifiers.Combine(TMPMeshModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Combine
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 297
+  namespace: Global
+  syntax:
+    content: public void Combine(TMPMeshModifiers other)
+    parameters:
+    - id: other
+      type: Global.TMPMeshModifiers
+    content.vb: Public Sub Combine(other As TMPMeshModifiers)
+  overload: Global.TMPMeshModifiers.Combine*
+- uid: Global.TMPMeshModifiers.CopyFrom(TMPMeshModifiers)
+  commentId: M:Global.TMPMeshModifiers.CopyFrom(TMPMeshModifiers)
+  id: CopyFrom(TMPMeshModifiers)
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: CopyFrom(TMPMeshModifiers)
+  nameWithType: TMPMeshModifiers.CopyFrom(TMPMeshModifiers)
+  fullName: TMPMeshModifiers.CopyFrom(TMPMeshModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CopyFrom
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 345
+  namespace: Global
+  syntax:
+    content: public void CopyFrom(TMPMeshModifiers other)
+    parameters:
+    - id: other
+      type: Global.TMPMeshModifiers
+    content.vb: Public Sub CopyFrom(other As TMPMeshModifiers)
+  overload: Global.TMPMeshModifiers.CopyFrom*
+- uid: Global.TMPMeshModifiers.op_Addition(TMPMeshModifiers,TMPMeshModifiers)
+  commentId: M:Global.TMPMeshModifiers.op_Addition(TMPMeshModifiers,TMPMeshModifiers)
+  id: op_Addition(TMPMeshModifiers,TMPMeshModifiers)
+  parent: Global.TMPMeshModifiers
+  langs:
+  - csharp
+  - vb
+  name: operator +(TMPMeshModifiers, TMPMeshModifiers)
+  nameWithType: TMPMeshModifiers.operator +(TMPMeshModifiers, TMPMeshModifiers)
+  fullName: TMPMeshModifiers.operator +(TMPMeshModifiers, TMPMeshModifiers)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Addition
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 372
+  namespace: Global
+  syntax:
+    content: public static TMPMeshModifiers operator +(TMPMeshModifiers lhs, TMPMeshModifiers rhs)
+    parameters:
+    - id: lhs
+      type: Global.TMPMeshModifiers
+    - id: rhs
+      type: Global.TMPMeshModifiers
+    return:
+      type: Global.TMPMeshModifiers
+    content.vb: Public Shared Operator +(lhs As TMPMeshModifiers, rhs As TMPMeshModifiers) As TMPMeshModifiers
+  overload: Global.TMPMeshModifiers.op_Addition*
+  nameWithType.vb: TMPMeshModifiers.+(TMPMeshModifiers, TMPMeshModifiers)
+  fullName.vb: TMPMeshModifiers.+(TMPMeshModifiers, TMPMeshModifiers)
+  name.vb: +(TMPMeshModifiers, TMPMeshModifiers)
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPMeshModifiers.BL_Delta*
+  commentId: Overload:Global.TMPMeshModifiers.BL_Delta
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BL_Delta
+  name: BL_Delta
+  nameWithType: TMPMeshModifiers.BL_Delta
+  fullName: TMPMeshModifiers.BL_Delta
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: Global.TMPMeshModifiers.TL_Delta*
+  commentId: Overload:Global.TMPMeshModifiers.TL_Delta
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TL_Delta
+  name: TL_Delta
+  nameWithType: TMPMeshModifiers.TL_Delta
+  fullName: TMPMeshModifiers.TL_Delta
+- uid: Global.TMPMeshModifiers.TR_Delta*
+  commentId: Overload:Global.TMPMeshModifiers.TR_Delta
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TR_Delta
+  name: TR_Delta
+  nameWithType: TMPMeshModifiers.TR_Delta
+  fullName: TMPMeshModifiers.TR_Delta
+- uid: Global.TMPMeshModifiers.BR_Delta*
+  commentId: Overload:Global.TMPMeshModifiers.BR_Delta
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BR_Delta
+  name: BR_Delta
+  nameWithType: TMPMeshModifiers.BR_Delta
+  fullName: TMPMeshModifiers.BR_Delta
+- uid: Global.TMPMeshModifiers.BL_Color*
+  commentId: Overload:Global.TMPMeshModifiers.BL_Color
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BL_Color
+  name: BL_Color
+  nameWithType: TMPMeshModifiers.BL_Color
+  fullName: TMPMeshModifiers.BL_Color
+- uid: Global.ColorOverride
+  commentId: T:Global.ColorOverride
+  href: ColorOverride.html
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: ColorOverride
+- uid: Global.TMPMeshModifiers.TL_Color*
+  commentId: Overload:Global.TMPMeshModifiers.TL_Color
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TL_Color
+  name: TL_Color
+  nameWithType: TMPMeshModifiers.TL_Color
+  fullName: TMPMeshModifiers.TL_Color
+- uid: Global.TMPMeshModifiers.TR_Color*
+  commentId: Overload:Global.TMPMeshModifiers.TR_Color
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TR_Color
+  name: TR_Color
+  nameWithType: TMPMeshModifiers.TR_Color
+  fullName: TMPMeshModifiers.TR_Color
+- uid: Global.TMPMeshModifiers.BR_Color*
+  commentId: Overload:Global.TMPMeshModifiers.BR_Color
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BR_Color
+  name: BR_Color
+  nameWithType: TMPMeshModifiers.BR_Color
+  fullName: TMPMeshModifiers.BR_Color
+- uid: Global.TMPMeshModifiers.BL_UV0*
+  commentId: Overload:Global.TMPMeshModifiers.BL_UV0
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BL_UV0
+  name: BL_UV0
+  nameWithType: TMPMeshModifiers.BL_UV0
+  fullName: TMPMeshModifiers.BL_UV0
+- uid: Global.Vector3Override
+  commentId: T:Global.Vector3Override
+  href: Vector3Override.html
+  name: Vector3Override
+  nameWithType: Vector3Override
+  fullName: Vector3Override
+- uid: Global.TMPMeshModifiers.TL_UV0*
+  commentId: Overload:Global.TMPMeshModifiers.TL_UV0
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TL_UV0
+  name: TL_UV0
+  nameWithType: TMPMeshModifiers.TL_UV0
+  fullName: TMPMeshModifiers.TL_UV0
+- uid: Global.TMPMeshModifiers.TR_UV0*
+  commentId: Overload:Global.TMPMeshModifiers.TR_UV0
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TR_UV0
+  name: TR_UV0
+  nameWithType: TMPMeshModifiers.TR_UV0
+  fullName: TMPMeshModifiers.TR_UV0
+- uid: Global.TMPMeshModifiers.BR_UV0*
+  commentId: Overload:Global.TMPMeshModifiers.BR_UV0
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BR_UV0
+  name: BR_UV0
+  nameWithType: TMPMeshModifiers.BR_UV0
+  fullName: TMPMeshModifiers.BR_UV0
+- uid: Global.TMPMeshModifiers.BL_UV2*
+  commentId: Overload:Global.TMPMeshModifiers.BL_UV2
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BL_UV2
+  name: BL_UV2
+  nameWithType: TMPMeshModifiers.BL_UV2
+  fullName: TMPMeshModifiers.BL_UV2
+- uid: Global.TMPMeshModifiers.TL_UV2*
+  commentId: Overload:Global.TMPMeshModifiers.TL_UV2
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TL_UV2
+  name: TL_UV2
+  nameWithType: TMPMeshModifiers.TL_UV2
+  fullName: TMPMeshModifiers.TL_UV2
+- uid: Global.TMPMeshModifiers.TR_UV2*
+  commentId: Overload:Global.TMPMeshModifiers.TR_UV2
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_TR_UV2
+  name: TR_UV2
+  nameWithType: TMPMeshModifiers.TR_UV2
+  fullName: TMPMeshModifiers.TR_UV2
+- uid: Global.TMPMeshModifiers.BR_UV2*
+  commentId: Overload:Global.TMPMeshModifiers.BR_UV2
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_BR_UV2
+  name: BR_UV2
+  nameWithType: TMPMeshModifiers.BR_UV2
+  fullName: TMPMeshModifiers.BR_UV2
+- uid: Global.TMPMeshModifiers.Modifier*
+  commentId: Overload:Global.TMPMeshModifiers.Modifier
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_Modifier
+  name: Modifier
+  nameWithType: TMPMeshModifiers.Modifier
+  fullName: TMPMeshModifiers.Modifier
+- uid: Global.TMPMeshModifiers.ModifierFlags
+  commentId: T:Global.TMPMeshModifiers.ModifierFlags
+  href: TMPMeshModifiers.html
+  name: TMPMeshModifiers.ModifierFlags
+  nameWithType: TMPMeshModifiers.ModifierFlags
+  fullName: TMPMeshModifiers.ModifierFlags
+  spec.csharp:
+  - uid: Global.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPMeshModifiers.html
+  - name: .
+  - uid: Global.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPMeshModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: Global.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPMeshModifiers.html
+  - name: .
+  - uid: Global.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPMeshModifiers.ModifierFlags.html
+- uid: Global.TMPMeshModifiers.#ctor*
+  commentId: Overload:Global.TMPMeshModifiers.#ctor
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers__ctor
+  name: TMPMeshModifiers
+  nameWithType: TMPMeshModifiers.TMPMeshModifiers
+  fullName: TMPMeshModifiers.TMPMeshModifiers
+  nameWithType.vb: TMPMeshModifiers.New
+  fullName.vb: TMPMeshModifiers.New
+  name.vb: New
+- uid: Global.TMPMeshModifiers
+  commentId: T:Global.TMPMeshModifiers
+  href: TMPMeshModifiers.html
+  name: TMPMeshModifiers
+  nameWithType: TMPMeshModifiers
+  fullName: TMPMeshModifiers
+- uid: Global.TMPMeshModifiers.ClearModifiers*
+  commentId: Overload:Global.TMPMeshModifiers.ClearModifiers
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_ClearModifiers
+  name: ClearModifiers
+  nameWithType: TMPMeshModifiers.ClearModifiers
+  fullName: TMPMeshModifiers.ClearModifiers
+- uid: Global.TMPMeshModifiers.Combine*
+  commentId: Overload:Global.TMPMeshModifiers.Combine
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_Combine_TMPMeshModifiers_
+  name: Combine
+  nameWithType: TMPMeshModifiers.Combine
+  fullName: TMPMeshModifiers.Combine
+- uid: Global.TMPMeshModifiers.CopyFrom*
+  commentId: Overload:Global.TMPMeshModifiers.CopyFrom
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_CopyFrom_TMPMeshModifiers_
+  name: CopyFrom
+  nameWithType: TMPMeshModifiers.CopyFrom
+  fullName: TMPMeshModifiers.CopyFrom
+- uid: Global.TMPMeshModifiers.op_Addition*
+  commentId: Overload:Global.TMPMeshModifiers.op_Addition
+  href: Global.TMPMeshModifiers.html#TMPMeshModifiers_op_Addition_TMPMeshModifiers_TMPMeshModifiers_
+  name: operator +
+  nameWithType: TMPMeshModifiers.operator +
+  fullName: TMPMeshModifiers.operator +
+  nameWithType.vb: TMPMeshModifiers.+
+  fullName.vb: TMPMeshModifiers.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Global.TMPMeshModifiers.op_Addition*
+    name: +
+    href: Global.TMPMeshModifiers.html#TMPMeshModifiers_op_Addition_TMPMeshModifiers_TMPMeshModifiers_

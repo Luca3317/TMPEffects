@@ -37,8 +37,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCollection
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 8
@@ -80,8 +80,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 10
@@ -112,8 +112,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 15
@@ -142,8 +142,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 22
@@ -180,8 +180,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryAdd
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 40
@@ -230,8 +230,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustOrderAtIndexAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 85
@@ -262,8 +262,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAllAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 99
@@ -306,8 +306,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 132
@@ -350,8 +350,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Clear
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 151
@@ -378,8 +378,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Remove
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 157
@@ -416,8 +416,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CopyTo
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 177
@@ -448,8 +448,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagCount
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 190
@@ -479,8 +479,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Contains
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 193
@@ -517,8 +517,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEnumerator
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 199
@@ -548,8 +548,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 202
@@ -592,8 +592,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 220
@@ -636,8 +636,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TagsAt
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 247
@@ -674,8 +674,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IndicesOf
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 264
@@ -709,8 +709,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: FindIndex
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 275
@@ -738,8 +738,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BinarySearchIndexOf
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 285
@@ -770,8 +770,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: BinarySearchIndexFirstIndexOf
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 305
@@ -799,8 +799,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: tags
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 352
@@ -824,8 +824,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: validator
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 353

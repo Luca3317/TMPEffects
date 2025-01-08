@@ -16,8 +16,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/ITMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ITMPEffectDatabase
     path: ../Package/Runtime/Databases/ITMPEffectDatabase.cs
     startLine: 7
@@ -41,8 +41,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/ITMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/ITMPEffectDatabase.cs
     startLine: 14

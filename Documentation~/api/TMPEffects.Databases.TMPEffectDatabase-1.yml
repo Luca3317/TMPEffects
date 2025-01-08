@@ -21,13 +21,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPEffectDatabase
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 10
+    startLine: 9
   namespace: TMPEffects.Databases
-  summary: Base class for all databases.
+  summary: Base class for all effect databases.
   example: []
   syntax:
     content: 'public abstract class TMPEffectDatabase<T> : ScriptableObject, ITMPEffectDatabase<T>, ITMPEffectDatabase, INotifyObjectChanged'
@@ -62,12 +62,13 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ObjectChanged
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 12
+    startLine: 11
   namespace: TMPEffects.Databases
+  summary: Raised when the object is changed.
   example: []
   syntax:
     content: public event ObjectChangedEventHandler ObjectChanged
@@ -92,11 +93,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 29
+    startLine: 18
   namespace: TMPEffects.Databases
   summary: Check whether this database contains an effect associated with the given name.
   example: []
@@ -130,11 +131,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 37
+    startLine: 26
   namespace: TMPEffects.Databases
   summary: Get the effect associated with the given name.
   example: []
@@ -172,11 +173,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 39
+    startLine: 28
   namespace: TMPEffects.Databases
   syntax:
     content: protected virtual void OnValidate()
@@ -198,11 +199,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: OnDestroy
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 44
+    startLine: 33
   namespace: TMPEffects.Databases
   syntax:
     content: protected virtual void OnDestroy()
@@ -224,11 +225,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/TMPEffectDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RaiseDatabaseChanged
     path: ../Package/Runtime/Databases/TMPEffectDatabase.cs
-    startLine: 49
+    startLine: 38
   namespace: TMPEffects.Databases
   syntax:
     content: protected void RaiseDatabaseChanged()

@@ -20,11 +20,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ParsingUtility
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 13
+    startLine: 10
   namespace: TMPEffects.TextProcessing
   summary: Utility methods for text processing and parsing.
   example: []
@@ -55,11 +55,11 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNextTag
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
-    startLine: 81
+    startLine: 78
   namespace: TMPEffects.TextProcessing
   summary: Get the next tag in <code class="paramref">text</code>, starting from <code class="paramref">startIndex</code>.
   example: []
@@ -100,8 +100,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TryParseTag
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 125
@@ -148,8 +148,8 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 171
@@ -192,13 +192,13 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: IsTag
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 216
   namespace: TMPEffects.TextProcessing
-  summary: Checks if the given string is a well formed tag (of the given type, if supplied).
+  summary: Checks if the given string is a well-formed tag (of the given type, if supplied).
   example: []
   syntax:
     content: public static bool IsTag(string tag, ParsingUtility.TagType type = TagType.Open | TagType.Close)
@@ -211,7 +211,7 @@ items:
       description: The type of tag to check for. Leave default for either type.
     return:
       type: System.Boolean
-      description: true if the the given string is a tag (of the given type, if supplied); otherwise false.
+      description: true if the given string is a tag (of the given type, if supplied); otherwise false.
     content.vb: Public Shared Function IsTag(tag As String, type As ParsingUtility.TagType = TagType.Open Or TagType.Close) As Boolean
   overload: TMPEffects.TextProcessing.ParsingUtility.IsTag*
   nameWithType.vb: ParsingUtility.IsTag(String, ParsingUtility.TagType)
@@ -231,21 +231,40 @@ items:
   source:
     remote:
       path: Package/Runtime/TextProcessing/ParsingUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetTagParametersDict
     path: ../Package/Runtime/TextProcessing/ParsingUtility.cs
     startLine: 234
   namespace: TMPEffects.TextProcessing
+  summary: >-
+    Parses a string to a <xref href="System.Collections.Generic.Dictionary%602" data-throw-if-not-resolved="false"></xref>.<br />
+
+    Pass in either a full tag string, e.g. &lt;example=10 arg="value"&gt;, or the same but
+
+    without the brackets (example=10 arg="value").<br />
+
+    Note that this only does some basic checks on the validity of the input string;
+
+    malformed strings may lead to errors.<br />
+
+    Ideally use by passing in a <xref href="TMPEffects.TextProcessing.ParsingUtility.TagInfo.parameterString" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public static Dictionary<string, string> GetTagParametersDict(string tag)
     parameters:
     - id: tag
       type: System.String
+      description: The tag to parse the parameters of.
     return:
       type: System.Collections.Generic.Dictionary{System.String,System.String}
+      description: The parsed string as <xref href="System.Collections.Generic.Dictionary%602" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function GetTagParametersDict(tag As String) As Dictionary(Of String, String)
   overload: TMPEffects.TextProcessing.ParsingUtility.GetTagParametersDict*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: ''
   nameWithType.vb: ParsingUtility.GetTagParametersDict(String)
   fullName.vb: TMPEffects.TextProcessing.ParsingUtility.GetTagParametersDict(String)
   name.vb: GetTagParametersDict(String)
@@ -606,6 +625,53 @@ references:
   name: IsTag
   nameWithType: ParsingUtility.IsTag
   fullName: TMPEffects.TextProcessing.ParsingUtility.IsTag
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: TMPEffects.TextProcessing.ParsingUtility.TagInfo.parameterString
+  commentId: F:TMPEffects.TextProcessing.ParsingUtility.TagInfo.parameterString
+  href: TMPEffects.TextProcessing.ParsingUtility.TagInfo.html#TMPEffects_TextProcessing_ParsingUtility_TagInfo_parameterString
+  name: parameterString
+  nameWithType: ParsingUtility.TagInfo.parameterString
+  fullName: TMPEffects.TextProcessing.ParsingUtility.TagInfo.parameterString
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
 - uid: TMPEffects.TextProcessing.ParsingUtility.GetTagParametersDict*
   commentId: Overload:TMPEffects.TextProcessing.ParsingUtility.GetTagParametersDict
   href: TMPEffects.TextProcessing.ParsingUtility.html#TMPEffects_TextProcessing_ParsingUtility_GetTagParametersDict_System_String_
@@ -658,40 +724,6 @@ references:
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-- uid: System.Collections.Generic.Dictionary`2
-  commentId: T:System.Collections.Generic.Dictionary`2
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<TKey, TValue>
-  nameWithType: Dictionary<TKey, TValue>
-  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
-  nameWithType.vb: Dictionary(Of TKey, TValue)
-  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
-  name.vb: Dictionary(Of TKey, TValue)
-  spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
   - name: )
 - uid: System.Collections.Generic
   commentId: N:System.Collections.Generic

@@ -4,9 +4,11 @@ items:
   commentId: N:TMPEffects.Components.Animator
   id: TMPEffects.Components.Animator
   children:
-  - TMPEffects.Components.Animator.AnimationUpdater
-  - TMPEffects.Components.Animator.AnimatorContext
   - TMPEffects.Components.Animator.IAnimatorContext
+  - TMPEffects.Components.Animator.IAnimatorDataProvider
+  - TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  - TMPEffects.Components.Animator.ICharacterTimingsProvider
+  - TMPEffects.Components.Animator.ITMPSegmentData
   - TMPEffects.Components.Animator.ReadOnlyAnimatorContext
   - TMPEffects.Components.Animator.SegmentData
   - TMPEffects.Components.Animator.TMPAnimationType
@@ -20,19 +22,6 @@ items:
   fullName: TMPEffects.Components.Animator
   type: Namespace
 references:
-- uid: TMPEffects.Components.Animator.AnimationUpdater
-  commentId: T:TMPEffects.Components.Animator.AnimationUpdater
-  href: TMPEffects.Components.Animator.AnimationUpdater.html
-  name: AnimationUpdater
-  nameWithType: AnimationUpdater
-  fullName: TMPEffects.Components.Animator.AnimationUpdater
-- uid: TMPEffects.Components.Animator.AnimatorContext
-  commentId: T:TMPEffects.Components.Animator.AnimatorContext
-  parent: TMPEffects.Components.Animator
-  href: TMPEffects.Components.Animator.AnimatorContext.html
-  name: AnimatorContext
-  nameWithType: AnimatorContext
-  fullName: TMPEffects.Components.Animator.AnimatorContext
 - uid: TMPEffects.Components.Animator.IAnimatorContext
   commentId: T:TMPEffects.Components.Animator.IAnimatorContext
   parent: TMPEffects.Components.Animator
@@ -40,12 +29,40 @@ references:
   name: IAnimatorContext
   nameWithType: IAnimatorContext
   fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorDataProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  name: IAnimatorDataProvider
+  nameWithType: IAnimatorDataProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider
+- uid: TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorTimingsProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorTimingsProvider.html
+  name: IAnimatorTimingsProvider
+  nameWithType: IAnimatorTimingsProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorTimingsProvider
+- uid: TMPEffects.Components.Animator.ICharacterTimingsProvider
+  commentId: T:TMPEffects.Components.Animator.ICharacterTimingsProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ICharacterTimingsProvider.html
+  name: ICharacterTimingsProvider
+  nameWithType: ICharacterTimingsProvider
+  fullName: TMPEffects.Components.Animator.ICharacterTimingsProvider
 - uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
   commentId: T:TMPEffects.Components.Animator.ReadOnlyAnimatorContext
   href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html
   name: ReadOnlyAnimatorContext
   nameWithType: ReadOnlyAnimatorContext
   fullName: TMPEffects.Components.Animator.ReadOnlyAnimatorContext
+- uid: TMPEffects.Components.Animator.ITMPSegmentData
+  commentId: T:TMPEffects.Components.Animator.ITMPSegmentData
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  name: ITMPSegmentData
+  nameWithType: ITMPSegmentData
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData
 - uid: TMPEffects.Components.Animator.SegmentData
   commentId: T:TMPEffects.Components.Animator.SegmentData
   parent: TMPEffects.Components.Animator

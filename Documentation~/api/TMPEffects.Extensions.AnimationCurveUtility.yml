@@ -7,6 +7,7 @@ items:
   children:
   - TMPEffects.Extensions.AnimationCurveUtility.Bezier(System.Collections.Generic.IEnumerable{Vector2})
   - TMPEffects.Extensions.AnimationCurveUtility.Bezier(Vector2[])
+  - TMPEffects.Extensions.AnimationCurveUtility.Copy(AnimationCurve)
   - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(System.Collections.Generic.IEnumerable{Vector2})
   - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2,Vector2,Vector2,Vector2)
   - TMPEffects.Extensions.AnimationCurveUtility.CubicBezier(Vector2[])
@@ -72,6 +73,7 @@ items:
   - TMPEffects.Extensions.AnimationCurveUtility.EaseOutSinePoints
   - TMPEffects.Extensions.AnimationCurveUtility.GetInverse(AnimationCurve)
   - TMPEffects.Extensions.AnimationCurveUtility.Invert(AnimationCurve)
+  - TMPEffects.Extensions.AnimationCurveUtility.InvertCopy(AnimationCurve)
   - TMPEffects.Extensions.AnimationCurveUtility.Linear
   - TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(System.Collections.Generic.IEnumerable{Vector2})
   - TMPEffects.Extensions.AnimationCurveUtility.LinearBezier(Vector2,Vector2)
@@ -92,8 +94,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationCurveUtility
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
     startLine: 13
@@ -111,6 +113,66 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Copy(AnimationCurve)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Copy(AnimationCurve)
+  id: Copy(AnimationCurve)
+  isExtensionMethod: true
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: Copy(AnimationCurve)
+  nameWithType: AnimationCurveUtility.Copy(AnimationCurve)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Copy(AnimationCurve)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Copy
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 15
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve Copy(this AnimationCurve curve)
+    parameters:
+    - id: curve
+      type: Global.AnimationCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function Copy(curve As AnimationCurve) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.Copy*
+- uid: TMPEffects.Extensions.AnimationCurveUtility.InvertCopy(AnimationCurve)
+  commentId: M:TMPEffects.Extensions.AnimationCurveUtility.InvertCopy(AnimationCurve)
+  id: InvertCopy(AnimationCurve)
+  isExtensionMethod: true
+  parent: TMPEffects.Extensions.AnimationCurveUtility
+  langs:
+  - csharp
+  - vb
+  name: InvertCopy(AnimationCurve)
+  nameWithType: AnimationCurveUtility.InvertCopy(AnimationCurve)
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.InvertCopy(AnimationCurve)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: InvertCopy
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
+    startLine: 22
+  namespace: TMPEffects.Extensions
+  syntax:
+    content: public static AnimationCurve InvertCopy(this AnimationCurve curve)
+    parameters:
+    - id: curve
+      type: Global.AnimationCurve
+    return:
+      type: Global.AnimationCurve
+    content.vb: Public Shared Function InvertCopy(curve As AnimationCurve) As AnimationCurve
+  overload: TMPEffects.Extensions.AnimationCurveUtility.InvertCopy*
 - uid: TMPEffects.Extensions.AnimationCurveUtility.Linear
   commentId: M:TMPEffects.Extensions.AnimationCurveUtility.Linear
   id: Linear
@@ -125,11 +187,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Linear
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 16
+    startLine: 28
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve Linear()
@@ -151,11 +213,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInSinePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 48
+    startLine: 60
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInSinePoints
@@ -176,11 +238,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutSinePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 49
+    startLine: 61
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutSinePoints
@@ -201,11 +263,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutSinePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 50
+    startLine: 62
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutSinePoints
@@ -226,11 +288,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInSine
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 52
+    startLine: 64
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInSine()
@@ -252,11 +314,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutSine
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 53
+    startLine: 65
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutSine()
@@ -278,11 +340,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutSine
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 54
+    startLine: 66
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutSine()
@@ -304,11 +366,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuadPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 83
+    startLine: 95
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInQuadPoints
@@ -329,11 +391,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuadPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 84
+    startLine: 96
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuadPoints
@@ -354,11 +416,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuadPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 85
+    startLine: 97
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuadPoints
@@ -379,11 +441,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuad
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 87
+    startLine: 99
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInQuad()
@@ -405,11 +467,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuad
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 88
+    startLine: 100
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutQuad()
@@ -431,11 +493,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuad
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 89
+    startLine: 101
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutQuad()
@@ -457,11 +519,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInCubicPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 118
+    startLine: 130
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInCubicPoints
@@ -482,11 +544,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutCubicPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 119
+    startLine: 131
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutCubicPoints
@@ -507,11 +569,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutCubicPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 120
+    startLine: 132
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutCubicPoints
@@ -532,11 +594,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInCubic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 122
+    startLine: 134
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInCubic()
@@ -558,11 +620,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutCubic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 123
+    startLine: 135
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutCubic()
@@ -584,11 +646,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutCubic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 124
+    startLine: 136
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutCubic()
@@ -610,11 +672,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuartPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 153
+    startLine: 165
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInQuartPoints
@@ -635,11 +697,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuartPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 154
+    startLine: 166
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuartPoints
@@ -660,11 +722,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuartPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 155
+    startLine: 167
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuartPoints
@@ -685,11 +747,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuart
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 157
+    startLine: 169
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInQuart()
@@ -711,11 +773,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuart
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 158
+    startLine: 170
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutQuart()
@@ -737,11 +799,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuart
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 159
+    startLine: 171
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutQuart()
@@ -763,11 +825,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuintPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 188
+    startLine: 200
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInQuintPoints
@@ -788,11 +850,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuintPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 189
+    startLine: 201
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutQuintPoints
@@ -813,11 +875,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuintPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 190
+    startLine: 202
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutQuintPoints
@@ -838,11 +900,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInQuint
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 192
+    startLine: 204
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInQuint()
@@ -864,11 +926,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutQuint
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 193
+    startLine: 205
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutQuint()
@@ -890,11 +952,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutQuint
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 194
+    startLine: 206
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutQuint()
@@ -916,11 +978,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInExpoPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 223
+    startLine: 235
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInExpoPoints
@@ -941,11 +1003,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutExpoPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 224
+    startLine: 236
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutExpoPoints
@@ -966,11 +1028,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutExpoPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 225
+    startLine: 237
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutExpoPoints
@@ -991,11 +1053,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInExpo
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 227
+    startLine: 239
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInExpo()
@@ -1017,11 +1079,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutExpo
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 228
+    startLine: 240
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutExpo()
@@ -1043,11 +1105,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutExpo
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 229
+    startLine: 241
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutExpo()
@@ -1069,11 +1131,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInCircPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 258
+    startLine: 270
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInCircPoints
@@ -1094,11 +1156,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutCircPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 259
+    startLine: 271
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutCircPoints
@@ -1119,11 +1181,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutCircPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 260
+    startLine: 272
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutCircPoints
@@ -1144,11 +1206,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInCirc
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 262
+    startLine: 274
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInCirc()
@@ -1170,11 +1232,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutCirc
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 263
+    startLine: 275
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutCirc()
@@ -1196,11 +1258,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutCirc
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 264
+    startLine: 276
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutCirc()
@@ -1222,11 +1284,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInBackPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 293
+    startLine: 305
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInBackPoints
@@ -1247,11 +1309,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutBackPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 294
+    startLine: 306
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutBackPoints
@@ -1272,11 +1334,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutBackPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 295
+    startLine: 307
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutBackPoints
@@ -1297,11 +1359,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInBack
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 297
+    startLine: 309
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInBack()
@@ -1323,11 +1385,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutBack
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 298
+    startLine: 310
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutBack()
@@ -1349,11 +1411,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutBack
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 299
+    startLine: 311
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutBack()
@@ -1375,11 +1437,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInElasticPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 377
+    startLine: 389
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInElasticPoints
@@ -1400,11 +1462,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutElasticPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 378
+    startLine: 390
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutElasticPoints
@@ -1425,11 +1487,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutElasticPoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 379
+    startLine: 391
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutElasticPoints
@@ -1450,11 +1512,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInElastic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 381
+    startLine: 393
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInElastic()
@@ -1476,11 +1538,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutElastic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 382
+    startLine: 394
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutElastic()
@@ -1502,11 +1564,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutElastic
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 383
+    startLine: 395
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutElastic()
@@ -1528,11 +1590,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInBouncePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 461
+    startLine: 473
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInBouncePoints
@@ -1553,11 +1615,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutBouncePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 462
+    startLine: 474
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseOutBouncePoints
@@ -1578,11 +1640,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutBouncePoints
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 463
+    startLine: 475
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyCollection<Vector2> EaseInOutBouncePoints
@@ -1603,11 +1665,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInBounce
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 465
+    startLine: 477
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInBounce()
@@ -1629,11 +1691,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseOutBounce
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 466
+    startLine: 478
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseOutBounce()
@@ -1655,11 +1717,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: EaseInOutBounce
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 467
+    startLine: 479
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve EaseInOutBounce()
@@ -1681,11 +1743,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Bezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 471
+    startLine: 483
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve Bezier(params Vector2[] points)
@@ -1713,11 +1775,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Bezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 479
+    startLine: 491
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve Bezier(IEnumerable<Vector2> points)
@@ -1745,11 +1807,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: LinearBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 487
+    startLine: 497
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve LinearBezier(Vector2 start, Vector2 end)
@@ -1776,11 +1838,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: LinearBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 495
+    startLine: 505
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve LinearBezier(params Vector2[] points)
@@ -1808,11 +1870,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: LinearBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 510
+    startLine: 520
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve LinearBezier(IEnumerable<Vector2> points)
@@ -1840,11 +1902,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: QuadraticBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 516
+    startLine: 526
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve QuadraticBezier(Vector2 startPoint, Vector2 controlPoint, Vector2 endPoint)
@@ -1873,11 +1935,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: QuadraticBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 523
+    startLine: 533
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve QuadraticBezier(params Vector2[] points)
@@ -1905,11 +1967,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: QuadraticBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 554
+    startLine: 564
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve QuadraticBezier(IEnumerable<Vector2> points)
@@ -1937,11 +1999,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CubicBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 560
+    startLine: 570
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve CubicBezier(Vector2 startPoint, Vector2 controlPoint0, Vector2 controlPoint1, Vector2 endPoint)
@@ -1972,11 +2034,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CubicBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 567
+    startLine: 577
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve CubicBezier(params Vector2[] points)
@@ -2004,11 +2066,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CubicBezier
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 578
+    startLine: 588
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve CubicBezier(IEnumerable<Vector2> points)
@@ -2036,11 +2098,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetInverse
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 644
+    startLine: 654
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve GetInverse(AnimationCurve originalCurve)
@@ -2065,11 +2127,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Invert
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 665
+    startLine: 675
   namespace: TMPEffects.Extensions
   syntax:
     content: public static AnimationCurve Invert(AnimationCurve curve)
@@ -2094,11 +2156,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: NamePointsMapping
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 693
+    startLine: 703
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyDictionary<string, ReadOnlyCollection<Vector2>> NamePointsMapping
@@ -2119,11 +2181,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: NameConstructorMapping
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 766
+    startLine: 776
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Func<AnimationCurve>> NameConstructorMapping
@@ -2144,11 +2206,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: NameBezierConstructorMapping
     path: ../Package/Runtime/Effects/TMPAnimations/AnimationCurveUtility.cs
-    startLine: 841
+    startLine: 851
   namespace: TMPEffects.Extensions
   syntax:
     content: public static readonly ReadOnlyDictionary<string, Func<IEnumerable<Vector2>, AnimationCurve>> NameBezierConstructorMapping
@@ -2415,17 +2477,29 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: TMPEffects.Extensions.AnimationCurveUtility.Copy*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.Copy
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_Copy_AnimationCurve_
+  name: Copy
+  nameWithType: AnimationCurveUtility.Copy
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.Copy
+- uid: Global.AnimationCurve
+  isExternal: true
+  name: AnimationCurve
+  nameWithType: AnimationCurve
+  fullName: AnimationCurve
+- uid: TMPEffects.Extensions.AnimationCurveUtility.InvertCopy*
+  commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.InvertCopy
+  href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_InvertCopy_AnimationCurve_
+  name: InvertCopy
+  nameWithType: AnimationCurveUtility.InvertCopy
+  fullName: TMPEffects.Extensions.AnimationCurveUtility.InvertCopy
 - uid: TMPEffects.Extensions.AnimationCurveUtility.Linear*
   commentId: Overload:TMPEffects.Extensions.AnimationCurveUtility.Linear
   href: TMPEffects.Extensions.AnimationCurveUtility.html#TMPEffects_Extensions_AnimationCurveUtility_Linear
   name: Linear
   nameWithType: AnimationCurveUtility.Linear
   fullName: TMPEffects.Extensions.AnimationCurveUtility.Linear
-- uid: Global.AnimationCurve
-  isExternal: true
-  name: AnimationCurve
-  nameWithType: AnimationCurve
-  fullName: AnimationCurve
 - uid: System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
   commentId: T:System.Collections.ObjectModel.ReadOnlyCollection{Vector2}
   parent: System.Collections.ObjectModel

@@ -6,6 +6,9 @@ items:
   parent: TMPEffects.CharacterData
   children:
   - TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
+  - TMPEffects.CharacterData.CharData.Info.InitialPosition
+  - TMPEffects.CharacterData.CharData.Info.InitialRotation
+  - TMPEffects.CharacterData.CharData.Info.InitialScale
   - TMPEffects.CharacterData.CharData.Info.ascender
   - TMPEffects.CharacterData.CharData.Info.baseLine
   - TMPEffects.CharacterData.CharData.Info.character
@@ -14,6 +17,7 @@ items:
   - TMPEffects.CharacterData.CharData.Info.elementType
   - TMPEffects.CharacterData.CharData.Info.fontAsset
   - TMPEffects.CharacterData.CharData.Info.index
+  - TMPEffects.CharacterData.CharData.Info.initialMesh
   - TMPEffects.CharacterData.CharData.Info.isVisible
   - TMPEffects.CharacterData.CharData.Info.lineNumber
   - TMPEffects.CharacterData.CharData.Info.origin
@@ -36,13 +40,13 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Info
     path: ../Package/Runtime/CharData/Info.cs
     startLine: 11
   namespace: TMPEffects.CharacterData
-  summary: Holds a selection of data of TMP_CharacterInfo, as well as some data about the initial mesh of the character.
+  summary: Holds a selection of data of TMP_CharacterInfo, as well as data about the initial mesh of the character.
   example: []
   syntax:
     content: public struct CharData.Info
@@ -68,8 +72,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: index
     path: ../Package/Runtime/CharData/Info.cs
     startLine: 16
@@ -95,8 +99,8 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordFirstIndex
     path: ../Package/Runtime/CharData/Info.cs
     startLine: 21
@@ -122,11 +126,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordLastIndex
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 25
+    startLine: 26
   namespace: TMPEffects.CharacterData
   summary: The last index of the word this character belongs to.
   example: []
@@ -149,11 +153,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordLen
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 29
+    startLine: 31
   namespace: TMPEffects.CharacterData
   summary: The length of the word this character belongs to.
   example: []
@@ -176,11 +180,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: color
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 33
+    startLine: 36
   namespace: TMPEffects.CharacterData
   summary: The color of this character.
   example: []
@@ -203,11 +207,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: pointSize
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 38
+    startLine: 41
   namespace: TMPEffects.CharacterData
   summary: The point size.
   example: []
@@ -230,11 +234,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: character
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 43
+    startLine: 46
   namespace: TMPEffects.CharacterData
   summary: The actual character.
   example: []
@@ -257,11 +261,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: isVisible
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 48
+    startLine: 51
   namespace: TMPEffects.CharacterData
   summary: Whether the character is inherently visible; i.e. is no whitespace.
   example: []
@@ -284,11 +288,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: lineNumber
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 53
+    startLine: 56
   namespace: TMPEffects.CharacterData
   summary: The line number of the line this character belongs to.
   example: []
@@ -311,11 +315,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: pageNumber
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 57
+    startLine: 61
   namespace: TMPEffects.CharacterData
   summary: The page number of the page this character belongs to.
   example: []
@@ -338,13 +342,13 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: wordNumber
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 61
+    startLine: 66
   namespace: TMPEffects.CharacterData
-  summary: The inde
+  summary: The index of the word the character belongs to.
   example: []
   syntax:
     content: public readonly int wordNumber
@@ -365,11 +369,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: baseLine
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 66
+    startLine: 71
   namespace: TMPEffects.CharacterData
   summary: The baseline of the character.
   example: []
@@ -392,11 +396,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ascender
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 70
+    startLine: 76
   namespace: TMPEffects.CharacterData
   summary: The ascender of the character.
   example: []
@@ -419,11 +423,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: descender
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 74
+    startLine: 81
   namespace: TMPEffects.CharacterData
   summary: The descender of the character.
   example: []
@@ -446,11 +450,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: xAdvance
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 78
+    startLine: 86
   namespace: TMPEffects.CharacterData
   summary: The xAdvance factor of the character.
   example: []
@@ -473,13 +477,13 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: fontAsset
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 83
+    startLine: 91
   namespace: TMPEffects.CharacterData
-  summary: The font asset used for this character.
+  summary: The font asset used for this character (if it is not a sprite).
   example: []
   syntax:
     content: public readonly TMP_FontAsset fontAsset
@@ -500,13 +504,13 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: spriteAsset
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 87
+    startLine: 96
   namespace: TMPEffects.CharacterData
-  summary: The sprite asset used for this sprite.
+  summary: The sprite asset used for this character (if it is a sprite).
   example: []
   syntax:
     content: public readonly TMP_SpriteAsset spriteAsset
@@ -527,12 +531,14 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: elementType
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 89
+    startLine: 101
   namespace: TMPEffects.CharacterData
+  summary: The type of element this character is (sprite or character).
+  example: []
   syntax:
     content: public readonly TMP_TextElementType elementType
     return:
@@ -552,12 +558,14 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: origin
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 91
+    startLine: 106
   namespace: TMPEffects.CharacterData
+  summary: The origin of this character.
+  example: []
   syntax:
     content: public readonly float origin
     return:
@@ -577,11 +585,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: referenceScale
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 96
+    startLine: 111
   namespace: TMPEffects.CharacterData
   summary: The reference scale of this character.
   example: []
@@ -590,6 +598,114 @@ items:
     return:
       type: System.Single
     content.vb: Public ReadOnly referenceScale As Single
+- uid: TMPEffects.CharacterData.CharData.Info.initialMesh
+  commentId: F:TMPEffects.CharacterData.CharData.Info.initialMesh
+  id: initialMesh
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: initialMesh
+  nameWithType: CharData.Info.initialMesh
+  fullName: TMPEffects.CharacterData.CharData.Info.initialMesh
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: initialMesh
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 116
+  namespace: TMPEffects.CharacterData
+  summary: The initial mesh of this character.
+  example: []
+  syntax:
+    content: public readonly ReadOnlyVertexData initialMesh
+    return:
+      type: TMPEffects.CharacterData.ReadOnlyVertexData
+    content.vb: Public ReadOnly initialMesh As ReadOnlyVertexData
+- uid: TMPEffects.CharacterData.CharData.Info.InitialPosition
+  commentId: F:TMPEffects.CharacterData.CharData.Info.InitialPosition
+  id: InitialPosition
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: InitialPosition
+  nameWithType: CharData.Info.InitialPosition
+  fullName: TMPEffects.CharacterData.CharData.Info.InitialPosition
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: InitialPosition
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 121
+  namespace: TMPEffects.CharacterData
+  summary: The initial position of this character.
+  example: []
+  syntax:
+    content: public readonly Vector3 InitialPosition
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly InitialPosition As Vector3
+- uid: TMPEffects.CharacterData.CharData.Info.InitialRotation
+  commentId: F:TMPEffects.CharacterData.CharData.Info.InitialRotation
+  id: InitialRotation
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: InitialRotation
+  nameWithType: CharData.Info.InitialRotation
+  fullName: TMPEffects.CharacterData.CharData.Info.InitialRotation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: InitialRotation
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 126
+  namespace: TMPEffects.CharacterData
+  summary: The initial rotation of this character.
+  example: []
+  syntax:
+    content: public readonly Quaternion InitialRotation
+    return:
+      type: Global.Quaternion
+    content.vb: Public ReadOnly InitialRotation As Quaternion
+- uid: TMPEffects.CharacterData.CharData.Info.InitialScale
+  commentId: F:TMPEffects.CharacterData.CharData.Info.InitialScale
+  id: InitialScale
+  parent: TMPEffects.CharacterData.CharData.Info
+  langs:
+  - csharp
+  - vb
+  name: InitialScale
+  nameWithType: CharData.Info.InitialScale
+  fullName: TMPEffects.CharacterData.CharData.Info.InitialScale
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Info.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: InitialScale
+    path: ../Package/Runtime/CharData/Info.cs
+    startLine: 131
+  namespace: TMPEffects.CharacterData
+  summary: The initial scale of this character.
+  example: []
+  syntax:
+    content: public readonly Vector3 InitialScale
+    return:
+      type: Global.Vector3
+    content.vb: Public ReadOnly InitialScale As Vector3
 - uid: TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
   commentId: M:TMPEffects.CharacterData.CharData.Info.#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)
   id: '#ctor(System.Int32,TMP_CharacterInfo,System.Int32,TMP_WordInfo)'
@@ -604,11 +720,11 @@ items:
   source:
     remote:
       path: Package/Runtime/CharData/Info.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/Info.cs
-    startLine: 142
+    startLine: 183
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Info(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo wInfo)
@@ -933,6 +1049,23 @@ references:
   name: TMP_TextElementType
   nameWithType: TMP_TextElementType
   fullName: TMP_TextElementType
+- uid: TMPEffects.CharacterData.ReadOnlyVertexData
+  commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.ReadOnlyVertexData.html
+  name: ReadOnlyVertexData
+  nameWithType: ReadOnlyVertexData
+  fullName: TMPEffects.CharacterData.ReadOnlyVertexData
+- uid: Global.Vector3
+  isExternal: true
+  name: Vector3
+  nameWithType: Vector3
+  fullName: Vector3
+- uid: Global.Quaternion
+  isExternal: true
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: Quaternion
 - uid: TMPEffects.CharacterData.CharData.Info.#ctor*
   commentId: Overload:TMPEffects.CharacterData.CharData.Info.#ctor
   href: TMPEffects.CharacterData.CharData.Info.html#TMPEffects_CharacterData_CharData_Info__ctor_System_Int32_TMP_CharacterInfo_System_Int32_TMP_WordInfo_

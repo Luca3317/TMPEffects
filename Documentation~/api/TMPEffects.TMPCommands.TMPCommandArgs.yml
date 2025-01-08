@@ -19,8 +19,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPCommandArgs
     path: ../Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 8
@@ -54,8 +54,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: tag
     path: ../Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 13
@@ -81,8 +81,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: indices
     path: ../Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 17
@@ -108,8 +108,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: writer
     path: ../Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 21
@@ -135,8 +135,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Effects/TMPCommands/TMPCommandArgs.cs
     startLine: 23

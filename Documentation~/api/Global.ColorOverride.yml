@@ -1,0 +1,796 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.ColorOverride
+  commentId: T:Global.ColorOverride
+  id: ColorOverride
+  parent: Global
+  children:
+  - Global.ColorOverride.#ctor(Color32,ColorOverride.OverrideMode)
+  - Global.ColorOverride.#ctor(ColorOverride)
+  - Global.ColorOverride.Color
+  - Global.ColorOverride.Equals(ColorOverride)
+  - Global.ColorOverride.GetValue(Color32)
+  - Global.ColorOverride.LerpUnclamped(Color32,ColorOverride,System.Single)
+  - Global.ColorOverride.LerpUnclamped(ColorOverride,Color32,System.Single)
+  - Global.ColorOverride.LerpUnclamped(ColorOverride,ColorOverride,System.Single)
+  - Global.ColorOverride.Override
+  - Global.ColorOverride.OverrideAlpha
+  - Global.ColorOverride.OverrideColor
+  - Global.ColorOverride.ToString
+  - Global.ColorOverride.op_Addition(ColorOverride,ColorOverride)
+  langs:
+  - csharp
+  - vb
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: ColorOverride
+  type: Struct
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ColorOverride
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 10
+  namespace: Global
+  syntax:
+    content: >-
+      [Serializable]
+
+      public struct ColorOverride
+    content.vb: >-
+      <Serializable>
+
+      Public Structure ColorOverride
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: Global.ColorOverride.Override
+  commentId: F:Global.ColorOverride.Override
+  id: Override
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: Override
+  nameWithType: ColorOverride.Override
+  fullName: ColorOverride.Override
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Override
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 13
+  namespace: Global
+  syntax:
+    content: public ColorOverride.OverrideMode Override
+    return:
+      type: Global.ColorOverride.OverrideMode
+    content.vb: Public Override As ColorOverride.OverrideMode
+- uid: Global.ColorOverride.Color
+  commentId: F:Global.ColorOverride.Color
+  id: Color
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: ColorOverride.Color
+  fullName: ColorOverride.Color
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Color
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 14
+  namespace: Global
+  syntax:
+    content: public Color32 Color
+    return:
+      type: Global.Color32
+    content.vb: Public Color As Color32
+- uid: Global.ColorOverride.OverrideAlpha
+  commentId: P:Global.ColorOverride.OverrideAlpha
+  id: OverrideAlpha
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: OverrideAlpha
+  nameWithType: ColorOverride.OverrideAlpha
+  fullName: ColorOverride.OverrideAlpha
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OverrideAlpha
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 16
+  namespace: Global
+  syntax:
+    content: public bool OverrideAlpha { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property OverrideAlpha As Boolean
+  overload: Global.ColorOverride.OverrideAlpha*
+- uid: Global.ColorOverride.OverrideColor
+  commentId: P:Global.ColorOverride.OverrideColor
+  id: OverrideColor
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: OverrideColor
+  nameWithType: ColorOverride.OverrideColor
+  fullName: ColorOverride.OverrideColor
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OverrideColor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 17
+  namespace: Global
+  syntax:
+    content: public bool OverrideColor { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property OverrideColor As Boolean
+  overload: Global.ColorOverride.OverrideColor*
+- uid: Global.ColorOverride.#ctor(ColorOverride)
+  commentId: M:Global.ColorOverride.#ctor(ColorOverride)
+  id: '#ctor(ColorOverride)'
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: ColorOverride(ColorOverride)
+  nameWithType: ColorOverride.ColorOverride(ColorOverride)
+  fullName: ColorOverride.ColorOverride(ColorOverride)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 19
+  namespace: Global
+  syntax:
+    content: public ColorOverride(ColorOverride original)
+    parameters:
+    - id: original
+      type: Global.ColorOverride
+    content.vb: Public Sub New(original As ColorOverride)
+  overload: Global.ColorOverride.#ctor*
+  nameWithType.vb: ColorOverride.New(ColorOverride)
+  fullName.vb: ColorOverride.New(ColorOverride)
+  name.vb: New(ColorOverride)
+- uid: Global.ColorOverride.#ctor(Color32,ColorOverride.OverrideMode)
+  commentId: M:Global.ColorOverride.#ctor(Color32,ColorOverride.OverrideMode)
+  id: '#ctor(Color32,ColorOverride.OverrideMode)'
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: ColorOverride(Color32, OverrideMode)
+  nameWithType: ColorOverride.ColorOverride(Color32, ColorOverride.OverrideMode)
+  fullName: ColorOverride.ColorOverride(Color32, ColorOverride.OverrideMode)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 25
+  namespace: Global
+  syntax:
+    content: public ColorOverride(Color32 color, ColorOverride.OverrideMode overrideMode)
+    parameters:
+    - id: color
+      type: Global.Color32
+    - id: overrideMode
+      type: Global.ColorOverride.OverrideMode
+    content.vb: Public Sub New(color As Color32, overrideMode As ColorOverride.OverrideMode)
+  overload: Global.ColorOverride.#ctor*
+  nameWithType.vb: ColorOverride.New(Color32, ColorOverride.OverrideMode)
+  fullName.vb: ColorOverride.New(Color32, ColorOverride.OverrideMode)
+  name.vb: New(Color32, OverrideMode)
+- uid: Global.ColorOverride.GetValue(Color32)
+  commentId: M:Global.ColorOverride.GetValue(Color32)
+  id: GetValue(Color32)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: GetValue(Color32)
+  nameWithType: ColorOverride.GetValue(Color32)
+  fullName: ColorOverride.GetValue(Color32)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: GetValue
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 31
+  namespace: Global
+  syntax:
+    content: public Color32 GetValue(Color32 fallback)
+    parameters:
+    - id: fallback
+      type: Global.Color32
+    return:
+      type: Global.Color32
+    content.vb: Public Function GetValue(fallback As Color32) As Color32
+  overload: Global.ColorOverride.GetValue*
+- uid: Global.ColorOverride.Equals(ColorOverride)
+  commentId: M:Global.ColorOverride.Equals(ColorOverride)
+  id: Equals(ColorOverride)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: Equals(ColorOverride)
+  nameWithType: ColorOverride.Equals(ColorOverride)
+  fullName: ColorOverride.Equals(ColorOverride)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Equals
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 55
+  namespace: Global
+  syntax:
+    content: public bool Equals(ColorOverride obj)
+    parameters:
+    - id: obj
+      type: Global.ColorOverride
+    return:
+      type: System.Boolean
+    content.vb: Public Function Equals(obj As ColorOverride) As Boolean
+  overload: Global.ColorOverride.Equals*
+- uid: Global.ColorOverride.LerpUnclamped(ColorOverride,Color32,System.Single)
+  commentId: M:Global.ColorOverride.LerpUnclamped(ColorOverride,Color32,System.Single)
+  id: LerpUnclamped(ColorOverride,Color32,System.Single)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: LerpUnclamped(ColorOverride, Color32, float)
+  nameWithType: ColorOverride.LerpUnclamped(ColorOverride, Color32, float)
+  fullName: ColorOverride.LerpUnclamped(ColorOverride, Color32, float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: LerpUnclamped
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 64
+  namespace: Global
+  syntax:
+    content: public static ColorOverride LerpUnclamped(ColorOverride start, Color32 end, float t)
+    parameters:
+    - id: start
+      type: Global.ColorOverride
+    - id: end
+      type: Global.Color32
+    - id: t
+      type: System.Single
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Shared Function LerpUnclamped(start As ColorOverride, [end] As Color32, t As Single) As ColorOverride
+  overload: Global.ColorOverride.LerpUnclamped*
+  nameWithType.vb: ColorOverride.LerpUnclamped(ColorOverride, Color32, Single)
+  fullName.vb: ColorOverride.LerpUnclamped(ColorOverride, Color32, Single)
+  name.vb: LerpUnclamped(ColorOverride, Color32, Single)
+- uid: Global.ColorOverride.LerpUnclamped(Color32,ColorOverride,System.Single)
+  commentId: M:Global.ColorOverride.LerpUnclamped(Color32,ColorOverride,System.Single)
+  id: LerpUnclamped(Color32,ColorOverride,System.Single)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: LerpUnclamped(Color32, ColorOverride, float)
+  nameWithType: ColorOverride.LerpUnclamped(Color32, ColorOverride, float)
+  fullName: ColorOverride.LerpUnclamped(Color32, ColorOverride, float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: LerpUnclamped
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 69
+  namespace: Global
+  syntax:
+    content: public static ColorOverride LerpUnclamped(Color32 start, ColorOverride end, float t)
+    parameters:
+    - id: start
+      type: Global.Color32
+    - id: end
+      type: Global.ColorOverride
+    - id: t
+      type: System.Single
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Shared Function LerpUnclamped(start As Color32, [end] As ColorOverride, t As Single) As ColorOverride
+  overload: Global.ColorOverride.LerpUnclamped*
+  nameWithType.vb: ColorOverride.LerpUnclamped(Color32, ColorOverride, Single)
+  fullName.vb: ColorOverride.LerpUnclamped(Color32, ColorOverride, Single)
+  name.vb: LerpUnclamped(Color32, ColorOverride, Single)
+- uid: Global.ColorOverride.LerpUnclamped(ColorOverride,ColorOverride,System.Single)
+  commentId: M:Global.ColorOverride.LerpUnclamped(ColorOverride,ColorOverride,System.Single)
+  id: LerpUnclamped(ColorOverride,ColorOverride,System.Single)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: LerpUnclamped(ColorOverride, ColorOverride, float)
+  nameWithType: ColorOverride.LerpUnclamped(ColorOverride, ColorOverride, float)
+  fullName: ColorOverride.LerpUnclamped(ColorOverride, ColorOverride, float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: LerpUnclamped
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 91
+  namespace: Global
+  syntax:
+    content: public static ColorOverride LerpUnclamped(ColorOverride start, ColorOverride end, float t)
+    parameters:
+    - id: start
+      type: Global.ColorOverride
+    - id: end
+      type: Global.ColorOverride
+    - id: t
+      type: System.Single
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Shared Function LerpUnclamped(start As ColorOverride, [end] As ColorOverride, t As Single) As ColorOverride
+  overload: Global.ColorOverride.LerpUnclamped*
+  nameWithType.vb: ColorOverride.LerpUnclamped(ColorOverride, ColorOverride, Single)
+  fullName.vb: ColorOverride.LerpUnclamped(ColorOverride, ColorOverride, Single)
+  name.vb: LerpUnclamped(ColorOverride, ColorOverride, Single)
+- uid: Global.ColorOverride.op_Addition(ColorOverride,ColorOverride)
+  commentId: M:Global.ColorOverride.op_Addition(ColorOverride,ColorOverride)
+  id: op_Addition(ColorOverride,ColorOverride)
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: operator +(ColorOverride, ColorOverride)
+  nameWithType: ColorOverride.operator +(ColorOverride, ColorOverride)
+  fullName: ColorOverride.operator +(ColorOverride, ColorOverride)
+  type: Operator
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: op_Addition
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 138
+  namespace: Global
+  syntax:
+    content: public static ColorOverride operator +(ColorOverride lhs, ColorOverride rhs)
+    parameters:
+    - id: lhs
+      type: Global.ColorOverride
+    - id: rhs
+      type: Global.ColorOverride
+    return:
+      type: Global.ColorOverride
+    content.vb: Public Shared Operator +(lhs As ColorOverride, rhs As ColorOverride) As ColorOverride
+  overload: Global.ColorOverride.op_Addition*
+  nameWithType.vb: ColorOverride.+(ColorOverride, ColorOverride)
+  fullName.vb: ColorOverride.+(ColorOverride, ColorOverride)
+  name.vb: +(ColorOverride, ColorOverride)
+- uid: Global.ColorOverride.ToString
+  commentId: M:Global.ColorOverride.ToString
+  id: ToString
+  parent: Global.ColorOverride
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ColorOverride.ToString()
+  fullName: ColorOverride.ToString()
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ToString
+    path: ../Package/Runtime/CharData/Mesh Modifiers/ColorOverride.cs
+    startLine: 173
+  namespace: Global
+  summary: Returns the fully qualified type name of this instance.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The fully qualified type name.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Global.ColorOverride.ToString*
+references:
+- uid: Global
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.ColorOverride.OverrideMode
+  commentId: T:Global.ColorOverride.OverrideMode
+  href: ColorOverride.html
+  name: ColorOverride.OverrideMode
+  nameWithType: ColorOverride.OverrideMode
+  fullName: ColorOverride.OverrideMode
+  spec.csharp:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html
+  spec.vb:
+  - uid: Global.ColorOverride
+    name: ColorOverride
+    href: ColorOverride.html
+  - name: .
+  - uid: Global.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: ColorOverride.OverrideMode.html
+- uid: Global.Color32
+  isExternal: true
+  name: Color32
+  nameWithType: Color32
+  fullName: Color32
+- uid: Global.ColorOverride.OverrideAlpha*
+  commentId: Overload:Global.ColorOverride.OverrideAlpha
+  href: Global.ColorOverride.html#ColorOverride_OverrideAlpha
+  name: OverrideAlpha
+  nameWithType: ColorOverride.OverrideAlpha
+  fullName: ColorOverride.OverrideAlpha
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Global.ColorOverride.OverrideColor*
+  commentId: Overload:Global.ColorOverride.OverrideColor
+  href: Global.ColorOverride.html#ColorOverride_OverrideColor
+  name: OverrideColor
+  nameWithType: ColorOverride.OverrideColor
+  fullName: ColorOverride.OverrideColor
+- uid: Global.ColorOverride.#ctor*
+  commentId: Overload:Global.ColorOverride.#ctor
+  href: Global.ColorOverride.html#ColorOverride__ctor_ColorOverride_
+  name: ColorOverride
+  nameWithType: ColorOverride.ColorOverride
+  fullName: ColorOverride.ColorOverride
+  nameWithType.vb: ColorOverride.New
+  fullName.vb: ColorOverride.New
+  name.vb: New
+- uid: Global.ColorOverride
+  commentId: T:Global.ColorOverride
+  href: ColorOverride.html
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: ColorOverride
+- uid: Global.ColorOverride.GetValue*
+  commentId: Overload:Global.ColorOverride.GetValue
+  href: Global.ColorOverride.html#ColorOverride_GetValue_Color32_
+  name: GetValue
+  nameWithType: ColorOverride.GetValue
+  fullName: ColorOverride.GetValue
+- uid: Global.ColorOverride.Equals*
+  commentId: Overload:Global.ColorOverride.Equals
+  href: Global.ColorOverride.html#ColorOverride_Equals_ColorOverride_
+  name: Equals
+  nameWithType: ColorOverride.Equals
+  fullName: ColorOverride.Equals
+- uid: Global.ColorOverride.LerpUnclamped*
+  commentId: Overload:Global.ColorOverride.LerpUnclamped
+  href: Global.ColorOverride.html#ColorOverride_LerpUnclamped_ColorOverride_Color32_System_Single_
+  name: LerpUnclamped
+  nameWithType: ColorOverride.LerpUnclamped
+  fullName: ColorOverride.LerpUnclamped
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Global.ColorOverride.op_Addition*
+  commentId: Overload:Global.ColorOverride.op_Addition
+  href: Global.ColorOverride.html#ColorOverride_op_Addition_ColorOverride_ColorOverride_
+  name: operator +
+  nameWithType: ColorOverride.operator +
+  fullName: ColorOverride.operator +
+  nameWithType.vb: ColorOverride.+
+  fullName.vb: ColorOverride.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Global.ColorOverride.op_Addition*
+    name: +
+    href: Global.ColorOverride.html#ColorOverride_op_Addition_ColorOverride_ColorOverride_
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Global.ColorOverride.ToString*
+  commentId: Overload:Global.ColorOverride.ToString
+  href: Global.ColorOverride.html#ColorOverride_ToString
+  name: ToString
+  nameWithType: ColorOverride.ToString
+  fullName: ColorOverride.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

@@ -1,0 +1,324 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  id: TMPParameterTypes.OffsetType
+  parent: TMPEffects.Parameters
+  children:
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.Baseline
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.Index
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.Line
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.SegmentIndex
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.Word
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldXPos
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldYPos
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldZPos
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.XPos
+  - TMPEffects.Parameters.TMPParameterTypes.OffsetType.YPos
+  langs:
+  - csharp
+  - vb
+  name: TMPParameterTypes.OffsetType
+  nameWithType: TMPParameterTypes.OffsetType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OffsetType
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 15
+  namespace: TMPEffects.Parameters
+  summary: Different built-in offset types, to be used with GetOffset(CharData, IAnimationContext, OffsetType).
+  example: []
+  syntax:
+    content: public enum TMPParameterTypes.OffsetType
+    content.vb: Public Enum TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.SegmentIndex
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.SegmentIndex
+  id: SegmentIndex
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: SegmentIndex
+  nameWithType: TMPParameterTypes.OffsetType.SegmentIndex
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.SegmentIndex
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: SegmentIndex
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 17
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: SegmentIndex = 0
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Index
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.Index
+  id: Index
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: Index
+  nameWithType: TMPParameterTypes.OffsetType.Index
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Index
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Index
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 18
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: Index = 5
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.XPos
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.XPos
+  id: XPos
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: XPos
+  nameWithType: TMPParameterTypes.OffsetType.XPos
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.XPos
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: XPos
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 19
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: XPos = 10
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.YPos
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.YPos
+  id: YPos
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: YPos
+  nameWithType: TMPParameterTypes.OffsetType.YPos
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.YPos
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: YPos
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 20
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: YPos = 15
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldXPos
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldXPos
+  id: WorldXPos
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldXPos
+  nameWithType: TMPParameterTypes.OffsetType.WorldXPos
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldXPos
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldXPos
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 22
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: WorldXPos = 20
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldYPos
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldYPos
+  id: WorldYPos
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldYPos
+  nameWithType: TMPParameterTypes.OffsetType.WorldYPos
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldYPos
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldYPos
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 23
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: WorldYPos = 25
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldZPos
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldZPos
+  id: WorldZPos
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: WorldZPos
+  nameWithType: TMPParameterTypes.OffsetType.WorldZPos
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.WorldZPos
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WorldZPos
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 24
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: WorldZPos = 30
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Word
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.Word
+  id: Word
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: Word
+  nameWithType: TMPParameterTypes.OffsetType.Word
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Word
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Word
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 26
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: Word = 35
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Line
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.Line
+  id: Line
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: Line
+  nameWithType: TMPParameterTypes.OffsetType.Line
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Line
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Line
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 27
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: Line = 40
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Baseline
+  commentId: F:TMPEffects.Parameters.TMPParameterTypes.OffsetType.Baseline
+  id: Baseline
+  parent: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  langs:
+  - csharp
+  - vb
+  name: Baseline
+  nameWithType: TMPParameterTypes.OffsetType.Baseline
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType.Baseline
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Parameters/TMPParameterTypes.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Baseline
+    path: ../Package/Runtime/Parameters/TMPParameterTypes.cs
+    startLine: 28
+  namespace: TMPEffects.Parameters
+  syntax:
+    content: Baseline = 45
+    return:
+      type: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+references:
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  commentId: T:TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPParameterTypes.html
+  name: TMPParameterTypes.OffsetType
+  nameWithType: TMPParameterTypes.OffsetType
+  fullName: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+  spec.csharp:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html
+  spec.vb:
+  - uid: TMPEffects.Parameters.TMPParameterTypes
+    name: TMPParameterTypes
+    href: TMPEffects.Parameters.TMPParameterTypes.html
+  - name: .
+  - uid: TMPEffects.Parameters.TMPParameterTypes.OffsetType
+    name: OffsetType
+    href: TMPEffects.Parameters.TMPParameterTypes.OffsetType.html

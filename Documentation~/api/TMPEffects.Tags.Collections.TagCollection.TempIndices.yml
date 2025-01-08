@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TempIndices
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 318
@@ -49,8 +49,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 323
@@ -81,8 +81,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Tags/TagCollection/TagCollection.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CompareTo
     path: ../Package/Runtime/Tags/TagCollection/TagCollection.cs
     startLine: 329

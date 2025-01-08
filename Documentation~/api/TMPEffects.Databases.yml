@@ -4,9 +4,13 @@ items:
   commentId: N:TMPEffects.Databases
   id: TMPEffects.Databases
   children:
+  - TMPEffects.Databases.CompositeTMPKeywordDatabase
   - TMPEffects.Databases.ITMPEffectDatabase
   - TMPEffects.Databases.ITMPEffectDatabase`1
+  - TMPEffects.Databases.ITMPKeywordDatabase
   - TMPEffects.Databases.TMPEffectDatabase`1
+  - TMPEffects.Databases.TMPKeywordDatabase
+  - TMPEffects.Databases.TMPSceneKeywordDatabase
   langs:
   - csharp
   - vb
@@ -72,6 +76,33 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: TMPEffects.Databases.CompositeTMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.CompositeTMPKeywordDatabase
+  href: TMPEffects.Databases.CompositeTMPKeywordDatabase.html
+  name: CompositeTMPKeywordDatabase
+  nameWithType: CompositeTMPKeywordDatabase
+  fullName: TMPEffects.Databases.CompositeTMPKeywordDatabase
+- uid: TMPEffects.Databases.ITMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.ITMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.ITMPKeywordDatabase.html
+  name: ITMPKeywordDatabase
+  nameWithType: ITMPKeywordDatabase
+  fullName: TMPEffects.Databases.ITMPKeywordDatabase
+- uid: TMPEffects.Databases.TMPKeywordDatabase
+  commentId: T:TMPEffects.Databases.TMPKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.TMPKeywordDatabase.html
+  name: TMPKeywordDatabase
+  nameWithType: TMPKeywordDatabase
+  fullName: TMPEffects.Databases.TMPKeywordDatabase
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabase
+  commentId: T:TMPEffects.Databases.TMPSceneKeywordDatabase
+  parent: TMPEffects.Databases
+  href: TMPEffects.Databases.TMPSceneKeywordDatabase.html
+  name: TMPSceneKeywordDatabase
+  nameWithType: TMPSceneKeywordDatabase
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabase
 - uid: TMPEffects.Databases
   commentId: N:TMPEffects.Databases
   href: TMPEffects.html

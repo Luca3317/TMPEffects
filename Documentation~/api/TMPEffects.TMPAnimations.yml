@@ -5,15 +5,23 @@ items:
   id: TMPEffects.TMPAnimations
   children:
   - TMPEffects.TMPAnimations.AnimationContext
-  - TMPEffects.TMPAnimations.AnimationUtility
-  - TMPEffects.TMPAnimations.AnimationUtility.Wave
-  - TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-  - TMPEffects.TMPAnimations.AnimationUtility.WaveBase
+  - TMPEffects.TMPAnimations.GenericAnimation
+  - TMPEffects.TMPAnimations.GenericAnimationUtility
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
   - TMPEffects.TMPAnimations.IAnimationContext
+  - TMPEffects.TMPAnimations.IAnimationData
+  - TMPEffects.TMPAnimations.IAnimationFinished
+  - TMPEffects.TMPAnimations.IAnimationFinisher
+  - TMPEffects.TMPAnimations.IGenericAnimation
   - TMPEffects.TMPAnimations.ITMPAnimation
   - TMPEffects.TMPAnimations.ReadOnlyAnimationContext
   - TMPEffects.TMPAnimations.TMPAnimation
   - TMPEffects.TMPAnimations.TMPAnimationParameterless
+  - TMPEffects.TMPAnimations.TMPAnimationUtility
+  - TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
   - TMPEffects.TMPAnimations.TMPHideAnimation
   - TMPEffects.TMPAnimations.TMPShowAnimation
   langs:
@@ -30,89 +38,6 @@ references:
   name: AnimationContext
   nameWithType: AnimationContext
   fullName: TMPEffects.TMPAnimations.AnimationContext
-- uid: TMPEffects.TMPAnimations.AnimationUtility
-  commentId: T:TMPEffects.TMPAnimations.AnimationUtility
-  href: TMPEffects.TMPAnimations.AnimationUtility.html
-  name: AnimationUtility
-  nameWithType: AnimationUtility
-  fullName: TMPEffects.TMPAnimations.AnimationUtility
-- uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
-  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.WaveBase
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.AnimationUtility.html
-  name: AnimationUtility.WaveBase
-  nameWithType: AnimationUtility.WaveBase
-  fullName: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
-    name: WaveBase
-    href: TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.WaveBase
-    name: WaveBase
-    href: TMPEffects.TMPAnimations.AnimationUtility.WaveBase.html
-- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
-  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.AnimationUtility.html
-  name: AnimationUtility.Wave
-  nameWithType: AnimationUtility.Wave
-  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
-    name: Wave
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
-    name: Wave
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
-- uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-  commentId: T:TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-  parent: TMPEffects.TMPAnimations
-  href: TMPEffects.TMPAnimations.AnimationUtility.html
-  name: AnimationUtility.Wave.PulseExtrema
-  nameWithType: AnimationUtility.Wave.PulseExtrema
-  fullName: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-  spec.csharp:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
-    name: Wave
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-    name: PulseExtrema
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html
-  spec.vb:
-  - uid: TMPEffects.TMPAnimations.AnimationUtility
-    name: AnimationUtility
-    href: TMPEffects.TMPAnimations.AnimationUtility.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave
-    name: Wave
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.html
-  - name: .
-  - uid: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema
-    name: PulseExtrema
-    href: TMPEffects.TMPAnimations.AnimationUtility.Wave.PulseExtrema.html
 - uid: TMPEffects.TMPAnimations.IAnimationContext
   commentId: T:TMPEffects.TMPAnimations.IAnimationContext
   parent: TMPEffects.TMPAnimations
@@ -120,6 +45,27 @@ references:
   name: IAnimationContext
   nameWithType: IAnimationContext
   fullName: TMPEffects.TMPAnimations.IAnimationContext
+- uid: TMPEffects.TMPAnimations.IAnimationData
+  commentId: T:TMPEffects.TMPAnimations.IAnimationData
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationData.html
+  name: IAnimationData
+  nameWithType: IAnimationData
+  fullName: TMPEffects.TMPAnimations.IAnimationData
+- uid: TMPEffects.TMPAnimations.IAnimationFinished
+  commentId: T:TMPEffects.TMPAnimations.IAnimationFinished
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationFinished.html
+  name: IAnimationFinished
+  nameWithType: IAnimationFinished
+  fullName: TMPEffects.TMPAnimations.IAnimationFinished
+- uid: TMPEffects.TMPAnimations.IAnimationFinisher
+  commentId: T:TMPEffects.TMPAnimations.IAnimationFinisher
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IAnimationFinisher.html
+  name: IAnimationFinisher
+  nameWithType: IAnimationFinisher
+  fullName: TMPEffects.TMPAnimations.IAnimationFinisher
 - uid: TMPEffects.TMPAnimations.ITMPAnimation
   commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
   parent: TMPEffects.TMPAnimations
@@ -146,6 +92,36 @@ references:
   name: TMPAnimationParameterless
   nameWithType: TMPAnimationParameterless
   fullName: TMPEffects.TMPAnimations.TMPAnimationParameterless
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationUtility
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  name: TMPAnimationUtility
+  nameWithType: TMPAnimationUtility
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  commentId: T:TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  name: TMPAnimationUtility.TMPWrapMode
+  nameWithType: TMPAnimationUtility.TMPWrapMode
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+    name: TMPAnimationUtility
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility
+    name: TMPAnimationUtility
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode
+    name: TMPWrapMode
+    href: TMPEffects.TMPAnimations.TMPAnimationUtility.TMPWrapMode.html
 - uid: TMPEffects.TMPAnimations.TMPHideAnimation
   commentId: T:TMPEffects.TMPAnimations.TMPHideAnimation
   parent: TMPEffects.TMPAnimations
@@ -160,6 +136,116 @@ references:
   name: TMPShowAnimation
   nameWithType: TMPShowAnimation
   fullName: TMPEffects.TMPAnimations.TMPShowAnimation
+- uid: TMPEffects.TMPAnimations.IGenericAnimation
+  commentId: T:TMPEffects.TMPAnimations.IGenericAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.IGenericAnimation.html
+  name: IGenericAnimation
+  nameWithType: IGenericAnimation
+  fullName: TMPEffects.TMPAnimations.IGenericAnimation
+- uid: TMPEffects.TMPAnimations.GenericAnimation
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimation
+  href: TMPEffects.TMPAnimations.GenericAnimation.html
+  name: GenericAnimation
+  nameWithType: GenericAnimation
+  fullName: TMPEffects.TMPAnimations.GenericAnimation
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility
+  nameWithType: GenericAnimationUtility
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.Track
+  nameWithType: GenericAnimationUtility.Track
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+    name: Track
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.Track.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Track
+    name: Track
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.Track.html
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.TrackList
+  nameWithType: GenericAnimationUtility.TrackList
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    name: TrackList
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
+    name: TrackList
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.StepComparer
+  nameWithType: GenericAnimationUtility.StepComparer
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+    name: StepComparer
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
+    name: StepComparer
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.CachedOffset
+  nameWithType: GenericAnimationUtility.CachedOffset
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
 - uid: TMPEffects.TMPAnimations
   commentId: N:TMPEffects.TMPAnimations
   href: TMPEffects.html

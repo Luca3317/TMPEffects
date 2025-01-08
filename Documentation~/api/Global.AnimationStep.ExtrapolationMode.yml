@@ -1,0 +1,175 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.AnimationStep.ExtrapolationMode
+  commentId: T:Global.AnimationStep.ExtrapolationMode
+  id: AnimationStep.ExtrapolationMode
+  parent: Global
+  children:
+  - Global.AnimationStep.ExtrapolationMode.Continue
+  - Global.AnimationStep.ExtrapolationMode.Hold
+  - Global.AnimationStep.ExtrapolationMode.Loop
+  - Global.AnimationStep.ExtrapolationMode.None
+  - Global.AnimationStep.ExtrapolationMode.PingPong
+  langs:
+  - csharp
+  - vb
+  name: AnimationStep.ExtrapolationMode
+  nameWithType: AnimationStep.ExtrapolationMode
+  fullName: AnimationStep.ExtrapolationMode
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ExtrapolationMode
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 66
+  namespace: Global
+  syntax:
+    content: public enum AnimationStep.ExtrapolationMode
+    content.vb: Public Enum AnimationStep.ExtrapolationMode
+- uid: Global.AnimationStep.ExtrapolationMode.None
+  commentId: F:Global.AnimationStep.ExtrapolationMode.None
+  id: None
+  parent: Global.AnimationStep.ExtrapolationMode
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: AnimationStep.ExtrapolationMode.None
+  fullName: AnimationStep.ExtrapolationMode.None
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: None
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 68
+  namespace: Global
+  syntax:
+    content: None = 0
+    return:
+      type: Global.AnimationStep.ExtrapolationMode
+- uid: Global.AnimationStep.ExtrapolationMode.Hold
+  commentId: F:Global.AnimationStep.ExtrapolationMode.Hold
+  id: Hold
+  parent: Global.AnimationStep.ExtrapolationMode
+  langs:
+  - csharp
+  - vb
+  name: Hold
+  nameWithType: AnimationStep.ExtrapolationMode.Hold
+  fullName: AnimationStep.ExtrapolationMode.Hold
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Hold
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 69
+  namespace: Global
+  syntax:
+    content: Hold = 1
+    return:
+      type: Global.AnimationStep.ExtrapolationMode
+- uid: Global.AnimationStep.ExtrapolationMode.Loop
+  commentId: F:Global.AnimationStep.ExtrapolationMode.Loop
+  id: Loop
+  parent: Global.AnimationStep.ExtrapolationMode
+  langs:
+  - csharp
+  - vb
+  name: Loop
+  nameWithType: AnimationStep.ExtrapolationMode.Loop
+  fullName: AnimationStep.ExtrapolationMode.Loop
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Loop
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 70
+  namespace: Global
+  syntax:
+    content: Loop = 2
+    return:
+      type: Global.AnimationStep.ExtrapolationMode
+- uid: Global.AnimationStep.ExtrapolationMode.PingPong
+  commentId: F:Global.AnimationStep.ExtrapolationMode.PingPong
+  id: PingPong
+  parent: Global.AnimationStep.ExtrapolationMode
+  langs:
+  - csharp
+  - vb
+  name: PingPong
+  nameWithType: AnimationStep.ExtrapolationMode.PingPong
+  fullName: AnimationStep.ExtrapolationMode.PingPong
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: PingPong
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 71
+  namespace: Global
+  syntax:
+    content: PingPong = 3
+    return:
+      type: Global.AnimationStep.ExtrapolationMode
+- uid: Global.AnimationStep.ExtrapolationMode.Continue
+  commentId: F:Global.AnimationStep.ExtrapolationMode.Continue
+  id: Continue
+  parent: Global.AnimationStep.ExtrapolationMode
+  langs:
+  - csharp
+  - vb
+  name: Continue
+  nameWithType: AnimationStep.ExtrapolationMode.Continue
+  fullName: AnimationStep.ExtrapolationMode.Continue
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Continue
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 72
+  namespace: Global
+  syntax:
+    content: Continue = 4
+    return:
+      type: Global.AnimationStep.ExtrapolationMode
+references:
+- uid: Global
+- uid: Global.AnimationStep.ExtrapolationMode
+  commentId: T:Global.AnimationStep.ExtrapolationMode
+  href: AnimationStep.html
+  name: AnimationStep.ExtrapolationMode
+  nameWithType: AnimationStep.ExtrapolationMode
+  fullName: AnimationStep.ExtrapolationMode
+  spec.csharp:
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: .
+  - uid: Global.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: AnimationStep.ExtrapolationMode.html
+  spec.vb:
+  - uid: Global.AnimationStep
+    name: AnimationStep
+    href: AnimationStep.html
+  - name: .
+  - uid: Global.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: AnimationStep.ExtrapolationMode.html

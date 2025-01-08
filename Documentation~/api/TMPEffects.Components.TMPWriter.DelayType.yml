@@ -17,11 +17,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: DelayType
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1256
+    startLine: 1365
   namespace: TMPEffects.Components
   summary: >-
     The type of delay.<br />
@@ -45,11 +45,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Percentage
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1258
+    startLine: 1367
   namespace: TMPEffects.Components
   syntax:
     content: Percentage = 0
@@ -69,11 +69,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPWriter/TMPWriter.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Raw
     path: ../Package/Runtime/Components/TMPWriter/TMPWriter.cs
-    startLine: 1259
+    startLine: 1368
   namespace: TMPEffects.Components
   syntax:
     content: Raw = 1

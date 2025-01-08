@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Parameters.Attributes
+  commentId: N:TMPEffects.Parameters.Attributes
+  id: TMPEffects.Parameters.Attributes
+  children:
+  - TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute
+  - TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute
+  - TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Parameters.Attributes
+  nameWithType: TMPEffects.Parameters.Attributes
+  fullName: TMPEffects.Parameters.Attributes
+  type: Namespace
+references:
+- uid: TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute
+  commentId: T:TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute
+  parent: TMPEffects.Parameters.Attributes
+  href: TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute.html
+  name: TMPParameterBundleAttribute
+  nameWithType: TMPParameterBundleAttribute
+  fullName: TMPEffects.Parameters.Attributes.TMPParameterBundleAttribute
+- uid: TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute
+  commentId: T:TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute
+  parent: TMPEffects.Parameters.Attributes
+  href: TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute.html
+  name: TMPParameterBundleFieldAttribute
+  nameWithType: TMPParameterBundleFieldAttribute
+  fullName: TMPEffects.Parameters.Attributes.TMPParameterBundleFieldAttribute
+- uid: TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute
+  commentId: T:TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute
+  href: TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute.html
+  name: TMPParameterTypeAttribute
+  nameWithType: TMPParameterTypeAttribute
+  fullName: TMPEffects.Parameters.Attributes.TMPParameterTypeAttribute
+- uid: TMPEffects.Parameters.Attributes
+  commentId: N:TMPEffects.Parameters.Attributes
+  href: TMPEffects.html
+  name: TMPEffects.Parameters.Attributes
+  nameWithType: TMPEffects.Parameters.Attributes
+  fullName: TMPEffects.Parameters.Attributes
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  - name: .
+  - uid: TMPEffects.Parameters.Attributes
+    name: Attributes
+    href: TMPEffects.Parameters.Attributes.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  - name: .
+  - uid: TMPEffects.Parameters.Attributes
+    name: Attributes
+    href: TMPEffects.Parameters.Attributes.html

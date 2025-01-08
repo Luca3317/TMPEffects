@@ -5,7 +5,6 @@ items:
   id: TMPMediator
   parent: TMPEffects.Components.Mediator
   children:
-  - TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
   - TMPEffects.Components.Mediator.TMPMediator.CharData
   - TMPEffects.Components.Mediator.TMPMediator.Dispose
   - TMPEffects.Components.Mediator.TMPMediator.ForceReprocess
@@ -32,11 +31,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPMediator
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 17
+    startLine: 19
   namespace: TMPEffects.Components.Mediator
   summary: >-
     A mediator class for TMPAnimator and TMPWriter (and potential additions, if any).<br />
@@ -74,12 +73,23 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityStates
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 26
+    startLine: 28
   namespace: TMPEffects.Components.Mediator
+  summary: >-
+    Collection containing all the current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> states of the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> collection.<br />
+
+    The mapping of <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> to <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> is index based, i.e. the n-th <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>
+
+    is associated with the n-th <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.<br />
+
+    You can rely on this never being reassigned (therefore any wrappers
+
+    you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
+  example: []
   syntax:
     content: public readonly ReadOnlyCollection<VisibilityState> VisibilityStates
     return:
@@ -99,12 +109,19 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: CharData
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 32
+    startLine: 35
   namespace: TMPEffects.Components.Mediator
+  summary: >-
+    Collection containing all the current <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.<br />
+
+    You can rely on this never being reassigned (therefore any wrappers
+
+    you may create, e.g. Collection&lt;VisibilityData&gt;, can be relied on as well.)
+  example: []
   syntax:
     content: public readonly ReadOnlyCollection<CharData> CharData
     return:
@@ -124,19 +141,19 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Processor
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 36
+    startLine: 40
   namespace: TMPEffects.Components.Mediator
-  summary: The <xref href="TMPEffects.TextProcessing.TMPTextProcessor" data-throw-if-not-resolved="false"></xref> used by the associated TMP_Text component.
+  summary: The <xref href="TMPEffects.TextProcessing.TMPEffectsTextProcessor" data-throw-if-not-resolved="false"></xref> used by the associated TMP_Text component.
   example: []
   syntax:
-    content: public readonly TMPTextProcessor Processor
+    content: public readonly TMPEffectsTextProcessor Processor
     return:
-      type: TMPEffects.TextProcessing.TMPTextProcessor
-    content.vb: Public ReadOnly Processor As TMPTextProcessor
+      type: TMPEffects.TextProcessing.TMPEffectsTextProcessor
+    content.vb: Public ReadOnly Processor As TMPEffectsTextProcessor
 - uid: TMPEffects.Components.Mediator.TMPMediator.Text
   commentId: F:TMPEffects.Components.Mediator.TMPMediator.Text
   id: Text
@@ -151,11 +168,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Text
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 40
+    startLine: 45
   namespace: TMPEffects.Components.Mediator
   summary: The associated TMP_Text component.
   example: []
@@ -178,11 +195,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Early
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 51
+    startLine: 60
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Raised when the associated TMP_Text component raises its TEXT_CHANGED_EVENT, before <xref href="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Late" data-throw-if-not-resolved="false"></xref>.<br />
@@ -210,11 +227,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TextChanged_Late
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 55
+    startLine: 65
   namespace: TMPEffects.Components.Mediator
   summary: Raised when the associated TMP_Text component raises its TEXT_CHANGED_EVENT, after <xref href="TMPEffects.Components.Mediator.TMPMediator.TextChanged_Early" data-throw-if-not-resolved="false"></xref>.<br />
   example: []
@@ -237,11 +254,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibilityStateUpdated
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 59
+    startLine: 70
   namespace: TMPEffects.Components.Mediator
   summary: Raised when the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> of one of the contained <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> is updated.
   example: []
@@ -264,11 +281,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ForceReprocess
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 90
+    startLine: 101
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Forces a mesh update on the associated TMP_Text component.<br />
@@ -293,11 +310,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: Dispose
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 98
+    startLine: 109
   namespace: TMPEffects.Components.Mediator
   summary: Dispose the TMPMediator instance.
   example: []
@@ -321,11 +338,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: RegisterVisibilityProcessor
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 120
+    startLine: 132
   namespace: TMPEffects.Components.Mediator
   summary: >-
     Register as the visibility processor of this TMPMediator.<br />
@@ -368,11 +385,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: UnregisterVisibilityProcessor
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 133
+    startLine: 145
   namespace: TMPEffects.Components.Mediator
   summary: Unregister as the visibility processor of this TMPMediator.
   example: []
@@ -404,11 +421,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetVisibilityState
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 151
+    startLine: 163
   namespace: TMPEffects.Components.Mediator
   summary: Get the associated <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> of the given <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
   remarks: >-
@@ -448,11 +465,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 163
+    startLine: 175
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> at the given indices.
   example: []
@@ -491,11 +508,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 218
+    startLine: 232
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the given <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
   remarks: >-
@@ -532,11 +549,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetVisibilityState
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 227
+    startLine: 241
   namespace: TMPEffects.Components.Mediator
   summary: Set the <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref> associated with the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref> at the given index.
   example: []
@@ -572,11 +589,11 @@ items:
   source:
     remote:
       path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: SetText
     path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 236
+    startLine: 250
   namespace: TMPEffects.Components.Mediator
   summary: Set the text of the associated TMP_Text component.
   example: []
@@ -591,36 +608,6 @@ items:
   nameWithType.vb: TMPMediator.SetText(String)
   fullName.vb: TMPEffects.Components.Mediator.TMPMediator.SetText(String)
   name.vb: SetText(String)
-- uid: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
-  commentId: M:TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
-  id: ApplyMesh(TMPEffects.CharacterData.CharData)
-  parent: TMPEffects.Components.Mediator.TMPMediator
-  langs:
-  - csharp
-  - vb
-  name: ApplyMesh(CharData)
-  nameWithType: TMPMediator.ApplyMesh(CharData)
-  fullName: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh(TMPEffects.CharacterData.CharData)
-  type: Method
-  source:
-    remote:
-      path: Package/Runtime/Components/TMPMediator/TMPMediator.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
-    id: ApplyMesh
-    path: ../Package/Runtime/Components/TMPMediator/TMPMediator.cs
-    startLine: 246
-  namespace: TMPEffects.Components.Mediator
-  summary: Apply the mesh of the <xref href="TMPEffects.Components.Mediator.TMPMediator.CharData" data-throw-if-not-resolved="false"></xref>.
-  example: []
-  syntax:
-    content: public void ApplyMesh(CharData cData)
-    parameters:
-    - id: cData
-      type: TMPEffects.CharacterData.CharData
-      description: ''
-    content.vb: Public Sub ApplyMesh(cData As CharData)
-  overload: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*
 references:
 - uid: TMPEffects.Components.Mediator.TMPMediator.CharData
   commentId: F:TMPEffects.Components.Mediator.TMPMediator.CharData
@@ -1063,13 +1050,13 @@ references:
     name: CharData
     href: TMPEffects.CharacterData.CharData.html
   - name: )
-- uid: TMPEffects.TextProcessing.TMPTextProcessor
-  commentId: T:TMPEffects.TextProcessing.TMPTextProcessor
+- uid: TMPEffects.TextProcessing.TMPEffectsTextProcessor
+  commentId: T:TMPEffects.TextProcessing.TMPEffectsTextProcessor
   parent: TMPEffects.TextProcessing
-  href: TMPEffects.TextProcessing.TMPTextProcessor.html
-  name: TMPTextProcessor
-  nameWithType: TMPTextProcessor
-  fullName: TMPEffects.TextProcessing.TMPTextProcessor
+  href: TMPEffects.TextProcessing.TMPEffectsTextProcessor.html
+  name: TMPEffectsTextProcessor
+  nameWithType: TMPEffectsTextProcessor
+  fullName: TMPEffects.TextProcessing.TMPEffectsTextProcessor
 - uid: TMPEffects.TextProcessing
   commentId: N:TMPEffects.TextProcessing
   href: TMPEffects.html
@@ -1308,9 +1295,3 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh*
-  commentId: Overload:TMPEffects.Components.Mediator.TMPMediator.ApplyMesh
-  href: TMPEffects.Components.Mediator.TMPMediator.html#TMPEffects_Components_Mediator_TMPMediator_ApplyMesh_TMPEffects_CharacterData_CharData_
-  name: ApplyMesh
-  nameWithType: TMPMediator.ApplyMesh
-  fullName: TMPEffects.Components.Mediator.TMPMediator.ApplyMesh

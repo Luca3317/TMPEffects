@@ -17,8 +17,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPShowAnimationDatabase
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 9
@@ -55,8 +55,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: ContainsEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 20
@@ -92,8 +92,8 @@ items:
   source:
     remote:
       path: Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
-      branch: docs-rework
-      repo: https://github.com/Luca3317/TMPEffects
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
     id: GetEffect
     path: ../Package/Runtime/Databases/AnimationDatabase/TMPShowAnimationDatabase.cs
     startLine: 32

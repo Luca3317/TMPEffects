@@ -1,0 +1,234 @@
+### YamlMime:ManagedReference
+items:
+- uid: Global.TMPResetTimeMarker
+  commentId: T:Global.TMPResetTimeMarker
+  id: TMPResetTimeMarker
+  parent: Global
+  children:
+  - Global.TMPResetTimeMarker.Time
+  - Global.TMPResetTimeMarker.flags
+  - Global.TMPResetTimeMarker.id
+  langs:
+  - csharp
+  - vb
+  name: TMPResetTimeMarker
+  nameWithType: TMPResetTimeMarker
+  fullName: TMPResetTimeMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPResetTimeMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+    startLine: 7
+  namespace: Global
+  syntax:
+    content: 'public class TMPResetTimeMarker : TMPEffectsMarker, INotification, INotificationOptionProvider'
+    content.vb: Public Class TMPResetTimeMarker Inherits TMPEffectsMarker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  - Global.TMPEffectsMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+  inheritedMembers:
+  - Global.TMPEffectsMarker.retroactive
+  - Global.TMPEffectsMarker.triggerOnce
+  - Global.TMPEffectsMarker.triggerInEditMode
+- uid: Global.TMPResetTimeMarker.id
+  commentId: P:Global.TMPResetTimeMarker.id
+  id: id
+  parent: Global.TMPResetTimeMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPResetTimeMarker.id
+  fullName: TMPResetTimeMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+    startLine: 12
+  namespace: Global
+  example: []
+  syntax:
+    content: public override PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public Overrides ReadOnly Property id As PropertyName
+  overridden: Global.TMPEffectsMarker.id
+  overload: Global.TMPResetTimeMarker.id*
+- uid: Global.TMPResetTimeMarker.flags
+  commentId: P:Global.TMPResetTimeMarker.flags
+  id: flags
+  parent: Global.TMPResetTimeMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPResetTimeMarker.flags
+  fullName: TMPResetTimeMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+    startLine: 14
+  namespace: Global
+  example: []
+  syntax:
+    content: public override NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public Overrides ReadOnly Property flags As NotificationFlags
+  overridden: Global.TMPEffectsMarker.flags
+  overload: Global.TMPResetTimeMarker.flags*
+- uid: Global.TMPResetTimeMarker.Time
+  commentId: P:Global.TMPResetTimeMarker.Time
+  id: Time
+  parent: Global.TMPResetTimeMarker
+  langs:
+  - csharp
+  - vb
+  name: Time
+  nameWithType: TMPResetTimeMarker.Time
+  fullName: TMPResetTimeMarker.Time
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Time
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPResetTimeMarker.cs
+    startLine: 22
+  namespace: Global
+  syntax:
+    content: public float Time { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property Time As Single
+  overload: Global.TMPResetTimeMarker.Time*
+references:
+- uid: Global
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.TMPEffectsMarker
+  commentId: T:Global.TMPEffectsMarker
+  href: TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffectsMarker
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: Global.TMPEffectsMarker.retroactive
+  commentId: F:Global.TMPEffectsMarker.retroactive
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_retroactive
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffectsMarker.retroactive
+- uid: Global.TMPEffectsMarker.triggerOnce
+  commentId: F:Global.TMPEffectsMarker.triggerOnce
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerOnce
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffectsMarker.triggerOnce
+- uid: Global.TMPEffectsMarker.triggerInEditMode
+  commentId: F:Global.TMPEffectsMarker.triggerInEditMode
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_triggerInEditMode
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffectsMarker.triggerInEditMode
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Global.TMPEffectsMarker.id
+  commentId: P:Global.TMPEffectsMarker.id
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffectsMarker.id
+- uid: Global.TMPResetTimeMarker.id*
+  commentId: Overload:Global.TMPResetTimeMarker.id
+  href: Global.TMPResetTimeMarker.html#TMPResetTimeMarker_id
+  name: id
+  nameWithType: TMPResetTimeMarker.id
+  fullName: TMPResetTimeMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: Global.TMPEffectsMarker.flags
+  commentId: P:Global.TMPEffectsMarker.flags
+  parent: Global.TMPEffectsMarker
+  href: Global.TMPEffectsMarker.html#TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffectsMarker.flags
+- uid: Global.TMPResetTimeMarker.flags*
+  commentId: Overload:Global.TMPResetTimeMarker.flags
+  href: Global.TMPResetTimeMarker.html#TMPResetTimeMarker_flags
+  name: flags
+  nameWithType: TMPResetTimeMarker.flags
+  fullName: TMPResetTimeMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags
+- uid: Global.TMPResetTimeMarker.Time*
+  commentId: Overload:Global.TMPResetTimeMarker.Time
+  href: Global.TMPResetTimeMarker.html#TMPResetTimeMarker_Time
+  name: Time
+  nameWithType: TMPResetTimeMarker.Time
+  fullName: TMPResetTimeMarker.Time
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
