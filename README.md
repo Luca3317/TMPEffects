@@ -1,4 +1,4 @@
-# TMPEffects [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://luca3317.github.io/TMPEffects-Pages/docs/introduction.html)
+# TMPEffects [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://tmpeffects.luca3317.dev/manual/introduction.html)
 If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lweist3317)!
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -49,11 +49,11 @@ Alternatively, you can install TMPEffects through the Unity Package Manager, usi
 https://github.com/Luca3317/TMPEffects.git?path=/Package
 ```
 
-If you don't know how to install packages using git urls, see the [docs](https://luca3317.github.io/TMPEffects-Pages/docs/installation.html).
+If you don't know how to install packages using git urls, see the [docs](https://tmpeffects.luca3317.dev/manual/installation.html).
 
 If you instead want to simply clone the repository,  
 you will have to manually import the required resources located under Assets > TMPEffects > Resources.
 
 ## Documentation
-The full documentation can be found [here](https://luca3317.github.io/TMPEffects-Pages/docs/introduction.html)
+The full documentation can be found [here](https://tmpeffects.luca3317.dev/manual/introduction.html).
 
