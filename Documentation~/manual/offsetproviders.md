@@ -28,3 +28,11 @@ That way you can create your own offset providers to be used in any animation (i
 
 There is an equivalent <mark class="markstyle">SceneOffsetBundle</mark> to be used in [SceneAnimations](tmpanimator_sceneanimations.md) that allow you to provide a 
 <mark class="markstyle">TMPSceneOffsetProvider</mark> (which is a component instead of an asset).
+
+### OffsetBundle - Parameters
+The parameters defined by the bundle (Type - aliases ):
+
+- OffsetProvider provider - <mark class=markstyle>offset</mark>, <mark class=markstyle>off</mark>
+- float Uniformity - <mark class=markstyle>uniformity</mark>, <mark class=markstyle>uni</mark>
+- bool IgnoreAnimatorScaling - <mark class=markstyle>ignoreanimatorscaling</mark>, <mark class=markstyle>ignorescaling</mark>, <mark class=markstyle>ignorescl</mark>, <mark class=markstyle>ignscl</mark>
+- bool ZeroBasedOffset - <mark class=markstyle>zerooffset</mark>, <mark class=markstyle>zerooff</mark>

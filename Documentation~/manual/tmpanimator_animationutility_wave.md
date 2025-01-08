@@ -80,3 +80,14 @@ If the checked wave has a crest or trough wait, this parameter defines whether a
 to be an extrema, but of course be aware that it will then notify you of each extremum twice.
 
 If multiple extrema were passed during the specified interval, it will notify you of the latest one.
+
+## Bundle parameters
+As mentioned above, waves are [AutoParameter bundles](autoparameters.md#adding-valid-parameters-using-bundles). The parameters defined by it are (Type name - aliases):
+
+- float upPeriod - <mark class="markstyle">upperiod</mark>, <mark class="markstyle">uppd</mark>
+- float downPeriod - <mark class="markstyle">downperiod</mark>, <mark class="markstyle">downpd</mark>, <mark class="markstyle">dnpd</mark>
+- float amplitude - <mark class="markstyle">amplitude</mark>, <mark class="markstyle">amp</mark>
+- float upwardCurve - <mark class="markstyle">upcurve</mark>, <mark class="markstyle">upcrv</mark>, <mark class="markstyle">up</mark>
+- float downwardCurve - <mark class="markstyle">downcurve</mark>, <mark class="markstyle">downcrv</mark>, <mark class="markstyle">down</mark>
+- float crestWait - <mark class="markstyle">crestwait</mark>, <mark class="markstyle">cwait</mark>, <mark class="markstyle">cw</mark>
+- float troughWait - <mark class="markstyle">troughwait</mark>, <mark class="markstyle">twait</mark>, <mark class="markstyle">tw</mark>
