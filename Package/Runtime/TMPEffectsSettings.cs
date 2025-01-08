@@ -5,6 +5,7 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using TMPEffects.Editor;
+#endif
 
 [System.Serializable]
 [ExcludeFromPreset]
@@ -52,4 +53,3 @@ internal class TMPEffectsSettings : ScriptableObject
 
     [SerializeField] private TMPKeywordDatabase globalKeywordDatabase;
 }
-#endif

@@ -881,18 +881,8 @@ namespace TMPEffects.Components
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
-        // private Stopwatch sw;
-        // private int count = 0;
-        
         private void UpdateAnimations_Impl(float deltaTime)
         {
-            // if (sw == null)
-            // {
-            //     sw = new Stopwatch();
-            // } 
-            //
-            // sw.Start();
-            
             context.passed += deltaTime;
 
             if (characterResetQueued)
@@ -910,16 +900,6 @@ namespace TMPEffects.Components
 
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-            
-            // sw.Stop();
-            // count++;
-            // if (count >= 10000)
-            // {
-            //     Debug.Log("10000 took " + sw.Elapsed.TotalMilliseconds);
-            //     sw.Reset();
-            //     count = 0;
-            // }
-            // else if (count % 100 == 0) Debug.Log(count);
         }
 
         /// <summary>
