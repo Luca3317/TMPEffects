@@ -1,28 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPWriterWaitMarkerStyle")]
-[DisplayName("TMPEffects Marker/TMPWriter/Wait")]
-public class TMPWriterWaitMarker : TMPEffectsMarker
+namespace TMPEffects.Timeline.Markers
 {
-    public override PropertyName id => new PropertyName();
-
-    public override NotificationFlags flags =>
-        (retroactive ? NotificationFlags.Retroactive : default) |
-        (triggerOnce ? NotificationFlags.TriggerOnce : default) |
-        (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
-
-    [Space] [Tooltip("The amount of time the TMPWriter should wait before continuing to write.")]
-    [SerializeField] private float waitTime = 0.5f;
-    public float WaitTime => waitTime;
-
-    private void OnValidate()
+    [CustomStyle("TMPWriterWaitMarkerStyle")]
+    [DisplayName("TMPEffects Marker/TMPWriter/Wait")]
+    public class TMPWriterWaitMarker : TMPEffectsMarker
     {
-        if (waitTime < 0) waitTime = 0;
+        public override PropertyName id => new PropertyName();
+
+        public override NotificationFlags flags =>
+            (retroactive ? NotificationFlags.Retroactive : default) |
+            (triggerOnce ? NotificationFlags.TriggerOnce : default) |
+            (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
+
+        [Space] [Tooltip("The amount of time the TMPWriter should wait before continuing to write.")]
+        [SerializeField] private float waitTime = 0.5f;
+        public float WaitTime => waitTime;
+
+        private void OnValidate()
+        {
+            if (waitTime < 0) waitTime = 0;
+        }
     }
 }

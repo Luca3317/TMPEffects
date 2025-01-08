@@ -1,5 +1,6 @@
 ﻿using TMPEffects.Components.Animator;
 using TMPEffects.CharacterData;
+using TMPEffects.Modifiers;
 
 namespace TMPEffects.TMPAnimations
 {

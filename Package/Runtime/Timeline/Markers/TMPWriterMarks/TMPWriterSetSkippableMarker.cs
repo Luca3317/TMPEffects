@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPSetSkippableMarkerStyle")]
-[DisplayName("TMPEffects Marker/TMPWriter/SetSkippable")]
-public class TMPWriterSetSkippableMarker : TMPEffectsMarker
+namespace TMPEffects.Timeline.Markers
 {
-    public override PropertyName id => new PropertyName();
+    [CustomStyle("TMPSetSkippableMarkerStyle")]
+    [DisplayName("TMPEffects Marker/TMPWriter/SetSkippable")]
+    public class TMPWriterSetSkippableMarker : TMPEffectsMarker
+    {
+        public override PropertyName id => new PropertyName();
 
-    public override NotificationFlags flags =>
-        (retroactive ? NotificationFlags.Retroactive : default) |
-        (triggerOnce ? NotificationFlags.TriggerOnce : default) |
-        (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
+        public override NotificationFlags flags =>
+            (retroactive ? NotificationFlags.Retroactive : default) |
+            (triggerOnce ? NotificationFlags.TriggerOnce : default) |
+            (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
-    [Space] [Tooltip("Whether the current text should be skippable.")]
-    [SerializeField] private bool skippable = false;
+        [Space] [Tooltip("Whether the current text should be skippable.")]
+        [SerializeField] private bool skippable = false;
     
-    public bool Skippable => skippable;
+        public bool Skippable => skippable;
+    }
 }

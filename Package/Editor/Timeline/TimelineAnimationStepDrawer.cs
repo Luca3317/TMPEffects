@@ -1,5 +1,6 @@
 using System;
 using TMPEffects.Editor;
+using TMPEffects.Timeline;
 using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEngine;

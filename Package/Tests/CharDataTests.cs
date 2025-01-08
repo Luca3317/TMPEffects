@@ -9,6 +9,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using TMPEffects.TextProcessing;
 using TMPEffects.EffectCategories;
+using TMPEffects.Modifiers;
 
 public class CharDataTests
 {

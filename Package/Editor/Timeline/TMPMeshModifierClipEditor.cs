@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPEffects.Parameters;
+using TMPEffects.Timeline;
+using TMPEffects.TMPAnimations;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPEffects.Editor;
+using TMPEffects.Timeline;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;

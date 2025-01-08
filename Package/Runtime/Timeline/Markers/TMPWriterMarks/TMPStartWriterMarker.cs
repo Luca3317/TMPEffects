@@ -2,13 +2,16 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPStartWriterMarkerStyle")]
-[DisplayName("TMPEffects Marker/TMPWriter/Start writer")]
-public class TMPStartWriterMarker : TMPEffectsMarker
+namespace TMPEffects.Timeline.Markers
 {
-    public override PropertyName id => new PropertyName();
-    public override NotificationFlags flags =>
-        (retroactive ? NotificationFlags.Retroactive : default) |
-        (triggerOnce ? NotificationFlags.TriggerOnce : default) |
-        (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
-}    
+    [CustomStyle("TMPStartWriterMarkerStyle")]
+    [DisplayName("TMPEffects Marker/TMPWriter/Start writer")]
+    public class TMPStartWriterMarker : TMPEffectsMarker
+    {
+        public override PropertyName id => new PropertyName();
+        public override NotificationFlags flags =>
+            (retroactive ? NotificationFlags.Retroactive : default) |
+            (triggerOnce ? NotificationFlags.TriggerOnce : default) |
+            (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
+    }
+}

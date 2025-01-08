@@ -1,4 +1,7 @@
 using UnityEngine.Timeline;
 
-public abstract class TMPEffectsTrack : TrackAsset
-{ }
+namespace TMPEffects.Timeline
+{
+    public abstract class TMPEffectsTrack : TrackAsset
+    { }
+}

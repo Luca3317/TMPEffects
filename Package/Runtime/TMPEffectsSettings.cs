@@ -5,12 +5,10 @@ using UnityEngine;
 
 #if UNITY_EDITOR
 using TMPEffects.Editor;
-#endif
 
 [System.Serializable]
 [ExcludeFromPreset]
-[CreateAssetMenu(fileName = "TMPEffects Settings", menuName = "CREATE SETTINGS")]
-public class TMPEffectsSettings : ScriptableObject
+internal class TMPEffectsSettings : ScriptableObject
 {
     private static TMPEffectsSettings instance;
 
@@ -54,3 +52,4 @@ public class TMPEffectsSettings : ScriptableObject
 
     [SerializeField] private TMPKeywordDatabase globalKeywordDatabase;
 }
+#endif

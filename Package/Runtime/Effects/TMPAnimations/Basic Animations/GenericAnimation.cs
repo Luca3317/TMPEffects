@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
+using TMPEffects.Modifiers;
 using UnityEngine;
 
 namespace TMPEffects.TMPAnimations

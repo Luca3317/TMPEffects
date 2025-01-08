@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using TMPEffects.Components.Animator;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPSettingsMarkerStyle")]
-[TrackBindingType(typeof(TMPAnimatorTrack))]
-[DisplayName("TMPEffects Marker/TMPAnimator/SetUpdateFrom")]
-public class TMPSetUpdateFromMarker : TMPEffectsMarker
+namespace TMPEffects.Timeline.Markers
 {
-    public override PropertyName id => new PropertyName();
+    [CustomStyle("TMPSettingsMarkerStyle")]
+    [TrackBindingType(typeof(TMPAnimatorTrack))]
+    [DisplayName("TMPEffects Marker/TMPAnimator/SetUpdateFrom")]
+    public class TMPSetUpdateFromMarker : TMPEffectsMarker
+    {
+        public override PropertyName id => new PropertyName();
 
-    public override NotificationFlags flags =>
-        (retroactive ? NotificationFlags.Retroactive : default) |
-        (triggerOnce ? NotificationFlags.TriggerOnce : default) |
-        (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
+        public override NotificationFlags flags =>
+            (retroactive ? NotificationFlags.Retroactive : default) |
+            (triggerOnce ? NotificationFlags.TriggerOnce : default) |
+            (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
 
-    [Space] [Tooltip("Where the TMPAnimator should be updated from.")]
-    [SerializeField] private UpdateFrom updateFrom;
+        [Space] [Tooltip("Where the TMPAnimator should be updated from.")]
+        [SerializeField] private UpdateFrom updateFrom;
     
-    public UpdateFrom UpdateFrom => updateFrom;
-}     
+        public UpdateFrom UpdateFrom => updateFrom;
+    }
+}
