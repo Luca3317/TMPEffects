@@ -2,6 +2,7 @@ using TMPEffects.CharacterData;
 using UnityEngine;
 using System;
 using TMPEffects.Databases;
+using TMPEffects.Modifiers;
 using TMPEffects.ObjectChanged;
 using TMPEffects.Parameters;
 using Object = UnityEngine.Object;

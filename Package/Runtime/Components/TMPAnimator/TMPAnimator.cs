@@ -19,6 +19,7 @@ using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPAnimations.Animations;
 using UnityEditor;
 using TMPEffects.Extensions;
+using TMPEffects.Modifiers;
 using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components

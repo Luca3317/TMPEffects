@@ -1,38 +1,38 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using TMPEffects.TMPAnimations;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[DisplayName("TMPEffects Clip/TMPMeshModifier Clip")]
-public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
+namespace TMPEffects.Timeline
 {
-    [NonSerialized] public TimelineClip Clip = null;
-    
-    public ClipCaps clipCaps
+    [DisplayName("TMPEffects Clip/TMPMeshModifier Clip")]
+    public class TMPMeshModifierClip : TMPEffectsClip, ITimelineClipAsset
     {
-        get { return ClipCaps.Extrapolation; }
-    }
+        [NonSerialized] public TimelineClip Clip = null;
+    
+        public ClipCaps clipCaps
+        {
+            get { return ClipCaps.Extrapolation; }
+        }
  
-    private ExposedReference<PlayableDirector> director;
-    [SerializeField] private TimelineAnimationStep step;
+        private ExposedReference<PlayableDirector> director;
+        [SerializeField] private TimelineAnimationStep step;
     
-    public TimelineAnimationStep Step => step;
+        public TimelineAnimationStep Step => step;
     
-    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
-    {
-        var playable = ScriptPlayable<TMPMeshModifierBehaviour>.Create(graph);
-        var behaviour = playable.GetBehaviour();
-        playable.GetDuration();
-        behaviour.Step = step;
-        behaviour.Clip = Clip;
+        public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+        {
+            var playable = ScriptPlayable<TMPMeshModifierBehaviour>.Create(graph);
+            var behaviour = playable.GetBehaviour();
+            playable.GetDuration();
+            behaviour.Step = step;
+            behaviour.Clip = Clip;
         
-        PlayableDirector director = (PlayableDirector)graph.GetResolver();
-        playable.GetGraph().GetResolver().SetReferenceValue(this.director.exposedName, director);
+            PlayableDirector director = (PlayableDirector)graph.GetResolver();
+            playable.GetGraph().GetResolver().SetReferenceValue(this.director.exposedName, director);
         
-        return playable;
+            return playable;
+        }
     }
 }

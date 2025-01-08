@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-[CustomStyle("TMPStopWriterMarkerStyle")]
-[DisplayName("TMPEffects Marker/TMPWriter/Stop writer")]
-public class TMPStopWriterMarker : TMPEffectsMarker
+namespace TMPEffects.Timeline.Markers
 {
-    public override PropertyName id => new PropertyName();
+    [CustomStyle("TMPStopWriterMarkerStyle")]
+    [DisplayName("TMPEffects Marker/TMPWriter/Stop writer")]
+    public class TMPStopWriterMarker : TMPEffectsMarker
+    {
+        public override PropertyName id => new PropertyName();
 
-    public override NotificationFlags flags =>
-        (retroactive ? NotificationFlags.Retroactive : default) |
-        (triggerOnce ? NotificationFlags.TriggerOnce : default) |
-        (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
-} 
+        public override NotificationFlags flags =>
+            (retroactive ? NotificationFlags.Retroactive : default) |
+            (triggerOnce ? NotificationFlags.TriggerOnce : default) |
+            (triggerInEditMode ? NotificationFlags.TriggerInEditMode : default);
+    }
+}

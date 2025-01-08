@@ -92,7 +92,6 @@ namespace TMPEffects.Editor
 
         public override void DrawPreview(Rect previewArea)
         {
-            Debug.Log(previewArea + " : " + Event.current.type);
             if (animator.Tags.Count == 0)
             {
                 if (!animator.Tags.TryAdd(

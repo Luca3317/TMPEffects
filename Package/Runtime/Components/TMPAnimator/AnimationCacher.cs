@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using TMPEffects.CharacterData;
 using TMPEffects.Databases;
+using TMPEffects.Modifiers;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
 using UnityEngine;

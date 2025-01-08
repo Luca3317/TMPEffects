@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPEffects.CharacterData;
 using TMPEffects.Components.Animator;
 using TMPEffects.Databases;
+using TMPEffects.Modifiers;
 using TMPEffects.TMPAnimations;
 using UnityEngine;
 

@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using TMPEffects.Components;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[TrackBindingType(typeof(TMPAnimator))]
-[TrackClipType(typeof(TMPAnimationClip))]
-[DisplayName("TMPEffects/TMPAnimatorTrack")]
-public class TMPAnimatorTrack : TrackAsset
+namespace TMPEffects.Timeline
 {
-    public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+    [TrackBindingType(typeof(TMPAnimator))]
+    [TrackClipType(typeof(TMPAnimationClip))]
+    [DisplayName("TMPEffects/TMPAnimatorTrack")]
+    public class TMPAnimatorTrack : TrackAsset
     {
-        var clips = GetClips();
-        foreach (var clip in clips)
+        public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
-            var currClip = clip.asset as TMPAnimationClip;
-            currClip.Clip = clip;
-        }
+            var clips = GetClips();
+            foreach (var clip in clips)
+            {
+                var currClip = clip.asset as TMPAnimationClip;
+                currClip.Clip = clip;
+            }
         
-        return ScriptPlayable<TMPAnimatorTrackMixer>.Create(graph, inputCount);
+            return ScriptPlayable<TMPAnimatorTrackMixer>.Create(graph, inputCount);
+        }
     }
 }

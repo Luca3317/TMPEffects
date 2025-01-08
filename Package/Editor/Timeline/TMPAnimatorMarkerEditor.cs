@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPEffects.Timeline.Markers;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Timeline;

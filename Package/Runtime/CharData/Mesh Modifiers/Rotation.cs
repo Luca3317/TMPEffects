@@ -1,20 +1,23 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public struct Rotation
+namespace TMPEffects.Modifiers
 {
-    public Vector3 pivot;
-    public Vector3 eulerAngles;
-
-    public Rotation(Vector3 eulerAngles, Vector3 pivot)
+    [Serializable]
+    public struct Rotation
     {
-        this.eulerAngles = eulerAngles;
-        this.pivot = pivot;
-    }
+        public Vector3 pivot;
+        public Vector3 eulerAngles;
 
-    public bool Equals(Rotation other)
-    {
-        return pivot.Equals(other.pivot) && eulerAngles.Equals(other.eulerAngles);
+        public Rotation(Vector3 eulerAngles, Vector3 pivot)
+        {
+            this.eulerAngles = eulerAngles;
+            this.pivot = pivot;
+        }
+
+        public bool Equals(Rotation other)
+        {
+            return pivot.Equals(other.pivot) && eulerAngles.Equals(other.eulerAngles);
+        }
     }
 }
