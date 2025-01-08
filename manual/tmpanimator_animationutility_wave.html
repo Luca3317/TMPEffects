@@ -153,6 +153,17 @@ Essentially, the method checks whether the wave passed an extrema during the tim
 If the checked wave has a crest or trough wait, this parameter defines whether an extremum is passed once the wait time begins, or once it ends. <mark class="markstyle">PulseExtrema</mark> can also consider both
 to be an extrema, but of course be aware that it will then notify you of each extremum twice.</p>
 <p>If multiple extrema were passed during the specified interval, it will notify you of the latest one.</p>
+<h2 id="bundle-parameters">Bundle parameters</h2>
+<p>As mentioned above, waves are <a href="autoparameters.html#adding-valid-parameters-using-bundles">AutoParameter bundles</a>. The parameters defined by it are (Type name - aliases):</p>
+<ul>
+<li>float upPeriod - <mark class="markstyle">upperiod</mark>, <mark class="markstyle">uppd</mark></li>
+<li>float downPeriod - <mark class="markstyle">downperiod</mark>, <mark class="markstyle">downpd</mark>, <mark class="markstyle">dnpd</mark></li>
+<li>float amplitude - <mark class="markstyle">amplitude</mark>, <mark class="markstyle">amp</mark></li>
+<li>float upwardCurve - <mark class="markstyle">upcurve</mark>, <mark class="markstyle">upcrv</mark>, <mark class="markstyle">up</mark></li>
+<li>float downwardCurve - <mark class="markstyle">downcurve</mark>, <mark class="markstyle">downcrv</mark>, <mark class="markstyle">down</mark></li>
+<li>float crestWait - <mark class="markstyle">crestwait</mark>, <mark class="markstyle">cwait</mark>, <mark class="markstyle">cw</mark></li>
+<li>float troughWait - <mark class="markstyle">troughwait</mark>, <mark class="markstyle">twait</mark>, <mark class="markstyle">tw</mark></li>
+</ul>
 
 </article>
 
