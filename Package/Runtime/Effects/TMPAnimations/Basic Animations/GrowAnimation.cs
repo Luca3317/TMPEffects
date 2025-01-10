@@ -12,12 +12,14 @@ namespace TMPEffects.TMPAnimations.Animations
     public partial class GrowAnimation : TMPAnimation
     {
         [SerializeField, AutoParameterBundle("")]
-        [Tooltip(
-            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\n" +
+                 "For more information about it, see the section on Waves in the documentation.")]
         private Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(), AnimationCurveUtility.EaseInOutSine(), 0.3f,
             0.3f, 1f, 0f, 1f);
 
-        [SerializeField, AutoParameterBundle("")] [Tooltip("The offset used for the wave evaluation.")]
+        [SerializeField, AutoParameterBundle("")] 
+        [Tooltip("The timing offsets used by this animation. No prefix.\n" +
+                 "For more information about it, see the section on OffsetProviders in the documentation.")]
         private OffsetBundle offsetProvider;
 
         [SerializeField, AutoParameter("maxscale", "maxscl", "max")]

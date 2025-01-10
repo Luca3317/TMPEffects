@@ -12,11 +12,13 @@ namespace TMPEffects.TMPAnimations.Animations
     [CreateAssetMenu(fileName = "new WaveAnimation", menuName = "TMPEffects/Animations/Basic Animations/Built-in/Wave")]
     public partial class WaveAnimation : TMPAnimation
     {
+        [Tooltip("The timing offsets used by this animation. No prefix.\n" +
+                 "For more information about it, see the section on OffsetProviders in the documentation.")]
         [SerializeField, AutoParameterBundle("")]
         private OffsetBundle offsetProvider = new OffsetBundle();
 
         [Tooltip("The wave that defines the behavior of this animation. No prefix.\n" +
-                 "For more information about Wave, see the section on it in the documentation.")]
+                 "For more information about it, see the section on Waves in the documentation.")]
         [SerializeField, AutoParameterBundle("")]
         private Wave wave = new Wave(AnimationCurveUtility.EaseInOutSine(),
             AnimationCurveUtility.EaseInOutSine(), 0.5f, 0.5f, 1f, 0f, 0f);
