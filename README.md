@@ -1,6 +1,6 @@
 # TMPEffects [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://tmpeffects.luca3317.dev/manual/introduction.html)
 Feel free to open issues for any questions you have that are not answered by the docs!  
-Also, please share any cool stuff you made with TMPEffects -- I want to get a little example / used in section going ☺️   
+Also, please share any cool stuff you made with TMPEffects -- I want to get a little example section going ☺️   
 If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lweist3317)!
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
