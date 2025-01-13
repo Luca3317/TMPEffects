@@ -4141,6 +4141,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "videos/previews/basic/dangle.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "videos/previews/basic/dangle.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "videos/previews/basic/fade.mp4",
       "output": {
         "resource": {
@@ -4245,6 +4255,26 @@
       "output": {
         "resource": {
           "relative_path": "videos/previews/basic/shake.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "videos/previews/basic/shear.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "videos/previews/basic/shear.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "videos/previews/basic/sketchy.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "videos/previews/basic/sketchy.mp4"
         }
       },
       "version": ""
