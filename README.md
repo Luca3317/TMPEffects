@@ -1,9 +1,10 @@
 # TMPEffects [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](https://tmpeffects.luca3317.dev/manual/introduction.html)
+Feel free to open issues for any questions you have that are not answered by the docs!  
+Also, please share any cool stuff you made with TMPEffects -- I want to get a little example / used in section going ☺️   
 If you want to, please support me / TMPEffects on [Ko-fi](https://ko-fi.com/lweist3317)!
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![openupm](https://img.shields.io/npm/v/com.luca3317.tmpeffects?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.luca3317.tmpeffects/)
-[![PCKG: Version](https://img.shields.io/github/tag/Luca3317/TMPEffects?include_prereleases=&sort=semver&color=blue)](https://github.com/Luca3317/TMPEffects/releases/)
 [![issues - TMPEffects](https://img.shields.io/github/issues/Luca3317/TMPEffects)](https://github.com/Luca3317/TMPEffects/issues)
 ![test-status](https://github.com/Luca3317/TMPEffects/actions/workflows/main.yml/badge.svg?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/luca3317/tmpeffects/badge)](https://www.codefactor.io/repository/github/luca3317/tmpeffects)
