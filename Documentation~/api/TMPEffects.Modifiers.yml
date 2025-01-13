@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  id: TMPEffects.Modifiers
+  children:
+  - TMPEffects.Modifiers.CharDataModifiers
+  - TMPEffects.Modifiers.ColorOverride
+  - TMPEffects.Modifiers.ColorOverride.OverrideMode
+  - TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+  - TMPEffects.Modifiers.EditorFriendlyRotation
+  - TMPEffects.Modifiers.Rotation
+  - TMPEffects.Modifiers.TMPCharacterModifiers
+  - TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+  - TMPEffects.Modifiers.TMPMeshModifiers
+  - TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  - TMPEffects.Modifiers.Vector3Override
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  type: Namespace
+references:
+- uid: TMPEffects.Modifiers.CharDataModifiers
+  commentId: T:TMPEffects.Modifiers.CharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: TMPEffects.Modifiers.CharDataModifiers
+- uid: TMPEffects.Modifiers.ColorOverride
+  commentId: T:TMPEffects.Modifiers.ColorOverride
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.ColorOverride.html
+  name: ColorOverride
+  nameWithType: ColorOverride
+  fullName: TMPEffects.Modifiers.ColorOverride
+- uid: TMPEffects.Modifiers.ColorOverride.OverrideMode
+  commentId: T:TMPEffects.Modifiers.ColorOverride.OverrideMode
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.ColorOverride.html
+  name: ColorOverride.OverrideMode
+  nameWithType: ColorOverride.OverrideMode
+  fullName: TMPEffects.Modifiers.ColorOverride.OverrideMode
+  spec.csharp:
+  - uid: TMPEffects.Modifiers.ColorOverride
+    name: ColorOverride
+    href: TMPEffects.Modifiers.ColorOverride.html
+  - name: .
+  - uid: TMPEffects.Modifiers.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: TMPEffects.Modifiers.ColorOverride.OverrideMode.html
+  spec.vb:
+  - uid: TMPEffects.Modifiers.ColorOverride
+    name: ColorOverride
+    href: TMPEffects.Modifiers.ColorOverride.html
+  - name: .
+  - uid: TMPEffects.Modifiers.ColorOverride.OverrideMode
+    name: OverrideMode
+    href: TMPEffects.Modifiers.ColorOverride.OverrideMode.html
+- uid: TMPEffects.Modifiers.EditorFriendlyRotation
+  commentId: T:TMPEffects.Modifiers.EditorFriendlyRotation
+  href: TMPEffects.Modifiers.EditorFriendlyRotation.html
+  name: EditorFriendlyRotation
+  nameWithType: EditorFriendlyRotation
+  fullName: TMPEffects.Modifiers.EditorFriendlyRotation
+- uid: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+  commentId: T:TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers.html
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers
+  fullName: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+- uid: TMPEffects.Modifiers.Rotation
+  commentId: T:TMPEffects.Modifiers.Rotation
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.Rotation.html
+  name: Rotation
+  nameWithType: Rotation
+  fullName: TMPEffects.Modifiers.Rotation
+- uid: TMPEffects.Modifiers.TMPCharacterModifiers
+  commentId: T:TMPEffects.Modifiers.TMPCharacterModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPCharacterModifiers.html
+  name: TMPCharacterModifiers
+  nameWithType: TMPCharacterModifiers
+  fullName: TMPEffects.Modifiers.TMPCharacterModifiers
+- uid: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+  commentId: T:TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPCharacterModifiers.html
+  name: TMPCharacterModifiers.ModifierFlags
+  nameWithType: TMPCharacterModifiers.ModifierFlags
+  fullName: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+  spec.csharp:
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers
+    name: TMPCharacterModifiers
+    href: TMPEffects.Modifiers.TMPCharacterModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers
+    name: TMPCharacterModifiers
+    href: TMPEffects.Modifiers.TMPCharacterModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags.html
+- uid: TMPEffects.Modifiers.TMPMeshModifiers
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  name: TMPMeshModifiers
+  nameWithType: TMPMeshModifiers
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  name: TMPMeshModifiers.ModifierFlags
+  nameWithType: TMPMeshModifiers.ModifierFlags
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  spec.csharp:
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.html
+- uid: TMPEffects.Modifiers.Vector3Override
+  commentId: T:TMPEffects.Modifiers.Vector3Override
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.Vector3Override.html
+  name: Vector3Override
+  nameWithType: Vector3Override
+  fullName: TMPEffects.Modifiers.Vector3Override
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html

@@ -5,6 +5,8 @@ items:
   id: TMPEffects.TMPAnimations
   children:
   - TMPEffects.TMPAnimations.AnimationContext
+  - TMPEffects.TMPAnimations.AnimationStep
+  - TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
   - TMPEffects.TMPAnimations.GenericAnimation
   - TMPEffects.TMPAnimations.GenericAnimationUtility
   - TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
@@ -38,6 +40,36 @@ references:
   name: AnimationContext
   nameWithType: AnimationContext
   fullName: TMPEffects.TMPAnimations.AnimationContext
+- uid: TMPEffects.TMPAnimations.AnimationStep
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
+  name: AnimationStep
+  nameWithType: AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep
+- uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
+  name: AnimationStep.ExtrapolationMode
+  nameWithType: AnimationStep.ExtrapolationMode
+  fullName: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationStep
+    name: AnimationStep
+    href: TMPEffects.TMPAnimations.AnimationStep.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationStep
+    name: AnimationStep
+    href: TMPEffects.TMPAnimations.AnimationStep.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode.html
 - uid: TMPEffects.TMPAnimations.IAnimationContext
   commentId: T:TMPEffects.TMPAnimations.IAnimationContext
   parent: TMPEffects.TMPAnimations

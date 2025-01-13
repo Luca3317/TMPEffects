@@ -563,6 +563,82 @@ input[type='checkbox'] {
 </div>
 </div>
 
+<div class="anim-container">
+<div class="wrap-collabsible">
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/previews/basic/shear.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+
+  <input id="collapsibleshear" class="toggle" type="checkbox">
+  <label for="collapsibleshear" class="lbl-toggle">shear Parameters</label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>
+        <ul>
+            <li> Wave: see <a href="tmpanimator_animationutility_wave.html">Waves</a></li>
+            <li> OffsetProvider: see <a href="offsetproviders.html">OffsetProviders</a></li>
+        </ul>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="anim-container">
+<div class="wrap-collabsible">
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/previews/basic/dangle.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+
+  <input id="collapsibledangle" class="toggle" type="checkbox">
+  <label for="collapsibledangle" class="lbl-toggle">dangle Parameters</label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>
+        <ul>
+            <li> Wave: see <a href="tmpanimator_animationutility_wave.html">Waves</a></li>
+            <li> OffsetProvider: see <a href="offsetproviders.html">OffsetProviders</a></li>
+        </ul>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="anim-container">
+<div class="wrap-collabsible">
+<video style="min-width: 300px; max-width: 2000px; width:75%; height:auto;" src="../videos/previews/basic/sketchy.mp4" width="320" height="240" autoplay loop muted>
+  Your browser does not support the video tag.
+</video>
+
+  <input id="collapsiblesketchy" class="toggle" type="checkbox">
+  <label for="collapsiblesketchy" class="lbl-toggle">sketchy Parameters</label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>
+      <ul>
+          <li> Delay: <mark class="markstyle">float</mark>
+          <div class="descr">The delay between each change, in seconds.</div>  
+          <div class="alias"><mark class="markstyle">delay</mark>, <mark class="markstyle">d</mark></div></li>
+          <li> Min/MaxOffset: <mark class="markstyle">Vector3</mark>
+          <div class="descr">The min/max offset from the original position.</div>  
+          <div class="alias"><mark class="markstyle">minoffset / maxoffset</mark>, <mark class="markstyle">minoff / maxoff</mark></div></li>
+          <li> Min/MaxRotation: <mark class="markstyle">Vector3</mark>
+          <div class="descr">The min/max rotation.</div>  
+          <div class="alias"><mark class="markstyle">minrotation / maxrotation</mark>, <mark class="markstyle">minrot / maxrot</mark></div></li>
+          <li> Min/MaxScale: <mark class="markstyle">Vector3</mark>
+          <div class="descr">The min/max scale.</div>  
+          <div class="alias"><mark class="markstyle">minscale / maxscale</mark>, <mark class="markstyle">minscl / maxscl</mark></div></li>
+          <li> Min/MaxColorShift: <mark class="markstyle">Vector3</mark>
+          <div class="descr">The min/max color shift, as RGB values.</div>  
+          <div class="alias"><mark class="markstyle">mincolorshift / maxcolorshift</mark>, <mark class="markstyle">minclrshift / maxclrshift</mark>, <mark class="markstyle">minclr / maxclr</mark></div></li>
+          </ul>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
 
 <div class="anim-container">
 <div class="wrap-collabsible">

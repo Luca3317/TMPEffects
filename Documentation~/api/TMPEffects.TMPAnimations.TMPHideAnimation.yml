@@ -37,11 +37,11 @@ items:
   inheritance:
   - System.Object
   derivedClasses:
-  - Global.GenericHideAnimation
   - TMPEffects.TMPAnimations.Animations.HideAnimationStackObject
   - TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+  - TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation

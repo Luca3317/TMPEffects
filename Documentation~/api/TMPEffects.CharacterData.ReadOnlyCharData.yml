@@ -29,7 +29,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyCharData
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 11
+    startLine: 12
   namespace: TMPEffects.CharacterData
   summary: A read-only wrapper around <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -64,7 +64,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Position
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 15
+    startLine: 16
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 Position { get; }
@@ -91,7 +91,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PositionDelta
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 16
+    startLine: 17
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 PositionDelta { get; }
@@ -118,7 +118,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Scale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 18
+    startLine: 19
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 Scale { get; }
@@ -145,13 +145,13 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Rotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 19
+    startLine: 20
   namespace: TMPEffects.CharacterData
   syntax:
     content: public IReadOnlyList<Rotation> Rotation { get; }
     parameters: []
     return:
-      type: System.Collections.Generic.IReadOnlyList{Rotation}
+      type: System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
     content.vb: Public ReadOnly Property Rotation As IReadOnlyList(Of Rotation)
   overload: TMPEffects.CharacterData.ReadOnlyCharData.Rotation*
 - uid: TMPEffects.CharacterData.ReadOnlyCharData.info
@@ -172,7 +172,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: info
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 21
+    startLine: 22
   namespace: TMPEffects.CharacterData
   syntax:
     content: public CharData.Info info { get; }
@@ -199,7 +199,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialMesh
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 23
+    startLine: 24
   namespace: TMPEffects.CharacterData
   syntax:
     content: public ReadOnlyVertexData InitialMesh { get; }
@@ -226,7 +226,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialPosition
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 25
+    startLine: 26
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 InitialPosition { get; }
@@ -253,7 +253,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 27
+    startLine: 28
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Quaternion InitialRotation { get; }
@@ -280,7 +280,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialScale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 29
+    startLine: 30
   namespace: TMPEffects.CharacterData
   syntax:
     content: public Vector3 InitialScale { get; }
@@ -307,7 +307,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 31
+    startLine: 32
   namespace: TMPEffects.CharacterData
   syntax:
     content: public ReadOnlyCharData(CharData cData)
@@ -615,16 +615,16 @@ references:
   name: Rotation
   nameWithType: ReadOnlyCharData.Rotation
   fullName: TMPEffects.CharacterData.ReadOnlyCharData.Rotation
-- uid: System.Collections.Generic.IReadOnlyList{Rotation}
-  commentId: T:System.Collections.Generic.IReadOnlyList{Rotation}
+- uid: System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.IReadOnlyList`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
   name: IReadOnlyList<Rotation>
   nameWithType: IReadOnlyList<Rotation>
-  fullName: System.Collections.Generic.IReadOnlyList<Rotation>
+  fullName: System.Collections.Generic.IReadOnlyList<TMPEffects.Modifiers.Rotation>
   nameWithType.vb: IReadOnlyList(Of Rotation)
-  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Rotation)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TMPEffects.Modifiers.Rotation)
   name.vb: IReadOnlyList(Of Rotation)
   spec.csharp:
   - uid: System.Collections.Generic.IReadOnlyList`1
@@ -632,9 +632,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
   - name: <
-  - uid: Global.Rotation
+  - uid: TMPEffects.Modifiers.Rotation
     name: Rotation
-    href: Rotation.html
+    href: TMPEffects.Modifiers.Rotation.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.IReadOnlyList`1
@@ -644,9 +644,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.Rotation
+  - uid: TMPEffects.Modifiers.Rotation
     name: Rotation
-    href: Rotation.html
+    href: TMPEffects.Modifiers.Rotation.html
   - name: )
 - uid: System.Collections.Generic.IReadOnlyList`1
   commentId: T:System.Collections.Generic.IReadOnlyList`1

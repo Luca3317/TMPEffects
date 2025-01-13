@@ -26,7 +26,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CurveShowAnimation
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 10
+    startLine: 11
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   syntax:
     content: 'public class CurveShowAnimation : TMPShowAnimation, ITMPAnimation, ITMPParameterValidator, INotifyObjectChanged'
@@ -61,7 +61,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: animation
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 13
+    startLine: 14
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   syntax:
     content: public TMPAnimation animation
@@ -86,7 +86,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: curve
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 14
+    startLine: 15
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   syntax:
     content: public AnimationCurve curve
@@ -111,7 +111,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: duration
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 15
+    startLine: 16
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   syntax:
     content: public float duration
@@ -136,7 +136,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 17
+    startLine: 18
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Animate the given character.
   example: []
@@ -170,7 +170,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ValidateParameters
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 35
+    startLine: 36
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Validate the given parameters.
   example: []
@@ -210,7 +210,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetParameters
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 41
+    startLine: 42
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Set the parameters for the animation.
   example: []
@@ -250,7 +250,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetNewCustomData
     path: ../Package/Runtime/Effects/TMPAnimations/Show Animations/CurveShowAnimation.cs
-    startLine: 48
+    startLine: 49
   namespace: TMPEffects.TMPAnimations.ShowAnimations
   summary: Get a new custom data object for this animation.
   example: []

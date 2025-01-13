@@ -1,0 +1,490 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.TMPAnimationClip
+  commentId: T:TMPEffects.Timeline.TMPAnimationClip
+  id: TMPAnimationClip
+  parent: TMPEffects.Timeline
+  children:
+  - TMPEffects.Timeline.TMPAnimationClip.Animation
+  - TMPEffects.Timeline.TMPAnimationClip.Clip
+  - TMPEffects.Timeline.TMPAnimationClip.CreatePlayable(PlayableGraph,GameObject)
+  - TMPEffects.Timeline.TMPAnimationClip.Data
+  - TMPEffects.Timeline.TMPAnimationClip.animation
+  - TMPEffects.Timeline.TMPAnimationClip.clipCaps
+  - TMPEffects.Timeline.TMPAnimationClip.entryCurve
+  - TMPEffects.Timeline.TMPAnimationClip.entryDuration
+  - TMPEffects.Timeline.TMPAnimationClip.exitCurve
+  - TMPEffects.Timeline.TMPAnimationClip.exitDuration
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimationClip
+  nameWithType: TMPAnimationClip
+  fullName: TMPEffects.Timeline.TMPAnimationClip
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPAnimationClip
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 10
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: 'public class TMPAnimationClip : TMPEffectsClip, ITimelineClipAsset'
+    content.vb: Public Class TMPAnimationClip Inherits TMPEffectsClip Implements ITimelineClipAsset
+  inheritance:
+  - System.Object
+  - TMPEffects.Timeline.TMPEffectsClip
+  implements:
+  - Global.ITimelineClipAsset
+- uid: TMPEffects.Timeline.TMPAnimationClip.Animation
+  commentId: P:TMPEffects.Timeline.TMPAnimationClip.Animation
+  id: Animation
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: Animation
+  nameWithType: TMPAnimationClip.Animation
+  fullName: TMPEffects.Timeline.TMPAnimationClip.Animation
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Animation
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 13
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public ITMPAnimation Animation { get; }
+    parameters: []
+    return:
+      type: TMPEffects.TMPAnimations.ITMPAnimation
+    content.vb: Public ReadOnly Property Animation As ITMPAnimation
+  overload: TMPEffects.Timeline.TMPAnimationClip.Animation*
+- uid: TMPEffects.Timeline.TMPAnimationClip.animation
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.animation
+  id: animation
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: animation
+  nameWithType: TMPAnimationClip.animation
+  fullName: TMPEffects.Timeline.TMPAnimationClip.animation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: animation
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 14
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public UnityEngine.Object animation
+    return:
+      type: Global.UnityEngine.Object
+    content.vb: Public animation As UnityEngine.Object
+- uid: TMPEffects.Timeline.TMPAnimationClip.Clip
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.Clip
+  id: Clip
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: Clip
+  nameWithType: TMPAnimationClip.Clip
+  fullName: TMPEffects.Timeline.TMPAnimationClip.Clip
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Clip
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 15
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: >-
+      [NonSerialized]
+
+      public TimelineClip Clip
+    return:
+      type: Global.TimelineClip
+    content.vb: >-
+      <NonSerialized>
+
+      Public Clip As TimelineClip
+  attributes:
+  - type: System.NonSerializedAttribute
+    ctor: System.NonSerializedAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Timeline.TMPAnimationClip.clipCaps
+  commentId: P:TMPEffects.Timeline.TMPAnimationClip.clipCaps
+  id: clipCaps
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: clipCaps
+  nameWithType: TMPAnimationClip.clipCaps
+  fullName: TMPEffects.Timeline.TMPAnimationClip.clipCaps
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: clipCaps
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 17
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public ClipCaps clipCaps { get; }
+    parameters: []
+    return:
+      type: Global.ClipCaps
+    content.vb: Public ReadOnly Property clipCaps As ClipCaps
+  overload: TMPEffects.Timeline.TMPAnimationClip.clipCaps*
+- uid: TMPEffects.Timeline.TMPAnimationClip.entryCurve
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.entryCurve
+  id: entryCurve
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: entryCurve
+  nameWithType: TMPAnimationClip.entryCurve
+  fullName: TMPEffects.Timeline.TMPAnimationClip.entryCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: entryCurve
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 20
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public TMPBlendCurve entryCurve
+    return:
+      type: TMPEffects.Parameters.TMPBlendCurve
+    content.vb: Public entryCurve As TMPBlendCurve
+- uid: TMPEffects.Timeline.TMPAnimationClip.entryDuration
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.entryDuration
+  id: entryDuration
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: entryDuration
+  nameWithType: TMPAnimationClip.entryDuration
+  fullName: TMPEffects.Timeline.TMPAnimationClip.entryDuration
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: entryDuration
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 21
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public float entryDuration
+    return:
+      type: System.Single
+    content.vb: Public entryDuration As Single
+- uid: TMPEffects.Timeline.TMPAnimationClip.exitCurve
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.exitCurve
+  id: exitCurve
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: exitCurve
+  nameWithType: TMPAnimationClip.exitCurve
+  fullName: TMPEffects.Timeline.TMPAnimationClip.exitCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: exitCurve
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 23
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public TMPBlendCurve exitCurve
+    return:
+      type: TMPEffects.Parameters.TMPBlendCurve
+    content.vb: Public exitCurve As TMPBlendCurve
+- uid: TMPEffects.Timeline.TMPAnimationClip.exitDuration
+  commentId: F:TMPEffects.Timeline.TMPAnimationClip.exitDuration
+  id: exitDuration
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: exitDuration
+  nameWithType: TMPAnimationClip.exitDuration
+  fullName: TMPEffects.Timeline.TMPAnimationClip.exitDuration
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: exitDuration
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 24
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public float exitDuration
+    return:
+      type: System.Single
+    content.vb: Public exitDuration As Single
+- uid: TMPEffects.Timeline.TMPAnimationClip.Data
+  commentId: P:TMPEffects.Timeline.TMPAnimationClip.Data
+  id: Data
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: TMPAnimationClip.Data
+  fullName: TMPEffects.Timeline.TMPAnimationClip.Data
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Data
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 26
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: public object Data { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property Data As Object
+  overload: TMPEffects.Timeline.TMPAnimationClip.Data*
+- uid: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable(PlayableGraph,GameObject)
+  commentId: M:TMPEffects.Timeline.TMPAnimationClip.CreatePlayable(PlayableGraph,GameObject)
+  id: CreatePlayable(PlayableGraph,GameObject)
+  parent: TMPEffects.Timeline.TMPAnimationClip
+  langs:
+  - csharp
+  - vb
+  name: CreatePlayable(PlayableGraph, GameObject)
+  nameWithType: TMPAnimationClip.CreatePlayable(PlayableGraph, GameObject)
+  fullName: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable(PlayableGraph, GameObject)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CreatePlayable
+    path: ../Package/Runtime/Timeline/Clips/TMPAnimationClip.cs
+    startLine: 29
+  namespace: TMPEffects.Timeline
+  example: []
+  syntax:
+    content: public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+    parameters:
+    - id: graph
+      type: Global.PlayableGraph
+    - id: owner
+      type: Global.GameObject
+    return:
+      type: Global.Playable
+    content.vb: Public Overrides Function CreatePlayable(graph As PlayableGraph, owner As GameObject) As Playable
+  overload: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable*
+references:
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  href: TMPEffects.html
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Timeline.TMPEffectsClip
+  commentId: T:TMPEffects.Timeline.TMPEffectsClip
+  parent: TMPEffects.Timeline
+  href: TMPEffects.Timeline.TMPEffectsClip.html
+  name: TMPEffectsClip
+  nameWithType: TMPEffectsClip
+  fullName: TMPEffects.Timeline.TMPEffectsClip
+- uid: Global.ITimelineClipAsset
+  isExternal: true
+  name: ITimelineClipAsset
+  nameWithType: ITimelineClipAsset
+  fullName: ITimelineClipAsset
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.TMPAnimationClip.Animation*
+  commentId: Overload:TMPEffects.Timeline.TMPAnimationClip.Animation
+  href: TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_Animation
+  name: Animation
+  nameWithType: TMPAnimationClip.Animation
+  fullName: TMPEffects.Timeline.TMPAnimationClip.Animation
+- uid: TMPEffects.TMPAnimations.ITMPAnimation
+  commentId: T:TMPEffects.TMPAnimations.ITMPAnimation
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.ITMPAnimation.html
+  name: ITMPAnimation
+  nameWithType: ITMPAnimation
+  fullName: TMPEffects.TMPAnimations.ITMPAnimation
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: Global.UnityEngine.Object
+  isExternal: true
+  name: Object
+  nameWithType: UnityEngine.Object
+  fullName: UnityEngine.Object
+- uid: Global.TimelineClip
+  isExternal: true
+  name: TimelineClip
+  nameWithType: TimelineClip
+  fullName: TimelineClip
+- uid: TMPEffects.Timeline.TMPAnimationClip.clipCaps*
+  commentId: Overload:TMPEffects.Timeline.TMPAnimationClip.clipCaps
+  href: TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_clipCaps
+  name: clipCaps
+  nameWithType: TMPAnimationClip.clipCaps
+  fullName: TMPEffects.Timeline.TMPAnimationClip.clipCaps
+- uid: Global.ClipCaps
+  isExternal: true
+  name: ClipCaps
+  nameWithType: ClipCaps
+  fullName: ClipCaps
+- uid: TMPEffects.Parameters.TMPBlendCurve
+  commentId: T:TMPEffects.Parameters.TMPBlendCurve
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPBlendCurve.html
+  name: TMPBlendCurve
+  nameWithType: TMPBlendCurve
+  fullName: TMPEffects.Parameters.TMPBlendCurve
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.Timeline.TMPAnimationClip.Data*
+  commentId: Overload:TMPEffects.Timeline.TMPAnimationClip.Data
+  href: TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_Data
+  name: Data
+  nameWithType: TMPAnimationClip.Data
+  fullName: TMPEffects.Timeline.TMPAnimationClip.Data
+- uid: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable*
+  commentId: Overload:TMPEffects.Timeline.TMPAnimationClip.CreatePlayable
+  href: TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_CreatePlayable_PlayableGraph_GameObject_
+  name: CreatePlayable
+  nameWithType: TMPAnimationClip.CreatePlayable
+  fullName: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable
+- uid: Global.PlayableGraph
+  isExternal: true
+  name: PlayableGraph
+  nameWithType: PlayableGraph
+  fullName: PlayableGraph
+- uid: Global.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: GameObject
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable

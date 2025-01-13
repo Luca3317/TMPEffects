@@ -1,0 +1,158 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  id: TMPMeshModifierTrackMixer
+  parent: TMPEffects.Timeline
+  children:
+  - TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  - TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifierTrackMixer
+  nameWithType: TMPMeshModifierTrackMixer
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPMeshModifierTrackMixer
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 10
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: 'public class TMPMeshModifierTrackMixer : PlayableBehaviour'
+    content.vb: Public Class TMPMeshModifierTrackMixer Inherits PlayableBehaviour
+  inheritance:
+  - System.Object
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  commentId: M:TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable,FrameData)
+  id: OnBehaviourPause(Playable,FrameData)
+  parent: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  langs:
+  - csharp
+  - vb
+  name: OnBehaviourPause(Playable, FrameData)
+  nameWithType: TMPMeshModifierTrackMixer.OnBehaviourPause(Playable, FrameData)
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause(Playable, FrameData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnBehaviourPause
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 24
+  namespace: TMPEffects.Timeline
+  example: []
+  syntax:
+    content: public override void OnBehaviourPause(Playable playable, FrameData info)
+    parameters:
+    - id: playable
+      type: Global.Playable
+    - id: info
+      type: Global.FrameData
+    content.vb: Public Overrides Sub OnBehaviourPause(playable As Playable, info As FrameData)
+  overload: TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause*
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  commentId: M:TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
+  id: ProcessFrame(Playable,FrameData,System.Object)
+  parent: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  langs:
+  - csharp
+  - vb
+  name: ProcessFrame(Playable, FrameData, object)
+  nameWithType: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, object)
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ProcessFrame
+    path: ../Package/Runtime/Timeline/TrackMixers/TMPMeshModifierTrackMixer.cs
+    startLine: 31
+  namespace: TMPEffects.Timeline
+  example: []
+  syntax:
+    content: public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+    parameters:
+    - id: playable
+      type: Global.Playable
+    - id: info
+      type: Global.FrameData
+    - id: playerData
+      type: System.Object
+    content.vb: Public Overrides Sub ProcessFrame(playable As Playable, info As FrameData, playerData As Object)
+  overload: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame*
+  nameWithType.vb: TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, Object)
+  fullName.vb: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame(Playable, FrameData, Object)
+  name.vb: ProcessFrame(Playable, FrameData, Object)
+references:
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  href: TMPEffects.html
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause*
+  commentId: Overload:TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause
+  href: TMPEffects.Timeline.TMPMeshModifierTrackMixer.html#TMPEffects_Timeline_TMPMeshModifierTrackMixer_OnBehaviourPause_Playable_FrameData_
+  name: OnBehaviourPause
+  nameWithType: TMPMeshModifierTrackMixer.OnBehaviourPause
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer.OnBehaviourPause
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable
+- uid: Global.FrameData
+  isExternal: true
+  name: FrameData
+  nameWithType: FrameData
+  fullName: FrameData
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame*
+  commentId: Overload:TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame
+  href: TMPEffects.Timeline.TMPMeshModifierTrackMixer.html#TMPEffects_Timeline_TMPMeshModifierTrackMixer_ProcessFrame_Playable_FrameData_System_Object_
+  name: ProcessFrame
+  nameWithType: TMPMeshModifierTrackMixer.ProcessFrame
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer.ProcessFrame

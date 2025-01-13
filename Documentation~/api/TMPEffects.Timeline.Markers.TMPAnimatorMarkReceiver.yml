@@ -1,0 +1,135 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  commentId: T:TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  id: TMPAnimatorMarkReceiver
+  parent: TMPEffects.Timeline.Markers
+  children:
+  - TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: TMPAnimatorMarkReceiver
+  nameWithType: TMPAnimatorMarkReceiver
+  fullName: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPAnimatorMarkReceiver
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+    startLine: 6
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: 'public class TMPAnimatorMarkReceiver : MonoBehaviour, INotificationReceiver'
+    content.vb: Public Class TMPAnimatorMarkReceiver Inherits MonoBehaviour Implements INotificationReceiver
+  inheritance:
+  - System.Object
+  implements:
+  - Global.INotificationReceiver
+- uid: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  commentId: M:TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify(Playable,INotification,System.Object)
+  id: OnNotify(Playable,INotification,System.Object)
+  parent: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  langs:
+  - csharp
+  - vb
+  name: OnNotify(Playable, INotification, object)
+  nameWithType: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, object)
+  fullName: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, object)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: OnNotify
+    path: ../Package/Runtime/Timeline/Markers/TMPAnimatorMarks/TMPAnimatorMarkReceiver.cs
+    startLine: 11
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: public void OnNotify(Playable origin, INotification notification, object context)
+    parameters:
+    - id: origin
+      type: Global.Playable
+    - id: notification
+      type: Global.INotification
+    - id: context
+      type: System.Object
+    content.vb: Public Sub OnNotify(origin As Playable, notification As INotification, context As Object)
+  overload: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify*
+  nameWithType.vb: TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, Object)
+  fullName.vb: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify(Playable, INotification, Object)
+  name.vb: OnNotify(Playable, INotification, Object)
+references:
+- uid: TMPEffects.Timeline.Markers
+  commentId: N:TMPEffects.Timeline.Markers
+  href: TMPEffects.html
+  name: TMPEffects.Timeline.Markers
+  nameWithType: TMPEffects.Timeline.Markers
+  fullName: TMPEffects.Timeline.Markers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Global.INotificationReceiver
+  isExternal: true
+  name: INotificationReceiver
+  nameWithType: INotificationReceiver
+  fullName: INotificationReceiver
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify
+  href: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.html#TMPEffects_Timeline_Markers_TMPAnimatorMarkReceiver_OnNotify_Playable_INotification_System_Object_
+  name: OnNotify
+  nameWithType: TMPAnimatorMarkReceiver.OnNotify
+  fullName: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.OnNotify
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification

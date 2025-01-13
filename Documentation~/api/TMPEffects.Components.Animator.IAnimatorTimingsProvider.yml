@@ -21,7 +21,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimatorTimingsProvider
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 54
+    startLine: 55
   namespace: TMPEffects.Components.Animator
   summary: Provides timings of <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -46,7 +46,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DeltaTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 59
+    startLine: 60
   namespace: TMPEffects.Components.Animator
   summary: The current delta time (=&gt; time since last animation update).
   example: []
@@ -75,7 +75,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 63
+    startLine: 64
   namespace: TMPEffects.Components.Animator
   summary: The time that has passed since the animator began animating.
   example: []

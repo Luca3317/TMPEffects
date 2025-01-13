@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.TMPMeshModifierTrack
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierTrack
+  id: TMPMeshModifierTrack
+  parent: TMPEffects.Timeline
+  children:
+  - TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph,GameObject,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifierTrack
+  nameWithType: TMPMeshModifierTrack
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrack
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Tracks/TMPMeshModifierTrack.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPMeshModifierTrack
+    path: ../Package/Runtime/Timeline/Tracks/TMPMeshModifierTrack.cs
+    startLine: 8
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: 'public class TMPMeshModifierTrack : TMPEffectsTrack'
+    content.vb: Public Class TMPMeshModifierTrack Inherits TMPEffectsTrack
+  inheritance:
+  - System.Object
+  - TMPEffects.Timeline.TMPEffectsTrack
+- uid: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph,GameObject,System.Int32)
+  commentId: M:TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph,GameObject,System.Int32)
+  id: CreateTrackMixer(PlayableGraph,GameObject,System.Int32)
+  parent: TMPEffects.Timeline.TMPMeshModifierTrack
+  langs:
+  - csharp
+  - vb
+  name: CreateTrackMixer(PlayableGraph, GameObject, int)
+  nameWithType: TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph, GameObject, int)
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph, GameObject, int)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Tracks/TMPMeshModifierTrack.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CreateTrackMixer
+    path: ../Package/Runtime/Timeline/Tracks/TMPMeshModifierTrack.cs
+    startLine: 13
+  namespace: TMPEffects.Timeline
+  example: []
+  syntax:
+    content: public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+    parameters:
+    - id: graph
+      type: Global.PlayableGraph
+    - id: go
+      type: Global.GameObject
+    - id: inputCount
+      type: System.Int32
+    return:
+      type: Global.Playable
+    content.vb: Public Overrides Function CreateTrackMixer(graph As PlayableGraph, go As GameObject, inputCount As Integer) As Playable
+  overload: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer*
+  nameWithType.vb: TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph, GameObject, Integer)
+  fullName.vb: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer(PlayableGraph, GameObject, Integer)
+  name.vb: CreateTrackMixer(PlayableGraph, GameObject, Integer)
+references:
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  href: TMPEffects.html
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Timeline.TMPEffectsTrack
+  commentId: T:TMPEffects.Timeline.TMPEffectsTrack
+  parent: TMPEffects.Timeline
+  href: TMPEffects.Timeline.TMPEffectsTrack.html
+  name: TMPEffectsTrack
+  nameWithType: TMPEffectsTrack
+  fullName: TMPEffects.Timeline.TMPEffectsTrack
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer*
+  commentId: Overload:TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer
+  href: TMPEffects.Timeline.TMPMeshModifierTrack.html#TMPEffects_Timeline_TMPMeshModifierTrack_CreateTrackMixer_PlayableGraph_GameObject_System_Int32_
+  name: CreateTrackMixer
+  nameWithType: TMPMeshModifierTrack.CreateTrackMixer
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrack.CreateTrackMixer
+- uid: Global.PlayableGraph
+  isExternal: true
+  name: PlayableGraph
+  nameWithType: PlayableGraph
+  fullName: PlayableGraph
+- uid: Global.GameObject
+  isExternal: true
+  name: GameObject
+  nameWithType: GameObject
+  fullName: GameObject
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Global.Playable
+  isExternal: true
+  name: Playable
+  nameWithType: Playable
+  fullName: Playable

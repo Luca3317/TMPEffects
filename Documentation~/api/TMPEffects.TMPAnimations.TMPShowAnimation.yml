@@ -37,12 +37,12 @@ items:
   inheritance:
   - System.Object
   derivedClasses:
-  - Global.GenericShowAnimation
   - TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject
   - TMPEffects.TMPAnimations.ShowAnimations.CharShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation

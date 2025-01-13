@@ -5,7 +5,7 @@ items:
   id: GenericAnimationUtility.StepComparer
   parent: TMPEffects.TMPAnimations
   children:
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(AnimationStep,AnimationStep)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
   langs:
   - csharp
   - vb
@@ -20,13 +20,13 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StepComparer
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 198
+    startLine: 199
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: 'public struct GenericAnimationUtility.StepComparer : IComparer<AnimationStep>'
     content.vb: Public Structure GenericAnimationUtility.StepComparer Implements IComparer(Of AnimationStep)
   implements:
-  - System.Collections.Generic.IComparer{AnimationStep}
+  - System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}
   inheritedMembers:
   - System.ValueType.Equals(System.Object)
   - System.ValueType.GetHashCode
@@ -34,16 +34,16 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(AnimationStep,AnimationStep)
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(AnimationStep,AnimationStep)
-  id: Compare(AnimationStep,AnimationStep)
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
+  id: Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer
   langs:
   - csharp
   - vb
   name: Compare(AnimationStep, AnimationStep)
   nameWithType: GenericAnimationUtility.StepComparer.Compare(AnimationStep, AnimationStep)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(AnimationStep, AnimationStep)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare(TMPEffects.TMPAnimations.AnimationStep, TMPEffects.TMPAnimations.AnimationStep)
   type: Method
   source:
     remote:
@@ -52,7 +52,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Compare
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 200
+    startLine: 201
   namespace: TMPEffects.TMPAnimations
   summary: Compares two objects and returns a value indicating whether one is less than, equal to, or greater than the other.
   example: []
@@ -60,10 +60,10 @@ items:
     content: public int Compare(AnimationStep x, AnimationStep y)
     parameters:
     - id: x
-      type: Global.AnimationStep
+      type: TMPEffects.TMPAnimations.AnimationStep
       description: The first object to compare.
     - id: y
-      type: Global.AnimationStep
+      type: TMPEffects.TMPAnimations.AnimationStep
       description: The second object to compare.
     return:
       type: System.Int32
@@ -74,7 +74,7 @@ items:
     content.vb: Public Function Compare(x As AnimationStep, y As AnimationStep) As Integer
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare*
   implements:
-  - System.Collections.Generic.IComparer{AnimationStep}.Compare(AnimationStep,AnimationStep)
+  - System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
 references:
 - uid: TMPEffects.TMPAnimations
   commentId: N:TMPEffects.TMPAnimations
@@ -98,16 +98,16 @@ references:
   - uid: TMPEffects.TMPAnimations
     name: TMPAnimations
     href: TMPEffects.TMPAnimations.html
-- uid: System.Collections.Generic.IComparer{AnimationStep}
-  commentId: T:System.Collections.Generic.IComparer{AnimationStep}
+- uid: System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}
+  commentId: T:System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.IComparer`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
   name: IComparer<AnimationStep>
   nameWithType: IComparer<AnimationStep>
-  fullName: System.Collections.Generic.IComparer<AnimationStep>
+  fullName: System.Collections.Generic.IComparer<TMPEffects.TMPAnimations.AnimationStep>
   nameWithType.vb: IComparer(Of AnimationStep)
-  fullName.vb: System.Collections.Generic.IComparer(Of AnimationStep)
+  fullName.vb: System.Collections.Generic.IComparer(Of TMPEffects.TMPAnimations.AnimationStep)
   name.vb: IComparer(Of AnimationStep)
   spec.csharp:
   - uid: System.Collections.Generic.IComparer`1
@@ -115,9 +115,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1
   - name: <
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.IComparer`1
@@ -127,9 +127,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
 - uid: System.ValueType.Equals(System.Object)
   commentId: M:System.ValueType.Equals(System.Object)
@@ -415,56 +415,57 @@ references:
   fullName: System
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html#TMPEffects_TMPAnimations_GenericAnimationUtility_StepComparer_Compare_AnimationStep_AnimationStep_
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.html#TMPEffects_TMPAnimations_GenericAnimationUtility_StepComparer_Compare_TMPEffects_TMPAnimations_AnimationStep_TMPEffects_TMPAnimations_AnimationStep_
   name: Compare
   nameWithType: GenericAnimationUtility.StepComparer.Compare
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.StepComparer.Compare
-- uid: System.Collections.Generic.IComparer{AnimationStep}.Compare(AnimationStep,AnimationStep)
-  commentId: M:System.Collections.Generic.IComparer{AnimationStep}.Compare(AnimationStep,AnimationStep)
-  parent: System.Collections.Generic.IComparer{AnimationStep}
+- uid: System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
+  commentId: M:System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
+  parent: System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}
   definition: System.Collections.Generic.IComparer`1.Compare(`0,`0)
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1.compare
   name: Compare(AnimationStep, AnimationStep)
   nameWithType: IComparer<AnimationStep>.Compare(AnimationStep, AnimationStep)
-  fullName: System.Collections.Generic.IComparer<AnimationStep>.Compare(AnimationStep, AnimationStep)
+  fullName: System.Collections.Generic.IComparer<TMPEffects.TMPAnimations.AnimationStep>.Compare(TMPEffects.TMPAnimations.AnimationStep, TMPEffects.TMPAnimations.AnimationStep)
   nameWithType.vb: IComparer(Of AnimationStep).Compare(AnimationStep, AnimationStep)
-  fullName.vb: System.Collections.Generic.IComparer(Of AnimationStep).Compare(AnimationStep, AnimationStep)
+  fullName.vb: System.Collections.Generic.IComparer(Of TMPEffects.TMPAnimations.AnimationStep).Compare(TMPEffects.TMPAnimations.AnimationStep, TMPEffects.TMPAnimations.AnimationStep)
   spec.csharp:
-  - uid: System.Collections.Generic.IComparer{AnimationStep}.Compare(AnimationStep,AnimationStep)
+  - uid: System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
     name: Compare
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1.compare
   - name: (
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: ','
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
   spec.vb:
-  - uid: System.Collections.Generic.IComparer{AnimationStep}.Compare(AnimationStep,AnimationStep)
+  - uid: System.Collections.Generic.IComparer{TMPEffects.TMPAnimations.AnimationStep}.Compare(TMPEffects.TMPAnimations.AnimationStep,TMPEffects.TMPAnimations.AnimationStep)
     name: Compare
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icomparer-1.compare
   - name: (
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: ','
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
-- uid: Global.AnimationStep
-  commentId: T:Global.AnimationStep
-  href: AnimationStep.html
+- uid: TMPEffects.TMPAnimations.AnimationStep
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
   name: AnimationStep
   nameWithType: AnimationStep
-  fullName: AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System

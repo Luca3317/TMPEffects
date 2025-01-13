@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GenericAnimation
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 18
+    startLine: 19
   namespace: TMPEffects.TMPAnimations
   summary: A generic <xref href="TMPEffects.TMPAnimations.ITMPAnimation" data-throw-if-not-resolved="false"></xref>, allowing you to create animations in the inspector.
   example: []
@@ -62,7 +62,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: OnValidate
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 25
+    startLine: 26
   namespace: TMPEffects.TMPAnimations
   example: []
   syntax:
@@ -88,7 +88,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tracks
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 35
+    startLine: 36
   namespace: TMPEffects.TMPAnimations
   example: []
   syntax:
@@ -118,7 +118,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Repeat
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 38
+    startLine: 39
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public bool Repeat { get; set; }
@@ -145,7 +145,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Duration
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 44
+    startLine: 45
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float Duration { get; set; }

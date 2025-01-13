@@ -21,7 +21,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TrackList
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 186
+    startLine: 187
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: >-
@@ -64,7 +64,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tracks
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 189
+    startLine: 190
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public List<GenericAnimationUtility.Track> Tracks
@@ -89,7 +89,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: this[]
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 191
+    startLine: 192
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public GenericAnimationUtility.Track this[int index] { get; set; }

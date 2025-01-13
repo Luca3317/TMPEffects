@@ -20,7 +20,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IGenericAnimation
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 10
+    startLine: 11
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public interface IGenericAnimation
@@ -43,7 +43,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tracks
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 12
+    startLine: 13
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: GenericAnimationUtility.TrackList Tracks { get; }

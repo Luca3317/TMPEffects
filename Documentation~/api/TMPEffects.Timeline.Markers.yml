@@ -1,0 +1,164 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.Markers
+  commentId: N:TMPEffects.Timeline.Markers
+  id: TMPEffects.Timeline.Markers
+  children:
+  - TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker
+  - TMPEffects.Timeline.Markers.TMPResetAnimationsMarker
+  - TMPEffects.Timeline.Markers.TMPResetTimeMarker
+  - TMPEffects.Timeline.Markers.TMPResetWriterMarker
+  - TMPEffects.Timeline.Markers.TMPRestartWriterMarker
+  - TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker
+  - TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  - TMPEffects.Timeline.Markers.TMPStartAnimatingMarker
+  - TMPEffects.Timeline.Markers.TMPStartWriterMarker
+  - TMPEffects.Timeline.Markers.TMPStopAnimatingMarker
+  - TMPEffects.Timeline.Markers.TMPStopWriterMarker
+  - TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker
+  - TMPEffects.Timeline.Markers.TMPWriterMarkReceiver
+  - TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker
+  - TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker
+  - TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Timeline.Markers
+  nameWithType: TMPEffects.Timeline.Markers
+  fullName: TMPEffects.Timeline.Markers
+  type: Namespace
+references:
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPEffectsMarker
+  parent: TMPEffects.Timeline.Markers
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker
+- uid: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  commentId: T:TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+  href: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver.html
+  name: TMPAnimatorMarkReceiver
+  nameWithType: TMPAnimatorMarkReceiver
+  fullName: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+- uid: TMPEffects.Timeline.Markers.TMPResetAnimationsMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPResetAnimationsMarker
+  href: TMPEffects.Timeline.Markers.TMPResetAnimationsMarker.html
+  name: TMPResetAnimationsMarker
+  nameWithType: TMPResetAnimationsMarker
+  fullName: TMPEffects.Timeline.Markers.TMPResetAnimationsMarker
+- uid: TMPEffects.Timeline.Markers.TMPResetTimeMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPResetTimeMarker
+  href: TMPEffects.Timeline.Markers.TMPResetTimeMarker.html
+  name: TMPResetTimeMarker
+  nameWithType: TMPResetTimeMarker
+  fullName: TMPEffects.Timeline.Markers.TMPResetTimeMarker
+- uid: TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker
+  href: TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker.html
+  name: TMPSetUpdateFromMarker
+  nameWithType: TMPSetUpdateFromMarker
+  fullName: TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker
+- uid: TMPEffects.Timeline.Markers.TMPStartAnimatingMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPStartAnimatingMarker
+  href: TMPEffects.Timeline.Markers.TMPStartAnimatingMarker.html
+  name: TMPStartAnimatingMarker
+  nameWithType: TMPStartAnimatingMarker
+  fullName: TMPEffects.Timeline.Markers.TMPStartAnimatingMarker
+- uid: TMPEffects.Timeline.Markers.TMPStopAnimatingMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPStopAnimatingMarker
+  href: TMPEffects.Timeline.Markers.TMPStopAnimatingMarker.html
+  name: TMPStopAnimatingMarker
+  nameWithType: TMPStopAnimatingMarker
+  fullName: TMPEffects.Timeline.Markers.TMPStopAnimatingMarker
+- uid: TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker
+  href: TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker.html
+  name: TMPUpdateAnimationsMarker
+  nameWithType: TMPUpdateAnimationsMarker
+  fullName: TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker
+- uid: TMPEffects.Timeline.Markers.TMPResetWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPResetWriterMarker
+  href: TMPEffects.Timeline.Markers.TMPResetWriterMarker.html
+  name: TMPResetWriterMarker
+  nameWithType: TMPResetWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPResetWriterMarker
+- uid: TMPEffects.Timeline.Markers.TMPRestartWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPRestartWriterMarker
+  href: TMPEffects.Timeline.Markers.TMPRestartWriterMarker.html
+  name: TMPRestartWriterMarker
+  nameWithType: TMPRestartWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPRestartWriterMarker
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  href: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.html
+  name: TMPSkipWriterMarker
+  nameWithType: TMPSkipWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+- uid: TMPEffects.Timeline.Markers.TMPStartWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPStartWriterMarker
+  href: TMPEffects.Timeline.Markers.TMPStartWriterMarker.html
+  name: TMPStartWriterMarker
+  nameWithType: TMPStartWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPStartWriterMarker
+- uid: TMPEffects.Timeline.Markers.TMPStopWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPStopWriterMarker
+  href: TMPEffects.Timeline.Markers.TMPStopWriterMarker.html
+  name: TMPStopWriterMarker
+  nameWithType: TMPStopWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPStopWriterMarker
+- uid: TMPEffects.Timeline.Markers.TMPWriterMarkReceiver
+  commentId: T:TMPEffects.Timeline.Markers.TMPWriterMarkReceiver
+  href: TMPEffects.Timeline.Markers.TMPWriterMarkReceiver.html
+  name: TMPWriterMarkReceiver
+  nameWithType: TMPWriterMarkReceiver
+  fullName: TMPEffects.Timeline.Markers.TMPWriterMarkReceiver
+- uid: TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker
+  href: TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker.html
+  name: TMPWriterResetWaitMarker
+  nameWithType: TMPWriterResetWaitMarker
+  fullName: TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker
+- uid: TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker
+  href: TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker.html
+  name: TMPWriterSetSkippableMarker
+  nameWithType: TMPWriterSetSkippableMarker
+  fullName: TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  href: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.html
+  name: TMPWriterWaitMarker
+  nameWithType: TMPWriterWaitMarker
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+- uid: TMPEffects.Timeline.Markers
+  commentId: N:TMPEffects.Timeline.Markers
+  href: TMPEffects.html
+  name: TMPEffects.Timeline.Markers
+  nameWithType: TMPEffects.Timeline.Markers
+  fullName: TMPEffects.Timeline.Markers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html

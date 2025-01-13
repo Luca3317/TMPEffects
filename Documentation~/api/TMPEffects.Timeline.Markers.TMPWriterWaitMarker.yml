@@ -1,0 +1,264 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  id: TMPWriterWaitMarker
+  parent: TMPEffects.Timeline.Markers
+  children:
+  - TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+  - TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+  - TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+  langs:
+  - csharp
+  - vb
+  name: TMPWriterWaitMarker
+  nameWithType: TMPWriterWaitMarker
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPWriterWaitMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+    startLine: 6
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: 'public class TMPWriterWaitMarker : TMPEffectsMarker, INotification, INotificationOptionProvider'
+    content.vb: Public Class TMPWriterWaitMarker Inherits TMPEffectsMarker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+  inheritedMembers:
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+  commentId: P:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+  id: id
+  parent: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPWriterWaitMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+    startLine: 10
+  namespace: TMPEffects.Timeline.Markers
+  example: []
+  syntax:
+    content: public override PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public Overrides ReadOnly Property id As PropertyName
+  overridden: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  overload: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id*
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+  commentId: P:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+  id: flags
+  parent: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPWriterWaitMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+    startLine: 12
+  namespace: TMPEffects.Timeline.Markers
+  example: []
+  syntax:
+    content: public override NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public Overrides ReadOnly Property flags As NotificationFlags
+  overridden: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  overload: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags*
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+  commentId: P:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+  id: WaitTime
+  parent: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+  langs:
+  - csharp
+  - vb
+  name: WaitTime
+  nameWithType: TMPWriterWaitMarker.WaitTime
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: WaitTime
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPWriterWaitMarker.cs
+    startLine: 19
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: public float WaitTime { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property WaitTime As Single
+  overload: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime*
+references:
+- uid: TMPEffects.Timeline.Markers
+  commentId: N:TMPEffects.Timeline.Markers
+  href: TMPEffects.html
+  name: TMPEffects.Timeline.Markers
+  nameWithType: TMPEffects.Timeline.Markers
+  fullName: TMPEffects.Timeline.Markers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPEffectsMarker
+  parent: TMPEffects.Timeline.Markers
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_retroactive
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_triggerOnce
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_triggerInEditMode
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  commentId: P:TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+  href: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.html#TMPEffects_Timeline_Markers_TMPWriterWaitMarker_id
+  name: id
+  nameWithType: TMPWriterWaitMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  commentId: P:TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+  href: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.html#TMPEffects_Timeline_Markers_TMPWriterWaitMarker_flags
+  name: flags
+  nameWithType: TMPWriterWaitMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags
+- uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+  href: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.html#TMPEffects_Timeline_Markers_TMPWriterWaitMarker_WaitTime
+  name: WaitTime
+  nameWithType: TMPWriterWaitMarker.WaitTime
+  fullName: TMPEffects.Timeline.Markers.TMPWriterWaitMarker.WaitTime
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

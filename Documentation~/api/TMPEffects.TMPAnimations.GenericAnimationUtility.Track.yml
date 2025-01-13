@@ -20,7 +20,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Track
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 174
+    startLine: 175
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: >-
@@ -63,13 +63,13 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Clips
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 177
+    startLine: 178
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public List<AnimationStep> Clips { get; set; }
     parameters: []
     return:
-      type: System.Collections.Generic.List{AnimationStep}
+      type: System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
     content.vb: Public Property Clips As List(Of AnimationStep)
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.Track.Clips*
 references:
@@ -338,16 +338,16 @@ references:
   name: Clips
   nameWithType: GenericAnimationUtility.Track.Clips
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Track.Clips
-- uid: System.Collections.Generic.List{AnimationStep}
-  commentId: T:System.Collections.Generic.List{AnimationStep}
+- uid: System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
+  commentId: T:System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.List`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   name: List<AnimationStep>
   nameWithType: List<AnimationStep>
-  fullName: System.Collections.Generic.List<AnimationStep>
+  fullName: System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>
   nameWithType.vb: List(Of AnimationStep)
-  fullName.vb: System.Collections.Generic.List(Of AnimationStep)
+  fullName.vb: System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep)
   name.vb: List(Of AnimationStep)
   spec.csharp:
   - uid: System.Collections.Generic.List`1
@@ -355,9 +355,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   - name: <
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.List`1
@@ -367,9 +367,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
 - uid: System.Collections.Generic.List`1
   commentId: T:System.Collections.Generic.List`1

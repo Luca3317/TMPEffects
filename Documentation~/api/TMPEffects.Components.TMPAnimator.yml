@@ -56,7 +56,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TMPAnimator
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 41
+    startLine: 42
   namespace: TMPEffects.Components
   summary: Animates the character of a TMP_Text component.
   remarks: >-
@@ -108,7 +108,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimatorContext
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 48
+    startLine: 49
   namespace: TMPEffects.Components
   summary: The context used by this animator.
   example: []
@@ -137,7 +137,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsAnimating
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 59
+    startLine: 60
   namespace: TMPEffects.Components
   summary: >-
     Whether the text is currently being animated.<br />
@@ -169,7 +169,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Database
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 65
+    startLine: 66
   namespace: TMPEffects.Components
   summary: The database used to parse animation tags.
   example: []
@@ -198,7 +198,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: KeywordDatabase
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 70
+    startLine: 71
   namespace: TMPEffects.Components
   summary: The keyword database used to parse tag parameters.
   example: []
@@ -227,7 +227,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SceneAnimations
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 75
+    startLine: 76
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.TMPAnimations.Animations.TMPSceneAnimation" data-throw-if-not-resolved="false"></xref> used by this animator.
   example: []
@@ -256,7 +256,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SceneShowAnimations
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 80
+    startLine: 81
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.TMPAnimations.ShowAnimations.TMPSceneShowAnimation" data-throw-if-not-resolved="false"></xref> used by this animator.
   example: []
@@ -285,7 +285,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SceneHideAnimations
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 85
+    startLine: 86
   namespace: TMPEffects.Components
   summary: The <xref href="TMPEffects.TMPAnimations.HideAnimations.TMPSceneHideAnimation" data-throw-if-not-resolved="false"></xref> used by this animator.
   example: []
@@ -314,7 +314,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateFrom
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 90
+    startLine: 91
   namespace: TMPEffects.Components
   summary: Where the animations are currently being updated from.
   example: []
@@ -343,7 +343,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Tags
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 95
+    startLine: 96
   namespace: TMPEffects.Components
   summary: All tags parsed by the TMPAnimator.
   example: []
@@ -372,7 +372,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BasicTags
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 100
+    startLine: 101
   namespace: TMPEffects.Components
   summary: All basic animation tags parsed by the TMPAnimator.
   example: []
@@ -401,7 +401,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ShowTags
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 105
+    startLine: 106
   namespace: TMPEffects.Components
   summary: All show animation tags parsed by the TMPAnimator.
   example: []
@@ -430,7 +430,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HideTags
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 110
+    startLine: 111
   namespace: TMPEffects.Components
   summary: All hide animation tags parsed by the TMPAnimator.
   example: []
@@ -459,7 +459,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimateOnStart
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 115
+    startLine: 116
   namespace: TMPEffects.Components
   summary: Whether the TMPAnimator should automatically begin animating on <xref href="TMPEffects.Components.TMPAnimator.Start" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -488,7 +488,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AnimationsOverride
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 124
+    startLine: 125
   namespace: TMPEffects.Components
   summary: Whether animations will override each other by default.
   example: []
@@ -517,7 +517,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ANIMATION_PREFIX
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 133
+    startLine: 134
   namespace: TMPEffects.Components
   summary: The prefix used for basic animation tags.
   example: []
@@ -544,7 +544,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SHOW_ANIMATION_PREFIX
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 138
+    startLine: 139
   namespace: TMPEffects.Components
   summary: The prefix used for show animation tags.
   example: []
@@ -571,7 +571,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: HIDE_ANIMATION_PREFIX
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 143
+    startLine: 144
   namespace: TMPEffects.Components
   summary: The prefix used for hide animation tags.
   example: []
@@ -598,7 +598,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UpdateAnimations
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 239
+    startLine: 240
   namespace: TMPEffects.Components
   summary: >-
     Update the current animations.<br />
@@ -635,7 +635,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StartAnimating
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 260
+    startLine: 261
   namespace: TMPEffects.Components
   summary: >-
     Start animating.<br />
@@ -666,7 +666,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StopAnimating
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 289
+    startLine: 290
   namespace: TMPEffects.Components
   summary: >-
     Stop animating.<br />
@@ -697,7 +697,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetAnimations
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 333
+    startLine: 334
   namespace: TMPEffects.Components
   summary: Reset all visible characters to their initial, unanimated state.
   example: []
@@ -723,7 +723,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetUpdateFrom
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 343
+    startLine: 344
   namespace: TMPEffects.Components
   summary: Set where the animations should be updated from.
   example: []
@@ -753,7 +753,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetDatabase
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 357
+    startLine: 358
   namespace: TMPEffects.Components
   summary: Set the database that will be used to parse animation tags.
   example: []
@@ -783,7 +783,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetSceneKeywordDatabase
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 367
+    startLine: 368
   namespace: TMPEffects.Components
   summary: Set the scene keyword database that will be used to parse tags.
   example: []
@@ -813,7 +813,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetKeywordDatabase
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 377
+    startLine: 378
   namespace: TMPEffects.Components
   summary: Set the keyword database that will be used to parse tags.
   example: []
@@ -843,7 +843,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedCharacters
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 389
+    startLine: 390
   namespace: TMPEffects.Components
   summary: Set the excluded character for animations of the given type, meaning characters that will not be animated by that type of animations.
   example: []
@@ -885,7 +885,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedBasicCharacters
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 412
+    startLine: 413
   namespace: TMPEffects.Components
   summary: Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
   example: []
@@ -921,7 +921,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedShowCharacters
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 432
+    startLine: 433
   namespace: TMPEffects.Components
   summary: Set the excluded character for show animations, meaning characters that will not be animated by show animations.
   example: []
@@ -957,7 +957,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetExcludedHideCharacters
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 452
+    startLine: 453
   namespace: TMPEffects.Components
   summary: Set the excluded character for hide animations, meaning characters that will not be animated by hide animations.
   example: []
@@ -993,7 +993,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcluded
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 476
+    startLine: 477
   namespace: TMPEffects.Components
   summary: Whether the character is excluded from animations of the given type.
   example: []
@@ -1036,7 +1036,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedBasic
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 492
+    startLine: 493
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from basic animations.
   example: []
@@ -1072,7 +1072,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedShow
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 500
+    startLine: 501
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from show animations.
   example: []
@@ -1108,7 +1108,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IsExcludedHide
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 508
+    startLine: 509
   namespace: TMPEffects.Components
   summary: Check whether the given character is excluded from hide animations.
   example: []
@@ -1144,7 +1144,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetTime
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 515
+    startLine: 516
   namespace: TMPEffects.Components
   summary: >-
     Reset the time of the animator.
@@ -1179,7 +1179,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RegisterPostAnimationHook
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 935
+    startLine: 936
   namespace: TMPEffects.Components
   summary: >-
     Register a post-animation hook. The passed in method will be called whenever a character has been animated,
@@ -1214,7 +1214,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UnregisterPostAnimationHook
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 945
+    startLine: 946
   namespace: TMPEffects.Components
   summary: Unregister a post-animation hook that was registered using <xref href="TMPEffects.Components.TMPAnimator.RegisterPostAnimationHook(TMPEffects.Components.TMPAnimator.OnCharacterAnimatedEventHandler)" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1247,7 +1247,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: QueueCharacterReset
     path: ../Package/Runtime/Components/TMPAnimator/TMPAnimator.cs
-    startLine: 954
+    startLine: 955
   namespace: TMPEffects.Components
   summary: >-
     Queue a character reset.<br />

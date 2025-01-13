@@ -24,7 +24,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimatorDataProvider
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 16
+    startLine: 17
   namespace: TMPEffects.Components.Animator
   summary: Provides data about a <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -49,7 +49,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animator
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 21
+    startLine: 22
   namespace: TMPEffects.Components.Animator
   summary: The animating <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -78,7 +78,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Modifiers
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 33
+    startLine: 34
   namespace: TMPEffects.Components.Animator
   summary: >-
     The current state of the CharData, with the previous animations applied.<br /><p><br />
@@ -97,7 +97,7 @@ items:
     content: CharDataModifiers Modifiers { get; }
     parameters: []
     return:
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     content.vb: ReadOnly Property Modifiers As CharDataModifiers
   overload: TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers*
 - uid: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
@@ -118,7 +118,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleAnimations
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 38
+    startLine: 39
   namespace: TMPEffects.Components.Animator
   summary: Whether animations are scaled.
   example: []
@@ -147,7 +147,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleUniformly
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 44
+    startLine: 45
   namespace: TMPEffects.Components.Animator
   summary: >-
     Whether to scale animations uniformly (based on the default font size of the animator)
@@ -181,7 +181,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 48
+    startLine: 49
   namespace: TMPEffects.Components.Animator
   summary: Whether animations use scaled time.
   example: []
@@ -264,12 +264,35 @@ references:
   name: Modifiers
   nameWithType: IAnimatorDataProvider.Modifiers
   fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
-- uid: Global.CharDataModifiers
-  commentId: T:Global.CharDataModifiers
-  href: CharDataModifiers.html
+- uid: TMPEffects.Modifiers.CharDataModifiers
+  commentId: T:TMPEffects.Modifiers.CharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.CharDataModifiers.html
   name: CharDataModifiers
   nameWithType: CharDataModifiers
-  fullName: CharDataModifiers
+  fullName: TMPEffects.Modifiers.CharDataModifiers
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
 - uid: TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations*
   commentId: Overload:TMPEffects.Components.Animator.IAnimatorDataProvider.ScaleAnimations
   href: TMPEffects.Components.Animator.IAnimatorDataProvider.html#TMPEffects_Components_Animator_IAnimatorDataProvider_ScaleAnimations

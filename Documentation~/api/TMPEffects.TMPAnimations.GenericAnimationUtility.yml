@@ -5,12 +5,12 @@ items:
   id: GenericAnimationUtility
   parent: TMPEffects.TMPAnimations
   children:
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep,System.Single)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@,System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@)
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}})
   - TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList)
-  - TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+  - TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep})
   langs:
   - csharp
   - vb
@@ -25,7 +25,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GenericAnimationUtility
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 80
+    startLine: 81
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static class GenericAnimationUtility
@@ -58,7 +58,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EnsureNonOverlappingTimings_Editor
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 82
+    startLine: 83
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void EnsureNonOverlappingTimings_Editor(GenericAnimationUtility.TrackList trackList)
@@ -67,16 +67,16 @@ items:
       type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
     content.vb: Public Shared Sub EnsureNonOverlappingTimings_Editor(trackList As GenericAnimationUtility.TrackList)
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings_Editor*
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
-  id: EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}})
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}})
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}})
+  id: EnsureNonOverlappingTimings(System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}})
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility
   langs:
   - csharp
   - vb
   name: EnsureNonOverlappingTimings(List<List<AnimationStep>>)
   nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings(List<List<AnimationStep>>)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List<System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>>)
   type: Method
   source:
     remote:
@@ -85,28 +85,28 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: EnsureNonOverlappingTimings
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 127
+    startLine: 128
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void EnsureNonOverlappingTimings(List<List<AnimationStep>> steps)
     parameters:
     - id: steps
-      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+      type: System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}
     content.vb: Public Shared Sub EnsureNonOverlappingTimings(steps As List(Of List(Of AnimationStep)))
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings*
   nameWithType.vb: GenericAnimationUtility.EnsureNonOverlappingTimings(List(Of List(Of AnimationStep)))
-  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings(System.Collections.Generic.List(Of System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep)))
   name.vb: EnsureNonOverlappingTimings(List(Of List(Of AnimationStep)))
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
-  id: CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@)
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@)
+  id: CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@)
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility
   langs:
   - csharp
   - vb
   name: CreateStepsSorted(TrackList, ref List<List<AnimationStep>>)
   nameWithType: GenericAnimationUtility.CreateStepsSorted(GenericAnimationUtility.TrackList, ref List<List<AnimationStep>>)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>>)
   type: Method
   source:
     remote:
@@ -115,7 +115,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CreateStepsSorted
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 214
+    startLine: 215
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void CreateStepsSorted(GenericAnimationUtility.TrackList tracks, ref List<List<AnimationStep>> steps)
@@ -123,22 +123,22 @@ items:
     - id: tracks
       type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
     - id: steps
-      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+      type: System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}
     content.vb: Public Shared Sub CreateStepsSorted(tracks As GenericAnimationUtility.TrackList, steps As List(Of List(Of AnimationStep)))
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted*
   nameWithType.vb: GenericAnimationUtility.CreateStepsSorted(GenericAnimationUtility.TrackList, List(Of List(Of AnimationStep)))
-  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted(TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep)))
   name.vb: CreateStepsSorted(TrackList, List(Of List(Of AnimationStep)))
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep,System.Single)
-  id: AdjustTimeForExtrapolation(AnimationStep,System.Single)
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep,System.Single)
+  id: AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep,System.Single)
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility
   langs:
   - csharp
   - vb
   name: AdjustTimeForExtrapolation(AnimationStep, float)
   nameWithType: GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, float)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, float)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep, float)
   type: Method
   source:
     remote:
@@ -147,13 +147,13 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AdjustTimeForExtrapolation
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 229
+    startLine: 230
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static float AdjustTimeForExtrapolation(AnimationStep step, float timeValue)
     parameters:
     - id: step
-      type: Global.AnimationStep
+      type: TMPEffects.TMPAnimations.AnimationStep
     - id: timeValue
       type: System.Single
     return:
@@ -161,18 +161,18 @@ items:
     content.vb: Public Shared Function AdjustTimeForExtrapolation([step] As AnimationStep, timeValue As Single) As Single
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation*
   nameWithType.vb: GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, Single)
-  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(AnimationStep, Single)
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation(TMPEffects.TMPAnimations.AnimationStep, Single)
   name.vb: AdjustTimeForExtrapolation(AnimationStep, Single)
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
-  id: FindCurrentlyActive(System.Single,System.Collections.Generic.List{AnimationStep})
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep})
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(System.Single,System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep})
+  id: FindCurrentlyActive(System.Single,System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep})
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility
   langs:
   - csharp
   - vb
   name: FindCurrentlyActive(float, List<AnimationStep>)
   nameWithType: GenericAnimationUtility.FindCurrentlyActive(float, List<AnimationStep>)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(float, System.Collections.Generic.List<AnimationStep>)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(float, System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>)
   type: Method
   source:
     remote:
@@ -181,7 +181,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: FindCurrentlyActive
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 275
+    startLine: 276
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static int FindCurrentlyActive(float timeValue, List<AnimationStep> steps)
@@ -189,24 +189,24 @@ items:
     - id: timeValue
       type: System.Single
     - id: steps
-      type: System.Collections.Generic.List{AnimationStep}
+      type: System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
     return:
       type: System.Int32
     content.vb: Public Shared Function FindCurrentlyActive(timeValue As Single, steps As List(Of AnimationStep)) As Integer
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive*
   nameWithType.vb: GenericAnimationUtility.FindCurrentlyActive(Single, List(Of AnimationStep))
-  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(Single, System.Collections.Generic.List(Of AnimationStep))
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive(Single, System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep))
   name.vb: FindCurrentlyActive(Single, List(Of AnimationStep))
-- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
-  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
-  id: Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}@,System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@,CharDataModifiers@)
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@,System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@)
+  commentId: M:TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@,System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@)
+  id: Animate(TMPEffects.CharacterData.CharData,TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList,System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}@,System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}},System.Boolean,System.Single,System.Single,TMPEffects.TMPAnimations.IAnimationContext,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@,TMPEffects.Modifiers.CharDataModifiers@)
   parent: TMPEffects.TMPAnimations.GenericAnimationUtility
   langs:
   - csharp
   - vb
   name: Animate(CharData, TrackList, ref List<List<AnimationStep>>, Dictionary<AnimationStep, (CachedOffset inOffset, CachedOffset outOffset)>, bool, float, float, IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
   nameWithType: GenericAnimationUtility.Animate(CharData, GenericAnimationUtility.TrackList, ref List<List<AnimationStep>>, Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>, bool, float, float, IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
-  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>, System.Collections.Generic.Dictionary<AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>, bool, float, float, TMPEffects.TMPAnimations.IAnimationContext, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers, ref CharDataModifiers)
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, ref System.Collections.Generic.List<System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>>, System.Collections.Generic.Dictionary<TMPEffects.TMPAnimations.AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>, bool, float, float, TMPEffects.TMPAnimations.IAnimationContext, ref TMPEffects.Modifiers.CharDataModifiers, ref TMPEffects.Modifiers.CharDataModifiers, ref TMPEffects.Modifiers.CharDataModifiers, ref TMPEffects.Modifiers.CharDataModifiers)
   type: Method
   source:
     remote:
@@ -215,7 +215,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animate
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 326
+    startLine: 327
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public static void Animate(CharData cData, GenericAnimationUtility.TrackList tracks, ref List<List<AnimationStep>> dataSteps, Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)> cachedOffsets, bool repeat, float duration, float passedTime, IAnimationContext context, ref CharDataModifiers modifiersStorage, ref CharDataModifiers modifiersStorage2, ref CharDataModifiers accModifier, ref CharDataModifiers current)
@@ -225,9 +225,9 @@ items:
     - id: tracks
       type: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList
     - id: dataSteps
-      type: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+      type: System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}
     - id: cachedOffsets
-      type: System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+      type: System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
     - id: repeat
       type: System.Boolean
     - id: duration
@@ -237,17 +237,17 @@ items:
     - id: context
       type: TMPEffects.TMPAnimations.IAnimationContext
     - id: modifiersStorage
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     - id: modifiersStorage2
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     - id: accModifier
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     - id: current
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     content.vb: Public Shared Sub Animate(cData As CharData, tracks As GenericAnimationUtility.TrackList, dataSteps As List(Of List(Of AnimationStep)), cachedOffsets As Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset)), repeat As Boolean, duration As Single, passedTime As Single, context As IAnimationContext, modifiersStorage As CharDataModifiers, modifiersStorage2 As CharDataModifiers, accModifier As CharDataModifiers, current As CharDataModifiers)
   overload: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate*
   nameWithType.vb: GenericAnimationUtility.Animate(CharData, GenericAnimationUtility.TrackList, List(Of List(Of AnimationStep)), Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset)), Boolean, Single, Single, IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
-  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep)), System.Collections.Generic.Dictionary(Of AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset)), Boolean, Single, Single, TMPEffects.TMPAnimations.IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName.vb: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate(TMPEffects.CharacterData.CharData, TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList, System.Collections.Generic.List(Of System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep)), System.Collections.Generic.Dictionary(Of TMPEffects.TMPAnimations.AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset)), Boolean, Single, Single, TMPEffects.TMPAnimations.IAnimationContext, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers)
   name.vb: Animate(CharData, TrackList, List(Of List(Of AnimationStep)), Dictionary(Of AnimationStep, (inOffset As CachedOffset, outOffset As CachedOffset)), Boolean, Single, Single, IAnimationContext, CharDataModifiers, CharDataModifiers, CharDataModifiers, CharDataModifiers)
 references:
 - uid: TMPEffects.TMPAnimations
@@ -540,20 +540,20 @@ references:
     href: TMPEffects.TMPAnimations.GenericAnimationUtility.TrackList.html
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_EnsureNonOverlappingTimings_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep___
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_EnsureNonOverlappingTimings_System_Collections_Generic_List_System_Collections_Generic_List_TMPEffects_TMPAnimations_AnimationStep___
   name: EnsureNonOverlappingTimings
   nameWithType: GenericAnimationUtility.EnsureNonOverlappingTimings
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.EnsureNonOverlappingTimings
-- uid: System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
-  commentId: T:System.Collections.Generic.List{System.Collections.Generic.List{AnimationStep}}
+- uid: System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}
+  commentId: T:System.Collections.Generic.List{System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.List`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   name: List<List<AnimationStep>>
   nameWithType: List<List<AnimationStep>>
-  fullName: System.Collections.Generic.List<System.Collections.Generic.List<AnimationStep>>
+  fullName: System.Collections.Generic.List<System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>>
   nameWithType.vb: List(Of List(Of AnimationStep))
-  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.List(Of AnimationStep))
+  fullName.vb: System.Collections.Generic.List(Of System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep))
   name.vb: List(Of List(Of AnimationStep))
   spec.csharp:
   - uid: System.Collections.Generic.List`1
@@ -566,9 +566,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   - name: <
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: '>'
   - name: '>'
   spec.vb:
@@ -586,9 +586,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
   - name: )
 - uid: System.Collections.Generic.List`1
@@ -658,22 +658,23 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_CreateStepsSorted_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep____
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_CreateStepsSorted_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_TMPEffects_TMPAnimations_AnimationStep____
   name: CreateStepsSorted
   nameWithType: GenericAnimationUtility.CreateStepsSorted
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CreateStepsSorted
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_AdjustTimeForExtrapolation_AnimationStep_System_Single_
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_AdjustTimeForExtrapolation_TMPEffects_TMPAnimations_AnimationStep_System_Single_
   name: AdjustTimeForExtrapolation
   nameWithType: GenericAnimationUtility.AdjustTimeForExtrapolation
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.AdjustTimeForExtrapolation
-- uid: Global.AnimationStep
-  commentId: T:Global.AnimationStep
-  href: AnimationStep.html
+- uid: TMPEffects.TMPAnimations.AnimationStep
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
   name: AnimationStep
   nameWithType: AnimationStep
-  fullName: AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -687,20 +688,20 @@ references:
   name.vb: Single
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_FindCurrentlyActive_System_Single_System_Collections_Generic_List_AnimationStep__
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_FindCurrentlyActive_System_Single_System_Collections_Generic_List_TMPEffects_TMPAnimations_AnimationStep__
   name: FindCurrentlyActive
   nameWithType: GenericAnimationUtility.FindCurrentlyActive
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.FindCurrentlyActive
-- uid: System.Collections.Generic.List{AnimationStep}
-  commentId: T:System.Collections.Generic.List{AnimationStep}
+- uid: System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
+  commentId: T:System.Collections.Generic.List{TMPEffects.TMPAnimations.AnimationStep}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.List`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   name: List<AnimationStep>
   nameWithType: List<AnimationStep>
-  fullName: System.Collections.Generic.List<AnimationStep>
+  fullName: System.Collections.Generic.List<TMPEffects.TMPAnimations.AnimationStep>
   nameWithType.vb: List(Of AnimationStep)
-  fullName.vb: System.Collections.Generic.List(Of AnimationStep)
+  fullName.vb: System.Collections.Generic.List(Of TMPEffects.TMPAnimations.AnimationStep)
   name.vb: List(Of AnimationStep)
   spec.csharp:
   - uid: System.Collections.Generic.List`1
@@ -708,9 +709,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
   - name: <
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.List`1
@@ -720,9 +721,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: )
 - uid: System.Int32
   commentId: T:System.Int32
@@ -737,7 +738,7 @@ references:
   name.vb: Integer
 - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate*
   commentId: Overload:TMPEffects.TMPAnimations.GenericAnimationUtility.Animate
-  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_AnimationStep____System_Collections_Generic_Dictionary_AnimationStep_System_ValueTuple_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset___System_Boolean_System_Single_System_Single_TMPEffects_TMPAnimations_IAnimationContext_CharDataModifiers__CharDataModifiers__CharDataModifiers__CharDataModifiers__
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html#TMPEffects_TMPAnimations_GenericAnimationUtility_Animate_TMPEffects_CharacterData_CharData_TMPEffects_TMPAnimations_GenericAnimationUtility_TrackList_System_Collections_Generic_List_System_Collections_Generic_List_TMPEffects_TMPAnimations_AnimationStep____System_Collections_Generic_Dictionary_TMPEffects_TMPAnimations_AnimationStep_System_ValueTuple_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset_TMPEffects_TMPAnimations_GenericAnimationUtility_CachedOffset___System_Boolean_System_Single_System_Single_TMPEffects_TMPAnimations_IAnimationContext_TMPEffects_Modifiers_CharDataModifiers__TMPEffects_Modifiers_CharDataModifiers__TMPEffects_Modifiers_CharDataModifiers__TMPEffects_Modifiers_CharDataModifiers__
   name: Animate
   nameWithType: GenericAnimationUtility.Animate
   fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.Animate
@@ -748,16 +749,16 @@ references:
   name: CharData
   nameWithType: CharData
   fullName: TMPEffects.CharacterData.CharData
-- uid: System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
-  commentId: T:System.Collections.Generic.Dictionary{AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+- uid: System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
+  commentId: T:System.Collections.Generic.Dictionary{TMPEffects.TMPAnimations.AnimationStep,System.ValueTuple{TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset}}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.Dictionary`2
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
   name: Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>
   nameWithType: Dictionary<AnimationStep, (GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset)>
-  fullName: System.Collections.Generic.Dictionary<AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>
+  fullName: System.Collections.Generic.Dictionary<TMPEffects.TMPAnimations.AnimationStep, (TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset inOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset outOffset)>
   nameWithType.vb: Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset))
-  fullName.vb: System.Collections.Generic.Dictionary(Of AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset))
+  fullName.vb: System.Collections.Generic.Dictionary(Of TMPEffects.TMPAnimations.AnimationStep, (inOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, outOffset As TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset))
   name.vb: Dictionary(Of AnimationStep, (inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset))
   spec.csharp:
   - uid: System.Collections.Generic.Dictionary`2
@@ -765,9 +766,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
   - name: <
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: ','
   - name: " "
   - name: (
@@ -805,9 +806,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.AnimationStep
+  - uid: TMPEffects.TMPAnimations.AnimationStep
     name: AnimationStep
-    href: AnimationStep.html
+    href: TMPEffects.TMPAnimations.AnimationStep.html
   - name: ','
   - name: " "
   - name: (
@@ -859,12 +860,13 @@ references:
   name: IAnimationContext
   nameWithType: IAnimationContext
   fullName: TMPEffects.TMPAnimations.IAnimationContext
-- uid: Global.CharDataModifiers
-  commentId: T:Global.CharDataModifiers
-  href: CharDataModifiers.html
+- uid: TMPEffects.Modifiers.CharDataModifiers
+  commentId: T:TMPEffects.Modifiers.CharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.CharDataModifiers.html
   name: CharDataModifiers
   nameWithType: CharDataModifiers
-  fullName: CharDataModifiers
+  fullName: TMPEffects.Modifiers.CharDataModifiers
 - uid: TMPEffects.CharacterData
   commentId: N:TMPEffects.CharacterData
   href: TMPEffects.html
@@ -921,3 +923,25 @@ references:
   - name: " "
   - name: TValue
   - name: )
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html

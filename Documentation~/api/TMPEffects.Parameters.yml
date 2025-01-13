@@ -9,6 +9,7 @@ items:
   - TMPEffects.Parameters.OffsetBundle
   - TMPEffects.Parameters.OffsetTypePowerEnum
   - TMPEffects.Parameters.ParameterParsing
+  - TMPEffects.Parameters.PowerEnum`2
   - TMPEffects.Parameters.SceneOffsetBundle
   - TMPEffects.Parameters.SceneOffsetTypePowerEnum
   - TMPEffects.Parameters.TMPBlendCurve
@@ -257,6 +258,37 @@ references:
   name: OffsetTypePowerEnum
   nameWithType: OffsetTypePowerEnum
   fullName: TMPEffects.Parameters.OffsetTypePowerEnum
+- uid: TMPEffects.Parameters.PowerEnum`2
+  commentId: T:TMPEffects.Parameters.PowerEnum`2
+  href: TMPEffects.Parameters.PowerEnum-2.html
+  name: PowerEnum<TEnum, TCustom>
+  nameWithType: PowerEnum<TEnum, TCustom>
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>
+  nameWithType.vb: PowerEnum(Of TEnum, TCustom)
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom)
+  name.vb: PowerEnum(Of TEnum, TCustom)
+  spec.csharp:
+  - uid: TMPEffects.Parameters.PowerEnum`2
+    name: PowerEnum
+    href: TMPEffects.Parameters.PowerEnum-2.html
+  - name: <
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: '>'
+  spec.vb:
+  - uid: TMPEffects.Parameters.PowerEnum`2
+    name: PowerEnum
+    href: TMPEffects.Parameters.PowerEnum-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEnum
+  - name: ','
+  - name: " "
+  - name: TCustom
+  - name: )
 - uid: TMPEffects.Parameters.SceneOffsetBundle
   commentId: T:TMPEffects.Parameters.SceneOffsetBundle
   href: TMPEffects.Parameters.SceneOffsetBundle.html

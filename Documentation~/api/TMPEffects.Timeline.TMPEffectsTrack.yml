@@ -1,0 +1,71 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.TMPEffectsTrack
+  commentId: T:TMPEffects.Timeline.TMPEffectsTrack
+  id: TMPEffectsTrack
+  parent: TMPEffects.Timeline
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TMPEffectsTrack
+  nameWithType: TMPEffectsTrack
+  fullName: TMPEffects.Timeline.TMPEffectsTrack
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/TMPEffectsTrack.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPEffectsTrack
+    path: ../Package/Runtime/Timeline/TMPEffectsTrack.cs
+    startLine: 4
+  namespace: TMPEffects.Timeline
+  syntax:
+    content: 'public abstract class TMPEffectsTrack : TrackAsset'
+    content.vb: Public MustInherit Class TMPEffectsTrack Inherits TrackAsset
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - TMPEffects.Timeline.TMPMeshModifierTrack
+references:
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  href: TMPEffects.html
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

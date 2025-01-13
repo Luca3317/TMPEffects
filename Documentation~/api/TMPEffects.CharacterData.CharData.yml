@@ -94,7 +94,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CharacterModifiers
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 48
+    startLine: 49
   namespace: TMPEffects.CharacterData
   summary: The character modifiers of this character.
   example: []
@@ -102,7 +102,7 @@ items:
     content: public TMPCharacterModifiers CharacterModifiers { get; }
     parameters: []
     return:
-      type: Global.TMPCharacterModifiers
+      type: TMPEffects.Modifiers.TMPCharacterModifiers
     content.vb: Public ReadOnly Property CharacterModifiers As TMPCharacterModifiers
   overload: TMPEffects.CharacterData.CharData.CharacterModifiers*
 - uid: TMPEffects.CharacterData.CharData.MeshModifiers
@@ -123,7 +123,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: MeshModifiers
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 53
+    startLine: 54
   namespace: TMPEffects.CharacterData
   summary: The mesh modifiers of this character.
   example: []
@@ -131,7 +131,7 @@ items:
     content: public TMPMeshModifiers MeshModifiers { get; }
     parameters: []
     return:
-      type: Global.TMPMeshModifiers
+      type: TMPEffects.Modifiers.TMPMeshModifiers
     content.vb: Public ReadOnly Property MeshModifiers As TMPMeshModifiers
   overload: TMPEffects.CharacterData.CharData.MeshModifiers*
 - uid: TMPEffects.CharacterData.CharData.positionDirty
@@ -152,7 +152,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: positionDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 58
+    startLine: 59
   namespace: TMPEffects.CharacterData
   summary: Whether the position has been manipulated from the character's initial position.
   example: []
@@ -181,7 +181,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: rotationDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 63
+    startLine: 64
   namespace: TMPEffects.CharacterData
   summary: Whether the rotation has been manipulated from the character's initial rotation.
   example: []
@@ -210,7 +210,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: scaleDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 68
+    startLine: 69
   namespace: TMPEffects.CharacterData
   summary: Whether the scale has been manipulated from the character's initial scale.
   example: []
@@ -239,7 +239,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: verticesDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 73
+    startLine: 74
   namespace: TMPEffects.CharacterData
   summary: Whether the vertices have been manipulated.
   example: []
@@ -268,7 +268,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: colorsDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 78
+    startLine: 79
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex colors have been manipulated.
   example: []
@@ -297,7 +297,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: alphasDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 83
+    startLine: 84
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex alphas have been manipulated.
   example: []
@@ -326,7 +326,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: uvsDirty
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 88
+    startLine: 89
   namespace: TMPEffects.CharacterData
   summary: Whether the UVs have been manipulated.
   example: []
@@ -355,7 +355,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Position
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 93
+    startLine: 94
   namespace: TMPEffects.CharacterData
   summary: The character's position.
   example: []
@@ -384,7 +384,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PositionDelta
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 102
+    startLine: 103
   namespace: TMPEffects.CharacterData
   summary: The character's position delta (offset from <xref href="TMPEffects.CharacterData.CharData.InitialPosition" data-throw-if-not-resolved="false"></xref>).
   example: []
@@ -413,7 +413,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Scale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 111
+    startLine: 112
   namespace: TMPEffects.CharacterData
   summary: The character's scale.
   example: []
@@ -442,7 +442,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Rotations
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 121
+    startLine: 122
   namespace: TMPEffects.CharacterData
   summary: >-
     The character's rotations.<br />
@@ -453,7 +453,7 @@ items:
     content: public IReadOnlyList<Rotation> Rotations { get; }
     parameters: []
     return:
-      type: System.Collections.Generic.IReadOnlyList{Rotation}
+      type: System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
     content.vb: Public ReadOnly Property Rotations As IReadOnlyList(Of Rotation)
   overload: TMPEffects.CharacterData.CharData.Rotations*
 - uid: TMPEffects.CharacterData.CharData.defaultScale
@@ -474,7 +474,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultScale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 128
+    startLine: 129
   namespace: TMPEffects.CharacterData
   summary: The default scale of any CharData.
   example: []
@@ -501,7 +501,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: defaultRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 133
+    startLine: 134
   namespace: TMPEffects.CharacterData
   summary: The default rotation of any CharData.
   example: []
@@ -528,7 +528,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: info
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 138
+    startLine: 139
   namespace: TMPEffects.CharacterData
   summary: Holds a selection of TMP_CharacterInfo data.
   example: []
@@ -555,7 +555,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: mesh
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 143
+    startLine: 144
   namespace: TMPEffects.CharacterData
   summary: The mesh of the character.
   example: []
@@ -582,7 +582,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialPosition
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 148
+    startLine: 149
   namespace: TMPEffects.CharacterData
   summary: The initial position of this character.
   example: []
@@ -611,7 +611,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 153
+    startLine: 154
   namespace: TMPEffects.CharacterData
   summary: The initial rotation of this character.
   example: []
@@ -640,7 +640,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialScale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 158
+    startLine: 159
   namespace: TMPEffects.CharacterData
   summary: The initial scale of this character.
   example: []
@@ -669,7 +669,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InitialMesh
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 163
+    startLine: 164
   namespace: TMPEffects.CharacterData
   summary: The initial mesh of this character.
   example: []
@@ -698,7 +698,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 168
+    startLine: 169
   namespace: TMPEffects.CharacterData
   syntax:
     content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex)
@@ -732,7 +732,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 176
+    startLine: 177
   namespace: TMPEffects.CharacterData
   syntax:
     content: public CharData(int index, TMP_CharacterInfo cInfo, int wordIndex, TMP_WordInfo? wInfo = null)
@@ -768,7 +768,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPosition
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 192
+    startLine: 193
   namespace: TMPEffects.CharacterData
   summary: Set the position of the character.
   example: []
@@ -798,7 +798,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPositionDelta
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 205
+    startLine: 206
   namespace: TMPEffects.CharacterData
   summary: Set the position delta of the character (offset from <xref href="TMPEffects.CharacterData.CharData.InitialPosition" data-throw-if-not-resolved="false"></xref>).
   example: []
@@ -828,7 +828,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ClearPosition
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 213
+    startLine: 214
   namespace: TMPEffects.CharacterData
   summary: Reset the position of the character back to <xref href="TMPEffects.CharacterData.CharData.InitialPosition" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -854,7 +854,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: AddRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 227
+    startLine: 228
   namespace: TMPEffects.CharacterData
   summary: Add a rotation to the character.
   example: []
@@ -887,7 +887,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: RemoveRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 236
+    startLine: 237
   namespace: TMPEffects.CharacterData
   summary: Remove a rotation from the character.
   example: []
@@ -920,7 +920,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: InsertRotation
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 247
+    startLine: 248
   namespace: TMPEffects.CharacterData
   summary: Add a rotation to the character.
   example: []
@@ -959,7 +959,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ClearRotations
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 255
+    startLine: 256
   namespace: TMPEffects.CharacterData
   summary: Clear all rotations of this character, effectively setting its rotation back to <xref href="TMPEffects.CharacterData.CharData.InitialRotation" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -985,7 +985,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetScale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 268
+    startLine: 269
   namespace: TMPEffects.CharacterData
   summary: Set the scale of this character.
   example: []
@@ -1015,7 +1015,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ClearScale
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 276
+    startLine: 277
   namespace: TMPEffects.CharacterData
   summary: Reset the scale of this character back to <xref href="TMPEffects.CharacterData.CharData.InitialScale" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1041,7 +1041,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Package/Runtime/CharData/CharData.cs
-    startLine: 286
+    startLine: 287
   namespace: TMPEffects.CharacterData
   summary: Reset all changes made to the character (mesh, position, rotation, scale and pivot).
   example: []
@@ -1353,24 +1353,48 @@ references:
   name: CharacterModifiers
   nameWithType: CharData.CharacterModifiers
   fullName: TMPEffects.CharacterData.CharData.CharacterModifiers
-- uid: Global.TMPCharacterModifiers
-  commentId: T:Global.TMPCharacterModifiers
-  href: TMPCharacterModifiers.html
+- uid: TMPEffects.Modifiers.TMPCharacterModifiers
+  commentId: T:TMPEffects.Modifiers.TMPCharacterModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPCharacterModifiers.html
   name: TMPCharacterModifiers
   nameWithType: TMPCharacterModifiers
-  fullName: TMPCharacterModifiers
+  fullName: TMPEffects.Modifiers.TMPCharacterModifiers
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
 - uid: TMPEffects.CharacterData.CharData.MeshModifiers*
   commentId: Overload:TMPEffects.CharacterData.CharData.MeshModifiers
   href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_MeshModifiers
   name: MeshModifiers
   nameWithType: CharData.MeshModifiers
   fullName: TMPEffects.CharacterData.CharData.MeshModifiers
-- uid: Global.TMPMeshModifiers
-  commentId: T:Global.TMPMeshModifiers
-  href: TMPMeshModifiers.html
+- uid: TMPEffects.Modifiers.TMPMeshModifiers
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPMeshModifiers.html
   name: TMPMeshModifiers
   nameWithType: TMPMeshModifiers
-  fullName: TMPMeshModifiers
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers
 - uid: TMPEffects.CharacterData.CharData.positionDirty*
   commentId: Overload:TMPEffects.CharacterData.CharData.positionDirty
   href: TMPEffects.CharacterData.CharData.html#TMPEffects_CharacterData_CharData_positionDirty
@@ -1510,16 +1534,16 @@ references:
   name: Rotations
   nameWithType: CharData.Rotations
   fullName: TMPEffects.CharacterData.CharData.Rotations
-- uid: System.Collections.Generic.IReadOnlyList{Rotation}
-  commentId: T:System.Collections.Generic.IReadOnlyList{Rotation}
+- uid: System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
+  commentId: T:System.Collections.Generic.IReadOnlyList{TMPEffects.Modifiers.Rotation}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.IReadOnlyList`1
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
   name: IReadOnlyList<Rotation>
   nameWithType: IReadOnlyList<Rotation>
-  fullName: System.Collections.Generic.IReadOnlyList<Rotation>
+  fullName: System.Collections.Generic.IReadOnlyList<TMPEffects.Modifiers.Rotation>
   nameWithType.vb: IReadOnlyList(Of Rotation)
-  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Rotation)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of TMPEffects.Modifiers.Rotation)
   name.vb: IReadOnlyList(Of Rotation)
   spec.csharp:
   - uid: System.Collections.Generic.IReadOnlyList`1
@@ -1527,9 +1551,9 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
   - name: <
-  - uid: Global.Rotation
+  - uid: TMPEffects.Modifiers.Rotation
     name: Rotation
-    href: Rotation.html
+    href: TMPEffects.Modifiers.Rotation.html
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.IReadOnlyList`1
@@ -1539,9 +1563,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Global.Rotation
+  - uid: TMPEffects.Modifiers.Rotation
     name: Rotation
-    href: Rotation.html
+    href: TMPEffects.Modifiers.Rotation.html
   - name: )
 - uid: System.Collections.Generic.IReadOnlyList`1
   commentId: T:System.Collections.Generic.IReadOnlyList`1

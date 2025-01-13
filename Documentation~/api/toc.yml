@@ -1,147 +1,5 @@
 ### YamlMime:TableOfContent
 items:
-- uid: Global
-  name: ''
-  type: Namespace
-  items:
-  - uid: Global.AnimationStep
-    name: AnimationStep
-    type: Class
-  - uid: Global.AnimationStep.ExtrapolationMode
-    name: AnimationStep.ExtrapolationMode
-    type: Enum
-  - uid: Global.CharDataModifiers
-    name: CharDataModifiers
-    type: Class
-  - uid: Global.ColorOverride
-    name: ColorOverride
-    type: Struct
-  - uid: Global.ColorOverride.OverrideMode
-    name: ColorOverride.OverrideMode
-    type: Enum
-  - uid: Global.EditorFriendlyCharDataModifiers
-    name: EditorFriendlyCharDataModifiers
-    type: Class
-  - uid: Global.EditorFriendlyRotation
-    name: EditorFriendlyRotation
-    type: Class
-  - uid: Global.GenericHideAnimation
-    name: GenericHideAnimation
-    type: Class
-  - uid: Global.GenericShowAnimation
-    name: GenericShowAnimation
-    type: Class
-  - uid: Global.PowerEnum`2
-    name: PowerEnum<TEnum, TCustom>
-    type: Class
-  - uid: Global.Rotation
-    name: Rotation
-    type: Struct
-  - uid: Global.TMPAnimationBehaviour
-    name: TMPAnimationBehaviour
-    type: Class
-  - uid: Global.TMPAnimationClip
-    name: TMPAnimationClip
-    type: Class
-  - uid: Global.TMPAnimatorMarkReceiver
-    name: TMPAnimatorMarkReceiver
-    type: Class
-  - uid: Global.TMPAnimatorTrack
-    name: TMPAnimatorTrack
-    type: Class
-  - uid: Global.TMPAnimatorTrackMixer
-    name: TMPAnimatorTrackMixer
-    type: Class
-  - uid: Global.TMPCharacterModifiers
-    name: TMPCharacterModifiers
-    type: Class
-  - uid: Global.TMPCharacterModifiers.ModifierFlags
-    name: TMPCharacterModifiers.ModifierFlags
-    type: Enum
-  - uid: Global.TMPEffectsClip
-    name: TMPEffectsClip
-    type: Class
-  - uid: Global.TMPEffectsMarker
-    name: TMPEffectsMarker
-    type: Class
-  - uid: Global.TMPEffectsSettings
-    name: TMPEffectsSettings
-    type: Class
-  - uid: Global.TMPEffectsTrack
-    name: TMPEffectsTrack
-    type: Class
-  - uid: Global.TMPMeshModifierBehaviour
-    name: TMPMeshModifierBehaviour
-    type: Class
-  - uid: Global.TMPMeshModifierClip
-    name: TMPMeshModifierClip
-    type: Class
-  - uid: Global.TMPMeshModifierTrack
-    name: TMPMeshModifierTrack
-    type: Class
-  - uid: Global.TMPMeshModifierTrackMixer
-    name: TMPMeshModifierTrackMixer
-    type: Class
-  - uid: Global.TMPMeshModifiers
-    name: TMPMeshModifiers
-    type: Class
-  - uid: Global.TMPMeshModifiers.ModifierFlags
-    name: TMPMeshModifiers.ModifierFlags
-    type: Enum
-  - uid: Global.TMPResetAnimationsMarker
-    name: TMPResetAnimationsMarker
-    type: Class
-  - uid: Global.TMPResetTimeMarker
-    name: TMPResetTimeMarker
-    type: Class
-  - uid: Global.TMPResetWriterMarker
-    name: TMPResetWriterMarker
-    type: Class
-  - uid: Global.TMPRestartWriterMarker
-    name: TMPRestartWriterMarker
-    type: Class
-  - uid: Global.TMPSetUpdateFromMarker
-    name: TMPSetUpdateFromMarker
-    type: Class
-  - uid: Global.TMPSkipWriterMarker
-    name: TMPSkipWriterMarker
-    type: Class
-  - uid: Global.TMPStartAnimatingMarker
-    name: TMPStartAnimatingMarker
-    type: Class
-  - uid: Global.TMPStartWriterMarker
-    name: TMPStartWriterMarker
-    type: Class
-  - uid: Global.TMPStopAnimatingMarker
-    name: TMPStopAnimatingMarker
-    type: Class
-  - uid: Global.TMPStopWriterMarker
-    name: TMPStopWriterMarker
-    type: Class
-  - uid: Global.TMPUpdateAnimationsMarker
-    name: TMPUpdateAnimationsMarker
-    type: Class
-  - uid: Global.TMPWriterMarkReceiver
-    name: TMPWriterMarkReceiver
-    type: Class
-  - uid: Global.TMPWriterResetWaitMarker
-    name: TMPWriterResetWaitMarker
-    type: Class
-  - uid: Global.TMPWriterSetSkippableMarker
-    name: TMPWriterSetSkippableMarker
-    type: Class
-  - uid: Global.TMPWriterWaitMarker
-    name: TMPWriterWaitMarker
-    type: Class
-  - uid: Global.TimelineAnimationStep
-    name: TimelineAnimationStep
-    type: Class
-  - uid: Global.ValueOverride`1
-    name: ValueOverride<T>
-    type: Interface
-  - uid: Global.Vector3Override
-    name: Vector3Override
-    type: Struct
 - uid: TMPEffects.CharacterData
   name: TMPEffects.CharacterData
   type: Namespace
@@ -300,6 +158,43 @@ items:
   - uid: TMPEffects.Extensions.Extensions
     name: Extensions
     type: Class
+- uid: TMPEffects.Modifiers
+  name: TMPEffects.Modifiers
+  type: Namespace
+  items:
+  - uid: TMPEffects.Modifiers.CharDataModifiers
+    name: CharDataModifiers
+    type: Class
+  - uid: TMPEffects.Modifiers.ColorOverride
+    name: ColorOverride
+    type: Struct
+  - uid: TMPEffects.Modifiers.ColorOverride.OverrideMode
+    name: ColorOverride.OverrideMode
+    type: Enum
+  - uid: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+    name: EditorFriendlyCharDataModifiers
+    type: Class
+  - uid: TMPEffects.Modifiers.EditorFriendlyRotation
+    name: EditorFriendlyRotation
+    type: Class
+  - uid: TMPEffects.Modifiers.Rotation
+    name: Rotation
+    type: Struct
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers
+    name: TMPCharacterModifiers
+    type: Class
+  - uid: TMPEffects.Modifiers.TMPCharacterModifiers.ModifierFlags
+    name: TMPCharacterModifiers.ModifierFlags
+    type: Enum
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers
+    name: TMPMeshModifiers
+    type: Class
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+    name: TMPMeshModifiers.ModifierFlags
+    type: Enum
+  - uid: TMPEffects.Modifiers.Vector3Override
+    name: Vector3Override
+    type: Struct
 - uid: TMPEffects.ObjectChanged
   name: TMPEffects.ObjectChanged
   type: Namespace
@@ -328,6 +223,9 @@ items:
     type: Class
   - uid: TMPEffects.Parameters.ParameterParsing
     name: ParameterParsing
+    type: Class
+  - uid: TMPEffects.Parameters.PowerEnum`2
+    name: PowerEnum<TEnum, TCustom>
     type: Class
   - uid: TMPEffects.Parameters.SceneOffsetBundle
     name: SceneOffsetBundle
@@ -410,6 +308,12 @@ items:
   - uid: TMPEffects.TMPAnimations.AnimationContext
     name: AnimationContext
     type: Class
+  - uid: TMPEffects.TMPAnimations.AnimationStep
+    name: AnimationStep
+    type: Class
+  - uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    name: AnimationStep.ExtrapolationMode
+    type: Enum
   - uid: TMPEffects.TMPAnimations.GenericAnimation
     name: GenericAnimation
     type: Class
@@ -526,6 +430,9 @@ items:
   - uid: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
     name: FadeHideAnimation
     type: Class
+  - uid: TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
+    name: GenericHideAnimation
+    type: Class
   - uid: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
     name: GrowHideAnimation
     type: Class
@@ -562,6 +469,9 @@ items:
     type: Class
   - uid: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
     name: FadeShowAnimation
+    type: Class
+  - uid: TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
+    name: GenericShowAnimation
     type: Class
   - uid: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
     name: GrowShowAnimation
@@ -718,5 +628,97 @@ items:
     type: Class
   - uid: TMPEffects.TextProcessing.TagProcessorManager
     name: TagProcessorManager
+    type: Class
+- uid: TMPEffects.Timeline
+  name: TMPEffects.Timeline
+  type: Namespace
+  items:
+  - uid: TMPEffects.Timeline.TMPAnimationBehaviour
+    name: TMPAnimationBehaviour
+    type: Class
+  - uid: TMPEffects.Timeline.TMPAnimationClip
+    name: TMPAnimationClip
+    type: Class
+  - uid: TMPEffects.Timeline.TMPAnimatorTrack
+    name: TMPAnimatorTrack
+    type: Class
+  - uid: TMPEffects.Timeline.TMPAnimatorTrackMixer
+    name: TMPAnimatorTrackMixer
+    type: Class
+  - uid: TMPEffects.Timeline.TMPEffectsClip
+    name: TMPEffectsClip
+    type: Class
+  - uid: TMPEffects.Timeline.TMPEffectsTrack
+    name: TMPEffectsTrack
+    type: Class
+  - uid: TMPEffects.Timeline.TMPMeshModifierBehaviour
+    name: TMPMeshModifierBehaviour
+    type: Class
+  - uid: TMPEffects.Timeline.TMPMeshModifierClip
+    name: TMPMeshModifierClip
+    type: Class
+  - uid: TMPEffects.Timeline.TMPMeshModifierTrack
+    name: TMPMeshModifierTrack
+    type: Class
+  - uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+    name: TMPMeshModifierTrackMixer
+    type: Class
+  - uid: TMPEffects.Timeline.TimelineAnimationStep
+    name: TimelineAnimationStep
+    type: Class
+- uid: TMPEffects.Timeline.Markers
+  name: TMPEffects.Timeline.Markers
+  type: Namespace
+  items:
+  - uid: TMPEffects.Timeline.Markers.TMPAnimatorMarkReceiver
+    name: TMPAnimatorMarkReceiver
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPEffectsMarker
+    name: TMPEffectsMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPResetAnimationsMarker
+    name: TMPResetAnimationsMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPResetTimeMarker
+    name: TMPResetTimeMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPResetWriterMarker
+    name: TMPResetWriterMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPRestartWriterMarker
+    name: TMPRestartWriterMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPSetUpdateFromMarker
+    name: TMPSetUpdateFromMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+    name: TMPSkipWriterMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPStartAnimatingMarker
+    name: TMPStartAnimatingMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPStartWriterMarker
+    name: TMPStartWriterMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPStopAnimatingMarker
+    name: TMPStopAnimatingMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPStopWriterMarker
+    name: TMPStopWriterMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPUpdateAnimationsMarker
+    name: TMPUpdateAnimationsMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPWriterMarkReceiver
+    name: TMPWriterMarkReceiver
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPWriterResetWaitMarker
+    name: TMPWriterResetWaitMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPWriterSetSkippableMarker
+    name: TMPWriterSetSkippableMarker
+    type: Class
+  - uid: TMPEffects.Timeline.Markers.TMPWriterWaitMarker
+    name: TMPWriterWaitMarker
     type: Class
 memberLayout: SamePage

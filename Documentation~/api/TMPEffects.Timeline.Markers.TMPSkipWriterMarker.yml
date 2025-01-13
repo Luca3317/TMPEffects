@@ -1,0 +1,264 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  id: TMPSkipWriterMarker
+  parent: TMPEffects.Timeline.Markers
+  children:
+  - TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+  - TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+  - TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+  langs:
+  - csharp
+  - vb
+  name: TMPSkipWriterMarker
+  nameWithType: TMPSkipWriterMarker
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: TMPSkipWriterMarker
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+    startLine: 6
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: 'public class TMPSkipWriterMarker : TMPEffectsMarker, INotification, INotificationOptionProvider'
+    content.vb: Public Class TMPSkipWriterMarker Inherits TMPEffectsMarker Implements INotification, INotificationOptionProvider
+  inheritance:
+  - System.Object
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker
+  implements:
+  - Global.INotification
+  - Global.INotificationOptionProvider
+  inheritedMembers:
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  - TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+  commentId: P:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+  id: id
+  parent: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: id
+  nameWithType: TMPSkipWriterMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: id
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+    startLine: 10
+  namespace: TMPEffects.Timeline.Markers
+  example: []
+  syntax:
+    content: public override PropertyName id { get; }
+    parameters: []
+    return:
+      type: Global.PropertyName
+    content.vb: Public Overrides ReadOnly Property id As PropertyName
+  overridden: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  overload: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id*
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+  commentId: P:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+  id: flags
+  parent: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: TMPSkipWriterMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: flags
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+    startLine: 12
+  namespace: TMPEffects.Timeline.Markers
+  example: []
+  syntax:
+    content: public override NotificationFlags flags { get; }
+    parameters: []
+    return:
+      type: Global.NotificationFlags
+    content.vb: Public Overrides ReadOnly Property flags As NotificationFlags
+  overridden: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  overload: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags*
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+  commentId: P:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+  id: SkipShowAnimation
+  parent: TMPEffects.Timeline.Markers.TMPSkipWriterMarker
+  langs:
+  - csharp
+  - vb
+  name: SkipShowAnimation
+  nameWithType: TMPSkipWriterMarker.SkipShowAnimation
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: SkipShowAnimation
+    path: ../Package/Runtime/Timeline/Markers/TMPWriterMarks/TMPSkipWriterMarker.cs
+    startLine: 20
+  namespace: TMPEffects.Timeline.Markers
+  syntax:
+    content: public bool SkipShowAnimation { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property SkipShowAnimation As Boolean
+  overload: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation*
+references:
+- uid: TMPEffects.Timeline.Markers
+  commentId: N:TMPEffects.Timeline.Markers
+  href: TMPEffects.html
+  name: TMPEffects.Timeline.Markers
+  nameWithType: TMPEffects.Timeline.Markers
+  fullName: TMPEffects.Timeline.Markers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  - name: .
+  - uid: TMPEffects.Timeline.Markers
+    name: Markers
+    href: TMPEffects.Timeline.Markers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  commentId: T:TMPEffects.Timeline.Markers.TMPEffectsMarker
+  parent: TMPEffects.Timeline.Markers
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html
+  name: TMPEffectsMarker
+  nameWithType: TMPEffectsMarker
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker
+- uid: Global.INotification
+  isExternal: true
+  name: INotification
+  nameWithType: INotification
+  fullName: INotification
+- uid: Global.INotificationOptionProvider
+  isExternal: true
+  name: INotificationOptionProvider
+  nameWithType: INotificationOptionProvider
+  fullName: INotificationOptionProvider
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_retroactive
+  name: retroactive
+  nameWithType: TMPEffectsMarker.retroactive
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.retroactive
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_triggerOnce
+  name: triggerOnce
+  nameWithType: TMPEffectsMarker.triggerOnce
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerOnce
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+  commentId: F:TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_triggerInEditMode
+  name: triggerInEditMode
+  nameWithType: TMPEffectsMarker.triggerInEditMode
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.triggerInEditMode
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  commentId: P:TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_id
+  name: id
+  nameWithType: TMPEffectsMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.id
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+  href: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.html#TMPEffects_Timeline_Markers_TMPSkipWriterMarker_id
+  name: id
+  nameWithType: TMPSkipWriterMarker.id
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.id
+- uid: Global.PropertyName
+  isExternal: true
+  name: PropertyName
+  nameWithType: PropertyName
+  fullName: PropertyName
+- uid: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  commentId: P:TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+  parent: TMPEffects.Timeline.Markers.TMPEffectsMarker
+  href: TMPEffects.Timeline.Markers.TMPEffectsMarker.html#TMPEffects_Timeline_Markers_TMPEffectsMarker_flags
+  name: flags
+  nameWithType: TMPEffectsMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPEffectsMarker.flags
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+  href: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.html#TMPEffects_Timeline_Markers_TMPSkipWriterMarker_flags
+  name: flags
+  nameWithType: TMPSkipWriterMarker.flags
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.flags
+- uid: Global.NotificationFlags
+  isExternal: true
+  name: NotificationFlags
+  nameWithType: NotificationFlags
+  fullName: NotificationFlags
+- uid: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation*
+  commentId: Overload:TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+  href: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.html#TMPEffects_Timeline_Markers_TMPSkipWriterMarker_SkipShowAnimation
+  name: SkipShowAnimation
+  nameWithType: TMPSkipWriterMarker.SkipShowAnimation
+  fullName: TMPEffects.Timeline.Markers.TMPSkipWriterMarker.SkipShowAnimation
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -32,7 +32,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ReadOnlyAnimatorContext
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 10
+    startLine: 11
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />
@@ -85,7 +85,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Modifiers
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 14
+    startLine: 15
   namespace: TMPEffects.Components.Animator
   summary: >-
     The current state of the CharData, with the previous animations applied.<br /><p><br />
@@ -104,7 +104,7 @@ items:
     content: public CharDataModifiers Modifiers { get; }
     parameters: []
     return:
-      type: Global.CharDataModifiers
+      type: TMPEffects.Modifiers.CharDataModifiers
     content.vb: Public ReadOnly Property Modifiers As CharDataModifiers
   overload: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.Modifiers*
   implements:
@@ -127,7 +127,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleAnimations
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 17
+    startLine: 18
   namespace: TMPEffects.Components.Animator
   summary: Whether animations are scaled.
   example: []
@@ -158,7 +158,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ScaleUniformly
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 19
+    startLine: 20
   namespace: TMPEffects.Components.Animator
   summary: >-
     Whether to scale animations uniformly (based on the default font size of the animator)
@@ -194,7 +194,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: UseScaledTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 21
+    startLine: 22
   namespace: TMPEffects.Components.Animator
   summary: Whether animations use scaled time.
   example: []
@@ -225,7 +225,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Animator
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 23
+    startLine: 24
   namespace: TMPEffects.Components.Animator
   summary: The animating <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -256,7 +256,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: DeltaTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 25
+    startLine: 26
   namespace: TMPEffects.Components.Animator
   summary: The current delta time (=&gt; time since last animation update).
   example: []
@@ -287,7 +287,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: PassedTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 27
+    startLine: 28
   namespace: TMPEffects.Components.Animator
   summary: The time that has passed since the animator began animating.
   example: []
@@ -318,7 +318,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 30
+    startLine: 31
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -356,7 +356,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 32
+    startLine: 33
   namespace: TMPEffects.Components.Animator
   summary: Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
   example: []
@@ -391,7 +391,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 35
+    startLine: 36
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -432,7 +432,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 37
+    startLine: 38
   namespace: TMPEffects.Components.Animator
   summary: Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
   example: []
@@ -469,7 +469,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 39
+    startLine: 40
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public ReadOnlyAnimatorContext(IAnimatorContext context)
@@ -499,7 +499,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/Components/TMPAnimator/ReadOnlyAnimatorContext.cs
-    startLine: 45
+    startLine: 46
   namespace: TMPEffects.Components.Animator
   syntax:
     content: public ReadOnlyAnimatorContext(TMPAnimator animator, bool scaleAnimations, bool useScaledTime, bool scaleUniformly, Func<int, float> getVisibleTime, Func<int, float> getStateTime)
@@ -859,12 +859,35 @@ references:
   name: Modifiers
   nameWithType: IAnimatorDataProvider.Modifiers
   fullName: TMPEffects.Components.Animator.IAnimatorDataProvider.Modifiers
-- uid: Global.CharDataModifiers
-  commentId: T:Global.CharDataModifiers
-  href: CharDataModifiers.html
+- uid: TMPEffects.Modifiers.CharDataModifiers
+  commentId: T:TMPEffects.Modifiers.CharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.CharDataModifiers.html
   name: CharDataModifiers
   nameWithType: CharDataModifiers
-  fullName: CharDataModifiers
+  fullName: TMPEffects.Modifiers.CharDataModifiers
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
 - uid: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations*
   commentId: Overload:TMPEffects.Components.Animator.ReadOnlyAnimatorContext.ScaleAnimations
   href: TMPEffects.Components.Animator.ReadOnlyAnimatorContext.html#TMPEffects_Components_Animator_ReadOnlyAnimatorContext_ScaleAnimations

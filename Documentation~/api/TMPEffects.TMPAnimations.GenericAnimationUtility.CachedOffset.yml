@@ -22,7 +22,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: CachedOffset
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 319
+    startLine: 320
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public struct GenericAnimationUtility.CachedOffset
@@ -52,7 +52,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: offset
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 321
+    startLine: 322
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public Dictionary<CharData, float> offset
@@ -77,7 +77,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: minOffset
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 322
+    startLine: 323
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float minOffset
@@ -102,7 +102,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: maxOffset
     path: ../Package/Runtime/Effects/TMPAnimations/Basic Animations/GenericAnimation.cs
-    startLine: 323
+    startLine: 324
   namespace: TMPEffects.TMPAnimations
   syntax:
     content: public float maxOffset

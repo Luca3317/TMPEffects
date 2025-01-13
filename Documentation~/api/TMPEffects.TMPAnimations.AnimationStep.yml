@@ -1,0 +1,1318 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.TMPAnimations.AnimationStep
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep
+  id: AnimationStep
+  parent: TMPEffects.TMPAnimations
+  children:
+  - TMPEffects.TMPAnimations.AnimationStep.#ctor
+  - TMPEffects.TMPAnimations.AnimationStep.#ctor(TMPEffects.TMPAnimations.AnimationStep)
+  - TMPEffects.TMPAnimations.AnimationStep.CalcWeight(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  - TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  - TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,System.Single)
+  - TMPEffects.TMPAnimations.AnimationStep.EndTime
+  - TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  - TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  - TMPEffects.TMPAnimations.AnimationStep.animate
+  - TMPEffects.TMPAnimations.AnimationStep.duration
+  - TMPEffects.TMPAnimations.AnimationStep.entryCurve
+  - TMPEffects.TMPAnimations.AnimationStep.entryDuration
+  - TMPEffects.TMPAnimations.AnimationStep.exitCurve
+  - TMPEffects.TMPAnimations.AnimationStep.exitDuration
+  - TMPEffects.TMPAnimations.AnimationStep.initModifiers
+  - TMPEffects.TMPAnimations.AnimationStep.modifiers
+  - TMPEffects.TMPAnimations.AnimationStep.name
+  - TMPEffects.TMPAnimations.AnimationStep.postExtrapolation
+  - TMPEffects.TMPAnimations.AnimationStep.preExtrapolation
+  - TMPEffects.TMPAnimations.AnimationStep.startTime
+  - TMPEffects.TMPAnimations.AnimationStep.useInitialModifiers
+  - TMPEffects.TMPAnimations.AnimationStep.useWave
+  - TMPEffects.TMPAnimations.AnimationStep.wave
+  - TMPEffects.TMPAnimations.AnimationStep.waveOffset
+  langs:
+  - csharp
+  - vb
+  name: AnimationStep
+  nameWithType: AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep
+  type: Class
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: AnimationStep
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 9
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: >-
+      [Serializable]
+
+      public class AnimationStep
+    content.vb: >-
+      <Serializable>
+
+      Public Class AnimationStep
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.TMPAnimations.AnimationStep.name
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.name
+  id: name
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: AnimationStep.name
+  fullName: TMPEffects.TMPAnimations.AnimationStep.name
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: name
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 12
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public string name
+    return:
+      type: System.String
+    content.vb: Public name As String
+- uid: TMPEffects.TMPAnimations.AnimationStep.animate
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.animate
+  id: animate
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: animate
+  nameWithType: AnimationStep.animate
+  fullName: TMPEffects.TMPAnimations.AnimationStep.animate
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: animate
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 13
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public bool animate
+    return:
+      type: System.Boolean
+    content.vb: Public animate As Boolean
+- uid: TMPEffects.TMPAnimations.AnimationStep.entryCurve
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.entryCurve
+  id: entryCurve
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: entryCurve
+  nameWithType: AnimationStep.entryCurve
+  fullName: TMPEffects.TMPAnimations.AnimationStep.entryCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: entryCurve
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 16
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public TMPBlendCurve entryCurve
+    return:
+      type: TMPEffects.Parameters.TMPBlendCurve
+    content.vb: Public entryCurve As TMPBlendCurve
+- uid: TMPEffects.TMPAnimations.AnimationStep.entryDuration
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.entryDuration
+  id: entryDuration
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: entryDuration
+  nameWithType: AnimationStep.entryDuration
+  fullName: TMPEffects.TMPAnimations.AnimationStep.entryDuration
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: entryDuration
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 17
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public float entryDuration
+    return:
+      type: System.Single
+    content.vb: Public entryDuration As Single
+- uid: TMPEffects.TMPAnimations.AnimationStep.exitCurve
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.exitCurve
+  id: exitCurve
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: exitCurve
+  nameWithType: AnimationStep.exitCurve
+  fullName: TMPEffects.TMPAnimations.AnimationStep.exitCurve
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: exitCurve
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 19
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public TMPBlendCurve exitCurve
+    return:
+      type: TMPEffects.Parameters.TMPBlendCurve
+    content.vb: Public exitCurve As TMPBlendCurve
+- uid: TMPEffects.TMPAnimations.AnimationStep.exitDuration
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.exitDuration
+  id: exitDuration
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: exitDuration
+  nameWithType: AnimationStep.exitDuration
+  fullName: TMPEffects.TMPAnimations.AnimationStep.exitDuration
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: exitDuration
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 20
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public float exitDuration
+    return:
+      type: System.Single
+    content.vb: Public exitDuration As Single
+- uid: TMPEffects.TMPAnimations.AnimationStep.preExtrapolation
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.preExtrapolation
+  id: preExtrapolation
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: preExtrapolation
+  nameWithType: AnimationStep.preExtrapolation
+  fullName: TMPEffects.TMPAnimations.AnimationStep.preExtrapolation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: preExtrapolation
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 22
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public AnimationStep.ExtrapolationMode preExtrapolation
+    return:
+      type: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    content.vb: Public preExtrapolation As AnimationStep.ExtrapolationMode
+- uid: TMPEffects.TMPAnimations.AnimationStep.postExtrapolation
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.postExtrapolation
+  id: postExtrapolation
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: postExtrapolation
+  nameWithType: AnimationStep.postExtrapolation
+  fullName: TMPEffects.TMPAnimations.AnimationStep.postExtrapolation
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: postExtrapolation
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 23
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public AnimationStep.ExtrapolationMode postExtrapolation
+    return:
+      type: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    content.vb: Public postExtrapolation As AnimationStep.ExtrapolationMode
+- uid: TMPEffects.TMPAnimations.AnimationStep.useWave
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.useWave
+  id: useWave
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: useWave
+  nameWithType: AnimationStep.useWave
+  fullName: TMPEffects.TMPAnimations.AnimationStep.useWave
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: useWave
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 25
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public bool useWave
+    return:
+      type: System.Boolean
+    content.vb: Public useWave As Boolean
+- uid: TMPEffects.TMPAnimations.AnimationStep.wave
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.wave
+  id: wave
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: wave
+  nameWithType: AnimationStep.wave
+  fullName: TMPEffects.TMPAnimations.AnimationStep.wave
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: wave
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 26
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public Wave wave
+    return:
+      type: TMPEffects.Parameters.Wave
+    content.vb: Public wave As Wave
+- uid: TMPEffects.TMPAnimations.AnimationStep.waveOffset
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.waveOffset
+  id: waveOffset
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: waveOffset
+  nameWithType: AnimationStep.waveOffset
+  fullName: TMPEffects.TMPAnimations.AnimationStep.waveOffset
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: waveOffset
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 27
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public OffsetBundle waveOffset
+    return:
+      type: TMPEffects.Parameters.OffsetBundle
+    content.vb: Public waveOffset As OffsetBundle
+- uid: TMPEffects.TMPAnimations.AnimationStep.startTime
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.startTime
+  id: startTime
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: startTime
+  nameWithType: AnimationStep.startTime
+  fullName: TMPEffects.TMPAnimations.AnimationStep.startTime
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: startTime
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 29
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public float startTime
+    return:
+      type: System.Single
+    content.vb: Public startTime As Single
+- uid: TMPEffects.TMPAnimations.AnimationStep.duration
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.duration
+  id: duration
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: duration
+  nameWithType: AnimationStep.duration
+  fullName: TMPEffects.TMPAnimations.AnimationStep.duration
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: duration
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 30
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public float duration
+    return:
+      type: System.Single
+    content.vb: Public duration As Single
+- uid: TMPEffects.TMPAnimations.AnimationStep.EndTime
+  commentId: P:TMPEffects.TMPAnimations.AnimationStep.EndTime
+  id: EndTime
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: EndTime
+  nameWithType: AnimationStep.EndTime
+  fullName: TMPEffects.TMPAnimations.AnimationStep.EndTime
+  type: Property
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: EndTime
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 33
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public float EndTime { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public ReadOnly Property EndTime As Single
+  overload: TMPEffects.TMPAnimations.AnimationStep.EndTime*
+- uid: TMPEffects.TMPAnimations.AnimationStep.useInitialModifiers
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.useInitialModifiers
+  id: useInitialModifiers
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: useInitialModifiers
+  nameWithType: AnimationStep.useInitialModifiers
+  fullName: TMPEffects.TMPAnimations.AnimationStep.useInitialModifiers
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: useInitialModifiers
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 35
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public bool useInitialModifiers
+    return:
+      type: System.Boolean
+    content.vb: Public useInitialModifiers As Boolean
+- uid: TMPEffects.TMPAnimations.AnimationStep.initModifiers
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.initModifiers
+  id: initModifiers
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: initModifiers
+  nameWithType: AnimationStep.initModifiers
+  fullName: TMPEffects.TMPAnimations.AnimationStep.initModifiers
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: initModifiers
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 36
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public EditorFriendlyCharDataModifiers initModifiers
+    return:
+      type: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+    content.vb: Public initModifiers As EditorFriendlyCharDataModifiers
+- uid: TMPEffects.TMPAnimations.AnimationStep.modifiers
+  commentId: F:TMPEffects.TMPAnimations.AnimationStep.modifiers
+  id: modifiers
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: modifiers
+  nameWithType: AnimationStep.modifiers
+  fullName: TMPEffects.TMPAnimations.AnimationStep.modifiers
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: modifiers
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 37
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public EditorFriendlyCharDataModifiers modifiers
+    return:
+      type: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+    content.vb: Public modifiers As EditorFriendlyCharDataModifiers
+- uid: TMPEffects.TMPAnimations.AnimationStep.#ctor
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.#ctor
+  id: '#ctor'
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: AnimationStep()
+  nameWithType: AnimationStep.AnimationStep()
+  fullName: TMPEffects.TMPAnimations.AnimationStep.AnimationStep()
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 39
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public AnimationStep()
+    content.vb: Public Sub New()
+  overload: TMPEffects.TMPAnimations.AnimationStep.#ctor*
+  nameWithType.vb: AnimationStep.New()
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.New()
+  name.vb: New()
+- uid: TMPEffects.TMPAnimations.AnimationStep.#ctor(TMPEffects.TMPAnimations.AnimationStep)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.#ctor(TMPEffects.TMPAnimations.AnimationStep)
+  id: '#ctor(TMPEffects.TMPAnimations.AnimationStep)'
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: AnimationStep(AnimationStep)
+  nameWithType: AnimationStep.AnimationStep(AnimationStep)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.AnimationStep(TMPEffects.TMPAnimations.AnimationStep)
+  type: Constructor
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: .ctor
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 43
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public AnimationStep(AnimationStep original)
+    parameters:
+    - id: original
+      type: TMPEffects.TMPAnimations.AnimationStep
+    content.vb: Public Sub New(original As AnimationStep)
+  overload: TMPEffects.TMPAnimations.AnimationStep.#ctor*
+  nameWithType.vb: AnimationStep.New(AnimationStep)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.New(TMPEffects.TMPAnimations.AnimationStep)
+  name.vb: New(AnimationStep)
+- uid: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.CalcWeight(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  id: CalcWeight(System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: CalcWeight(float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  nameWithType: AnimationStep.CalcWeight(float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(float, float, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CalcWeight
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 86
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the weight of the step using the time value.
+  example: []
+  syntax:
+    content: public float CalcWeight(float timeValue, float duration, CharData cData, IAnimatorDataProvider context, ITMPSegmentData segmentData)
+    parameters:
+    - id: timeValue
+      type: System.Single
+      description: ''
+    - id: duration
+      type: System.Single
+      description: ''
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    - id: segmentData
+      type: TMPEffects.Components.Animator.ITMPSegmentData
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Function CalcWeight(timeValue As Single, duration As Single, cData As CharData, context As IAnimatorDataProvider, segmentData As ITMPSegmentData) As Single
+  overload: TMPEffects.TMPAnimations.AnimationStep.CalcWeight*
+  nameWithType.vb: AnimationStep.CalcWeight(Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(Single, Single, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData)
+  name.vb: CalcWeight(Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData)
+- uid: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  id: CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData)
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: CalcWeight(AnimationStep, float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  nameWithType: AnimationStep.CalcWeight(AnimationStep, float, float, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep, float, float, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CalcWeight
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 101
+  namespace: TMPEffects.TMPAnimations
+  summary: Calculate the weight of the step using the time value.
+  example: []
+  syntax:
+    content: public static float CalcWeight(AnimationStep step, float timeValue, float duration, CharData cData, IAnimatorDataProvider context, ITMPSegmentData segmentData)
+    parameters:
+    - id: step
+      type: TMPEffects.TMPAnimations.AnimationStep
+    - id: timeValue
+      type: System.Single
+      description: ''
+    - id: duration
+      type: System.Single
+      description: ''
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+      description: ''
+    - id: segmentData
+      type: TMPEffects.Components.Animator.ITMPSegmentData
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Shared Function CalcWeight([step] As AnimationStep, timeValue As Single, duration As Single, cData As CharData, context As IAnimatorDataProvider, segmentData As ITMPSegmentData) As Single
+  overload: TMPEffects.TMPAnimations.AnimationStep.CalcWeight*
+  nameWithType.vb: AnimationStep.CalcWeight(AnimationStep, Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep, Single, Single, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData)
+  name.vb: CalcWeight(AnimationStep, Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData)
+- uid: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,System.Single)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,System.Single)
+  id: CalcWeight(TMPEffects.TMPAnimations.AnimationStep,System.Single,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider,TMPEffects.Components.Animator.ITMPSegmentData,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset,System.Single)
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: CalcWeight(AnimationStep, float, float, CharData, IAnimatorDataProvider, ITMPSegmentData, CachedOffset, CachedOffset, float)
+  nameWithType: AnimationStep.CalcWeight(AnimationStep, float, float, CharData, IAnimatorDataProvider, ITMPSegmentData, GenericAnimationUtility.CachedOffset, GenericAnimationUtility.CachedOffset, float)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep, float, float, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, float)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: CalcWeight
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 128
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public static float CalcWeight(AnimationStep step, float timeValue, float duration, CharData cData, IAnimatorDataProvider context, ITMPSegmentData segmentData, GenericAnimationUtility.CachedOffset inOffset, GenericAnimationUtility.CachedOffset outOffset, float waveOffset = 0)
+    parameters:
+    - id: step
+      type: TMPEffects.TMPAnimations.AnimationStep
+    - id: timeValue
+      type: System.Single
+    - id: duration
+      type: System.Single
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorDataProvider
+    - id: segmentData
+      type: TMPEffects.Components.Animator.ITMPSegmentData
+    - id: inOffset
+      type: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    - id: outOffset
+      type: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    - id: waveOffset
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function CalcWeight([step] As AnimationStep, timeValue As Single, duration As Single, cData As CharData, context As IAnimatorDataProvider, segmentData As ITMPSegmentData, inOffset As GenericAnimationUtility.CachedOffset, outOffset As GenericAnimationUtility.CachedOffset, waveOffset As Single = 0) As Single
+  overload: TMPEffects.TMPAnimations.AnimationStep.CalcWeight*
+  nameWithType.vb: AnimationStep.CalcWeight(AnimationStep, Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData, GenericAnimationUtility.CachedOffset, GenericAnimationUtility.CachedOffset, Single)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.CalcWeight(TMPEffects.TMPAnimations.AnimationStep, Single, Single, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider, TMPEffects.Components.Animator.ITMPSegmentData, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset, Single)
+  name.vb: CalcWeight(AnimationStep, Single, Single, CharData, IAnimatorDataProvider, ITMPSegmentData, CachedOffset, CachedOffset, Single)
+- uid: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  id: LerpAnimationStepWeighted(System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: LerpAnimationStepWeighted(float, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  nameWithType: AnimationStep.LerpAnimationStepWeighted(float, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(float, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: LerpAnimationStepWeighted
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 158
+  namespace: TMPEffects.TMPAnimations
+  syntax:
+    content: public void LerpAnimationStepWeighted(float weight, CharData cData, IAnimatorContext context, CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
+    parameters:
+    - id: weight
+      type: System.Single
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorContext
+    - id: storage
+      type: TMPEffects.Modifiers.CharDataModifiers
+    - id: storage2
+      type: TMPEffects.Modifiers.CharDataModifiers
+    - id: result
+      type: TMPEffects.Modifiers.CharDataModifiers
+    content.vb: Public Sub LerpAnimationStepWeighted(weight As Single, cData As CharData, context As IAnimatorContext, storage As CharDataModifiers, storage2 As CharDataModifiers, result As CharDataModifiers)
+  overload: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted*
+  nameWithType.vb: AnimationStep.LerpAnimationStepWeighted(Single, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(Single, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers)
+  name.vb: LerpAnimationStepWeighted(Single, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+- uid: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  commentId: M:TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  id: LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep,System.Single,TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorContext,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers,TMPEffects.Modifiers.CharDataModifiers)
+  parent: TMPEffects.TMPAnimations.AnimationStep
+  langs:
+  - csharp
+  - vb
+  name: LerpAnimationStepWeighted(AnimationStep, float, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  nameWithType: AnimationStep.LerpAnimationStepWeighted(AnimationStep, float, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep, float, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers)
+  type: Method
+  source:
+    remote:
+      path: Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: LerpAnimationStepWeighted
+    path: ../Package/Runtime/Effects/TMPAnimations/AnimationStep.cs
+    startLine: 174
+  namespace: TMPEffects.TMPAnimations
+  summary: Lerp the step using the weight
+  example: []
+  syntax:
+    content: public static void LerpAnimationStepWeighted(AnimationStep step, float weight, CharData cData, IAnimatorContext context, CharDataModifiers storage, CharDataModifiers storage2, CharDataModifiers result)
+    parameters:
+    - id: step
+      type: TMPEffects.TMPAnimations.AnimationStep
+    - id: weight
+      type: System.Single
+    - id: cData
+      type: TMPEffects.CharacterData.CharData
+      description: ''
+    - id: context
+      type: TMPEffects.Components.Animator.IAnimatorContext
+      description: ''
+    - id: storage
+      type: TMPEffects.Modifiers.CharDataModifiers
+    - id: storage2
+      type: TMPEffects.Modifiers.CharDataModifiers
+    - id: result
+      type: TMPEffects.Modifiers.CharDataModifiers
+    content.vb: Public Shared Sub LerpAnimationStepWeighted([step] As AnimationStep, weight As Single, cData As CharData, context As IAnimatorContext, storage As CharDataModifiers, storage2 As CharDataModifiers, result As CharDataModifiers)
+  overload: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted*
+  nameWithType.vb: AnimationStep.LerpAnimationStepWeighted(AnimationStep, Single, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted(TMPEffects.TMPAnimations.AnimationStep, Single, TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorContext, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers, TMPEffects.Modifiers.CharDataModifiers)
+  name.vb: LerpAnimationStepWeighted(AnimationStep, Single, CharData, IAnimatorContext, CharDataModifiers, CharDataModifiers, CharDataModifiers)
+references:
+- uid: TMPEffects.TMPAnimations
+  commentId: N:TMPEffects.TMPAnimations
+  href: TMPEffects.html
+  name: TMPEffects.TMPAnimations
+  nameWithType: TMPEffects.TMPAnimations
+  fullName: TMPEffects.TMPAnimations
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations
+    name: TMPAnimations
+    href: TMPEffects.TMPAnimations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TMPEffects.Parameters.TMPBlendCurve
+  commentId: T:TMPEffects.Parameters.TMPBlendCurve
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.TMPBlendCurve.html
+  name: TMPBlendCurve
+  nameWithType: TMPBlendCurve
+  fullName: TMPEffects.Parameters.TMPBlendCurve
+- uid: TMPEffects.Parameters
+  commentId: N:TMPEffects.Parameters
+  href: TMPEffects.html
+  name: TMPEffects.Parameters
+  nameWithType: TMPEffects.Parameters
+  fullName: TMPEffects.Parameters
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Parameters
+    name: Parameters
+    href: TMPEffects.Parameters.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
+  name: AnimationStep.ExtrapolationMode
+  nameWithType: AnimationStep.ExtrapolationMode
+  fullName: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.AnimationStep
+    name: AnimationStep
+    href: TMPEffects.TMPAnimations.AnimationStep.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.AnimationStep
+    name: AnimationStep
+    href: TMPEffects.TMPAnimations.AnimationStep.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode
+    name: ExtrapolationMode
+    href: TMPEffects.TMPAnimations.AnimationStep.ExtrapolationMode.html
+- uid: TMPEffects.Parameters.Wave
+  commentId: T:TMPEffects.Parameters.Wave
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.Wave.html
+  name: Wave
+  nameWithType: Wave
+  fullName: TMPEffects.Parameters.Wave
+- uid: TMPEffects.Parameters.OffsetBundle
+  commentId: T:TMPEffects.Parameters.OffsetBundle
+  parent: TMPEffects.Parameters
+  href: TMPEffects.Parameters.OffsetBundle.html
+  name: OffsetBundle
+  nameWithType: OffsetBundle
+  fullName: TMPEffects.Parameters.OffsetBundle
+- uid: TMPEffects.TMPAnimations.AnimationStep.EndTime*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationStep.EndTime
+  href: TMPEffects.TMPAnimations.AnimationStep.html#TMPEffects_TMPAnimations_AnimationStep_EndTime
+  name: EndTime
+  nameWithType: AnimationStep.EndTime
+  fullName: TMPEffects.TMPAnimations.AnimationStep.EndTime
+- uid: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+  commentId: T:TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers.html
+  name: EditorFriendlyCharDataModifiers
+  nameWithType: EditorFriendlyCharDataModifiers
+  fullName: TMPEffects.Modifiers.EditorFriendlyCharDataModifiers
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+- uid: TMPEffects.TMPAnimations.AnimationStep.#ctor*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationStep.#ctor
+  href: TMPEffects.TMPAnimations.AnimationStep.html#TMPEffects_TMPAnimations_AnimationStep__ctor
+  name: AnimationStep
+  nameWithType: AnimationStep.AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep.AnimationStep
+  nameWithType.vb: AnimationStep.New
+  fullName.vb: TMPEffects.TMPAnimations.AnimationStep.New
+  name.vb: New
+- uid: TMPEffects.TMPAnimations.AnimationStep
+  commentId: T:TMPEffects.TMPAnimations.AnimationStep
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.AnimationStep.html
+  name: AnimationStep
+  nameWithType: AnimationStep
+  fullName: TMPEffects.TMPAnimations.AnimationStep
+- uid: TMPEffects.TMPAnimations.AnimationStep.CalcWeight*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationStep.CalcWeight
+  href: TMPEffects.TMPAnimations.AnimationStep.html#TMPEffects_TMPAnimations_AnimationStep_CalcWeight_System_Single_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorDataProvider_TMPEffects_Components_Animator_ITMPSegmentData_
+  name: CalcWeight
+  nameWithType: AnimationStep.CalcWeight
+  fullName: TMPEffects.TMPAnimations.AnimationStep.CalcWeight
+- uid: TMPEffects.CharacterData.CharData
+  commentId: T:TMPEffects.CharacterData.CharData
+  parent: TMPEffects.CharacterData
+  href: TMPEffects.CharacterData.CharData.html
+  name: CharData
+  nameWithType: CharData
+  fullName: TMPEffects.CharacterData.CharData
+- uid: TMPEffects.Components.Animator.IAnimatorDataProvider
+  commentId: T:TMPEffects.Components.Animator.IAnimatorDataProvider
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorDataProvider.html
+  name: IAnimatorDataProvider
+  nameWithType: IAnimatorDataProvider
+  fullName: TMPEffects.Components.Animator.IAnimatorDataProvider
+- uid: TMPEffects.Components.Animator.ITMPSegmentData
+  commentId: T:TMPEffects.Components.Animator.ITMPSegmentData
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.ITMPSegmentData.html
+  name: ITMPSegmentData
+  nameWithType: ITMPSegmentData
+  fullName: TMPEffects.Components.Animator.ITMPSegmentData
+- uid: TMPEffects.CharacterData
+  commentId: N:TMPEffects.CharacterData
+  href: TMPEffects.html
+  name: TMPEffects.CharacterData
+  nameWithType: TMPEffects.CharacterData
+  fullName: TMPEffects.CharacterData
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.CharacterData
+    name: CharacterData
+    href: TMPEffects.CharacterData.html
+- uid: TMPEffects.Components.Animator
+  commentId: N:TMPEffects.Components.Animator
+  href: TMPEffects.html
+  name: TMPEffects.Components.Animator
+  nameWithType: TMPEffects.Components.Animator
+  fullName: TMPEffects.Components.Animator
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Components
+    name: Components
+    href: TMPEffects.Components.html
+  - name: .
+  - uid: TMPEffects.Components.Animator
+    name: Animator
+    href: TMPEffects.Components.Animator.html
+- uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  commentId: T:TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  parent: TMPEffects.TMPAnimations
+  href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  name: GenericAnimationUtility.CachedOffset
+  nameWithType: GenericAnimationUtility.CachedOffset
+  fullName: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+  spec.csharp:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+  spec.vb:
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility
+    name: GenericAnimationUtility
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.html
+  - name: .
+  - uid: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset
+    name: CachedOffset
+    href: TMPEffects.TMPAnimations.GenericAnimationUtility.CachedOffset.html
+- uid: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted*
+  commentId: Overload:TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted
+  href: TMPEffects.TMPAnimations.AnimationStep.html#TMPEffects_TMPAnimations_AnimationStep_LerpAnimationStepWeighted_System_Single_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorContext_TMPEffects_Modifiers_CharDataModifiers_TMPEffects_Modifiers_CharDataModifiers_TMPEffects_Modifiers_CharDataModifiers_
+  name: LerpAnimationStepWeighted
+  nameWithType: AnimationStep.LerpAnimationStepWeighted
+  fullName: TMPEffects.TMPAnimations.AnimationStep.LerpAnimationStepWeighted
+- uid: TMPEffects.Components.Animator.IAnimatorContext
+  commentId: T:TMPEffects.Components.Animator.IAnimatorContext
+  parent: TMPEffects.Components.Animator
+  href: TMPEffects.Components.Animator.IAnimatorContext.html
+  name: IAnimatorContext
+  nameWithType: IAnimatorContext
+  fullName: TMPEffects.Components.Animator.IAnimatorContext
+- uid: TMPEffects.Modifiers.CharDataModifiers
+  commentId: T:TMPEffects.Modifiers.CharDataModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.CharDataModifiers.html
+  name: CharDataModifiers
+  nameWithType: CharDataModifiers
+  fullName: TMPEffects.Modifiers.CharDataModifiers

@@ -23,7 +23,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ICharacterTimingsProvider
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 69
+    startLine: 70
   namespace: TMPEffects.Components.Animator
   summary: Provides visibility timings of <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -48,7 +48,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 77
+    startLine: 78
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -84,7 +84,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 83
+    startLine: 84
   namespace: TMPEffects.Components.Animator
   summary: Check how long the passed <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> has been visible.
   example: []
@@ -117,7 +117,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: StateTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 91
+    startLine: 92
   namespace: TMPEffects.Components.Animator
   summary: >-
     Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been in its current <xref href="TMPEffects.CharacterData.VisibilityState" data-throw-if-not-resolved="false"></xref>.<br />
@@ -156,7 +156,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VisibleTime
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 97
+    startLine: 98
   namespace: TMPEffects.Components.Animator
   summary: Check how long the <xref href="TMPEffects.CharacterData.CharData" data-throw-if-not-resolved="false"></xref> at the given index has been visible.
   example: []

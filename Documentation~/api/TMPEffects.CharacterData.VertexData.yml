@@ -62,7 +62,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: VertexData
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 8
+    startLine: 9
   namespace: TMPEffects.CharacterData
   summary: Holds data about a TextMeshPro character mesh.
   example: []
@@ -97,7 +97,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Modifiers
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 13
+    startLine: 14
   namespace: TMPEffects.CharacterData
   summary: The modifiers of this mesh.
   example: []
@@ -105,7 +105,7 @@ items:
     content: public TMPMeshModifiers Modifiers { get; }
     parameters: []
     return:
-      type: Global.TMPMeshModifiers
+      type: TMPEffects.Modifiers.TMPMeshModifiers
     content.vb: Public ReadOnly Property Modifiers As TMPMeshModifiers
   overload: TMPEffects.CharacterData.VertexData.Modifiers*
 - uid: TMPEffects.CharacterData.VertexData.initial
@@ -126,7 +126,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: initial
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 40
+    startLine: 41
   namespace: TMPEffects.CharacterData
   summary: The initial, immutable vertex data of the character.
   example: []
@@ -153,7 +153,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: positionsDirty
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 45
+    startLine: 46
   namespace: TMPEffects.CharacterData
   summary: Whether the positions have been manipulated.
   example: []
@@ -182,7 +182,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: colorsDirty
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 50
+    startLine: 51
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex colors have been manipulated.
   example: []
@@ -211,7 +211,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: alphasDirty
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 55
+    startLine: 56
   namespace: TMPEffects.CharacterData
   summary: Whether the vertex alphas have been manipulated.
   example: []
@@ -240,7 +240,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: uvsDirty
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 60
+    startLine: 61
   namespace: TMPEffects.CharacterData
   summary: Whether the UVs have been manipulated.
   example: []
@@ -269,7 +269,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Color
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 67
+    startLine: 68
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the bottom left vertex.<br />
@@ -303,7 +303,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Color
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 86
+    startLine: 87
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the top left vertex.<br />
@@ -337,7 +337,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Color
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 105
+    startLine: 106
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the top right vertex.<br />
@@ -371,7 +371,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Color
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 124
+    startLine: 125
   namespace: TMPEffects.CharacterData
   summary: >-
     Get or set the color of the bottom right vertex.<br />
@@ -405,7 +405,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Alpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 141
+    startLine: 142
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the bottom left vertex.
   example: []
@@ -434,7 +434,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Alpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 157
+    startLine: 158
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the top left vertex.
   example: []
@@ -463,7 +463,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Alpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 173
+    startLine: 174
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the top right vertex.
   example: []
@@ -492,7 +492,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Alpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 189
+    startLine: 190
   namespace: TMPEffects.CharacterData
   summary: Get or set the alpha of the bottom right vertex.
   example: []
@@ -521,7 +521,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_Position
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 205
+    startLine: 206
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the bottom left vertex.
   example: []
@@ -550,7 +550,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_Position
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 218
+    startLine: 219
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the top left vertex.
   example: []
@@ -579,7 +579,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_Position
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 231
+    startLine: 232
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the top right vertex.
   example: []
@@ -608,7 +608,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_Position
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 244
+    startLine: 245
   namespace: TMPEffects.CharacterData
   summary: Get or set the position of the bottom right vertex.
   example: []
@@ -637,7 +637,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 257
+    startLine: 258
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom left vertex.
   example: []
@@ -666,7 +666,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 271
+    startLine: 272
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom right vertex.
   example: []
@@ -695,7 +695,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 284
+    startLine: 285
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the top right vertex.
   example: []
@@ -724,7 +724,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 297
+    startLine: 298
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV0 of the bottom right vertex.
   example: []
@@ -753,7 +753,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BL_UV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 310
+    startLine: 311
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom left vertex.
   example: []
@@ -782,7 +782,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TL_UV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 323
+    startLine: 324
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom right vertex.
   example: []
@@ -811,7 +811,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: TR_UV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 336
+    startLine: 337
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the top right vertex.
   example: []
@@ -840,7 +840,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: BR_UV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 349
+    startLine: 350
   namespace: TMPEffects.CharacterData
   summary: Get or set the UV2 of the bottom right vertex.
   example: []
@@ -869,7 +869,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 359
+    startLine: 360
   namespace: TMPEffects.CharacterData
   syntax:
     content: public VertexData(TMP_Vertex bl, TMP_Vertex tl, TMP_Vertex tr, TMP_Vertex br)
@@ -905,7 +905,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: .ctor
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 374
+    startLine: 375
   namespace: TMPEffects.CharacterData
   syntax:
     content: public VertexData(TMP_CharacterInfo info)
@@ -935,7 +935,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetPosition
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 399
+    startLine: 400
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the position of the vertex associated with the index.<br />
@@ -984,7 +984,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetPosition
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 420
+    startLine: 421
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the position of the vertex associated with the index.<br />
@@ -1032,7 +1032,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetColor
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 452
+    startLine: 453
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the color of the vertex associated with the index.<br />
@@ -1081,7 +1081,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetColor
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 475
+    startLine: 476
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the color of the vertex associated with the index.<br />
@@ -1133,7 +1133,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetAlpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 549
+    startLine: 550
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the alpha of the vertex associated with the index.<br />
@@ -1182,7 +1182,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetAlpha
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 570
+    startLine: 571
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the alpha of the vertex associated with the index.<br />
@@ -1230,7 +1230,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetUV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 602
+    startLine: 603
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the UV0 of the vertex associated with the index.<br />
@@ -1279,7 +1279,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetUV0
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 623
+    startLine: 624
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the UV0 of the vertex associated with the index.<br />
@@ -1327,7 +1327,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: GetUV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 655
+    startLine: 656
   namespace: TMPEffects.CharacterData
   summary: >-
     Get the UV2 of the vertex associated with the index.<br />
@@ -1376,7 +1376,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: SetUV2
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 676
+    startLine: 677
   namespace: TMPEffects.CharacterData
   summary: >-
     Set the UV2 of the vertex associated with the index.<br />
@@ -1424,7 +1424,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: Reset
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 701
+    startLine: 702
   namespace: TMPEffects.CharacterData
   summary: Reset the mesh to <xref href="TMPEffects.CharacterData.VertexData.initial" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1450,7 +1450,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetColors
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 709
+    startLine: 710
   namespace: TMPEffects.CharacterData
   summary: Reset the vertex colors to <xref href="TMPEffects.CharacterData.VertexData.initial" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1476,7 +1476,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetAlphas
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 745
+    startLine: 746
   namespace: TMPEffects.CharacterData
   syntax:
     content: public void ResetAlphas()
@@ -1500,7 +1500,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetPositions
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 785
+    startLine: 786
   namespace: TMPEffects.CharacterData
   summary: Reset the vertices to <xref href="TMPEffects.CharacterData.VertexData.initial" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1526,7 +1526,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: ResetUVs
     path: ../Package/Runtime/CharData/VertexData.cs
-    startLine: 795
+    startLine: 796
   namespace: TMPEffects.CharacterData
   summary: Reset the UVs to <xref href="TMPEffects.CharacterData.VertexData.initial" data-throw-if-not-resolved="false"></xref>.
   example: []
@@ -1800,12 +1800,35 @@ references:
   name: Modifiers
   nameWithType: VertexData.Modifiers
   fullName: TMPEffects.CharacterData.VertexData.Modifiers
-- uid: Global.TMPMeshModifiers
-  commentId: T:Global.TMPMeshModifiers
-  href: TMPMeshModifiers.html
+- uid: TMPEffects.Modifiers.TMPMeshModifiers
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPMeshModifiers.html
   name: TMPMeshModifiers
   nameWithType: TMPMeshModifiers
-  fullName: TMPMeshModifiers
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
 - uid: TMPEffects.CharacterData.ReadOnlyVertexData
   commentId: T:TMPEffects.CharacterData.ReadOnlyVertexData
   parent: TMPEffects.CharacterData

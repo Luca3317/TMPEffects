@@ -1,0 +1,182 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  id: TMPMeshModifiers.ModifierFlags
+  parent: TMPEffects.Modifiers
+  children:
+  - TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.All
+  - TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Colors
+  - TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Deltas
+  - TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.UVs
+  langs:
+  - csharp
+  - vb
+  name: TMPMeshModifiers.ModifierFlags
+  nameWithType: TMPMeshModifiers.ModifierFlags
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  type: Enum
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: ModifierFlags
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 400
+  namespace: TMPEffects.Modifiers
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum TMPMeshModifiers.ModifierFlags : byte
+    content.vb: >-
+      <Flags>
+
+      Public Enum TMPMeshModifiers.ModifierFlags As Byte
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Deltas
+  commentId: F:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Deltas
+  id: Deltas
+  parent: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  langs:
+  - csharp
+  - vb
+  name: Deltas
+  nameWithType: TMPMeshModifiers.ModifierFlags.Deltas
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Deltas
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Deltas
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 403
+  namespace: TMPEffects.Modifiers
+  syntax:
+    content: Deltas = 1
+    return:
+      type: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Colors
+  commentId: F:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Colors
+  id: Colors
+  parent: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  langs:
+  - csharp
+  - vb
+  name: Colors
+  nameWithType: TMPMeshModifiers.ModifierFlags.Colors
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.Colors
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: Colors
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 404
+  namespace: TMPEffects.Modifiers
+  syntax:
+    content: Colors = 2
+    return:
+      type: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.UVs
+  commentId: F:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.UVs
+  id: UVs
+  parent: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  langs:
+  - csharp
+  - vb
+  name: UVs
+  nameWithType: TMPMeshModifiers.ModifierFlags.UVs
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.UVs
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: UVs
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 405
+  namespace: TMPEffects.Modifiers
+  syntax:
+    content: UVs = 4
+    return:
+      type: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.All
+  commentId: F:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.All
+  id: All
+  parent: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: TMPMeshModifiers.ModifierFlags.All
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.All
+  type: Field
+  source:
+    remote:
+      path: Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+      branch: docs
+      repo: https://github.com/Luca3317/TMPEffects.git
+    id: All
+    path: ../Package/Runtime/CharData/Mesh Modifiers/TMPMeshModifiers.cs
+    startLine: 407
+  namespace: TMPEffects.Modifiers
+  syntax:
+    content: All = 255
+    return:
+      type: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+references:
+- uid: TMPEffects.Modifiers
+  commentId: N:TMPEffects.Modifiers
+  href: TMPEffects.html
+  name: TMPEffects.Modifiers
+  nameWithType: TMPEffects.Modifiers
+  fullName: TMPEffects.Modifiers
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Modifiers
+    name: Modifiers
+    href: TMPEffects.Modifiers.html
+- uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  commentId: T:TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  parent: TMPEffects.Modifiers
+  href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  name: TMPMeshModifiers.ModifierFlags
+  nameWithType: TMPMeshModifiers.ModifierFlags
+  fullName: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+  spec.csharp:
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.html
+  spec.vb:
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers
+    name: TMPMeshModifiers
+    href: TMPEffects.Modifiers.TMPMeshModifiers.html
+  - name: .
+  - uid: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags
+    name: ModifierFlags
+    href: TMPEffects.Modifiers.TMPMeshModifiers.ModifierFlags.html

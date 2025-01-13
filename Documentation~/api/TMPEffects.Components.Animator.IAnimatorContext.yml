@@ -19,7 +19,7 @@ items:
       repo: https://github.com/Luca3317/TMPEffects.git
     id: IAnimatorContext
     path: ../Package/Runtime/Components/TMPAnimator/IAnimatorContext.cs
-    startLine: 9
+    startLine: 10
   namespace: TMPEffects.Components.Animator
   summary: >-
     To be used with <xref href="TMPEffects.Components.TMPAnimator" data-throw-if-not-resolved="false"></xref>.<br />

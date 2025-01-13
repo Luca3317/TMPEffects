@@ -9,6 +9,7 @@ items:
   - TMPEffects.TMPAnimations.ShowAnimations.CurveShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.DummyShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+  - TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.MoveInShowAnimation
   - TMPEffects.TMPAnimations.ShowAnimations.PivotShowAnimation
@@ -60,6 +61,12 @@ references:
   name: FadeShowAnimation
   nameWithType: FadeShowAnimation
   fullName: TMPEffects.TMPAnimations.ShowAnimations.FadeShowAnimation
+- uid: TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
+  commentId: T:TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
+  href: TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation.html
+  name: GenericShowAnimation
+  nameWithType: GenericShowAnimation
+  fullName: TMPEffects.TMPAnimations.ShowAnimations.GenericShowAnimation
 - uid: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
   commentId: T:TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation
   href: TMPEffects.TMPAnimations.ShowAnimations.GrowShowAnimation.html

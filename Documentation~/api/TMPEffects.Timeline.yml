@@ -1,0 +1,116 @@
+### YamlMime:ManagedReference
+items:
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  id: TMPEffects.Timeline
+  children:
+  - TMPEffects.Timeline.TMPAnimationBehaviour
+  - TMPEffects.Timeline.TMPAnimationClip
+  - TMPEffects.Timeline.TMPAnimatorTrack
+  - TMPEffects.Timeline.TMPAnimatorTrackMixer
+  - TMPEffects.Timeline.TMPEffectsClip
+  - TMPEffects.Timeline.TMPEffectsTrack
+  - TMPEffects.Timeline.TMPMeshModifierBehaviour
+  - TMPEffects.Timeline.TMPMeshModifierClip
+  - TMPEffects.Timeline.TMPMeshModifierTrack
+  - TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  - TMPEffects.Timeline.TimelineAnimationStep
+  langs:
+  - csharp
+  - vb
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  type: Namespace
+references:
+- uid: TMPEffects.Timeline.TimelineAnimationStep
+  commentId: T:TMPEffects.Timeline.TimelineAnimationStep
+  parent: TMPEffects.Timeline
+  href: TMPEffects.Timeline.TimelineAnimationStep.html
+  name: TimelineAnimationStep
+  nameWithType: TimelineAnimationStep
+  fullName: TMPEffects.Timeline.TimelineAnimationStep
+- uid: TMPEffects.Timeline.TMPEffectsClip
+  commentId: T:TMPEffects.Timeline.TMPEffectsClip
+  parent: TMPEffects.Timeline
+  href: TMPEffects.Timeline.TMPEffectsClip.html
+  name: TMPEffectsClip
+  nameWithType: TMPEffectsClip
+  fullName: TMPEffects.Timeline.TMPEffectsClip
+- uid: TMPEffects.Timeline.TMPEffectsTrack
+  commentId: T:TMPEffects.Timeline.TMPEffectsTrack
+  parent: TMPEffects.Timeline
+  href: TMPEffects.Timeline.TMPEffectsTrack.html
+  name: TMPEffectsTrack
+  nameWithType: TMPEffectsTrack
+  fullName: TMPEffects.Timeline.TMPEffectsTrack
+- uid: TMPEffects.Timeline.TMPAnimationBehaviour
+  commentId: T:TMPEffects.Timeline.TMPAnimationBehaviour
+  href: TMPEffects.Timeline.TMPAnimationBehaviour.html
+  name: TMPAnimationBehaviour
+  nameWithType: TMPAnimationBehaviour
+  fullName: TMPEffects.Timeline.TMPAnimationBehaviour
+- uid: TMPEffects.Timeline.TMPMeshModifierBehaviour
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierBehaviour
+  href: TMPEffects.Timeline.TMPMeshModifierBehaviour.html
+  name: TMPMeshModifierBehaviour
+  nameWithType: TMPMeshModifierBehaviour
+  fullName: TMPEffects.Timeline.TMPMeshModifierBehaviour
+- uid: TMPEffects.Timeline.TMPAnimationClip
+  commentId: T:TMPEffects.Timeline.TMPAnimationClip
+  href: TMPEffects.Timeline.TMPAnimationClip.html
+  name: TMPAnimationClip
+  nameWithType: TMPAnimationClip
+  fullName: TMPEffects.Timeline.TMPAnimationClip
+- uid: TMPEffects.Timeline.TMPMeshModifierClip
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierClip
+  href: TMPEffects.Timeline.TMPMeshModifierClip.html
+  name: TMPMeshModifierClip
+  nameWithType: TMPMeshModifierClip
+  fullName: TMPEffects.Timeline.TMPMeshModifierClip
+- uid: TMPEffects.Timeline.TMPAnimatorTrackMixer
+  commentId: T:TMPEffects.Timeline.TMPAnimatorTrackMixer
+  href: TMPEffects.Timeline.TMPAnimatorTrackMixer.html
+  name: TMPAnimatorTrackMixer
+  nameWithType: TMPAnimatorTrackMixer
+  fullName: TMPEffects.Timeline.TMPAnimatorTrackMixer
+- uid: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierTrackMixer
+  href: TMPEffects.Timeline.TMPMeshModifierTrackMixer.html
+  name: TMPMeshModifierTrackMixer
+  nameWithType: TMPMeshModifierTrackMixer
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrackMixer
+- uid: TMPEffects.Timeline.TMPAnimatorTrack
+  commentId: T:TMPEffects.Timeline.TMPAnimatorTrack
+  href: TMPEffects.Timeline.TMPAnimatorTrack.html
+  name: TMPAnimatorTrack
+  nameWithType: TMPAnimatorTrack
+  fullName: TMPEffects.Timeline.TMPAnimatorTrack
+- uid: TMPEffects.Timeline.TMPMeshModifierTrack
+  commentId: T:TMPEffects.Timeline.TMPMeshModifierTrack
+  href: TMPEffects.Timeline.TMPMeshModifierTrack.html
+  name: TMPMeshModifierTrack
+  nameWithType: TMPMeshModifierTrack
+  fullName: TMPEffects.Timeline.TMPMeshModifierTrack
+- uid: TMPEffects.Timeline
+  commentId: N:TMPEffects.Timeline
+  href: TMPEffects.html
+  name: TMPEffects.Timeline
+  nameWithType: TMPEffects.Timeline
+  fullName: TMPEffects.Timeline
+  spec.csharp:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html
+  spec.vb:
+  - uid: TMPEffects
+    name: TMPEffects
+    href: TMPEffects.html
+  - name: .
+  - uid: TMPEffects.Timeline
+    name: Timeline
+    href: TMPEffects.Timeline.html

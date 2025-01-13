@@ -7,6 +7,7 @@ items:
   - TMPEffects.TMPAnimations.HideAnimations.CharHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.DummyHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+  - TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.MoveInHideAnimation
   - TMPEffects.TMPAnimations.HideAnimations.PivotHideAnimation
@@ -39,6 +40,12 @@ references:
   name: FadeHideAnimation
   nameWithType: FadeHideAnimation
   fullName: TMPEffects.TMPAnimations.HideAnimations.FadeHideAnimation
+- uid: TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
+  commentId: T:TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
+  href: TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation.html
+  name: GenericHideAnimation
+  nameWithType: GenericHideAnimation
+  fullName: TMPEffects.TMPAnimations.HideAnimations.GenericHideAnimation
 - uid: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
   commentId: T:TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation
   href: TMPEffects.TMPAnimations.HideAnimations.GrowHideAnimation.html

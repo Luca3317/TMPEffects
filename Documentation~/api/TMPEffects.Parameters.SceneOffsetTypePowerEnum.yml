@@ -41,15 +41,15 @@ items:
       Public Class SceneOffsetTypePowerEnum Inherits PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider) Implements IEquatable(Of SceneOffsetTypePowerEnum), ITMPOffsetProvider
   inheritance:
   - System.Object
-  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  - TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
   implements:
   - System.IEquatable{TMPEffects.Parameters.SceneOffsetTypePowerEnum}
   - TMPEffects.Parameters.ITMPOffsetProvider
   inheritedMembers:
-  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
-  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
-  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
-  - Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  - TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  - TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  - TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  - TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetType
   - System.Object.MemberwiseClone
@@ -412,20 +412,21 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
-- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  commentId: T:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  definition: Global.PowerEnum`2
-  href: PowerEnum-2.html
+- uid: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  commentId: T:TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  parent: TMPEffects.Parameters
+  definition: TMPEffects.Parameters.PowerEnum`2
+  href: TMPEffects.Parameters.PowerEnum-2.html
   name: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>
   nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>
-  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>
+  fullName: TMPEffects.Parameters.PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>
   nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
-  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider)
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider)
   name.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider)
   spec.csharp:
-  - uid: Global.PowerEnum`2
+  - uid: TMPEffects.Parameters.PowerEnum`2
     name: PowerEnum
-    href: PowerEnum-2.html
+    href: TMPEffects.Parameters.PowerEnum-2.html
   - name: <
   - uid: TMPEffects.Parameters.TMPParameterTypes
     name: TMPParameterTypes
@@ -441,9 +442,9 @@ references:
     href: TMPEffects.Parameters.TMPSceneOffsetProvider.html
   - name: '>'
   spec.vb:
-  - uid: Global.PowerEnum`2
+  - uid: TMPEffects.Parameters.PowerEnum`2
     name: PowerEnum
-    href: PowerEnum-2.html
+    href: TMPEffects.Parameters.PowerEnum-2.html
   - name: (
   - name: Of
   - name: " "
@@ -500,46 +501,46 @@ references:
   name: ITMPOffsetProvider
   nameWithType: ITMPOffsetProvider
   fullName: TMPEffects.Parameters.ITMPOffsetProvider
-- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
-  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
-  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  definition: Global.PowerEnum`2.Value
-  href: Global.PowerEnum-2.html#PowerEnum_2_Value
+- uid: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  commentId: P:TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.Value
+  parent: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: TMPEffects.Parameters.PowerEnum`2.Value
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_Value
   name: Value
   nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.Value
-  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.Value
+  fullName: TMPEffects.Parameters.PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.Value
   nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).Value
-  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).Value
-- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
-  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
-  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  definition: Global.PowerEnum`2.EnumValue
-  href: Global.PowerEnum-2.html#PowerEnum_2_EnumValue
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).Value
+- uid: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  commentId: P:TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.EnumValue
+  parent: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: TMPEffects.Parameters.PowerEnum`2.EnumValue
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_EnumValue
   name: EnumValue
   nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.EnumValue
-  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.EnumValue
+  fullName: TMPEffects.Parameters.PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.EnumValue
   nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).EnumValue
-  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).EnumValue
-- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
-  commentId: P:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
-  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  definition: Global.PowerEnum`2.UseCustom
-  href: Global.PowerEnum-2.html#PowerEnum_2_UseCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).EnumValue
+- uid: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  commentId: P:TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.UseCustom
+  parent: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: TMPEffects.Parameters.PowerEnum`2.UseCustom
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_UseCustom
   name: UseCustom
   nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.UseCustom
-  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.UseCustom
+  fullName: TMPEffects.Parameters.PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.UseCustom
   nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).UseCustom
-  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).UseCustom
-- uid: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
-  commentId: F:Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
-  parent: Global.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
-  definition: Global.PowerEnum`2.useCustom
-  href: Global.PowerEnum-2.html#PowerEnum_2_useCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).UseCustom
+- uid: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  commentId: F:TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}.useCustom
+  parent: TMPEffects.Parameters.PowerEnum{TMPEffects.Parameters.TMPParameterTypes.OffsetType,TMPEffects.Parameters.TMPSceneOffsetProvider}
+  definition: TMPEffects.Parameters.PowerEnum`2.useCustom
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_useCustom
   name: useCustom
   nameWithType: PowerEnum<TMPParameterTypes.OffsetType, TMPSceneOffsetProvider>.useCustom
-  fullName: PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.useCustom
+  fullName: TMPEffects.Parameters.PowerEnum<TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider>.useCustom
   nameWithType.vb: PowerEnum(Of TMPParameterTypes.OffsetType, TMPSceneOffsetProvider).useCustom
-  fullName.vb: PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).useCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TMPEffects.Parameters.TMPParameterTypes.OffsetType, TMPEffects.Parameters.TMPSceneOffsetProvider).useCustom
 - uid: System.Object.Equals(System.Object,System.Object)
   commentId: M:System.Object.Equals(System.Object,System.Object)
   parent: System.Object
@@ -709,19 +710,19 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Global.PowerEnum`2
-  commentId: T:Global.PowerEnum`2
-  href: PowerEnum-2.html
+- uid: TMPEffects.Parameters.PowerEnum`2
+  commentId: T:TMPEffects.Parameters.PowerEnum`2
+  href: TMPEffects.Parameters.PowerEnum-2.html
   name: PowerEnum<TEnum, TCustom>
   nameWithType: PowerEnum<TEnum, TCustom>
-  fullName: PowerEnum<TEnum, TCustom>
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>
   nameWithType.vb: PowerEnum(Of TEnum, TCustom)
-  fullName.vb: PowerEnum(Of TEnum, TCustom)
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom)
   name.vb: PowerEnum(Of TEnum, TCustom)
   spec.csharp:
-  - uid: Global.PowerEnum`2
+  - uid: TMPEffects.Parameters.PowerEnum`2
     name: PowerEnum
-    href: PowerEnum-2.html
+    href: TMPEffects.Parameters.PowerEnum-2.html
   - name: <
   - name: TEnum
   - name: ','
@@ -729,9 +730,9 @@ references:
   - name: TCustom
   - name: '>'
   spec.vb:
-  - uid: Global.PowerEnum`2
+  - uid: TMPEffects.Parameters.PowerEnum`2
     name: PowerEnum
-    href: PowerEnum-2.html
+    href: TMPEffects.Parameters.PowerEnum-2.html
   - name: (
   - name: Of
   - name: " "
@@ -768,38 +769,38 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Global.PowerEnum`2.Value
-  commentId: P:Global.PowerEnum`2.Value
-  href: Global.PowerEnum-2.html#PowerEnum_2_Value
+- uid: TMPEffects.Parameters.PowerEnum`2.Value
+  commentId: P:TMPEffects.Parameters.PowerEnum`2.Value
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_Value
   name: Value
   nameWithType: PowerEnum<TEnum, TCustom>.Value
-  fullName: PowerEnum<TEnum, TCustom>.Value
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>.Value
   nameWithType.vb: PowerEnum(Of TEnum, TCustom).Value
-  fullName.vb: PowerEnum(Of TEnum, TCustom).Value
-- uid: Global.PowerEnum`2.EnumValue
-  commentId: P:Global.PowerEnum`2.EnumValue
-  href: Global.PowerEnum-2.html#PowerEnum_2_EnumValue
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom).Value
+- uid: TMPEffects.Parameters.PowerEnum`2.EnumValue
+  commentId: P:TMPEffects.Parameters.PowerEnum`2.EnumValue
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_EnumValue
   name: EnumValue
   nameWithType: PowerEnum<TEnum, TCustom>.EnumValue
-  fullName: PowerEnum<TEnum, TCustom>.EnumValue
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>.EnumValue
   nameWithType.vb: PowerEnum(Of TEnum, TCustom).EnumValue
-  fullName.vb: PowerEnum(Of TEnum, TCustom).EnumValue
-- uid: Global.PowerEnum`2.UseCustom
-  commentId: P:Global.PowerEnum`2.UseCustom
-  href: Global.PowerEnum-2.html#PowerEnum_2_UseCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom).EnumValue
+- uid: TMPEffects.Parameters.PowerEnum`2.UseCustom
+  commentId: P:TMPEffects.Parameters.PowerEnum`2.UseCustom
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_UseCustom
   name: UseCustom
   nameWithType: PowerEnum<TEnum, TCustom>.UseCustom
-  fullName: PowerEnum<TEnum, TCustom>.UseCustom
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>.UseCustom
   nameWithType.vb: PowerEnum(Of TEnum, TCustom).UseCustom
-  fullName.vb: PowerEnum(Of TEnum, TCustom).UseCustom
-- uid: Global.PowerEnum`2.useCustom
-  commentId: F:Global.PowerEnum`2.useCustom
-  href: Global.PowerEnum-2.html#PowerEnum_2_useCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom).UseCustom
+- uid: TMPEffects.Parameters.PowerEnum`2.useCustom
+  commentId: F:TMPEffects.Parameters.PowerEnum`2.useCustom
+  href: TMPEffects.Parameters.PowerEnum-2.html#TMPEffects_Parameters_PowerEnum_2_useCustom
   name: useCustom
   nameWithType: PowerEnum<TEnum, TCustom>.useCustom
-  fullName: PowerEnum<TEnum, TCustom>.useCustom
+  fullName: TMPEffects.Parameters.PowerEnum<TEnum, TCustom>.useCustom
   nameWithType.vb: PowerEnum(Of TEnum, TCustom).useCustom
-  fullName.vb: PowerEnum(Of TEnum, TCustom).useCustom
+  fullName.vb: TMPEffects.Parameters.PowerEnum(Of TEnum, TCustom).useCustom
 - uid: TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor*
   commentId: Overload:TMPEffects.Parameters.SceneOffsetTypePowerEnum.#ctor
   href: TMPEffects.Parameters.SceneOffsetTypePowerEnum.html#TMPEffects_Parameters_SceneOffsetTypePowerEnum__ctor
