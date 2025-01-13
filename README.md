@@ -42,7 +42,7 @@ TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro t
 <br><br/>
 The rest of this README gives just a quick overview of TMPEffects, you definitely should refer to [the manual](https://tmpeffects.luca3317.dev/manual/introduction.html) when questions come up!
 
-## Built-in animations (+ commands)
+## 🌟 Built-in animations (+ commands)
 TMPEffects comes with a lot of built-in animations (most of which are really versatile when using tag parameters):
 <div style="display:flex;justify-content:center;align-items:center;">
   <img src="/gifs/basic-overview.gif" width="80%"/>
@@ -57,7 +57,7 @@ There are also various built-in show/hide animations (which are just as versatil
 For a full preview of built-in [animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinbasicanimations.html), [show / hide animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinshowhideanimations.html), 
 and [commands](https://tmpeffects.luca3317.dev/manual/tmpwriter_builtincommands.html), as well as each of their parameters, see the respective documentation.
 
-## Creating your own effects
+## 🛠️ Creating your own effects
 You can easily create your own animations and commands through custom scripts ([animations](https://tmpeffects.luca3317.dev/manual/animatingacharacter.html), [commands](https://tmpeffects.luca3317.dev/manual/tmpwriter_creatingcommands.html)).
 
 Additionally, if you prefer not to code, you can create animations in the inspector using [GenericAnimations](https://tmpeffects.luca3317.dev/manual/genericanimations.html) or through Unity's timeline window, if you have it installed:
@@ -65,7 +65,7 @@ Additionally, if you prefer not to code, you can create animations in the inspec
   <img src="/gifs/timeline.gif" width="80%"/>
 </div>
 
-## Parameters
+## 🏷️ Parameters
 TMPEffects comes with very strong support for tag parameters; when creating an animation or command from script adding a parameter to your animation is as easy as decorating it with the [AutoParameter] attribute:
 
 ```csharp
@@ -78,7 +78,7 @@ You can now set amplitude from the tag (e.g. &lt;wave amp=12&gt;) and use the va
 On top of that, TMPEffects has many types that are supported out of the box (float, Vector3, AnimationCurve...) as well as giving you the ability to easily create your own (which are also compatible with the AutoParameter attribute).
 You can also define custom keywords using Keyword databases.
 
-## Integrations
+## 🤝 Integrations
 These are the external packages TMPEffects is integrated and confirmed to work with.  
 If there is some other package/tool you'd like to see TMPEffects integrated with, feel free to open an issue (or, even better, a pull request!)
 
@@ -90,12 +90,12 @@ TMPEffects works out of the box with [YarnSpinner](https://www.yarnspinner.dev/)
 You can even use variables defined in YarnSpinner scripts as tag parameters!
 
 
-## Dependencies and compatibility
+## 🧩 Dependencies and compatibility
 - TMPEffects is compatible with Unity 2021.3 and up
     - Tested in 2021.3, 2022.3 and 2023.2; if you have compatibility issues in another version (>= 2021.3), please open an issue for it!
 - Only dependency: Unity's TextMeshPro package (automatically included in Unity 2018.3 and up)
 
-## Quickstart
+## 🚀 Quickstart
 ### Installation
 TMPEffects is available on the [OpenUPM registry](https://openupm.com/packages/com.luca3317.tmpeffects/).  
 Alternatively, you can install TMPEffects through the Unity Package Manager, using the git url:
@@ -112,6 +112,6 @@ you will have to manually import the required resources located under Assets > T
 Add the TMPAnimator and/or TMPWriter component to a GameObject with a TextMeshPro(UI) component, and select "use default database" in both their inspectors.  
 You will get a prompt to import the required resources. Hit the button and you're done setting up TMPEffects!
 
-## Documentation
+## 📚 Documentation
 The full documentation can be found [here](https://tmpeffects.luca3317.dev/manual/introduction.html).
 
