@@ -31,22 +31,42 @@ namespace TMPEffects.Modifiers
         /// <summary>
         /// Stores the position of the bottom-left vertex after calling <see cref="CalculateVertexPositions"/>.
         /// </summary>
-        public Vector3 BL_Result { get; private set; }
+        public Vector3 BL_Position { get; private set; }
     
         /// <summary>
         /// Stores the position of the top-left vertex after calling <see cref="CalculateVertexPositions"/>.
         /// </summary>
-        public Vector3 TL_Result { get; private set; }
+        public Vector3 TL_Position { get; private set; }
     
         /// <summary>
         /// Stores the position of the top-right vertex after calling <see cref="CalculateVertexPositions"/>.
         /// </summary>
-        public Vector3 TR_Result { get; private set; }
+        public Vector3 TR_Position { get; private set; }
     
         /// <summary>
         /// Stores the position of the bottom-right vertex after calling <see cref="CalculateVertexPositions"/>.
         /// </summary>
-        public Vector3 BR_Result { get; private set; }
+        public Vector3 BR_Position { get; private set; }
+        
+        /// <summary>
+        /// Stores the color of the bottom-left vertex after calling <see cref="CalculateVertexColors"/>.
+        /// </summary>
+        public Color32 BL_Color { get; private set; }
+        
+        /// <summary>
+        /// Stores the color of the top-left vertex after calling <see cref="CalculateVertexColors"/>.
+        /// </summary>
+        public Color32 TL_Color { get; private set; }
+        
+        /// <summary>
+        /// Stores the color of the top-right vertex after calling <see cref="CalculateVertexColors"/>.
+        /// </summary>
+        public Color32 TR_Color { get; private set; }
+        
+        /// <summary>
+        /// Stores the color of the bottom-right vertex after calling <see cref="CalculateVertexColors"/>.
+        /// </summary>
+        public Color32 BR_Color { get; private set; }
 
         public CharDataModifiers()
         {
@@ -71,8 +91,22 @@ namespace TMPEffects.Modifiers
         }
 
         /// <summary>
-        /// Calculate the vertex positions, applying all modifiers to the passed in <see cref="CharData"/>.<br/>
-        /// The results are stored in <see cref="BL_Result"/>, <see cref="TL_Result"/>, <see cref="TR_Result"/>, <see cref="BR_Result"/>.
+        /// Calculate the vertex colors, applying all relevant modifiers to the passed in <see cref="CharData"/>.
+        /// The results are stored in <see cref="BL_Color"/>, <see cref="TL_Color"/>, <see cref="TR_Color"/>, <see cref="BR_Color"/>.
+        /// </summary>
+        /// <param name="cData">The CharData to apply the modifiers to.</param>
+        /// <param name="context"></param>
+        public void CalculateVertexColors(CharData cData, IAnimatorDataProvider context)
+        {
+            BL_Color = context.Modifiers.MeshModifiers.BL_Color.GetValue(cData.InitialMesh.GetColor(0));
+            TL_Color = context.Modifiers.MeshModifiers.TL_Color.GetValue(cData.InitialMesh.GetColor(1));
+            TR_Color = context.Modifiers.MeshModifiers.TR_Color.GetValue(cData.InitialMesh.GetColor(2));
+            BR_Color = context.Modifiers.MeshModifiers.BR_Color.GetValue(cData.InitialMesh.GetColor(3));
+        }
+
+        /// <summary>
+        /// Calculate the vertex positions, applying all relevant modifiers to the passed in <see cref="CharData"/>.<br/>
+        /// The results are stored in <see cref="BL_Position"/>, <see cref="TL_Position"/>, <see cref="TR_Position"/>, <see cref="BR_Position"/>.
         /// </summary>
         /// <param name="cData">The CharData to apply the modifiers to.</param>
         /// <param name="context"></param>
@@ -139,10 +173,46 @@ namespace TMPEffects.Modifiers
                 vbr += scaled;
             }
 
-            BL_Result = vbl;
-            TL_Result = vtl;
-            TR_Result = vtr;
-            BR_Result = vbr;
+            BL_Position = vbl;
+            TL_Position = vtl;
+            TR_Position = vtr;
+            BR_Position = vbr;
+        }
+
+        /// <summary>
+        /// Get the vertex position. You have to call <see cref="CalculateVertexPositions"/> before this
+        /// to populate the values.
+        /// </summary>
+        /// <param name="i">0: BL, 1: TL, 2: TR, 3: BR</param>
+        /// <returns></returns>
+        public Vector3 VertexPosition(int i)
+        {
+            return i switch
+            {
+                0 => BL_Position,
+                1 => TL_Position,
+                2 => TR_Position,
+                3 => BR_Position,
+                _ => throw new IndexOutOfRangeException()
+            };
+        }
+        
+        /// <summary>
+        /// Get the vertex color. You have to call <see cref="CalculateVertexColors"/> before this
+        /// to populate the values.
+        /// </summary>
+        /// <param name="i">0: BL, 1: TL, 2: TR, 3: BR</param>
+        /// <returns></returns>
+        public Color32 VertexColor(int i)
+        {
+            return i switch
+            {
+                0 => BL_Color,
+                1 => TL_Color,
+                2 => TR_Color,
+                3 => BR_Color,
+                _ => throw new IndexOutOfRangeException()
+            };
         }
 
         static Vector3 GetPreciseScale(Matrix4x4 matrix)
@@ -273,7 +343,6 @@ namespace TMPEffects.Modifiers
                 {
                     for (int i = 0; i < modifiers.Rotations.Count; i++)
                     {
-                        // Debug.Log("douing it " + i + "; there are " + modifiers.Rotations.Count + " and so far i got " + result.Rotations.Count);
                         var rot = modifiers.Rotations[i];
                         result.AddRotation(
                             new Rotation(Vector3.LerpUnclamped(cData.InitialRotation.eulerAngles, rot.eulerAngles, t),
@@ -282,7 +351,7 @@ namespace TMPEffects.Modifiers
                 }
                 catch (System.Exception exception)
                 {
-                    TMPEffectsBugReport.BugReportPrompt("Tried to add to many with " + modifiers.Rotations.Count + "; " + result.Rotations.Count + ":\n" + exception);
+                    TMPEffectsBugReport.BugReportPrompt("Tried to add too many with " + modifiers.Rotations.Count + "; " + result.Rotations.Count + ":\n" + exception);
                 } 
             }
 

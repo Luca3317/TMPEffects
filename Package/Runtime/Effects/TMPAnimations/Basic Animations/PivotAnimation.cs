@@ -43,9 +43,10 @@ namespace TMPEffects.TMPAnimations.Animations
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
                 d.waveOffsetType.GetOffset(cData, context));
 
-            // Calculate the angle based on the evaluate wave
+            // Calculate the angle based on the evaluate wave 
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
-            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+            cData.AddRotation(
+                TMPAnimationUtility.NormalizeEulerAngles(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles),
                 d.pivot.ToPosition(cData, context));
         }
     }

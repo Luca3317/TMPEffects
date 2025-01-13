@@ -84,9 +84,10 @@ namespace TMPEffects.TMPAnimations.Animations
             if (modData.rotation != Vector3.zero) cData.AddRotation(modData.rotation, cData.InitialPosition);
             if (modData.colorshift != Vector3.zero)
             {
+                context.AnimatorContext.Modifiers.CalculateVertexColors(cData, context.AnimatorContext);
                 for (int i = 0; i < 4; i++)
                 {
-                    Color col = cData.InitialMesh.GetColor(i);
+                    Color col = context.AnimatorContext.Modifiers.VertexColor(i);
                     col.r += modData.colorshift.x;
                     col.g += modData.colorshift.y;
                     col.b += modData.colorshift.z;

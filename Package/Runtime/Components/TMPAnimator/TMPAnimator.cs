@@ -991,10 +991,10 @@ namespace TMPEffects.Components
                     state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
                 {
                     state.CalculateVertexPositions(cData, context);
-                    cData.mesh.SetPosition(0, state.BL_Result);
-                    cData.mesh.SetPosition(1, state.TL_Result);
-                    cData.mesh.SetPosition(2, state.TR_Result);
-                    cData.mesh.SetPosition(3, state.BR_Result);
+                    cData.mesh.SetPosition(0, state.BL_Position);
+                    cData.mesh.SetPosition(1, state.TL_Position);
+                    cData.mesh.SetPosition(2, state.TR_Position);
+                    cData.mesh.SetPosition(3, state.BR_Position);
                 }
 
                 if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))

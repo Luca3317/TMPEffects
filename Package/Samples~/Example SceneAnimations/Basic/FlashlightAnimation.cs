@@ -1,23 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPEffects.Components;
+using TMPEffects.AutoParameters.Attributes;
 using TMPEffects.CharacterData;
+using TMPEffects.Extensions;
 using TMPEffects.TMPAnimations;
+using TMPEffects.TMPAnimations.Animations;
 using TMPro;
 using UnityEngine;
-using static TMPEffects.ParameterUtility;
+using static TMPEffects.Parameters.TMPParameterUtility;
 
 namespace TMPEffects.TMPSceneAnimations.Animations
 {
-    public class FlashlightAnimation : TMPSceneAnimation
+    [AutoParameters]
+    public partial class FlashlightAnimation : TMPSceneAnimation
     {
         [SerializeField] Camera cam;
         [SerializeField] TMP_Text text;
 
-        [SerializeField] float hiddenOpacity;
-        [SerializeField] float shownOpacity;
-        [SerializeField] AnimationCurve fallOffCurve;
-        [SerializeField] float radius;
+        [AutoParameter("hiddenopacity"), SerializeField]
+        float hiddenOpacity = 0;
+
+        [AutoParameter("shownopacity"), SerializeField]
+        float shownOpacity = 255;
+
+        [AutoParameter("falloffcurve"), SerializeField]
+        AnimationCurve fallOffCurve = AnimationCurveUtility.Linear();
+
+        [AutoParameter("radius"), SerializeField]
+        float radius = 50;
 
         private Canvas canvas;
 
@@ -28,7 +37,8 @@ namespace TMPEffects.TMPSceneAnimations.Animations
                 text = GetComponentInParent<TMP_Text>();
                 if (text == null)
                 {
-                    Debug.LogError("Could not find TMP_Text component on gameobject or its parent; Please either put this component on a gameobject with a TMP_Text component in its ancestors or manually assign a component.");
+                    Debug.LogError(
+                        "Could not find TMP_Text component on gameobject or its parent; Please either put this component on a gameobject with a TMP_Text component in its ancestors or manually assign a component.");
                 }
             }
 
@@ -51,96 +61,53 @@ namespace TMPEffects.TMPSceneAnimations.Animations
             }
         }
 
-        public override void Animate(CharData cData, IAnimationContext context)
+        // Your animation logic goes here
+        private partial void Animate(CharData cData, AutoParametersData data, IAnimationContext context)
         {
+            // Dont want to show this one in preview
             if (!Application.isPlaying)
             {
                 return;
             }
 
-            Data d = context.CustomData as Data;
-
             Camera input = canvas == null ? null : (canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : cam);
 
-            if (!TMP_TextUtilities.ScreenPointToWorldPointInRectangle(text.transform, Input.mousePosition, input, out Vector3 res))
+            if (!TMP_TextUtilities.ScreenPointToWorldPointInRectangle(text.transform, Input.mousePosition, input,
+                    out Vector3 res))
             {
                 Debug.LogError("Failed to calculate ScreenPointToWorldPointInRectangle");
             }
 
-            context.State.CalculateVertexPositions();
+            context.AnimatorContext.Modifiers.CalculateVertexPositions(cData, context.AnimatorContext);
+            context.AnimatorContext.Modifiers.CalculateVertexColors(cData, context.AnimatorContext);
+            var rad = TMPAnimationUtility.ScaleVector(new Vector3(data.radius, 0, 0), cData, context).x;
             for (int i = 0; i < 4; i++)
             {
                 Vector3 vertex;
 
-                switch (i)
-                {
-                    case 0: vertex = text.transform.TransformPoint(context.State.BL_Result); break;
-                    case 1: vertex = text.transform.TransformPoint(context.State.TL_Result); break;
-                    case 2: vertex = text.transform.TransformPoint(context.State.TR_Result); break;
-                    case 3: vertex = text.transform.TransformPoint(context.State.BR_Result); break;
-                    default: throw new System.Exception();
-                }
+                vertex = text.transform.TransformPoint(context.AnimatorContext.Modifiers.VertexPosition(i));
 
                 float magnitude = (res - vertex).magnitude;
 
-                Color32 color = context.State.TL_Color;
+                Color32 color = context.AnimatorContext.Modifiers.VertexColor(i);
 
-                if (magnitude < d.radius)
+                if (magnitude < rad)
                 {
-                    float t = magnitude / d.radius;
-                    float t2 = 1 - d.fallOffCurve.Evaluate(t);
-                    float opacity = Mathf.LerpUnclamped(d.hiddenOpacity, d.shownOpacity, t2);
+                    float t = magnitude / rad;
+                    float t2 = 1 - data.fallOffCurve.Evaluate(t);
+                    float opacity = Mathf.LerpUnclamped(data.hiddenOpacity, data.shownOpacity, t2);
 
                     color.a = (byte)opacity;
-                    cData.mesh.SetColor(i, color);
+                    cData.mesh.SetAlpha(i, (byte)opacity);
+                    // cData.mesh.SetColor(i, color);
                 }
                 else
                 {
                     color.a = (byte)0;
-                    cData.mesh.SetColor(i, color);
+                    // cData.mesh.SetColor(i, color);
+                    cData.mesh.SetAlpha(i, 0);
                 }
             }
-        }
-
-        public override void SetParameters(object customData, IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return;
-
-            Data d = customData as Data;
-            if (TryGetFloatParameter(out float f, parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden")) d.hiddenOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "shownOpacity", "sOpacity", "sOp", "shown")) d.shownOpacity = f;
-            if (TryGetFloatParameter(out f, parameters, "radius", "rad", "r")) d.radius = f;
-            if (TryGetAnimCurveParameter(out var crv, parameters, "fallOffCurve", "foCurve", "foCrv")) d.fallOffCurve = crv;
-        }
-
-        public override bool ValidateParameters(IDictionary<string, string> parameters)
-        {
-            if (parameters == null) return true;
-
-            if (HasNonFloatParameter(parameters, "hiddenOpacity", "hOpacity", "hOp", "hidden")) return false;
-            if (HasNonFloatParameter(parameters, "shownOpacity", "sOpacity", "sOp", "shown")) return false;
-            if (HasNonFloatParameter(parameters, "radius", "rad", "r")) return false;
-            if (HasNonAnimCurveParameter(parameters, "fallOffCurve", "foCurve", "foCrv")) return false;
-            return true;
-        }
-
-        public override object GetNewCustomData()
-        {
-            return new Data()
-            {
-                hiddenOpacity = this.hiddenOpacity,
-                shownOpacity = this.shownOpacity,
-                fallOffCurve = this.fallOffCurve,
-                radius = this.radius
-            };
-        }
-
-        private class Data
-        {
-            public float hiddenOpacity;
-            public float shownOpacity;
-            public AnimationCurve fallOffCurve;
-            public float radius;
         }
     }
 }

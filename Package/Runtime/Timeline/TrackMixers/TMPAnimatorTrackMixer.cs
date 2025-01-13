@@ -7,6 +7,7 @@ using TMPEffects.Modifiers;
 using TMPEffects.Parameters;
 using TMPEffects.Tags;
 using TMPEffects.TMPAnimations;
+using UnityEngine;
 using UnityEngine.Playables;
 
 namespace TMPEffects.Timeline
@@ -24,6 +25,7 @@ namespace TMPEffects.Timeline
 
         private float time;
         private MockedAnimationContext mocked;
+        private ITMPAnimation lastActive;
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
@@ -83,6 +85,7 @@ namespace TMPEffects.Timeline
                 if (!active[i].IsValid()) continue;
                 var behaviour = active[i].GetBehaviour();
                 if (behaviour == null) continue;
+                if (behaviour.animation == null) continue;
 
                 float currTime;
                 if (time < behaviour.Clip.start)
@@ -92,11 +95,14 @@ namespace TMPEffects.Timeline
 
                 float duration = (float)behaviour.Clip.duration;
 
-                if (mocked == null)
+                // var animation = (behaviour.Clip.asset as TMPAnimationClip).Animation;
+                // if (animation == null) return;
+                if (mocked == null || lastActive != behaviour.animation)
                 {
-                    var data = (behaviour.Clip.asset as TMPAnimationClip).Data;
+                    var data = behaviour.animation.GetNewCustomData();
                     mocked = new MockedAnimationContext(animator.AnimatorContext, data);
-                    (behaviour.Clip.asset as TMPAnimationClip).Animation.SetParameters(data, new Dictionary<string, string>(), null);
+                    behaviour.animation.SetParameters(data, new Dictionary<string, string>(), null);
+                    lastActive = behaviour.animation;
                 }
 
                 // Animate
