@@ -43,8 +43,8 @@ TMPEffects comes with a lot of built-in animations (most of which are really ver
 <div valign="middle" style="border: none;" align="center"><br>
   <img src="/gifs/overview.gif" width=100% height=auto />
 </div>
-![til](./gifs/overview.gif)
-<img src="./gifs/overview.gif"/>
+![til](/gifs/overview.gif)
+<img src="/gifs/overview.gif"/>
 
 For a full preview of built-in [animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinbasicanimations.html), [show / hide animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinshowhideanimations.html), 
 and [commands](https://tmpeffects.luca3317.dev/manual/tmpwriter_builtincommands.html), see the respective documentation.
