@@ -168,8 +168,8 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationHide = false;
 
 
-        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
-        [SerializeField] private TMPKeywordDatabase keywordDatabase;
+        [SerializeField] private TMPSceneKeywordDatabaseBase sceneKeywordDatabase;
+        [SerializeField] private TMPKeywordDatabaseBase keywordDatabase;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
         private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations =

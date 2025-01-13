@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {}
+    "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {}
   },
   "projects": {
-    "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {
+    "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj",
+        "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj",
         "projectName": "TMPEffects.StringLibrary",
-        "projectPath": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj",
+        "projectPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj",
         "packagesPath": "C:\\Users\\lweis\\.nuget\\packages\\",
-        "outputPath": "C:\\UnityProjects\\TMPEffects Dev 2.0 For docs\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\obj\\",
+        "outputPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\lweis\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
