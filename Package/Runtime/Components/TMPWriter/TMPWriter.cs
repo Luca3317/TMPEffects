@@ -188,8 +188,8 @@ namespace TMPEffects.Components
         #region Fields
 
         // Settings
-        [SerializeField] private TMPKeywordDatabase keywordDatabase;
-        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
+        [SerializeField] private TMPKeywordDatabaseBase keywordDatabase;
+        [SerializeField] private TMPSceneKeywordDatabaseBase sceneKeywordDatabase;
 
         [SerializeField] private TMPCommandDatabase database;
 

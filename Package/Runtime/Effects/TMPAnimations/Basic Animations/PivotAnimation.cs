@@ -12,13 +12,13 @@ namespace TMPEffects.TMPAnimations.Animations
     public partial class PivotAnimation : TMPAnimation
     {
         [SerializeField, AutoParameterBundle("")]
-        [Tooltip(
-            "The wave that defines the behavior of this animation. No prefix.\nFor more information about Wave, see the section on it in the documentation.")]
+        [Tooltip("The wave that defines the behavior of this animation. No prefix.\n" +
+                 "For more information about it, see the section on Waves in the documentation.")]
         Wave wave;
 
         [SerializeField, AutoParameterBundle("")]
-        [Tooltip(
-            "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
+        [Tooltip("The timing offsets used by this animation. No prefix.\n" +
+                 "For more information about it, see the section on OffsetProviders in the documentation.")]
         OffsetBundle waveOffsetType;
 
         [SerializeField, AutoParameter("pivot", "pv", "p")]
@@ -43,9 +43,10 @@ namespace TMPEffects.TMPAnimations.Animations
             (float, int) result = d.wave.Evaluate(context.AnimatorContext.PassedTime,
                 d.waveOffsetType.GetOffset(cData, context));
 
-            // Calculate the angle based on the evaluate wave
+            // Calculate the angle based on the evaluate wave 
             float angle = Mathf.LerpUnclamped(d.minAngleLimit, d.maxAngleLimit, result.Item1);
-            cData.AddRotation(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles,
+            cData.AddRotation(
+                TMPAnimationUtility.NormalizeEulerAngles(Quaternion.AngleAxis(angle, d.rotationAxis).eulerAngles),
                 d.pivot.ToPosition(cData, context));
         }
     }

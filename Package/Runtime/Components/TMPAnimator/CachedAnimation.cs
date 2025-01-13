@@ -17,8 +17,8 @@ namespace TMPEffects.Components.Animator
         private TMPEffectTag tag;
         private TMPEffectTagIndices indices;
 
-        public readonly bool? overrides;
-        public readonly bool late;
+        public bool? overrides => TagData.overrides;
+        public bool late => TagData.late;
         public readonly ITMPAnimation animation;
         public readonly AnimationContext context;
         public readonly ReadOnlyAnimationContext roContext;

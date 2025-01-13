@@ -30,12 +30,16 @@ TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro t
   </tr>
 </table>
 
-- Raise events at any given index
+- **Raise events at any given index**
 
-- **API to create your own tags (animations, commands)**
+- **API to create your own animations / commands / tags**
 
-For a full preview of built-in [animations](https://luca3317.github.io/TMPEffects-Pages/docs/tmpanimator_builtinbasicanimations.html), [show / hide animations](https://luca3317.github.io/TMPEffects-Pages/docs/tmpanimator_builtinshowhideanimations.html), 
-and [commands](https://luca3317.github.io/TMPEffects-Pages/docs/tmpwriter_builtincommands.html), see the respective documentation.
+- **If you don't like to code: create animations right in the inspector and / or in Unity's Timeline**
+
+- **Many other features (timeline integration, keyword databases, ...)**
+
+For a full preview of built-in [animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinbasicanimations.html), [show / hide animations](https://tmpeffects.luca3317.dev/manual/tmpanimator_builtinshowhideanimations.html), 
+and [commands](https://tmpeffects.luca3317.dev/manual/tmpwriter_builtincommands.html), see the respective documentation.
 
 ## Dependencies and compatibility
 - TMPEffects is compatible with Unity 2021.3 and up

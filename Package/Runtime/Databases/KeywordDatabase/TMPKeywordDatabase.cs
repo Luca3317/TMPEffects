@@ -1,8 +1,6 @@
-using System;
 using TMPEffects.ObjectChanged;
 using TMPEffects.Parameters;
 using TMPEffects.SerializedCollections;
-using TMPEffects.TMPAnimations;
 using UnityEngine;
 
 namespace TMPEffects.Databases
@@ -11,7 +9,7 @@ namespace TMPEffects.Databases
     /// Provides keywords used for parsing TMPEffects tags.
     /// </summary>
     [CreateAssetMenu(fileName = "new KeywordDatabase", menuName = "TMPEffects/Database/Keywords")]
-    public partial class TMPKeywordDatabase : ScriptableObject, ITMPKeywordDatabase, INotifyObjectChanged
+    public sealed partial class TMPKeywordDatabase : TMPKeywordDatabaseBase, ITMPKeywordDatabase, INotifyObjectChanged
     {
         public event ObjectChangedEventHandler ObjectChanged;
 
@@ -42,49 +40,42 @@ namespace TMPEffects.Databases
         [SerializedDictionary(keyName: "Keyword", valueName: "Unity Object")] [SerializeField]
         internal SerializedDictionary<string, UnityEngine.Object> unityObjectKeywords;
 
-        public bool TryGetFloat(string str, out float result)
+        public override bool TryGetFloat(string str, out float result)
         {
             return floatKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetInt(string str, out int result)
+        public override bool TryGetInt(string str, out int result)
         {
             return intKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetBool(string str, out bool result)
+        public override bool TryGetBool(string str, out bool result)
         {
             return boolKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetColor(string str, out Color result)
+        public override bool TryGetColor(string str, out Color result)
         {
             return colorKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetVector3(string str, out Vector3 result)
+        public override bool TryGetVector3(string str, out Vector3 result)
         {
             return vector3Keywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetAnchor(string str, out Vector2 result)
+        public override bool TryGetAnchor(string str, out Vector2 result)
         {
             return anchorKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetAnimCurve(string str, out AnimationCurve result)
+        public override bool TryGetAnimCurve(string str, out AnimationCurve result)
         {
             return animationCurveKeywords.TryGetValue(str, out result);
         }
 
-        public bool TryGetOffsetType(string str, out ITMPOffsetProvider result)
-        {
-            bool success = offsetTypeKeywords.TryGetValue(str, out var offset);
-            result = offset;
-            return success;
-        }
-
-        public bool TryGetUnityObject(string str, out UnityEngine.Object result)
+        public override bool TryGetUnityObject(string str, out UnityEngine.Object result)
         {
             return unityObjectKeywords.TryGetValue(str, out result);
         }

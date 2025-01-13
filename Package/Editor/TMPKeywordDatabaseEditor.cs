@@ -34,7 +34,6 @@ namespace TMPEffects.Editor
 
         private void AddKeywords(bool precdenceToCustom = true)
         {
-            Debug.LogWarning("add");
 #if UNITY_2022_2_OR_NEWER
             Reset(serializedObject.FindProperty("floatKeywords").FindPropertyRelative("_serializedList"),
                 FloatKeywords);

@@ -13,7 +13,6 @@ using TMPEffects.Tags.Collections;
 using TMPEffects.Tags;
 using TMPEffects.CharacterData;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using TMPEffects.TMPAnimations.ShowAnimations;
 using TMPEffects.TMPAnimations.HideAnimations;
 using TMPEffects.TMPAnimations.Animations;
@@ -24,7 +23,6 @@ using Debug = UnityEngine.Debug;
 
 namespace TMPEffects.Components
 {
-    // TODO Fix the table, names dont show up
     /// <summary>
     /// Animates the character of a <see cref="TMP_Text"/> component.
     /// </summary>
@@ -32,10 +30,10 @@ namespace TMPEffects.Components
     /// One of the two main components of TMPEffects, along with <see cref="TMPWriter"/>.<br/>
     /// TMPAnimator allows you to apply animations to the characters of a <see cref="TMP_Text"/> component.<br/>
     /// There are three types of animations:
-    /// <list type="table">
-    /// <item><see cref="TMPAnimation"/>: The "basic" type of animation. Will animate the effected text continuously.</item>
-    /// <item><see cref="TMPShowAnimation"/>: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
-    /// <item><see cref="TMPHideAnimation"/>: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
+    /// <list type="bullet">
+    /// <item>TMPAnimation: The "basic" type of animation. Will animate the effected text continuously.</item>
+    /// <item>TMPShowAnimation: Will animate the effected text when it begins to be shown. Show animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
+    /// <item>TMPHideAnimation: Will animate the effected text when it begins to be hidden. Hide animations are only applied if there is also a <see cref="TMPWriter"/> component on the same GameObject.</item>
     /// </list>    
     /// <br/>
     /// You may control when the animations are updated by setting <see cref="UpdateFrom"/> to <see cref="UpdateFrom.Script"/> and calling <see cref="UpdateAnimations(float)"/>.<br/>
@@ -48,7 +46,7 @@ namespace TMPEffects.Components
         /// The context used by this animator.
         /// </summary>
         public IAnimatorContext AnimatorContext => readonlyContext;
-
+        
         /// <summary>
         /// Whether the text is currently being animated.<br/>
         /// If <see cref="UpdateFrom"/> is set to <see cref="UpdateFrom.Script"/>, this will always evaluate to true.
@@ -170,8 +168,8 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationHide = false;
 
 
-        [SerializeField] private TMPSceneKeywordDatabase sceneKeywordDatabase;
-        [SerializeField] private TMPKeywordDatabase keywordDatabase;
+        [SerializeField] private TMPSceneKeywordDatabaseBase sceneKeywordDatabase;
+        [SerializeField] private TMPKeywordDatabaseBase keywordDatabase;
 
         [SerializeField, SerializedDictionary(keyName: "Name", valueName: "Animation")]
         private SerializedObservableDictionary<string, TMPSceneAnimation> sceneAnimations =
@@ -881,18 +879,8 @@ namespace TMPEffects.Components
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
-        // private Stopwatch sw;
-        // private int count = 0;
-        
         private void UpdateAnimations_Impl(float deltaTime)
         {
-            // if (sw == null)
-            // {
-            //     sw = new Stopwatch();
-            // } 
-            //
-            // sw.Start();
-            
             context.passed += deltaTime;
 
             if (characterResetQueued)
@@ -910,16 +898,6 @@ namespace TMPEffects.Components
 
             if (Mediator.Text.mesh != null)
                 Mediator.Text.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
-            
-            // sw.Stop();
-            // count++;
-            // if (count >= 10000)
-            // {
-            //     Debug.Log("10000 took " + sw.Elapsed.TotalMilliseconds);
-            //     sw.Reset();
-            //     count = 0;
-            // }
-            // else if (count % 100 == 0) Debug.Log(count);
         }
 
         /// <summary>
@@ -1013,10 +991,10 @@ namespace TMPEffects.Components
                     state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Deltas))
                 {
                     state.CalculateVertexPositions(cData, context);
-                    cData.mesh.SetPosition(0, state.BL_Result);
-                    cData.mesh.SetPosition(1, state.TL_Result);
-                    cData.mesh.SetPosition(2, state.TR_Result);
-                    cData.mesh.SetPosition(3, state.BR_Result);
+                    cData.mesh.SetPosition(0, state.BL_Position);
+                    cData.mesh.SetPosition(1, state.TL_Position);
+                    cData.mesh.SetPosition(2, state.TR_Position);
+                    cData.mesh.SetPosition(3, state.BR_Position);
                 }
 
                 if (state.MeshModifiers.Modifier.HasFlag(TMPMeshModifiers.ModifierFlags.Colors))

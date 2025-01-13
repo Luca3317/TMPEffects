@@ -295,6 +295,19 @@ namespace TMPEffects.TMPAnimations
         #region General Math
 
         /// <summary>
+        /// Normalizes euler angles so that each component is within [-180, 180].
+        /// </summary>
+        /// <param name="eulerAngles"></param>
+        /// <returns>The normalized angles.</returns>
+        public static Vector3 NormalizeEulerAngles(Vector3 eulerAngles)
+        {
+            if (eulerAngles.x > 180) eulerAngles.x -= 360;
+            if (eulerAngles.y > 180) eulerAngles.y -= 360;
+            if (eulerAngles.z > 180) eulerAngles.z -= 360;
+            return eulerAngles;
+        }
+
+        /// <summary>
         /// Get the point on a line closest to the given point.
         /// </summary>
         /// <param name="lineStart"></param>
