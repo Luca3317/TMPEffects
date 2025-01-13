@@ -992,10 +992,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.TMPKeywordDatabaseBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.TMPKeywordDatabaseBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabase.yml",
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html"
         }
       },
       "version": ""
@@ -1802,6 +1822,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.DangleAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.DangleAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.FadeAnimation.yml",
       "output": {
         ".html": {
@@ -1882,6 +1912,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShearAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShearAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.yml",
       "output": {
         ".html": {
@@ -1896,6 +1936,16 @@
       "output": {
         ".html": {
           "relative_path": "api/TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TMPEffects.TMPAnimations.Animations.SketchyAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TMPEffects.TMPAnimations.Animations.SketchyAnimation.html"
         }
       },
       "version": ""

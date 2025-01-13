@@ -9389,22 +9389,6 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Databases.TMPKeywordDatabase.TryGetInt
   nameWithType: TMPKeywordDatabase.TryGetInt
-- uid: TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType(System.String,TMPEffects.Parameters.ITMPOffsetProvider@)
-  name: TryGetOffsetType(string, out ITMPOffsetProvider)
-  href: api/TMPEffects.Databases.TMPKeywordDatabase.html#TMPEffects_Databases_TMPKeywordDatabase_TryGetOffsetType_System_String_TMPEffects_Parameters_ITMPOffsetProvider__
-  commentId: M:TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType(System.String,TMPEffects.Parameters.ITMPOffsetProvider@)
-  name.vb: TryGetOffsetType(String, ITMPOffsetProvider)
-  fullName: TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType(string, out TMPEffects.Parameters.ITMPOffsetProvider)
-  fullName.vb: TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType(String, TMPEffects.Parameters.ITMPOffsetProvider)
-  nameWithType: TMPKeywordDatabase.TryGetOffsetType(string, out ITMPOffsetProvider)
-  nameWithType.vb: TMPKeywordDatabase.TryGetOffsetType(String, ITMPOffsetProvider)
-- uid: TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType*
-  name: TryGetOffsetType
-  href: api/TMPEffects.Databases.TMPKeywordDatabase.html#TMPEffects_Databases_TMPKeywordDatabase_TryGetOffsetType_
-  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType
-  isSpec: "True"
-  fullName: TMPEffects.Databases.TMPKeywordDatabase.TryGetOffsetType
-  nameWithType: TMPKeywordDatabase.TryGetOffsetType
 - uid: TMPEffects.Databases.TMPKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)
   name: TryGetUnityObject(string, out Object)
   href: api/TMPEffects.Databases.TMPKeywordDatabase.html#TMPEffects_Databases_TMPKeywordDatabase_TryGetUnityObject_System_String_UnityEngine_Object__
@@ -9437,6 +9421,140 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Databases.TMPKeywordDatabase.TryGetVector3
   nameWithType: TMPKeywordDatabase.TryGetVector3
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase
+  name: TMPKeywordDatabaseBase
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html
+  commentId: T:TMPEffects.Databases.TMPKeywordDatabaseBase
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase
+  nameWithType: TMPKeywordDatabaseBase
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor(System.String,Vector2@)
+  name: TryGetAnchor(string, out Vector2)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnchor_System_String_Vector2__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor(System.String,Vector2@)
+  name.vb: TryGetAnchor(String, Vector2)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor(string, out Vector2)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor(String, Vector2)
+  nameWithType: TMPKeywordDatabaseBase.TryGetAnchor(string, out Vector2)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetAnchor(String, Vector2)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor*
+  name: TryGetAnchor
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnchor_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor
+  nameWithType: TMPKeywordDatabaseBase.TryGetAnchor
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve(System.String,AnimationCurve@)
+  name: TryGetAnimCurve(string, out AnimationCurve)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnimCurve_System_String_AnimationCurve__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve(System.String,AnimationCurve@)
+  name.vb: TryGetAnimCurve(String, AnimationCurve)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve(string, out AnimationCurve)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve(String, AnimationCurve)
+  nameWithType: TMPKeywordDatabaseBase.TryGetAnimCurve(string, out AnimationCurve)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetAnimCurve(String, AnimationCurve)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve*
+  name: TryGetAnimCurve
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnimCurve_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve
+  nameWithType: TMPKeywordDatabaseBase.TryGetAnimCurve
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetBool_System_String_System_Boolean__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool(string, out bool)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool(String, Boolean)
+  nameWithType: TMPKeywordDatabaseBase.TryGetBool(string, out bool)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetBool(String, Boolean)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool*
+  name: TryGetBool
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetBool_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool
+  nameWithType: TMPKeywordDatabaseBase.TryGetBool
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor(System.String,Color@)
+  name: TryGetColor(string, out Color)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetColor_System_String_Color__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor(System.String,Color@)
+  name.vb: TryGetColor(String, Color)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor(string, out Color)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor(String, Color)
+  nameWithType: TMPKeywordDatabaseBase.TryGetColor(string, out Color)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetColor(String, Color)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor*
+  name: TryGetColor
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetColor_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor
+  nameWithType: TMPKeywordDatabaseBase.TryGetColor
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetFloat_System_String_System_Single__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat(string, out float)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat(String, Single)
+  nameWithType: TMPKeywordDatabaseBase.TryGetFloat(string, out float)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetFloat(String, Single)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat*
+  name: TryGetFloat
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetFloat_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat
+  nameWithType: TMPKeywordDatabaseBase.TryGetFloat
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetInt_System_String_System_Int32__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt(string, out int)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt(String, Integer)
+  nameWithType: TMPKeywordDatabaseBase.TryGetInt(string, out int)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetInt(String, Integer)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt*
+  name: TryGetInt
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetInt_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt
+  nameWithType: TMPKeywordDatabaseBase.TryGetInt
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject(System.String,Object@)
+  name: TryGetUnityObject(string, out Object)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetUnityObject_System_String_Object__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject(System.String,Object@)
+  name.vb: TryGetUnityObject(String, Object)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject(string, out Object)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject(String, Object)
+  nameWithType: TMPKeywordDatabaseBase.TryGetUnityObject(string, out Object)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetUnityObject(String, Object)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject*
+  name: TryGetUnityObject
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetUnityObject_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject
+  nameWithType: TMPKeywordDatabaseBase.TryGetUnityObject
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3(System.String,Vector3@)
+  name: TryGetVector3(string, out Vector3)
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetVector3_System_String_Vector3__
+  commentId: M:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3(System.String,Vector3@)
+  name.vb: TryGetVector3(String, Vector3)
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3(string, out Vector3)
+  fullName.vb: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3(String, Vector3)
+  nameWithType: TMPKeywordDatabaseBase.TryGetVector3(string, out Vector3)
+  nameWithType.vb: TMPKeywordDatabaseBase.TryGetVector3(String, Vector3)
+- uid: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3*
+  name: TryGetVector3
+  href: api/TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetVector3_
+  commentId: Overload:TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3
+  nameWithType: TMPKeywordDatabaseBase.TryGetVector3
 - uid: TMPEffects.Databases.TMPSceneKeywordDatabase
   name: TMPSceneKeywordDatabase
   href: api/TMPEffects.Databases.TMPSceneKeywordDatabase.html
@@ -9545,22 +9663,6 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetInt
   nameWithType: TMPSceneKeywordDatabase.TryGetInt
-- uid: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType(System.String,TMPEffects.Parameters.ITMPOffsetProvider@)
-  name: TryGetOffsetType(string, out ITMPOffsetProvider)
-  href: api/TMPEffects.Databases.TMPSceneKeywordDatabase.html#TMPEffects_Databases_TMPSceneKeywordDatabase_TryGetOffsetType_System_String_TMPEffects_Parameters_ITMPOffsetProvider__
-  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType(System.String,TMPEffects.Parameters.ITMPOffsetProvider@)
-  name.vb: TryGetOffsetType(String, ITMPOffsetProvider)
-  fullName: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType(string, out TMPEffects.Parameters.ITMPOffsetProvider)
-  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType(String, TMPEffects.Parameters.ITMPOffsetProvider)
-  nameWithType: TMPSceneKeywordDatabase.TryGetOffsetType(string, out ITMPOffsetProvider)
-  nameWithType.vb: TMPSceneKeywordDatabase.TryGetOffsetType(String, ITMPOffsetProvider)
-- uid: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType*
-  name: TryGetOffsetType
-  href: api/TMPEffects.Databases.TMPSceneKeywordDatabase.html#TMPEffects_Databases_TMPSceneKeywordDatabase_TryGetOffsetType_
-  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType
-  isSpec: "True"
-  fullName: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetOffsetType
-  nameWithType: TMPSceneKeywordDatabase.TryGetOffsetType
 - uid: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)
   name: TryGetUnityObject(string, out Object)
   href: api/TMPEffects.Databases.TMPSceneKeywordDatabase.html#TMPEffects_Databases_TMPSceneKeywordDatabase_TryGetUnityObject_System_String_UnityEngine_Object__
@@ -9593,6 +9695,140 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Databases.TMPSceneKeywordDatabase.TryGetVector3
   nameWithType: TMPSceneKeywordDatabase.TryGetVector3
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase
+  name: TMPSceneKeywordDatabaseBase
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html
+  commentId: T:TMPEffects.Databases.TMPSceneKeywordDatabaseBase
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase
+  nameWithType: TMPSceneKeywordDatabaseBase
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor(System.String,Vector2@)
+  name: TryGetAnchor(string, out Vector2)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetAnchor_System_String_Vector2__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor(System.String,Vector2@)
+  name.vb: TryGetAnchor(String, Vector2)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor(string, out Vector2)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor(String, Vector2)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetAnchor(string, out Vector2)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetAnchor(String, Vector2)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor*
+  name: TryGetAnchor
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetAnchor_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnchor
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetAnchor
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve(System.String,AnimationCurve@)
+  name: TryGetAnimCurve(string, out AnimationCurve)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetAnimCurve_System_String_AnimationCurve__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve(System.String,AnimationCurve@)
+  name.vb: TryGetAnimCurve(String, AnimationCurve)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve(string, out AnimationCurve)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve(String, AnimationCurve)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetAnimCurve(string, out AnimationCurve)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetAnimCurve(String, AnimationCurve)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve*
+  name: TryGetAnimCurve
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetAnimCurve_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetAnimCurve
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetAnimCurve
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool(System.String,System.Boolean@)
+  name: TryGetBool(string, out bool)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetBool_System_String_System_Boolean__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool(System.String,System.Boolean@)
+  name.vb: TryGetBool(String, Boolean)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool(string, out bool)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool(String, Boolean)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetBool(string, out bool)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetBool(String, Boolean)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool*
+  name: TryGetBool
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetBool_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetBool
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetBool
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor(System.String,Color@)
+  name: TryGetColor(string, out Color)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetColor_System_String_Color__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor(System.String,Color@)
+  name.vb: TryGetColor(String, Color)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor(string, out Color)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor(String, Color)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetColor(string, out Color)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetColor(String, Color)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor*
+  name: TryGetColor
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetColor_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetColor
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetColor
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat(System.String,System.Single@)
+  name: TryGetFloat(string, out float)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetFloat_System_String_System_Single__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat(System.String,System.Single@)
+  name.vb: TryGetFloat(String, Single)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat(string, out float)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat(String, Single)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetFloat(string, out float)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetFloat(String, Single)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat*
+  name: TryGetFloat
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetFloat_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetFloat
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetFloat
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt(System.String,System.Int32@)
+  name: TryGetInt(string, out int)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetInt_System_String_System_Int32__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt(System.String,System.Int32@)
+  name.vb: TryGetInt(String, Integer)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt(string, out int)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt(String, Integer)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetInt(string, out int)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetInt(String, Integer)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt*
+  name: TryGetInt
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetInt_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetInt
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetInt
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject(System.String,Object@)
+  name: TryGetUnityObject(string, out Object)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetUnityObject_System_String_Object__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject(System.String,Object@)
+  name.vb: TryGetUnityObject(String, Object)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject(string, out Object)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject(String, Object)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetUnityObject(string, out Object)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetUnityObject(String, Object)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject*
+  name: TryGetUnityObject
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetUnityObject_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetUnityObject
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetUnityObject
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3(System.String,Vector3@)
+  name: TryGetVector3(string, out Vector3)
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetVector3_System_String_Vector3__
+  commentId: M:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3(System.String,Vector3@)
+  name.vb: TryGetVector3(String, Vector3)
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3(string, out Vector3)
+  fullName.vb: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3(String, Vector3)
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetVector3(string, out Vector3)
+  nameWithType.vb: TMPSceneKeywordDatabaseBase.TryGetVector3(String, Vector3)
+- uid: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3*
+  name: TryGetVector3
+  href: api/TMPEffects.Databases.TMPSceneKeywordDatabaseBase.html#TMPEffects_Databases_TMPSceneKeywordDatabaseBase_TryGetVector3_
+  commentId: Overload:TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3
+  isSpec: "True"
+  fullName: TMPEffects.Databases.TMPSceneKeywordDatabaseBase.TryGetVector3
+  nameWithType: TMPSceneKeywordDatabaseBase.TryGetVector3
 - uid: TMPEffects.EffectCategories
   name: TMPEffects.EffectCategories
   href: api/TMPEffects.EffectCategories.html
@@ -10815,32 +11051,71 @@ references:
   fullName.vb: TMPEffects.Modifiers.CharDataModifiers.New
   nameWithType: CharDataModifiers.CharDataModifiers
   nameWithType.vb: CharDataModifiers.New
-- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Result
-  name: BL_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Result
-  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BL_Result
-  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Result
-  nameWithType: CharDataModifiers.BL_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Result*
-  name: BL_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Result_
-  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BL_Result
+- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Color
+  name: BL_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Color
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BL_Color
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Color
+  nameWithType: CharDataModifiers.BL_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Color*
+  name: BL_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Color_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BL_Color
   isSpec: "True"
-  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Result
-  nameWithType: CharDataModifiers.BL_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Result
-  name: BR_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Result
-  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BR_Result
-  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Result
-  nameWithType: CharDataModifiers.BR_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Result*
-  name: BR_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Result_
-  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BR_Result
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Color
+  nameWithType: CharDataModifiers.BL_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Position
+  name: BL_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Position
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BL_Position
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Position
+  nameWithType: CharDataModifiers.BL_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.BL_Position*
+  name: BL_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BL_Position_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BL_Position
   isSpec: "True"
-  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Result
-  nameWithType: CharDataModifiers.BR_Result
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BL_Position
+  nameWithType: CharDataModifiers.BL_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Color
+  name: BR_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Color
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BR_Color
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Color
+  nameWithType: CharDataModifiers.BR_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Color*
+  name: BR_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Color_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BR_Color
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Color
+  nameWithType: CharDataModifiers.BR_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Position
+  name: BR_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Position
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.BR_Position
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Position
+  nameWithType: CharDataModifiers.BR_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.BR_Position*
+  name: BR_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_BR_Position_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.BR_Position
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.BR_Position
+  nameWithType: CharDataModifiers.BR_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  name: CalculateVertexColors(CharData, IAnimatorDataProvider)
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_CalculateVertexColors_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorDataProvider_
+  commentId: M:TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
+  fullName: TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors(TMPEffects.CharacterData.CharData, TMPEffects.Components.Animator.IAnimatorDataProvider)
+  nameWithType: CharDataModifiers.CalculateVertexColors(CharData, IAnimatorDataProvider)
+- uid: TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors*
+  name: CalculateVertexColors
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_CalculateVertexColors_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.CalculateVertexColors
+  nameWithType: CharDataModifiers.CalculateVertexColors
 - uid: TMPEffects.Modifiers.CharDataModifiers.CalculateVertexPositions(TMPEffects.CharacterData.CharData,TMPEffects.Components.Animator.IAnimatorDataProvider)
   name: CalculateVertexPositions(CharData, IAnimatorDataProvider)
   href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_CalculateVertexPositions_TMPEffects_CharacterData_CharData_TMPEffects_Components_Animator_IAnimatorDataProvider_
@@ -10981,32 +11256,90 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Modifiers.CharDataModifiers.Reset
   nameWithType: CharDataModifiers.Reset
-- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Result
-  name: TL_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Result
-  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TL_Result
-  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Result
-  nameWithType: CharDataModifiers.TL_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Result*
-  name: TL_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Result_
-  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TL_Result
+- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Color
+  name: TL_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Color
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TL_Color
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Color
+  nameWithType: CharDataModifiers.TL_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Color*
+  name: TL_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Color_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TL_Color
   isSpec: "True"
-  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Result
-  nameWithType: CharDataModifiers.TL_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Result
-  name: TR_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Result
-  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TR_Result
-  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Result
-  nameWithType: CharDataModifiers.TR_Result
-- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Result*
-  name: TR_Result
-  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Result_
-  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TR_Result
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Color
+  nameWithType: CharDataModifiers.TL_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Position
+  name: TL_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Position
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TL_Position
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Position
+  nameWithType: CharDataModifiers.TL_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.TL_Position*
+  name: TL_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TL_Position_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TL_Position
   isSpec: "True"
-  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Result
-  nameWithType: CharDataModifiers.TR_Result
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TL_Position
+  nameWithType: CharDataModifiers.TL_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Color
+  name: TR_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Color
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TR_Color
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Color
+  nameWithType: CharDataModifiers.TR_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Color*
+  name: TR_Color
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Color_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TR_Color
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Color
+  nameWithType: CharDataModifiers.TR_Color
+- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Position
+  name: TR_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Position
+  commentId: P:TMPEffects.Modifiers.CharDataModifiers.TR_Position
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Position
+  nameWithType: CharDataModifiers.TR_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.TR_Position*
+  name: TR_Position
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_TR_Position_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.TR_Position
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.TR_Position
+  nameWithType: CharDataModifiers.TR_Position
+- uid: TMPEffects.Modifiers.CharDataModifiers.VertexColor(System.Int32)
+  name: VertexColor(int)
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_VertexColor_System_Int32_
+  commentId: M:TMPEffects.Modifiers.CharDataModifiers.VertexColor(System.Int32)
+  name.vb: VertexColor(Integer)
+  fullName: TMPEffects.Modifiers.CharDataModifiers.VertexColor(int)
+  fullName.vb: TMPEffects.Modifiers.CharDataModifiers.VertexColor(Integer)
+  nameWithType: CharDataModifiers.VertexColor(int)
+  nameWithType.vb: CharDataModifiers.VertexColor(Integer)
+- uid: TMPEffects.Modifiers.CharDataModifiers.VertexColor*
+  name: VertexColor
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_VertexColor_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.VertexColor
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.VertexColor
+  nameWithType: CharDataModifiers.VertexColor
+- uid: TMPEffects.Modifiers.CharDataModifiers.VertexPosition(System.Int32)
+  name: VertexPosition(int)
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_VertexPosition_System_Int32_
+  commentId: M:TMPEffects.Modifiers.CharDataModifiers.VertexPosition(System.Int32)
+  name.vb: VertexPosition(Integer)
+  fullName: TMPEffects.Modifiers.CharDataModifiers.VertexPosition(int)
+  fullName.vb: TMPEffects.Modifiers.CharDataModifiers.VertexPosition(Integer)
+  nameWithType: CharDataModifiers.VertexPosition(int)
+  nameWithType.vb: CharDataModifiers.VertexPosition(Integer)
+- uid: TMPEffects.Modifiers.CharDataModifiers.VertexPosition*
+  name: VertexPosition
+  href: api/TMPEffects.Modifiers.CharDataModifiers.html#TMPEffects_Modifiers_CharDataModifiers_VertexPosition_
+  commentId: Overload:TMPEffects.Modifiers.CharDataModifiers.VertexPosition
+  isSpec: "True"
+  fullName: TMPEffects.Modifiers.CharDataModifiers.VertexPosition
+  nameWithType: CharDataModifiers.VertexPosition
 - uid: TMPEffects.Modifiers.ColorOverride
   name: ColorOverride
   href: api/TMPEffects.Modifiers.ColorOverride.html
@@ -16938,6 +17271,12 @@ references:
   commentId: T:TMPEffects.TMPAnimations.Animations.ContPivotAnimation
   fullName: TMPEffects.TMPAnimations.Animations.ContPivotAnimation
   nameWithType: ContPivotAnimation
+- uid: TMPEffects.TMPAnimations.Animations.DangleAnimation
+  name: DangleAnimation
+  href: api/TMPEffects.TMPAnimations.Animations.DangleAnimation.html
+  commentId: T:TMPEffects.TMPAnimations.Animations.DangleAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.DangleAnimation
+  nameWithType: DangleAnimation
 - uid: TMPEffects.TMPAnimations.Animations.FadeAnimation
   name: FadeAnimation
   href: api/TMPEffects.TMPAnimations.Animations.FadeAnimation.html
@@ -17057,6 +17396,12 @@ references:
   commentId: T:TMPEffects.TMPAnimations.Animations.ShakeAnimation
   fullName: TMPEffects.TMPAnimations.Animations.ShakeAnimation
   nameWithType: ShakeAnimation
+- uid: TMPEffects.TMPAnimations.Animations.ShearAnimation
+  name: ShearAnimation
+  href: api/TMPEffects.TMPAnimations.Animations.ShearAnimation.html
+  commentId: T:TMPEffects.TMPAnimations.Animations.ShearAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.ShearAnimation
+  nameWithType: ShearAnimation
 - uid: TMPEffects.TMPAnimations.Animations.ShowAnimationStack
   name: ShowAnimationStack
   href: api/TMPEffects.TMPAnimations.Animations.ShowAnimationStack.html
@@ -17140,6 +17485,12 @@ references:
   isSpec: "True"
   fullName: TMPEffects.TMPAnimations.Animations.ShowAnimationStackObject.ValidateParameters
   nameWithType: ShowAnimationStackObject.ValidateParameters
+- uid: TMPEffects.TMPAnimations.Animations.SketchyAnimation
+  name: SketchyAnimation
+  href: api/TMPEffects.TMPAnimations.Animations.SketchyAnimation.html
+  commentId: T:TMPEffects.TMPAnimations.Animations.SketchyAnimation
+  fullName: TMPEffects.TMPAnimations.Animations.SketchyAnimation
+  nameWithType: SketchyAnimation
 - uid: TMPEffects.TMPAnimations.Animations.TMPSceneAnimation
   name: TMPSceneAnimation
   href: api/TMPEffects.TMPAnimations.Animations.TMPSceneAnimation.html
@@ -18705,6 +19056,19 @@ references:
   isSpec: "True"
   fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.InverseScaleVector
   nameWithType: TMPAnimationUtility.InverseScaleVector
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles(Vector3)
+  name: NormalizeEulerAngles(Vector3)
+  href: api/TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_NormalizeEulerAngles_Vector3_
+  commentId: M:TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles(Vector3)
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles(Vector3)
+  nameWithType: TMPAnimationUtility.NormalizeEulerAngles(Vector3)
+- uid: TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles*
+  name: NormalizeEulerAngles
+  href: api/TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_NormalizeEulerAngles_
+  commentId: Overload:TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles
+  isSpec: "True"
+  fullName: TMPEffects.TMPAnimations.TMPAnimationUtility.NormalizeEulerAngles
+  nameWithType: TMPAnimationUtility.NormalizeEulerAngles
 - uid: TMPEffects.TMPAnimations.TMPAnimationUtility.ScaleTextMesh(System.Boolean,System.Single)
   name: ScaleTextMesh(bool, float)
   href: api/TMPEffects.TMPAnimations.TMPAnimationUtility.html#TMPEffects_TMPAnimations_TMPAnimationUtility_ScaleTextMesh_System_Boolean_System_Single_
@@ -23912,19 +24276,6 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Timeline.TMPAnimationClip.CreatePlayable
   nameWithType: TMPAnimationClip.CreatePlayable
-- uid: TMPEffects.Timeline.TMPAnimationClip.Data
-  name: Data
-  href: api/TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_Data
-  commentId: P:TMPEffects.Timeline.TMPAnimationClip.Data
-  fullName: TMPEffects.Timeline.TMPAnimationClip.Data
-  nameWithType: TMPAnimationClip.Data
-- uid: TMPEffects.Timeline.TMPAnimationClip.Data*
-  name: Data
-  href: api/TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_Data_
-  commentId: Overload:TMPEffects.Timeline.TMPAnimationClip.Data
-  isSpec: "True"
-  fullName: TMPEffects.Timeline.TMPAnimationClip.Data
-  nameWithType: TMPAnimationClip.Data
 - uid: TMPEffects.Timeline.TMPAnimationClip.animation
   name: animation
   href: api/TMPEffects.Timeline.TMPAnimationClip.html#TMPEffects_Timeline_TMPAnimationClip_animation

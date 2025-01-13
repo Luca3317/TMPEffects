@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class TMPKeywordDatabase | TMPEffects documentation </title>
+      <title>Class TMPKeywordDatabaseBase | TMPEffects documentation </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class TMPKeywordDatabase | TMPEffects documentation ">
+      <meta name="title" content="Class TMPKeywordDatabaseBase | TMPEffects documentation ">
       
-      <meta name="description" content="Provides keywords used for parsing TMPEffects tags.">
+      <meta name="description" content="Base-class to create your own implementation of . Provides keywords used for parsing TMPEffects tags.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Databases_TMPKeywordDatabase.md&amp;value=---%0Auid%3A%20TMPEffects.Databases.TMPKeywordDatabase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/Luca3317/TMPEffects/new/docs/apiSpec/new?filename=TMPEffects_Databases_TMPKeywordDatabaseBase.md&amp;value=---%0Auid%3A%20TMPEffects.Databases.TMPKeywordDatabaseBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="TMPEffects.Databases.TMPKeywordDatabase">
+        <article data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase">
 
 
 
-  <h1 id="TMPEffects_Databases_TMPKeywordDatabase" data-uid="TMPEffects.Databases.TMPKeywordDatabase" class="text-break">
-Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <h1 id="TMPEffects_Databases_TMPKeywordDatabaseBase" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase" class="text-break">
+Class TMPKeywordDatabaseBase  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,12 +97,13 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
   
   </div>
 
-  <div class="markdown summary"><p>Provides keywords used for parsing TMPEffects tags.</p>
+  <div class="markdown summary"><p>Base-class to create your own implementation of <a class="xref" href="TMPEffects.Databases.TMPKeywordDatabase.html">TMPKeywordDatabase</a>.<br>
+Provides keywords used for parsing TMPEffects tags.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TMPKeywordDatabase : TMPKeywordDatabaseBase, ITMPKeywordDatabase, INotifyObjectChanged</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class TMPKeywordDatabaseBase : ScriptableObject, ITMPKeywordDatabase</code></pre>
   </div>
 
 
@@ -112,8 +113,7 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="TMPEffects.Databases.TMPKeywordDatabaseBase.html">TMPKeywordDatabaseBase</a></div>
-      <div><span class="xref">TMPKeywordDatabase</span></div>
+      <div><span class="xref">TMPKeywordDatabaseBase</span></div>
     </dd>
   </dl>
 
@@ -121,18 +121,16 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="TMPEffects.Databases.ITMPKeywordDatabase.html">ITMPKeywordDatabase</a></div>
-      <div><a class="xref" href="TMPEffects.ObjectChanged.INotifyObjectChanged.html">INotifyObjectChanged</a></div>
     </dd>
   </dl>
 
-
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
+  <dl class="typelist derived">
+    <dt>Derived</dt>
     <dd>
-    <div>
-      <a class="xref" href="TMPEffects.Databases.TMPKeywordDatabaseBase.html#TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetUnityObject_System_String_Object__">TMPKeywordDatabaseBase.TryGetUnityObject(string, out Object)</a>
-    </div>
-  </dd></dl>
+      <div><a class="xref" href="TMPEffects.Databases.TMPKeywordDatabase.html">TMPKeywordDatabase</a></div>
+    </dd>
+  </dl>
+
 
 
 
@@ -143,18 +141,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 </h2>
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetAnchor_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetAnchor*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnchor_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetAnchor_System_String_Vector2__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetAnchor(System.String,Vector2@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnchor_System_String_Vector2__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnchor(System.String,Vector2@)">
   TryGetAnchor(string, out Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetAnchor(string str, out Vector2 result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetAnchor(string str, out Vector2 result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -181,18 +179,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetAnimCurve_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetAnimCurve*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnimCurve_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetAnimCurve_System_String_AnimationCurve__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetAnimCurve(System.String,AnimationCurve@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetAnimCurve_System_String_AnimationCurve__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetAnimCurve(System.String,AnimationCurve@)">
   TryGetAnimCurve(string, out AnimationCurve)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetAnimCurve(string str, out AnimationCurve result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetAnimCurve(string str, out AnimationCurve result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -219,18 +217,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetBool_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetBool*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetBool_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetBool_System_String_System_Boolean__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetBool(System.String,System.Boolean@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetBool_System_String_System_Boolean__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetBool(System.String,System.Boolean@)">
   TryGetBool(string, out bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetBool(string str, out bool result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetBool(string str, out bool result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -257,18 +255,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetColor_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetColor*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetColor_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetColor_System_String_Color__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetColor(System.String,Color@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetColor_System_String_Color__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetColor(System.String,Color@)">
   TryGetColor(string, out Color)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetColor(string str, out Color result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetColor(string str, out Color result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -295,18 +293,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetFloat_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetFloat*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetFloat_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetFloat_System_String_System_Single__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetFloat(System.String,System.Single@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetFloat_System_String_System_Single__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetFloat(System.String,System.Single@)">
   TryGetFloat(string, out float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetFloat(string str, out float result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetFloat(string str, out float result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -333,18 +331,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetInt_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetInt*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetInt_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetInt_System_String_System_Int32__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetInt(System.String,System.Int32@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetInt_System_String_System_Int32__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetInt(System.String,System.Int32@)">
   TryGetInt(string, out int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetInt(string str, out int result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetInt(string str, out int result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -371,25 +369,25 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetUnityObject_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetUnityObject*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetUnityObject_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetUnityObject_System_String_UnityEngine_Object__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetUnityObject(System.String,UnityEngine.Object@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetUnityObject_System_String_Object__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetUnityObject(System.String,Object@)">
   TryGetUnityObject(string, out Object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetUnityObject(string str, out UnityEngine.Object result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetUnityObject(string str, out Object obj)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
-    <dt><code>result</code> <span class="xref">Object</span></dt>
+    <dt><code>obj</code> <span class="xref">Object</span></dt>
     <dd></dd>
   </dl>
 
@@ -409,18 +407,18 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <a id="TMPEffects_Databases_TMPKeywordDatabase_TryGetVector3_" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetVector3*"></a>
+  <a id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetVector3_" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3*"></a>
 
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_TryGetVector3_System_String_Vector3__" data-uid="TMPEffects.Databases.TMPKeywordDatabase.TryGetVector3(System.String,Vector3@)">
+  <h3 id="TMPEffects_Databases_TMPKeywordDatabaseBase_TryGetVector3_System_String_Vector3__" data-uid="TMPEffects.Databases.TMPKeywordDatabaseBase.TryGetVector3(System.String,Vector3@)">
   TryGetVector3(string, out Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryGetVector3(string str, out Vector3 result)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract bool TryGetVector3(string str, out Vector3 result)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -447,46 +445,11 @@ Class TMPKeywordDatabase  <a class="header-action link-secondary" title="View so
 
 
 
-  <h2 class="section" id="events">Events
-</h2>
-
-
-
-  <h3 id="TMPEffects_Databases_TMPKeywordDatabase_ObjectChanged" data-uid="TMPEffects.Databases.TMPKeywordDatabase.ObjectChanged">
-  ObjectChanged
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L14"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Raised when the object is changed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event ObjectChangedEventHandler ObjectChanged</code></pre>
-  </div>
-
-
-
-
-
-
-  <h4 class="section">Event Type</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="TMPEffects.ObjectChanged.ObjectChangedEventHandler.html">ObjectChangedEventHandler</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabase.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/Luca3317/TMPEffects/blob/docs/Package/Runtime/Databases/KeywordDatabase/TMPKeywordDatabaseBase.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 
