@@ -7,9 +7,8 @@ using UnityEngine;
 namespace TMPEffects.Parameters
 {
     /// <summary>
-    /// Allows you to easily create periodic animations.<b/>
-    /// The class is explained in detail <a href="https://tmpeffects.luca3317.dev/docs/tmpanimator_animationutility_wave.html">here</a>.
-    /// TODO Update link once docs updated
+    /// Allows you to easily create periodic animations.<br/>
+    /// The class is explained in detail <a href="https://tmpeffects.luca3317.dev/manual/tmpanimator_animationutility_wave.html">here</a>.
     /// </summary>
     [System.Serializable]
     [TMPParameterBundle("Wave")]
