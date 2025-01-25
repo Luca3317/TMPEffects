@@ -10,6 +10,9 @@ namespace TMPEffects.Editor
     {
         internal class Styles
         {
+            public static readonly GUIContent optOutBugReport = new GUIContent("Opt out of Bug Report Window",
+                "Whether you will get a bug report window for some TMPEffects bugs or not.");
+            
             public static readonly GUIContent defaultAnimationDatabase = new GUIContent("Default Animation Database",
                 "The default animation database that TMPAnimator components will use.");
 
@@ -46,6 +49,18 @@ namespace TMPEffects.Editor
             EditorGUILayout.PropertyField(defaultKeywordDatabase, Styles.defaultKeywordDatabase);
             EditorGUILayout.PropertyField(globalKeywordDatabase, Styles.globalKeywordDatabase);
             EditorGUI.indentLevel--;
+            
+            EditorGUILayout.Space();
+            
+            EditorGUILayout.LabelField("Miscellaneous", EditorStyles.boldLabel);
+            EditorGUI.indentLevel++;
+            bool optOutofWindow = EditorPrefs.GetBool(TMPEffectsEditorPrefsKeys.OptOutKey, true);
+            bool newOptOutofWindow = EditorGUILayout.Toggle(Styles.optOutBugReport, optOutofWindow);
+            if (newOptOutofWindow != optOutofWindow)
+            {
+                EditorPrefs.SetBool(TMPEffectsEditorPrefsKeys.OptOutKey, newOptOutofWindow);
+            }
+            EditorGUI.indentLevel--;
 
             if (serializedObject.hasModifiedProperties)
                 serializedObject.ApplyModifiedProperties();
@@ -76,28 +91,27 @@ namespace TMPEffects.Editor
 
         public const string SettingsPath = "Project/TMPEffects";
 
-        class Styles
-        {
-        }
-
         public TMPEffectsSettingsProvider() : base("Project/TMPEffects", SettingsScope.Project)
-        {
-        }
-
-        public override void OnActivate(string searchContext, VisualElement rootElement)
         {
         }
 
         public override void OnGUI(string searchContext)
         {
-            bool optOutofWindow = EditorPrefs.GetBool(TMPEffectsEditorPrefsKeys.OptOutKey, true);
-            bool newOptOutofWindow = EditorGUILayout.Toggle("Opt out of bug report window", optOutofWindow);
-            if (newOptOutofWindow != optOutofWindow)
-            {
-                EditorPrefs.SetBool(TMPEffectsEditorPrefsKeys.OptOutKey, newOptOutofWindow);
-            }
+            EditorGUI.indentLevel++;
+            
+            GUIStyle style = new GUIStyle(GUI.skin.label);
+            style.richText = true;
+            
+            GUIContent content = new GUIContent();
+            content.text = @"Settings for the TMPEffects package.
 
-            EditorGUILayout.Space();
+Full <color=lightblue>DOCUMENTATION</color> can be found here: https://tmpeffects.luca3317.dev
+The <color=lightblue>GITHUB</color> repository can be found here: https://github.com/Luca3317/TMPEffects";
+
+            float height = style.CalcHeight(content, EditorGUIUtility.currentViewWidth);
+            EditorGUILayout.SelectableLabel(content.text, style, GUILayout.Height(height));
+            EditorGUI.indentLevel--;
         }
+        
     }
 }
