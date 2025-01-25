@@ -230,6 +230,7 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
         lists[index].DoList(rect);
 #else
         EditorGUI.indentLevel++;
+        var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
         EditorGUI.indentLevel--;
