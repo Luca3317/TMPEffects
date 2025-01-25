@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="../styles.css">
 
 # Timeline integration
-TMPEffects is integrated with [Unity's Timeline package](https://docs.unity3d.com/Packages/com.unity.timeline@1.2/manual/index.html), providing its own timeline clips and markers.
+TMPEffects is integrated with [Unity's Timeline package](https://docs.unity3d.com/Packages/com.unity.timeline@1.2/manual/index.html), providing its own timeline clips and markers.  
+Be aware that both clips require the associated TMPAnimator to be animating (/previewing in edit mode) for the clips to take effect.
 
 ## Clips
 At the moment, TMPEffects provides two different clip types.
