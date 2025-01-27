@@ -15,8 +15,17 @@ namespace TMPEffects.Extensions
     {
         public static AnimationCurve Copy(this AnimationCurve curve)
         {
-            AnimationCurve newCurve = new AnimationCurve();
+            AnimationCurve newCurve;
+#if UNITY_2022_2_OR_NEWER
+            newCurve = new AnimationCurve();
             newCurve.CopyFrom(curve);
+#else
+            newCurve = new AnimationCurve(curve.keys)
+            {
+                postWrapMode = curve.postWrapMode,
+                preWrapMode = curve.preWrapMode
+            };
+#endif
             return newCurve;
         }
 

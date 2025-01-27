@@ -251,8 +251,7 @@ namespace TMPEffects.Editor
             }
         }
 
-        private void ResetAnimationCurves(SerializedProperty animCurveKeywordsProp,
-            IDictionary<string, AnimationCurve> curves)
+        private void ResetAnimationCurves(SerializedProperty animCurveKeywordsProp)
         {
             Dictionary<string, List<AnimationCurve>> vals = new Dictionary<string, List<AnimationCurve>>();
 
@@ -302,9 +301,9 @@ namespace TMPEffects.Editor
                 var enumValue = value.FindPropertyRelative("enumValue").enumValueIndex;
                 var customValue = value.FindPropertyRelative("customValue").objectReferenceValue;
                 var useCustomValue = value.FindPropertyRelative("useCustom").boolValue;
-                var offsettype = new OffsetTypePowerEnum((ParameterTypes.WaveOffsetType)enumValue,
-                    (ParameterTypes.TMPOffsetProvider)customValue, useCustomValue);
-
+                var offsettype = new OffsetTypePowerEnum((TMPParameterTypes.OffsetType)enumValue,
+                    (TMPOffsetProvider)customValue, useCustomValue);
+              
                 if (vals.ContainsKey(key))
                 {
                     vals[key].Add(offsettype);
