@@ -38,7 +38,7 @@ namespace TMPEffects.Components
     /// In addition to command tags, TMPWriter also processes event tags:<br/><br/>
     /// <see cref="TMPEvent"/>: Using event tags, you can raise events from text, i.e. when a specific character is shown. You can subscribe to these events with OnTextEvent.
     /// </remarks>
-    [HelpURL("https://tmpeffects.luca3317.dev/docs/tmpwriter.html")]
+    [HelpURL("https://tmpeffects.luca3317.dev/manual/tmpwriter.html")]
     [ExecuteAlways, DisallowMultipleComponent, RequireComponent(typeof(TMP_Text))]
     public class TMPWriter : TMPEffectComponent
     {

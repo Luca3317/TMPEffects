@@ -116,6 +116,7 @@ namespace TMPEffects.Editor
             {
                 // No clue how else to handle this
                 // Need to render during layout to correctly update preview scene (afaict)
+                // During layout previewArea is massive so set to 1 1
                 // TODO Maybe look into this further at some point; this works fine for now though
                 previewArea.width = 1;
                 previewArea.height = 1;
