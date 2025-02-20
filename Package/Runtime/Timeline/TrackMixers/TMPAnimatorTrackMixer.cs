@@ -72,7 +72,7 @@ namespace TMPEffects.Timeline
             for (int i = 0; i < inputCount; i++)
             {
                 float weight = playable.GetInputWeight(i);
-                if (weight <= 0) continue;
+                if (weight < Mathf.Epsilon) continue;
 
                 ScriptPlayable<TMPAnimationBehaviour> behaviour =
                     (ScriptPlayable<TMPAnimationBehaviour>)playable.GetInput(i);
