@@ -99,7 +99,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
                 // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude for each character a new delay
                 if (data.autoUpdateDict[segmentIndex] ||
-                    context.AnimatorContext.PassedTime - data.sharedLastUpdated >= data.sharedDelay)
+                    Mathf.Abs(context.AnimatorContext.PassedTime - data.sharedLastUpdated) >= data.sharedDelay)
                 {
                     float xAmp = data.maxXAmplitude == data.minXAmplitude
                         ? data.maxXAmplitude

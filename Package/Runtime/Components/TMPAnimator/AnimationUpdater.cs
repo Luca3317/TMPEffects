@@ -56,9 +56,9 @@ namespace TMPEffects.Components.Animator
         {
             delta += deltaTime;
 
-            if (delta + over >= updateTiming)
+            if (Mathf.Abs(delta + over) >= updateTiming)
             {
-                over = (delta + over) % updateTiming;
+                over = (Mathf.Abs(delta) + over) % updateTiming;
                 updateAction.Invoke(delta * additionalTimeScaling);
                 delta = 0;
                 return true;
