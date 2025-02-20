@@ -86,8 +86,9 @@ namespace TMPEffects.Components
 
         /// <summary>
         /// Where the animations are currently being updated from.
+        /// While the component is being animated via timeline, this will always be "Script"
         /// </summary>
-        public UpdateFrom UpdateFrom => updateFrom;
+        public UpdateFrom UpdateFrom => _isTimelineAnimated ? UpdateFrom.Script : updateFrom;
 
         /// <summary>
         /// All tags parsed by the TMPAnimator.
@@ -214,6 +215,11 @@ namespace TMPEffects.Components
         [System.NonSerialized] private object timesIdentifier;
 
         [System.NonSerialized] private CharDataModifiers state = new CharDataModifiers();
+        
+        /// <summary>
+        /// A flag indicating whether the component is being animated via Timeline
+        /// </summary>
+        [System.NonSerialized] private bool _isTimelineAnimated = false;
 
         private const string FalseUpdateAnimationsCallWarning =
             "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
@@ -531,6 +537,15 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             lastPreviewUpdateTime = Time.time;
 #endif
+        }
+
+        /// <summary>
+        /// Set whether the animator is being driven by Timeline
+        /// While driven by timeline, the component will behave as though UpdateMode is set to Script.
+        /// </summary>
+        public void SetIsTimelineAnimated(bool isTimelineAnimated)
+        {
+            _isTimelineAnimated = isTimelineAnimated;
         }
 
         #endregion
@@ -1714,6 +1729,7 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
             if (Application.isPlaying) return;
+            if (_isTimelineAnimated) return;
 
             if (lastPreviewUpdateTime <= 0)
             {
