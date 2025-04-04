@@ -21,7 +21,7 @@ namespace TMPEffects.TMPAnimations.Animations
             "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         OffsetBundle waveOffset;
 
-        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        [SerializeField, AutoParameter("colors", "clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         Color[] colors;
 
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
