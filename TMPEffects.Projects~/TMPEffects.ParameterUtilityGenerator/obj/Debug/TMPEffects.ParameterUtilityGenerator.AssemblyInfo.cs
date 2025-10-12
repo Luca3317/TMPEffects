@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TMPEffects.ParameterUtilityGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+557f93249ffb8cc948fb672342f99b4496c6f466")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de5f787f2534a25c2f151538f26d8e1eaae7df2f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TMPEffects.ParameterUtilityGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TMPEffects.ParameterUtilityGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

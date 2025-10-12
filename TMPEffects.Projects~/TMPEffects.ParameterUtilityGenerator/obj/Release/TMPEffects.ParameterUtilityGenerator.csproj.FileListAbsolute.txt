@@ -22,3 +22,15 @@ C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projec
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffec.846E2A58.Up2Date
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.dll
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.pdb
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.ParameterUtilityGenerator.deps.json
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.ParameterUtilityGenerator.dll
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.ParameterUtilityGenerator.pdb
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.csproj.AssemblyReference.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.AssemblyInfoInputs.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.AssemblyInfo.cs
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.csproj.CoreCompileInputs.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.sourcelink.json
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffec.846E2A58.Up2Date
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.dll
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.ParameterUtilityGenerator\obj\Release\TMPEffects.ParameterUtilityGenerator.pdb
