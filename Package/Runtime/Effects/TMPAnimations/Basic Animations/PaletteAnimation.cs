@@ -32,7 +32,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
-            int intIndex = (int)index;
+            int intIndex = ((int)index) % d.colors.Length;
 
             float t;
             Color color0;
