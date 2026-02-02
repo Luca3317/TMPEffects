@@ -168,7 +168,6 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationShow = false;
         [SerializeField] private bool excludePunctuationHide = false;
 
-
         [SerializeField] private TMPSceneKeywordDatabaseBase sceneKeywordDatabase;
         [SerializeField] private TMPKeywordDatabaseBase keywordDatabase;
 
@@ -408,7 +407,6 @@ namespace TMPEffects.Components
                 default: throw new System.ArgumentException();
             }
         }
-
 
         /// <summary>
         /// Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.

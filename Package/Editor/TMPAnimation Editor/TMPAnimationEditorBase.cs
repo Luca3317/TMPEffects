@@ -76,7 +76,6 @@ namespace TMPEffects.Editor
                                                                (animate ? "<color=#90ee90>" : "<color=#f1807e>") +
                                                                animationC.ToString() + "</color>");
 
-
             if (GUILayout.Button(animationButtonContent, animationButtonStyle))
             {
                 animate = !animate;

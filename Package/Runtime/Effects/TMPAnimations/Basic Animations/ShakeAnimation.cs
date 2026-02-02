@@ -42,7 +42,7 @@ namespace TMPEffects.TMPAnimations.Animations
         [SerializeField, AutoParameter("maxwait", "maxw")]
         [Tooltip("The maximum amount of time to wait after each shake.\nAliases: maxwait, maxw")] 
         float maxWait = 0.1f;
-        
+
         private partial void Animate(CharData cData, Data data, IAnimationContext context)
         {
             // Initialize if not yet initialized
@@ -68,99 +68,105 @@ namespace TMPEffects.TMPAnimations.Animations
             Vector3 offset;
 
             // If the shake is uniform (all characters shake the same way, at the same time)
-            if (data.uniform)
-            {
-                // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delay
-                if (context.AnimatorContext.PassedTime - data.lastUpdated >= data.delay)
-                {
-                    float xAmp = data.maxXAmplitude == data.minXAmplitude
-                        ? data.maxXAmplitude
-                        : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rng.NextDouble());
-                    float yAmp = data.maxYAmplitude == data.minYAmplitude
-                        ? data.maxYAmplitude
-                        : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rng.NextDouble());
-
-                    data.delay = data.maxWait == data.minWait
-                        ? data.maxWait
-                        : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rng.NextDouble());
-                    data.lastUpdated = context.AnimatorContext.PassedTime;
-
-                    data.xOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * xAmp;
-                    data.yOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * yAmp;
-                }
-
-                offset = new Vector3(data.xOffset, data.yOffset, 0f);
-            }
+            if (data.uniform) offset = UniformShake(cData, data, context);
 
             // else if the shake uses uniform delay (all character shake at the same time)
-            else if (data.uniformWait)
-            {
-                int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
-
-                // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude for each character a new delay
-                if (data.autoUpdateDict[segmentIndex] ||
-                    Mathf.Abs(context.AnimatorContext.PassedTime - data.sharedLastUpdated) >= data.sharedDelay)
-                {
-                    float xAmp = data.maxXAmplitude == data.minXAmplitude
-                        ? data.maxXAmplitude
-                        : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
-                    float yAmp = data.maxYAmplitude == data.minYAmplitude
-                        ? data.maxYAmplitude
-                        : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
-
-                    if (data.autoUpdateDict[segmentIndex]) data.autoUpdateDict[segmentIndex] = false;
-                    else
-                    {
-                        data.sharedDelay = data.maxWait == data.minWait
-                            ? data.maxWait
-                            : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rngDict[segmentIndex].NextDouble());
-                        data.sharedLastUpdated = context.AnimatorContext.PassedTime;
-
-                        for (int i = 0; i < context.SegmentData.Length; i++)
-                        {
-                            if (i == segmentIndex) continue;
-                            data.autoUpdateDict[i] = true;
-                        }
-                    }
-
-                    float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
-                    float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
-                    data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
-                }
-
-                offset = data.offsetDict[segmentIndex];
-            }
+            else if (data.uniformWait) offset = UniformWaitShake(cData, data, context);
 
             // else if the characters shake completely independently
-            else 
-            {
-                int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
-
-                // if the delay time of the current character is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delays for each character
-                if (context.AnimatorContext.PassedTime - data.lastUpdatedDict[segmentIndex] >= data.delayDict[segmentIndex])
-                {
-                    float xAmp = data.maxXAmplitude == data.minXAmplitude
-                        ? data.maxXAmplitude
-                        : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
-                    float yAmp = data.maxYAmplitude == data.minYAmplitude
-                        ? data.maxYAmplitude
-                        : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
-
-                    data.delayDict[segmentIndex] = data.maxWait == data.minWait
-                        ? data.maxWait
-                        : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rngDict[segmentIndex].NextDouble());
-                    data.lastUpdatedDict[segmentIndex] = context.AnimatorContext.PassedTime;
-
-                    float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
-                    float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
-                    data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
-                }
-
-                offset = data.offsetDict[segmentIndex];
-            }
+            else offset = IndependentShake(cData, data, context);
 
             // Set the position of the character using the calculated offset
             cData.SetPosition(cData.InitialPosition + offset);
+        }
+
+        private Vector3 UniformShake(CharData cData, Data data, IAnimationContext context)
+        {
+            // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delay
+            if (context.AnimatorContext.PassedTime - data.lastUpdated >= data.delay)
+            {
+                float xAmp = data.maxXAmplitude == data.minXAmplitude
+                    ? data.maxXAmplitude
+                    : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rng.NextDouble());
+                float yAmp = data.maxYAmplitude == data.minYAmplitude
+                    ? data.maxYAmplitude
+                    : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rng.NextDouble());
+
+                data.delay = data.maxWait == data.minWait
+                    ? data.maxWait
+                    : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rng.NextDouble());
+                data.lastUpdated = context.AnimatorContext.PassedTime;
+
+                data.xOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * xAmp;
+                data.yOffset = (((float)data.rng.NextDouble() * 2f) - 1f) * yAmp;
+            }
+
+            return new Vector3(data.xOffset, data.yOffset, 0f);
+        }
+
+        private Vector3 UniformWaitShake(CharData cData, Data data, IAnimationContext context)
+        {
+            int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+
+            // if the delay time is exceeded, shake the character by calculating new x/yoffset, x/yamplitude for each character a new delay
+            if (data.autoUpdateDict[segmentIndex] ||
+                Mathf.Abs(context.AnimatorContext.PassedTime - data.sharedLastUpdated) >= data.sharedDelay)
+            {
+                float xAmp = data.maxXAmplitude == data.minXAmplitude
+                    ? data.maxXAmplitude
+                    : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
+                float yAmp = data.maxYAmplitude == data.minYAmplitude
+                    ? data.maxYAmplitude
+                    : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
+
+                if (data.autoUpdateDict[segmentIndex]) data.autoUpdateDict[segmentIndex] = false;
+                else
+                {
+                    data.sharedDelay = data.maxWait == data.minWait
+                        ? data.maxWait
+                        : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rngDict[segmentIndex].NextDouble());
+                    data.sharedLastUpdated = context.AnimatorContext.PassedTime;
+
+                    for (int i = 0; i < context.SegmentData.Length; i++)
+                    {
+                        if (i == segmentIndex) continue;
+                        data.autoUpdateDict[i] = true;
+                    }
+                }
+
+                float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
+                float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
+                data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
+            }
+
+            return data.offsetDict[segmentIndex];
+        }
+
+        private Vector3 IndependentShake(CharData cData, Data data, IAnimationContext context)
+        {
+            int segmentIndex = context.SegmentData.SegmentIndexOf(cData);
+
+            // if the delay time of the current character is exceeded, shake the character by calculating new x/yoffset, x/yamplitude and delays for each character
+            if (context.AnimatorContext.PassedTime - data.lastUpdatedDict[segmentIndex] >= data.delayDict[segmentIndex])
+            {
+                float xAmp = data.maxXAmplitude == data.minXAmplitude
+                    ? data.maxXAmplitude
+                    : Mathf.Lerp(data.minXAmplitude, data.maxXAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
+                float yAmp = data.maxYAmplitude == data.minYAmplitude
+                    ? data.maxYAmplitude
+                    : Mathf.Lerp(data.minYAmplitude, data.maxYAmplitude, (float)data.rngDict[segmentIndex].NextDouble());
+
+                data.delayDict[segmentIndex] = data.maxWait == data.minWait
+                    ? data.maxWait
+                    : Mathf.Lerp(data.minWait, data.maxWait, (float)data.rngDict[segmentIndex].NextDouble());
+                data.lastUpdatedDict[segmentIndex] = context.AnimatorContext.PassedTime;
+
+                float xOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * xAmp;
+                float yOffset = (((float)data.rngDict[segmentIndex].NextDouble() * 2f) - 1f) * yAmp;
+                data.offsetDict[segmentIndex] = new Vector3(xOffset, yOffset, 0f);
+            }
+
+            return data.offsetDict[segmentIndex];
         }
 
         private void InitRNGDict(IAnimationContext context)
