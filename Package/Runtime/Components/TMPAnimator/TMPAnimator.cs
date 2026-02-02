@@ -53,10 +53,10 @@ namespace TMPEffects.Components
         /// </summary>
 #if UNITY_EDITOR
         public bool IsAnimating => isActiveAndEnabled &&
-                                   (updateFrom == UpdateFrom.Script || isAnimating ||
+                                   (UpdateFrom == UpdateFrom.Script || isAnimating ||
                                     (!Application.isPlaying && preview));
 #else
-        public bool IsAnimating => isActiveAndEnabled && (updateFrom == UpdateFrom.Script || isAnimating);
+        public bool IsAnimating => isActiveAndEnabled && (UpdateFrom == UpdateFrom.Script || isAnimating);
 #endif
 
         /// <summary>
@@ -86,8 +86,9 @@ namespace TMPEffects.Components
 
         /// <summary>
         /// Where the animations are currently being updated from.
+        /// While the component is being animated via timeline, this will always be "Script"
         /// </summary>
-        public UpdateFrom UpdateFrom => updateFrom;
+        public UpdateFrom UpdateFrom => _isTimelineAnimated ? UpdateFrom.Script : updateFrom;
 
         /// <summary>
         /// All tags parsed by the TMPAnimator.
@@ -167,7 +168,6 @@ namespace TMPEffects.Components
         [SerializeField] private bool excludePunctuationShow = false;
         [SerializeField] private bool excludePunctuationHide = false;
 
-
         [SerializeField] private TMPSceneKeywordDatabaseBase sceneKeywordDatabase;
         [SerializeField] private TMPKeywordDatabaseBase keywordDatabase;
 
@@ -214,6 +214,11 @@ namespace TMPEffects.Components
         [System.NonSerialized] private object timesIdentifier;
 
         [System.NonSerialized] private CharDataModifiers state = new CharDataModifiers();
+        
+        /// <summary>
+        /// A flag indicating whether the component is being animated via Timeline
+        /// </summary>
+        [System.NonSerialized] private bool _isTimelineAnimated = false;
 
         private const string FalseUpdateAnimationsCallWarning =
             "Called UpdateAnimations while TMPAnimator {0} is set to automatically update from {1}; " +
@@ -243,10 +248,10 @@ namespace TMPEffects.Components
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-            if (updateFrom != UpdateFrom.Script)
+            if (UpdateFrom != UpdateFrom.Script)
             {
                 throw new System.InvalidOperationException(string.Format(FalseUpdateAnimationsCallWarning, name,
-                    updateFrom.ToString()));
+                    UpdateFrom.ToString()));
             }
 
             UpdateAnimations_Impl(deltaTime);
@@ -272,10 +277,10 @@ namespace TMPEffects.Components
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-            if (updateFrom == UpdateFrom.Script)
+            if (UpdateFrom == UpdateFrom.Script)
             {
                 throw new System.InvalidOperationException(string.Format(FalseStartStopAnimatingCallWarning, name,
-                    updateFrom.ToString()));
+                    UpdateFrom.ToString()));
             }
 
             isAnimating = true;
@@ -301,10 +306,10 @@ namespace TMPEffects.Components
                 throw new System.InvalidOperationException("Animator is not enabled!");
             }
 
-            if (updateFrom == UpdateFrom.Script)
+            if (UpdateFrom == UpdateFrom.Script)
             {
                 throw new System.InvalidOperationException(string.Format(FalseStartStopAnimatingCallWarning, name,
-                    updateFrom.ToString()));
+                    UpdateFrom.ToString()));
             }
 
             isAnimating = false;
@@ -402,7 +407,6 @@ namespace TMPEffects.Components
                 default: throw new System.ArgumentException();
             }
         }
-
 
         /// <summary>
         /// Set the excluded character for basic animations, meaning characters that will not be animated by basic animations.
@@ -533,6 +537,15 @@ namespace TMPEffects.Components
 #endif
         }
 
+        /// <summary>
+        /// Set whether the animator is being driven by Timeline
+        /// While driven by timeline, the component will behave as though UpdateMode is set to Script.
+        /// </summary>
+        internal void SetIsTimelineAnimated(bool isTimelineAnimated)
+        {
+            _isTimelineAnimated = isTimelineAnimated;
+        }
+
         #endregion
 
         #region Initialization
@@ -572,7 +585,7 @@ namespace TMPEffects.Components
             if (!Application.isPlaying) return;
 #endif
 
-            if (animateOnStart && updateFrom != UpdateFrom.Script) StartAnimating();
+            if (animateOnStart && UpdateFrom != UpdateFrom.Script) StartAnimating();
         }
 
         private void OnDisable()
@@ -857,7 +870,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.Update && isAnimating)
+            if (UpdateFrom == UpdateFrom.Update && isAnimating)
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
         }
 
@@ -866,7 +879,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.LateUpdate && isAnimating)
+            if (UpdateFrom == UpdateFrom.LateUpdate && isAnimating)
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.deltaTime : Time.unscaledDeltaTime);
         }
 
@@ -875,7 +888,7 @@ namespace TMPEffects.Components
 #if UNITY_EDITOR
             if (!Application.isPlaying) return;
 #endif
-            if (updateFrom == UpdateFrom.FixedUpdate && isAnimating)
+            if (UpdateFrom == UpdateFrom.FixedUpdate && isAnimating)
                 UpdateAnimations_Impl(context.UseScaledTime ? Time.fixedDeltaTime : Time.fixedUnscaledDeltaTime);
         }
 
@@ -1714,6 +1727,7 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) return;
             if (Application.isPlaying) return;
+            if (_isTimelineAnimated) return;
 
             if (lastPreviewUpdateTime <= 0)
             {

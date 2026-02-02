@@ -50,7 +50,7 @@ namespace TMPEffects.TMPAnimations.Animations
         private partial void Animate(CharData cData, AnimData data, IAnimationContext context)
         {
             if (!data.lastUpdate.TryGetValue(cData.info.index, out float lastUpdate) || 
-                context.AnimatorContext.PassedTime - lastUpdate > data.delayTime ||
+                Mathf.Abs(context.AnimatorContext.PassedTime - lastUpdate) > data.delayTime ||
                 !data.modDatas.TryGetValue(cData.info.index, out var modData))
             {
                 modData = new ModData();

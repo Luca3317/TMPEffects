@@ -27,11 +27,30 @@ namespace TMPEffects.Timeline
         private MockedAnimationContext mocked;
         private ITMPAnimation lastActive;
 
+        internal bool PreserveAnimationStateOnPause { get; set; }
+        internal bool ShouldUpdateAnimations { get; set; }
+
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
             if (animator == null) return;
             animator.OnTextChanged -= UpdateContext;
             mocked = null;
+            
+            if (!PreserveAnimationStateOnPause)
+            {
+                active ??= new List<ScriptPlayable<TMPAnimationBehaviour>>();
+                active.Clear();
+                
+                animator.ResetTime();
+                animator.ResetAnimations();
+                animator.SetIsTimelineAnimated(false);
+            }
+        }
+
+        public override void OnPlayableDestroy(Playable playable)
+        {
+            if (animator == null) return;
+            animator.SetIsTimelineAnimated(false);
         }
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -39,6 +58,8 @@ namespace TMPEffects.Timeline
             animator = playerData as TMPAnimator;
 
             if (animator == null) return;
+            
+            animator.SetIsTimelineAnimated(true);
 
             active ??= new List<ScriptPlayable<TMPAnimationBehaviour>>();
             active.Clear();
@@ -51,7 +72,7 @@ namespace TMPEffects.Timeline
             for (int i = 0; i < inputCount; i++)
             {
                 float weight = playable.GetInputWeight(i);
-                if (weight <= 0) continue;
+                if (weight < Mathf.Epsilon) continue;
 
                 ScriptPlayable<TMPAnimationBehaviour> behaviour =
                     (ScriptPlayable<TMPAnimationBehaviour>)playable.GetInput(i);
@@ -59,8 +80,10 @@ namespace TMPEffects.Timeline
                 active.Add(behaviour);
             }
 
-            time = (float)playable.GetTime();
-
+            float t = (float)playable.GetTime();
+            float deltaTime = t - time;
+            time = t;
+            
             if (active.Count > 0)
             {
                 animator.UnregisterPostAnimationHook(OnAnimatedCallback);
@@ -70,6 +93,11 @@ namespace TMPEffects.Timeline
             {
                 needsReset = false;
                 animator.QueueCharacterReset();
+            }
+
+            if (ShouldUpdateAnimations)
+            {
+                animator.UpdateAnimations(deltaTime);
             }
         }
 
