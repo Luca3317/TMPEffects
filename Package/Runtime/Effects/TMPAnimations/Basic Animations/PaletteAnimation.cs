@@ -21,7 +21,7 @@ namespace TMPEffects.TMPAnimations.Animations
             "The way the offset for the wave is calculated.\nFor more information about Wave, see the section on it in the documentation.\nAliases: waveoffset, woffset, waveoff, woff")]
         OffsetBundle waveOffset;
 
-        [SerializeField, AutoParameter("colors, clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
+        [SerializeField, AutoParameter("colors", "clrs")] [Tooltip("The colors to cycle through.\nAliases: colors, clrs")]
         Color[] colors;
 
         private partial void Animate(CharData cData, AutoParametersData d, IAnimationContext context)
@@ -32,7 +32,7 @@ namespace TMPEffects.TMPAnimations.Animations
 
             // Calculate the index to be used for the colors array
             float index = Mathf.Abs((d.colors.Length) * (d.wave.Amplitude == 0 ? 0 : result.Item1 / d.wave.Amplitude));
-            int intIndex = (int)index;
+            int intIndex = ((int)index) % d.colors.Length;
 
             float t;
             Color color0;

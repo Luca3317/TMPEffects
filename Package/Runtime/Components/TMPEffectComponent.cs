@@ -40,6 +40,7 @@ namespace TMPEffects.Components
         {
             if (Mediator == null) TextComponent.SetText(text);
             else Mediator.SetText(text);
+            TextComponent.ForceMeshUpdate();
         }
 
         /// <summary>

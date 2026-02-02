@@ -187,11 +187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\TMPEffects.AutoParameters.Attributes.csproj",
+      "projectUniqueName": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\TMPEffects.AutoParameters.Attributes.csproj",
       "projectName": "TMPEffects.AutoParameters.Attributes",
-      "projectPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\TMPEffects.AutoParameters.Attributes.csproj",
+      "projectPath": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\TMPEffects.AutoParameters.Attributes.csproj",
       "packagesPath": "C:\\Users\\lweis\\.nuget\\packages\\",
-      "outputPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\obj\\",
+      "outputPath": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.AutoParameters.Attributes\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\lweis\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

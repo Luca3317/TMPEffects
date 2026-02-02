@@ -581,7 +581,7 @@ namespace TMPEffects.AutoParameters
 
                 return ifStatementSyntaxxx;
             }
-
+            
             private static StatementSyntax GetStringValidationSyntax(string parametersName, AutoParameterInfo info)
             {
                 if (info.required)
@@ -589,6 +589,7 @@ namespace TMPEffects.AutoParameters
                     var returnStatement =
                         SyntaxFactory.ReturnStatement(
                             SyntaxFactory.LiteralExpression(SyntaxKind.FalseLiteralExpression));
+
                     var arguments =
                         new List<ArgumentSyntax>()
                                 { SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName)) }
@@ -601,8 +602,12 @@ namespace TMPEffects.AutoParameters
                         SyntaxFactory.IdentifierName(Strings.ParameterDefinedName),
                         SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
 
-                    var ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, returnStatement);
-                    return ifStatementSyntaxxx;
+                    var negatedInvocation = SyntaxFactory.PrefixUnaryExpression(
+                        SyntaxKind.LogicalNotExpression,
+                        invocation);
+
+                    var ifStatementSyntax = SyntaxFactory.IfStatement(negatedInvocation, returnStatement);
+                    return ifStatementSyntax;
                 }
                 else
                 {
@@ -826,8 +831,52 @@ namespace TMPEffects.AutoParameters
 
                 return ifStatementSyntaxxx;
             }
-
+            
             private static StatementSyntax GetSetStringSyntax(string parametersName, string storageName,
+                AutoParameterInfo info)
+            {
+                int firstAliasIndex = 0;
+                if (info.specifiesRequirement)
+                    firstAliasIndex++;
+
+                var outArg = SyntaxFactory.Argument(SyntaxFactory.DeclarationExpression(
+                    SyntaxFactory.IdentifierName("var"),
+                    SyntaxFactory.SingleVariableDesignation(SyntaxFactory.Identifier(info.FieldName))));
+
+                var arguments =
+                    new List<ArgumentSyntax>()
+                    {
+                        outArg.WithRefKindKeyword(SyntaxFactory.Token(SyntaxKind.OutKeyword)),
+                        SyntaxFactory.Argument(SyntaxFactory.IdentifierName(parametersName))
+                    }.Concat(info.AliasesWithName.Select(str =>
+                        SyntaxFactory.Argument(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression,
+                            SyntaxFactory.Literal(str)))));
+
+                var invocation = SyntaxFactory.InvocationExpression(
+                    SyntaxFactory.IdentifierName(Strings.TryGetDefinedParameter),
+                    SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(arguments)));
+
+                // Build parametersName[<FieldName>] (use IdentifierName, not a string literal)
+                var dictionaryAccess = SyntaxFactory.ElementAccessExpression(
+                    SyntaxFactory.IdentifierName(parametersName),
+                    SyntaxFactory.BracketedArgumentList(SyntaxFactory.SeparatedList(new[]
+                    {
+                        SyntaxFactory.Argument(
+                            SyntaxFactory.IdentifierName(info.FieldName))
+                    })));
+
+                var assignment = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(
+                    SyntaxKind.SimpleAssignmentExpression,
+                    SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
+                        SyntaxFactory.IdentifierName(storageName), SyntaxFactory.IdentifierName(info.FieldName)),
+                    dictionaryAccess));
+
+                var ifStatementSyntaxxx = SyntaxFactory.IfStatement(invocation, assignment);
+
+                return ifStatementSyntaxxx;
+            }
+            
+            private static StatementSyntax GetSetStringSyntax_OLD(string parametersName, string storageName,
                 AutoParameterInfo info)
             {
                 int firstAliasIndex = 0;
