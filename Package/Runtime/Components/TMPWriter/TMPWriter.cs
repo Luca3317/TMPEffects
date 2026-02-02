@@ -978,6 +978,7 @@ namespace TMPEffects.Components
 
         private void ResetInvokables(int maxIndex)
         {
+            if (events == null) return;
             foreach (var eventt in events)
             {
                 if ((eventt.Indices.StartIndex <= maxIndex || eventt.ExecuteInstantly) && eventt.ExecuteRepeatable)

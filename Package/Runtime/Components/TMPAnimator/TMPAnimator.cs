@@ -543,7 +543,7 @@ namespace TMPEffects.Components
         /// Set whether the animator is being driven by Timeline
         /// While driven by timeline, the component will behave as though UpdateMode is set to Script.
         /// </summary>
-        public void SetIsTimelineAnimated(bool isTimelineAnimated)
+        internal void SetIsTimelineAnimated(bool isTimelineAnimated)
         {
             _isTimelineAnimated = isTimelineAnimated;
         }

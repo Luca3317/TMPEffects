@@ -174,7 +174,12 @@ namespace TMPEffects.Editor
             targetText.text = "TMPEffects";
             targetText.fontSize = 15;
             targetText.overflowMode = TextOverflowModes.Overflow;
-            targetText.enableWordWrapping = false;
+
+#if TMP_NEW_WRAPPING
+            targetText.textWrappingMode = TextWrappingModes.NoWrap;
+#else
+            targetText.enableWordWrapping = false; 
+#endif
 
             animator = targetObject.AddComponent<TMPAnimator>();
             animator.enabled = true;
