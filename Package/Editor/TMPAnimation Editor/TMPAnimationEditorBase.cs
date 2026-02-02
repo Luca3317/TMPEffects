@@ -174,7 +174,7 @@ namespace TMPEffects.Editor
             targetText.fontSize = 15;
             targetText.overflowMode = TextOverflowModes.Overflow;
 
-#if TMP_NEW_WRAPPING
+#if TMPro_4_OR_NEWER
             targetText.textWrappingMode = TextWrappingModes.NoWrap;
 #else
             targetText.enableWordWrapping = false; 

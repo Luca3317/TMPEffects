@@ -24,9 +24,14 @@
             "define": "TIMELINE_INSTALLED"
         },
         {
+            "name": "com.unity.textmeshpro",
+            "expression": "4.0.0",
+            "define": "TMPro_4_OR_NEWER"
+        },
+        {
             "name": "com.unity.ugui",
             "expression": "1.0.0",
-            "define": "TMP_NEW_WRAPPING"
+            "define": "USING_UGUI"
         }
     ],
     "noEngineReferences": false
