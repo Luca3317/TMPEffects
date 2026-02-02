@@ -1,7 +1,7 @@
 {
   "name": "com.luca3317.tmpeffects",
   "description": "Easily animate text and apply other kinds of effects to your TextMeshPro texts using custom tags",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "unity": "2021.3",
   "displayName": "TMPEffects",
   "author": { "name": "Luca Weist", "url": "https://github.com/Luca3317" },
