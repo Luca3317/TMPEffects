@@ -200,7 +200,21 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
     {
         var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
+        
+#if !UNITY_2022_2_OR_NEWER
+        // Weird thing where if not expanded, whether there are list elements or not,
+        // that returned height is too small and will overlap with other lists / add button
+        clips.isExpanded = true;
+#endif
+        
         return EditorGUI.GetPropertyHeight(clips);
+    }
+    
+    private float ElementHeightCallback(int listIndex, int index)
+    {
+        var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
+        var clip = tracksprop.GetArrayElementAtIndex(listIndex).FindPropertyRelative("clips").GetArrayElementAtIndex(index);
+        return EditorGUI.GetPropertyHeight(clip);
     }
 
     private void MainAddCallback(ReorderableList list)
@@ -212,11 +226,15 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
     private void MainDrawElementCallback(Rect rect, int index, bool isactive, bool isfocused)
     {
+#if !UNITY_2022_2_OR_NEWER
+        lists[index].DoList(rect);
+#else
         EditorGUI.indentLevel++;
         var tracksprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
         var clips = tracksprop.GetArrayElementAtIndex(index).FindPropertyRelative("clips");
         EditorGUI.PropertyField(rect, clips);
         EditorGUI.indentLevel--;
+#endif
     }
 
     private void AddCallback(ReorderableList list)
@@ -288,8 +306,37 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
 
     private ReorderableList trackList;
 
+#if !UNITY_2022_2_OR_NEWER
+    private Dictionary<int, ReorderableList> lists = new Dictionary<int, ReorderableList>(); 
+#endif
+    
     private void UpdateLists()
     {
+#if !UNITY_2022_2_OR_NEWER
+        // 2021.3 and before dont have ReorderableList.GetReorderableListFromSerializedProperty,
+        // so this is a quick implementation that works with these versions
+        // Doesnt look the exact same as the original, but functionally identical (as far as my tests went so far)
+        
+        var trackprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
+        if (trackList == null) trackList = new ReorderableList(serializedObject, trackprop, true, false, true, true);
+        trackList.onAddCallback = MainAddCallback;
+        trackList.drawElementCallback = MainDrawElementCallback;
+        trackList.elementHeightCallback = MainElementHeightCallback;
+
+        for (int i = 0; i < trackprop.arraySize; i++)
+        {
+            if (!lists.TryGetValue(i, out var list) || list == null)
+            {
+                var clips = trackprop.GetArrayElementAtIndex(i).FindPropertyRelative("clips");
+                list = new ReorderableList(clips.serializedObject, clips, true, false, true, true);
+                lists[i] = list;
+            }
+
+            int listindex = i;
+            list.drawElementCallback = (a, b, c, d) => DrawElementCallback(listindex, a, b, c, d);
+            list.elementHeightCallback = (index) => ElementHeightCallback(listindex, index);
+        }
+#else
         try
         {
             var trackprop = serializedObject.FindProperty("<Tracks>k__BackingField").FindPropertyRelative("Tracks");
@@ -318,6 +365,7 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
         {
             Debug.LogWarning(e.Message);
         }
+#endif
     }
 
     public override void OnInspectorGUI()
@@ -381,7 +429,6 @@ internal class BaseGenericAnimationEditor : TMPAnimationEditorBase
             if (!wasPlaying.HasValue) wasPlaying = animate;
             animate = false;
             float fullPlays = (int)(animator.AnimatorContext.PassedTime / duration.floatValue);
-            // Debug.LogWarning("usevalue " + useValue);
             animator.ResetTime(useValue);
             animator.UpdateAnimations(0f);
         }

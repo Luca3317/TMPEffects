@@ -20,3 +20,14 @@ C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projec
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.sourcelink.json
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.dll
 C:\UnityProjects\TMPEffects Dev 2.0 For docs\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.pdb
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.AutoParameters.Attributes.deps.json
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.AutoParameters.Attributes.dll
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\Package\TMPEffects.AutoParameters.Attributes.pdb
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.csproj.AssemblyReference.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.GeneratedMSBuildEditorConfig.editorconfig
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.AssemblyInfoInputs.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.AssemblyInfo.cs
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.csproj.CoreCompileInputs.cache
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.sourcelink.json
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.dll
+C:\UnityProjects\TMPEffects\Assets\TMPEffects\TMPEffects.Projects~\TMPEffects.AutoParameters.Attributes\obj\Debug\TMPEffects.AutoParameters.Attributes.pdb

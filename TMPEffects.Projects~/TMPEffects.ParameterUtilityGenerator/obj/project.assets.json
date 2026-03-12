@@ -3098,11 +3098,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
+      "projectUniqueName": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
       "projectName": "TMPEffects.ParameterUtilityGenerator",
-      "projectPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
+      "projectPath": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\TMPEffects.ParameterUtilityGenerator.csproj",
       "packagesPath": "C:\\Users\\lweis\\.nuget\\packages\\",
-      "outputPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\obj\\",
+      "outputPath": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.ParameterUtilityGenerator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\lweis\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
@@ -3127,8 +3127,8 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {
-              "projectPath": "C:\\UnityProjects\\TMPEffects Dev\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj"
+            "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj": {
+              "projectPath": "C:\\UnityProjects\\TMPEffects\\Assets\\TMPEffects\\TMPEffects.Projects~\\TMPEffects.StringLibrary\\TMPEffects.StringLibrary.csproj"
             }
           }
         }

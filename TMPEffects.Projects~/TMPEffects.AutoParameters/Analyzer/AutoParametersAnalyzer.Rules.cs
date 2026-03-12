@@ -38,6 +38,7 @@ namespace TMPEffects.AutoParameters.Analyzer
                     Rule_1_4,
                     Rule_1_5,
                     Rule_1_7,
+                    Rule_1_8,
                     Rule_2_0,
                     Rule_2_1,
                     Rule_2_2,
@@ -341,6 +342,22 @@ namespace TMPEffects.AutoParameters.Analyzer
 #pragma warning disable RS2008 // Enable analyzer release tracking
         private static readonly DiagnosticDescriptor Rule_1_7 = new DiagnosticDescriptor(DiagnosticId_1_7, Title_1_7,
             MessageFormat_1_7, Category_1_7, DiagnosticSeverity.Warning, isEnabledByDefault: true);
+#pragma warning restore RS2008 // Enable analyzer release tracking
+        
+        
+        public const string DiagnosticId_1_8 = "TMPAP108";
+
+        private static readonly LocalizableString Title_1_8 =
+            "AutoParameters that use \"\" as alias must be required";
+
+        private static readonly LocalizableString MessageFormat_1_8 = "Field {0} decorated with " +
+                                                                      Strings.AutoParameterAttributeName +
+                                                                      " is not required, but uses \"\" as alias";
+
+        private const string Category_1_8 = "Usage";
+#pragma warning disable RS2008 // Enable analyzer release tracking
+        private static readonly DiagnosticDescriptor Rule_1_8 = new DiagnosticDescriptor(DiagnosticId_1_8, Title_1_8,
+            MessageFormat_1_8, Category_1_8, DiagnosticSeverity.Error, isEnabledByDefault: true);
 #pragma warning restore RS2008 // Enable analyzer release tracking
 
         #endregion

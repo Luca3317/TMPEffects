@@ -76,7 +76,6 @@ namespace TMPEffects.Editor
                                                                (animate ? "<color=#90ee90>" : "<color=#f1807e>") +
                                                                animationC.ToString() + "</color>");
 
-
             if (GUILayout.Button(animationButtonContent, animationButtonStyle))
             {
                 animate = !animate;
@@ -116,6 +115,7 @@ namespace TMPEffects.Editor
             {
                 // No clue how else to handle this
                 // Need to render during layout to correctly update preview scene (afaict)
+                // During layout previewArea is massive so set to 1 1
                 // TODO Maybe look into this further at some point; this works fine for now though
                 previewArea.width = 1;
                 previewArea.height = 1;
@@ -173,7 +173,12 @@ namespace TMPEffects.Editor
             targetText.text = "TMPEffects";
             targetText.fontSize = 15;
             targetText.overflowMode = TextOverflowModes.Overflow;
-            targetText.enableWordWrapping = false;
+
+#if TMPro_4_OR_NEWER
+            targetText.textWrappingMode = TextWrappingModes.NoWrap;
+#else
+            targetText.enableWordWrapping = false; 
+#endif
 
             animator = targetObject.AddComponent<TMPAnimator>();
             animator.enabled = true;

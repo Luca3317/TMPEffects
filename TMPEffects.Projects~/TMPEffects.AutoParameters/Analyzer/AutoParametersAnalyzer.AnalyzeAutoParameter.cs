@@ -95,6 +95,19 @@ namespace TMPEffects.AutoParameters.Analyzer
             {
                 diagnostic = Diagnostic.Create(Rule_1_5, varDecl.GetLocation(), varDecl.Identifier.Text);
                 context.ReportDiagnostic(diagnostic);
+                return;
+            }
+
+            if (Utility.TryGetAutoParameterInfo(varSymbol, out var info))
+            {
+                if (info.FirstAlias == "" || (info.AliasesWithName != null && info.AliasesWithName.Contains("")))
+                {
+                    if (!info.required)
+                    {
+                        diagnostic = Diagnostic.Create(Rule_1_8, varDecl.GetLocation(), varDecl.Identifier.Text);
+                        context.ReportDiagnostic(diagnostic);
+                    }
+                }
             }
         }
     }

@@ -5,7 +5,8 @@ using TMPEffects.Parameters.Attributes;
 namespace TMPEffects.Parameters
 {
     /// <summary>
-    /// Provides timing offsets for characters (to be used with e.g. <see cref="Wave"/>).
+    /// Provides timing offsets for characters (to be used with e.g. <see cref="Wave"/>).<br/>
+    /// The class is explained in detail <a href="https://tmpeffects.luca3317.dev/manual/offsetproviders.html">here</a>.
     /// </summary>
     [TMPParameterType("OffsetProvider", typeof(OffsetTypePowerEnum), typeof(SceneOffsetTypePowerEnum), true)]
     public partial interface ITMPOffsetProvider

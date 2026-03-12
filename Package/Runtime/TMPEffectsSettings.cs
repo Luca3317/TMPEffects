@@ -30,7 +30,10 @@ internal class TMPEffectsSettings : ScriptableObject
                     TMPEffectsImporterWindow.ShowImporterWindow();
                 }
 #else
-                Debug.LogError("Could not load TMPEffectsSettings. You must import it and rebuild.");
+                if (TMPEffectsSettings.instance == null)
+                {
+                    Debug.LogError("Could not load TMPEffectsSettings. You must import it and rebuild in order for TMPEffects to work properly.");
+                }
 #endif
             }
 
