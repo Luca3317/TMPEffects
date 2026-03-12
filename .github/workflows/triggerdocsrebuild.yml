@@ -1,0 +1,17 @@
+name: Trigger Docs Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch build to private repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DOCS_TRIGGER_TOKEN }}
+          repository: Luca3317/TMPEffects-Docs
+          event-type: trigger-docs-build
