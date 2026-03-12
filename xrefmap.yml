@@ -16841,6 +16841,19 @@ references:
   isSpec: "True"
   fullName: TMPEffects.Timeline.TMPAnimatorTrackMixer.OnBehaviourPause
   nameWithType: TMPAnimatorTrackMixer.OnBehaviourPause
+- uid: TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy(Playable)
+  name: OnPlayableDestroy(Playable)
+  href: api/TMPEffects.Timeline.TMPAnimatorTrackMixer.html#TMPEffects_Timeline_TMPAnimatorTrackMixer_OnPlayableDestroy_Playable_
+  commentId: M:TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy(Playable)
+  fullName: TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy(Playable)
+  nameWithType: TMPAnimatorTrackMixer.OnPlayableDestroy(Playable)
+- uid: TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy*
+  name: OnPlayableDestroy
+  href: api/TMPEffects.Timeline.TMPAnimatorTrackMixer.html#TMPEffects_Timeline_TMPAnimatorTrackMixer_OnPlayableDestroy_
+  commentId: Overload:TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy
+  isSpec: "True"
+  fullName: TMPEffects.Timeline.TMPAnimatorTrackMixer.OnPlayableDestroy
+  nameWithType: TMPAnimatorTrackMixer.OnPlayableDestroy
 - uid: TMPEffects.Timeline.TMPAnimatorTrackMixer.ProcessFrame(Playable,FrameData,System.Object)
   name: ProcessFrame(Playable, FrameData, object)
   href: api/TMPEffects.Timeline.TMPAnimatorTrackMixer.html#TMPEffects_Timeline_TMPAnimatorTrackMixer_ProcessFrame_Playable_FrameData_System_Object_
