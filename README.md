@@ -21,7 +21,7 @@ TMPEffects allows you to easily apply all kinds of effects to your TextMeshPro t
       <img src="/gifs/tmpeffectwrite-git.gif" width=100% height=auto />
     </td>
   </tr>
-  <tr>
+
     <td valign="middle" style="border: none;" align="center"><b>&bull; Animate the show / hide sequence</b><br><br>
     <img src="/gifs/tmpeffectsshowhide-git.gif" width=100% height=auto />
     </td>
