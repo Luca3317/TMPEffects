@@ -15,18 +15,23 @@ namespace TMPEffects.Components
     public abstract class TMPEffectComponent : MonoBehaviour
     {
         public delegate void OnTextChangedEventHandler(bool textContentChanged);
-        
+
         /// <summary>
         /// Raised when the associated <see cref="TMP_Text"/> component's text changes.<br/>
         /// The bool parameter indicates whether the actual text content changed.
         /// </summary>
         public event OnTextChangedEventHandler OnTextChanged;
-        
+
         /// <summary>
         /// The associated <see cref="CharData"/>.
         /// </summary>
         public ReadOnlyCollection<CharData> CharData => Mediator.CharData;
-        
+
+        /// <summary>
+        /// The visibility states of the current <see cref="CharData"/>. (Lists kept in sync; VisibilityStates[i] => state for CharData[i])
+        /// </summary>
+        public ReadOnlyCollection<VisibilityState> VisibilityStates => Mediator.VisibilityStates;
+
         /// <summary>
         /// The associated <see cref="TMP_Text"/> component.
         /// </summary>
@@ -147,7 +152,7 @@ namespace TMPEffects.Components
         {
             Mediator.TextChanged_Late -= TextChanged;
         }
-        
+
         private void TextChanged(bool textContentChanged, ReadOnlyCollection<CharData> oldCharData, ReadOnlyCollection<VisibilityState> oldVisibilities)
         {
             OnTextChanged?.Invoke(textContentChanged);
